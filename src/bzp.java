@@ -33,7 +33,7 @@ public class bzp {
                .apply(
                   $$7x,
                   $$6xx -> ($$7xx, $$8x, $$9x) -> {
-                        if ($$3 && $$8x.n_()) {
+                        if ($$3 && $$8x.e_()) {
                            return false;
                         } else if ($$8.getValue() == 0L) {
                            $$8.setValue($$7xx.ae() + (long)$$7xx.A.a(20));
@@ -96,7 +96,7 @@ public class bzp {
             $$2.add((iw)$$4.getSecond());
          }
 
-         return $$0.O().a($$2, $$3);
+         return $$0.N().a($$2, $$3);
       }
    }
 

@@ -35,8 +35,8 @@ public class eac extends dyo {
    public boolean a(csi $$0) {
       if (this.m().b() instanceof duy $$1) {
          fgc $$2 = $$1.o(this.m());
-         double $$3 = $$0.dA() - ((double)this.aC_().u() + $$2.d);
-         double $$4 = $$0.dG() - ((double)this.aC_().w() + $$2.f);
+         double $$3 = $$0.dA() - ((double)this.ax_().u() + $$2.d);
+         double $$4 = $$0.dG() - ((double)this.ax_().w() + $$2.f);
          float $$5 = $$1.h(this.m());
          float $$6 = (float)(azz.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
          return azz.d($$5, $$6) <= 90.0F;
@@ -108,9 +108,9 @@ public class eac extends dyo {
       if (!this.u() && $$0.cG().equals(this.t()) && this.n != null) {
          this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
          this.a(null);
-         this.n.a(this.aC_(), this.m(), this.m(), 3);
+         this.n.a(this.ax_(), this.m(), this.m(), 3);
       } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ai().getString());
+         a.warn("Player {} just tried to change non-editable sign", $$0.ah().getString());
       }
    }
 
@@ -122,8 +122,8 @@ public class eac extends dyo {
    private ead a(csi $$0, List<asu> $$1, ead $$2) {
       for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
          asu $$4 = $$1.get($$3);
-         yd $$5 = $$2.a($$3, $$0.X()).a();
-         if ($$0.X()) {
+         yd $$5 = $$2.a($$3, $$0.W()).a();
+         if ($$0.W()) {
             $$2 = $$2.a($$3, xg.b($$4.b()).b($$5));
          } else {
             $$2 = $$2.a($$3, xg.b($$4.d()).b($$5), xg.b($$4.b()).b($$5));
@@ -164,7 +164,7 @@ public class eac extends dyo {
    public boolean a(csi $$0, dkj $$1, iw $$2, boolean $$3) {
       boolean $$4 = false;
 
-      for (xg $$5 : this.a($$3).b($$0.X())) {
+      for (xg $$5 : this.a($$3).b($$0.W())) {
          yd $$6 = $$5.a();
          xe $$7 = $$6.i();
          if ($$7 instanceof xe.f) {
@@ -187,8 +187,8 @@ public class eac extends dyo {
    }
 
    private static ek a(@Nullable csi $$0, dkj $$1, iw $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ai().getString();
-      xg $$4 = (xg)($$0 == null ? xg.b("Sign") : $$0.m_());
+      String $$3 = $$0 == null ? "Sign" : $$0.ah().getString();
+      xg $$4 = (xg)($$0 == null ? xg.b("Sign") : $$0.P_());
       return new ek(ej.a, fgc.b($$2), fgb.a, (asb)$$1, 2, $$3, $$4, $$1.p(), $$0);
    }
 
@@ -212,7 +212,7 @@ public class eac extends dyo {
 
    private void v() {
       this.e();
-      this.n.a(this.aC_(), this.m(), this.m(), 3);
+      this.n.a(this.ax_(), this.m(), this.m(), 3);
    }
 
    public boolean u() {
@@ -231,7 +231,7 @@ public class eac extends dyo {
 
    public boolean b(UUID $$0) {
       csi $$1 = this.n.a($$0);
-      return $$1 == null || !$$1.a(this.aC_(), 4.0);
+      return $$1 == null || !$$1.a(this.ax_(), 4.0);
    }
 
    public static void a(dkj $$0, iw $$1, ebq $$2, eac $$3) {

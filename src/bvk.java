@@ -8,7 +8,7 @@ public final class bvk implements bve {
    }
 
    @Override
-   public xg m_() {
+   public xg P_() {
       return this.a;
    }
 

@@ -93,7 +93,7 @@ public abstract class cuw extends cuv implements cva {
 
    @Override
    public void a() {
-      this.al_();
+      this.ah_();
    }
 
    public void a(alq<fay> $$0, long $$1) {
@@ -104,7 +104,7 @@ public abstract class cuw extends cuv implements cva {
    @Nullable
    @Override
    public cwb createMenu(int $$0, csh $$1, csi $$2) {
-      if (this.c != null && $$2.aa_()) {
+      if (this.c != null && $$2.ak()) {
          return null;
       } else {
          this.f($$1.h);
@@ -116,7 +116,7 @@ public abstract class cuw extends cuv implements cva {
 
    @Nullable
    @Override
-   public alq<fay> q() {
+   public alq<fay> r() {
       return this.c;
    }
 

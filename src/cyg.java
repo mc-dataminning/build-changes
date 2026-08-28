@@ -79,7 +79,7 @@ public class cyg implements cwt {
    }
 
    @Override
-   public int aA_() {
+   public int av_() {
       return this.c;
    }
 

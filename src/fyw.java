@@ -17,7 +17,7 @@ public class fyw extends fzq {
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aN_() != this.d || $$0 != 257 && $$0 != 335) {
+      if (!this.b.j || this.aI_() != this.d || $$0 != 257 && $$0 != 335) {
          return super.a($$0, $$1, $$2);
       } else {
          this.m();
@@ -26,7 +26,7 @@ public class fyw extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.d = new fuh(this.p, this.n / 2 - 100, 116, 200, 20, xg.c("addServer.enterIp"));
       this.d.f(128);
       this.d.a(this.m.n.Y);
@@ -38,7 +38,7 @@ public class fyw extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.d);
    }
 
@@ -55,12 +55,12 @@ public class fyw extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.u);
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       this.m.n.Y = this.d.a();
       this.m.n.az();
    }

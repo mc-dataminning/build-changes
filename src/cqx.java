@@ -74,7 +74,7 @@ public class cqx extends cqw implements cox, crs {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("IsBaby", this.n_());
+      $$0.a("IsBaby", this.e_());
       $$0.a("CannotHunt", this.bY);
       this.b($$0, this.dX());
    }
@@ -89,16 +89,16 @@ public class cqx extends cqw implements cox, crs {
 
    @bbi
    @Override
-   public bvj n() {
+   public bvj u() {
       return this.bX;
    }
 
    @Override
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cow $$4 && $$4.x()) {
+      if ($$1.d() instanceof cow $$4 && $$4.gw()) {
          dak $$5 = new dak(dao.vB);
-         $$4.gu();
+         $$4.gx();
          this.a($$0, $$5);
       }
 
@@ -125,12 +125,12 @@ public class cqx extends cqw implements cox, crs {
    public void a(aku<?> $$0) {
       super.a($$0);
       if (bI.equals($$0)) {
-         this.i_();
+         this.h_();
       }
    }
 
-   public static bzk.a gy() {
-      return cpk.gx().a(bzl.s, 16.0).a(bzl.v, 0.35F).a(bzl.c, 5.0);
+   public static bzk.a gB() {
+      return cpk.gA().a(bzl.s, 16.0).a(bzl.v, 0.35F).a(bzl.c, 5.0);
    }
 
    public static boolean b(bxn<cqx> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
@@ -144,8 +144,8 @@ public class cqx extends cqw implements cox, crs {
       if ($$2 != bxm.d) {
          if ($$4.i() < 0.2F) {
             this.a(true);
-         } else if (this.t()) {
-            this.a(bxo.a, this.gA());
+         } else if (this.gv()) {
+            this.a(bxo.a, this.gD());
          }
       }
 
@@ -156,7 +156,7 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   protected boolean aa() {
+   protected boolean Z() {
       return false;
    }
 
@@ -167,7 +167,7 @@ public class cqx extends cqw implements cox, crs {
 
    @Override
    protected void a(bai $$0, bva $$1) {
-      if (this.t()) {
+      if (this.gv()) {
          this.a(bxo.f, new dak(dao.qC), $$0);
          this.a(bxo.e, new dak(dao.qD), $$0);
          this.a(bxo.d, new dak(dao.qE), $$0);
@@ -204,14 +204,14 @@ public class cqx extends cqw implements cox, crs {
       } else if (this.dV() instanceof asb $$3) {
          return cqy.a($$3, this, $$0, $$1);
       } else {
-         boolean $$4 = cqy.b(this, $$0.b($$1)) && this.x() != cqz.d;
+         boolean $$4 = cqy.b(this, $$0.b($$1)) && this.gw() != cqz.d;
          return (bvc)($$4 ? bvc.a : bvc.e);
       }
    }
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bT : super.e($$0);
+      return this.e_() ? bT : super.e($$0);
    }
 
    @Override
@@ -227,7 +227,7 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   public boolean n_() {
+   public boolean e_() {
       return this.ar().a(bI);
    }
 
@@ -236,7 +236,7 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   protected boolean j() {
+   protected boolean m() {
       return !this.bY;
    }
 
@@ -262,17 +262,17 @@ public class cqx extends cqw implements cox, crs {
       super.g($$0);
    }
 
-   private dak gA() {
+   private dak gD() {
       return (double)this.ae.i() < 0.5 ? new dak(dao.xg) : new dak(dao.pK);
    }
 
    @Nullable
    @Override
-   public ayc<dag> Y() {
-      return this.n_() ? null : axv.bW;
+   public ayc<dag> X() {
+      return this.e_() ? null : axv.bW;
    }
 
-   private boolean gB() {
+   private boolean gE() {
       return this.al.a(bJ);
    }
 
@@ -287,21 +287,21 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   public cqz x() {
-      if (this.gz()) {
+   public cqz gw() {
+      if (this.gC()) {
          return cqz.e;
       } else if (cqy.a(this.fc())) {
          return cqz.d;
-      } else if (this.gl() && this.gu()) {
+      } else if (this.gl() && this.gx()) {
          return cqz.a;
-      } else if (this.gB()) {
+      } else if (this.gE()) {
          return cqz.c;
       } else {
          return this.b(dao.xg) && czd.g(this.dZ()) ? cqz.b : cqz.f;
       }
    }
 
-   public boolean gz() {
+   public boolean gC() {
       return this.al.a(bK);
    }
 
@@ -358,7 +358,7 @@ public class cqx extends cqw implements cox, crs {
       if (dgz.a($$1, dgy.E)) {
          return false;
       } else {
-         ayc<dag> $$3 = this.Y();
+         ayc<dag> $$3 = this.X();
          boolean $$4 = cqy.a($$0) || $$3 != null && $$0.a($$3);
          boolean $$5 = cqy.a($$1) || $$3 != null && $$1.a($$3);
          if ($$4 && !$$5) {
@@ -377,7 +377,7 @@ public class cqx extends cqw implements cox, crs {
 
    @Override
    public boolean a(bxe $$0, boolean $$1) {
-      if (this.n_() && $$0.an() == bxn.ak) {
+      if (this.e_() && $$0.an() == bxn.ak) {
          $$0 = this.b($$0, 3);
       }
 
@@ -391,7 +391,7 @@ public class cqx extends cqw implements cox, crs {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.dV().C ? null : cqy.b(this).orElse(null);
    }
 
@@ -401,7 +401,7 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.ux;
    }
 
@@ -411,7 +411,7 @@ public class cqx extends cqw implements cox, crs {
    }
 
    @Override
-   protected void gv() {
+   protected void gy() {
       this.b(awy.uC);
    }
 }

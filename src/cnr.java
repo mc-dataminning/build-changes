@@ -14,7 +14,7 @@ public class cnr extends cnj {
    @Override
    public void a(asb $$0) {
       if (this.c++ >= 40) {
-         this.a.t().a(cnw.f);
+         this.a.gr().a(cnw.f);
       }
    }
 

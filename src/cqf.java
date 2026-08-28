@@ -26,7 +26,7 @@ public class cqf extends cqd implements byk {
    }
 
    @Override
-   protected void m() {
+   protected void p() {
       this.bF.a(2, new cgq(this, 1.0, false));
       this.bF.a(7, new cgo(this, 1.0));
       this.bG.a(1, new cgt(this).a());
@@ -34,81 +34,81 @@ public class cqf extends cqd implements byk {
       this.bG.a(3, new cha<>(this, true));
    }
 
-   public static bzk.a gB() {
-      return cqd.gv().a(bzl.A, 0.0).a(bzl.v, 0.23F).a(bzl.c, 5.0);
+   public static bzk.a gE() {
+      return cqd.gy().a(bzl.A, 0.0).a(bzl.v, 0.23F).a(bzl.c, 5.0);
    }
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? c : super.e($$0);
+      return this.e_() ? c : super.e($$0);
    }
 
    @Override
-   protected boolean x() {
+   protected boolean gw() {
       return false;
    }
 
    @Override
    protected void a(asb $$0) {
       bzh $$1 = this.g(bzl.v);
-      if (this.af_()) {
-         if (!this.n_() && !$$1.b(bJ)) {
+      if (this.ac_()) {
+         if (!this.e_() && !$$1.b(bJ)) {
             $$1.b(bK);
          }
 
-         this.gC();
+         this.gF();
       } else if ($$1.b(bJ)) {
          $$1.c(bJ);
       }
 
       this.a($$0, true);
-      if (this.f() != null) {
-         this.gD();
+      if (this.e() != null) {
+         this.gG();
       }
 
       super.a($$0);
    }
 
-   private void gC() {
+   private void gF() {
       if (this.bM > 0) {
          this.bM--;
          if (this.bM == 0) {
-            this.gF();
+            this.gI();
          }
       }
    }
 
-   private void gD() {
+   private void gG() {
       if (this.bS > 0) {
          this.bS--;
       } else {
-         if (this.P().a(this.f())) {
-            this.gE();
+         if (this.O().a(this.e())) {
+            this.gH();
          }
 
          this.bS = bR.a(this.ae);
       }
    }
 
-   private void gE() {
+   private void gH() {
       double $$0 = this.h(bzl.m);
       ffx $$1 = ffx.a(this.dt()).c($$0, 10.0, $$0);
       this.dV()
          .a(cqf.class, $$1, bxl.f)
          .stream()
          .filter($$0x -> $$0x != this)
-         .filter($$0x -> $$0x.f() == null)
-         .filter($$0x -> !$$0x.s(this.f()))
-         .forEach($$0x -> $$0x.g(this.f()));
+         .filter($$0x -> $$0x.e() == null)
+         .filter($$0x -> !$$0x.s(this.e()))
+         .forEach($$0x -> $$0x.g(this.e()));
    }
 
-   private void gF() {
+   private void gI() {
       this.a(awy.EE, this.fe() * 2.0F, this.ff() * 1.8F);
    }
 
    @Override
    public void g(@Nullable byf $$0) {
-      if (this.f() == null && $$0 != null) {
+      if (this.e() == null && $$0 != null) {
          this.bM = bL.a(this.ae);
          this.bS = bR.a(this.ae);
       }
@@ -153,8 +153,8 @@ public class cqf extends cqd implements byk {
    }
 
    @Override
-   protected awx u() {
-      return this.af_() ? awy.EE : awy.ED;
+   protected awx s() {
+      return this.ac_() ? awy.EE : awy.ED;
    }
 
    @Override
@@ -163,7 +163,7 @@ public class cqf extends cqd implements byk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.EF;
    }
 
@@ -173,12 +173,12 @@ public class cqf extends cqd implements byk {
    }
 
    @Override
-   protected dak t() {
+   protected dak gv() {
       return dak.l;
    }
 
    @Override
-   protected void gA() {
+   protected void gD() {
       this.g(bzl.A).a(0.0);
    }
 

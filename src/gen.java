@@ -30,7 +30,7 @@ public class gen extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       fxq $$0 = this.z.a(fxq.d().a(4));
       $$0.c().b();
       $$0.a(new fvf(a, this.p));
@@ -45,7 +45,7 @@ public class gen extends fzq {
 
       fxq $$3 = $$2.a(fxq.e().a(8));
       $$3.a(fty.a(s, this::c).a());
-      $$3.a(fty.a(xf.d, $$0x -> this.aQ_()).a());
+      $$3.a(fty.a(xf.d, $$0x -> this.aL_()).a());
       fxq $$4 = this.z.c(fxq.d().a(8));
       this.A = $$4.a(new gem(0, 0, this.n - 40, this.z.d(), this.p));
       this.A.a($$0x -> this.C = $$0x);
@@ -72,7 +72,7 @@ public class gen extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       if (this.A != null) {
          this.b(this.A);
       }
@@ -102,7 +102,7 @@ public class gen extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.x);
    }
 }

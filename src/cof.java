@@ -21,11 +21,11 @@ public abstract class cof extends cod {
       this.c = $$0;
       this.w((float)(this.c.e() * 90));
       this.N = this.dL();
-      this.f();
+      this.e();
    }
 
    @Override
-   protected final void f() {
+   protected final void e() {
       if (this.c != null) {
          ffx $$0 = this.a(this.a, this.c);
          fgc $$1 = $$0.f();
@@ -37,11 +37,11 @@ public abstract class cof extends cod {
    protected abstract ffx a(iw var1, jc var2);
 
    @Override
-   public boolean g() {
+   public boolean f() {
       if (!this.dV().g(this)) {
          return false;
       } else {
-         boolean $$0 = iw.b(this.u()).allMatch($$0x -> {
+         boolean $$0 = iw.b(this.t()).allMatch($$0x -> {
             ebq $$1 = this.dV().a_($$0x);
             return $$1.e() || dpr.n($$1);
          });
@@ -49,7 +49,7 @@ public abstract class cof extends cod {
       }
    }
 
-   protected ffx u() {
+   protected ffx t() {
       return this.cR().a(this.c.m().mul(-0.5F)).h(1.0E-7);
    }
 
@@ -58,15 +58,14 @@ public abstract class cof extends cod {
       return this.c;
    }
 
-   @Override
-   public abstract void v();
+   public abstract void u();
 
    @Override
    public coo a(asb $$0, dak $$1, float $$2) {
       coo $$3 = new coo(
          this.dV(), this.dA() + (double)((float)this.c.j() * 0.15F), this.dC() + (double)$$2, this.dG() + (double)((float)this.c.l() * 0.15F), $$1
       );
-      $$3.j();
+      $$3.i();
       this.dV().b($$3);
       return $$3;
    }

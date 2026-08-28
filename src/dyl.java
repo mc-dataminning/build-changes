@@ -56,7 +56,7 @@ public class dyl extends dyo {
    @Override
    public void e() {
       if (this.a()) {
-         this.a(null, this.n.a_(this.aC_()), dyl.b.c);
+         this.a(null, this.n.a_(this.ax_()), dyl.b.c);
       }
 
       super.e();
@@ -123,21 +123,21 @@ public class dyl extends dyo {
 
    @bbi
    public boolean j() {
-      return doe.a(this.n, this.aC_());
+      return doe.a(this.n, this.ax_());
    }
 
    public void a(cjw $$0) {
       if (this.h.size() < 3) {
          $$0.bO();
          $$0.bN();
-         $$0.y();
+         $$0.x();
          this.a(dyl.c.a($$0));
          if (this.n != null) {
-            if ($$0.t() && (!this.k() || this.n.A.h())) {
-               this.i = $$0.q();
+            if ($$0.p() && (!this.k() || this.n.A.h())) {
+               this.i = $$0.m();
             }
 
-            iw $$1 = this.aC_();
+            iw $$1 = this.ax_();
             this.n.a(null, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awy.bV, awz.e, 1.0F, 1.0F);
             this.n.a(egq.c, $$1, egq.a.a($$0, this.m()));
          }
@@ -164,7 +164,7 @@ public class dyl extends dyo {
             bxe $$10 = $$3.a($$0, $$1);
             if ($$10 != null) {
                if ($$10 instanceof cjw $$11) {
-                  if ($$6 != null && !$$11.t() && $$0.A.i() < 0.9F) {
+                  if ($$6 != null && !$$11.p() && $$0.A.i() < 0.9F) {
                      $$11.h($$6);
                   }
 
@@ -353,7 +353,7 @@ public class dyl extends dyo {
       }
 
       private static void a(int $$0, cjw $$1) {
-         int $$2 = $$1.g();
+         int $$2 = $$1.Y_();
          if ($$2 < 0) {
             $$1.c_(Math.min(0, $$2 + $$0));
          } else if ($$2 > 0) {

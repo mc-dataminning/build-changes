@@ -103,7 +103,7 @@ public class dyy extends dyo implements buv {
    }
 
    @Override
-   public int ap_() {
+   public int ak_() {
       return 1;
    }
 
@@ -114,7 +114,7 @@ public class dyy extends dyo implements buv {
 
    @Override
    public boolean b(int $$0, dak $$1) {
-      return $$1.a(axv.bb) && this.a($$0).f() && $$1.M() == this.ap_();
+      return $$1.a(axv.bb) && this.a($$0).f() && $$1.M() == this.ak_();
    }
 
    public int j() {

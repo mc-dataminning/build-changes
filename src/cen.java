@@ -47,8 +47,8 @@ public class cen extends cfb {
 
    @Override
    public void a() {
-      this.a.J().a(this.c, 10.0F, (float)this.a.ad());
-      this.a.O().a(this.c, this.g);
+      this.a.I().a(this.c, 10.0F, (float)this.a.ac());
+      this.a.N().a(this.c, this.g);
       this.f++;
       if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
          this.g();

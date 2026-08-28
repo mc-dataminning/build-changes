@@ -37,7 +37,7 @@ public class dwi extends dna implements dra {
    @Override
    protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
       if ($$1.c_($$2) instanceof eai $$6) {
-         if (!$$3.gG()) {
+         if (!$$3.gH()) {
             return bvc.e;
          } else {
             if ($$1.C) {

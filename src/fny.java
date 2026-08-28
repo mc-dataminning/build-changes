@@ -27,9 +27,9 @@ public class fny extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.G = this.n / 2 - 150;
-      this.c(fty.a(xf.k, $$0 -> this.aQ_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
+      this.c(fty.a(xf.k, $$0 -> this.aL_()).a((this.n - 150) / 2, g(13) - 5, 150, 20).a());
       if (this.D == null) {
          this.a(this.E);
       } else {
@@ -174,7 +174,7 @@ public class fny extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.C);
    }
 

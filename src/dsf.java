@@ -39,7 +39,7 @@ public class dsf extends dna {
       dak $$2 = $$0.n();
       csi $$3 = $$0.o();
       boolean $$4 = false;
-      if (!$$1.C && $$3 != null && $$3.gG()) {
+      if (!$$1.C && $$3 != null && $$3.gH()) {
          dcs $$5 = $$2.a(kl.aa, dcs.a);
          if ($$5.a("Book")) {
             $$4 = true;

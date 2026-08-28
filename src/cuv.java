@@ -85,7 +85,7 @@ public abstract class cuv extends cvn {
          $$8.p($$1, $$2, $$3);
          bxn.a($$0, $$6, $$7).accept($$8);
          if ($$8.f() instanceof cvk $$9) {
-            iw $$10 = $$8.j();
+            iw $$10 = $$8.l();
             ebq $$11 = $$0.a_($$10);
             $$9.a($$10, $$11, true);
          }
@@ -219,7 +219,7 @@ public abstract class cuv extends cvn {
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (this.H() > 0) {
          this.d(this.H() - 1);
       }
@@ -241,11 +241,11 @@ public abstract class cuv extends cvn {
       this.ak = false;
    }
 
-   public boolean g() {
+   public boolean i() {
       return this.ak;
    }
 
-   public iw j() {
+   public iw l() {
       int $$0 = azz.a(this.dA());
       int $$1 = azz.a(this.dC());
       int $$2 = azz.a(this.dG());
@@ -289,12 +289,12 @@ public abstract class cuv extends cvn {
    }
 
    @Override
-   public fgc ae() {
-      return this.l.c(super.ae());
+   public fgc ad() {
+      return this.l.c(super.ad());
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return this.l.a();
    }
 

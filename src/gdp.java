@@ -145,7 +145,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    }
 
    private boolean n() {
-      return this.A.a(this.f.ao_());
+      return this.A.a(this.f.aj_());
    }
 
    protected void b(boolean $$0) {
@@ -154,7 +154,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
       }
 
       this.H = $$0;
-      this.A.a(this.f.ao_(), $$0);
+      this.A.a(this.f.aj_(), $$0);
       if (!$$0) {
          this.B.c();
       }
@@ -245,7 +245,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    }
 
    private boolean q() {
-      return this.A.b(this.f.ao_());
+      return this.A.b(this.f.aj_());
    }
 
    @Override
@@ -287,7 +287,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (this.d() && !this.g.t.aa_()) {
+      if (this.d() && !this.g.t.ak()) {
          if (this.B.a($$0, $$1, $$2, this.l(), this.k(), 147, 166)) {
             dgj $$3 = this.B.a();
             gdt $$4 = this.B.b();
@@ -359,7 +359,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    }
 
    private boolean r() {
-      cxr $$0 = this.f.ao_();
+      cxr $$0 = this.f.aj_();
       boolean $$1 = !this.A.b($$0);
       this.A.b($$0, $$1);
       return $$1;
@@ -378,7 +378,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       this.G = false;
-      if (!this.d() || this.g.t.aa_()) {
+      if (!this.d() || this.g.t.ak()) {
          return false;
       } else if ($$0 == 256 && !this.t()) {
          this.b(false);
@@ -386,9 +386,9 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
       } else if (this.x.a($$0, $$1, $$2)) {
          this.s();
          return true;
-      } else if (this.x.aO_() && this.x.i() && $$0 != 256) {
+      } else if (this.x.aJ_() && this.x.i() && $$0 != 256) {
          return true;
-      } else if (this.g.n.I.a($$0, $$1) && !this.x.aO_()) {
+      } else if (this.g.n.I.a($$0, $$1) && !this.x.aJ_()) {
          this.G = true;
          this.x.a(true);
          return true;
@@ -410,7 +410,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    public boolean a(char $$0, int $$1) {
       if (this.G) {
          return false;
-      } else if (!this.d() || this.g.t.aa_()) {
+      } else if (!this.d() || this.g.t.ak()) {
          return false;
       } else if (this.x.a($$0, $$1)) {
          this.s();
@@ -430,7 +430,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
    }
 
    @Override
-   public boolean aO_() {
+   public boolean aJ_() {
       return false;
    }
 
@@ -485,7 +485,7 @@ public abstract class gdp<T extends cxq> implements fvb, fvv, fxt {
 
    protected void h() {
       if (this.g.L() != null) {
-         cxr $$0 = this.f.ao_();
+         cxr $$0 = this.f.aj_();
          boolean $$1 = this.A.a().a($$0);
          boolean $$2 = this.A.a().b($$0);
          this.g.L().b(new aik($$0, $$1, $$2));

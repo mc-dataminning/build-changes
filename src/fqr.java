@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import org.joml.Vector2i;
 import org.lwjgl.glfw.GLFWDropCallback;
 import org.slf4j.Logger;
@@ -35,15 +36,16 @@ public class fqr {
    }
 
    private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.b.aO().h()) {
+      fki $$4 = this.b.aO();
+      if ($$0 == $$4.h()) {
          this.b.aP().d();
          if (this.b.z != null) {
             this.b.a(fqn.b);
          }
 
-         boolean $$4 = $$2 == 1;
+         boolean $$5 = $$2 == 1;
          if (fqq.a && $$1 == 0) {
-            if ($$4) {
+            if ($$5) {
                if (($$3 & 2) == 2) {
                   $$1 = 1;
                   this.h++;
@@ -54,8 +56,8 @@ public class fqr {
             }
          }
 
-         int $$5 = $$1;
-         if ($$4) {
+         int $$6 = $$1;
+         if ($$5) {
             if (this.b.n.ac().c() && this.k++ > 0) {
                return;
             }
@@ -72,42 +74,40 @@ public class fqr {
 
          if (this.b.aM() == null) {
             if (this.b.z == null) {
-               if (!this.s && $$4) {
+               if (!this.s && $$5) {
                   this.i();
                }
             } else {
-               double $$6 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$7 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
-               fzq $$8 = this.b.z;
-               if ($$4) {
-                  $$8.w();
+               double $$7 = this.a($$4);
+               double $$8 = this.b($$4);
+               fzq $$9 = this.b.z;
+               if ($$5) {
+                  $$9.w();
 
                   try {
-                     if ($$8.a($$6, $$7, $$5)) {
+                     if ($$9.a($$7, $$8, $$6)) {
                         return;
                      }
-                  } catch (Throwable var17) {
-                     p $$10 = p.a(var17, "mouseClicked event handler");
-                     $$8.a($$10);
-                     q $$11 = $$10.a("Mouse");
-                     $$11.a("Scaled X", $$6);
-                     $$11.a("Scaled Y", $$7);
-                     $$11.a("Button", $$1);
-                     throw new aa($$10);
+                  } catch (Throwable var18) {
+                     p $$11 = p.a(var18, "mouseClicked event handler");
+                     $$9.a($$11);
+                     q $$12 = $$11.a("Mouse");
+                     this.a($$12, $$4);
+                     $$12.a("Button", $$1);
+                     throw new aa($$11);
                   }
                } else {
                   try {
-                     if ($$8.b($$6, $$7, $$5)) {
+                     if ($$9.b($$7, $$8, $$6)) {
                         return;
                      }
-                  } catch (Throwable var16) {
-                     p $$13 = p.a(var16, "mouseReleased event handler");
-                     $$8.a($$13);
-                     q $$14 = $$13.a("Mouse");
-                     $$14.a("Scaled X", $$6);
-                     $$14.a("Scaled Y", $$7);
-                     $$14.a("Button", $$1);
-                     throw new aa($$13);
+                  } catch (Throwable var17) {
+                     p $$14 = p.a(var17, "mouseReleased event handler");
+                     $$9.a($$14);
+                     q $$15 = $$14.a("Mouse");
+                     this.a($$15, $$4);
+                     $$15.a("Button", $$1);
+                     throw new aa($$14);
                   }
                }
             }
@@ -115,16 +115,16 @@ public class fqr {
 
          if (this.b.z == null && this.b.aM() == null) {
             if ($$1 == 0) {
-               this.c = $$4;
+               this.c = $$5;
             } else if ($$1 == 2) {
-               this.d = $$4;
+               this.d = $$5;
             } else if ($$1 == 1) {
-               this.e = $$4;
+               this.e = $$5;
             }
 
-            fqo.a(fka.b.c.a($$1), $$4);
-            if ($$4) {
-               if (this.b.t.aa_() && $$1 == 2) {
+            fqo.a(fka.b.c.a($$1), $$5);
+            if ($$5) {
+               if (this.b.t.ak() && $$1 == 2) {
                   this.b.m.g().b();
                } else {
                   fqo.a(fka.b.c.a($$1));
@@ -132,6 +132,14 @@ public class fqr {
             }
          }
       }
+   }
+
+   public void a(q $$0, fki $$1) {
+      $$0.a("Mouse location", () -> String.format(Locale.ROOT, "Scaled: (%f, %f). Absolute: (%f, %f)", a($$1, this.f), b($$1, this.g), this.f, this.g));
+      $$0.a(
+         "Screen size",
+         () -> String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f", $$1.o(), $$1.p(), $$1.k(), $$1.l(), $$1.s())
+      );
    }
 
    private void a(long $$0, double $$1, double $$2) {
@@ -143,8 +151,8 @@ public class fqr {
          double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
          if (this.b.aM() == null) {
             if (this.b.z != null) {
-               double $$7 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$8 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
+               double $$7 = this.a(this.b.aO());
+               double $$8 = this.b(this.b.aO());
                this.b.z.a($$7, $$8, $$5, $$6);
                this.b.z.w();
             } else if (this.b.t != null) {
@@ -154,7 +162,7 @@ public class fqr {
                }
 
                int $$10 = $$9.y == 0 ? -$$9.x : $$9.y;
-               if (this.b.t.aa_()) {
+               if (this.b.t.ak()) {
                   if (this.b.m.g().a()) {
                      this.b.m.g().b(-$$10);
                   } else {
@@ -240,33 +248,32 @@ public class fqr {
          }
 
          if ($$2 != null && this.b.aM() == null && $$3) {
-            double $$4 = this.f * (double)this.b.aO().o() / (double)this.b.aO().m();
-            double $$5 = this.g * (double)this.b.aO().p() / (double)this.b.aO().n();
+            fki $$4 = this.b.aO();
+            double $$5 = this.a($$4);
+            double $$6 = this.b($$4);
 
             try {
-               $$2.f($$4, $$5);
-            } catch (Throwable var19) {
-               p $$7 = p.a(var19, "mouseMoved event handler");
-               $$2.a($$7);
-               q $$8 = $$7.a("Mouse");
-               $$8.a("Scaled X", $$4);
-               $$8.a("Scaled Y", $$5);
-               throw new aa($$7);
+               $$2.f($$5, $$6);
+            } catch (Throwable var20) {
+               p $$8 = p.a(var20, "mouseMoved event handler");
+               $$2.a($$8);
+               q $$9 = $$8.a("Mouse");
+               this.a($$9, $$4);
+               throw new aa($$8);
             }
 
             if (this.i != -1 && this.l > 0.0) {
-               double $$9 = this.o * (double)this.b.aO().o() / (double)this.b.aO().m();
-               double $$10 = this.p * (double)this.b.aO().p() / (double)this.b.aO().n();
+               double $$10 = a($$4, this.o);
+               double $$11 = b($$4, this.p);
 
                try {
-                  $$2.a($$4, $$5, this.i, $$9, $$10);
-               } catch (Throwable var18) {
-                  p $$12 = p.a(var18, "mouseDragged event handler");
-                  $$2.a($$12);
-                  q $$13 = $$12.a("Mouse");
-                  $$13.a("Scaled X", $$4);
-                  $$13.a("Scaled Y", $$5);
-                  throw new aa($$12);
+                  $$2.a($$5, $$6, this.i, $$10, $$11);
+               } catch (Throwable var19) {
+                  p $$13 = p.a(var19, "mouseDragged event handler");
+                  $$2.a($$13);
+                  q $$14 = $$13.a("Mouse");
+                  this.a($$14, $$4);
+                  throw new aa($$13);
                }
             }
 
@@ -282,6 +289,22 @@ public class fqr {
       this.p = 0.0;
    }
 
+   public static double a(fki $$0, double $$1) {
+      return $$1 * (double)$$0.o() / (double)$$0.m();
+   }
+
+   public double a(fki $$0) {
+      return a($$0, this.f);
+   }
+
+   public static double b(fki $$0, double $$1) {
+      return $$1 * (double)$$0.p() / (double)$$0.n();
+   }
+
+   public double b(fki $$0) {
+      return b($$0, this.g);
+   }
+
    private void a(double $$0) {
       double $$1 = this.b.n.d().c() * 0.6F + 0.2F;
       double $$2 = $$1 * $$1 * $$1;
@@ -293,7 +316,7 @@ public class fqr {
          double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
          $$6 = $$4;
          $$7 = $$5;
-      } else if (this.b.n.aE().a() && this.b.t.gH()) {
+      } else if (this.b.n.aE().a() && this.b.t.gI()) {
          this.m.a();
          this.n.a();
          $$6 = this.o * $$2;
@@ -373,5 +396,13 @@ public class fqr {
 
    public void k() {
       this.j = true;
+   }
+
+   public void a(fti $$0, ftk $$1) {
+      fki $$2 = this.b.aO();
+      double $$3 = this.a($$2);
+      double $$4 = this.b($$2) - 8.0;
+      String $$5 = String.format(Locale.ROOT, "%.0f,%.0f", $$3, $$4);
+      $$1.b($$0, $$5, (int)$$3, (int)$$4, -1);
    }
 }

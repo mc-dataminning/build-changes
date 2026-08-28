@@ -13,7 +13,7 @@ public class fob extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.c(fty.a(xf.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
       this.c(fty.a(xf.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }

@@ -1,12 +1,12 @@
 public interface crs {
    String n_ = "Inventory";
 
-   bvj n();
+   bvj u();
 
    static void a(asb $$0, byh $$1, crs $$2, coo $$3) {
-      dak $$4 = $$3.f();
+      dak $$4 = $$3.e();
       if ($$1.c($$0, $$4)) {
-         bvj $$5 = $$2.n();
+         bvj $$5 = $$2.u();
          boolean $$6 = $$5.c($$4);
          if (!$$6) {
             return;
@@ -25,10 +25,10 @@ public interface crs {
    }
 
    default void a(ua $$0, ji.a $$1) {
-      $$0.o("Inventory").ifPresent($$1x -> this.n().a($$1x, $$1));
+      $$0.o("Inventory").ifPresent($$1x -> this.u().a($$1x, $$1));
    }
 
    default void b(ua $$0, ji.a $$1) {
-      $$0.a("Inventory", this.n().a($$1));
+      $$0.a("Inventory", this.u().a($$1));
    }
 }

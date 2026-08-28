@@ -115,7 +115,7 @@ public class fqp {
                this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
                return true;
             case 67:
-               if (this.b.t.gA()) {
+               if (this.b.t.gB()) {
                   return false;
                } else {
                   glp $$7 = this.b.t.j;
@@ -154,7 +154,7 @@ public class fqp {
                this.b.n.az();
                return true;
             case 73:
-               if (!this.b.t.gA()) {
+               if (!this.b.t.gB()) {
                   this.a(this.b.t.s(2), !fzq.t());
                }
 
@@ -168,7 +168,7 @@ public class fqp {
             case 78:
                if (!this.b.t.s(2)) {
                   this.a("debug.creative_spectator.error");
-               } else if (!this.b.t.aa_()) {
+               } else if (!this.b.t.ak()) {
                   this.b.t.j.d("gamemode spectator");
                } else {
                   this.b.t.j.d("gamemode " + ((dkg)MoreObjects.firstNonNull(this.b.r.h(), dkg.b)).b());
@@ -352,7 +352,7 @@ public class fqp {
          }
 
          if ($$3 != 0) {
-            boolean $$9 = $$6 == null || !($$6.aN_() instanceof fuh) || !((fuh)$$6.aN_()).c();
+            boolean $$9 = $$6 == null || !($$6.aI_() instanceof fuh) || !((fuh)$$6.aI_()).c();
             if ($$9) {
                if (fzq.s() && $$1 == 66 && this.b.aY().a() && this.b.n.w().c()) {
                   boolean $$10 = this.b.n.av().c() == fqs.a;

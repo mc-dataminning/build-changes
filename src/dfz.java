@@ -62,7 +62,7 @@ public class dfz implements dfw {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       if (this.h == null) {
          this.h = dfa.b(List.of(this.d, this.e, this.f));
       }

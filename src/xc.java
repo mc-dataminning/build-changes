@@ -32,7 +32,7 @@ public record xc(xd l, xd m) {
    }
 
    public static xc.a a(alq<xc> $$0, bxe $$1) {
-      return a($$0, $$1.dV().J_(), $$1.m_());
+      return a($$0, $$1.dV().J_(), $$1.P_());
    }
 
    public static xc.a a(alq<xc> $$0, ek $$1) {

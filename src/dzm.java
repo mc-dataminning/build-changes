@@ -41,14 +41,14 @@ public class dzm extends dyo implements dzv {
    }
 
    public void a(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
-         this.b.a($$0, this.i(), this.aC_(), this.m());
+      if (!this.p && !$$0.ak()) {
+         this.b.a($$0, this.i(), this.ax_(), this.m());
       }
    }
 
    public void b(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
-         this.b.b($$0, this.i(), this.aC_(), this.m());
+      if (!this.p && !$$0.ak()) {
+         this.b.b($$0, this.i(), this.ax_(), this.m());
       }
    }
 
@@ -58,7 +58,7 @@ public class dzm extends dyo implements dzv {
 
    public void a() {
       if (!this.p) {
-         this.b.c(this.i(), this.aC_(), this.m());
+         this.b.c(this.i(), this.ax_(), this.m());
       }
    }
 

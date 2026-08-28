@@ -11,24 +11,24 @@ public abstract class cqw extends cpk {
    public cqw(bxn<? extends cqw> $$0, dkj $$1) {
       super($$0, $$1);
       this.a_(true);
-      this.n();
+      this.u();
       this.a(eyr.n, 16.0F);
       this.a(eyr.o, -1.0F);
    }
 
-   private void n() {
+   private void u() {
       if (ciz.a(this)) {
-         ((cho)this.O()).b(true);
+         ((cho)this.N()).b(true);
       }
    }
 
-   protected abstract boolean j();
+   protected abstract boolean m();
 
    public void w(boolean $$0) {
       this.ar().a(a, $$0);
    }
 
-   protected boolean m() {
+   protected boolean p() {
       return this.ar().a(a);
    }
 
@@ -41,7 +41,7 @@ public abstract class cqw extends cpk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("IsImmuneToZombification", this.m());
+      $$0.a("IsImmuneToZombification", this.p());
       $$0.a("TimeInOverworld", this.c);
    }
 
@@ -59,14 +59,14 @@ public abstract class cqw extends cpk {
    @Override
    protected void a(asb $$0) {
       super.a($$0);
-      if (this.q()) {
+      if (this.gu()) {
          this.c++;
       } else {
          this.c = 0;
       }
 
       if (this.c > 300) {
-         this.gv();
+         this.gy();
          this.g($$0);
       }
    }
@@ -76,42 +76,42 @@ public abstract class cqw extends cpk {
       this.c = $$0;
    }
 
-   public boolean q() {
-      return !this.dV().F_().b() && !this.m() && !this.gj();
+   public boolean gu() {
+      return !this.dV().F_().b() && !this.p() && !this.gj();
    }
 
    protected void g(asb $$0) {
       this.a(bxn.bS, bwy.a(this, true, true), $$0x -> $$0x.a(new bwi(bwk.i, 200, 0)));
    }
 
-   public boolean t() {
-      return !this.n_();
+   public boolean gv() {
+      return !this.e_();
    }
 
-   public abstract cqz x();
+   public abstract cqz gw();
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
-   protected boolean gu() {
+   protected boolean gx() {
       return this.fb().c(kl.A);
    }
 
    @Override
-   public void T() {
+   public void S() {
       if (cqy.c(this)) {
-         super.T();
+         super.S();
       }
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
-   protected abstract void gv();
+   protected abstract void gy();
 }

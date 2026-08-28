@@ -20,11 +20,11 @@ public abstract class cmd extends cme {
       $$0.a(bI, false);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return gV().a(bzl.v, 0.175F).a(bzl.o, 0.5);
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.al.a(bI);
    }
 
@@ -34,13 +34,13 @@ public abstract class cmd extends cme {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? this.bK : super.e($$0);
+      return this.e_() ? this.bK : super.e($$0);
    }
 
    @Override
    protected void f(asb $$0) {
       super.f($$0);
-      if (this.t()) {
+      if (this.p()) {
          this.a($$0, dnq.cG);
          this.w(false);
       }
@@ -49,8 +49,8 @@ public abstract class cmd extends cme {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("ChestedHorse", this.t());
-      if (this.t()) {
+      $$0.a("ChestedHorse", this.p());
+      if (this.p()) {
          ug $$1 = new ug();
 
          for (int $$2 = 0; $$2 < this.ca.b(); $$2++) {
@@ -71,7 +71,7 @@ public abstract class cmd extends cme {
       super.a($$0);
       this.w($$0.b("ChestedHorse", false));
       this.gT();
-      if (this.t()) {
+      if (this.p()) {
          ug $$1 = $$0.p("Items");
 
          for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
@@ -89,20 +89,20 @@ public abstract class cmd extends cme {
       return $$0 == 499 ? new byw() {
          @Override
          public dak a() {
-            return cmd.this.t() ? new dak(dao.fh) : dak.l;
+            return cmd.this.p() ? new dak(dao.fh) : dak.l;
          }
 
          @Override
          public boolean a(dak $$0) {
             if ($$0.f()) {
-               if (cmd.this.t()) {
+               if (cmd.this.p()) {
                   cmd.this.w(false);
                   cmd.this.gT();
                }
 
                return true;
             } else if ($$0.a(dao.fh)) {
-               if (!cmd.this.t()) {
+               if (!cmd.this.p()) {
                   cmd.this.w(true);
                   cmd.this.gT();
                }
@@ -117,7 +117,7 @@ public abstract class cmd extends cme {
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
-      boolean $$2 = !this.n_() && this.gL() && $$0.fY();
+      boolean $$2 = !this.e_() && this.gL() && $$0.fY();
       if (!this.bZ() && !$$2) {
          dak $$3 = $$0.b($$1);
          if (!$$3.f()) {
@@ -130,7 +130,7 @@ public abstract class cmd extends cme {
                return bvc.a;
             }
 
-            if (!this.t() && $$3.a(dao.fh)) {
+            if (!this.p() && $$3.a(dao.fh)) {
                this.d($$0, $$3);
                return bvc.a;
             }
@@ -144,18 +144,18 @@ public abstract class cmd extends cme {
 
    private void d(csi $$0, dak $$1) {
       this.w(true);
-      this.x();
+      this.u();
       $$1.a(1, $$0);
       this.gT();
    }
 
    @Override
-   protected void x() {
+   protected void u() {
       this.a(awy.hF, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
    }
 
    @Override
-   public int ae_() {
-      return this.t() ? 5 : 0;
+   public int ab_() {
+      return this.p() ? 5 : 0;
    }
 }

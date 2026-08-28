@@ -25,8 +25,8 @@ public class cqg extends cpk {
       cte.b.deflect($$0, $$1, $$2);
    };
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.v, 0.63F).a(bzl.s, 30.0).a(bzl.m, 24.0).a(bzl.c, 3.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.v, 0.63F).a(bzl.s, 30.0).a(bzl.m, 24.0).a(bzl.c, 3.0);
    }
 
    public cqg(bxn<? extends cpk> $$0, dkj $$1) {
@@ -54,7 +54,7 @@ public class cqg extends cpk {
    @Override
    public void a(aku<?> $$0) {
       if (this.dV().A_() && aq.equals($$0)) {
-         this.gu();
+         this.gx();
          byr $$1 = this.at();
          switch ($$1) {
             case q:
@@ -71,7 +71,7 @@ public class cqg extends cpk {
       super.a($$0);
    }
 
-   private void gu() {
+   private void gx() {
       this.e.a();
       this.a.a();
       this.f.a();
@@ -79,20 +79,20 @@ public class cqg extends cpk {
    }
 
    @Override
-   public void h() {
+   public void g() {
       byr $$0 = this.at();
       switch ($$0) {
          case q:
          case r:
          case a:
-            this.m().b(1 + this.dY().a(1));
+            this.p().b(1 + this.dY().a(1));
             break;
          case p:
             this.b(20);
             break;
          case g:
             this.d.b(this.af);
-            this.n();
+            this.u();
       }
 
       this.a.b(this.af);
@@ -103,18 +103,18 @@ public class cqg extends cpk {
 
       this.bS = this.bS == 0 ? this.ae.a(1, 80) : this.bS - 1;
       if (this.bS == 0) {
-         this.q();
+         this.gu();
       }
 
-      super.h();
+      super.g();
    }
 
-   public cqg m() {
+   public cqg p() {
       this.bR = 0;
       return this;
    }
 
-   public void n() {
+   public void u() {
       if (++this.bR <= 5) {
          ebq $$0 = !this.dw().l() ? this.dw() : this.bs();
          fgc $$1 = this.dy();
@@ -140,14 +140,13 @@ public class cqg extends cpk {
    }
 
    @Override
-   public void T() {
-      if (this.f() == null || !this.aH()) {
-         this.dV().a(this, this.u(), this.dm(), 1.0F, 1.0F);
+   public void S() {
+      if (this.e() == null || !this.aH()) {
+         this.dV().a(this, this.s(), this.dm(), 1.0F, 1.0F);
       }
    }
 
-   @Override
-   public void q() {
+   public void gu() {
       float $$0 = 0.7F + 0.4F * this.ae.i();
       float $$1 = 0.8F + 0.2F * this.ae.i();
       this.dV().a(this, awy.cP, this.dm(), $$1, $$0);
@@ -168,7 +167,7 @@ public class cqg extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.cN;
    }
 
@@ -178,11 +177,11 @@ public class cqg extends cpk {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.aH() ? awy.cH : awy.cI;
    }
 
-   public Optional<byf> t() {
+   public Optional<byf> gv() {
       return this.ec().c(chh.y).map(bvt::d).filter($$0 -> $$0 instanceof byf).map($$0 -> (byf)$$0);
    }
 
@@ -203,8 +202,8 @@ public class cqg extends cpk {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a((byf)this);
       agx.a(this);
    }
@@ -215,16 +214,16 @@ public class cqg extends cpk {
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 30;
    }
 
    @Override
-   public int ah() {
+   public int ag() {
       return 25;
    }
 
-   public double x() {
+   public double gw() {
       return this.dC() + (double)(this.dr() / 2.0F) + 0.3F;
    }
 
@@ -254,7 +253,7 @@ public class cqg extends cpk {
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 }

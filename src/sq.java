@@ -12,6 +12,7 @@ import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.LongStream;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class sq {
@@ -181,8 +182,8 @@ public class sq {
 
    public sx a(byh $$0, iw $$1, float $$2) {
       return this.g().a(2, () -> {
-         eyo $$3 = $$0.O().a(this.j($$1), 0);
-         $$0.O().a($$3, (double)$$2);
+         eyo $$3 = $$0.N().a(this.j($$1), 0);
+         $$0.N().a($$3, (double)$$2);
       });
    }
 
@@ -233,18 +234,14 @@ public class sq {
 
    public csi a(final dkg $$0) {
       return new csi(this.a(), iw.c, 0.0F, new GameProfile(UUID.randomUUID(), "test-mock-player")) {
+         @Nonnull
          @Override
-         public boolean aa_() {
-            return $$0 == dkg.d;
+         public dkg a() {
+            return $$0;
          }
 
          @Override
-         public boolean b() {
-            return $$0.g();
-         }
-
-         @Override
-         public boolean Q_() {
+         public boolean Z_() {
             return false;
          }
       };
@@ -257,13 +254,8 @@ public class sq {
       asr $$0 = asr.a(new GameProfile(UUID.randomUUID(), "test-mock-player"), false);
       asc $$1 = new asc(this.a().p(), this.a(), $$0.a(), $$0.c()) {
          @Override
-         public boolean aa_() {
-            return false;
-         }
-
-         @Override
-         public boolean b() {
-            return true;
+         public dkg a() {
+            return dkg.b;
          }
       };
       vv $$2 = new vv(zp.a);
@@ -477,7 +469,7 @@ public class sq {
       int $$6 = 0;
 
       for (coo $$7 : $$5) {
-         dak $$8 = $$7.f();
+         dak $$8 = $$7.e();
          if ($$8.a($$0)) {
             $$6 += $$8.M();
          }
@@ -493,7 +485,7 @@ public class sq {
 
       for (bxe $$5 : this.a().a(bxn.ar, new ffx($$3).g($$2), bxe::bJ)) {
          coo $$6 = (coo)$$5;
-         if ($$6.f().h().equals($$0)) {
+         if ($$6.e().h().equals($$0)) {
             return;
          }
       }
@@ -506,7 +498,7 @@ public class sq {
 
       for (bxe $$5 : this.a().a(bxn.ar, new ffx($$3).g($$2), bxe::bJ)) {
          coo $$6 = (coo)$$5;
-         if ($$6.f().h().equals($$0)) {
+         if ($$6.e().h().equals($$0)) {
             throw this.a($$1, "test.error.unexpected_item", $$0.l());
          }
       }
@@ -515,7 +507,7 @@ public class sq {
    public void a(dag $$0) {
       for (bxe $$2 : this.a().a(bxn.ar, this.j(), bxe::bJ)) {
          coo $$3 = (coo)$$2;
-         if ($$3.f().h().equals($$0)) {
+         if ($$3.e().h().equals($$0)) {
             return;
          }
       }
@@ -526,7 +518,7 @@ public class sq {
    public void b(dag $$0) {
       for (bxe $$2 : this.a().a(bxn.ar, this.j(), bxe::bJ)) {
          coo $$3 = (coo)$$2;
-         if ($$3.f().h().equals($$0)) {
+         if ($$3.e().h().equals($$0)) {
             throw this.a("test.error.unexpected_item", $$0.l());
          }
       }
@@ -587,7 +579,7 @@ public class sq {
       } else {
          for (E $$5 : $$4) {
             if (!$$2.test($$5)) {
-               throw this.a($$5.dv(), "test.error.expected_entity_data_predicate", $$5.ai());
+               throw this.a($$5.dv(), "test.error.expected_entity_data_predicate", $$5.ah());
             }
          }
       }
@@ -631,7 +623,7 @@ public class sq {
          throw this.a($$0, "test.error.expected_entity", $$1.h());
       } else {
          for (E $$5 : $$4) {
-            if ($$5.n().a_($$1x -> $$1x.a($$2))) {
+            if ($$5.u().a_($$1x -> $$1x.a($$2))) {
                return;
             }
          }
@@ -696,21 +688,21 @@ public class sq {
 
    public <E extends bxe> void a(E $$0, Predicate<E> $$1, xg $$2) {
       if (!$$1.test($$0)) {
-         throw this.a($$0.dv(), "test.error.entity_property", $$0.ai(), $$2);
+         throw this.a($$0.dv(), "test.error.entity_property", $$0.ah(), $$2);
       }
    }
 
    public <E extends bxe, T> void a(E $$0, Function<E, T> $$1, T $$2, xg $$3) {
       T $$4 = $$1.apply($$0);
       if (!$$4.equals($$2)) {
-         throw this.a($$0.dv(), "test.error.entity_property_details", $$0.ai(), $$3, $$4, $$2);
+         throw this.a($$0.dv(), "test.error.entity_property_details", $$0.ah(), $$3, $$4, $$2);
       }
    }
 
    public void a(byf $$0, jg<bwg> $$1, int $$2) {
       bwi $$3 = $$0.c($$1);
       if ($$3 == null || $$3.e() != $$2) {
-         throw this.a("test.error.expected_entity_effect", $$0.ai(), dcg.a($$1, $$2));
+         throw this.a("test.error.expected_entity_effect", $$0.ah(), dcg.a($$1, $$2));
       }
    }
 

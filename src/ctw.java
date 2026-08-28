@@ -21,8 +21,8 @@ public class ctw extends ctu {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.i > 0) {
          this.i--;
       }

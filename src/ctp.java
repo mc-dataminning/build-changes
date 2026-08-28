@@ -14,14 +14,14 @@ public class ctp extends css {
    }
 
    @Override
-   protected dag g() {
+   protected dag f() {
       return dao.wC;
    }
 
    @Override
    public void a(asb $$0, dak $$1, @Nullable bxe $$2) {
       bww $$3 = new bww(this.dV(), this.dA(), this.dC(), this.dG());
-      if (this.q() instanceof byf $$4) {
+      if (this.p() instanceof byf $$4) {
          $$3.a($$4);
       }
 
@@ -29,7 +29,7 @@ public class ctp extends css {
       $$3.c(-0.5F);
       $$3.a(600);
       $$3.c(10);
-      $$3.d(-$$3.e() / (float)$$3.i());
+      $$3.d(-$$3.c() / (float)$$3.h());
       $$3.c($$1);
       $$0.b($$3);
    }

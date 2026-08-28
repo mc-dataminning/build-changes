@@ -43,7 +43,7 @@ public class hd {
                   $$0.b(true);
                }
 
-               $$0.a($$2x -> $$2x.ai().getString().equals($$3) != $$2);
+               $$0.a($$2x -> $$2x.ah().getString().equals($$3) != $$2);
             }
          }, $$0 -> !$$0.v(), xg.c("argument.entity.options.name.description"));
          a("distance", $$0 -> {
@@ -164,11 +164,11 @@ public class hd {
                } else {
                   $$0.a(false);
                   $$0.a($$2x -> {
-                     if (!($$2x instanceof asc)) {
-                        return false;
+                     if ($$2x instanceof asc $$3x) {
+                        dkg $$4x = $$3x.a();
+                        return $$4x == $$4 ^ $$2;
                      } else {
-                        dkg $$3x = ((asc)$$2x).h.b();
-                        return $$2 ? $$3x != $$4 : $$3x == $$4;
+                        return false;
                      }
                   });
                   if ($$2) {
@@ -363,7 +363,7 @@ public class hd {
                   if (!($$1x instanceof asc $$2x)) {
                      return false;
                   } else {
-                     alz $$4 = $$2x.S();
+                     alz $$4 = $$2x.R();
                      ame $$5x = $$2x.cV().aD();
 
                      for (Entry<alr, Predicate<al>> $$6x : $$2.entrySet()) {

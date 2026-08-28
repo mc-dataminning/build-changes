@@ -35,7 +35,7 @@ public record dib(lx d, dib.a e, dib.a f, dib.c g, dib.c h, buf i) implements dh
    @Override
    public void a(asb $$0, int $$1, dgw $$2, bxe $$3, fgc $$4) {
       bai $$5 = $$3.dY();
-      fgc $$6 = $$3.ae();
+      fgc $$6 = $$3.ad();
       float $$7 = $$3.dq();
       float $$8 = $$3.dr();
       $$0.a(

@@ -46,7 +46,7 @@ public class foa extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       if (this.P == null) {
          this.a(this.Q);
       }
@@ -80,7 +80,7 @@ public class foa extends hrc {
             .a(this.b(2), g(13) - 5, 90, 20)
             .a()
       );
-      this.c(fty.a(xf.k, $$0x -> this.aQ_()).a(this.S - 80 + 8, g(13) - 5, 70, 20).a());
+      this.c(fty.a(xf.k, $$0x -> this.aL_()).a(this.S - 80 + 8, g(13) - 5, 70, 20).a());
       this.X.j = true;
       if (this.P == null) {
          this.I();
@@ -169,7 +169,7 @@ public class foa extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.O);
       if (this.aa) {
          this.O.h();

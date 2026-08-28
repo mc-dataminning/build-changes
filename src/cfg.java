@@ -8,10 +8,10 @@ public class cfg extends cfb {
 
    @Override
    public boolean b() {
-      if (!(this.a.e() instanceof asc $$0)) {
+      if (!(this.a.T_() instanceof asc $$0)) {
          return false;
       } else {
-         boolean $$1 = !$$0.aa_() && !$$0.gk().b && !$$0.bi() && !$$0.av;
+         boolean $$1 = !$$0.ak() && !$$0.gk().b && !$$0.bi() && !$$0.av;
          return !this.a.gu() && $$1 && this.a.gK();
       }
    }
@@ -28,8 +28,8 @@ public class cfg extends cfb {
 
    @Override
    public void a() {
-      if (!this.b && !this.a.x() && !this.a.T_()) {
-         if (this.a.e() instanceof asc $$0 && this.a.cR().c($$0.cR())) {
+      if (!this.b && !this.a.u() && !this.a.Q_()) {
+         if (this.a.T_() instanceof asc $$0 && this.a.cR().c($$0.cR())) {
             this.b = this.a.b($$0);
          }
       }

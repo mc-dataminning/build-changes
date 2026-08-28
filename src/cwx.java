@@ -147,7 +147,7 @@ public class cwx extends cwb {
             return true;
          }
       } else {
-         ag.b($$0.ai() + " pressed invalid button id: " + $$1);
+         ag.b($$0.ah() + " pressed invalid button id: " + $$1);
          return false;
       }
    }

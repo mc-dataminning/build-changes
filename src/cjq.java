@@ -6,7 +6,7 @@ public abstract class cjq extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cfu(this, 2.0));
       this.bF.a(2, new cen(this, 1.0));
@@ -22,12 +22,12 @@ public abstract class cjq extends cjv {
       return $$0.a(axv.af);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 10.0).a(bzl.v, 0.2F);
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.gf;
    }
 
@@ -37,7 +37,7 @@ public abstract class cjq extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.gg;
    }
 
@@ -54,7 +54,7 @@ public abstract class cjq extends cjv {
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ($$2.a(dao.ro) && !this.n_()) {
+      if ($$2.a(dao.ro) && !this.e_()) {
          $$0.a(awy.gi, 1.0F, 1.0F);
          dak $$3 = dan.a($$2, $$0, dao.ru.m());
          $$0.a($$1, $$3);
@@ -66,6 +66,6 @@ public abstract class cjq extends cjv {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bI : super.e($$0);
+      return this.e_() ? bI : super.e($$0);
    }
 }

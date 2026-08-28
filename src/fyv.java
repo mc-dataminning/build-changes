@@ -10,7 +10,7 @@ public class fyv extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       int $$0 = -16;
       this.c(fty.a(xg.c("demo.help.buy"), $$0x -> {
          $$0x.j = false;

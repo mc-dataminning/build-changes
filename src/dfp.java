@@ -48,7 +48,7 @@ public class dfp implements deq {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       if (this.i == null) {
          this.i = dfa.a(this.d.c());
       }

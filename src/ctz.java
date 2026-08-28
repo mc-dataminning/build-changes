@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 public abstract class ctz extends cpl {
    protected static final aku<Boolean> c = aky.a(ctz.class, akw.k);
-   static final Predicate<coo> a = $$0 -> !$$0.o() && $$0.bJ() && dak.a($$0.f(), cty.a($$0.dX().f(mi.aF)));
+   static final Predicate<coo> a = $$0 -> !$$0.n() && $$0.bJ() && dak.a($$0.e(), cty.a($$0.dX().f(mi.aF)));
    private static final int b = 0;
    private static final boolean e = false;
    @Nullable
@@ -23,8 +23,8 @@ public abstract class ctz extends cpl {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(1, new ctz.b<>(this));
       this.bF.a(3, new cfv<>(this));
       this.bF.a(4, new ctz.d(this, 1.05F, 1));
@@ -39,7 +39,7 @@ public abstract class ctz extends cpl {
 
    public abstract void a(asb var1, int var2, boolean var3);
 
-   public boolean gE() {
+   public boolean gH() {
       return this.bI;
    }
 
@@ -48,10 +48,10 @@ public abstract class ctz extends cpl {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.dV() instanceof asb $$0 && this.bJ()) {
-         cty $$1 = this.gF();
-         if (this.gE()) {
+         cty $$1 = this.gI();
+         if (this.gH()) {
             if ($$1 == null) {
                if (this.dV().ae() % 20L == 0L) {
                   cty $$2 = $$0.d(this.dv());
@@ -60,7 +60,7 @@ public abstract class ctz extends cpl {
                   }
                }
             } else {
-               byf $$3 = this.f();
+               byf $$3 = this.e();
                if ($$3 != null && ($$3.an() == bxn.bT || $$3.an() == bxn.aq)) {
                   this.bd = 0;
                }
@@ -68,11 +68,11 @@ public abstract class ctz extends cpl {
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
-   protected void gw() {
+   protected void gz() {
       this.bd += 2;
    }
 
@@ -80,10 +80,10 @@ public abstract class ctz extends cpl {
    public void a(bvt $$0) {
       if (this.dV() instanceof asb $$1) {
          bxe $$2 = $$0.d();
-         cty $$3 = this.gF();
+         cty $$3 = this.gI();
          if ($$3 != null) {
-            if (this.gv()) {
-               $$3.c(this.gJ());
+            if (this.gy()) {
+               $$3.c(this.gM());
             }
 
             if ($$2 != null && $$2.an() == bxn.bT) {
@@ -98,8 +98,8 @@ public abstract class ctz extends cpl {
    }
 
    @Override
-   public boolean gy() {
-      return !this.gI();
+   public boolean gB() {
+      return !this.gL();
    }
 
    public void a(@Nullable cty $$0) {
@@ -107,34 +107,34 @@ public abstract class ctz extends cpl {
    }
 
    @Nullable
-   public cty gF() {
+   public cty gI() {
       return this.d;
    }
 
-   public boolean gG() {
+   public boolean gJ() {
       dak $$0 = this.a(bxo.f);
       boolean $$1 = !$$0.f() && dak.a($$0, cty.a(this.dX().f(mi.aF)));
-      boolean $$2 = this.gv();
+      boolean $$2 = this.gy();
       return $$1 && $$2;
    }
 
-   public boolean gH() {
-      return !(this.dV() instanceof asb $$0) ? false : this.gF() != null || $$0.d(this.dv()) != null;
+   public boolean gK() {
+      return !(this.dV() instanceof asb $$0) ? false : this.gI() != null || $$0.d(this.dv()) != null;
    }
 
-   public boolean gI() {
-      return this.gF() != null && this.gF().r();
+   public boolean gL() {
+      return this.gI() != null && this.gI().r();
    }
 
    public void b(int $$0) {
       this.f = $$0;
    }
 
-   public int gJ() {
+   public int gM() {
       return this.f;
    }
 
-   public boolean gK() {
+   public boolean gN() {
       return this.al.a(c);
    }
 
@@ -162,7 +162,7 @@ public abstract class ctz extends cpl {
             this.d = $$1.B().a($$1x);
             if (this.d != null) {
                this.d.a($$1, this.f, this, false);
-               if (this.gv()) {
+               if (this.gy()) {
                   this.d.a(this.f, this);
                }
             }
@@ -172,9 +172,9 @@ public abstract class ctz extends cpl {
 
    @Override
    protected void a(asb $$0, coo $$1) {
-      dak $$2 = $$1.f();
-      boolean $$3 = this.gI() && this.gF().b(this.gJ()) != null;
-      if (this.gI() && !$$3 && dak.a($$2, cty.a(this.dX().f(mi.aF)))) {
+      dak $$2 = $$1.e();
+      boolean $$3 = this.gL() && this.gI().b(this.gM()) != null;
+      if (this.gL() && !$$3 && dak.a($$2, cty.a(this.dX().f(mi.aF)))) {
          bxo $$4 = bxo.f;
          dak $$5 = this.a($$4);
          double $$6 = (double)this.gb().b($$4);
@@ -186,7 +186,7 @@ public abstract class ctz extends cpl {
          this.a($$4, $$2);
          this.a($$1, $$2.M());
          $$1.aq();
-         this.gF().a(this.gJ(), this);
+         this.gI().a(this.gM(), this);
          this.w(true);
       } else {
          super.a($$0, $$1);
@@ -195,15 +195,15 @@ public abstract class ctz extends cpl {
 
    @Override
    public boolean h(double $$0) {
-      return this.gF() == null ? super.h($$0) : false;
+      return this.gI() == null ? super.h($$0) : false;
    }
 
    @Override
-   public boolean Z() {
-      return super.Z() || this.gF() != null;
+   public boolean Y() {
+      return super.Y() || this.gI() != null;
    }
 
-   public int gL() {
+   public int gO() {
       return this.bJ;
    }
 
@@ -213,8 +213,8 @@ public abstract class ctz extends cpl {
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      if (this.gI()) {
-         this.gF().n();
+      if (this.gL()) {
+         this.gI().n();
       }
 
       return super.a($$0, $$1, $$2);
@@ -227,7 +227,7 @@ public abstract class ctz extends cpl {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public abstract awx aj_();
+   public abstract awx af_();
 
    protected static class a extends cfb {
       private final ctz b;
@@ -243,23 +243,23 @@ public abstract class ctz extends cpl {
       @Override
       public boolean b() {
          byf $$0 = this.b.er();
-         return this.b.gF() == null && this.b.gA() && this.b.f() != null && !this.b.gl() && ($$0 == null || $$0.an() != bxn.bT);
+         return this.b.gI() == null && this.b.gD() && this.b.e() != null && !this.b.gl() && ($$0 == null || $$0.an() != bxn.bT);
       }
 
       @Override
       public void d() {
          super.d();
-         this.b.O().m();
+         this.b.N().m();
 
          for (ctz $$1 : a(this.b).a(ctz.class, this.a, this.b, this.b.cR().c(8.0, 8.0, 8.0))) {
-            $$1.g(this.b.f());
+            $$1.g(this.b.e());
          }
       }
 
       @Override
       public void e() {
          super.e();
-         byf $$0 = this.b.f();
+         byf $$0 = this.b.e();
          if ($$0 != null) {
             for (ctz $$2 : a(this.b).a(ctz.class, this.a, this.b, this.b.cR().c(8.0, 8.0, 8.0))) {
                $$2.g($$0);
@@ -277,12 +277,12 @@ public abstract class ctz extends cpl {
 
       @Override
       public void a() {
-         byf $$0 = this.b.f();
+         byf $$0 = this.b.e();
          if ($$0 != null) {
             if (this.b.g((bxe)$$0) > (double)this.c) {
-               this.b.J().a($$0, 30.0F, 30.0F);
+               this.b.I().a($$0, 30.0F, 30.0F);
                if (this.b.ae.a(50) == 0) {
-                  this.b.T();
+                  this.b.S();
                }
             } else {
                this.b.v(true);
@@ -319,7 +319,7 @@ public abstract class ctz extends cpl {
                if (ctz.this.dV().ae() < $$4) {
                   $$0.put($$3.ao(), $$4);
                } else {
-                  eyo $$5 = this.b.O().a($$3, 1);
+                  eyo $$5 = this.b.N().a($$3, 1);
                   if ($$5 != null && $$5.j()) {
                      this.d = $$5;
                      this.e = $$3;
@@ -347,23 +347,23 @@ public abstract class ctz extends cpl {
       }
 
       private boolean h() {
-         if (!this.b.gI()) {
+         if (!this.b.gL()) {
             return true;
-         } else if (this.b.gF().a()) {
+         } else if (this.b.gI().a()) {
             return true;
-         } else if (!this.b.t()) {
+         } else if (!this.b.gv()) {
             return true;
          } else if (dak.a(this.b.a(bxo.f), cty.a(this.b.dX().f(mi.aF)))) {
             return true;
          } else {
-            ctz $$0 = ctz.this.d.b(this.b.gJ());
+            ctz $$0 = ctz.this.d.b(this.b.gM());
             return $$0 != null && $$0.bJ();
          }
       }
 
       @Override
       public void d() {
-         this.b.O().a(this.d, 1.15F);
+         this.b.N().a(this.d, 1.15F);
       }
 
       @Override
@@ -390,8 +390,8 @@ public abstract class ctz extends cpl {
 
       @Override
       public boolean b() {
-         cty $$0 = this.b.gF();
-         return this.b.bJ() && this.b.f() == null && $$0 != null && $$0.f();
+         cty $$0 = this.b.gI();
+         return this.b.bJ() && this.b.e() == null && $$0 != null && $$0.f();
       }
 
       @Override
@@ -409,11 +409,11 @@ public abstract class ctz extends cpl {
       @Override
       public void a() {
          if (!this.b.ba() && this.b.ae.a(this.a(100)) == 0) {
-            ctz.this.b(ctz.this.aj_());
+            ctz.this.b(ctz.this.af_());
          }
 
          if (!this.b.bY() && this.b.ae.a(this.a(50)) == 0) {
-            this.b.N().a();
+            this.b.M().a();
          }
 
          super.a();
@@ -438,11 +438,11 @@ public abstract class ctz extends cpl {
       @Override
       public boolean b() {
          this.k();
-         return this.h() && this.i() && this.a.f() == null;
+         return this.h() && this.i() && this.a.e() == null;
       }
 
       private boolean h() {
-         return this.a.gI() && !this.a.gF().a();
+         return this.a.gL() && !this.a.gI().a();
       }
 
       private boolean i() {
@@ -459,7 +459,7 @@ public abstract class ctz extends cpl {
 
       @Override
       public boolean c() {
-         return this.a.O().k() ? false : this.a.f() == null && !this.c.a(this.a.dt(), (double)(this.a.dq() + (float)this.e)) && !this.f;
+         return this.a.N().k() ? false : this.a.e() == null && !this.c.a(this.a.dt(), (double)(this.a.dq() + (float)this.e)) && !this.f;
       }
 
       @Override
@@ -473,13 +473,13 @@ public abstract class ctz extends cpl {
       public void d() {
          super.d();
          this.a.n(0);
-         this.a.O().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), this.b);
+         this.a.N().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), this.b);
          this.f = false;
       }
 
       @Override
       public void a() {
-         if (this.a.O().k()) {
+         if (this.a.N().k()) {
             fgc $$0 = fgc.c(this.c);
             fgc $$1 = ciy.a(this.a, 16, 7, $$0, (float) (Math.PI / 10));
             if ($$1 == null) {
@@ -491,7 +491,7 @@ public abstract class ctz extends cpl {
                return;
             }
 
-            this.a.O().a($$1.d, $$1.e, $$1.f, this.b);
+            this.a.N().a($$1.d, $$1.e, $$1.f, this.b);
          }
       }
 

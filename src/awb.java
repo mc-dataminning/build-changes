@@ -82,7 +82,7 @@ public abstract class awb {
 
       $$1.a($$11);
       String $$13 = $$0.a(this.k.bl());
-      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ai().getString(), $$13, $$1.ao(), $$1.dA(), $$1.dC(), $$1.dG()});
+      h.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ah().getString(), $$13, $$1.ao(), $$1.dA(), $$1.dC(), $$1.dG()});
       fad $$14 = $$11.C_();
       $$1.e($$8.orElse(null));
       ate $$15 = new ate(this.k, $$0, $$1, $$2);
@@ -98,15 +98,15 @@ public abstract class awb {
       dfi $$20 = this.k.aI();
       $$15.b(new agu($$20.b(), $$20.c()));
       this.e($$1);
-      $$1.I().c();
-      $$1.J().a($$1);
+      $$1.H().c();
+      $$1.I().a($$1);
       this.a($$11.g(), $$1);
       this.k.av();
       xu $$21;
       if ($$1.gi().getName().equalsIgnoreCase($$6)) {
-         $$21 = xg.a("multiplayer.player.joined", $$1.m_());
+         $$21 = xg.a("multiplayer.player.joined", $$1.P_());
       } else {
-         $$21 = xg.a("multiplayer.player.joined.renamed", $$1.m_(), $$6);
+         $$21 = xg.a("multiplayer.player.joined.renamed", $$1.P_(), $$6);
       }
 
       this.a($$21.a(o.o), false);
@@ -128,7 +128,7 @@ public abstract class awb {
          $$1.d($$1x);
          $$1.c($$1x);
       });
-      $$1.d();
+      $$1.c();
    }
 
    protected void a(amk $$0, asc $$1) {
@@ -215,7 +215,7 @@ public abstract class awb {
    }
 
    public void c(asc $$0) {
-      asb $$1 = $$0.y();
+      asb $$1 = $$0.x();
       $$0.a(axi.j);
       this.b($$0);
       if ($$0.bY()) {
@@ -229,12 +229,12 @@ public abstract class awb {
 
       $$0.al();
 
-      for (ctn $$3 : $$0.ah()) {
+      for (ctn $$3 : $$0.ag()) {
          $$3.c(bxe.d.d);
       }
 
       $$1.a($$0, bxe.d.d);
-      $$0.S().a();
+      $$0.R().a();
       this.l.remove($$0);
       this.k.aM().b($$0);
       UUID $$4 = $$0.cG();
@@ -301,10 +301,10 @@ public abstract class awb {
 
    public asc a(asc $$0, boolean $$1, bxe.d $$2) {
       this.l.remove($$0);
-      $$0.y().a($$0, $$2);
+      $$0.x().a($$0, $$2);
       eza $$3 = $$0.a(!$$1, eza.a);
       asb $$4 = $$3.b();
-      asc $$5 = new asc(this.k, $$4, $$0.gi(), $$0.C());
+      asc $$5 = new asc(this.k, $$4, $$0.gi(), $$0.B());
       $$5.f = $$0.f;
       $$5.a($$0, $$1);
       $$5.e($$0.ao());
@@ -324,7 +324,7 @@ public abstract class awb {
       }
 
       byte $$8 = (byte)($$1 ? 1 : 0);
-      asb $$9 = $$5.y();
+      asb $$9 = $$5.x();
       fad $$10 = $$9.C_();
       $$5.f.b(new aex($$5.b($$9), $$8));
       $$5.f.a($$5.dA(), $$5.dC(), $$5.dG(), $$5.dL(), $$5.dN());
@@ -337,9 +337,9 @@ public abstract class awb {
       $$4.b($$5);
       this.l.add($$5);
       this.m.put($$5.cG(), $$5);
-      $$5.d();
+      $$5.c();
       $$5.d($$5.eG());
-      asc.a $$11 = $$5.T();
+      asc.a $$11 = $$5.S();
       if (!$$1 && $$11 != null) {
          asb $$12 = this.k.a($$11.a());
          if ($$12 != null) {
@@ -546,7 +546,7 @@ public abstract class awb {
 
    public void f(asc $$0) {
       $$0.bQ.b();
-      $$0.v();
+      $$0.u();
       $$0.f.b(new afu($$0.gj().f()));
    }
 
@@ -570,7 +570,7 @@ public abstract class awb {
       List<asc> $$1 = Lists.newArrayList();
 
       for (asc $$2 : this.l) {
-         if ($$2.B().equals($$0)) {
+         if ($$2.A().equals($$0)) {
             $$1.add($$2);
          }
       }
@@ -656,7 +656,7 @@ public abstract class awb {
          File $$3 = this.k.a(faf.b).toFile();
          File $$4 = new File($$3, $$1 + ".json");
          if (!$$4.exists()) {
-            File $$5 = new File($$3, $$0.ai().getString() + ".json");
+            File $$5 = new File($$3, $$0.ah().getString() + ".json");
             Path $$6 = $$5.toPath();
             if (w.a($$6) && w.b($$6) && $$6.startsWith($$3.getPath()) && $$5.isFile()) {
                $$5.renameTo($$4);
@@ -729,7 +729,7 @@ public abstract class awb {
 
       for (asc $$3 : this.l) {
          $$3.f.b($$2);
-         $$3.J().a($$3);
+         $$3.I().a($$3);
       }
    }
 

@@ -19,9 +19,9 @@ public class gzl extends gym<cqw, hfp, giq> {
    public void a(cqw $$0, hfp $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.an() == bxn.aT;
-      $$1.d = $$0.x();
+      $$1.d = $$0.gw();
       $$1.c = (float)czd.b($$0.fB(), $$0);
-      $$1.b = $$0.q();
+      $$1.b = $$0.gu();
    }
 
    protected boolean b(hfp $$0) {

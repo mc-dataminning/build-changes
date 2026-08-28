@@ -28,7 +28,7 @@ public class apb {
    private static int a(ek $$0, bxe $$1, bxe $$2) throws CommandSyntaxException {
       bxe $$3 = $$1.dk();
       if ($$3 != null) {
-         throw b.create($$1.m_(), $$3.m_());
+         throw b.create($$1.P_(), $$3.P_());
       } else if ($$2.an() == bxn.bT) {
          throw d.create();
       } else if ($$1.da().anyMatch($$1x -> $$1x == $$2)) {
@@ -36,9 +36,9 @@ public class apb {
       } else if ($$1.dV() != $$2.dV()) {
          throw f.create();
       } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.m_(), $$2.m_());
+         throw c.create($$1.P_(), $$2.P_());
       } else {
-         $$0.a(() -> xg.a("commands.ride.mount.success", $$1.m_(), $$2.m_()), true);
+         $$0.a(() -> xg.a("commands.ride.mount.success", $$1.P_(), $$2.P_()), true);
          return 1;
       }
    }
@@ -46,10 +46,10 @@ public class apb {
    private static int a(ek $$0, bxe $$1) throws CommandSyntaxException {
       bxe $$2 = $$1.dk();
       if ($$2 == null) {
-         throw a.create($$1.m_());
+         throw a.create($$1.P_());
       } else {
          $$1.bO();
-         $$0.a(() -> xg.a("commands.ride.dismount.success", $$1.m_(), $$2.m_()), true);
+         $$0.a(() -> xg.a("commands.ride.dismount.success", $$1.P_(), $$2.P_()), true);
          return 1;
       }
    }

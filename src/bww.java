@@ -63,28 +63,28 @@ public class bww extends bxe implements bzd {
    }
 
    @Override
-   public void i_() {
+   public void h_() {
       double $$0 = this.dA();
       double $$1 = this.dC();
       double $$2 = this.dG();
-      super.i_();
+      super.h_();
       this.a_($$0, $$1, $$2);
    }
 
-   public float e() {
+   public float c() {
       return this.ar().a(f);
    }
 
    public void a(dcg $$0) {
       this.t = $$0;
-      this.s();
+      this.r();
    }
 
    public void b(float $$0) {
       this.u = $$0;
    }
 
-   private void s() {
+   private void r() {
       lx $$0 = this.al.a(h);
       if ($$0 instanceof ls $$1) {
          int $$2 = this.t.equals(dcg.a) ? 0 : this.t.b();
@@ -96,7 +96,7 @@ public class bww extends bxe implements bzd {
       this.a(this.t.a($$0));
    }
 
-   public lx f() {
+   public lx e() {
       return this.ar().a(h);
    }
 
@@ -108,11 +108,11 @@ public class bww extends bxe implements bzd {
       this.ar().a(g, $$0);
    }
 
-   public boolean g() {
+   public boolean f() {
       return this.ar().a(g);
    }
 
-   public int i() {
+   public int h() {
       return this.az;
    }
 
@@ -121,20 +121,20 @@ public class bww extends bxe implements bzd {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV() instanceof asb $$0) {
          this.a($$0);
       } else {
-         this.t();
+         this.s();
       }
    }
 
-   private void t() {
-      boolean $$0 = this.g();
-      float $$1 = this.e();
+   private void s() {
+      boolean $$0 = this.f();
+      float $$1 = this.c();
       if (!$$0 || !this.ae.h()) {
-         lx $$2 = this.f();
+         lx $$2 = this.e();
          int $$3;
          float $$4;
          if ($$0) {
@@ -170,14 +170,14 @@ public class bww extends bxe implements bzd {
       if (this.az != -1 && this.af >= this.aA + this.az) {
          this.aq();
       } else {
-         boolean $$1 = this.g();
+         boolean $$1 = this.f();
          boolean $$2 = this.af < this.aA;
          if ($$1 != $$2) {
             this.a($$2);
          }
 
          if (!$$2) {
-            float $$3 = this.e();
+            float $$3 = this.c();
             if (this.aE != 0.0F) {
                $$3 += this.aE;
                if ($$3 < 0.5F) {
@@ -207,7 +207,7 @@ public class bww extends bxe implements bzd {
 
                               for (bwi $$10 : $$4) {
                                  if ($$10.c().a().a()) {
-                                    $$10.c().a().a($$0, this, this.o(), $$6, $$10.e(), 0.5);
+                                    $$10.c().a().a($$0, this, this.n(), $$6, $$10.e(), 0.5);
                                  } else {
                                     $$6.b(new bwi($$10), this);
                                  }
@@ -240,7 +240,7 @@ public class bww extends bxe implements bzd {
       }
    }
 
-   public float j() {
+   public float i() {
       return this.aD;
    }
 
@@ -248,7 +248,7 @@ public class bww extends bxe implements bzd {
       this.aD = $$0;
    }
 
-   public float l() {
+   public float k() {
       return this.aE;
    }
 
@@ -256,7 +256,7 @@ public class bww extends bxe implements bzd {
       this.aE = $$0;
    }
 
-   public int m() {
+   public int l() {
       return this.aC;
    }
 
@@ -264,7 +264,7 @@ public class bww extends bxe implements bzd {
       this.aC = $$0;
    }
 
-   public int n() {
+   public int m() {
       return this.aA;
    }
 
@@ -278,7 +278,7 @@ public class bww extends bxe implements bzd {
    }
 
    @Nullable
-   public byf o() {
+   public byf n() {
       if (this.aF != null && !this.aF.dQ()) {
          return this.aF;
       } else {
@@ -316,9 +316,9 @@ public class bww extends bxe implements bzd {
       $$0.a("DurationOnUse", this.aC);
       $$0.a("RadiusOnUse", this.aD);
       $$0.a("RadiusPerTick", this.aE);
-      $$0.a("Radius", this.e());
+      $$0.a("Radius", this.c());
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Particle", lz.bk, $$1, this.f());
+      $$0.a("Particle", lz.bk, $$1, this.e());
       $$0.b("Owner", ka.a, this.aG);
       if (!this.t.equals(dcg.a)) {
          $$0.a("potion_contents", dcg.c, $$1, this.t);
@@ -332,20 +332,20 @@ public class bww extends bxe implements bzd {
    @Override
    public void a(aku<?> $$0) {
       if (f.equals($$0)) {
-         this.i_();
+         this.h_();
       }
 
       super.a($$0);
    }
 
    @Override
-   public eyf j_() {
+   public eyf i_() {
       return eyf.d;
    }
 
    @Override
    public bxh a(byr $$0) {
-      return bxh.b(this.e() * 2.0F, 0.5F);
+      return bxh.b(this.c() * 2.0F, 0.5F);
    }
 
    @Override

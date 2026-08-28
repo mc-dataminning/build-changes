@@ -77,7 +77,7 @@ public class ciu {
                }
             }
 
-            if (this.e && $$1 instanceof byh $$6 && !$$6.P().a($$2)) {
+            if (this.e && $$1 instanceof byh $$6 && !$$6.O().a($$2)) {
                return false;
             }
          }

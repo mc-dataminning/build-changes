@@ -95,17 +95,17 @@ public class crm {
          cuc.b,
          10,
          ImmutableList.of(
-            cdt.a(crl::q), cdx.a(), new cbt(ImmutableMap.of(chh.aC, chi.b), ImmutableList.of(Pair.of(cbo.a(0.5F), 2), Pair.of(new cag(30, 60), 1)))
+            cdt.a(crl::gu), cdx.a(), new cbt(ImmutableMap.of(chh.aC, chi.b), ImmutableList.of(Pair.of(cbo.a(0.5F), 2), Pair.of(new cag(30, 60), 1)))
          )
       );
    }
 
    private static void e(bzf<crl> $$0) {
-      $$0.a(cuc.w, 5, ImmutableList.of(cdt.a(crl::q), cap.a(chh.aA, 2, 0.7F)), chh.aA);
+      $$0.a(cuc.w, 5, ImmutableList.of(cdt.a(crl::gu), cap.a(chh.aA, 2, 0.7F)), chh.aA);
    }
 
    private static void f(bzf<crl> $$0) {
-      $$0.a(cuc.v, 5, ImmutableList.of(cdt.a(crl::q), new cdv(i)), chh.aC);
+      $$0.a(cuc.v, 5, ImmutableList.of(cdt.a(crl::gu), new cdv(i)), chh.aC);
    }
 
    private static void g(bzf<crl> $$0) {
@@ -118,7 +118,7 @@ public class crm {
          10,
          ImmutableList.of(
             m,
-            ccl.a(($$1x, $$2) -> !$$0.n().d() || !$$0.b($$2), crm::a, false),
+            ccl.a(($$1x, $$2) -> !$$0.u().d() || !$$0.b($$2), crm::a, false),
             cbv.a($$1x -> a($$0, $$1x), (float)$$0.h(bzl.m)),
             ccb.a(1.2F),
             new cdw(),
@@ -147,7 +147,7 @@ public class crm {
    }
 
    public static void a(crl $$0, iw $$1) {
-      if ($$0.dV().E_().a($$1) && !$$0.q().isPresent() && !$$0.ec().c(chh.p).isPresent()) {
+      if ($$0.dV().E_().a($$1) && !$$0.gu().isPresent() && !$$0.ec().c(chh.p).isPresent()) {
          a((byf)$$0);
          $$0.ec().a(chh.aH, bbh.a, 100L);
          $$0.ec().a(chh.o, new bzz($$1), 100L);

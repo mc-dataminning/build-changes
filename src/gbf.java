@@ -8,7 +8,7 @@ public class gbf extends gaf<cxd> {
    private float M;
 
    public gbf(cxd $$0, csh $$1, cme $$2, int $$3) {
-      super($$0, $$1, $$2.m_());
+      super($$0, $$1, $$2.P_());
       this.J = $$2;
       this.K = $$3;
    }

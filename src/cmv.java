@@ -75,7 +75,7 @@ public class cmv {
                   super.a($$0, $$1, $$2);
                }
             }),
-            Pair.of(1, new caj($$0x -> 1.25F, $$0x -> $$0x.n_() ? 2.5 : 3.5) {
+            Pair.of(1, new caj($$0x -> 1.25F, $$0x -> $$0x.e_() ? 2.5 : 3.5) {
                @Override
                protected void b(asb $$0, byn $$1, long $$2) {
                   cmv.b((cmu)$$1);
@@ -183,7 +183,7 @@ public class cmv {
       }
 
       protected boolean a(asb $$0, cmu $$1) {
-         return !$$1.x();
+         return !$$1.u();
       }
 
       protected boolean a(asb $$0, cmu $$1, long $$2) {
@@ -239,7 +239,7 @@ public class cmv {
       }
 
       protected boolean a(asb $$0, cmu $$1) {
-         return !$$1.n_() && $$1.gu();
+         return !$$1.e_() && $$1.gu();
       }
 
       protected boolean a(asb $$0, cmu $$1, long $$2) {

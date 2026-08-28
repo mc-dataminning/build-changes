@@ -22,6 +22,6 @@ public class gzc extends gwp<ckm, hfj, ghd> {
 
    public void a(ckm $$0, hfj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.p();
    }
 }

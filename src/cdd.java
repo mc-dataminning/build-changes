@@ -30,8 +30,8 @@ public class cdd extends bzw<cru> {
       if (!($$1.g($$3) > 5.0)) {
          bzy.a($$1, $$3, 0.5F, 2);
          if ($$2 >= this.c) {
-            $$1.gK();
-            $$3.gK();
+            $$1.gL();
+            $$3.gL();
             this.a($$0, $$1, $$3);
          } else if ($$1.dY().a(35) == 0) {
             $$0.a($$3, (byte)12);
@@ -63,7 +63,7 @@ public class cdd extends bzw<cru> {
    private boolean a(cru $$0) {
       bzf<cru> $$1 = $$0.ec();
       Optional<bwu> $$2 = $$1.c(chh.s).filter($$0x -> $$0x.an() == bxn.bE);
-      return $$2.isEmpty() ? false : bzy.a($$1, chh.s, bxn.bE) && $$0.Y_() && $$2.get().Y_();
+      return $$2.isEmpty() ? false : bzy.a($$1, chh.s, bxn.bE) && $$0.X_() && $$2.get().X_();
    }
 
    private Optional<iw> b(asb $$0, cru $$1) {
@@ -71,7 +71,7 @@ public class cdd extends bzw<cru> {
    }
 
    private boolean a(cru $$0, iw $$1, jg<cjk> $$2) {
-      eyo $$3 = $$0.O().a($$1, $$2.a().c());
+      eyo $$3 = $$0.N().a($$1, $$2.a().c());
       return $$3 != null && $$3.j();
    }
 

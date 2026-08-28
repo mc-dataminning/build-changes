@@ -409,7 +409,7 @@ public class grh {
             break;
          case 3015:
             if (this.b.c_($$1) instanceof eax $$31) {
-               eax.a.a(this.b, $$31.aC_(), $$31.m(), $$31.c(), $$2 == 0 ? lz.aM : lz.N);
+               eax.a.a(this.b, $$31.ax_(), $$31.m(), $$31.c(), $$2 == 0 ? lz.aM : lz.N);
                this.b.a($$1, awy.BE, awz.e, 1.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, true);
             }
             break;

@@ -37,7 +37,7 @@ public class csv extends bxe implements bzd {
    }
 
    @Nullable
-   public byf f() {
+   public byf e() {
       if (this.i == null && this.j != null && this.dV() instanceof asb) {
          bxe $$0 = ((asb)this.dV()).b(this.j);
          if ($$0 instanceof byf) {
@@ -61,8 +61,8 @@ public class csv extends bxe implements bzd {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV().C) {
          if (this.h) {
             this.g--;
@@ -97,7 +97,7 @@ public class csv extends bxe implements bzd {
    }
 
    private void c(byf $$0) {
-      byf $$1 = this.f();
+      byf $$1 = this.e();
       if ($$0.bJ() && !$$0.cC() && $$0 != $$1) {
          if ($$1 == null) {
             $$0.a(this.dW().q(), 6.0F);

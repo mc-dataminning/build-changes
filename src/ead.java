@@ -83,7 +83,7 @@ public class ead {
    }
 
    public boolean a(csi $$0) {
-      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+      return Arrays.stream(this.b($$0.W())).anyMatch($$0x -> !$$0x.getString().isEmpty());
    }
 
    public xg[] b(boolean $$0) {
@@ -114,7 +114,7 @@ public class ead {
    }
 
    public boolean b(csi $$0) {
-      for (xg $$1 : this.b($$0.X())) {
+      for (xg $$1 : this.b($$0.W())) {
          yd $$2 = $$1.a();
          xe $$3 = $$2.i();
          if ($$3 != null && $$3.a() == xe.a.c) {

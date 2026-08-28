@@ -43,14 +43,14 @@ public record deb(float c) implements ddy {
             }
 
             $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
-            $$2.k();
+            $$2.j();
             $$3 = true;
             break;
          }
       }
 
       if ($$3 && $$2 instanceof csi $$13) {
-         $$13.gP();
+         $$13.gQ();
       }
 
       return $$3;

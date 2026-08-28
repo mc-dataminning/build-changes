@@ -40,9 +40,9 @@ public class czy extends dag {
          }
 
          bxn.<cof>a($$6, $$5, $$4).accept($$8);
-         if ($$8.g()) {
+         if ($$8.f()) {
             if (!$$6.C) {
-               $$8.v();
+               $$8.u();
                $$6.a($$4, egq.t, $$8.dt());
                $$6.b($$8);
             }

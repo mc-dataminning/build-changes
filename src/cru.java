@@ -68,7 +68,7 @@ public class cru extends crp implements byu, crw {
       chh.b,
       (BiPredicate<cru, jg>)($$0, $$1) -> $$1.a(cjl.n),
       chh.c,
-      (BiPredicate<cru, jg>)($$0, $$1) -> $$0.gC().b().a().b().test($$1),
+      (BiPredicate<cru, jg>)($$0, $$1) -> $$0.gF().b().a().b().test($$1),
       chh.d,
       (BiPredicate<cru, jg>)($$0, $$1) -> crx.a.test($$1),
       chh.e,
@@ -85,11 +85,11 @@ public class cru extends crp implements byu, crw {
 
    public cru(bxn<? extends cru> $$0, dkj $$1, jg<crz> $$2) {
       super($$0, $$1);
-      ((cho)this.O()).b(true);
-      this.O().a(true);
-      this.O().a(48.0F);
+      ((cho)this.N()).b(true);
+      this.N().a(true);
+      this.N().a(48.0F);
       this.a_(true);
-      this.a(this.gC().a($$2).b($$1.J_(), crx.b));
+      this.a(this.gF().a($$2).b($$1.J_(), crx.b));
    }
 
    @Override
@@ -117,8 +117,8 @@ public class cru extends crp implements byu, crw {
    }
 
    private void a(bzf<cru> $$0) {
-      jg<crx> $$1 = this.gC().b();
-      if (this.n_()) {
+      jg<crx> $$1 = this.gF().b();
+      if (this.e_()) {
          $$0.a(cue.e);
          $$0.a(cuc.d, cdc.a(0.5F));
       } else {
@@ -141,15 +141,15 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   protected void j() {
-      super.j();
+   protected void h() {
+      super.h();
       if (this.dV() instanceof asb) {
          this.g((asb)this.dV());
       }
    }
 
    public static bzk.a gD() {
-      return byh.E().a(bzl.v, 0.5);
+      return byh.D().a(bzl.v, 0.5);
    }
 
    public boolean gE() {
@@ -166,11 +166,11 @@ public class cru extends crp implements byu, crw {
          this.cr = false;
       }
 
-      if (!this.gu() && this.cd > 0) {
+      if (!this.gv() && this.cd > 0) {
          this.cd--;
          if (this.cd <= 0) {
             if (this.ce) {
-               this.ha();
+               this.hb();
                this.ce = false;
             }
 
@@ -191,37 +191,37 @@ public class cru extends crp implements byu, crw {
          }
       }
 
-      if (this.gC().b().a(crx.b) && this.gu()) {
-         this.gz();
+      if (this.gF().b().a(crx.b) && this.gv()) {
+         this.gA();
       }
 
       super.a($$0);
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.q() > 0) {
-         this.r(this.q() - 1);
+   public void g() {
+      super.g();
+      if (this.m() > 0) {
+         this.r(this.m() - 1);
       }
 
-      this.hc();
+      this.hd();
    }
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ($$2.a(dao.uR) || !this.bJ() || this.gu() || this.fR()) {
+      if ($$2.a(dao.uR) || !this.bJ() || this.gv() || this.fR()) {
          return super.b($$0, $$1);
-      } else if (this.n_()) {
-         this.gP();
+      } else if (this.e_()) {
+         this.gQ();
          return bvc.a;
       } else {
          if (!this.dV().C) {
-            boolean $$3 = this.gv().isEmpty();
+            boolean $$3 = this.gw().isEmpty();
             if ($$1 == bvb.a) {
                if ($$3) {
-                  this.gP();
+                  this.gQ();
                }
 
                $$0.a(axi.S);
@@ -238,7 +238,7 @@ public class cru extends crp implements byu, crw {
       }
    }
 
-   private void gP() {
+   private void gQ() {
       this.r(40);
       if (!this.dV().A_()) {
          this.b(awy.Ca);
@@ -248,59 +248,59 @@ public class cru extends crp implements byu, crw {
    private void g(csi $$0) {
       this.h($$0);
       this.a($$0);
-      this.a($$0, this.m_(), this.gC().c());
+      this.a($$0, this.P_(), this.gF().c());
    }
 
    @Override
    public void a(@Nullable csi $$0) {
-      boolean $$1 = this.x() != null && $$0 == null;
+      boolean $$1 = this.gu() != null && $$0 == null;
       super.a($$0);
       if ($$1) {
-         this.gz();
+         this.gA();
       }
    }
 
    @Override
-   protected void gz() {
-      super.gz();
-      this.gQ();
+   protected void gA() {
+      super.gA();
+      this.gR();
    }
 
-   private void gQ() {
+   private void gR() {
       if (!this.dV().A_()) {
-         for (djf $$0 : this.gv()) {
+         for (djf $$0 : this.gw()) {
             $$0.n();
          }
       }
    }
 
    @Override
-   public boolean gF() {
+   public boolean gG() {
       return true;
    }
 
-   public void gG() {
-      this.gV();
+   public void gH() {
+      this.gW();
 
-      for (djf $$0 : this.gv()) {
+      for (djf $$0 : this.gw()) {
          $$0.j();
       }
 
-      this.gR();
+      this.gS();
       this.cm = this.dV().ae();
       this.cn++;
    }
 
-   private void gR() {
-      djg $$0 = this.gv();
-      csi $$1 = this.x();
+   private void gS() {
+      djg $$0 = this.gw();
+      csi $$1 = this.gu();
       if ($$1 != null && !$$0.isEmpty()) {
-         $$1.a($$1.bR.l, $$0, this.gC().c(), this.t(), this.gw(), this.gF());
+         $$1.a($$1.bR.l, $$0, this.gF().c(), this.p(), this.gx(), this.gG());
       }
    }
 
-   private boolean gS() {
-      for (djf $$0 : this.gv()) {
+   private boolean gT() {
+      for (djf $$0 : this.gw()) {
          if ($$0.t()) {
             return true;
          }
@@ -309,11 +309,11 @@ public class cru extends crp implements byu, crw {
       return false;
    }
 
-   private boolean gT() {
+   private boolean gU() {
       return this.cn == 0 || this.cn < 2 && this.dV().ae() > this.cm + 2400L;
    }
 
-   public boolean gH() {
+   public boolean gI() {
       long $$0 = this.cm + 12000L;
       long $$1 = this.dV().ae();
       boolean $$2 = $$1 > $$0;
@@ -327,29 +327,29 @@ public class cru extends crp implements byu, crw {
       this.cq = $$3;
       if ($$2) {
          this.cm = $$1;
-         this.hd();
+         this.he();
       }
 
-      return this.gT() && this.gS();
+      return this.gU() && this.gT();
    }
 
-   private void gU() {
+   private void gV() {
       int $$0 = 2 - this.cn;
       if ($$0 > 0) {
-         for (djf $$1 : this.gv()) {
+         for (djf $$1 : this.gw()) {
             $$1.j();
          }
       }
 
       for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.gV();
+         this.gW();
       }
 
-      this.gR();
+      this.gS();
    }
 
-   private void gV() {
-      for (djf $$0 : this.gv()) {
+   private void gW() {
+      for (djf $$0 : this.gw()) {
          $$0.g();
       }
    }
@@ -357,7 +357,7 @@ public class cru extends crp implements byu, crw {
    private void h(csi $$0) {
       int $$1 = this.f($$0);
       if ($$1 != 0) {
-         for (djf $$2 : this.gv()) {
+         for (djf $$2 : this.gw()) {
             $$2.a(-azz.d((float)$$1 * $$2.p()));
          }
       }
@@ -366,7 +366,7 @@ public class cru extends crp implements byu, crw {
          bwi $$3 = $$0.c(bwk.F);
          int $$4 = $$3.e();
 
-         for (djf $$5 : this.gv()) {
+         for (djf $$5 : this.gw()) {
             double $$6 = 0.3 + 0.0625 * (double)$$4;
             int $$7 = (int)Math.floor($$6 * (double)$$5.a().M());
             $$5.a(-Math.max($$7, 1));
@@ -377,17 +377,17 @@ public class cru extends crp implements byu, crw {
    @Override
    protected void a(aky.a $$0) {
       super.a($$0);
-      $$0.a(bP, gI());
+      $$0.a(bP, gJ());
    }
 
-   public static crv gI() {
+   public static crv gJ() {
       return new crv(mh.w.b(crz.c), mh.x.b(crx.b), 1);
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("VillagerData", crv.c, this.gC());
+      $$0.a("VillagerData", crv.c, this.gF());
       $$0.a("FoodLevel", (byte)this.ch);
       $$0.a("Gossips", chd.a, this.ci);
       $$0.a("Xp", this.cl);
@@ -402,7 +402,7 @@ public class cru extends crp implements byu, crw {
    @Override
    public void a(ua $$0) {
       super.a($$0);
-      this.al.a(bP, $$0.<crv>a("VillagerData", crv.c).orElseGet(cru::gI));
+      this.al.a(bP, $$0.<crv>a("VillagerData", crv.c).orElseGet(cru::gJ));
       this.ch = $$0.b("FoodLevel", (byte)0);
       this.ci.c();
       $$0.<chd>a("Gossips", chd.a).ifPresent(this.ci::a);
@@ -424,11 +424,11 @@ public class cru extends crp implements byu, crw {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       if (this.fR()) {
          return null;
       } else {
-         return this.gu() ? awy.Cb : awy.BW;
+         return this.gv() ? awy.Cb : awy.BW;
       }
    }
 
@@ -438,17 +438,17 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.BY;
    }
 
-   public void gJ() {
-      this.b(this.gC().b().a().f());
+   public void gK() {
+      this.b(this.gF().b().a().f());
    }
 
    @Override
    public void a(crv $$0) {
-      crv $$1 = this.gC();
+      crv $$1 = this.gF();
       if (!$$1.b().equals($$0.b())) {
          this.bJ = null;
       }
@@ -457,7 +457,7 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   public crv gC() {
+   public crv gF() {
       return this.al.a(bP);
    }
 
@@ -465,8 +465,8 @@ public class cru extends crp implements byu, crw {
    protected void b(djf $$0) {
       int $$1 = 3 + this.ae.a(4);
       this.cl = this.cl + $$0.q();
-      this.cf = this.x();
-      if (this.gZ()) {
+      this.cf = this.gu();
+      if (this.ha()) {
          this.cd = 40;
          this.ce = true;
          $$1 += 5;
@@ -497,11 +497,11 @@ public class cru extends crp implements byu, crw {
          this.b($$1);
       }
 
-      this.gW();
+      this.gX();
       super.a($$0);
    }
 
-   private void gW() {
+   private void gX() {
       this.a(chh.b);
       this.a(chh.c);
       this.a(chh.d);
@@ -536,18 +536,18 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   public boolean Y_() {
-      return this.ch + this.hb() >= 12 && !this.fR() && this.g() == 0;
+   public boolean X_() {
+      return this.ch + this.hc() >= 12 && !this.fR() && this.Y_() == 0;
    }
 
-   private boolean gX() {
+   private boolean gY() {
       return this.ch < 12;
    }
 
-   private void gY() {
-      if (this.gX() && this.hb() != 0) {
-         for (int $$0 = 0; $$0 < this.n().b(); $$0++) {
-            dak $$1 = this.n().a($$0);
+   private void gZ() {
+      if (this.gY() && this.hc() != 0) {
+         for (int $$0 = 0; $$0 < this.u().b(); $$0++) {
+            dak $$1 = this.u().a($$0);
             if (!$$1.f()) {
                Integer $$2 = bL.get($$1.h());
                if ($$2 != null) {
@@ -555,8 +555,8 @@ public class cru extends crp implements byu, crw {
 
                   for (int $$4 = $$3; $$4 > 0; $$4--) {
                      this.ch = this.ch + $$2;
-                     this.n().a($$0, 1);
-                     if (!this.gX()) {
+                     this.u().a($$0, 1);
+                     if (!this.gY()) {
                         return;
                      }
                   }
@@ -574,8 +574,8 @@ public class cru extends crp implements byu, crw {
       this.ch -= $$0;
    }
 
-   public void gK() {
-      this.gY();
+   public void gL() {
+      this.gZ();
       this.u(12);
    }
 
@@ -583,19 +583,19 @@ public class cru extends crp implements byu, crw {
       this.bJ = $$0;
    }
 
-   private boolean gZ() {
-      int $$0 = this.gC().c();
+   private boolean ha() {
+      int $$0 = this.gF().c();
       return crv.d($$0) && this.cl >= crv.c($$0);
    }
 
-   private void ha() {
-      this.a(this.gC().a(this.gC().c() + 1));
-      this.gA();
+   private void hb() {
+      this.a(this.gF().a(this.gF().c() + 1));
+      this.gB();
    }
 
    @Override
    protected xg cz() {
-      return this.gC().b().a().a();
+      return this.gF().b().a().a();
    }
 
    @Override
@@ -617,11 +617,11 @@ public class cru extends crp implements byu, crw {
    @Override
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
       if ($$2 == bxm.e) {
-         this.a(this.gC().b($$0.J_(), crx.b));
+         this.a(this.gF().b($$0.J_(), crx.b));
       }
 
       if ($$2 == bxm.n || $$2 == bxm.m || bxm.a($$2) || $$2 == bxm.o) {
-         this.a(this.gC().a($$0.J_(), crz.a($$0.u(this.dv()))));
+         this.a(this.gF().a($$0.J_(), crz.a($$0.u(this.dv()))));
       }
 
       if ($$2 == bxm.d) {
@@ -638,9 +638,9 @@ public class cru extends crp implements byu, crw {
       if ($$2 < 0.5) {
          $$3 = $$0.J_().d(crz.a($$0.u(this.dv())));
       } else if ($$2 < 0.75) {
-         $$3 = this.gC().a();
+         $$3 = this.gF().a();
       } else {
-         $$3 = ((cru)$$1).gC().a();
+         $$3 = ((cru)$$1).gF().a();
       }
 
       cru $$6 = new cru(bxn.bE, $$0, $$3);
@@ -655,7 +655,7 @@ public class cru extends crp implements byu, crw {
          cqa $$2 = this.a(bxn.bJ, bwy.a(this, false, false), $$1x -> {
             $$1x.a($$0, $$0.d_($$1x.dv()), bxm.i, null);
             $$1x.gc();
-            this.gW();
+            this.gX();
          });
          if ($$2 == null) {
             super.a($$0, $$1);
@@ -673,29 +673,29 @@ public class cru extends crp implements byu, crw {
    @Override
    public boolean c(asb $$0, dak $$1) {
       dag $$2 = $$1.h();
-      return ($$1.a(axv.bP) || this.gC().b().a().d().contains($$2)) && this.n().c($$1);
-   }
-
-   public boolean gL() {
-      return this.hb() >= 24;
+      return ($$1.a(axv.bP) || this.gF().b().a().d().contains($$2)) && this.u().c($$1);
    }
 
    public boolean gM() {
-      return this.hb() < 12;
-   }
-
-   private int hb() {
-      bvj $$0 = this.n();
-      return bL.entrySet().stream().mapToInt($$1 -> $$0.a_($$1.getKey()) * $$1.getValue()).sum();
+      return this.hc() >= 24;
    }
 
    public boolean gN() {
-      return this.n().a_($$0 -> $$0.a(axv.bO));
+      return this.hc() < 12;
+   }
+
+   private int hc() {
+      bvj $$0 = this.u();
+      return bL.entrySet().stream().mapToInt($$1 -> $$0.a_($$1.getKey()) * $$1.getValue()).sum();
+   }
+
+   public boolean gO() {
+      return this.u().a_($$0 -> $$0.a(axv.bO));
    }
 
    @Override
-   protected void gA() {
-      crv $$0 = this.gC();
+   protected void gB() {
+      crv $$0 = this.gF();
       alq<crx> $$1 = $$0.b().e().orElse(null);
       if ($$1 != null) {
          Int2ObjectMap<cry.g[]> $$3;
@@ -709,7 +709,7 @@ public class cru extends crp implements byu, crw {
          if ($$3 != null && !$$3.isEmpty()) {
             cry.g[] $$5 = (cry.g[])$$3.get($$0.c());
             if ($$5 != null) {
-               djg $$6 = this.gv();
+               djg $$6 = this.gw();
                this.a($$6, $$5, 2);
             }
          }
@@ -725,7 +725,7 @@ public class cru extends crp implements byu, crw {
       }
    }
 
-   private void hc() {
+   private void hd() {
       long $$0 = this.dV().ae();
       if (this.ck == 0L) {
          this.ck = $$0;
@@ -767,7 +767,7 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   public int t() {
+   public int p() {
       return this.cl;
    }
 
@@ -775,12 +775,12 @@ public class cru extends crp implements byu, crw {
       this.cl = $$0;
    }
 
-   private void hd() {
-      this.gU();
+   private void he() {
+      this.gV();
       this.cn = 0;
    }
 
-   public chd gO() {
+   public chd gP() {
       return this.ci;
    }
 
@@ -789,8 +789,8 @@ public class cru extends crp implements byu, crw {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -816,7 +816,7 @@ public class cru extends crp implements byu, crw {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.av ? c((kk<T>)$$0, this.gC().a()) : super.a($$0);
+      return $$0 == kl.av ? c((kk<T>)$$0, this.gF().a()) : super.a($$0);
    }
 
    @Override
@@ -829,7 +829,7 @@ public class cru extends crp implements byu, crw {
    protected <T> boolean b(kk<T> $$0, T $$1) {
       if ($$0 == kl.av) {
          jg<crz> $$2 = c(kl.av, $$1);
-         this.a(this.gC().a($$2));
+         this.a(this.gF().a($$2));
          return true;
       } else {
          return super.b($$0, $$1);

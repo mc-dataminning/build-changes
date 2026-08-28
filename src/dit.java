@@ -55,14 +55,14 @@ public record dit(bxo c, jg<awx> d, Optional<alq<dir>> e, Optional<alr> f, Optio
    public bvc a(dak $$0, csi $$1) {
       if ($$1.e(this.c) && this.a($$1.an())) {
          dak $$2 = $$1.a(this.c);
-         if ((!dgz.a($$2, dgy.E) || $$1.b()) && !dak.c($$0, $$2)) {
+         if ((!dgz.a($$2, dgy.E) || $$1.gz()) && !dak.c($$0, $$2)) {
             if (!$$1.dV().A_()) {
                $$1.b(axi.c.b($$0.h()));
             }
 
             if ($$0.M() <= 1) {
                dak $$3 = $$2.f() ? $$0 : $$2.g();
-               dak $$4 = $$1.b() ? $$0.v() : $$0.g();
+               dak $$4 = $$1.gz() ? $$0.v() : $$0.g();
                $$1.a(this.c, $$4);
                return bvc.a.a($$3);
             } else {

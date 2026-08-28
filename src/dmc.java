@@ -86,7 +86,7 @@ public final class dmc {
    }
 
    protected void a(Consumer<Pair<dlv.d, alq<dlm>>> $$0) {
-      if (ac.ar) {
+      if (ac.as) {
          this.b($$0);
       } else {
          this.c($$0);

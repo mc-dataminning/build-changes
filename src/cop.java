@@ -65,7 +65,7 @@ public class cop extends bxe implements bzd {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.bV();
       this.be();
       this.a(byj.a, this.dy());
@@ -75,12 +75,12 @@ public class cop extends bxe implements bzd {
          this.i(this.dy().d(0.7, -0.5, 0.7));
       }
 
-      int $$0 = this.g() - 1;
+      int $$0 = this.f() - 1;
       this.b($$0);
       if ($$0 <= 0) {
          this.aq();
          if (!this.dV().C) {
-            this.m();
+            this.l();
          }
       } else {
          this.bo();
@@ -90,7 +90,7 @@ public class cop extends bxe implements bzd {
       }
    }
 
-   private void m() {
+   private void l() {
       if (this.dV() instanceof asb $$0 && $$0.O().c(dkf.ad)) {
          this.dV().a(this, dkc.a(this.dV(), this), this.k ? i : null, this.dA(), this.e(0.0625), this.dG(), this.l, false, dkj.a.d);
       }
@@ -99,8 +99,8 @@ public class cop extends bxe implements bzd {
    @Override
    protected void b(ua $$0) {
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("fuse", (short)this.g());
-      $$0.a("block_state", ebq.a, $$1, this.j());
+      $$0.a("fuse", (short)this.f());
+      $$0.a("block_state", ebq.a, $$1, this.i());
       if (this.l != 4.0F) {
          $$0.a("explosion_power", this.l);
       }
@@ -115,7 +115,7 @@ public class cop extends bxe implements bzd {
    }
 
    @Nullable
-   public byf f() {
+   public byf e() {
       return this.j;
    }
 
@@ -131,7 +131,7 @@ public class cop extends bxe implements bzd {
       this.al.a(b, $$0);
    }
 
-   public int g() {
+   public int f() {
       return this.al.a(b);
    }
 
@@ -139,7 +139,7 @@ public class cop extends bxe implements bzd {
       this.al.a(c, $$0);
    }
 
-   public ebq j() {
+   public ebq i() {
       return this.al.a(c);
    }
 

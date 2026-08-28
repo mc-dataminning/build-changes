@@ -35,13 +35,13 @@ public class foe extends hrc {
    }
 
    @Override
-   public void aT_() {
-      this.c(fty.a(xf.h, $$0 -> this.aQ_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+   public void aO_() {
+      this.c(fty.a(xf.h, $$0 -> this.aL_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
       this.c = fur.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.a);
    }
 

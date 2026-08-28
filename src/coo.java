@@ -42,7 +42,7 @@ public class coo extends bxe implements bzd {
 
    private coo(coo $$0) {
       super($$0.an(), $$0.dV());
-      this.a($$0.f().v());
+      this.a($$0.e().v());
       this.w($$0);
       this.k = $$0.k;
       this.b = $$0.b;
@@ -50,12 +50,12 @@ public class coo extends bxe implements bzd {
 
    @Override
    public boolean bg() {
-      return this.f().a(axv.bt);
+      return this.e().a(axv.bt);
    }
 
    @Nullable
    @Override
-   public bxe q() {
+   public bxe p() {
       if (this.o != null && !this.o.dQ()) {
          return this.o;
       } else if (this.n != null && this.dV() instanceof asb $$0) {
@@ -90,11 +90,11 @@ public class coo extends bxe implements bzd {
    }
 
    @Override
-   public void h() {
-      if (this.f().f()) {
+   public void g() {
+      if (this.e().f()) {
          this.aq();
       } else {
-         super.h();
+         super.g();
          if (this.l > 0 && this.l != 32767) {
             this.l--;
          }
@@ -104,9 +104,9 @@ public class coo extends bxe implements bzd {
          this.M = this.dG();
          fgc $$0 = this.dy();
          if (this.bi() && this.b(axs.a) > 0.1F) {
-            this.w();
+            this.v();
          } else if (this.bv() && this.b(axs.b) > 0.1F) {
-            this.x();
+            this.w();
          } else {
             this.be();
          }
@@ -139,8 +139,8 @@ public class coo extends bxe implements bzd {
 
          boolean $$3 = azz.a(this.K) != azz.a(this.dA()) || azz.a(this.L) != azz.a(this.dC()) || azz.a(this.M) != azz.a(this.dG());
          int $$4 = $$3 ? 2 : 40;
-         if (this.af % $$4 == 0 && !this.dV().C && this.z()) {
-            this.y();
+         if (this.af % $$4 == 0 && !this.dV().C && this.y()) {
+            this.x();
          }
 
          if (this.k != -32768) {
@@ -166,11 +166,11 @@ public class coo extends bxe implements bzd {
       return this.f(0.999999F);
    }
 
-   private void w() {
+   private void v() {
       this.h(0.99F);
    }
 
-   private void x() {
+   private void w() {
       this.h(0.95F);
    }
 
@@ -179,10 +179,10 @@ public class coo extends bxe implements bzd {
       this.n($$1.d * $$0, $$1.e + (double)($$1.e < 0.06F ? 5.0E-4F : 0.0F), $$1.f * $$0);
    }
 
-   private void y() {
-      if (this.z()) {
-         for (coo $$1 : this.dV().a(coo.class, this.cR().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.z())) {
-            if ($$1.z()) {
+   private void x() {
+      if (this.y()) {
+         for (coo $$1 : this.dV().a(coo.class, this.cR().c(0.5, 0.0, 0.5), $$0 -> $$0 != this && $$0.y())) {
+            if ($$1.y()) {
                this.a($$1);
                if (this.dQ()) {
                   break;
@@ -192,14 +192,14 @@ public class coo extends bxe implements bzd {
       }
    }
 
-   private boolean z() {
-      dak $$0 = this.f();
+   private boolean y() {
+      dak $$0 = this.e();
       return this.bJ() && this.l != 32767 && this.k != -32768 && this.k < 6000 && $$0.M() < $$0.k();
    }
 
    private void a(coo $$0) {
-      dak $$1 = this.f();
-      dak $$2 = $$0.f();
+      dak $$1 = this.e();
+      dak $$2 = $$0.e();
       if (Objects.equals(this.p, $$0.p) && a($$1, $$2)) {
          if ($$2.M() < $$1.M()) {
             a(this, $$1, $$0, $$2);
@@ -236,7 +236,7 @@ public class coo extends bxe implements bzd {
 
    @Override
    public boolean bh() {
-      return !this.f().a(this.dW().a()) || super.bh();
+      return !this.e().a(this.dW().a()) || super.bh();
    }
 
    @Override
@@ -246,7 +246,7 @@ public class coo extends bxe implements bzd {
 
    @Override
    public final boolean b(bvt $$0) {
-      return this.d($$0) ? false : this.f().a($$0);
+      return this.d($$0) ? false : this.e().a($$0);
    }
 
    @Override
@@ -255,14 +255,14 @@ public class coo extends bxe implements bzd {
          return false;
       } else if (!$$0.O().c(dkf.d) && $$1.d() instanceof byh) {
          return false;
-      } else if (!this.f().a($$1)) {
+      } else if (!this.e().a($$1)) {
          return false;
       } else {
          this.bB();
          this.m = (int)((float)this.m - $$2);
          this.a(egq.o, $$1.d());
          if (this.m <= 0) {
-            this.f().a(this);
+            this.e().a(this);
             this.aq();
          }
 
@@ -282,9 +282,9 @@ public class coo extends bxe implements bzd {
       $$0.a("PickupDelay", (short)this.l);
       $$0.b("Thrower", ka.a, this.n);
       $$0.b("Owner", ka.a, this.p);
-      if (!this.f().f()) {
+      if (!this.e().f()) {
          alp<va> $$1 = this.dX().a(uo.a);
-         $$0.a("Item", dak.b, $$1, this.f());
+         $$0.a("Item", dak.b, $$1, this.e());
       }
    }
 
@@ -298,7 +298,7 @@ public class coo extends bxe implements bzd {
       this.o = null;
       alp<va> $$1 = this.dX().a(uo.a);
       this.a($$0.<dak>a("Item", dak.b, $$1).orElse(dak.l));
-      if (this.f().f()) {
+      if (this.e().f()) {
          this.aq();
       }
    }
@@ -306,7 +306,7 @@ public class coo extends bxe implements bzd {
    @Override
    public void a_(csi $$0) {
       if (!this.dV().C) {
-         dak $$1 = this.f();
+         dak $$1 = this.e();
          dag $$2 = $$1.h();
          int $$3 = $$1.M();
          if (this.l == 0 && (this.p == null || this.p.equals($$0.cG())) && $$0.gj().g($$1)) {
@@ -323,9 +323,9 @@ public class coo extends bxe implements bzd {
    }
 
    @Override
-   public xg ai() {
-      xg $$0 = this.ak();
-      return $$0 != null ? $$0 : this.f().A();
+   public xg ah() {
+      xg $$0 = this.aj();
+      return $$0 != null ? $$0 : this.e().A();
    }
 
    @Override
@@ -338,13 +338,13 @@ public class coo extends bxe implements bzd {
    public bxe b(eza $$0) {
       bxe $$1 = super.b($$0);
       if (!this.dV().C && $$1 instanceof coo $$2) {
-         $$2.y();
+         $$2.x();
       }
 
       return $$1;
    }
 
-   public dak f() {
+   public dak e() {
       return this.ar().a(c);
    }
 
@@ -356,7 +356,7 @@ public class coo extends bxe implements bzd {
    public void a(aku<?> $$0) {
       super.a($$0);
       if (c.equals($$0)) {
-         this.f().a((bxe)this);
+         this.e().a((bxe)this);
       }
    }
 
@@ -370,20 +370,21 @@ public class coo extends bxe implements bzd {
       this.o = $$0;
    }
 
-   public int g() {
+   public int f() {
       return this.k;
    }
 
-   @Override
-   public void j() {
+   public void i() {
       this.l = 10;
    }
 
-   public void m() {
+   @Override
+   public void l() {
       this.l = 0;
    }
 
-   public void n() {
+   @Override
+   public void m() {
       this.l = 32767;
    }
 
@@ -391,20 +392,20 @@ public class coo extends bxe implements bzd {
       this.l = $$0;
    }
 
-   public boolean o() {
+   public boolean n() {
       return this.l > 0;
    }
 
-   public void s() {
+   public void r() {
       this.k = -32768;
    }
 
-   public void t() {
+   public void s() {
       this.k = -6000;
    }
 
-   public void u() {
-      this.n();
+   public void t() {
+      this.m();
       this.k = 5999;
    }
 
@@ -412,7 +413,7 @@ public class coo extends bxe implements bzd {
       return $$0 / 20.0F + $$1;
    }
 
-   public coo v() {
+   public coo u() {
       return new coo(this);
    }
 
@@ -423,11 +424,11 @@ public class coo extends bxe implements bzd {
 
    @Override
    public float dM() {
-      return 180.0F - f((float)this.g() + 0.5F, this.b) / (float) (Math.PI * 2) * 360.0F;
+      return 180.0F - f((float)this.f() + 0.5F, this.b) / (float) (Math.PI * 2) * 360.0F;
    }
 
    @Override
    public byw a_(int $$0) {
-      return $$0 == 0 ? byw.a(this::f, this::a) : super.a_($$0);
+      return $$0 == 0 ? byw.a(this::e, this::a) : super.a_($$0);
    }
 }

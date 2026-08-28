@@ -38,8 +38,8 @@ public final class gyl extends gwl<cmg, heu, ghz> {
 
    public void a(cmg $$0, heu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
+      $$1.a = $$0.m();
+      $$1.h = $$0.p();
       $$1.i = $$0.fY().v();
    }
 }

@@ -25,7 +25,7 @@ public class cmg extends cme {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Variant", this.x());
+      $$0.a("Variant", this.u());
    }
 
    @Override
@@ -38,7 +38,7 @@ public class cmg extends cme {
       this.al.a(bI, $$0);
    }
 
-   private int x() {
+   private int u() {
       return this.al.a(bI);
    }
 
@@ -46,18 +46,18 @@ public class cmg extends cme {
       this.w($$0.a() & 0xFF | $$1.a() << 8 & 0xFF00);
    }
 
-   public cmn q() {
-      return cmn.a(this.x() & 0xFF);
+   public cmn m() {
+      return cmn.a(this.u() & 0xFF);
    }
 
    private void a(cmn $$0) {
-      this.w($$0.a() & 0xFF | this.x() & -256);
+      this.w($$0.a() & 0xFF | this.u() & -256);
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aL ? c((kk<T>)$$0, this.q()) : super.a($$0);
+      return $$0 == kl.aL ? c((kk<T>)$$0, this.m()) : super.a($$0);
    }
 
    @Override
@@ -76,8 +76,8 @@ public class cmg extends cme {
       }
    }
 
-   public cmi t() {
-      return cmi.a((this.x() & 0xFF00) >> 8);
+   public cmi p() {
+      return cmi.a((this.u() & 0xFF00) >> 8);
    }
 
    @Override
@@ -89,12 +89,12 @@ public class cmg extends cme {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.ni;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.nm;
    }
 
@@ -116,7 +116,7 @@ public class cmg extends cme {
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
-      boolean $$2 = !this.n_() && this.gL() && $$0.fY();
+      boolean $$2 = !this.e_() && this.gL() && $$0.fY();
       if (!this.bZ() && !$$2) {
          dak $$3 = $$0.b($$1);
          if (!$$3.f()) {
@@ -162,9 +162,9 @@ public class cmg extends cme {
             int $$5 = this.ae.a(9);
             cmn $$6;
             if ($$5 < 4) {
-               $$6 = this.q();
+               $$6 = this.m();
             } else if ($$5 < 8) {
-               $$6 = $$3.q();
+               $$6 = $$3.m();
             } else {
                $$6 = ag.a(cmn.values(), this.ae);
             }
@@ -172,9 +172,9 @@ public class cmg extends cme {
             int $$9 = this.ae.a(5);
             cmi $$10;
             if ($$9 < 2) {
-               $$10 = this.t();
+               $$10 = this.p();
             } else if ($$9 < 4) {
-               $$10 = $$3.t();
+               $$10 = $$3.p();
             } else {
                $$10 = ag.a(cmi.values(), this.ae);
             }
@@ -215,7 +215,7 @@ public class cmg extends cme {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bJ : super.e($$0);
+      return this.e_() ? bJ : super.e($$0);
    }
 
    public static class a extends bwu.a {

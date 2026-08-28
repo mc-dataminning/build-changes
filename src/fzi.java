@@ -26,8 +26,8 @@ public class fzi extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.w.c().b();
       fxl.b $$0 = this.w.d(1);
       $$0.a(new fvf(this.l, this.p));
@@ -37,7 +37,7 @@ public class fzi extends fzq {
       fxl.b $$3 = $$2.d(3);
       $$3.a(fty.a(xf.n, $$0x -> ag.n().a(this.u)).b(120, 20).a());
       $$3.a(fty.a(xf.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fty.a(xf.k, $$0x -> this.aQ_()).b(120, 20).a());
+      $$3.a(fty.a(xf.k, $$0x -> this.aL_()).b(120, 20).a());
       $$0.a($$2);
       this.c();
       this.w.a(this::c);
@@ -55,7 +55,7 @@ public class fzi extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.v.run();
    }
 }

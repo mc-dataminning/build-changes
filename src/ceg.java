@@ -22,7 +22,7 @@ public class ceg extends cee {
          this.d.i(this.d.dy().b(0.0, 0.005, 0.0));
       }
 
-      if (this.k == cee.a.b && !this.d.O().k()) {
+      if (this.k == cee.a.b && !this.d.N().k()) {
          double $$0 = this.e - this.d.dA();
          double $$1 = this.f - this.d.dC();
          double $$2 = this.g - this.d.dG();

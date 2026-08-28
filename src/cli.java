@@ -22,7 +22,7 @@ public class cli {
    );
    private static final cbh<clh> k = cdj.a(
       (Function<cdj.b<clh>, ? extends App<cdj.c<clh>, cdm<clh>>>)($$0 -> $$0.group($$0.c(chh.H)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
-               if ($$1.t()) {
+               if ($$1.p()) {
                   $$1.gx();
                   return true;
                } else {
@@ -49,7 +49,7 @@ public class cli {
       $$0.a(cuc.a, 0, ImmutableList.of(new ccq(0.8F), new cli.b(2.0F), new cbc(45, 90), new cbg() {
          @Override
          protected boolean a(asb $$0, byh $$1) {
-            if ($$1 instanceof clh $$2 && $$2.t()) {
+            if ($$1 instanceof clh $$2 && $$2.p()) {
                return false;
             }
 
@@ -64,7 +64,7 @@ public class cli {
          ImmutableList.of(
             Pair.of(0, cbw.a(bxn.bT, 6.0F, bun.a(30, 60))),
             Pair.of(1, new bzq(bxn.f, 1.0F, 1)),
-            Pair.of(2, new cbt(ImmutableList.of(Pair.of(new caj($$0x -> 1.25F, $$0x -> $$0x.n_() ? 1.0 : 2.0), 1), Pair.of(bzt.a(h, 1.25F), 1)))),
+            Pair.of(2, new cbt(ImmutableList.of(Pair.of(new caj($$0x -> 1.25F, $$0x -> $$0x.e_() ? 1.0 : 2.0), 1), Pair.of(bzt.a(h, 1.25F), 1)))),
             Pair.of(3, new cbn(bun.a(150, 250), 30.0F, 0.0F, 0.0F)),
             Pair.of(
                4, new cbt(ImmutableMap.of(chh.n, chi.b), ImmutableList.of(Pair.of(cbo.a(1.0F), 1), Pair.of(ccd.a(1.0F, 3), 1), Pair.of(new cag(30, 60), 1)))

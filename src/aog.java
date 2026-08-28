@@ -34,7 +34,7 @@ public class aog {
    private static int b(ek $$0) throws CommandSyntaxException {
       try {
          Path $$1 = Paths.get(".").relativize(bru.f.b().normalize());
-         Path $$2 = $$0.l().r() && !ac.aU ? $$1 : $$1.toAbsolutePath();
+         Path $$2 = $$0.l().r() && !ac.aV ? $$1 : $$1.toAbsolutePath();
          xg $$3 = xg.b($$1.toString()).a(o.t).a($$1x -> $$1x.a(new xe.c($$2.toString())).a(new xm.e(xg.c("chat.copy.click"))));
          $$0.a(() -> xg.a("commands.jfr.stopped", $$3), false);
          return 1;

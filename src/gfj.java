@@ -20,7 +20,7 @@ public class gfj {
       }
 
       @Override
-      public xg aU_() {
+      public xg aP_() {
          return xf.a;
       }
 
@@ -29,7 +29,7 @@ public class gfj {
       }
 
       @Override
-      public boolean aV_() {
+      public boolean aQ_() {
          return false;
       }
    };
@@ -77,7 +77,7 @@ public class gfj {
    public void b(int $$0) {
       gfl $$1 = this.a($$0);
       if ($$1 != a) {
-         if (this.o == $$0 && $$1.aV_()) {
+         if (this.o == $$0 && $$1.aQ_()) {
             $$1.a(this);
          } else {
             this.o = $$0;
@@ -110,7 +110,7 @@ public class gfj {
       }
 
       @Override
-      public xg aU_() {
+      public xg aP_() {
          return gfj.j;
       }
 
@@ -120,7 +120,7 @@ public class gfj {
       }
 
       @Override
-      public boolean aV_() {
+      public boolean aQ_() {
          return true;
       }
    }
@@ -140,7 +140,7 @@ public class gfj {
       }
 
       @Override
-      public xg aU_() {
+      public xg aP_() {
          return this.a < 0 ? gfj.k : gfj.l;
       }
 
@@ -155,7 +155,7 @@ public class gfj {
       }
 
       @Override
-      public boolean aV_() {
+      public boolean aQ_() {
          return this.b;
       }
    }

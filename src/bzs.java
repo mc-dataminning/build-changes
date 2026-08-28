@@ -17,7 +17,7 @@ public class bzs {
                            $$1.b();
                            $$2.a($$6);
                            $$3.a($$4, (byte)14);
-                           if (!$$4.gC().b().a(crx.b)) {
+                           if (!$$4.gF().b().a(crx.b)) {
                               return true;
                            } else {
                               MinecraftServer $$7 = $$3.p();
@@ -25,7 +25,7 @@ public class bzs {
                                  .flatMap($$1xx -> $$1xx.A().c($$6.b()))
                                  .flatMap($$0xxx -> mh.x.c().filter($$1xx -> ((crx)$$1xx.a()).b().test($$0xxx)).findFirst())
                                  .ifPresent($$2xx -> {
-                                    $$4.a($$4.gC().b($$2xx));
+                                    $$4.a($$4.gF().b($$2xx));
                                     $$4.g($$3);
                                  });
                               return true;

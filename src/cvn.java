@@ -60,7 +60,7 @@ public abstract class cvn extends bxe {
       this.c($$0);
       if ($$0.O().c(dkf.j)) {
          dak $$2 = new dak($$1);
-         $$2.b(kl.g, this.ak());
+         $$2.b(kl.g, this.aj());
          this.a($$0, $$2);
       }
    }
@@ -97,7 +97,7 @@ public abstract class cvn extends bxe {
    }
 
    protected void a(asb $$0, bvt $$1) {
-      this.a($$0, this.o());
+      this.a($$0, this.p());
    }
 
    @Override
@@ -105,5 +105,5 @@ public abstract class cvn extends bxe {
       return 10;
    }
 
-   protected abstract dag o();
+   protected abstract dag p();
 }

@@ -15,7 +15,7 @@ public class gwv extends gzb<cjo, hdk, ggl> {
 
    public void a(cjo $$0, hdk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.a = $$0.p();
       $$1.b.a($$0.c);
       $$1.c.a($$0.d);
    }

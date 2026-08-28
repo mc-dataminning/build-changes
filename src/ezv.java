@@ -126,13 +126,13 @@ public class ezv extends ezm {
 
       Predicate<dak> $$3 = a($$1);
       if (!$$0.gj().b($$3)) {
-         this.a($$0.ai().getString());
+         this.a($$0.ah().getString());
       }
 
       for (int $$4 = 0; $$4 < this.p.size(); $$4++) {
          ezv.a $$5 = this.p.get($$4);
          csi $$6 = $$5.a;
-         String $$7 = $$6.ai().getString();
+         String $$7 = $$6.ah().getString();
          if (!$$6.dQ() && ($$6.gj().b($$3) || $$1.H())) {
             if (!$$1.H() && $$6.dV().aj() == this.f && this.n) {
                this.a(ezr.a, $$6.dV(), $$7, $$6.dA(), $$6.dG(), (double)$$6.dL(), null);
@@ -150,7 +150,7 @@ public class ezv extends ezm {
 
       if ($$1.H() && this.n) {
          cog $$8 = $$1.I();
-         iw $$9 = $$8.j();
+         iw $$9 = $$8.i();
          ezs $$10 = this.t.get(ezs.a($$9));
          if ($$10 != null && $$8.ao() != $$10.d() && this.t.containsKey($$10.a())) {
             this.a(b($$10.d()));

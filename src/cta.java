@@ -1,3 +1,3 @@
 public interface cta {
-   dak f();
+   dak e();
 }

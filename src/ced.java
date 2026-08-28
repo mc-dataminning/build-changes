@@ -26,7 +26,7 @@ public class ced implements cea {
    }
 
    public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.ah(), (float)this.a.ad());
+      this.a($$0, $$1, $$2, (float)this.a.ag(), (float)this.a.ac());
    }
 
    public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
@@ -55,8 +55,8 @@ public class ced implements cea {
    }
 
    protected void b() {
-      if (!this.a.O().k()) {
-         this.a.aX = azz.c(this.a.aX, this.a.aV, (float)this.a.af());
+      if (!this.a.N().k()) {
+         this.a.aX = azz.c(this.a.aX, this.a.aV, (float)this.a.ae());
       }
    }
 

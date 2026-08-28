@@ -243,7 +243,7 @@ public class ag {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !ac.aT ? null : b($$0, $$1);
+      return !ac.aU ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -254,7 +254,7 @@ public class ag {
          $$2 = bbp.a().getSchema(DataFixUtils.makeKey(ac.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (ac.aU) {
+         if (ac.aV) {
             throw var4;
          }
       }
@@ -263,13 +263,13 @@ public class ag {
    }
 
    public static void a(Runnable $$0, String $$1) {
-      if (ac.aU) {
+      if (ac.aV) {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$1);
 
          try {
-            Zone $$4 = TracyClient.beginZone($$1, ac.aU);
+            Zone $$4 = TracyClient.beginZone($$1, ac.aV);
 
             try {
                $$0.run();
@@ -292,7 +292,7 @@ public class ag {
             $$2.setName($$3);
          }
       } else {
-         Zone $$5 = TracyClient.beginZone($$1, ac.aU);
+         Zone $$5 = TracyClient.beginZone($$1, ac.aV);
 
          try {
             $$0.run();
@@ -635,20 +635,20 @@ public class ag {
 
    public static void b(String $$0) {
       g.error($$0);
-      if (ac.aU) {
+      if (ac.aV) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (ac.aU) {
+      if (ac.aV) {
          d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (ac.aU) {
+      if (ac.aV) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }

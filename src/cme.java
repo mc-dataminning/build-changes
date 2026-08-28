@@ -61,7 +61,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cfu(this, 1.2));
       this.bF.a(1, new cgf(this, 1.2));
       this.bF.a(2, new cen(this, 1.0, cme.class));
@@ -153,7 +153,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
 
    @Override
    public boolean e(bxo $$0) {
-      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.n_() && this.gL();
+      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.e_() && this.gL();
    }
 
    public void b(csi $$0, dak $$1) {
@@ -186,8 +186,8 @@ public abstract class cme extends cjv implements bxv, bym, byp {
       return !this.bZ();
    }
 
-   private void q() {
-      this.x();
+   private void m() {
+      this.u();
       if (!this.ba()) {
          awx $$0 = this.gw();
          if ($$0 != null) {
@@ -214,7 +214,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    public final int gS() {
-      return v(this.ae_());
+      return v(this.ab_());
    }
 
    public static int v(int $$0) {
@@ -316,7 +316,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 400;
    }
 
@@ -360,7 +360,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
          $$3 = 4.0F;
          $$4 = 60;
          $$5 = 5;
-         if (!this.dV().C && this.gL() && this.g() == 0 && !this.gE()) {
+         if (!this.dV().C && this.gL() && this.Y_() == 0 && !this.gE()) {
             $$2 = true;
             this.e($$0);
          }
@@ -368,7 +368,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
          $$3 = 10.0F;
          $$4 = 240;
          $$5 = 10;
-         if (!this.dV().C && this.gL() && this.g() == 0 && !this.gE()) {
+         if (!this.dV().C && this.gL() && this.Y_() == 0 && !this.gE()) {
             $$2 = true;
             this.e($$0);
          }
@@ -379,7 +379,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
          $$2 = true;
       }
 
-      if (this.n_() && $$4 > 0) {
+      if (this.e_() && $$4 > 0) {
          this.dV().a(lz.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
          if (!this.dV().C) {
             this.b_($$4);
@@ -393,7 +393,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
       }
 
       if ($$2) {
-         this.q();
+         this.m();
          this.a(egq.m);
       }
 
@@ -420,7 +420,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
       return $$0.a(axv.ak);
    }
 
-   private void t() {
+   private void p() {
       this.bX = 1;
    }
 
@@ -438,12 +438,12 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.ae.a(200) == 0) {
-         this.t();
+         this.p();
       }
 
-      super.k_();
+      super.d_();
       if (this.dV() instanceof asb $$0 && this.bJ()) {
          if (this.ae.a(900) == 0 && this.aP == 0) {
             this.c(1.0F);
@@ -466,7 +466,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    protected void g(asb $$0) {
-      if (this.gQ() && this.n_() && !this.gO()) {
+      if (this.gQ() && this.e_() && !this.gO()) {
          byf $$1 = $$0.a(cme.class, bS, this, this.dA(), this.dC(), this.dG(), this.cR().g(16.0));
          if ($$1 != null && this.g($$1) > 4.0) {
             this.bE.a($$1, 0);
@@ -479,8 +479,8 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.ct > 0 && ++this.ct > 30) {
          this.ct = 0;
          this.d(64, false);
@@ -547,7 +547,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
-      if (this.bZ() || this.n_()) {
+      if (this.bZ() || this.e_()) {
          return super.b($$0, $$1);
       } else if (this.gL() && $$0.fY()) {
          this.b($$0);
@@ -571,7 +571,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
       }
    }
 
-   private void x() {
+   private void u() {
       if (!this.dV().C) {
          this.ct = 1;
          this.d(64, true);
@@ -592,7 +592,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
 
    @Nullable
    public awx gY() {
-      return this.u();
+      return this.s();
    }
 
    public void gZ() {
@@ -711,7 +711,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    protected boolean hc() {
-      return !this.bZ() && !this.bY() && this.gL() && !this.n_() && this.eG() >= this.eU() && this.gE();
+      return !this.bZ() && !this.bY() && this.gL() && !this.e_() && this.eG() >= this.eU() && this.gE();
    }
 
    @Nullable
@@ -843,7 +843,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    @Override
-   public boolean d_() {
+   public boolean k_() {
       return false;
    }
 
@@ -933,7 +933,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
    }
 
    public int hd() {
-      return this.S();
+      return this.R();
    }
 
    @Override
@@ -942,7 +942,7 @@ public abstract class cme extends cjv implements bxv, bym, byp {
          .e(new fgc(0.0, 0.15 * (double)this.cy * (double)$$2, -0.7 * (double)this.cy * (double)$$2).b(-this.dL() * (float) (Math.PI / 180.0)));
    }
 
-   public int ae_() {
+   public int ab_() {
       return 0;
    }
 }

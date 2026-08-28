@@ -79,7 +79,7 @@ public class gic<S extends hew> extends ghn<S> implements ggd, ghx {
 
       cor.a $$3 = $$0.j;
       if ($$3 == cor.a.b) {
-         if ($$0.aY_().c()) {
+         if ($$0.aT_().c()) {
             ggb.a(this.g, this.f, true, $$0.m, $$0.v);
          } else {
             ggb.a(this.f, this.g, $$0.d, $$0.m, $$0.v);

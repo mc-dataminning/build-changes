@@ -15,7 +15,7 @@ public class gwr extends gwp<clh, hdf, ggc> {
 
    public void a(clh $$0, hdf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
+      $$1.a = $$0.u();
       $$1.d.a($$0.bO);
       $$1.b.a($$0.bM);
       $$1.c.a($$0.bN);

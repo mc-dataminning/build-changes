@@ -45,7 +45,7 @@ public class clq {
             Pair.of(
                2,
                new cbt(
-                  ImmutableList.of(Pair.of(new caj($$0x -> 2.5F, $$0x -> $$0x.n_() ? 2.5 : 3.5), 1), Pair.of(cdj.a(Predicate.not(clp::t), bzt.a(f, 2.5F)), 1))
+                  ImmutableList.of(Pair.of(new caj($$0x -> 2.5F, $$0x -> $$0x.e_() ? 2.5 : 3.5), 1), Pair.of(cdj.a(Predicate.not(clp::p), bzt.a(f, 2.5F)), 1))
                )
             ),
             Pair.of(3, new cbn(bun.a(150, 250), 30.0F, 0.0F, 0.0F)),
@@ -54,8 +54,8 @@ public class clq {
                new cbt(
                   ImmutableMap.of(chh.n, chi.b),
                   ImmutableList.of(
-                     Pair.of(cdj.a(Predicate.not(clp::t), cbo.a(2.0F)), 1),
-                     Pair.of(cdj.a(Predicate.not(clp::t), ccd.a(2.0F, 3)), 1),
+                     Pair.of(cdj.a(Predicate.not(clp::p), cbo.a(2.0F)), 1),
+                     Pair.of(cdj.a(Predicate.not(clp::p), ccd.a(2.0F, 3)), 1),
                      Pair.of(new clq.b(20), 1),
                      Pair.of(new cag(30, 60), 1)
                   )
@@ -93,7 +93,7 @@ public class clq {
       }
 
       protected boolean a(asb $$0, clp $$1) {
-         return !$$1.bi() && $$1.gK() >= (long)this.c && !$$1.T_() && $$1.aH() && !$$1.cX() && $$1.gu();
+         return !$$1.bi() && $$1.gK() >= (long)this.c && !$$1.Q_() && $$1.aH() && !$$1.cX() && $$1.gu();
       }
 
       protected void a(asb $$0, clp $$1, long $$2) {

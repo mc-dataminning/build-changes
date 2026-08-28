@@ -53,7 +53,7 @@ public class dud extends dno {
          return bvc.a;
       } else {
          if ($$3 instanceof asc $$5) {
-            asc.a $$6 = $$5.T();
+            asc.a $$6 = $$5.S();
             asc.a $$7 = new asc.a($$1.aj(), $$2, 0.0F, false);
             if ($$6 == null || !$$6.a($$7)) {
                $$5.a($$7, true);

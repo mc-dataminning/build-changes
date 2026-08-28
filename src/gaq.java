@@ -22,8 +22,8 @@ public class gaq extends gae {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.v = this.c(fuf.<dyz.a>a($$0 -> {
          return switch ($$0) {
             case a -> xg.c("advMode.mode.sequence");

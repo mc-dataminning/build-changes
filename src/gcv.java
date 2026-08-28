@@ -30,7 +30,7 @@ public class gcv extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       fxq $$0 = this.C.a(fxq.d().a(8));
       $$0.a(new fvf(a, this.p), fxp::b);
       fxq $$1 = $$0.a(fxq.e()).a(8);
@@ -55,7 +55,7 @@ public class gcv extends fzq {
 
       $$3.a(this.a(A, () -> new fys(this)));
       this.C.c($$2);
-      this.C.b(fty.a(xf.d, $$0x -> this.aQ_()).a(200).a());
+      this.C.b(fty.a(xf.d, $$0x -> this.aL_()).a(200).a());
       this.C.a($$1x -> {
          ftw var10000 = this.c($$1x);
       });
@@ -68,7 +68,7 @@ public class gcv extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.D);
    }
 
@@ -114,7 +114,7 @@ public class gcv extends fzq {
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       this.E.az();
    }
 

@@ -16,7 +16,7 @@ public class cmh extends cmd implements cpo {
 
    public cmh(bxn<? extends cmh> $$0, dkj $$1) {
       super($$0, $$1);
-      this.O().a(40.0F);
+      this.N().a(40.0F);
    }
 
    public boolean gx() {
@@ -51,7 +51,7 @@ public class cmh extends cmd implements cpo {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cgf(this, 1.2));
       this.bF.a(2, new cfi(this, 2.1F));
@@ -68,7 +68,7 @@ public class cmh extends cmd implements cpo {
    }
 
    public static bzk.a gG() {
-      return q();
+      return m();
    }
 
    @Override
@@ -127,7 +127,7 @@ public class cmh extends cmd implements cpo {
          $$2 = 90;
          $$3 = 6;
          $$4 = 10.0F;
-         if (this.gL() && this.g() == 0 && this.gB()) {
+         if (this.gL() && this.Y_() == 0 && this.gB()) {
             $$5 = true;
             this.e($$0);
          }
@@ -138,7 +138,7 @@ public class cmh extends cmd implements cpo {
          $$5 = true;
       }
 
-      if (this.n_() && $$2 > 0) {
+      if (this.e_() && $$2 > 0) {
          this.dV().a(lz.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
          if (!this.dV().C) {
             this.b_($$2);
@@ -194,7 +194,7 @@ public class cmh extends cmd implements cpo {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.oK;
    }
 
@@ -204,7 +204,7 @@ public class cmh extends cmd implements cpo {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.oN;
    }
 
@@ -220,13 +220,13 @@ public class cmh extends cmd implements cpo {
    }
 
    @Override
-   protected void x() {
+   protected void u() {
       this.a(awy.oM, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
    }
 
    @Override
-   public int ae_() {
-      return this.t() ? this.gy() : 0;
+   public int ab_() {
+      return this.p() ? this.gy() : 0;
    }
 
    @Override
@@ -337,7 +337,7 @@ public class cmh extends cmd implements cpo {
 
    @Override
    protected void g(asb $$0) {
-      if (!this.he() && this.n_()) {
+      if (!this.he() && this.e_()) {
          super.g($$0);
       }
    }
@@ -359,7 +359,7 @@ public class cmh extends cmd implements cpo {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bM : super.e($$0);
+      return this.e_() ? bM : super.e($$0);
    }
 
    @Override
@@ -369,7 +369,7 @@ public class cmh extends cmd implements cpo {
 
    static class a extends cgu<cmx> {
       public a(cmh $$0) {
-         super($$0, cmx.class, 16, false, true, ($$0x, $$1) -> !((cmx)$$0x).q());
+         super($$0, cmx.class, 16, false, true, ($$0x, $$1) -> !((cmx)$$0x).m());
       }
 
       @Override

@@ -71,9 +71,9 @@ public class agw {
 
    public static String a(bxe $$0) {
       if ($$0 instanceof csi) {
-         return $$0.ai().getString();
+         return $$0.ah().getString();
       } else {
-         xg $$1 = $$0.ak();
+         xg $$1 = $$0.aj();
          return $$1 != null ? $$1.getString() : a($$0.cG());
       }
    }

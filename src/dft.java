@@ -40,7 +40,7 @@ public abstract class dft implements dfb<dfu> {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       if (this.g == null) {
          this.g = dfa.a(this.d);
       }

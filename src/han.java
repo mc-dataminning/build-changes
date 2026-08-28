@@ -23,9 +23,9 @@ public class han extends gzb<clb, hgl, ghn<hgl>> {
 
    public void a(clb $$0, hgl $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      $$1.b = $$0.gA().d();
-      $$1.c = $$0.gB().d();
+      $$1.a = $$0.gF();
+      $$1.b = $$0.gD().d();
+      $$1.c = $$0.gE().d();
    }
 
    public void a(hgl $$0, fld $$1, grn $$2, int $$3) {

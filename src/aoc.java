@@ -45,7 +45,7 @@ public class aoc {
                if ($$11 && $$10.f()) {
                   coo $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
-                     $$13.u();
+                     $$13.t();
                   }
 
                   $$7.dV().a(null, $$7.dA(), $$7.dC(), $$7.dG(), awy.oj, awz.h, 0.2F, (($$7.dY().i() - $$7.dY().i()) * 0.7F + 1.0F) * 2.0F);
@@ -53,7 +53,7 @@ public class aoc {
                } else {
                   coo $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
-                     $$12.m();
+                     $$12.l();
                      $$12.b($$7.cG());
                   }
                }
@@ -61,7 +61,7 @@ public class aoc {
          }
 
          if ($$2.size() == 1) {
-            $$0.a(() -> xg.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.give.success.single", $$3, $$4.K(), $$2.size()), true);
          }

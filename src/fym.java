@@ -17,7 +17,7 @@ public class fym extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.u = this.m.m.d().c().size();
       this.b = new fuh(this.m.i, 4, this.o - 12, this.n - 4, 12, xg.c("chat.editBox")) {
          @Override
@@ -37,7 +37,7 @@ public class fym extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.b);
    }
 
@@ -50,7 +50,7 @@ public class fym extends fzq {
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       this.m.m.d().d();
    }
 

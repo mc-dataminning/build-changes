@@ -11,10 +11,10 @@ import javax.annotation.Nullable;
 import org.joml.Vector2i;
 
 public interface fvu extends fvv {
-   List<? extends fvv> aJ_();
+   List<? extends fvv> aE_();
 
    default Optional<fvv> d(double $$0, double $$1) {
-      for (fvv $$2 : this.aJ_()) {
+      for (fvv $$2 : this.aE_()) {
          if ($$2.a_($$0, $$1)) {
             return Optional.of($$2);
          }
@@ -43,10 +43,10 @@ public interface fvu extends fvv {
 
    @Override
    default boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0 && this.aM_()) {
+      if ($$2 == 0 && this.aH_()) {
          this.b_(false);
-         if (this.aN_() != null) {
-            return this.aN_().b($$0, $$1, $$2);
+         if (this.aI_() != null) {
+            return this.aI_().b($$0, $$1, $$2);
          }
       }
 
@@ -55,10 +55,10 @@ public interface fvu extends fvv {
 
    @Override
    default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aN_() != null && this.aM_() && $$2 == 0 ? this.aN_().a($$0, $$1, $$2, $$3, $$4) : false;
+      return this.aI_() != null && this.aH_() && $$2 == 0 ? this.aI_().a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
-   boolean aM_();
+   boolean aH_();
 
    void b_(boolean var1);
 
@@ -69,21 +69,21 @@ public interface fvu extends fvv {
 
    @Override
    default boolean a(int $$0, int $$1, int $$2) {
-      return this.aN_() != null && this.aN_().a($$0, $$1, $$2);
+      return this.aI_() != null && this.aI_().a($$0, $$1, $$2);
    }
 
    @Override
    default boolean c(int $$0, int $$1, int $$2) {
-      return this.aN_() != null && this.aN_().c($$0, $$1, $$2);
+      return this.aI_() != null && this.aI_().c($$0, $$1, $$2);
    }
 
    @Override
    default boolean a(char $$0, int $$1) {
-      return this.aN_() != null && this.aN_().a($$0, $$1);
+      return this.aI_() != null && this.aI_().a($$0, $$1);
    }
 
    @Nullable
-   fvv aN_();
+   fvv aI_();
 
    void a(@Nullable fvv var1);
 
@@ -92,21 +92,21 @@ public interface fvu extends fvv {
    }
 
    @Override
-   default boolean aO_() {
-      return this.aN_() != null;
+   default boolean aJ_() {
+      return this.aI_() != null;
    }
 
    @Nullable
    @Override
-   default fth aP_() {
-      fvv $$0 = this.aN_();
-      return $$0 != null ? fth.a(this, $$0.aP_()) : null;
+   default fth aK_() {
+      fvv $$0 = this.aI_();
+      return $$0 != null ? fth.a(this, $$0.aK_()) : null;
    }
 
    @Nullable
    @Override
    default fth a(fyb $$0) {
-      fvv $$1 = this.aN_();
+      fvv $$1 = this.aI_();
       if ($$1 != null) {
          fth $$2 = $$1.a($$0);
          if ($$2 != null) {
@@ -124,8 +124,8 @@ public interface fvu extends fvv {
    @Nullable
    private fth a(fyb.c $$0) {
       boolean $$1 = $$0.b();
-      fvv $$2 = this.aN_();
-      List<? extends fvv> $$3 = new ArrayList<>(this.aJ_());
+      fvv $$2 = this.aI_();
+      List<? extends fvv> $$3 = new ArrayList<>(this.aE_());
       Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.K()));
       int $$4 = $$3.indexOf($$2);
       int $$5;
@@ -154,7 +154,7 @@ public interface fvu extends fvv {
 
    @Nullable
    private fth a(fyb.a $$0) {
-      fvv $$1 = this.aN_();
+      fvv $$1 = this.aI_();
       if ($$1 == null) {
          fyd $$2 = $$0.b();
          fyf $$3 = this.b($$2.b());
@@ -173,7 +173,7 @@ public interface fvu extends fvv {
       int $$7 = $$0.b($$1.b());
       List<fvv> $$8 = new ArrayList<>();
 
-      for (fvv $$9 : this.aJ_()) {
+      for (fvv $$9 : this.aE_()) {
          if ($$9 != $$2) {
             fyf $$10 = $$9.J();
             if ($$10.a($$0, $$5)) {
@@ -208,7 +208,7 @@ public interface fvu extends fvv {
       List<Pair<fvv, Long>> $$6 = new ArrayList<>();
       fye $$7 = fye.a($$4, $$0.b($$1), $$0.b($$5));
 
-      for (fvv $$8 : this.aJ_()) {
+      for (fvv $$8 : this.aE_()) {
          if ($$8 != $$2) {
             fyf $$9 = $$8.J();
             fye $$10 = fye.a($$4, $$9.b($$1.b()), $$9.b($$5));

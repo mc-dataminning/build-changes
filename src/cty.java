@@ -149,7 +149,7 @@ public class cty {
    private Predicate<asc> t() {
       return $$0 -> {
          iw $$1 = $$0.dv();
-         return $$0.bJ() && $$0.y().d($$1) == this;
+         return $$0.bJ() && $$0.x().d($$1) == this;
       };
    }
 
@@ -314,7 +314,7 @@ public class cty {
                      bxe $$9 = $$0.b($$8);
                      if ($$9 instanceof byf) {
                         byf $$10 = (byf)$$9;
-                        if (!$$9.aa_()) {
+                        if (!$$9.ak()) {
                            $$10.a(new bwi(bwk.F, 48000, this.G - 1, false, false, true));
                            if ($$10 instanceof asc $$11) {
                               $$11.a(axi.aB);
@@ -395,10 +395,10 @@ public class cty {
                }
 
                if (!$$0.c($$5) && $$4.ew() > 2400) {
-                  $$4.c($$4.gL() + 1);
+                  $$4.c($$4.gO() + 1);
                }
 
-               if ($$4.gL() >= 30) {
+               if ($$4.gO() >= 30) {
                   $$2.add($$4);
                }
             }
@@ -407,8 +407,8 @@ public class cty {
 
       for (ctz $$6 : $$2) {
          this.a($$0, $$6, true);
-         if ($$6.gv()) {
-            this.c($$6.gJ());
+         if ($$6.gy()) {
+            this.c($$6.gM());
          }
       }
    }
@@ -448,7 +448,7 @@ public class cty {
                break;
             }
 
-            if (!$$2 && $$10.t()) {
+            if (!$$2 && $$10.gv()) {
                $$10.w(true);
                this.a($$3, $$10);
                $$2 = true;
@@ -525,7 +525,7 @@ public class cty {
    }
 
    public void a(asb $$0, ctz $$1, boolean $$2) {
-      Set<ctz> $$3 = this.A.get($$1.gJ());
+      Set<ctz> $$3 = this.A.get($$1.gM());
       if ($$3 != null) {
          boolean $$4 = $$3.remove($$1);
          if ($$4) {

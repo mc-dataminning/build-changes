@@ -18,7 +18,7 @@ public class coa extends cpk implements cpo {
    private final int[] bN = new int[2];
    private final int[] bO = new int[2];
    private int bP;
-   private final arx bQ = (arx)new arx(this.m_(), bus.a.f, bus.b.a).a(true);
+   private final arx bQ = (arx)new arx(this.P_(), bus.a.f, bus.b.a).a(true);
    private static final ciu.a bR = ($$0, $$1) -> !$$0.an().a(axq.y) && $$0.fM();
    private static final ciu bS = ciu.a().a(20.0).a(bR);
 
@@ -38,7 +38,7 @@ public class coa extends cpk implements cpo {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new coa.a());
       this.bF.a(2, new cga(this, 1.0, 40, 20.0F));
       this.bF.a(5, new cgn(this, 1.0));
@@ -60,26 +60,26 @@ public class coa extends cpk implements cpo {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Invul", this.t());
+      $$0.a("Invul", this.gv());
    }
 
    @Override
    public void a(ua $$0) {
       super.a($$0);
       this.b($$0.b("Invul", 0));
-      if (this.h_()) {
-         this.bQ.a(this.m_());
+      if (this.g_()) {
+         this.bQ.a(this.P_());
       }
    }
 
    @Override
    public void b(@Nullable xg $$0) {
       super.b($$0);
-      this.bQ.a(this.m_());
+      this.bQ.a(this.P_());
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.DC;
    }
 
@@ -89,18 +89,18 @@ public class coa extends cpk implements cpo {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.DE;
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       fgc $$0 = this.dy().d(1.0, 0.6, 1.0);
       if (!this.dV().C && this.c(0) > 0) {
          bxe $$1 = this.dV().a(this.c(0));
          if ($$1 != null) {
             double $$2 = $$0.e;
-            if (this.dC() < $$1.dC() || !this.x() && this.dC() < $$1.dC() + 5.0) {
+            if (this.dC() < $$1.dC() || !this.gw() && this.dC() < $$1.dC() + 5.0) {
                $$2 = Math.max(0.0, $$2);
                $$2 += 0.3 - $$2 * 0.6F;
             }
@@ -119,7 +119,7 @@ public class coa extends cpk implements cpo {
          this.w((float)azz.d($$0.f, $$0.d) * (180.0F / (float)Math.PI) - 90.0F);
       }
 
-      super.k_();
+      super.d_();
 
       for (int $$5 = 0; $$5 < 2; $$5++) {
          this.bM[$$5] = this.bK[$$5];
@@ -150,7 +150,7 @@ public class coa extends cpk implements cpo {
          }
       }
 
-      boolean $$18 = this.x();
+      boolean $$18 = this.gw();
 
       for (int $$19 = 0; $$19 < 3; $$19++) {
          double $$20 = this.r($$19);
@@ -172,7 +172,7 @@ public class coa extends cpk implements cpo {
          }
       }
 
-      if (this.t() > 0) {
+      if (this.gv() > 0) {
          float $$24 = 3.3F * this.el();
 
          for (int $$25 = 0; $$25 < 3; $$25++) {
@@ -184,8 +184,8 @@ public class coa extends cpk implements cpo {
 
    @Override
    protected void a(asb $$0) {
-      if (this.t() > 0) {
-         int $$1 = this.t() - 1;
+      if (this.gv() > 0) {
+         int $$1 = this.gv() - 1;
          this.bQ.a(1.0F - (float)$$1 / 220.0F);
          if ($$1 <= 0) {
             $$0.a(this, this.dA(), this.dE(), this.dG(), 7.0F, false, dkj.a.c);
@@ -234,8 +234,8 @@ public class coa extends cpk implements cpo {
             }
          }
 
-         if (this.f() != null) {
-            this.a(0, this.f().ao());
+         if (this.e() != null) {
+            this.a(0, this.e().ao());
          } else {
             this.a(0, 0);
          }
@@ -273,7 +273,7 @@ public class coa extends cpk implements cpo {
    }
 
    @Override
-   public void j() {
+   public void m() {
       this.b(220);
       this.bQ.a(0.0F);
       this.d(this.eU() / 3.0F);
@@ -370,10 +370,10 @@ public class coa extends cpk implements cpo {
          return false;
       } else if ($$1.a(axo.t) || $$1.d() instanceof coa) {
          return false;
-      } else if (this.t() > 0 && !$$1.a(axo.d)) {
+      } else if (this.gv() > 0 && !$$1.a(axo.d)) {
          return false;
       } else {
-         if (this.x()) {
+         if (this.gw()) {
             bxe $$3 = $$1.c();
             if ($$3 instanceof csq || $$3 instanceof ctw) {
                return false;
@@ -402,13 +402,13 @@ public class coa extends cpk implements cpo {
       super.a($$0, $$1, $$2);
       coo $$3 = this.a($$0, dao.vC);
       if ($$3 != null) {
-         $$3.t();
+         $$3.s();
       }
    }
 
    @Override
    public void dH() {
-      if (this.dV().an() == buz.a && this.aa()) {
+      if (this.dV().an() == buz.a && this.Z()) {
          this.aq();
       } else {
          this.bd = 0;
@@ -420,19 +420,19 @@ public class coa extends cpk implements cpo {
       return false;
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.s, 300.0).a(bzl.v, 0.6F).a(bzl.l, 0.6F).a(bzl.m, 40.0).a(bzl.a, 4.0);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.s, 300.0).a(bzl.v, 0.6F).a(bzl.l, 0.6F).a(bzl.m, 40.0).a(bzl.a, 4.0);
    }
 
-   public float[] n() {
+   public float[] u() {
       return this.bK;
    }
 
-   public float[] q() {
+   public float[] gu() {
       return this.bJ;
    }
 
-   public int t() {
+   public int gv() {
       return this.al.a(e);
    }
 
@@ -448,7 +448,7 @@ public class coa extends cpk implements cpo {
       this.al.a(d.get($$0), $$1);
    }
 
-   public boolean x() {
+   public boolean gw() {
       return this.eG() <= this.eU() / 2.0F;
    }
 
@@ -474,7 +474,7 @@ public class coa extends cpk implements cpo {
 
       @Override
       public boolean b() {
-         return coa.this.t() > 0;
+         return coa.this.gv() > 0;
       }
    }
 }

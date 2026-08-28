@@ -61,7 +61,7 @@ public class fuq extends ftv {
 
    @Override
    public boolean a(char $$0, int $$1) {
-      if (this.k && this.aO_() && bay.a($$0)) {
+      if (this.k && this.aJ_() && bay.a($$0)) {
          this.p.b(Character.toString($$0));
          return true;
       } else {
@@ -72,11 +72,11 @@ public class fuq extends ftv {
    @Override
    protected void c(ftk $$0, int $$1, int $$2, float $$3) {
       String $$4 = this.p.c();
-      if ($$4.isEmpty() && !this.aO_()) {
+      if ($$4.isEmpty() && !this.aJ_()) {
          $$0.a(this.n, (xl)this.o, this.e(), this.p(), this.g - this.b(), -857677600);
       } else {
          int $$5 = this.p.d();
-         boolean $$6 = this.aO_() && (ag.c() - this.q) / 300L % 2L == 0L;
+         boolean $$6 = this.aJ_() && (ag.c() - this.q) / 300L % 2L == 0L;
          boolean $$7 = $$5 < $$4.length();
          int $$8 = 0;
          int $$9 = 0;

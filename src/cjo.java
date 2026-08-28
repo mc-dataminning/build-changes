@@ -23,7 +23,7 @@ public class cjo extends cjn {
 
    @Override
    public boolean aZ() {
-      return !this.m() && (float)this.af % 10.0F == 0.0F;
+      return !this.p() && (float)this.af % 10.0F == 0.0F;
    }
 
    @Override
@@ -44,8 +44,8 @@ public class cjo extends cjn {
 
    @Nullable
    @Override
-   public awx u() {
-      return this.m() && this.ae.a(4) != 0 ? null : awy.bF;
+   public awx s() {
+      return this.p() && this.ae.a(4) != 0 ? null : awy.bF;
    }
 
    @Override
@@ -54,7 +54,7 @@ public class cjo extends cjn {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.bG;
    }
 
@@ -68,14 +68,14 @@ public class cjo extends cjn {
    }
 
    @Override
-   protected void o() {
+   protected void n() {
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 6.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 6.0);
    }
 
-   public boolean m() {
+   public boolean p() {
       return (this.al.a(e) & 1) != 0;
    }
 
@@ -89,16 +89,16 @@ public class cjo extends cjn {
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.m()) {
+   public void g() {
+      super.g();
+      if (this.p()) {
          this.i(fgc.c);
          this.o(this.dA(), (double)azz.a(this.dC()) + 1.0 - (double)this.dr(), this.dG());
       } else {
          this.i(this.dy().d(1.0, 0.6, 1.0));
       }
 
-      this.q();
+      this.gq();
    }
 
    @Override
@@ -106,7 +106,7 @@ public class cjo extends cjn {
       super.a($$0);
       iw $$1 = this.dv();
       iw $$2 = $$1.d();
-      if (this.m()) {
+      if (this.p()) {
          boolean $$3 = this.ba();
          if ($$0.a_($$2).d($$0, $$1)) {
             if (this.ae.a(200) == 0) {
@@ -164,7 +164,7 @@ public class cjo extends cjn {
    }
 
    @Override
-   public boolean g_() {
+   public boolean n_() {
       return true;
    }
 
@@ -173,7 +173,7 @@ public class cjo extends cjn {
       if (this.a($$0, $$1)) {
          return false;
       } else {
-         if (this.m()) {
+         if (this.p()) {
             this.w(false);
          }
 
@@ -199,7 +199,7 @@ public class cjo extends cjn {
       } else {
          int $$5 = $$1.B($$3);
          int $$6 = 4;
-         if (n()) {
+         if (u()) {
             $$6 = 7;
          } else if ($$4.h()) {
             return false;
@@ -213,15 +213,15 @@ public class cjo extends cjn {
       }
    }
 
-   private static boolean n() {
+   private static boolean u() {
       LocalDate $$0 = LocalDate.now();
       int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
       int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
       return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
    }
 
-   private void q() {
-      if (this.m()) {
+   private void gq() {
+      if (this.p()) {
          this.c.a();
          this.d.b(this.af);
       } else {

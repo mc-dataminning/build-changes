@@ -9,7 +9,7 @@ public abstract class der implements deq {
    }
 
    @Override
-   public boolean ar_() {
+   public boolean am_() {
       return true;
    }
 
@@ -19,7 +19,7 @@ public abstract class der implements deq {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       return dfa.b;
    }
 

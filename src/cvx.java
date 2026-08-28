@@ -20,7 +20,7 @@ public class cvx {
    }
 
    public void a(asc $$0) {
-      asb $$1 = $$0.y();
+      asb $$1 = $$0.x();
       buz $$2 = $$1.an();
       if (this.e > 4.0F) {
          this.e -= 4.0F;

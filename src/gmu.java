@@ -37,7 +37,7 @@ public record gmu(String a, @Nullable gmu.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.5-pre2");
+      $$0.append("1.21.5-pre3");
       if (fqq.e().a()) {
          $$0.append(" (modded)");
       }

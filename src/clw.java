@@ -51,13 +51,13 @@ public class clw extends bzw<cls> {
 
    protected void c(asb $$0, cls $$1, long $$2) {
       $$1.ec().b(chh.p);
-      $$1.q();
+      $$1.m();
       $$1.b(byr.a);
    }
 
    private void b(asb $$0, cls $$1) {
       $$0.a(null, $$1, this.m, awz.g, 2.0F, 1.0F);
-      Optional<bxe> $$2 = $$1.t();
+      Optional<bxe> $$2 = $$1.p();
       if ($$2.isPresent()) {
          bxe $$3 = $$2.get();
          if ($$3.bJ()) {
@@ -105,7 +105,7 @@ public class clw extends bzw<cls> {
    }
 
    private boolean a(cls $$0, byf $$1) {
-      eyo $$2 = $$0.O().a($$1, 0);
+      eyo $$2 = $$0.N().a($$1, 0);
       return $$2 != null && $$2.m() < 1.75F;
    }
 

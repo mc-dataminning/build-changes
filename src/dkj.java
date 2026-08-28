@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
@@ -451,7 +452,7 @@ public abstract class dkj implements dkk, egi<bxe>, AutoCloseable {
    }
 
    public void a(dyo $$0) {
-      iw $$1 = $$0.aC_();
+      iw $$1 = $$0.ax_();
       if (!this.t($$1)) {
          this.m($$1).b($$0);
       }
@@ -565,7 +566,7 @@ public abstract class dkj implements dkk, egi<bxe>, AutoCloseable {
          }
 
          if ($$4x instanceof cng $$5) {
-            for (cnd $$6 : $$5.q()) {
+            for (cnd $$6 : $$5.gq()) {
                T $$7 = $$0.a($$6);
                if ($$7 != null && $$2.test($$7)) {
                   $$3.add($$7);
@@ -680,16 +681,15 @@ public abstract class dkj implements dkk, egi<bxe>, AutoCloseable {
    @Nullable
    public abstract ezv a(ezt var1);
 
-   public abstract void a(ezt var1, ezv var2);
-
-   public abstract ezt x();
-
    public void b(int $$0, iw $$1, int $$2) {
    }
 
    public q a(p $$0) {
       q $$1 = $$0.a("Affected level", 1);
-      $$1.a("All players", () -> this.z().size() + " total; " + this.z());
+      $$1.a("All players", () -> {
+         List<? extends csi> $$0x = this.z();
+         return $$0x.size() + " total; " + $$0x.stream().map(csi::gS).collect(Collectors.joining(", "));
+      });
       $$1.a("Chunk stats", this.S()::e);
       $$1.a("Level dimension", () -> this.aj().a().toString());
 

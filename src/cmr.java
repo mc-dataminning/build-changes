@@ -29,7 +29,7 @@ public class cmr extends cjv implements byv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bP = new cet(this);
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cfu(this, 1.25));
@@ -54,15 +54,15 @@ public class cmr extends cjv implements byv {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.dV().C) {
          this.bO = Math.max(0, this.bO - 1);
       }
 
-      super.k_();
+      super.d_();
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 8.0).a(bzl.v, 0.23F);
    }
 
@@ -133,14 +133,14 @@ public class cmr extends cjv implements byv {
 
    @Override
    public boolean a() {
-      return this.bJ() && !this.x() && !this.n_();
+      return this.bJ() && !this.u() && !this.e_();
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Sheared", this.x());
-      $$0.a("Color", czi.s, this.t());
+      $$0.a("Sheared", this.u());
+      $$0.a("Color", czi.s, this.p());
    }
 
    @Override
@@ -151,7 +151,7 @@ public class cmr extends cjv implements byv {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.xo;
    }
 
@@ -161,7 +161,7 @@ public class cmr extends cjv implements byv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.xp;
    }
 
@@ -170,7 +170,7 @@ public class cmr extends cjv implements byv {
       this.a(awy.xs, 0.15F, 1.0F);
    }
 
-   public czi t() {
+   public czi p() {
       return czi.a(this.al.a(bJ) & 15);
    }
 
@@ -182,7 +182,7 @@ public class cmr extends cjv implements byv {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aR ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aR ? c((kk<T>)$$0, this.p()) : super.a($$0);
    }
 
    @Override
@@ -201,7 +201,7 @@ public class cmr extends cjv implements byv {
       }
    }
 
-   public boolean x() {
+   public boolean u() {
       return (this.al.a(bJ) & 16) != 0;
    }
 
@@ -223,8 +223,8 @@ public class cmr extends cjv implements byv {
    public cmr b(asb $$0, bwu $$1) {
       cmr $$2 = bxn.bc.a($$0, bxm.e);
       if ($$2 != null) {
-         czi $$3 = this.t();
-         czi $$4 = ((cmr)$$1).t();
+         czi $$3 = this.p();
+         czi $$4 = ((cmr)$$1).p();
          $$2.b(czi.a($$0, $$3, $$4));
       }
 
@@ -232,10 +232,10 @@ public class cmr extends cjv implements byv {
    }
 
    @Override
-   public void R() {
-      super.R();
+   public void Q() {
+      super.Q();
       this.w(false);
-      if (this.n_()) {
+      if (this.e_()) {
          this.b_(60);
       }
    }

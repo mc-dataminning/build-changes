@@ -44,7 +44,7 @@ public abstract class gxu<T extends bxe, S extends hec> {
             return true;
          } else {
             if ($$0 instanceof byd $$6) {
-               bxe $$7 = $$6.C();
+               bxe $$7 = $$6.B();
                if ($$7 != null) {
                   return $$1.a(this.d.a($$7).a($$7));
                }
@@ -135,7 +135,7 @@ public abstract class gxu<T extends bxe, S extends hec> {
    }
 
    protected boolean a(T $$0, double $$1) {
-      return $$0.cM() || $$0.h_() && $$0 == this.d.c;
+      return $$0.cM() || $$0.g_() && $$0 == this.d.c;
    }
 
    public fti e() {
@@ -166,7 +166,7 @@ public abstract class gxu<T extends bxe, S extends hec> {
 
    @Nullable
    protected xg c(T $$0) {
-      return $$0.m_();
+      return $$0.P_();
    }
 
    protected float c(S $$0) {
@@ -214,7 +214,7 @@ public abstract class gxu<T extends bxe, S extends hec> {
       }
 
       $$1.B = $$0.cf();
-      bxe $$10 = $$0 instanceof byd $$9 ? $$9.C() : null;
+      bxe $$10 = $$0 instanceof byd $$9 ? $$9.B() : null;
       if ($$10 != null) {
          float $$11 = $$0.u($$2) * (float) (Math.PI / 180.0);
          fgc $$12 = $$0.t($$2).b(-$$11);

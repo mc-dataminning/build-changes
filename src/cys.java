@@ -129,7 +129,7 @@ public class cys extends dag {
                   return false;
                }
 
-               if (!$$7.b() || $$1 != null && $$1.gG()) {
+               if (!$$7.b() || $$1 != null && $$1.gH()) {
                   return $$4.a($$6, $$0.J_());
                }
 
@@ -143,7 +143,7 @@ public class cys extends dag {
 
    @Override
    public boolean a(dak $$0, @Nullable csi $$1) {
-      if ($$1 != null && $$1.G() >= 2) {
+      if ($$1 != null && $$1.F() >= 2) {
          dcs $$2 = $$0.a(kl.aa);
          if ($$2 != null) {
             dyq<?> $$3 = $$2.a($$1.dV().J_(), mi.e);
@@ -169,7 +169,7 @@ public class cys extends dag {
 
    @Override
    public void a(coo $$0) {
-      ddc $$1 = $$0.f().b(kl.ap, ddc.a);
+      ddc $$1 = $$0.e().b(kl.ap, ddc.a);
       if ($$1 != null) {
          dan.a($$0, $$1.e());
       }

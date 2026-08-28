@@ -21,7 +21,7 @@ public class cvc extends cuv {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.ov;
    }
 
@@ -52,10 +52,10 @@ public class cvc extends cuv {
    }
 
    @Override
-   public void h() {
+   public void g() {
       double $$0 = (double)this.dL();
       fgc $$1 = this.dt();
-      super.h();
+      super.g();
       double $$2 = ((double)this.dL() - $$0) % 360.0;
       if (this.dV().C && $$1.f(this.dt()) > 0.01) {
          this.b += (float)$$2;
@@ -66,7 +66,7 @@ public class cvc extends cuv {
    @Override
    protected void a(bxe $$0, bxe.a $$1) {
       super.a($$0, $$1);
-      if (this.dV().C && $$0 instanceof csi $$2 && $$2.gQ() && b(this.dV())) {
+      if (this.dV().C && $$0 instanceof csi $$2 && $$2.gR() && b(this.dV())) {
          float $$3 = (float)azz.e(0.5, (double)this.c, (double)this.b);
          $$2.w($$2.dL() - ($$3 - this.c));
          this.c = $$3;

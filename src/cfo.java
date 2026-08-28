@@ -56,7 +56,7 @@ public abstract class cfo extends cfb {
    }
 
    protected void h() {
-      this.a.O().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
+      this.a.N().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
    }
 
    public double i() {
@@ -79,7 +79,7 @@ public abstract class cfo extends cfb {
          this.k = false;
          this.d++;
          if (this.l()) {
-            this.a.O().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
+            this.a.N().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
          }
       } else {
          this.k = true;

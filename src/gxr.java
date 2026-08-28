@@ -29,7 +29,7 @@ public class gxr extends gzb<cpa, heb, ghl<heb>> {
    public void a(cpa $$0, heb $$1, float $$2) {
       super.a($$0, $$1, $$2);
       gym.a($$0, $$1, $$2, this.h);
-      $$1.a = $$0.t();
-      $$1.b = $$0.q();
+      $$1.a = $$0.gv();
+      $$1.b = $$0.gu();
    }
 }

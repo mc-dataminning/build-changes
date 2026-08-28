@@ -73,9 +73,9 @@ public interface egz {
       }
    });
 
-   egz.a x();
+   egz.a gw();
 
-   egz.d gu();
+   egz.d gx();
 
    static int a_(jg<egq> $$0) {
       return $$0.e().map(egz::a).orElse(0);
@@ -164,18 +164,18 @@ public interface egz {
 
       @Override
       public egu a() {
-         return this.a.gu().b();
+         return this.a.gx().b();
       }
 
       @Override
       public int b() {
-         return this.a.gu().a();
+         return this.a.gx().a();
       }
 
       @Override
       public boolean a(asb $$0, jg<egq> $$1, egq.a $$2, fgc $$3) {
-         egz.a $$4 = this.a.x();
-         egz.d $$5 = this.a.gu();
+         egz.a $$4 = this.a.gw();
+         egz.d $$5 = this.a.gx();
          if ($$4.b() != null) {
             return false;
          } else if (!$$5.a($$1, $$2)) {
@@ -199,7 +199,7 @@ public interface egz {
       }
 
       public void b(asb $$0, jg<egq> $$1, egq.a $$2, fgc $$3) {
-         this.a.gu().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.x(), $$1, $$2, $$3, $$4));
+         this.a.gx().b().a($$0).ifPresent($$4 -> this.a($$0, this.a.gw(), $$1, $$2, $$3, $$4));
       }
 
       private void a(asb $$0, egz.a $$1, jg<egq> $$2, egq.a $$3, fgc $$4, fgc $$5) {
@@ -338,7 +338,7 @@ public interface egz {
          } else {
             bxe $$2 = $$1.a();
             if ($$2 != null) {
-               if ($$2.aa_()) {
+               if ($$2.ak()) {
                   return false;
                }
 

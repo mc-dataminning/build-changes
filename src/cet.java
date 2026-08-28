@@ -16,7 +16,7 @@ public class cet extends cfb {
 
    @Override
    public boolean b() {
-      if (this.c.dY().a(this.c.n_() ? 50 : 1000) != 0) {
+      if (this.c.dY().a(this.c.e_() ? 50 : 1000) != 0) {
          return false;
       } else {
          iw $$0 = this.c.dv();
@@ -28,7 +28,7 @@ public class cet extends cfb {
    public void d() {
       this.e = this.a(40);
       this.d.a(this.c, (byte)10);
-      this.c.O().m();
+      this.c.N().m();
    }
 
    @Override
@@ -55,7 +55,7 @@ public class cet extends cfb {
                this.d.b($$0, false);
             }
 
-            this.c.R();
+            this.c.Q();
          } else {
             iw $$1 = $$0.e();
             if (this.d.a_($$1).a(dnq.i)) {
@@ -64,7 +64,7 @@ public class cet extends cfb {
                   this.d.a($$1, dnq.j.m(), 2);
                }
 
-               this.c.R();
+               this.c.Q();
             }
          }
       }

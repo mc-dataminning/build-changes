@@ -20,7 +20,7 @@ public class cpt extends byh implements cpc {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cpt.b(this));
       this.bF.a(2, new cpt.a(this));
       this.bF.a(3, new cpt.e(this));
@@ -45,7 +45,7 @@ public class cpt extends byh implements cpc {
       int $$2 = azz.a($$0, 1, 127);
       this.al.a(bH, $$2);
       this.av();
-      this.i_();
+      this.h_();
       this.g(bzl.s).a((double)($$2 * $$2));
       this.g(bzl.v).a((double)(0.2F + 0.1F * (float)$$2));
       this.g(bzl.c).a((double)$$2);
@@ -56,14 +56,14 @@ public class cpt extends byh implements cpc {
       this.bA = $$2;
    }
 
-   public int gs() {
+   public int gv() {
       return this.al.a(bH);
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Size", this.gs() - 1);
+      $$0.a("Size", this.gv() - 1);
       $$0.a("wasOnGround", this.bJ);
    }
 
@@ -74,24 +74,24 @@ public class cpt extends byh implements cpc {
       this.bJ = $$0.b("wasOnGround", false);
    }
 
-   public boolean gt() {
-      return this.gs() <= 1;
+   public boolean gw() {
+      return this.gv() <= 1;
    }
 
-   protected lx m() {
+   protected lx p() {
       return lz.X;
    }
 
    @Override
-   protected boolean aa() {
-      return this.gs() > 0;
+   protected boolean Z() {
+      return this.gv() > 0;
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.f = this.e;
       this.e = this.e + (this.d - this.e) * 0.5F;
-      super.h();
+      super.g();
       if (this.aH() && !this.bJ) {
          float $$0 = this.a(this.at()).a() * 2.0F;
          float $$1 = $$0 / 2.0F;
@@ -101,41 +101,40 @@ public class cpt extends byh implements cpc {
             float $$4 = this.ae.i() * 0.5F + 0.5F;
             float $$5 = azz.a($$3) * $$1 * $$4;
             float $$6 = azz.b($$3) * $$1 * $$4;
-            this.dV().a(this.m(), this.dA() + (double)$$5, this.dC(), this.dG() + (double)$$6, 0.0, 0.0, 0.0);
+            this.dV().a(this.p(), this.dA() + (double)$$5, this.dC(), this.dG() + (double)$$6, 0.0, 0.0, 0.0);
          }
 
-         this.a(this.gq(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) / 0.8F);
+         this.a(this.gt(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) / 0.8F);
          this.d = -0.5F;
       } else if (!this.aH() && this.bJ) {
          this.d = 1.0F;
       }
 
       this.bJ = this.aH();
-      this.q();
+      this.gq();
    }
 
-   @Override
-   protected void q() {
+   protected void gq() {
       this.d *= 0.6F;
    }
 
-   protected int n() {
+   protected int u() {
       return this.ae.a(20) + 10;
    }
 
    @Override
-   public void i_() {
+   public void h_() {
       double $$0 = this.dA();
       double $$1 = this.dC();
       double $$2 = this.dG();
-      super.i_();
+      super.h_();
       this.a_($$0, $$1, $$2);
    }
 
    @Override
    public void a(aku<?> $$0) {
       if (bH.equals($$0)) {
-         this.i_();
+         this.h_();
          this.w(this.aX);
          this.aV = this.aX;
          if (this.bi() && this.ae.a(20) == 0) {
@@ -153,7 +152,7 @@ public class cpt extends byh implements cpc {
 
    @Override
    public void a(bxe.d $$0) {
-      int $$1 = this.gs();
+      int $$1 = this.gv();
       if (!this.dV().C && $$1 > 1 && this.eH()) {
          float $$2 = this.a(this.at()).a();
          float $$3 = $$2 / 2.0F;
@@ -177,14 +176,14 @@ public class cpt extends byh implements cpc {
    @Override
    public void h(bxe $$0) {
       super.h($$0);
-      if ($$0 instanceof ckl && this.t()) {
+      if ($$0 instanceof ckl && this.gr()) {
          this.i((byf)$$0);
       }
    }
 
    @Override
    public void a_(csi $$0) {
-      if (this.t()) {
+      if (this.gr()) {
          this.i($$0);
       }
    }
@@ -192,7 +191,7 @@ public class cpt extends byh implements cpc {
    protected void i(byf $$0) {
       if (this.dV() instanceof asb $$1 && this.bJ() && this.h($$0) && this.E($$0)) {
          bvt $$2 = this.dW().b((byf)this);
-         if ($$0.a($$1, $$2, this.x())) {
+         if ($$0.a($$1, $$2, this.gs())) {
             this.a(awy.yf, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             dgz.a($$1, (bxe)$$0, $$2);
          }
@@ -201,29 +200,29 @@ public class cpt extends byh implements cpc {
 
    @Override
    protected fgc a(bxe $$0, bxh $$1, float $$2) {
-      return new fgc(0.0, (double)$$1.b() - 0.015625 * (double)this.gs() * (double)$$2, 0.0);
+      return new fgc(0.0, (double)$$1.b() - 0.015625 * (double)this.gv() * (double)$$2, 0.0);
    }
 
-   protected boolean t() {
-      return !this.gt() && this.dj();
+   protected boolean gr() {
+      return !this.gw() && this.dj();
    }
 
-   protected float x() {
+   protected float gs() {
       return (float)this.h(bzl.c);
    }
 
    @Override
    protected awx e(bvt $$0) {
-      return this.gt() ? awy.zk : awy.yh;
+      return this.gw() ? awy.zk : awy.yh;
    }
 
    @Override
-   protected awx l_() {
-      return this.gt() ? awy.zj : awy.yg;
+   protected awx j_() {
+      return this.gw() ? awy.zj : awy.yg;
    }
 
-   protected awx gq() {
-      return this.gt() ? awy.zm : awy.yj;
+   protected awx gt() {
+      return this.gw() ? awy.zm : awy.yj;
    }
 
    public static boolean c(bxn<cpt> $$0, dkk $$1, bxm $$2, iw $$3, bai $$4) {
@@ -252,20 +251,20 @@ public class cpt extends byh implements cpc {
 
    @Override
    protected float fe() {
-      return 0.4F * (float)this.gs();
+      return 0.4F * (float)this.gv();
    }
 
    @Override
-   public int ad() {
+   public int ac() {
       return 0;
    }
 
-   protected boolean gu() {
-      return this.gs() > 0;
+   protected boolean gx() {
+      return this.gv() > 0;
    }
 
    @Override
-   public void s() {
+   public void r() {
       fgc $$0 = this.dy();
       this.n($$0.d, (double)this.fh(), $$0.f);
       this.ar = true;
@@ -285,18 +284,18 @@ public class cpt extends byh implements cpc {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   float j() {
-      float $$0 = this.gt() ? 1.4F : 0.8F;
+   float m() {
+      float $$0 = this.gw() ? 1.4F : 0.8F;
       return ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * $$0;
    }
 
-   protected awx gr() {
-      return this.gt() ? awy.zl : awy.yi;
+   protected awx gu() {
+      return this.gw() ? awy.zl : awy.yi;
    }
 
    @Override
    public bxh e(byr $$0) {
-      return super.e($$0).a((float)this.gs());
+      return super.e($$0).a((float)this.gv());
    }
 
    static class a extends cfb {
@@ -310,11 +309,11 @@ public class cpt extends byh implements cpc {
 
       @Override
       public boolean b() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          if ($$0 == null) {
             return false;
          } else {
-            return !this.a.c($$0) ? false : this.a.L() instanceof cpt.d;
+            return !this.a.c($$0) ? false : this.a.K() instanceof cpt.d;
          }
       }
 
@@ -326,7 +325,7 @@ public class cpt extends byh implements cpc {
 
       @Override
       public boolean c() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          if ($$0 == null) {
             return false;
          } else {
@@ -341,13 +340,13 @@ public class cpt extends byh implements cpc {
 
       @Override
       public void a() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          if ($$0 != null) {
             this.a.a($$0, 10.0F, 10.0F);
          }
 
-         if (this.a.L() instanceof cpt.d $$1) {
-            $$1.a(this.a.dL(), this.a.t());
+         if (this.a.K() instanceof cpt.d $$1) {
+            $$1.a(this.a.dL(), this.a.gr());
          }
       }
    }
@@ -358,12 +357,12 @@ public class cpt extends byh implements cpc {
       public b(cpt $$0) {
          this.a = $$0;
          this.a(EnumSet.of(cfb.a.c, cfb.a.a));
-         $$0.O().a(true);
+         $$0.N().a(true);
       }
 
       @Override
       public boolean b() {
-         return (this.a.bi() || this.a.bv()) && this.a.L() instanceof cpt.d;
+         return (this.a.bi() || this.a.bv()) && this.a.K() instanceof cpt.d;
       }
 
       @Override
@@ -374,10 +373,10 @@ public class cpt extends byh implements cpc {
       @Override
       public void a() {
          if (this.a.dY().i() < 0.8F) {
-            this.a.N().a();
+            this.a.M().a();
          }
 
-         if (this.a.L() instanceof cpt.d $$0) {
+         if (this.a.K() instanceof cpt.d $$0) {
             $$0.a(1.2);
          }
       }
@@ -398,7 +397,7 @@ public class cpt extends byh implements cpc {
 
       @Override
       public void a() {
-         if (this.a.L() instanceof cpt.d $$0) {
+         if (this.a.K() instanceof cpt.d $$0) {
             $$0.a(1.0);
          }
       }
@@ -438,14 +437,14 @@ public class cpt extends byh implements cpc {
             if (this.d.aH()) {
                this.d.B((float)(this.h * this.d.h(bzl.v)));
                if (this.m-- <= 0) {
-                  this.m = this.n.n();
+                  this.m = this.n.u();
                   if (this.o) {
                      this.m /= 3;
                   }
 
-                  this.n.N().a();
-                  if (this.n.gu()) {
-                     this.n.a(this.n.gr(), this.n.fe(), this.n.j());
+                  this.n.M().a();
+                  if (this.n.gx()) {
+                     this.n.a(this.n.gu(), this.n.fe(), this.n.m());
                   }
                } else {
                   this.n.bg = 0.0F;
@@ -471,7 +470,7 @@ public class cpt extends byh implements cpc {
 
       @Override
       public boolean b() {
-         return this.a.f() == null && (this.a.aH() || this.a.bi() || this.a.bv() || this.a.b(bwk.y)) && this.a.L() instanceof cpt.d;
+         return this.a.e() == null && (this.a.aH() || this.a.bi() || this.a.bv() || this.a.b(bwk.y)) && this.a.K() instanceof cpt.d;
       }
 
       @Override
@@ -481,7 +480,7 @@ public class cpt extends byh implements cpc {
             this.b = (float)this.a.dY().a(360);
          }
 
-         if (this.a.L() instanceof cpt.d $$0) {
+         if (this.a.K() instanceof cpt.d $$0) {
             $$0.a(this.b, false);
          }
       }

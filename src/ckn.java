@@ -14,22 +14,22 @@ public class ckn extends cjv {
 
    public ckn(bxn<? extends ckn> $$0, dkj $$1) {
       super($$0, $$1);
-      this.t();
+      this.p();
    }
 
-   boolean x() {
+   boolean u() {
       return this.al.a(bM);
    }
 
    private void w(boolean $$0) {
       this.al.a(bM, $$0);
-      this.t();
+      this.p();
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Trusting", this.x());
+      $$0.a("Trusting", this.u());
    }
 
    @Override
@@ -45,7 +45,7 @@ public class ckn extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bP = new ckn.b(this, 0.6, $$0 -> $$0.a(axv.au), true);
       this.bF.a(1, new cev(this));
       this.bF.a(3, this.bP);
@@ -60,8 +60,8 @@ public class ckn extends cjv {
 
    @Override
    public void a(asb $$0) {
-      if (this.L().b()) {
-         double $$1 = this.L().c();
+      if (this.K().b()) {
+         double $$1 = this.K().c();
          if ($$1 == 0.6) {
             this.b(byr.f);
             this.h(false);
@@ -80,21 +80,21 @@ public class ckn extends cjv {
 
    @Override
    public boolean h(double $$0) {
-      return !this.x() && this.af > 2400;
+      return !this.u() && this.af > 2400;
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 10.0).a(bzl.v, 0.3F).a(bzl.c, 3.0);
    }
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.tb;
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 900;
    }
 
@@ -104,14 +104,14 @@ public class ckn extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.tc;
    }
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ((this.bP == null || this.bP.i()) && !this.x() && this.i($$2) && $$0.g(this) < 9.0) {
+      if ((this.bP == null || this.bP.i()) && !this.u() && this.i($$2) && $$0.g(this) < 9.0) {
          this.a($$0, $$1, $$2);
          if (!this.dV().C) {
             if (this.ae.a(3) == 0) {
@@ -155,13 +155,13 @@ public class ckn extends cjv {
       }
    }
 
-   protected void t() {
+   protected void p() {
       if (this.bO == null) {
          this.bO = new ckn.a<>(this, csi.class, 16.0F, 0.8, 1.33);
       }
 
       this.bF.a(this.bO);
-      if (!this.x()) {
+      if (!this.u()) {
          this.bF.a(4, this.bO);
       }
    }
@@ -227,12 +227,12 @@ public class ckn extends cjv {
 
       @Override
       public boolean b() {
-         return !this.i.x() && super.b();
+         return !this.i.u() && super.b();
       }
 
       @Override
       public boolean c() {
-         return !this.i.x() && super.c();
+         return !this.i.u() && super.c();
       }
    }
 
@@ -246,7 +246,7 @@ public class ckn extends cjv {
 
       @Override
       protected boolean h() {
-         return super.h() && !this.c.x();
+         return super.h() && !this.c.u();
       }
    }
 }

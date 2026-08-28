@@ -20,14 +20,14 @@ public class hba extends gwp<cmx, hgu, gkg> {
 
    public void a(cmx $$0, hgu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.af_();
-      $$1.b = $$0.x();
+      $$1.a = $$0.ac_();
+      $$1.b = $$0.u();
       $$1.c = $$0.gI();
       $$1.d = $$0.L($$2);
       $$1.e = $$0.K($$2);
       $$1.g = $$0.gG();
       $$1.f = $$0.J($$2);
-      $$1.h = $$0.q() ? $$0.gJ() : null;
+      $$1.h = $$0.m() ? $$0.gJ() : null;
       $$1.i = $$0.fY().v();
    }
 }

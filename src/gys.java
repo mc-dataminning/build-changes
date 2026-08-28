@@ -80,11 +80,11 @@ public class gys<T extends cog> extends gxu<T, hfc> {
    }
 
    protected boolean a(T $$0, double $$1) {
-      return fqq.M() && this.d.c == $$0 && $$0.w().z() != null;
+      return fqq.M() && this.d.c == $$0 && $$0.v().z() != null;
    }
 
    protected xg a(T $$0) {
-      return $$0.w().y();
+      return $$0.v().y();
    }
 
    public hfc a() {
@@ -94,9 +94,9 @@ public class gys<T extends cog> extends gxu<T, hfc> {
    public void a(T $$0, hfc $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.cO();
-      dak $$3 = $$0.w();
+      dak $$3 = $$0.v();
       this.h.a($$1.b, $$3, dai.i, $$0);
-      $$1.c = $$0.y();
+      $$1.c = $$0.x();
       $$1.d = $$0.an() == bxn.ag;
       $$1.e = null;
       if (!$$3.f()) {

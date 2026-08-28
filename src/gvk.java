@@ -91,7 +91,7 @@ public class gvk implements gvq.a {
    public void a(fld $$0, grn $$1, double $$2, double $$3, double $$4) {
       this.b();
       this.b($$0, $$1, $$2, $$3, $$4);
-      if (!this.F.t.aa_()) {
+      if (!this.F.t.ak()) {
          this.d();
       }
    }

@@ -33,7 +33,7 @@ public class gzo extends gzb<cku, hfs, ghn<hec>> {
 
    public void a(cku $$0, hfs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
+      $$1.a = $$0.gw();
    }
 
    protected void a(hfs $$0, fld $$1, float $$2, float $$3) {

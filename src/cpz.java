@@ -13,8 +13,8 @@ public class cpz extends cor {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cei<>(this, cqo.class, 8.0F, 1.0, 1.2));
       this.bF.a(2, new cpz.a(this));
@@ -35,14 +35,14 @@ public class cpz extends cor {
    protected void a(asb $$0) {
       if (!this.gj() && ciz.a(this)) {
          boolean $$1 = $$0.e(this.dv());
-         ((cho)this.O()).b($$1);
+         ((cho)this.N()).b($$1);
       }
 
       super.a($$0);
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.v, 0.35F).a(bzl.m, 12.0).a(bzl.s, 24.0).a(bzl.c, 5.0);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.v, 0.35F).a(bzl.m, 12.0).a(bzl.s, 24.0).a(bzl.c, 5.0);
    }
 
    @Override
@@ -54,11 +54,11 @@ public class cpz extends cor {
    }
 
    @Override
-   public cor.a j() {
+   public cor.a m() {
       if (this.gl()) {
          return cor.a.b;
       } else {
-         return this.gK() ? cor.a.g : cor.a.a;
+         return this.gN() ? cor.a.g : cor.a.a;
       }
    }
 
@@ -69,7 +69,7 @@ public class cpz extends cor {
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.Cr;
    }
 
@@ -77,7 +77,7 @@ public class cpz extends cor {
    @Override
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
       byx $$4 = super.a($$0, $$1, $$2, $$3);
-      ((cho)this.O()).b(true);
+      ((cho)this.N()).b(true);
       bai $$5 = $$0.G_();
       this.a($$5, $$1);
       this.a($$0, $$5, $$1);
@@ -86,7 +86,7 @@ public class cpz extends cor {
 
    @Override
    protected void a(bai $$0, bva $$1) {
-      if (this.gF() == null) {
+      if (this.gI() == null) {
          this.a(bxo.a, new dak(dao.pS));
       }
    }
@@ -100,12 +100,12 @@ public class cpz extends cor {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Cq;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Cs;
    }
 
@@ -117,7 +117,7 @@ public class cpz extends cor {
    @Override
    public void a(asb $$0, int $$1, boolean $$2) {
       dak $$3 = new dak(dao.pS);
-      cty $$4 = this.gF();
+      cty $$4 = this.gI();
       boolean $$5 = this.ae.i() <= $$4.s();
       if ($$5) {
          alq<dif> $$6 = $$1 > $$4.a(buz.c) ? dil.f : dil.e;
@@ -136,13 +136,13 @@ public class cpz extends cor {
       @Override
       public boolean c() {
          cpz $$0 = (cpz)this.d;
-         return $$0.gI() && super.c();
+         return $$0.gL() && super.c();
       }
 
       @Override
       public boolean b() {
          cpz $$0 = (cpz)this.d;
-         return $$0.gI() && $$0.ae.a(b(10)) == 0 && super.b();
+         return $$0.gL() && $$0.ae.a(b(10)) == 0 && super.b();
       }
 
       @Override

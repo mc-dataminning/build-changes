@@ -83,8 +83,8 @@ public abstract class fzq extends fvt implements fvb {
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256 && this.aI_()) {
-         this.aQ_();
+      if ($$0 == 256 && this.aD_()) {
+         this.aL_();
          return true;
       } else if (super.a($$0, $$1, $$2)) {
          return true;
@@ -122,7 +122,7 @@ public abstract class fzq extends fvt implements fvb {
       return new fyb.a($$0);
    }
 
-   protected void aH_() {
+   protected void aC_() {
       if (this.m.aX().b()) {
          fyb.c $$0 = new fyb.c(true);
          fth $$1 = super.a($$0);
@@ -140,7 +140,7 @@ public abstract class fzq extends fvt implements fvb {
    }
 
    public void o() {
-      fth $$0 = this.aP_();
+      fth $$0 = this.aK_();
       if ($$0 != null) {
          $$0.a(false);
       }
@@ -152,11 +152,11 @@ public abstract class fzq extends fvt implements fvb {
       $$0.a(true);
    }
 
-   public boolean aI_() {
+   public boolean aD_() {
       return true;
    }
 
-   public void aQ_() {
+   public void aL_() {
       this.m.a(null);
    }
 
@@ -316,8 +316,8 @@ public abstract class fzq extends fvt implements fvb {
       this.n = $$1;
       this.o = $$2;
       if (!this.u) {
-         this.aT_();
-         this.aH_();
+         this.aO_();
+         this.aC_();
       } else {
          this.c();
       }
@@ -330,25 +330,25 @@ public abstract class fzq extends fvt implements fvb {
    protected void q() {
       this.p();
       this.o();
-      this.aT_();
-      this.aH_();
+      this.aO_();
+      this.aC_();
    }
 
    @Override
-   public List<? extends fvv> aJ_() {
+   public List<? extends fvv> aE_() {
       return this.d;
    }
 
-   protected void aT_() {
+   protected void aO_() {
    }
 
    public void e() {
    }
 
-   public void aK_() {
+   public void aF_() {
    }
 
-   public void aL_() {
+   public void aG_() {
    }
 
    public void b(ftk $$0, int $$1, int $$2, float $$3) {
@@ -501,13 +501,13 @@ public abstract class fzq extends fvt implements fvb {
       }
    }
 
-   protected boolean aS_() {
+   protected boolean aN_() {
       return true;
    }
 
    protected void a(fxv $$0) {
       $$0.a(fxu.a, this.i());
-      if (this.aS_()) {
+      if (this.aN_()) {
          $$0.a(fxu.d, b);
       }
 

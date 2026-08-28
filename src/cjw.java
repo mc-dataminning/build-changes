@@ -90,7 +90,7 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cjw.b(this, 1.4F, true));
       this.bF.a(1, new cjw.d());
       this.bF.a(2, new cen(this, 1.0));
@@ -160,7 +160,7 @@ public class cjw extends cjv implements byk, ckj {
          }
 
          this.x(true);
-         this.ab_();
+         this.i();
          this.a(awy.bS, 1.0F, 1.0F);
       }
 
@@ -168,8 +168,8 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.gG() && this.gR() < 10 && this.ae.i() < 0.05F) {
          for (int $$0 = 0; $$0 < this.ae.a(2) + 1; $$0++) {
             this.a(this.dV(), this.dA() - 0.3F, this.dA() + 0.3F, this.dG() - 0.3F, this.dG() + 0.3F, this.e(0.5), lz.aB);
@@ -211,11 +211,11 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Nullable
-   public iw q() {
+   public iw m() {
       return this.cF;
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.cF != null;
    }
 
@@ -224,7 +224,7 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @bbi
-   public int x() {
+   public int u() {
       return Math.max(this.cI.d, this.cJ.d);
    }
 
@@ -248,7 +248,7 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    boolean gO() {
-      if (this.cx <= 0 && !this.cH.l() && !this.gH() && this.f() == null) {
+      if (this.cx <= 0 && !this.cH.l() && !this.gH() && this.e() == null) {
          boolean $$0 = this.gL() || c(this.dV()) || this.gG();
          return $$0 && !this.gQ();
       } else {
@@ -361,8 +361,8 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -379,8 +379,8 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C) {
          if (this.cx > 0) {
             this.cx--;
@@ -394,7 +394,7 @@ public class cjw extends cjv implements byk, ckj {
             this.cE--;
          }
 
-         boolean $$0 = this.af_() && !this.gH() && this.f() != null && this.f().g(this) < 4.0;
+         boolean $$0 = this.ac_() && !this.gH() && this.e() != null && this.e().g(this) < 4.0;
          this.y($$0);
          if (this.af % 20 == 0 && !this.gV()) {
             this.cG = null;
@@ -512,7 +512,7 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return null;
    }
 
@@ -522,7 +522,7 @@ public class cjw extends cjv implements byk, ckj {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.bO;
    }
 
@@ -602,12 +602,12 @@ public class cjw extends cjv implements byk, ckj {
 
       @Override
       public boolean b() {
-         return this.h() && !cjw.this.af_();
+         return this.h() && !cjw.this.ac_();
       }
 
       @Override
       public boolean c() {
-         return this.i() && !cjw.this.af_();
+         return this.i() && !cjw.this.ac_();
       }
    }
 
@@ -618,12 +618,12 @@ public class cjw extends cjv implements byk, ckj {
 
       @Override
       public boolean b() {
-         return super.b() && cjw.this.af_() && !cjw.this.gH();
+         return super.b() && cjw.this.ac_() && !cjw.this.gH();
       }
 
       @Override
       public boolean c() {
-         return super.c() && cjw.this.af_() && !cjw.this.gH();
+         return super.c() && cjw.this.ac_() && !cjw.this.gH();
       }
    }
 
@@ -640,7 +640,7 @@ public class cjw extends cjv implements byk, ckj {
       @Override
       public boolean c() {
          boolean $$0 = this.i();
-         if ($$0 && this.e.f() != null) {
+         if ($$0 && this.e.e() != null) {
             return super.c();
          } else {
             this.g = null;
@@ -650,7 +650,7 @@ public class cjw extends cjv implements byk, ckj {
 
       private boolean i() {
          cjw $$0 = (cjw)this.e;
-         return $$0.af_() && !$$0.gH();
+         return $$0.ac_() && !$$0.gH();
       }
    }
 
@@ -921,7 +921,7 @@ public class cjw extends cjv implements byk, ckj {
 
       @Override
       public boolean c() {
-         return cjw.this.af_() && super.c();
+         return cjw.this.ac_() && super.c();
       }
 
       @Override
@@ -975,7 +975,7 @@ public class cjw extends cjv implements byk, ckj {
 
       @Override
       public void a() {
-         if (!cjw.this.af_()) {
+         if (!cjw.this.ac_()) {
             super.a();
          }
       }
@@ -1032,7 +1032,7 @@ public class cjw extends cjv implements byk, ckj {
       public boolean i() {
          if (!this.l) {
             return false;
-         } else if (!cjw.this.t()) {
+         } else if (!cjw.this.p()) {
             return false;
          } else if (cjw.this.dV().ah()) {
             return false;
@@ -1080,7 +1080,7 @@ public class cjw extends cjv implements byk, ckj {
 
       @Override
       public void a() {
-         if (cjw.this.t()) {
+         if (cjw.this.p()) {
             this.n++;
             if (this.n > 600) {
                cjw.this.gN();
@@ -1110,7 +1110,7 @@ public class cjw extends cjv implements byk, ckj {
                            $$2 = false;
                         }
 
-                        cjw.this.J().a($$0.a(), $$0.b(), $$0.c());
+                        cjw.this.I().a($$0.a(), $$0.b(), $$0.c());
                      }
 
                      if ($$2) {
@@ -1129,7 +1129,7 @@ public class cjw extends cjv implements byk, ckj {
       }
 
       private void n() {
-         cjw.this.L().a(this.m.a(), this.m.b(), this.m.c(), 0.35F);
+         cjw.this.K().a(this.m.a(), this.m.b(), this.m.c(), 0.35F);
       }
 
       private float o() {
@@ -1198,7 +1198,7 @@ public class cjw extends cjv implements byk, ckj {
       }
 
       private int i() {
-         int $$0 = !cjw.this.gw() && !cjw.this.t() ? 16 : 24;
+         int $$0 = !cjw.this.gw() && !cjw.this.p() ? 16 : 24;
          return 48 - $$0;
       }
    }

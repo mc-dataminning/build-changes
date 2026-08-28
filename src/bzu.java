@@ -9,7 +9,7 @@ public class bzu {
                      byf $$9 = $$2.b($$5);
                      if ($$9.a($$7, (double)$$0) && $$2.<chj>b($$6).a($$9)) {
                         $$4.a(new cah($$9, true));
-                        $$7.L().a(-$$1, 0.0F);
+                        $$7.K().a(-$$1, 0.0F);
                         $$7.w(azz.c($$7.dL(), $$7.aX, 0.0F));
                         return true;
                      } else {

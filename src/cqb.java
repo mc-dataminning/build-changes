@@ -7,13 +7,13 @@ public class cqb extends cos {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bG.a(3, new cgu<>(this, cqw.class, true));
-      super.D();
+      super.C();
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.DH;
    }
 
@@ -23,17 +23,17 @@ public class cqb extends cos {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.DI;
    }
 
    @Override
-   awx m() {
+   awx p() {
       return awy.DK;
    }
 
    @Override
-   public ayc<dag> Y() {
+   public ayc<dag> X() {
       return null;
    }
 
@@ -45,8 +45,8 @@ public class cqb extends cos {
    @Override
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cow $$4 && $$4.x()) {
-         $$4.gu();
+      if ($$1.d() instanceof cow $$4 && $$4.gw()) {
+         $$4.gx();
          this.a($$0, dao.vw);
       }
    }
@@ -65,7 +65,7 @@ public class cqb extends cos {
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
       byx $$4 = super.a($$0, $$1, $$2, $$3);
       this.g(bzl.c).a(4.0);
-      this.n();
+      this.u();
       return $$4;
    }
 

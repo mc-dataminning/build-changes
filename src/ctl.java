@@ -31,10 +31,10 @@ public abstract class ctl extends ctd {
    }
 
    @Override
-   public void h() {
-      this.j();
+   public void g() {
+      this.i();
       this.be();
-      this.g();
+      this.f();
       fga $$0 = ctf.a(this, this::b);
       fgc $$1;
       if ($$0.d() != fga.a.a) {
@@ -44,15 +44,15 @@ public abstract class ctl extends ctd {
       }
 
       this.b($$1);
-      this.A();
+      this.z();
       this.aI();
-      super.h();
+      super.g();
       if ($$0.d() != fga.a.a && this.bJ()) {
          this.b($$0);
       }
    }
 
-   private void g() {
+   private void f() {
       fgc $$0 = this.dy();
       fgc $$1 = this.dt();
       float $$4;
@@ -70,7 +70,7 @@ public abstract class ctl extends ctd {
       this.i($$0.c((double)$$4));
    }
 
-   private void j() {
+   private void i() {
       if (this.ak) {
          for (iw $$0 : iw.a(this.cR())) {
             ebq $$1 = this.dV().a_($$0);

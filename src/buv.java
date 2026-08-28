@@ -18,12 +18,12 @@ public interface buv extends but, Iterable<dak> {
 
    void a(int var1, dak var2);
 
-   default int ap_() {
+   default int ak_() {
       return 99;
    }
 
    default int f_(dak $$0) {
-      return Math.min(this.ap_(), $$0.k());
+      return Math.min(this.ak_(), $$0.k());
    }
 
    void e();
@@ -76,7 +76,7 @@ public interface buv extends but, Iterable<dak> {
 
    static boolean a(dyo $$0, csi $$1, float $$2) {
       dkj $$3 = $$0.i();
-      iw $$4 = $$0.aC_();
+      iw $$4 = $$0.ax_();
       if ($$3 == null) {
          return false;
       } else {

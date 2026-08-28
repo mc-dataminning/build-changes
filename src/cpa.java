@@ -24,7 +24,7 @@ public class cpa extends cpk implements byk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cpa.a(this));
       this.bF.a(2, new cfl(this, 1.0, false));
@@ -39,8 +39,8 @@ public class cpa extends cpk implements byk {
       this.bG.a(4, new cha<>(this, false));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.c, 7.0).a(bzl.m, 64.0).a(bzl.B, 1.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.c, 7.0).a(bzl.m, 64.0).a(bzl.B, 1.0);
    }
 
    @Override
@@ -95,7 +95,7 @@ public class cpa extends cpk implements byk {
       return this.bP;
    }
 
-   public void m() {
+   public void p() {
       if (this.af >= this.bL + 400) {
          this.bL = this.af;
          if (!this.ba()) {
@@ -106,8 +106,8 @@ public class cpa extends cpk implements byk {
 
    @Override
    public void a(aku<?> $$0) {
-      if (bJ.equals($$0) && this.x() && this.dV().C) {
-         this.m();
+      if (bJ.equals($$0) && this.gw() && this.dV().C) {
+         this.p();
       }
 
       super.a($$0);
@@ -116,7 +116,7 @@ public class cpa extends cpk implements byk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      ebq $$1 = this.q();
+      ebq $$1 = this.gu();
       if ($$1 != null) {
          alp<va> $$2 = this.dX().a(uo.a);
          $$0.a("carriedBlockState", ebq.a, $$2, $$1);
@@ -138,7 +138,7 @@ public class cpa extends cpk implements byk {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.dV().C) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
             this.dV().a(lz.af, this.d(0.5), this.dD() - 0.25, this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
@@ -150,7 +150,7 @@ public class cpa extends cpk implements byk {
          this.a((asb)this.dV(), true);
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -164,14 +164,14 @@ public class cpa extends cpk implements byk {
          float $$1 = this.bw();
          if ($$1 > 0.5F && $$0.h(this.dv()) && this.ae.i() * 30.0F < ($$1 - 0.4F) * 2.0F) {
             this.g(null);
-            this.n();
+            this.u();
          }
       }
 
       super.a($$0);
    }
 
-   protected boolean n() {
+   protected boolean u() {
       if (!this.dV().A_() && this.bJ()) {
          double $$0 = this.dA() + (this.ae.j() - 0.5) * 64.0;
          double $$1 = this.dC() + (double)(this.ae.a(64) - 32);
@@ -220,8 +220,8 @@ public class cpa extends cpk implements byk {
    }
 
    @Override
-   protected awx u() {
-      return this.t() ? awy.iK : awy.iH;
+   protected awx s() {
+      return this.gv() ? awy.iK : awy.iH;
    }
 
    @Override
@@ -230,14 +230,14 @@ public class cpa extends cpk implements byk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.iI;
    }
 
    @Override
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      ebq $$3 = this.q();
+      ebq $$3 = this.gu();
       if ($$3 != null) {
          dak $$4 = new dak(dao.pX);
          dgz.a($$4, $$0.J_(), dil.g, $$0.d_(this.dv()), this.dY());
@@ -254,7 +254,7 @@ public class cpa extends cpk implements byk {
    }
 
    @Nullable
-   public ebq q() {
+   public ebq gu() {
       return this.al.a(bI).orElse(null);
    }
 
@@ -267,7 +267,7 @@ public class cpa extends cpk implements byk {
          if (!$$1.a(axo.j) && $$4 == null) {
             boolean $$7 = super.a($$0, $$1, $$2);
             if (!($$1.d() instanceof byf) && this.ae.a(10) != 0) {
-               this.n();
+               this.u();
             }
 
             return $$7;
@@ -275,7 +275,7 @@ public class cpa extends cpk implements byk {
             boolean $$5 = $$4 != null && this.a($$0, $$1, $$4, $$2);
 
             for (int $$6 = 0; $$6 < 64; $$6++) {
-               if (this.n()) {
+               if (this.u()) {
                   return true;
                }
             }
@@ -286,26 +286,26 @@ public class cpa extends cpk implements byk {
    }
 
    private boolean a(asb $$0, bvt $$1, css $$2, float $$3) {
-      dak $$4 = $$2.f();
+      dak $$4 = $$2.e();
       dcg $$5 = $$4.a(kl.R, dcg.a);
       return $$5.a(dch.a) ? super.a($$0, $$1, $$3) : false;
    }
 
-   public boolean t() {
+   public boolean gv() {
       return this.al.a(bJ);
    }
 
-   public boolean x() {
+   public boolean gw() {
       return this.al.a(bK);
    }
 
-   public void gu() {
+   public void gx() {
       this.al.a(bK, true);
    }
 
    @Override
-   public boolean Z() {
-      return super.Z() || this.q() != null;
+   public boolean Y() {
+      return super.Y() || this.gu() != null;
    }
 
    static class a extends cfb {
@@ -320,7 +320,7 @@ public class cpa extends cpk implements byk {
 
       @Override
       public boolean b() {
-         this.b = this.a.f();
+         this.b = this.a.e();
          if (this.b instanceof csi $$0) {
             double $$2 = this.b.g(this.a);
             return $$2 > 256.0 ? false : this.a.a($$0);
@@ -331,12 +331,12 @@ public class cpa extends cpk implements byk {
 
       @Override
       public void d() {
-         this.a.O().m();
+         this.a.N().m();
       }
 
       @Override
       public void a() {
-         this.a.J().a(this.b.dA(), this.b.dE(), this.b.dG());
+         this.a.I().a(this.b.dA(), this.b.dE(), this.b.dG());
       }
    }
 
@@ -349,7 +349,7 @@ public class cpa extends cpk implements byk {
 
       @Override
       public boolean b() {
-         if (this.a.q() == null) {
+         if (this.a.gu() == null) {
             return false;
          } else {
             return !a(this.a).O().c(dkf.d) ? false : this.a.dY().a(b(2000)) == 0;
@@ -367,7 +367,7 @@ public class cpa extends cpk implements byk {
          ebq $$6 = $$1.a_($$5);
          iw $$7 = $$5.e();
          ebq $$8 = $$1.a_($$7);
-         ebq $$9 = this.a.q();
+         ebq $$9 = this.a.gu();
          if ($$9 != null) {
             $$9 = dno.b($$9, this.a.dV(), $$5);
             if (this.a($$1, $$5, $$9, $$6, $$8, $$7)) {
@@ -410,7 +410,7 @@ public class cpa extends cpk implements byk {
       public void d() {
          this.k = this.a(5);
          this.l = 0;
-         this.i.gu();
+         this.i.gx();
       }
 
       @Override
@@ -445,7 +445,7 @@ public class cpa extends cpk implements byk {
 
       @Override
       public void a() {
-         if (this.i.f() == null) {
+         if (this.i.e() == null) {
             super.a(null);
          }
 
@@ -459,7 +459,7 @@ public class cpa extends cpk implements byk {
             if (this.c != null && !this.i.bY()) {
                if (this.i.a((csi)this.c)) {
                   if (this.c.g(this.i) < 16.0) {
-                     this.i.n();
+                     this.i.u();
                   }
 
                   this.l = 0;
@@ -482,7 +482,7 @@ public class cpa extends cpk implements byk {
 
       @Override
       public boolean b() {
-         if (this.a.q() != null) {
+         if (this.a.gu() != null) {
             return false;
          } else {
             return !a(this.a).O().c(dkf.d) ? false : this.a.dY().a(b(20)) == 0;

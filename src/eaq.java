@@ -4,12 +4,12 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 public interface eaq {
-   eaq a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.b() && !$$2x.aa_())
+   eaq a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.gz() && !$$2x.ak())
          .stream()
          .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
          .map(bxe::cG)
          .toList();
-   eaq b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.aa_())
+   eaq b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dv().a($$2, $$3) && !$$2x.ak())
          .stream()
          .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bD()))
          .map(bxe::cG)

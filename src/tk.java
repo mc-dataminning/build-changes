@@ -154,7 +154,7 @@ public class tk {
             $$3x -> {
                if ($$0.b().e().c_($$3x) instanceof eaj $$5) {
                   jc var13 = $$5.u().a(jc.c);
-                  iw $$8 = $$5.aC_().a(var13, 2);
+                  iw $$8 = $$5.ax_().a(var13, 2);
                   int $$9 = (int)var13.g().p();
                   String $$10 = String.format(Locale.ROOT, "/tp @s %d %d %d %d 0", $$8.u(), $$8.v(), $$8.w(), $$9);
                   int $$11 = $$2.u() - $$3x.u();
@@ -322,7 +322,7 @@ public class tk {
                      )
                )
          );
-      if (ac.aU) {
+      if (ac.aV) {
          $$3 = (LiteralArgumentBuilder<ek>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$3.then(
                      el.a("export").then(el.a("test", fj.a($$1, mi.bh)).executes($$0x -> a((ek)$$0x.getSource(), fj.a($$0x, "test", mi.bh))))
                   ))

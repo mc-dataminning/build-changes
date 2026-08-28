@@ -34,7 +34,7 @@ public class gev extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.s.a(a, this.p);
       fxq $$0 = this.s.c(fxq.d());
       $$0.a(new fus(b, this.p).d(310), $$0x -> $$0x.e(15));
@@ -45,7 +45,7 @@ public class gev extends fzq {
       $$0.a(this.y);
       fxq $$3 = this.s.b(fxq.e().a(8));
       $$3.a(fty.a(xf.d, $$0x -> this.m()).a());
-      $$3.a(fty.a(xf.e, $$0x -> this.aQ_()).a());
+      $$3.a(fty.a(xf.e, $$0x -> this.aL_()).a());
       this.s.a($$1x -> {
          ftw var10000 = this.c($$1x);
       });
@@ -72,7 +72,7 @@ public class gev extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.u);
    }
 
@@ -155,7 +155,7 @@ public class gev extends fzq {
       }
 
       @Override
-      public List<? extends fvv> aJ_() {
+      public List<? extends fvv> aE_() {
          return this.a;
       }
 

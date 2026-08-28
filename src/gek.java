@@ -72,7 +72,7 @@ public class gek extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.M.a(c, this.p);
       this.O = new gej(this, this.m, this.n, this.E() - 88, 88, 36);
       int $$0 = this.O.a() / 3;
@@ -98,7 +98,7 @@ public class gek extends fzq {
       this.d(this.O);
       this.V = this.c(fty.a(E, fyn.b(this, ayt.o)).a(this.n / 2 - 100, 64 + this.m(), 200, 20).a());
       this.a(this.R);
-      this.M.b(fty.a(xf.d, $$0x -> this.aQ_()).a(200).a());
+      this.M.b(fty.a(xf.d, $$0x -> this.aL_()).a(200).a());
       this.M.a($$1x -> {
          ftw var10000 = this.c($$1x);
       });
@@ -120,12 +120,12 @@ public class gek extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.P);
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.N);
    }
 
@@ -156,7 +156,7 @@ public class gek extends fzq {
       }
 
       fqh $$6 = this.m.aY();
-      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aO_()) {
+      if (!this.P.a().isEmpty() && this.O.b() && !this.P.aJ_()) {
          $$6.c(B);
       } else if ($$1) {
          if ($$0 == gek.a.b) {
@@ -198,8 +198,8 @@ public class gek extends fzq {
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.P.aO_() && this.m.n.L.a($$0, $$1)) {
-         this.aQ_();
+      if (!this.P.aJ_() && this.m.n.L.a($$0, $$1)) {
+         this.aL_();
          return true;
       } else {
          return super.a($$0, $$1, $$2);

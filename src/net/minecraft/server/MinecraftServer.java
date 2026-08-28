@@ -865,7 +865,7 @@ public abstract class MinecraftServer extends btv<amo> implements amh, eev, ej {
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
             asc $$6 = $$0.get($$4 + $$5);
-            $$3.add($$6.Y() ? $$6.gi() : e);
+            $$3.add($$6.X() ? $$6.gi() : e);
          }
 
          ag.c($$3, this.K);

@@ -12,11 +12,11 @@ public class aoj {
    }
 
    private static int a(ek $$0) {
-      return a($$0, csi::m_);
+      return a($$0, csi::P_);
    }
 
    private static int b(ek $$0) {
-      return a($$0, $$0x -> xg.a("commands.list.nameAndId", $$0x.ai(), xg.a($$0x.gi().getId())));
+      return a($$0, $$0x -> xg.a("commands.list.nameAndId", $$0x.ah(), xg.a($$0x.gi().getId())));
    }
 
    private static int a(ek $$0, Function<asc, xg> $$1) {

@@ -14,14 +14,14 @@ public class foj extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.c.a(15).c().b();
       this.D = new fus(a, this.p).b(true);
       this.c.a(this.D);
       fxq $$0 = this.c.a(fxq.e().a(8));
       xg $$1 = xg.c("mco.account.privacy.info.button");
       $$0.a(fty.a($$1, fyn.b(this, ayt.a)).a());
-      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      $$0.a(fty.a(xf.k, $$0x -> this.aL_()).a());
       this.c.a($$1x -> {
          ftw var10000 = this.c($$1x);
       });
@@ -29,7 +29,7 @@ public class foj extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.C);
    }
 

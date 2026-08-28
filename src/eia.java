@@ -15,7 +15,7 @@ public class eia implements djv {
                      int $$5 = $$0.z().size();
                      if ($$5 >= 1) {
                         csi $$6 = $$0.z().get($$3.a($$5));
-                        if (!$$6.aa_()) {
+                        if (!$$6.ak()) {
                            if (!$$0.a($$6.dv(), 2)) {
                               int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
                               int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
@@ -62,7 +62,7 @@ public class eia implements djv {
          if ($$5 != null) {
             if ($$3) {
                $$5.w(true);
-               $$5.gz();
+               $$5.gC();
             }
 
             $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());

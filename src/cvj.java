@@ -24,8 +24,8 @@ public class cvj extends cuv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.m > 0) {
          this.m--;
          this.dV().a(lz.ah, this.dA(), this.dC() + 0.5, this.dG(), 0.0, 0.0, 0.0);
@@ -55,7 +55,7 @@ public class cvj extends cuv {
    public void a(asb $$0, bvt $$1) {
       double $$2 = this.dy().j();
       if (!f($$1) && !($$2 >= 0.01F)) {
-         this.a($$0, this.o());
+         this.a($$0, this.p());
       } else {
          if (this.m < 0) {
             this.a($$1);
@@ -65,7 +65,7 @@ public class cvj extends cuv {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.oy;
    }
 
@@ -84,7 +84,7 @@ public class cvj extends cuv {
             double $$3 = Math.min(Math.sqrt($$1), 5.0);
             $$2.a(this, $$0, null, this.dA(), this.dC(), this.dG(), (float)((double)this.n + (double)this.o * this.ae.j() * 1.5 * $$3), false, dkj.a.d);
             this.aq();
-         } else if (this.s()) {
+         } else if (this.r()) {
             this.aq();
          }
       }
@@ -134,22 +134,22 @@ public class cvj extends cuv {
       }
    }
 
-   public int q() {
+   public int e() {
       return this.m;
    }
 
-   public boolean s() {
+   public boolean r() {
       return this.m > -1;
    }
 
    @Override
    public float a(dkc $$0, djn $$1, iw $$2, ebq $$3, eya $$4, float $$5) {
-      return !this.s() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
+      return !this.r() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
    }
 
    @Override
    public boolean a(dkc $$0, djn $$1, iw $$2, ebq $$3, float $$4) {
-      return !this.s() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+      return !this.r() || !$$3.a(axn.P) && !$$1.a_($$2.d()).a(axn.P) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 
    @Override

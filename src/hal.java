@@ -37,6 +37,6 @@ public class hal extends gwm<cvj, hfi> {
 
    public void a(cvj $$0, hfi $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
+      $$1.n = $$0.e() > -1 ? (float)$$0.e() - $$2 + 1.0F : -1.0F;
    }
 }

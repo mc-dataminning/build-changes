@@ -40,7 +40,7 @@ public class asz {
          this.i = Math.min(this.i + this.h, $$1);
          if (!(this.i < 1.0F)) {
             if (!this.f.isEmpty()) {
-               asb $$2 = $$0.y();
+               asb $$2 = $$0.x();
                arf $$3 = $$2.m().a;
                List<edx> $$4 = this.a($$3, $$0.dx());
                if (!$$4.isEmpty()) {

@@ -43,7 +43,7 @@ public abstract class ces extends cfb {
       } else if (!this.d.P) {
          return false;
       } else {
-         cho $$0 = (cho)this.d.O();
+         cho $$0 = (cho)this.d.N();
          eyo $$1 = $$0.i();
          if ($$1 != null && !$$1.c()) {
             for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {

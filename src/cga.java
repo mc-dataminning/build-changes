@@ -35,7 +35,7 @@ public class cga extends cfb {
 
    @Override
    public boolean b() {
-      byf $$0 = this.a.f();
+      byf $$0 = this.a.e();
       if ($$0 != null && $$0.bJ()) {
          this.c = $$0;
          return true;
@@ -46,7 +46,7 @@ public class cga extends cfb {
 
    @Override
    public boolean c() {
-      return this.b() || this.c.bJ() && !this.a.O().k();
+      return this.b() || this.c.bJ() && !this.a.N().k();
    }
 
    @Override
@@ -64,7 +64,7 @@ public class cga extends cfb {
    @Override
    public void a() {
       double $$0 = this.a.h(this.c.dA(), this.c.dC(), this.c.dG());
-      boolean $$1 = this.a.P().a(this.c);
+      boolean $$1 = this.a.O().a(this.c);
       if ($$1) {
          this.f++;
       } else {
@@ -72,12 +72,12 @@ public class cga extends cfb {
       }
 
       if (!($$0 > (double)this.j) && this.f >= 5) {
-         this.a.O().m();
+         this.a.N().m();
       } else {
-         this.a.O().a(this.c, this.e);
+         this.a.N().a(this.c, this.e);
       }
 
-      this.a.J().a(this.c, 30.0F, 30.0F);
+      this.a.I().a(this.c, 30.0F, 30.0F);
       if (--this.d == 0) {
          if (!$$1) {
             return;

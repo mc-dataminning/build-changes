@@ -11,7 +11,7 @@ public class ckq extends cjv implements byc {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cfu(this, 1.25));
       this.bF.a(3, new cen(this, 1.0));
@@ -23,7 +23,7 @@ public class ckq extends cjv implements byc {
       this.bF.a(8, new cfw(this));
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 10.0).a(bzl.v, 0.25);
    }
 
@@ -52,7 +52,7 @@ public class ckq extends cjv implements byc {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      cur.a($$0, this.t());
+      cur.a($$0, this.p());
    }
 
    @Override
@@ -62,7 +62,7 @@ public class ckq extends cjv implements byc {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.uo;
    }
 
@@ -72,7 +72,7 @@ public class ckq extends cjv implements byc {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.up;
    }
 
@@ -103,7 +103,7 @@ public class ckq extends cjv implements byc {
 
    @Override
    public boolean e(bxo $$0) {
-      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.n_();
+      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.e_();
    }
 
    @Override
@@ -193,7 +193,7 @@ public class ckq extends cjv implements byc {
    public ckq b(asb $$0, bwu $$1) {
       ckq $$2 = bxn.aR.a($$0, bxm.e);
       if ($$2 != null && $$1 instanceof ckq $$3) {
-         $$2.j(this.ae.h() ? this.t() : $$3.t());
+         $$2.j(this.ae.h() ? this.p() : $$3.p());
       }
 
       return $$2;
@@ -213,14 +213,14 @@ public class ckq extends cjv implements byc {
       this.al.a(bJ, $$0);
    }
 
-   public jg<ckr> t() {
+   public jg<ckr> p() {
       return this.al.a(bJ);
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aH ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aH ? c((kk<T>)$$0, this.p()) : super.a($$0);
    }
 
    @Override

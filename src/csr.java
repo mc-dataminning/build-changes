@@ -42,16 +42,16 @@ public abstract class csr extends ctd {
       return $$0 < $$1 * $$1;
    }
 
-   protected djq.a ak_() {
+   protected djq.a ag_() {
       return djq.a.a;
    }
 
    @Override
-   public void h() {
-      bxe $$0 = this.q();
-      this.o();
+   public void g() {
+      bxe $$0 = this.p();
+      this.n();
       if (this.dV().C || ($$0 == null || !$$0.dQ()) && this.dV().C(this.dv())) {
-         fga $$1 = ctf.a(this, this::b, this.ak_());
+         fga $$1 = ctf.a(this, this::b, this.ag_());
          fgc $$2;
          if ($$1.d() != fga.a.a) {
             $$2 = $$1.g();
@@ -62,8 +62,8 @@ public abstract class csr extends ctd {
          ctf.a(this, 0.2F);
          this.b($$2);
          this.aI();
-         super.h();
-         if (this.g()) {
+         super.g();
+         if (this.f()) {
             this.e(1.0F);
          }
 
@@ -71,13 +71,13 @@ public abstract class csr extends ctd {
             this.b($$1);
          }
 
-         this.s();
+         this.r();
       } else {
          this.aq();
       }
    }
 
-   private void o() {
+   private void n() {
       fgc $$0 = this.dy();
       fgc $$1 = this.dt();
       float $$4;
@@ -87,16 +87,16 @@ public abstract class csr extends ctd {
             this.dV().a(lz.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
          }
 
-         $$4 = this.n();
-      } else {
          $$4 = this.m();
+      } else {
+         $$4 = this.l();
       }
 
       this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
    }
 
-   private void s() {
-      lx $$0 = this.j();
+   private void r() {
+      lx $$0 = this.i();
       fgc $$1 = this.dt();
       if ($$0 != null) {
          this.dV().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
@@ -114,20 +114,20 @@ public abstract class csr extends ctd {
    }
 
    @Override
-   protected boolean g() {
+   protected boolean f() {
       return true;
    }
 
    @Nullable
-   protected lx j() {
+   protected lx i() {
       return lz.ah;
    }
 
-   protected float m() {
+   protected float l() {
       return 0.95F;
    }
 
-   protected float n() {
+   protected float m() {
       return 0.8F;
    }
 

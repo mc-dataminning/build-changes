@@ -144,7 +144,7 @@ public abstract class edn implements dlo.a, edz, eej {
    public int a(ehp.a $$0, int $$1, int $$2) {
       ehp $$3 = this.h.get($$0);
       if ($$3 == null) {
-         if (ac.aU && this instanceof edx) {
+         if (ac.aV && this instanceof edx) {
             n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
          }
 

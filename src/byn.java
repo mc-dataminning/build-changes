@@ -19,7 +19,7 @@ public abstract class byn extends byh {
    }
 
    public boolean gq() {
-      return !this.O().k();
+      return !this.N().k();
    }
 
    public boolean gr() {
@@ -48,7 +48,7 @@ public abstract class byn extends byh {
          float $$1 = 2.0F;
          float $$2 = this.f($$0);
          fgc $$3 = new fgc($$0.dA() - this.dA(), $$0.dC() - this.dC(), $$0.dG() - this.dG()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
-         this.O().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gt());
+         this.N().a(this.dA() + $$3.d, this.dC() + $$3.e, this.dG() + $$3.f, this.gt());
       }
    }
 

@@ -49,7 +49,7 @@ public class aoy {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
@@ -69,7 +69,7 @@ public class aoy {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
          }

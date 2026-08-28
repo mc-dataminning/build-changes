@@ -45,11 +45,11 @@ public interface fvv extends fvi {
 
    void a(boolean var1);
 
-   boolean aO_();
+   boolean aJ_();
 
    @Nullable
-   default fth aP_() {
-      return this.aO_() ? fth.a(this) : null;
+   default fth aK_() {
+      return this.aJ_() ? fth.a(this) : null;
    }
 
    default fyf J() {

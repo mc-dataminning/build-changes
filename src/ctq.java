@@ -15,7 +15,7 @@ public class ctq extends css {
    }
 
    @Override
-   protected dag g() {
+   protected dag f() {
       return dao.wz;
    }
 
@@ -27,7 +27,7 @@ public class ctq extends css {
       ffx $$6 = this.cR().c(4.0, 2.0, 4.0);
       List<byf> $$7 = this.dV().a(byf.class, $$6);
       if (!$$7.isEmpty()) {
-         bxe $$8 = this.z();
+         bxe $$8 = this.y();
 
          for (byf $$9 : $$7) {
             if ($$9.fL()) {
@@ -43,7 +43,7 @@ public class ctq extends css {
                   for (bwi $$13 : $$5) {
                      jg<bwg> $$14 = $$13.c();
                      if ($$14.a().a()) {
-                        $$14.a().a($$0, this, this.q(), $$9, $$13.e(), $$11);
+                        $$14.a().a($$0, this, this.p(), $$9, $$13.e(), $$11);
                      } else {
                         int $$15 = $$13.a($$2x -> (int)($$11 * (double)$$2x * (double)$$4 + 0.5));
                         bwi $$16 = new bwi($$14, $$15, $$13.e(), $$13.f(), $$13.g());

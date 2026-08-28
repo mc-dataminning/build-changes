@@ -26,29 +26,29 @@ public abstract class dyh extends dyo implements buv, bve, bvf {
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return this.e != null ? this.e : this.j();
    }
 
    @Override
-   public xg m_() {
-      return this.ai();
+   public xg P_() {
+      return this.ah();
    }
 
    @Nullable
    @Override
-   public xg ak() {
+   public xg aj() {
       return this.e;
    }
 
    protected abstract xg j();
 
    public boolean d(csi $$0) {
-      return a($$0, this.d, this.m_());
+      return a($$0, this.d, this.P_());
    }
 
    public static boolean a(csi $$0, bvd $$1, xg $$2) {
-      if (!$$0.aa_() && !$$1.a($$0.fb())) {
+      if (!$$0.ak() && !$$1.a($$0.fb())) {
          $$0.a(xg.a("container.isLocked", $$2), true);
          $$0.a(awy.eT, awz.e, 1.0F, 1.0F);
          return false;

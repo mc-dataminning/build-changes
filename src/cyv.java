@@ -7,11 +7,11 @@ public class cyv extends dag {
 
    @Override
    public bvc a(dkj $$0, csi $$1, bvb $$2) {
-      List<bww> $$3 = $$0.a(bww.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bJ() && $$0x.o() instanceof cng);
+      List<bww> $$3 = $$0.a(bww.class, $$1.cR().g(2.0), $$0x -> $$0x != null && $$0x.bJ() && $$0x.n() instanceof cng);
       dak $$4 = $$1.b($$2);
       if (!$$3.isEmpty()) {
          bww $$5 = $$3.get(0);
-         $$5.a($$5.e() - 0.5F);
+         $$5.a($$5.c() - 0.5F);
          $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awy.cD, awz.g, 1.0F, 1.0F);
          $$0.a($$1, egq.y, $$1.dt());
          if ($$1 instanceof asc $$6) {

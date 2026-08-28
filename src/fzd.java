@@ -6,8 +6,8 @@ public class fzd extends fym {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.c = fty.a(xg.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
       this.c(this.c);
    }
@@ -22,7 +22,7 @@ public class fzd extends fym {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.E();
    }
 

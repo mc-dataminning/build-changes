@@ -393,12 +393,12 @@ public abstract class byf extends bxe implements bwx {
       dgz.a($$0, this);
    }
 
-   public boolean n_() {
+   public boolean e_() {
       return false;
    }
 
    public float ek() {
-      return this.n_() ? 0.5F : 1.0F;
+      return this.e_() ? 0.5F : 1.0F;
    }
 
    public final float el() {
@@ -423,11 +423,11 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public boolean eo() {
-      return !this.n_();
+      return !this.e_();
    }
 
    protected boolean ep() {
-      return !this.n_();
+      return !this.e_();
    }
 
    protected int l(int $$0) {
@@ -469,7 +469,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @Override
-   public byf aj() {
+   public byf ai() {
       return this.er();
    }
 
@@ -535,7 +535,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public void a(bxo $$0, dak $$1, dak $$2) {
-      if (!this.dV().A_() && !this.aa_()) {
+      if (!this.dV().A_() && !this.ak()) {
          if (!dak.c($$1, $$2) && !this.ak) {
             dit $$3 = $$2.a(kl.D);
             if (!this.ba() && $$3 != null && $$0 == $$3.b()) {
@@ -682,8 +682,8 @@ public abstract class byf extends bxe implements bwx {
          }
 
          if (this.bK) {
-            this.K();
-            this.q();
+            this.J();
+            this.s();
             this.bK = false;
          }
       } else {
@@ -703,23 +703,23 @@ public abstract class byf extends bxe implements bwx {
       }
    }
 
-   protected void K() {
+   protected void J() {
       if (this.bH.isEmpty()) {
          this.eB();
          this.k(false);
       } else {
          this.k(this.b(bwk.n));
-         this.j();
+         this.m();
       }
    }
 
-   private void j() {
+   private void m() {
       List<lx> $$0 = this.bH.values().stream().filter(bwi::g).map(bwi::a).toList();
       this.al.a(bz, $$0);
       this.al.a(bA, d(this.bH.values()));
    }
 
-   private void q() {
+   private void s() {
       boolean $$0 = this.cn();
       if (this.i(6) != $$0) {
          this.b(6, $$0);
@@ -765,7 +765,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public boolean eA() {
-      return !this.aa_() && this.bJ();
+      return !this.ak() && this.bJ();
    }
 
    public static boolean d(Collection<bwi> $$0) {
@@ -906,7 +906,7 @@ public abstract class byf extends bxe implements bwx {
             bwg $$3 = $$0.c().a();
             $$3.a(this.fa());
             $$3.a(this.fa(), $$0.e());
-            this.u();
+            this.C();
          }
 
          this.c($$0);
@@ -927,11 +927,11 @@ public abstract class byf extends bxe implements bwx {
             }
          }
 
-         this.u();
+         this.C();
       }
    }
 
-   private void u() {
+   private void C() {
       Set<bzh> $$0 = this.fa().b();
 
       for (bzh $$1 : $$0) {
@@ -953,7 +953,7 @@ public abstract class byf extends bxe implements bwx {
             this.E($$2);
          }
       } else if ($$0.a(bzl.y)) {
-         this.i_();
+         this.h_();
       }
    }
 
@@ -1063,7 +1063,7 @@ public abstract class byf extends bxe implements bwx {
          if (this.eH()) {
             if (!this.j($$1)) {
                if ($$6) {
-                  this.b(this.l_());
+                  this.b(this.j_());
                   this.i($$1);
                }
 
@@ -1109,7 +1109,7 @@ public abstract class byf extends bxe implements bwx {
          } else {
             dcl $$4 = $$3.a(kl.I);
             if ($$4 != null && !$$4.f().map($$1::a).orElse(false)) {
-               if ($$1.c() instanceof csq $$5 && $$5.u() > 0) {
+               if ($$1.c() instanceof csq $$5 && $$5.t() > 0) {
                   return 0.0F;
                }
 
@@ -1156,7 +1156,7 @@ public abstract class byf extends bxe implements bwx {
       bxe $$1 = $$0.d();
       if ($$1 instanceof csi $$2) {
          this.a($$2, 100);
-      } else if ($$1 instanceof cmx $$3 && $$3.q()) {
+      } else if ($$1 instanceof cmx $$3 && $$3.m()) {
          if ($$3.d() != null) {
             this.a($$3.d().c(), 100);
          } else {
@@ -1251,7 +1251,7 @@ public abstract class byf extends bxe implements bwx {
             this.fS();
          }
 
-         if (!this.dV().C && this.h_()) {
+         if (!this.dV().C && this.g_()) {
             a.info("Named entity {} died: {}", this, this.eS().a().getString());
          }
 
@@ -1384,7 +1384,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @Nullable
-   protected awx l_() {
+   protected awx j_() {
       return awy.kF;
    }
 
@@ -1427,8 +1427,8 @@ public abstract class byf extends bxe implements bwx {
       return this.bT;
    }
 
-   public boolean d_() {
-      if (this.aa_()) {
+   public boolean k_() {
+      if (this.ak()) {
          return false;
       } else {
          iw $$0 = this.dv();
@@ -1709,7 +1709,7 @@ public abstract class byf extends bxe implements bwx {
    public void b(byte $$0) {
       switch ($$0) {
          case 3:
-            awx $$1 = this.l_();
+            awx $$1 = this.j_();
             if ($$1 != null) {
                this.a($$1, this.fe(), (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             }
@@ -1935,7 +1935,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public float ff() {
-      return this.n_() ? (this.ae.i() - this.ae.i()) * 0.2F + 1.5F : (this.ae.i() - this.ae.i()) * 0.2F + 1.0F;
+      return this.e_() ? (this.ae.i() - this.ae.i()) * 0.2F + 1.5F : (this.ae.i() - this.ae.i()) * 0.2F + 1.0F;
    }
 
    protected boolean fg() {
@@ -1988,7 +1988,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @VisibleForTesting
-   public void s() {
+   public void r() {
       float $$0 = this.fh();
       if (!($$0 <= 1.0E-5F)) {
          fgc $$1 = this.dy();
@@ -2088,7 +2088,7 @@ public abstract class byf extends bxe implements bwx {
          this.a($$5, $$0);
          this.a(byj.a, this.dy());
          fgc $$7 = this.dy();
-         if (this.P && this.d_()) {
+         if (this.P && this.k_()) {
             $$7 = new fgc($$7.d, 0.2, $$7.f);
          }
 
@@ -2117,7 +2117,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    private void n(fgc $$0) {
-      if (this.d_()) {
+      if (this.k_()) {
          this.l($$0);
          this.fm();
       } else {
@@ -2206,7 +2206,7 @@ public abstract class byf extends bxe implements bwx {
 
    protected void A(float $$0) {
       float $$1 = Math.min($$0 * 4.0F, 1.0F);
-      this.aT.a($$1, 0.4F, this.n_() ? 3.0F : 1.0F);
+      this.aT.a($$1, 0.4F, this.e_() ? 3.0F : 1.0F);
    }
 
    private fgc a(fgc $$0, float $$1) {
@@ -2214,7 +2214,7 @@ public abstract class byf extends bxe implements bwx {
       this.i(this.p(this.dy()));
       this.a(byj.a, this.dy());
       fgc $$2 = this.dy();
-      if ((this.P || this.bf) && (this.d_() || this.aw && dtp.a(this))) {
+      if ((this.P || this.bf) && (this.k_() || this.aw && dtp.a(this))) {
          $$2 = new fgc($$2.d, 0.2, $$2.f);
       }
 
@@ -2237,8 +2237,8 @@ public abstract class byf extends bxe implements bwx {
    }
 
    private fgc p(fgc $$0) {
-      if (this.d_()) {
-         this.k();
+      if (this.k_()) {
+         this.j();
          float $$1 = 0.15F;
          double $$2 = azz.a($$0.d, -0.15F, 0.15F);
          double $$3 = azz.a($$0.f, -0.15F, 0.15F);
@@ -2275,10 +2275,10 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       this.I();
-      this.J();
+      this.K();
       if (!this.dV().C) {
          int $$0 = this.eW();
          if ($$0 > 0) {
@@ -2309,13 +2309,13 @@ public abstract class byf extends bxe implements bwx {
             this.eS().c();
          }
 
-         if (this.fR() && !this.L()) {
+         if (this.fR() && !this.M()) {
             this.fS();
          }
       }
 
       if (!this.dQ()) {
-         this.k_();
+         this.d_();
       }
 
       double $$2 = this.dA() - this.K;
@@ -2385,7 +2385,7 @@ public abstract class byf extends bxe implements bwx {
          this.x(0.0F);
       }
 
-      this.u();
+      this.C();
       this.aZ.a();
    }
 
@@ -2481,13 +2481,13 @@ public abstract class byf extends bxe implements bwx {
       return 50.0F;
    }
 
-   public void k_() {
+   public void d_() {
       if (this.bQ > 0) {
          this.bQ--;
       }
 
       if (this.bQ()) {
-         this.S_().e();
+         this.l_().e();
       } else if (!this.di()) {
          this.i(this.dy().c(0.98));
       }
@@ -2550,7 +2550,7 @@ public abstract class byf extends bxe implements bwx {
          if (!$$7 || this.aH() && !($$5 > $$8)) {
             if (!this.bv() || this.aH() && !($$5 > $$8)) {
                if ((this.aH() || $$7 && $$5 <= $$8) && this.bQ == 0) {
-                  this.s();
+                  this.r();
                   this.bQ = 10;
                }
             } else {
@@ -2572,7 +2572,7 @@ public abstract class byf extends bxe implements bwx {
       ffx $$9 = this.cR();
       fgc $$10 = new fgc((double)this.bg, (double)this.bh, (double)this.bi);
       if (this.b(bwk.B) || this.b(bwk.y)) {
-         this.k();
+         this.j();
       }
 
       label122: {
@@ -2616,7 +2616,7 @@ public abstract class byf extends bxe implements bwx {
          this.a($$9, this.cR());
       }
 
-      this.o();
+      this.n();
       $$4.c();
       if (this.dV() instanceof asb $$13 && this.fr() && this.bk()) {
          this.a($$13, this.dW().i(), 1.0F);
@@ -2672,7 +2672,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @Override
-   protected void o() {
+   protected void n() {
       List<bxe> $$0 = this.dV().i(this, this.cR());
       if (!$$0.isEmpty()) {
          if (this.dV() instanceof asb $$1) {
@@ -2742,13 +2742,13 @@ public abstract class byf extends bxe implements bwx {
    }
 
    @Override
-   public void r() {
-      super.r();
-      this.k();
+   public void q() {
+      super.q();
+      this.j();
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return this.bj;
    }
 
@@ -2763,9 +2763,9 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public void a(coo $$0) {
-      bxe $$1 = $$0.q();
+      bxe $$1 = $$0.p();
       if ($$1 instanceof asc) {
-         aq.R.a((asc)$$1, $$0.f(), this);
+         aq.R.a((asc)$$1, $$0.e(), this);
       }
    }
 
@@ -2810,7 +2810,7 @@ public abstract class byf extends bxe implements bwx {
 
    @Override
    public boolean bG() {
-      return this.bJ() && !this.aa_() && !this.d_();
+      return this.bJ() && !this.ak() && !this.k_();
    }
 
    @Override
@@ -2849,7 +2849,7 @@ public abstract class byf extends bxe implements bwx {
       this.bR = $$0;
    }
 
-   public void e_() {
+   public void f_() {
    }
 
    public void O_() {
@@ -2918,11 +2918,11 @@ public abstract class byf extends bxe implements bwx {
    protected void a(dak $$0) {
       $$0.b(this.dV(), this, this.fC());
       if (--this.bn == 0 && !this.dV().C && !$$0.x()) {
-         this.P_();
+         this.v();
       }
    }
 
-   private void J() {
+   private void K() {
       this.bX = this.bW;
       if (this.ck()) {
          this.bW = Math.min(1.0F, this.bW + 0.09F);
@@ -3002,7 +3002,7 @@ public abstract class byf extends bxe implements bwx {
       }
    }
 
-   protected void P_() {
+   protected void v() {
       if (!this.dV().C || this.fz()) {
          bvb $$0 = this.fA();
          if (!this.bm.equals(this.b($$0))) {
@@ -3138,7 +3138,7 @@ public abstract class byf extends bxe implements bwx {
          }
 
          if (this instanceof byn $$14) {
-            $$14.O().m();
+            $$14.N().m();
          }
 
          return true;
@@ -3225,7 +3225,7 @@ public abstract class byf extends bxe implements bwx {
       this.a_((double)$$0.u() + 0.5, (double)$$0.v() + 0.6875, (double)$$0.w() + 0.5);
    }
 
-   private boolean L() {
+   private boolean M() {
       return this.fP().map($$0 -> this.dV().a_($$0).b() instanceof dnh).orElse(false);
    }
 
@@ -3300,7 +3300,7 @@ public abstract class byf extends bxe implements bwx {
    }
 
    public final boolean e(dak $$0) {
-      if (this.bJ() && !this.aa_()) {
+      if (this.bJ() && !this.ak()) {
          dit $$1 = $$0.a(kl.D);
          if ($$1 != null && $$1.g()) {
             bxo $$2 = $$1.b();
@@ -3360,7 +3360,7 @@ public abstract class byf extends bxe implements bwx {
 
    @Override
    public boolean dJ() {
-      if (this.aa_()) {
+      if (this.ak()) {
          return false;
       } else {
          for (bxo $$0 : bxp.i) {

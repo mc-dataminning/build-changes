@@ -24,7 +24,7 @@ public class gzg extends gxu<coi, hfk> {
    public void a(coi $$0, hfk $$1, float $$2) {
       super.a($$0, $$1, $$2);
       jc $$3 = $$0.cO();
-      coj $$4 = $$0.m().a();
+      coj $$4 = $$0.l().a();
       $$1.a = $$3;
       $$1.b = $$4;
       int $$5 = $$4.b();

@@ -13,8 +13,8 @@ public class cgz extends chb {
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gu()) {
-         byf $$0 = this.a.e();
+      if (this.a.m() && !this.a.gu()) {
+         byf $$0 = this.a.T_();
          if ($$0 == null) {
             return false;
          } else {
@@ -30,7 +30,7 @@ public class cgz extends chb {
    @Override
    public void d() {
       this.e.g(this.b);
-      byf $$0 = this.a.e();
+      byf $$0 = this.a.T_();
       if ($$0 != null) {
          this.c = $$0.ev();
       }

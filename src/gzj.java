@@ -16,8 +16,8 @@ public class gzj extends gzb<cpm, hfn, gin> {
 
    public void a(cpm $$0, hfn $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.m() + $$1.v;
-      $$1.b = $$0.j();
+      $$1.a = (float)$$0.p() + $$1.v;
+      $$1.b = $$0.m();
    }
 
    protected void a(hfn $$0, fld $$1) {

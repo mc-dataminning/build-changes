@@ -12,7 +12,7 @@ public interface cxs {
       dfg<?> $$2 = this.d();
       if ($$2 != null) {
          $$0.a($$2, $$1);
-         if (!$$2.b().ar_()) {
+         if (!$$2.b().am_()) {
             $$0.a(Collections.singleton($$2));
             this.a(null);
          }
@@ -20,7 +20,7 @@ public interface cxs {
    }
 
    default boolean a(asc $$0, dfg<?> $$1) {
-      if (!$$1.b().ar_() && $$0.y().O().c(dkf.y) && !$$0.J().b($$1.a())) {
+      if (!$$1.b().am_() && $$0.x().O().c(dkf.y) && !$$0.I().b($$1.a())) {
          return false;
       } else {
          this.a($$1);

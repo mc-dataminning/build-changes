@@ -17,7 +17,7 @@ public record dg(boolean d, boolean e) implements ca {
 
    @Override
    public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
-      return !($$0 instanceof ctz $$3) ? false : $$3.gH() == this.d && $$3.gG() == this.e;
+      return !($$0 instanceof ctz $$3) ? false : $$3.gK() == this.d && $$3.gJ() == this.e;
    }
 
    public boolean b() {

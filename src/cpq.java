@@ -37,7 +37,7 @@ public class cpq extends cjs implements cpc {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cfj(this, csi.class, 8.0F, 0.02F, true));
       this.bF.a(4, new cpq.a());
       this.bF.a(7, new cpq.f());
@@ -58,25 +58,25 @@ public class cpq extends cjs implements cpc {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.xB;
    }
 
    @Override
-   public void T() {
-      if (!this.gw()) {
-         super.T();
+   public void S() {
+      if (!this.gz()) {
+         super.S();
       }
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.xH;
    }
 
    @Override
    protected awx e(bvt $$0) {
-      return this.gw() ? awy.xJ : awy.xI;
+      return this.gz() ? awy.xJ : awy.xI;
    }
 
    @Override
@@ -87,12 +87,12 @@ public class cpq extends cjs implements cpc {
       $$0.a(c, (byte)16);
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 30.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 30.0);
    }
 
    @Override
-   protected cdz I() {
+   protected cdz H() {
       return new cpq.b(this);
    }
 
@@ -107,20 +107,20 @@ public class cpq extends cjs implements cpc {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("AttachFace", jc.k, this.n());
+      $$0.a("AttachFace", jc.k, this.u());
       $$0.a("Peek", this.al.a(b).byteValue());
       $$0.a("Color", this.al.a(c).byteValue());
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (!this.dV().C && !this.bY() && !this.a(this.dv(), this.n())) {
-         this.x();
+   public void g() {
+      super.g();
+      if (!this.dV().C && !this.bY() && !this.a(this.dv(), this.u())) {
+         this.gw();
       }
 
-      if (this.gu()) {
-         this.gv();
+      if (this.gx()) {
+         this.gy();
       }
 
       if (this.dV().C) {
@@ -132,19 +132,19 @@ public class cpq extends cjs implements cpc {
       }
    }
 
-   private void x() {
+   private void gw() {
       jc $$0 = this.h(this.dv());
       if ($$0 != null) {
          this.a($$0);
       } else {
-         this.m();
+         this.p();
       }
    }
 
    @Override
    protected ffx c(fgc $$0) {
       float $$1 = L(this.bT);
-      jc $$2 = this.n().g();
+      jc $$2 = this.u().g();
       return a(this.el(), $$2, $$1, $$0);
    }
 
@@ -152,9 +152,9 @@ public class cpq extends cjs implements cpc {
       return 0.5F - azz.a((0.5F + $$0) * (float) Math.PI) * 0.5F;
    }
 
-   private boolean gu() {
+   private boolean gx() {
       this.bS = this.bT;
-      float $$0 = (float)this.gy() * 0.01F;
+      float $$0 = (float)this.gB() * 0.01F;
       if (this.bT == $$0) {
          return false;
       } else {
@@ -168,11 +168,11 @@ public class cpq extends cjs implements cpc {
       }
    }
 
-   private void gv() {
+   private void gy() {
       this.av();
       float $$0 = L(this.bT);
       float $$1 = L(this.bS);
-      jc $$2 = this.n().g();
+      jc $$2 = this.u().g();
       float $$3 = ($$0 - $$1) * this.el();
       if (!($$3 <= 0.0F)) {
          for (bxe $$5 : this.dV().a(this, a(this.el(), $$2, $$1, $$0, this.dt()), bxl.f.and($$0x -> !$$0x.z(this)))) {
@@ -230,7 +230,7 @@ public class cpq extends cjs implements cpc {
    @Override
    public void a(byj $$0, fgc $$1) {
       if ($$0 == byj.d) {
-         this.m();
+         this.p();
       } else {
          super.a($$0, $$1);
       }
@@ -305,7 +305,7 @@ public class cpq extends cjs implements cpc {
       }
    }
 
-   protected boolean m() {
+   protected boolean p() {
       if (!this.gj() && this.bJ()) {
          iw $$0 = this.dv();
 
@@ -333,13 +333,13 @@ public class cpq extends cjs implements cpc {
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return null;
    }
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      if (this.gw()) {
+      if (this.gz()) {
          bxe $$3 = $$1.c();
          if ($$3 instanceof csq) {
             return false;
@@ -350,11 +350,11 @@ public class cpq extends cjs implements cpc {
          return false;
       } else {
          if ((double)this.eG() < (double)this.eU() * 0.5 && this.ae.a(4) == 0) {
-            this.m();
+            this.p();
          } else if ($$1.a(axo.j)) {
             bxe $$4 = $$1.c();
             if ($$4 != null && $$4.an() == bxn.be) {
-               this.gx();
+               this.gA();
             }
          }
 
@@ -362,20 +362,20 @@ public class cpq extends cjs implements cpc {
       }
    }
 
-   private boolean gw() {
-      return this.gy() == 0;
+   private boolean gz() {
+      return this.gB() == 0;
    }
 
-   private void gx() {
+   private void gA() {
       fgc $$0 = this.dt();
       ffx $$1 = this.cR();
-      if (!this.gw() && this.m()) {
+      if (!this.gz() && this.p()) {
          int $$2 = this.dV().a(bxn.bd, $$1.g(8.0), bxe::bJ).size();
          float $$3 = (float)($$2 - 1) / 5.0F;
          if (!(this.dV().A.i() < $$3)) {
             cpq $$4 = bxn.bd.a(this.dV(), bxm.e);
             if ($$4 != null) {
-               $$4.a(this.q());
+               $$4.a(this.gu());
                $$4.f($$0);
                this.dV().b($$4);
             }
@@ -388,7 +388,7 @@ public class cpq extends cjs implements cpc {
       return this.bJ();
    }
 
-   public jc n() {
+   public jc u() {
       return this.al.a(a);
    }
 
@@ -405,7 +405,7 @@ public class cpq extends cjs implements cpc {
       super.a($$0);
    }
 
-   private int gy() {
+   private int gB() {
       return this.al.a(b);
    }
 
@@ -437,12 +437,12 @@ public class cpq extends cjs implements cpc {
    }
 
    @Override
-   public int ad() {
+   public int ac() {
       return 180;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 180;
    }
 
@@ -475,12 +475,12 @@ public class cpq extends cjs implements cpc {
       this.al.a(c, $$0.<Byte>map($$0x -> (byte)$$0x.a()).orElse((byte)16));
    }
 
-   public Optional<czi> q() {
-      return Optional.ofNullable(this.t());
+   public Optional<czi> gu() {
+      return Optional.ofNullable(this.gv());
    }
 
    @Nullable
-   public czi t() {
+   public czi gv() {
       byte $$0 = this.al.a(c);
       return $$0 != 16 && $$0 <= 15 ? czi.a($$0) : null;
    }
@@ -488,7 +488,7 @@ public class cpq extends cjs implements cpc {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aS ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aS ? c((kk<T>)$$0, this.gv()) : super.a($$0);
    }
 
    @Override
@@ -516,7 +516,7 @@ public class cpq extends cjs implements cpc {
 
       @Override
       public boolean b() {
-         byf $$0 = cpq.this.f();
+         byf $$0 = cpq.this.e();
          return $$0 != null && $$0.bJ() ? cpq.this.dV().an() != buz.a : false;
       }
 
@@ -540,14 +540,14 @@ public class cpq extends cjs implements cpc {
       public void a() {
          if (cpq.this.dV().an() != buz.a) {
             this.b--;
-            byf $$0 = cpq.this.f();
+            byf $$0 = cpq.this.e();
             if ($$0 != null) {
-               cpq.this.J().a($$0, 180.0F, 180.0F);
+               cpq.this.I().a($$0, 180.0F, 180.0F);
                double $$1 = cpq.this.g((bxe)$$0);
                if ($$1 < 400.0) {
                   if (this.b <= 0) {
                      this.b = 20 + cpq.this.ae.a(10) * 20 / 2;
-                     cpq.this.dV().b(new ctg(cpq.this.dV(), cpq.this, $$0, cpq.this.n().o()));
+                     cpq.this.dV().b(new ctg(cpq.this.dV(), cpq.this, $$0, cpq.this.u().o()));
                      cpq.this.a(awy.xL, 2.0F, (cpq.this.ae.i() - cpq.this.ae.i()) * 0.2F + 1.0F);
                   }
                } else {
@@ -582,7 +582,7 @@ public class cpq extends cjs implements cpc {
 
       @Override
       protected ffx a(double $$0) {
-         jc $$1 = ((cpq)this.e).n();
+         jc $$1 = ((cpq)this.e).u();
          if ($$1.o() == jc.a.a) {
             return this.e.cR().c(4.0, $$0, $$0);
          } else {
@@ -602,7 +602,7 @@ public class cpq extends cjs implements cpc {
 
       @Override
       protected Optional<Float> i() {
-         jc $$0 = cpq.this.n().g();
+         jc $$0 = cpq.this.u().g();
          Vector3f $$1 = $$0.b().transform(new Vector3f(cpq.bQ));
          kb $$2 = $$0.q();
          Vector3f $$3 = new Vector3f((float)$$2.u(), (float)$$2.v(), (float)$$2.w());
@@ -636,7 +636,7 @@ public class cpq extends cjs implements cpc {
 
       @Override
       protected ffx a(double $$0) {
-         jc $$1 = ((cpq)this.e).n();
+         jc $$1 = ((cpq)this.e).u();
          if ($$1.o() == jc.a.a) {
             return this.e.cR().c(4.0, $$0, $$0);
          } else {
@@ -650,12 +650,12 @@ public class cpq extends cjs implements cpc {
 
       @Override
       public boolean b() {
-         return cpq.this.f() == null && cpq.this.ae.a(b(40)) == 0 && cpq.this.a(cpq.this.dv(), cpq.this.n());
+         return cpq.this.e() == null && cpq.this.ae.a(b(40)) == 0 && cpq.this.a(cpq.this.dv(), cpq.this.u());
       }
 
       @Override
       public boolean c() {
-         return cpq.this.f() == null && this.b > 0;
+         return cpq.this.e() == null && this.b > 0;
       }
 
       @Override
@@ -666,7 +666,7 @@ public class cpq extends cjs implements cpc {
 
       @Override
       public void e() {
-         if (cpq.this.f() == null) {
+         if (cpq.this.e() == null) {
             cpq.this.b(0);
          }
       }

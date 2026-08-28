@@ -11,7 +11,7 @@ public class gyh extends hae<bxu> {
    }
 
    protected int a(bxu $$0, iw $$1) {
-      int $$2 = (int)azz.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
+      int $$2 = (int)azz.b(0.0F, 15.0F, 1.0F - (float)$$0.u() / 10.0F);
       return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

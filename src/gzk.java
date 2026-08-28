@@ -34,6 +34,6 @@ public class gzk extends gzb<ckq, hfo, gio> {
    public void a(ckq $$0, hfo $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.a(bxo.h).v();
-      $$1.b = $$0.t().a();
+      $$1.b = $$0.p().a();
    }
 }

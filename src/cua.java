@@ -86,15 +86,15 @@ public class cua extends ezm {
    }
 
    public static boolean a(ctz $$0) {
-      return $$0.bJ() && $$0.gE() && $$0.ew() <= 2400;
+      return $$0.bJ() && $$0.gH() && $$0.ew() <= 2400;
    }
 
    @Nullable
    public cty a(asc $$0, iw $$1) {
-      if ($$0.aa_()) {
+      if ($$0.ak()) {
          return null;
       } else {
-         asb $$2 = $$0.y();
+         asb $$2 = $$0.x();
          if ($$2.O().c(dkf.D)) {
             return null;
          } else {

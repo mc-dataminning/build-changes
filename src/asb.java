@@ -567,7 +567,7 @@ public class asb extends dkj implements asa, dli {
       $$0.af++;
       $$1.a(() -> mh.f.b($$0.an()).toString());
       $$1.f("tickNonPassenger");
-      $$0.h();
+      $$0.g();
       $$1.c();
 
       for (bxe $$2 : $$0.cY()) {
@@ -584,7 +584,7 @@ public class asb extends dkj implements asa, dli {
          brm $$2 = brl.a();
          $$2.a(() -> mh.f.b($$1.an()).toString());
          $$2.f("tickPassenger");
-         $$1.r();
+         $$1.q();
          $$2.c();
 
          for (bxe $$3 : $$1.cY()) {
@@ -830,7 +830,7 @@ public class asb extends dkj implements asa, dli {
          List<chp> $$7 = new ObjectArrayList();
 
          for (byh $$8 : this.W) {
-            chp $$9 = $$8.O();
+            chp $$9 = $$8.N();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -1076,12 +1076,10 @@ public class asb extends dkj implements asa, dli {
       return this.p().J().w().b(ezv.a($$0));
    }
 
-   @Override
    public void a(ezt $$0, ezv $$1) {
       this.p().J().w().a(ezv.a($$0), $$1);
    }
 
-   @Override
    public ezt x() {
       return this.p().J().w().a(ezu.b).a();
    }
@@ -1237,8 +1235,8 @@ public class asb extends dkj implements asa, dli {
       ayx $$2 = ayx.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
       for (bxe $$3 : $$1) {
-         xg $$4 = $$3.ak();
-         xg $$5 = $$3.m_();
+         xg $$4 = $$3.aj();
+         xg $$5 = $$3.P_();
          $$2.a($$3.dA(), $$3.dC(), $$3.dG(), $$3.cG(), mh.f.b($$3.an()), $$3.bJ(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
@@ -1462,7 +1460,7 @@ public class asb extends dkj implements asa, dli {
          }
 
          if ($$0 instanceof cng $$4) {
-            for (cnd $$5 : $$4.q()) {
+            for (cnd $$5 : $$4.gq()) {
                asb.this.ad.put($$5.ao(), $$5);
             }
          }
@@ -1487,7 +1485,7 @@ public class asb extends dkj implements asa, dli {
          }
 
          if ($$0 instanceof cng $$4) {
-            for (cnd $$5 : $$4.q()) {
+            for (cnd $$5 : $$4.gq()) {
                asb.this.ad.remove($$5.ao());
             }
          }

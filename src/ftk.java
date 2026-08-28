@@ -593,7 +593,7 @@ public class ftk {
 
    private void d(dak $$0, int $$1, int $$2) {
       gqm $$3 = this.d.t;
-      float $$4 = $$3 == null ? 0.0F : $$3.gF().a($$0, this.d.av().a(true));
+      float $$4 = $$3 == null ? 0.0F : $$3.gG().a($$0, this.d.av().a(true));
       if ($$4 > 0.0F) {
          int $$5 = $$2 + azz.d(16.0F * (1.0F - $$4));
          int $$6 = $$5 + azz.f(16.0F * $$4);

@@ -7,7 +7,7 @@ public interface cva extends buv, bve {
    ffx cR();
 
    @Nullable
-   alq<fay> q();
+   alq<fay> r();
 
    void a(@Nullable alq<fay> var1);
 
@@ -25,12 +25,12 @@ public interface cva extends buv, bve {
 
    @Override
    default boolean c() {
-      return this.am_();
+      return this.h();
    }
 
    default void a(ua $$0, ji.a $$1) {
-      if (this.q() != null) {
-         $$0.a("LootTable", this.q().a().toString());
+      if (this.r() != null) {
+         $$0.a("LootTable", this.r().a().toString());
          if (this.s() != 0L) {
             $$0.a("LootTableSeed", this.s());
          }
@@ -66,10 +66,10 @@ public interface cva extends buv, bve {
 
    default void f(@Nullable csi $$0) {
       MinecraftServer $$1 = this.dV().p();
-      if (this.q() != null && $$1 != null) {
-         fay $$2 = $$1.bc().b(this.q());
+      if (this.r() != null && $$1 != null) {
+         fay $$2 = $$1.bc().b(this.r());
          if ($$0 != null) {
-            aq.Q.a((asc)$$0, this.q());
+            aq.Q.a((asc)$$0, this.r());
          }
 
          this.a(null);
@@ -82,12 +82,12 @@ public interface cva extends buv, bve {
       }
    }
 
-   default void al_() {
+   default void ah_() {
       this.f(null);
       this.t().clear();
    }
 
-   default boolean am_() {
+   default boolean h() {
       for (dak $$0 : this.t()) {
          if (!$$0.f()) {
             return false;

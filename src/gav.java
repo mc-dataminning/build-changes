@@ -83,7 +83,7 @@ public class gav extends gaf<gav.b> {
    }
 
    private boolean a(csi $$0) {
-      return $$0.gG() && this.af;
+      return $$0.gH() && this.af;
    }
 
    private void a(cvs $$0, boolean $$1, ji.a $$2) {
@@ -276,9 +276,9 @@ public class gav extends gaf<gav.b> {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       if (this.m.t.fV()) {
-         super.aT_();
+         super.aO_();
          this.Y = new fuh(this.p, this.C + 82, this.D + 6, 80, 9, xg.c("itemGroup.search"));
          this.Y.f(50);
          this.Y.d(false);
@@ -314,8 +314,8 @@ public class gav extends gaf<gav.b> {
    }
 
    @Override
-   public void aK_() {
-      super.aK_();
+   public void aF_() {
+      super.aF_();
       if (this.m.t != null && this.m.t.gj() != null) {
          this.m.t.bQ.b(this.ab);
       }
@@ -367,7 +367,7 @@ public class gav extends gaf<gav.b> {
 
                return true;
             } else {
-               return this.Y.aO_() && this.Y.i() && $$0 != 256 ? true : super.a($$0, $$1, $$2);
+               return this.Y.aJ_() && this.Y.i() && $$0 != 256 ? true : super.a($$0, $$1, $$2);
             }
          }
       }

@@ -92,7 +92,7 @@ public class tn implements tp, tq {
 
       public tn c(CommandContext<ek> $$0) {
          ek $$1 = (ek)$$0.getSource();
-         return this.a($$1, tn.a, () -> tj.a(iw.a((jq)$$1.d()), $$1.i().L(), $$1.e()));
+         return this.a($$1, tn.a, () -> tj.a(iw.a((jq)$$1.d()), $$1.i().K(), $$1.e()));
       }
 
       public tn a(CommandContext<ek> $$0, boolean $$1) {

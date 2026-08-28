@@ -111,7 +111,7 @@ public class hdc extends gyw<gqj, hfq, git> {
       $$1.k = $$0.eX();
       $$1.l = $$0.fC();
       $$1.aF = $$0.aI;
-      $$1.m = $$0.aa_();
+      $$1.m = $$0.ak();
       $$1.n = $$0.a(csk.g);
       $$1.o = $$0.a(csk.b);
       $$1.p = $$0.a(csk.e);
@@ -122,7 +122,7 @@ public class hdc extends gyw<gqj, hfq, git> {
       b($$0, $$1, $$2);
       c($$0, $$1, $$2);
       if ($$1.z < 100.0) {
-         fhh $$3 = $$0.gz();
+         fhh $$3 = $$0.gA();
          fgz $$4 = $$3.a(fgy.c);
          if ($$4 != null) {
             fhd $$5 = $$3.d($$0, $$4);
@@ -184,7 +184,7 @@ public class hdc extends gyw<gqj, hfq, git> {
 
    @Nullable
    private static ckp.b a(gqj $$0, boolean $$1) {
-      ua $$2 = $$1 ? $$0.gB() : $$0.gC();
+      ua $$2 = $$1 ? $$0.gC() : $$0.gD();
       if ($$2.j()) {
          return null;
       } else {

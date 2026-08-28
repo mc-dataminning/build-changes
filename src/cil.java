@@ -20,7 +20,7 @@ public class cil extends cin<cru> {
          for (int $$7 = -2; $$7 <= 2; $$7++) {
             for (int $$8 = -4; $$8 <= 4; $$8++) {
                iw $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gC().b().a().e().contains($$0.a_($$9).b())) {
+               if ($$1.gF().b().a().e().contains($$0.a_($$9).b())) {
                   $$4.add(jf.a($$2, $$9));
                }
             }

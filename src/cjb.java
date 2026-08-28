@@ -53,6 +53,6 @@ public class cjb {
    @Nullable
    public static iw a(byn $$0, int $$1, boolean $$2, iw $$3) {
       iw $$4 = cjc.a($$0, $$1, $$0.dY(), $$3);
-      return !ciz.a($$4, $$0) && !ciz.a($$2, $$0, $$4) && !ciz.a($$0.O(), $$4) ? $$4 : null;
+      return !ciz.a($$4, $$0) && !ciz.a($$2, $$0, $$4) && !ciz.a($$0.N(), $$4) ? $$4 : null;
    }
 }

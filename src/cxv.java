@@ -37,7 +37,7 @@ public class cxv extends cxz {
    @Override
    protected void c_(dak $$0) {
       if (this.g > 0) {
-         $$0.a(this.b.dV(), this.b, this.g);
+         $$0.a(this.b, this.g);
       }
 
       if (this.c instanceof cxs $$1) {
@@ -64,7 +64,7 @@ public class cxv extends cxz {
    @Override
    public void a(csi $$0, dak $$1) {
       this.c_($$1);
-      dep.a $$2 = this.a.aE_();
+      dep.a $$2 = this.a.az_();
       dep $$3 = $$2.a();
       int $$4 = $$2.b();
       int $$5 = $$2.c();
@@ -72,7 +72,7 @@ public class cxv extends cxz {
 
       for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
          for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
-            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.aA_();
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.av_();
             dak $$10 = this.a.a($$9);
             dak $$11 = $$6.get($$8 + $$7 * $$3.f());
             if (!$$10.f()) {

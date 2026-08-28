@@ -25,7 +25,7 @@ public class cgb<T extends cpk & cpo> extends cfb {
 
    @Override
    public boolean b() {
-      return this.a.f() == null ? false : this.h();
+      return this.a.e() == null ? false : this.h();
    }
 
    protected boolean h() {
@@ -34,7 +34,7 @@ public class cgb<T extends cpk & cpo> extends cfb {
 
    @Override
    public boolean c() {
-      return (this.b() || !this.a.O().k()) && this.h();
+      return (this.b() || !this.a.N().k()) && this.h();
    }
 
    @Override
@@ -59,10 +59,10 @@ public class cgb<T extends cpk & cpo> extends cfb {
 
    @Override
    public void a() {
-      byf $$0 = this.a.f();
+      byf $$0 = this.a.e();
       if ($$0 != null) {
          double $$1 = this.a.h($$0.dA(), $$0.dC(), $$0.dG());
-         boolean $$2 = this.a.P().a($$0);
+         boolean $$2 = this.a.O().a($$0);
          boolean $$3 = this.f > 0;
          if ($$2 != $$3) {
             this.f = 0;
@@ -75,10 +75,10 @@ public class cgb<T extends cpk & cpo> extends cfb {
          }
 
          if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.O().m();
+            this.a.N().m();
             this.i++;
          } else {
-            this.a.O().a($$0, this.b);
+            this.a.N().a($$0, this.b);
             this.i = -1;
          }
 
@@ -101,14 +101,14 @@ public class cgb<T extends cpk & cpo> extends cfb {
                this.h = true;
             }
 
-            this.a.L().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
+            this.a.K().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
             if (this.a.dl() instanceof byh $$4) {
                $$4.a($$0, 30.0F, 30.0F);
             }
 
             this.a.a($$0, 30.0F, 30.0F);
          } else {
-            this.a.J().a($$0, 30.0F, 30.0F);
+            this.a.I().a($$0, 30.0F, 30.0F);
          }
 
          if (this.a.fz()) {

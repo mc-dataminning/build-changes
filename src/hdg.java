@@ -5,7 +5,7 @@ public class hdg extends hfe {
    public gib.a h = gib.a.a;
    public final hhi i = new hhi();
 
-   public hhi aY_() {
+   public hhi aT_() {
       return this.e == bxw.b ? this.g : this.i;
    }
 

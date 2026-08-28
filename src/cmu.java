@@ -26,13 +26,13 @@ public class cmu extends cjv {
    public final bwv bM = new bwv();
    public final bwv bN = new bwv();
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.v, 0.1F).a(bzl.s, 14.0);
    }
 
    public cmu(bxn<? extends cjv> $$0, dkj $$1) {
       super($$0, $$1);
-      this.O().a(true);
+      this.N().a(true);
       this.a(eyr.j, -1.0F);
       this.a(eyr.g, -1.0F);
       this.a(eyr.y, -1.0F);
@@ -46,15 +46,15 @@ public class cmu extends cjv {
    }
 
    @Override
-   public void G() {
-      super.G();
+   public void F() {
+      super.F();
       if (this.bX() || this.bi()) {
          this.a(eyr.j, 0.0F);
       }
    }
 
    @Override
-   public void H() {
+   public void G() {
       this.a(eyr.j, -1.0F);
    }
 
@@ -63,16 +63,16 @@ public class cmu extends cjv {
       return this.gH() == cmu.a.f ? bU.a(this.ek()) : super.e($$0);
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.gH() == cmu.a.e;
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.bs.c(chh.S).orElse(false);
    }
 
    public boolean gu() {
-      return !this.x() && !this.gr() && !this.bi() && !this.gE() && this.aH() && !this.bY() && !this.T_();
+      return !this.u() && !this.gr() && !this.bi() && !this.gE() && this.aH() && !this.bY() && !this.Q_();
    }
 
    public boolean gv() {
@@ -121,7 +121,7 @@ public class cmu extends cjv {
                this.bN.b(this.af);
          }
 
-         this.i_();
+         this.h_();
       }
 
       super.a($$0);
@@ -166,7 +166,7 @@ public class cmu extends cjv {
    }
 
    private cmu gJ() {
-      this.a(awy.zv, 1.0F, this.n_() ? 1.3F : 1.0F);
+      this.a(awy.zv, 1.0F, this.e_() ? 1.3F : 1.0F);
       return this;
    }
 
@@ -196,13 +196,13 @@ public class cmu extends cjv {
    }
 
    boolean gx() {
-      return !this.gr() && !this.x() && !this.n_() && !this.bi() && this.aH() && !this.bY() && this.h(this.gy().e());
+      return !this.gr() && !this.u() && !this.e_() && !this.bi() && this.aH() && !this.bY() && this.h(this.gy().e());
    }
 
    private boolean h(iw $$0) {
       return this.dV().a_($$0).a(axn.cy)
          && this.gM().noneMatch($$1 -> jf.a(this.dV().aj(), $$0).equals($$1))
-         && Optional.ofNullable(this.O().a($$0, 1)).map(eyo::j).orElse(false);
+         && Optional.ofNullable(this.N().a($$0, 1)).map(eyo::j).orElse(false);
    }
 
    private void gL() {
@@ -210,7 +210,7 @@ public class cmu extends cjv {
          iw $$2 = this.gy();
          this.a($$0, fap.aG, ($$1x, $$2x) -> {
             coo $$3 = new coo(this.dV(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$2x);
-            $$3.j();
+            $$3.i();
             $$1x.b($$3);
          });
          this.a(awy.zu, 1.0F, 1.0F);
@@ -254,8 +254,8 @@ public class cmu extends cjv {
    }
 
    @Override
-   public void s() {
-      super.s();
+   public void r() {
+      super.r();
       double $$0 = this.bC.c();
       if ($$0 > 0.0) {
          double $$1 = this.dy().j();
@@ -269,7 +269,7 @@ public class cmu extends cjv {
    public void a(asb $$0, cjv $$1) {
       dak $$2 = new dak(dao.kU);
       coo $$3 = new coo($$0, this.dt().a(), this.dt().b(), this.dt().c(), $$2);
-      $$3.j();
+      $$3.i();
       this.a($$0, $$1, null);
       this.a(awy.zB, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 0.5F);
       $$0.b($$3);
@@ -282,7 +282,7 @@ public class cmu extends cjv {
    }
 
    @Override
-   public void h() {
+   public void g() {
       switch (this.gH()) {
          case e:
             this.gN();
@@ -291,7 +291,7 @@ public class cmu extends cjv {
             this.a(this.bM).gL();
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
@@ -323,7 +323,7 @@ public class cmu extends cjv {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return Set.of(cmu.a.f, cmu.a.e).contains(this.gH()) ? null : awy.zr;
    }
 
@@ -333,12 +333,12 @@ public class cmu extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.zt;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 50;
    }
 
@@ -394,8 +394,8 @@ public class cmu extends cjv {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 

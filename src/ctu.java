@@ -48,7 +48,7 @@ public abstract class ctu extends csr implements cta {
    protected void a(ffz $$0) {
       super.a($$0);
       if (this.dV() instanceof asb $$1) {
-         byf $$4 = this.q() instanceof byf $$3 ? $$3 : null;
+         byf $$4 = this.p() instanceof byf $$3 ? $$3 : null;
          bxe $$5 = $$0.a();
          if ($$4 != null) {
             $$4.B($$5);
@@ -90,38 +90,38 @@ public abstract class ctu extends csr implements cta {
    }
 
    @Override
-   protected boolean g() {
+   protected boolean f() {
       return false;
    }
 
    @Override
-   public dak f() {
+   public dak e() {
       return dak.l;
    }
 
    @Override
-   protected float m() {
+   protected float l() {
       return 1.0F;
    }
 
    @Override
-   protected float n() {
-      return this.m();
+   protected float m() {
+      return this.l();
    }
 
    @Nullable
    @Override
-   protected lx j() {
+   protected lx i() {
       return null;
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.dV().C && this.dB() > this.dV().ao() + 30) {
          this.a(this.dt());
          this.aq();
       } else {
-         super.h();
+         super.g();
       }
    }
 }

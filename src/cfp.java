@@ -32,11 +32,11 @@ public class cfp extends cfb {
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      return !this.a.N().k();
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 }

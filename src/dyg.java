@@ -76,26 +76,26 @@ public class dyg extends dzx {
 
    @Override
    public void c_(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
-         this.e.a($$0, this.i(), this.aC_(), this.m());
+      if (!this.p && !$$0.ak()) {
+         this.e.a($$0, this.i(), this.ax_(), this.m());
       }
    }
 
    @Override
    public void c(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
-         this.e.b($$0, this.i(), this.aC_(), this.m());
+      if (!this.p && !$$0.ak()) {
+         this.e.b($$0, this.i(), this.ax_(), this.m());
       }
    }
 
    public void k() {
       if (!this.p) {
-         this.e.c(this.i(), this.aC_(), this.m());
+         this.e.c(this.i(), this.ax_(), this.m());
       }
    }
 
    void a(ebq $$0, boolean $$1) {
-      this.n.a(this.aC_(), $$0.b(dmu.c, Boolean.valueOf($$1)), 3);
+      this.n.a(this.ax_(), $$0.b(dmu.c, Boolean.valueOf($$1)), 3);
    }
 
    void a(ebq $$0, awx $$1) {

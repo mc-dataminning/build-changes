@@ -48,7 +48,7 @@ public class cyc extends cxf {
 
    @Override
    protected void a(csi $$0, dak $$1) {
-      $$1.a($$0.dV(), $$0, $$1.M());
+      $$1.a($$0, $$1.M());
       this.t.a($$0, this.o());
       this.e(0);
       this.e(1);

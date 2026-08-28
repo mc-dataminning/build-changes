@@ -17,8 +17,8 @@ public class hao extends gwp<clc, hgm, gjx> {
    public void a(clc $$0, hgm $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = !$$0.bi() && $$0.aH();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.n_() && $$0.q();
+      $$1.b = $$0.p();
+      $$1.c = !$$0.e_() && $$0.m();
    }
 
    public alr b(hgm $$0) {

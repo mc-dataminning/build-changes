@@ -110,7 +110,7 @@ public abstract class dnc extends dno {
    }
 
    protected static int a(dkj $$0, ffx $$1, Class<? extends bxe> $$2) {
-      return $$0.a($$2, $$1, bxl.f.and($$0x -> !$$0x.g_())).size();
+      return $$0.a($$2, $$1, bxl.f.and($$0x -> !$$0x.n_())).size();
    }
 
    protected abstract int b(dkj var1, iw var2);

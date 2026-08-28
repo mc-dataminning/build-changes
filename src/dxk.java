@@ -71,7 +71,7 @@ public interface dxk extends dor<dxk.a> {
    }
 
    @Override
-   default float aw_() {
+   default float ar_() {
       return this.c() == dxk.a.a ? 0.75F : 1.0F;
    }
 

@@ -31,6 +31,6 @@ public class gzz extends gzb<cpt, hgb, gjm> {
    public void a(cpt $$0, hgb $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = azz.h($$2, $$0.f, $$0.e);
-      $$1.b = $$0.gs();
+      $$1.b = $$0.gv();
    }
 }

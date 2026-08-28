@@ -9,7 +9,7 @@ public class fzb extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.a = this.c(new fuj(this.n, this.l, this.p, 12));
       this.c();
    }
@@ -23,12 +23,12 @@ public class fzb extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected boolean aS_() {
+   protected boolean aN_() {
       return false;
    }
 

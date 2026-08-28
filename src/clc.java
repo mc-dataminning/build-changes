@@ -7,7 +7,7 @@ public class clc extends cjv {
    private static final bxh bN = bxn.bC.n().a(bxg.a().a(bxf.a, 0.0F, bxn.bC.m(), -0.25F)).a(0.3F);
    private static final boolean bO = false;
    int bP;
-   public static final ciu.a bI = ($$0, $$1) -> $$0.n_() && !$$0.bi();
+   public static final ciu.a bI = ($$0, $$1) -> $$0.e_() && !$$0.bi();
    iw bQ = iw.c;
    @Nullable
    iw bR;
@@ -26,7 +26,7 @@ public class clc extends cjv {
       this.bQ = $$0;
    }
 
-   public boolean q() {
+   public boolean m() {
       return this.al.a(bJ);
    }
 
@@ -34,7 +34,7 @@ public class clc extends cjv {
       this.al.a(bJ, $$0);
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.al.a(bK);
    }
 
@@ -54,7 +54,7 @@ public class clc extends cjv {
    public void b(ua $$0) {
       super.b($$0);
       $$0.a("home_pos", iw.a, this.bQ);
-      $$0.a("has_egg", this.q());
+      $$0.a("has_egg", this.m());
    }
 
    @Override
@@ -76,7 +76,7 @@ public class clc extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new clc.f(this, 1.2));
       this.bF.a(1, new clc.a(this, 1.0));
       this.bF.a(1, new clc.d(this, 1.0));
@@ -88,7 +88,7 @@ public class clc extends cjv {
       this.bF.a(9, new clc.h(this, 1.0, 100));
    }
 
-   public static bzk.a x() {
+   public static bzk.a u() {
       return cjv.gz().a(bzl.s, 30.0).a(bzl.v, 0.25).a(bzl.B, 1.0);
    }
 
@@ -98,14 +98,14 @@ public class clc extends cjv {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 200;
    }
 
    @Nullable
    @Override
-   protected awx u() {
-      return !this.bi() && this.aH() && !this.n_() ? awy.Bj : super.u();
+   protected awx s() {
+      return !this.bi() && this.aH() && !this.e_() ? awy.Bj : super.s();
    }
 
    @Override
@@ -121,24 +121,24 @@ public class clc extends cjv {
    @Nullable
    @Override
    protected awx e(bvt $$0) {
-      return this.n_() ? awy.Bq : awy.Bp;
+      return this.e_() ? awy.Bq : awy.Bp;
    }
 
    @Nullable
    @Override
-   protected awx l_() {
-      return this.n_() ? awy.Bl : awy.Bk;
+   protected awx j_() {
+      return this.e_() ? awy.Bl : awy.Bk;
    }
 
    @Override
    protected void b(iw $$0, ebq $$1) {
-      awx $$2 = this.n_() ? awy.Bt : awy.Bs;
+      awx $$2 = this.e_() ? awy.Bt : awy.Bs;
       this.a($$2, 0.15F, 1.0F);
    }
 
    @Override
    public boolean gB() {
-      return super.gB() && !this.q();
+      return super.gB() && !this.m();
    }
 
    @Override
@@ -148,7 +148,7 @@ public class clc extends cjv {
 
    @Override
    public float ek() {
-      return this.n_() ? 0.3F : 1.0F;
+      return this.e_() ? 0.3F : 1.0F;
    }
 
    @Override
@@ -177,9 +177,9 @@ public class clc extends cjv {
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (this.bJ() && this.t() && this.bP >= 1 && this.bP % 5 == 0) {
+   public void d_() {
+      super.d_();
+      if (this.bJ() && this.p() && this.bP >= 1 && this.bP % 5 == 0) {
          iw $$0 = this.dv();
          if (dwv.a(this.dV(), $$0)) {
             this.dV().c(2001, $$0, dno.j(this.dV().a_($$0.e())));
@@ -189,9 +189,9 @@ public class clc extends cjv {
    }
 
    @Override
-   protected void j() {
-      super.j();
-      if (!this.n_() && this.dV() instanceof asb $$0 && $$0.O().c(dkf.g)) {
+   protected void h() {
+      super.h();
+      if (!this.e_() && this.dV() instanceof asb $$0 && $$0.O().c(dkf.g)) {
          this.a($$0, dao.pd, 1);
       }
    }
@@ -202,7 +202,7 @@ public class clc extends cjv {
          this.a(0.1F, $$0);
          this.a(byj.a, this.dy());
          this.i(this.dy().c(0.9));
-         if (this.f() == null && (!this.bS || !this.bQ.a(this.dt(), 20.0))) {
+         if (this.e() == null && (!this.bS || !this.bQ.a(this.dt(), 20.0))) {
             this.i(this.dy().b(0.0, -0.005, 0.0));
          }
       } else {
@@ -222,7 +222,7 @@ public class clc extends cjv {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bN : super.e($$0);
+      return this.e_() ? bN : super.e($$0);
    }
 
    static class a extends cen {
@@ -235,7 +235,7 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         return super.b() && !this.d.q();
+         return super.b() && !this.d.m();
       }
 
       @Override
@@ -276,9 +276,9 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         if (this.a.n_()) {
+         if (this.a.e_()) {
             return false;
-         } else if (this.a.q()) {
+         } else if (this.a.m()) {
             return true;
          } else {
             return this.a.dY().a(b(700)) != 0 ? false : !this.a.bQ.a(this.a.dt(), 64.0);
@@ -310,7 +310,7 @@ public class clc extends cjv {
             this.d++;
          }
 
-         if (this.a.O().k()) {
+         if (this.a.N().k()) {
             fgc $$2 = fgc.c($$0);
             fgc $$3 = ciy.a(this.a, 16, 3, $$2, (float) (Math.PI / 10));
             if ($$3 == null) {
@@ -326,7 +326,7 @@ public class clc extends cjv {
                return;
             }
 
-            this.a.O().a($$3.d, $$3.e, $$3.f, this.b);
+            this.a.N().a($$3.d, $$3.e, $$3.f, this.b);
          }
       }
    }
@@ -336,7 +336,7 @@ public class clc extends cjv {
       private final clc h;
 
       c(clc $$0, double $$1) {
-         super($$0, $$0.n_() ? 2.0 : $$1, 24);
+         super($$0, $$0.e_() ? 2.0 : $$1, 24);
          this.h = $$0;
          this.f = -1;
       }
@@ -348,10 +348,10 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         if (this.h.n_() && !this.h.bi()) {
+         if (this.h.e_() && !this.h.bi()) {
             return super.b();
          } else {
-            return !this.h.bS && !this.h.bi() && !this.h.q() ? super.b() : false;
+            return !this.h.bS && !this.h.bi() && !this.h.m() ? super.b() : false;
          }
       }
 
@@ -376,12 +376,12 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         return this.g.q() && this.g.bQ.a(this.g.dt(), 9.0) ? super.b() : false;
+         return this.g.m() && this.g.bQ.a(this.g.dt(), 9.0) ? super.b() : false;
       }
 
       @Override
       public boolean c() {
-         return super.c() && this.g.q() && this.g.bQ.a(this.g.dt(), 9.0);
+         return super.c() && this.g.m() && this.g.bQ.a(this.g.dt(), 9.0);
       }
 
       @Override
@@ -403,7 +403,7 @@ public class clc extends cjv {
                this.g.r(600);
             }
 
-            if (this.g.t()) {
+            if (this.g.p()) {
                this.g.bP++;
             }
          }
@@ -430,7 +430,7 @@ public class clc extends cjv {
                this.l.B(Math.max(this.l.fo() / 2.0F, 0.08F));
             }
 
-            if (this.l.n_()) {
+            if (this.l.e_()) {
                this.l.B(Math.max(this.l.fo() / 3.0F, 0.06F));
             }
          } else if (this.l.aH()) {
@@ -441,7 +441,7 @@ public class clc extends cjv {
       @Override
       public void a() {
          this.g();
-         if (this.k == cee.a.b && !this.l.O().k()) {
+         if (this.k == cee.a.b && !this.l.N().k()) {
             double $$0 = this.e - this.l.dA();
             double $$1 = this.f - this.l.dC();
             double $$2 = this.g - this.l.dG();
@@ -511,7 +511,7 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         return !this.b.bi() && !this.i.bS && !this.i.q() ? super.b() : false;
+         return !this.b.bi() && !this.i.bS && !this.i.m() ? super.b() : false;
       }
    }
 
@@ -527,7 +527,7 @@ public class clc extends cjv {
 
       @Override
       public boolean b() {
-         return !this.a.bS && !this.a.q() && this.a.bi();
+         return !this.a.bS && !this.a.m() && this.a.bi();
       }
 
       @Override
@@ -551,7 +551,7 @@ public class clc extends cjv {
          if (this.a.bR == null) {
             this.c = true;
          } else {
-            if (this.a.O().k()) {
+            if (this.a.N().k()) {
                fgc $$0 = fgc.c(this.a.bR);
                fgc $$1 = ciy.a(this.a, 16, 3, $$0, (float) (Math.PI / 10));
                if ($$1 == null) {
@@ -572,14 +572,14 @@ public class clc extends cjv {
                   return;
                }
 
-               this.a.O().a($$1.d, $$1.e, $$1.f, this.b);
+               this.a.N().a($$1.d, $$1.e, $$1.f, this.b);
             }
          }
       }
 
       @Override
       public boolean c() {
-         return !this.a.O().k() && !this.c && !this.a.bS && !this.a.gE() && !this.a.q();
+         return !this.a.N().k() && !this.c && !this.a.bS && !this.a.gE() && !this.a.m();
       }
 
       @Override

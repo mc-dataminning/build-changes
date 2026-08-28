@@ -55,14 +55,14 @@ public class dnu extends dna implements dql {
 
       if (dqm.n($$1.a_($$2.e())) && $$2.v() >= $$1.K_()) {
          com $$5 = com.a($$1, $$2, $$0);
-         $$5.g();
+         $$5.f();
       }
    }
 
    @Override
    public void a(dkj $$0, iw $$1, com $$2) {
       fgc $$3 = $$2.cR().f();
-      $$0.c(2001, iw.a((jq)$$3), dno.j($$2.j()));
+      $$0.c(2001, iw.a((jq)$$3), dno.j($$2.i()));
       $$0.a($$2, egq.f, $$3);
    }
 

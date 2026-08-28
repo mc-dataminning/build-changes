@@ -17,9 +17,9 @@ public class gyq extends gzb<ckl, hey, gid> {
 
    public void a(ckl $$0, hey $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
-      $$1.b = $$0.q();
-      $$1.c = $$0.m();
+      $$1.a = (float)$$0.u() > 0.0F ? (float)$$0.u() - $$2 : 0.0F;
+      $$1.b = $$0.gu();
+      $$1.c = $$0.p();
    }
 
    protected void a(hey $$0, fld $$1, float $$2, float $$3) {

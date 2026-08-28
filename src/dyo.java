@@ -161,7 +161,7 @@ public abstract class dyo {
       }
    }
 
-   public iw aC_() {
+   public iw ax_() {
       return this.o;
    }
 
@@ -170,7 +170,7 @@ public abstract class dyo {
    }
 
    @Nullable
-   public zo<acf> az_() {
+   public zo<acf> au_() {
       return null;
    }
 
@@ -182,7 +182,7 @@ public abstract class dyo {
       return this.p;
    }
 
-   public void ax_() {
+   public void as_() {
       this.p = true;
    }
 

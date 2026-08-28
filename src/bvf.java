@@ -1,18 +1,18 @@
 import javax.annotation.Nullable;
 
 public interface bvf {
-   xg ai();
+   xg ah();
 
-   default boolean h_() {
-      return this.ak() != null;
+   default boolean g_() {
+      return this.aj() != null;
    }
 
-   default xg m_() {
-      return this.ai();
+   default xg P_() {
+      return this.ah();
    }
 
    @Nullable
-   default xg ak() {
+   default xg aj() {
       return null;
    }
 }

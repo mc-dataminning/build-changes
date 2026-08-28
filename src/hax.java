@@ -31,10 +31,10 @@ public class hax extends gzb<coa, hgs, gkf> {
 
    public void a(coa $$0, hgs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.t();
+      int $$3 = $$0.gv();
       $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.x();
+      System.arraycopy($$0.gu(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.u(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.gw();
    }
 }

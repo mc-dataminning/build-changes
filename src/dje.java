@@ -5,9 +5,9 @@ public interface dje {
    void a(@Nullable csi var1);
 
    @Nullable
-   csi x();
+   csi gu();
 
-   djg gv();
+   djg gw();
 
    void a(djg var1);
 
@@ -15,29 +15,29 @@ public interface dje {
 
    void i(dak var1);
 
-   int t();
+   int p();
 
    void s(int var1);
 
-   boolean gw();
+   boolean gx();
 
-   awx gx();
+   awx gy();
 
-   default boolean gF() {
+   default boolean gG() {
       return false;
    }
 
    default void a(csi $$0, xg $$1, int $$2) {
       OptionalInt $$3 = $$0.a(new bvk(($$0x, $$1x, $$2x) -> new cxm($$0x, $$1x, this), $$1));
       if ($$3.isPresent()) {
-         djg $$4 = this.gv();
+         djg $$4 = this.gw();
          if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gw(), this.gF());
+            $$0.a($$3.getAsInt(), $$4, $$2, this.p(), this.gx(), this.gG());
          }
       }
    }
 
-   boolean gB();
+   boolean gC();
 
    boolean e(csi var1);
 }

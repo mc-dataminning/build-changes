@@ -25,9 +25,9 @@ public class cvk extends cvd {
    @Override
    public void b() {
       if (this.c() instanceof asb $$0) {
-         iw var5 = this.a.j();
+         iw var5 = this.a.l();
          ebq $$4 = this.c().a_(var5);
-         if (this.a.g()) {
+         if (this.a.i()) {
             this.a.a(dnd.h($$4));
             this.a(var5, $$4, true);
          }
@@ -36,7 +36,7 @@ public class cvk extends cvd {
          this.a.b($$0);
       } else {
          this.p();
-         boolean $$1 = dnd.h(this.c().a_(this.a.j()));
+         boolean $$1 = dnd.h(this.c().a_(this.a.l()));
          this.a.a($$1);
       }
    }
@@ -200,7 +200,7 @@ public class cvk extends cvd {
    public void a(asb $$0) {
       for (cvk.c $$1 = new cvk.c(); $$1.a() && this.a.bJ(); $$1.b = false) {
          fgc $$2 = this.e();
-         iw $$3 = this.a.j();
+         iw $$3 = this.a.l();
          ebq $$4 = this.c().a_($$3);
          boolean $$5 = dnd.h($$4);
          if (this.a.cp() != $$5) {
@@ -209,7 +209,7 @@ public class cvk extends cvd {
          }
 
          if ($$5) {
-            this.a.k();
+            this.a.j();
             this.a.bx();
             if ($$4.a(dnq.hI)) {
                this.a.a($$3.u(), $$3.v(), $$3.w(), $$4.c(dtr.d));
@@ -319,7 +319,7 @@ public class cvk extends cvd {
 
    private fgc d(fgc $$0) {
       if (this.a.cZ() instanceof asc $$1) {
-         fgc $$3 = $$1.ag();
+         fgc $$3 = $$1.af();
          if ($$3.h() > 0.0) {
             fgc $$4 = $$3.d();
             double $$5 = $$0.j();

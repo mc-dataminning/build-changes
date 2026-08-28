@@ -180,9 +180,9 @@ public class dyj extends dyo implements bve, bvf, dyi {
    }
 
    @Override
-   public void ax_() {
+   public void as_() {
       a(this.n, this.o, awy.bM);
-      super.ax_();
+      super.as_();
    }
 
    private static void a(dkj $$0, iw $$1, int $$2, @Nullable jg<bwg> $$3, @Nullable jg<bwg> $$4) {
@@ -263,23 +263,23 @@ public class dyj extends dyo implements bve, bvf, dyi {
 
    @Nullable
    @Override
-   public xg ak() {
+   public xg aj() {
       return this.u;
    }
 
    @Nullable
    @Override
    public cwb createMenu(int $$0, csh $$1, csi $$2) {
-      return dyh.a($$2, this.v, this.m_()) ? new cwg($$0, $$1, this.w, cwo.a(this.n, this.aC_())) : null;
+      return dyh.a($$2, this.v, this.P_()) ? new cwg($$0, $$1, this.w, cwo.a(this.n, this.ax_())) : null;
    }
 
    @Override
-   public xg m_() {
-      return this.ai();
+   public xg P_() {
+      return this.ah();
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return this.u != null ? this.u : i;
    }
 

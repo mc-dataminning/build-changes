@@ -42,11 +42,11 @@ public abstract class hoa extends hnw {
    }
 
    private float u() {
-      return this.n.n_() ? 1.1F : 0.7F;
+      return this.n.e_() ? 1.1F : 0.7F;
    }
 
    private float v() {
-      return this.n.n_() ? 1.5F : 1.1F;
+      return this.n.e_() ? 1.5F : 1.1F;
    }
 
    @Override

@@ -12,19 +12,19 @@ public class cti extends ctk {
    }
 
    @Override
-   protected dag g() {
+   protected dag f() {
       return dao.rs;
    }
 
-   private lx j() {
-      dak $$0 = this.f();
+   private lx i() {
+      dak $$0 = this.e();
       return (lx)($$0.f() ? lz.Z : new lv(lz.U, $$0));
    }
 
    @Override
    public void b(byte $$0) {
       if ($$0 == 3) {
-         lx $$1 = this.j();
+         lx $$1 = this.i();
 
          for (int $$2 = 0; $$2 < 8; $$2++) {
             this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
@@ -37,7 +37,7 @@ public class cti extends ctk {
       super.a($$0);
       bxe $$1 = $$0.a();
       int $$2 = $$1 instanceof cot ? 3 : 0;
-      $$1.a(this.dW().b(this, this.q()), (float)$$2);
+      $$1.a(this.dW().b(this, this.p()), (float)$$2);
    }
 
    @Override

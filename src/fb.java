@@ -55,7 +55,7 @@ public class fb implements fs<fb.a> {
 
    private static CompletableFuture<asu> a(ek $$0, xw $$1) {
       asc $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cG()) ? $$2.W().a($$1.c()) : CompletableFuture.completedFuture(asu.a($$1.c()));
+      return $$2 != null && $$1.a($$2.cG()) ? $$2.V().a($$1.c()) : CompletableFuture.completedFuture(asu.a($$1.c()));
    }
 
    public fb.a a(StringReader $$0) throws CommandSyntaxException {

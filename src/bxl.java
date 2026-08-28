@@ -7,13 +7,13 @@ public final class bxl {
    public static final Predicate<bxe> c = $$0 -> $$0.bJ() && !$$0.bZ() && !$$0.bY();
    public static final Predicate<bxe> d = $$0 -> $$0 instanceof buv && $$0.bJ();
    public static final Predicate<bxe> e = $$0 -> {
-      if ($$0 instanceof csi $$1 && ($$0.aa_() || $$1.b())) {
+      if ($$0 instanceof csi $$1 && ($$0.ak() || $$1.gz())) {
          return false;
       }
 
       return true;
    };
-   public static final Predicate<bxe> f = $$0 -> !$$0.aa_();
+   public static final Predicate<bxe> f = $$0 -> !$$0.ak();
    public static final Predicate<bxe> g = f.and(bxe::bL);
    public static final Predicate<bxe> h = f.and(bxe::bF);
 

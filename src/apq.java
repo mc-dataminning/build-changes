@@ -24,12 +24,12 @@ public class apq {
    private static int a(ek $$0, @Nullable bxe $$1, asc $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dkg.d) {
-         throw b.create($$2.m_());
+      } else if (!$$2.ak()) {
+         throw b.create($$2.P_());
       } else {
          $$2.d($$1);
          if ($$1 != null) {
-            $$0.a(() -> xg.a("commands.spectate.success.started", $$1.m_()), false);
+            $$0.a(() -> xg.a("commands.spectate.success.started", $$1.P_()), false);
          } else {
             $$0.a(() -> xg.c("commands.spectate.success.stopped"), false);
          }

@@ -31,7 +31,7 @@ public class ckm extends cjq implements byv {
    public void a(asb $$0, bye $$1) {
       UUID $$2 = $$1.cG();
       if (!$$2.equals(this.bN)) {
-         this.a(this.t() == ckm.a.a ? ckm.a.b : ckm.a.a);
+         this.a(this.p() == ckm.a.a ? ckm.a.b : ckm.a.a);
          this.bN = $$2;
          this.a(awy.pA, 2.0F, 1.0F);
       }
@@ -46,7 +46,7 @@ public class ckm extends cjq implements byv {
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ($$2.a(dao.ph) && !this.n_()) {
+      if ($$2.a(dao.ph) && !this.e_()) {
          boolean $$3 = false;
          dak $$4;
          if (this.bM != null) {
@@ -77,7 +77,7 @@ public class ckm extends cjq implements byv {
          }
 
          return bvc.a;
-      } else if (this.t() == ckm.a.b) {
+      } else if (this.p() == ckm.a.b) {
          Optional<ddm> $$10 = this.j($$2);
          if ($$10.isEmpty()) {
             return super.b($$0, $$1);
@@ -119,13 +119,13 @@ public class ckm extends cjq implements byv {
 
    @Override
    public boolean a() {
-      return this.bJ() && !this.n_();
+      return this.bJ() && !this.e_();
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Type", ckm.a.d, this.t());
+      $$0.a("Type", ckm.a.d, this.p());
       $$0.b("stew_effects", ddm.c, this.bM);
    }
 
@@ -145,14 +145,14 @@ public class ckm extends cjq implements byv {
       this.al.a(bI, $$0.h);
    }
 
-   public ckm.a t() {
+   public ckm.a p() {
       return ckm.a.a(this.al.a(bI));
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aF ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aF ? c((kk<T>)$$0, this.p()) : super.a($$0);
    }
 
    @Override
@@ -182,8 +182,8 @@ public class ckm extends cjq implements byv {
    }
 
    private ckm.a a(ckm $$0) {
-      ckm.a $$1 = this.t();
-      ckm.a $$2 = $$0.t();
+      ckm.a $$1 = this.p();
+      ckm.a $$2 = $$0.p();
       ckm.a $$3;
       if ($$1 == $$2 && this.ae.a(1024) == 0) {
          $$3 = $$1 == ckm.a.b ? ckm.a.a : ckm.a.b;

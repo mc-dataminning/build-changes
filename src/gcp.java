@@ -38,8 +38,8 @@ public class gcp extends gcw {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       ftw $$0 = this.d.b(this.c.u());
       if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
          $$0.j = false;

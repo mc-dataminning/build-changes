@@ -15,7 +15,7 @@ public class haa extends gwp<cmu, hgc, gjn> {
 
    public void a(cmu $$0, hgc $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.p();
       $$1.b.a($$0.bM);
       $$1.c.a($$0.bK);
       $$1.d.a($$0.bN);

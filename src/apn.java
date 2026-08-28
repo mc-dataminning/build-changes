@@ -29,7 +29,7 @@ public class apn {
 
       String $$6 = $$4.a().toString();
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.spawnpoint.success.single", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.spawnpoint.success.multiple", $$2.u(), $$2.v(), $$2.w(), $$3, $$6, $$1.size()), true);
       }

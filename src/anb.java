@@ -29,7 +29,7 @@ public class anb {
       } else {
          asc $$3 = $$0.l().ag().a($$1);
          if ($$3 != null) {
-            return b($$0, $$3.B(), $$2);
+            return b($$0, $$3.A(), $$2);
          } else {
             throw a.create();
          }

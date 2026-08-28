@@ -116,7 +116,7 @@ public class gim extends ghn<hfm> {
    public static gim.a a(ckp $$0) {
       if ($$0.gH()) {
          return gim.a.d;
-      } else if ($$0.x()) {
+      } else if ($$0.u()) {
          return gim.a.c;
       } else {
          return $$0.gJ() ? gim.a.a : gim.a.b;

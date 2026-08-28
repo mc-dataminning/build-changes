@@ -5,7 +5,7 @@ public interface bvi extends buv {
    String c = "LootTableSeed";
 
    @Nullable
-   alq<fay> ay_();
+   alq<fay> at_();
 
    void a(@Nullable alq<fay> var1);
 
@@ -14,11 +14,11 @@ public interface bvi extends buv {
       this.a($$1);
    }
 
-   long aB_();
+   long aw_();
 
    void a(long var1);
 
-   iw aC_();
+   iw ax_();
 
    @Nullable
    dkj i();
@@ -37,12 +37,12 @@ public interface bvi extends buv {
    }
 
    default boolean b(ua $$0) {
-      alq<fay> $$1 = this.ay_();
+      alq<fay> $$1 = this.at_();
       if ($$1 == null) {
          return false;
       } else {
          $$0.a("LootTable", fay.a, $$1);
-         long $$2 = this.aB_();
+         long $$2 = this.aw_();
          if ($$2 != 0L) {
             $$0.a("LootTableSeed", $$2);
          }
@@ -53,8 +53,8 @@ public interface bvi extends buv {
 
    default void d_(@Nullable csi $$0) {
       dkj $$1 = this.i();
-      iw $$2 = this.aC_();
-      alq<fay> $$3 = this.ay_();
+      iw $$2 = this.ax_();
+      alq<fay> $$3 = this.at_();
       if ($$3 != null && $$1 != null && $$1.p() != null) {
          fay $$4 = $$1.p().bc().b($$3);
          if ($$0 instanceof asc) {
@@ -67,7 +67,7 @@ public interface bvi extends buv {
             $$5.a($$0.eh()).a(fdn.a, $$0);
          }
 
-         $$4.a(this, $$5.a(fdm.c), this.aB_());
+         $$4.a(this, $$5.a(fdm.c), this.aw_());
       }
    }
 }

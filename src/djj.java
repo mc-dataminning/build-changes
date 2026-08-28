@@ -141,7 +141,7 @@ public abstract class djj {
                   $$0.c(2004, $$1, 0);
                   $$0.a($$11, egq.t, $$9);
                   if ($$11 instanceof byh) {
-                     ((byh)$$11).U();
+                     ((byh)$$11).T();
                   }
 
                   $$2 = true;

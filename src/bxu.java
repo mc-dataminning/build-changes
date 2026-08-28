@@ -9,7 +9,7 @@ public class bxu extends ckz {
    }
 
    @Override
-   protected lx q() {
+   protected lx m() {
       return lz.aS;
    }
 
@@ -26,12 +26,12 @@ public class bxu extends ckz {
    }
 
    @Override
-   protected awx t() {
+   protected awx p() {
       return awy.ln;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.lk;
    }
 
@@ -41,14 +41,14 @@ public class bxu extends ckz {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.ll;
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("DarkTicksRemaining", this.x());
+      $$0.a("DarkTicksRemaining", this.u());
    }
 
    @Override
@@ -58,9 +58,9 @@ public class bxu extends ckz {
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      int $$0 = this.x();
+   public void d_() {
+      super.d_();
+      int $$0 = this.u();
       if ($$0 > 0) {
          this.s($$0 - 1);
       }
@@ -82,7 +82,7 @@ public class bxu extends ckz {
       this.al.a(bQ, $$0);
    }
 
-   public int x() {
+   public int u() {
       return this.al.a(bQ);
    }
 

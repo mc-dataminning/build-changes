@@ -73,7 +73,7 @@ public abstract class ftv extends ftr {
    }
 
    protected void a(ftk $$0, int $$1, int $$2, int $$3, int $$4) {
-      alr $$5 = a.a(this.E(), this.aO_());
+      alr $$5 = a.a(this.E(), this.aJ_());
       $$0.a(gry::H, $$5, $$1, $$2, $$3, $$4);
    }
 

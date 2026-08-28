@@ -50,7 +50,7 @@ public class cxm extends cwb {
    }
 
    public int l() {
-      return this.x.t();
+      return this.x.p();
    }
 
    public int m() {
@@ -125,9 +125,9 @@ public class cxm extends cwb {
    }
 
    private void r() {
-      if (!this.x.gB()) {
+      if (!this.x.gC()) {
          bxe $$0 = (bxe)this.x;
-         $$0.dV().a($$0.dA(), $$0.dC(), $$0.dG(), this.x.gx(), awz.g, 1.0F, 1.0F, false);
+         $$0.dV().a($$0.dA(), $$0.dC(), $$0.dG(), this.x.gy(), awz.g, 1.0F, 1.0F, false);
       }
    }
 
@@ -135,8 +135,8 @@ public class cxm extends cwb {
    public void a(csi $$0) {
       super.a($$0);
       this.x.a(null);
-      if (!this.x.gB()) {
-         if (!$$0.bJ() || $$0 instanceof asc && ((asc)$$0).u()) {
+      if (!this.x.gC()) {
+         if (!$$0.bJ() || $$0 instanceof asc && ((asc)$$0).t()) {
             dak $$1 = this.y.b(0);
             if (!$$1.f()) {
                $$0.a($$1, false);
@@ -205,7 +205,7 @@ public class cxm extends cwb {
    }
 
    public djg p() {
-      return this.x.gv();
+      return this.x.gw();
    }
 
    public boolean q() {

@@ -4,7 +4,7 @@ public class gud<T extends dyo & dyr> implements gua<T> {
 
    @Override
    public void a(T $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
-      if (fqq.Q().t.gG() || fqq.Q().t.aa_()) {
+      if (fqq.Q().t.gH() || fqq.Q().t.ak()) {
          dyr.a $$7 = $$0.b();
          if ($$7 != dyr.a.a) {
             dyr.b $$8 = $$0.c();
@@ -43,7 +43,7 @@ public class gud<T extends dyo & dyr> implements gua<T> {
 
    private void a(T $$0, djn $$1, iw $$2, kb $$3, grn $$4, fld $$5) {
       flg $$6 = $$4.getBuffer(gry.w());
-      iw $$7 = $$0.aC_();
+      iw $$7 = $$0.ax_();
       iw $$8 = $$7.a((kb)$$2);
 
       for (iw $$9 : iw.c($$8, $$8.a($$3).b(-1, -1, -1))) {
@@ -77,7 +77,7 @@ public class gud<T extends dyo & dyr> implements gua<T> {
    private void a(T $$0, iw $$1, kb $$2, flg $$3, fld $$4) {
       djn $$5 = $$0.i();
       if ($$5 != null) {
-         iw $$6 = $$0.aC_();
+         iw $$6 = $$0.ax_();
          fgl $$7 = new fgf($$2.u(), $$2.v(), $$2.w());
 
          for (iw $$8 : iw.c($$1, $$1.a($$2).b(-1, -1, -1))) {
@@ -105,7 +105,7 @@ public class gud<T extends dyo & dyr> implements gua<T> {
    }
 
    @Override
-   public int aW_() {
+   public int aR_() {
       return 96;
    }
 }

@@ -24,12 +24,12 @@ public class cma extends cjv {
 
    public cma(bxn<? extends cma> $$0, dkj $$1) {
       super($$0, $$1);
-      this.O().a(true);
+      this.N().a(true);
       this.a(eyr.f, -1.0F);
       this.a(eyr.g, -1.0F);
    }
 
-   public dak q() {
+   public dak m() {
       bai $$0 = bai.a((long)this.cG().hashCode());
       ayc<dad> $$1 = this.gG() ? axu.b : axu.a;
       return this.dV().J_().f(mi.aU).a($$1, $$0).map($$0x -> dae.a(dao.xt, $$0x)).orElseGet(() -> new dak(dao.xt));
@@ -45,13 +45,13 @@ public class cma extends cjv {
       return cmb.a(this.ed().a($$0));
    }
 
-   public static bzk.a t() {
+   public static bzk.a p() {
       return cjv.gz().a(bzl.s, 10.0).a(bzl.v, 0.2F).a(bzl.c, 2.0);
    }
 
    @Override
-   protected void j() {
-      if (this.n_()) {
+   protected void h() {
+      if (this.e_()) {
          this.g(bzl.c).a(1.0);
          this.gy();
       } else {
@@ -66,7 +66,7 @@ public class cma extends cjv {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.gG() ? awy.lx : awy.lo;
    }
 
@@ -76,7 +76,7 @@ public class cma extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return this.gG() ? awy.ly : awy.lp;
    }
 
@@ -85,7 +85,7 @@ public class cma extends cjv {
       this.a(awy.lF, 0.15F, 1.0F);
    }
 
-   protected awx x() {
+   protected awx u() {
       return this.gG() ? awy.lC : awy.lt;
    }
 
@@ -120,13 +120,13 @@ public class cma extends cjv {
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 15;
    }
 
    @Override
    public void r(float $$0) {
-      int $$1 = this.af();
+      int $$1 = this.ae();
       float $$2 = azz.c(this.aV, $$0);
       float $$3 = azz.a($$2, (float)(-$$1), (float)$$1);
       super.r(this.aV + $$3);
@@ -145,8 +145,8 @@ public class cma extends cjv {
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ($$2.a(dao.ro) && !this.n_()) {
-         $$0.a(this.x(), 1.0F, 1.0F);
+      if ($$2.a(dao.ro) && !this.e_()) {
+         $$0.a(this.u(), 1.0F, 1.0F);
          dak $$3 = dan.a($$2, $$0, dao.ru.m());
          $$0.a($$1, $$3);
          return bvc.a;
@@ -165,8 +165,8 @@ public class cma extends cjv {
       bai $$4 = $$0.G_();
       cmb.a(this, $$4);
       this.w($$4.j() < 0.02);
-      this.j();
-      if (!this.n_() && (double)$$4.i() < 0.1F) {
+      this.h();
+      if (!this.e_() && (double)$$4.i() < 0.1F) {
          aku<Boolean> $$5 = $$4.h() ? bS : bT;
          this.al.a($$5, false);
       }
@@ -175,8 +175,8 @@ public class cma extends cjv {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -213,7 +213,7 @@ public class cma extends cjv {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bX) {
          this.bY++;
       } else {
@@ -221,7 +221,7 @@ public class cma extends cjv {
       }
 
       this.bY = azz.a(this.bY, 0, 20);
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -257,7 +257,7 @@ public class cma extends cjv {
 
          this.al.a($$2, false);
          fgc $$5 = this.dt();
-         dak $$6 = this.q();
+         dak $$6 = this.m();
          double $$7 = (double)azz.b(this.ae, -0.2F, 0.2F);
          double $$8 = (double)azz.b(this.ae, 0.3F, 0.7F);
          double $$9 = (double)azz.b(this.ae, -0.2F, 0.2F);

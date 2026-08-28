@@ -89,8 +89,8 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void ab() {
-      super.ab();
+   public void aa() {
+      super.aa();
       this.da = false;
    }
 
@@ -105,12 +105,12 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void h() {
-      this.gK();
-      if (this.gJ()) {
+   public void g() {
+      this.gL();
+      if (this.gK()) {
          this.cG.b();
-         super.h();
-         this.H();
+         super.g();
+         this.I();
          if (!this.cV.equals(this.k.a)) {
             this.j.b(new aii(this.k.a));
             this.cV = this.k.a;
@@ -121,10 +121,10 @@ public class gqm extends gqj {
             bxe $$0 = this.df();
             if ($$0 != this && $$0.dg()) {
                this.j.b(aia.a($$0));
-               this.I();
+               this.K();
             }
          } else {
-            this.F();
+            this.H();
          }
 
          for (hnx $$1 : this.cH) {
@@ -143,9 +143,9 @@ public class gqm extends gqj {
       return 0.0F;
    }
 
-   private void F() {
-      this.I();
-      if (this.y()) {
+   private void H() {
+      this.K();
+      if (this.z()) {
          double $$0 = this.dA() - this.cJ;
          double $$1 = this.dC() - this.cK;
          double $$2 = this.dG() - this.cL;
@@ -182,7 +182,7 @@ public class gqm extends gqj {
       }
    }
 
-   private void H() {
+   private void I() {
       boolean $$0 = this.cc();
       if ($$0 != this.cR) {
          aih.a $$1 = $$0 ? aih.a.a : aih.a.b;
@@ -191,7 +191,7 @@ public class gqm extends gqj {
       }
    }
 
-   private void I() {
+   private void K() {
       boolean $$0 = this.ci();
       if ($$0 != this.cS) {
          aih.a $$1 = $$0 ? aih.a.d : aih.a.e;
@@ -220,13 +220,13 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void p() {
+   public void o() {
       this.j.b(new ahr(this.bR.l));
       this.e();
    }
 
    public void e() {
-      super.p();
+      super.o();
       this.cq.a(null);
    }
 
@@ -252,7 +252,7 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void x() {
+   public void w() {
       this.j.b(new aif(this.gk()));
    }
 
@@ -271,11 +271,11 @@ public class gqm extends gqj {
       return !this.gk().b && super.bt();
    }
 
-   protected void f() {
-      this.j.b(new aih(this, aih.a.f, azz.d(this.v() * 100.0F)));
+   protected void h() {
+      this.j.b(new aih(this, aih.a.f, azz.d(this.x() * 100.0F)));
    }
 
-   public void i() {
+   public void k() {
       this.j.b(new aih(this, aih.a.h));
    }
 
@@ -295,7 +295,7 @@ public class gqm extends gqj {
    }
 
    @Override
-   public int G() {
+   public int F() {
       return this.cI;
    }
 
@@ -362,7 +362,7 @@ public class gqm extends gqj {
       this.df = $$0;
    }
 
-   public boolean n() {
+   public boolean s() {
       return this.df;
    }
 
@@ -437,12 +437,12 @@ public class gqm extends gqj {
       return null;
    }
 
-   public float v() {
+   public float x() {
       return this.cX;
    }
 
    @Override
-   public boolean X() {
+   public boolean W() {
       return this.cq.aT();
    }
 
@@ -513,13 +513,13 @@ public class gqm extends gqj {
       return this.cQ;
    }
 
-   public boolean w() {
+   public boolean y() {
       return this.ch() || this.cl();
    }
 
    @Override
    public void fq() {
-      if (this.y()) {
+      if (this.z()) {
          fgb $$0 = this.a(this.k.b());
          this.bg = $$0.j;
          this.bi = $$0.k;
@@ -542,7 +542,7 @@ public class gqm extends gqj {
             $$1 = $$1.a(0.2F);
          }
 
-         if (this.w()) {
+         if (this.y()) {
             float $$2 = (float)this.h(bzl.z);
             $$1 = $$1.a($$2);
          }
@@ -570,11 +570,11 @@ public class gqm extends gqj {
       return azz.c(1.0F + azz.l($$3));
    }
 
-   protected boolean y() {
+   protected boolean z() {
       return this.cq.ao() == this;
    }
 
-   public void z() {
+   public void A() {
       this.b(byr.a);
       if (this.dV() != null) {
          for (double $$0 = this.dC(); $$0 > (double)this.dV().K_() && $$0 <= (double)this.dV().ao(); $$0++) {
@@ -593,14 +593,14 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.cr > 0) {
          this.cr--;
       }
 
       if (!(this.cq.z instanceof fzo)) {
-         this.y(this.A() == dtn.a.a);
-         this.M();
+         this.y(this.B() == dtn.a.a);
+         this.L();
       }
 
       boolean $$0 = this.k.a.e();
@@ -628,7 +628,7 @@ public class gqm extends gqj {
          this.cr = 0;
       }
 
-      if (this.Q()) {
+      if (this.R()) {
          if (!$$2) {
             if (this.cr > 0) {
                this.h(true);
@@ -644,10 +644,10 @@ public class gqm extends gqj {
 
       if (this.ci()) {
          if (this.cj()) {
-            if (this.L()) {
+            if (this.N()) {
                this.h(false);
             }
-         } else if (this.J()) {
+         } else if (this.M()) {
             this.h(false);
          }
       }
@@ -658,7 +658,7 @@ public class gqm extends gqj {
             if (!$$3.b) {
                $$3.b = true;
                $$5 = true;
-               this.x();
+               this.w();
             }
          } else if (!$$0 && this.k.a.e() && !$$4) {
             if (this.bT == 0) {
@@ -666,17 +666,17 @@ public class gqm extends gqj {
             } else if (!this.cj()) {
                $$3.b = !$$3.b;
                if ($$3.b && this.aH()) {
-                  this.s();
+                  this.r();
                }
 
                $$5 = true;
-               this.x();
+               this.w();
                this.bT = 0;
             }
          }
       }
 
-      if (this.k.a.e() && !$$5 && !$$0 && !this.d_() && this.gq()) {
+      if (this.k.a.e() && !$$5 && !$$0 && !this.k_() && this.gq()) {
          this.j.b(new aih(this, aih.a.i));
       }
 
@@ -686,14 +686,14 @@ public class gqm extends gqj {
       }
 
       if (this.a(axs.a)) {
-         int $$6 = this.aa_() ? 10 : 1;
+         int $$6 = this.ak() ? 10 : 1;
          this.de = azz.a(this.de + $$6, 0, 600);
       } else if (this.de > 0) {
          this.a(axs.a);
          this.de = azz.a(this.de - 10, 0, 600);
       }
 
-      if ($$3.b && this.y()) {
+      if ($$3.b && this.z()) {
          int $$7 = 0;
          if (this.k.a.f()) {
             $$7--;
@@ -719,8 +719,8 @@ public class gqm extends gqj {
 
          if ($$0 && !this.k.a.e()) {
             this.cW = -10;
-            $$8.b(azz.d(this.v() * 100.0F));
-            this.f();
+            $$8.b(azz.d(this.x() * 100.0F));
+            this.h();
          } else if (!$$0 && this.k.a.e()) {
             this.cW = 0;
             this.cX = 0.0F;
@@ -736,26 +736,26 @@ public class gqm extends gqj {
          this.cX = 0.0F;
       }
 
-      super.k_();
+      super.d_();
       if (this.aH() && $$3.b && !this.cq.r.g()) {
          $$3.b = false;
-         this.x();
+         this.w();
       }
    }
 
-   private boolean J() {
-      return this.N() || this.bY() && !this.a(this.dk()) || !this.k.c() || !this.R() || this.P && !this.S || this.bi() && !this.bm();
-   }
-
-   private boolean L() {
-      return this.N() || this.bY() && !this.a(this.dk()) || !this.bi() || !this.k.c() && !this.aH() && !this.k.a.f() || !this.R();
+   private boolean M() {
+      return this.O() || this.bY() && !this.a(this.dk()) || !this.k.c() || !this.S() || this.P && !this.S || this.bi() && !this.bm();
    }
 
    private boolean N() {
+      return this.O() || this.bY() && !this.a(this.dk()) || !this.bi() || !this.k.c() && !this.aH() && !this.k.a.f() || !this.S();
+   }
+
+   private boolean O() {
       return this.b(bwk.o);
    }
 
-   public dtn.a A() {
+   public dtn.a B() {
       return this.as == null ? dtn.a.b : this.as.a();
    }
 
@@ -773,7 +773,7 @@ public class gqm extends gqj {
       if ($$0 && this.as != null && this.as.e()) {
          if (this.cq.z != null && !this.cq.z.k() && !(this.cq.z instanceof fyu) && !(this.cq.z instanceof fzt)) {
             if (this.cq.z instanceof gaf) {
-               this.p();
+               this.o();
             }
 
             this.cq.a(null);
@@ -793,8 +793,8 @@ public class gqm extends gqj {
    }
 
    @Override
-   public void r() {
-      super.r();
+   public void q() {
+      super.q();
       this.da = false;
       if (this.dl() instanceof cut $$0) {
          $$0.a(this.k.a.c(), this.k.a.d(), this.k.a.a(), this.k.a.b());
@@ -802,7 +802,7 @@ public class gqm extends gqj {
       }
    }
 
-   public boolean B() {
+   public boolean C() {
       return this.da;
    }
 
@@ -817,18 +817,18 @@ public class gqm extends gqj {
       this.g = this.g + azz.f($$4, $$5) * 0.6F;
    }
 
-   public boolean C() {
+   public boolean D() {
       return this.db;
    }
 
    @Override
-   public boolean gQ() {
+   public boolean gR() {
       return this.cq.n.K().c();
    }
 
    @Override
    protected void f(float $$0, float $$1) {
-      if (this.O()) {
+      if (this.P()) {
          fgc $$2 = this.dt();
          fgc $$3 = $$2.b((double)$$0, 0.0, (double)$$1);
          fgc $$4 = new fgc((double)$$0, 0.0, (double)$$1);
@@ -942,23 +942,23 @@ public class gqm extends gqj {
       }
    }
 
-   private boolean O() {
-      return this.C() && this.dc <= 0 && this.aH() && !this.ga() && !this.bY() && this.P() && (double)this.aR() >= 1.0;
-   }
-
    private boolean P() {
-      return this.k.b().c() > 0.0F;
+      return this.D() && this.dc <= 0 && this.aH() && !this.ga() && !this.bY() && this.Q() && (double)this.aR() >= 1.0;
    }
 
    private boolean Q() {
+      return this.k.b().c() > 0.0F;
+   }
+
+   private boolean R() {
       return !this.ci()
          && this.k.c()
-         && this.R()
+         && this.S()
          && !this.fz()
-         && !this.N()
+         && !this.O()
          && (!this.bY() || this.a(this.dk()))
          && (!this.fJ() || this.bm())
-         && (!this.w() || this.bm())
+         && (!this.y() || this.bm())
          && (!this.bi() || this.bm());
    }
 
@@ -966,11 +966,11 @@ public class gqm extends gqj {
       return $$0.dO() && $$0.dg();
    }
 
-   private boolean R() {
+   private boolean S() {
       return this.bY() || (float)this.gu().a() > 6.0F || this.gk().c;
    }
 
-   public float D() {
+   public float E() {
       if (!this.a(axs.a)) {
          return 0.0F;
       } else {
@@ -1001,7 +1001,7 @@ public class gqm extends gqj {
    protected boolean gb() {
       boolean $$0 = this.ce;
       boolean $$1 = super.gb();
-      if (this.aa_()) {
+      if (this.ak()) {
          return this.ce;
       } else {
          if (!$$0 && $$1) {
@@ -1050,7 +1050,7 @@ public class gqm extends gqj {
       return this.cG.c();
    }
 
-   public bbb E() {
+   public bbb G() {
       return this.cG;
    }
 }

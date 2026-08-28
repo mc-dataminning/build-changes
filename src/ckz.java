@@ -22,17 +22,17 @@ public class ckz extends cju {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new ckz.b(this));
       this.bF.a(1, new ckz.a());
    }
 
    public static bzk.a gu() {
-      return byh.E().a(bzl.s, 10.0);
+      return byh.D().a(bzl.s, 10.0);
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Ad;
    }
 
@@ -42,11 +42,11 @@ public class ckz extends cju {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Ae;
    }
 
-   protected awx t() {
+   protected awx p() {
       return awy.Ag;
    }
 
@@ -77,8 +77,8 @@ public class ckz extends cju {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       this.bJ = this.bI;
       this.bL = this.bK;
       this.bN = this.bM;
@@ -145,7 +145,7 @@ public class ckz extends cju {
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
       if (super.a($$0, $$1, $$2) && this.er() != null) {
-         this.x();
+         this.u();
          return true;
       } else {
          return false;
@@ -157,19 +157,19 @@ public class ckz extends cju {
       return $$1.b(-this.aW * (float) (Math.PI / 180.0));
    }
 
-   private void x() {
-      this.b(this.t());
+   private void u() {
+      this.b(this.p());
       fgc $$0 = this.l(new fgc(0.0, -1.0, 0.0)).b(this.dA(), this.dC(), this.dG());
 
       for (int $$1 = 0; $$1 < 30; $$1++) {
          fgc $$2 = this.l(new fgc((double)this.ae.i() * 0.6 - 0.3, -1.0, (double)this.ae.i() * 0.6 - 0.3));
-         float $$3 = this.n_() ? 0.1F : 0.3F;
+         float $$3 = this.e_() ? 0.1F : 0.3F;
          fgc $$4 = $$2.c((double)($$3 + this.ae.i() * 2.0F));
-         ((asb)this.dV()).a(this.q(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
+         ((asb)this.dV()).a(this.m(), $$0.d, $$0.e + 0.5, $$0.f, 0, $$4.d, $$4.e, $$4.f, 0.1F);
       }
    }
 
-   protected lx q() {
+   protected lx m() {
       return lz.al;
    }
 

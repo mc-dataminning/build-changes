@@ -37,7 +37,7 @@ public class gbi extends fzq {
    }
 
    private void F() {
-      this.m.L().b(new aiv(this.y.aC_(), alr.a(this.z.a()), alr.a(this.A.a()), alr.a(this.B.a()), this.C.a(), this.K, this.b(this.D.a()), this.b(this.E.a())));
+      this.m.L().b(new aiv(this.y.ax_(), alr.a(this.z.a()), alr.a(this.A.a()), alr.a(this.B.a()), this.C.a(), this.K, this.b(this.D.a()), this.b(this.E.a())));
    }
 
    private int b(String $$0) {
@@ -49,16 +49,16 @@ public class gbi extends fzq {
    }
 
    private void G() {
-      this.m.L().b(new ahx(this.y.aC_(), this.F, this.G));
+      this.m.L().b(new ahx(this.y.ax_(), this.F, this.G));
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.E();
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.B = new fuh(this.p, this.n / 2 - 153, 20, 300, 20, b);
       this.B.f(128);
       this.B.a(this.y.d().a().toString());
@@ -119,7 +119,7 @@ public class gbi extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.B);
    }
 

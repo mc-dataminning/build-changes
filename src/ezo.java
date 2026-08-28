@@ -17,7 +17,7 @@ public record ezo(iw b, czi c, Optional<xg> d) {
    public static ezo a(djn $$0, iw $$1) {
       if ($$0.c_($$1) instanceof dyc $$3) {
          czi $$4 = $$3.f();
-         Optional<xg> $$5 = Optional.ofNullable($$3.ak());
+         Optional<xg> $$5 = Optional.ofNullable($$3.aj());
          return new ezo($$1, $$4, $$5);
       } else {
          return null;

@@ -13,12 +13,12 @@ public interface fhg {
    String cI();
 
    @Nullable
-   default xg m_() {
+   default xg P_() {
       return null;
    }
 
    default xg hg() {
-      xg $$0 = this.m_();
+      xg $$0 = this.P_();
       return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xm.e(xg.b(this.cI())))) : xg.b(this.cI());
    }
 

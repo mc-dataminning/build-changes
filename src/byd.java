@@ -11,20 +11,20 @@ public interface byd {
    double i = 6.0;
 
    @Nullable
-   byd.a Z_();
+   byd.a S_();
 
    void a(@Nullable byd.a var1);
 
-   default boolean T_() {
-      return this.Z_() != null && this.Z_().b != null;
+   default boolean Q_() {
+      return this.S_() != null && this.S_().b != null;
+   }
+
+   default boolean o() {
+      return this.S_() != null;
    }
 
    default boolean R_() {
-      return this.Z_() != null;
-   }
-
-   default boolean p() {
-      return this.w() && !this.T_();
+      return this.w() && !this.Q_();
    }
 
    default boolean w() {
@@ -38,8 +38,8 @@ public interface byd {
 
    default void c(ua $$0) {
       byd.a $$1 = $$0.<byd.a>a("leash", byd.a.a).orElse(null);
-      if (this.Z_() != null && $$1 == null) {
-         this.z();
+      if (this.S_() != null && $$1 == null) {
+         this.y();
       }
 
       this.a($$1);
@@ -71,22 +71,22 @@ public interface byd {
       }
    }
 
-   default void y() {
+   default void x() {
       a((bxe)this, true, true);
    }
 
-   default void z() {
+   default void y() {
       a((bxe)this, true, false);
    }
 
-   default void A() {
+   default void z() {
    }
 
    private static <E extends bxe & byd> void a(E $$0, boolean $$1, boolean $$2) {
-      byd.a $$3 = $$0.Z_();
+      byd.a $$3 = $$0.S_();
       if ($$3 != null && $$3.b != null) {
          $$0.a(null);
-         $$0.A();
+         $$0.z();
          if ($$0.dV() instanceof asb $$4) {
             if ($$2) {
                $$0.a($$4, dao.vV);
@@ -100,7 +100,7 @@ public interface byd {
    }
 
    static <E extends bxe & byd> void a_(asb $$0, E $$1) {
-      byd.a $$2 = $$1.Z_();
+      byd.a $$2 = $$1.S_();
       if ($$2 != null && $$2.c != null) {
          a($$1, $$2);
       }
@@ -108,13 +108,13 @@ public interface byd {
       if ($$2 != null && $$2.b != null) {
          if (!$$1.bJ() || !$$2.b.bJ()) {
             if ($$0.O().c(dkf.j)) {
-               $$1.y();
+               $$1.x();
             } else {
-               $$1.z();
+               $$1.y();
             }
          }
 
-         bxe $$3 = $$1.C();
+         bxe $$3 = $$1.B();
          if ($$3 != null && $$3.dV() == $$1.dV()) {
             float $$4 = $$1.f($$3);
             if (!$$1.a($$3, $$4)) {
@@ -122,7 +122,7 @@ public interface byd {
             }
 
             if ((double)$$4 > 10.0) {
-               $$1.B();
+               $$1.A();
             } else if ((double)$$4 > 6.0) {
                $$1.b($$3, $$4);
                $$1.cy();
@@ -137,8 +137,8 @@ public interface byd {
       return true;
    }
 
-   default void B() {
-      this.y();
+   default void A() {
+      this.x();
    }
 
    default void a(bxe $$0) {
@@ -160,7 +160,7 @@ public interface byd {
    }
 
    private static <E extends bxe & byd> void a(E $$0, bxe $$1, boolean $$2) {
-      byd.a $$3 = $$0.Z_();
+      byd.a $$3 = $$0.S_();
       if ($$3 == null) {
          $$3 = new byd.a($$1);
          $$0.a($$3);
@@ -178,13 +178,13 @@ public interface byd {
    }
 
    @Nullable
-   default bxe C() {
+   default bxe B() {
       return b((bxe)this);
    }
 
    @Nullable
    private static <E extends bxe & byd> bxe b(E $$0) {
-      byd.a $$1 = $$0.Z_();
+      byd.a $$1 = $$0.S_();
       if ($$1 == null) {
          return null;
       } else {
@@ -202,7 +202,7 @@ public interface byd {
    public static final class a {
       public static final Codec<byd.a> a = Codec.xor(ka.a.fieldOf("UUID").codec(), iw.a).xmap(byd.a::new, $$0 -> {
          if ($$0.b instanceof coh $$2) {
-            return Either.right($$2.j());
+            return Either.right($$2.i());
          } else {
             return $$0.b != null ? Either.left($$0.b.cG()) : Objects.requireNonNull($$0.c, "Invalid LeashData had no attachment");
          }

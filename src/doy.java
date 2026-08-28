@@ -99,7 +99,7 @@ public class doy extends dna implements dra {
    @Override
    protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
       dyo $$5 = $$1.c_($$2);
-      if ($$5 instanceof dyz && $$3.gG()) {
+      if ($$5 instanceof dyz && $$3.gH()) {
          $$3.a((dyz)$$5);
          return bvc.a;
       } else {

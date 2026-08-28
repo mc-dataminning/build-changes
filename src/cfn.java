@@ -59,7 +59,7 @@ public class cfn extends cfb {
                      return false;
                   } else {
                      this.d = $$3.get().j();
-                     cho $$4 = (cho)this.a.O();
+                     cho $$4 = (cho)this.a.N();
                      $$4.b(this.h.getAsBoolean());
                      this.c = $$4.a(this.d, 0);
                      $$4.b(true);
@@ -70,7 +70,7 @@ public class cfn extends cfb {
                         }
 
                         $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.O().a($$5.d, $$5.e, $$5.f, 0);
+                        this.c = this.a.N().a($$5.d, $$5.e, $$5.f, 0);
                         $$4.b(true);
                         if (this.c == null) {
                            return false;
@@ -81,7 +81,7 @@ public class cfn extends cfb {
                         eym $$7 = this.c.a($$6);
                         iw $$8 = new iw($$7.a, $$7.b + 1, $$7.c);
                         if (dpv.a(this.a.dV(), $$8)) {
-                           this.c = this.a.O().a((double)$$7.a, (double)$$7.b, (double)$$7.c, 0);
+                           this.c = this.a.N().a((double)$$7.a, (double)$$7.b, (double)$$7.c, 0);
                            break;
                         }
                      }
@@ -96,17 +96,17 @@ public class cfn extends cfb {
 
    @Override
    public boolean c() {
-      return this.a.O().k() ? false : !this.d.a(this.a.dt(), (double)(this.a.dq() + (float)this.g));
+      return this.a.N().k() ? false : !this.d.a(this.a.dt(), (double)(this.a.dq() + (float)this.g));
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.c, this.b);
+      this.a.N().a(this.c, this.b);
    }
 
    @Override
    public void e() {
-      if (this.a.O().k() || this.d.a(this.a.dt(), (double)this.g)) {
+      if (this.a.N().k() || this.d.a(this.a.dt(), (double)this.g)) {
          this.f.add(this.d);
       }
    }

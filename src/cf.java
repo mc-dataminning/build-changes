@@ -24,7 +24,7 @@ public record cf(Optional<Boolean> d) implements ca {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof csz $$3 ? this.d.get() == $$3.f() : false;
+         return $$0 instanceof csz $$3 ? this.d.get() == $$3.e() : false;
       }
    }
 

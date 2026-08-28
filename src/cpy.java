@@ -30,9 +30,9 @@ public class cpy extends cpk implements bzd {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.ad = true;
-      super.h();
+      super.g();
       this.ad = false;
       this.f(true);
       if (this.bI && --this.bJ <= 0) {
@@ -42,8 +42,8 @@ public class cpy extends cpk implements bzd {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(4, new cpy.a());
       this.bF.a(8, new cpy.d());
@@ -54,8 +54,8 @@ public class cpy extends cpk implements bzd {
       this.bG.a(3, new cgu<>(this, csi.class, true));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 14.0).a(bzl.c, 4.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 14.0).a(bzl.c, 4.0);
    }
 
    @Override
@@ -75,7 +75,7 @@ public class cpy extends cpk implements bzd {
    public void x(bxe $$0) {
       super.x($$0);
       if ($$0 instanceof cpy $$1) {
-         this.e = $$1.m();
+         this.e = $$1.u();
       }
    }
 
@@ -89,12 +89,12 @@ public class cpy extends cpk implements bzd {
    }
 
    @Nullable
-   public byh m() {
+   public byh u() {
       return this.e;
    }
 
    @Nullable
-   public iw n() {
+   public iw gu() {
       return this.f;
    }
 
@@ -118,7 +118,7 @@ public class cpy extends cpk implements bzd {
       this.al.a(c, (byte)($$2 & 0xFF));
    }
 
-   public boolean t() {
+   public boolean gv() {
       return this.c(1);
    }
 
@@ -136,12 +136,12 @@ public class cpy extends cpk implements bzd {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.BS;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.BU;
    }
 
@@ -177,18 +177,18 @@ public class cpy extends cpk implements bzd {
 
       @Override
       public boolean b() {
-         byf $$0 = cpy.this.f();
-         return $$0 != null && $$0.bJ() && !cpy.this.L().b() && cpy.this.ae.a(b(7)) == 0 ? cpy.this.g($$0) > 4.0 : false;
+         byf $$0 = cpy.this.e();
+         return $$0 != null && $$0.bJ() && !cpy.this.K().b() && cpy.this.ae.a(b(7)) == 0 ? cpy.this.g($$0) > 4.0 : false;
       }
 
       @Override
       public boolean c() {
-         return cpy.this.L().b() && cpy.this.t() && cpy.this.f() != null && cpy.this.f().bJ();
+         return cpy.this.K().b() && cpy.this.gv() && cpy.this.e() != null && cpy.this.e().bJ();
       }
 
       @Override
       public void d() {
-         byf $$0 = cpy.this.f();
+         byf $$0 = cpy.this.e();
          if ($$0 != null) {
             fgc $$1 = $$0.bD();
             cpy.this.bC.a($$1.d, $$1.e, $$1.f, 1.0);
@@ -210,7 +210,7 @@ public class cpy extends cpk implements bzd {
 
       @Override
       public void a() {
-         byf $$0 = cpy.this.f();
+         byf $$0 = cpy.this.e();
          if ($$0 != null) {
             if (cpy.this.cR().c($$0.cR())) {
                cpy.this.c(a(cpy.this.dV()), $$0);
@@ -235,12 +235,12 @@ public class cpy extends cpk implements bzd {
 
       @Override
       public boolean b() {
-         return cpy.this.e != null && cpy.this.e.f() != null && this.a(cpy.this.e.f(), this.b);
+         return cpy.this.e != null && cpy.this.e.e() != null && this.a(cpy.this.e.e(), this.b);
       }
 
       @Override
       public void d() {
-         cpy.this.g(cpy.this.e.f());
+         cpy.this.g(cpy.this.e.e());
          super.d();
       }
    }
@@ -260,13 +260,13 @@ public class cpy extends cpk implements bzd {
                cpy.this.i(cpy.this.dy().c(0.5));
             } else {
                cpy.this.i(cpy.this.dy().e($$0.c(this.h * 0.05 / $$1)));
-               if (cpy.this.f() == null) {
+               if (cpy.this.e() == null) {
                   fgc $$2 = cpy.this.dy();
                   cpy.this.w(-((float)azz.d($$2.d, $$2.f)) * (180.0F / (float)Math.PI));
                   cpy.this.aV = cpy.this.dL();
                } else {
-                  double $$3 = cpy.this.f().dA() - cpy.this.dA();
-                  double $$4 = cpy.this.f().dG() - cpy.this.dG();
+                  double $$3 = cpy.this.e().dA() - cpy.this.dA();
+                  double $$4 = cpy.this.e().dG() - cpy.this.dG();
                   cpy.this.w(-((float)azz.d($$3, $$4)) * (180.0F / (float)Math.PI));
                   cpy.this.aV = cpy.this.dL();
                }
@@ -282,7 +282,7 @@ public class cpy extends cpk implements bzd {
 
       @Override
       public boolean b() {
-         return !cpy.this.L().b() && cpy.this.ae.a(b(7)) == 0;
+         return !cpy.this.K().b() && cpy.this.ae.a(b(7)) == 0;
       }
 
       @Override
@@ -292,7 +292,7 @@ public class cpy extends cpk implements bzd {
 
       @Override
       public void a() {
-         iw $$0 = cpy.this.n();
+         iw $$0 = cpy.this.gu();
          if ($$0 == null) {
             $$0 = cpy.this.dv();
          }
@@ -301,8 +301,8 @@ public class cpy extends cpk implements bzd {
             iw $$2 = $$0.b(cpy.this.ae.a(15) - 7, cpy.this.ae.a(11) - 5, cpy.this.ae.a(15) - 7);
             if (cpy.this.dV().v($$2)) {
                cpy.this.bC.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 0.25);
-               if (cpy.this.f() == null) {
-                  cpy.this.J().a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 180.0F, 20.0F);
+               if (cpy.this.e() == null) {
+                  cpy.this.I().a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, 180.0F, 20.0F);
                }
                break;
             }

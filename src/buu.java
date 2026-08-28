@@ -46,8 +46,8 @@ public class buu implements buv {
    }
 
    @Override
-   public int ap_() {
-      return this.b.ap_();
+   public int ak_() {
+      return this.b.ak_();
    }
 
    @Override

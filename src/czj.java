@@ -13,7 +13,7 @@ public class czj extends dag implements dbm {
 
    @Override
    public bvc a(dak $$0, csi $$1, byf $$2, bvb $$3) {
-      if ($$2 instanceof cmr $$4 && $$4.bJ() && !$$4.x() && $$4.t() != this.b) {
+      if ($$2 instanceof cmr $$4 && $$4.bJ() && !$$4.u() && $$4.p() != this.b) {
          $$4.dV().a($$1, $$4, awy.ik, awz.h, 1.0F, 1.0F);
          if (!$$1.dV().C) {
             $$4.b(this.b);
@@ -37,7 +37,7 @@ public class czj extends dag implements dbm {
    @Override
    public boolean a(dkj $$0, eac $$1, boolean $$2, csi $$3) {
       if ($$1.a($$0x -> $$0x.a(this.a()), $$2)) {
-         $$0.a(null, $$1.aC_(), awy.ik, awz.e, 1.0F, 1.0F);
+         $$0.a(null, $$1.ax_(), awy.ik, awz.e, 1.0F, 1.0F);
          return true;
       } else {
          return false;

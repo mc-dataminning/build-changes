@@ -20,7 +20,7 @@ public class gyz extends gzb<cpj, hgb, gie> {
    public void a(cpj $$0, hgb $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = azz.h($$2, $$0.f, $$0.e);
-      $$1.b = $$0.gs();
+      $$1.b = $$0.gv();
    }
 
    protected float b(hgb $$0) {

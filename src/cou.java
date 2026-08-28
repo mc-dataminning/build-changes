@@ -7,8 +7,8 @@ public class cou extends cos implements byv {
    private static final String d = "sheared";
    private static final boolean e = false;
 
-   public static bzk.a gu() {
-      return cos.j().a(bzl.s, 16.0);
+   public static bzk.a gx() {
+      return cos.m().a(bzl.s, 16.0);
    }
 
    public cou(bxn<? extends cou> $$0, dkj $$1) {
@@ -24,7 +24,7 @@ public class cou extends cos implements byv {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("sheared", this.gv());
+      $$0.a("sheared", this.gy());
    }
 
    @Override
@@ -33,7 +33,7 @@ public class cou extends cos implements byv {
       this.w($$0.b("sheared", false));
    }
 
-   public boolean gv() {
+   public boolean gy() {
       return this.al.a(c);
    }
 
@@ -58,7 +58,7 @@ public class cou extends cos implements byv {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.cn;
    }
 
@@ -68,12 +68,12 @@ public class cou extends cos implements byv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.co;
    }
 
    @Override
-   protected awx m() {
+   protected awx p() {
       return awy.cr;
    }
 
@@ -88,12 +88,12 @@ public class cou extends cos implements byv {
    }
 
    @Override
-   protected int q() {
+   protected int gu() {
       return 50;
    }
 
    @Override
-   protected int t() {
+   protected int gv() {
       return 70;
    }
 
@@ -110,6 +110,6 @@ public class cou extends cos implements byv {
 
    @Override
    public boolean a() {
-      return !this.gv() && this.bJ();
+      return !this.gy() && this.bJ();
    }
 }

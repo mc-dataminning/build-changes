@@ -79,7 +79,7 @@ public class ek implements em<ek>, ep {
    public ek a(bxe $$0) {
       return this.l == $$0
          ? this
-         : new ek(this.d, this.e, this.o, this.f, this.g, $$0.ai().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
+         : new ek(this.d, this.e, this.o, this.f, this.g, $$0.ah().getString(), $$0.P_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
    public ek a(fgc $$0) {
@@ -224,7 +224,7 @@ public class ek implements em<ek>, ep {
 
    public boolean a(asc $$0) {
       asc $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.X() || $$0.X();
+      return $$0 == $$1 ? false : $$1 != null && $$1.W() || $$0.W();
    }
 
    public void a(xv $$0, boolean $$1, xc.a $$2) {
@@ -268,7 +268,7 @@ public class ek implements em<ek>, ep {
       xg $$1 = xg.a("chat.type.admin", this.b(), $$0).a(o.h, o.u);
       if (this.j.aL().c(dkf.q)) {
          for (asc $$2 : this.j.ag().t()) {
-            if ($$2.z() != this.d && this.j.ag().f($$2.gi())) {
+            if ($$2.y() != this.d && this.j.ag().f($$2.gi())) {
                $$2.a($$1);
             }
          }

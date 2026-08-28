@@ -35,7 +35,7 @@ public class cqo extends cpk {
       this.bB = new cqo.c(this);
       this.bC = new cqo.d(this);
       this.bD = new cqo.b(this);
-      cho $$2 = (cho)this.O();
+      cho $$2 = (cho)this.N();
       $$2.a(true);
       this.bA = 0;
    }
@@ -49,12 +49,12 @@ public class cqo extends cpk {
       this.a(eyr.n, 0.0F);
    }
 
-   public boolean j() {
-      return this.x() != null;
+   public boolean m() {
+      return this.gw() != null;
    }
 
    @Override
-   protected cdz I() {
+   protected cdz H() {
       return new cqo.a(this);
    }
 
@@ -77,11 +77,11 @@ public class cqo extends cpk {
       $$0.a(bO, Optional.empty());
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.s, 1.0).a(bzl.v, 0.4F).a(bzl.c, 3.0).a(bzl.m, 32.0).a(bzl.B, 1.0625);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.s, 1.0).a(bzl.v, 0.4F).a(bzl.c, 3.0).a(bzl.m, 32.0).a(bzl.B, 1.0625);
    }
 
-   public boolean n() {
+   public boolean u() {
       return this.al.a(bL);
    }
 
@@ -98,7 +98,7 @@ public class cqo extends cpk {
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      iw $$3 = this.x();
+      iw $$3 = this.gw();
       if ($$3 == null || $$1.a(axo.d)) {
          return super.a($$0, $$1, $$2);
       } else if (!this.a($$0, $$1) && this.bX <= 0 && !this.eH()) {
@@ -132,12 +132,12 @@ public class cqo extends cpk {
 
    @Override
    public boolean bG() {
-      return super.bG() && this.n();
+      return super.bG() && this.u();
    }
 
    @Override
    public void i(double $$0, double $$1, double $$2) {
-      if (this.n()) {
+      if (this.u()) {
          super.i($$0, $$1, $$2);
       }
    }
@@ -157,7 +157,7 @@ public class cqo extends cpk {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bX > 0) {
          this.bX--;
       }
@@ -168,13 +168,13 @@ public class cqo extends cpk {
 
       if (!this.dV().C) {
          boolean $$0 = this.al.a(bL);
-         boolean $$1 = this.gA();
+         boolean $$1 = this.gD();
          if ($$1 != $$0) {
             this.a(egq.u);
             if ($$1) {
                this.b(awy.gt);
             } else {
-               this.W();
+               this.V();
                this.b(awy.gs);
             }
          }
@@ -182,13 +182,13 @@ public class cqo extends cpk {
          this.al.a(bL, $$1);
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.dV().C) {
-         iw $$0 = this.x();
+         iw $$0 = this.gw();
          if ($$0 != null) {
             boolean var10000;
             label21: {
@@ -207,19 +207,19 @@ public class cqo extends cpk {
          }
       }
 
-      super.h();
+      super.g();
       if (this.dV().C) {
-         this.gD();
-         this.gz();
+         this.gG();
+         this.gC();
       }
    }
 
    @Override
    protected void en() {
-      if (this.j() && this.gv()) {
+      if (this.m() && this.gy()) {
          this.aP++;
          if (!this.dV().A_() && this.aP > 45 && !this.dQ()) {
-            this.q();
+            this.gu();
          }
       } else {
          super.en();
@@ -232,14 +232,13 @@ public class cqo extends cpk {
       this.aT.a($$1, 0.4F, 1.0F);
    }
 
-   private void gD() {
+   private void gG() {
       this.bI.a(this.bW > 0, this.af);
       this.bJ.a(this.bX > 0, this.af);
-      this.bK.a(this.gv(), this.af);
+      this.bK.a(this.gy(), this.af);
    }
 
-   @Override
-   public void q() {
+   public void gu() {
       if (this.dV() instanceof asb $$0) {
          ffx $$1 = this.cR();
          fgc $$2 = $$1.f();
@@ -250,7 +249,7 @@ public class cqo extends cpk {
          $$0.a(new lr(lz.bi, dnq.cE.m().b(dpk.c, eck.c)), $$2.d, $$2.e, $$2.f, 10, $$3, $$4, $$5, 0.0);
       }
 
-      this.b(this.l_());
+      this.b(this.j_());
       this.a(bxe.d.b);
    }
 
@@ -275,29 +274,29 @@ public class cqo extends cpk {
 
    @Override
    public boolean bh() {
-      return this.j() || super.bh();
+      return this.m() || super.bh();
    }
 
    @Override
    protected boolean r(bxe $$0) {
-      return !this.j() && super.r($$0);
+      return !this.m() && super.r($$0);
    }
 
    @Override
    protected boolean bP() {
-      return !this.j() && super.bP();
+      return !this.m() && super.bP();
    }
 
    @Override
    protected void p(bxe $$0) {
-      if (this.j()) {
+      if (this.m()) {
          throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
       }
    }
 
    @Override
    public boolean n(boolean $$0) {
-      return !this.j() && super.n($$0);
+      return !this.m() && super.n($$0);
    }
 
    @Override
@@ -305,7 +304,7 @@ public class cqo extends cpk {
       return new cqo.e(this, $$0);
    }
 
-   public boolean t() {
+   public boolean gv() {
       List<csi> $$0 = this.bs.c(chh.j).orElse(List.of());
       if ($$0.isEmpty()) {
          this.ca = 0;
@@ -334,7 +333,7 @@ public class cqo extends cpk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.b("home_pos", iw.a, this.x());
+      $$0.b("home_pos", iw.a, this.gw());
    }
 
    public void i(iw $$0) {
@@ -342,23 +341,23 @@ public class cqo extends cpk {
    }
 
    @Nullable
-   public iw x() {
+   public iw gw() {
       return this.al.a(bO).orElse(null);
    }
 
-   public void gu() {
+   public void gx() {
       this.al.a(bN, true);
    }
 
-   public boolean gv() {
+   public boolean gy() {
       return this.al.a(bN);
    }
 
-   public boolean gy() {
+   public boolean gB() {
       return this.bY;
    }
 
-   public void gz() {
+   public void gC() {
       if (this.aP > this.bZ) {
          this.bZ = this.aP + this.dY().a(this.bY ? 2 : this.aP / 4, this.bY ? 8 : this.aP / 2);
          this.bY = !this.bY;
@@ -371,17 +370,17 @@ public class cqo extends cpk {
    }
 
    @Override
-   protected awx u() {
-      return this.gC() ? null : awy.gm;
+   protected awx s() {
+      return this.gF() ? null : awy.gm;
    }
 
    @Override
    protected awx e(bvt $$0) {
-      return this.j() ? awy.gv : super.e($$0);
+      return this.m() ? awy.gv : super.e($$0);
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.gq;
    }
 
@@ -392,29 +391,29 @@ public class cqo extends cpk {
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
    @Override
    public void p(double $$0, double $$1, double $$2) {
-      if (this.n()) {
+      if (this.u()) {
          super.p($$0, $$1, $$2);
       }
    }
 
-   public boolean gA() {
+   public boolean gD() {
       List<csi> $$0 = this.bs.c(chh.j).orElse(List.of());
-      boolean $$1 = this.gC();
+      boolean $$1 = this.gF();
       if ($$0.isEmpty()) {
          if ($$1) {
-            this.gB();
+            this.gE();
          }
 
          return true;
@@ -439,7 +438,7 @@ public class cqo extends cpk {
          }
 
          if (!$$2 && $$1) {
-            this.gB();
+            this.gE();
          }
 
          return true;
@@ -453,7 +452,7 @@ public class cqo extends cpk {
       this.w(true);
    }
 
-   public void gB() {
+   public void gE() {
       this.ec().b(chh.p);
       this.a(egq.u);
       this.b(awy.go);
@@ -464,7 +463,7 @@ public class cqo extends cpk {
       this.al.a(bM, $$0);
    }
 
-   public boolean gC() {
+   public boolean gF() {
       return this.al.a(bM);
    }
 
@@ -480,7 +479,7 @@ public class cqo extends cpk {
 
       @Override
       public void a() {
-         if (cqo.this.n()) {
+         if (cqo.this.u()) {
             super.a();
          }
       }
@@ -493,7 +492,7 @@ public class cqo extends cpk {
 
       @Override
       public void b() {
-         if (cqo.this.n()) {
+         if (cqo.this.u()) {
             super.b();
          } else {
             cqo.this.s(false);
@@ -508,7 +507,7 @@ public class cqo extends cpk {
 
       @Override
       public void a() {
-         if (cqo.this.n()) {
+         if (cqo.this.u()) {
             super.a();
          }
       }
@@ -521,7 +520,7 @@ public class cqo extends cpk {
 
       @Override
       public void a() {
-         if (cqo.this.n()) {
+         if (cqo.this.u()) {
             super.a();
          }
       }
@@ -534,7 +533,7 @@ public class cqo extends cpk {
 
       @Override
       public void c() {
-         if (cqo.this.n()) {
+         if (cqo.this.u()) {
             super.c();
          }
       }
@@ -552,7 +551,7 @@ public class cqo extends cpk {
 
       @Override
       public eyr a(eyt $$0, int $$1, int $$2, int $$3) {
-         iw $$4 = cqo.this.x();
+         iw $$4 = cqo.this.gw();
          if ($$4 == null) {
             return super.a($$0, $$1, $$2, $$3);
          } else {

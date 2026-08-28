@@ -69,7 +69,7 @@ public class dzg extends dyo implements bvi, fho.a {
 
    @Nullable
    @Override
-   public alq<fay> ay_() {
+   public alq<fay> at_() {
       return this.i;
    }
 
@@ -79,7 +79,7 @@ public class dzg extends dyo implements bvi, fho.a {
    }
 
    @Override
-   public long aB_() {
+   public long aw_() {
       return this.j;
    }
 
@@ -139,7 +139,7 @@ public class dzg extends dyo implements bvi, fho.a {
 
    public void a(dzg.a $$0) {
       if (this.n != null && !this.n.A_()) {
-         this.n.a(this.aC_(), this.m().b(), 1, $$0.ordinal());
+         this.n.a(this.ax_(), this.m().b(), 1, $$0.ordinal());
       }
    }
 

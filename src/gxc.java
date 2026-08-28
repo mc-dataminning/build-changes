@@ -17,12 +17,12 @@ public class gxc extends gwp<cjy, hdr, ggw> {
       $$1.a = $$0.gG().a().b().b();
       $$1.d = $$0.ch();
       $$1.e = $$0.ci();
-      $$1.f = $$0.x();
+      $$1.f = $$0.u();
       $$1.g = $$0.J($$2);
       $$1.h = $$0.K($$2);
       $$1.i = $$0.L($$2);
       $$1.b = $$0.gL();
-      $$1.c = $$0.q() ? $$0.gI() : null;
+      $$1.c = $$0.m() ? $$0.gI() : null;
    }
 
    protected void a(hdr $$0, fld $$1, float $$2, float $$3) {

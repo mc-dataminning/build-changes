@@ -42,11 +42,11 @@ public class gzw extends gzb<cpq, hfz, gjh> {
    public void a(cpq $$0, hfz $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = Objects.requireNonNullElse($$0.K($$2), fgc.c);
-      $$1.b = $$0.t();
+      $$1.b = $$0.gv();
       $$1.c = $$0.J($$2);
       $$1.d = $$0.aX;
       $$1.e = $$0.aV;
-      $$1.f = $$0.n();
+      $$1.f = $$0.u();
    }
 
    public static alr a(@Nullable czi $$0) {

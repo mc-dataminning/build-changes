@@ -18,7 +18,7 @@ public class hoj extends hnw {
 
    @Override
    public void q() {
-      if (!this.p.dQ() && this.p.f() == null && this.p.gv()) {
+      if (!this.p.dQ() && this.p.e() == null && this.p.gv()) {
          this.f = (double)((float)this.p.dA());
          this.g = (double)((float)this.p.dC());
          this.h = (double)((float)this.p.dG());

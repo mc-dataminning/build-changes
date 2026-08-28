@@ -32,7 +32,7 @@ public class awe {
       this.b = 0;
 
       for (asc $$3 : $$0) {
-         if (!$$3.aa_()) {
+         if (!$$3.ak()) {
             this.a++;
             if ($$3.fR()) {
                this.b++;

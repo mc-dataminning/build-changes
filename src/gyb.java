@@ -26,7 +26,7 @@ public class gyb extends gxu<csy, hej> {
 
    public void a(csy $$0, hej $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
-      this.a.a($$1.b, $$0.f(), dai.h, $$0);
+      $$1.a = $$0.f();
+      this.a.a($$1.b, $$0.e(), dai.h, $$0);
    }
 }

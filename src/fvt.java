@@ -6,7 +6,7 @@ public abstract class fvt implements fvu {
    private boolean b;
 
    @Override
-   public final boolean aM_() {
+   public final boolean aH_() {
       return this.b;
    }
 
@@ -17,7 +17,7 @@ public abstract class fvt implements fvu {
 
    @Nullable
    @Override
-   public fvv aN_() {
+   public fvv aI_() {
       return this.a;
    }
 

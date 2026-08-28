@@ -39,7 +39,7 @@ public class haz extends gxu<cts, hgt> {
 
    public void a(cts $$0, hgt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.o();
+      $$1.a = $$0.n();
       $$1.c = $$0.l($$2);
       $$1.b = $$0.k($$2);
    }

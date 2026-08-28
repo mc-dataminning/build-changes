@@ -18,6 +18,7 @@ import java.util.OptionalInt;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
@@ -151,7 +152,7 @@ public class asc extends csi {
    private final ej dp = new ej() {
       @Override
       public boolean x_() {
-         return asc.this.y().O().c(dkf.q);
+         return asc.this.x().O().c(dkf.q);
       }
 
       @Override
@@ -302,7 +303,7 @@ public class asc extends csi {
    public void c(ua $$0) {
       Optional<ua> $$1 = $$0.m("RootVehicle");
       if (!$$1.isEmpty()) {
-         asb $$2 = this.y();
+         asb $$2 = this.x();
          bxe $$3 = bxn.a($$1.get().n("Entity"), $$2, bxm.r, $$1x -> !$$2.c($$1x) ? null : $$1x);
          if ($$3 != null) {
             UUID $$4 = $$1.get().<UUID>a("Attach", ka.a).orElse(null);
@@ -356,7 +357,7 @@ public class asc extends csi {
    private void o(ua $$0) {
       Optional<alq<dkj>> $$1 = $$0.a("ender_pearl_dimension", dkj.h);
       if (!$$1.isEmpty()) {
-         asb $$2 = this.y().p().a($$1.get());
+         asb $$2 = this.x().p().a($$1.get());
          if ($$2 != null) {
             bxe $$3 = bxn.a($$0, $$2, bxm.r, $$1x -> !$$2.c($$1x) ? null : $$1x);
             if ($$3 != null) {
@@ -399,13 +400,13 @@ public class asc extends csi {
       $$0.a(this.dm);
    }
 
-   public void d() {
+   public void c() {
       this.a(this.bQ);
    }
 
    @Override
-   public void e_() {
-      super.e_();
+   public void f_() {
+      super.f_();
       this.f.b(aej.a);
    }
 
@@ -421,13 +422,13 @@ public class asc extends csi {
    }
 
    @Override
-   protected dah g() {
+   protected dah f() {
       return new dbi(this);
    }
 
    @Override
-   public void h() {
-      this.gK();
+   public void g() {
+      this.gL();
       this.h.a();
       this.dh.a();
       if (this.aj > 0) {
@@ -436,15 +437,15 @@ public class asc extends csi {
 
       this.bR.d();
       if (!this.bR.b(this)) {
-         this.p();
+         this.o();
          this.bR = this.bQ;
       }
 
-      bxe $$0 = this.L();
+      bxe $$0 = this.K();
       if ($$0 != this) {
          if ($$0.bJ()) {
             this.a($$0.dA(), $$0.dC(), $$0.dG(), $$0.dL(), $$0.dN());
-            this.y().m().a(this);
+            this.x().m().a(this);
             if (this.fZ()) {
                this.d(this);
             }
@@ -458,16 +459,16 @@ public class asc extends csi {
          aq.v.a(this, this.cS, this.af - this.cT);
       }
 
+      this.k();
       this.l();
-      this.m();
-      this.gR();
+      this.gT();
       this.cz.a(this, true);
    }
 
-   private void gR() {
+   private void gT() {
       bzh $$0 = this.g(bzl.g);
       if ($$0 != null) {
-         if (this.b()) {
+         if (this.gz()) {
             $$0.a(cu);
          } else {
             $$0.e(cu);
@@ -476,7 +477,7 @@ public class asc extends csi {
 
       bzh $$1 = this.g(bzl.j);
       if ($$1 != null) {
-         if (this.b()) {
+         if (this.gz()) {
             $$1.a(cv);
          } else {
             $$1.e(cv);
@@ -484,10 +485,10 @@ public class asc extends csi {
       }
    }
 
-   public void i() {
+   public void h() {
       try {
-         if (!this.aa_() || !this.do()) {
-            super.h();
+         if (!this.ak() || !this.do()) {
+            super.g();
          }
 
          for (int $$0 = 0; $$0 < this.gj().b(); $$0++) {
@@ -562,8 +563,8 @@ public class asc extends csi {
    }
 
    @Override
-   protected void j() {
-      if (this.dV().an() == buz.a && this.y().O().c(dkf.l)) {
+   protected void i() {
+      if (this.dV().an() == buz.a && this.x().O().c(dkf.l)) {
          if (this.af % 20 == 0) {
             if (this.eG() < this.eU()) {
                this.c(1.0F);
@@ -582,16 +583,16 @@ public class asc extends csi {
    }
 
    @Override
-   public void k() {
+   public void j() {
       if (this.eG() > 0.0F && this.cX != null) {
          aq.X.a(this, this.cX);
       }
 
       this.cX = null;
-      super.k();
+      super.j();
    }
 
-   public void l() {
+   public void k() {
       if (this.Z > 0.0 && this.cX == null) {
          this.cX = this.dt();
          if (this.cm != null && this.cm.e <= this.cX.e) {
@@ -601,7 +602,7 @@ public class asc extends csi {
    }
 
    @Override
-   public void m() {
+   public void l() {
       if (this.dk() != null && this.dk().bv()) {
          if (this.cZ == null) {
             this.cZ = this.dt();
@@ -616,20 +617,20 @@ public class asc extends csi {
    }
 
    private void a(fhk $$0, int $$1) {
-      this.gz().a($$0, this, $$1x -> $$1x.a($$1));
+      this.gA().a($$0, this, $$1x -> $$1x.a($$1));
    }
 
    @Override
    public void a(bvt $$0) {
       this.a(egq.p);
-      boolean $$1 = this.y().O().c(dkf.o);
+      boolean $$1 = this.x().O().c(dkf.o);
       if ($$1) {
          xg $$2 = this.eS().a();
          this.f.a(new aek(this.ao(), $$2), wl.a(() -> {
             int $$1x = 256;
             String $$2x = $$2.a(256);
             xg $$3x = xg.a("death.attack.message_too_long", xg.b($$2x).a(o.o));
-            xg $$4x = xg.a("death.attack.even_more_magic", this.m_()).a($$1xx -> $$1xx.a(new xm.e($$3x)));
+            xg $$4x = xg.a("death.attack.even_more_magic", this.P_()).a($$1xx -> $$1xx.a(new xm.e($$3x)));
             return new aek(this.ao(), $$4x);
          }));
          fhj $$3 = this.cq();
@@ -645,15 +646,15 @@ public class asc extends csi {
       }
 
       this.gy();
-      if (this.y().O().c(dkf.P)) {
-         this.gS();
+      if (this.x().O().c(dkf.P)) {
+         this.gU();
       }
 
-      if (!this.aa_()) {
-         this.b(this.y(), $$0);
+      if (!this.ak()) {
+         this.b(this.x(), $$0);
       }
 
-      this.gz().a(fhk.e, this, fhf::b);
+      this.gA().a(fhk.e, this, fhf::b);
       byf $$4 = this.eT();
       if ($$4 != null) {
          this.b(axi.h.b($$4.an()));
@@ -673,19 +674,19 @@ public class asc extends csi {
       this.v(false);
    }
 
-   private void gS() {
+   private void gU() {
       ffx $$0 = new ffx(this.dv()).c(32.0, 10.0, 32.0);
-      this.dV().a(byh.class, $$0, bxl.f).stream().filter($$0x -> $$0x instanceof byk).forEach($$0x -> ((byk)$$0x).a_(this.y(), this));
+      this.dV().a(byh.class, $$0, bxl.f).stream().filter($$0x -> $$0x instanceof byk).forEach($$0x -> ((byk)$$0x).a_(this.x(), this));
    }
 
    @Override
    public void a(bxe $$0, bvt $$1) {
       if ($$0 != this) {
          super.a($$0, $$1);
-         this.gz().a(fhk.g, this, fhf::b);
+         this.gA().a(fhk.g, this, fhf::b);
          if ($$0 instanceof csi) {
             this.a(axi.Q);
-            this.gz().a(fhk.f, this, fhf::b);
+            this.gA().a(fhk.f, this, fhf::b);
          } else {
             this.a(axi.O);
          }
@@ -697,11 +698,11 @@ public class asc extends csi {
    }
 
    private void a(fhg $$0, fhg $$1, fhk[] $$2) {
-      fhc $$3 = this.gz().e($$1.cI());
+      fhc $$3 = this.gA().e($$1.cI());
       if ($$3 != null) {
          int $$4 = $$3.o().b();
          if ($$4 >= 0 && $$4 < $$2.length) {
-            this.gz().a($$2[$$4], $$0, fhf::b);
+            this.gA().a($$2[$$4], $$0, fhf::b);
          }
       }
    }
@@ -716,7 +717,7 @@ public class asc extends csi {
             return false;
          }
 
-         if ($$3 instanceof csq $$5 && $$5.q() instanceof csi $$7 && !this.a($$7)) {
+         if ($$3 instanceof csq $$5 && $$5.p() instanceof csi $$7 && !this.a($$7)) {
             return false;
          }
 
@@ -726,15 +727,15 @@ public class asc extends csi {
 
    @Override
    public boolean a(csi $$0) {
-      return !this.gT() ? false : super.a($$0);
+      return !this.gV() ? false : super.a($$0);
    }
 
-   private boolean gT() {
+   private boolean gV() {
       return this.g.ac();
    }
 
    public eza a(boolean $$0, eza.a $$1) {
-      asc.a $$2 = this.T();
+      asc.a $$2 = this.S();
       asb $$3 = this.g.a(asc.a.b($$2));
       if ($$3 != null && $$2 != null) {
          Optional<asc.b> $$4 = a($$3, $$2, $$0);
@@ -775,9 +776,9 @@ public class asc extends csi {
    }
 
    @Override
-   public void n() {
+   public void m() {
       this.al();
-      this.y().a(this, bxe.d.e);
+      this.x().a(this, bxe.d.e);
       if (!this.k) {
          this.k = true;
          this.f.b(new adm(adm.f, 0.0F));
@@ -795,10 +796,10 @@ public class asc extends csi {
          }
 
          asb $$1 = $$0.b();
-         asb $$2 = this.y();
+         asb $$2 = this.x();
          alq<dkj> $$3 = $$2.aj();
          if (!$$0.h()) {
-            this.ab();
+            this.aa();
          }
 
          if ($$1.aj() == $$3) {
@@ -863,10 +864,10 @@ public class asc extends csi {
 
    @Override
    public boolean a(asc $$0) {
-      if ($$0.aa_()) {
-         return this.L() == this;
+      if ($$0.ak()) {
+         return this.K() == this;
       } else {
-         return this.aa_() ? false : super.a($$0);
+         return this.ak() ? false : super.a($$0);
       }
    }
 
@@ -892,7 +893,7 @@ public class asc extends csi {
          if (this.dV().V()) {
             return Either.left(csi.a.b);
          } else {
-            if (!this.b()) {
+            if (!this.gz()) {
                double $$2 = 8.0;
                double $$3 = 5.0;
                fgc $$4 = fgc.c($$0);
@@ -900,7 +901,7 @@ public class asc extends csi {
                   .a(
                      cpk.class,
                      new ffx($$4.a() - 8.0, $$4.b() - 5.0, $$4.c() - 8.0, $$4.a() + 8.0, $$4.b() + 5.0, $$4.c() + 8.0),
-                     $$0x -> $$0x.a(this.y(), this)
+                     $$0x -> $$0x.a(this.x(), this)
                   );
                if (!$$5.isEmpty()) {
                   return Either.left(csi.a.f);
@@ -911,7 +912,7 @@ public class asc extends csi {
                this.a(axi.ap);
                aq.r.a(this);
             });
-            if (!this.y().e()) {
+            if (!this.x().e()) {
                this.a(xg.c("sleep.not_possible"), true);
             }
 
@@ -944,7 +945,7 @@ public class asc extends csi {
    @Override
    public void a(boolean $$0, boolean $$1) {
       if (this.fR()) {
-         this.y().m().a(this, new ach(this, 2));
+         this.x().m().a(this, new ach(this, 2));
       }
 
       super.a($$0, $$1);
@@ -955,12 +956,12 @@ public class asc extends csi {
 
    @Override
    public boolean a(asb $$0, bvt $$1) {
-      return super.a($$0, $$1) || this.Q() && !$$1.a(bvw.m) || !this.gJ();
+      return super.a($$0, $$1) || this.P() && !$$1.a(bvw.m) || !this.gK();
    }
 
    @Override
    protected void b(asb $$0, iw $$1) {
-      if (!this.aa_()) {
+      if (!this.ak()) {
          super.b($$0, $$1);
       }
    }
@@ -970,7 +971,7 @@ public class asc extends csi {
       if (this.dg && $$1 && this.Z > 0.0) {
          fgc $$4 = $$3.b().b(0.0, 0.5, 0.0);
          int $$5 = (int)azz.a(50.0 * this.Z, 0.0, 200.0);
-         this.y().a(new lr(lz.b, $$2), $$4.d, $$4.e, $$4.f, $$5, 0.3F, 0.3F, 0.3F, 0.15F);
+         this.x().a(new lr(lz.b, $$2), $$4.d, $$4.e, $$4.f, $$5, 0.3F, 0.3F, 0.3F, 0.15F);
          this.dg = false;
       }
 
@@ -986,19 +987,19 @@ public class asc extends csi {
    }
 
    @Override
-   protected void o() {
+   protected void n() {
       if (this.dV().u().i()) {
-         super.o();
+         super.n();
       }
    }
 
    @Override
    public void a(eac $$0, boolean $$1) {
-      this.f.b(new acn(this.dV(), $$0.aC_()));
-      this.f.b(new aee($$0.aC_(), $$1));
+      this.f.b(new acn(this.dV(), $$0.ax_()));
+      this.f.b(new aee($$0.ax_(), $$1));
    }
 
-   private void gU() {
+   private void gW() {
       this.dq = this.dq % 100 + 1;
    }
 
@@ -1008,19 +1009,19 @@ public class asc extends csi {
          return OptionalInt.empty();
       } else {
          if (this.bR != this.bQ) {
-            this.p();
+            this.o();
          }
 
-         this.gU();
+         this.gW();
          cwb $$1 = $$0.createMenu(this.dq, this.gj(), this);
          if ($$1 == null) {
-            if (this.aa_()) {
+            if (this.ak()) {
                this.a(xg.c("container.spectatorCantOpen").a(o.m), true);
             }
 
             return OptionalInt.empty();
          } else {
-            this.f.b(new aed($$1.l, $$1.a(), $$0.m_()));
+            this.f.b(new aed($$1.l, $$1.a(), $$0.P_()));
             this.a($$1);
             this.bR = $$1;
             return OptionalInt.of(this.dq);
@@ -1036,11 +1037,11 @@ public class asc extends csi {
    @Override
    public void a(cme $$0, buv $$1) {
       if (this.bR != this.bQ) {
-         this.p();
+         this.o();
       }
 
-      this.gU();
-      int $$2 = $$0.ae_();
+      this.gW();
+      int $$2 = $$0.ab_();
       this.f.b(new adn(this.dq, $$2, $$0.ao()));
       this.bR = new cxd(this.dq, this.gj(), $$1, $$0, $$2);
       this.a(this.bR);
@@ -1049,7 +1050,7 @@ public class asc extends csi {
    @Override
    public void a(dak $$0, bvb $$1) {
       if ($$0.c(kl.V)) {
-         if (ddu.a($$0, this.A(), this)) {
+         if (ddu.a($$0, this.z(), this)) {
             this.bR.d();
          }
 
@@ -1063,24 +1064,24 @@ public class asc extends csi {
    }
 
    @Override
-   public void p() {
+   public void o() {
       this.f.b(new acy(this.bR.l));
-      this.q();
+      this.p();
    }
 
    @Override
-   public void q() {
+   public void p() {
       this.bR.a(this);
       this.bQ.a(this.bR);
       this.bR = this.bQ;
    }
 
    @Override
-   public void r() {
+   public void q() {
       double $$0 = this.dA();
       double $$1 = this.dC();
       double $$2 = this.dG();
-      super.r();
+      super.q();
       this.q(this.dA() - $$0, this.dC() - $$1, this.dG() - $$2);
    }
 
@@ -1104,7 +1105,7 @@ public class asc extends csi {
                this.a(axi.s, $$5);
                this.G(0.01F * (float)$$5 * 0.01F);
             }
-         } else if (this.d_()) {
+         } else if (this.k_()) {
             if ($$1 > 0.0) {
                this.a(axi.u, (int)Math.round($$1 * 100.0));
             }
@@ -1159,13 +1160,13 @@ public class asc extends csi {
    @Override
    public void a(axf<?> $$0, int $$1) {
       this.cA.b(this, $$0, $$1);
-      this.gz().a($$0, this, $$1x -> $$1x.b($$1));
+      this.gA().a($$0, this, $$1x -> $$1x.b($$1));
    }
 
    @Override
    public void a(axf<?> $$0) {
       this.cA.a(this, $$0, 0);
-      this.gz().a($$0, this, fhf::c);
+      this.gA().a($$0, this, fhf::c);
    }
 
    @Override
@@ -1190,8 +1191,8 @@ public class asc extends csi {
    }
 
    @Override
-   public void s() {
-      super.s();
+   public void r() {
+      super.r();
       this.a(axi.E);
       if (this.ci()) {
          this.G(0.2F);
@@ -1206,7 +1207,8 @@ public class asc extends csi {
       this.cK = -1;
    }
 
-   public void t() {
+   @Override
+   public void s() {
       this.cU = true;
       this.bN();
       if (this.fR()) {
@@ -1214,12 +1216,11 @@ public class asc extends csi {
       }
    }
 
-   public boolean u() {
+   public boolean t() {
       return this.cU;
    }
 
-   @Override
-   public void v() {
+   public void u() {
       this.cH = -1.0E8F;
    }
 
@@ -1229,10 +1230,10 @@ public class asc extends csi {
    }
 
    @Override
-   protected void P_() {
+   protected void v() {
       if (!this.bm.f() && this.fz()) {
          this.f.b(new adi(this, (byte)9));
-         super.P_();
+         super.v();
       }
    }
 
@@ -1252,7 +1253,7 @@ public class asc extends csi {
       this.dh = $$0.dh;
       this.do = $$0.do;
       this.h.a($$0.h.b(), $$0.h.c());
-      this.x();
+      this.w();
       if ($$1) {
          this.fa().b($$0.fa());
          this.fa().c($$0.fa());
@@ -1272,7 +1273,7 @@ public class asc extends csi {
       } else {
          this.fa().b($$0.fa());
          this.d(this.eU());
-         if (this.y().O().c(dkf.e) || $$0.aa_()) {
+         if (this.x().O().c(dkf.e) || $$0.ak()) {
             this.gj().a($$0.gj());
             this.cf = $$0.cf;
             this.cg = $$0.cg;
@@ -1291,9 +1292,9 @@ public class asc extends csi {
       this.i = $$0.i;
       this.cY = $$0.cY;
       this.db = $$0.db;
-      this.k($$0.gB());
-      this.l($$0.gC());
-      this.a($$0.gI());
+      this.k($$0.gC());
+      this.l($$0.gD());
+      this.a($$0.gJ());
    }
 
    @Override
@@ -1365,28 +1366,28 @@ public class asc extends csi {
 
    @Override
    public void b(bxe $$0) {
-      this.y().m().a(this, new ach($$0, 4));
+      this.x().m().a(this, new ach($$0, 4));
    }
 
    @Override
    public void c(bxe $$0) {
-      this.y().m().a(this, new ach($$0, 5));
+      this.x().m().a(this, new ach($$0, 5));
    }
 
    @Override
-   public void x() {
+   public void w() {
       if (this.f != null) {
          this.f.b(new aeg(this.gk()));
-         this.K();
+         this.J();
       }
    }
 
-   public asb y() {
+   public asb x() {
       return (asb)this.dV();
    }
 
    public boolean a(dkg $$0) {
-      boolean $$1 = this.aa_();
+      boolean $$1 = this.ak();
       if (!this.h.a($$0)) {
          return false;
       } else {
@@ -1398,32 +1399,28 @@ public class asc extends csi {
          } else {
             this.d(this);
             if ($$1) {
-               dgz.a(this.y(), this);
+               dgz.a(this.x(), this);
             }
          }
 
-         this.x();
+         this.w();
          this.fx();
          return true;
       }
    }
 
+   @Nonnull
    @Override
-   public boolean aa_() {
-      return this.h.b() == dkg.d;
+   public dkg a() {
+      return this.h.b();
    }
 
-   @Override
-   public boolean b() {
-      return this.h.b() == dkg.b;
-   }
-
-   public ej z() {
+   public ej y() {
       return this.dp;
    }
 
-   public ek A() {
-      return new ek(this.z(), this.dt(), this.bT(), this.y(), this.G(), this.ai().getString(), this.m_(), this.g, this);
+   public ek z() {
+      return new ek(this.y(), this.dt(), this.bT(), this.x(), this.F(), this.ah().getString(), this.P_(), this.g, this);
    }
 
    public void a(xg $$0) {
@@ -1446,12 +1443,12 @@ public class asc extends csi {
    }
 
    public void a(xv $$0, boolean $$1, xc.a $$2) {
-      if (this.gV()) {
+      if (this.gX()) {
          $$0.a(this, $$1, $$2);
       }
    }
 
-   public String B() {
+   public String A() {
       return this.f.m() instanceof InetSocketAddress $$1 ? InetAddresses.toAddrString($$1.getAddress()) : "<unknown>";
    }
 
@@ -1467,17 +1464,17 @@ public class asc extends csi {
       this.ar().a(bL, (byte)$$0.g().b());
    }
 
-   public arl C() {
+   public arl B() {
       int $$0 = this.ar().a(bK);
       bxw $$1 = bxw.d.apply(this.ar().a(bL));
       return new arl(this.cW, this.cV, this.cL, this.cN, $$0, $$1, this.de, this.df, this.cM);
    }
 
-   public boolean D() {
+   public boolean C() {
       return this.cN;
    }
 
-   public csf E() {
+   public csf D() {
       return this.cL;
    }
 
@@ -1485,11 +1482,11 @@ public class asc extends csi {
       return this.cL == csf.c ? $$0 : true;
    }
 
-   private boolean gV() {
+   private boolean gX() {
       return this.cL == csf.a;
    }
 
-   public int F() {
+   public int E() {
       return this.cV;
    }
 
@@ -1498,39 +1495,40 @@ public class asc extends csi {
    }
 
    @Override
-   public int G() {
+   public int F() {
       return this.g.c(this.gi());
    }
 
-   public void H() {
+   @Override
+   public void G() {
       this.cO = ag.c();
    }
 
-   public axe I() {
+   public axe H() {
       return this.cA;
    }
 
-   public axd J() {
+   public axd I() {
       return this.cR;
    }
 
    @Override
-   protected void K() {
-      if (this.aa_()) {
+   protected void J() {
+      if (this.ak()) {
          this.eB();
          this.k(true);
       } else {
-         super.K();
+         super.J();
       }
    }
 
-   public bxe L() {
+   public bxe K() {
       return (bxe)(this.cP == null ? this : this.cP);
    }
 
    @Override
    public void d(@Nullable bxe $$0) {
-      bxe $$1 = this.L();
+      bxe $$1 = this.K();
       this.cP = (bxe)($$0 == null ? this : $$0);
       if ($$1 != this.cP) {
          if (this.cP.dV() instanceof asb $$2) {
@@ -1538,7 +1536,7 @@ public class asc extends csi {
          }
 
          if ($$0 != null) {
-            this.y().m().a(this);
+            this.x().m().a(this);
          }
 
          this.f.b(new afi(this.cP));
@@ -1547,54 +1545,54 @@ public class asc extends csi {
    }
 
    @Override
-   protected void M() {
+   protected void L() {
       if (!this.cQ) {
-         super.M();
+         super.L();
       }
    }
 
    @Override
    public void e(bxe $$0) {
-      if (this.h.b() == dkg.d) {
+      if (this.ak()) {
          this.d($$0);
       } else {
          super.e($$0);
       }
    }
 
-   public long N() {
+   public long M() {
       return this.cO;
    }
 
    @Nullable
-   public xg O() {
+   public xg N() {
       return null;
    }
 
-   public int P() {
+   public int O() {
       return 0;
    }
 
    @Override
    public void a(bvb $$0) {
       super.a($$0);
-      this.gE();
+      this.gF();
    }
 
-   public boolean Q() {
+   public boolean P() {
       return this.cQ;
    }
 
-   public void R() {
+   public void Q() {
       this.cQ = false;
    }
 
-   public alz S() {
+   public alz R() {
       return this.cz;
    }
 
    @Nullable
-   public asc.a T() {
+   public asc.a S() {
       return this.dc;
    }
 
@@ -1610,7 +1608,7 @@ public class asc extends csi {
       this.dc = $$0;
    }
 
-   public jz U() {
+   public jz T() {
       return this.da;
    }
 
@@ -1618,7 +1616,7 @@ public class asc extends csi {
       this.da = $$0;
    }
 
-   public ark V() {
+   public ark U() {
       return this.db;
    }
 
@@ -1635,7 +1633,7 @@ public class asc extends csi {
    public coo a(dak $$0, boolean $$1, boolean $$2) {
       coo $$3 = super.a($$0, $$1, $$2);
       if ($$2) {
-         dak $$4 = $$3 != null ? $$3.f() : dak.l;
+         dak $$4 = $$3 != null ? $$3.e() : dak.l;
          if (!$$4.f()) {
             this.a(axi.f.b($$4.h()), $$0.M());
             this.a(axi.F);
@@ -1645,7 +1643,7 @@ public class asc extends csi {
       return $$3;
    }
 
-   public atk W() {
+   public atk V() {
       return this.dd;
    }
 
@@ -1680,7 +1678,7 @@ public class asc extends csi {
    }
 
    @Override
-   public boolean X() {
+   public boolean W() {
       return this.de;
    }
 
@@ -1713,12 +1711,12 @@ public class asc extends csi {
       }
    }
 
-   public boolean Y() {
+   public boolean X() {
       return this.df;
    }
 
    @Override
-   public Optional<crn> Z() {
+   public Optional<crn> Y() {
       return Optional.of(this.dh);
    }
 
@@ -1729,9 +1727,9 @@ public class asc extends csi {
    @Override
    public void a(coo $$0) {
       super.a($$0);
-      bxe $$1 = $$0.q();
+      bxe $$1 = $$0.p();
       if ($$1 != null) {
-         aq.S.a(this, $$0.f(), $$1);
+         aq.S.a(this, $$0.e(), $$1);
       }
    }
 
@@ -1740,7 +1738,7 @@ public class asc extends csi {
    }
 
    @Nullable
-   public xx aa() {
+   public xx Z() {
       return this.do != null && this.do.b() ? null : this.do;
    }
 
@@ -1767,9 +1765,9 @@ public class asc extends csi {
    }
 
    @Override
-   public void ab() {
+   public void aa() {
       bxe $$0 = this.dk();
-      super.ab();
+      super.aa();
       if ($$0 instanceof byf $$1) {
          for (bwi $$2 : $$1.eD()) {
             this.f.b(new aev($$0.ao(), $$2.c()));
@@ -1782,7 +1780,7 @@ public class asc extends csi {
    }
 
    public agv b(asb $$0) {
-      return new agv($$0.ai(), $$0.aj(), dlo.a($$0.E()), this.h.b(), this.h.c(), $$0.ak(), $$0.D(), this.gI(), this.az(), $$0.P());
+      return new agv($$0.ai(), $$0.aj(), dlo.a($$0.E()), this.h.b(), this.h.c(), $$0.ak(), $$0.D(), this.gJ(), this.az(), $$0.P());
    }
 
    @Override
@@ -1790,19 +1788,19 @@ public class asc extends csi {
       this.di = $$0;
    }
 
-   public void ac() {
+   public void ab() {
       this.di = null;
    }
 
    @Nullable
-   public iw ad() {
+   public iw ac() {
       return this.di;
    }
 
    @Override
-   public fgc ae() {
+   public fgc ad() {
       bxe $$0 = this.dk();
-      return $$0 != null && $$0.cW() != this ? $$0.ae() : this.dj;
+      return $$0 != null && $$0.cW() != this ? $$0.ad() : this.dj;
    }
 
    public void a(fgc $$0) {
@@ -1811,7 +1809,7 @@ public class asc extends csi {
 
    @Override
    protected float a(bxe $$0, float $$1, bvt $$2) {
-      return dgz.a(this.y(), this.dZ(), $$0, $$2, $$1);
+      return dgz.a(this.x(), this.dZ(), $$0, $$2, $$1);
    }
 
    @Override
@@ -1820,7 +1818,7 @@ public class asc extends csi {
       this.b(axi.d.b($$0));
    }
 
-   public csg af() {
+   public csg ae() {
       return this.dk;
    }
 
@@ -1828,7 +1826,7 @@ public class asc extends csi {
       this.dk = $$0;
    }
 
-   public fgc ag() {
+   public fgc af() {
       float $$0 = this.dk.c() == this.dk.d() ? 0.0F : (this.dk.c() ? 1.0F : -1.0F);
       float $$1 = this.dk.a() == this.dk.b() ? 0.0F : (this.dk.a() ? 1.0F : -1.0F);
       return a(new fgc((double)$$0, 0.0, (double)$$1), 1.0F, this.dL());
@@ -1842,7 +1840,7 @@ public class asc extends csi {
       this.dl.remove($$0);
    }
 
-   public Set<ctn> ah() {
+   public Set<ctn> ag() {
       return this.dl;
    }
 

@@ -25,7 +25,7 @@ public class gor extends gox {
    }
 
    private bxe a(bxe $$0) {
-      return (bxe)(!($$0 instanceof coo) ? $$0 : ((coo)$$0).v());
+      return (bxe)(!($$0 instanceof coo) ? $$0 : ((coo)$$0).u());
    }
 
    @Override

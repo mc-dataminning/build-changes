@@ -11,7 +11,7 @@ public class gyk extends gwk<cqr> {
 
    public void a(cqr $$0, hes $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gu();
+      $$1.b = $$0.u();
    }
 
    protected boolean b(hes $$0) {

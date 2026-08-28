@@ -44,12 +44,12 @@ public class dyt extends dyo {
             this.b($$1, $$2, $$4);
             return true;
          } else {
-            $$1.a(this.aC_(), this.m().b(), 2);
+            $$1.a(this.ax_(), this.m().b(), 2);
             int $$6 = this.f();
             if ($$5 != $$6) {
                ebq $$7 = this.m();
                ebq $$8 = $$7.b(ecg.by, Integer.valueOf($$6));
-               $$1.a(this.aC_(), $$8, 3);
+               $$1.a(this.ax_(), $$8, 3);
             }
 
             return false;
@@ -83,7 +83,7 @@ public class dyt extends dyo {
    private void b(asb $$0, byf $$1, dak $$2) {
       this.c($$0, $$1, $$2);
       ebq $$3 = this.m();
-      $$0.c(3008, this.aC_(), dno.j($$3));
+      $$0.c(3008, this.ax_(), dno.j($$3));
       dno $$6;
       if (this.m().b() instanceof dnu $$5) {
          $$6 = $$5.b();
@@ -118,7 +118,7 @@ public class dyt extends dyo {
          this.i = Math.max(0, this.i - 2);
          int $$2 = this.f();
          if ($$1 != $$2) {
-            $$0.a(this.aC_(), this.m().b(ecg.by, Integer.valueOf($$2)), 3);
+            $$0.a(this.ax_(), this.m().b(ecg.by, Integer.valueOf($$2)), 3);
          }
 
          int $$3 = 4;
@@ -130,7 +130,7 @@ public class dyt extends dyo {
          this.j = 0L;
          this.k = 0L;
       } else {
-         $$0.a(this.aC_(), this.m().b(), 2);
+         $$0.a(this.ax_(), this.m().b(), 2);
       }
    }
 

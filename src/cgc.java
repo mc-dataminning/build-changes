@@ -28,11 +28,11 @@ public class cgc<T extends cpk & cpo & cox> extends cfb {
 
    @Override
    public boolean c() {
-      return this.i() && (this.b() || !this.b.O().k()) && this.h();
+      return this.i() && (this.b() || !this.b.N().k()) && this.h();
    }
 
    private boolean i() {
-      return this.b.f() != null && this.b.f().bJ();
+      return this.b.e() != null && this.b.e().bJ();
    }
 
    @Override
@@ -55,9 +55,9 @@ public class cgc<T extends cpk & cpo & cox> extends cfb {
 
    @Override
    public void a() {
-      byf $$0 = this.b.f();
+      byf $$0 = this.b.e();
       if ($$0 != null) {
-         boolean $$1 = this.b.P().a($$0);
+         boolean $$1 = this.b.O().a($$0);
          boolean $$2 = this.f > 0;
          if ($$1 != $$2) {
             this.f = 0;
@@ -74,15 +74,15 @@ public class cgc<T extends cpk & cpo & cox> extends cfb {
          if ($$4) {
             this.h--;
             if (this.h <= 0) {
-               this.b.O().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.b.N().a($$0, this.k() ? this.d : this.d * 0.5);
                this.h = a.a(this.b.dY());
             }
          } else {
             this.h = 0;
-            this.b.O().m();
+            this.b.N().m();
          }
 
-         this.b.J().a($$0, 30.0F, 30.0F);
+         this.b.I().a($$0, 30.0F, 30.0F);
          if (this.c == cgc.a.a) {
             if (!$$4) {
                this.b.c(ctf.a(this.b, dao.xg));

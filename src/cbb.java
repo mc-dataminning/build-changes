@@ -9,7 +9,7 @@ public class cbb extends bzw<cru> {
    }
 
    protected boolean a(asb $$0, cru $$1) {
-      csi $$2 = $$1.x();
+      csi $$2 = $$1.gu();
       return $$1.bJ() && $$2 != null && !$$1.bi() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bR != null;
    }
 
@@ -38,7 +38,7 @@ public class cbb extends bzw<cru> {
 
    private void a(cru $$0) {
       bzf<?> $$1 = $$0.ec();
-      $$1.a(chh.n, new chk(new cah($$0.x(), false), this.c, 2));
-      $$1.a(chh.o, new cah($$0.x(), true));
+      $$1.a(chh.n, new chk(new cah($$0.gu(), false), this.c, 2));
+      $$1.a(chh.o, new cah($$0.gu(), true));
    }
 }

@@ -13,7 +13,7 @@ public abstract class gwo<T extends cqd, S extends hgv, M extends gkh<S>> extend
    public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.gl();
-      $$1.b = $$0.gy();
+      $$1.b = $$0.gB();
    }
 
    protected boolean b(S $$0) {

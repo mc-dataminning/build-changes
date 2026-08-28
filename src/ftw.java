@@ -36,7 +36,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
       if (this.k) {
          this.i = $$0.a($$1, $$2) && $$1 >= this.F() && $$2 >= this.G() && $$1 < this.F() + this.g && $$2 < this.G() + this.h;
          this.b($$0, $$1, $$2, $$3);
-         this.n.a(this.C(), this.aO_(), this.J());
+         this.n.a(this.C(), this.aJ_(), this.J());
       }
    }
 
@@ -149,7 +149,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
       if (!this.j || !this.k) {
          return null;
       } else {
-         return !this.aO_() ? fth.a(this) : null;
+         return !this.aJ_() ? fth.a(this) : null;
       }
    }
 
@@ -192,7 +192,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
    }
 
    @Override
-   public boolean aO_() {
+   public boolean aJ_() {
       return this.m;
    }
 
@@ -201,7 +201,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
    }
 
    public boolean D() {
-      return this.C() || this.aO_();
+      return this.C() || this.aJ_();
    }
 
    @Override
@@ -216,7 +216,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
 
    @Override
    public fxt.a w() {
-      if (this.aO_()) {
+      if (this.aJ_()) {
          return fxt.a.c;
       } else {
          return this.i ? fxt.a.b : fxt.a.a;
@@ -234,7 +234,7 @@ public abstract class ftw implements fvb, fvv, fxo, fxt {
    protected void c(fxv $$0) {
       $$0.a(fxu.a, this.d());
       if (this.j) {
-         if (this.aO_()) {
+         if (this.aJ_()) {
             $$0.a(fxu.d, xg.c("narration.button.usage.focused"));
          } else {
             $$0.a(fxu.d, xg.c("narration.button.usage.hovered"));

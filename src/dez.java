@@ -43,7 +43,7 @@ public class dez extends dfp {
    }
 
    @Override
-   public boolean ar_() {
+   public boolean am_() {
       return true;
    }
 

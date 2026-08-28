@@ -82,7 +82,7 @@ public class fub {
       boolean $$3 = this.t != null;
       if ($$3 && this.t.b($$0, $$1, $$2)) {
          return true;
-      } else if (this.f.aN_() != this.g || $$0 != 258 || this.w && !$$3) {
+      } else if (this.f.aI_() != this.g || $$0 != 258 || this.w && !$$3) {
          return false;
       } else {
          this.c(true);
@@ -441,8 +441,8 @@ public class fub {
       }
 
       public boolean a(double $$0) {
-         int $$1 = (int)(fub.this.e.o.e() * (double)fub.this.e.aO().o() / (double)fub.this.e.aO().m());
-         int $$2 = (int)(fub.this.e.o.f() * (double)fub.this.e.aO().p() / (double)fub.this.e.aO().n());
+         int $$1 = (int)fub.this.e.o.a(fub.this.e.aO());
+         int $$2 = (int)fub.this.e.o.b(fub.this.e.aO());
          if (this.b.b($$1, $$2)) {
             this.e = azz.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - fub.this.l, 0));
             return true;

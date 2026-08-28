@@ -11,8 +11,8 @@ public class fyt extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.a = fur.a(this.p, this.n(), this.n - 50);
       this.c(fty.a(xg.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
       this.c(fty.a(xf.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
@@ -25,7 +25,7 @@ public class fyt extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 }

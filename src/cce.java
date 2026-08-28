@@ -23,7 +23,7 @@ public class cce extends bzw<cru> {
          return false;
       } else {
          byf $$3 = $$2.c(chh.r).get();
-         return $$3.an() == bxn.bT && $$1.bJ() && $$3.bJ() && !$$1.n_() && $$1.g($$3) <= 17.0;
+         return $$3.an() == bxn.bT && $$1.bJ() && $$3.bJ() && !$$1.e_() && $$1.g($$3) <= 17.0;
       }
    }
 
@@ -82,7 +82,7 @@ public class cce extends bzw<cru> {
    }
 
    private void b(cru $$0) {
-      for (djf $$1 : $$0.gv()) {
+      for (djf $$1 : $$0.gw()) {
          if (!$$1.r() && this.a($$1)) {
             this.f.add($$1.h());
          }

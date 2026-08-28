@@ -27,7 +27,7 @@ public class cdg extends cdh {
       int $$5 = 20;
       int $$6 = 10;
       int[] $$7 = new int[c.size()];
-      bvj $$8 = $$1.n();
+      bvj $$8 = $$1.u();
       int $$9 = $$8.b();
       ebq $$10 = $$3;
 
@@ -61,7 +61,7 @@ public class cdg extends cdh {
    }
 
    private void c(asb $$0, cru $$1) {
-      bvj $$2 = $$1.n();
+      bvj $$2 = $$1.u();
       if ($$2.a_(dao.ql) <= 36) {
          int $$3 = $$2.a_(dao.qk);
          int $$4 = 3;

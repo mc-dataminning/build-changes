@@ -20,7 +20,7 @@ public class foc extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.F.a(this.l, this.p);
       fxq $$0 = this.F.c(fxq.d()).a(10);
       fty $$1 = fty.a(xf.j, $$0x -> this.I.run()).a();
@@ -32,7 +32,7 @@ public class foc extends hrc {
       $$0.a(fxi.a(this.p, this.H, c));
       fxq $$2 = this.F.b(fxq.e().a(10));
       $$2.a($$1);
-      $$2.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      $$2.a(fty.a(xf.k, $$0x -> this.aL_()).a());
       this.F.a($$1x -> {
          ftw var10000 = this.c($$1x);
       });
@@ -40,7 +40,7 @@ public class foc extends hrc {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.G);
    }
 
@@ -98,7 +98,7 @@ public class foc extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.E);
    }
 }

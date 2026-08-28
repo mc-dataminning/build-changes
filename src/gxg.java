@@ -32,7 +32,7 @@ public class gxg extends gzb<ckf, hdt, ghd> {
 
    public void a(ckf $$0, hdt $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t().a();
+      $$1.a = $$0.p().a();
    }
 
    public void a(hdt $$0, fld $$1, grn $$2, int $$3) {

@@ -15,7 +15,7 @@ public class cef extends ced {
          this.i().ifPresent($$0x -> this.a.aX = this.a(this.a.aX, $$0x + 20.0F, this.b));
          this.h().ifPresent($$0x -> this.a.x(this.a(this.a.dN(), $$0x + 10.0F, this.c)));
       } else {
-         if (this.a.O().k()) {
+         if (this.a.N().k()) {
             this.a.x(this.a(this.a.dN(), 0.0F, 5.0F));
          }
 

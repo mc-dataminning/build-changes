@@ -28,7 +28,7 @@ public class aoa {
             $$1.a(xg.a("gameMode.changed", $$3));
          }
 
-         $$0.a(() -> xg.a("commands.gamemode.success.other", $$1.m_(), $$3), true);
+         $$0.a(() -> xg.a("commands.gamemode.success.other", $$1.P_(), $$3), true);
       }
    }
 

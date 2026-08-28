@@ -24,8 +24,8 @@ public class fyk extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.x = fur.a(this.p, this.v, this.n - 50);
       int $$0 = (this.x.a() + 1) * 9;
       this.y = fua.a(xg.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
@@ -46,7 +46,7 @@ public class fyk extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 

@@ -32,8 +32,8 @@ public abstract class gtu implements gua<eac> {
       $$1.a();
       this.a($$1, -$$6.h($$5), $$5);
       this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aC_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
-      this.a($$0.aC_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
+      this.a($$0.ax_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
+      this.a($$0.ax_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
       $$1.b();
    }
 
@@ -98,7 +98,7 @@ public abstract class gtu implements gua<eac> {
       } else {
          fqq $$2 = fqq.Q();
          gqm $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
+         if ($$3 != null && $$2.n.aE().a() && $$3.gI()) {
             return true;
          } else {
             bxe $$4 = $$2.ao();

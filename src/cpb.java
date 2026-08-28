@@ -9,7 +9,7 @@ public class cpb extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cev(this));
       this.bF.a(1, new ceq(this, this.dV()));
       this.bF.a(2, new cfl(this, 1.0, false));
@@ -20,8 +20,8 @@ public class cpb extends cpk {
       this.bG.a(2, new cgu<>(this, csi.class, true));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 8.0).a(bzl.v, 0.25).a(bzl.c, 2.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 8.0).a(bzl.v, 0.25).a(bzl.c, 2.0);
    }
 
    @Override
@@ -30,7 +30,7 @@ public class cpb extends cpk {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.iN;
    }
 
@@ -40,7 +40,7 @@ public class cpb extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.iO;
    }
 
@@ -62,9 +62,9 @@ public class cpb extends cpk {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.aV = this.dL();
-      super.h();
+      super.g();
    }
 
    @Override
@@ -74,8 +74,8 @@ public class cpb extends cpk {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.dV().C) {
          for (int $$0 = 0; $$0 < 2; $$0++) {
             this.dV().a(lz.af, this.d(0.5), this.dD(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);

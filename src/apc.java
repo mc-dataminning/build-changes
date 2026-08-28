@@ -40,13 +40,13 @@ public class apc {
    private static int a(ek $$0, bxe $$1, gj $$2) {
       fgb $$3 = $$2.b($$0);
       $$1.a($$3.k, $$3.j);
-      $$0.a(() -> xg.a("commands.rotate.success", $$1.m_()), true);
+      $$0.a(() -> xg.a("commands.rotate.success", $$1.P_()), true);
       return 1;
    }
 
    private static int a(ek $$0, bxe $$1, aol $$2) {
       $$2.perform($$0, $$1);
-      $$0.a(() -> xg.a("commands.rotate.success", $$1.m_()), true);
+      $$0.a(() -> xg.a("commands.rotate.success", $$1.P_()), true);
       return 1;
    }
 }

@@ -9,6 +9,6 @@ public class czw extends cys {
    @Override
    protected ebq c(ded $$0) {
       csi $$1 = $$0.o();
-      return $$1 != null && !$$1.gG() ? null : super.c($$0);
+      return $$1 != null && !$$1.gH() ? null : super.c($$0);
    }
 }

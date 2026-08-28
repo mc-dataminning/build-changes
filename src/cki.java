@@ -10,7 +10,7 @@ public class cki extends cju {
    static final ciu bN = ciu.b().a(10.0).d();
    public static final int bI = 4800;
    private static final int bO = 2400;
-   public static final Predicate<coo> bJ = $$0 -> !$$0.o() && $$0.bJ() && $$0.bi();
+   public static final Predicate<coo> bJ = $$0 -> !$$0.n() && $$0.bJ() && $$0.bi();
    public static final float bK = 0.65F;
    private static final boolean bP = false;
    @Nullable
@@ -39,14 +39,14 @@ public class cki extends cju {
 
    @Override
    public float ek() {
-      return this.n_() ? 0.65F : 1.0F;
+      return this.e_() ? 0.65F : 1.0F;
    }
 
    @Override
    protected void r(int $$0) {
    }
 
-   public boolean q() {
+   public boolean m() {
       return this.al.a(bL);
    }
 
@@ -54,7 +54,7 @@ public class cki extends cju {
       this.al.a(bL, $$0);
    }
 
-   public int t() {
+   public int p() {
       return this.al.a(bM);
    }
 
@@ -72,8 +72,8 @@ public class cki extends cju {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("GotFish", this.q());
-      $$0.a("Moistness", this.t());
+      $$0.a("GotFish", this.m());
+      $$0.a("Moistness", this.p());
    }
 
    @Override
@@ -84,7 +84,7 @@ public class cki extends cju {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cem(this));
       this.bF.a(0, new cgl(this));
       this.bF.a(1, new cki.a(this));
@@ -100,8 +100,8 @@ public class cki extends cju {
       this.bG.a(1, new cgt(this, cpg.class).a());
    }
 
-   public static bzk.a x() {
-      return byh.E().a(bzl.s, 10.0).a(bzl.v, 1.2F).a(bzl.c, 3.0);
+   public static bzk.a u() {
+      return byh.D().a(bzl.s, 10.0).a(bzl.v, 1.2F).a(bzl.c, 3.0);
    }
 
    @Override
@@ -116,7 +116,7 @@ public class cki extends cju {
 
    @Override
    public boolean c(byf $$0) {
-      return !this.n_() && super.c($$0);
+      return !this.e_() && super.c($$0);
    }
 
    @Override
@@ -130,12 +130,12 @@ public class cki extends cju {
    }
 
    @Override
-   public int ad() {
+   public int ac() {
       return 1;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 1;
    }
 
@@ -152,7 +152,7 @@ public class cki extends cju {
    @Override
    protected void a(asb $$0, coo $$1) {
       if (this.a(bxo.a).f()) {
-         dak $$2 = $$1.f();
+         dak $$2 = $$1.e();
          if (this.g($$2)) {
             this.a($$1);
             this.a(bxo.a, $$2);
@@ -164,16 +164,16 @@ public class cki extends cju {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.gj()) {
          this.j(this.cr());
       } else {
          if (this.bk()) {
             this.s(2400);
          } else {
-            this.s(this.t() - 1);
-            if (this.t() <= 0) {
+            this.s(this.p() - 1);
+            if (this.p() <= 0) {
                this.a(this.dW().t(), 1.0F);
             }
 
@@ -227,7 +227,7 @@ public class cki extends cju {
             this.a(awy.hx, 1.0F, 1.0F);
          }
 
-         if (this.n_()) {
+         if (this.e_()) {
             $$2.a(1, $$0);
             this.a(d_(-this.d), true);
          } else {
@@ -248,13 +248,13 @@ public class cki extends cju {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.hw;
    }
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.bi() ? awy.hu : awy.ht;
    }
 
@@ -269,7 +269,7 @@ public class cki extends cju {
    }
 
    protected boolean gu() {
-      iw $$0 = this.O().g();
+      iw $$0 = this.N().g();
       return $$0 != null ? $$0.a(this.dt(), 12.0) : false;
    }
 
@@ -279,7 +279,7 @@ public class cki extends cju {
          this.a(this.fo(), $$0);
          this.a(byj.a, this.dy());
          this.i(this.dy().c(0.9));
-         if (this.f() == null) {
+         if (this.e() == null) {
             this.i(this.dy().b(0.0, -0.005, 0.0));
          }
       } else {
@@ -308,7 +308,7 @@ public class cki extends cju {
 
       @Override
       public boolean b() {
-         return this.a.q() && this.a.cs() >= 100;
+         return this.a.m() && this.a.cs() >= 100;
       }
 
       @Override
@@ -322,7 +322,7 @@ public class cki extends cju {
          if (this.a.dV() instanceof asb) {
             asb $$0 = (asb)this.a.dV();
             this.b = false;
-            this.a.O().m();
+            this.a.N().m();
             iw $$1 = this.a.dv();
             iw $$2 = $$0.a(axy.b, $$1, 50, false);
             if ($$2 != null) {
@@ -346,7 +346,7 @@ public class cki extends cju {
       public void a() {
          if (this.a.bQ != null) {
             dkj $$0 = this.a.dV();
-            if (this.a.gu() || this.a.O().k()) {
+            if (this.a.gu() || this.a.N().k()) {
                fgc $$1 = fgc.b(this.a.bQ);
                fgc $$2 = ciy.a(this.a, 16, 1, $$1, (float) (Math.PI / 8));
                if ($$2 == null) {
@@ -365,8 +365,8 @@ public class cki extends cju {
                   return;
                }
 
-               this.a.J().a($$2.d, $$2.e, $$2.f, (float)(this.a.af() + 20), (float)this.a.ad());
-               this.a.O().a($$2.d, $$2.e, $$2.f, 1.3);
+               this.a.I().a($$2.d, $$2.e, $$2.f, (float)(this.a.ae() + 20), (float)this.a.ac());
+               this.a.N().a($$2.d, $$2.e, $$2.f, 1.3);
                if ($$0.A.a(this.a(80)) == 0) {
                   $$0.a(this.a, (byte)38);
                }
@@ -390,7 +390,7 @@ public class cki extends cju {
       @Override
       public boolean b() {
          this.c = a(this.a).a(cki.bN, this.a);
-         return this.c == null ? false : this.c.cj() && this.a.f() != this.c;
+         return this.c == null ? false : this.c.cj() && this.a.e() != this.c;
       }
 
       @Override
@@ -406,16 +406,16 @@ public class cki extends cju {
       @Override
       public void e() {
          this.c = null;
-         this.a.O().m();
+         this.a.N().m();
       }
 
       @Override
       public void a() {
-         this.a.J().a(this.c, (float)(this.a.af() + 20), (float)this.a.ad());
+         this.a.I().a(this.c, (float)(this.a.ae() + 20), (float)this.a.ac());
          if (this.a.g(this.c) < 6.25) {
-            this.a.O().m();
+            this.a.N().m();
          } else {
-            this.a.O().a(this.c, this.b);
+            this.a.N().a(this.c, this.b);
          }
 
          if (this.c.cj() && this.c.dV().A.a(6) == 0) {
@@ -441,7 +441,7 @@ public class cki extends cju {
       public void d() {
          List<coo> $$0 = cki.this.dV().a(coo.class, cki.this.cR().c(8.0, 8.0, 8.0), cki.bJ);
          if (!$$0.isEmpty()) {
-            cki.this.O().a($$0.get(0), 1.2F);
+            cki.this.N().a($$0.get(0), 1.2F);
             cki.this.a(awy.hA, 1.0F, 1.0F);
          }
 
@@ -466,7 +466,7 @@ public class cki extends cju {
             this.a($$1);
             cki.this.a(bxo.a, dak.l);
          } else if (!$$0.isEmpty()) {
-            cki.this.O().a($$0.get(0), 1.2F);
+            cki.this.N().a($$0.get(0), 1.2F);
          }
       }
 

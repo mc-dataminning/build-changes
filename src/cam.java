@@ -36,7 +36,7 @@ public class cam<E extends byf & crs> extends bzw<E> {
          cbk $$4 = $$3.get();
          double $$5 = $$4.a().f($$1.bD());
          if ($$5 < 3.0) {
-            dak $$6 = $$1.n().a(0, 1);
+            dak $$6 = $$1.u().a(0, 1);
             if (!$$6.f()) {
                a($$1, $$6, a($$4));
                if ($$1 instanceof cle $$7) {
@@ -55,7 +55,7 @@ public class cam<E extends byf & crs> extends bzw<E> {
    }
 
    private boolean b(E $$0) {
-      if ($$0.n().c()) {
+      if ($$0.u().c()) {
          return false;
       } else {
          Optional<cbk> $$1 = this.e.apply($$0);

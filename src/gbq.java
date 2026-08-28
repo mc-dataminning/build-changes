@@ -13,8 +13,8 @@ public class gbq extends gai {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       boolean $$0 = this.a.m().b() instanceof dvt;
       this.u = gup.a(this.m.aS(), this.b, $$0);
    }

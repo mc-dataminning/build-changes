@@ -11,8 +11,8 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cei<>(this, cqo.class, 8.0F, 1.0, 1.2));
       this.bF.a(2, new ctz.a(this, 10.0F));
@@ -26,8 +26,8 @@ public class cpn extends cor implements cox, crs {
       this.bG.a(3, new cgu<>(this, ckl.class, true));
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.v, 0.35F).a(bzl.s, 24.0).a(bzl.c, 5.0).a(bzl.m, 32.0);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.v, 0.35F).a(bzl.s, 24.0).a(bzl.c, 5.0).a(bzl.m, 32.0);
    }
 
    @Override
@@ -41,7 +41,7 @@ public class cpn extends cor implements cox, crs {
       return $$0 == dao.xg;
    }
 
-   public boolean q() {
+   public boolean gu() {
       return this.al.a(a);
    }
 
@@ -56,7 +56,7 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   public ayc<dag> Y() {
+   public ayc<dag> X() {
       return axv.bX;
    }
 
@@ -67,8 +67,8 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   public cor.a j() {
-      if (this.q()) {
+   public cor.a m() {
+      if (this.gu()) {
          return cor.a.f;
       } else if (this.b(dao.xg)) {
          return cor.a.e;
@@ -120,12 +120,12 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.uJ;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.uL;
    }
 
@@ -140,13 +140,13 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   public bvj n() {
+   public bvj u() {
       return this.bI;
    }
 
    @Override
    protected void a(asb $$0, coo $$1) {
-      dak $$2 = $$1.f();
+      dak $$2 = $$1.e();
       if ($$2.h() instanceof cyq) {
          super.a($$0, $$1);
       } else if (this.i($$2)) {
@@ -161,7 +161,7 @@ public class cpn extends cor implements cox, crs {
    }
 
    private boolean i(dak $$0) {
-      return this.gI() && $$0.a(dao.wa);
+      return this.gL() && $$0.a(dao.wa);
    }
 
    @Override
@@ -172,7 +172,7 @@ public class cpn extends cor implements cox, crs {
 
    @Override
    public void a(asb $$0, int $$1, boolean $$2) {
-      cty $$3 = this.gF();
+      cty $$3 = this.gI();
       boolean $$4 = this.ae.i() <= $$3.s();
       if ($$4) {
          dak $$5 = new dak(dao.xg);
@@ -193,7 +193,7 @@ public class cpn extends cor implements cox, crs {
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.uK;
    }
 }

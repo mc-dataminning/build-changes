@@ -19,7 +19,7 @@ public class coi extends cof {
    @Override
    public void a(aku<?> $$0) {
       if (e.equals($$0)) {
-         this.f();
+         this.e();
       }
    }
 
@@ -27,14 +27,14 @@ public class coi extends cof {
       this.al.a(e, $$0);
    }
 
-   public jg<coj> m() {
+   public jg<coj> l() {
       return this.al.a(e);
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aM ? c((kk<T>)$$0, this.m()) : super.a($$0);
+      return $$0 == kl.aM ? c((kk<T>)$$0, this.l()) : super.a($$0);
    }
 
    @Override
@@ -63,7 +63,7 @@ public class coi extends cof {
          $$3.a($$2);
          $$4.removeIf($$1x -> {
             $$3.b($$1x);
-            return !$$3.g();
+            return !$$3.f();
          });
          if ($$4.isEmpty()) {
             return Optional.empty();
@@ -100,7 +100,7 @@ public class coi extends cof {
    public void b(ua $$0) {
       $$0.a("facing", jc.l, this.c);
       super.b($$0);
-      cur.a($$0, this.m());
+      cur.a($$0, this.l());
    }
 
    @Override
@@ -115,7 +115,7 @@ public class coi extends cof {
    protected ffx a(iw $$0, jc $$1) {
       float $$2 = 0.46875F;
       fgc $$3 = fgc.b($$0).a($$1, -0.46875);
-      coj $$4 = this.m().a();
+      coj $$4 = this.l().a();
       double $$5 = this.b($$4.b());
       double $$6 = this.b($$4.c());
       jc $$7 = $$1.i();
@@ -144,7 +144,7 @@ public class coi extends cof {
    }
 
    @Override
-   public void v() {
+   public void u() {
       this.a(awy.tf, 1.0F, 1.0F);
    }
 
@@ -160,7 +160,7 @@ public class coi extends cof {
 
    @Override
    public zo<acf> a(arz $$0) {
-      return new acg(this, this.c.d(), this.j());
+      return new acg(this, this.c.d(), this.i());
    }
 
    @Override

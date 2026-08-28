@@ -23,7 +23,7 @@ public class ctm extends ctk {
          for (int $$2 = 0; $$2 < 8; $$2++) {
             this.dV()
                .a(
-                  new lv(lz.U, this.f()),
+                  new lv(lz.U, this.e()),
                   this.dA(),
                   this.dC(),
                   this.dG(),
@@ -38,7 +38,7 @@ public class ctm extends ctk {
    @Override
    protected void a(ffz $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
+      $$0.a().a(this.dW().b(this, this.p()), 0.0F);
    }
 
    @Override
@@ -56,7 +56,7 @@ public class ctm extends ctk {
                if ($$3 != null) {
                   $$3.c_(-24000);
                   $$3.b(this.dA(), this.dC(), this.dG(), this.dL(), 0.0F);
-                  Optional.ofNullable(this.f().a(kl.aJ)).flatMap($$0x -> $$0x.a(this.dX())).ifPresent($$3::j);
+                  Optional.ofNullable(this.e().a(kl.aJ)).flatMap($$0x -> $$0x.a(this.dX())).ifPresent($$3::j);
                   if (!$$3.a(a)) {
                      break;
                   }
@@ -72,7 +72,7 @@ public class ctm extends ctk {
    }
 
    @Override
-   protected dag g() {
+   protected dag f() {
       return dao.rH;
    }
 }

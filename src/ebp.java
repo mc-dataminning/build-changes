@@ -144,11 +144,11 @@ public abstract class ebp implements cvp {
       return false;
    }
 
-   protected float at_() {
+   protected float ao_() {
       return 0.25F;
    }
 
-   protected float av_() {
+   protected float aq_() {
       return 0.2F;
    }
 
@@ -1121,7 +1121,7 @@ public abstract class ebp implements cvp {
             case b -> ($$0x, $$1) -> {
             dno $$2 = $$0x.b();
             long $$3 = azz.b($$1.u(), 0, $$1.w());
-            float $$4 = $$2.at_();
+            float $$4 = $$2.ao_();
             double $$5 = azz.a(((double)((float)($$3 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$4), (double)$$4);
             double $$6 = azz.a(((double)((float)($$3 >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$4), (double)$$4);
             return new fgc($$5, 0.0, $$6);
@@ -1129,8 +1129,8 @@ public abstract class ebp implements cvp {
             case c -> ($$0x, $$1) -> {
             dno $$2 = $$0x.b();
             long $$3 = azz.b($$1.u(), 0, $$1.w());
-            double $$4 = ((double)((float)($$3 >> 4 & 15L) / 15.0F) - 1.0) * (double)$$2.av_();
-            float $$5 = $$2.at_();
+            double $$4 = ((double)((float)($$3 >> 4 & 15L) / 15.0F) - 1.0) * (double)$$2.aq_();
+            float $$5 = $$2.ao_();
             double $$6 = azz.a(((double)((float)($$3 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$5), (double)$$5);
             double $$7 = azz.a(((double)((float)($$3 >> 8 & 15L) / 15.0F) - 0.5) * 0.5, (double)(-$$5), (double)$$5);
             return new fgc($$6, $$4, $$7);

@@ -35,7 +35,7 @@ public class cxa extends cxz {
 
    @Override
    protected void c_(dak $$0) {
-      $$0.a(this.a.dV(), this.a, this.b);
+      $$0.a(this.a, this.b);
       if (this.a instanceof asc $$1 && this.c instanceof dyb $$2) {
          $$2.a($$1);
       }

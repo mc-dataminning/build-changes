@@ -9,7 +9,7 @@ public class gug implements gua<dyv> {
    public void a(dyv $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
       jc $$7 = $$0.m().c(doe.e);
       jp<dak> $$8 = $$0.c();
-      int $$9 = (int)$$0.aC_().a();
+      int $$9 = (int)$$0.ax_().a();
 
       for (int $$10 = 0; $$10 < $$8.size(); $$10++) {
          dak $$11 = $$8.get($$10);

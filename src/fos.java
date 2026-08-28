@@ -51,7 +51,7 @@ public class fos extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.c);
    }
 
@@ -69,7 +69,7 @@ public class fos extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.I = 170;
       this.H = this.n / 2 - this.I;
       int $$0 = this.n / 2 + 10;
@@ -119,7 +119,7 @@ public class fos extends hrc {
       }
 
       this.c(fty.a(xg.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.H, g(13), this.I, 20).a());
-      this.c(fty.a(xf.e, $$0x -> this.aQ_()).a($$0, g(13), this.I, 20).a());
+      this.c(fty.a(xf.e, $$0x -> this.aL_()).a($$0, g(13), this.I, 20).a());
    }
 
    private fuf.b<Boolean> a(xg $$0, Consumer<Boolean> $$1) {
@@ -129,7 +129,7 @@ public class fos extends hrc {
          } else {
             this.m.a(fom.b(this, $$0, $$1xx -> {
                $$1.accept(false);
-               $$1xx.aQ_();
+               $$1xx.aL_();
             }));
          }
       };

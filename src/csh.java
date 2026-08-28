@@ -402,7 +402,7 @@ public class csh implements buv, bvf {
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return xg.c("container.inventory");
    }
 

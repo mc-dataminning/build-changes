@@ -84,12 +84,12 @@ public class ckp extends ckx implements ckj {
    }
 
    @Override
-   public boolean n_() {
+   public boolean e_() {
       return false;
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new bzb.a(1.25));
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cfj(this, csi.class, 8.0F));
@@ -113,7 +113,7 @@ public class ckp extends ckx implements ckj {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bW == null || !this.bW.a(this.dt(), 3.46) || !this.dV().a_(this.bW).a(dnq.ek)) {
          this.bV = false;
          this.bW = null;
@@ -123,7 +123,7 @@ public class ckp extends ckx implements ckj {
          a(this.dV(), this);
       }
 
-      super.k_();
+      super.d_();
       this.gL();
    }
 
@@ -176,7 +176,7 @@ public class ckp extends ckx implements ckj {
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if (!this.q() && $$2.a(axv.aC)) {
+      if (!this.m() && $$2.a(axv.aC)) {
          this.a($$0, $$1, $$2);
          if (!this.ba()) {
             this.dV().a(null, this.dA(), this.dC(), this.dG(), awy.tu, this.dm(), 1.0F, 1.0F + (this.ae.i() - this.ae.i()) * 0.2F);
@@ -193,7 +193,7 @@ public class ckp extends ckx implements ckj {
 
          return bvc.a;
       } else if (!$$2.a(axv.aD)) {
-         if (!this.gJ() && this.q() && this.j($$0)) {
+         if (!this.gJ() && this.m() && this.j($$0)) {
             if (!this.dV().C) {
                this.y(!this.gu());
             }
@@ -205,7 +205,7 @@ public class ckp extends ckx implements ckj {
       } else {
          this.a($$0, $$1, $$2);
          this.a(new bwi(bwk.s, 900));
-         if ($$0.b() || !this.cC()) {
+         if ($$0.gz() || !this.cC()) {
             this.a(this.dW().a($$0), Float.MAX_VALUE);
          }
 
@@ -239,7 +239,7 @@ public class ckp extends ckx implements ckj {
 
    @Nullable
    @Override
-   public awx u() {
+   public awx s() {
       return a(this.dV(), this.dV().A);
    }
 
@@ -262,7 +262,7 @@ public class ckp extends ckx implements ckj {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.tt;
    }
 

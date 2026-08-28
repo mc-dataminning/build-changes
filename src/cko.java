@@ -35,7 +35,7 @@ public class cko extends cjv {
    public cko(bxn<? extends cko> $$0, dkj $$1) {
       super($$0, $$1);
       this.bC = new cko.h(this);
-      if (!this.n_()) {
+      if (!this.e_()) {
          this.a_(true);
       }
    }
@@ -45,7 +45,7 @@ public class cko extends cjv {
       return $$0 == bxo.a && this.fN();
    }
 
-   public int q() {
+   public int m() {
       return this.al.a(bK);
    }
 
@@ -53,11 +53,11 @@ public class cko extends cjv {
       this.al.a(bK, $$0);
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.v(2);
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.v(8);
    }
 
@@ -190,7 +190,7 @@ public class cko extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(2, new cko.i(this, 2.0));
       this.bF.a(2, new cko.d(this, 1.0));
@@ -263,8 +263,8 @@ public class cko extends cjv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.gK()) {
          if (this.dV().ag() && !this.bi()) {
             this.w(true);
@@ -274,25 +274,25 @@ public class cko extends cjv {
          }
       }
 
-      byf $$0 = this.f();
+      byf $$0 = this.e();
       if ($$0 == null) {
          this.bZ = false;
          this.ca = false;
       }
 
-      if (this.q() > 0) {
+      if (this.m() > 0) {
          if ($$0 != null) {
             this.a($$0, 90.0F, 90.0F);
          }
 
-         if (this.q() == 29 || this.q() == 14) {
+         if (this.m() == 29 || this.m() == 14) {
             this.a(awy.tn, 1.0F, 1.0F);
          }
 
-         this.s(this.q() - 1);
+         this.s(this.m() - 1);
       }
 
-      if (this.t()) {
+      if (this.p()) {
          this.t(this.gw() + 1);
          if (this.gw() > 20) {
             this.z(false);
@@ -308,7 +308,7 @@ public class cko extends cjv {
          this.bJ = 0;
       }
 
-      if (this.x()) {
+      if (this.u()) {
          this.x(0.0F);
       }
 
@@ -323,9 +323,9 @@ public class cko extends cjv {
    }
 
    private void gS() {
-      if (!this.gv() && this.x() && !this.gO() && !this.a(bxo.a).f() && this.ae.a(80) == 1) {
+      if (!this.gv() && this.u() && !this.gO() && !this.a(bxo.a).f() && this.ae.a(80) == 1) {
          this.y(true);
-      } else if (this.a(bxo.a).f() || !this.x()) {
+      } else if (this.a(bxo.a).f() || !this.u()) {
          this.y(false);
       }
 
@@ -368,7 +368,7 @@ public class cko extends cjv {
 
    private void gU() {
       this.cd = this.cc;
-      if (this.x()) {
+      if (this.u()) {
          this.cc = Math.min(1.0F, this.cc + 0.15F);
       } else {
          this.cc = Math.max(0.0F, this.cc - 0.19F);
@@ -414,7 +414,7 @@ public class cko extends cjv {
             fgc $$0 = this.dy();
             if (this.bJ == 1) {
                float $$1 = this.dL() * (float) (Math.PI / 180.0);
-               float $$2 = this.n_() ? 0.1F : 0.2F;
+               float $$2 = this.e_() ? 0.1F : 0.2F;
                this.cb = new fgc($$0.d + (double)(-azz.a($$1) * $$2), 0.0, $$0.f + (double)(azz.b($$1) * $$2));
                this.i(this.cb.b(0.0, 0.27, 0.0));
             } else if ((float)this.bJ != 7.0F && (float)this.bJ != 15.0F && (float)this.bJ != 23.0F) {
@@ -441,8 +441,8 @@ public class cko extends cjv {
       this.a(awy.ti, 1.0F, 1.0F);
 
       for (cko $$3 : $$1.a(cko.class, this.cR().g(10.0))) {
-         if (!$$3.n_() && $$3.aH() && !$$3.bi() && $$3.gQ()) {
-            $$3.s();
+         if (!$$3.e_() && $$3.aH() && !$$3.bi() && $$3.gQ()) {
+            $$3.r();
          }
       }
 
@@ -455,7 +455,7 @@ public class cko extends cjv {
    protected void a(asb $$0, coo $$1) {
       if (this.a(bxo.a).f() && b($$1)) {
          this.a($$1);
-         dak $$2 = $$1.f();
+         dak $$2 = $$1.e();
          this.a(bxo.a, $$2);
          this.g(bxo.a);
          this.a($$1, $$2.M());
@@ -526,7 +526,7 @@ public class cko extends cjv {
    void ha() {
       if (!this.bi()) {
          this.G(0.0F);
-         this.O().m();
+         this.N().m();
          this.w(true);
       }
    }
@@ -540,18 +540,18 @@ public class cko extends cjv {
          this.x(false);
          return bvc.a;
       } else if (this.i($$2)) {
-         if (this.f() != null) {
+         if (this.e() != null) {
             this.bZ = true;
          }
 
-         if (this.n_()) {
+         if (this.e_()) {
             this.a($$0, $$1, $$2);
-            this.a((int)((float)(-this.g() / 20) * 0.1F), true);
-         } else if (!this.dV().C && this.g() == 0 && this.gB()) {
+            this.a((int)((float)(-this.Y_() / 20) * 0.1F), true);
+         } else if (!this.dV().C && this.Y_() == 0 && this.gB()) {
             this.a($$0, $$1, $$2);
             this.e($$0);
          } else {
-            if (!(this.dV() instanceof asb $$3) || this.x() || this.bi()) {
+            if (!(this.dV() instanceof asb $$3) || this.u() || this.bi()) {
                return bvc.e;
             }
 
@@ -574,7 +574,7 @@ public class cko extends cjv {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       if (this.gl()) {
          return awy.to;
       } else {
@@ -594,7 +594,7 @@ public class cko extends cjv {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.tk;
    }
 
@@ -605,16 +605,16 @@ public class cko extends cjv {
    }
 
    public boolean gQ() {
-      return !this.gu() && !this.gO() && !this.gv() && !this.gG() && !this.x();
+      return !this.gu() && !this.gO() && !this.gv() && !this.gG() && !this.u();
    }
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bS : super.e($$0);
+      return this.e_() ? bS : super.e($$0);
    }
 
    private static boolean b(coo $$0) {
-      return $$0.f().a(axv.aw) && $$0.bJ() && !$$0.o();
+      return $$0.e().a(axv.aw) && $$0.bJ() && !$$0.n();
    }
 
    public static enum a implements bax {
@@ -721,7 +721,7 @@ public class cko extends cjv {
 
       @Override
       public boolean b() {
-         if (!super.b() || this.d.q() != 0) {
+         if (!super.b() || this.d.m() != 0) {
             return false;
          } else if (!this.h()) {
             if (this.e <= this.d.af) {
@@ -893,8 +893,8 @@ public class cko extends cjv {
 
       @Override
       public boolean c() {
-         if (this.a.x()) {
-            this.a.O().m();
+         if (this.a.u()) {
+            this.a.N().m();
             return false;
          } else {
             return super.c();
@@ -912,7 +912,7 @@ public class cko extends cjv {
 
       @Override
       public boolean b() {
-         if ((this.a.n_() || this.a.gL()) && this.a.aH()) {
+         if ((this.a.e_() || this.a.gL()) && this.a.aH()) {
             if (!this.a.gQ()) {
                return false;
             } else {
@@ -957,7 +957,7 @@ public class cko extends cjv {
 
       @Override
       public boolean b() {
-         if (this.b > cko.this.af || cko.this.n_() || cko.this.bi() || !cko.this.gQ() || cko.this.q() > 0) {
+         if (this.b > cko.this.af || cko.this.e_() || cko.this.bi() || !cko.this.gQ() || cko.this.m() > 0) {
             return false;
          } else {
             return !cko.this.a(bxo.a).f() ? true : !cko.this.dV().a(coo.class, cko.this.cR().c(6.0, 6.0, 6.0), cko::b).isEmpty();
@@ -971,7 +971,7 @@ public class cko extends cjv {
 
       @Override
       public void a() {
-         if (!cko.this.x() && !cko.this.a(bxo.a).f()) {
+         if (!cko.this.u() && !cko.this.a(bxo.a).f()) {
             cko.this.ha();
          }
       }
@@ -981,7 +981,7 @@ public class cko extends cjv {
          if (cko.this.a(bxo.a).f()) {
             List<coo> $$0 = cko.this.dV().a(coo.class, cko.this.cR().c(8.0, 8.0, 8.0), cko::b);
             if (!$$0.isEmpty()) {
-               cko.this.O().a($$0.getFirst(), 1.2F);
+               cko.this.N().a($$0.getFirst(), 1.2F);
             }
          } else {
             cko.this.ha();
@@ -1013,7 +1013,7 @@ public class cko extends cjv {
 
       @Override
       public boolean b() {
-         if (this.a.n_() && this.a.gQ()) {
+         if (this.a.e_() && this.a.gQ()) {
             return this.a.gN() && this.a.ae.a(b(500)) == 1 ? true : this.a.ae.a(b(6000)) == 1;
          } else {
             return false;

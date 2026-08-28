@@ -10,7 +10,7 @@ public class gun implements gua<ebl> {
    public void a(ebl $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
       dkj $$7 = $$0.i();
       if ($$7 != null) {
-         iw $$8 = $$0.aC_().a($$0.f().g());
+         iw $$8 = $$0.ax_().a($$0.f().g());
          ebq $$9 = $$0.j();
          if (!$$9.l()) {
             gss.a();
@@ -47,7 +47,7 @@ public class gun implements gua<ebl> {
    }
 
    @Override
-   public int aW_() {
+   public int aR_() {
       return 68;
    }
 }

@@ -8,12 +8,12 @@ public class cph extends cqd {
    }
 
    @Override
-   protected boolean ai_() {
+   protected boolean ae_() {
       return false;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.nB;
    }
 
@@ -23,12 +23,12 @@ public class cph extends cqd {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.nD;
    }
 
    @Override
-   protected awx n() {
+   protected awx u() {
       return awy.nF;
    }
 
@@ -44,12 +44,12 @@ public class cph extends cqd {
    }
 
    @Override
-   protected boolean x() {
+   protected boolean gw() {
       return true;
    }
 
    @Override
-   protected void ah_() {
+   protected void ad_() {
       this.b(bxn.bP);
       if (!this.ba()) {
          this.dV().a(null, 1041, this.dv(), 0);
@@ -57,7 +57,7 @@ public class cph extends cqd {
    }
 
    @Override
-   protected dak t() {
+   protected dak gv() {
       return dak.l;
    }
 }

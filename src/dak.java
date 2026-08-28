@@ -403,7 +403,7 @@ public final class dak implements kh {
 
    public void a(int $$0, csi $$1) {
       if ($$1 instanceof asc $$2) {
-         int $$3 = this.a($$0, $$2.y(), $$2);
+         int $$3 = this.a($$0, $$2.x(), $$2);
          if ($$3 == 0) {
             return;
          }
@@ -605,9 +605,9 @@ public final class dak implements kh {
       }
    }
 
-   public void a(dkj $$0, csi $$1, int $$2) {
-      $$1.a(axi.b.b(this.h()), $$2);
-      this.h().a(this, $$0, $$1);
+   public void a(csi $$0, int $$1) {
+      $$0.a(axi.b.b(this.h()), $$1);
+      this.h().c(this, $$0);
    }
 
    public void a(dkj $$0) {

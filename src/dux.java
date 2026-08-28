@@ -76,7 +76,7 @@ public class dux extends dna {
             dak $$6 = b(this.b());
             $$6.b($$4.q());
             coo $$7 = new coo($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
-            $$7.j();
+            $$7.i();
             $$0.b($$7);
          } else {
             $$5.d_($$3);

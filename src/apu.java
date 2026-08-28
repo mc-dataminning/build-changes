@@ -55,7 +55,7 @@ public class apu {
 
    private static int b(ek $$0, jg.c<bxn<?>> $$1, fgc $$2, ua $$3, boolean $$4) throws CommandSyntaxException {
       bxe $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> xg.a("commands.summon.success", $$5.m_()), true);
+      $$0.a(() -> xg.a("commands.summon.success", $$5.P_()), true);
       return 1;
    }
 }

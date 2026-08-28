@@ -138,7 +138,7 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
             $$4 = 1.0F;
          }
 
-         $$1.a(a.f.rotationDegrees($$4 * this.aX_()));
+         $$1.a(a.f.rotationDegrees($$4 * this.aS_()));
       } else if ($$0.ao) {
          $$1.a(a.b.rotationDegrees(-90.0F - $$0.ae));
          $$1.a(a.d.rotationDegrees($$0.v * -75.0F));
@@ -146,7 +146,7 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
          jc $$5 = $$0.as;
          float $$6 = $$5 != null ? a($$5) : $$2;
          $$1.a(a.d.rotationDegrees($$6));
-         $$1.a(a.f.rotationDegrees(this.aX_()));
+         $$1.a(a.f.rotationDegrees(this.aS_()));
          $$1.a(a.d.rotationDegrees(270.0F));
       } else if ($$0.ak) {
          $$1.a(0.0F, ($$0.x + 0.1F) / $$3, 0.0F);
@@ -154,7 +154,7 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
       }
    }
 
-   protected float aX_() {
+   protected float aS_() {
       return 90.0F;
    }
 
@@ -200,8 +200,8 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
    }
 
    public static boolean b(byf $$0) {
-      if ($$0 instanceof csi || $$0.h_()) {
-         String $$1 = o.a($$0.ai().getString());
+      if ($$0 instanceof csi || $$0.g_()) {
+         String $$1 = o.a($$0.ah().getString());
          if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
             if ($$0 instanceof csi $$2 && !$$2.a(csk.a)) {
                return false;
@@ -224,7 +224,7 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
       $$1.ac = a($$0, $$3, $$2);
       $$1.ad = azz.h($$3 - $$1.ac);
       $$1.ae = $$0.k($$2);
-      $$1.at = $$0.ak();
+      $$1.at = $$0.aj();
       $$1.ak = b($$0);
       if ($$1.ak) {
          $$1.ae *= -1.0F;
@@ -255,7 +255,7 @@ public abstract class gyw<T extends byf, S extends hfe, M extends ghn<? super S>
 
       label48: {
          $$1.al = $$0.cw();
-         $$1.am = $$0.n_();
+         $$1.am = $$0.e_();
          $$1.an = $$0.bi();
          $$1.ao = $$0.fv();
          $$1.ap = $$0.aN > 0 || $$0.aP > 0;

@@ -19,8 +19,8 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cpu.b());
       this.bF.a(3, new cei<>(this, cqo.class, 8.0F, 1.0, 1.2));
@@ -36,8 +36,8 @@ public class cpi extends cpu implements cpo {
       this.bG.a(3, new cgu<>(this, ckl.class, false).c(300));
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.v, 0.5).a(bzl.m, 18.0).a(bzl.s, 32.0);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.v, 0.5).a(bzl.m, 18.0).a(bzl.s, 32.0);
    }
 
    @Override
@@ -47,8 +47,8 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.dV().C && this.co()) {
          this.bI--;
          if (this.bI < 0) {
@@ -84,7 +84,7 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.nG;
    }
 
@@ -105,12 +105,12 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.nG;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.nI;
    }
 
@@ -120,7 +120,7 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   protected awx q() {
+   protected awx gu() {
       return awy.nH;
    }
 
@@ -145,8 +145,8 @@ public class cpi extends cpu implements cpo {
    }
 
    @Override
-   public cor.a j() {
-      if (this.gB()) {
+   public cor.a m() {
+      if (this.gE()) {
          return cor.a.c;
       } else {
          return this.gl() ? cor.a.d : cor.a.a;
@@ -160,17 +160,17 @@ public class cpi extends cpu implements cpo {
       public boolean b() {
          if (!super.b()) {
             return false;
-         } else if (cpi.this.f() == null) {
+         } else if (cpi.this.e() == null) {
             return false;
          } else {
-            return cpi.this.f().ao() == this.e ? false : cpi.this.dV().d_(cpi.this.dv()).a((float)buz.c.ordinal());
+            return cpi.this.e().ao() == this.e ? false : cpi.this.dV().d_(cpi.this.dv()).a((float)buz.c.ordinal());
          }
       }
 
       @Override
       public void d() {
          super.d();
-         byf $$0 = cpi.this.f();
+         byf $$0 = cpi.this.e();
          if ($$0 != null) {
             this.e = $$0.ao();
          }
@@ -188,7 +188,7 @@ public class cpi extends cpu implements cpo {
 
       @Override
       protected void k() {
-         cpi.this.f().b(new bwi(bwk.o, 400), cpi.this);
+         cpi.this.e().b(new bwi(bwk.o, 400), cpi.this);
       }
 
       @Override

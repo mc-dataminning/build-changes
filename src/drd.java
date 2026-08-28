@@ -73,7 +73,7 @@ public class drd extends dvp implements dnr {
    }
 
    @Override
-   public dnr.a as_() {
+   public dnr.a an_() {
       return dnr.a.a;
    }
 }

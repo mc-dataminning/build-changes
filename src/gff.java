@@ -65,7 +65,7 @@ public class gff extends fuu<gff.a> {
 
    @Override
    protected void s() {
-      this.aJ_().forEach(gff.a::close);
+      this.aE_().forEach(gff.a::close);
       super.s();
    }
 
@@ -201,7 +201,7 @@ public class gff extends fuu<gff.a> {
 
    @Override
    public void a(fxv $$0) {
-      if (this.aJ_().contains(this.I)) {
+      if (this.aE_().contains(this.I)) {
          this.I.b($$0);
       } else {
          super.a($$0);

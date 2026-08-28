@@ -67,7 +67,7 @@ public class ctg extends ctd {
    }
 
    @Nullable
-   private jc f() {
+   private jc e() {
       return this.c;
    }
 
@@ -162,8 +162,8 @@ public class ctg extends ctd {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       fga $$0 = null;
       if (!this.dV().C) {
          if (this.b == null && this.h != null) {
@@ -173,7 +173,7 @@ public class ctg extends ctd {
             }
          }
 
-         if (this.b == null || !this.b.bJ() || this.b instanceof csi && this.b.aa_()) {
+         if (this.b == null || !this.b.bJ() || this.b instanceof csi && this.b.ak()) {
             this.be();
          } else {
             this.e = azz.a(this.e * 1.025, -1.0, 1.0);
@@ -252,7 +252,7 @@ public class ctg extends ctd {
    protected void a(ffz $$0) {
       super.a($$0);
       bxe $$1 = $$0.a();
-      bxe $$2 = this.q();
+      bxe $$2 = this.p();
       byf $$3 = $$2 instanceof byf ? (byf)$$2 : null;
       bvt $$4 = this.dW().a(this, $$3);
       boolean $$5 = $$1.b($$4, 4.0F);
@@ -274,7 +274,7 @@ public class ctg extends ctd {
       this.a(awy.xE, 1.0F, 1.0F);
    }
 
-   private void g() {
+   private void f() {
       this.aq();
       this.dV().a(egq.o, this.dt(), egq.a.a(this));
    }
@@ -282,7 +282,7 @@ public class ctg extends ctd {
    @Override
    protected void a(fga $$0) {
       super.a($$0);
-      this.g();
+      this.f();
    }
 
    @Override
@@ -299,7 +299,7 @@ public class ctg extends ctd {
    public boolean a(asb $$0, bvt $$1, float $$2) {
       this.a(awy.xF, 1.0F, 1.0F);
       $$0.a(lz.f, this.dA(), this.dC(), this.dG(), 15, 0.2, 0.2, 0.2, 0.0);
-      this.g();
+      this.f();
       return true;
    }
 

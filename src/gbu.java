@@ -72,7 +72,7 @@ public class gbu extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.c((fty)fty.a(xf.d, $$0x -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
       this.c((fty)fty.a(xf.e, $$0x -> this.E()).a(this.n / 2 + 4, 210, 150, 20).a());
       this.C = this.B.s();
@@ -183,7 +183,7 @@ public class gbu extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.J);
    }
 
@@ -310,7 +310,7 @@ public class gbu extends fzq {
          .L()
          .b(
             new aiw(
-               this.B.aC_(),
+               this.B.ax_(),
                $$0,
                this.B.v(),
                this.J.a(),
@@ -355,7 +355,7 @@ public class gbu extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.E();
    }
 

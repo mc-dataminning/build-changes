@@ -39,7 +39,7 @@ public class dnk extends dna {
 
    @Override
    protected void a(dkj $$0, ebq $$1, ffy $$2, ctd $$3) {
-      csi $$6 = $$3.q() instanceof csi $$5 ? $$5 : null;
+      csi $$6 = $$3.p() instanceof csi $$5 ? $$5 : null;
       this.a($$0, $$1, $$2, $$6, true);
    }
 

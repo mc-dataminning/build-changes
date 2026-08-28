@@ -11,9 +11,9 @@ public class cqa extends ctz implements cpo {
    }
 
    @Override
-   protected void D() {
-      super.D();
-      this.bI = new cgw<>(this, ctz.class, true, ($$0, $$1) -> this.gI() && $$0.an() != bxn.bJ);
+   protected void C() {
+      super.C();
+      this.bI = new cgw<>(this, ctz.class, true, ($$0, $$1) -> this.gL() && $$0.an() != bxn.bJ);
       this.bJ = new cgv<>(this, csi.class, 10, true, false, null);
       this.bF.a(1, new cev(this));
       this.bF.a(2, new cga(this, 1.0, 60, 10.0F));
@@ -32,7 +32,7 @@ public class cqa extends ctz implements cpo {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Dw;
    }
 
@@ -42,7 +42,7 @@ public class cqa extends ctz implements cpo {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Dy;
    }
 
@@ -50,16 +50,16 @@ public class cqa extends ctz implements cpo {
       this.ar().a(e, $$0);
    }
 
-   public boolean j() {
+   public boolean m() {
       return this.ar().a(e);
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.s, 26.0).a(bzl.v, 0.25);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.s, 26.0).a(bzl.v, 0.25);
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (!this.dV().C && this.bJ()) {
          this.bI.k();
          if (this.bI.i() <= 0) {
@@ -68,7 +68,7 @@ public class cqa extends ctz implements cpo {
             this.bJ.a(false);
          }
 
-         if (this.j()) {
+         if (this.m()) {
             if (this.f-- <= 0) {
                this.y(false);
                dak $$0 = this.fb();
@@ -89,7 +89,7 @@ public class cqa extends ctz implements cpo {
                $$2 = dch.l;
             } else if (this.ae.i() < 0.05F && this.eG() < this.eU()) {
                $$2 = dch.y;
-            } else if (this.ae.i() < 0.5F && this.f() != null && !this.b(bwk.a) && this.f().g(this) > 121.0) {
+            } else if (this.ae.i() < 0.5F && this.e() != null && !this.b(bwk.a) && this.e().g(this) > 121.0) {
                $$2 = dch.n;
             }
 
@@ -112,11 +112,11 @@ public class cqa extends ctz implements cpo {
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.Dx;
    }
 
@@ -147,7 +147,7 @@ public class cqa extends ctz implements cpo {
 
    @Override
    public void a(byf $$0, float $$1) {
-      if (!this.j()) {
+      if (!this.m()) {
          fgc $$2 = $$0.dy();
          double $$3 = $$0.dA() + $$2.d - this.dA();
          double $$4 = $$0.dE() - 1.1F - this.dC();
@@ -186,7 +186,7 @@ public class cqa extends ctz implements cpo {
    }
 
    @Override
-   public boolean t() {
+   public boolean gv() {
       return false;
    }
 }

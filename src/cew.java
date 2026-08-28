@@ -67,7 +67,7 @@ public class cew extends cfb {
          if (this.d == cek.a) {
             iw $$2 = this.c.dv().a(this.c.cO().g());
             $$2 = $$2.b(0, -1, 0);
-            this.b.O().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            this.b.N().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
             if (this.b.f(this.c) < 4.0F) {
                this.a = 0;
                this.d = cek.b;
@@ -75,7 +75,7 @@ public class cew extends cfb {
          } else if (this.d == cek.b) {
             jc $$3 = this.c.cP();
             iw $$4 = this.c.dv().a($$3, 10);
-            this.b.O().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            this.b.N().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
             if (this.b.f(this.c) > 12.0F) {
                this.a = 0;
                this.d = cek.a;

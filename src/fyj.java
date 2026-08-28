@@ -24,8 +24,8 @@ public class fyj extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.c = fur.a(this.p, this.b, this.n - 50);
       int $$0 = this.c.a() * 9;
       int $$1 = azz.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
@@ -41,7 +41,7 @@ public class fyj extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return this.u;
    }
 }

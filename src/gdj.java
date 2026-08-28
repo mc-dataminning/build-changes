@@ -127,7 +127,7 @@ public class gdj extends fuu<gdj.a> {
          $$0.a(gry::H, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
          azk $$12 = this.g;
          fur $$13 = this.h;
-         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aO_())) {
+         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aJ_())) {
             $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
             int $$14 = $$6 - $$3;
             int $$15 = $$7 - $$2;
@@ -221,7 +221,7 @@ public class gdj extends fuu<gdj.a> {
       @Override
       public boolean a(double $$0, double $$1, int $$2) {
          double $$3 = $$0 - (double)this.e.u();
-         double $$4 = $$1 - (double)this.e.d(this.e.aJ_().indexOf(this));
+         double $$4 = $$1 - (double)this.e.d(this.e.aE_().indexOf(this));
          if (this.d() && $$3 <= 32.0) {
             this.e.x.m();
             if (this.f.o()) {

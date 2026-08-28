@@ -11,8 +11,8 @@ public class cts extends csr {
    }
 
    @Override
-   protected float m() {
-      return this.o() ? 0.73F : super.m();
+   protected float l() {
+      return this.n() ? 0.73F : super.l();
    }
 
    @Override
@@ -22,7 +22,7 @@ public class cts extends csr {
 
    @Override
    public float a(dkc $$0, djn $$1, iw $$2, ebq $$3, eya $$4, float $$5) {
-      return this.o() && coa.c($$3) ? Math.min(0.8F, $$5) : $$5;
+      return this.n() && coa.c($$3) ? Math.min(0.8F, $$5) : $$5;
    }
 
    @Override
@@ -31,7 +31,7 @@ public class cts extends csr {
       if (this.dV() instanceof asb $$1) {
          bxe var8 = $$0.a();
          boolean $$7;
-         if (this.q() instanceof byf $$5) {
+         if (this.p() instanceof byf $$5) {
             bvt $$6 = this.dW().a(this, $$5);
             $$7 = var8.a($$1, $$6, 8.0F);
             if ($$7) {
@@ -54,7 +54,7 @@ public class cts extends csr {
             }
 
             if ($$10 > 0) {
-               $$9.b(new bwi(bwk.t, 20 * $$10, 1), this.z());
+               $$9.b(new bwi(bwk.t, 20 * $$10, 1), this.y());
             }
          }
       }
@@ -74,7 +74,7 @@ public class cts extends csr {
       $$0.a(d, false);
    }
 
-   public boolean o() {
+   public boolean n() {
       return this.al.a(d);
    }
 
@@ -83,14 +83,14 @@ public class cts extends csr {
    }
 
    @Override
-   protected boolean g() {
+   protected boolean f() {
       return false;
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("dangerous", this.o());
+      $$0.a("dangerous", this.n());
    }
 
    @Override

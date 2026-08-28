@@ -16,18 +16,18 @@ public class cfv<T extends ctz> extends cfb {
 
    @Override
    public boolean b() {
-      return this.c.f() == null && !this.c.cX() && this.c.gI() && !this.c.gF().a() && !a(this.c.dV()).c(this.c.dv());
+      return this.c.e() == null && !this.c.cX() && this.c.gL() && !this.c.gI().a() && !a(this.c.dV()).c(this.c.dv());
    }
 
    @Override
    public boolean c() {
-      return this.c.gI() && !this.c.gF().a() && !a(this.c.dV()).c(this.c.dv());
+      return this.c.gL() && !this.c.gI().a() && !a(this.c.dV()).c(this.c.dv());
    }
 
    @Override
    public void a() {
-      if (this.c.gI()) {
-         cty $$0 = this.c.gF();
+      if (this.c.gL()) {
+         cty $$0 = this.c.gI();
          if (this.c.af > this.d) {
             this.d = this.c.af + 20;
             this.a($$0);
@@ -36,7 +36,7 @@ public class cfv<T extends ctz> extends cfb {
          if (!this.c.gq()) {
             fgc $$1 = ciy.a(this.c, 15, 4, fgc.c($$0.q()), (float) (Math.PI / 2));
             if ($$1 != null) {
-               this.c.O().a($$1.d, $$1.e, $$1.f, 1.0);
+               this.c.N().a($$1.d, $$1.e, $$1.f, 1.0);
             }
          }
       }
@@ -46,7 +46,7 @@ public class cfv<T extends ctz> extends cfb {
       if ($$0.r()) {
          asb $$1 = a(this.c.dV());
          Set<ctz> $$2 = Sets.newHashSet();
-         List<ctz> $$3 = $$1.a(ctz.class, this.c.cR().g(16.0), $$0x -> !$$0x.gI() && cua.a($$0x));
+         List<ctz> $$3 = $$1.a(ctz.class, this.c.cR().g(16.0), $$0x -> !$$0x.gL() && cua.a($$0x));
          $$2.addAll($$3);
 
          for (ctz $$4 : $$2) {

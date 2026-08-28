@@ -51,15 +51,15 @@ public class bxs extends bxe {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.o.e();
       if (this.ak && this.dV().C) {
          this.ak = false;
       } else {
-         super.h();
+         super.g();
          boolean $$0 = !this.dV().b(this.cR());
          if (this.a(axs.a)) {
-            this.n();
+            this.m();
          } else if (!$$0) {
             this.be();
          }
@@ -69,10 +69,10 @@ public class bxs extends bxe {
          }
 
          if (this.af % 20 == 1) {
-            this.m();
+            this.l();
          }
 
-         this.j();
+         this.i();
          if (this.n == null && !this.dV().C && $$0) {
             this.l(this.dA(), (this.cR().b + this.cR().e) / 2.0, this.dG());
             this.ar = true;
@@ -98,10 +98,10 @@ public class bxs extends bxe {
       }
    }
 
-   private void j() {
-      if (this.n == null || this.n.g(this) > 64.0) {
+   private void i() {
+      if (this.n == null || this.n.ak() || this.n.g(this) > 64.0) {
          csi $$0 = this.dV().a(this, 8.0);
-         if ($$0 != null && !$$0.aa_() && !$$0.eH()) {
+         if ($$0 != null && !$$0.ak() && !$$0.eH()) {
             this.n = $$0;
          } else {
             this.n = null;
@@ -121,7 +121,7 @@ public class bxs extends bxe {
       return this.f(0.999999F);
    }
 
-   private void m() {
+   private void l() {
       if (this.dV() instanceof asb) {
          for (bxs $$1 : this.dV().a(egc.a(bxs.class), this.cR().g(0.5), this::a)) {
             this.b($$1);
@@ -154,11 +154,11 @@ public class bxs extends bxe {
    }
 
    private boolean a(bxs $$0) {
-      return $$0 != this && a($$0, this.ao(), this.f());
+      return $$0 != this && a($$0, this.ao(), this.e());
    }
 
    private static boolean a(bxs $$0, int $$1, int $$2) {
-      return !$$0.dQ() && ($$0.ao() - $$1) % 40 == 0 && $$0.f() == $$2;
+      return !$$0.dQ() && ($$0.ao() - $$1) % 40 == 0 && $$0.e() == $$2;
    }
 
    private void b(bxs $$0) {
@@ -167,7 +167,7 @@ public class bxs extends bxe {
       $$0.aq();
    }
 
-   private void n() {
+   private void m() {
       fgc $$0 = this.dy();
       this.n($$0.d * 0.99F, Math.min($$0.e + 5.0E-4F, 0.06F), $$0.f * 0.99F);
    }
@@ -200,7 +200,7 @@ public class bxs extends bxe {
    public void b(ua $$0) {
       $$0.a("Health", (short)this.l);
       $$0.a("Age", (short)this.k);
-      $$0.a("Value", (short)this.f());
+      $$0.a("Value", (short)this.e());
       $$0.a("Count", this.m);
    }
 
@@ -218,7 +218,7 @@ public class bxs extends bxe {
          if ($$0.bX == 0) {
             $$0.bX = 2;
             $$0.a(this, 1);
-            int $$3 = this.a($$1, this.f());
+            int $$3 = this.a($$1, this.e());
             if ($$3 > 0) {
                $$0.d($$3);
             }
@@ -235,7 +235,7 @@ public class bxs extends bxe {
       Optional<dgw> $$2 = dgz.a(dgy.z, $$0, dak::n);
       if ($$2.isPresent()) {
          dak $$3 = $$2.get().a();
-         int $$4 = dgz.c($$0.y(), $$3, $$1);
+         int $$4 = dgz.c($$0.x(), $$3, $$1);
          int $$5 = Math.min($$4, $$3.o());
          $$3.b($$3.o() - $$5);
          if ($$5 > 0) {
@@ -251,7 +251,7 @@ public class bxs extends bxe {
       }
    }
 
-   public int f() {
+   public int e() {
       return this.al.a(a);
    }
 
@@ -259,8 +259,8 @@ public class bxs extends bxe {
       this.al.a(a, $$0);
    }
 
-   public int g() {
-      int $$0 = this.f();
+   public int f() {
+      int $$0 = this.e();
       if ($$0 >= 2477) {
          return 10;
       } else if ($$0 >= 1237) {
@@ -319,7 +319,7 @@ public class bxs extends bxe {
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return this.o;
    }
 }

@@ -57,7 +57,7 @@ public class dmv extends dno implements duz {
 
    @Override
    public dak a(@Nullable byf $$0, dkk $$1, iw $$2, ebq $$3) {
-      if ($$0 instanceof csi $$4 && $$4.b()) {
+      if ($$0 instanceof csi $$4 && $$4.gz()) {
          return duz.super.a($$0, $$1, $$2, $$3);
       }
 
@@ -66,7 +66,7 @@ public class dmv extends dno implements duz {
 
    @Override
    public boolean a(@Nullable byf $$0, djn $$1, iw $$2, ebq $$3, exz $$4) {
-      if ($$0 instanceof csi $$5 && $$5.b()) {
+      if ($$0 instanceof csi $$5 && $$5.gz()) {
          return duz.super.a($$0, $$1, $$2, $$3, $$4);
       }
 

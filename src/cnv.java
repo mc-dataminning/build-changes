@@ -14,9 +14,9 @@ public class cnv extends cni {
    @Override
    public void a(asb $$0) {
       if (!this.b && this.c != null) {
-         iw $$1 = $$0.a(ehp.a.f, eku.a(this.a.j()));
+         iw $$1 = $$0.a(ehp.a.f, eku.a(this.a.m()));
          if (!$$1.a(this.a.dt(), 10.0)) {
-            this.a.t().a(cnw.a);
+            this.a.gr().a(cnw.a);
          }
       } else {
          this.b = false;
@@ -32,10 +32,10 @@ public class cnv extends cni {
    }
 
    private void i() {
-      int $$0 = this.a.n();
+      int $$0 = this.a.u();
       fgc $$1 = this.a.J(1.0F);
       int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
-      if (this.a.x() != null && this.a.x().e() > 0) {
+      if (this.a.gs() != null && this.a.gs().e() > 0) {
          $$2 %= 12;
          if ($$2 < 0) {
             $$2 += 12;

@@ -33,6 +33,6 @@ public class gxi extends gzb<cow, hdv, ghf> {
    public void a(cow $$0, hdv $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+      $$1.b = $$0.p();
    }
 }

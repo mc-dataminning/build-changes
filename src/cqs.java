@@ -45,7 +45,7 @@ public class cqs {
             new bzq(bxn.ak, 0.6F, 2),
             cca.a(chh.ax, 1.0F, 8, true),
             cci.a(cqs::a),
-            cdj.a(cqr::x, cca.b(chh.ar, 0.4F, 8, false)),
+            cdj.a(cqr::p, cca.b(chh.ar, 0.4F, 8, false)),
             cbw.a(8.0F, bun.a(30, 60)),
             bzt.a(j, 0.6F),
             a()
@@ -58,7 +58,7 @@ public class cqs {
          cuc.k,
          10,
          ImmutableList.of(
-            bzv.a(chh.ax, 200), new bzq(bxn.ak, 0.6F, 2), ccb.a(1.0F), cdj.a(cqr::x, cbd.a(40)), cdj.a(bwu::n_, cbd.a(15)), ccl.a(), cai.a(cqs::h, chh.p)
+            bzv.a(chh.ax, 200), new bzq(bxn.ak, 0.6F, 2), ccb.a(1.0F), cdj.a(cqr::p, cbd.a(40)), cdj.a(bwu::e_, cbd.a(15)), ccl.a(), cai.a(cqs::h, chh.p)
          ),
          chh.p
       );
@@ -85,7 +85,7 @@ public class cqs {
    }
 
    protected static void a(cqr $$0, byf $$1) {
-      if (!$$0.n_()) {
+      if (!$$0.e_()) {
          if ($$1.an() == bxn.aS && e($$0)) {
             d($$0, $$1);
             b($$0, $$1);
@@ -122,11 +122,11 @@ public class cqs {
    }
 
    private static boolean d(cqr $$0) {
-      return $$0.x() && !e($$0);
+      return $$0.p() && !e($$0);
    }
 
    private static boolean e(cqr $$0) {
-      if ($$0.n_()) {
+      if ($$0.e_()) {
          return false;
       } else {
          int $$1 = $$0.ec().c(chh.at).orElse(0);
@@ -139,7 +139,7 @@ public class cqs {
       bzf<cqr> $$3 = $$1.ec();
       $$3.b(chh.ay);
       $$3.b(chh.s);
-      if ($$1.n_()) {
+      if ($$1.e_()) {
          c($$1, $$2);
       } else {
          b($$0, $$1, $$2);
@@ -183,7 +183,7 @@ public class cqs {
    }
 
    private static awx a(cqr $$0, cuc $$1) {
-      if ($$1 == cuc.n || $$0.gu()) {
+      if ($$1 == cuc.n || $$0.u()) {
          return awy.mW;
       } else if ($$1 == cuc.k) {
          return awy.mR;

@@ -71,7 +71,7 @@ public abstract class bxb extends bxe {
    public void a(aku<?> $$0) {
       super.a($$0);
       if (aF.equals($$0) || aE.equals($$0)) {
-         this.A();
+         this.z();
       }
 
       if (p.equals($$0)) {
@@ -79,7 +79,7 @@ public abstract class bxb extends bxe {
       }
 
       if (r.equals($$0)) {
-         this.aZ.a(this.o());
+         this.aZ.a(this.n());
       }
 
       if (q.equals($$0)) {
@@ -105,7 +105,7 @@ public abstract class bxb extends bxe {
    }
 
    @Override
-   public void h() {
+   public void g() {
       bxe $$0 = this.dk();
       if ($$0 != null && $$0.dQ()) {
          this.bO();
@@ -114,13 +114,13 @@ public abstract class bxb extends bxe {
       if (this.dV().C) {
          if (this.aW) {
             this.aW = false;
-            int $$1 = this.n();
+            int $$1 = this.m();
             this.aR = (long)(this.af + $$1);
          }
 
          if (this.aX) {
             this.aX = false;
-            this.aS = this.m();
+            this.aS = this.l();
          }
 
          if (this.n) {
@@ -129,7 +129,7 @@ public abstract class bxb extends bxe {
             if ($$2 && this.aY != null) {
                this.aY = this.a(this.aY, this.aT);
             } else {
-               this.aY = this.B();
+               this.aY = this.A();
             }
 
             this.a($$2, this.aT);
@@ -140,7 +140,7 @@ public abstract class bxb extends bxe {
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return this.aZ;
    }
 
@@ -192,38 +192,38 @@ public abstract class bxb extends bxe {
    @Override
    protected void b(ua $$0) {
       $$0.a("transformation", k.b, a(this.al));
-      $$0.a("billboard", bxb.a.e, this.q());
-      $$0.a("interpolation_duration", this.m());
-      $$0.a("teleport_duration", this.o());
-      $$0.a("view_range", this.u());
-      $$0.a("shadow_radius", this.v());
-      $$0.a("shadow_strength", this.w());
-      $$0.a("width", this.x());
-      $$0.a("height", this.z());
-      $$0.a("glow_color_override", this.y());
-      $$0.b("brightness", ayn.b, this.s());
+      $$0.a("billboard", bxb.a.e, this.p());
+      $$0.a("interpolation_duration", this.l());
+      $$0.a("teleport_duration", this.n());
+      $$0.a("view_range", this.t());
+      $$0.a("shadow_radius", this.u());
+      $$0.a("shadow_strength", this.v());
+      $$0.a("width", this.w());
+      $$0.a("height", this.y());
+      $$0.a("glow_color_override", this.x());
+      $$0.b("brightness", ayn.b, this.r());
    }
 
-   public ffx f() {
+   public ffx e() {
       return this.aU;
    }
 
-   public boolean g() {
+   public boolean f() {
       return !this.aV;
    }
 
    @Override
-   public eyf j_() {
+   public eyf i_() {
       return eyf.d;
    }
 
    @Override
-   public boolean g_() {
+   public boolean n_() {
       return true;
    }
 
    @Nullable
-   public bxb.j j() {
+   public bxb.j i() {
       return this.aY;
    }
 
@@ -231,7 +231,7 @@ public abstract class bxb extends bxe {
       this.al.a(q, $$0);
    }
 
-   private int m() {
+   private int l() {
       return this.al.a(q);
    }
 
@@ -239,7 +239,7 @@ public abstract class bxb extends bxe {
       this.al.a(p, $$0, true);
    }
 
-   private int n() {
+   private int m() {
       return this.al.a(p);
    }
 
@@ -247,7 +247,7 @@ public abstract class bxb extends bxe {
       this.al.a(r, $$0);
    }
 
-   private int o() {
+   private int n() {
       return this.al.a(r);
    }
 
@@ -255,7 +255,7 @@ public abstract class bxb extends bxe {
       this.al.a(az, $$0.a());
    }
 
-   private bxb.a q() {
+   private bxb.a p() {
       return bxb.a.f.apply(this.al.a(az));
    }
 
@@ -264,12 +264,12 @@ public abstract class bxb extends bxe {
    }
 
    @Nullable
-   private ayn s() {
+   private ayn r() {
       int $$0 = this.al.a(aA);
       return $$0 != -1 ? ayn.a($$0) : null;
    }
 
-   private int t() {
+   private int s() {
       return this.al.a(aA);
    }
 
@@ -277,7 +277,7 @@ public abstract class bxb extends bxe {
       this.al.a(aB, $$0);
    }
 
-   private float u() {
+   private float t() {
       return this.al.a(aB);
    }
 
@@ -285,7 +285,7 @@ public abstract class bxb extends bxe {
       this.al.a(aC, $$0);
    }
 
-   private float v() {
+   private float u() {
       return this.al.a(aC);
    }
 
@@ -293,7 +293,7 @@ public abstract class bxb extends bxe {
       this.al.a(aD, $$0);
    }
 
-   private float w() {
+   private float v() {
       return this.al.a(aD);
    }
 
@@ -301,7 +301,7 @@ public abstract class bxb extends bxe {
       this.al.a(aE, $$0);
    }
 
-   private float x() {
+   private float w() {
       return this.al.a(aE);
    }
 
@@ -309,7 +309,7 @@ public abstract class bxb extends bxe {
       this.al.a(aF, $$0);
    }
 
-   private int y() {
+   private int x() {
       return this.al.a(aG);
    }
 
@@ -330,19 +330,19 @@ public abstract class bxb extends bxe {
       }
    }
 
-   private float z() {
+   private float y() {
       return this.al.a(aF);
    }
 
    @Override
    public void a_(double $$0, double $$1, double $$2) {
       super.a_($$0, $$1, $$2);
-      this.A();
+      this.z();
    }
 
-   private void A() {
-      float $$0 = this.x();
-      float $$1 = this.z();
+   private void z() {
+      float $$0 = this.w();
+      float $$1 = this.y();
       this.aV = $$0 == 0.0F || $$1 == 0.0F;
       float $$2 = $$0 / 2.0F;
       double $$3 = this.dA();
@@ -353,24 +353,24 @@ public abstract class bxb extends bxe {
 
    @Override
    public boolean a(double $$0) {
-      return $$0 < azz.k((double)this.u() * 64.0 * cK());
+      return $$0 < azz.k((double)this.t() * 64.0 * cK());
    }
 
    @Override
-   public int f_() {
-      int $$0 = this.y();
-      return $$0 != -1 ? $$0 : super.f_();
+   public int m_() {
+      int $$0 = this.x();
+      return $$0 != -1 ? $$0 : super.m_();
    }
 
-   private bxb.j B() {
-      return new bxb.j(bxb.e.constant(a(this.al)), this.q(), this.t(), bxb.d.constant(this.v()), bxb.d.constant(this.w()), this.y());
+   private bxb.j A() {
+      return new bxb.j(bxb.e.constant(a(this.al)), this.p(), this.s(), bxb.d.constant(this.u()), bxb.d.constant(this.v()), this.x());
    }
 
    private bxb.j a(bxb.j $$0, float $$1) {
       k $$2 = $$0.a.get($$1);
       float $$3 = $$0.d.get($$1);
       float $$4 = $$0.e.get($$1);
-      return new bxb.j(new bxb.l($$2, a(this.al)), this.q(), this.t(), new bxb.h($$3, this.v()), new bxb.h($$4, this.w()), this.y());
+      return new bxb.j(new bxb.l($$2, a(this.al)), this.p(), this.s(), new bxb.h($$3, this.u()), new bxb.h($$4, this.v()), this.x());
    }
 
    public static enum a implements bax {
@@ -423,7 +423,7 @@ public abstract class bxb extends bxe {
          }
       }
 
-      private ebq n() {
+      private ebq m() {
          return this.al.a(p);
       }
 
@@ -442,17 +442,17 @@ public abstract class bxb extends bxe {
       protected void b(ua $$0) {
          super.b($$0);
          alp<va> $$1 = this.dX().a(uo.a);
-         $$0.a("block_state", ebq.a, $$1, this.n());
+         $$0.a("block_state", ebq.a, $$1, this.m());
       }
 
       @Nullable
-      public bxb.b.a m() {
+      public bxb.b.a l() {
          return this.q;
       }
 
       @Override
       protected void a(boolean $$0, float $$1) {
-         this.q = new bxb.b.a(this.n());
+         this.q = new bxb.b.a(this.m());
       }
 
       public static record a(ebq a) {
@@ -498,7 +498,7 @@ public abstract class bxb extends bxe {
       private static final String p = "item_display";
       private static final aku<dak> q = aky.a(bxb.g.class, akw.h);
       private static final aku<Byte> r = aky.a(bxb.g.class, akw.a);
-      private final byw s = byw.a(this::n, this::a);
+      private final byw s = byw.a(this::m, this::a);
       @Nullable
       private bxb.g.a t;
 
@@ -521,7 +521,7 @@ public abstract class bxb extends bxe {
          }
       }
 
-      private dak n() {
+      private dak m() {
          return this.al.a(q);
       }
 
@@ -533,7 +533,7 @@ public abstract class bxb extends bxe {
          this.al.a(r, $$0.a());
       }
 
-      private dai o() {
+      private dai n() {
          return dai.k.apply(this.al.a(r));
       }
 
@@ -548,11 +548,11 @@ public abstract class bxb extends bxe {
       @Override
       protected void b(ua $$0) {
          super.b($$0);
-         if (!this.n().f()) {
-            $$0.a("item", dak.b, this.dX().a(uo.a), this.n());
+         if (!this.m().f()) {
+            $$0.a("item", dak.b, this.dX().a(uo.a), this.m());
          }
 
-         $$0.a("item_display", dai.j, this.o());
+         $$0.a("item_display", dai.j, this.n());
       }
 
       @Override
@@ -561,15 +561,15 @@ public abstract class bxb extends bxe {
       }
 
       @Nullable
-      public bxb.g.a m() {
+      public bxb.g.a l() {
          return this.t;
       }
 
       @Override
       protected void a(boolean $$0, float $$1) {
-         dak $$2 = this.n();
+         dak $$2 = this.m();
          $$2.a(this);
-         this.t = new bxb.g.a($$2, this.o());
+         this.t = new bxb.g.a($$2, this.n());
       }
 
       public static record a(dak a, dai b) {
@@ -643,7 +643,7 @@ public abstract class bxb extends bxe {
          }
       }
 
-      private xg n() {
+      private xg m() {
          return this.al.a(aH);
       }
 
@@ -651,7 +651,7 @@ public abstract class bxb extends bxe {
          this.al.a(aH, $$0);
       }
 
-      private int o() {
+      private int n() {
          return this.al.a(aI);
       }
 
@@ -659,7 +659,7 @@ public abstract class bxb extends bxe {
          this.al.a(aI, $$0);
       }
 
-      private byte q() {
+      private byte p() {
          return this.al.a(aK);
       }
 
@@ -667,7 +667,7 @@ public abstract class bxb extends bxe {
          this.al.a(aK, $$0);
       }
 
-      private int s() {
+      private int r() {
          return this.al.a(aJ);
       }
 
@@ -675,7 +675,7 @@ public abstract class bxb extends bxe {
          this.al.a(aJ, $$0);
       }
 
-      private byte t() {
+      private byte s() {
          return this.al.a(aL);
       }
 
@@ -733,11 +733,11 @@ public abstract class bxb extends bxe {
       protected void b(ua $$0) {
          super.b($$0);
          alp<va> $$1 = this.dX().a(uo.a);
-         $$0.a("text", xi.a, $$1, this.n());
-         $$0.a("line_width", this.o());
-         $$0.a("background", this.s());
-         $$0.a("text_opacity", this.q());
-         byte $$2 = this.t();
+         $$0.a("text", xi.a, $$1, this.m());
+         $$0.a("line_width", this.n());
+         $$0.a("background", this.r());
+         $$0.a("text_opacity", this.p());
+         byte $$2 = this.s();
          b($$2, $$0, "shadow", (byte)1);
          b($$2, $$0, "see_through", (byte)2);
          b($$2, $$0, "default_background", (byte)4);
@@ -749,25 +749,25 @@ public abstract class bxb extends bxe {
          if ($$0 && this.aO != null) {
             this.aO = this.a(this.aO, $$1);
          } else {
-            this.aO = this.u();
+            this.aO = this.t();
          }
 
          this.aN = null;
       }
 
       @Nullable
-      public bxb.k.e m() {
+      public bxb.k.e l() {
          return this.aO;
       }
 
-      private bxb.k.e u() {
-         return new bxb.k.e(this.n(), this.o(), bxb.f.constant(this.q()), bxb.f.constant(this.s()), this.t());
+      private bxb.k.e t() {
+         return new bxb.k.e(this.m(), this.n(), bxb.f.constant(this.p()), bxb.f.constant(this.r()), this.s());
       }
 
       private bxb.k.e a(bxb.k.e $$0, float $$1) {
          int $$2 = $$0.d.get($$1);
          int $$3 = $$0.c.get($$1);
-         return new bxb.k.e(this.n(), this.o(), new bxb.i($$3, this.q()), new bxb.c($$2, this.s()), this.t());
+         return new bxb.k.e(this.m(), this.n(), new bxb.i($$3, this.p()), new bxb.c($$2, this.r()), this.s());
       }
 
       public bxb.k.b a(bxb.k.d $$0) {

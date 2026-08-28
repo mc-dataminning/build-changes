@@ -12,14 +12,14 @@ public class gas extends gaf<cwr> {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
    protected void a(cxz $$0, int $$1, int $$2, cwm $$3) {
-      if ($$0 instanceof cws && !$$0.h() && !this.L.aa_()) {
+      if ($$0 instanceof cws && !$$0.h() && !this.L.ak()) {
          switch ($$3) {
             case a:
                if (this.z.e($$1)) {
@@ -73,7 +73,7 @@ public class gas extends gaf<cwr> {
       super.a($$0, $$1, $$2, $$3);
       this.d($$0);
       this.a($$0, $$1, $$2);
-      if (this.B instanceof cws && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.aa_()) {
+      if (this.B instanceof cws && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.ak()) {
          $$0.a(this.p, K, $$1, $$2);
       }
    }

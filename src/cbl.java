@@ -53,7 +53,7 @@ public class cbl<E extends byn> extends bzw<E> {
          boolean $$3 = !this.l.get().c().dv().equals(this.l.get().b());
          if ($$3) {
             $$0.a($$1, (byte)59);
-            $$1.O().m();
+            $$1.N().m();
             this.b($$1, this.l.get().c);
          } else {
             iw $$4 = $$1.dv();
@@ -103,7 +103,7 @@ public class cbl<E extends byn> extends bzw<E> {
             }
          }
 
-         chp $$7 = $$0.O();
+         chp $$7 = $$0.N();
          return $$3.stream().sorted(Comparator.comparingDouble($$0.dv()::j)).filter($$1x -> {
             eyo $$2x = $$7.a($$1x, 0);
             return $$2x != null && $$2x.j();
@@ -112,7 +112,7 @@ public class cbl<E extends byn> extends bzw<E> {
    }
 
    private boolean a(byn $$0, iw $$1) {
-      return $$0.O().a($$1) && $$0.a(eyw.b($$0, $$1)) == 0.0F;
+      return $$0.N().a($$1) && $$0.a(eyw.b($$0, $$1)) == 0.0F;
    }
 
    private void b(byn $$0, byf $$1) {

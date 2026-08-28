@@ -97,7 +97,7 @@ public class eah extends dyo implements dyr {
 
    private void H() {
       if (this.n != null) {
-         iw $$0 = this.aC_();
+         iw $$0 = this.ax_();
          ebq $$1 = this.n.a_($$0);
          if ($$1.a(dnq.pG)) {
             this.n.a($$0, $$1.b(dvw.b, this.B), 2);
@@ -115,7 +115,7 @@ public class eah extends dyo implements dyr {
    }
 
    public boolean a(csi $$0) {
-      if (!$$0.gG()) {
+      if (!$$0.gH()) {
          return false;
       } else {
          if ($$0.cU().C) {
@@ -143,7 +143,7 @@ public class eah extends dyo implements dyr {
    }
 
    public void a(byf $$0) {
-      this.v = $$0.ai().getString();
+      this.v = $$0.ah().getString();
    }
 
    public iw j() {
@@ -192,9 +192,9 @@ public class eah extends dyo implements dyr {
 
    public void a(eda $$0) {
       this.B = $$0;
-      ebq $$1 = this.n.a_(this.aC_());
+      ebq $$1 = this.n.a_(this.ax_());
       if ($$1.a(dnq.pG)) {
-         this.n.a(this.aC_(), $$1.b(dvw.b, $$0), 2);
+         this.n.a(this.ax_(), $$1.b(dvw.b, $$0), 2);
       }
    }
 
@@ -234,7 +234,7 @@ public class eah extends dyo implements dyr {
       if (this.B != eda.a) {
          return false;
       } else {
-         iw $$0 = this.aC_();
+         iw $$0 = this.ax_();
          int $$1 = 80;
          iw $$2 = new iw($$0.u() - 80, this.n.K_(), $$0.w() - 80);
          iw $$3 = new iw($$0.u() + 80, this.n.ao(), $$0.w() + 80);
@@ -264,7 +264,7 @@ public class eah extends dyo implements dyr {
          .filter($$0x -> $$0x instanceof eah)
          .map($$0x -> (eah)$$0x)
          .filter($$0x -> $$0x.B == eda.c && Objects.equals(this.u, $$0x.u))
-         .map(dyo::aC_);
+         .map(dyo::ax_);
    }
 
    private static Optional<esf> a(iw $$0, Stream<iw> $$1) {
@@ -290,7 +290,7 @@ public class eah extends dyo implements dyr {
 
    public boolean c(boolean $$0) {
       if (this.u != null && this.n instanceof asb $$1) {
-         iw var4 = this.aC_().a((kb)this.x);
+         iw var4 = this.ax_().a((kb)this.x);
          return a($$1, this.u, var4, this.y, this.C, this.v, $$0);
       } else {
          return false;
@@ -376,7 +376,7 @@ public class eah extends dyo implements dyr {
          $$2.b().a(new evs(azz.a(this.H, 0.0F, 1.0F))).a(b(this.I));
       }
 
-      iw $$3 = this.aC_().a((kb)this.x);
+      iw $$3 = this.ax_().a((kb)this.x);
       $$1.a($$0, $$3, $$3, $$2, b(this.I), 2 | (this.D ? 816 : 0));
    }
 

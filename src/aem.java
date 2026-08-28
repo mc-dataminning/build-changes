@@ -116,7 +116,7 @@ public class aem implements zo<acf> {
    public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dkg e, @Nullable xg f, boolean g, int h, @Nullable xx.a i) {
 
       b(asc $$0) {
-         this($$0.cG(), $$0.gi(), true, $$0.f.k(), $$0.h.b(), $$0.O(), $$0.a(csk.g), $$0.P(), y.a($$0.aa(), xx::a));
+         this($$0.cG(), $$0.gi(), true, $$0.f.k(), $$0.a(), $$0.N(), $$0.a(csk.g), $$0.O(), y.a($$0.Z(), xx::a));
       }
    }
 

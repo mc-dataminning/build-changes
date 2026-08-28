@@ -68,7 +68,7 @@ public class cxl implements buv {
 
    @Override
    public boolean a(csi $$0) {
-      return this.b.x() == $$0;
+      return this.b.gu() == $$0;
    }
 
    @Override
@@ -92,7 +92,7 @@ public class cxl implements buv {
          this.a(2, dak.l);
          this.f = 0;
       } else {
-         djg $$4 = this.b.gv();
+         djg $$4 = this.b.gw();
          if (!$$4.isEmpty()) {
             djf $$5 = $$4.a($$0, $$1, this.e);
             if ($$5 == null || $$5.r()) {

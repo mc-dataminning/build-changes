@@ -33,7 +33,7 @@ public class gtv implements gua<dyc> {
       }
 
       long $$14 = $$0.i().ae();
-      iw $$15 = $$0.aC_();
+      iw $$15 = $$0.ax_();
       float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$14, 100L) + $$1) / 100.0F;
       a($$2, $$3, $$4, $$5, $$8, $$9, $$10, $$16, $$0.f(), $$0.b());
    }

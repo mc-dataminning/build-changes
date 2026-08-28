@@ -57,26 +57,26 @@ public class csy extends ctd implements cta {
 
    @Override
    protected void a(aky.a $$0) {
-      $$0.a(a, o());
+      $$0.a(a, n());
       $$0.a(b, OptionalInt.empty());
       $$0.a(c, false);
    }
 
    @Override
    public boolean a(double $$0) {
-      return $$0 < 4096.0 && !this.m();
+      return $$0 < 4096.0 && !this.l();
    }
 
    @Override
    public boolean j(double $$0, double $$1, double $$2) {
-      return super.j($$0, $$1, $$2) && !this.m();
+      return super.j($$0, $$1, $$2) && !this.l();
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       fga $$6;
-      if (this.m()) {
+      if (this.l()) {
          if (this.i == null) {
             this.al.a(b).ifPresent($$0x -> {
                bxe $$1x = this.dV().a($$0x);
@@ -105,7 +105,7 @@ public class csy extends ctd implements cta {
 
          $$6 = ctf.a(this, this::b);
       } else {
-         if (!this.g()) {
+         if (!this.f()) {
             double $$7 = this.P ? 1.0 : 1.15;
             this.i(this.dy().d($$7, 1.0, $$7).b(0.0, 0.04, 0.0));
          }
@@ -122,7 +122,7 @@ public class csy extends ctd implements cta {
          this.ar = true;
       }
 
-      this.A();
+      this.z();
       if (this.g == 0 && !this.ba()) {
          this.dV().a(null, this.dA(), this.dC(), this.dG(), awy.jt, awz.i, 3.0F, 1.0F);
       }
@@ -139,7 +139,7 @@ public class csy extends ctd implements cta {
 
    private void b(asb $$0) {
       $$0.a(this, (byte)17);
-      this.a(egq.w, this.q());
+      this.a(egq.w, this.p());
       this.e($$0);
       this.aq();
    }
@@ -156,27 +156,27 @@ public class csy extends ctd implements cta {
    protected void a(ffy $$0) {
       iw $$1 = new iw($$0.b());
       this.dV().a_($$1).a(this.dV(), $$1, this, bxx.a);
-      if (this.dV() instanceof asb $$2 && this.j()) {
+      if (this.dV() instanceof asb $$2 && this.i()) {
          this.b($$2);
       }
 
       super.a($$0);
    }
 
-   private boolean j() {
-      return !this.n().isEmpty();
+   private boolean i() {
+      return !this.m().isEmpty();
    }
 
    private void e(asb $$0) {
       float $$1 = 0.0F;
-      List<dcy> $$2 = this.n();
+      List<dcy> $$2 = this.m();
       if (!$$2.isEmpty()) {
          $$1 = 5.0F + (float)($$2.size() * 2);
       }
 
       if ($$1 > 0.0F) {
          if (this.i != null) {
-            this.i.a($$0, this.dW().a(this, this.q()), 5.0F + (float)($$2.size() * 2));
+            this.i.a($$0, this.dW().a(this, this.p()), 5.0F + (float)($$2.size() * 2));
          }
 
          double $$3 = 5.0;
@@ -197,19 +197,19 @@ public class csy extends ctd implements cta {
 
                if ($$7) {
                   float $$11 = $$1 * (float)Math.sqrt((5.0 - (double)this.f($$6)) / 5.0);
-                  $$6.a($$0, this.dW().a(this, this.q()), $$11);
+                  $$6.a($$0, this.dW().a(this, this.p()), $$11);
                }
             }
          }
       }
    }
 
-   private boolean m() {
+   private boolean l() {
       return this.al.a(b).isPresent();
    }
 
    @Override
-   public boolean g() {
+   public boolean f() {
       return this.al.a(c);
    }
 
@@ -217,7 +217,7 @@ public class csy extends ctd implements cta {
    public void b(byte $$0) {
       if ($$0 == 17 && this.dV().C) {
          fgc $$1 = this.dy();
-         this.dV().a(this.dA(), this.dC(), this.dG(), $$1.d, $$1.e, $$1.f, this.n());
+         this.dV().a(this.dA(), this.dC(), this.dG(), $$1.d, $$1.e, $$1.f, this.m());
       }
 
       super.b($$0);
@@ -229,7 +229,7 @@ public class csy extends ctd implements cta {
       $$0.a("Life", this.g);
       $$0.a("LifeTime", this.h);
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("FireworksItem", dak.b, $$1, this.f());
+      $$0.a("FireworksItem", dak.b, $$1, this.e());
       $$0.a("ShotAtAngle", this.al.a(c).booleanValue());
    }
 
@@ -239,18 +239,18 @@ public class csy extends ctd implements cta {
       this.g = $$0.b("Life", 0);
       this.h = $$0.b("LifeTime", 0);
       alp<va> $$1 = this.dX().a(uo.a);
-      this.al.a(a, $$0.<dak>a("FireworksItem", dak.b, $$1).orElse(o()));
+      this.al.a(a, $$0.<dak>a("FireworksItem", dak.b, $$1).orElse(n()));
       this.al.a(c, $$0.b("ShotAtAngle", false));
    }
 
-   private List<dcy> n() {
+   private List<dcy> m() {
       dak $$0 = this.al.a(a);
       dcz $$1 = $$0.a(kl.aj);
       return $$1 != null ? $$1.b() : List.of();
    }
 
    @Override
-   public dak f() {
+   public dak e() {
       return this.al.a(a);
    }
 
@@ -259,7 +259,7 @@ public class csy extends ctd implements cta {
       return false;
    }
 
-   private static dak o() {
+   private static dak n() {
       return new dak(dao.vE);
    }
 

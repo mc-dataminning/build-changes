@@ -20,7 +20,7 @@ public class ckk extends cjv {
    private static final int bR = 128;
    private static final aku<Optional<bxk<byf>>> bS = aky.a(ckk.class, akw.r);
    private static final aku<Optional<bxk<byf>>> bT = aky.a(ckk.class, akw.r);
-   static final Predicate<coo> bU = $$0 -> !$$0.o() && $$0.bJ();
+   static final Predicate<coo> bU = $$0 -> !$$0.n() && $$0.bJ();
    private static final Predicate<bxe> bV = $$0 -> !($$0 instanceof byf $$1) ? false : $$1.eu() != null && $$1.ev() < $$1.af + 600;
    static final Predicate<bxe> bW = $$0 -> $$0 instanceof ckb || $$0 instanceof ckv;
    private static final Predicate<bxe> bX = $$0 -> !$$0.cf() && bxl.e.test($$0);
@@ -46,7 +46,7 @@ public class ckk extends cjv {
       this.a(eyr.p, 0.0F);
       this.a(eyr.q, 0.0F);
       this.a_(true);
-      this.O().a(32.0F);
+      this.N().a(32.0F);
    }
 
    @Override
@@ -59,7 +59,7 @@ public class ckk extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.ce = new cgu<>(this, cjv.class, 10, false, false, ($$0, $$1) -> $$0 instanceof ckb || $$0 instanceof ckv);
       this.cf = new cgu<>(this, clc.class, 10, false, false, clc.bI);
       this.cg = new cgu<>(this, cjr.class, 20, false, false, ($$0, $$1) -> $$0 instanceof cjt);
@@ -69,7 +69,7 @@ public class ckk extends cjv {
       this.bF.a(2, new ckk.n(2.2));
       this.bF.a(3, new ckk.e(1.0));
       this.bF.a(4, new cei<>(this, csi.class, 16.0F, 1.6, 1.4, $$0 -> bX.test($$0) && !this.j($$0) && !this.gJ()));
-      this.bF.a(4, new cei<>(this, cmx.class, 8.0F, 1.6, 1.4, $$0 -> !((cmx)$$0).q() && !this.gJ()));
+      this.bF.a(4, new cei<>(this, cmx.class, 8.0F, 1.6, 1.4, $$0 -> !((cmx)$$0).m() && !this.gJ()));
       this.bF.a(4, new cei<>(this, ckt.class, 8.0F, 1.6, 1.4, $$0 -> !this.gJ()));
       this.bF.a(5, new ckk.u());
       this.bF.a(6, new ckk.o());
@@ -88,7 +88,7 @@ public class ckk extends cjv {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (!this.dV().C && this.bJ() && this.dj()) {
          this.cl++;
          dak $$0 = this.a(bxo.a);
@@ -106,7 +106,7 @@ public class ckk extends cjv {
             }
          }
 
-         byf $$2 = this.f();
+         byf $$2 = this.e();
          if ($$2 == null || !$$2.bJ()) {
             this.y(false);
             this.z(false);
@@ -119,7 +119,7 @@ public class ckk extends cjv {
          this.bi = 0.0F;
       }
 
-      super.k_();
+      super.d_();
       if (this.gJ() && this.ae.i() < 0.05F) {
          this.a(awy.jJ, 1.0F, 1.0F);
       }
@@ -131,7 +131,7 @@ public class ckk extends cjv {
    }
 
    private boolean j(dak $$0) {
-      return $$0.c(kl.v) && this.f() == null && this.aH() && !this.fR();
+      return $$0.c(kl.v) && this.e() == null && this.aH() && !this.fR();
    }
 
    @Override
@@ -174,7 +174,7 @@ public class ckk extends cjv {
       }
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.v, 0.3F).a(bzl.s, 10.0).a(bzl.c, 2.0).a(bzl.x, 5.0).a(bzl.m, 32.0);
    }
 
@@ -182,7 +182,7 @@ public class ckk extends cjv {
    public ckk b(asb $$0, bwu $$1) {
       ckk $$2 = bxn.ab.a($$0, bxm.e);
       if ($$2 != null) {
-         $$2.a(this.ae.h() ? this.t() : ((ckk)$$1).t());
+         $$2.a(this.ae.h() ? this.p() : ((ckk)$$1).p());
       }
 
       return $$2;
@@ -221,7 +221,7 @@ public class ckk extends cjv {
    }
 
    private void gG() {
-      if (this.t() == ckk.v.a) {
+      if (this.p() == ckk.v.a) {
          this.bG.a(4, this.ce);
          this.bG.a(4, this.cf);
          this.bG.a(6, this.cg);
@@ -239,10 +239,10 @@ public class ckk extends cjv {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bZ : super.e($$0);
+      return this.e_() ? bZ : super.e($$0);
    }
 
-   public ckk.v t() {
+   public ckk.v p() {
       return ckk.v.a(this.al.a(bM));
    }
 
@@ -253,7 +253,7 @@ public class ckk extends cjv {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.az ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.az ? c((kk<T>)$$0, this.p()) : super.a($$0);
    }
 
    @Override
@@ -293,8 +293,8 @@ public class ckk extends cjv {
       super.b($$0);
       $$0.a("Trusted", ca, this.gH().toList());
       $$0.a("Sleeping", this.fR());
-      $$0.a("Type", ckk.v.d, this.t());
-      $$0.a("Sitting", this.x());
+      $$0.a("Type", ckk.v.d, this.p());
+      $$0.a("Sitting", this.u());
       $$0.a("Crouching", this.ch());
    }
 
@@ -317,7 +317,7 @@ public class ckk extends cjv {
       this.al.a(bT, Optional.empty());
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.s(1);
    }
 
@@ -390,7 +390,7 @@ public class ckk extends cjv {
 
    @Override
    protected void a(asb $$0, coo $$1) {
-      dak $$2 = $$1.f();
+      dak $$2 = $$1.e();
       if (this.g($$2)) {
          int $$3 = $$2.M();
          if ($$3 > 1) {
@@ -408,11 +408,11 @@ public class ckk extends cjv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dj()) {
          boolean $$0 = this.bi();
-         if ($$0 || this.f() != null || this.dV().ag()) {
+         if ($$0 || this.e() != null || this.dV().ag()) {
             this.gK();
          }
 
@@ -519,22 +519,22 @@ public class ckk extends cjv {
    }
 
    boolean gM() {
-      return !this.fR() && !this.x() && !this.gu();
+      return !this.fR() && !this.u() && !this.gu();
    }
 
    @Override
-   public void T() {
-      awx $$0 = this.u();
+   public void S() {
+      awx $$0 = this.s();
       if ($$0 == awy.jP) {
          this.a($$0, 2.0F, this.ff());
       } else {
-         super.T();
+         super.S();
       }
    }
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       if (this.fR()) {
          return awy.jQ;
       } else {
@@ -557,7 +557,7 @@ public class ckk extends cjv {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.jM;
    }
 
@@ -689,9 +689,9 @@ public class ckk extends cjv {
          } else if ($$0 instanceof ckb || $$0 instanceof ckv || $$0 instanceof cpk) {
             return true;
          } else if ($$0 instanceof bzb) {
-            return !((bzb)$$0).q();
+            return !((bzb)$$0).m();
          } else {
-            if ($$0 instanceof csi $$2 && ($$2.aa_() || $$2.b())) {
+            if ($$0 instanceof csi $$2 && ($$2.ak() || $$2.gz())) {
                return false;
             }
 
@@ -956,7 +956,7 @@ public class ckk extends cjv {
 
       @Override
       public boolean b() {
-         return !ckk.this.x() && !ckk.this.fR() && !ckk.this.ch() && !ckk.this.gu() && super.b();
+         return !ckk.this.u() && !ckk.this.fR() && !ckk.this.ch() && !ckk.this.gu() && super.b();
       }
    }
 
@@ -990,14 +990,14 @@ public class ckk extends cjv {
          if (!ckk.this.gx()) {
             return false;
          } else {
-            byf $$0 = ckk.this.f();
+            byf $$0 = ckk.this.e();
             if ($$0 != null && $$0.bJ()) {
                if ($$0.cP() != $$0.cO()) {
                   return false;
                } else {
                   boolean $$1 = ckk.a(ckk.this, $$0);
                   if (!$$1) {
-                     ckk.this.O().a($$0, 0);
+                     ckk.this.N().a($$0, 0);
                      ckk.this.y(false);
                      ckk.this.z(false);
                   }
@@ -1012,7 +1012,7 @@ public class ckk extends cjv {
 
       @Override
       public boolean c() {
-         byf $$0 = ckk.this.f();
+         byf $$0 = ckk.this.e();
          if ($$0 != null && $$0.bJ()) {
             double $$1 = ckk.this.dy().e;
             return (!($$1 * $$1 < 0.05F) || !(Math.abs(ckk.this.dN()) < 15.0F) || !ckk.this.aH()) && !ckk.this.gu();
@@ -1031,14 +1031,14 @@ public class ckk extends cjv {
          ckk.this.s(true);
          ckk.this.x(true);
          ckk.this.z(false);
-         byf $$0 = ckk.this.f();
+         byf $$0 = ckk.this.e();
          if ($$0 != null) {
-            ckk.this.J().a($$0, 60.0F, 30.0F);
+            ckk.this.I().a($$0, 60.0F, 30.0F);
             fgc $$1 = new fgc($$0.dA() - ckk.this.dA(), $$0.dC() - ckk.this.dC(), $$0.dG() - ckk.this.dG()).d();
             ckk.this.i(ckk.this.dy().b($$1.d * 0.8, 0.9, $$1.f * 0.8));
          }
 
-         ckk.this.O().m();
+         ckk.this.N().m();
       }
 
       @Override
@@ -1052,9 +1052,9 @@ public class ckk extends cjv {
 
       @Override
       public void a() {
-         byf $$0 = ckk.this.f();
+         byf $$0 = ckk.this.e();
          if ($$0 != null) {
-            ckk.this.J().a($$0, 60.0F, 30.0F);
+            ckk.this.I().a($$0, 60.0F, 30.0F);
          }
 
          if (!ckk.this.gu()) {
@@ -1087,7 +1087,7 @@ public class ckk extends cjv {
       public boolean b() {
          if (!ckk.this.a(bxo.a).f()) {
             return false;
-         } else if (ckk.this.f() != null || ckk.this.er() != null) {
+         } else if (ckk.this.e() != null || ckk.this.er() != null) {
             return false;
          } else if (!ckk.this.gM()) {
             return false;
@@ -1104,7 +1104,7 @@ public class ckk extends cjv {
          List<coo> $$0 = ckk.this.dV().a(coo.class, ckk.this.cR().c(8.0, 8.0, 8.0), ckk.bU);
          dak $$1 = ckk.this.a(bxo.a);
          if ($$1.f() && !$$0.isEmpty()) {
-            ckk.this.O().a($$0.get(0), 1.2F);
+            ckk.this.N().a($$0.get(0), 1.2F);
          }
       }
 
@@ -1112,7 +1112,7 @@ public class ckk extends cjv {
       public void d() {
          List<coo> $$0 = ckk.this.dV().a(coo.class, ckk.this.cR().c(8.0, 8.0, 8.0), ckk.bU);
          if (!$$0.isEmpty()) {
-            ckk.this.O().a($$0.get(0), 1.2F);
+            ckk.this.N().a($$0.get(0), 1.2F);
          }
       }
    }
@@ -1139,7 +1139,7 @@ public class ckk extends cjv {
       }
 
       private boolean h() {
-         return !ckk.this.fR() && !ckk.this.x() && !ckk.this.gJ() && ckk.this.f() == null;
+         return !ckk.this.fR() && !ckk.this.u() && !ckk.this.gJ() && ckk.this.e() == null;
       }
    }
 
@@ -1158,8 +1158,8 @@ public class ckk extends cjv {
          return ckk.this.er() == null
             && ckk.this.dY().i() < 0.02F
             && !ckk.this.fR()
-            && ckk.this.f() == null
-            && ckk.this.O().k()
+            && ckk.this.e() == null
+            && ckk.this.N().k()
             && !this.i()
             && !ckk.this.gv()
             && !ckk.this.ch();
@@ -1175,7 +1175,7 @@ public class ckk extends cjv {
          this.k();
          this.f = 2 + ckk.this.dY().a(3);
          ckk.this.w(true);
-         ckk.this.O().m();
+         ckk.this.N().m();
       }
 
       @Override
@@ -1191,7 +1191,7 @@ public class ckk extends cjv {
             this.k();
          }
 
-         ckk.this.J().a(ckk.this.dA() + this.c, ckk.this.dE(), ckk.this.dG() + this.d, (float)ckk.this.af(), (float)ckk.this.ad());
+         ckk.this.I().a(ckk.this.dA() + this.c, ckk.this.dE(), ckk.this.dG() + this.d, (float)ckk.this.ae(), (float)ckk.this.ac());
       }
 
       private void k() {
@@ -1211,7 +1211,7 @@ public class ckk extends cjv {
 
       @Override
       public boolean b() {
-         if (!ckk.this.fR() && this.a.f() == null) {
+         if (!ckk.this.fR() && this.a.e() == null) {
             if (ckk.this.dV().ag() && ckk.this.dV().h(this.a.dv())) {
                return this.h();
             } else if (this.c > 0) {
@@ -1274,8 +1274,8 @@ public class ckk extends cjv {
          ckk.this.z(false);
          ckk.this.s(false);
          ckk.this.C(true);
-         ckk.this.O().m();
-         ckk.this.L().a(ckk.this.dA(), ckk.this.dC(), ckk.this.dG(), 0.0);
+         ckk.this.N().m();
+         ckk.this.K().a(ckk.this.dA(), ckk.this.dC(), ckk.this.dG(), 0.0);
       }
    }
 
@@ -1289,7 +1289,7 @@ public class ckk extends cjv {
          if (ckk.this.fR()) {
             return false;
          } else {
-            byf $$0 = ckk.this.f();
+            byf $$0 = ckk.this.e();
             return $$0 != null && $$0.bJ() && ckk.bW.test($$0) && ckk.this.g((bxe)$$0) > 36.0 && !ckk.this.ch() && !ckk.this.gy() && !ckk.this.bf;
          }
       }
@@ -1302,12 +1302,12 @@ public class ckk extends cjv {
 
       @Override
       public void e() {
-         byf $$0 = ckk.this.f();
+         byf $$0 = ckk.this.e();
          if ($$0 != null && ckk.a(ckk.this, $$0)) {
             ckk.this.z(true);
             ckk.this.y(true);
-            ckk.this.O().m();
-            ckk.this.J().a($$0, (float)ckk.this.af(), (float)ckk.this.ad());
+            ckk.this.N().m();
+            ckk.this.I().a($$0, (float)ckk.this.ae(), (float)ckk.this.ac());
          } else {
             ckk.this.z(false);
             ckk.this.y(false);
@@ -1316,15 +1316,15 @@ public class ckk extends cjv {
 
       @Override
       public void a() {
-         byf $$0 = ckk.this.f();
+         byf $$0 = ckk.this.e();
          if ($$0 != null) {
-            ckk.this.J().a($$0, (float)ckk.this.af(), (float)ckk.this.ad());
+            ckk.this.I().a($$0, (float)ckk.this.ae(), (float)ckk.this.ac());
             if (ckk.this.g((bxe)$$0) <= 36.0) {
                ckk.this.z(true);
                ckk.this.y(true);
-               ckk.this.O().m();
+               ckk.this.N().m();
             } else {
-               ckk.this.O().a($$0, 1.5);
+               ckk.this.N().a($$0, 1.5);
             }
          }
       }

@@ -12,14 +12,14 @@ public class cpe extends bxt implements cpc {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(5, new cpe.d(this));
       this.bF.a(7, new cpe.a(this));
       this.bF.a(7, new cpe.c(this));
       this.bG.a(1, new cgu<>(this, csi.class, 10, true, false, ($$0, $$1) -> Math.abs($$0.dC() - this.dC()) <= 4.0));
    }
 
-   public boolean j() {
+   public boolean m() {
       return this.al.a(a);
    }
 
@@ -27,12 +27,12 @@ public class cpe extends bxt implements cpc {
       this.al.a(a, $$0);
    }
 
-   public int m() {
+   public int p() {
       return this.c;
    }
 
    @Override
-   protected boolean aa() {
+   protected boolean Z() {
       return true;
    }
 
@@ -61,8 +61,8 @@ public class cpe extends bxt implements cpc {
       $$0.a(a, false);
    }
 
-   public static bzk.a n() {
-      return byh.E().a(bzl.s, 10.0).a(bzl.m, 100.0);
+   public static bzk.a u() {
+      return byh.D().a(bzl.s, 10.0).a(bzl.m, 100.0);
    }
 
    @Override
@@ -71,7 +71,7 @@ public class cpe extends bxt implements cpc {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.kO;
    }
 
@@ -81,7 +81,7 @@ public class cpe extends bxt implements cpc {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.kP;
    }
 
@@ -131,12 +131,12 @@ public class cpe extends bxt implements cpc {
 
       @Override
       public void a() {
-         if (this.a.f() == null) {
+         if (this.a.e() == null) {
             fgc $$0 = this.a.dy();
             this.a.w(-((float)azz.d($$0.d, $$0.f)) * (180.0F / (float)Math.PI));
             this.a.aV = this.a.dL();
          } else {
-            byf $$1 = this.a.f();
+            byf $$1 = this.a.e();
             double $$2 = 64.0;
             if ($$1.g(this.a) < 4096.0) {
                double $$3 = $$1.dA() - this.a.dA();
@@ -198,7 +198,7 @@ public class cpe extends bxt implements cpc {
 
       @Override
       public boolean b() {
-         return this.b.f() != null;
+         return this.b.e() != null;
       }
 
       @Override
@@ -218,7 +218,7 @@ public class cpe extends bxt implements cpc {
 
       @Override
       public void a() {
-         byf $$0 = this.b.f();
+         byf $$0 = this.b.e();
          if ($$0 != null) {
             double $$1 = 64.0;
             if ($$0.g(this.b) < 4096.0 && this.b.E($$0)) {
@@ -239,7 +239,7 @@ public class cpe extends bxt implements cpc {
                      $$2.a(null, 1016, this.b.dv(), 0);
                   }
 
-                  ctb $$9 = new ctb($$2, this.b, $$8.d(), this.b.m());
+                  ctb $$9 = new ctb($$2, this.b, $$8.d(), this.b.p());
                   $$9.a_(this.b.dA() + $$4.d * 4.0, this.b.e(0.5) + 0.5, $$9.dG() + $$4.f * 4.0);
                   $$2.b($$9);
                   this.a = -40;
@@ -263,7 +263,7 @@ public class cpe extends bxt implements cpc {
 
       @Override
       public boolean b() {
-         cee $$0 = this.a.L();
+         cee $$0 = this.a.K();
          if (!$$0.b()) {
             return true;
          } else {
@@ -286,7 +286,7 @@ public class cpe extends bxt implements cpc {
          double $$1 = this.a.dA() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
          double $$2 = this.a.dC() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
          double $$3 = this.a.dG() + (double)(($$0.i() * 2.0F - 1.0F) * 16.0F);
-         this.a.L().a($$1, $$2, $$3, 1.0);
+         this.a.K().a($$1, $$2, $$3, 1.0);
       }
    }
 }

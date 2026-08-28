@@ -52,7 +52,7 @@ public class aqd {
          }
 
          if ($$3.size() == 1) {
-            $$0.a(() -> xg.a("commands.transfer.success.single", $$3.iterator().next().m_(), $$1, $$2), true);
+            $$0.a(() -> xg.a("commands.transfer.success.single", $$3.iterator().next().P_(), $$1, $$2), true);
          } else {
             $$0.a(() -> xg.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
          }

@@ -17,8 +17,8 @@ public class gus implements gua<eaj> {
    }
 
    @Override
-   public int aW_() {
-      return Math.max(this.a.aW_(), this.b.aW_());
+   public int aR_() {
+      return Math.max(this.a.aR_(), this.b.aR_());
    }
 
    public boolean a(eaj $$0, fgc $$1) {

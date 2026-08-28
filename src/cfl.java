@@ -28,13 +28,13 @@ public class cfl extends cfb {
          return false;
       } else {
          this.k = $$0;
-         byf $$1 = this.a.f();
+         byf $$1 = this.a.e();
          if ($$1 == null) {
             return false;
          } else if (!$$1.bJ()) {
             return false;
          } else {
-            this.d = this.a.O().a($$1, 0);
+            this.d = this.a.N().a($$1, 0);
             return this.d != null ? true : this.a.h($$1);
          }
       }
@@ -42,17 +42,17 @@ public class cfl extends cfb {
 
    @Override
    public boolean c() {
-      byf $$0 = this.a.f();
+      byf $$0 = this.a.e();
       if ($$0 == null) {
          return false;
       } else if (!$$0.bJ()) {
          return false;
       } else if (!this.c) {
-         return !this.a.O().k();
+         return !this.a.N().k();
       } else if (!this.a.a($$0.dv())) {
          return false;
       } else {
-         if ($$0 instanceof csi $$1 && ($$1.aa_() || $$1.b())) {
+         if ($$0 instanceof csi $$1 && ($$1.ak() || $$1.gz())) {
             return false;
          }
 
@@ -62,7 +62,7 @@ public class cfl extends cfb {
 
    @Override
    public void d() {
-      this.a.O().a(this.d, this.b);
+      this.a.N().a(this.d, this.b);
       this.a.v(true);
       this.h = 0;
       this.i = 0;
@@ -70,13 +70,13 @@ public class cfl extends cfb {
 
    @Override
    public void e() {
-      byf $$0 = this.a.f();
+      byf $$0 = this.a.e();
       if (!bxl.e.test($$0)) {
          this.a.g(null);
       }
 
       this.a.v(false);
-      this.a.O().m();
+      this.a.N().m();
    }
 
    @Override
@@ -86,11 +86,11 @@ public class cfl extends cfb {
 
    @Override
    public void a() {
-      byf $$0 = this.a.f();
+      byf $$0 = this.a.e();
       if ($$0 != null) {
-         this.a.J().a($$0, 30.0F, 30.0F);
+         this.a.I().a($$0, 30.0F, 30.0F);
          this.h = Math.max(this.h - 1, 0);
-         if ((this.c || this.a.P().a($$0))
+         if ((this.c || this.a.O().a($$0))
             && this.h <= 0
             && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.h(this.e, this.f, this.g) >= 1.0 || this.a.dY().i() < 0.05F)) {
             this.e = $$0.dA();
@@ -104,7 +104,7 @@ public class cfl extends cfb {
                this.h += 5;
             }
 
-            if (!this.a.O().a($$0, this.b)) {
+            if (!this.a.N().a($$0, this.b)) {
                this.h += 15;
             }
 
@@ -133,7 +133,7 @@ public class cfl extends cfb {
    }
 
    protected boolean b(byf $$0) {
-      return this.i() && this.a.h($$0) && this.a.P().a($$0);
+      return this.i() && this.a.h($$0) && this.a.O().a($$0);
    }
 
    protected int k() {

@@ -1,6 +1,6 @@
 public class ciz {
    public static boolean a(byh $$0) {
-      return $$0.O() instanceof cho;
+      return $$0.N() instanceof cho;
    }
 
    public static boolean a(byn $$0, int $$1) {

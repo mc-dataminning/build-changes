@@ -20,7 +20,7 @@ public class clh extends cjv {
 
    public clh(bxn<? extends cjv> $$0, dkj $$1) {
       super($$0, $$1);
-      this.O().a(true);
+      this.N().a(true);
       this.bT = this.gH();
    }
 
@@ -30,7 +30,7 @@ public class clh extends cjv {
       return bxn.f.a($$0, bxm.e);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 12.0).a(bzl.v, 0.14);
    }
 
@@ -40,11 +40,11 @@ public class clh extends cjv {
       $$0.a(bR, clh.a.a);
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.al.a(bR) != clh.a.a;
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.gv().a(this.bS);
    }
 
@@ -57,8 +57,8 @@ public class clh extends cjv {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -94,7 +94,7 @@ public class clh extends cjv {
       $$1.a("armadilloActivityUpdate");
       cli.a(this);
       $$1.c();
-      if (this.bJ() && !this.n_() && --this.bT <= 0) {
+      if (this.bJ() && !this.e_() && --this.bT <= 0) {
          if (this.a($$0, fap.aJ, this::a)) {
             this.a(awy.ak, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             this.a(egq.t);
@@ -111,14 +111,14 @@ public class clh extends cjv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV().A_()) {
          this.gI();
       }
 
-      if (this.t()) {
-         this.ag();
+      if (this.p()) {
+         this.af();
       }
 
       this.bS++;
@@ -126,7 +126,7 @@ public class clh extends cjv {
 
    @Override
    public float ek() {
-      return this.n_() ? 0.6F : 1.0F;
+      return this.e_() ? 0.6F : 1.0F;
    }
 
    private void gI() {
@@ -190,7 +190,7 @@ public class clh extends cjv {
       } else if (this.er() == $$0) {
          return true;
       } else if ($$0 instanceof csi $$1) {
-         return $$1.aa_() ? false : $$1.ci() || $$1.bY();
+         return $$1.ak() ? false : $$1.ci() || $$1.bY();
       } else {
          return false;
       }
@@ -211,8 +211,8 @@ public class clh extends cjv {
    }
 
    public void gw() {
-      if (!this.t()) {
-         this.W();
+      if (!this.p()) {
+         this.V();
          this.gF();
          this.a(egq.u);
          this.b(awy.ai);
@@ -221,7 +221,7 @@ public class clh extends cjv {
    }
 
    public void gx() {
-      if (this.t()) {
+      if (this.p()) {
          this.a(egq.u);
          this.b(awy.al);
          this.a(clh.a.a);
@@ -230,7 +230,7 @@ public class clh extends cjv {
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      if (this.t()) {
+      if (this.p()) {
          $$2 = ($$2 - 1.0F) / 2.0F;
       }
 
@@ -259,12 +259,12 @@ public class clh extends cjv {
          $$2.a(16, $$0, d($$1));
          return bvc.a;
       } else {
-         return (bvc)(this.t() ? bvc.d : super.b($$0, $$1));
+         return (bvc)(this.p() ? bvc.d : super.b($$0, $$1));
       }
    }
 
    public boolean gy() {
-      if (this.n_()) {
+      if (this.e_()) {
          return false;
       } else {
          if (this.dV() instanceof asb $$0) {
@@ -278,17 +278,17 @@ public class clh extends cjv {
    }
 
    public boolean gG() {
-      return !this.gr() && !this.bl() && !this.T_() && !this.bY() && !this.bZ();
+      return !this.gr() && !this.bl() && !this.Q_() && !this.bY() && !this.bZ();
    }
 
    @Override
    public boolean gB() {
-      return super.gB() && !this.t();
+      return super.gB() && !this.p();
    }
 
    @Override
-   protected awx u() {
-      return this.t() ? null : awy.af;
+   protected awx s() {
+      return this.p() ? null : awy.af;
    }
 
    @Override
@@ -297,13 +297,13 @@ public class clh extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.ah;
    }
 
    @Override
    protected awx e(bvt $$0) {
-      return this.t() ? awy.ae : awy.ad;
+      return this.p() ? awy.ae : awy.ad;
    }
 
    @Override
@@ -312,16 +312,16 @@ public class clh extends cjv {
    }
 
    @Override
-   public int af() {
-      return this.t() ? 0 : 32;
+   public int ae() {
+      return this.p() ? 0 : 32;
    }
 
    @Override
-   protected cdz I() {
+   protected cdz H() {
       return new cdz(this) {
          @Override
          public void a() {
-            if (!clh.this.t()) {
+            if (!clh.this.p()) {
                super.a();
             }
          }

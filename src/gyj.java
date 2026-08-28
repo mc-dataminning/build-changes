@@ -17,8 +17,8 @@ public class gyj extends gzb<cpg, hep, ghw> {
       if (super.a($$0, $$1, $$2, $$3, $$4)) {
          return true;
       } else {
-         if ($$0.x()) {
-            byf $$5 = $$0.gu();
+         if ($$0.gw()) {
+            byf $$5 = $$0.gx();
             if ($$5 != null) {
                fgc $$6 = this.a($$5, (double)$$5.dr() * 0.5, 1.0F);
                fgc $$7 = this.a($$0, (double)$$0.cS(), 1.0F);
@@ -125,10 +125,10 @@ public class gyj extends gzb<cpg, hep, ghw> {
          $$1.e = null;
       }
 
-      byf $$4 = $$0.gu();
+      byf $$4 = $$0.gx();
       if ($$4 != null) {
          $$1.h = $$0.L($$2);
-         $$1.g = $$0.gv() + $$2;
+         $$1.g = $$0.gy() + $$2;
          $$1.f = this.a($$4, (double)$$4.dr() * 0.5, $$2);
       } else {
          $$1.f = null;
@@ -138,6 +138,6 @@ public class gyj extends gzb<cpg, hep, ghw> {
    @Nullable
    private static bxe a(cpg $$0) {
       bxe $$1 = fqq.Q().ao();
-      return (bxe)($$0.x() ? $$0.gu() : $$1);
+      return (bxe)($$0.gw() ? $$0.gx() : $$1);
    }
 }

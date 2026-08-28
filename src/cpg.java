@@ -27,7 +27,7 @@ public class cpg extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       cfp $$0 = new cfp(this, 1.0);
       this.c = new cfy(this, 1.0, 80);
       this.bF.a(4, new cpg.a(this));
@@ -41,8 +41,8 @@ public class cpg extends cpk {
       this.bG.a(1, new cgu<>(this, byf.class, 10, true, false, new cpg.b(this)));
    }
 
-   public static bzk.a q() {
-      return cpk.gx().a(bzl.c, 6.0).a(bzl.v, 0.5).a(bzl.s, 30.0);
+   public static bzk.a gu() {
+      return cpk.gA().a(bzl.c, 6.0).a(bzl.v, 0.5).a(bzl.s, 30.0);
    }
 
    @Override
@@ -57,7 +57,7 @@ public class cpg extends cpk {
       $$0.a(d, 0);
    }
 
-   public boolean t() {
+   public boolean gv() {
       return this.al.a(a);
    }
 
@@ -65,7 +65,7 @@ public class cpg extends cpk {
       this.al.a(a, $$0);
    }
 
-   public int m() {
+   public int p() {
       return 80;
    }
 
@@ -73,13 +73,13 @@ public class cpg extends cpk {
       this.al.a(d, $$0);
    }
 
-   public boolean x() {
+   public boolean gw() {
       return this.al.a(d) != 0;
    }
 
    @Nullable
-   public byf gu() {
-      if (!this.x()) {
+   public byf gx() {
+      if (!this.gw()) {
          return null;
       } else if (this.dV().C) {
          if (this.bL != null) {
@@ -94,7 +94,7 @@ public class cpg extends cpk {
             }
          }
       } else {
-         return this.f();
+         return this.e();
       }
    }
 
@@ -108,12 +108,12 @@ public class cpg extends cpk {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 160;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.bi() ? awy.lS : awy.lT;
    }
 
@@ -123,7 +123,7 @@ public class cpg extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return this.bi() ? awy.lV : awy.lW;
    }
 
@@ -138,7 +138,7 @@ public class cpg extends cpk {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bJ()) {
          if (this.dV().C) {
             this.f = this.e;
@@ -146,11 +146,11 @@ public class cpg extends cpk {
                this.bI = 2.0F;
                fgc $$0 = this.dy();
                if ($$0.e > 0.0 && this.bN && !this.ba()) {
-                  this.dV().a(this.dA(), this.dC(), this.dG(), this.n(), this.dm(), 1.0F, 1.0F, false);
+                  this.dV().a(this.dA(), this.dC(), this.dG(), this.u(), this.dm(), 1.0F, 1.0F, false);
                }
 
                this.bN = $$0.e < 0.0 && this.dV().a(this.dv().e(), this);
-            } else if (this.t()) {
+            } else if (this.gv()) {
                if (this.bI < 0.5F) {
                   this.bI = 4.0F;
                } else {
@@ -164,13 +164,13 @@ public class cpg extends cpk {
             this.bK = this.bJ;
             if (!this.bi()) {
                this.bJ = this.ae.i();
-            } else if (this.t()) {
+            } else if (this.gv()) {
                this.bJ = this.bJ + (0.0F - this.bJ) * 0.25F;
             } else {
                this.bJ = this.bJ + (1.0F - this.bJ) * 0.06F;
             }
 
-            if (this.t() && this.bi()) {
+            if (this.gv() && this.bi()) {
                fgc $$1 = this.h(0.0F);
 
                for (int $$2 = 0; $$2 < 2; $$2++) {
@@ -178,15 +178,15 @@ public class cpg extends cpk {
                }
             }
 
-            if (this.x()) {
-               if (this.bM < this.m()) {
+            if (this.gw()) {
+               if (this.bM < this.p()) {
                   this.bM++;
                }
 
-               byf $$3 = this.gu();
+               byf $$3 = this.gx();
                if ($$3 != null) {
-                  this.J().a($$3, 90.0F, 90.0F);
-                  this.J().a();
+                  this.I().a($$3, 90.0F, 90.0F);
+                  this.I().a();
                   double $$4 = (double)this.L(0.0F);
                   double $$5 = $$3.dA() - this.dA();
                   double $$6 = $$3.e(0.5) - this.dE();
@@ -214,15 +214,15 @@ public class cpg extends cpk {
             this.ar = true;
          }
 
-         if (this.x()) {
+         if (this.gw()) {
             this.w(this.aX);
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
-   protected awx n() {
+   protected awx u() {
       return awy.lX;
    }
 
@@ -235,10 +235,10 @@ public class cpg extends cpk {
    }
 
    public float L(float $$0) {
-      return ((float)this.bM + $$0) / (float)this.m();
+      return ((float)this.bM + $$0) / (float)this.p();
    }
 
-   public float gv() {
+   public float gy() {
       return (float)this.bM;
    }
 
@@ -253,7 +253,7 @@ public class cpg extends cpk {
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      if (!this.t() && !$$1.a(axo.w) && !$$1.a(bvw.P) && $$1.c() instanceof byf $$3) {
+      if (!this.gv() && !$$1.a(axo.w) && !$$1.a(bvw.P) && $$1.c() instanceof byf $$3) {
          $$3.a($$0, this.dW().d(this), 2.0F);
       }
 
@@ -265,7 +265,7 @@ public class cpg extends cpk {
    }
 
    @Override
-   public int ad() {
+   public int ac() {
       return 180;
    }
 
@@ -275,7 +275,7 @@ public class cpg extends cpk {
          this.a(0.1F, $$0);
          this.a(byj.a, this.dy());
          this.i(this.dy().c(0.9));
-         if (!this.t() && this.f() == null) {
+         if (!this.gv() && this.e() == null) {
             this.i(this.dy().b(0.0, -0.005, 0.0));
          }
       } else {
@@ -296,22 +296,22 @@ public class cpg extends cpk {
 
       @Override
       public boolean b() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          return $$0 != null && $$0.bJ();
       }
 
       @Override
       public boolean c() {
-         return super.c() && (this.c || this.a.f() != null && this.a.g((bxe)this.a.f()) > 9.0);
+         return super.c() && (this.c || this.a.e() != null && this.a.g((bxe)this.a.e()) > 9.0);
       }
 
       @Override
       public void d() {
          this.b = -10;
-         this.a.O().m();
-         byf $$0 = this.a.f();
+         this.a.N().m();
+         byf $$0 = this.a.e();
          if ($$0 != null) {
-            this.a.J().a($$0, 90.0F, 90.0F);
+            this.a.I().a($$0, 90.0F, 90.0F);
          }
 
          this.a.ar = true;
@@ -331,10 +331,10 @@ public class cpg extends cpk {
 
       @Override
       public void a() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          if ($$0 != null) {
-            this.a.O().m();
-            this.a.J().a($$0, 90.0F, 90.0F);
+            this.a.N().m();
+            this.a.I().a($$0, 90.0F, 90.0F);
             if (!this.a.E($$0)) {
                this.a.g(null);
             } else {
@@ -344,7 +344,7 @@ public class cpg extends cpk {
                   if (!this.a.ba()) {
                      this.a.dV().a(this.a, (byte)21);
                   }
-               } else if (this.b >= this.a.m()) {
+               } else if (this.b >= this.a.p()) {
                   float $$1 = 1.0F;
                   if (this.a.dV().an() == buz.d) {
                      $$1 += 2.0F;
@@ -389,7 +389,7 @@ public class cpg extends cpk {
 
       @Override
       public void a() {
-         if (this.k == cee.a.b && !this.l.O().k()) {
+         if (this.k == cee.a.b && !this.l.N().k()) {
             fgc $$0 = new fgc(this.e - this.l.dA(), this.f - this.l.dC(), this.g - this.l.dG());
             double $$1 = $$0.g();
             double $$2 = $$0.d / $$1;
@@ -406,7 +406,7 @@ public class cpg extends cpk {
             double $$10 = Math.sin((double)(this.l.dL() * (float) (Math.PI / 180.0)));
             double $$11 = Math.sin((double)(this.l.af + this.l.ao()) * 0.75) * 0.05;
             this.l.i(this.l.dy().b($$8 * $$9, $$11 * ($$10 + $$9) * 0.25 + (double)$$7 * $$3 * 0.1, $$8 * $$10));
-            ced $$12 = this.l.J();
+            ced $$12 = this.l.I();
             double $$13 = this.l.dA() + $$2 * 2.0;
             double $$14 = this.l.dE() + $$3 / $$1;
             double $$15 = this.l.dG() + $$4 * 2.0;
@@ -419,7 +419,7 @@ public class cpg extends cpk {
                $$18 = $$15;
             }
 
-            this.l.J().a(azz.d(0.125, $$16, $$13), azz.d(0.125, $$17, $$14), azz.d(0.125, $$18, $$15), 10.0F, 40.0F);
+            this.l.I().a(azz.d(0.125, $$16, $$13), azz.d(0.125, $$17, $$14), azz.d(0.125, $$18, $$15), 10.0F, 40.0F);
             this.l.w(true);
          } else {
             this.l.B(0.0F);

@@ -156,7 +156,7 @@ public class arf extends eex implements ard.b, arq {
    }
 
    boolean a(asc $$0, int $$1, int $$2) {
-      return $$0.V().a($$1, $$2) && !$$0.f.g.a(djo.c($$1, $$2));
+      return $$0.U().a($$1, $$2) && !$$0.f.g.a(djo.c($$1, $$2));
    }
 
    private boolean b(asc $$0, int $$1, int $$2) {
@@ -614,7 +614,7 @@ public class arf extends eex implements ard.b, arq {
       djo $$2 = $$1.f();
 
       for (asc $$3 : this.K.a()) {
-         if ($$3.V().a($$2)) {
+         if ($$3.U().a($$2)) {
             a($$3, $$1);
          }
       }
@@ -733,7 +733,7 @@ public class arf extends eex implements ard.b, arq {
    }
 
    int b(asc $$0) {
-      return azz.a($$0.F(), 2, this.R);
+      return azz.a($$0.E(), 2, this.R);
    }
 
    private void a(asc $$0, djo $$1) {
@@ -900,7 +900,7 @@ public class arf extends eex implements ard.b, arq {
    }
 
    private boolean c(asc $$0, djo $$1) {
-      if ($$0.aa_()) {
+      if ($$0.ak()) {
          return false;
       } else {
          double $$2 = a($$1, $$0.dt());
@@ -917,7 +917,7 @@ public class arf extends eex implements ard.b, arq {
    }
 
    private boolean c(asc $$0) {
-      return $$0.aa_() && !this.t.O().c(dkf.s);
+      return $$0.ak() && !this.t.O().c(dkf.s);
    }
 
    void a(asc $$0, boolean $$1) {
@@ -933,7 +933,7 @@ public class arf extends eex implements ard.b, arq {
          $$0.a(ark.a);
          this.e($$0);
       } else {
-         jz $$4 = $$0.U();
+         jz $$4 = $$0.T();
          this.K.a($$0);
          if (!$$3) {
             this.H.b($$4, $$0);
@@ -960,7 +960,7 @@ public class arf extends eex implements ard.b, arq {
          }
       }
 
-      jz $$2x = $$0.U();
+      jz $$2x = $$0.T();
       jz $$3 = jz.a($$0);
       boolean $$4 = this.K.e($$0);
       boolean $$5 = this.c($$0);
@@ -990,7 +990,7 @@ public class arf extends eex implements ard.b, arq {
    private void e(asc $$0) {
       djo $$1 = $$0.dx();
       int $$2 = this.b($$0);
-      if ($$0.V() instanceof ark.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
+      if ($$0.U() instanceof ark.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
       }
 
@@ -999,7 +999,7 @@ public class arf extends eex implements ard.b, arq {
 
    private void a(asc $$0, ark $$1) {
       if ($$0.dV() == this.t) {
-         ark $$2 = $$0.V();
+         ark $$2 = $$0.U();
          if ($$1 instanceof ark.a $$3 && (!($$2 instanceof ark.a $$4) || !$$4.a().equals($$3.a()))) {
             $$0.f.b(new afj($$3.a().h, $$3.a().i));
          }

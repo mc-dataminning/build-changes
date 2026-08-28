@@ -42,8 +42,8 @@ public class cfj extends cfb {
       if (this.b.dY().i() >= this.e) {
          return false;
       } else {
-         if (this.b.f() != null) {
-            this.c = this.b.f();
+         if (this.b.e() != null) {
+            this.c = this.b.e();
          }
 
          asb $$0 = a(this.b);
@@ -82,7 +82,7 @@ public class cfj extends cfb {
    public void a() {
       if (this.c.bJ()) {
          double $$0 = this.i ? this.b.dE() : this.c.dE();
-         this.b.J().a(this.c.dA(), $$0, this.c.dG());
+         this.b.I().a(this.c.dA(), $$0, this.c.dG());
          this.h--;
       }
    }

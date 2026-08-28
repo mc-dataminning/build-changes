@@ -64,7 +64,7 @@ public class arz {
       }
 
       if (this.g instanceof cog $$2 && this.q % 10 == 0) {
-         dak $$3 = $$2.w();
+         dak $$3 = $$2.v();
          if ($$3.h() instanceof dax) {
             ezt $$4 = $$3.a(kl.M);
             ezv $$5 = dax.a($$4, this.f);
@@ -268,8 +268,8 @@ public class arz {
          $$1.accept(new afw(this.g.dk()));
       }
 
-      if (this.g instanceof byd $$9 && $$9.T_()) {
-         $$1.accept(new afp(this.g, $$9.C()));
+      if (this.g instanceof byd $$9 && $$9.Q_()) {
+         $$1.accept(new afp(this.g, $$9.B()));
       }
    }
 

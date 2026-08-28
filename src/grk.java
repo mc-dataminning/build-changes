@@ -75,7 +75,7 @@ public class grk implements AutoCloseable {
             float $$6 = this.i.n.ao().c().floatValue();
             float $$7 = this.i.t.a(bwk.G, $$0) * $$6;
             float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
-            float $$9 = this.i.t.D();
+            float $$9 = this.i.t.E();
             float $$10;
             if (this.i.t.b(bwk.p)) {
                $$10 = grd.a(this.i.t, $$0);

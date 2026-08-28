@@ -5,7 +5,7 @@ public interface dor<T extends Enum<T>> {
 
    Optional<ebq> k_(ebq var1);
 
-   float aw_();
+   float ar_();
 
    default void a_(ebq $$0, asb $$1, iw $$2, bai $$3) {
       float $$4 = 0.05688889F;
@@ -45,7 +45,7 @@ public interface dor<T extends Enum<T>> {
       }
 
       float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.aw_();
+      float $$13 = $$12 * $$12 * this.ar_();
       return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

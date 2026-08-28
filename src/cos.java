@@ -22,11 +22,11 @@ public abstract class cos extends cpk implements cpo {
 
    protected cos(bxn<? extends cos> $$0, dkj $$1) {
       super($$0, $$1);
-      this.n();
+      this.u();
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(2, new cge(this));
       this.bF.a(3, new ceu(this, 1.0));
       this.bF.a(3, new cei<>(this, cmx.class, 6.0F, 1.0, 1.2));
@@ -39,19 +39,19 @@ public abstract class cos extends cpk implements cpo {
       this.bG.a(3, new cgu<>(this, clc.class, 10, true, false, clc.bI));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.v, 0.25);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.v, 0.25);
    }
 
    @Override
    protected void b(iw $$0, ebq $$1) {
-      this.a(this.m(), 0.15F, 1.0F);
+      this.a(this.p(), 0.15F, 1.0F);
    }
 
-   abstract awx m();
+   abstract awx p();
 
    @Override
-   public void k_() {
+   public void d_() {
       boolean $$0 = this.go();
       if ($$0) {
          dak $$1 = this.a(bxo.f);
@@ -73,12 +73,12 @@ public abstract class cos extends cpk implements cpo {
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
-   public void r() {
-      super.r();
+   public void q() {
+      super.q();
       if (this.dl() instanceof byn $$0) {
          this.aV = $$0.aV;
       }
@@ -97,7 +97,7 @@ public abstract class cos extends cpk implements cpo {
       bai $$4 = $$0.G_();
       this.a($$4, $$1);
       this.a($$0, $$4, $$1);
-      this.n();
+      this.u();
       this.a_($$4.i() < 0.55F * $$1.d());
       if (this.a(bxo.f).f()) {
          LocalDate $$5 = LocalDate.now();
@@ -112,15 +112,15 @@ public abstract class cos extends cpk implements cpo {
       return $$3;
    }
 
-   public void n() {
+   public void u() {
       if (this.dV() != null && !this.dV().C) {
          this.bF.a(this.d);
          this.bF.a(this.c);
          dak $$0 = this.b(ctf.a(this, dao.pj));
          if ($$0.a(dao.pj)) {
-            int $$1 = this.q();
+            int $$1 = this.gu();
             if (this.dV().an() != buz.d) {
-               $$1 = this.t();
+               $$1 = this.gv();
             }
 
             this.c.c($$1);
@@ -131,11 +131,11 @@ public abstract class cos extends cpk implements cpo {
       }
    }
 
-   protected int q() {
+   protected int gu() {
       return 20;
    }
 
-   protected int t() {
+   protected int gv() {
       return 40;
    }
 
@@ -165,25 +165,25 @@ public abstract class cos extends cpk implements cpo {
    }
 
    @Override
-   public ayc<dag> Y() {
+   public ayc<dag> X() {
       return axv.bU;
    }
 
    @Override
    public void a(ua $$0) {
       super.a($$0);
-      this.n();
+      this.u();
    }
 
    @Override
    public void a(bxo $$0, dak $$1, dak $$2) {
       super.a($$0, $$1, $$2);
       if (!this.dV().C) {
-         this.n();
+         this.u();
       }
    }
 
-   public boolean x() {
+   public boolean gw() {
       return this.cw();
    }
 }

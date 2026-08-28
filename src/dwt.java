@@ -138,7 +138,7 @@ public class dwt extends dno {
       boolean $$5 = false;
       if (!$$2.isEmpty()) {
          for (bxe $$6 : $$2) {
-            if (!$$6.g_()) {
+            if (!$$6.n_()) {
                $$5 = true;
                break;
             }

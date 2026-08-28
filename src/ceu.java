@@ -18,7 +18,7 @@ public class ceu extends cfb {
 
    @Override
    public boolean b() {
-      if (this.a.f() != null) {
+      if (this.a.e() != null) {
          return false;
       } else if (!this.f.V()) {
          return false;
@@ -45,12 +45,12 @@ public class ceu extends cfb {
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      return !this.a.N().k();
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.a.N().a(this.b, this.c, this.d, this.e);
    }
 
    @Nullable

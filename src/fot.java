@@ -32,7 +32,7 @@ public class fot extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.a(this.J.a);
       this.c(fty.a(xg.c("mco.configure.world.subscription.extend"), $$0 -> fyn.a(this, ayt.a(this.J.b, this.m.X().b()))).a(this.n / 2 - 100, g(6), 200, 20).a());
       if (this.J.j) {
@@ -47,7 +47,7 @@ public class fot extends hrc {
          this.c(new fui(this.n / 2 - 100, g(8), 200, 46, H, this.p));
       }
 
-      this.c(fty.a(xf.k, $$0 -> this.aQ_()).a(this.n / 2 - 100, g(12), 200, 20).a());
+      this.c(fty.a(xf.k, $$0 -> this.aL_()).a(this.n / 2 - 100, g(12), 200, 20).a());
    }
 
    @Override
@@ -93,7 +93,7 @@ public class fot extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.I);
    }
 

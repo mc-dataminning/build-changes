@@ -15,7 +15,7 @@ public class gzf extends gxu<byl, hez> {
 
    public void a(byl $$0, hez $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      dak $$3 = $$0.g();
+      dak $$3 = $$0.f();
       $$1.a($$0, $$3, this.h);
    }
 

@@ -60,7 +60,7 @@ public class dni extends dna {
          }
 
          for (cjw $$5 : $$3) {
-            if ($$5.f() == null) {
+            if ($$5.e() == null) {
                csi $$6 = ag.a($$4, $$0.A);
                $$5.g($$6);
             }
@@ -204,7 +204,7 @@ public class dni extends dna {
             $$9.b($$6.q());
             $$9.b(kl.aq, dck.a.a(c, $$7));
             coo $$10 = new coo($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$9);
-            $$10.j();
+            $$10.i();
             $$0.b($$10);
          }
       }

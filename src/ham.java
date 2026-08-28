@@ -37,7 +37,7 @@ public class ham extends gxu<cop, hgk> {
 
    public void a(cop $$0, hgk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.g() - $$2 + 1.0F;
-      $$1.b = $$0.j();
+      $$1.a = (float)$$0.f() - $$2 + 1.0F;
+      $$1.b = $$0.i();
    }
 }

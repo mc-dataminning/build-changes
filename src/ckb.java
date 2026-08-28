@@ -21,7 +21,7 @@ public class ckb extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cfu(this, 1.4));
       this.bF.a(2, new cen(this, 1.0));
@@ -34,16 +34,16 @@ public class ckb extends cjv {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bQ : super.e($$0);
+      return this.e_() ? bQ : super.e($$0);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 4.0).a(bzl.v, 0.25);
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       this.bM = this.bI;
       this.bK = this.bJ;
       this.bJ = this.bJ + (this.aH() ? -1.0F : 4.0F) * 0.3F;
@@ -59,7 +59,7 @@ public class ckb extends cjv {
       }
 
       this.bI = this.bI + this.bN * 2.0F;
-      if (this.dV() instanceof asb $$1 && this.bJ() && !this.n_() && !this.x() && --this.bO <= 0) {
+      if (this.dV() instanceof asb $$1 && this.bJ() && !this.e_() && !this.u() && --this.bO <= 0) {
          if (this.a($$1, fap.aI, this::a)) {
             this.a(awy.eX, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
             this.a(egq.t);
@@ -80,7 +80,7 @@ public class ckb extends cjv {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.eV;
    }
 
@@ -90,7 +90,7 @@ public class ckb extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.eW;
    }
 
@@ -103,7 +103,7 @@ public class ckb extends cjv {
    public ckb b(asb $$0, bwu $$1) {
       ckb $$2 = bxn.A.a($$0, bxm.e);
       if ($$2 != null && $$1 instanceof ckb $$3) {
-         $$2.j(this.ae.h() ? this.t() : $$3.t());
+         $$2.j(this.ae.h() ? this.p() : $$3.p());
       }
 
       return $$2;
@@ -122,7 +122,7 @@ public class ckb extends cjv {
 
    @Override
    protected int e(asb $$0) {
-      return this.x() ? 10 : super.e($$0);
+      return this.u() ? 10 : super.e($$0);
    }
 
    @Override
@@ -144,21 +144,21 @@ public class ckb extends cjv {
       super.b($$0);
       $$0.a("IsChickenJockey", this.bP);
       $$0.a("EggLayTime", this.bO);
-      cur.a($$0, this.t());
+      cur.a($$0, this.p());
    }
 
    public void j(jg<ckc> $$0) {
       this.al.a(bR, $$0);
    }
 
-   public jg<ckc> t() {
+   public jg<ckc> p() {
       return this.al.a(bR);
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aJ ? c((kk<T>)$$0, new czl<>(this.t())) : super.a($$0);
+      return $$0 == kl.aJ ? c((kk<T>)$$0, new czl<>(this.p())) : super.a($$0);
    }
 
    @Override
@@ -184,7 +184,7 @@ public class ckb extends cjv {
 
    @Override
    public boolean h(double $$0) {
-      return this.x();
+      return this.u();
    }
 
    @Override
@@ -195,7 +195,7 @@ public class ckb extends cjv {
       }
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.bP;
    }
 

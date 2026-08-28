@@ -23,7 +23,7 @@ public class cnl extends cni {
    public void a(asb $$0) {
       this.c++;
       if (this.b == null) {
-         iw $$1 = $$0.a(ehp.a.e, eku.a(this.a.j()));
+         iw $$1 = $$0.a(ehp.a.e, eku.a(this.a.m()));
          this.b = fgc.c($$1);
       }
 

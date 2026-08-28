@@ -5,7 +5,7 @@ public class dzt extends dyo implements fho.a {
    public static final String b = "RecordItem";
    public static final String c = "ticks_since_song_started";
    private dak d = dak.l;
-   private final dar e = new dar(this::k, this.aC_());
+   private final dar e = new dar(this::k, this.ax_());
 
    public dzt(iw $$0, ebq $$1) {
       super(dyq.e, $$0, $$1);
@@ -16,27 +16,27 @@ public class dzt extends dyo implements fho.a {
    }
 
    public void k() {
-      this.n.a(this.aC_(), this.m().b());
+      this.n.a(this.ax_(), this.m().b());
       this.e();
    }
 
    private void a(boolean $$0) {
-      if (this.n != null && this.n.a_(this.aC_()) == this.m()) {
-         this.n.a(this.aC_(), this.m().b(drw.b, Boolean.valueOf($$0)), 2);
-         this.n.a(egq.c, this.aC_(), egq.a.a(this.m()));
+      if (this.n != null && this.n.a_(this.ax_()) == this.m()) {
+         this.n.a(this.ax_(), this.m().b(drw.b, Boolean.valueOf($$0)), 2);
+         this.n.a(egq.c, this.ax_(), egq.a.a(this.m()));
       }
    }
 
    public void s() {
       if (this.n != null && !this.n.C) {
-         iw $$0 = this.aC_();
+         iw $$0 = this.ax_();
          dak $$1 = this.f();
          if (!$$1.f()) {
             this.h();
             fgc $$2 = fgc.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
             dak $$3 = $$1.v();
             coo $$4 = new coo(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
-            $$4.j();
+            $$4.i();
             this.n.b($$4);
          }
       }
@@ -102,7 +102,7 @@ public class dzt extends dyo implements fho.a {
    }
 
    @Override
-   public int ap_() {
+   public int ak_() {
       return 1;
    }
 
@@ -130,7 +130,7 @@ public class dzt extends dyo implements fho.a {
    public void c(dak $$0) {
       this.d = $$0;
       daq.a(this.n.J_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
-      this.n.a(this.aC_(), this.m().b());
+      this.n.a(this.ax_(), this.m().b());
       this.e();
    }
 

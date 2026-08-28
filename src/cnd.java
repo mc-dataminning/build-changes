@@ -8,7 +8,7 @@ public class cnd extends bxe {
    public cnd(cng $$0, String $$1, float $$2, float $$3) {
       super($$0.an(), $$0.dV());
       this.c = bxh.b($$2, $$3);
-      this.i_();
+      this.h_();
       this.a = $$0;
       this.b = $$1;
    }

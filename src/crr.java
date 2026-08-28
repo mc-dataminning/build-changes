@@ -10,7 +10,7 @@ public class crr implements dje {
    }
 
    @Override
-   public csi x() {
+   public csi gu() {
       return this.a;
    }
 
@@ -19,7 +19,7 @@ public class crr implements dje {
    }
 
    @Override
-   public djg gv() {
+   public djg gw() {
       return this.b;
    }
 
@@ -38,7 +38,7 @@ public class crr implements dje {
    }
 
    @Override
-   public boolean gB() {
+   public boolean gC() {
       return this.a.dV().C;
    }
 
@@ -48,7 +48,7 @@ public class crr implements dje {
    }
 
    @Override
-   public int t() {
+   public int p() {
       return this.c;
    }
 
@@ -58,12 +58,12 @@ public class crr implements dje {
    }
 
    @Override
-   public boolean gw() {
+   public boolean gx() {
       return true;
    }
 
    @Override
-   public awx gx() {
+   public awx gy() {
       return awy.Cc;
    }
 }

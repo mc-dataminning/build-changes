@@ -65,11 +65,11 @@ public class bvt {
       if (this.b == null && this.c == null) {
          byf $$5 = $$0.eT();
          String $$6 = $$1 + ".player";
-         return $$5 != null ? xg.a($$6, $$0.m_(), $$5.m_()) : xg.a($$1, $$0.m_());
+         return $$5 != null ? xg.a($$6, $$0.P_(), $$5.P_()) : xg.a($$1, $$0.P_());
       } else {
-         xg $$2 = this.b == null ? this.c.m_() : this.b.m_();
+         xg $$2 = this.b == null ? this.c.P_() : this.b.P_();
          dak $$4 = this.b instanceof byf $$3 ? $$3.fb() : dak.l;
-         return !$$4.f() && $$4.c(kl.g) ? xg.a($$1 + ".item", $$0.m_(), $$2, $$4.K()) : xg.a($$1, $$0.m_(), $$2);
+         return !$$4.f() && $$4.c(kl.g) ? xg.a($$1 + ".item", $$0.P_(), $$2, $$4.K()) : xg.a($$1, $$0.P_(), $$2);
       }
    }
 

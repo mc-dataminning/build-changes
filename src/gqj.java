@@ -17,20 +17,15 @@ public abstract class gqj extends csi {
       this.e = $$0;
    }
 
+   @Nullable
    @Override
-   public boolean aa_() {
-      gma $$0 = this.a();
-      return $$0 != null && $$0.e() == dkg.d;
-   }
-
-   @Override
-   public boolean b() {
-      gma $$0 = this.a();
-      return $$0 != null && $$0.e() == dkg.b;
+   public dkg a() {
+      gma $$0 = this.b();
+      return $$0 != null ? $$0.e() : null;
    }
 
    @Nullable
-   protected gma a() {
+   protected gma b() {
       if (this.h == null) {
          this.h = fqq.Q().L().a(this.cG());
       }
@@ -39,10 +34,10 @@ public abstract class gqj extends csi {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.f = this.g;
       this.a = this.dy();
-      super.h();
+      super.g();
    }
 
    public fgc I(float $$0) {
@@ -50,7 +45,7 @@ public abstract class gqj extends csi {
    }
 
    public hls c() {
-      gma $$0 = this.a();
+      gma $$0 = this.b();
       return $$0 == null ? hli.a(this.cG()) : $$0.g();
    }
 
@@ -70,7 +65,7 @@ public abstract class gqj extends csi {
          if (this.fB().a(dao.pj)) {
             float $$5 = Math.min((float)this.fD() / 20.0F, 1.0F);
             $$2 *= 1.0F - azz.l($$5) * 0.15F;
-         } else if ($$0 && this.gH()) {
+         } else if ($$0 && this.gI()) {
             return 0.1F;
          }
       }

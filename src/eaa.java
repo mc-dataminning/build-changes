@@ -27,12 +27,12 @@ public class eaa extends dyo implements egs.b<egz.b>, egz {
    }
 
    @Override
-   public egz.a x() {
+   public egz.a gw() {
       return this.q;
    }
 
    @Override
-   public egz.d gu() {
+   public egz.d gx() {
       return this.m;
    }
 
@@ -65,14 +65,14 @@ public class eaa extends dyo implements egs.b<egz.b>, egz {
          }
 
          if ($$0 instanceof ctd $$3) {
-            bxe var3 = $$3.q();
+            bxe var3 = $$3.p();
             if (var3 instanceof asc) {
                return (asc)var3;
             }
          }
 
          if ($$0 instanceof coo $$5) {
-            bxe var9 = $$5.q();
+            bxe var9 = $$5.p();
             if (var9 instanceof asc) {
                return (asc)var9;
             }
@@ -95,13 +95,13 @@ public class eaa extends dyo implements egs.b<egz.b>, egz {
    }
 
    private boolean b(asb $$0, asc $$1) {
-      OptionalInt $$2 = crn.a($$0, this.aC_(), $$1);
+      OptionalInt $$2 = crn.a($$0, this.ax_(), $$1);
       $$2.ifPresent($$0x -> this.l = $$0x);
       return $$2.isPresent();
    }
 
    private void a(asb $$0, @Nullable bxe $$1) {
-      iw $$2 = this.aC_();
+      iw $$2 = this.ax_();
       ebq $$3 = this.m();
       $$0.a($$2, $$3.b(duq.b, Boolean.valueOf(true)), 2);
       $$0.a($$2, $$3.b(), 90);
@@ -126,14 +126,14 @@ public class eaa extends dyo implements egs.b<egz.b>, egz {
             this.b((dkj)$$0);
          }
 
-         crl.a($$0, fgc.b(this.aC_()), null, 40);
+         crl.a($$0, fgc.b(this.ax_()), null, 40);
       }
    }
 
    private void b(dkj $$0) {
       awx $$1 = (awx)j.get(this.l);
       if ($$1 != null) {
-         iw $$2 = this.aC_();
+         iw $$2 = this.ax_();
          int $$3 = $$2.u() + azz.b($$0.A, -10, 10);
          int $$4 = $$2.v() + azz.b($$0.A, -10, 10);
          int $$5 = $$2.w() + azz.b($$0.A, -10, 10);
@@ -142,7 +142,7 @@ public class eaa extends dyo implements egs.b<egz.b>, egz {
    }
 
    private boolean c(asb $$0) {
-      return this.l < 4 ? false : bau.a(bxn.bH, bxm.k, $$0, this.aC_(), 20, 5, 6, bau.a.b, false).isPresent();
+      return this.l < 4 ? false : bau.a(bxn.bH, bxm.k, $$0, this.ax_(), 20, 5, 6, bau.a.b, false).isPresent();
    }
 
    public egz.b a() {

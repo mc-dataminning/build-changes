@@ -25,7 +25,7 @@ public class gww extends gwp<cjw, hdl, ggm> {
       $$1.a = $$0.J($$2);
       $$1.b = !$$0.gH();
       $$1.c = $$0.aH() && $$0.dy().h() < 1.0E-7;
-      $$1.d = $$0.af_();
+      $$1.d = $$0.ac_();
       $$1.e = $$0.gG();
    }
 }

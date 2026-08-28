@@ -80,7 +80,7 @@ public class ani {
 
    private static int a(ek $$0, bxe $$1, float $$2, bvt $$3) throws CommandSyntaxException {
       if ($$1.a($$0.e(), $$3, $$2)) {
-         $$0.a(() -> xg.a("commands.damage.success", $$2, $$1.m_()), true);
+         $$0.a(() -> xg.a("commands.damage.success", $$2, $$1.P_()), true);
          return 1;
       } else {
          throw a.create();

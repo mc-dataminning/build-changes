@@ -43,7 +43,7 @@ public record dcl(float c, float d, List<dcl.a> e, dcl.b f, Optional<ayc<bvv>> g
       int $$4 = this.a($$2);
       if ($$4 > 0) {
          if ($$1 instanceof csi $$5) {
-            $$5.gF().a($$3, $$4);
+            $$5.gG().a($$3, $$4);
          }
 
          $$1.fF();

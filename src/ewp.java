@@ -112,7 +112,7 @@ public class ewp {
          $$4.g($$6);
          iw $$7;
          if ($$4 instanceof coi) {
-            $$7 = ((coi)$$4).j().b($$1);
+            $$7 = ((coi)$$4).i().b($$1);
          } else {
             $$7 = iw.a((jq)$$5);
          }

@@ -102,7 +102,7 @@ public class el {
          aog.a(this.h);
       }
 
-      if (ac.aU) {
+      if (ac.aV) {
          aow.a(this.h, $$1);
          ano.a(this.h);
          ann.a(this.h);
@@ -171,7 +171,7 @@ public class el {
          }
 
          $$2.b(xg.c("command.failed").a($$1x -> $$1x.a(new xm.e($$5))));
-         if (ac.aU) {
+         if (ac.aV) {
             $$2.b(xg.b(ag.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
@@ -233,7 +233,7 @@ public class el {
       Map<CommandNode<ek>, CommandNode<ep>> $$1 = Maps.newHashMap();
       RootCommandNode<ep> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.A(), $$1);
+      this.a(this.h.getRoot(), $$2, $$0.z(), $$1);
       $$0.f.b(new acx($$2));
    }
 

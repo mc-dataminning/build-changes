@@ -35,7 +35,7 @@ public class drs extends dno {
       if ($$2 != null) {
          $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
          $$0.b($$2);
-         $$2.U();
+         $$2.T();
       }
    }
 

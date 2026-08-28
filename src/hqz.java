@@ -11,7 +11,7 @@ public class hqz extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.m.af().i();
       this.b = fur.a(this.p, this.a, this.n - 50);
       this.C = this.b.a() * 9;
@@ -24,7 +24,7 @@ public class hqz extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       fqq.Q().a(this.c);
    }
 

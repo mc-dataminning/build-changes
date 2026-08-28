@@ -28,7 +28,7 @@ public final class dku {
       Object2IntOpenHashMap<byi> $$5 = new Object2IntOpenHashMap();
 
       for (bxe $$6 : $$1) {
-         if ($$6 instanceof byh $$7 && ($$7.gd() || $$7.Z())) {
+         if ($$6 instanceof byh $$7 && ($$7.gd() || $$7.Y())) {
             continue;
          }
 

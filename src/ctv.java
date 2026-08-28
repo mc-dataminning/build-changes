@@ -6,7 +6,7 @@ public class ctv extends ctu {
    }
 
    public ctv(cqg $$0, dkj $$1) {
-      super(bxn.t, $$1, $$0, $$0.dA(), $$0.x(), $$0.dG());
+      super(bxn.t, $$1, $$0, $$0.dA(), $$0.gw(), $$0.dG());
    }
 
    @Override

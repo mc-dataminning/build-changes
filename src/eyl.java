@@ -13,12 +13,12 @@ public class eyl extends eyw {
    public void a(dkw $$0, byh $$1) {
       super.a($$0, $$1);
       this.a.clear();
-      $$1.G();
+      $$1.F();
    }
 
    @Override
    public void b() {
-      this.c.H();
+      this.c.G();
       this.a.clear();
       super.b();
    }

@@ -19,7 +19,7 @@ public class ciq extends cin<byf> {
    }
 
    private boolean b(byf $$0) {
-      return $$0.an() == bxn.bE && $$0.n_();
+      return $$0.an() == bxn.bE && $$0.e_();
    }
 
    private chj c(byf $$0) {

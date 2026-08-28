@@ -13,7 +13,7 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(0, new cev(this));
       this.bF.a(0, new cgm<>(this, dcg.a(dao.tt, dch.g), awy.CC, $$0 -> this.dV().W() && !$$0.co()));
       this.bF.a(0, new cgm<>(this, new dak(dao.ru), awy.CH, $$0 -> this.dV().V() && $$0.co()));
@@ -41,25 +41,25 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   public boolean gw() {
+   public boolean gx() {
       return false;
    }
 
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if (!$$2.a(dao.uR) && this.bJ() && !this.gu() && !this.n_()) {
+      if (!$$2.a(dao.uR) && this.bJ() && !this.gv() && !this.e_()) {
          if ($$1 == bvb.a) {
             $$0.a(axi.S);
          }
 
          if (!this.dV().C) {
-            if (this.gv().isEmpty()) {
+            if (this.gw().isEmpty()) {
                return bvc.c;
             }
 
             this.a($$0);
-            this.a($$0, this.m_(), 1);
+            this.a($$0, this.P_(), 1);
          }
 
          return bvc.a;
@@ -69,8 +69,8 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   protected void gA() {
-      djg $$0 = this.gv();
+   protected void gB() {
+      djg $$0 = this.gw();
 
       for (Pair<cry.g[], Integer> $$1 : cry.b) {
          cry.g[] $$2 = (cry.g[])$$1.getLeft();
@@ -90,7 +90,7 @@ public class csa extends crp implements dcp.b {
       super.a($$0);
       this.bM = $$0.b("DespawnDelay", 0);
       this.bL = $$0.<iw>a("wander_target", iw.a).orElse(null);
-      this.c_(Math.max(0, this.g()));
+      this.c_(Math.max(0, this.Y_()));
    }
 
    @Override
@@ -107,8 +107,8 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   protected awx u() {
-      return this.gu() ? awy.CI : awy.CA;
+   protected awx s() {
+      return this.gv() ? awy.CI : awy.CA;
    }
 
    @Override
@@ -117,7 +117,7 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.CB;
    }
 
@@ -132,7 +132,7 @@ public class csa extends crp implements dcp.b {
    }
 
    @Override
-   public awx gx() {
+   public awx gy() {
       return awy.CJ;
    }
 
@@ -140,20 +140,20 @@ public class csa extends crp implements dcp.b {
       this.bM = $$0;
    }
 
-   public int gC() {
+   public int gD() {
       return this.bM;
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C) {
-         this.gD();
+         this.gE();
       }
    }
 
-   private void gD() {
-      if (this.bM > 0 && !this.gu() && --this.bM == 0) {
+   private void gE() {
+      if (this.bM > 0 && !this.gv() && --this.bM == 0) {
          this.aq();
       }
    }
@@ -163,7 +163,7 @@ public class csa extends crp implements dcp.b {
    }
 
    @Nullable
-   iw gE() {
+   iw gF() {
       return this.bL;
    }
 
@@ -187,13 +187,13 @@ public class csa extends crp implements dcp.b {
 
       @Override
       public boolean b() {
-         iw $$0 = this.a.gE();
+         iw $$0 = this.a.gF();
          return $$0 != null && this.a($$0, this.b);
       }
 
       @Override
       public void a() {
-         iw $$0 = this.a.gE();
+         iw $$0 = this.a.gF();
          if ($$0 != null && csa.this.bE.k()) {
             if (this.a($$0, 10.0)) {
                fgc $$1 = new fgc((double)$$0.u() - this.a.dA(), (double)$$0.v() - this.a.dC(), (double)$$0.w() - this.a.dG()).d();

@@ -17,7 +17,7 @@ public record bn(List<du<bvv>> b, Optional<bz> c, Optional<bz> d, Optional<Boole
    );
 
    public boolean a(asc $$0, bvt $$1) {
-      return this.a($$0.y(), $$0.dt(), $$1);
+      return this.a($$0.x(), $$0.dt(), $$1);
    }
 
    public boolean a(asb $$0, fgc $$1, bvt $$2) {

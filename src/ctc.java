@@ -19,15 +19,15 @@ public class ctc extends ctd {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       fgc $$0 = this.dy();
       fga $$1 = ctf.a(this, this::b);
       this.b($$1);
       double $$2 = this.dA() + $$0.d;
       double $$3 = this.dC() + $$0.e;
       double $$4 = this.dG() + $$0.f;
-      this.A();
+      this.z();
       float $$5 = 0.99F;
       if (this.dV().a(this.cR()).noneMatch(ebp.a::l)) {
          this.aq();
@@ -43,7 +43,7 @@ public class ctc extends ctd {
    @Override
    protected void a(ffz $$0) {
       super.a($$0);
-      if (this.q() instanceof byf $$1) {
+      if (this.p() instanceof byf $$1) {
          bxe $$2 = $$0.a();
          bvt $$3 = this.dW().b(this, $$1);
          if (this.dV() instanceof asb $$4 && $$2.a($$4, $$3, 1.0F)) {

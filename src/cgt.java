@@ -48,7 +48,7 @@ public class cgt extends chb {
    @Override
    public void d() {
       this.e.g(this.e.er());
-      this.g = this.e.f();
+      this.g = this.e.e();
       this.d = this.e.et();
       this.h = 300;
       if (this.c) {
@@ -72,7 +72,7 @@ public class cgt extends chb {
             }
 
             $$3 = (byh)var5.next();
-            if (this.e != $$3 && $$3.f() == null && (!(this.e instanceof bzb) || ((bzb)this.e).e() == ((bzb)$$3).e()) && !$$3.s(this.e.er())) {
+            if (this.e != $$3 && $$3.e() == null && (!(this.e instanceof bzb) || ((bzb)this.e).T_() == ((bzb)$$3).T_()) && !$$3.s(this.e.er())) {
                if (this.j == null) {
                   break;
                }

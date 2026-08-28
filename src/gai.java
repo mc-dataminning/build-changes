@@ -27,7 +27,7 @@ public abstract class gai extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.c(fty.a(xf.d, $$0 -> this.F()).a(this.n / 2 - 100, this.o / 4 + 144, 200, 20).a());
       this.w = new fwt(() -> this.d[this.v], this::a, fwt.a(this.m), fwt.c(this.m), $$0 -> this.m.h.b($$0) <= this.a.c());
    }
@@ -82,15 +82,15 @@ public abstract class gai extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.F();
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       glp $$0 = this.m.L();
       if ($$0 != null) {
-         $$0.b(new aiy(this.a.aC_(), this.s, this.d[0], this.d[1], this.d[2], this.d[3]));
+         $$0.b(new aiy(this.a.ax_(), this.s, this.d[0], this.d[1], this.d[2], this.d[3]));
       }
    }
 

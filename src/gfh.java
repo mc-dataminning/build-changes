@@ -18,7 +18,7 @@ public class gfh implements gfl {
    }
 
    @Override
-   public xg aU_() {
+   public xg aP_() {
       return this.c;
    }
 
@@ -28,7 +28,7 @@ public class gfh implements gfl {
    }
 
    @Override
-   public boolean aV_() {
+   public boolean aQ_() {
       return true;
    }
 }

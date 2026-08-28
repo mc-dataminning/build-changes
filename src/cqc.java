@@ -61,7 +61,7 @@ public class cqc extends cpk implements cqt {
    }
 
    private static void c(bzf<cqc> $$0) {
-      $$0.a(cuc.k, 10, ImmutableList.of(ccb.a(1.0F), cdj.a(cqc::m, cbd.a(40)), cdj.a(cqc::n_, cbd.a(15)), ccl.a()), chh.p);
+      $$0.a(cuc.k, 10, ImmutableList.of(ccb.a(1.0F), cdj.a(cqc::p, cbd.a(40)), cdj.a(cqc::e_, cbd.a(15)), ccl.a()), chh.p);
    }
 
    private Optional<? extends byf> g(asb $$0) {
@@ -83,7 +83,7 @@ public class cqc extends cpk implements cqt {
    public void a(aku<?> $$0) {
       super.a($$0);
       if (e.equals($$0)) {
-         this.i_();
+         this.h_();
       }
    }
 
@@ -97,12 +97,12 @@ public class cqc extends cpk implements cqt {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.p, 0.6F).a(bzl.d, 1.0).a(bzl.c, 6.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.p, 0.6F).a(bzl.d, 1.0).a(bzl.c, 6.0);
    }
 
-   public boolean m() {
-      return !this.n_();
+   public boolean p() {
+      return !this.e_();
    }
 
    @Override
@@ -124,7 +124,7 @@ public class cqc extends cpk implements cqt {
 
    @Override
    protected void d(byf $$0) {
-      if (!this.n_()) {
+      if (!this.e_()) {
          cqt.a(this, $$0);
       }
    }
@@ -153,12 +153,12 @@ public class cqc extends cpk implements cqt {
       return (bzf<cqc>)super.ec();
    }
 
-   protected void n() {
+   protected void u() {
       cuc $$0 = this.bs.g().orElse(null);
       this.bs.a(ImmutableList.of(cuc.k, cuc.b));
       cuc $$1 = this.bs.g().orElse(null);
       if ($$1 == cuc.k && $$0 != cuc.k) {
-         this.t();
+         this.gv();
       }
 
       this.v(this.bs.a(chh.p));
@@ -170,7 +170,7 @@ public class cqc extends cpk implements cqt {
       $$1.a("zoglinBrain");
       this.ec().a($$0, this);
       $$1.c();
-      this.n();
+      this.u();
    }
 
    @Override
@@ -182,17 +182,17 @@ public class cqc extends cpk implements cqt {
    }
 
    @Override
-   public boolean n_() {
+   public boolean e_() {
       return this.ar().a(e);
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bS > 0) {
          this.bS--;
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -206,12 +206,12 @@ public class cqc extends cpk implements cqt {
    }
 
    @Override
-   public int q() {
+   public int gu() {
       return this.bS;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       if (this.dV().C) {
          return null;
       } else {
@@ -225,7 +225,7 @@ public class cqc extends cpk implements cqt {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Eo;
    }
 
@@ -234,26 +234,26 @@ public class cqc extends cpk implements cqt {
       this.a(awy.Eq, 0.15F, 1.0F);
    }
 
-   protected void t() {
+   protected void gv() {
       this.b(awy.Em);
    }
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("IsBaby", this.n_());
+      $$0.a("IsBaby", this.e_());
    }
 
    @Override

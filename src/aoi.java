@@ -18,7 +18,7 @@ public class aoi {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.kill.success.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.kill.success.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.kill.success.multiple", $$1.size()), true);
       }

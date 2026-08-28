@@ -25,7 +25,7 @@ public class har extends gwp<cru, hgp, gka> {
    public void a(cru $$0, hgp $$1, float $$2) {
       super.a($$0, $$1, $$2);
       het.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gC();
+      $$1.a = $$0.m() > 0;
+      $$1.b = $$0.gF();
    }
 }

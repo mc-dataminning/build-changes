@@ -17,8 +17,8 @@ public class gwq extends gzb<cle, hde, gga> {
    public void a(cle $$0, hde $$1, float $$2) {
       super.a($$0, $$1, $$2);
       hdg.a($$0, $$1, this.h);
-      $$1.a = $$0.q();
-      $$1.b = $$0.t();
+      $$1.a = $$0.gu();
+      $$1.b = $$0.gv();
       $$1.c = $$0.K($$2);
       $$1.d = $$0.J($$2);
    }

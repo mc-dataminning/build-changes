@@ -17,7 +17,7 @@ public class cwg extends cwb {
       }
 
       @Override
-      public int ap_() {
+      public int ak_() {
          return 1;
       }
    };

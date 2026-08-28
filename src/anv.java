@@ -74,7 +74,7 @@ public class anv {
 
    private static int a(ek $$0, asc $$1, anv.a $$2) {
       int $$3 = $$2.f.applyAsInt($$1);
-      $$0.a(() -> xg.a("commands.experience.query." + $$2.e, $$1.m_(), $$3), false);
+      $$0.a(() -> xg.a("commands.experience.query." + $$2.e, $$1.P_(), $$3), false);
       return $$3;
    }
 
@@ -84,7 +84,7 @@ public class anv {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
       }
@@ -105,7 +105,7 @@ public class anv {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }

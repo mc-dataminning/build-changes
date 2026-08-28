@@ -19,7 +19,7 @@ public class dzz extends dyo implements egs.b<egz.b>, egz {
    }
 
    public egz.d a() {
-      return new dzz.a(this.aC_());
+      return new dzz.a(this.ax_());
    }
 
    @Override
@@ -39,12 +39,12 @@ public class dzz extends dyo implements egs.b<egz.b>, egz {
    }
 
    @Override
-   public egz.a x() {
+   public egz.a gw() {
       return this.b;
    }
 
    @Override
-   public egz.d gu() {
+   public egz.d gx() {
       return this.d;
    }
 

@@ -99,7 +99,7 @@ public abstract class dlq implements dlp {
       int $$16 = $$15;
 
       while ($$16 <= $$11) {
-         for (int $$17 = ac.ar ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
+         for (int $$17 = ac.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
             boolean $$18 = Math.abs($$17) == $$16;
 
             for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {

@@ -5,8 +5,8 @@ public class cov extends cpv {
       super($$0, $$1);
    }
 
-   public static bzk.a j() {
-      return cpv.m().a(bzl.s, 12.0);
+   public static bzk.a m() {
+      return cpv.p().a(bzl.s, 12.0);
    }
 
    @Override

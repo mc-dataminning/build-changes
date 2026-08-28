@@ -476,7 +476,7 @@ public final class ehj {
 
    protected static record g(ehi e, double f, double g) implements ehj.p {
       private static final MapCodec<ehj.g> h = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ehi.b.fieldOf("input").forGetter(ehj.g::aF_), ehj.d.fieldOf("min").forGetter(ehj.g::a), ehj.d.fieldOf("max").forGetter(ehj.g::b))
+         $$0 -> $$0.group(ehi.b.fieldOf("input").forGetter(ehj.g::aA_), ehj.d.fieldOf("min").forGetter(ehj.g::a), ehj.d.fieldOf("max").forGetter(ehj.g::b))
                .apply($$0, ehj.g::new)
       );
       public static final azs<ehj.g> a = ehj.a(h);
@@ -497,7 +497,7 @@ public final class ehj {
       }
 
       @Override
-      public ehi aF_() {
+      public ehi aA_() {
          return this.e;
       }
 
@@ -672,7 +672,7 @@ public final class ehj {
       }
 
       @Override
-      public ehi aF_() {
+      public ehi aA_() {
          return this.e;
       }
 
@@ -695,7 +695,7 @@ public final class ehj {
          f("squeeze");
 
          private final String g;
-         final azs<ehj.k> h = ehj.a($$0x -> ehj.k.a(this, $$0x), ehj.k::aF_);
+         final azs<ehj.k> h = ehj.a($$0x -> ehj.k.a(this, $$0x), ehj.k::aA_);
 
          private a(final String $$0) {
             this.g = $$0;
@@ -826,7 +826,7 @@ public final class ehj {
       }
 
       @Override
-      public ehi aF_() {
+      public ehi aA_() {
          return this.f;
       }
 
@@ -906,16 +906,16 @@ public final class ehj {
    }
 
    interface p extends ehi {
-      ehi aF_();
+      ehi aA_();
 
       @Override
       default double a(ehi.b $$0) {
-         return this.a(this.aF_().a($$0));
+         return this.a(this.aA_().a($$0));
       }
 
       @Override
       default void a(double[] $$0, ehi.a $$1) {
-         this.aF_().a($$0, $$1);
+         this.aA_().a($$0, $$1);
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
             $$0[$$2] = this.a($$0[$$2]);

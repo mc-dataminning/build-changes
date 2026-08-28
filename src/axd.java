@@ -51,7 +51,7 @@ public class axd extends axb {
 
       for (dfg<?> $$3 : $$0) {
          alq<dfb<?>> $$4 = $$3.a();
-         if (!this.c.contains($$4) && !$$3.b().ar_()) {
+         if (!this.c.contains($$4) && !$$3.b().am_()) {
             this.a($$4);
             this.e($$4);
             this.g.displaysForRecipe($$4, $$2x -> $$2.add(new aer.a($$2x, $$3.b().i(), true)));

@@ -30,7 +30,7 @@ public class bvq {
          this.i = true;
          this.g = this.e.af;
          this.h = this.g;
-         this.e.e_();
+         this.e.f_();
       }
    }
 
@@ -40,7 +40,7 @@ public class bvq {
 
    private xg a(bxe $$0, xg $$1, String $$2, String $$3) {
       dak $$5 = $$0 instanceof byf $$4 ? $$4.fb() : dak.l;
-      return !$$5.f() && $$5.c(kl.g) ? xg.a($$2, this.e.m_(), $$1, $$5.K()) : xg.a($$3, this.e.m_(), $$1);
+      return !$$5.f() && $$5.c(kl.g) ? xg.a($$2, this.e.P_(), $$1, $$5.K()) : xg.a($$3, this.e.P_(), $$1);
    }
 
    private xg a(bvo $$0, @Nullable bxe $$1) {
@@ -52,22 +52,22 @@ public class bvq {
          if ($$6 != null && !$$6.equals($$4)) {
             return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
          } else {
-            return (xg)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xg.a("death.fell.killer", this.e.m_()));
+            return (xg)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : xg.a("death.fell.killer", this.e.P_()));
          }
       } else {
          bvy $$3 = Objects.requireNonNullElse($$0.c(), bvy.a);
-         return xg.a($$3.a(), this.e.m_());
+         return xg.a($$3.a(), this.e.P_());
       }
    }
 
    @Nullable
    private static xg a(@Nullable bxe $$0) {
-      return $$0 == null ? null : $$0.m_();
+      return $$0 == null ? null : $$0.P_();
    }
 
    public xg a() {
       if (this.d.isEmpty()) {
-         return xg.a("death.attack.generic", this.e.m_());
+         return xg.a("death.attack.generic", this.e.P_());
       } else {
          bvo $$0 = this.d.get(this.d.size() - 1);
          bvt $$1 = $$0.a();
@@ -78,7 +78,7 @@ public class bvq {
          } else if ($$3 == bvx.c) {
             String $$4 = "death.attack." + $$1.f();
             xg $$5 = xj.a((xg)xg.c($$4 + ".link")).c(c);
-            return xg.a($$4 + ".message", this.e.m_(), $$5);
+            return xg.a($$4 + ".message", this.e.P_(), $$5);
          } else {
             return $$1.a(this.e);
          }

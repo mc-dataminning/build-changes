@@ -27,12 +27,12 @@ public abstract class csq extends ctd {
    public int c = 0;
    private int s = 0;
    private double t = 2.0;
-   private awx u = this.j();
+   private awx u = this.i();
    @Nullable
    private IntOpenHashSet ay;
    @Nullable
    private List<bxe> az;
-   private dak aA = this.o();
+   private dak aA = this.n();
    @Nullable
    private dak aB = null;
 
@@ -100,7 +100,7 @@ public abstract class csq extends ctd {
    public void k(double $$0, double $$1, double $$2) {
       super.k($$0, $$1, $$2);
       this.s = 0;
-      if (this.f() && azz.f($$0, $$1, $$2) > 0.0) {
+      if (this.e() && azz.f($$0, $$1, $$2) > 0.0) {
          this.a(false);
       }
    }
@@ -108,14 +108,14 @@ public abstract class csq extends ctd {
    @Override
    public void a(aku<?> $$0) {
       super.a($$0);
-      if (!this.ak && this.c <= 0 && $$0.equals(o) && this.f()) {
+      if (!this.ak && this.c <= 0 && $$0.equals(o) && this.e()) {
          this.c = 7;
       }
    }
 
    @Override
-   public void h() {
-      boolean $$0 = !this.w();
+   public void g() {
+      boolean $$0 = !this.v();
       fgc $$1 = this.dy();
       iw $$2 = this.dv();
       ebq $$3 = this.dV().a_($$2);
@@ -142,12 +142,12 @@ public abstract class csq extends ctd {
          this.aF();
       }
 
-      if (this.f() && $$0) {
+      if (this.e() && $$0) {
          if (!this.dV().A_()) {
-            if (this.r != $$3 && this.y()) {
-               this.B();
+            if (this.r != $$3 && this.x()) {
+               this.A();
             } else {
-               this.g();
+               this.f();
             }
          }
 
@@ -163,11 +163,11 @@ public abstract class csq extends ctd {
          this.a = 0;
          fgc $$7 = this.dt();
          if (this.bi()) {
-            this.b(this.v());
+            this.b(this.u());
             this.a($$7);
          }
 
-         if (this.t()) {
+         if (this.s()) {
             for (int $$8 = 0; $$8 < 4; $$8++) {
                this.dV()
                   .a(
@@ -204,11 +204,11 @@ public abstract class csq extends ctd {
             this.b(0.99F);
          }
 
-         if ($$0 && !this.f()) {
+         if ($$0 && !this.e()) {
             this.be();
          }
 
-         super.h();
+         super.g();
       }
    }
 
@@ -232,7 +232,7 @@ public abstract class csq extends ctd {
          } else if (this.bJ() && !this.ad) {
             cte $$4 = this.b($$2);
             this.ar = true;
-            if (this.u() > 0 && $$4 == cte.a) {
+            if (this.t() > 0 && $$4 == cte.a) {
                continue;
             }
             break;
@@ -259,18 +259,18 @@ public abstract class csq extends ctd {
       return 0.05;
    }
 
-   private boolean y() {
-      return this.f() && this.dV().b(new ffx(this.dt(), this.dt()).g(0.06));
+   private boolean x() {
+      return this.e() && this.dV().b(new ffx(this.dt(), this.dt()).g(0.06));
    }
 
-   private void B() {
+   private void A() {
       this.a(false);
       fgc $$0 = this.dy();
       this.i($$0.d((double)(this.ae.i() * 0.2F), (double)(this.ae.i() * 0.2F), (double)(this.ae.i() * 0.2F)));
       this.s = 0;
    }
 
-   protected boolean f() {
+   protected boolean e() {
       return this.al.a(o);
    }
 
@@ -280,25 +280,25 @@ public abstract class csq extends ctd {
 
    @Override
    public boolean cJ() {
-      return !this.f();
+      return !this.e();
    }
 
    @Override
    public void a(byj $$0, fgc $$1) {
       super.a($$0, $$1);
-      if ($$0 != byj.a && this.y()) {
-         this.B();
+      if ($$0 != byj.a && this.x()) {
+         this.A();
       }
    }
 
-   protected void g() {
+   protected void f() {
       this.s++;
       if (this.s >= 1200) {
          this.aq();
       }
    }
 
-   private void C() {
+   private void B() {
       if (this.az != null) {
          this.az.clear();
       }
@@ -315,21 +315,21 @@ public abstract class csq extends ctd {
 
    @Override
    public void a(boolean $$0, iw $$1) {
-      if (!this.f()) {
+      if (!this.e()) {
          super.a($$0, $$1);
       }
    }
 
    @Override
    public void l(boolean $$0) {
-      if (!this.f()) {
+      if (!this.e()) {
          super.l($$0);
       }
    }
 
    @Override
    public void i(double $$0, double $$1, double $$2) {
-      if (!this.f()) {
+      if (!this.e()) {
          super.i($$0, $$1, $$2);
       }
    }
@@ -340,14 +340,14 @@ public abstract class csq extends ctd {
       bxe $$1 = $$0.a();
       float $$2 = (float)this.dy().g();
       double $$3 = this.t;
-      bxe $$4 = this.q();
+      bxe $$4 = this.p();
       bvt $$5 = this.dW().a(this, (bxe)($$4 != null ? $$4 : this));
       if (this.dZ() != null && this.dV() instanceof asb $$6) {
          $$3 = (double)dgz.a($$6, this.dZ(), $$1, $$5, (float)$$3);
       }
 
       int $$7 = azz.c(azz.a((double)$$2 * $$3, 0.0, 2.147483647E9));
-      if (this.u() > 0) {
+      if (this.t() > 0) {
          if (this.ay == null) {
             this.ay = new IntOpenHashSet(5);
          }
@@ -356,7 +356,7 @@ public abstract class csq extends ctd {
             this.az = Lists.newArrayListWithCapacity(5);
          }
 
-         if (this.ay.size() >= this.u() + 1) {
+         if (this.ay.size() >= this.t() + 1) {
             this.aq();
             return;
          }
@@ -364,7 +364,7 @@ public abstract class csq extends ctd {
          this.ay.add($$1.ao());
       }
 
-      if (this.t()) {
+      if (this.s()) {
          long $$8 = (long)this.ae.a($$7 / 2 + 2);
          $$7 = (int)Math.min($$8 + (long)$$7, 2147483647L);
       }
@@ -385,7 +385,7 @@ public abstract class csq extends ctd {
          }
 
          if ($$1 instanceof byf $$12) {
-            if (!this.dV().C && this.u() <= 0) {
+            if (!this.dV().C && this.t() <= 0) {
                $$12.o($$12.eW() + 1);
             }
 
@@ -413,16 +413,16 @@ public abstract class csq extends ctd {
          }
 
          this.a(this.u, 1.0F, 1.2F / (this.ae.i() * 0.2F + 0.9F));
-         if (this.u() <= 0) {
+         if (this.t() <= 0) {
             this.aq();
          }
       } else {
          $$1.h($$11);
-         this.a(cte.b, $$1, this.q(), false);
+         this.a(cte.b, $$1, this.p(), false);
          this.i(this.dy().c(0.2));
          if (this.dV() instanceof asb $$16 && this.dy().h() < 1.0E-7) {
             if (this.b == csq.a.b) {
-               this.a($$16, this.n(), 0.1F);
+               this.a($$16, this.m(), 0.1F);
             }
 
             this.aq();
@@ -455,18 +455,18 @@ public abstract class csq extends ctd {
       fgc $$5 = $$4.c(0.05F);
       this.b(this.dt().d($$5));
       this.i(fgc.c);
-      this.a(this.m(), 1.0F, 1.2F / (this.ae.i() * 0.2F + 0.9F));
+      this.a(this.l(), 1.0F, 1.2F / (this.ae.i() * 0.2F + 0.9F));
       this.a(true);
       this.c = 7;
       this.b(false);
       this.a((byte)0);
       this.b(awy.aE);
-      this.C();
+      this.B();
    }
 
    protected void a(asb $$0, ffy $$1, dak $$2) {
       fgc $$3 = $$1.b().a($$1.g());
-      dgz.a($$0, $$2, this.q() instanceof byf $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$0x -> this.aB = null);
+      dgz.a($$0, $$2, this.p() instanceof byf $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$0x -> this.aB = null);
    }
 
    @Override
@@ -474,11 +474,11 @@ public abstract class csq extends ctd {
       return this.aB;
    }
 
-   protected awx j() {
+   protected awx i() {
       return awy.aE;
    }
 
-   protected final awx m() {
+   protected final awx l() {
       return this.u;
    }
 
@@ -492,7 +492,7 @@ public abstract class csq extends ctd {
 
    @Override
    protected boolean b(bxe $$0) {
-      return $$0 instanceof csi && this.q() instanceof csi $$1 && !$$1.a((csi)$$0) ? false : super.b($$0) && (this.ay == null || !this.ay.contains($$0.ao()));
+      return $$0 instanceof csi && this.p() instanceof csi $$1 && !$$1.a((csi)$$0) ? false : super.b($$0) && (this.ay == null || !this.ay.contains($$0.ao()));
    }
 
    @Override
@@ -502,11 +502,11 @@ public abstract class csq extends ctd {
       $$0.a("life", (short)this.s);
       $$0.b("inBlockState", ebq.a, $$1, this.r);
       $$0.a("shake", (byte)this.c);
-      $$0.a("inGround", this.f());
+      $$0.a("inGround", this.e());
       $$0.a("pickup", csq.a.d, this.b);
       $$0.a("damage", this.t);
-      $$0.a("crit", this.t());
-      $$0.a("PierceLevel", this.u());
+      $$0.a("crit", this.s());
+      $$0.a("PierceLevel", this.t());
       $$0.a("SoundEvent", mh.b.q(), this.u);
       $$0.a("item", dak.b, $$1, this.aA);
       $$0.b("weapon", dak.b, $$1, this.aB);
@@ -524,8 +524,8 @@ public abstract class csq extends ctd {
       this.b = $$0.<csq.a>a("pickup", csq.a.d).orElse(csq.a.a);
       this.b($$0.b("crit", false));
       this.a($$0.b("PierceLevel", (byte)0));
-      this.u = $$0.<awx>a("SoundEvent", mh.b.q()).orElse(this.j());
-      this.a($$0.<dak>a("item", dak.b, $$1).orElse(this.o()));
+      this.u = $$0.<awx>a("SoundEvent", mh.b.q()).orElse(this.i());
+      this.a($$0.<dak>a("item", dak.b, $$1).orElse(this.n()));
       this.aB = $$0.<dak>a("weapon", dak.b, $$1).orElse(null);
    }
 
@@ -542,7 +542,7 @@ public abstract class csq extends ctd {
 
    @Override
    public void a_(csi $$0) {
-      if (!this.dV().C && (this.f() || this.w()) && this.c <= 0) {
+      if (!this.dV().C && (this.e() || this.v()) && this.c <= 0) {
          if (this.a($$0)) {
             $$0.a(this, 1);
             this.aq();
@@ -553,23 +553,23 @@ public abstract class csq extends ctd {
    protected boolean a(csi $$0) {
       return switch (this.b) {
          case a -> false;
-         case b -> $$0.gj().g(this.n());
+         case b -> $$0.gj().g(this.m());
          case c -> $$0.fV();
       };
    }
 
-   protected dak n() {
+   protected dak m() {
       return this.aA.v();
    }
 
-   protected abstract dak o();
+   protected abstract dak n();
 
    @Override
    protected bxe.c bf() {
       return bxe.c.a;
    }
 
-   public dak s() {
+   public dak r() {
       return this.aA;
    }
 
@@ -603,16 +603,16 @@ public abstract class csq extends ctd {
       if (!$$0.f()) {
          this.aA = $$0;
       } else {
-         this.aA = this.o();
+         this.aA = this.n();
       }
    }
 
-   public boolean t() {
+   public boolean s() {
       byte $$0 = this.al.a(m);
       return ($$0 & 1) != 0;
    }
 
-   public byte u() {
+   public byte t() {
       return this.al.a(n);
    }
 
@@ -620,7 +620,7 @@ public abstract class csq extends ctd {
       this.h((double)($$0 * 2.0F) + this.ae.a((double)this.dV().an().a() * 0.11, 0.57425));
    }
 
-   protected float v() {
+   protected float u() {
       return 0.6F;
    }
 
@@ -629,22 +629,22 @@ public abstract class csq extends ctd {
       this.a(2, $$0);
    }
 
-   public boolean w() {
+   public boolean v() {
       return !this.dV().C ? this.ad : (this.al.a(m) & 2) != 0;
    }
 
    @Override
    public boolean bF() {
-      return super.bF() && !this.f();
+      return super.bF() && !this.e();
    }
 
    @Override
    public byw a_(int $$0) {
-      return $$0 == 0 ? byw.a(this::s, this::a) : super.a_($$0);
+      return $$0 == 0 ? byw.a(this::r, this::a) : super.a_($$0);
    }
 
    @Override
-   protected boolean x() {
+   protected boolean w() {
       return true;
    }
 

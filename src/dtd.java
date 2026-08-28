@@ -62,7 +62,7 @@ public class dtd extends dno implements dnr {
    }
 
    @Override
-   public dnr.a as_() {
+   public dnr.a an_() {
       return dnr.a.a;
    }
 }

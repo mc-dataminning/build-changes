@@ -30,7 +30,7 @@ public class gaj extends gbh<cwe> {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.L);
    }
 
@@ -44,7 +44,7 @@ public class gaj extends gbh<cwe> {
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.m.t.p();
+         this.m.t.o();
       }
 
       return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;

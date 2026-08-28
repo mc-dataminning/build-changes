@@ -41,7 +41,7 @@ public abstract class fnt {
    }
 
    public static void a(fts<?> $$0, fuu.a<?> $$1, List<fnt> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aJ_().indexOf($$1);
+      int $$6 = $$0.aE_().indexOf($$1);
       if ($$6 > -1) {
          $$0.a($$6);
          int $$7 = $$0.u();

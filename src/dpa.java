@@ -245,7 +245,7 @@ public class dpa extends dno implements bvn {
       if (!$$2.C) {
          fgc $$4 = fgc.a($$3, 0.5, 1.01, 0.5).a($$2.A, 0.7F);
          coo $$5 = new coo($$2, $$4.a(), $$4.b(), $$4.c(), new dak(dao.sG));
-         $$5.j();
+         $$5.i();
          $$2.b($$5);
       }
 
@@ -352,7 +352,7 @@ public class dpa extends dno implements bvn {
       }
 
       @Override
-      public int ap_() {
+      public int ak_() {
          return 1;
       }
 
@@ -397,7 +397,7 @@ public class dpa extends dno implements bvn {
       }
 
       @Override
-      public int ap_() {
+      public int ak_() {
          return 1;
       }
 

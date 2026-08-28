@@ -42,8 +42,8 @@ public class gak extends gaf<cwg> {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.P.clear();
       this.a(new gak.c(this.C + 164, this.D + 107));
       this.a(new gak.b(this.C + 190, this.D + 107));
@@ -127,7 +127,7 @@ public class gak extends gaf<cwg> {
 
       @Override
       public void b() {
-         gak.this.m.t.p();
+         gak.this.m.t.o();
       }
 
       @Override
@@ -143,7 +143,7 @@ public class gak extends gaf<cwg> {
       @Override
       public void b() {
          gak.this.m.L().b(new aiq(Optional.ofNullable(gak.this.Q), Optional.ofNullable(gak.this.R)));
-         gak.this.m.t.p();
+         gak.this.m.t.o();
       }
 
       @Override

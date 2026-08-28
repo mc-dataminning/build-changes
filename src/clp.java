@@ -30,7 +30,7 @@ public class clp extends cme {
       super($$0, $$1);
       this.bC = new clp.c();
       this.bB = new clp.b();
-      cho $$2 = (cho)this.O();
+      cho $$2 = (cho)this.N();
       $$2.a(true);
       $$2.d(true);
    }
@@ -52,7 +52,7 @@ public class clp extends cme {
       this.a($$1);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return gV().a(bzl.s, 32.0).a(bzl.v, 0.09F).a(bzl.o, 0.42F).a(bzl.B, 1.5);
    }
 
@@ -80,7 +80,7 @@ public class clp extends cme {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
    }
 
    @Override
@@ -107,9 +107,9 @@ public class clp extends cme {
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.x() && this.cs < 50 && (this.aH() || this.bl() || this.bY())) {
+   public void g() {
+      super.g();
+      if (this.u() && this.cs < 50 && (this.aH() || this.bl() || this.bY())) {
          this.w(false);
       }
 
@@ -124,8 +124,8 @@ public class clp extends cme {
          this.he();
       }
 
-      if (this.t()) {
-         this.ag();
+      if (this.p()) {
+         this.af();
       }
 
       if (this.gx() && this.bi()) {
@@ -154,7 +154,7 @@ public class clp extends cme {
       } else {
          this.bO.a();
          this.bP.a();
-         this.bS.a(this.x(), this.af);
+         this.bS.a(this.u(), this.af);
          this.bQ.a(this.gG() && this.gK() >= 0L, this.af);
       }
    }
@@ -168,12 +168,12 @@ public class clp extends cme {
          $$1 = 0.0F;
       }
 
-      this.aT.a($$1, 0.2F, this.n_() ? 3.0F : 1.0F);
+      this.aT.a($$1, 0.2F, this.e_() ? 3.0F : 1.0F);
    }
 
    @Override
    public void a_(fgc $$0) {
-      if (this.t() && this.aH()) {
+      if (this.p() && this.aH()) {
          this.i(this.dy().d(0.0, 1.0, 0.0));
          $$0 = $$0.d(0.0, 1.0, 0.0);
       }
@@ -189,7 +189,7 @@ public class clp extends cme {
       }
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.gx() || this.gG();
    }
 
@@ -201,17 +201,17 @@ public class clp extends cme {
 
    @Override
    protected fgb i(byf $$0) {
-      return this.t() ? new fgb(this.dN(), this.dL()) : super.i($$0);
+      return this.p() ? new fgb(this.dN(), this.dL()) : super.i($$0);
    }
 
    @Override
    protected fgc b(csi $$0, fgc $$1) {
-      return this.t() ? fgc.c : super.b($$0, $$1);
+      return this.p() ? fgc.c : super.b($$0, $$1);
    }
 
    @Override
    public boolean a() {
-      return !this.t() && super.a();
+      return !this.p() && super.a();
    }
 
    @Override
@@ -235,7 +235,7 @@ public class clp extends cme {
       this.ar = true;
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.al.a(bM);
    }
 
@@ -260,12 +260,12 @@ public class clp extends cme {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.dB;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.dE;
    }
 
@@ -291,7 +291,7 @@ public class clp extends cme {
    @Override
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      if ($$0.fY() && !this.n_()) {
+      if ($$0.fY() && !this.e_()) {
          this.b($$0);
          return bvc.a;
       } else {
@@ -301,7 +301,7 @@ public class clp extends cme {
          } else if (this.i($$2)) {
             return this.c($$0, $$2);
          } else {
-            if (this.cY().size() < 2 && !this.n_()) {
+            if (this.cY().size() < 2 && !this.e_()) {
                this.a($$0);
             }
 
@@ -333,12 +333,12 @@ public class clp extends cme {
             this.c(2.0F);
          }
 
-         boolean $$3 = this.gL() && this.g() == 0 && this.gB();
+         boolean $$3 = this.gL() && this.Y_() == 0 && this.gB();
          if ($$3) {
             this.e($$0);
          }
 
-         boolean $$4 = this.n_();
+         boolean $$4 = this.e_();
          if ($$4) {
             this.dV().a(lz.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
             if (!this.dV().C) {
@@ -414,7 +414,7 @@ public class clp extends cme {
 
    @Override
    public float ek() {
-      return this.n_() ? 0.45F : 1.0F;
+      return this.e_() ? 0.45F : 1.0F;
    }
 
    private double a(boolean $$0, float $$1, bxh $$2, float $$3) {
@@ -458,7 +458,7 @@ public class clp extends cme {
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 30;
    }
 
@@ -468,8 +468,8 @@ public class clp extends cme {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -554,7 +554,7 @@ public class clp extends cme {
    }
 
    @Override
-   protected cdz I() {
+   protected cdz H() {
       return new clp.a(this);
    }
 
@@ -565,7 +565,7 @@ public class clp extends cme {
 
       @Override
       public void a() {
-         if (!clp.this.t()) {
+         if (!clp.this.p()) {
             super.a();
          }
       }
@@ -591,7 +591,7 @@ public class clp extends cme {
 
       @Override
       public void a() {
-         if (this.k == cee.a.b && !clp.this.T_() && clp.this.gx() && !clp.this.gG() && clp.this.gu()) {
+         if (this.k == cee.a.b && !clp.this.Q_() && clp.this.gx() && !clp.this.gG() && clp.this.gu()) {
             clp.this.gI();
          }
 

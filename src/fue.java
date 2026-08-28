@@ -25,7 +25,7 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
             int $$3 = -1;
             fyd $$4 = $$1.b();
             if ($$2 != null) {
-               $$3 = $$2.aJ_().indexOf($$2.aN_());
+               $$3 = $$2.aE_().indexOf($$2.aI_());
             }
 
             if ($$3 == -1) {
@@ -47,7 +47,7 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
 
             fth $$6;
             do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aJ_().isEmpty(), $$5);
+               $$5 = this.a($$4, $$0x -> !$$0x.aE_().isEmpty(), $$5);
                if ($$5 == null) {
                   return null;
                }
@@ -72,7 +72,7 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
 
    @Override
    public fxt.a w() {
-      return this.aO_() ? fxt.a.c : super.w();
+      return this.aJ_() ? fxt.a.c : super.w();
    }
 
    @Override
@@ -105,7 +105,7 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
       private boolean c;
 
       @Override
-      public boolean aM_() {
+      public boolean aH_() {
          return this.c;
       }
 
@@ -134,16 +134,16 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
 
       @Nullable
       @Override
-      public fvv aN_() {
+      public fvv aI_() {
          return this.a;
       }
 
       @Nullable
       public fth a(fyb $$0, int $$1) {
-         if (this.aJ_().isEmpty()) {
+         if (this.aE_().isEmpty()) {
             return null;
          } else {
-            fth $$2 = this.aJ_().get(Math.min($$1, this.aJ_().size() - 1)).a($$0);
+            fth $$2 = this.aE_().get(Math.min($$1, this.aE_().size() - 1)).a($$0);
             return fth.a(this, $$2);
          }
       }
@@ -161,10 +161,10 @@ public abstract class fue<E extends fue.a<E>> extends fts<E> {
                return null;
             }
 
-            int $$3 = azz.a($$2 + this.aJ_().indexOf(this.aN_()), 0, this.aJ_().size() - 1);
+            int $$3 = azz.a($$2 + this.aE_().indexOf(this.aI_()), 0, this.aE_().size() - 1);
 
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aJ_().size(); $$4 += $$2) {
-               fvv $$5 = this.aJ_().get($$4);
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aE_().size(); $$4 += $$2) {
+               fvv $$5 = this.aE_().get($$4);
                fth $$6 = $$5.a($$0);
                if ($$6 != null) {
                   return fth.a(this, $$6);

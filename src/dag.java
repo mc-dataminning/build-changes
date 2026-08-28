@@ -48,7 +48,7 @@ public class dag implements cvp, dki {
       this.c = $$0.a(xg.c(this.n), $$0.e());
       this.d = $$0.d;
       this.o = $$0.e;
-      if (ac.aU) {
+      if (ac.aV) {
          String $$1 = this.getClass().getSimpleName();
          if (!$$1.endsWith("Item")) {
             a.error("Item classes should end with Item and {} doesn't.", $$1);
@@ -202,8 +202,8 @@ public class dag implements cvp, dki {
    public void a(dak $$0, asb $$1, bxe $$2, @Nullable bxo $$3) {
    }
 
-   public void a(dak $$0, dkj $$1, csi $$2) {
-      this.a($$0, $$1);
+   public void c(dak $$0, csi $$1) {
+      this.a($$0, $$1.dV());
    }
 
    public void a(dak $$0, dkj $$1) {
@@ -260,7 +260,7 @@ public class dag implements cvp, dki {
 
    protected static ffy a(dkj $$0, csi $$1, djq.b $$2) {
       fgc $$3 = $$1.bD();
-      fgc $$4 = $$3.e($$1.d($$1.dN(), $$1.dL()).c($$1.gL()));
+      fgc $$4 = $$3.e($$1.d($$1.dN(), $$1.dL()).c($$1.gM()));
       return $$0.a(new djq($$3, $$4, djq.a.b, $$2, $$1));
    }
 

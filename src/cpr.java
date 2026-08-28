@@ -10,7 +10,7 @@ public class cpr extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.a = new cpr.b(this);
       this.bF.a(1, new cev(this));
       this.bF.a(1, new ceq(this, this.dV()));
@@ -21,8 +21,8 @@ public class cpr extends cpk {
       this.bG.a(2, new cgu<>(this, csi.class, true));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 8.0).a(bzl.v, 0.25).a(bzl.c, 1.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 8.0).a(bzl.v, 0.25).a(bzl.c, 1.0);
    }
 
    @Override
@@ -31,7 +31,7 @@ public class cpr extends cpk {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.xN;
    }
 
@@ -41,7 +41,7 @@ public class cpr extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.xO;
    }
 
@@ -64,9 +64,9 @@ public class cpr extends cpk {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.aV = this.dL();
-      super.h();
+      super.g();
    }
 
    @Override
@@ -103,9 +103,9 @@ public class cpr extends cpk {
 
       @Override
       public boolean b() {
-         if (this.b.f() != null) {
+         if (this.b.e() != null) {
             return false;
-         } else if (!this.b.O().k()) {
+         } else if (!this.b.N().k()) {
             return false;
          } else {
             bai $$0 = this.b.dY();
@@ -139,7 +139,7 @@ public class cpr extends cpk {
             ebq $$2 = $$0.a_($$1);
             if (drs.o($$2)) {
                $$0.a($$1, drs.p($$2), 3);
-               this.b.U();
+               this.b.T();
                this.b.aq();
             }
          }

@@ -78,7 +78,7 @@ public class dgd implements deq {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       if (this.i == null) {
          this.i = dfa.b(List.of(this.f, this.g));
       }

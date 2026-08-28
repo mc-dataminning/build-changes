@@ -25,27 +25,27 @@ public class gbj extends gan implements gbl<cxh> {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.y.a(this.z);
    }
 
    @Override
-   public void aQ_() {
-      this.m.t.p();
-      super.aQ_();
+   public void aL_() {
+      this.m.t.o();
+      super.aL_();
    }
 
    @Override
-   public void aK_() {
-      super.aK_();
+   public void aF_() {
+      super.aF_();
       this.y.b(this.z);
    }
 
    @Override
    protected void m() {
       if (this.m.t.gw()) {
-         this.c(fty.a(xf.d, $$0 -> this.aQ_()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fty.a(xf.d, $$0 -> this.aL_()).a(this.n / 2 - 100, 196, 98, 20).a());
          this.c(fty.a(xg.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
       } else {
          super.m();
@@ -92,6 +92,6 @@ public class gbj extends gan implements gbl<cxh> {
 
    @Override
    protected void I() {
-      this.m.t.p();
+      this.m.t.o();
    }
 }

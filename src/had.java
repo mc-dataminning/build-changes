@@ -11,7 +11,7 @@ public class had<T extends cpv> extends gzb<T, hfe, gjp> {
    }
 
    @Override
-   protected float aX_() {
+   protected float aS_() {
       return 180.0F;
    }
 

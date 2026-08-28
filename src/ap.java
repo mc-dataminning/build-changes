@@ -30,6 +30,6 @@ public enum ap implements bax {
    }
 
    public xu a(aj $$0, asc $$1) {
-      return xg.a("chat.type.advancement." + this.e, $$1.m_(), ai.a($$0));
+      return xg.a("chat.type.advancement." + this.e, $$1.P_(), ai.a($$0));
    }
 }

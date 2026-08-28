@@ -55,7 +55,7 @@ public class fua extends fto {
    public void a(fxv $$0) {
       $$0.a(fxu.a, this.d());
       if (this.j) {
-         if (this.aO_()) {
+         if (this.aJ_()) {
             $$0.a(fxu.d, xg.c("narration.checkbox.usage.focused"));
          } else {
             $$0.a(fxu.d, xg.c("narration.checkbox.usage.hovered"));
@@ -69,9 +69,9 @@ public class fua extends fto {
       fti $$5 = $$4.h;
       alr $$6;
       if (this.o) {
-         $$6 = this.aO_() ? a : b;
+         $$6 = this.aJ_() ? a : b;
       } else {
-         $$6 = this.aO_() ? c : d;
+         $$6 = this.aJ_() ? c : d;
       }
 
       int $$8 = a($$5);

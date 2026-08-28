@@ -18,7 +18,7 @@ public class fyy extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.v = new fuh(this.p, this.n / 2 - 100, 66, 200, 20, xg.c("addServer.enterName"));
       this.v.a(this.s.a);
       this.v.b($$0 -> this.E());
@@ -40,7 +40,7 @@ public class fyy extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.v);
    }
 
@@ -60,7 +60,7 @@ public class fyy extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.w);
    }
 

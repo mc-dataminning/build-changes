@@ -147,7 +147,7 @@ public enum eav implements bax {
          .stream()
          .map($$0::a)
          .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.b() && !$$2x.aa_() && $$2x.bJ() && $$2x.g($$1.b()) <= (double)azz.h($$2.h()))
+         .filter($$2x -> !$$2x.gz() && !$$2x.ak() && $$2x.bJ() && $$2x.g($$1.b()) <= (double)azz.h($$2.h()))
          .toList();
       if ($$4.isEmpty()) {
          return Optional.empty();

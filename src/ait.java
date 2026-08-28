@@ -36,7 +36,7 @@ public class ait implements zo<aha> {
    @Nullable
    public dji a(dkj $$0) {
       bxe $$1 = $$0.a(this.b);
-      return $$1 instanceof cvf ? ((cvf)$$1).q() : null;
+      return $$1 instanceof cvf ? ((cvf)$$1).e() : null;
    }
 
    public String b() {

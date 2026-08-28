@@ -116,7 +116,7 @@ public class agx {
          bxe $$2 = (bxe)$$1;
          return agw.a($$2);
       } else if ($$1 instanceof bvf) {
-         return ((bvf)$$1).ai().getString();
+         return ((bvf)$$1).ah().getString();
       } else if ($$1 instanceof chk) {
          return a($$0, ((chk)$$1).a());
       } else if ($$1 instanceof cah) {

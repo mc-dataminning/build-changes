@@ -113,7 +113,7 @@ public class cyu extends dag {
       ebq $$3 = $$0.a_($$1);
       if ($$3.b() instanceof dnr $$4) {
          iw $$5 = $$4.a($$1);
-         switch ($$4.as_()) {
+         switch ($$4.an_()) {
             case a:
                bad.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lz.Q);
                break;

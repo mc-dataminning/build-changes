@@ -7,8 +7,8 @@ public class fyz extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.c(fty.a(xf.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
@@ -25,7 +25,7 @@ public class fyz extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 }

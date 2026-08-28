@@ -16,12 +16,12 @@ public class eyw extends eyn {
    @Override
    public void a(dkw $$0, byh $$1) {
       super.a($$0, $$1);
-      $$1.G();
+      $$1.F();
    }
 
    @Override
    public void b() {
-      this.c.H();
+      this.c.G();
       this.m.clear();
       this.n.clear();
       super.b();

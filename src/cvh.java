@@ -59,9 +59,9 @@ public class cvh extends cuw implements dzq {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.h = false;
-      super.h();
+      super.g();
       this.J();
    }
 
@@ -94,7 +94,7 @@ public class cvh extends cuw implements dzq {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.oz;
    }
 

@@ -59,18 +59,19 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       this.bB = new ced(this);
       this.bC = new cee(this);
       this.bD = new cec(this);
-      this.bN = this.I();
+      this.bN = this.H();
       this.bE = this.b($$1);
       this.bP = new cim(this);
       if ($$1 instanceof asb) {
-         this.D();
+         this.C();
       }
    }
 
-   protected void D() {
+   @Override
+   protected void C() {
    }
 
-   public static bzk.a E() {
+   public static bzk.a D() {
       return byf.ee().a(bzl.m, 16.0);
    }
 
@@ -78,14 +79,14 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       return new cho(this, $$0);
    }
 
-   protected boolean F() {
+   protected boolean E() {
       return false;
    }
 
    public float a(eyr $$0) {
       byh $$2;
       label17: {
-         if (this.dl() instanceof byh $$1 && $$1.F()) {
+         if (this.dl() instanceof byh $$1 && $$1.E()) {
             $$2 = $$1;
             break label17;
          }
@@ -102,30 +103,31 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    }
 
    @Override
+   public void F() {
+   }
+
+   @Override
    public void G() {
    }
 
-   public void H() {
-   }
-
-   protected cdz I() {
+   protected cdz H() {
       return new cdz(this);
    }
 
-   public ced J() {
+   public ced I() {
       return this.bB;
    }
 
-   public cee L() {
-      return this.dl() instanceof byh $$0 ? $$0.L() : this.bC;
+   public cee K() {
+      return this.dl() instanceof byh $$0 ? $$0.K() : this.bC;
    }
 
-   public cec N() {
+   public cec M() {
       return this.bD;
    }
 
-   public chp O() {
-      return this.dl() instanceof byh $$0 ? $$0.O() : this.bE;
+   public chp N() {
+      return this.dl() instanceof byh $$0 ? $$0.N() : this.bE;
    }
 
    @Nullable
@@ -139,18 +141,18 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       return null;
    }
 
-   public cim P() {
+   public cim O() {
       return this.bP;
    }
 
    @Nullable
    @Override
-   public byf f() {
+   public byf e() {
       return this.bO;
    }
 
    @Nullable
-   protected final byf Q() {
+   protected final byf P() {
       return this.ec().c(chh.p).orElse(null);
    }
 
@@ -167,7 +169,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       return false;
    }
 
-   public void R() {
+   public void Q() {
       this.a(egq.m);
    }
 
@@ -177,12 +179,12 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       $$0.a(a, (byte)0);
    }
 
-   public int S() {
+   public int R() {
       return 80;
    }
 
-   public void T() {
-      this.b(this.u());
+   public void S() {
+      this.b(this.s());
    }
 
    @Override
@@ -191,8 +193,8 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       brm $$0 = brl.a();
       $$0.a("mobBaseTick");
       if (this.bJ() && this.ae.a(1000) < this.bz++) {
-         this.j();
-         this.T();
+         this.m();
+         this.S();
       }
 
       $$0.c();
@@ -200,12 +202,12 @@ public abstract class byh extends byf implements bxr, byd, bzc {
 
    @Override
    protected void h(bvt $$0) {
-      this.j();
+      this.m();
       super.h($$0);
    }
 
-   private void j() {
-      this.bz = -this.S();
+   private void m() {
+      this.bz = -this.R();
    }
 
    @Override
@@ -228,7 +230,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       }
    }
 
-   public void U() {
+   public void T() {
       if (this.dV().C) {
          this.eY();
       } else {
@@ -239,21 +241,21 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    @Override
    public void b(byte $$0) {
       if ($$0 == 20) {
-         this.U();
+         this.T();
       } else {
          super.b($$0);
       }
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (!this.dV().C && this.af % 5 == 0) {
-         this.V();
+         this.U();
       }
    }
 
-   protected void V() {
+   protected void U() {
       boolean $$0 = !(this.cW() instanceof byh);
       boolean $$1 = !(this.dk() instanceof cut);
       this.bF.a(cfb.a.a, $$0);
@@ -267,7 +269,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    }
 
    @Nullable
-   protected awx u() {
+   protected awx s() {
       return null;
    }
 
@@ -341,23 +343,23 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       this.G($$0);
    }
 
-   public void W() {
-      this.O().m();
+   public void V() {
+      this.N().m();
       this.I(0.0F);
       this.H(0.0F);
       this.B(0.0F);
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       brm $$0 = brl.a();
       $$0.a("looting");
       if (this.dV() instanceof asb $$1 && this.fN() && this.bJ() && !this.bc && $$1.O().c(dkf.d)) {
-         kb $$2 = this.X();
+         kb $$2 = this.W();
 
          for (coo $$4 : this.dV().a(coo.class, this.cR().c((double)$$2.u(), (double)$$2.v(), (double)$$2.w()))) {
-            if (!$$4.dQ() && !$$4.f().f() && !$$4.o() && this.c($$1, $$4.f())) {
+            if (!$$4.dQ() && !$$4.e().f() && !$$4.n() && this.c($$1, $$4.e())) {
                this.a($$1, $$4);
             }
          }
@@ -366,12 +368,12 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       $$0.c();
    }
 
-   protected kb X() {
+   protected kb W() {
       return e;
    }
 
    protected void a(asb $$0, coo $$1) {
-      dak $$2 = $$1.f();
+      dak $$2 = $$1.e();
       dak $$3 = this.b($$0, $$2.v());
       if (!$$3.f()) {
          this.a($$1);
@@ -448,7 +450,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    }
 
    private boolean c(dak $$0, dak $$1, bxo $$2) {
-      ayc<dag> $$3 = this.Y();
+      ayc<dag> $$3 = this.X();
       if ($$3 != null) {
          if ($$1.a($$3) && !$$0.a($$3)) {
             return false;
@@ -491,7 +493,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    }
 
    @Nullable
-   public ayc<dag> Y() {
+   public ayc<dag> X() {
       return null;
    }
 
@@ -499,19 +501,19 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       return true;
    }
 
-   public boolean Z() {
+   public boolean Y() {
       return this.bY();
    }
 
-   protected boolean aa() {
+   protected boolean Z() {
       return false;
    }
 
    @Override
    public void dH() {
-      if (this.dV().an() == buz.a && this.aa()) {
+      if (this.dV().an() == buz.a && this.Z()) {
          this.aq();
-      } else if (!this.gd() && !this.Z()) {
+      } else if (!this.gd() && !this.Y()) {
          bxe $$0 = this.dV().a(this, -1.0);
          if ($$0 != null) {
             double $$1 = $$0.g(this);
@@ -573,26 +575,26 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       this.bD.b();
       $$0.c();
       $$0.c();
-      this.ac();
+      this.ab();
    }
 
-   protected void ac() {
+   protected void ab() {
       agx.a(this.dV(), this, this.bF);
    }
 
    protected void a(asb $$0) {
    }
 
-   public int ad() {
+   public int ac() {
       return 40;
    }
 
-   public int af() {
+   public int ae() {
       return 75;
    }
 
-   protected void ag() {
-      float $$0 = (float)this.af();
+   protected void af() {
+      float $$0 = (float)this.ae();
       float $$1 = this.cA();
       float $$2 = azz.h(this.aV - $$1);
       float $$3 = azz.a(azz.h(this.aV - $$1), -$$0, $$0);
@@ -600,7 +602,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
       this.r($$4);
    }
 
-   public int ah() {
+   public int ag() {
       return 10;
    }
 
@@ -657,7 +659,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
 
    @Override
    public int cE() {
-      if (this.f() == null) {
+      if (this.e() == null) {
          return this.y(0.0F);
       } else {
          int $$0 = (int)(this.eG() - this.eU() * 0.33F);
@@ -1056,7 +1058,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
 
    @Nullable
    @Override
-   public byd.a Z_() {
+   public byd.a S_() {
       return this.bW;
    }
 
@@ -1066,15 +1068,15 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    }
 
    @Override
-   public void A() {
-      if (this.Z_() == null) {
+   public void z() {
+      if (this.S_() == null) {
          this.gh();
       }
    }
 
    @Override
-   public void B() {
-      byd.super.B();
+   public void A() {
+      byd.super.A();
       this.bF.a(cfb.a.a);
    }
 
@@ -1086,8 +1088,8 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    @Override
    public boolean a(bxe $$0, boolean $$1) {
       boolean $$2 = super.a($$0, $$1);
-      if ($$2 && this.T_()) {
-         this.y();
+      if ($$2 && this.Q_()) {
+         this.x();
       }
 
       return $$2;
@@ -1201,7 +1203,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
 
    @Override
    protected void c(ayc<exz> $$0) {
-      if (this.O().o()) {
+      if (this.N().o()) {
          super.c($$0);
       } else {
          this.i(this.dy().b(0.0, 0.3, 0.0));
@@ -1241,7 +1243,7 @@ public abstract class byh extends byf implements bxr, byd, bzc {
    protected void f(jg<bzg> $$0) {
       super.f($$0);
       if ($$0.a(bzl.m) || $$0.a(bzl.E)) {
-         this.O().e();
+         this.N().e();
       }
    }
 }

@@ -29,16 +29,16 @@ public class ccr extends bzw<cru> {
       if (!($$1.g($$3) > 5.0)) {
          bzy.a($$1, $$3, 0.5F, 2);
          $$1.a($$0, $$3, $$2);
-         boolean $$4 = $$1.gC().b().a(crx.g);
-         if ($$1.gL() && ($$4 || $$3.gM())) {
+         boolean $$4 = $$1.gF().b().a(crx.g);
+         if ($$1.gM() && ($$4 || $$3.gN())) {
             a($$1, cru.bL.keySet(), $$3);
          }
 
-         if ($$4 && $$1.n().a_(dao.qk) > dao.qk.g() / 2) {
+         if ($$4 && $$1.u().a_(dao.qk) > dao.qk.g() / 2) {
             a($$1, ImmutableSet.of(dao.qk), $$3);
          }
 
-         if (!this.c.isEmpty() && $$1.n().a(this.c)) {
+         if (!this.c.isEmpty() && $$1.u().a(this.c)) {
             a($$1, this.c, $$3);
          }
       }
@@ -49,13 +49,13 @@ public class ccr extends bzw<cru> {
    }
 
    private static Set<dag> a(cru $$0, cru $$1) {
-      ImmutableSet<dag> $$2 = $$1.gC().b().a().d();
-      ImmutableSet<dag> $$3 = $$0.gC().b().a().d();
+      ImmutableSet<dag> $$2 = $$1.gF().b().a().d();
+      ImmutableSet<dag> $$3 = $$0.gF().b().a().d();
       return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
    }
 
    private static void a(cru $$0, Set<dag> $$1, byf $$2) {
-      bvj $$3 = $$0.n();
+      bvj $$3 = $$0.u();
       dak $$4 = dak.l;
       int $$5 = 0;
 

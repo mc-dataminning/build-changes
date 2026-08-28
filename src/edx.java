@@ -351,7 +351,7 @@ public class edx extends edn {
 
    @Override
    public void a(dyo $$0) {
-      iw $$1 = $$0.aC_();
+      iw $$1 = $$0.ax_();
       ebq $$2 = this.a_($$1);
       if (!$$2.x()) {
          n.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
@@ -374,7 +374,7 @@ public class edx extends edn {
          $$0.o();
          dyo $$4 = this.k.put($$1.j(), $$0);
          if ($$4 != null && $$4 != $$0) {
-            $$4.ax_();
+            $$4.as_();
          }
       }
    }
@@ -407,7 +407,7 @@ public class edx extends edn {
                this.a($$1, $$2);
             }
 
-            $$1.ax_();
+            $$1.as_();
          }
       }
 
@@ -419,7 +419,7 @@ public class edx extends edn {
       if ($$2 instanceof dqi) {
          egs $$3 = ((dqi)$$2).a($$1, $$0);
          if ($$3 != null) {
-            int $$4 = jz.a($$0.aC_().v());
+            int $$4 = jz.a($$0.ax_().v());
             egt $$5 = this.a($$4);
             $$5.b($$3);
          }
@@ -576,7 +576,7 @@ public class edx extends edn {
    }
 
    public void J() {
-      this.k.values().forEach(dyo::ax_);
+      this.k.values().forEach(dyo::as_);
       this.k.clear();
       this.p.values().forEach($$0 -> $$0.a(o));
       this.p.clear();
@@ -597,7 +597,7 @@ public class edx extends edn {
       if ($$2 instanceof dqi) {
          egs $$3 = ((dqi)$$2).a($$1, $$0);
          if ($$3 != null) {
-            this.a(jz.a($$0.aC_().v())).a($$3);
+            this.a(jz.a($$0.ax_().v())).a($$3);
          }
       }
    }
@@ -606,9 +606,9 @@ public class edx extends edn {
       ebq $$1 = $$0.m();
       dyp<T> $$2 = $$1.a(this.r, (dyq<T>)$$0.p());
       if ($$2 == null) {
-         this.k($$0.aC_());
+         this.k($$0.ax_());
       } else {
-         this.p.compute($$0.aC_(), ($$2x, $$3) -> {
+         this.p.compute($$0.ax_(), ($$2x, $$3) -> {
             eam $$4 = this.a($$0, $$2);
             if ($$3 != null) {
                $$3.a($$4);
@@ -641,14 +641,14 @@ public class edx extends edn {
       @Override
       public void a() {
          if (!this.b.n() && this.b.l()) {
-            iw $$0 = this.b.aC_();
+            iw $$0 = this.b.ax_();
             if (edx.this.h($$0)) {
                try {
                   brm $$1 = brl.a();
                   $$1.a(this::d);
                   ebq $$2 = edx.this.a_($$0);
                   if (this.b.p().a($$2)) {
-                     this.c.tick(edx.this.r, this.b.aC_(), $$2, this.b);
+                     this.c.tick(edx.this.r, this.b.ax_(), $$2, this.b);
                      this.d = false;
                   } else if (!this.d) {
                      this.d = true;
@@ -673,7 +673,7 @@ public class edx extends edn {
 
       @Override
       public iw c() {
-         return this.b.aC_();
+         return this.b.ax_();
       }
 
       @Override

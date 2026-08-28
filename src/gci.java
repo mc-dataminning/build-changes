@@ -28,7 +28,7 @@ public class gci extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       if (this.E) {
          this.s.a(this.n, this.o - 64 - 32, 0, 32);
       } else {
@@ -81,7 +81,7 @@ public class gci extends fzq {
          }
       }).a(74).a());
       fty $$3 = this.c(fty.a(xg.c("selectServer.refresh"), $$0 -> this.H()).a(74).a());
-      fty $$4 = this.c(fty.a(xf.k, $$0 -> this.aQ_()).a(74).a());
+      fty $$4 = this.c(fty.a(xf.k, $$0 -> this.aL_()).a(74).a());
       fxq $$5 = fxq.d();
       fxj $$6 = $$5.a(new fxj(308, 20, fxj.b.a));
       $$6.a(this.z);
@@ -99,7 +99,7 @@ public class gci extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.w);
    }
 
@@ -115,7 +115,7 @@ public class gci extends fzq {
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       if (this.D != null) {
          this.D.interrupt();
          this.D = null;

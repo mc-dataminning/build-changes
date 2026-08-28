@@ -23,12 +23,12 @@ public class dau extends dag {
 
    public static bvc a(csi $$0, dkj $$1, iw $$2) {
       coh $$3 = null;
-      List<byd> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+      List<byd> $$4 = a($$1, $$2, $$1x -> $$1x.B() == $$0);
 
       for (byd $$5 : $$4) {
          if ($$3 == null) {
             $$3 = coh.b($$1, $$2);
-            $$3.m();
+            $$3.l();
          }
 
          $$5.a_($$3, true);

@@ -20,7 +20,7 @@ public class hof extends hnw {
 
    @Override
    public void q() {
-      if (!this.r.dQ() && this.r.f() == null) {
+      if (!this.r.dQ() && this.r.e() == null) {
          this.f = (double)((float)this.r.dA());
          this.g = (double)((float)this.r.dC());
          this.h = (double)((float)this.r.dG());

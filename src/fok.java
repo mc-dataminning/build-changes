@@ -35,7 +35,7 @@ public class fok extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       fll.f();
       this.K = new fok.b();
       this.I.thenAcceptAsync($$0 -> {
@@ -47,13 +47,13 @@ public class fok extends hrc {
       }, this.r);
       this.c(this.K);
       this.L = this.c((fty)fty.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
-      this.c((fty)fty.a(xf.d, $$0 -> this.aQ_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.c((fty)fty.a(xf.d, $$0 -> this.aL_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
       this.M = this.c((fty)fty.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
       this.E();
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.H);
    }
 

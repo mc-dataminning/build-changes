@@ -8,26 +8,26 @@ public class ckw extends cjt {
 
    public ckw(bxn<? extends ckw> $$0, dkj $$1) {
       super($$0, $$1);
-      this.i_();
+      this.h_();
    }
 
    @Override
-   public int x() {
+   public int gw() {
       return 5;
    }
 
    @Override
-   public dak X_() {
+   public dak a() {
       return new dak(dao.rw);
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.wt;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.wu;
    }
 
@@ -37,7 +37,7 @@ public class ckw extends cjt {
    }
 
    @Override
-   protected awx t() {
+   protected awx gv() {
       return awy.wv;
    }
 
@@ -51,14 +51,14 @@ public class ckw extends cjt {
    public void a(aku<?> $$0) {
       super.a($$0);
       if (b.equals($$0)) {
-         this.i_();
+         this.h_();
       }
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("type", ckw.a.e, this.gA());
+      $$0.a("type", ckw.a.e, this.gD());
    }
 
    @Override
@@ -77,14 +77,14 @@ public class ckw extends cjt {
       this.al.a(b, $$0.i);
    }
 
-   public ckw.a gA() {
+   public ckw.a gD() {
       return ckw.a.g.apply(this.al.a(b));
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aA ? c((kk<T>)$$0, this.gA()) : super.a($$0);
+      return $$0 == kl.aA ? c((kk<T>)$$0, this.gD()) : super.a($$0);
    }
 
    @Override
@@ -114,13 +114,13 @@ public class ckw extends cjt {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public float gB() {
-      return this.gA().j;
+   public float gE() {
+      return this.gD().j;
    }
 
    @Override
    protected bxh e(byr $$0) {
-      return super.e($$0).a(this.gB());
+      return super.e($$0).a(this.gE());
    }
 
    public static enum a implements bax {

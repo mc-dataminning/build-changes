@@ -572,13 +572,15 @@ public class fug {
 
       try (RenderPass $$5 = RenderSystem.getDevice().createCommandEncoder().createRenderPass($$2, OptionalInt.empty(), $$3, OptionalDouble.empty())) {
          $$5.setPipeline($$0);
-         $$5.setUniform("LineWidth", 4.0F);
+         RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
+         RenderSystem.lineWidth(4.0F);
          $$5.setVertexBuffer(0, this.k);
          $$5.setIndexBuffer($$4, this.l.a());
          $$5.drawIndexed(0, 18);
          RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         $$5.setUniform("LineWidth", 2.0F);
+         RenderSystem.lineWidth(2.0F);
          $$5.drawIndexed(0, 18);
+         RenderSystem.lineWidth(1.0F);
       }
    }
 

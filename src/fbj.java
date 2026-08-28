@@ -34,15 +34,15 @@ public abstract class fbj implements fbb {
    public abstract static class a<T extends fbj.a<T>> implements fdu<T> {
       private final Builder<fec> a = ImmutableList.builder();
 
-      protected abstract T aG_();
+      protected abstract T aB_();
 
       public T a(fec.a $$0) {
          this.a.add($$0.build());
-         return this.aG_();
+         return this.aB_();
       }
 
       public final T e() {
-         return this.aG_();
+         return this.aB_();
       }
 
       protected List<fec> f() {

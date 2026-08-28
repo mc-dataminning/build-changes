@@ -308,7 +308,7 @@ public class aof {
       } else {
          if ($$4.size() == 1) {
             Entry<bxe, dak> $$8 = $$4.entrySet().iterator().next();
-            $$0.a(() -> xg.a("commands.item.entity.set.success.single", $$8.getKey().m_(), $$8.getValue().K()), true);
+            $$0.a(() -> xg.a("commands.item.entity.set.success.single", $$8.getKey().P_(), $$8.getValue().K()), true);
          } else {
             $$0.a(() -> xg.a("commands.item.entity.set.success.multiple", $$4.size()), true);
          }
@@ -354,7 +354,7 @@ public class aof {
          throw f.create($$3.K(), $$2);
       } else {
          if ($$4.size() == 1) {
-            $$0.a(() -> xg.a("commands.item.entity.set.success.single", $$4.iterator().next().m_(), $$3.K()), true);
+            $$0.a(() -> xg.a("commands.item.entity.set.success.single", $$4.iterator().next().P_(), $$3.K()), true);
          } else {
             $$0.a(() -> xg.a("commands.item.entity.set.success.multiple", $$4.size(), $$3.K()), true);
          }

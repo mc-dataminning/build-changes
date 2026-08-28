@@ -40,16 +40,16 @@ public class cqd extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(4, new cqd.a(this, 1.0, 3));
       this.bF.a(8, new cfj(this, csi.class, 8.0F));
       this.bF.a(8, new cfw(this));
-      this.m();
+      this.p();
    }
 
-   protected void m() {
+   protected void p() {
       this.bF.a(2, new cgq(this, 1.0, false));
-      this.bF.a(6, new cfn(this, 1.0, true, 4, this::gz));
+      this.bF.a(6, new cfn(this, 1.0, true, 4, this::gC));
       this.bF.a(7, new cgo(this, 1.0));
       this.bG.a(1, new cgt(this).a(cqf.class));
       this.bG.a(2, new cgu<>(this, csi.class, true));
@@ -58,8 +58,8 @@ public class cqd extends cpk {
       this.bG.a(5, new cgu<>(this, clc.class, 10, true, false, clc.bI));
    }
 
-   public static bzk.a gv() {
-      return cpk.gx().a(bzl.m, 35.0).a(bzl.v, 0.23F).a(bzl.c, 3.0).a(bzl.a, 2.0).a(bzl.A);
+   public static bzk.a gy() {
+      return cpk.gA().a(bzl.m, 35.0).a(bzl.v, 0.23F).a(bzl.c, 3.0).a(bzl.a, 2.0).a(bzl.A);
    }
 
    @Override
@@ -70,11 +70,11 @@ public class cqd extends cpk {
       $$0.a(bO, false);
    }
 
-   public boolean gy() {
+   public boolean gB() {
       return this.ar().a(bO);
    }
 
-   public boolean gz() {
+   public boolean gC() {
       return this.bX;
    }
 
@@ -82,7 +82,7 @@ public class cqd extends cpk {
       if (ciz.a(this)) {
          if (this.bX != $$0) {
             this.bX = $$0;
-            ((cho)this.O()).b($$0);
+            ((cho)this.N()).b($$0);
             if ($$0) {
                this.bF.a(1, this.bW);
             } else {
@@ -96,13 +96,13 @@ public class cqd extends cpk {
    }
 
    @Override
-   public boolean n_() {
+   public boolean e_() {
       return this.ar().a(bM);
    }
 
    @Override
    protected int e(asb $$0) {
-      if (this.n_()) {
+      if (this.e_()) {
          this.bA = (int)((double)this.bA * 2.5);
       }
 
@@ -124,25 +124,25 @@ public class cqd extends cpk {
    @Override
    public void a(aku<?> $$0) {
       if (bM.equals($$0)) {
-         this.i_();
+         this.h_();
       }
 
       super.a($$0);
    }
 
-   protected boolean x() {
+   protected boolean gw() {
       return true;
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.dV().C && this.bJ() && !this.gj()) {
-         if (this.gy()) {
+         if (this.gB()) {
             this.bZ--;
             if (this.bZ < 0) {
-               this.ah_();
+               this.ad_();
             }
-         } else if (this.x()) {
+         } else if (this.gw()) {
             if (this.a(axs.a)) {
                this.bY++;
                if (this.bY >= 600) {
@@ -154,13 +154,13 @@ public class cqd extends cpk {
          }
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bJ()) {
-         boolean $$0 = this.ai_() && this.go();
+         boolean $$0 = this.ae_() && this.go();
          if ($$0) {
             dak $$1 = this.a(bxo.f);
             if (!$$1.f()) {
@@ -182,7 +182,7 @@ public class cqd extends cpk {
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
    private void r(int $$0) {
@@ -190,7 +190,7 @@ public class cqd extends cpk {
       this.ar().a(bO, true);
    }
 
-   protected void ah_() {
+   protected void ad_() {
       this.b(bxn.L);
       if (!this.ba()) {
          this.dV().a(null, 1040, this.dv(), 0);
@@ -205,10 +205,10 @@ public class cqd extends cpk {
    public boolean a(asb $$0, cru $$1) {
       cqe $$2 = $$1.a(bxn.bR, bwy.a($$1, true, true), $$2x -> {
          $$2x.a($$0, $$0.d_($$2x.dv()), bxm.i, new cqd.b(false, true));
-         $$2x.a($$1.gC());
-         $$2x.a($$1.gO().d());
-         $$2x.a($$1.gv().a());
-         $$2x.s($$1.t());
+         $$2x.a($$1.gF());
+         $$2x.a($$1.gP().d());
+         $$2x.a($$1.gw().a());
+         $$2x.s($$1.p());
          if (!this.ba()) {
             $$0.a(null, 1026, this.dv(), 0);
          }
@@ -216,7 +216,7 @@ public class cqd extends cpk {
       return $$2 != null;
    }
 
-   protected boolean ai_() {
+   protected boolean ae_() {
       return true;
    }
 
@@ -225,7 +225,7 @@ public class cqd extends cpk {
       if (!super.a($$0, $$1, $$2)) {
          return false;
       } else {
-         byf $$3 = this.f();
+         byf $$3 = this.e();
          if ($$3 == null && $$1.d() instanceof byf) {
             $$3 = (byf)$$1.d();
          }
@@ -247,7 +247,7 @@ public class cqd extends cpk {
                iw $$13 = new iw($$10, $$11, $$12);
                if (bza.a($$7, $$0, $$13) && bza.a($$7, $$0, bxm.j, $$13, $$0.A)) {
                   $$8.a_((double)$$10, (double)$$11, (double)$$12);
-                  if (!$$0.a((double)$$10, (double)$$11, (double)$$12, 7.0) && $$0.f($$8) && $$0.g($$8) && ($$8.q() || !$$0.d($$8.cR()))) {
+                  if (!$$0.a((double)$$10, (double)$$11, (double)$$12, 7.0) && $$0.f($$8) && $$0.g($$8) && ($$8.gu() || !$$0.d($$8.cR()))) {
                      $$8.g($$3);
                      $$8.a($$0, $$0.d_($$8.dv()), bxm.j, null);
                      $$0.a_($$8);
@@ -281,7 +281,7 @@ public class cqd extends cpk {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Er;
    }
 
@@ -291,17 +291,17 @@ public class cqd extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Ew;
    }
 
-   protected awx n() {
+   protected awx u() {
       return awy.EH;
    }
 
    @Override
    protected void b(iw $$0, ebq $$1) {
-      this.a(this.n(), 0.15F, 1.0F);
+      this.a(this.u(), 0.15F, 1.0F);
    }
 
    @Override
@@ -309,7 +309,7 @@ public class cqd extends cpk {
       return (bxn<? extends cqd>)super.an();
    }
 
-   protected boolean q() {
+   protected boolean gu() {
       return false;
    }
 
@@ -329,10 +329,10 @@ public class cqd extends cpk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("IsBaby", this.n_());
-      $$0.a("CanBreakDoors", this.gz());
+      $$0.a("IsBaby", this.e_());
+      $$0.a("CanBreakDoors", this.gC());
       $$0.a("InWaterTime", this.bi() ? this.bY : -1);
-      $$0.a("DrownedConversionTime", this.gy() ? this.bZ : -1);
+      $$0.a("DrownedConversionTime", this.gB() ? this.bZ : -1);
    }
 
    @Override
@@ -367,12 +367,12 @@ public class cqd extends cpk {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bQ : super.e($$0);
+      return this.e_() ? bQ : super.e($$0);
    }
 
    @Override
    public boolean g(dak $$0) {
-      return $$0.a(axv.aa) && this.n_() && this.bY() ? false : super.g($$0);
+      return $$0.a(axv.aa) && this.e_() && this.bY() ? false : super.g($$0);
    }
 
    @Override
@@ -454,7 +454,7 @@ public class cqd extends cpk {
    }
 
    protected void J(float $$0) {
-      this.gA();
+      this.gD();
       this.g(bzl.p).c(new bzj(by, this.ae.j() * 0.05F, bzj.a.a));
       double $$1 = this.ae.j() * 1.5 * (double)$$0;
       if ($$1 > 1.0) {
@@ -468,23 +468,23 @@ public class cqd extends cpk {
       }
    }
 
-   protected void gA() {
+   protected void gD() {
       this.g(bzl.A).a(this.ae.j() * 0.1F);
    }
 
    @Override
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cow $$4 && $$4.x()) {
-         dak $$5 = this.t();
+      if ($$1.d() instanceof cow $$4 && $$4.gw()) {
+         dak $$5 = this.gv();
          if (!$$5.f()) {
-            $$4.gu();
+            $$4.gx();
             this.a($$0, $$5);
          }
       }
    }
 
-   protected dak t() {
+   protected dak gv() {
       return new dak(dao.vy);
    }
 

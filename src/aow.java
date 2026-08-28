@@ -90,11 +90,11 @@ public class aow {
    private static int b(ek $$0, int $$1) throws CommandSyntaxException {
       asc $$2 = $$0.h();
       iw $$3 = $$2.dv();
-      if ($$2.y().e($$3)) {
+      if ($$2.x().e($$3)) {
          $$0.b(xg.b("Raid already started close by"));
          return -1;
       } else {
-         cua $$4 = $$2.y().B();
+         cua $$4 = $$2.x().B();
          cty $$5 = $$4.a($$2, $$2.dv());
          if ($$5 != null) {
             $$5.a($$1);
@@ -111,7 +111,7 @@ public class aow {
    private static int c(ek $$0) throws CommandSyntaxException {
       asc $$1 = $$0.h();
       iw $$2 = $$1.dv();
-      cty $$3 = $$1.y().d($$2);
+      cty $$3 = $$1.x().d($$2);
       if ($$3 != null) {
          $$3.m();
          $$0.a(() -> xg.b("Stopped raid"), false);
@@ -149,6 +149,6 @@ public class aow {
 
    @Nullable
    private static cty a(asc $$0) {
-      return $$0.y().d($$0.dv());
+      return $$0.x().d($$0.dv());
    }
 }

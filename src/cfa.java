@@ -18,7 +18,7 @@ public class cfa extends cfb {
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
+      if (this.d.Y_() >= 0) {
          return false;
       } else {
          List<? extends cjv> $$0 = this.d.dV().a((Class<? extends cjv>)this.d.getClass(), this.d.cR().c(8.0, 4.0, 8.0));
@@ -26,7 +26,7 @@ public class cfa extends cfb {
          double $$2 = Double.MAX_VALUE;
 
          for (cjv $$3 : $$0) {
-            if ($$3.g() >= 0) {
+            if ($$3.Y_() >= 0) {
                double $$4 = this.d.g($$3);
                if (!($$4 > $$2)) {
                   $$2 = $$4;
@@ -48,7 +48,7 @@ public class cfa extends cfb {
 
    @Override
    public boolean c() {
-      if (this.d.g() >= 0) {
+      if (this.d.Y_() >= 0) {
          return false;
       } else if (!this.e.bJ()) {
          return false;
@@ -72,7 +72,7 @@ public class cfa extends cfb {
    public void a() {
       if (--this.g <= 0) {
          this.g = this.a(10);
-         this.d.O().a(this.e, this.f);
+         this.d.N().a(this.e, this.f);
       }
    }
 }

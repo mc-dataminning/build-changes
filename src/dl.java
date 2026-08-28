@@ -32,7 +32,7 @@ public abstract class dl<T extends dl.a> implements at<T> {
    }
 
    protected void a(asc $$0, Predicate<T> $$1) {
-      alz $$2 = $$0.S();
+      alz $$2 = $$0.R();
       Set<at.a<T>> $$3 = this.a.get($$2);
       if ($$3 != null && !$$3.isEmpty()) {
          fat $$4 = bz.b($$0, $$0);

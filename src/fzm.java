@@ -131,7 +131,7 @@ public class fzm extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.A = xg.c("createWorld.customize.presets.share");
       this.B = xg.c("createWorld.customize.presets.list");
       this.E = new fuh(this.p, 50, 40, this.n - 100, 20, this.A);
@@ -169,7 +169,7 @@ public class fzm extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.z);
    }
 

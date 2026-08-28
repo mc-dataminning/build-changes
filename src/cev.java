@@ -6,7 +6,7 @@ public class cev extends cfb {
    public cev(byh $$0) {
       this.a = $$0;
       this.a(EnumSet.of(cfb.a.c));
-      $$0.O().a(true);
+      $$0.N().a(true);
    }
 
    @Override
@@ -22,7 +22,7 @@ public class cev extends cfb {
    @Override
    public void a() {
       if (this.a.dY().i() < 0.8F) {
-         this.a.N().a();
+         this.a.M().a();
       }
    }
 }

@@ -61,14 +61,14 @@ public class crn {
             $$3.add($$2);
          }
 
-         if ($$3.stream().anyMatch($$0x -> $$0x.Z().map(crn::d).orElse(false))) {
+         if ($$3.stream().anyMatch($$0x -> $$0x.Y().map(crn::d).orElse(false))) {
             return OptionalInt.empty();
          } else {
-            Optional<crn> $$4 = $$3.stream().flatMap($$0x -> $$0x.Z().stream()).max(Comparator.comparingInt(crn::c));
+            Optional<crn> $$4 = $$3.stream().flatMap($$0x -> $$0x.Y().stream()).max(Comparator.comparingInt(crn::c));
             if ($$4.isPresent()) {
                crn $$5 = $$4.get();
                $$5.e();
-               $$3.forEach($$1x -> $$1x.Z().ifPresent($$1xx -> $$1xx.a($$5)));
+               $$3.forEach($$1x -> $$1x.Y().ifPresent($$1xx -> $$1xx.a($$5)));
                return OptionalInt.of($$5.h);
             } else {
                return OptionalInt.empty();
@@ -88,7 +88,7 @@ public class crn {
 
    private static List<asc> b(asb $$0, iw $$1) {
       fgc $$2 = fgc.b($$1);
-      return $$0.a($$1x -> !$$1x.aa_() && $$1x.dt().a((jq)$$2, 16.0) && $$1x.bJ());
+      return $$0.a($$1x -> !$$1x.ak() && $$1x.dt().a((jq)$$2, 16.0) && $$1x.bJ());
    }
 
    private void e() {

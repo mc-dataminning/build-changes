@@ -31,15 +31,15 @@ public abstract class cpu extends cor {
    }
 
    @Override
-   public cor.a j() {
-      if (this.gB()) {
+   public cor.a m() {
+      if (this.gE()) {
          return cor.a.c;
       } else {
-         return this.gK() ? cor.a.g : cor.a.a;
+         return this.gN() ? cor.a.g : cor.a.a;
       }
    }
 
-   public boolean gB() {
+   public boolean gE() {
       return this.dV().C ? this.al.a(a) > 0 : this.b > 0;
    }
 
@@ -48,7 +48,7 @@ public abstract class cpu extends cor {
       this.al.a(a, (byte)$$0.h);
    }
 
-   protected cpu.a gC() {
+   protected cpu.a gF() {
       return !this.dV().C ? this.f : cpu.a.a(this.al.a(a));
    }
 
@@ -61,10 +61,10 @@ public abstract class cpu extends cor {
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && this.gB()) {
-         cpu.a $$0 = this.gC();
+   public void g() {
+      super.g();
+      if (this.dV().C && this.gE()) {
+         cpu.a $$0 = this.gF();
          float $$1 = (float)$$0.i[0];
          float $$2 = (float)$$0.i[1];
          float $$3 = (float)$$0.i[2];
@@ -78,11 +78,11 @@ public abstract class cpu extends cor {
       }
    }
 
-   protected int gD() {
+   protected int gG() {
       return this.b;
    }
 
-   protected abstract awx q();
+   protected abstract awx gu();
 
    protected static enum a {
       a(0, 0.0, 0.0, 0.0),
@@ -113,7 +113,7 @@ public abstract class cpu extends cor {
 
       @Override
       public boolean b() {
-         return cpu.this.gD() > 0;
+         return cpu.this.gG() > 0;
       }
 
       @Override
@@ -130,8 +130,8 @@ public abstract class cpu extends cor {
 
       @Override
       public void a() {
-         if (cpu.this.f() != null) {
-            cpu.this.J().a(cpu.this.f(), (float)cpu.this.af(), (float)cpu.this.ad());
+         if (cpu.this.e() != null) {
+            cpu.this.I().a(cpu.this.e(), (float)cpu.this.ae(), (float)cpu.this.ac());
          }
       }
    }
@@ -142,17 +142,17 @@ public abstract class cpu extends cor {
 
       @Override
       public boolean b() {
-         byf $$0 = cpu.this.f();
+         byf $$0 = cpu.this.e();
          if ($$0 == null || !$$0.bJ()) {
             return false;
          } else {
-            return cpu.this.gB() ? false : cpu.this.af >= this.c;
+            return cpu.this.gE() ? false : cpu.this.af >= this.c;
          }
       }
 
       @Override
       public boolean c() {
-         byf $$0 = cpu.this.f();
+         byf $$0 = cpu.this.e();
          return $$0 != null && $$0.bJ() && this.b > 0;
       }
 
@@ -174,7 +174,7 @@ public abstract class cpu extends cor {
          this.b--;
          if (this.b == 0) {
             this.k();
-            cpu.this.a(cpu.this.q(), 1.0F, 1.0F);
+            cpu.this.a(cpu.this.gu(), 1.0F, 1.0F);
          }
       }
 

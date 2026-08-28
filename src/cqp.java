@@ -11,7 +11,7 @@ public class cqp {
    static void a(bzf<cqo> $$0) {
       $$0.a(cuc.a, 0, ImmutableList.of(new ccq<cqo>(0.8F) {
          protected boolean a(asb $$0, cqo $$1) {
-            return $$1.n() && super.a($$0, (byf)$$1);
+            return $$1.u() && super.a($$0, (byf)$$1);
          }
       }, new cbc(45, 90), new cbg()));
    }
@@ -21,7 +21,7 @@ public class cqp {
          cuc.b,
          10,
          ImmutableList.of(
-            cci.a(($$0x, $$1) -> $$1.gC(), ($$0x, $$1) -> $$1.ec().c(chh.l)),
+            cci.a(($$0x, $$1) -> $$1.gF(), ($$0x, $$1) -> $$1.ec().c(chh.l)),
             cbw.a(8.0F, bun.a(30, 60)),
             new cbt(ImmutableList.of(Pair.of(cbo.a(0.3F), 2), Pair.of(ccd.a(0.3F, 3), 2), Pair.of(new cag(30, 60), 1)))
          )
@@ -29,7 +29,7 @@ public class cqp {
    }
 
    static void a(cqo $$0, bzf<cqo> $$1) {
-      $$1.a(cuc.k, 10, ImmutableList.of(ccb.a(1.0F), cbd.a(cqo::n, 40), ccl.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(chh.p, chi.a)));
+      $$1.a(cuc.k, 10, ImmutableList.of(ccb.a(1.0F), cbd.a(cqo::u, 40), ccl.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(chh.p, chi.a)));
    }
 
    private static boolean a(cqo $$0, byf $$1) {
@@ -58,7 +58,7 @@ public class cqp {
    }
 
    public static void a(cqo $$0) {
-      if (!$$0.n()) {
+      if (!$$0.u()) {
          $$0.ec().f();
       } else {
          $$0.ec().a(ImmutableList.of(cuc.k, cuc.b));

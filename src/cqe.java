@@ -22,23 +22,23 @@ public class cqe extends cqd implements crw {
 
    public cqe(bxn<? extends cqe> $$0, dkj $$1) {
       super($$0, $$1);
-      mh.x.a(this.ae).ifPresent($$0x -> this.a(this.gC().b($$0x)));
+      mh.x.a(this.ae).ifPresent($$0x -> this.a(this.gF().b($$0x)));
    }
 
    @Override
    protected void a(aky.a $$0) {
       super.a($$0);
       $$0.a(a, false);
-      $$0.a(b, cru.gI());
+      $$0.a(b, cru.gJ());
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("VillagerData", crv.c, this.gC());
+      $$0.a("VillagerData", crv.c, this.gF());
       $$0.b("Offers", djg.a, this.dX().a(uo.a), this.bR);
       $$0.b("Gossips", chd.a, this.bQ);
-      $$0.a("ConversionTime", this.gB() ? this.bO : -1);
+      $$0.a("ConversionTime", this.gE() ? this.bO : -1);
       $$0.b("ConversionPlayer", ka.a, this.bP);
       $$0.a("Xp", this.bS);
    }
@@ -46,7 +46,7 @@ public class cqe extends cqd implements crw {
    @Override
    public void a(ua $$0) {
       super.a($$0);
-      this.al.a(b, $$0.<crv>a("VillagerData", crv.c).orElseGet(cru::gI));
+      this.al.a(b, $$0.<crv>a("VillagerData", crv.c).orElseGet(cru::gJ));
       this.bR = $$0.<djg>a("Offers", djg.a, this.dX().a(uo.a)).orElse(null);
       this.bQ = $$0.<chd>a("Gossips", chd.a).orElse(null);
       int $$1 = $$0.b("ConversionTime", -1);
@@ -62,16 +62,16 @@ public class cqe extends cqd implements crw {
    }
 
    @Override
-   public void h() {
-      if (!this.dV().C && this.bJ() && this.gB()) {
-         int $$0 = this.gE();
+   public void g() {
+      if (!this.dV().C && this.bJ() && this.gE()) {
+         int $$0 = this.gH();
          this.bO -= $$0;
          if (this.bO <= 0) {
             this.g((asb)this.dV());
          }
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
@@ -94,16 +94,16 @@ public class cqe extends cqd implements crw {
    }
 
    @Override
-   protected boolean x() {
+   protected boolean gw() {
       return false;
    }
 
    @Override
    public boolean h(double $$0) {
-      return !this.gB() && this.bS == 0;
+      return !this.gE() && this.bS == 0;
    }
 
-   public boolean gB() {
+   public boolean gE() {
       return this.ar().a(a);
    }
 
@@ -134,7 +134,7 @@ public class cqe extends cqd implements crw {
             $$3.a(this.a($$2));
          }
 
-         $$1.a(this.gC());
+         $$1.a(this.gF());
          if (this.bQ != null) {
             $$1.a(this.bQ);
          }
@@ -167,7 +167,7 @@ public class cqe extends cqd implements crw {
       this.bO = $$0;
    }
 
-   private int gE() {
+   private int gH() {
       int $$0 = 1;
       if (this.ae.i() < 0.01F) {
          int $$1 = 0;
@@ -194,11 +194,11 @@ public class cqe extends cqd implements crw {
 
    @Override
    public float ff() {
-      return this.n_() ? (this.ae.i() - this.ae.i()) * 0.2F + 2.0F : (this.ae.i() - this.ae.i()) * 0.2F + 1.0F;
+      return this.e_() ? (this.ae.i() - this.ae.i()) * 0.2F + 2.0F : (this.ae.i() - this.ae.i()) * 0.2F + 1.0F;
    }
 
    @Override
-   public awx u() {
+   public awx s() {
       return awy.EI;
    }
 
@@ -208,17 +208,17 @@ public class cqe extends cqd implements crw {
    }
 
    @Override
-   public awx l_() {
+   public awx j_() {
       return awy.EL;
    }
 
    @Override
-   public awx n() {
+   public awx u() {
       return awy.EN;
    }
 
    @Override
-   protected dak t() {
+   protected dak gv() {
       return dak.l;
    }
 
@@ -233,13 +233,13 @@ public class cqe extends cqd implements crw {
    @Nullable
    @Override
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
-      this.a(this.gC().a($$0.J_(), crz.a($$0.u(this.dv()))));
+      this.a(this.gF().a($$0.J_(), crz.a($$0.u(this.dv()))));
       return super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
    public void a(crv $$0) {
-      crv $$1 = this.gC();
+      crv $$1 = this.gF();
       if (!$$1.b().equals($$0.b())) {
          this.bR = null;
       }
@@ -248,11 +248,11 @@ public class cqe extends cqd implements crw {
    }
 
    @Override
-   public crv gC() {
+   public crv gF() {
       return this.al.a(b);
    }
 
-   public int gD() {
+   public int gG() {
       return this.bS;
    }
 
@@ -263,7 +263,7 @@ public class cqe extends cqd implements crw {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.av ? c((kk<T>)$$0, this.gC().a()) : super.a($$0);
+      return $$0 == kl.av ? c((kk<T>)$$0, this.gF().a()) : super.a($$0);
    }
 
    @Override
@@ -276,7 +276,7 @@ public class cqe extends cqd implements crw {
    protected <T> boolean b(kk<T> $$0, T $$1) {
       if ($$0 == kl.av) {
          jg<crz> $$2 = c(kl.av, $$1);
-         this.a(this.gC().a($$2));
+         this.a(this.gF().a($$2));
          return true;
       } else {
          return super.b($$0, $$1);

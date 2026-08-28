@@ -34,10 +34,10 @@ public interface byk {
    }
 
    default void a(asb $$0, boolean $$1) {
-      byf $$2 = this.f();
+      byf $$2 = this.e();
       UUID $$3 = this.b();
       if (($$2 == null || $$2.eH()) && $$3 != null && $$0.b($$3) instanceof byh) {
-         this.ab_();
+         this.i();
       } else {
          if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
             this.a($$2.cG());
@@ -47,7 +47,7 @@ public interface byk {
          if (this.a() > 0 && ($$2 == null || $$2.an() != bxn.bT || !$$1)) {
             this.a(this.a() - 1);
             if (this.a() == 0) {
-               this.ab_();
+               this.i();
             }
          }
       }
@@ -62,27 +62,27 @@ public interface byk {
    }
 
    default boolean a_(asb $$0) {
-      return $$0.O().c(dkf.Q) && this.af_() && this.b() == null;
+      return $$0.O().c(dkf.Q) && this.ac_() && this.b() == null;
    }
 
-   default boolean af_() {
+   default boolean ac_() {
       return this.a() > 0;
    }
 
    default void a_(asb $$0, csi $$1) {
       if ($$0.O().c(dkf.P)) {
          if ($$1.cG().equals(this.b())) {
-            this.ab_();
+            this.i();
          }
       }
    }
 
-   default void ag_() {
-      this.ab_();
+   default void aa_() {
+      this.i();
       this.c();
    }
 
-   default void ab_() {
+   default void i() {
       this.a(null);
       this.a(null);
       this.g(null);
@@ -99,5 +99,5 @@ public interface byk {
    boolean c(byf var1);
 
    @Nullable
-   byf f();
+   byf e();
 }

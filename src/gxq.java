@@ -147,10 +147,10 @@ public class gxq extends gxu<cng, hea> {
          $$1.d = null;
       }
 
-      cnq $$5 = $$0.t().a();
+      cnq $$5 = $$0.gr().a();
       $$1.e = $$5 == cnw.d || $$5 == cnw.e;
       $$1.f = $$5.a();
-      iw $$6 = $$0.dV().a(ehp.a.f, eku.a($$0.j()));
+      iw $$6 = $$0.dV().a(ehp.a.f, eku.a($$0.m()));
       $$1.g = $$6.b($$0.dt());
       $$1.h = $$0.eH() ? 0.0F : $$2;
       $$1.i.a($$0.b);
@@ -162,7 +162,7 @@ public class gxq extends gxu<cng, hea> {
       double $$4 = -azz.d((double)$$2, $$0.ab, $$0.dC());
       double $$5 = -azz.d((double)$$2, $$0.ac, $$0.dG());
 
-      for (cnd $$6 : $$0.q()) {
+      for (cnd $$6 : $$0.gq()) {
          ffx $$7 = $$6.cR();
          heq $$8 = new heq(
             $$7.a - $$6.dA(),

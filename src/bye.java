@@ -35,7 +35,7 @@ public class bye extends bxe {
    }
 
    @Nullable
-   public asc f() {
+   public asc e() {
       return this.h;
    }
 
@@ -43,8 +43,8 @@ public class bye extends bxe {
       this.h = $$0;
    }
 
-   private void m() {
-      iw $$0 = this.n();
+   private void l() {
+      iw $$0 = this.m();
       ebq $$1 = this.dV().a_($$0);
       if ($$1.a(dnq.ta)) {
          ((dsj)$$1.b()).d($$1, this.dV(), $$0);
@@ -52,8 +52,8 @@ public class bye extends bxe {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.e == 2) {
          if (this.dV().A_()) {
             this.dV().a(this.dA(), this.dC(), this.dG(), awy.oI, awz.d, 10000.0F, 0.8F + this.ae.i() * 0.2F, false);
@@ -64,8 +64,8 @@ public class bye extends bxe {
                this.b(4);
             }
 
-            this.m();
-            b(this.dV(), this.n());
+            this.l();
+            b(this.dV(), this.m());
             this.a(egq.G);
          }
       }
@@ -114,7 +114,7 @@ public class bye extends bxe {
       }
    }
 
-   private iw n() {
+   private iw m() {
       fgc $$0 = this.dt();
       return iw.a($$0.d, $$0.e - 1.0E-6, $$0.f);
    }
@@ -207,11 +207,11 @@ public class bye extends bxe {
    protected void b(ua $$0) {
    }
 
-   public int g() {
+   public int f() {
       return this.j;
    }
 
-   public Stream<bxe> j() {
+   public Stream<bxe> i() {
       return this.i.stream().filter(bxe::bJ);
    }
 

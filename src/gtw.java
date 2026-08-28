@@ -13,9 +13,9 @@ public class gtw<T extends dyo & dyi> implements gua<T> {
    @Override
    public void a(T $$0, float $$1, fld $$2, grn $$3, int $$4, int $$5, fgc $$6) {
       long $$7 = $$0.i().ae();
-      float $$8 = (float)$$6.d($$0.aC_().b()).i();
+      float $$8 = (float)$$6.d($$0.ax_().b()).i();
       gqm $$9 = fqq.Q().t;
-      float $$10 = $$9 != null && $$9.gH() ? 1.0F : Math.max(1.0F, $$8 / 96.0F);
+      float $$10 = $$9 != null && $$9.gI() ? 1.0F : Math.max(1.0F, $$8 / 96.0F);
       List<dyi.a> $$11 = $$0.a();
       int $$12 = 0;
 
@@ -108,12 +108,12 @@ public class gtw<T extends dyo & dyi> implements gua<T> {
    }
 
    @Override
-   public int aW_() {
+   public int aR_() {
       return fqq.Q().n.aH() * 16;
    }
 
    @Override
    public boolean a(T $$0, fgc $$1) {
-      return fgc.b($$0.aC_()).d(1.0, 0.0, 1.0).a((jq)$$1.d(1.0, 0.0, 1.0), (double)this.aW_());
+      return fgc.b($$0.ax_()).d(1.0, 0.0, 1.0).a((jq)$$1.d(1.0, 0.0, 1.0), (double)this.aR_());
    }
 }

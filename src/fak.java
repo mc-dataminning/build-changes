@@ -31,7 +31,7 @@ public class fak {
          Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
          ag.a($$4, $$3, $$5);
       } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ai().getString());
+         b.warn("Failed to save player data for {}", $$0.ah().getString());
       }
    }
 
@@ -43,7 +43,7 @@ public class fak {
          try {
             Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
          } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ai().getString(), var7);
+            b.warn("Failed to copy the player.dat file for {}", $$0.ah().getString(), var7);
          }
       }
    }
@@ -54,7 +54,7 @@ public class fak {
          try {
             return Optional.of(un.a($$2.toPath(), uj.a()));
          } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ai().getString());
+            b.warn("Failed to load player data for {}", $$0.ah().getString());
          }
       }
 

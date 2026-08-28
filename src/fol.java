@@ -24,13 +24,13 @@ public class fol extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.D.a(b, this.p);
       this.G = this.D.c(new fol.b());
       this.E();
       fxq $$0 = this.D.b(fxq.e().a(8));
       $$0.a(fty.a(xg.c("mco.configure.world.buttons.invite"), $$0x -> this.m.a(new fof(this.E, this, this.F))).a());
-      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      $$0.a(fty.a(xf.k, $$0x -> this.aL_()).a());
       this.D.a($$1 -> {
          ftw var10000 = this.c($$1);
       });
@@ -47,16 +47,16 @@ public class fol extends hrc {
 
    void E() {
       if (this.G != null) {
-         this.G.aJ_().clear();
+         this.G.aE_().clear();
 
          for (fmn $$0 : this.F.h) {
-            this.G.aJ_().add(new fol.a($$0));
+            this.G.aE_().add(new fol.a($$0));
          }
       }
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.F();
    }
 
@@ -171,7 +171,7 @@ public class fol extends hrc {
       }
 
       @Override
-      public List<? extends fvv> aJ_() {
+      public List<? extends fvv> aE_() {
          return ImmutableList.of(this.g(), this.k);
       }
 

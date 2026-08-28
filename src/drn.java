@@ -87,7 +87,7 @@ public class drn extends dri {
          $$0.i(new fgc($$1.d, c(-0.05), $$1.f));
       }
 
-      $$0.k();
+      $$0.j();
    }
 
    private void a(dkj $$0, bxe $$1) {

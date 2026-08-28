@@ -4,17 +4,17 @@ public abstract class cor extends ctz {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
    }
 
-   public cor.a j() {
+   public cor.a m() {
       return cor.a.a;
    }
 
    @Override
    public boolean c(byf $$0) {
-      return $$0 instanceof crp && $$0.n_() ? false : super.c($$0);
+      return $$0 instanceof crp && $$0.e_() ? false : super.c($$0);
    }
 
    @Override
@@ -44,7 +44,7 @@ public abstract class cor extends ctz {
 
       @Override
       public boolean b() {
-         return super.b() && cor.this.gI();
+         return super.b() && cor.this.gL();
       }
    }
 }

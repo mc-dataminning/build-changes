@@ -19,7 +19,7 @@ public class cii extends cin<byf> {
       Optional<byh> $$5 = $$4.a($$0x -> $$0x instanceof cqb || $$0x instanceof coa).map(byh.class::cast);
 
       for (byf $$7 : $$2.c(chh.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cqw && ((cqw)$$7).t()) {
+         if ($$7 instanceof cqw && ((cqw)$$7).gv()) {
             $$3.add((cqw)$$7);
          }
       }

@@ -23,7 +23,7 @@ public class fzr extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       hpb $$0 = this.m.V();
       this.z = $$0.u();
       this.A = $$0.aZ().m();
@@ -58,11 +58,11 @@ public class fzr extends fzq {
       this.C.c(xg.b(this.B + "").a(o.i));
       this.c(this.C);
       this.c($$1);
-      this.c(fty.a(xf.e, $$0x -> this.aQ_()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.c(fty.a(xf.e, $$0x -> this.aL_()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.y);
    }
 

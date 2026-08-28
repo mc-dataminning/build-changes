@@ -23,11 +23,11 @@ public class aqf {
 
    private static int a(ek $$0, Collection<? extends csi> $$1, int $$2) {
       for (csi $$3 : $$1) {
-         $$3.Z().ifPresent($$1x -> $$1x.a($$2));
+         $$3.Y().ifPresent($$1x -> $$1x.a($$2));
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
       }
@@ -37,11 +37,11 @@ public class aqf {
 
    private static int a(ek $$0, Collection<? extends csi> $$1) {
       for (csi $$2 : $$1) {
-         $$2.Z().ifPresent(crn::b);
+         $$2.Y().ifPresent(crn::b);
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
       }

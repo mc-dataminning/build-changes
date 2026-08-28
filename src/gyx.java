@@ -25,7 +25,7 @@ public class gyx extends gwp<cmh, hff, gig> {
    public void a(cmh $$0, hff $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.gH();
-      $$1.b = !$$0.n_() && $$0.t();
+      $$1.b = !$$0.e_() && $$0.p();
       $$1.c = $$0.fY();
       $$1.d = $$0.gx();
    }

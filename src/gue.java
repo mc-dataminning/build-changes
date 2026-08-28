@@ -3,8 +3,8 @@ import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 public class gue<S extends dyo> implements dpw.b<S, Int2IntFunction> {
    public Int2IntFunction a(S $$0, S $$1) {
       return $$2 -> {
-         int $$3 = gri.a($$0.i(), $$0.aC_());
-         int $$4 = gri.a($$1.i(), $$1.aC_());
+         int $$3 = gri.a($$0.i(), $$0.ax_());
+         int $$4 = gri.a($$1.i(), $$1.ax_());
          int $$5 = grk.a($$3);
          int $$6 = grk.a($$4);
          int $$7 = grk.b($$3);

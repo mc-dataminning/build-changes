@@ -86,7 +86,7 @@ public class eab extends dzx implements bvm {
          List<bxe> $$5 = $$0.a_(null, $$4);
          if (!$$5.isEmpty()) {
             for (bxe $$6 : $$5) {
-               if ($$6.j_() != eyf.d) {
+               if ($$6.i_() != eyf.d) {
                   $$6.a(byj.d, new fgc(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
                }
             }
@@ -128,7 +128,7 @@ public class eab extends dzx implements bvm {
 
    @Override
    public void c_(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
+      if (!this.p && !$$0.ak()) {
          if (this.r < 0) {
             this.r = 0;
          }
@@ -144,7 +144,7 @@ public class eab extends dzx implements bvm {
 
    @Override
    public void c(csi $$0) {
-      if (!this.p && !$$0.aa_()) {
+      if (!this.p && !$$0.ak()) {
          this.r--;
          this.n.a(this.o, this.m().b(), 1, this.r);
          if (this.r <= 0) {

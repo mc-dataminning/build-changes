@@ -29,7 +29,7 @@ public class cjy extends bzb {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bW = new cjy.c(this, 0.6, $$0 -> $$0.a(axv.aj), true);
       this.bF.a(1, new cev(this));
       this.bF.a(1, new bzb.a(1.5));
@@ -135,8 +135,8 @@ public class cjy extends bzb {
 
    @Override
    public void a(asb $$0) {
-      if (this.L().b()) {
-         double $$1 = this.L().c();
+      if (this.K().b()) {
+         double $$1 = this.K().c();
          if ($$1 == 0.6) {
             this.b(byr.f);
             this.h(false);
@@ -155,8 +155,8 @@ public class cjy extends bzb {
 
    @Nullable
    @Override
-   protected awx u() {
-      if (this.q()) {
+   protected awx s() {
+      if (this.m()) {
          if (this.gE()) {
             return awy.eb;
          } else {
@@ -168,7 +168,7 @@ public class cjy extends bzb {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 120;
    }
 
@@ -182,7 +182,7 @@ public class cjy extends bzb {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.dW;
    }
 
@@ -196,9 +196,9 @@ public class cjy extends bzb {
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.bW != null && this.bW.i() && !this.q() && this.af % 100 == 0) {
+   public void g() {
+      super.g();
+      if (this.bW != null && this.bW.i() && !this.m() && this.af % 100 == 0) {
          this.a(awy.dZ, 1.0F, 1.0F);
       }
 
@@ -272,7 +272,7 @@ public class cjy extends bzb {
             $$2.j($$3.gG());
          }
 
-         if (this.q()) {
+         if (this.m()) {
             $$2.a(this.d());
             $$2.a(true, true);
             czi $$4 = this.gI();
@@ -286,10 +286,10 @@ public class cjy extends bzb {
 
    @Override
    public boolean a(cjv $$0) {
-      if (!this.q()) {
+      if (!this.m()) {
          return false;
       } else {
-         return !($$0 instanceof cjy $$1) ? false : $$1.q() && super.a($$0);
+         return !($$0 instanceof cjy $$1) ? false : $$1.m() && super.a($$0);
       }
    }
 
@@ -305,7 +305,7 @@ public class cjy extends bzb {
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
       dag $$3 = $$2.h();
-      if (this.q()) {
+      if (this.m()) {
          if (this.j($$0)) {
             if ($$3 instanceof czj $$4) {
                czi $$5 = $$4.a();
@@ -363,7 +363,7 @@ public class cjy extends bzb {
 
    @Override
    public boolean h(double $$0) {
-      return !this.q() && this.af > 2400;
+      return !this.m() && this.af > 2400;
    }
 
    @Override
@@ -378,7 +378,7 @@ public class cjy extends bzb {
       }
 
       this.bF.a(this.bV);
-      if (!this.q()) {
+      if (!this.m()) {
          this.bF.a(4, this.bV);
       }
    }
@@ -408,12 +408,12 @@ public class cjy extends bzb {
 
       @Override
       public boolean b() {
-         return !this.i.q() && super.b();
+         return !this.i.m() && super.b();
       }
 
       @Override
       public boolean c() {
-         return !this.i.q() && super.c();
+         return !this.i.m() && super.c();
       }
    }
 
@@ -431,12 +431,12 @@ public class cjy extends bzb {
 
       @Override
       public boolean b() {
-         if (!this.a.q()) {
+         if (!this.a.m()) {
             return false;
          } else if (this.a.gu()) {
             return false;
          } else {
-            byf $$0 = this.a.e();
+            byf $$0 = this.a.T_();
             if ($$0 instanceof csi $$1) {
                this.b = $$1;
                if (!$$0.fR()) {
@@ -471,14 +471,14 @@ public class cjy extends bzb {
 
       @Override
       public boolean c() {
-         return this.a.q() && !this.a.gu() && this.b != null && this.b.fR() && this.c != null && !this.h();
+         return this.a.m() && !this.a.gu() && this.b != null && this.b.fR() && this.c != null && !this.h();
       }
 
       @Override
       public void d() {
          if (this.c != null) {
             this.a.x(false);
-            this.a.O().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
+            this.a.N().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
          }
       }
 
@@ -492,13 +492,13 @@ public class cjy extends bzb {
 
          this.d = 0;
          this.a.A(false);
-         this.a.O().m();
+         this.a.N().m();
       }
 
       private void i() {
          bai $$0 = this.a.dY();
          iw.a $$1 = new iw.a();
-         $$1.g(this.a.T_() ? this.a.C().dv() : this.a.dv());
+         $$1.g(this.a.Q_() ? this.a.B().dv() : this.a.dv());
          this.a.b((double)($$1.u() + $$0.a(11) - 5), (double)($$1.v() + $$0.a(5) - 2), (double)($$1.w() + $$0.a(11) - 5), false);
          $$1.g(this.a.dv());
          this.a
@@ -521,7 +521,7 @@ public class cjy extends bzb {
       public void a() {
          if (this.b != null && this.c != null) {
             this.a.x(false);
-            this.a.O().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
+            this.a.N().a((double)this.c.u(), (double)this.c.v(), (double)this.c.w(), 1.1F);
             if (this.a.g(this.b) < 2.5) {
                this.d++;
                if (this.d > this.a(16)) {
@@ -565,7 +565,7 @@ public class cjy extends bzb {
 
       @Override
       public boolean b() {
-         return super.b() && !this.d.q();
+         return super.b() && !this.d.m();
       }
    }
 }

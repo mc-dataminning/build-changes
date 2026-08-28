@@ -10,7 +10,7 @@ public interface dfb<T extends dfh> {
 
    dak a(T var1, ji.a var2);
 
-   default boolean ar_() {
+   default boolean am_() {
       return false;
    }
 
@@ -26,7 +26,7 @@ public interface dfb<T extends dfh> {
 
    dfm<? extends dfb<T>> b();
 
-   dfa aq_();
+   dfa al_();
 
    default List<dgh> g() {
       return List.of();

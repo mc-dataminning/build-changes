@@ -177,12 +177,12 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return fgt.c($$2, fgt.a(this.cR()), fgg.i);
    }
 
-   public int f_() {
+   public int m_() {
       fhj $$0 = this.cq();
       return $$0 != null && $$0.o().f() != null ? $$0.o().f() : 16777215;
    }
 
-   public boolean aa_() {
+   public boolean ak() {
       return false;
    }
 
@@ -327,7 +327,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       }
    }
 
-   public void h() {
+   public void g() {
       this.aw();
    }
 
@@ -351,7 +351,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       this.aw = this.av;
       this.av = false;
       this.bo();
-      this.o();
+      this.m();
       this.bn();
       if (this.dV() instanceof asb $$1) {
          if (this.aK > 0) {
@@ -415,7 +415,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return this.aY > 0;
    }
 
-   protected void M() {
+   protected void L() {
       if (this.aA()) {
          this.aY--;
       }
@@ -546,7 +546,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             if (this.Z != 0.0 && $$4 >= 1.0) {
                ffy $$5 = this.dV().a(new djq(this.dt(), this.dt().e($$3), djq.a.d, djq.b.d, this));
                if ($$5.d() != fga.a.a) {
-                  this.k();
+                  this.j();
                }
             }
 
@@ -1031,7 +1031,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    private void c(iw $$0, ebq $$1) {
       this.b($$0, $$1);
       if (this.d($$1)) {
-         this.j();
+         this.l();
       }
    }
 
@@ -1069,7 +1069,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return $$0.a(axn.bp) && this.af >= this.bi + 20;
    }
 
-   private void j() {
+   private void l() {
       this.bh = this.bh * (float)Math.pow(0.997, (double)(this.af - this.bi));
       this.bh = Math.min(1.0F, this.bh + 0.07F);
       float $$0 = 0.5F + this.bh * this.ae.i() * 1.2F;
@@ -1160,7 +1160,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             this.dV().a(egq.A, this.aA, egq.a.a(this, this.ax.<ebq>map($$0x -> this.dV().a_($$0x)).orElse($$2)));
          }
 
-         this.k();
+         this.j();
       }
    }
 
@@ -1233,14 +1233,14 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             this.bq();
          }
 
-         this.k();
+         this.j();
          this.ag = true;
       } else {
          this.ag = false;
       }
    }
 
-   private void o() {
+   private void m() {
       this.ai = this.a(axs.a);
       this.aL.clear();
       double $$0 = this.dE();
@@ -1294,7 +1294,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public boolean bt() {
-      return this.ci() && !this.bi() && !this.aa_() && !this.ch() && !this.bv() && this.bJ();
+      return this.ci() && !this.bi() && !this.ak() && !this.ch() && !this.bv() && this.bJ();
    }
 
    protected void bu() {
@@ -1658,7 +1658,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
          $$0.a("Invulnerable", this.aZ);
          $$0.a("PortalCooldown", this.aY);
          $$0.a("UUID", ka.a, this.cG());
-         xg $$1 = this.ak();
+         xg $$1 = this.aj();
          if ($$1 != null) {
             alp<va> $$2 = this.dX().a(uo.a);
             $$0.a("CustomName", xi.a, $$2, $$1);
@@ -1813,7 +1813,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
          return null;
       } else {
          coo $$3 = new coo($$0, this.dA(), this.dC() + (double)$$2, this.dG(), $$1);
-         $$3.j();
+         $$3.i();
          $$0.b($$3);
          return $$3;
       }
@@ -1838,12 +1838,12 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
 
    public bvc a(csi $$0, bvb $$1) {
       if (this.bJ() && this instanceof byd $$2) {
-         if ($$2.C() == $$0) {
+         if ($$2.B() == $$0) {
             if (!this.dV().A_()) {
                if ($$0.fV()) {
-                  $$2.z();
-               } else {
                   $$2.y();
+               } else {
+                  $$2.x();
                }
 
                this.a(egq.r, $$0);
@@ -1853,7 +1853,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
          }
 
          dak $$3 = $$0.b($$1);
-         if ($$3.a(dao.vV) && $$2.p()) {
+         if ($$3.a(dao.vV) && $$2.R_()) {
             if (!this.dV().A_()) {
                $$2.a_($$0, true);
             }
@@ -1874,9 +1874,9 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return false;
    }
 
-   public void r() {
+   public void q() {
       this.i(fgc.c);
-      this.h();
+      this.g();
       if (this.bY()) {
          this.dk().j(this);
       }
@@ -1944,7 +1944,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             this.b(byr.a);
             this.ay = $$0;
             this.ay.p(this);
-            $$0.D().filter($$0x -> $$0x instanceof asc).forEach($$0x -> aq.U.a((asc)$$0x));
+            $$0.C().filter($$0x -> $$0x instanceof asc).forEach($$0x -> aq.U.a((asc)$$0x));
             return true;
          } else {
             return false;
@@ -1962,7 +1962,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       }
    }
 
-   public void ab() {
+   public void aa() {
       if (this.ay != null) {
          bxe $$0 = this.ay;
          this.ay = null;
@@ -1971,7 +1971,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public void bO() {
-      this.ab();
+      this.aa();
    }
 
    protected void p(bxe $$0) {
@@ -2019,11 +2019,11 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public final boolean bQ() {
-      return this.S_() != null && this.S_().d();
+      return this.l_() != null && this.l_().d();
    }
 
    public final void d(fgc $$0, float $$1, float $$2) {
-      bya $$3 = this.S_();
+      bya $$3 = this.l_();
       if ($$3 != null) {
          $$3.a($$0, $$1, $$2);
       } else {
@@ -2033,7 +2033,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    @Nullable
-   public bya S_() {
+   public bya l_() {
       return null;
    }
 
@@ -2082,7 +2082,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
 
    protected void bV() {
       if (this.dV() instanceof asb $$0) {
-         this.M();
+         this.L();
          if (this.as != null) {
             if (this.as.a($$0, this, this.n(false))) {
                brm $$2 = brl.a();
@@ -2217,7 +2217,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public boolean d(csi $$0) {
-      if ($$0.aa_()) {
+      if ($$0.ak()) {
          return false;
       } else {
          fhj $$1 = this.cq();
@@ -2352,7 +2352,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       }
 
       $$0.n($$2.d, $$3, $$2.f);
-      $$0.k();
+      $$0.j();
    }
 
    public boolean a(asb $$0, byf $$1) {
@@ -2365,7 +2365,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       }
    }
 
-   public void k() {
+   public void j() {
       this.Z = 0.0;
    }
 
@@ -2401,7 +2401,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public void a(ebq $$0, fgc $$1) {
-      this.k();
+      this.j();
       this.U = $$1;
    }
 
@@ -2416,8 +2416,8 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    @Override
-   public xg ai() {
-      xg $$0 = this.ak();
+   public xg ah() {
+      xg $$0 = this.aj();
       return $$0 != null ? a($$0) : this.cz();
    }
 
@@ -2455,7 +2455,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             Locale.ROOT,
             "%s['%s'/%d, l='%s', x=%.2f, y=%.2f, z=%.2f, removed=%s]",
             this.getClass().getSimpleName(),
-            this.ai().getString(),
+            this.ah().getString(),
             this.t,
             $$0,
             this.dA(),
@@ -2467,7 +2467,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
             Locale.ROOT,
             "%s['%s'/%d, l='%s', x=%.2f, y=%.2f, z=%.2f]",
             this.getClass().getSimpleName(),
-            this.ai().getString(),
+            this.ah().getString(),
             this.t,
             $$0,
             this.dA(),
@@ -2623,7 +2623,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    protected void cD() {
       this.c(bxe.d.e);
       if (this instanceof byd $$0) {
-         $$0.z();
+         $$0.y();
       }
    }
 
@@ -2659,14 +2659,14 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return 3;
    }
 
-   public boolean g_() {
+   public boolean n_() {
       return false;
    }
 
    public void a(q $$0) {
       $$0.a("Entity Type", () -> bxn.a(this.an()) + " (" + this.getClass().getCanonicalName() + ")");
       $$0.a("Entity ID", this.t);
-      $$0.a("Entity Name", () -> this.ai().getString());
+      $$0.a("Entity Name", () -> this.ah().getString());
       $$0.a("Entity's Exact location", String.format(Locale.ROOT, "%.2f, %.2f, %.2f", this.dA(), this.dC(), this.dG()));
       $$0.a("Entity's Block location", q.a(this.dV(), azz.a(this.dA()), azz.a(this.dC()), azz.a(this.dG())));
       fgc $$1 = this.dy();
@@ -2676,7 +2676,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public boolean cF() {
-      return this.bX() && !this.aa_();
+      return this.bX() && !this.ak();
    }
 
    public void a_(UUID $$0) {
@@ -2711,8 +2711,8 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    @Override
-   public xg m_() {
-      return fhc.a(this.cq(), this.ai()).a($$0 -> $$0.a(this.cQ()).a(this.cH()));
+   public xg P_() {
+      return fhc.a(this.cq(), this.ah()).a($$0 -> $$0.a(this.cQ()).a(this.cH()));
    }
 
    public void b(@Nullable xg $$0) {
@@ -2721,12 +2721,12 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
 
    @Nullable
    @Override
-   public xg ak() {
+   public xg aj() {
       return this.al.a(aR).orElse(null);
    }
 
    @Override
-   public boolean h_() {
+   public boolean g_() {
       return this.al.a(aR).isPresent();
    }
 
@@ -2750,11 +2750,11 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    public void b(double $$0, double $$1, double $$2) {
       if (this.dV() instanceof asb) {
          this.b($$0, $$1, $$2, this.dL(), this.dN());
-         this.v();
+         this.n();
       }
    }
 
-   private void v() {
+   private void n() {
       this.da().forEach($$0 -> {
          UnmodifiableIterator var1 = $$0.u.iterator();
 
@@ -2780,7 +2780,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    @Override
    public void a(aku<?> $$0) {
       if (aq.equals($$0)) {
-         this.i_();
+         this.h_();
       }
    }
 
@@ -2792,7 +2792,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       this.bf = $$1.c();
    }
 
-   public void i_() {
+   public void h_() {
       bxh $$0 = this.be;
       byr $$1 = this.at();
       bxh $$2 = this.a($$1);
@@ -2838,7 +2838,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    protected xm cQ() {
-      return new xm.c(new xm.b(this.an(), this.cG(), this.ai()));
+      return new xm.c(new xm.b(this.an(), this.cG(), this.ah()));
    }
 
    public boolean a(asc $$0) {
@@ -2962,13 +2962,13 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return false;
    }
 
-   private Stream<bxe> D() {
+   private Stream<bxe> C() {
       return this.u.stream().flatMap(bxe::da);
    }
 
    @Override
    public Stream<bxe> da() {
-      return Stream.concat(Stream.of(this), this.D());
+      return Stream.concat(Stream.of(this), this.C());
    }
 
    @Override
@@ -2977,11 +2977,11 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public Iterable<bxe> dc() {
-      return () -> this.D().iterator();
+      return () -> this.C().iterator();
    }
 
    public int dd() {
-      return (int)this.D().filter($$0 -> $$0 instanceof csi).count();
+      return (int)this.C().filter($$0 -> $$0 instanceof csi).count();
    }
 
    public boolean de() {
@@ -3012,7 +3012,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public final boolean dg() {
-      return this.az.A_() ? this.dh() : !this.Q_();
+      return this.az.A_() ? this.dh() : !this.Z_();
    }
 
    protected boolean dh() {
@@ -3020,9 +3020,9 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return $$0 != null && $$0.dh();
    }
 
-   public boolean Q_() {
+   public boolean Z_() {
       byf $$0 = this.cW();
-      return $$0 != null && $$0.Q_();
+      return $$0 != null && $$0.Z_();
    }
 
    public boolean di() {
@@ -3055,7 +3055,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return this.ay != null && this.ay.cW() == this ? this.ay : null;
    }
 
-   public eyf j_() {
+   public eyf i_() {
       return eyf.a;
    }
 
@@ -3068,7 +3068,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    }
 
    public ek d(asb $$0) {
-      return new ek(ej.a, this.dt(), this.bT(), $$0, 0, this.ai().getString(), this.m_(), $$0.p(), this);
+      return new ek(ej.a, this.dt(), this.bT(), $$0, 0, this.ah().getString(), this.P_(), $$0.p(), this);
    }
 
    public void a(ew.a $$0, fgc $$1) {
@@ -3462,9 +3462,9 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
       return this.ae;
    }
 
-   public fgc ae() {
+   public fgc ad() {
       if (this.cW() instanceof csi $$0 && this.bJ()) {
-         return $$0.ae();
+         return $$0.ad();
       }
 
       return this.dy();
@@ -3492,7 +3492,7 @@ public abstract class bxe implements akx, bvf, efv, fhg, kg {
    @Override
    public <T> T a(kk<? extends T> $$0) {
       if ($$0 == kl.g) {
-         return c((kk<T>)$$0, this.ak());
+         return c((kk<T>)$$0, this.aj());
       } else {
          return $$0 == kl.b ? c((kk<T>)$$0, this.bp) : null;
       }

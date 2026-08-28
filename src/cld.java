@@ -12,7 +12,7 @@ public abstract class cld extends byn {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 120;
    }
 

@@ -235,7 +235,7 @@ public class dzr extends dzx implements dzq {
 
    public static boolean a(buv $$0, coo $$1) {
       boolean $$2 = false;
-      dak $$3 = $$1.f().v();
+      dak $$3 = $$1.e().v();
       dak $$4 = a(null, $$0, $$3, null);
       if ($$4.f()) {
          $$2 = true;
@@ -337,7 +337,7 @@ public class dzr extends dzx implements dzq {
    }
 
    public static List<coo> b(dkj $$0, dzq $$1) {
-      ffx $$2 = $$1.an_().d($$1.B() - 0.5, $$1.C() - 0.5, $$1.D() - 0.5);
+      ffx $$2 = $$1.ai_().d($$1.B() - 0.5, $$1.C() - 0.5, $$1.D() - 0.5);
       return $$0.a(coo.class, $$2, bxl.a);
    }
 
@@ -425,7 +425,7 @@ public class dzr extends dzx implements dzq {
    }
 
    public static void a(dkj $$0, iw $$1, ebq $$2, bxe $$3, dzr $$4) {
-      if ($$3 instanceof coo $$5 && !$$5.f().f() && $$3.cR().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.an_())) {
+      if ($$3 instanceof coo $$5 && !$$5.e().f() && $$3.cR().d((double)(-$$1.u()), (double)(-$$1.v()), (double)(-$$1.w())).c($$4.ai_())) {
          a($$0, $$1, $$2, $$4, () -> a((buv)$$4, $$5));
       }
    }

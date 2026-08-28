@@ -10,7 +10,7 @@ public class cvf extends cuv {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.ov;
    }
 
@@ -30,8 +30,8 @@ public class cvf extends cuv {
    protected void a(ua $$0) {
       super.a($$0);
       this.d.b($$0, this.dX());
-      this.ar().a(b, this.q().m());
-      this.ar().a(c, this.q().l());
+      this.ar().a(b, this.e().m());
+      this.ar().a(c, this.e().l());
    }
 
    @Override
@@ -45,14 +45,14 @@ public class cvf extends cuv {
       return dnq.gm.m();
    }
 
-   public dji q() {
+   public dji e() {
       return this.d;
    }
 
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
       if ($$3 && this.af - this.i >= 4) {
-         this.q().a(this.dV());
+         this.e().a(this.dV());
          this.i = this.af;
       }
    }
@@ -98,7 +98,7 @@ public class cvf extends cuv {
 
       @Override
       public ek i() {
-         return new ek(this, cvf.this.dt(), cvf.this.bT(), this.e(), 2, this.n().getString(), cvf.this.m_(), this.e().p(), cvf.this);
+         return new ek(this, cvf.this.dt(), cvf.this.bT(), this.e(), 2, this.n().getString(), cvf.this.P_(), this.e().p(), cvf.this);
       }
 
       @Override

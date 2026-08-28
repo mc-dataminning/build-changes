@@ -19,7 +19,7 @@ public class car extends bzw<cru> {
    protected boolean a(asb $$0, cru $$1) {
       if (!$$0.O().c(dkf.d)) {
          return false;
-      } else if (!$$1.gC().b().a(crx.g)) {
+      } else if (!$$1.gF().b().a(crx.g)) {
          return false;
       } else {
          iw.a $$2 = $$1.dv().k();
@@ -77,8 +77,8 @@ public class car extends bzw<cru> {
                $$0.a(this.e, true, $$1);
             }
 
-            if ($$3.l() && $$5 instanceof dqn && $$1.gN()) {
-               bvj $$6 = $$1.n();
+            if ($$3.l() && $$5 instanceof dqn && $$1.gO()) {
+               bvj $$6 = $$1.u();
 
                for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
                   dak $$8 = $$6.a($$7);

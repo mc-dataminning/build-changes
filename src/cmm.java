@@ -33,8 +33,8 @@ public class cmm extends cmh {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(1, new cfu(this, 2.0));
       this.bG.a(1, new cmm.a(this));
       this.bG.a(2, new cgu<>(this, cqd.class, true, ($$0, $$1) -> $$0.an() != bxn.bS));
@@ -48,15 +48,15 @@ public class cmm extends cmh {
 
    @Override
    protected void a(csi $$0) {
-      bxe $$1 = this.C();
+      bxe $$1 = this.B();
       if (!($$1 instanceof csa)) {
          super.a($$0);
       }
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C) {
          this.hh();
       }
@@ -64,9 +64,9 @@ public class cmm extends cmh {
 
    private void hh() {
       if (this.hi()) {
-         this.bJ = this.hj() ? ((csa)this.C()).gC() - 1 : this.bJ - 1;
+         this.bJ = this.hj() ? ((csa)this.B()).gD() - 1 : this.bJ - 1;
          if (this.bJ <= 0) {
-            this.z();
+            this.y();
             this.aq();
          }
       }
@@ -77,11 +77,11 @@ public class cmm extends cmh {
    }
 
    private boolean hj() {
-      return this.C() instanceof csa;
+      return this.B() instanceof csa;
    }
 
    private boolean hk() {
-      return this.T_() && !this.hj();
+      return this.Q_() && !this.hj();
    }
 
    @Nullable
@@ -111,9 +111,9 @@ public class cmm extends cmh {
 
       @Override
       public boolean b() {
-         if (!this.a.T_()) {
+         if (!this.a.Q_()) {
             return false;
-         } else if (!(this.a.C() instanceof csa $$1)) {
+         } else if (!(this.a.B() instanceof csa $$1)) {
             return false;
          } else {
             this.b = $$1.er();
@@ -125,7 +125,7 @@ public class cmm extends cmh {
       @Override
       public void d() {
          this.e.g(this.b);
-         bxe $$0 = this.a.C();
+         bxe $$0 = this.a.B();
          if ($$0 instanceof csa) {
             this.c = ((csa)$$0).et();
          }

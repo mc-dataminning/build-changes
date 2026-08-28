@@ -74,7 +74,7 @@ public class dqc extends dna {
    protected bve b(ebq $$0, dkj $$1, iw $$2) {
       dyo $$3 = $$1.c_($$2);
       if ($$3 instanceof dzl) {
-         xg $$4 = ((bvf)$$3).m_();
+         xg $$4 = ((bvf)$$3).P_();
          return new bvk(($$2x, $$3x, $$4x) -> new cwx($$2x, $$3x, cwo.a($$1, $$2)), $$4);
       } else {
          return null;

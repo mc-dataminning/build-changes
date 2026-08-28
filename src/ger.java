@@ -72,7 +72,7 @@ public class ger extends fzq {
    private static void a(fqq $$0, @Nullable fzq $$1, Function<amp.a, eil> $$2, gfc $$3, alq<esc> $$4, geq $$5) {
       a($$0, y);
       auz $$6 = new auz(new avc($$0.be()));
-      dlh $$7 = ac.aU ? new dlh(new djw(List.of("vanilla", "tests"), List.of()), cvu.h) : dlh.d;
+      dlh $$7 = ac.aV ? new dlh(new djw(List.of("vanilla", "tests"), List.of()), cvu.h) : dlh.d;
       amp.c $$8 = a($$6, $$7);
       CompletableFuture<gfb> $$9 = amp.a($$8, $$1x -> new amp.b<>(new ges($$2.apply($$1x), $$1x.b()), $$1x.d()), ($$1x, $$2x, $$3x, $$4x) -> {
          $$1x.close();
@@ -114,7 +114,7 @@ public class ger extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.K = fwd.a(this.D, this.n).a(new ger.a(), new ger.c(), new ger.b()).a();
       this.c(this.K);
       fxq $$0 = this.B.b(fxq.e().a(8));
@@ -130,7 +130,7 @@ public class ger extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
    }
 
    @Override
@@ -211,7 +211,7 @@ public class ger extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.E();
    }
 

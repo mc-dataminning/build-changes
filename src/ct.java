@@ -20,7 +20,7 @@ public record ct(cx.d c, Optional<bz> d) implements ca {
 
    @Override
    public boolean a(bxe $$0, asb $$1, @Nullable fgc $$2) {
-      return !($$0 instanceof bye $$3) ? false : this.c.d($$3.g()) && (this.d.isEmpty() || $$3.j().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+      return !($$0 instanceof bye $$3) ? false : this.c.d($$3.f()) && (this.d.isEmpty() || $$3.i().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cx.d b() {

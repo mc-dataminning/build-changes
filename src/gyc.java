@@ -8,7 +8,7 @@ public class gyc extends gxu<csz, hek> {
    }
 
    public boolean a(csz $$0, gvh $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) && $$0.g() != null;
+      return super.a($$0, $$1, $$2, $$3, $$4) && $$0.f() != null;
    }
 
    public void a(hek $$0, fld $$1, grn $$2, int $$3) {
@@ -88,7 +88,7 @@ public class gyc extends gxu<csz, hek> {
 
    public void a(csz $$0, hek $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      csi $$3 = $$0.g();
+      csi $$3 = $$0.f();
       if ($$3 == null) {
          $$1.a = fgc.c;
       } else {

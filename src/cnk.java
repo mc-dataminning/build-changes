@@ -17,9 +17,9 @@ public class cnk extends cni {
    public void a(asb $$0) {
       if (this.d == null) {
          b.warn("Aborting charge player as no target was set.");
-         this.a.t().a(cnw.a);
+         this.a.gr().a(cnw.a);
       } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.t().a(cnw.a);
+         this.a.gr().a(cnw.a);
       } else {
          double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
          if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {

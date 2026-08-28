@@ -106,7 +106,7 @@ public class dvd extends dpx implements dnr, duz {
    }
 
    @Override
-   protected float av_() {
+   protected float aq_() {
       return 0.1F;
    }
 }

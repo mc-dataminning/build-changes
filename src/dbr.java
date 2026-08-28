@@ -125,7 +125,7 @@ public class dbr extends dag {
             return Optional.empty();
          } else {
             $$6.a(true);
-            if (!$$6.n_()) {
+            if (!$$6.e_()) {
                return Optional.empty();
             } else {
                $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
@@ -140,7 +140,7 @@ public class dbr extends dag {
 
    @Override
    public boolean a(dak $$0, @Nullable csi $$1) {
-      if ($$1 != null && $$1.G() >= 2) {
+      if ($$1 != null && $$1.F() >= 2) {
          dcs $$2 = $$0.a(kl.Y);
          if ($$2 != null) {
             bxn<?> $$3 = $$2.a($$1.dV().J_(), mi.B);

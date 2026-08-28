@@ -6,7 +6,7 @@ public class cmf extends cmd {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.hD;
    }
 
@@ -16,7 +16,7 @@ public class cmf extends cmd {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.hG;
    }
 

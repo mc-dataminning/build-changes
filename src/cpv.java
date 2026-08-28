@@ -9,9 +9,9 @@ public class cpv extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cev(this));
-      this.bF.a(2, new cei<>(this, clh.class, 6.0F, 1.0, 1.2, $$0 -> !((clh)$$0).t()));
+      this.bF.a(2, new cei<>(this, clh.class, 6.0F, 1.0, 1.2, $$0 -> !((clh)$$0).p()));
       this.bF.a(3, new cfh(this, 0.4F));
       this.bF.a(4, new cpv.a(this));
       this.bF.a(5, new cgo(this, 0.8));
@@ -34,19 +34,19 @@ public class cpv extends cpk {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (!this.dV().C) {
          this.w(this.P);
       }
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.s, 16.0).a(bzl.v, 0.3F);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.s, 16.0).a(bzl.v, 0.3F);
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.zP;
    }
 
@@ -56,7 +56,7 @@ public class cpv extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.zQ;
    }
 
@@ -66,8 +66,8 @@ public class cpv extends cpk {
    }
 
    @Override
-   public boolean d_() {
-      return this.n();
+   public boolean k_() {
+      return this.u();
    }
 
    @Override
@@ -82,7 +82,7 @@ public class cpv extends cpk {
       return $$0.a(bwk.s) ? false : super.b($$0);
    }
 
-   public boolean n() {
+   public boolean u() {
       return (this.al.a(a) & 1) != 0;
    }
 

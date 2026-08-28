@@ -89,7 +89,7 @@ public class gcm extends fuu<gcm.a> {
 
       for (int $$3 = this.Q.size() - $$1; $$3 < this.Q.size(); $$3++) {
          gcm.c $$4 = this.Q.get($$3);
-         int $$5 = $$3 - this.Q.size() + this.aJ_().size();
+         int $$5 = $$3 - this.Q.size() + this.aE_().size();
          int $$6 = this.d($$5);
          int $$7 = this.e($$5);
          if ($$7 >= this.G() && $$6 <= this.I()) {
@@ -375,7 +375,7 @@ public class gcm extends fuu<gcm.a> {
       public boolean a(int $$0, int $$1, int $$2) {
          if (fzq.t()) {
             gcm $$3 = this.g.s;
-            int $$4 = $$3.aJ_().indexOf(this);
+            int $$4 = $$3.aE_().indexOf(this);
             if ($$4 == -1) {
                return true;
             }
@@ -392,7 +392,7 @@ public class gcm extends fuu<gcm.a> {
       private void a(int $$0, int $$1) {
          this.g.G().a($$0, $$1);
          this.g.s.a(this.g.G());
-         gcm.a $$2 = this.g.s.aJ_().get($$1);
+         gcm.a $$2 = this.g.s.aE_().get($$1);
          this.g.s.a($$2);
          gcm.this.f($$2);
       }
@@ -400,7 +400,7 @@ public class gcm extends fuu<gcm.a> {
       @Override
       public boolean a(double $$0, double $$1, int $$2) {
          double $$3 = $$0 - (double)gcm.this.u();
-         double $$4 = $$1 - (double)gcm.this.d(gcm.this.aJ_().indexOf(this));
+         double $$4 = $$1 - (double)gcm.this.d(gcm.this.aE_().indexOf(this));
          if ($$3 <= 32.0) {
             if ($$3 < 32.0 && $$3 > 16.0 && this.e()) {
                this.g.a(this);
@@ -408,7 +408,7 @@ public class gcm extends fuu<gcm.a> {
                return true;
             }
 
-            int $$5 = this.g.s.aJ_().indexOf(this);
+            int $$5 = this.g.s.aE_().indexOf(this);
             if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
                this.a($$5, $$5 - 1);
                return true;

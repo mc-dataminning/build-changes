@@ -11,8 +11,8 @@ public class cpd extends cpu {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(1, new cpd.b());
       this.bF.a(2, new cei<>(this, csi.class, 8.0F, 0.6, 1.0));
@@ -29,8 +29,8 @@ public class cpd extends cpu {
       this.bG.a(3, new cgu<>(this, ckl.class, false));
    }
 
-   public static bzk.a m() {
-      return cpk.gx().a(bzl.v, 0.5).a(bzl.m, 12.0).a(bzl.s, 24.0);
+   public static bzk.a p() {
+      return cpk.gA().a(bzl.v, 0.5).a(bzl.m, 12.0).a(bzl.s, 24.0);
    }
 
    @Override
@@ -44,7 +44,7 @@ public class cpd extends cpu {
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.iX;
    }
 
@@ -60,8 +60,8 @@ public class cpd extends cpu {
       } else if (super.t($$0)) {
          return true;
       } else {
-         if ($$0 instanceof cpy $$1 && $$1.m() != null) {
-            return this.t($$1.m());
+         if ($$0 instanceof cpy $$1 && $$1.u() != null) {
+            return this.t($$1.u());
          }
 
          return false;
@@ -69,12 +69,12 @@ public class cpd extends cpu {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.iV;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.iY;
    }
 
@@ -88,12 +88,12 @@ public class cpd extends cpu {
    }
 
    @Nullable
-   cmr gM() {
+   cmr gP() {
       return this.a;
    }
 
    @Override
-   protected awx q() {
+   protected awx gu() {
       return awy.iW;
    }
 
@@ -114,7 +114,7 @@ public class cpd extends cpu {
 
       @Override
       protected void k() {
-         byf $$0 = cpd.this.f();
+         byf $$0 = cpd.this.e();
          double $$1 = Math.min($$0.dC(), cpd.this.dC());
          double $$2 = Math.max($$0.dC(), cpd.this.dC()) + 1.0;
          float $$3 = (float)azz.d($$0.dG() - cpd.this.dG(), $$0.dA() - cpd.this.dA());
@@ -181,10 +181,10 @@ public class cpd extends cpu {
    class b extends cpu.b {
       @Override
       public void a() {
-         if (cpd.this.f() != null) {
-            cpd.this.J().a(cpd.this.f(), (float)cpd.this.af(), (float)cpd.this.ad());
-         } else if (cpd.this.gM() != null) {
-            cpd.this.J().a(cpd.this.gM(), (float)cpd.this.af(), (float)cpd.this.ad());
+         if (cpd.this.e() != null) {
+            cpd.this.I().a(cpd.this.e(), (float)cpd.this.ae(), (float)cpd.this.ac());
+         } else if (cpd.this.gP() != null) {
+            cpd.this.I().a(cpd.this.gP(), (float)cpd.this.ae(), (float)cpd.this.ac());
          }
       }
    }
@@ -248,13 +248,13 @@ public class cpd extends cpu {
    }
 
    public class d extends cpu.c {
-      private final ciu e = ciu.b().a(16.0).a(($$0x, $$1) -> ((cmr)$$0x).t() == czi.l);
+      private final ciu e = ciu.b().a(16.0).a(($$0x, $$1) -> ((cmr)$$0x).p() == czi.l);
 
       @Override
       public boolean b() {
-         if (cpd.this.f() != null) {
+         if (cpd.this.e() != null) {
             return false;
-         } else if (cpd.this.gB()) {
+         } else if (cpd.this.gE()) {
             return false;
          } else if (cpd.this.af < this.c) {
             return false;
@@ -276,7 +276,7 @@ public class cpd extends cpu {
 
       @Override
       public boolean c() {
-         return cpd.this.gM() != null && this.b > 0;
+         return cpd.this.gP() != null && this.b > 0;
       }
 
       @Override
@@ -287,7 +287,7 @@ public class cpd extends cpu {
 
       @Override
       protected void k() {
-         cmr $$0 = cpd.this.gM();
+         cmr $$0 = cpd.this.gP();
          if ($$0 != null && $$0.bJ()) {
             $$0.b(czi.o);
          }

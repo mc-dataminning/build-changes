@@ -112,9 +112,9 @@ public class apy {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.teleport.success.entity.single", $$1.iterator().next().m_(), $$2.m_()), true);
+         $$0.a(() -> xg.a("commands.teleport.success.entity.single", $$1.iterator().next().P_(), $$2.P_()), true);
       } else {
-         $$0.a(() -> xg.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.m_()), true);
+         $$0.a(() -> xg.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.P_()), true);
       }
 
       return $$1.size();
@@ -134,7 +134,7 @@ public class apy {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.teleport.success.location.single", $$1.iterator().next().m_(), a($$6.d), a($$6.e), a($$6.f)), true);
+         $$0.a(() -> xg.a("commands.teleport.success.location.single", $$1.iterator().next().P_(), a($$6.d), a($$6.e), a($$6.f)), true);
       } else {
          $$0.a(() -> xg.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.d), a($$6.e), a($$6.f)), true);
       }
@@ -203,7 +203,7 @@ public class apy {
             }
 
             if ($$1 instanceof byn $$19) {
-               $$19.O().m();
+               $$19.N().m();
             }
          }
       }

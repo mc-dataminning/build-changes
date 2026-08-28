@@ -20,14 +20,14 @@ public class gxh<T extends cqo> extends gzb<T, hdu, ghe> {
       $$1.b.a($$0.bI);
       $$1.a.a($$0.bJ);
       $$1.c.a($$0.bK);
-      if ($$0.gv()) {
+      if ($$0.gy()) {
          $$1.af = 0.0F;
          $$1.ap = false;
-         $$1.d = $$0.gy();
+         $$1.d = $$0.gB();
       } else {
-         $$1.d = $$0.gC();
+         $$1.d = $$0.gF();
       }
 
-      $$1.e = $$0.n();
+      $$1.e = $$0.u();
    }
 }

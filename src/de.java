@@ -39,10 +39,10 @@ public record de(cx.d d, ci e, List<de.e<?>> f, Object2BooleanMap<alq<dfb<?>>> g
          return false;
       } else if (!this.d.d($$3.cf)) {
          return false;
-      } else if (!this.e.a($$3.h.b())) {
+      } else if (!this.e.a($$3.a())) {
          return false;
       } else {
-         axj $$5 = $$3.I();
+         axj $$5 = $$3.H();
 
          for (de.e<?> $$6 : this.f) {
             if (!$$6.a($$5)) {
@@ -50,7 +50,7 @@ public record de(cx.d d, ci e, List<de.e<?>> f, Object2BooleanMap<alq<dfb<?>>> g
             }
          }
 
-         axd $$7 = $$3.J();
+         axd $$7 = $$3.I();
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
@@ -61,7 +61,7 @@ public record de(cx.d d, ci e, List<de.e<?>> f, Object2BooleanMap<alq<dfb<?>>> g
          }
 
          if (!this.h.isEmpty()) {
-            alz $$9 = $$3.S();
+            alz $$9 = $$3.R();
             ame $$10 = $$3.cV().aD();
 
             for (java.util.Map.Entry<alr, de.c> $$11 : this.h.entrySet()) {
@@ -76,7 +76,7 @@ public record de(cx.d d, ci e, List<de.e<?>> f, Object2BooleanMap<alq<dfb<?>>> g
             fgc $$13 = $$3.bD();
             fgc $$14 = $$3.h(1.0F);
             fgc $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            ffz $$16 = ctf.a($$3.dV(), $$3, $$13, $$15, new ffx($$13, $$15).g(1.0), $$0x -> !$$0x.aa_(), 0.0F);
+            ffz $$16 = ctf.a($$3.dV(), $$3, $$13, $$15, new ffx($$13, $$15).g(1.0), $$0x -> !$$0x.ak(), 0.0F);
             if ($$16 == null || $$16.d() != fga.a.c) {
                return false;
             }
@@ -87,7 +87,7 @@ public record de(cx.d d, ci e, List<de.e<?>> f, Object2BooleanMap<alq<dfb<?>>> g
             }
          }
 
-         return !this.j.isPresent() || this.j.get().a($$3.af());
+         return !this.j.isPresent() || this.j.get().a($$3.ae());
       }
    }
 

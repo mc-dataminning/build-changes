@@ -55,10 +55,10 @@ public class ant {
                      throw c.create($$8.y().getString());
                   }
                } else if ($$1.size() == 1) {
-                  throw b.create($$7.ai().getString());
+                  throw b.create($$7.ah().getString());
                }
             } else if ($$1.size() == 1) {
-               throw a.create($$6.ai().getString());
+               throw a.create($$6.ah().getString());
             }
          }
 
@@ -66,7 +66,7 @@ public class ant {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> xg.a("commands.enchant.success.single", dgx.a($$2, $$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> xg.a("commands.enchant.success.single", dgx.a($$2, $$3), $$1.iterator().next().P_()), true);
             } else {
                $$0.a(() -> xg.a("commands.enchant.success.multiple", dgx.a($$2, $$3), $$1.size()), true);
             }

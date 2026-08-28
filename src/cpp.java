@@ -27,8 +27,8 @@ public class cpp extends ctz {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(4, new cfl(this, 1.0, true));
       this.bF.a(5, new cgo(this, 0.4));
@@ -36,12 +36,12 @@ public class cpp extends ctz {
       this.bF.a(10, new cfj(this, byh.class, 8.0F));
       this.bG.a(2, new cgt(this, ctz.class).a());
       this.bG.a(3, new cgu<>(this, csi.class, true));
-      this.bG.a(4, new cgu<>(this, crp.class, true, ($$0, $$1) -> !$$0.n_()));
+      this.bG.a(4, new cgu<>(this, crp.class, true, ($$0, $$1) -> !$$0.e_()));
       this.bG.a(4, new cgu<>(this, ckl.class, true));
    }
 
    @Override
-   protected void V() {
+   protected void U() {
       boolean $$0 = !(this.cW() instanceof byh) || this.cW().an().a(axq.c);
       boolean $$1 = !(this.dk() instanceof cut);
       this.bF.a(cfb.a.a, $$0);
@@ -50,8 +50,8 @@ public class cpp extends ctz {
       this.bF.a(cfb.a.d, $$0);
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 100.0).a(bzl.v, 0.3).a(bzl.p, 0.75).a(bzl.c, 12.0).a(bzl.d, 1.5).a(bzl.m, 32.0).a(bzl.B, 1.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 100.0).a(bzl.v, 0.3).a(bzl.p, 0.75).a(bzl.c, 12.0).a(bzl.d, 1.5).a(bzl.m, 32.0).a(bzl.B, 1.0);
    }
 
    @Override
@@ -71,23 +71,23 @@ public class cpp extends ctz {
    }
 
    @Override
-   public awx aj_() {
+   public awx af_() {
       return awy.vT;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 45;
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.bJ()) {
          if (this.fg()) {
             this.g(bzl.v).a(0.0);
          } else {
-            double $$0 = this.f() != null ? 0.35 : 0.3;
+            double $$0 = this.e() != null ? 0.35 : 0.3;
             double $$1 = this.g(bzl.v).b();
             this.g(bzl.v).a(azz.d(0.1, $$1, $$0));
          }
@@ -105,14 +105,14 @@ public class cpp extends ctz {
             }
 
             if (!$$3 && this.aH()) {
-               this.s();
+               this.r();
             }
          }
 
          if (this.bU > 0) {
             this.bU--;
             if (this.bU == 10) {
-               this.gD();
+               this.gG();
             }
          }
 
@@ -122,7 +122,7 @@ public class cpp extends ctz {
 
          if (this.bT > 0) {
             this.bT--;
-            this.gC();
+            this.gF();
             if (this.bT == 0) {
                this.a(awy.vY, 1.0F, 1.0F);
                this.bU = 20;
@@ -131,7 +131,7 @@ public class cpp extends ctz {
       }
    }
 
-   private void gC() {
+   private void gF() {
       if (this.ae.a(6) == 0) {
          double $$0 = this.dA() - (double)this.dq() * Math.sin((double)(this.aV * (float) (Math.PI / 180.0))) + (this.ae.j() * 0.6 - 0.3);
          double $$1 = this.dC() + (double)this.dr() - 0.3;
@@ -166,7 +166,7 @@ public class cpp extends ctz {
       }
    }
 
-   private void gD() {
+   private void gG() {
       if (this.bJ()) {
          if (this.dV() instanceof asb $$0) {
             Predicate<bxe> $$1 = $$0.O().c(dkf.d) ? e : f;
@@ -218,15 +218,15 @@ public class cpp extends ctz {
       super.b($$0);
    }
 
-   public int m() {
+   public int p() {
       return this.bS;
    }
 
-   public int q() {
+   public int gu() {
       return this.bT;
    }
 
-   public int gB() {
+   public int gE() {
       return this.bU;
    }
 
@@ -240,7 +240,7 @@ public class cpp extends ctz {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.vR;
    }
 
@@ -250,7 +250,7 @@ public class cpp extends ctz {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.vU;
    }
 
@@ -269,7 +269,7 @@ public class cpp extends ctz {
    }
 
    @Override
-   public boolean t() {
+   public boolean gv() {
       return false;
    }
 

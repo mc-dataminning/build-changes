@@ -57,7 +57,7 @@ public class dup extends dna implements duz {
 
    @Override
    public void a(dkj $$0, iw $$1, ebq $$2, bxe $$3) {
-      if (!$$0.A_() && q($$2) && $$3.an() != bxn.bH && $$0.c_($$1) instanceof dzz $$5 && $$0 instanceof asb $$6 && $$5.gu().a($$6, $$1, egq.P, egq.a.a($$2))) {
+      if (!$$0.A_() && q($$2) && $$3.an() != bxn.bH && $$0.c_($$1) instanceof dzz $$5 && $$0 instanceof asb $$6 && $$5.gx().a($$6, $$1, egq.P, egq.a.a($$2))) {
          $$5.f().b($$6, egq.P, egq.a.a($$3), $$3.dt());
       }
 
@@ -104,7 +104,7 @@ public class dup extends dna implements duz {
    @Nullable
    @Override
    public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
-      return !$$0.C ? a($$2, dyq.J, ($$0x, $$1x, $$2x, $$3) -> egz.c.a($$0x, $$3.x(), $$3.gu())) : null;
+      return !$$0.C ? a($$2, dyq.J, ($$0x, $$1x, $$2x, $$3) -> egz.c.a($$0x, $$3.gw(), $$3.gx())) : null;
    }
 
    @Override

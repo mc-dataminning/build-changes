@@ -68,7 +68,7 @@ public record bz(
    }
 
    public boolean a(asc $$0, @Nullable bxe $$1) {
-      return this.a($$0.y(), $$0.dt(), $$1);
+      return this.a($$0.x(), $$0.dt(), $$1);
    }
 
    public boolean a(asb $$0, @Nullable fgc $$1, @Nullable bxe $$2) {
@@ -86,7 +86,7 @@ public record bz(
          }
 
          if (this.e.isPresent()) {
-            fgc $$3 = $$2.ae();
+            fgc $$3 = $$2.ad();
             fgc $$4 = $$3.c(20.0);
             if (!this.e.get().a($$4.d, $$4.e, $$4.f, $$2.Z)) {
                return false;
@@ -122,7 +122,7 @@ public record bz(
                return false;
             } else if (this.n.isPresent() && $$2.cY().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof byh ? ((byh)$$2).f() : null)) {
+            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof byh ? ((byh)$$2).e() : null)) {
                return false;
             } else if (this.l.isPresent() && $$2.af % this.l.get() != 0) {
                return false;
@@ -145,7 +145,7 @@ public record bz(
    }
 
    public static fat b(asc $$0, bxe $$1) {
-      faw $$2 = new faw.a($$0.y()).a(fdn.a, $$1).a(fdn.f, $$0.dt()).a(fdm.n);
+      faw $$2 = new faw.a($$0.x()).a(fdn.a, $$1).a(fdn.f, $$0.dt()).a(fdm.n);
       return new fat.a($$2).a(Optional.empty());
    }
 

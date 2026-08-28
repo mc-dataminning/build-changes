@@ -13,7 +13,7 @@ public class gzt extends gzb<ckw, hfv, gjc> {
 
    public void a(ckw $$0, hfv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gA();
+      $$1.a = $$0.gD();
    }
 
    public alr a(hfv $$0) {

@@ -137,7 +137,7 @@ public class dpk extends dna {
    }
 
    private void a(csi $$0, ebq $$1, dkj $$2, iw $$3) {
-      if (!$$0.gl() && !$$0.aa_() && $$1.c(d) && $$2 instanceof asb $$4) {
+      if (!$$0.gl() && !$$0.ak() && $$1.c(d) && $$2 instanceof asb $$4) {
          this.a($$4, $$3, $$2.A.a(20, 24));
       }
    }

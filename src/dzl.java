@@ -22,7 +22,7 @@ public class dzl extends dyo implements bvf {
    @Override
    protected void b(ua $$0, ji.a $$1) {
       super.b($$0, $$1);
-      if (this.h_()) {
+      if (this.g_()) {
          $$0.a("CustomName", xi.a, $$1.a(uo.a), this.l);
       }
    }
@@ -92,7 +92,7 @@ public class dzl extends dyo implements bvf {
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return (xg)(this.l != null ? this.l : xg.c("container.enchant"));
    }
 
@@ -102,7 +102,7 @@ public class dzl extends dyo implements bvf {
 
    @Nullable
    @Override
-   public xg ak() {
+   public xg aj() {
       return this.l;
    }
 

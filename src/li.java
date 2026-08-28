@@ -67,7 +67,7 @@ public interface li {
          public dak a(lf $$0, dak $$1) {
             iw $$2 = $$0.c().a($$0.d().c(dpu.b));
 
-            for (cmd $$4 : $$0.b().a(cmd.class, new ffx($$2), $$0x -> $$0x.bJ() && !$$0x.t())) {
+            for (cmd $$4 : $$0.b().a(cmd.class, new ffx($$2), $$0x -> $$0x.bJ() && !$$0x.p())) {
                if ($$4.gL() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);

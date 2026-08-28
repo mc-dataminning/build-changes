@@ -12,10 +12,10 @@ public class fnz extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.E.a(a, this.p);
       this.E.c(new fus(this.E(), this.p).b(true));
-      this.E.b(fty.a(xf.k, $$0 -> this.aQ_()).a(200).a());
+      this.E.b(fty.a(xf.k, $$0 -> this.aL_()).a(200).a());
       this.E.a($$1 -> {
          ftw var10000 = this.c($$1);
       });
@@ -28,7 +28,7 @@ public class fnz extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.D);
    }
 

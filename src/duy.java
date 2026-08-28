@@ -51,7 +51,7 @@ public abstract class duy extends dna implements duz {
                if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
                   $$7.a($$4, $$2, $$3, $$12);
                   $$4.b(axi.c.b($$0.h()));
-                  $$2.a(egq.c, $$7.aC_(), egq.a.a($$4, $$7.m()));
+                  $$2.a(egq.c, $$7.ax_(), egq.a.a($$4, $$7.m()));
                   $$0.a(1, $$4);
                   return bvc.a;
                } else {
@@ -78,7 +78,7 @@ public abstract class duy extends dna implements duz {
          boolean $$7 = $$5.a($$3);
          boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
          if ($$5.u()) {
-            $$1.a(null, $$5.aC_(), $$5.d(), awz.e);
+            $$1.a(null, $$5.ax_(), $$5.d(), awz.e);
             return bvc.b;
          } else if ($$8) {
             return bvc.b;
@@ -95,7 +95,7 @@ public abstract class duy extends dna implements duz {
 
    private boolean b(csi $$0, eac $$1, boolean $$2) {
       ead $$3 = $$1.a($$2);
-      return Arrays.stream($$3.b($$0.X())).allMatch($$0x -> $$0x.equals(xf.a) || $$0x.b() instanceof yn);
+      return Arrays.stream($$3.b($$0.W())).allMatch($$0x -> $$0x.equals(xf.a) || $$0x.b() instanceof yn);
    }
 
    public abstract float h(ebq var1);

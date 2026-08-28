@@ -55,14 +55,14 @@ public class fop extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.G.a(this.l, this.p);
       this.I = this.G.c(new fop.b(this, this.I.c()));
       fxq $$0 = this.G.b(fxq.e().a(10));
       $$0.c().b();
       this.L = $$0.a(fty.a(C, $$0x -> this.G()).a(100).a());
       this.K = $$0.a(fty.a(c, $$0x -> this.F()).a(100).a());
-      $$0.a(fty.a(xf.e, $$0x -> this.aQ_()).a(100).a());
+      $$0.a(fty.a(xf.e, $$0x -> this.aL_()).a(100).a());
       this.M = $$0.a(fty.a(D, $$0x -> this.H()).a(100).a());
       this.E();
       this.G.a($$1 -> {
@@ -95,7 +95,7 @@ public class fop extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.H.accept(null);
    }
 
@@ -236,7 +236,7 @@ public class fop extends hrc {
       public boolean a(double $$0, double $$1, int $$2) {
          fop.this.N = this.a;
          fop.this.E();
-         if (ag.c() - this.g < 250L && this.aO_()) {
+         if (ag.c() - this.g < 250L && this.aJ_()) {
             fop.this.H.accept(this.a);
          }
 
@@ -328,7 +328,7 @@ public class fop extends hrc {
       }
 
       public List<fnh> c() {
-         return this.aJ_().stream().map($$0 -> $$0.a).collect(Collectors.toList());
+         return this.aE_().stream().map($$0 -> $$0.a).collect(Collectors.toList());
       }
    }
 }

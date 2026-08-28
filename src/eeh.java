@@ -125,8 +125,8 @@ public class eeh extends edn {
 
    @Override
    public void a(dyo $$0) {
-      this.j.remove($$0.aC_());
-      this.k.put($$0.aC_(), $$0);
+      this.j.remove($$0.ax_());
+      this.k.put($$0.ax_(), $$0);
    }
 
    @Nullable

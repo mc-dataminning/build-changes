@@ -16,7 +16,7 @@ public class foq extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       int $$0 = this.n / 2 - 106;
       String $$1 = this.D.e == fmr.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
       fty $$2 = fty.a(xg.c($$1), $$0x -> {
@@ -37,16 +37,16 @@ public class foq extends hrc {
       this.c(this.E);
       fty $$3 = this.c(fty.a(xg.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
       this.F.b($$1x -> $$3.j = !bay.h($$1x));
-      this.c(fty.a(xf.e, $$0x -> this.aQ_()).a(this.n / 2 + 2, g(12), 106, 20).a());
+      this.c(fty.a(xf.e, $$0x -> this.aL_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.F);
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.C);
    }
 

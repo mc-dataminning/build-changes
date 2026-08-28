@@ -55,7 +55,7 @@ public class gam extends fzq {
          this.F.add("");
       }
 
-      this.U = xg.a("book.byAuthor", $$0.ai()).a(o.i);
+      this.U = xg.a("book.byAuthor", $$0.ah()).a(o.i);
    }
 
    private void a(String $$0) {
@@ -79,7 +79,7 @@ public class gam extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.T();
       this.O = this.c((fty)fty.a(xg.c("book.signButton"), $$0x -> {
          this.C = true;

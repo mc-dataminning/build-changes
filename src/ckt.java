@@ -28,11 +28,11 @@ public class ckt extends cjv implements byk {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cev(this));
       this.bF.a(1, new ckt.c());
-      this.bF.a(1, new cfu(this, 2.0, $$0 -> $$0.n_() ? axo.F : axo.G));
+      this.bF.a(1, new cfu(this, 2.0, $$0 -> $$0.e_() ? axo.F : axo.G));
       this.bF.a(4, new cfa(this, 1.25));
       this.bF.a(5, new cfy(this, 1.0));
       this.bF.a(6, new cfj(this, csi.class, 6.0F));
@@ -44,7 +44,7 @@ public class ckt extends cjv implements byk {
       this.bG.a(5, new cha<>(this, false));
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return cjv.gz().a(bzl.s, 30.0).a(bzl.m, 20.0).a(bzl.v, 0.25).a(bzl.c, 6.0);
    }
 
@@ -92,8 +92,8 @@ public class ckt extends cjv implements byk {
    }
 
    @Override
-   protected awx u() {
-      return this.n_() ? awy.vl : awy.vk;
+   protected awx s() {
+      return this.e_() ? awy.vl : awy.vk;
    }
 
    @Override
@@ -102,7 +102,7 @@ public class ckt extends cjv implements byk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.vm;
    }
 
@@ -111,7 +111,7 @@ public class ckt extends cjv implements byk {
       this.a(awy.vo, 0.15F, 1.0F);
    }
 
-   protected void t() {
+   protected void p() {
       if (this.bN <= 0) {
          this.b(awy.vp);
          this.bN = 40;
@@ -125,15 +125,15 @@ public class ckt extends cjv implements byk {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV().C) {
          if (this.bM != this.bK) {
-            this.i_();
+            this.h_();
          }
 
          this.bK = this.bM;
-         if (this.x()) {
+         if (this.u()) {
             this.bM = azz.a(this.bM + 1.0F, 0.0F, 6.0F);
          } else {
             this.bM = azz.a(this.bM - 1.0F, 0.0F, 6.0F);
@@ -160,7 +160,7 @@ public class ckt extends cjv implements byk {
       }
    }
 
-   public boolean x() {
+   public boolean u() {
       return this.al.a(bI);
    }
 
@@ -193,12 +193,12 @@ public class ckt extends cjv implements byk {
 
       @Override
       public boolean b() {
-         if (ckt.this.n_()) {
+         if (ckt.this.e_()) {
             return false;
          } else {
             if (super.b()) {
                for (ckt $$1 : ckt.this.dV().a(ckt.class, ckt.this.cR().c(8.0, 4.0, 8.0))) {
-                  if ($$1.n_()) {
+                  if ($$1.e_()) {
                      return true;
                   }
                }
@@ -222,7 +222,7 @@ public class ckt extends cjv implements byk {
       @Override
       public void d() {
          super.d();
-         if (ckt.this.n_()) {
+         if (ckt.this.e_()) {
             this.h();
             this.e();
          }
@@ -230,7 +230,7 @@ public class ckt extends cjv implements byk {
 
       @Override
       protected void a(byh $$0, byf $$1) {
-         if ($$0 instanceof ckt && !$$0.n_()) {
+         if ($$0 instanceof ckt && !$$0.e_()) {
             super.a($$0, $$1);
          }
       }
@@ -255,7 +255,7 @@ public class ckt extends cjv implements byk {
 
             if (this.k() <= 10) {
                ckt.this.w(true);
-               ckt.this.t();
+               ckt.this.p();
             }
          } else {
             this.h();

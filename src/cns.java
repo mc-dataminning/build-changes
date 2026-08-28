@@ -42,9 +42,9 @@ public class cns extends cnj {
       this.e++;
       if (this.e >= 200) {
          if (this.f >= 4) {
-            this.a.t().a(cnw.e);
+            this.a.gr().a(cnw.e);
          } else {
-            this.a.t().a(cnw.g);
+            this.a.gr().a(cnw.g);
          }
       } else if (this.e == 10) {
          fgc $$1 = new fgc(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();

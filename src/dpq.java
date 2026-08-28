@@ -120,7 +120,7 @@ public class dpq extends dnd {
       if ($$0.c(d)) {
          List<cvf> $$3 = this.a($$1, $$2, cvf.class, $$0x -> true);
          if (!$$3.isEmpty()) {
-            return $$3.get(0).q().k();
+            return $$3.get(0).e().k();
          }
 
          List<cuv> $$4 = this.a($$1, $$2, cuv.class, bxl.d);

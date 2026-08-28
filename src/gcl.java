@@ -11,12 +11,12 @@ public class gcl extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.s.c().b().a(10);
       this.s.a(new fvf(this.l, this.p));
       this.c = this.s.a(fty.a(xf.p, $$0 -> this.b.a(fyp.a)).a());

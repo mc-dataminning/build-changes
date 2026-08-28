@@ -83,7 +83,7 @@ public class dze extends dyo {
                            if ($$16 != null) {
                               $$3.a($$16);
                               $$16.b(awy.gu);
-                              $$0.a(null, $$3.aC_(), awy.gE, awz.e, 1.0F, 1.0F);
+                              $$0.a(null, $$3.ax_(), awy.gE, awz.e, 1.0F, 1.0F);
                            }
                         }
                      }
@@ -93,7 +93,7 @@ public class dze extends dyo {
                Optional<cqo> $$13 = $$3.s();
                if ($$13.isPresent()) {
                   cqo $$14 = $$13.get();
-                  if (!dpk.a($$0) && !$$14.gd() || $$3.j() > 34.0 || $$14.t()) {
+                  if (!dpk.a($$0) && !$$14.gd() || $$3.j() > 34.0 || $$14.gv()) {
                      $$3.a(null);
                   }
                }
@@ -112,7 +112,7 @@ public class dze extends dyo {
    }
 
    private double j() {
-      return this.s().map($$0 -> Math.sqrt($$0.g(fgc.c(this.aC_())))).orElse(0.0);
+      return this.s().map($$0 -> Math.sqrt($$0.g(fgc.c(this.ax_())))).orElse(0.0);
    }
 
    private void k() {
@@ -164,7 +164,7 @@ public class dze extends dyo {
 
    @Nullable
    private static cqo a(asb $$0, dze $$1) {
-      iw $$2 = $$1.aC_();
+      iw $$2 = $$1.ax_();
       Optional<cqo> $$3 = bau.a(bxn.E, bxm.c, $$0, $$2, 5, 16, 8, bau.a.c, true);
       if ($$3.isEmpty()) {
          return null;
@@ -253,7 +253,7 @@ public class dze extends dyo {
          for (double $$7 = 0.0; $$7 < (double)$$1; $$7++) {
             ffx $$8 = $$3.cR();
             fgc $$9 = $$8.h().b($$6.j() * $$8.b(), $$6.j() * $$8.c(), $$6.j() * $$8.d());
-            fgc $$10 = fgc.a(this.aC_()).b($$6.j(), $$6.j(), $$6.j());
+            fgc $$10 = fgc.a(this.ax_()).b($$6.j(), $$6.j(), $$6.j());
             if ($$2) {
                fgc $$11 = $$9;
                $$9 = $$10;
@@ -274,10 +274,10 @@ public class dze extends dyo {
    public void a(@Nullable bvt $$0) {
       if (this.s().orElse(null) instanceof cqo $$1) {
          if ($$0 == null) {
-            $$1.q();
+            $$1.gu();
          } else {
             $$1.j($$0);
-            $$1.gu();
+            $$1.gx();
             $$1.d(0.0F);
          }
 

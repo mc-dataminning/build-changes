@@ -22,6 +22,6 @@ public class gxy<T extends cpu> extends gyo<T, hef> {
 
    public void a(T $$0, hef $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gB();
+      $$1.a = $$0.gE();
    }
 }

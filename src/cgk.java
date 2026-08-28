@@ -19,7 +19,7 @@ public class cgk extends cfb {
       } else if (this.a.T) {
          return false;
       } else {
-         csi $$0 = this.a.x();
+         csi $$0 = this.a.gu();
          if ($$0 == null) {
             return false;
          } else {
@@ -30,7 +30,7 @@ public class cgk extends cfb {
 
    @Override
    public void d() {
-      this.a.O().m();
+      this.a.N().m();
    }
 
    @Override

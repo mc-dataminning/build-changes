@@ -18,7 +18,7 @@ public class cif extends cin<byh> {
       bzf<?> $$2 = $$1.ec();
       List<coo> $$3 = $$0.a(coo.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
       $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<coo> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.f())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      Optional<coo> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.e())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
       $$2.a(chh.M, $$4);
    }
 }

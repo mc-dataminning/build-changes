@@ -16,7 +16,7 @@ public class cth extends csx {
       super.a($$0);
       if (this.dV() instanceof asb $$1) {
          bxe var7 = $$0.a();
-         bxe $$4 = this.q();
+         bxe $$4 = this.p();
          int $$5 = var7.aE();
          var7.e(5.0F);
          bvt $$6 = this.dW().a((csx)this, $$4);
@@ -32,7 +32,7 @@ public class cth extends csx {
    protected void a(ffy $$0) {
       super.a($$0);
       if (this.dV() instanceof asb $$1) {
-         bxe $$3 = this.q();
+         bxe $$3 = this.p();
          if (!($$3 instanceof byh) || $$1.O().c(dkf.d)) {
             iw $$4 = $$0.b().a($$0.c());
             if (this.dV().v($$4)) {

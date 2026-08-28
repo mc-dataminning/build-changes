@@ -126,7 +126,7 @@ public abstract class dyb extends dyh implements bvm, cxs, cye {
             $$11 = null;
          }
 
-         int $$13 = $$3.ap_();
+         int $$13 = $$3.ak_();
          if (!$$3.k() && a($$0.J_(), $$11, $$10, $$3.l, $$13)) {
             $$3.y = $$3.a($$0.M(), $$6);
             $$3.z = $$3.y;
@@ -300,7 +300,7 @@ public abstract class dyb extends dyh implements bvm, cxs, cye {
    }
 
    public void a(asc $$0) {
-      List<dfg<?>> $$1 = this.a($$0.y(), $$0.dt());
+      List<dfg<?>> $$1 = this.a($$0.x(), $$0.dt());
       $$0.a($$1);
 
       for (dfg<?> $$2 : $$1) {

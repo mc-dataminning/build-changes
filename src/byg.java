@@ -5,7 +5,7 @@ public class byg extends bxe {
    }
 
    @Override
-   public void h() {
+   public void g() {
    }
 
    @Override
@@ -41,12 +41,12 @@ public class byg extends bxe {
    }
 
    @Override
-   public eyf j_() {
+   public eyf i_() {
       return eyf.d;
    }
 
    @Override
-   public boolean g_() {
+   public boolean n_() {
       return true;
    }
 

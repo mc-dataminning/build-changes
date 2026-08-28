@@ -26,8 +26,8 @@ public record egx(jg<egq> b, float c, fgc d, @Nullable UUID e, @Nullable UUID f,
 
    @Nullable
    private static UUID a(@Nullable bxe $$0) {
-      if ($$0 instanceof ctd $$1 && $$1.q() != null) {
-         return $$1.q().cG();
+      if ($$0 instanceof ctd $$1 && $$1.p() != null) {
+         return $$1.p().cG();
       }
 
       return null;
@@ -38,7 +38,7 @@ public record egx(jg<egq> b, float c, fgc d, @Nullable UUID e, @Nullable UUID f,
    }
 
    public Optional<bxe> b(asb $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof ctd).map($$0x -> (ctd)$$0x).map(ctd::q).or(() -> Optional.ofNullable(this.f).map($$0::b));
+      return this.a($$0).filter($$0x -> $$0x instanceof ctd).map($$0x -> (ctd)$$0x).map(ctd::p).or(() -> Optional.ofNullable(this.f).map($$0::b));
    }
 
    public jg<egq> a() {

@@ -16,7 +16,7 @@ public class ckf extends cjq {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      cur.a($$0, this.t());
+      cur.a($$0, this.p());
    }
 
    @Override
@@ -29,7 +29,7 @@ public class ckf extends cjq {
    public ckf b(asb $$0, bwu $$1) {
       ckf $$2 = bxn.D.a($$0, bxm.e);
       if ($$2 != null && $$1 instanceof ckf $$3) {
-         $$2.j(this.ae.h() ? this.t() : $$3.t());
+         $$2.j(this.ae.h() ? this.p() : $$3.p());
       }
 
       return $$2;
@@ -45,14 +45,14 @@ public class ckf extends cjq {
       this.al.a(bI, $$0);
    }
 
-   public jg<ckg> t() {
+   public jg<ckg> p() {
       return this.al.a(bI);
    }
 
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aI ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aI ? c((kk<T>)$$0, this.p()) : super.a($$0);
    }
 
    @Override

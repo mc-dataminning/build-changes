@@ -427,7 +427,7 @@ public class fqq extends btv<Runnable> implements fkj {
       hqi.a.a(hqe.C);
       fqq.b $$17 = new fqq.b($$11, $$0.e);
       this.a((fzk)(new fzg(this, $$16, $$1x -> ag.a($$1x, $$1xx -> this.a($$1xx, $$17), () -> {
-            if (ac.aU) {
+            if (ac.aV) {
                this.bk();
             }
 
@@ -842,12 +842,12 @@ public class fqq extends btv<Runnable> implements fkj {
    }
 
    public void a(@Nullable fzq $$0) {
-      if (ac.aU && Thread.currentThread() != this.bc) {
+      if (ac.aV && Thread.currentThread() != this.bc) {
          G.error("setScreen called from non-game thread");
       }
 
       if (this.z != null) {
-         this.z.aK_();
+         this.z.aF_();
       } else {
          this.a(fqn.a);
       }
@@ -858,7 +858,7 @@ public class fqq extends btv<Runnable> implements fkj {
          if ($$0 == null && this.s == null) {
             $$0 = new fzs();
          } else if ($$0 == null && this.t.eH()) {
-            if (this.t.n()) {
+            if (this.t.s()) {
                $$0 = new fyu(null, this.s.k().l());
             } else {
                this.t.gg();
@@ -867,7 +867,7 @@ public class fqq extends btv<Runnable> implements fkj {
 
          this.z = $$0;
          if (this.z != null) {
-            this.z.aL_();
+            this.z.aG_();
          }
 
          if ($$0 != null) {
@@ -907,7 +907,7 @@ public class fqq extends btv<Runnable> implements fkj {
          }
 
          if (this.z != null) {
-            this.z.aK_();
+            this.z.aF_();
          }
 
          this.close();
@@ -1323,7 +1323,7 @@ public class fqq extends btv<Runnable> implements fkj {
          }
 
          return false;
-      } else if (this.t.B()) {
+      } else if (this.t.C()) {
          return false;
       } else {
          dak $$0 = this.t.b(bvb.a);
@@ -1350,7 +1350,7 @@ public class fqq extends btv<Runnable> implements fkj {
                      this.x = 10;
                   }
 
-                  this.t.gE();
+                  this.t.gF();
             }
 
             this.t.a(bvb.a);
@@ -1362,7 +1362,7 @@ public class fqq extends btv<Runnable> implements fkj {
    private void bp() {
       if (!this.r.j()) {
          this.aV = 4;
-         if (!this.t.B()) {
+         if (!this.t.C()) {
             if (this.w == null) {
                G.warn("Null returned as 'hitResult', this shouldn't happen!");
             }
@@ -1599,7 +1599,7 @@ public class fqq extends btv<Runnable> implements fkj {
          boolean $$2 = this.n.T.e();
          boolean $$3 = this.n.U.e();
          if (this.n.S[$$1].g()) {
-            if (this.t.aa_()) {
+            if (this.t.ak()) {
                this.m.g().a($$1);
             } else if (!this.t.fV() || this.z != null || !$$3 && !$$2) {
                this.t.gj().c($$1);
@@ -1625,7 +1625,7 @@ public class fqq extends btv<Runnable> implements fkj {
 
       while (this.n.C.g()) {
          if (this.r.f()) {
-            this.t.i();
+            this.t.k();
          } else {
             this.aL.a();
             this.a((fzq)(new gbg(this.t)));
@@ -1637,13 +1637,13 @@ public class fqq extends btv<Runnable> implements fkj {
       }
 
       while (this.n.D.g()) {
-         if (!this.t.aa_()) {
+         if (!this.t.ak()) {
             this.L().b(new aig(aig.a.g, iw.c, jc.a));
          }
       }
 
       while (this.n.E.g()) {
-         if (!this.t.aa_() && this.t.a(fzq.s())) {
+         if (!this.t.ak() && this.t.a(fzq.s())) {
             this.t.a(bvb.a);
          }
       }
@@ -1904,7 +1904,7 @@ public class fqq extends btv<Runnable> implements fkj {
    }
 
    public boolean E() {
-      return ac.aU ? false : this.bt().flag(UserFlag.TELEMETRY_ENABLED);
+      return ac.aV ? false : this.bt().flag(UserFlag.TELEMETRY_ENABLED);
    }
 
    public boolean F() {
@@ -2222,7 +2222,7 @@ public class fqq extends btv<Runnable> implements fkj {
    }
 
    public boolean b(bxe $$0) {
-      return $$0.cn() || this.t != null && this.t.aa_() && this.n.Q.e() && $$0.an() == bxn.bT;
+      return $$0.cn() || this.t != null && this.t.ak() && this.n.Q.e() && $$0.an() == bxn.bT;
    }
 
    @Override
@@ -2273,7 +2273,7 @@ public class fqq extends btv<Runnable> implements fkj {
    }
 
    public boolean az() {
-      return this.t != null && this.t.gA() || this.n.Y().c();
+      return this.t != null && this.t.gB() || this.n.Y().c();
    }
 
    public fwj aA() {

@@ -4,7 +4,7 @@ public record bys(fgc b, fgc c, float d, float e) {
    public static final ze<vy, bys> a = ze.a(fgc.b, bys::a, fgc.b, bys::b, zc.l, bys::c, zc.l, bys::d, bys::new);
 
    public static bys a(bxe $$0) {
-      return $$0.bQ() ? new bys($$0.S_().a(), $$0.ae(), $$0.S_().b(), $$0.S_().c()) : new bys($$0.dt(), $$0.ae(), $$0.dL(), $$0.dN());
+      return $$0.bQ() ? new bys($$0.l_().a(), $$0.ad(), $$0.l_().b(), $$0.l_().c()) : new bys($$0.dt(), $$0.ad(), $$0.dL(), $$0.dN());
    }
 
    public static bys a(eza $$0) {

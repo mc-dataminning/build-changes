@@ -18,7 +18,7 @@ public class csu extends csr {
          if (!this.dV().C) {
             List<byf> $$1 = this.dV().a(byf.class, this.cR().c(4.0, 2.0, 4.0));
             bww $$2 = new bww(this.dV(), this.dA(), this.dC(), this.dG());
-            bxe $$3 = this.q();
+            bxe $$3 = this.p();
             if ($$3 instanceof byf) {
                $$2.a((byf)$$3);
             }
@@ -26,7 +26,7 @@ public class csu extends csr {
             $$2.a(lz.h);
             $$2.a(3.0F);
             $$2.a(600);
-            $$2.d((7.0F - $$2.e()) / (float)$$2.i());
+            $$2.d((7.0F - $$2.c()) / (float)$$2.h());
             $$2.b(0.25F);
             $$2.a(new bwi(bwk.g, 1, 1));
             if (!$$1.isEmpty()) {
@@ -47,12 +47,12 @@ public class csu extends csr {
    }
 
    @Override
-   protected lx j() {
+   protected lx i() {
       return lz.h;
    }
 
    @Override
-   protected boolean g() {
+   protected boolean f() {
       return false;
    }
 }

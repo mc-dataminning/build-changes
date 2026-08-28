@@ -54,8 +54,8 @@ public class clk extends cjv implements cjx {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Variant", clk.e.i, this.t());
-      $$0.a("FromBucket", this.m());
+      $$0.a("Variant", clk.e.i, this.gu());
+      $$0.a("FromBucket", this.p());
    }
 
    @Override
@@ -66,9 +66,9 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   public void T() {
-      if (!this.x()) {
-         super.T();
+   public void S() {
+      if (!this.gv()) {
+         super.S();
       }
    }
 
@@ -105,13 +105,13 @@ public class clk extends cjv implements cjx {
       }
 
       if (this.dV().A_()) {
-         this.gv();
+         this.gx();
       }
    }
 
-   private void gv() {
+   private void gx() {
       clk.a $$0;
-      if (this.x()) {
+      if (this.gv()) {
          $$0 = clk.a.a;
       } else if (this.bi()) {
          $$0 = clk.a.b;
@@ -141,7 +141,7 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   public void q() {
+   public void m() {
       int $$0 = this.cs() + 1800;
       this.j(Math.min($$0, this.cr()));
    }
@@ -151,7 +151,7 @@ public class clk extends cjv implements cjx {
       return 6000;
    }
 
-   public clk.e t() {
+   public clk.e gu() {
       return clk.e.a(this.al.a(bU));
    }
 
@@ -162,7 +162,7 @@ public class clk extends cjv implements cjx {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aO ? c((kk<T>)$$0, this.t()) : super.a($$0);
+      return $$0 == kl.aO ? c((kk<T>)$$0, this.gu()) : super.a($$0);
    }
 
    @Override
@@ -199,12 +199,12 @@ public class clk extends cjv implements cjx {
       this.al.a(bV, $$0);
    }
 
-   public boolean x() {
+   public boolean gv() {
       return this.al.a(bV);
    }
 
    @Override
-   public boolean m() {
+   public boolean p() {
       return this.al.a(bW);
    }
 
@@ -222,7 +222,7 @@ public class clk extends cjv implements cjx {
          if (a(this.ae)) {
             $$3 = clk.e.b(this.ae);
          } else {
-            $$3 = this.ae.h() ? this.t() : ((clk)$$1).t();
+            $$3 = this.ae.h() ? this.gu() : ((clk)$$1).gu();
          }
 
          $$2.a($$3);
@@ -257,7 +257,7 @@ public class clk extends cjv implements cjx {
       }
    }
 
-   public static bzk.a gu() {
+   public static bzk.a gw() {
       return cjv.gz().a(bzl.s, 14.0).a(bzl.v, 1.0).a(bzl.c, 2.0).a(bzl.B, 1.0);
    }
 
@@ -280,7 +280,7 @@ public class clk extends cjv implements cjx {
          && $$2 < $$3
          && this.bi()
          && ($$1.d() != null || $$1.c() != null)
-         && !this.x()) {
+         && !this.gv()) {
          this.bs.a(chh.O, 200);
       }
 
@@ -288,12 +288,12 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   public int ad() {
+   public int ac() {
       return 1;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 1;
    }
 
@@ -307,7 +307,7 @@ public class clk extends cjv implements cjx {
       cjx.a(this, $$0);
       $$0.a(kl.aO, this);
       dcs.a(kl.Z, $$0, $$0x -> {
-         $$0x.a("Age", this.g());
+         $$0x.a("Age", this.Y_());
          bzf<?> $$1 = this.ec();
          if ($$1.a(chh.V)) {
             $$0x.a("HuntingCooldown", $$1.e(chh.V));
@@ -323,18 +323,18 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   public dak X_() {
+   public dak a() {
       return new dak(dao.rz);
    }
 
    @Override
-   public awx n() {
+   public awx u() {
       return awy.dk;
    }
 
    @Override
    public boolean ez() {
-      return !this.x() && super.ez();
+      return !this.gv() && super.ez();
    }
 
    public static void a(asb $$0, clk $$1, byf $$2) {
@@ -365,8 +365,8 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   public boolean Z() {
-      return super.Z() || this.m();
+   public boolean Y() {
+      return super.Y() || this.p();
    }
 
    @Override
@@ -376,13 +376,13 @@ public class clk extends cjv implements cjx {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.aL;
    }
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.bi() ? awy.aO : awy.aN;
    }
 
@@ -412,8 +412,8 @@ public class clk extends cjv implements cjx {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -439,13 +439,13 @@ public class clk extends cjv implements cjx {
 
    @Override
    public boolean h(double $$0) {
-      return !this.m() && !this.h_();
+      return !this.p() && !this.g_();
    }
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
    public static boolean a(bxn<? extends byf> $$0, dla $$1, bxm $$2, iw $$3, bai $$4) {
@@ -479,7 +479,7 @@ public class clk extends cjv implements cjx {
 
       @Override
       public void a() {
-         if (!clk.this.x()) {
+         if (!clk.this.gv()) {
             super.a();
          }
       }
@@ -495,7 +495,7 @@ public class clk extends cjv implements cjx {
 
       @Override
       public void a() {
-         if (!this.l.x()) {
+         if (!this.l.gv()) {
             super.a();
          }
       }

@@ -13,32 +13,32 @@ public class ctn extends ctk {
    }
 
    @Override
-   protected dag g() {
+   protected dag f() {
       return dao.tn;
    }
 
    @Override
    protected void c(@Nullable UUID $$0) {
-      this.j();
+      this.i();
       super.c($$0);
-      this.m();
+      this.l();
    }
 
    @Override
    public void c(@Nullable bxe $$0) {
-      this.j();
+      this.i();
       super.c($$0);
-      this.m();
+      this.l();
    }
 
-   private void j() {
-      if (this.q() instanceof asc $$0) {
+   private void i() {
+      if (this.p() instanceof asc $$0) {
          $$0.b(this);
       }
    }
 
-   private void m() {
-      if (this.q() instanceof asc $$0) {
+   private void l() {
+      if (this.p() instanceof asc $$0) {
          $$0.a(this);
       }
    }
@@ -70,7 +70,7 @@ public class ctn extends ctk {
    @Override
    protected void a(ffz $$0) {
       super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
+      $$0.a().a(this.dW().b(this, this.p()), 0.0F);
    }
 
    @Override
@@ -82,7 +82,7 @@ public class ctn extends ctk {
       }
 
       if (this.dV() instanceof asb $$2 && !this.dQ()) {
-         bxe $$4 = this.q();
+         bxe $$4 = this.p();
          if ($$4 != null && a($$4, $$2)) {
             fgc $$5 = this.bA();
             if ($$4 instanceof asc $$6) {
@@ -101,9 +101,9 @@ public class ctn extends ctk {
 
                   asc $$8 = $$6.a(new eza($$2, $$5, fgc.c, 0.0F, 0.0F, byt.a(byt.k, byt.l), eza.a));
                   if ($$8 != null) {
-                     $$8.k();
-                     $$8.gP();
-                     $$8.a($$6.y(), this.dW().m(), 5.0F);
+                     $$8.j();
+                     $$8.gQ();
+                     $$8.a($$6.x(), this.dW().m(), 5.0F);
                   }
 
                   this.a($$2, $$5);
@@ -111,7 +111,7 @@ public class ctn extends ctk {
             } else {
                bxe $$9 = $$4.b(new eza($$2, $$5, $$4.dy(), $$4.dL(), $$4.dN(), eza.a));
                if ($$9 != null) {
-                  $$9.k();
+                  $$9.j();
                }
 
                this.a($$2, $$5);
@@ -135,20 +135,20 @@ public class ctn extends ctk {
    }
 
    @Override
-   public void h() {
+   public void g() {
       int $$0;
       int $$1;
       bxe $$2;
       label30: {
          $$0 = jz.b(this.dt().a());
          $$1 = jz.b(this.dt().c());
-         $$2 = this.q();
-         if ($$2 instanceof asc $$3 && !$$2.bJ() && $$3.y().O().c(dkf.aa)) {
+         $$2 = this.p();
+         if ($$2 instanceof asc $$3 && !$$2.bJ() && $$3.x().O().c(dkf.aa)) {
             this.aq();
             break label30;
          }
 
-         super.h();
+         super.g();
       }
 
       if (this.bJ()) {
@@ -176,13 +176,13 @@ public class ctn extends ctk {
 
    @Override
    public boolean a(dkj $$0, dkj $$1) {
-      return $$0.aj() == dkj.k && $$1.aj() == dkj.i && this.q() instanceof asc $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
+      return $$0.aj() == dkj.k && $$1.aj() == dkj.i && this.p() instanceof asc $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
    }
 
    @Override
    protected void a(ebq $$0) {
       super.a($$0);
-      if ($$0.a(dnq.ll) && this.q() instanceof asc $$1) {
+      if ($$0.a(dnq.ll) && this.p() instanceof asc $$1) {
          $$1.a($$0);
       }
    }
@@ -190,7 +190,7 @@ public class ctn extends ctk {
    @Override
    public void b(bxe.d $$0) {
       if ($$0 != bxe.d.d) {
-         this.j();
+         this.i();
       }
 
       super.b($$0);

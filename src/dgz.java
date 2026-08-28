@@ -234,7 +234,7 @@ public class dgz {
    }
 
    public static void a(asb $$0, dak $$1, ctd $$2, Consumer<dag> $$3) {
-      byf $$5 = $$2.q() instanceof byf $$4 ? $$4 : null;
+      byf $$5 = $$2.p() instanceof byf $$4 ? $$4 : null;
       dgw $$6 = new dgw($$1, null, $$5, $$3);
       a($$1, ($$3x, $$4x) -> ((dgx)$$3x.a()).b($$0, $$4x, $$6, $$2));
    }

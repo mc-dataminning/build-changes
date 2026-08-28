@@ -42,7 +42,7 @@ public class foo extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.L = this.c(new foo.b());
 
       try {
@@ -153,7 +153,7 @@ public class foo extends hrc {
 
       public void a(@Nullable foo.a $$0) {
          super.a($$0);
-         foo.this.K = this.aJ_().indexOf($$0);
+         foo.this.K = this.aE_().indexOf($$0);
          foo.this.I.j = foo.this.K >= 0 && foo.this.K < this.t();
       }
 

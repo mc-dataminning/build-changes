@@ -15,12 +15,12 @@ public class coy extends cqd implements cpo {
       this.c = new cho(this, $$1);
    }
 
-   public static bzk.a j() {
-      return cqd.gv().a(bzl.B, 1.0);
+   public static bzk.a m() {
+      return cqd.gy().a(bzl.B, 1.0);
    }
 
    @Override
-   protected void m() {
+   protected void p() {
       this.bF.a(1, new coy.c(this, 1.0));
       this.bF.a(2, new coy.f(this, 1.0, 40, 10.0F));
       this.bF.a(2, new coy.a(this, 1.0, false));
@@ -65,7 +65,7 @@ public class coy extends cqd implements cpo {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.bi() ? awy.ic : awy.ib;
    }
 
@@ -75,12 +75,12 @@ public class coy extends cqd implements cpo {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return this.bi() ? awy.ie : awy.id;
    }
 
    @Override
-   protected awx n() {
+   protected awx u() {
       return awy.ii;
    }
 
@@ -90,12 +90,12 @@ public class coy extends cqd implements cpo {
    }
 
    @Override
-   protected boolean q() {
+   protected boolean gu() {
       return true;
    }
 
    @Override
-   protected dak t() {
+   protected dak gv() {
       return dak.l;
    }
 
@@ -117,7 +117,7 @@ public class coy extends cqd implements cpo {
    }
 
    @Override
-   protected boolean x() {
+   protected boolean gw() {
       return false;
    }
 
@@ -135,18 +135,18 @@ public class coy extends cqd implements cpo {
       return !this.cj();
    }
 
-   boolean gB() {
+   boolean gE() {
       if (this.bJ) {
          return true;
       } else {
-         byf $$0 = this.f();
+         byf $$0 = this.e();
          return $$0 != null && $$0.bi();
       }
    }
 
    @Override
    public void a_(fgc $$0) {
-      if (this.bm() && this.gB()) {
+      if (this.bm() && this.gE()) {
          this.a(0.01F, $$0);
          this.a(byj.a, this.dy());
          this.i(this.dy().c(0.9));
@@ -158,7 +158,7 @@ public class coy extends cqd implements cpo {
    @Override
    public void bn() {
       if (!this.dV().C) {
-         if (this.dj() && this.bm() && this.gB()) {
+         if (this.dj() && this.bm() && this.gE()) {
             this.bE = this.b;
             this.i(true);
          } else {
@@ -173,8 +173,8 @@ public class coy extends cqd implements cpo {
       return this.cj();
    }
 
-   protected boolean gu() {
-      eyo $$0 = this.O().i();
+   protected boolean gx() {
+      eyo $$0 = this.N().i();
       if ($$0 != null) {
          iw $$1 = $$0.l();
          if ($$1 != null) {
@@ -205,7 +205,7 @@ public class coy extends cqd implements cpo {
    }
 
    @Override
-   public ayc<dag> Y() {
+   public ayc<dag> X() {
       return axv.bV;
    }
 
@@ -223,12 +223,12 @@ public class coy extends cqd implements cpo {
 
       @Override
       public boolean b() {
-         return super.b() && this.b.i(this.b.f());
+         return super.b() && this.b.i(this.b.e());
       }
 
       @Override
       public boolean c() {
-         return super.c() && this.b.i(this.b.f());
+         return super.c() && this.b.i(this.b.e());
       }
    }
 
@@ -305,12 +305,12 @@ public class coy extends cqd implements cpo {
 
       @Override
       public boolean c() {
-         return !this.a.O().k();
+         return !this.a.N().k();
       }
 
       @Override
       public void d() {
-         this.a.O().a(this.b, this.c, this.d, this.e);
+         this.a.N().a(this.b, this.c, this.d, this.e);
       }
 
       @Nullable
@@ -339,13 +339,13 @@ public class coy extends cqd implements cpo {
 
       @Override
       public void a() {
-         byf $$0 = this.l.f();
-         if (this.l.gB() && this.l.bi()) {
+         byf $$0 = this.l.e();
+         if (this.l.gE() && this.l.bi()) {
             if ($$0 != null && $$0.dC() > this.l.dC() || this.l.bJ) {
                this.l.i(this.l.dy().b(0.0, 0.002, 0.0));
             }
 
-            if (this.k != cee.a.b || this.l.O().k()) {
+            if (this.k != cee.a.b || this.l.N().k()) {
                this.l.B(0.0F);
                return;
             }
@@ -396,14 +396,14 @@ public class coy extends cqd implements cpo {
 
       @Override
       public void a() {
-         if (this.a.dC() < (double)(this.c - 1) && (this.a.O().k() || this.a.gu())) {
+         if (this.a.dC() < (double)(this.c - 1) && (this.a.N().k() || this.a.gx())) {
             fgc $$0 = ciy.a(this.a, 4, 8, new fgc(this.a.dA(), (double)(this.c - 1), this.a.dG()), (float) (Math.PI / 2));
             if ($$0 == null) {
                this.d = true;
                return;
             }
 
-            this.a.O().a($$0.d, $$0.e, $$0.f, this.b);
+            this.a.N().a($$0.d, $$0.e, $$0.f, this.b);
          }
       }
 

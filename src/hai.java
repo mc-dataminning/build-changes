@@ -34,6 +34,6 @@ public class hai<T extends bxe & cta> extends gxu<T, hgh> {
 
    public void a(T $$0, hgh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.f(), dai.h, $$0);
+      this.a.a($$1.a, $$0.e(), dai.h, $$0);
    }
 }

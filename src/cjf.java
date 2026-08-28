@@ -53,7 +53,7 @@ public class cjf implements djv {
 
    private boolean a(asb $$0) {
       for (csi $$1 : $$0.z()) {
-         if (!$$1.aa_()) {
+         if (!$$1.ak()) {
             iw $$2 = $$1.dv();
             if ($$0.c($$2) && !$$0.u($$2).a(axm.af)) {
                for (int $$3 = 0; $$3 < 10; $$3++) {

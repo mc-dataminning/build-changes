@@ -12,7 +12,7 @@ public record btl<T>(T a, int b) {
       if (b < 0) {
          throw (IllegalArgumentException)ag.b(new IllegalArgumentException("Weight should be >= 0"));
       } else {
-         if (b == 0 && ac.aU) {
+         if (b == 0 && ac.aV) {
             c.warn("Found 0 weight, make sure this is intentional!");
          }
 

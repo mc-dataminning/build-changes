@@ -7,18 +7,18 @@ public abstract class cjr extends cld implements cjx {
       this.bC = new cjr.a(this);
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 3.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 3.0);
    }
 
    @Override
-   public boolean Z() {
-      return super.Z() || this.m();
+   public boolean Y() {
+      return super.Y() || this.p();
    }
 
    @Override
    public boolean h(double $$0) {
-      return !this.m() && !this.h_();
+      return !this.p() && !this.g_();
    }
 
    @Override
@@ -33,7 +33,7 @@ public abstract class cjr extends cld implements cjx {
    }
 
    @Override
-   public boolean m() {
+   public boolean p() {
       return this.al.a(a);
    }
 
@@ -45,7 +45,7 @@ public abstract class cjr extends cld implements cjx {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("FromBucket", this.m());
+      $$0.a("FromBucket", this.p());
    }
 
    @Override
@@ -55,8 +55,8 @@ public abstract class cjr extends cld implements cjx {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(0, new cfu(this, 1.25));
       this.bF.a(2, new cei<>(this, csi.class, 8.0F, 1.6, 1.4, bxl.f::test));
       this.bF.a(4, new cjr.b(this));
@@ -73,7 +73,7 @@ public abstract class cjr extends cld implements cjx {
          this.a(0.01F, $$0);
          this.a(byj.a, this.dy());
          this.i(this.dy().c(0.9));
-         if (this.f() == null) {
+         if (this.e() == null) {
             this.i(this.dy().b(0.0, -0.005, 0.0));
          }
       } else {
@@ -82,15 +82,15 @@ public abstract class cjr extends cld implements cjx {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (!this.bi() && this.aH() && this.Q) {
          this.i(this.dy().b((double)((this.ae.i() * 2.0F - 1.0F) * 0.05F), 0.4F, (double)((this.ae.i() * 2.0F - 1.0F) * 0.05F)));
          this.d(false);
          this.ar = true;
-         this.b(this.t());
+         this.b(this.gv());
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -109,15 +109,15 @@ public abstract class cjr extends cld implements cjx {
    }
 
    @Override
-   public awx n() {
+   public awx u() {
       return awy.dl;
    }
 
-   protected boolean q() {
+   protected boolean gu() {
       return true;
    }
 
-   protected abstract awx t();
+   protected abstract awx gv();
 
    @Override
    protected awx aU() {
@@ -142,7 +142,7 @@ public abstract class cjr extends cld implements cjx {
             this.l.i(this.l.dy().b(0.0, 0.005, 0.0));
          }
 
-         if (this.k == cee.a.b && !this.l.O().k()) {
+         if (this.k == cee.a.b && !this.l.N().k()) {
             float $$0 = (float)(this.h * this.l.h(bzl.v));
             this.l.B(azz.h(0.125F, this.l.fo(), $$0));
             double $$1 = this.e - this.l.dA();
@@ -174,7 +174,7 @@ public abstract class cjr extends cld implements cjx {
 
       @Override
       public boolean b() {
-         return this.i.q() && super.b();
+         return this.i.gu() && super.b();
       }
    }
 }

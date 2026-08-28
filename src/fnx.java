@@ -36,13 +36,13 @@ public class fnx extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.K.a(b, this.p);
       this.J = this.K.c(new fnx.a());
       fxq $$0 = this.K.b(fxq.e().a(8));
       this.M = $$0.a(fty.a(E, $$0x -> this.F()).a());
       this.M.j = false;
-      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      $$0.a(fty.a(xf.k, $$0x -> this.aL_()).a());
       this.K.a($$1 -> {
          ftw var10000 = this.c($$1);
       });
@@ -93,7 +93,7 @@ public class fnx extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.H);
    }
 
@@ -191,7 +191,7 @@ public class fnx extends hrc {
       }
 
       @Override
-      public List<? extends fvv> aJ_() {
+      public List<? extends fvv> aE_() {
          return this.f;
       }
 

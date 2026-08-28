@@ -63,8 +63,8 @@ public class cle extends byn implements crs, egz {
       return (bzf<cle>)super.ec();
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 20.0).a(bzl.l, 0.1F).a(bzl.v, 0.1F).a(bzl.c, 2.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 20.0).a(bzl.l, 0.1F).a(bzl.v, 0.1F).a(bzl.c, 2.0);
    }
 
    @Override
@@ -128,7 +128,7 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.d(bxo.a) ? awy.a : awy.b;
    }
 
@@ -138,7 +138,7 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.c;
    }
 
@@ -160,35 +160,35 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C && this.bJ() && this.af % 10 == 0) {
          this.c(1.0F);
       }
 
-      if (this.q() && this.gw() && this.af % 20 == 0) {
+      if (this.gu() && this.gz() && this.af % 20 == 0) {
          this.w(false);
          this.bV = null;
       }
 
-      this.gx();
+      this.gA();
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV().C) {
          this.bY = this.bX;
-         if (this.m()) {
+         if (this.p()) {
             this.bX = azz.a(this.bX + 1.0F, 0.0F, 5.0F);
          } else {
             this.bX = azz.a(this.bX - 1.0F, 0.0F, 5.0F);
          }
 
-         if (this.q()) {
+         if (this.gu()) {
             this.bZ++;
             this.cb = this.ca;
-            if (this.t()) {
+            if (this.gv()) {
                this.ca++;
             } else {
                this.ca--;
@@ -210,10 +210,10 @@ public class cle extends byn implements crs, egz {
 
    @Override
    public boolean fN() {
-      return !this.gv() && this.m();
+      return !this.gy() && this.p();
    }
 
-   public boolean m() {
+   public boolean p() {
       return !this.b(bvb.a).f();
    }
 
@@ -222,7 +222,7 @@ public class cle extends byn implements crs, egz {
       return false;
    }
 
-   private boolean gv() {
+   private boolean gy() {
       return this.ec().a(chh.aQ, chi.a);
    }
 
@@ -230,8 +230,8 @@ public class cle extends byn implements crs, egz {
    protected bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
       dak $$3 = this.b(bvb.a);
-      if (this.q() && $$2.a(axv.X) && this.gA()) {
-         this.gy();
+      if (this.gu() && $$2.a(axv.X) && this.gD()) {
+         this.gB();
          this.dV().a(this, (byte)18);
          this.dV().a($$0, this, awy.E, awz.g, 2.0F, 1.0F);
          this.a($$0, $$2);
@@ -248,7 +248,7 @@ public class cle extends byn implements crs, egz {
          this.dV().a($$0, this, awy.f, awz.g, 2.0F, 1.0F);
          this.a(bvb.a);
 
-         for (dak $$5 : this.n().f()) {
+         for (dak $$5 : this.u().f()) {
             bzy.a(this, $$5, this.dt());
          }
 
@@ -262,7 +262,7 @@ public class cle extends byn implements crs, egz {
 
    public void b(iw $$0, boolean $$1) {
       if ($$1) {
-         if (!this.q()) {
+         if (!this.gu()) {
             this.bV = $$0;
             this.w(true);
          }
@@ -273,12 +273,12 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   public bvj n() {
+   public bvj u() {
       return this.bU;
    }
 
    @Override
-   protected kb X() {
+   protected kb W() {
       return e;
    }
 
@@ -304,8 +304,8 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -322,7 +322,7 @@ public class cle extends byn implements crs, egz {
       }
    }
 
-   public boolean q() {
+   public boolean gu() {
       return this.al.a(bO);
    }
 
@@ -332,7 +332,7 @@ public class cle extends byn implements crs, egz {
       }
    }
 
-   private boolean gw() {
+   private boolean gz() {
       return this.bV == null || !this.bV.a(this.dt(), (double)egq.E.a().a()) || !this.dV().a_(this.bV).a(dnq.ek);
    }
 
@@ -340,7 +340,7 @@ public class cle extends byn implements crs, egz {
       return azz.h($$0, this.bY, this.bX) / 5.0F;
    }
 
-   public boolean t() {
+   public boolean gv() {
       float $$0 = this.bZ % 55.0F;
       return $$0 < 15.0F;
    }
@@ -393,7 +393,7 @@ public class cle extends byn implements crs, egz {
       return false;
    }
 
-   private void gx() {
+   private void gA() {
       if (!this.dV().A_() && this.bW > 0L) {
          this.a(this.bW - 1L);
       }
@@ -404,22 +404,22 @@ public class cle extends byn implements crs, egz {
       this.al.a(bP, $$0 == 0L);
    }
 
-   private void gy() {
+   private void gB() {
       cle $$0 = bxn.d.a(this.dV(), bxm.e);
       if ($$0 != null) {
          $$0.f(this.dt());
          $$0.gc();
-         $$0.gz();
-         this.gz();
+         $$0.gC();
+         this.gC();
          this.dV().b($$0);
       }
    }
 
-   private void gz() {
+   private void gC() {
       this.a(6000L);
    }
 
-   private boolean gA() {
+   private boolean gD() {
       return this.al.a(bP);
    }
 
@@ -436,14 +436,14 @@ public class cle extends byn implements crs, egz {
    public void b(byte $$0) {
       if ($$0 == 18) {
          for (int $$1 = 0; $$1 < 3; $$1++) {
-            this.gB();
+            this.gE();
          }
       } else {
          super.b($$0);
       }
    }
 
-   private void gB() {
+   private void gE() {
       double $$0 = this.ae.k() * 0.02;
       double $$1 = this.ae.k() * 0.02;
       double $$2 = this.ae.k() * 0.02;
@@ -451,12 +451,12 @@ public class cle extends byn implements crs, egz {
    }
 
    @Override
-   public egz.a x() {
+   public egz.a gw() {
       return this.bR;
    }
 
    @Override
-   public egz.d gu() {
+   public egz.d gx() {
       return this.bS;
    }
 

@@ -15,10 +15,10 @@ public class gzr extends gzb<cpp, hfu, gjb> {
 
    public void a(cpp $$0, hfu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
-      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
-      if ($$0.gB() > 0) {
-         $$1.c = ((float)(20 - $$0.gB()) + $$2) / 20.0F;
+      $$1.a = (float)$$0.gu() > 0.0F ? (float)$$0.gu() - $$2 : 0.0F;
+      $$1.b = (float)$$0.p() > 0.0F ? (float)$$0.p() - $$2 : 0.0F;
+      if ($$0.gE() > 0) {
+         $$1.c = ((float)(20 - $$0.gE()) + $$2) / 20.0F;
       } else {
          $$1.c = 0.0F;
       }

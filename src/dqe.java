@@ -33,7 +33,7 @@ public class dqe extends dna implements dtn {
    protected void a(ebq $$0, dkj $$1, iw $$2, bxe $$3, bxx $$4) {
       if ($$3.n(false)) {
          if (!$$1.C && $$1.aj() == dkj.k && $$3 instanceof asc $$5 && !$$5.i) {
-            $$5.n();
+            $$5.m();
             return;
          }
 

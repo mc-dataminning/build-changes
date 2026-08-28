@@ -51,7 +51,7 @@ public class cpx extends cjv implements byc {
 
    @Override
    public boolean e(bxo $$0) {
-      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.n_();
+      return $$0 != bxo.h ? super.e($$0) : this.bJ() && !this.e_();
    }
 
    @Override
@@ -65,7 +65,7 @@ public class cpx extends cjv implements byc {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cfu(this, 1.65));
       this.bF.a(2, new cen(this, 1.0));
       this.bQ = new cgj(this, 1.4, $$0 -> $$0.a(axv.aA), false);
@@ -90,7 +90,7 @@ public class cpx extends cjv implements byc {
       }
    }
 
-   public boolean q() {
+   public boolean m() {
       return this.al.a(bO);
    }
 
@@ -182,7 +182,7 @@ public class cpx extends cjv implements byc {
 
    @Override
    protected float c(csi $$0) {
-      return (float)(this.h(bzl.v) * (double)(this.q() ? 0.35F : 0.55F) * (double)this.bP.c());
+      return (float)(this.h(bzl.v) * (double)(this.m() ? 0.35F : 0.55F) * (double)this.bP.c());
    }
 
    @Override
@@ -203,15 +203,15 @@ public class cpx extends cjv implements byc {
    @Override
    protected void a(double $$0, boolean $$1, ebq $$2, iw $$3) {
       if (this.bv()) {
-         this.k();
+         this.j();
       } else {
          super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public void h() {
-      if (this.x() && this.ae.a(140) == 0) {
+   public void g() {
+      if (this.u() && this.ae.a(140) == 0) {
          this.b(awy.zb);
       } else if (this.gr() && this.ae.a(60) == 0) {
          this.b(awy.zc);
@@ -224,7 +224,7 @@ public class cpx extends cjv implements byc {
             ebq $$0 = this.dV().a_(this.dv());
             ebq $$1 = this.br();
             $$2 = $$0.a(axn.aW) || $$1.a(axn.aW) || this.b(axs.b) > 0.0;
-            if (this.dk() instanceof cpx $$3 && $$3.q()) {
+            if (this.dk() instanceof cpx $$3 && $$3.m()) {
                var10000 = true;
                break label36;
             }
@@ -236,16 +236,16 @@ public class cpx extends cjv implements byc {
          this.w(!$$2 || $$4);
       }
 
-      super.h();
+      super.g();
       this.gu();
    }
 
-   private boolean x() {
+   private boolean u() {
       return this.bQ != null && this.bQ.i();
    }
 
    @Override
-   protected boolean F() {
+   protected boolean E() {
       return true;
    }
 
@@ -260,13 +260,13 @@ public class cpx extends cjv implements byc {
       }
    }
 
-   public static bzk.a t() {
+   public static bzk.a p() {
       return cjv.gz().a(bzl.v, 0.175F);
    }
 
    @Override
-   protected awx u() {
-      return !this.gr() && !this.x() ? awy.za : null;
+   protected awx s() {
+      return !this.gr() && !this.u() ? awy.za : null;
    }
 
    @Override
@@ -275,7 +275,7 @@ public class cpx extends cjv implements byc {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.zd;
    }
 
@@ -350,7 +350,7 @@ public class cpx extends cjv implements byc {
    @Nullable
    @Override
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
-      if (this.n_()) {
+      if (this.e_()) {
          return super.a($$0, $$1, $$2, $$3);
       } else {
          bai $$4 = $$0.G_();

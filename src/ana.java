@@ -167,7 +167,7 @@ public class ana {
    private static bzh a(bxe $$0, jg<bzg> $$1) throws CommandSyntaxException {
       bzh $$2 = a($$0).fa().a($$1);
       if ($$2 == null) {
-         throw b.create($$0.ai(), a($$1));
+         throw b.create($$0.ah(), a($$1));
       } else {
          return $$2;
       }
@@ -175,7 +175,7 @@ public class ana {
 
    private static byf a(bxe $$0) throws CommandSyntaxException {
       if (!($$0 instanceof byf)) {
-         throw a.create($$0.ai());
+         throw a.create($$0.ah());
       } else {
          return (byf)$$0;
       }
@@ -184,7 +184,7 @@ public class ana {
    private static byf b(bxe $$0, jg<bzg> $$1) throws CommandSyntaxException {
       byf $$2 = a($$0);
       if (!$$2.fa().b($$1)) {
-         throw b.create($$0.ai(), a($$1));
+         throw b.create($$0.ah(), a($$1));
       } else {
          return $$2;
       }
@@ -193,14 +193,14 @@ public class ana {
    private static int a(ek $$0, bxe $$1, jg<bzg> $$2, double $$3) throws CommandSyntaxException {
       byf $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
-      $$0.a(() -> xg.a("commands.attribute.value.get.success", a($$2), $$1.ai(), $$5), false);
+      $$0.a(() -> xg.a("commands.attribute.value.get.success", a($$2), $$1.ah(), $$5), false);
       return (int)($$5 * $$3);
    }
 
    private static int b(ek $$0, bxe $$1, jg<bzg> $$2, double $$3) throws CommandSyntaxException {
       byf $$4 = b($$1, $$2);
       double $$5 = $$4.i($$2);
-      $$0.a(() -> xg.a("commands.attribute.base_value.get.success", a($$2), $$1.ai(), $$5), false);
+      $$0.a(() -> xg.a("commands.attribute.base_value.get.success", a($$2), $$1.ah(), $$5), false);
       return (int)($$5 * $$3);
    }
 
@@ -208,10 +208,10 @@ public class ana {
       byf $$5 = b($$1, $$2);
       bzi $$6 = $$5.fa();
       if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.ai(), a($$2), $$3);
+         throw c.create($$1.ah(), a($$2), $$3);
       } else {
          double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> xg.a("commands.attribute.modifier.value.get.success", xg.a($$3), a($$2), $$1.ai(), $$7), false);
+         $$0.a(() -> xg.a("commands.attribute.modifier.value.get.success", xg.a($$3), a($$2), $$1.ah(), $$7), false);
          return (int)($$7 * $$4);
       }
    }
@@ -223,17 +223,17 @@ public class ana {
 
    private static int c(ek $$0, bxe $$1, jg<bzg> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
-      $$0.a(() -> xg.a("commands.attribute.base_value.set.success", a($$2), $$1.ai(), $$3), false);
+      $$0.a(() -> xg.a("commands.attribute.base_value.set.success", a($$2), $$1.ah(), $$3), false);
       return 1;
    }
 
    private static int a(ek $$0, bxe $$1, jg<bzg> $$2) throws CommandSyntaxException {
       byf $$3 = a($$1);
       if (!$$3.fa().e($$2)) {
-         throw b.create($$1.ai(), a($$2));
+         throw b.create($$1.ah(), a($$2));
       } else {
          double $$4 = $$3.i($$2);
-         $$0.a(() -> xg.a("commands.attribute.base_value.reset.success", a($$2), $$1.ai(), $$4), false);
+         $$0.a(() -> xg.a("commands.attribute.base_value.reset.success", a($$2), $$1.ah(), $$4), false);
          return 1;
       }
    }
@@ -242,10 +242,10 @@ public class ana {
       bzh $$6 = a($$1, $$2);
       bzj $$7 = new bzj($$3, $$4, $$5);
       if ($$6.b($$3)) {
-         throw d.create($$1.ai(), a($$2), $$3);
+         throw d.create($$1.ah(), a($$2), $$3);
       } else {
          $$6.d($$7);
-         $$0.a(() -> xg.a("commands.attribute.modifier.add.success", xg.a($$3), a($$2), $$1.ai()), false);
+         $$0.a(() -> xg.a("commands.attribute.modifier.add.success", xg.a($$3), a($$2), $$1.ah()), false);
          return 1;
       }
    }
@@ -253,10 +253,10 @@ public class ana {
    private static int a(ek $$0, bxe $$1, jg<bzg> $$2, alr $$3) throws CommandSyntaxException {
       bzh $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
-         $$0.a(() -> xg.a("commands.attribute.modifier.remove.success", xg.a($$3), a($$2), $$1.ai()), false);
+         $$0.a(() -> xg.a("commands.attribute.modifier.remove.success", xg.a($$3), a($$2), $$1.ah()), false);
          return 1;
       } else {
-         throw c.create($$1.ai(), a($$2), $$3);
+         throw c.create($$1.ah(), a($$2), $$3);
       }
    }
 

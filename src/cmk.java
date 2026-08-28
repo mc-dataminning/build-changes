@@ -13,7 +13,7 @@ public class cmk extends cme {
       super($$0, $$1);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return gV().a(bzl.s, 15.0).a(bzl.v, 0.2F);
    }
 
@@ -31,12 +31,12 @@ public class cmk extends cme {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.a(axs.a) ? awy.xY : awy.xU;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.xV;
    }
 
@@ -85,13 +85,13 @@ public class cmk extends cme {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bN : super.e($$0);
+      return this.e_() ? bN : super.e($$0);
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (this.t() && this.bP++ >= 18000) {
+   public void d_() {
+      super.d_();
+      if (this.p() && this.bP++ >= 18000) {
          this.aq();
       }
    }
@@ -99,7 +99,7 @@ public class cmk extends cme {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("SkeletonTrap", this.t());
+      $$0.a("SkeletonTrap", this.p());
       $$0.a("SkeletonTrapTime", this.bP);
    }
 
@@ -115,7 +115,7 @@ public class cmk extends cme {
       return 0.96F;
    }
 
-   public boolean t() {
+   public boolean p() {
       return this.bO;
    }
 

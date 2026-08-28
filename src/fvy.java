@@ -61,11 +61,11 @@ public class fvy implements gfm {
       if ($$5 != gfj.a) {
          $$0.c().a();
          $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$6 = $$5.aV_() ? 1.0F : 0.25F;
+         float $$6 = $$5.aQ_() ? 1.0F : 0.25F;
          $$5.a($$0, $$6, $$4);
          $$0.c().b();
          int $$7 = (int)($$4 * 255.0F);
-         if ($$7 > 3 && $$5.aV_()) {
+         if ($$7 > 3 && $$5.aQ_()) {
             xg $$8 = this.e.n.S[$$1].k();
             $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$7 << 24));
          }
@@ -76,7 +76,7 @@ public class fvy implements gfm {
       int $$1 = (int)(this.c() * 255.0F);
       if ($$1 > 3 && this.g != null) {
          gfl $$2 = this.g.b();
-         xg $$3 = $$2 == gfj.a ? this.g.c().b() : $$2.aU_();
+         xg $$3 = $$2 == gfj.a ? this.g.c().b() : $$2.aP_();
          if ($$3 != null) {
             int $$4 = this.e.h.a($$3);
             int $$5 = ($$0.a() - $$4) / 2;
@@ -99,7 +99,7 @@ public class fvy implements gfm {
    public void b(int $$0) {
       int $$1 = this.g.e() + $$0;
 
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == gfj.a || !this.g.a($$1).aV_())) {
+      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == gfj.a || !this.g.a($$1).aQ_())) {
          $$1 += $$0;
       }
 

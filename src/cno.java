@@ -38,8 +38,8 @@ public class cno extends cni {
 
    private void b(asb $$0) {
       if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         iw $$2 = $$0.a(ehp.a.f, eku.a(this.a.j()));
+         int $$1 = this.a.u();
+         iw $$2 = $$0.a(ehp.a.f, eku.a(this.a.m()));
          csi $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
          int $$5;
          if ($$3 != null) {
@@ -58,7 +58,7 @@ public class cno extends cni {
 
       this.i();
       if (this.c != null && this.c.c()) {
-         this.a.t().a(cnw.d);
+         this.a.gr().a(cnw.d);
       }
    }
 

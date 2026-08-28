@@ -19,7 +19,7 @@ public class dwg extends dno {
    @Override
    protected void a(dkj $$0, ebq $$1, ffy $$2, ctd $$3) {
       int $$4 = a((dkk)$$0, $$1, $$2, (bxe)$$3);
-      if ($$3.q() instanceof asc $$6) {
+      if ($$3.p() instanceof asc $$6) {
          $$6.a(axi.aE);
          aq.M.a($$6, $$3, $$2.g(), $$4);
       }

@@ -10,7 +10,7 @@ public abstract class ftp extends ftr implements fvu {
    }
 
    @Override
-   public final boolean aM_() {
+   public final boolean aH_() {
       return this.c;
    }
 
@@ -21,7 +21,7 @@ public abstract class ftp extends ftr implements fvu {
 
    @Nullable
    @Override
-   public fvv aN_() {
+   public fvv aI_() {
       return this.a;
    }
 
@@ -63,8 +63,8 @@ public abstract class ftp extends ftr implements fvu {
    }
 
    @Override
-   public boolean aO_() {
-      return fvu.super.aO_();
+   public boolean aJ_() {
+      return fvu.super.aJ_();
    }
 
    @Override

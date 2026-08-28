@@ -49,13 +49,13 @@ public class daw extends dag {
    }
 
    private fgc a(asc $$0) {
-      return $$0.gN() && $$0.cm != null && $$0.cm.e <= $$0.dt().e ? $$0.cm : $$0.dt();
+      return $$0.gO() && $$0.cm != null && $$0.cm.e <= $$0.dt().e ? $$0.cm : $$0.dt();
    }
 
    @Override
    public void b(dak $$0, byf $$1, byf $$2) {
       if (b($$2)) {
-         $$2.k();
+         $$2.j();
       }
    }
 
@@ -106,10 +106,10 @@ public class daw extends dag {
          boolean $$5;
          boolean var10000;
          label64: {
-            $$3 = !$$2.aa_();
+            $$3 = !$$2.ak();
             $$4 = $$2 != $$0 && $$2 != $$1;
             $$5 = !$$0.s($$2);
-            if ($$2 instanceof bzb $$6 && $$1 instanceof byf $$7 && $$6.q() && $$6.j($$7)) {
+            if ($$2 instanceof bzb $$6 && $$1 instanceof byf $$7 && $$6.m() && $$6.j($$7)) {
                var10000 = true;
                break label64;
             }
@@ -120,7 +120,7 @@ public class daw extends dag {
          boolean $$8;
          label56: {
             $$8 = !var10000;
-            if ($$2 instanceof coc $$9 && $$9.t()) {
+            if ($$2 instanceof coc $$9 && $$9.w()) {
                var10000 = false;
                break label56;
             }

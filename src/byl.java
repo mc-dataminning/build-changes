@@ -20,12 +20,12 @@ public class byl extends bxe {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV() instanceof asb $$0) {
          this.a($$0);
       } else {
-         this.j();
+         this.i();
       }
    }
 
@@ -35,20 +35,20 @@ public class byl extends bxe {
       }
 
       if ((long)this.af >= this.g) {
-         this.m();
+         this.l();
          this.c($$0);
       }
    }
 
-   private void j() {
+   private void i() {
       if (this.dV().ae() % 5L == 0L) {
-         this.f();
+         this.e();
       }
    }
 
-   private void m() {
+   private void l() {
       if (this.dV() instanceof asb $$0) {
-         dak $$2 = this.g();
+         dak $$2 = this.f();
          if (!$$2.f()) {
             bxe $$4;
             if ($$2.h() instanceof dbe $$3) {
@@ -88,9 +88,9 @@ public class byl extends bxe {
 
    @Override
    protected void b(ua $$0) {
-      if (!this.g().f()) {
+      if (!this.f().f()) {
          alp<va> $$1 = this.dX().a(uo.a);
-         $$0.a("item", dak.b, $$1, this.g());
+         $$0.a("item", dak.b, $$1, this.f());
       }
 
       $$0.a("spawn_item_after_ticks", this.g);
@@ -112,16 +112,16 @@ public class byl extends bxe {
    }
 
    @Override
-   public eyf j_() {
+   public eyf i_() {
       return eyf.d;
    }
 
    @Override
-   public boolean g_() {
+   public boolean n_() {
       return true;
    }
 
-   public void f() {
+   public void e() {
       fgc $$0 = this.dt();
       int $$1 = this.ae.a(1, 3);
 
@@ -135,7 +135,7 @@ public class byl extends bxe {
       }
    }
 
-   public dak g() {
+   public dak f() {
       return this.ar().a(f);
    }
 

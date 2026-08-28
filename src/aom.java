@@ -237,7 +237,7 @@ public class aom {
       asb $$4 = $$0.e();
       $$2.forEach($$2x -> {
          coo $$3x = new coo($$4, $$1.d, $$1.e, $$1.f, $$2x.v());
-         $$3x.j();
+         $$3x.i();
          $$4.b($$3x);
       });
       $$3.accept($$2);
@@ -267,7 +267,7 @@ public class aom {
       if ($$2 instanceof byf) {
          return ((byf)$$2).a($$1);
       } else {
-         throw b.create($$2.m_());
+         throw b.create($$2.P_());
       }
    }
 
@@ -289,7 +289,7 @@ public class aom {
    private static int a(CommandContext<ek> $$0, bxe $$1, aom.b $$2) throws CommandSyntaxException {
       Optional<alq<fay>> $$3 = $$1.ea();
       if ($$3.isEmpty()) {
-         throw c.create($$1.m_());
+         throw c.create($$1.P_());
       } else {
          ek $$4 = (ek)$$0.getSource();
          faw.a $$5 = new faw.a($$4.e());

@@ -32,7 +32,7 @@ public class guh<T extends dyo & dzv> implements gua<T> {
          $$2.a(-0.5F, -0.5F, -0.5F);
          dpw.c<? extends dyw> $$15;
          if ($$8) {
-            $$15 = $$12.a($$9, $$7, $$0.aC_(), true);
+            $$15 = $$12.a($$9, $$7, $$0.ax_(), true);
          } else {
             $$15 = dpw.b::b;
          }

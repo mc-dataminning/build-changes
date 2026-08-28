@@ -30,8 +30,8 @@ public class fzc extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       if (this.d != null) {
          this.v = fur.a(this.p, this.d, 360);
       }
@@ -41,7 +41,7 @@ public class fzc extends fzq {
       int $$2 = this.v != null ? this.v.a() : 1;
       int $$3 = Math.max($$2, 5) * 9;
       int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fty.a(this.s, $$0x -> this.aQ_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+      this.w = this.c(fty.a(this.s, $$0x -> this.aL_()).a((this.n - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
@@ -66,12 +66,12 @@ public class fzc extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return this.v != null && this.w.j;
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.u.run();
    }
 

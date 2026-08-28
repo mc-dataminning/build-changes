@@ -30,8 +30,8 @@ public class fyo extends fzq {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.u = fur.a(this.p, this.s, this.n - 50);
       int $$0 = azz.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
       this.w.clear();
@@ -86,7 +86,7 @@ public class fyo extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 

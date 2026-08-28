@@ -17,6 +17,6 @@ public class gwz extends gwn<cou, hdo> {
 
    public void a(cou $$0, hdo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gv();
+      $$1.a = $$0.gy();
    }
 }

@@ -60,7 +60,7 @@ public class apv {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.tag.add.success.single", $$2, $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.tag.add.success.single", $$2, $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
          }
@@ -82,7 +82,7 @@ public class apv {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
          }
@@ -101,9 +101,9 @@ public class apv {
       if ($$1.size() == 1) {
          bxe $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
-            $$0.a(() -> xg.a("commands.tag.list.single.empty", $$4.m_()), false);
+            $$0.a(() -> xg.a("commands.tag.list.single.empty", $$4.P_()), false);
          } else {
-            $$0.a(() -> xg.a("commands.tag.list.single.success", $$4.m_(), $$2.size(), xj.a($$2)), false);
+            $$0.a(() -> xg.a("commands.tag.list.single.success", $$4.P_(), $$2.size(), xj.a($$2)), false);
          }
       } else if ($$2.isEmpty()) {
          $$0.a(() -> xg.a("commands.tag.list.multiple.empty", $$1.size()), false);

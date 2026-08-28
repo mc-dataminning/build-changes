@@ -46,7 +46,7 @@ public class ang {
 
       if ($$4 == 0) {
          if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().ai());
+            throw a.create($$1.iterator().next().ah());
          } else {
             throw b.create($$1.size());
          }
@@ -54,12 +54,12 @@ public class ang {
          int $$6 = $$4;
          if ($$3 == 0) {
             if ($$1.size() == 1) {
-               $$0.a(() -> xg.a("commands.clear.test.single", $$6, $$1.iterator().next().m_()), true);
+               $$0.a(() -> xg.a("commands.clear.test.single", $$6, $$1.iterator().next().P_()), true);
             } else {
                $$0.a(() -> xg.a("commands.clear.test.multiple", $$6, $$1.size()), true);
             }
          } else if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.clear.success.single", $$6, $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.clear.success.single", $$6, $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.clear.success.multiple", $$6, $$1.size()), true);
          }

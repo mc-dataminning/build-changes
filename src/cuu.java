@@ -36,7 +36,7 @@ public abstract class cuu extends cut implements bxv, cva {
 
    @Override
    public void a(asb $$0, bvt $$1) {
-      this.a($$0, this.o());
+      this.a($$0, this.p());
       this.a($$1, $$0, this);
    }
 
@@ -82,7 +82,7 @@ public abstract class cuu extends cut implements bxv, cva {
 
    @Override
    public void a() {
-      this.al_();
+      this.ah_();
    }
 
    @Override
@@ -127,7 +127,7 @@ public abstract class cuu extends cut implements bxv, cva {
    @Nullable
    @Override
    public cwb createMenu(int $$0, csh $$1, csi $$2) {
-      if (this.l != null && $$2.aa_()) {
+      if (this.l != null && $$2.ak()) {
          return null;
       } else {
          this.e($$1.h);
@@ -141,7 +141,7 @@ public abstract class cuu extends cut implements bxv, cva {
 
    @Nullable
    @Override
-   public alq<fay> q() {
+   public alq<fay> r() {
       return this.l;
    }
 

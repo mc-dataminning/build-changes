@@ -18,12 +18,12 @@ public class fzo extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected boolean aS_() {
+   protected boolean aN_() {
       return false;
    }
 
@@ -61,14 +61,14 @@ public class fzo extends fzq {
    @Override
    public void e() {
       if (this.d.getAsBoolean() || ag.c() > this.c + 30000L) {
-         this.aQ_();
+         this.aL_();
       }
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.aY().c(xg.c("narrator.ready_to_play"));
-      super.aQ_();
+      super.aL_();
    }
 
    @Override

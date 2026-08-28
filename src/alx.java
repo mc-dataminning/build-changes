@@ -13,7 +13,7 @@ public class alx {
 
    public alx(Path $$0) {
       this.b = $$0;
-      this.c = ac.aU || this.b();
+      this.c = ac.aV || this.b();
    }
 
    private boolean b() {
@@ -38,7 +38,7 @@ public class alx {
    }
 
    private void c() {
-      if (!ac.aU) {
+      if (!ac.aV) {
          try (OutputStream $$0 = Files.newOutputStream(this.b)) {
             Properties $$1 = new Properties();
             $$1.setProperty("eula", "false");

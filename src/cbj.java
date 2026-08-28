@@ -31,7 +31,7 @@ public class cbj {
    private static cru a(cru $$0, cru $$1) {
       cru $$2;
       cru $$3;
-      if ($$0.t() > $$1.t()) {
+      if ($$0.p() > $$1.p()) {
          $$2 = $$0;
          $$3 = $$1;
       } else {
@@ -45,7 +45,7 @@ public class cbj {
 
    private static boolean a(jf $$0, jg<cjk> $$1, cru $$2) {
       Optional<jf> $$3 = $$2.ec().c(chh.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gC().b());
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gF().b());
    }
 
    private static boolean a(jg<cjk> $$0, jg<crx> $$1) {

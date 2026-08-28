@@ -18,13 +18,13 @@ public class dyc extends dyo implements bvf {
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return (xg)(this.c != null ? this.c : xg.c("block.minecraft.banner"));
    }
 
    @Nullable
    @Override
-   public xg ak() {
+   public xg aj() {
       return this.c;
    }
 

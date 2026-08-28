@@ -8,7 +8,7 @@ public interface fho extends buv {
    void b(dak var1);
 
    default dak h() {
-      return this.c(this.ap_());
+      return this.c(this.ak_());
    }
 
    @Override
@@ -28,7 +28,7 @@ public interface fho extends buv {
 
    @Override
    default dak b(int $$0) {
-      return this.a($$0, this.ap_());
+      return this.a($$0, this.ak_());
    }
 
    @Override

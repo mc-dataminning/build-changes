@@ -30,9 +30,9 @@ public class cij extends cin<byf> {
       for (byf $$14 : $$13.b($$0x -> true)) {
          if ($$14 instanceof cqr) {
             cqr $$15 = (cqr)$$14;
-            if ($$15.n_() && $$5.isEmpty()) {
+            if ($$15.e_() && $$5.isEmpty()) {
                $$5 = Optional.of($$15);
-            } else if ($$15.x()) {
+            } else if ($$15.p()) {
                $$10++;
                if ($$4.isEmpty() && $$15.gv()) {
                   $$4 = Optional.of($$15);
@@ -42,9 +42,9 @@ public class cij extends cin<byf> {
             $$11.add($$16);
          } else if ($$14 instanceof cqx) {
             cqx $$17 = (cqx)$$14;
-            if ($$17.n_() && $$6.isEmpty()) {
+            if ($$17.e_() && $$6.isEmpty()) {
                $$6 = Optional.of($$17);
-            } else if ($$17.t()) {
+            } else if ($$17.gv()) {
                $$11.add($$17);
             }
          } else if ($$14 instanceof csi) {
@@ -53,7 +53,7 @@ public class cij extends cin<byf> {
                $$8 = Optional.of($$18);
             }
 
-            if ($$9.isEmpty() && !$$18.aa_() && cqy.b($$18)) {
+            if ($$9.isEmpty() && !$$18.ak() && cqy.b($$18)) {
                $$9 = Optional.of($$18);
             }
          } else if (!$$3.isEmpty() || !($$14 instanceof cqb) && !($$14 instanceof coa)) {
@@ -68,7 +68,7 @@ public class cij extends cin<byf> {
       for (byf $$20 : $$2.c(chh.g).orElse(ImmutableList.of())) {
          if ($$20 instanceof cqw) {
             cqw $$21 = (cqw)$$20;
-            if ($$21.t()) {
+            if ($$21.gv()) {
                $$12.add($$21);
             }
          }

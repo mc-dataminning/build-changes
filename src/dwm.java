@@ -44,7 +44,7 @@ public class dwm extends dno {
    public void a(asb $$0, iw $$1, dkc $$2) {
       if ($$0.O().c(dkf.ad)) {
          cop $$3 = new cop($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.c());
-         int $$4 = $$3.g();
+         int $$4 = $$3.f();
          $$3.b((short)($$0.A.a($$4 / 4) + $$4 / 8));
          $$0.b($$3);
       }
@@ -94,7 +94,7 @@ public class dwm extends dno {
    protected void a(dkj $$0, ebq $$1, ffy $$2, ctd $$3) {
       if ($$0 instanceof asb $$4) {
          iw $$5 = $$2.b();
-         bxe $$6 = $$3.q();
+         bxe $$6 = $$3.p();
          if ($$3.bX() && $$3.c($$4, $$5) && a($$0, $$5, $$6 instanceof byf ? (byf)$$6 : null)) {
             $$0.a($$5, false);
          }

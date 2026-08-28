@@ -60,12 +60,12 @@ public class fzs extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       if (this.u == null) {
          this.u = this.m.aL().a();
       }
@@ -100,7 +100,7 @@ public class fzs extends fzq {
    }
 
    private int a(int $$0, int $$1) {
-      if (ac.aU) {
+      if (ac.aV) {
          this.c(fty.a(xg.b("Create Test World"), $$0x -> ger.b(this.m, this)).a(this.n / 2 - 100, $$0 += $$1, 200, 20).a());
       }
 
@@ -243,7 +243,7 @@ public class fzs extends fzq {
    }
 
    private void a(float $$0) {
-      for (fvv $$1 : this.aJ_()) {
+      for (fvv $$1 : this.aE_()) {
          if ($$1 instanceof ftw $$2) {
             $$2.a($$0);
          }
@@ -265,17 +265,17 @@ public class fzs extends fzq {
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       if (this.w != null) {
-         this.w.aK_();
+         this.w.aF_();
       }
    }
 
    @Override
-   public void aL_() {
-      super.aL_();
+   public void aG_() {
+      super.aG_();
       if (this.w != null) {
-         this.w.aL_();
+         this.w.aG_();
       }
    }
 

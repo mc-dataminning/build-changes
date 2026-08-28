@@ -18,6 +18,6 @@ public class hat extends gzb<csa, hgp, gka> {
    public void a(csa $$0, hgp $$1, float $$2) {
       super.a($$0, $$1, $$2);
       het.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
+      $$1.a = $$0.m() > 0;
    }
 }

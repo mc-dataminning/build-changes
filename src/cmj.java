@@ -6,7 +6,7 @@ public class cmj extends cmd {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.qj;
    }
 
@@ -16,7 +16,7 @@ public class cmj extends cmd {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.qm;
    }
 
@@ -37,7 +37,7 @@ public class cmj extends cmd {
    }
 
    @Override
-   protected void x() {
+   protected void u() {
       this.a(awy.ql, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
    }
 

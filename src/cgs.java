@@ -35,7 +35,7 @@ public class cgs extends chb {
       if (this.b == null) {
          return false;
       } else {
-         if (this.b instanceof csi $$8 && ($$8.aa_() || $$8.b())) {
+         if (this.b instanceof csi $$8 && ($$8.ak() || $$8.gz())) {
             return false;
          }
 

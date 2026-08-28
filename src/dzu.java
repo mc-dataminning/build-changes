@@ -52,7 +52,7 @@ public class dzu extends dyo implements but, bve {
       }
 
       @Override
-      public int ap_() {
+      public int ak_() {
          return 1;
       }
 
@@ -116,7 +116,7 @@ public class dzu extends dyo implements but, bve {
    void s() {
       this.h = 0;
       this.i = 0;
-      dsf.a(null, this.i(), this.aC_(), this.m(), false);
+      dsf.a(null, this.i(), this.ax_(), this.m(), false);
    }
 
    public void a(dak $$0, @Nullable csi $$1) {
@@ -131,7 +131,7 @@ public class dzu extends dyo implements but, bve {
       if ($$1 != this.h) {
          this.h = $$1;
          this.e();
-         dsf.a(this.i(), this.aC_(), this.m());
+         dsf.a(this.i(), this.ax_(), this.m());
       }
    }
 
@@ -159,8 +159,8 @@ public class dzu extends dyo implements but, bve {
          $$2 = "Lectern";
          $$3 = xg.b("Lectern");
       } else {
-         $$2 = $$0.ai().getString();
-         $$3 = $$0.m_();
+         $$2 = $$0.ah().getString();
+         $$3 = $$0.P_();
       }
 
       fgc $$6 = fgc.b(this.o);
@@ -199,7 +199,7 @@ public class dzu extends dyo implements but, bve {
          float $$4 = 0.25F * (float)$$2.j();
          float $$5 = 0.25F * (float)$$2.l();
          coo $$6 = new coo(this.n, (double)$$0.u() + 0.5 + (double)$$4, (double)($$0.v() + 1), (double)$$0.w() + 0.5 + (double)$$5, $$3);
-         $$6.j();
+         $$6.i();
          this.n.b($$6);
       }
    }
@@ -210,7 +210,7 @@ public class dzu extends dyo implements but, bve {
    }
 
    @Override
-   public xg m_() {
+   public xg P_() {
       return xg.c("container.lectern");
    }
 

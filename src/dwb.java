@@ -52,7 +52,7 @@ public class dwb extends dxa implements dnr {
       if ($$3 instanceof byf && $$3.an() != bxn.ab && $$3.an() != bxn.m) {
          $$3.a($$0, new fgc(0.8F, 0.75, 0.8F));
          if ($$1 instanceof asb $$5 && $$0.c(c) != 0) {
-            fgc $$7 = $$3.Q_() ? $$3.ae() : $$3.bA().d($$3.dt());
+            fgc $$7 = $$3.Z_() ? $$3.ad() : $$3.bA().d($$3.dt());
             if ($$7.j() > 0.0) {
                double $$8 = Math.abs($$7.a());
                double $$9 = Math.abs($$7.c());

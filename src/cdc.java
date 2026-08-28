@@ -134,7 +134,7 @@ public class cdc {
             new cbt(
                ImmutableList.of(
                   Pair.of(cat.a(bxn.bE, 8, chh.r, $$1, 2), 2),
-                  Pair.of(cat.a(bxn.bE, 8, bwu::Y_, bwu::Y_, chh.s, $$1, 2), 1),
+                  Pair.of(cat.a(bxn.bE, 8, bwu::X_, bwu::X_, chh.s, $$1, 2), 1),
                   Pair.of(cat.a(bxn.v, 8, chh.r, $$1, 2), 1),
                   Pair.of(cda.a($$1), 1),
                   Pair.of(ccd.a($$1, 2), 1),

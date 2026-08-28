@@ -44,7 +44,7 @@ public class fuv extends fue<fuv.a> {
 
    @Nullable
    public ftw b(fqt<?> $$0) {
-      for (fuv.a $$1 : this.aJ_()) {
+      for (fuv.a $$1 : this.aE_()) {
          if ($$1 instanceof fuv.b $$2) {
             ftw $$3 = $$2.a.get($$0);
             if ($$3 != null) {
@@ -57,7 +57,7 @@ public class fuv extends fue<fuv.a> {
    }
 
    public void b() {
-      for (fuv.a $$0 : this.aJ_()) {
+      for (fuv.a $$0 : this.aE_()) {
          if ($$0 instanceof fuv.b) {
             fuv.b $$1 = (fuv.b)$$0;
 
@@ -71,8 +71,8 @@ public class fuv extends fue<fuv.a> {
    }
 
    public Optional<fvv> e(double $$0, double $$1) {
-      for (fuv.a $$2 : this.aJ_()) {
-         for (fvv $$3 : $$2.aJ_()) {
+      for (fuv.a $$2 : this.aE_()) {
+         for (fvv $$3 : $$2.aE_()) {
             if ($$3.a_($$0, $$1)) {
                return Optional.of($$3);
             }
@@ -113,7 +113,7 @@ public class fuv extends fue<fuv.a> {
       }
 
       @Override
-      public List<? extends fvv> aJ_() {
+      public List<? extends fvv> aE_() {
          return this.a;
       }
 

@@ -60,9 +60,9 @@ public abstract class bzb extends cjv implements bym {
 
    @Override
    public boolean a(bxe $$0, float $$1) {
-      if (this.x()) {
+      if (this.u()) {
          if ($$1 > 10.0F) {
-            this.y();
+            this.x();
          }
 
          return false;
@@ -96,7 +96,7 @@ public abstract class bzb extends cjv implements bym {
       }
    }
 
-   public boolean q() {
+   public boolean m() {
       return (this.al.a(bJ) & 4) != 0;
    }
 
@@ -109,14 +109,14 @@ public abstract class bzb extends cjv implements bym {
       }
 
       if ($$1) {
-         this.t();
+         this.p();
       }
    }
 
-   protected void t() {
+   protected void p() {
    }
 
-   public boolean x() {
+   public boolean u() {
       return (this.al.a(bJ) & 1) != 0;
    }
 
@@ -157,7 +157,7 @@ public abstract class bzb extends cjv implements bym {
    }
 
    public boolean j(byf $$0) {
-      return $$0 == this.e();
+      return $$0 == this.T_();
    }
 
    public boolean a(byf $$0, byf $$1) {
@@ -171,7 +171,7 @@ public abstract class bzb extends cjv implements bym {
       if ($$0 != null) {
          return $$0;
       } else {
-         if (this.q()) {
+         if (this.m()) {
             byf $$1 = this.U_();
             if ($$1 != null) {
                return $$1.cq();
@@ -184,7 +184,7 @@ public abstract class bzb extends cjv implements bym {
 
    @Override
    protected boolean t(bxe $$0) {
-      if (this.q()) {
+      if (this.m()) {
          byf $$1 = this.U_();
          if ($$0 == $$1) {
             return true;
@@ -200,7 +200,7 @@ public abstract class bzb extends cjv implements bym {
 
    @Override
    public void a(bvt $$0) {
-      if (this.dV() instanceof asb $$1 && $$1.O().c(dkf.o) && this.e() instanceof asc $$2) {
+      if (this.dV() instanceof asb $$1 && $$1.O().c(dkf.o) && this.T_() instanceof asc $$2) {
          $$2.a(this.eS().a());
       }
 
@@ -216,15 +216,15 @@ public abstract class bzb extends cjv implements bym {
    }
 
    public void gv() {
-      byf $$0 = this.e();
+      byf $$0 = this.T_();
       if ($$0 != null) {
          this.h($$0.dv());
       }
    }
 
    public boolean gw() {
-      byf $$0 = this.e();
-      return $$0 != null && this.g((bxe)this.e()) >= 144.0;
+      byf $$0 = this.T_();
+      return $$0 != null && this.g((bxe)this.T_()) >= 144.0;
    }
 
    private void h(iw $$0) {
@@ -266,7 +266,7 @@ public abstract class bzb extends cjv implements bym {
    }
 
    public final boolean gx() {
-      return this.gu() || this.bY() || this.R_() || this.e() != null && this.e().aa_();
+      return this.gu() || this.bY() || this.o() || this.T_() != null && this.T_().ak();
    }
 
    protected boolean gy() {

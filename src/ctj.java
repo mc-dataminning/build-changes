@@ -17,9 +17,9 @@ public class ctj extends csq {
    }
 
    @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.f()) {
+   public void g() {
+      super.g();
+      if (this.dV().C && !this.e()) {
          this.dV().a(lz.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
       }
    }
@@ -28,7 +28,7 @@ public class ctj extends csq {
    protected void a(byf $$0) {
       super.a($$0);
       bwi $$1 = new bwi(bwk.x, this.e, 0);
-      $$0.b($$1, this.z());
+      $$0.b($$1, this.y());
    }
 
    @Override
@@ -44,7 +44,7 @@ public class ctj extends csq {
    }
 
    @Override
-   protected dak o() {
+   protected dak n() {
       return new dak(dao.wA);
    }
 }

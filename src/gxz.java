@@ -51,6 +51,6 @@ public class gxz extends gxu<bxs, heg> {
 
    public void a(bxs $$0, heg $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.g();
+      $$1.a = $$0.f();
    }
 }

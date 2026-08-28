@@ -14,7 +14,7 @@ public class ccy extends bzw<cru> {
 
    protected boolean a(asb $$0, cru $$1) {
       if ($$1.af % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.af)) {
-         if ($$1.n().a_(dao.sG) <= 0) {
+         if ($$1.u().a_(dao.sG) <= 0) {
             return false;
          } else {
             this.g = this.b($$0, $$1);
@@ -80,7 +80,7 @@ public class ccy extends bzw<cru> {
       iw $$3 = this.g.get();
       if ($$2 >= this.d && $$3.a($$1.dt(), 1.0)) {
          dak $$4 = dak.l;
-         bvj $$5 = $$1.n();
+         bvj $$5 = $$1.u();
          int $$6 = $$5.b();
 
          for (int $$7 = 0; $$7 < $$6; $$7++) {

@@ -35,7 +35,7 @@ public class dfr implements deq {
    }
 
    @Override
-   public dfa aq_() {
+   public dfa al_() {
       if (this.h == null) {
          this.h = dfa.b(this.g);
       }

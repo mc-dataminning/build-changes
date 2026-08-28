@@ -13,14 +13,14 @@ public class cgi extends cfb {
 
    @Override
    public boolean b() {
-      byf $$0 = this.a.f();
-      return this.a.n() > 0 || $$0 != null && this.a.g($$0) < 9.0;
+      byf $$0 = this.a.e();
+      return this.a.u() > 0 || $$0 != null && this.a.g($$0) < 9.0;
    }
 
    @Override
    public void d() {
-      this.a.O().m();
-      this.b = this.a.f();
+      this.a.N().m();
+      this.b = this.a.e();
    }
 
    @Override
@@ -39,7 +39,7 @@ public class cgi extends cfb {
          this.a.b(-1);
       } else if (this.a.g(this.b) > 49.0) {
          this.a.b(-1);
-      } else if (!this.a.P().a(this.b)) {
+      } else if (!this.a.O().a(this.b)) {
          this.a.b(-1);
       } else {
          this.a.b(1);

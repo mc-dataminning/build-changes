@@ -20,7 +20,7 @@ public class cav extends bzw<byh> {
    }
 
    protected boolean a(asb $$0, byh $$1) {
-      return $$1.n_() && this.b($$0, $$1);
+      return $$1.e_() && this.b($$0, $$1);
    }
 
    protected void a(asb $$0, byh $$1, long $$2) {
@@ -43,7 +43,7 @@ public class cav extends bzw<byh> {
    }
 
    protected boolean c(asb $$0, byh $$1, long $$2) {
-      return $$1.n_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
+      return $$1.e_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
    }
 
    @Override
@@ -58,7 +58,7 @@ public class cav extends bzw<byh> {
          this.k--;
       } else {
          if (this.d($$0, $$1)) {
-            $$1.N().a();
+            $$1.M().a();
             this.j--;
             this.k = 5;
          }

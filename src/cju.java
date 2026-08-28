@@ -10,7 +10,7 @@ public abstract class cju extends bwu {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 120;
    }
 

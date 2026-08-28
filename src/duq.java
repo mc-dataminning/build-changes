@@ -98,6 +98,6 @@ public class duq extends dna implements duz {
    @Nullable
    @Override
    public <T extends dyo> dyp<T> a(dkj $$0, ebq $$1, dyq<T> $$2) {
-      return !$$0.C ? dna.a($$2, dyq.M, ($$0x, $$1x, $$2x, $$3) -> egz.c.a($$0x, $$3.x(), $$3.gu())) : null;
+      return !$$0.C ? dna.a($$2, dyq.M, ($$0x, $$1x, $$2x, $$3) -> egz.c.a($$0x, $$3.gw(), $$3.gx())) : null;
    }
 }

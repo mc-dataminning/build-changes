@@ -29,7 +29,7 @@ public class caa extends bzw<cru> {
    protected void c(asb $$0, cru $$1, long $$2) {
       bai $$3 = $$1.dY();
       if ($$3.a(100) == 0) {
-         $$1.gy();
+         $$1.gz();
       }
 
       if ($$3.a(200) == 0 && cbf.a($$0, $$1, $$1.dv())) {

@@ -8,32 +8,32 @@ public class coe extends cog {
    }
 
    @Override
-   public awx m() {
+   public awx l() {
       return awy.li;
    }
 
    @Override
-   public awx n() {
+   public awx m() {
       return awy.lg;
    }
 
    @Override
-   public awx o() {
+   public awx n() {
       return awy.lh;
    }
 
    @Override
-   public awx q() {
+   public awx p() {
       return awy.lf;
    }
 
    @Override
-   public awx s() {
+   public awx r() {
       return awy.lj;
    }
 
    @Override
-   protected dak t() {
+   protected dak s() {
       return new dak(dao.vn);
    }
 }

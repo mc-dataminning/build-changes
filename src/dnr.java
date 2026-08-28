@@ -28,13 +28,13 @@ public interface dnr {
    }
 
    default iw a(iw $$0) {
-      return switch (this.as_()) {
+      return switch (this.an_()) {
          case a -> $$0.d();
          case b -> $$0;
       };
    }
 
-   default dnr.a as_() {
+   default dnr.a an_() {
       return dnr.a.b;
    }
 

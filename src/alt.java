@@ -96,7 +96,7 @@ public class alt {
 
    public static void c() {
       a(() -> "validate");
-      if (ac.aU) {
+      if (ac.aV) {
          b().forEach($$0 -> d.error("Missing translations: {}", $$0));
          el.b();
       }

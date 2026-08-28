@@ -22,6 +22,6 @@ public class haq extends gzb<cpy, hgn, gjy> {
    public void a(cpy $$0, hgn $$1, float $$2) {
       super.a($$0, $$1, $$2);
       hdg.a($$0, $$1, this.h);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gv();
    }
 }

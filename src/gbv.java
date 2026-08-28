@@ -13,13 +13,13 @@ public class gbv extends fzq {
 
    public gbv(eai $$0) {
       super(b);
-      this.d = $$0.aC_();
+      this.d = $$0.ax_();
       this.s = $$0.d();
       this.u = $$0.t();
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.v = new fuh(this.p, this.n / 2 - 152, 80, 240, 20, xg.c("test_block.message"));
       this.v.f(128);
       this.v.a(this.u);
@@ -50,11 +50,11 @@ public class gbv extends fzq {
    private void m() {
       this.u = this.v.a();
       this.m.L().b(new aix(this.d, this.s, this.u));
-      this.aQ_();
+      this.aL_();
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.E();
    }
 

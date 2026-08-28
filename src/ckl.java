@@ -17,7 +17,7 @@ public class ckl extends cjs implements byk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cfl(this, 1.0, true));
       this.bF.a(2, new cfq(this, 0.9, 32.0F));
       this.bF.a(2, new cfm(this, 0.6, false));
@@ -38,8 +38,8 @@ public class ckl extends cjs implements byk {
       $$0.a(c, (byte)0);
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 100.0).a(bzl.v, 0.25).a(bzl.p, 1.0).a(bzl.c, 15.0).a(bzl.B, 1.0);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 100.0).a(bzl.v, 0.25).a(bzl.p, 1.0).a(bzl.c, 15.0).a(bzl.B, 1.0);
    }
 
    @Override
@@ -57,8 +57,8 @@ public class ckl extends cjs implements byk {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.f > 0) {
          this.f--;
       }
@@ -79,7 +79,7 @@ public class ckl extends cjs implements byk {
 
    @Override
    public boolean a(bxn<?> $$0) {
-      if (this.t() && $$0 == bxn.bT) {
+      if (this.gv() && $$0 == bxn.bT) {
          return false;
       } else {
          return $$0 == bxn.F ? false : super.a($$0);
@@ -89,7 +89,7 @@ public class ckl extends cjs implements byk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("PlayerCreated", this.t());
+      $$0.a("PlayerCreated", this.gv());
       this.a_($$0);
    }
 
@@ -126,7 +126,7 @@ public class ckl extends cjs implements byk {
       return this.bL;
    }
 
-   private float x() {
+   private float gw() {
       return (float)this.h(bzl.c);
    }
 
@@ -134,7 +134,7 @@ public class ckl extends cjs implements byk {
    public boolean c(asb $$0, bxe $$1) {
       this.f = 10;
       $$0.a(this, (byte)4);
-      float $$2 = this.x();
+      float $$2 = this.gw();
       float $$3 = (int)$$2 > 0 ? $$2 / 2.0F + (float)this.ae.a((int)$$2) : $$2;
       bvt $$4 = this.dW().b((byf)this);
       boolean $$5 = $$1.a($$0, $$4, $$3);
@@ -151,16 +151,16 @@ public class ckl extends cjs implements byk {
 
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
-      bxa.a $$3 = this.m();
+      bxa.a $$3 = this.p();
       boolean $$4 = super.a($$0, $$1, $$2);
-      if ($$4 && this.m() != $$3) {
+      if ($$4 && this.p() != $$3) {
          this.a(awy.nW, 1.0F, 1.0F);
       }
 
       return $$4;
    }
 
-   public bxa.a m() {
+   public bxa.a p() {
       return bxa.a.a(this.eG() / this.eU());
    }
 
@@ -178,7 +178,7 @@ public class ckl extends cjs implements byk {
       }
    }
 
-   public int n() {
+   public int u() {
       return this.f;
    }
 
@@ -198,7 +198,7 @@ public class ckl extends cjs implements byk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.nX;
    }
 
@@ -226,11 +226,11 @@ public class ckl extends cjs implements byk {
       this.a(awy.oa, 1.0F, 1.0F);
    }
 
-   public int q() {
+   public int gu() {
       return this.bI;
    }
 
-   public boolean t() {
+   public boolean gv() {
       return (this.al.a(c) & 1) != 0;
    }
 

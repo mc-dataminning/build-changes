@@ -35,7 +35,7 @@ public class gzp extends gwp<ckv, hft, giz> {
    public void a(ckv $$0, hft $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(o.a($$0.ai().getString()));
+      $$1.b = "Toast".equals(o.a($$0.ah().getString()));
       $$1.c = $$0.gu();
    }
 }

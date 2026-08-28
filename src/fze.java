@@ -28,17 +28,17 @@ public class fze extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected boolean aS_() {
+   protected boolean aN_() {
       return false;
    }
 
    @Override
-   public void aK_() {
+   public void aF_() {
       this.d = true;
       this.d(true);
    }

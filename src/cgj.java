@@ -82,18 +82,18 @@ public class cgj extends cfb {
    @Override
    public void e() {
       this.b = null;
-      this.a.O().m();
+      this.a.N().m();
       this.k = b(100);
       this.l = false;
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.b, (float)(this.a.af() + 20), (float)this.a.ad());
+      this.a.I().a(this.b, (float)(this.a.ae() + 20), (float)this.a.ac());
       if (this.a.g(this.b) < 6.25) {
-         this.a.O().m();
+         this.a.N().m();
       } else {
-         this.a.O().a(this.b, this.e);
+         this.a.N().a(this.b, this.e);
       }
    }
 

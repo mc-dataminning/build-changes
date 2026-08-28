@@ -142,7 +142,7 @@ public class ftj {
       float $$3 = $$1.a();
       this.aM = azz.h(0.5F * $$3, this.aM, 1.125F);
       if (this.ak.n.aE().a()) {
-         if ($$2.gH()) {
+         if ($$2.gI()) {
             this.a($$0, this.aM);
          } else {
             this.aM = 0.5F;
@@ -262,8 +262,8 @@ public class ftj {
    private void g(ftk $$0, fqg $$1) {
       if (!this.al.e()) {
          fki $$2 = this.ak.aO();
-         int $$3 = azz.a(this.ak.o.e() * (double)$$2.o() / (double)$$2.m());
-         int $$4 = azz.a(this.ak.o.f() * (double)$$2.p() / (double)$$2.n());
+         int $$3 = azz.a(this.ak.o.a($$2));
+         int $$4 = azz.a(this.ak.o.b($$2));
          this.al.a($$0, this.am, $$3, $$4, false);
       }
    }
@@ -300,7 +300,7 @@ public class ftj {
       fqu $$2 = this.ak.n;
       if ($$2.aE().a()) {
          if (this.ak.r.i() != dkg.d || this.a(this.ak.w)) {
-            if (this.at.d() && !this.ak.t.gA() && !$$2.Y().c()) {
+            if (this.at.d() && !this.ak.t.gB() && !$$2.Y().c()) {
                fpy $$3 = this.ak.j.k();
                Matrix4fStack $$4 = RenderSystem.getModelViewStack();
                $$4.pushMatrix();
@@ -318,7 +318,7 @@ public class ftj {
                   float $$6 = this.ak.t.H(0.0F);
                   boolean $$7 = false;
                   if (this.ak.v != null && this.ak.v instanceof byf && $$6 >= 1.0F) {
-                     $$7 = this.ak.t.gD() > 5.0F;
+                     $$7 = this.ak.t.gE() > 5.0F;
                      $$7 &= this.ak.v.bJ();
                   }
 
@@ -428,7 +428,7 @@ public class ftj {
       this.c($$0);
       if (this.ak.r.i() != dkg.d) {
          this.a($$0);
-      } else if (this.ak.t.aa_()) {
+      } else if (this.ak.t.ak()) {
          this.av.b($$0);
       }
    }
@@ -490,7 +490,7 @@ public class ftj {
 
    private void a(byp $$0, ftk $$1, int $$2) {
       brl.a().a("jumpBar");
-      float $$3 = this.ak.t.v();
+      float $$3 = this.ak.t.x();
       int $$4 = 182;
       int $$5 = (int)($$3 * 183.0F);
       int $$6 = $$1.b() - 32 + 3;

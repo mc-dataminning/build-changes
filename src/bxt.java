@@ -36,7 +36,7 @@ public abstract class bxt extends byh {
    }
 
    @Override
-   public boolean d_() {
+   public boolean k_() {
       return false;
    }
 }

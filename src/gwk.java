@@ -9,6 +9,6 @@ public abstract class gwk<T extends byh & cqt> extends gwp<T, hes, ghy> {
 
    public void a(T $$0, hes $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+      $$1.a = $$0.gu();
    }
 }

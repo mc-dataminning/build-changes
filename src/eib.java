@@ -11,12 +11,12 @@ public class eib implements djv {
                this.a = this.a + (60 + $$3.a(60)) * 20;
                if ($$0.D_() >= 5 || !$$0.F_().g()) {
                   for (asc $$4 : $$0.z()) {
-                     if (!$$4.aa_()) {
+                     if (!$$4.ak()) {
                         iw $$5 = $$4.dv();
                         if (!$$0.F_().g() || $$5.v() >= $$0.P() && $$0.h($$5)) {
                            bva $$6 = $$0.d_($$5);
                            if ($$6.a($$3.i() * 3.0F)) {
-                              axe $$7 = $$4.I();
+                              axe $$7 = $$4.H();
                               int $$8 = azz.a($$7.a(axi.i.b(axi.n)), 1, Integer.MAX_VALUE);
                               int $$9 = 24000;
                               if ($$3.a($$8) >= 72000) {

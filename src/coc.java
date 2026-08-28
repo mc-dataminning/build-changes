@@ -61,26 +61,26 @@ public class coc extends byf {
       this.a_($$1, $$2, $$3);
    }
 
-   public static bzk.a j() {
+   public static bzk.a m() {
       return ee().a(bzl.B, 0.0);
    }
 
    @Override
-   public void i_() {
+   public void h_() {
       double $$0 = this.dA();
       double $$1 = this.dC();
       double $$2 = this.dG();
-      super.i_();
+      super.h_();
       this.a_($$0, $$1, $$2);
    }
 
-   private boolean C() {
-      return !this.t() && !this.bb();
+   private boolean D() {
+      return !this.w() && !this.bb();
    }
 
    @Override
    public boolean dj() {
-      return super.dj() && this.C();
+      return super.dj() && this.D();
    }
 
    @Override
@@ -104,15 +104,15 @@ public class coc extends byf {
    public void b(ua $$0) {
       super.b($$0);
       $$0.a("Invisible", this.co());
-      $$0.a("Small", this.m());
-      $$0.a("ShowArms", this.n());
+      $$0.a("Small", this.p());
+      $$0.a("ShowArms", this.s());
       $$0.a("DisabledSlots", this.bT);
-      $$0.a("NoBasePlate", !this.q());
-      if (this.t()) {
-         $$0.a("Marker", this.t());
+      $$0.a("NoBasePlate", !this.u());
+      if (this.w()) {
+         $$0.a("Marker", this.w());
       }
 
-      $$0.a("Pose", this.D());
+      $$0.a("Pose", this.E());
    }
 
    @Override
@@ -124,7 +124,7 @@ public class coc extends byf {
       this.bT = $$0.b("DisabledSlots", 0);
       this.b($$0.b("NoBasePlate", false));
       this.u($$0.b("Marker", false));
-      this.ad = !this.C();
+      this.ad = !this.D();
       this.c($$0.n("Pose"));
    }
 
@@ -137,7 +137,7 @@ public class coc extends byf {
       this.f($$0.<jy>a("RightLeg", jy.a).orElse(g));
    }
 
-   private ua D() {
+   private ua E() {
       ua $$0 = new ua();
       if (!b.equals(this.bU)) {
          $$0.a("Head", jy.a, this.bU);
@@ -176,7 +176,7 @@ public class coc extends byf {
    }
 
    @Override
-   protected void o() {
+   protected void n() {
       for (bxe $$1 : this.dV().a(this, this.cR(), bL)) {
          if (this.g($$1) <= 0.2) {
             $$1.h(this);
@@ -187,9 +187,9 @@ public class coc extends byf {
    @Override
    public bvc a(csi $$0, fgc $$1, bvb $$2) {
       dak $$3 = $$0.b($$2);
-      if (this.t() || $$3.a(dao.vW)) {
+      if (this.w() || $$3.a(dao.vW)) {
          return bvc.e;
-      } else if ($$0.aa_()) {
+      } else if ($$0.ak()) {
          return bvc.a;
       } else if ($$0.dV().C) {
          return bvc.b;
@@ -206,7 +206,7 @@ public class coc extends byf {
                return bvc.d;
             }
 
-            if ($$4.a() == bxo.a.a && !this.n()) {
+            if ($$4.a() == bxo.a.a && !this.s()) {
                return bvc.d;
             }
 
@@ -221,7 +221,7 @@ public class coc extends byf {
 
    private bxo l(fgc $$0) {
       bxo $$1 = bxo.a;
-      boolean $$2 = this.m();
+      boolean $$2 = this.p();
       double $$3 = $$0.e / (double)(this.el() * this.ek());
       bxo $$4 = bxo.c;
       if ($$3 >= 0.1 && $$3 < 0.1 + ($$2 ? 0.8 : 0.45) && this.d($$4)) {
@@ -240,7 +240,7 @@ public class coc extends byf {
    }
 
    private boolean g(bxo $$0) {
-      return (this.bT & 1 << $$0.b(0)) != 0 || $$0.a() == bxo.a.a && !this.n();
+      return (this.bT & 1 << $$0.b(0)) != 0 || $$0.a() == bxo.a.a && !this.s();
    }
 
    private boolean a(csi $$0, bxo $$1, dak $$2, bvb $$3) {
@@ -273,7 +273,7 @@ public class coc extends byf {
       } else if ($$1.a(axo.d)) {
          this.c($$0);
          return false;
-      } else if (this.a($$0, $$1) || this.bS || this.t()) {
+      } else if (this.a($$0, $$1) || this.bS || this.w()) {
          return false;
       } else if ($$1.a(axo.l)) {
          this.d($$0, $$1);
@@ -301,8 +301,8 @@ public class coc extends byf {
             }
 
             if ($$1.h()) {
+               this.G();
                this.F();
-               this.E();
                this.c($$0);
                return true;
             } else {
@@ -313,7 +313,7 @@ public class coc extends byf {
                   this.bD = $$6;
                } else {
                   this.c($$0, $$1);
-                  this.E();
+                  this.F();
                   this.c($$0);
                }
 
@@ -346,7 +346,7 @@ public class coc extends byf {
       return $$0 < $$1 * $$1;
    }
 
-   private void E() {
+   private void F() {
       if (this.dV() instanceof asb) {
          ((asb)this.dV())
             .a(
@@ -377,13 +377,13 @@ public class coc extends byf {
 
    private void c(asb $$0, bvt $$1) {
       dak $$2 = new dak(dao.vQ);
-      $$2.b(kl.g, this.ak());
+      $$2.b(kl.g, this.aj());
       dno.a(this.dV(), this.dv(), $$2);
       this.d($$0, $$1);
    }
 
    private void d(asb $$0, bvt $$1) {
-      this.F();
+      this.G();
       this.b($$0, $$1);
 
       for (bxo $$2 : bxo.j) {
@@ -394,7 +394,7 @@ public class coc extends byf {
       }
    }
 
-   private void F() {
+   private void G() {
       this.dV().a(null, this.dA(), this.dC(), this.dG(), awy.aA, this.dm(), 1.0F, 1.0F);
    }
 
@@ -406,7 +406,7 @@ public class coc extends byf {
 
    @Override
    public void a_(fgc $$0) {
-      if (this.C()) {
+      if (this.D()) {
          super.a_($$0);
       }
    }
@@ -424,8 +424,8 @@ public class coc extends byf {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       jy $$0 = this.al.a(bx);
       if (!this.bU.equals($$0)) {
          this.a($$0);
@@ -458,7 +458,7 @@ public class coc extends byf {
    }
 
    @Override
-   protected void K() {
+   protected void J() {
       this.k(this.bS);
    }
 
@@ -469,8 +469,8 @@ public class coc extends byf {
    }
 
    @Override
-   public boolean n_() {
-      return this.m();
+   public boolean e_() {
+      return this.p();
    }
 
    @Override
@@ -485,20 +485,20 @@ public class coc extends byf {
    }
 
    @Override
-   public eyf j_() {
-      return this.t() ? eyf.d : super.j_();
+   public eyf i_() {
+      return this.w() ? eyf.d : super.i_();
    }
 
    @Override
-   public boolean g_() {
-      return this.t();
+   public boolean n_() {
+      return this.w();
    }
 
    private void t(boolean $$0) {
       this.al.a(bw, this.a(this.al.a(bw), 1, $$0));
    }
 
-   public boolean m() {
+   public boolean p() {
       return (this.al.a(bw) & 1) != 0;
    }
 
@@ -506,7 +506,7 @@ public class coc extends byf {
       this.al.a(bw, this.a(this.al.a(bw), 4, $$0));
    }
 
-   public boolean n() {
+   public boolean s() {
       return (this.al.a(bw) & 4) != 0;
    }
 
@@ -514,7 +514,7 @@ public class coc extends byf {
       this.al.a(bw, this.a(this.al.a(bw), 8, $$0));
    }
 
-   public boolean q() {
+   public boolean u() {
       return (this.al.a(bw) & 8) == 0;
    }
 
@@ -522,7 +522,7 @@ public class coc extends byf {
       this.al.a(bw, this.a(this.al.a(bw), 16, $$0));
    }
 
-   public boolean t() {
+   public boolean w() {
       return (this.al.a(bw) & 16) != 0;
    }
 
@@ -566,33 +566,33 @@ public class coc extends byf {
       this.al.a(bC, $$0);
    }
 
-   public jy u() {
+   public jy x() {
       return this.bU;
    }
 
-   public jy x() {
+   public jy y() {
       return this.bV;
    }
 
-   public jy y() {
+   public jy z() {
       return this.bW;
    }
 
-   public jy z() {
+   public jy A() {
       return this.bX;
    }
 
-   public jy A() {
+   public jy B() {
       return this.bY;
    }
 
-   public jy B() {
+   public jy C() {
       return this.bZ;
    }
 
    @Override
    public boolean bF() {
-      return super.bF() && !this.t();
+      return super.bF() && !this.w();
    }
 
    @Override
@@ -622,7 +622,7 @@ public class coc extends byf {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.aA;
    }
 
@@ -638,8 +638,8 @@ public class coc extends byf {
    @Override
    public void a(aku<?> $$0) {
       if (bw.equals($$0)) {
-         this.i_();
-         this.I = !this.t();
+         this.h_();
+         this.I = !this.w();
       }
 
       super.a($$0);
@@ -652,20 +652,20 @@ public class coc extends byf {
 
    @Override
    public bxh e(byr $$0) {
-      return this.v(this.t());
+      return this.v(this.w());
    }
 
    private bxh v(boolean $$0) {
       if ($$0) {
          return bF;
       } else {
-         return this.n_() ? bG : this.an().n();
+         return this.e_() ? bG : this.an().n();
       }
    }
 
    @Override
    public fgc o(float $$0) {
-      if (this.t()) {
+      if (this.w()) {
          ffx $$1 = this.v(false).a(this.dt());
          iw $$2 = this.dv();
          int $$3 = Integer.MIN_VALUE;
@@ -695,6 +695,6 @@ public class coc extends byf {
 
    @Override
    public boolean eA() {
-      return !this.co() && !this.t();
+      return !this.co() && !this.w();
    }
 }

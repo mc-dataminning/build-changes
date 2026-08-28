@@ -16,6 +16,6 @@ public class hab extends gzb<cky, hgd, gjo> {
 
    public void a(cky $$0, hgd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.m();
+      $$1.a = $$0.p();
    }
 }

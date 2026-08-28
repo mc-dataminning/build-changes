@@ -173,7 +173,7 @@ public class dkz implements dkc {
                   $$8.h($$21);
                   if ($$8 instanceof csi) {
                      csi $$22 = (csi)$$8;
-                     if (!$$22.aa_() && (!$$22.b() || !$$22.gk().b)) {
+                     if (!$$22.ak() && (!$$22.gz() || !$$22.gk().b)) {
                         this.l.put($$22, $$21);
                      }
                   }

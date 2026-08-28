@@ -52,7 +52,7 @@ public class cqk extends bzw<cqg> {
          if (!$$3.c(chh.aX).isPresent() && !$$3.c(chh.aY).isPresent()) {
             $$3.a(chh.aY, bbh.a, (long)h);
             double $$5 = $$4.dA() - $$1.dA();
-            double $$6 = $$4.e($$4.bY() ? 0.8 : 0.3) - $$1.x();
+            double $$6 = $$4.e($$4.bY() ? 0.8 : 0.3) - $$1.gw();
             double $$7 = $$4.dG() - $$1.dG();
             ctd.a(new ctv($$1, $$0), $$0, dak.l, $$5, $$6, $$7, 0.7F, (float)(5 - $$0.an().a() * 4));
             $$1.a(awy.cJ, 1.5F, 1.0F);

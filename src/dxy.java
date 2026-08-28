@@ -41,7 +41,7 @@ public class dxy extends dva {
                   iw $$7 = $$5.a(1, 2, 0).d();
                   $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == jc.a.a ? 0.0F : 90.0F, 0.0F);
                   $$6.aV = $$5.b().o() == jc.a.a ? 0.0F : 90.0F;
-                  $$6.j();
+                  $$6.m();
 
                   for (asc $$8 : $$0.a(asc.class, $$6.cR().g(50.0))) {
                      aq.o.a($$8, $$6);

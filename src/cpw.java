@@ -16,7 +16,7 @@ public class cpw extends cos {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Aq;
    }
 
@@ -26,12 +26,12 @@ public class cpw extends cos {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Ar;
    }
 
    @Override
-   awx m() {
+   awx p() {
       return awy.At;
    }
 

@@ -16,7 +16,7 @@ public abstract class fuu<E extends fuu.a<E>> extends fts<E> {
    public fth a(fyb $$0) {
       if (this.t() == 0) {
          return null;
-      } else if (this.aO_() && $$0 instanceof fyb.a $$1) {
+      } else if (this.aJ_() && $$0 instanceof fyb.a $$1) {
          E $$2 = this.a($$1.b());
          if ($$2 != null) {
             return fth.a(this, fth.a($$2));
@@ -24,7 +24,7 @@ public abstract class fuu<E extends fuu.a<E>> extends fts<E> {
             this.a(null);
             return null;
          }
-      } else if (!this.aO_()) {
+      } else if (!this.aJ_()) {
          E $$3 = this.p();
          if ($$3 == null) {
             $$3 = this.a($$0.a());
@@ -50,7 +50,7 @@ public abstract class fuu<E extends fuu.a<E>> extends fts<E> {
          }
       }
 
-      if (this.aO_()) {
+      if (this.aJ_()) {
          $$0.a(fxu.d, a);
       }
    }

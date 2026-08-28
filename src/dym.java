@@ -70,7 +70,7 @@ public class dym extends dyo {
    }
 
    public void a(jc $$0) {
-      iw $$1 = this.aC_();
+      iw $$1 = this.ax_();
       this.c = $$0;
       if (this.b) {
          this.a = 0;
@@ -82,7 +82,7 @@ public class dym extends dyo {
    }
 
    private void a() {
-      iw $$0 = this.aC_();
+      iw $$0 = this.ax_();
       if (this.n.ae() > this.l + 60L || this.m == null) {
          this.l = this.n.ae();
          ffx $$1 = new ffx($$0).g(48.0);

@@ -35,7 +35,7 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cev(this));
       this.bF.a(1, new bzb.a(1.5, axo.G));
       this.bF.a(2, new cgg(this));
@@ -60,10 +60,10 @@ public class cmx extends bzb implements byk {
 
    public alr gG() {
       cna $$0 = this.gL().a();
-      if (this.q()) {
+      if (this.m()) {
          return $$0.b().b().b();
       } else {
-         return this.af_() ? $$0.b().c().b() : $$0.b().a().b();
+         return this.ac_() ? $$0.b().c().b() : $$0.b().a().b();
       }
    }
 
@@ -175,11 +175,11 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   protected awx u() {
-      if (this.af_()) {
+   protected awx s() {
+      if (this.ac_()) {
          return this.gM().a().c().a();
       } else if (this.ae.a(3) == 0) {
-         return this.q() && this.eG() < 20.0F ? this.gM().a().f().a() : this.gM().a().e().a();
+         return this.m() && this.eG() < 20.0F ? this.gM().a().f().a() : this.gM().a().e().a();
       } else {
          return this.gM().a().a().a();
       }
@@ -191,7 +191,7 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return this.gM().a().b().a();
    }
 
@@ -201,8 +201,8 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C && this.bZ && !this.ca && !this.gq() && this.aH()) {
          this.ca = true;
          this.cb = 0.0F;
@@ -216,8 +216,8 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.bJ()) {
          this.bY = this.bX;
          if (this.gK()) {
@@ -290,8 +290,8 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   public int ad() {
-      return this.x() ? 20 : super.ad();
+   public int ac() {
+      return this.u() ? 20 : super.ac();
    }
 
    @Override
@@ -325,8 +325,8 @@ public class cmx extends bzb implements byk {
    }
 
    @Override
-   protected void t() {
-      if (this.q()) {
+   protected void p() {
+      if (this.m()) {
          this.g(bzl.s).a(40.0);
          this.d(40.0F);
       } else {
@@ -343,7 +343,7 @@ public class cmx extends bzb implements byk {
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
       dag $$3 = $$2.h();
-      if (this.q()) {
+      if (this.m()) {
          if (this.i($$2) && this.eG() < this.eU()) {
             this.a($$0, $$1, $$2);
             cvy $$4 = $$2.a(kl.v);
@@ -362,11 +362,11 @@ public class cmx extends bzb implements byk {
                return super.b($$0, $$1);
             }
 
-            if (this.a($$2, bxo.g) && !this.ga() && this.j($$0) && !this.n_()) {
+            if (this.a($$2, bxo.g) && !this.ga() && this.j($$0) && !this.e_()) {
                this.h($$2.c(1));
                $$2.a(1, $$0);
                return bvc.a;
-            } else if ($$2.a(dao.td) && this.j($$0) && this.ga() && (!dgz.a(this.fY(), dgy.E) || $$0.b())) {
+            } else if ($$2.a(dao.td) && this.j($$0) && this.ga() && (!dgz.a(this.fY(), dgy.E) || $$0.gz())) {
                $$2.a(1, $$0, d($$1));
                this.a(awy.az);
                dak $$8 = this.fY();
@@ -376,7 +376,7 @@ public class cmx extends bzb implements byk {
                }
 
                return bvc.a;
-            } else if (this.x() && this.ga() && this.j($$0) && this.fY().n() && this.fY().c($$2)) {
+            } else if (this.u() && this.ga() && this.j($$0) && this.fY().n() && this.fY().c($$2)) {
                $$2.h(1);
                this.a(awy.DP);
                dak $$10 = this.fY();
@@ -396,7 +396,7 @@ public class cmx extends bzb implements byk {
                }
             }
          }
-      } else if (!this.dV().C && $$2.a(dao.sH) && !this.af_()) {
+      } else if (!this.dV().C && $$2.a(dao.sH) && !this.ac_()) {
          $$2.a(1, $$0);
          this.f($$0);
          return bvc.b;
@@ -431,9 +431,9 @@ public class cmx extends bzb implements byk {
    }
 
    public float gI() {
-      if (this.af_()) {
+      if (this.ac_()) {
          return 1.5393804F;
-      } else if (this.q()) {
+      } else if (this.m()) {
          float $$0 = this.eU();
          float $$1 = ($$0 - this.eG()) / $$0;
          return (0.55F - $$1 * 0.4F) * (float) Math.PI;
@@ -496,7 +496,7 @@ public class cmx extends bzb implements byk {
             $$2.j($$3.gL());
          }
 
-         if (this.q()) {
+         if (this.m()) {
             $$2.a(this.d());
             $$2.a(true, true);
             czi $$4 = this.gJ();
@@ -518,14 +518,14 @@ public class cmx extends bzb implements byk {
    public boolean a(cjv $$0) {
       if ($$0 == this) {
          return false;
-      } else if (!this.q()) {
+      } else if (!this.m()) {
          return false;
       } else if (!($$0 instanceof cmx $$1)) {
          return false;
-      } else if (!$$1.q()) {
+      } else if (!$$1.m()) {
          return false;
       } else {
-         return $$1.x() ? false : this.gE() && $$1.gE();
+         return $$1.u() ? false : this.gE() && $$1.gE();
       }
    }
 
@@ -538,7 +538,7 @@ public class cmx extends bzb implements byk {
       if ($$0 instanceof cow || $$0 instanceof cpe || $$0 instanceof coc) {
          return false;
       } else if ($$0 instanceof cmx $$2) {
-         return !$$2.q() || $$2.e() != $$1;
+         return !$$2.m() || $$2.T_() != $$1;
       } else {
          if ($$0 instanceof csi $$3 && $$1 instanceof csi $$4 && !$$4.a($$3)) {
             return false;
@@ -548,7 +548,7 @@ public class cmx extends bzb implements byk {
             return false;
          }
 
-         if ($$0 instanceof bzb $$6 && $$6.q()) {
+         if ($$0 instanceof bzb $$6 && $$6.m()) {
             return false;
          }
 
@@ -558,7 +558,7 @@ public class cmx extends bzb implements byk {
 
    @Override
    public boolean w() {
-      return !this.af_();
+      return !this.ac_();
    }
 
    @Override
@@ -580,7 +580,7 @@ public class cmx extends bzb implements byk {
 
       @Override
       public boolean b() {
-         return super.b() && this.b instanceof cmh ? !this.j.q() && this.a((cmh)this.b) : false;
+         return super.b() && this.b instanceof cmh ? !this.j.m() && this.a((cmh)this.b) : false;
       }
 
       private boolean a(cmh $$0) {

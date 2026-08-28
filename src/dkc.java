@@ -9,9 +9,9 @@ public interface dkc {
    static byf a(@Nullable bxe $$0) {
       return switch ($$0) {
          case null, default -> null;
-         case cop $$1 -> $$1.f();
+         case cop $$1 -> $$1.e();
          case byf $$2 -> $$2;
-         case ctd $$3 when $$3.q() instanceof byf $$4 -> $$4;
+         case ctd $$3 when $$3.p() instanceof byf $$4 -> $$4;
       };
    }
 

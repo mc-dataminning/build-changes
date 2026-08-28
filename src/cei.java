@@ -29,7 +29,7 @@ public class cei<T extends byf> extends cfb {
       this.i = $$4;
       this.j = $$5;
       this.h = $$6;
-      this.e = $$0.O();
+      this.e = $$0.N();
       this.a(EnumSet.of(cfb.a.a));
       this.k = ciu.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
    }
@@ -75,9 +75,9 @@ public class cei<T extends byf> extends cfb {
    @Override
    public void a() {
       if (this.a.g((bxe)this.b) < 49.0) {
-         this.a.O().a(this.j);
+         this.a.N().a(this.j);
       } else {
-         this.a.O().a(this.i);
+         this.a.N().a(this.i);
       }
    }
 }

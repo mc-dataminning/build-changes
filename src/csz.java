@@ -64,7 +64,7 @@ public class csz extends ctd {
    }
 
    @Override
-   protected boolean x() {
+   protected boolean w() {
       return true;
    }
 
@@ -92,10 +92,10 @@ public class csz extends ctd {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.b.b(this.cG().getLeastSignificantBits() ^ this.dV().ae());
-      super.h();
-      csi $$0 = this.g();
+      super.g();
+      csi $$0 = this.f();
       if ($$0 == null) {
          this.aq();
       } else if (this.dV().C || !this.a($$0)) {
@@ -130,7 +130,7 @@ public class csz extends ctd {
                return;
             }
 
-            this.m();
+            this.l();
          } else {
             if (this.o == csz.a.b) {
                if (this.n != null) {
@@ -180,7 +180,7 @@ public class csz extends ctd {
 
          this.a(byj.a, this.dy());
          this.aI();
-         this.A();
+         this.z();
          if (this.o == csz.a.a && (this.aH() || this.P)) {
             this.i(fgc.c);
          }
@@ -204,7 +204,7 @@ public class csz extends ctd {
       }
    }
 
-   private void m() {
+   private void l() {
       fga $$0 = ctf.a(this, this::b);
       this.b($$0);
    }
@@ -354,7 +354,7 @@ public class csz extends ctd {
       }
    }
 
-   public boolean f() {
+   public boolean e() {
       return this.m;
    }
 
@@ -367,7 +367,7 @@ public class csz extends ctd {
    }
 
    public int a(dak $$0) {
-      csi $$1 = this.g();
+      csi $$1 = this.f();
       if (!this.dV().C && $$1 != null && !this.a($$1)) {
          int $$2 = 0;
          if (this.n != null) {
@@ -419,7 +419,7 @@ public class csz extends ctd {
    }
 
    protected void d(bxe $$0) {
-      bxe $$1 = this.q();
+      bxe $$1 = this.p();
       if ($$1 != null) {
          fgc $$2 = new fgc($$1.dA() - this.dA(), $$1.dC() - this.dC(), $$1.dG() - this.dG()).c(0.1);
          $$0.i($$0.dy().e($$2));
@@ -449,19 +449,19 @@ public class csz extends ctd {
    }
 
    private void a(@Nullable csz $$0) {
-      csi $$1 = this.g();
+      csi $$1 = this.f();
       if ($$1 != null) {
          $$1.ck = $$0;
       }
    }
 
    @Nullable
-   public csi g() {
-      return this.q() instanceof csi $$1 ? $$1 : null;
+   public csi f() {
+      return this.p() instanceof csi $$1 ? $$1 : null;
    }
 
    @Nullable
-   public bxe j() {
+   public bxe i() {
       return this.n;
    }
 
@@ -472,14 +472,14 @@ public class csz extends ctd {
 
    @Override
    public zo<acf> a(arz $$0) {
-      bxe $$1 = this.q();
+      bxe $$1 = this.p();
       return new acg(this, $$0, $$1 == null ? this.ao() : $$1.ao());
    }
 
    @Override
    public void a(acg $$0) {
       super.a($$0);
-      if (this.g() == null) {
+      if (this.f() == null) {
          int $$1 = $$0.p();
          a.error("Failed to recreate fishing hook on client. {} (id: {}) is not a valid owner.", this.dV().a($$1), $$1);
          this.aq();

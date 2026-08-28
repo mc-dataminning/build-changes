@@ -18,7 +18,7 @@ public class cia extends cin<cqr> {
       List<cqr> $$5 = Lists.newArrayList();
       chj $$6 = $$2.c(chh.h).orElse(chj.a());
 
-      for (byf $$7 : $$6.b($$0x -> !$$0x.n_() && ($$0x instanceof cqx || $$0x instanceof cqr))) {
+      for (byf $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cqx || $$0x instanceof cqr))) {
          if ($$7 instanceof cqx $$8) {
             $$4++;
             if ($$3.isEmpty()) {

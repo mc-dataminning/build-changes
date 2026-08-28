@@ -16,14 +16,14 @@ public class cgg extends cfb {
    @Override
    public boolean b() {
       boolean $$0 = this.a.gu();
-      if (!$$0 && !this.a.q()) {
+      if (!$$0 && !this.a.m()) {
          return false;
       } else if (this.a.bi()) {
          return false;
       } else if (!this.a.aH()) {
          return false;
       } else {
-         byf $$1 = this.a.e();
+         byf $$1 = this.a.T_();
          if ($$1 == null) {
             return true;
          } else {
@@ -34,7 +34,7 @@ public class cgg extends cfb {
 
    @Override
    public void d() {
-      this.a.O().m();
+      this.a.N().m();
       this.a.x(true);
    }
 

@@ -2,12 +2,12 @@ public interface cqt {
    int l_ = 10;
    float m_ = 0.2F;
 
-   int q();
+   int gu();
 
    static boolean a(asb $$0, byf $$1, byf $$2) {
       float $$3 = (float)$$1.h(bzl.c);
       float $$4;
-      if (!$$1.n_() && (int)$$3 > 0) {
+      if (!$$1.e_() && (int)$$3 > 0) {
          $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
       } else {
          $$4 = $$3;
@@ -17,7 +17,7 @@ public interface cqt {
       boolean $$7 = $$2.a($$0, $$6, $$4);
       if ($$7) {
          dgz.a($$0, (bxe)$$2, $$6);
-         if (!$$1.n_()) {
+         if (!$$1.e_()) {
             a($$1, $$2);
          }
       }

@@ -4,7 +4,7 @@ public abstract class gzb<T extends byh, S extends hfe, M extends ghn<? super S>
    }
 
    protected boolean a(T $$0, double $$1) {
-      return super.a($$0, $$1) && ($$0.cM() || $$0.h_() && $$0 == this.d.c);
+      return super.a($$0, $$1) && ($$0.cM() || $$0.g_() && $$0 == this.d.c);
    }
 
    @Override

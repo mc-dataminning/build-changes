@@ -40,7 +40,7 @@ public class clx extends cjr {
    }
 
    @Override
-   protected awx t() {
+   protected awx gv() {
       return awy.Ay;
    }
 
@@ -56,13 +56,13 @@ public class clx extends cjr {
       super.a($$0);
    }
 
-   public static bzk.a x() {
+   public static bzk.a gw() {
       return cjv.gz().a(bzl.v, 1.0).a(bzl.s, 6.0);
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (!this.dV().C) {
          this.c(this.bJ + 1);
       }
@@ -82,7 +82,7 @@ public class clx extends cjr {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return null;
    }
 
@@ -94,7 +94,7 @@ public class clx extends cjr {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Ax;
    }
 
@@ -110,13 +110,13 @@ public class clx extends cjr {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
    @Override
-   public boolean m() {
+   public boolean p() {
       return true;
    }
 
@@ -127,7 +127,7 @@ public class clx extends cjr {
    @Override
    public void a_(dak $$0) {
       cjx.a(this, $$0);
-      dcs.a(kl.Z, $$0, $$0x -> $$0x.a("Age", this.gu()));
+      dcs.a(kl.Z, $$0, $$0x -> $$0x.a("Age", this.gx()));
    }
 
    @Override
@@ -137,12 +137,12 @@ public class clx extends cjr {
    }
 
    @Override
-   public dak X_() {
+   public dak a() {
       return new dak(dao.rA);
    }
 
    @Override
-   public awx n() {
+   public awx u() {
       return awy.do;
    }
 
@@ -152,7 +152,7 @@ public class clx extends cjr {
 
    private void a(csi $$0, dak $$1) {
       this.b($$0, $$1);
-      this.b(bwu.d_(this.gw()));
+      this.b(bwu.d_(this.gz()));
       this.dV().a(lz.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
    }
 
@@ -160,7 +160,7 @@ public class clx extends cjr {
       $$1.a(1, $$0);
    }
 
-   private int gu() {
+   private int gx() {
       return this.bJ;
    }
 
@@ -171,11 +171,11 @@ public class clx extends cjr {
    private void c(int $$0) {
       this.bJ = $$0;
       if (this.bJ >= a) {
-         this.gv();
+         this.gy();
       }
    }
 
-   private void gv() {
+   private void gy() {
       if (this.dV() instanceof asb $$0) {
          this.a(bxn.ac, bwy.a(this, false, false), $$1 -> {
             $$1.a($$0, this.dV().d_($$1.dv()), bxm.i, null);
@@ -186,7 +186,7 @@ public class clx extends cjr {
       }
    }
 
-   private int gw() {
+   private int gz() {
       return Math.max(0, a - this.bJ);
    }
 

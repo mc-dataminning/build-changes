@@ -26,7 +26,7 @@ public class gcz extends fzq {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       UnmodifiableIterator $$1 = this.u.iterator();
 
       while ($$1.hasNext()) {
@@ -56,7 +56,7 @@ public class gcz extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 

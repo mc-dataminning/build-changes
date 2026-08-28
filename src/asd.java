@@ -25,7 +25,7 @@ public class asd {
       this.k = iw.c;
       this.m = -1;
       this.d = $$0;
-      this.c = $$0.y();
+      this.c = $$0.x();
    }
 
    public boolean a(dkg $$0) {
@@ -33,11 +33,11 @@ public class asd {
          return false;
       } else {
          this.a($$0, this.e);
-         this.d.x();
+         this.d.w();
          this.d.g.ag().a(new aem(aem.a.c, this.d));
          this.c.f();
          if ($$0 == dkg.b) {
-            this.d.gP();
+            this.d.gQ();
          }
 
          return true;
@@ -209,7 +209,7 @@ public class asd {
       } else {
          dyo $$2 = this.c.c_($$0);
          dno $$3 = $$1.b();
-         if ($$3 instanceof dra && !this.d.gG()) {
+         if ($$3 instanceof dra && !this.d.gH()) {
             this.c.a($$0, $$1, $$1, 3);
             return false;
          } else if (this.d.a(this.c, $$0, this.b)) {
@@ -241,7 +241,7 @@ public class asd {
    public bvc a(asc $$0, dkj $$1, dak $$2, bvb $$3) {
       if (this.b == dkg.d) {
          return bvc.e;
-      } else if ($$0.gF().a($$2)) {
+      } else if ($$0.gG().a($$2)) {
          return bvc.e;
       } else {
          int $$4 = $$2.M();
@@ -309,7 +309,7 @@ public class asd {
             }
          }
 
-         if (!$$2.f() && !$$0.gF().a($$2)) {
+         if (!$$2.f() && !$$0.gG().a($$2)) {
             def $$13 = new def($$0, $$3, $$4);
             bvc $$15;
             if ($$0.fV()) {

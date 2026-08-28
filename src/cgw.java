@@ -20,7 +20,7 @@ public class cgw<T extends byf> extends cgu<T> {
    public boolean b() {
       if (this.j > 0 || !this.e.dY().h()) {
          return false;
-      } else if (!((ctz)this.e).gI()) {
+      } else if (!((ctz)this.e).gL()) {
          return false;
       } else {
          this.h();

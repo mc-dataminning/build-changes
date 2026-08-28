@@ -50,7 +50,7 @@ public class cog extends cof {
 
       this.O = this.dN();
       this.N = this.dL();
-      this.f();
+      this.e();
    }
 
    @Override
@@ -65,7 +65,7 @@ public class cog extends cof {
    }
 
    @Override
-   public boolean g() {
+   public boolean f() {
       if (this.o) {
          return true;
       } else if (!this.dV().g(this)) {
@@ -92,12 +92,12 @@ public class cog extends cof {
 
    @Override
    public void c(asb $$0) {
-      this.d(this.w());
+      this.d(this.v());
       super.c($$0);
    }
 
    private boolean a(bvt $$0) {
-      return !$$0.a(axo.l) && !this.w().f();
+      return !$$0.a(axo.l) && !this.v().f();
    }
 
    private static boolean e(bvt $$0) {
@@ -117,7 +117,7 @@ public class cog extends cof {
          } else if (this.a($$1)) {
             this.a($$0, $$1.d(), false);
             this.a(egq.c, $$1.d());
-            this.a(this.m(), 1.0F, 1.0F);
+            this.a(this.l(), 1.0F, 1.0F);
             return true;
          } else {
             return super.a($$0, $$1, $$2);
@@ -127,7 +127,7 @@ public class cog extends cof {
       }
    }
 
-   public awx m() {
+   public awx l() {
       return awy.og;
    }
 
@@ -140,27 +140,27 @@ public class cog extends cof {
 
    @Override
    public void a(asb $$0, @Nullable bxe $$1) {
-      this.a(this.n(), 1.0F, 1.0F);
+      this.a(this.m(), 1.0F, 1.0F);
       this.a($$0, $$1, true);
       this.a(egq.c, $$1);
    }
 
-   public awx n() {
+   public awx m() {
       return awy.oe;
    }
 
    @Override
-   public void v() {
-      this.a(this.o(), 1.0F, 1.0F);
+   public void u() {
+      this.a(this.n(), 1.0F, 1.0F);
    }
 
-   public awx o() {
+   public awx n() {
       return awy.of;
    }
 
    private void a(asb $$0, @Nullable bxe $$1, boolean $$2) {
       if (!this.o) {
-         dak $$3 = this.w();
+         dak $$3 = this.v();
          this.b(dak.l);
          if (!$$0.O().c(dkf.j)) {
             if ($$1 == null) {
@@ -173,7 +173,7 @@ public class cog extends cof {
             }
 
             if ($$2) {
-               this.a($$0, this.t());
+               this.a($$0, this.s());
             }
 
             if (!$$3.f()) {
@@ -199,7 +199,7 @@ public class cog extends cof {
       $$0.a(null);
    }
 
-   public dak w() {
+   public dak v() {
       return this.ar().a(e);
    }
 
@@ -208,8 +208,8 @@ public class cog extends cof {
       return $$0.a(kl.M);
    }
 
-   public boolean x() {
-      return this.w().c(kl.M);
+   public boolean w() {
+      return this.v().c(kl.M);
    }
 
    public void b(dak $$0) {
@@ -224,7 +224,7 @@ public class cog extends cof {
       this.e($$0);
       this.ar().a(e, $$0);
       if (!$$0.f()) {
-         this.a(this.q(), 1.0F, 1.0F);
+         this.a(this.p(), 1.0F, 1.0F);
       }
 
       if ($$1 && this.a != null) {
@@ -232,19 +232,19 @@ public class cog extends cof {
       }
    }
 
-   public awx q() {
+   public awx p() {
       return awy.od;
    }
 
    @Override
    public byw a_(int $$0) {
-      return $$0 == 0 ? byw.a(this::w, this::b) : super.a_($$0);
+      return $$0 == 0 ? byw.a(this::v, this::b) : super.a_($$0);
    }
 
    @Override
    public void a(aku<?> $$0) {
       if ($$0.equals(e)) {
-         this.e(this.w());
+         this.e(this.v());
       }
    }
 
@@ -253,10 +253,10 @@ public class cog extends cof {
          $$0.a(this);
       }
 
-      this.f();
+      this.e();
    }
 
-   public int y() {
+   public int x() {
       return this.ar().a(f);
    }
 
@@ -274,13 +274,13 @@ public class cog extends cof {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      dak $$1 = this.w();
+      dak $$1 = this.v();
       if (!$$1.f()) {
          alp<va> $$2 = this.dX().a(uo.a);
          $$0.a("Item", dak.b, $$2, $$1);
       }
 
-      $$0.a("ItemRotation", (byte)this.y());
+      $$0.a("ItemRotation", (byte)this.x());
       $$0.a("ItemDropChance", this.n);
       $$0.a("Facing", jc.k, this.c);
       $$0.a("Invisible", this.co());
@@ -292,7 +292,7 @@ public class cog extends cof {
       super.a($$0);
       alp<va> $$1 = this.dX().a(uo.a);
       dak $$2 = $$0.<dak>a("Item", dak.b, $$1).orElse(dak.l);
-      dak $$3 = this.w();
+      dak $$3 = this.v();
       if (!$$3.f() && !dak.a($$2, $$3)) {
          this.d($$3);
       }
@@ -308,7 +308,7 @@ public class cog extends cof {
    @Override
    public bvc a(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
-      boolean $$3 = !this.w().f();
+      boolean $$3 = !this.v().f();
       boolean $$4 = !$$2.f();
       if (this.o) {
          return bvc.e;
@@ -328,8 +328,8 @@ public class cog extends cof {
                return bvc.e;
             }
          } else {
-            this.a(this.s(), 1.0F, 1.0F);
-            this.b(this.y() + 1);
+            this.a(this.r(), 1.0F, 1.0F);
+            this.b(this.x() + 1);
             this.a(egq.c, $$0);
             return bvc.a;
          }
@@ -338,17 +338,17 @@ public class cog extends cof {
       }
    }
 
-   public awx s() {
+   public awx r() {
       return awy.oh;
    }
 
-   public int z() {
-      return this.w().f() ? 0 : this.y() % 8 + 1;
+   public int y() {
+      return this.v().f() ? 0 : this.x() % 8 + 1;
    }
 
    @Override
    public zo<acf> a(arz $$0) {
-      return new acg(this, this.c.d(), this.j());
+      return new acg(this, this.c.d(), this.i());
    }
 
    @Override
@@ -359,11 +359,11 @@ public class cog extends cof {
 
    @Override
    public dak dI() {
-      dak $$0 = this.w();
-      return $$0.f() ? this.t() : $$0.v();
+      dak $$0 = this.v();
+      return $$0.f() ? this.s() : $$0.v();
    }
 
-   protected dak t() {
+   protected dak s() {
       return new dak(dao.vm);
    }
 
@@ -371,6 +371,6 @@ public class cog extends cof {
    public float dM() {
       jc $$0 = this.cO();
       int $$1 = $$0.o().b() ? 90 * $$0.f().a() : 0;
-      return (float)azz.b(180 + $$0.e() * 90 + this.y() * 45 + $$1);
+      return (float)azz.b(180 + $$0.e() * 90 + this.x() * 45 + $$1);
    }
 }

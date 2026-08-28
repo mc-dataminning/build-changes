@@ -23,8 +23,8 @@ public class cvg extends cuv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (!this.dV().A_()) {
          if (this.k > 0) {
             this.k--;
@@ -37,7 +37,7 @@ public class cvg extends cuv {
          this.q(this.k > 0);
       }
 
-      if (this.q() && this.ae.a(4) == 0) {
+      if (this.e() && this.ae.a(4) == 0) {
          this.dV().a(lz.aa, this.dA(), this.dC() + 0.8, this.dG(), 0.0, 0.0, 0.0);
       }
    }
@@ -48,7 +48,7 @@ public class cvg extends cuv {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.ox;
    }
 
@@ -111,7 +111,7 @@ public class cvg extends cuv {
       this.k = $$0.b("Fuel", (short)0);
    }
 
-   protected boolean q() {
+   protected boolean e() {
       return this.al.a(c);
    }
 
@@ -121,6 +121,6 @@ public class cvg extends cuv {
 
    @Override
    public ebq v() {
-      return dnq.cO.m().b(dqz.a, jc.c).b(dqz.b, Boolean.valueOf(this.q()));
+      return dnq.cO.m().b(dqz.a, jc.c).b(dqz.b, Boolean.valueOf(this.e()));
    }
 }

@@ -47,7 +47,7 @@ public record bx(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof byf $$4 && $$4.n_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof byf $$4 && $$4.e_() != this.h.get()) {
             return false;
          }
 

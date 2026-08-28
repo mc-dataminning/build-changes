@@ -12,7 +12,7 @@ public class dax extends dag {
       super($$0);
    }
 
-   public static dak a(dkj $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
+   public static dak a(asb $$0, int $$1, int $$2, byte $$3, boolean $$4, boolean $$5) {
       dak $$6 = new dak(dao.tc);
       ezt $$7 = a($$0, $$1, $$2, $$3, $$4, $$5, $$0.aj());
       $$6.b(kl.M, $$7);
@@ -30,7 +30,7 @@ public class dax extends dag {
       return a($$2, $$1);
    }
 
-   private static ezt a(dkj $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, alq<dkj> $$6) {
+   private static ezt a(asb $$0, int $$1, int $$2, int $$3, boolean $$4, boolean $$5, alq<dkj> $$6) {
       ezv $$7 = ezv.a((double)$$1, (double)$$2, (byte)$$3, $$4, $$5, $$6);
       ezt $$8 = $$0.x();
       $$0.a($$8, $$7);
@@ -162,7 +162,7 @@ public class dax extends dag {
    }
 
    public static void a(asb $$0, dak $$1) {
-      ezv $$2 = b($$1, $$0);
+      ezv $$2 = b($$1, (dkj)$$0);
       if ($$2 != null) {
          if ($$0.aj() == $$2.f) {
             int $$3 = 1 << $$2.g;
@@ -238,7 +238,7 @@ public class dax extends dag {
 
    @Override
    public void a(dak $$0, asb $$1, bxe $$2, @Nullable bxo $$3) {
-      ezv $$4 = b($$0, $$1);
+      ezv $$4 = b($$0, (dkj)$$1);
       if ($$4 != null) {
          if ($$2 instanceof csi $$5) {
             $$4.a($$5, $$0);
@@ -254,18 +254,20 @@ public class dax extends dag {
    public void a(dak $$0, dkj $$1) {
       ddh $$2 = $$0.e(kl.O);
       if ($$2 != null) {
-         switch ($$2) {
-            case a:
-               a($$1, $$0);
-               break;
-            case b:
-               c($$0, $$1);
+         if ($$1 instanceof asb $$3) {
+            switch ($$2) {
+               case a:
+                  b($$0, $$3);
+                  break;
+               case b:
+                  a($$0, $$3);
+            }
          }
       }
    }
 
-   private static void c(dak $$0, dkj $$1) {
-      ezv $$2 = b($$0, $$1);
+   private static void a(dak $$0, asb $$1) {
+      ezv $$2 = b($$0, (dkj)$$1);
       if ($$2 != null) {
          ezt $$3 = $$1.x();
          $$1.a($$3, $$2.b());
@@ -273,13 +275,13 @@ public class dax extends dag {
       }
    }
 
-   public static void a(dkj $$0, dak $$1) {
-      ezv $$2 = b($$1, $$0);
+   private static void b(dak $$0, asb $$1) {
+      ezv $$2 = b($$0, (dkj)$$1);
       if ($$2 != null) {
-         ezt $$3 = $$0.x();
+         ezt $$3 = $$1.x();
          ezv $$4 = $$2.a();
-         $$0.a($$3, $$4);
-         $$1.b(kl.M, $$3);
+         $$1.a($$3, $$4);
+         $$0.b(kl.M, $$3);
       }
    }
 

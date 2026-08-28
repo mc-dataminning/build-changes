@@ -70,7 +70,7 @@ public class cmb {
       $$0.a(
          cuc.r,
          ImmutableList.of(
-            Pair.of(0, new cbm($$0x -> $$0x.gG() ? q : p, r, 3.0F, $$0x -> $$0x.n_() ? 1.0 : 2.5, $$0x -> $$0x.gG() ? awy.lE : awy.lv, $$0x -> awy.lw)),
+            Pair.of(0, new cbm($$0x -> $$0x.gG() ? q : p, r, 3.0F, $$0x -> $$0x.e_() ? 1.0 : 2.5, $$0x -> $$0x.gG() ? awy.lE : awy.lv, $$0x -> awy.lw)),
             Pair.of(1, new cbl<>($$0x -> $$0x.gG() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gG() ? awy.lD : awy.lu))
          ),
          ImmutableSet.of(Pair.of(chh.P, chi.b), Pair.of(chh.s, chi.b), Pair.of(chh.W, chi.b))

@@ -9,7 +9,7 @@ public abstract class gyo<T extends cor, S extends hew> extends gzb<T, S, gic<S>
       hdg.a($$0, $$1, this.h);
       $$1.b = $$0.bY();
       $$1.d = $$0.fy();
-      $$1.j = $$0.j();
+      $$1.j = $$0.m();
       $$1.k = $$1.j == cor.a.f ? czd.b($$0.fB(), $$0) : 0;
       $$1.l = $$0.fD();
       $$1.m = $$0.D($$2);

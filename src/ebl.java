@@ -98,7 +98,7 @@ public class ebl extends dyo {
                   }
 
                   $$11 = (bxe)var12.next();
-                  if ($$11.j_() != eyf.d) {
+                  if ($$11.i_() != eyf.d) {
                      if (!$$10) {
                         break;
                      }
@@ -172,7 +172,7 @@ public class ebl extends dyo {
    }
 
    private static boolean a(ffx $$0, bxe $$1, iw $$2) {
-      return $$1.j_() == eyf.a && $$1.aH() && ($$1.d($$2) || $$1.dA() >= $$0.a && $$1.dA() <= $$0.d && $$1.dG() >= $$0.c && $$1.dG() <= $$0.f);
+      return $$1.i_() == eyf.a && $$1.aH() && ($$1.d($$2) || $$1.dA() >= $$0.a && $$1.dA() <= $$0.d && $$1.dG() >= $$0.c && $$1.dG() <= $$0.f);
    }
 
    private boolean v() {
@@ -229,7 +229,7 @@ public class ebl extends dyo {
          this.m = 1.0F;
          this.q = this.m;
          this.n.o(this.o);
-         this.ax_();
+         this.as_();
          if (this.n.a_(this.o).a(dnq.ca)) {
             ebq $$0;
             if (this.k) {
@@ -261,7 +261,7 @@ public class ebl extends dyo {
             $$3.s++;
          } else {
             $$0.o($$1);
-            $$3.ax_();
+            $$3.as_();
             if ($$0.a_($$1).a(dnq.ca)) {
                ebq $$4 = dno.b($$3.h, $$0, $$1);
                if ($$4.l()) {

@@ -217,7 +217,7 @@ public class fln {
       Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
       int $$4 = 1;
 
-      for (char $$5 : ac.bc) {
+      for (char $$5 : ac.bd) {
          $$0 = $$0.replace($$5, '_');
       }
 

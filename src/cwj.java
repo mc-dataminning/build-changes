@@ -52,7 +52,7 @@ public class cwj extends cwb {
          public void a(csi $$0, dak $$1) {
             cwj.this.k.get(0).a(1);
             cwj.this.k.get(1).a(1);
-            $$1.h().a($$1, $$0.dV(), $$0);
+            $$1.h().c($$1, $$0);
             $$2.a(($$0x, $$1x) -> {
                long $$2xx = $$0x.ae();
                if (cwj.this.v != $$2xx) {
@@ -130,7 +130,7 @@ public class cwj extends cwb {
          dak $$4 = $$3.g();
          $$2 = $$4.v();
          if ($$1 == 2) {
-            $$4.h().a($$4, $$0.dV(), $$0);
+            $$4.h().c($$4, $$0);
             if (!this.a($$4, 3, 39, true)) {
                return dak.l;
             }

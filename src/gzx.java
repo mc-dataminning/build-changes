@@ -6,7 +6,7 @@ public class gzx extends gzb<cpr, hfe, gji> {
    }
 
    @Override
-   protected float aX_() {
+   protected float aS_() {
       return 180.0F;
    }
 

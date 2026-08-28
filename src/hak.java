@@ -16,6 +16,6 @@ public class hak extends gwt<cst, hgj> {
 
    public void a(cst $$0, hgj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.y() > 0;
+      $$1.d = $$0.x() > 0;
    }
 }

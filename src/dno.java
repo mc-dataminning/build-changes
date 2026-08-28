@@ -170,7 +170,7 @@ public class dno extends ebp implements dki {
       this.a($$1);
       this.C = $$1.a(dno::m, ebq::new);
       this.l(this.C.b());
-      if (ac.aU) {
+      if (ac.aV) {
          String $$2 = this.getClass().getSimpleName();
          if (!$$2.endsWith("Block")) {
             a.error("Block classes should end with Block and {} doesn't.", $$2);
@@ -294,7 +294,7 @@ public class dno extends ebp implements dki {
    private static void a(dkj $$0, Supplier<coo> $$1, dak $$2) {
       if ($$0 instanceof asb $$3 && !$$2.f() && $$3.O().c(dkf.i)) {
          coo $$5 = $$1.get();
-         $$5.j();
+         $$5.i();
          $$0.b($$5);
          return;
       }

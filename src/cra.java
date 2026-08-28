@@ -17,8 +17,8 @@ public class cra extends cqw {
       this.bA = 20;
    }
 
-   public static bzk.a n() {
-      return cpk.gx().a(bzl.s, 50.0).a(bzl.v, 0.35F).a(bzl.c, 7.0).a(bzl.m, 12.0);
+   public static bzk.a u() {
+      return cpk.gA().a(bzl.s, 50.0).a(bzl.v, 0.35F).a(bzl.c, 7.0).a(bzl.m, 12.0);
    }
 
    @Nullable
@@ -50,7 +50,7 @@ public class cra extends cqw {
    }
 
    @Override
-   public boolean j() {
+   public boolean m() {
       return false;
    }
 
@@ -71,8 +71,8 @@ public class cra extends cqw {
    }
 
    @Override
-   public cqz x() {
-      return this.gl() && this.gu() ? cqz.a : cqz.f;
+   public cqz gw() {
+      return this.gl() && this.gx() ? cqz.a : cqz.f;
    }
 
    @Override
@@ -86,7 +86,7 @@ public class cra extends cqw {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.uD;
    }
 
@@ -96,7 +96,7 @@ public class cra extends cqw {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.uF;
    }
 
@@ -105,12 +105,12 @@ public class cra extends cqw {
       this.a(awy.uH, 0.15F, 1.0F);
    }
 
-   protected void gy() {
+   protected void gB() {
       this.b(awy.uE);
    }
 
    @Override
-   protected void gv() {
+   protected void gy() {
       this.b(awy.uI);
    }
 }

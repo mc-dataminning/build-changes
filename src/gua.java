@@ -5,11 +5,11 @@ public interface gua<T extends dyo> {
       return false;
    }
 
-   default int aW_() {
+   default int aR_() {
       return 64;
    }
 
    default boolean a(T $$0, fgc $$1) {
-      return fgc.b($$0.aC_()).a((jq)$$1, (double)this.aW_());
+      return fgc.b($$0.ax_()).a((jq)$$1, (double)this.aR_());
    }
 }

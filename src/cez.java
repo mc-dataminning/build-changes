@@ -15,18 +15,18 @@ public class cez extends cfb {
    public cez(bzb $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
       this.c = $$1;
-      this.d = $$0.O();
+      this.d = $$0.N();
       this.g = $$2;
       this.f = $$3;
       this.a(EnumSet.of(cfb.a.a, cfb.a.b));
-      if (!($$0.O() instanceof cho) && !($$0.O() instanceof chn)) {
+      if (!($$0.N() instanceof cho) && !($$0.N() instanceof chn)) {
          throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
       }
    }
 
    @Override
    public boolean b() {
-      byf $$0 = this.a.e();
+      byf $$0 = this.a.T_();
       if ($$0 == null) {
          return false;
       } else if (this.a.gx()) {
@@ -66,7 +66,7 @@ public class cez extends cfb {
    public void a() {
       boolean $$0 = this.a.gw();
       if (!$$0) {
-         this.a.J().a(this.b, 10.0F, (float)this.a.ad());
+         this.a.I().a(this.b, 10.0F, (float)this.a.ac());
       }
 
       if (--this.e <= 0) {

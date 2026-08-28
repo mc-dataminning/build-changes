@@ -16,12 +16,12 @@ public abstract class cjv extends bwu {
    }
 
    public static bzk.a gz() {
-      return byh.E().a(bzl.E, 10.0);
+      return byh.D().a(bzl.E, 10.0);
    }
 
    @Override
    protected void a(asb $$0) {
-      if (this.g() != 0) {
+      if (this.Y_() != 0) {
          this.bJ = 0;
       }
 
@@ -29,9 +29,9 @@ public abstract class cjv extends bwu {
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (this.g() != 0) {
+   public void d_() {
+      super.d_();
+      if (this.Y_() != 0) {
          this.bJ = 0;
       }
 
@@ -81,7 +81,7 @@ public abstract class cjv extends bwu {
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 120;
    }
 
@@ -101,7 +101,7 @@ public abstract class cjv extends bwu {
    public bvc b(csi $$0, bvb $$1) {
       dak $$2 = $$0.b($$1);
       if (this.i($$2)) {
-         int $$3 = this.g();
+         int $$3 = this.Y_();
          if (!this.dV().C && $$3 == 0 && this.gB()) {
             this.a($$0, $$1, $$2);
             this.e($$0);
@@ -109,7 +109,7 @@ public abstract class cjv extends bwu {
             return bvc.b;
          }
 
-         if (this.n_()) {
+         if (this.e_()) {
             this.a($$0, $$1, $$2);
             this.a(d_(-$$3), true);
             this.gA();

@@ -3,8 +3,8 @@ public class cpf extends cpk {
       super($$0, $$1);
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 100.0).a(bzl.v, 0.5).a(bzl.c, 50.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 100.0).a(bzl.v, 0.5).a(bzl.c, 50.0);
    }
 
    @Override

@@ -50,8 +50,8 @@ public class cqr extends cjv implements cpc, cqt {
       return true;
    }
 
-   public static bzk.a t() {
-      return cpk.gx().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.p, 0.6F).a(bzl.d, 1.0).a(bzl.c, 6.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 40.0).a(bzl.v, 0.3F).a(bzl.p, 0.6F).a(bzl.d, 1.0).a(bzl.c, 6.0);
    }
 
    @Override
@@ -69,7 +69,7 @@ public class cqr extends cjv implements cpc, cqt {
 
    @Override
    protected void d(byf $$0) {
-      if (this.x()) {
+      if (this.p()) {
          cqt.a(this, $$0);
       }
    }
@@ -106,7 +106,7 @@ public class cqr extends cjv implements cpc, cqt {
       this.ec().a($$0, this);
       $$1.c();
       cqs.a(this);
-      if (this.gu()) {
+      if (this.u()) {
          this.bX++;
          if (this.bX > 300) {
             this.b(awy.mT);
@@ -118,17 +118,17 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bW > 0) {
          this.bW--;
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
-   protected void j() {
-      if (this.n_()) {
+   protected void h() {
+      if (this.e_()) {
          this.bA = 3;
          this.g(bzl.c).a(0.5);
       } else {
@@ -186,7 +186,7 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    @Override
-   public int q() {
+   public int gu() {
       return this.bW;
    }
 
@@ -209,8 +209,8 @@ public class cqr extends cjv implements cpc, cqt {
       return $$0.a(axv.ar);
    }
 
-   public boolean x() {
-      return !this.n_();
+   public boolean p() {
+      return !this.e_();
    }
 
    @Override
@@ -243,7 +243,7 @@ public class cqr extends cjv implements cpc, cqt {
       return this.ar().a(bM);
    }
 
-   public boolean gu() {
+   public boolean u() {
       return !this.dV().F_().b() && !this.gx() && !this.gj();
    }
 
@@ -252,7 +252,7 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    public boolean gv() {
-      return this.x() && !this.bY;
+      return this.p() && !this.bY;
    }
 
    @Nullable
@@ -277,7 +277,7 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.dV().C ? null : cqs.b(this).orElse(null);
    }
 
@@ -287,7 +287,7 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.mU;
    }
 
@@ -307,14 +307,14 @@ public class cqr extends cjv implements cpc, cqt {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 }

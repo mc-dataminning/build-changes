@@ -272,7 +272,7 @@ public final class fqt<T> {
       }
 
       @Override
-      public boolean aR_() {
+      public boolean aM_() {
          return this.c;
       }
    }
@@ -414,13 +414,13 @@ public final class fqt<T> {
 
       T b(double var1);
 
-      default boolean aR_() {
+      default boolean aM_() {
          return true;
       }
 
       @Override
       default Function<fqt<T>, ftw> a(fqt.l<T> $$0, fqu $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new fqt.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aR_());
+         return $$6 -> new fqt.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aM_());
       }
    }
 

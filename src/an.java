@@ -21,7 +21,7 @@ public record an(int c, List<alq<fay>> d, List<alq<dfb<?>>> e, Optional<ef> f) {
 
    public void a(asc $$0) {
       $$0.d(this.c);
-      faw $$1 = new faw.a($$0.y()).a(fdn.a, $$0).a(fdn.f, $$0.dt()).a(fdm.m);
+      faw $$1 = new faw.a($$0.x()).a(fdn.a, $$0).a(fdn.f, $$0.dt()).a(fdm.m);
       boolean $$2 = false;
 
       for (alq<fay> $$3 : this.d) {
@@ -35,7 +35,7 @@ public record an(int c, List<alq<fay>> d, List<alq<dfb<?>>> e, Optional<ef> f) {
             } else {
                coo $$5 = $$0.a($$4, false);
                if ($$5 != null) {
-                  $$5.m();
+                  $$5.l();
                   $$5.b($$0.cG());
                }
             }
@@ -51,7 +51,7 @@ public record an(int c, List<alq<fay>> d, List<alq<dfb<?>>> e, Optional<ef> f) {
       }
 
       MinecraftServer $$6 = $$0.g;
-      this.f.flatMap($$1x -> $$1x.a($$6.aE())).ifPresent($$2x -> $$6.aE().a($$2x, $$0.A().a().a(2)));
+      this.f.flatMap($$1x -> $$1x.a($$6.aE())).ifPresent($$2x -> $$6.aE().a($$2x, $$0.z().a().a(2)));
    }
 
    public int a() {

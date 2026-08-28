@@ -33,7 +33,7 @@ public class gfo implements gfk, gfl {
    }
 
    @Override
-   public xg aU_() {
+   public xg aP_() {
       return c;
    }
 
@@ -43,7 +43,7 @@ public class gfo implements gfk, gfl {
    }
 
    @Override
-   public boolean aV_() {
+   public boolean aQ_() {
       return !this.e.isEmpty();
    }
 }

@@ -35,7 +35,7 @@ public class gfp implements gfk, gfl {
    }
 
    @Override
-   public xg aU_() {
+   public xg aP_() {
       return b;
    }
 
@@ -45,7 +45,7 @@ public class gfp implements gfk, gfl {
    }
 
    @Override
-   public boolean aV_() {
+   public boolean aQ_() {
       return !this.d.isEmpty();
    }
 
@@ -85,7 +85,7 @@ public class gfp implements gfk, gfl {
       }
 
       @Override
-      public xg aU_() {
+      public xg aP_() {
          return this.a.d();
       }
 
@@ -103,7 +103,7 @@ public class gfp implements gfk, gfl {
       }
 
       @Override
-      public boolean aV_() {
+      public boolean aQ_() {
          return true;
       }
    }

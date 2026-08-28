@@ -30,7 +30,7 @@ public abstract class ctd extends bxe implements bzd {
 
    @Nullable
    @Override
-   public bxe q() {
+   public bxe p() {
       if (this.d != null && !this.d.dQ()) {
          return this.d;
       } else if (this.c != null) {
@@ -46,8 +46,8 @@ public abstract class ctd extends bxe implements bzd {
       return this.dV() instanceof asb $$1 ? $$1.b($$0) : null;
    }
 
-   public bxe z() {
-      return (bxe)MoreObjects.firstNonNull(this.q(), this);
+   public bxe y() {
+      return (bxe)MoreObjects.firstNonNull(this.p(), this);
    }
 
    @Override
@@ -88,21 +88,21 @@ public abstract class ctd extends bxe implements bzd {
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.f) {
-         this.a(egq.K, this.q());
+         this.a(egq.K, this.p());
          this.f = true;
       }
 
       if (!this.e) {
-         this.e = this.g();
+         this.e = this.f();
       }
 
-      super.h();
+      super.g();
    }
 
-   private boolean g() {
-      bxe $$0 = this.q();
+   private boolean f() {
+      bxe $$0 = this.p();
       if ($$0 != null) {
          ffx $$1 = this.cR().b(this.dy()).g(1.0);
          return $$0.df().da().filter(bxl.h).noneMatch($$1x -> $$1.c($$1x.cR()));
@@ -134,7 +134,7 @@ public abstract class ctd extends bxe implements bzd {
       float $$7 = -azz.a(($$1 + $$3) * (float) (Math.PI / 180.0));
       float $$8 = azz.b($$2 * (float) (Math.PI / 180.0)) * azz.b($$1 * (float) (Math.PI / 180.0));
       this.c((double)$$6, (double)$$7, (double)$$8, $$4, $$5);
-      fgc $$9 = $$0.ae();
+      fgc $$9 = $$0.ad();
       this.i(this.dy().b($$9.d, $$0.aH() ? 0.0 : $$9.e, $$9.f));
    }
 
@@ -149,7 +149,7 @@ public abstract class ctd extends bxe implements bzd {
    public void l(boolean $$0) {
       double $$1 = $$0 ? -0.03 : 0.06;
       this.i(this.dy().b(0.0, $$1, 0.0));
-      this.k();
+      this.j();
    }
 
    public static <T extends ctd> T a(ctd.a<T> $$0, asb $$1, dak $$2, byf $$3, float $$4, float $$5, float $$6) {
@@ -193,15 +193,15 @@ public abstract class ctd extends bxe implements bzd {
          bxe $$2 = $$1.a();
          cte $$3 = $$2.a(this);
          if ($$3 != cte.a) {
-            if ($$2 != this.g && this.a($$3, $$2, this.q(), false)) {
+            if ($$2 != this.g && this.a($$3, $$2, this.p(), false)) {
                this.g = $$2;
             }
 
             return $$3;
          }
-      } else if (this.x() && $$0 instanceof ffy $$4 && $$4.f()) {
+      } else if (this.w() && $$0 instanceof ffy $$4 && $$4.f()) {
          cte $$5 = cte.b;
-         if (this.a($$5, null, this.q(), false)) {
+         if (this.a($$5, null, this.p(), false)) {
             this.i(this.dy().c(0.2));
             return $$5;
          }
@@ -211,7 +211,7 @@ public abstract class ctd extends bxe implements bzd {
       return cte.a;
    }
 
-   protected boolean x() {
+   protected boolean w() {
       return false;
    }
 
@@ -237,7 +237,7 @@ public abstract class ctd extends bxe implements bzd {
          ffz $$2 = (ffz)$$0;
          bxe $$3 = $$2.a();
          if ($$3.an().a(axq.H) && $$3 instanceof ctd $$4) {
-            $$4.a(cte.c, this.q(), this.q(), true);
+            $$4.a(cte.c, this.p(), this.p(), true);
          }
 
          this.a($$2);
@@ -262,12 +262,12 @@ public abstract class ctd extends bxe implements bzd {
       if (!$$0.bE()) {
          return false;
       } else {
-         bxe $$1 = this.q();
+         bxe $$1 = this.p();
          return $$1 == null || this.e || !$$1.z($$0);
       }
    }
 
-   protected void A() {
+   protected void z() {
       fgc $$0 = this.dy();
       double $$1 = $$0.i();
       this.x(f(this.O, (float)(azz.d($$0.e, $$1) * 180.0F / (float)Math.PI)));
@@ -288,7 +288,7 @@ public abstract class ctd extends bxe implements bzd {
 
    @Override
    public zo<acf> a(arz $$0) {
-      bxe $$1 = this.q();
+      bxe $$1 = this.p();
       return new acg(this, $$0, $$1 == null ? 0 : $$1.ao());
    }
 
@@ -303,7 +303,7 @@ public abstract class ctd extends bxe implements bzd {
 
    @Override
    public boolean c(asb $$0, iw $$1) {
-      bxe $$2 = this.q();
+      bxe $$2 = this.p();
       return $$2 instanceof csi ? $$2.c($$0, $$1) : $$2 == null || $$0.O().c(dkf.d);
    }
 

@@ -40,7 +40,7 @@ public class chq extends cho {
          if (this.p != null) {
             if (!this.p.a(this.a.dt(), (double)this.a.dq())
                && (!(this.a.dC() > (double)this.p.v()) || !iw.a((double)this.p.u(), this.a.dC(), (double)this.p.w()).a(this.a.dt(), (double)this.a.dq()))) {
-               this.a.L().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+               this.a.K().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
             } else {
                this.p = null;
             }

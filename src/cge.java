@@ -12,13 +12,13 @@ public class cge extends cfb {
 
    @Override
    public void d() {
-      ((cho)this.a.O()).c(true);
+      ((cho)this.a.N()).c(true);
    }
 
    @Override
    public void e() {
       if (ciz.a(this.a)) {
-         ((cho)this.a.O()).c(false);
+         ((cho)this.a.N()).c(false);
       }
    }
 }

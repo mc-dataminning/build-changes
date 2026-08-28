@@ -137,7 +137,7 @@ public class anr {
          throw a.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.effect.give.success.single", $$6.g(), $$1.iterator().next().m_(), $$8 / 20), true);
+            $$0.a(() -> xg.a("commands.effect.give.success.single", $$6.g(), $$1.iterator().next().P_(), $$8 / 20), true);
          } else {
             $$0.a(() -> xg.a("commands.effect.give.success.multiple", $$6.g(), $$1.size(), $$8 / 20), true);
          }
@@ -159,7 +159,7 @@ public class anr {
          throw b.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.effect.clear.everything.success.single", $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.effect.clear.everything.success.single", $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.effect.clear.everything.success.multiple", $$1.size()), true);
          }
@@ -182,7 +182,7 @@ public class anr {
          throw c.create();
       } else {
          if ($$1.size() == 1) {
-            $$0.a(() -> xg.a("commands.effect.clear.specific.success.single", $$3.g(), $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a("commands.effect.clear.specific.success.single", $$3.g(), $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a("commands.effect.clear.specific.success.multiple", $$3.g(), $$1.size()), true);
          }

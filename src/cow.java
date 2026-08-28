@@ -20,7 +20,7 @@ public class cow extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cev(this));
       this.bF.a(2, new cgi(this));
       this.bF.a(3, new cei<>(this, ckn.class, 6.0F, 1.0, 1.2));
@@ -33,13 +33,13 @@ public class cow extends cpk {
       this.bG.a(2, new cgt(this));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.v, 0.25);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.v, 0.25);
    }
 
    @Override
    public int cE() {
-      return this.f() == null ? this.y(0.0F) : this.y(this.eG() - 1.0F);
+      return this.e() == null ? this.y(0.0F) : this.y(this.eG() - 1.0F);
    }
 
    @Override
@@ -64,10 +64,10 @@ public class cow extends cpk {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("powered", this.m());
+      $$0.a("powered", this.p());
       $$0.a("Fuse", (short)this.bL);
       $$0.a("ExplosionRadius", (byte)this.bM);
-      $$0.a("ignited", this.q());
+      $$0.a("ignited", this.gu());
    }
 
    @Override
@@ -77,19 +77,19 @@ public class cow extends cpk {
       this.bL = $$0.b("Fuse", (short)30);
       this.bM = $$0.b("ExplosionRadius", (byte)3);
       if ($$0.b("ignited", false)) {
-         this.t();
+         this.gv();
       }
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (this.bJ()) {
          this.bJ = this.bK;
-         if (this.q()) {
+         if (this.gu()) {
             this.b(1);
          }
 
-         int $$0 = this.n();
+         int $$0 = this.u();
          if ($$0 > 0 && this.bK == 0) {
             this.a(awy.gH, 1.0F, 0.5F);
             this.a(egq.I);
@@ -102,11 +102,11 @@ public class cow extends cpk {
 
          if (this.bK >= this.bL) {
             this.bK = this.bL;
-            this.gv();
+            this.gy();
          }
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
@@ -122,7 +122,7 @@ public class cow extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.gF;
    }
 
@@ -130,8 +130,8 @@ public class cow extends cpk {
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
       bxe $$3 = $$1.d();
-      if ($$3 != this && $$3 instanceof cow $$4 && $$4.x()) {
-         $$4.gu();
+      if ($$3 != this && $$3 instanceof cow $$4 && $$4.gw()) {
+         $$4.gx();
          this.a($$0, dao.vz);
       }
    }
@@ -141,7 +141,7 @@ public class cow extends cpk {
       return true;
    }
 
-   public boolean m() {
+   public boolean p() {
       return this.al.a(b);
    }
 
@@ -149,7 +149,7 @@ public class cow extends cpk {
       return azz.h($$0, (float)this.bJ, (float)this.bK) / (float)(this.bL - 2);
    }
 
-   public int n() {
+   public int u() {
       return this.al.a(a);
    }
 
@@ -170,7 +170,7 @@ public class cow extends cpk {
          awx $$3 = $$2.a(dao.vg) ? awy.jn : awy.jD;
          this.dV().a($$0, this.dA(), this.dC(), this.dG(), $$3, this.dm(), 1.0F, this.ae.i() * 0.4F + 0.8F);
          if (!this.dV().C) {
-            this.t();
+            this.gv();
             if (!$$2.m()) {
                $$2.h(1);
             } else {
@@ -184,18 +184,18 @@ public class cow extends cpk {
       }
    }
 
-   private void gv() {
+   private void gy() {
       if (this.dV() instanceof asb $$0) {
-         float $$1 = this.m() ? 2.0F : 1.0F;
+         float $$1 = this.p() ? 2.0F : 1.0F;
          this.bc = true;
          $$0.a(this, this.dA(), this.dC(), this.dG(), (float)this.bM * $$1, dkj.a.c);
-         this.gy();
+         this.gB();
          this.a($$0, bxe.d.a);
          this.aq();
       }
    }
 
-   private void gy() {
+   private void gB() {
       Collection<bwi> $$0 = this.eD();
       if (!$$0.isEmpty()) {
          bww $$1 = new bww(this.dV(), this.dA(), this.dC(), this.dG());
@@ -204,7 +204,7 @@ public class cow extends cpk {
          $$1.c(10);
          $$1.a(300);
          $$1.b(0.25F);
-         $$1.d(-$$1.e() / (float)$$1.i());
+         $$1.d(-$$1.c() / (float)$$1.h());
 
          for (bwi $$2 : $$0) {
             $$1.a(new bwi($$2));
@@ -214,19 +214,19 @@ public class cow extends cpk {
       }
    }
 
-   public boolean q() {
+   public boolean gu() {
       return this.al.a(c);
    }
 
-   public void t() {
+   public void gv() {
       this.al.a(c, true);
    }
 
-   public boolean x() {
-      return this.m() && this.bN < 1;
+   public boolean gw() {
+      return this.p() && this.bN < 1;
    }
 
-   public void gu() {
+   public void gx() {
       this.bN++;
    }
 }

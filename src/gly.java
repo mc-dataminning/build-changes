@@ -63,7 +63,7 @@ public class gly {
             return false;
          } else {
             dno $$3 = $$2.b();
-            if ($$3 instanceof dra && !this.b.t.gG()) {
+            if ($$3 instanceof dra && !this.b.t.gH()) {
                return false;
             } else if ($$2.l()) {
                return false;
@@ -135,7 +135,7 @@ public class gly {
          this.i = false;
          this.f = 0.0F;
          this.b.s.a(this.b.t.ao(), this.d, -1);
-         this.b.t.gE();
+         this.b.t.gF();
       }
    }
 
@@ -257,7 +257,7 @@ public class gly {
             }
          }
 
-         if (!$$4.f() && !$$0.gF().a($$4)) {
+         if (!$$4.f() && !$$0.gG().a($$4)) {
             def $$10 = new def($$0, $$1, $$2);
             bvc $$12;
             if ($$0.fV()) {
@@ -284,7 +284,7 @@ public class gly {
          this.a(this.b.s, $$3 -> {
             ajd $$4 = new ajd($$1, $$3, $$0.dL(), $$0.dN());
             dak $$5 = $$0.b($$1);
-            if ($$0.gF().a($$5)) {
+            if ($$0.gG().a($$5)) {
                $$2.setValue(bvc.e);
                return $$4;
             } else {
@@ -321,7 +321,7 @@ public class gly {
       this.c.b(ahw.a($$1, $$0.cc()));
       if (this.j != dkg.d) {
          $$0.e($$1);
-         $$0.gE();
+         $$0.gF();
       }
    }
 
@@ -385,7 +385,7 @@ public class gly {
       boolean $$1 = this.b.z instanceof gaf && !(this.b.z instanceof gav);
       if (this.b.t.fV() && !$$1 && !$$0.f() && this.c.a($$0.h().k())) {
          this.c.b(new aiu(-1, $$0));
-         this.b.t.E().a();
+         this.b.t.G().a();
       }
    }
 

@@ -15,7 +15,7 @@ public class glx {
          case b:
             iw $$0 = this.a.dv();
             boolean $$1 = this.b.e($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.aa_() || !this.a.bJ()) {
+            if ($$1 || this.c.a($$0) || this.a.ak() || !this.a.bJ()) {
                this.d = glx.a.c;
             }
          case a:

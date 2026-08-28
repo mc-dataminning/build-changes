@@ -2,7 +2,7 @@ public record aia(fgc b, float c, float d, boolean e) implements zo<aha> {
    public static final ze<vy, aia> a = ze.a(fgc.b, aia::b, zc.l, aia::e, zc.l, aia::f, zc.b, aia::g, aia::new);
 
    public static aia a(bxe $$0) {
-      return $$0.bQ() ? new aia($$0.S_().a(), $$0.S_().b(), $$0.S_().c(), $$0.aH()) : new aia($$0.dt(), $$0.dL(), $$0.dN(), $$0.aH());
+      return $$0.bQ() ? new aia($$0.l_().a(), $$0.l_().b(), $$0.l_().c(), $$0.aH()) : new aia($$0.dt(), $$0.dL(), $$0.dN(), $$0.aH());
    }
 
    @Override

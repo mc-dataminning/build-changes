@@ -7,7 +7,7 @@ public class cmo extends cme {
       super($$0, $$1);
    }
 
-   public static bzk.a q() {
+   public static bzk.a m() {
       return gV().a(bzl.s, 15.0).a(bzl.v, 0.2F);
    }
 
@@ -21,12 +21,12 @@ public class cmo extends cme {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.Ey;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.Ez;
    }
 
@@ -52,6 +52,6 @@ public class cmo extends cme {
 
    @Override
    public bxh e(byr $$0) {
-      return this.n_() ? bI : super.e($$0);
+      return this.e_() ? bI : super.e($$0);
    }
 }

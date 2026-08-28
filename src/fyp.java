@@ -151,12 +151,12 @@ public class fyp extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.c(fty.a(xf.e, $$0 -> {
          synchronized (this) {
             this.w = true;

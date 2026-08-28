@@ -26,7 +26,7 @@ public abstract class chb extends cfb {
 
    @Override
    public boolean c() {
-      byf $$0 = this.e.f();
+      byf $$0 = this.e.e();
       if ($$0 == null) {
          $$0 = this.g;
       }
@@ -46,7 +46,7 @@ public abstract class chb extends cfb {
                return false;
             } else {
                if (this.f) {
-                  if (this.e.P().a($$0)) {
+                  if (this.e.O().a($$0)) {
                      this.k = 0;
                   } else if (++this.k > b(this.h)) {
                      return false;
@@ -105,7 +105,7 @@ public abstract class chb extends cfb {
 
    private boolean a(byf $$0) {
       this.j = b(10 + this.e.dY().a(5));
-      eyo $$1 = this.e.O().a($$0, 0);
+      eyo $$1 = this.e.N().a($$0, 0);
       if ($$1 == null) {
          return false;
       } else {

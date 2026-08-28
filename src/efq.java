@@ -223,7 +223,7 @@ public class efq {
 
             for (dyo $$4 : $$3.I().values()) {
                if ($$4 instanceof eal) {
-                  ebv.b $$5 = this.o.a(this.l, $$4.aC_());
+                  ebv.b $$5 = this.o.a(this.l, $$4.ax_());
                   if ($$5 != null) {
                      iw $$6 = $$5.a(3, 3, 3).d();
                      if (this.y == null) {
@@ -365,7 +365,7 @@ public class efq {
       if ($$0 != null) {
          $$0.a(this);
          $$0.c(this.m);
-         $$0.t().a(cnw.a);
+         $$0.gr().a(cnw.a);
          $$0.b((double)this.m.u(), (double)(128 + this.m.v()), (double)this.m.w(), this.l.A.i() * 360.0F, 0.0F);
          this.l.b($$0);
          this.w = $$0.cG();
@@ -378,8 +378,8 @@ public class efq {
       if ($$0.cG().equals(this.w)) {
          this.k.a($$0.eG() / $$0.eU());
          this.p = 0;
-         if ($$0.h_()) {
-            this.k.a($$0.m_());
+         if ($$0.g_()) {
+            this.k.a($$0.P_());
          }
       }
    }

@@ -45,7 +45,7 @@ public class cbg extends bzw<byh> {
       if (this.e != null && this.f != null) {
          Optional<chk> $$3 = $$1.ec().c(chh.n);
          boolean $$4 = $$3.<Boolean>map(cbg::a).orElse(false);
-         chp $$5 = $$1.O();
+         chp $$5 = $$1.N();
          return !$$5.k() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
       } else {
          return false;
@@ -53,11 +53,11 @@ public class cbg extends bzw<byh> {
    }
 
    protected void b(asb $$0, byh $$1, long $$2) {
-      if ($$1.ec().a(chh.n) && !this.a($$1, $$1.ec().c(chh.n).get()) && $$1.O().q()) {
+      if ($$1.ec().a(chh.n) && !this.a($$1, $$1.ec().c(chh.n).get()) && $$1.N().q()) {
          this.d = $$0.G_().a(40);
       }
 
-      $$1.O().m();
+      $$1.N().m();
       $$1.ec().b(chh.n);
       $$1.ec().b(chh.u);
       this.e = null;
@@ -65,11 +65,11 @@ public class cbg extends bzw<byh> {
 
    protected void c(asb $$0, byh $$1, long $$2) {
       $$1.ec().a(chh.u, this.e);
-      $$1.O().a(this.e, (double)this.g);
+      $$1.N().a(this.e, (double)this.g);
    }
 
    protected void d(asb $$0, byh $$1, long $$2) {
-      eyo $$3 = $$1.O().i();
+      eyo $$3 = $$1.N().i();
       bzf<?> $$4 = $$1.ec();
       if (this.e != $$3) {
          this.e = $$3;
@@ -87,7 +87,7 @@ public class cbg extends bzw<byh> {
 
    private boolean a(byh $$0, chk $$1, long $$2) {
       iw $$3 = $$1.a().b();
-      this.e = $$0.O().a($$3, 0);
+      this.e = $$0.N().a($$3, 0);
       this.g = $$1.b();
       bzf<?> $$4 = $$0.ec();
       if (this.a($$0, $$1)) {
@@ -106,7 +106,7 @@ public class cbg extends bzw<byh> {
 
          fgc $$6 = ciy.a((byn)$$0, 10, 7, fgc.c($$3), (float) (Math.PI / 2));
          if ($$6 != null) {
-            this.e = $$0.O().a($$6.d, $$6.e, $$6.f, 0);
+            this.e = $$0.N().a($$6.d, $$6.e, $$6.f, 0);
             return this.e != null;
          }
       }
@@ -119,6 +119,6 @@ public class cbg extends bzw<byh> {
    }
 
    private static boolean a(chk $$0) {
-      return $$0.a() instanceof cah $$2 ? $$2.c().aa_() : false;
+      return $$0.a() instanceof cah $$2 ? $$2.c().ak() : false;
    }
 }

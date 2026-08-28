@@ -16,17 +16,17 @@ public class coz extends cpg {
       }
    }
 
-   public static bzk.a j() {
-      return cpg.q().a(bzl.v, 0.3F).a(bzl.c, 8.0).a(bzl.s, 80.0);
+   public static bzk.a m() {
+      return cpg.gu().a(bzl.v, 0.3F).a(bzl.c, 8.0).a(bzl.s, 80.0);
    }
 
    @Override
-   public int m() {
+   public int p() {
       return 60;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return this.bi() ? awy.im : awy.in;
    }
 
@@ -36,12 +36,12 @@ public class coz extends cpg {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return this.bi() ? awy.ip : awy.iq;
    }
 
    @Override
-   protected awx n() {
+   protected awx u() {
       return awy.ir;
    }
 

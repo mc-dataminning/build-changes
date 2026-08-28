@@ -1,7 +1,7 @@
 import java.util.Optional;
 
 public interface cjx {
-   boolean m();
+   boolean p();
 
    void w(boolean var1);
 
@@ -9,9 +9,9 @@ public interface cjx {
 
    void d(ua var1);
 
-   dak X_();
+   dak a();
 
-   awx n();
+   awx u();
 
    @Deprecated
    static void a(byh $$0, dak $$1) {
@@ -54,8 +54,8 @@ public interface cjx {
    static <T extends byf & cjx> Optional<bvc> a(csi $$0, bvb $$1, T $$2) {
       dak $$3 = $$0.b($$1);
       if ($$3.h() == dao.rp && $$2.bJ()) {
-         $$2.a($$2.n(), 1.0F, 1.0F);
-         dak $$4 = $$2.X_();
+         $$2.a($$2.u(), 1.0F, 1.0F);
+         dak $$4 = $$2.a();
          $$2.a_($$4);
          dak $$5 = dan.a($$3, $$0, $$4, false);
          $$0.a($$1, $$5);

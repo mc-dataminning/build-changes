@@ -26,13 +26,13 @@ public class fof extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.E.a(b, this.p);
       fxq $$0 = this.E.c(fxq.d().a(8));
       this.F = new fuh(this.m.h, 200, 20, xg.c("mco.configure.world.invite.profile.name"));
       $$0.a(fxi.a(this.p, this.F, c));
       this.G = $$0.a(fty.a(b, $$0x -> this.E()).a(200).a());
-      this.E.b(fty.a(xf.k, $$0x -> this.aQ_()).a(200).a());
+      this.E.b(fty.a(xf.k, $$0x -> this.aL_()).a(200).a());
       this.E.a($$1 -> {
          ftw var10000 = this.c($$1);
       });
@@ -45,7 +45,7 @@ public class fof extends hrc {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.F);
    }
 
@@ -85,7 +85,7 @@ public class fof extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.J);
    }
 

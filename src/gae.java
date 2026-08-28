@@ -16,7 +16,7 @@ public abstract class gae extends fzq {
    @Override
    public void e() {
       if (!this.m().j()) {
-         this.aQ_();
+         this.aL_();
       }
    }
 
@@ -25,9 +25,9 @@ public abstract class gae extends fzq {
    abstract int E();
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.c = this.c(fty.a(xf.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
-      this.d = this.c(fty.a(xf.e, $$0x -> this.aQ_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fty.a(xf.e, $$0x -> this.aL_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
       boolean $$0 = this.m().p();
       this.s = this.c(fuf.a(xg.b("O"), xg.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, xg.c("advMode.trackOutput"), ($$0x, $$1) -> {
          dji $$2 = this.m();
@@ -55,7 +55,7 @@ public abstract class gae extends fzq {
    }
 
    @Override
-   protected void aH_() {
+   protected void aC_() {
       this.b(this.a);
    }
 

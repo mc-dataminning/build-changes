@@ -31,12 +31,12 @@ public class fuj extends fus {
 
    @Override
    public void b(ftk $$0, int $$1, int $$2, float $$3) {
-      if (this.aO_() || this.b) {
+      if (this.aJ_() || this.b) {
          int $$4 = this.F() - this.c;
          int $$5 = this.G() - this.c;
          int $$6 = this.A() + this.c * 2;
          int $$7 = this.y() + this.c * 2;
-         int $$8 = this.b ? (this.aO_() ? -1 : -6250336) : -1;
+         int $$8 = this.b ? (this.aJ_() ? -1 : -6250336) : -1;
          $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
          $$0.b($$4, $$5, $$6, $$7, $$8);
       }

@@ -16,15 +16,15 @@ public abstract class cod extends bxe {
       this.a = $$2;
    }
 
-   protected abstract void f();
+   protected abstract void e();
 
    @Override
-   public void h() {
+   public void g() {
       if (this.dV() instanceof asb $$0) {
          this.ax();
          if (this.c++ == 100) {
             this.c = 0;
-            if (!this.dQ() && !this.g()) {
+            if (!this.dQ() && !this.f()) {
                this.aq();
                this.a($$0, null);
             }
@@ -32,7 +32,7 @@ public abstract class cod extends bxe {
       }
    }
 
-   public abstract boolean g();
+   public abstract boolean f();
 
    @Override
    public boolean bF() {
@@ -93,7 +93,7 @@ public abstract class cod extends bxe {
 
    @Override
    public void b(ua $$0) {
-      $$0.a("block_pos", iw.a, this.j());
+      $$0.a("block_pos", iw.a, this.i());
    }
 
    @Override
@@ -116,11 +116,11 @@ public abstract class cod extends bxe {
    @Override
    public void a_(double $$0, double $$1, double $$2) {
       this.a = iw.a($$0, $$1, $$2);
-      this.f();
+      this.e();
       this.ar = true;
    }
 
-   public iw j() {
+   public iw i() {
       return this.a;
    }
 
@@ -129,6 +129,6 @@ public abstract class cod extends bxe {
    }
 
    @Override
-   public void i_() {
+   public void h_() {
    }
 }

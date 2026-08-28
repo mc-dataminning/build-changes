@@ -353,7 +353,7 @@ public class gri implements avp, AutoCloseable {
       boolean $$20 = this.a($$3, $$14, this.K);
       this.L = this.K.size();
       $$8.b("terrain_setup");
-      this.a($$3, $$14, $$13, this.h.t.aa_());
+      this.a($$3, $$14, $$13, this.h.t.ak());
       $$8.b("compile_sections");
       this.c($$3);
       Matrix4fStack $$21 = RenderSystem.getModelViewStack();
@@ -651,7 +651,7 @@ public class gri implements avp, AutoCloseable {
          if ($$10 && this.h.b($$11)) {
             grp $$12 = this.k.e();
             $$13 = $$12;
-            int $$14 = $$11.f_();
+            int $$14 = $$11.m_();
             $$12.a(ayh.b($$14), ayh.c($$14), ayh.d($$14), 255);
          } else {
             $$13 = $$1;
@@ -674,7 +674,7 @@ public class gri implements avp, AutoCloseable {
          List<dyo> $$10 = $$9.d().b();
          if (!$$10.isEmpty()) {
             for (dyo $$11 : $$10) {
-               iw $$12 = $$11.aC_();
+               iw $$12 = $$11.ax_();
                grn $$13 = $$1;
                $$0.a();
                $$0.a((double)$$12.u() - $$6, (double)$$12.v() - $$7, (double)$$12.w() - $$8);
@@ -699,7 +699,7 @@ public class gri implements avp, AutoCloseable {
 
       synchronized (this.t) {
          for (dyo $$18 : this.t) {
-            iw $$19 = $$18.aC_();
+            iw $$19 = $$18.ax_();
             $$0.a();
             $$0.a((double)$$19.u() - $$6, (double)$$19.v() - $$7, (double)$$19.w() - $$8);
             this.j.a($$18, $$4, $$0, $$1);

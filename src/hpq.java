@@ -350,7 +350,7 @@ public class hpq {
                            CompletableFuture<hph.a> $$16 = this.t.a($$3.g() ? fik.c.b : fik.c.a);
                            hph.a $$17 = $$16.join();
                            if ($$17 == null) {
-                              if (ac.aU) {
+                              if (ac.aV) {
                                  e.warn("Failed to create new sound handle");
                               }
                            } else {

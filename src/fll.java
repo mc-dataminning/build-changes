@@ -102,7 +102,7 @@ public class fll extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       this.aI = new fnr(this.m);
       this.aH = new fll.j();
       xg $$0 = xg.c("mco.invites.title");
@@ -126,7 +126,7 @@ public class fll extends hrc {
       this.aE = fty.a(P, $$0x -> this.e(this.O())).a(100).a();
       this.aG = fty.a(S, $$0x -> this.g(this.O())).a(100).a();
       this.aP = fty.a(xg.c("mco.selectServer.purchase"), $$0x -> this.P()).b(100, 20).a();
-      this.aD = fty.a(xf.k, $$0x -> this.aQ_()).a(100).a();
+      this.aD = fty.a(xf.k, $$0x -> this.aL_()).a(100).a();
       if (flq.a == flq.b.b) {
          this.c(fuf.a(xg.b("Snapshot"), xg.b("Release")).a(5, 5, 100, 20, xg.b("Realm"), ($$0x, $$1x) -> {
             av = $$1x;
@@ -160,7 +160,7 @@ public class fll extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.aB);
    }
 
@@ -541,12 +541,12 @@ public class fll extends hrc {
                   .a(
                      new fva.a($$1, ad)
                         .a(xg.a("mco.compatibility.incompatible.series.popup.message", xg.b($$0.v).b(-171), xg.b(ac.b().c()).b(-171)))
-                        .a(xf.k, fva::aQ_)
+                        .a(xf.k, fva::aL_)
                         .a()
                   );
                break;
             case c:
-               fqq.Q().a(new fva.a($$1, ad).a(ae).a(xf.k, fva::aQ_).a());
+               fqq.Q().a(new fva.a($$1, ad).a(ae).a(xf.k, fva::aL_).a());
          }
       }
    }
@@ -555,7 +555,7 @@ public class fll extends hrc {
       fqq.Q().a(new fva.a($$1, $$2).a($$3).a($$4, $$2x -> {
          fqq.Q().a(new fog($$1, new fpn($$1, $$0)));
          g();
-      }).a(xf.e, fva::aQ_).a());
+      }).a(xf.e, fva::aL_).a());
    }
 
    private static void b(fmr $$0, fzq $$1) {
@@ -613,7 +613,7 @@ public class fll extends hrc {
          int $$10 = $$2 + $$5 / 2 - 9 / 2;
          $$0.b(fll.this.p, f, $$3 + 40 - 2, $$10 - 5, 8388479);
          $$0.b(fll.this.p, xg.a("mco.snapshot.description", Objects.requireNonNullElse(this.i.c, "unknown server")), $$3 + 40 - 2, $$10 + 5, -8355712);
-         this.h.a($$8, this.aO_(), new fyf($$3, $$2, $$4, $$5));
+         this.h.a($$8, this.aJ_(), new fyf($$3, $$2, $$4, $$5));
       }
 
       @Override
@@ -639,7 +639,7 @@ public class fll extends hrc {
                new fva.a(fll.this, xg.c("mco.snapshot.createSnapshotPopup.title"))
                   .a(xg.c("mco.snapshot.createSnapshotPopup.text"))
                   .a(xg.c("mco.selectServer.create"), $$0 -> fll.this.m.a(new foc(fll.this, this.i, true)))
-                  .a(xf.e, fva::aQ_)
+                  .a(xf.e, fva::aL_)
                   .a()
             );
       }
@@ -965,7 +965,7 @@ public class fll extends hrc {
          this.a($$0, this.f.a(), $$10, this.c($$11), $$14, -8355712);
          this.a($$0, $$2, $$3, this.f);
          this.a(this.f, $$0, $$3 + $$4, $$2, $$6, $$7);
-         this.g.a($$8, this.aO_(), new fyf($$3, $$2, $$4, $$5));
+         this.g.a($$8, this.aJ_(), new fyf($$3, $$2, $$4, $$5));
       }
 
       @Override
@@ -1077,7 +1077,7 @@ public class fll extends hrc {
             boolean $$11 = this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7);
             this.a(this.i, $$0, $$3 + $$4, $$2, $$6, $$7);
             if (!$$11) {
-               this.j.a($$8, this.aO_(), new fyf($$3, $$2, $$4, $$5));
+               this.j.a($$8, this.aJ_(), new fyf($$3, $$2, $$4, $$5));
             }
          }
       }
@@ -1145,7 +1145,7 @@ public class fll extends hrc {
          if (this.i.e == fmr.c.c) {
             this.e();
          } else if (fll.this.a(this.i)) {
-            if (ag.c() - fll.this.aN < 250L && this.aO_()) {
+            if (ag.c() - fll.this.aN < 250L && this.aJ_()) {
                this.d();
             }
 

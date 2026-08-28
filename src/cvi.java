@@ -13,7 +13,7 @@ public class cvi extends cuv {
    }
 
    @Override
-   protected dag o() {
+   protected dag p() {
       return dao.ov;
    }
 
@@ -49,12 +49,12 @@ public class cvi extends cuv {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       this.c.run();
    }
 
-   public djj q() {
+   public djj e() {
       return this.b;
    }
 }

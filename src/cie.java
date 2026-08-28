@@ -25,7 +25,7 @@ public class cie extends cin<byh> {
    }
 
    protected void a(asb $$0, byh $$1) {
-      if ($$1.n_()) {
+      if ($$1.e_()) {
          this.e = 0;
          this.f = $$0.ae() + (long)$$0.G_().a(20);
          cjh $$2 = $$0.A();

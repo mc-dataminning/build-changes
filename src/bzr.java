@@ -41,7 +41,7 @@ public class bzr<E extends byn> extends bzw<E> {
    }
 
    protected void d(asb $$0, E $$1, long $$2) {
-      if ($$1.O().k()) {
+      if ($$1.N().k()) {
          fgc $$3 = this.a($$1, $$0);
          if ($$3 != null) {
             $$1.ec().a(chh.n, new chk($$3, this.g, 0));

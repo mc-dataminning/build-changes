@@ -21,12 +21,12 @@ public class gcj extends gcn {
 
          this.m.a(new gci(this.u));
       }).a());
-      $$0.a(fty.a(xf.k, $$0x -> this.aQ_()).a());
+      $$0.a(fty.a(xf.k, $$0x -> this.aL_()).a());
       return $$0;
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.u);
    }
 }

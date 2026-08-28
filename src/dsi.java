@@ -25,7 +25,7 @@ public class dsi extends dno implements duz {
 
    @Override
    protected bvc a(ebq $$0, dkj $$1, iw $$2, csi $$3, ffy $$4) {
-      if (!$$1.C && $$3.gG()) {
+      if (!$$1.C && $$3.gH()) {
          $$1.a($$2, $$0.a(c), 2);
          return bvc.b;
       } else {

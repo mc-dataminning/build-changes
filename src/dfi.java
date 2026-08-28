@@ -71,7 +71,7 @@ public class dfi extends avt<dfj> implements dfc {
       List<dfi.b> $$2 = b.entrySet().stream().map($$0x -> new dfi.b((alq<dfk>)$$0x.getKey(), (dfi.c)$$0x.getValue())).toList();
       this.e.a().forEach($$3 -> {
          dfb<?> $$4 = $$3.b();
-         if (!$$4.ar_() && $$4.aq_().c()) {
+         if (!$$4.am_() && $$4.al_().c()) {
             a.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", $$3.a().a());
          } else {
             $$2.forEach($$1xx -> $$1xx.a($$4));
@@ -192,10 +192,10 @@ public class dfi extends avt<dfj> implements dfc {
          }
 
          Optional<List<dex>> $$8;
-         if ($$5.ar_()) {
+         if ($$5.am_()) {
             $$8 = Optional.empty();
          } else {
-            $$8 = Optional.of($$5.aq_().b());
+            $$8 = Optional.of($$5.al_().b());
          }
 
          for (dgh $$10 : $$5.g()) {

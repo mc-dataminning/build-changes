@@ -183,7 +183,7 @@ public class glo extends dkj implements glh.a<glo> {
       $$0.bx();
       $$0.af++;
       brl.a().a(() -> mh.f.b($$0.an()).toString());
-      $$0.h();
+      $$0.g();
       brl.a().c();
 
       for (bxe $$1 : $$0.cY()) {
@@ -197,7 +197,7 @@ public class glo extends dkj implements glh.a<glo> {
       } else if ($$1 instanceof csi || this.e.c($$1)) {
          $$1.bx();
          $$1.af++;
-         $$1.r();
+         $$1.q();
 
          for (bxe $$2 : $$1.cY()) {
             this.a($$1, $$2);
@@ -449,17 +449,8 @@ public class glo extends dkj implements glh.a<glo> {
       return this.N.get($$0);
    }
 
-   public void b(ezt $$0, ezv $$1) {
-      this.N.put($$0, $$1);
-   }
-
-   @Override
    public void a(ezt $$0, ezv $$1) {
-   }
-
-   @Override
-   public ezt x() {
-      return new ezt(0);
+      this.N.put($$0, $$1);
    }
 
    @Override
@@ -898,7 +889,7 @@ public class glo extends dkj implements glh.a<glo> {
                glo.this.L.add($$1);
                break;
             case cng $$2:
-               glo.this.M.addAll(Arrays.asList($$2.q()));
+               glo.this.M.addAll(Arrays.asList($$2.gq()));
                break;
          }
       }
@@ -911,7 +902,7 @@ public class glo extends dkj implements glh.a<glo> {
                glo.this.L.remove($$1);
                break;
             case cng $$2:
-               glo.this.M.removeAll(Arrays.asList($$2.q()));
+               glo.this.M.removeAll(Arrays.asList($$2.gq()));
                break;
          }
       }

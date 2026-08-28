@@ -40,7 +40,7 @@ public class fyr extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.y.a(this.l, this.p);
       this.B = this.y.c(new fyr.a());
       fxq $$0 = this.y.b(fxq.d().a(4));
@@ -50,10 +50,10 @@ public class fyr extends fzq {
       this.C = $$1.a(fty.a(xg.c("createWorld.customize.flat.removeLayer"), $$0x -> {
          if (this.E()) {
             List<eqn> $$1x = this.A.e();
-            int $$2x = this.B.aJ_().indexOf(this.B.p());
+            int $$2x = this.B.aE_().indexOf(this.B.p());
             int $$3 = $$1x.size() - $$2x - 1;
             $$1x.remove($$3);
-            this.B.a($$1x.isEmpty() ? null : this.B.aJ_().get(Math.min($$2x, $$1x.size() - 1)));
+            this.B.a($$1x.isEmpty() ? null : this.B.aE_().get(Math.min($$2x, $$1x.size() - 1)));
             this.A.g();
             this.B.b();
             this.m();
@@ -66,11 +66,11 @@ public class fyr extends fzq {
       }).a());
       $$2.a(fty.a(xf.d, $$0x -> {
          this.z.accept(this.A);
-         this.aQ_();
+         this.aL_();
          this.A.g();
       }).a());
       $$2.a(fty.a(xf.e, $$0x -> {
-         this.aQ_();
+         this.aL_();
          this.A.g();
       }).a());
       this.A.g();
@@ -99,7 +99,7 @@ public class fyr extends fzq {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.a);
    }
 
@@ -121,14 +121,14 @@ public class fyr extends fzq {
       }
 
       public void b() {
-         int $$0 = this.aJ_().indexOf(this.p());
+         int $$0 = this.aE_().indexOf(this.p());
          this.s();
 
          for (int $$1 = 0; $$1 < fyr.this.A.e().size(); $$1++) {
             this.b(new fyr.a.a());
          }
 
-         List<fyr.a.a> $$2 = this.aJ_();
+         List<fyr.a.a> $$2 = this.aE_();
          if ($$0 >= 0 && $$0 < $$2.size()) {
             this.a($$2.get($$0));
          }
@@ -176,7 +176,7 @@ public class fyr extends fzq {
 
          @Override
          public xg a() {
-            eqn $$0 = fyr.this.A.e().get(fyr.this.A.e().size() - a.this.aJ_().indexOf(this) - 1);
+            eqn $$0 = fyr.this.A.e().get(fyr.this.A.e().size() - a.this.aE_().indexOf(this) - 1);
             dak $$1 = this.a($$0.b());
             return (xg)(!$$1.f() ? xg.a("narrator.select", $$1.y()) : xf.a);
          }

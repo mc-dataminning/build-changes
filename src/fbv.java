@@ -28,7 +28,7 @@ public class fbv extends fcg {
    @Override
    public dak a(dak $$0, fat $$1) {
       if ($$1.c(this.b.g) instanceof bvf $$3) {
-         $$0.b(kl.g, $$3.ak());
+         $$0.b(kl.g, $$3.aj());
       }
 
       return $$0;

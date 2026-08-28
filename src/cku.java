@@ -5,7 +5,7 @@ public class cku extends cjr {
    int f;
    int bI;
    private static final ciu.a bJ = ($$0, $$1) -> {
-      if ($$0 instanceof csi $$2 && $$2.b()) {
+      if ($$0 instanceof csi $$2 && $$2.gz()) {
          return false;
       }
 
@@ -19,7 +19,7 @@ public class cku extends cjr {
 
    public cku(bxn<? extends cku> $$0, dkj $$1) {
       super($$0, $$1);
-      this.i_();
+      this.h_();
    }
 
    @Override
@@ -28,7 +28,7 @@ public class cku extends cjr {
       $$0.a(e, 0);
    }
 
-   public int x() {
+   public int gw() {
       return this.al.a(e);
    }
 
@@ -39,7 +39,7 @@ public class cku extends cjr {
    @Override
    public void a(aku<?> $$0) {
       if (e.equals($$0)) {
-         this.i_();
+         this.h_();
       }
 
       super.a($$0);
@@ -48,7 +48,7 @@ public class cku extends cjr {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("PuffState", this.x());
+      $$0.a("PuffState", this.gw());
    }
 
    @Override
@@ -58,34 +58,34 @@ public class cku extends cjr {
    }
 
    @Override
-   public dak X_() {
+   public dak a() {
       return new dak(dao.rv);
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(1, new cku.a(this));
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.dV().C && this.bJ() && this.dj()) {
          if (this.f > 0) {
-            if (this.x() == 0) {
+            if (this.gw() == 0) {
                this.b(awy.vF);
                this.b(1);
-            } else if (this.f > 40 && this.x() == 1) {
+            } else if (this.f > 40 && this.gw() == 1) {
                this.b(awy.vF);
                this.b(2);
             }
 
             this.f++;
-         } else if (this.x() != 0) {
-            if (this.bI > 60 && this.x() == 2) {
+         } else if (this.gw() != 0) {
+            if (this.bI > 60 && this.gw() == 2) {
                this.b(awy.vE);
                this.b(1);
-            } else if (this.bI > 100 && this.x() == 1) {
+            } else if (this.bI > 100 && this.gw() == 1) {
                this.b(awy.vE);
                this.b(0);
             }
@@ -94,13 +94,13 @@ public class cku extends cjr {
          }
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
-   public void k_() {
-      super.k_();
-      if (this.dV() instanceof asb $$0 && this.bJ() && this.x() > 0) {
+   public void d_() {
+      super.d_();
+      if (this.dV() instanceof asb $$0 && this.bJ() && this.gw() > 0) {
          for (byh $$2 : this.dV().a(byh.class, this.cR().g(0.3), $$1 -> bK.a($$0, this, $$1))) {
             if ($$2.bJ()) {
                this.a($$0, $$2);
@@ -110,7 +110,7 @@ public class cku extends cjr {
    }
 
    private void a(asb $$0, byh $$1) {
-      int $$2 = this.x();
+      int $$2 = this.gw();
       if ($$1.a($$0, this.dW().b((byf)this), (float)(1 + $$2))) {
          $$1.b(new bwi(bwk.s, 60 * $$2, 0), this);
          this.a(awy.vJ, 1.0F, 1.0F);
@@ -119,8 +119,8 @@ public class cku extends cjr {
 
    @Override
    public void a_(csi $$0) {
-      int $$1 = this.x();
-      if ($$0 instanceof asc $$2 && $$1 > 0 && $$0.a($$2.y(), this.dW().b((byf)this), (float)(1 + $$1))) {
+      int $$1 = this.gw();
+      if ($$0 instanceof asc $$2 && $$1 > 0 && $$0.a($$2.x(), this.dW().b((byf)this), (float)(1 + $$1))) {
          if (!this.ba()) {
             $$2.f.b(new adm(adm.k, 0.0F));
          }
@@ -130,12 +130,12 @@ public class cku extends cjr {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.vD;
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.vG;
    }
 
@@ -145,13 +145,13 @@ public class cku extends cjr {
    }
 
    @Override
-   protected awx t() {
+   protected awx gv() {
       return awy.vH;
    }
 
    @Override
    public bxh e(byr $$0) {
-      return super.e($$0).a(c(this.x()));
+      return super.e($$0).a(c(this.gw()));
    }
 
    private static float c(int $$0) {

@@ -43,16 +43,16 @@ public class aqm implements aqk {
 
    @Override
    public xg b() {
-      return xg.a("commands.data.entity.modified", this.c.m_());
+      return xg.a("commands.data.entity.modified", this.c.P_());
    }
 
    @Override
    public xg a(va $$0) {
-      return xg.a("commands.data.entity.query", this.c.m_(), up.b($$0));
+      return xg.a("commands.data.entity.query", this.c.P_(), up.b($$0));
    }
 
    @Override
    public xg a(fc.g $$0, double $$1, int $$2) {
-      return xg.a("commands.data.entity.get", $$0.a(), this.c.m_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return xg.a("commands.data.entity.get", $$0.a(), this.c.P_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

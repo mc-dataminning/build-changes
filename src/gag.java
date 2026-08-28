@@ -13,8 +13,8 @@ public abstract class gag<T extends cwd> extends gah<T> {
    }
 
    @Override
-   public void aT_() {
-      super.aT_();
+   public void aO_() {
+      super.aO_();
       this.v = (this.s - this.p.a(this.l)) / 2;
    }
 

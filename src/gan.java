@@ -61,13 +61,13 @@ public class gan extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.m();
       this.E();
    }
 
    protected void m() {
-      this.c(fty.a(xf.d, $$0 -> this.aQ_()).a(this.n / 2 - 100, 196, 200, 20).a());
+      this.c(fty.a(xf.d, $$0 -> this.aL_()).a(this.n / 2 - 100, 196, 200, 20).a());
    }
 
    protected void E() {

@@ -10,7 +10,7 @@ public class cg extends dl<cg.a> {
    }
 
    public void a(asc $$0, dak $$1, csz $$2, Collection<dak> $$3) {
-      fat $$4 = bz.b($$0, (bxe)($$2.j() != null ? $$2.j() : $$2));
+      fat $$4 = bz.b($$0, (bxe)($$2.i() != null ? $$2.i() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
@@ -38,7 +38,7 @@ public class cg extends dl<cg.a> {
             if (this.e.isPresent()) {
                boolean $$3 = false;
                bxe $$4 = $$1.c(fdn.a);
-               if ($$4 instanceof coo $$5 && this.e.get().a($$5.f())) {
+               if ($$4 instanceof coo $$5 && this.e.get().a($$5.e())) {
                   $$3 = true;
                }
 

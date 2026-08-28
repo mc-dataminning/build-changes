@@ -15,7 +15,7 @@ public class cot extends cpk {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(4, new cot.a(this));
       this.bF.a(5, new cfp(this, 1.0));
       this.bF.a(7, new cgo(this, 1.0, 0.0F));
@@ -25,8 +25,8 @@ public class cot extends cpk {
       this.bG.a(2, new cgu<>(this, csi.class, true));
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.c, 6.0).a(bzl.v, 0.23F).a(bzl.m, 48.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.c, 6.0).a(bzl.v, 0.23F).a(bzl.m, 48.0);
    }
 
    @Override
@@ -36,7 +36,7 @@ public class cot extends cpk {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.cg;
    }
 
@@ -46,7 +46,7 @@ public class cot extends cpk {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.ci;
    }
 
@@ -56,7 +56,7 @@ public class cot extends cpk {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (!this.aH() && this.dy().e < 0.0) {
          this.i(this.dy().d(1.0, 0.6, 1.0));
       }
@@ -71,7 +71,7 @@ public class cot extends cpk {
          }
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -87,7 +87,7 @@ public class cot extends cpk {
          this.a = (float)this.ae.a(0.5, 6.891);
       }
 
-      byf $$1 = this.f();
+      byf $$1 = this.e();
       if ($$1 != null && $$1.dE() > this.dE() + (double)this.a && this.c($$1)) {
          fgc $$2 = this.dy();
          this.i(this.dy().b(0.0, (0.3F - $$2.e) * 0.3F, 0.0));
@@ -99,10 +99,10 @@ public class cot extends cpk {
 
    @Override
    public boolean bX() {
-      return this.m();
+      return this.p();
    }
 
-   private boolean m() {
+   private boolean p() {
       return (this.al.a(c) & 1) != 0;
    }
 
@@ -130,7 +130,7 @@ public class cot extends cpk {
 
       @Override
       public boolean b() {
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          return $$0 != null && $$0.bJ() && this.a.c($$0);
       }
 
@@ -153,9 +153,9 @@ public class cot extends cpk {
       @Override
       public void a() {
          this.c--;
-         byf $$0 = this.a.f();
+         byf $$0 = this.a.e();
          if ($$0 != null) {
-            boolean $$1 = this.a.P().a($$0);
+            boolean $$1 = this.a.O().a($$0);
             if ($$1) {
                this.d = 0;
             } else {
@@ -173,7 +173,7 @@ public class cot extends cpk {
                   this.a.c(a(this.a), $$0);
                }
 
-               this.a.L().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
+               this.a.K().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
             } else if ($$2 < this.h() * this.h() && $$1) {
                double $$3 = $$0.dA() - this.a.dA();
                double $$4 = $$0.e(0.5) - this.a.e(0.5);
@@ -206,9 +206,9 @@ public class cot extends cpk {
                   }
                }
 
-               this.a.J().a($$0, 10.0F, 10.0F);
+               this.a.I().a($$0, 10.0F, 10.0F);
             } else if (this.d < 5) {
-               this.a.L().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
+               this.a.K().a($$0.dA(), $$0.dC(), $$0.dG(), 1.0);
             }
 
             super.a();

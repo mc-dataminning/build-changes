@@ -9,7 +9,7 @@ public class fzj extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.d.a(a, this.p);
       this.d.c(new fuj(300, b, this.p));
       fxq $$0 = this.d.b(fxq.e().a(8));
@@ -25,7 +25,7 @@ public class fzj extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 }

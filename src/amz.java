@@ -156,24 +156,24 @@ public class amz {
       if ($$5 == 0) {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               throw a.create(xg.a($$2.a() + ".one.to.one.failure", ai.a($$3.iterator().next()), $$1.iterator().next().m_()));
+               throw a.create(xg.a($$2.a() + ".one.to.one.failure", ai.a($$3.iterator().next()), $$1.iterator().next().P_()));
             } else {
                throw a.create(xg.a($$2.a() + ".one.to.many.failure", ai.a($$3.iterator().next()), $$1.size()));
             }
          } else if ($$1.size() == 1) {
-            throw a.create(xg.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().m_()));
+            throw a.create(xg.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().P_()));
          } else {
             throw a.create(xg.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
          }
       } else {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               $$0.a(() -> xg.a($$2.a() + ".one.to.one.success", ai.a($$3.iterator().next()), $$1.iterator().next().m_()), true);
+               $$0.a(() -> xg.a($$2.a() + ".one.to.one.success", ai.a($$3.iterator().next()), $$1.iterator().next().P_()), true);
             } else {
                $$0.a(() -> xg.a($$2.a() + ".one.to.many.success", ai.a($$3.iterator().next()), $$1.size()), true);
             }
          } else if ($$1.size() == 1) {
-            $$0.a(() -> xg.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().m_()), true);
+            $$0.a(() -> xg.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().P_()), true);
          } else {
             $$0.a(() -> xg.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
          }
@@ -196,13 +196,13 @@ public class amz {
 
          if ($$5 == 0) {
             if ($$1.size() == 1) {
-               throw a.create(xg.a($$2.a() + ".criterion.to.one.failure", $$4, ai.a($$3), $$1.iterator().next().m_()));
+               throw a.create(xg.a($$2.a() + ".criterion.to.one.failure", $$4, ai.a($$3), $$1.iterator().next().P_()));
             } else {
                throw a.create(xg.a($$2.a() + ".criterion.to.many.failure", $$4, ai.a($$3), $$1.size()));
             }
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> xg.a($$2.a() + ".criterion.to.one.success", $$4, ai.a($$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> xg.a($$2.a() + ".criterion.to.one.success", $$4, ai.a($$3), $$1.iterator().next().P_()), true);
             } else {
                $$0.a(() -> xg.a($$2.a() + ".criterion.to.many.success", $$4, ai.a($$3), $$1.size()), true);
             }
@@ -245,12 +245,12 @@ public class amz {
       a("grant") {
          @Override
          protected boolean a(asc $$0, aj $$1) {
-            al $$2 = $$0.S().b($$1);
+            al $$2 = $$0.R().b($$1);
             if ($$2.a()) {
                return false;
             } else {
                for (String $$3 : $$2.e()) {
-                  $$0.S().a($$1, $$3);
+                  $$0.R().a($$1, $$3);
                }
 
                return true;
@@ -259,18 +259,18 @@ public class amz {
 
          @Override
          protected boolean a(asc $$0, aj $$1, String $$2) {
-            return $$0.S().a($$1, $$2);
+            return $$0.R().a($$1, $$2);
          }
       },
       b("revoke") {
          @Override
          protected boolean a(asc $$0, aj $$1) {
-            al $$2 = $$0.S().b($$1);
+            al $$2 = $$0.R().b($$1);
             if (!$$2.b()) {
                return false;
             } else {
                for (String $$3 : $$2.f()) {
-                  $$0.S().b($$1, $$3);
+                  $$0.R().b($$1, $$3);
                }
 
                return true;
@@ -279,7 +279,7 @@ public class amz {
 
          @Override
          protected boolean a(asc $$0, aj $$1, String $$2) {
-            return $$0.S().b($$1, $$2);
+            return $$0.R().b($$1, $$2);
          }
       };
 
@@ -292,7 +292,7 @@ public class amz {
       public int a(asc $$0, Iterable<aj> $$1, boolean $$2) {
          int $$3 = 0;
          if (!$$2) {
-            $$0.S().a($$0, true);
+            $$0.R().a($$0, true);
          }
 
          for (aj $$4 : $$1) {
@@ -302,7 +302,7 @@ public class amz {
          }
 
          if (!$$2) {
-            $$0.S().a($$0, false);
+            $$0.R().a($$0, false);
          }
 
          return $$3;

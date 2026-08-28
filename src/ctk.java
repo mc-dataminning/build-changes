@@ -19,29 +19,29 @@ public abstract class ctk extends ctl implements cta {
       this.ar().a(a, $$0.c(1));
    }
 
-   protected abstract dag g();
+   protected abstract dag f();
 
    @Override
-   public dak f() {
+   public dak e() {
       return this.ar().a(a);
    }
 
    @Override
    protected void a(aky.a $$0) {
-      $$0.a(a, new dak(this.g()));
+      $$0.a(a, new dak(this.f()));
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Item", dak.b, $$1, this.f());
+      $$0.a("Item", dak.b, $$1, this.e());
    }
 
    @Override
    public void a(ua $$0) {
       super.a($$0);
       alp<va> $$1 = this.dX().a(uo.a);
-      this.a($$0.<dak>a("Item", dak.b, $$1).orElseGet(() -> new dak(this.g())));
+      this.a($$0.<dak>a("Item", dak.b, $$1).orElseGet(() -> new dak(this.f())));
    }
 }

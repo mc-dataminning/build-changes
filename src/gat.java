@@ -6,8 +6,8 @@ public class gat extends gah<cwu> {
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
+   protected void aO_() {
+      super.aO_();
       this.v = 29;
    }
 

@@ -15,7 +15,7 @@ public abstract class ftt extends ftw {
    }
 
    private alr c() {
-      return this.E() && this.aO_() && !this.o ? d : a;
+      return this.E() && this.aJ_() && !this.o ? d : a;
    }
 
    private alr e() {
@@ -31,7 +31,7 @@ public abstract class ftt extends ftw {
    public void a(fxv $$0) {
       $$0.a(fxu.a, this.d());
       if (this.j) {
-         if (this.aO_()) {
+         if (this.aJ_()) {
             $$0.a(fxu.d, xg.c("narration.slider.usage.focused"));
          } else {
             $$0.a(fxu.d, xg.c("narration.slider.usage.hovered"));

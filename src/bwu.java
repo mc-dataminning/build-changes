@@ -39,11 +39,11 @@ public abstract class bwu extends byn {
       $$0.a(bI, false);
    }
 
-   public boolean Y_() {
+   public boolean X_() {
       return false;
    }
 
-   public int g() {
+   public int Y_() {
       if (this.dV().C) {
          return this.al.a(bI) ? -1 : 1;
       } else {
@@ -52,7 +52,7 @@ public abstract class bwu extends byn {
    }
 
    public void a(int $$0, boolean $$1) {
-      int $$2 = this.g();
+      int $$2 = this.Y_();
       $$2 += $$0 * 20;
       if ($$2 > 0) {
          $$2 = 0;
@@ -67,7 +67,7 @@ public abstract class bwu extends byn {
          }
       }
 
-      if (this.g() == 0) {
+      if (this.Y_() == 0) {
          this.c_(this.e);
       }
    }
@@ -77,18 +77,18 @@ public abstract class bwu extends byn {
    }
 
    public void c_(int $$0) {
-      int $$1 = this.g();
+      int $$1 = this.Y_();
       this.d = $$0;
       if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
          this.al.a(bI, $$0 < 0);
-         this.j();
+         this.h();
       }
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Age", this.g());
+      $$0.a("Age", this.Y_());
       $$0.a("ForcedAge", this.e);
    }
 
@@ -102,15 +102,15 @@ public abstract class bwu extends byn {
    @Override
    public void a(aku<?> $$0) {
       if (bI.equals($$0)) {
-         this.i_();
+         this.h_();
       }
 
       super.a($$0);
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.dV().C) {
          if (this.f > 0) {
             if (this.f % 4 == 0) {
@@ -120,7 +120,7 @@ public abstract class bwu extends byn {
             this.f--;
          }
       } else if (this.bJ()) {
-         int $$0 = this.g();
+         int $$0 = this.Y_();
          if ($$0 < 0) {
             this.c_(++$$0);
          } else if ($$0 > 0) {
@@ -129,16 +129,15 @@ public abstract class bwu extends byn {
       }
    }
 
-   @Override
-   protected void j() {
-      if (!this.n_() && this.bY() && this.dk() instanceof cut $$0 && !$$0.b((bxe)this)) {
+   protected void h() {
+      if (!this.e_() && this.bY() && this.dk() instanceof cut $$0 && !$$0.b((bxe)this)) {
          this.bO();
       }
    }
 
    @Override
-   public boolean n_() {
-      return this.g() < 0;
+   public boolean e_() {
+      return this.Y_() < 0;
    }
 
    @Override
@@ -151,12 +150,12 @@ public abstract class bwu extends byn {
    }
 
    @VisibleForTesting
-   public int ac_() {
+   public int k() {
       return this.e;
    }
 
    @VisibleForTesting
-   public int ad_() {
+   public int l() {
       return this.f;
    }
 

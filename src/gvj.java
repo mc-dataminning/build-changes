@@ -69,7 +69,7 @@ public class gvj implements gvq.a {
       this.c();
       this.b();
       this.a($$0, $$1);
-      if (!this.w.t.aa_()) {
+      if (!this.w.t.ak()) {
          this.g();
       }
    }

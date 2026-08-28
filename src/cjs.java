@@ -7,7 +7,7 @@ public abstract class cjs extends byn {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return null;
    }
 
@@ -19,12 +19,12 @@ public abstract class cjs extends byn {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return null;
    }
 
    @Override
-   public int S() {
+   public int R() {
       return 120;
    }
 

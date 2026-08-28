@@ -20,7 +20,7 @@ public class cfq extends cfb {
 
    @Override
    public boolean b() {
-      this.b = this.a.f();
+      this.b = this.a.e();
       if (this.b == null) {
          return false;
       } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
@@ -40,7 +40,7 @@ public class cfq extends cfb {
 
    @Override
    public boolean c() {
-      return !this.a.O().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
+      return !this.a.N().k() && this.b.bJ() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
@@ -50,6 +50,6 @@ public class cfq extends cfb {
 
    @Override
    public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.f);
+      this.a.N().a(this.c, this.d, this.e, this.f);
    }
 }

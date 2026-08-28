@@ -17,7 +17,7 @@ public class fou extends hrc {
    }
 
    @Override
-   public void aT_() {
+   public void aO_() {
       int $$0 = this.n / 4 - 2;
       this.c(fty.a(xg.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
       this.c(fty.a(xg.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());

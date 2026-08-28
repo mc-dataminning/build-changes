@@ -66,12 +66,12 @@ public class cng extends byh implements cpc {
       this.cb = $$0;
    }
 
-   public iw j() {
+   public iw m() {
       return this.cb;
    }
 
-   public static bzk.a m() {
-      return byh.E().a(bzl.s, 200.0);
+   public static bzk.a p() {
+      return byh.D().a(bzl.s, 200.0);
    }
 
    @Override
@@ -95,7 +95,7 @@ public class cng extends byh implements cpc {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       this.aN();
       if (this.dV().C) {
          this.d(this.eG());
@@ -119,7 +119,7 @@ public class cng extends byh implements cpc {
          float $$4 = (this.ae.i() - 0.5F) * 8.0F;
          this.dV().a(lz.w, this.dA() + (double)$$2, this.dC() + 2.0 + (double)$$3, this.dG() + (double)$$4, 0.0, 0.0, 0.0);
       } else {
-         this.gr();
+         this.gu();
          fgc $$5 = this.dy();
          float $$6 = 0.2F / ((float)$$5.i() * 10.0F + 1.0F);
          $$6 *= (float)Math.pow(2.0, $$5.e);
@@ -216,7 +216,7 @@ public class cng extends byh implements cpc {
 
             float $$34 = azz.a(this.dL() * (float) (Math.PI / 180.0) - this.bI * 0.01F);
             float $$35 = azz.b(this.dL() * (float) (Math.PI / 180.0) - this.bI * 0.01F);
-            float $$36 = this.gq();
+            float $$36 = this.gt();
             this.a(this.c, (double)($$34 * 6.5F * $$28), (double)($$36 + $$29 * 6.5F), (double)(-$$35 * 6.5F * $$28));
             this.a(this.bT, (double)($$34 * 5.5F * $$28), (double)($$36 + $$29 * 5.5F), (double)(-$$35 * 5.5F * $$28));
             cne.a $$37 = this.b.a(5);
@@ -272,7 +272,7 @@ public class cng extends byh implements cpc {
       $$0.a_(this.dA() + $$1, this.dC() + $$2, this.dG() + $$3);
    }
 
-   private float gq() {
+   private float gt() {
       if (this.cc.a().a()) {
          return -1.0F;
       } else {
@@ -282,7 +282,7 @@ public class cng extends byh implements cpc {
       }
    }
 
-   private void gr() {
+   private void gu() {
       if (this.bJ != null) {
          if (this.bJ.dQ()) {
             this.bJ = null;
@@ -480,7 +480,7 @@ public class cng extends byh implements cpc {
       }
    }
 
-   public int n() {
+   public int u() {
       if (this.cf[0] == null) {
          for (int $$0 = 0; $$0 < 24; $$0++) {
             int $$1 = 5;
@@ -670,7 +670,7 @@ public class cng extends byh implements cpc {
    public void dH() {
    }
 
-   public cnd[] q() {
+   public cnd[] gq() {
       return this.bS;
    }
 
@@ -685,7 +685,7 @@ public class cng extends byh implements cpc {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.iy;
    }
 
@@ -749,12 +749,12 @@ public class cng extends byh implements cpc {
       super.a($$0);
    }
 
-   public cnx t() {
+   public cnx gr() {
       return this.cc;
    }
 
    @Nullable
-   public efq x() {
+   public efq gs() {
       return this.ca;
    }
 
@@ -776,7 +776,7 @@ public class cng extends byh implements cpc {
    @Override
    public void a(acg $$0) {
       super.a($$0);
-      cnd[] $$1 = this.q();
+      cnd[] $$1 = this.gq();
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
          $$1[$$2].e($$2 + $$0.b() + 1);

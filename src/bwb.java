@@ -10,7 +10,7 @@ class bwb extends bwg {
 
    @Override
    public boolean a(asb $$0, byf $$1, int $$2) {
-      if ($$1 instanceof asc $$3 && !$$3.aa_() && $$0.an() != buz.a && $$0.c($$3.dv())) {
+      if ($$1 instanceof asc $$3 && !$$3.ak() && $$0.an() != buz.a && $$0.c($$3.dv())) {
          cty $$4 = $$0.d($$3.dv());
          if ($$4 == null || $$4.l() < $$4.k()) {
             $$3.a(new bwi(bwk.I, 600, $$2));

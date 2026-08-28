@@ -86,7 +86,7 @@ public class cee implements cea {
          fgw $$16 = $$15.g(this.d.dV(), $$14);
          if ($$11 > (double)this.d.dP() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dq())
             || !$$16.c() && this.d.dC() < $$16.c(jc.a.b) + (double)$$14.v() && !$$15.a(axn.q) && !$$15.a(axn.U)) {
-            this.d.N().a();
+            this.d.M().a();
             this.k = cee.a.d;
          }
       } else if (this.k == cee.a.d) {
@@ -100,7 +100,7 @@ public class cee implements cea {
    }
 
    private boolean b(float $$0, float $$1) {
-      chp $$2 = this.d.O();
+      chp $$2 = this.d.N();
       if ($$2 != null) {
          eyn $$3 = $$2.n();
          if ($$3 != null && $$3.a(this.d, iw.a(this.d.dA() + (double)$$0, (double)this.d.dB(), this.d.dG() + (double)$$1)) != eyr.c) {

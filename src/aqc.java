@@ -70,7 +70,7 @@ public class aqc {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.title.cleared.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.title.cleared.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.title.cleared.multiple", $$1.size()), true);
       }
@@ -86,7 +86,7 @@ public class aqc {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.title.reset.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.title.reset.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.title.reset.multiple", $$1.size()), true);
       }
@@ -100,7 +100,7 @@ public class aqc {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
       }
@@ -116,7 +116,7 @@ public class aqc {
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> xg.a("commands.title.times.single", $$1.iterator().next().m_()), true);
+         $$0.a(() -> xg.a("commands.title.times.single", $$1.iterator().next().P_()), true);
       } else {
          $$0.a(() -> xg.a("commands.title.times.multiple", $$1.size()), true);
       }

@@ -17,7 +17,7 @@ public class gxl<T extends cmd> extends gwl<T, hdy, ghh> {
 
    public void a(T $$0, hdy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.p();
    }
 
    public static enum a {

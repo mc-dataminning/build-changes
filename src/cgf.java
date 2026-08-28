@@ -32,12 +32,12 @@ public class cgf extends cfb {
 
    @Override
    public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.b);
+      this.a.N().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
    public boolean c() {
-      return !this.a.gL() && !this.a.O().k() && this.a.bZ();
+      return !this.a.gL() && !this.a.N().k() && this.a.bZ();
    }
 
    @Override

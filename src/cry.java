@@ -807,7 +807,7 @@ public class cry {
       @Override
       public djf a(bxe $$0, bai $$1) {
          if ($$0 instanceof crw $$2) {
-            alq<crz> $$3 = $$2.gC().a().e().orElse(null);
+            alq<crz> $$3 = $$2.gF().a().e().orElse(null);
             if ($$3 == null) {
                return null;
             } else {
@@ -1111,7 +1111,7 @@ public class cry {
       @Override
       public djf a(bxe $$0, bai $$1) {
          if ($$0 instanceof crw $$2) {
-            alq<crz> $$3 = $$2.gC().a().e().orElse(null);
+            alq<crz> $$3 = $$2.gF().a().e().orElse(null);
             if ($$3 == null) {
                return null;
             } else {

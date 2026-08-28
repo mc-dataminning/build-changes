@@ -19,9 +19,9 @@ public abstract class ckx extends bzb {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.bN++;
-      super.h();
+      super.g();
    }
 
    public boolean gK() {

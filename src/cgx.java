@@ -10,7 +10,7 @@ public class cgx<T extends byf> extends cgu<T> {
 
    @Override
    public boolean b() {
-      return !this.i.q() && super.b();
+      return !this.i.m() && super.b();
    }
 
    @Override

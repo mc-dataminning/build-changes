@@ -69,7 +69,9 @@ public class cqy {
 
    private static void b(bzf<cqx> $$0) {
       $$0.a(
-         cuc.b, 10, ImmutableList.of(cbv.a(cqy::b, 14.0F), cci.a(($$0x, $$1) -> $$1.t(), cqy::b), cdj.a(cqx::j, cre.a()), d(), g(), b(), c(), cby.a(bxn.bT, 4))
+         cuc.b,
+         10,
+         ImmutableList.of(cbv.a(cqy::b, 14.0F), cci.a(($$0x, $$1) -> $$1.gv(), cqy::b), cdj.a(cqx::m, cre.a()), d(), g(), b(), c(), cby.a(bxn.bT, 4))
       );
    }
 
@@ -91,9 +93,9 @@ public class cqy {
          ImmutableList.of(
             d(),
             cbv.a(cqy::b, 14.0F),
-            cci.a(($$0x, $$1) -> $$1.t(), cqy::b),
-            cdj.a($$0x -> !$$0x.gz(), cap.a(chh.aj, 2, 1.0F)),
-            cdj.a(cqx::gz, cap.a(chh.aj, 4, 0.6F)),
+            cci.a(($$0x, $$1) -> $$1.gv(), cqy::b),
+            cdj.a($$0x -> !$$0x.gC(), cap.a(chh.aj, 2, 1.0F)),
+            cdj.a(cqx::gC, cap.a(chh.aj, 4, 0.6F)),
             new cbt(ImmutableList.of(Pair.of(cbv.a(bxn.aS, 8.0F), 1), Pair.of(cbo.a(0.6F, 2, 1), 1), Pair.of(new cag(10, 20), 1)))
          ),
          chh.aj
@@ -143,7 +145,7 @@ public class cqy {
    }
 
    private static bzx<cqx> e() {
-      return cab.a(cqx::n_, chh.N, chh.A, B);
+      return cab.a(cqx::e_, chh.N, chh.A, B);
    }
 
    private static bzx<cqx> f() {
@@ -172,20 +174,20 @@ public class cqy {
    }
 
    private static boolean e(cqx $$0) {
-      if (!$$0.n_()) {
+      if (!$$0.e_()) {
          return false;
       } else {
          bxe $$1 = $$0.dk();
-         return $$1 instanceof cqx && ((cqx)$$1).n_() || $$1 instanceof cqr && ((cqr)$$1).n_();
+         return $$1 instanceof cqx && ((cqx)$$1).e_() || $$1 instanceof cqr && ((cqr)$$1).e_();
       }
    }
 
    protected static void a(asb $$0, cqx $$1, coo $$2) {
       i($$1);
       dak $$3;
-      if ($$2.f().a(dao.tq)) {
-         $$1.a($$2, $$2.f().M());
-         $$3 = $$2.f();
+      if ($$2.e().a(dao.tq)) {
+         $$1.a($$2, $$2.e().M());
+         $$3 = $$2.e();
          $$2.aq();
       } else {
          $$1.a($$2, 1);
@@ -215,7 +217,7 @@ public class cqy {
    }
 
    private static dak a(coo $$0) {
-      dak $$1 = $$0.f();
+      dak $$1 = $$0.e();
       dak $$2 = $$1.a(1);
       if ($$1.f()) {
          $$0.aq();
@@ -229,7 +231,7 @@ public class cqy {
    protected static void a(asb $$0, cqx $$1, boolean $$2) {
       dak $$3 = $$1.b(bvb.b);
       $$1.a(bvb.b, dak.l);
-      if ($$1.t()) {
+      if ($$1.gv()) {
          boolean $$4 = b($$3);
          if ($$2 && $$4) {
             a($$1, f($$1));
@@ -304,7 +306,7 @@ public class cqy {
    }
 
    protected static boolean a(cqx $$0, dak $$1) {
-      if ($$0.n_() && $$1.a(axv.V)) {
+      if ($$0.e_() && $$1.a(axv.V)) {
          return false;
       } else if ($$1.a(axv.T)) {
          return false;
@@ -329,7 +331,7 @@ public class cqy {
    }
 
    private static boolean a(cqx $$0, bxe $$1) {
-      return !($$1 instanceof byh $$2) ? false : !$$2.n_() || !$$2.bJ() || g((byf)$$0) || g($$2) || $$2 instanceof cqx && $$2.dk() == null;
+      return !($$1 instanceof byh $$2) ? false : !$$2.e_() || !$$2.bJ() || g((byf)$$0) || g($$2) || $$2 instanceof cqx && $$2.dk() == null;
    }
 
    private static boolean b(asb $$0, cqx $$1, byf $$2) {
@@ -398,7 +400,7 @@ public class cqy {
    }
 
    protected static boolean b(cqx $$0, dak $$1) {
-      return !r($$0) && !p($$0) && $$0.t() && b($$1);
+      return !r($$0) && !p($$0) && $$0.gv() && b($$1);
    }
 
    protected static void a(asb $$0, cqx $$1, byf $$2) {
@@ -420,7 +422,7 @@ public class cqy {
                $$3.b(chh.A);
             }
          });
-         if ($$1.n_()) {
+         if ($$1.e_()) {
             $$3.a(chh.A, $$2, 100L);
             if (cin.d($$0, $$1, $$2)) {
                b($$0, (cqw)$$1, $$2);
@@ -457,7 +459,7 @@ public class cqy {
    private static awx a(cqx $$0, cuc $$1) {
       if ($$1 == cuc.k) {
          return awy.uv;
-      } else if ($$0.q()) {
+      } else if ($$0.gu()) {
          return awy.uA;
       } else if ($$1 == cuc.n && h($$0)) {
          return awy.uA;
@@ -497,17 +499,17 @@ public class cqy {
 
    private static void i(cqx $$0) {
       $$0.ec().b(chh.n);
-      $$0.O().m();
+      $$0.N().m();
    }
 
    private static bzx<byf> g() {
       cbw.a $$0 = new cbw.a(o);
-      return cab.a($$1 -> $$1.n_() && $$0.a($$1.dV().A), chh.am, chh.t, p);
+      return cab.a($$1 -> $$1.e_() && $$0.a($$1.dV().A), chh.am, chh.t, p);
    }
 
    protected static void b(asb $$0, cqw $$1, byf $$2) {
       d($$1).forEach($$2x -> {
-         if ($$2.an() != bxn.ak || $$2x.j() && ((cqr)$$2).gv()) {
+         if ($$2.an() != bxn.ak || $$2x.m() && ((cqr)$$2).gv()) {
             e($$0, $$2x, $$2);
          }
       });
@@ -521,7 +523,7 @@ public class cqy {
       if (cin.d($$0, $$1, $$2)) {
          $$1.ec().b(chh.F);
          $$1.ec().a(chh.ac, $$2.cG(), 600L);
-         if ($$2.an() == bxn.ak && $$1.j()) {
+         if ($$2.an() == bxn.ak && $$1.m()) {
             b($$1);
          }
 

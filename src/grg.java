@@ -330,7 +330,7 @@ public class grg {
    }
 
    private void a(gqj $$0, float $$1, float $$2, bvb $$3, float $$4, dak $$5, float $$6, fld $$7, grn $$8, int $$9) {
-      if (!$$0.gH()) {
+      if (!$$0.gI()) {
          boolean $$10 = $$3 == bvb.a;
          bxw $$11 = $$10 ? $$0.fy() : $$0.fy().e();
          $$7.a();
@@ -497,7 +497,7 @@ public class grg {
          this.ax = $$2;
       }
 
-      if ($$0.B()) {
+      if ($$0.C()) {
          this.ay = azz.a(this.ay - 0.4F, 0.0F, 1.0F);
          this.aA = azz.a(this.aA - 0.4F, 0.0F, 1.0F);
       } else {

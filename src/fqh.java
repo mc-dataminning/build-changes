@@ -52,7 +52,7 @@ public class fqh {
    }
 
    private void b(String $$0) {
-      if (ac.aU) {
+      if (ac.aV) {
          b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
       }
    }

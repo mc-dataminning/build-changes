@@ -21,16 +21,16 @@ public class cpm extends bxt implements cpc {
 
    @Override
    public boolean aZ() {
-      return (this.m() + this.af) % b == 0;
+      return (this.p() + this.af) % b == 0;
    }
 
    @Override
-   protected cdz I() {
+   protected cdz H() {
       return new cpm.d(this);
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cpm.c());
       this.bF.a(2, new cpm.i());
       this.bF.a(3, new cpm.e());
@@ -47,39 +47,39 @@ public class cpm extends bxt implements cpc {
       this.al.a(c, azz.a($$0, 0, 64));
    }
 
-   private void n() {
-      this.i_();
-      this.g(bzl.c).a((double)(6 + this.j()));
+   private void u() {
+      this.h_();
+      this.g(bzl.c).a((double)(6 + this.m()));
    }
 
-   public int j() {
+   public int m() {
       return this.al.a(c);
    }
 
    @Override
    public void a(aku<?> $$0) {
       if (c.equals($$0)) {
-         this.n();
+         this.u();
       }
 
       super.a($$0);
    }
 
-   public int m() {
+   public int p() {
       return this.ao() * 3;
    }
 
    @Override
-   protected boolean aa() {
+   protected boolean Z() {
       return true;
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       if (this.dV().C) {
-         float $$0 = azz.b((float)(this.m() + this.af) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
-         float $$1 = azz.b((float)(this.m() + this.af + 1) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
+         float $$0 = azz.b((float)(this.p() + this.af) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
+         float $$1 = azz.b((float)(this.p() + this.af + 1) * 7.448451F * (float) (Math.PI / 180.0) + (float) Math.PI);
          if ($$0 > 0.0F && $$1 <= 0.0F) {
             this.dV().a(this.dA(), this.dC(), this.dG(), awy.ul, this.dm(), 0.95F + this.ae.i() * 0.05F, 0.95F + this.ae.i() * 0.05F, false);
          }
@@ -94,12 +94,12 @@ public class cpm extends bxt implements cpc {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bJ() && this.go()) {
          this.e(8.0F);
       }
 
-      super.k_();
+      super.d_();
    }
 
    @Override
@@ -120,7 +120,7 @@ public class cpm extends bxt implements cpc {
    public void b(ua $$0) {
       super.b($$0);
       $$0.b("anchor_pos", iw.a, this.e);
-      $$0.a("size", this.j());
+      $$0.a("size", this.m());
    }
 
    @Override
@@ -134,7 +134,7 @@ public class cpm extends bxt implements cpc {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.ui;
    }
 
@@ -144,7 +144,7 @@ public class cpm extends bxt implements cpc {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.uk;
    }
 
@@ -160,7 +160,7 @@ public class cpm extends bxt implements cpc {
 
    @Override
    public bxh e(byr $$0) {
-      int $$1 = this.j();
+      int $$1 = this.m();
       bxh $$2 = super.e($$0);
       return $$2.a(1.0F + 0.15F * (float)$$1);
    }
@@ -204,7 +204,7 @@ public class cpm extends bxt implements cpc {
 
       @Override
       public boolean c() {
-         byf $$0 = cpm.this.f();
+         byf $$0 = cpm.this.e();
          return $$0 != null ? cpm.this.a(a(cpm.this.dV()), $$0, ciu.a) : false;
       }
    }
@@ -214,7 +214,7 @@ public class cpm extends bxt implements cpc {
 
       @Override
       public boolean b() {
-         byf $$0 = cpm.this.f();
+         byf $$0 = cpm.this.e();
          return $$0 != null ? cpm.this.a(a(cpm.this.dV()), $$0, ciu.a) : false;
       }
 
@@ -247,7 +247,7 @@ public class cpm extends bxt implements cpc {
 
       private void h() {
          if (cpm.this.e != null) {
-            cpm.this.e = cpm.this.f().dv().b(20 + cpm.this.ae.a(20));
+            cpm.this.e = cpm.this.e().dv().b(20 + cpm.this.ae.a(20));
             if (cpm.this.e.v() < cpm.this.dV().P()) {
                cpm.this.e = new iw(cpm.this.e.u(), cpm.this.dV().P() + 1, cpm.this.e.w());
             }
@@ -275,7 +275,7 @@ public class cpm extends bxt implements cpc {
 
       @Override
       public boolean b() {
-         return cpm.this.f() == null || cpm.this.f == cpm.a.a;
+         return cpm.this.e() == null || cpm.this.f == cpm.a.a;
       }
 
       @Override
@@ -405,18 +405,18 @@ public class cpm extends bxt implements cpc {
 
       @Override
       public boolean b() {
-         return cpm.this.f() != null && cpm.this.f == cpm.a.b;
+         return cpm.this.e() != null && cpm.this.f == cpm.a.b;
       }
 
       @Override
       public boolean c() {
-         byf $$0 = cpm.this.f();
+         byf $$0 = cpm.this.e();
          if ($$0 == null) {
             return false;
          } else if (!$$0.bJ()) {
             return false;
          } else {
-            if ($$0 instanceof csi $$1 && ($$0.aa_() || $$1.b())) {
+            if ($$0 instanceof csi $$1 && ($$0.ak() || $$1.gz())) {
                return false;
             }
 
@@ -451,7 +451,7 @@ public class cpm extends bxt implements cpc {
 
       @Override
       public void a() {
-         byf $$0 = cpm.this.f();
+         byf $$0 = cpm.this.e();
          if ($$0 != null) {
             cpm.this.d = new fgc($$0.dA(), $$0.e(0.5), $$0.dG());
             if (cpm.this.cR().g(0.2F).c($$0.cR())) {

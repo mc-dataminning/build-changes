@@ -44,18 +44,18 @@ public class bxz extends bxe implements bwx, bzc {
 
    @Override
    protected void b(ua $$0) {
-      $$0.a("width", this.g());
-      $$0.a("height", this.j());
+      $$0.a("width", this.f());
+      $$0.a("height", this.i());
       $$0.b("attack", bxz.a.a, this.l);
       $$0.b("interaction", bxz.a.a, this.m);
-      $$0.a("response", this.m());
+      $$0.a("response", this.l());
    }
 
    @Override
    public void a(aku<?> $$0) {
       super.a($$0);
       if (b.equals($$0) || a.equals($$0)) {
-         this.i_();
+         this.h_();
       }
    }
 
@@ -70,12 +70,12 @@ public class bxz extends bxe implements bwx, bzc {
    }
 
    @Override
-   public eyf j_() {
+   public eyf i_() {
       return eyf.d;
    }
 
    @Override
-   public boolean g_() {
+   public boolean n_() {
       return true;
    }
 
@@ -87,7 +87,7 @@ public class bxz extends bxe implements bwx, bzc {
             aq.h.a($$2, this, $$1.dW().p(), 1.0F, 1.0F, false);
          }
 
-         return !this.m();
+         return !this.l();
       } else {
          return false;
       }
@@ -101,7 +101,7 @@ public class bxz extends bxe implements bwx, bzc {
    @Override
    public bvc a(csi $$0, bvb $$1) {
       if (this.dV().C) {
-         return this.m() ? bvc.a : bvc.c;
+         return this.l() ? bvc.a : bvc.c;
       } else {
          this.m = new bxz.a($$0.cG(), this.dV().ae());
          return bvc.c;
@@ -109,18 +109,18 @@ public class bxz extends bxe implements bwx, bzc {
    }
 
    @Override
-   public void h() {
+   public void g() {
    }
 
    @Nullable
    @Override
-   public byf aj() {
+   public byf ai() {
       return this.l != null ? this.dV().a(this.l.a()) : null;
    }
 
    @Nullable
    @Override
-   public byf f() {
+   public byf e() {
       return this.m != null ? this.dV().a(this.m.a()) : null;
    }
 
@@ -128,7 +128,7 @@ public class bxz extends bxe implements bwx, bzc {
       this.al.a(a, $$0);
    }
 
-   private float g() {
+   private float f() {
       return this.al.a(a);
    }
 
@@ -136,7 +136,7 @@ public class bxz extends bxe implements bwx, bzc {
       this.al.a(b, $$0);
    }
 
-   private float j() {
+   private float i() {
       return this.al.a(b);
    }
 
@@ -144,22 +144,22 @@ public class bxz extends bxe implements bwx, bzc {
       this.al.a(c, $$0);
    }
 
-   private boolean m() {
+   private boolean l() {
       return this.al.a(c);
    }
 
-   private bxh n() {
-      return bxh.b(this.g(), this.j());
+   private bxh m() {
+      return bxh.b(this.f(), this.i());
    }
 
    @Override
    public bxh a(byr $$0) {
-      return this.n();
+      return this.m();
    }
 
    @Override
    protected ffx c(fgc $$0) {
-      return this.n().a($$0);
+      return this.m().a($$0);
    }
 
    static record a(UUID b, long c) {

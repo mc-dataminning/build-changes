@@ -26,15 +26,15 @@ public class gqn extends gqj {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       this.r(false);
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bQ()) {
-         this.S_().e();
+         this.l_().e();
       }
 
       if (this.bl > 0) {
@@ -59,7 +59,7 @@ public class gqn extends gqj {
       this.bW = this.bW + ($$1 - this.bW) * 0.4F;
 
       try (brr $$2 = brl.a().d("push")) {
-         this.o();
+         this.n();
       }
    }
 

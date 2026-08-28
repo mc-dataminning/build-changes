@@ -45,7 +45,7 @@ public class cyf extends cwb {
 
          @Override
          public void a(csi $$0, dak $$1) {
-            $$1.a($$0.dV(), $$0, $$1.M());
+            $$1.a($$0, $$1.M());
             cyf.this.C.a($$0, this.j());
             dak $$2 = cyf.this.o.a(1);
             if (!$$2.f()) {
@@ -170,7 +170,7 @@ public class cyf extends cwb {
          dag $$5 = $$4.h();
          $$2 = $$4.v();
          if ($$1 == 1) {
-            $$5.a($$4, $$0.dV(), $$0);
+            $$5.c($$4, $$0);
             if (!this.a($$4, 2, 38, true)) {
                return dak.l;
             }

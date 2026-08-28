@@ -41,14 +41,14 @@ public class fnv extends hrc {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.R.a(this.m, this.n, this.o);
       if (this.S) {
          this.T = this.c(fty.a(xg.c("mco.selectServer.trial"), fyn.b(this, ayt.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
       }
 
       this.c(fty.a(xg.c("mco.selectServer.buy"), fyn.b(this, ayt.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
-      fuk $$0 = this.c(new fuk(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aQ_(), b));
+      fuk $$0 = this.c(new fuk(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aL_(), b));
       $$0.a(fvj.a(b));
       int $$1 = 142 - (this.S ? 40 : 20);
       fui $$2 = new fui(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
@@ -115,7 +115,7 @@ public class fnv extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.m.a(this.R);
    }
 }

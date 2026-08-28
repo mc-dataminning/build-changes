@@ -22,7 +22,7 @@ public abstract class dzc {
       }
 
       this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gL(), this.c);
+      this.c = Math.max($$0.gM(), this.c);
    }
 
    public void b(csi $$0, dkj $$1, iw $$2, ebq $$3) {
@@ -47,7 +47,7 @@ public abstract class dzc {
       this.c = 0.0;
 
       for (csi $$4 : $$3) {
-         this.c = Math.max($$4.gL(), this.c);
+         this.c = Math.max($$4.gM(), this.c);
       }
 
       int $$5 = $$3.size();

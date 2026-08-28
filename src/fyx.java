@@ -28,7 +28,7 @@ public class fyx extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.w.c().b().a(10);
       this.w.a(new fvf(this.l, this.p));
       this.w.a(new fus(this.u.a(), this.p).d(this.n - 50).b(true));
@@ -59,7 +59,7 @@ public class fyx extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 }

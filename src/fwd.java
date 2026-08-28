@@ -50,8 +50,8 @@ public class fwd extends fvt implements fvb, fxt {
    @Override
    public void a(boolean $$0) {
       super.a($$0);
-      if (this.aN_() != null) {
-         this.aN_().a($$0);
+      if (this.aI_() != null) {
+         this.aI_().a($$0);
       }
    }
 
@@ -66,7 +66,7 @@ public class fwd extends fvt implements fvb, fxt {
    @Nullable
    @Override
    public fth a(fyb $$0) {
-      if (!this.aO_()) {
+      if (!this.aJ_()) {
          fvh $$1 = this.g();
          if ($$1 != null) {
             return fth.a(this, fth.a($$1));
@@ -77,7 +77,7 @@ public class fwd extends fvt implements fvb, fxt {
    }
 
    @Override
-   public List<? extends fvv> aJ_() {
+   public List<? extends fvv> aE_() {
       return this.j;
    }
 
@@ -93,7 +93,7 @@ public class fwd extends fvt implements fvb, fxt {
          this.a($$0.a(), $$1x);
          $$1x.b($$0);
       });
-      if (this.aO_()) {
+      if (this.aJ_()) {
          $$0.a(fxu.d, e);
       }
    }
@@ -141,7 +141,7 @@ public class fwd extends fvt implements fvb, fxt {
    }
 
    public void a(int $$0, boolean $$1) {
-      if (this.aO_()) {
+      if (this.aJ_()) {
          this.a((fvv)this.j.get($$0));
       } else {
          this.h.a((fwb)this.i.get($$0), $$1);

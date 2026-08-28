@@ -29,7 +29,7 @@ public class aoh {
          for (asc $$4 : $$1) {
             if (!$$0.l().a($$4.gi())) {
                $$4.f.a($$2);
-               $$0.a(() -> xg.a("commands.kick.success", $$4.m_(), $$2), true);
+               $$0.a(() -> xg.a("commands.kick.success", $$4.P_(), $$2), true);
                $$3++;
             }
          }

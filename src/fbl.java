@@ -68,7 +68,7 @@ public abstract class fbl extends fbj {
 
       public T a(fch.a $$0) {
          this.c.add($$0.b());
-         return this.aG_();
+         return this.aB_();
       }
 
       protected List<fch> a() {
@@ -77,12 +77,12 @@ public abstract class fbl extends fbj {
 
       public T a(int $$0) {
          this.a = $$0;
-         return this.aG_();
+         return this.aB_();
       }
 
       public T b(int $$0) {
          this.b = $$0;
-         return this.aG_();
+         return this.aB_();
       }
    }
 

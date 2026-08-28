@@ -16,6 +16,6 @@ public class gyf extends gzb<cpe, hen, ght> {
 
    public void a(cpe $$0, hen $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
+      $$1.a = $$0.m();
    }
 }

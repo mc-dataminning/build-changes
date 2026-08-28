@@ -1,3 +1,4 @@
+import com.google.common.base.MoreObjects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
@@ -86,7 +87,7 @@ public abstract class csi extends byf {
    private final GameProfile cy;
    private boolean cz;
    private dak cA = dak.l;
-   private final dah cB = this.g();
+   private final dah cB = this.f();
    private Optional<jf> cC = Optional.empty();
    @Nullable
    public csz ck;
@@ -142,9 +143,9 @@ public abstract class csi extends byf {
    }
 
    @Override
-   public void h() {
-      this.ad = this.aa_();
-      if (this.aa_() || this.bY()) {
+   public void g() {
+      this.ad = this.ak();
+      if (this.ak() || this.bY()) {
          this.d(false);
       }
 
@@ -169,13 +170,13 @@ public abstract class csi extends byf {
       }
 
       this.gb();
-      super.h();
+      super.g();
       if (!this.dV().C && this.bR != null && !this.bR.b(this)) {
-         this.p();
+         this.o();
          this.bR = this.bQ;
       }
 
-      this.n();
+      this.s();
       if (this instanceof asc $$0) {
          this.bS.a($$0);
          this.a(axi.k);
@@ -204,7 +205,7 @@ public abstract class csi extends byf {
       dak $$4 = this.fb();
       if (!dak.a(this.cA, $$4)) {
          if (!dak.b(this.cA, $$4)) {
-            this.gE();
+            this.gF();
          }
 
          this.cA = $$4.v();
@@ -273,11 +274,11 @@ public abstract class csi extends byf {
       return false;
    }
 
-   protected dah g() {
+   protected dah f() {
       return new dah();
    }
 
-   private void n() {
+   private void s() {
       this.bY = this.cb;
       this.bZ = this.cc;
       this.ca = this.cd;
@@ -322,9 +323,9 @@ public abstract class csi extends byf {
 
    protected void gc() {
       if (this.h(byr.d)) {
-         byr $$0 = this.t();
+         byr $$0 = this.u();
          byr $$1;
-         if (this.aa_() || this.bY() || this.h($$0)) {
+         if (this.ak() || this.bY() || this.h($$0)) {
             $$1 = $$0;
          } else if (this.h(byr.f)) {
             $$1 = byr.f;
@@ -336,7 +337,7 @@ public abstract class csi extends byf {
       }
    }
 
-   private byr t() {
+   private byr u() {
       if (this.fR()) {
          return byr.c;
       } else if (this.cj()) {
@@ -395,7 +396,7 @@ public abstract class csi extends byf {
    @Override
    public void b(byte $$0) {
       if ($$0 == 9) {
-         this.P_();
+         this.v();
       } else if ($$0 == 23) {
          this.cz = false;
       } else if ($$0 == 22) {
@@ -405,40 +406,39 @@ public abstract class csi extends byf {
       }
    }
 
-   protected void p() {
+   protected void o() {
       this.bR = this.bQ;
    }
 
-   @Override
-   protected void q() {
+   protected void p() {
    }
 
    @Override
-   public void r() {
+   public void q() {
       if (!this.dV().C && this.fZ() && this.bY()) {
          this.bO();
          this.g(false);
       } else {
-         super.r();
+         super.q();
          this.bV = this.bW;
          this.bW = 0.0F;
       }
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       if (this.bT > 0) {
          this.bT--;
       }
 
-      this.j();
+      this.i();
       this.ct.l();
       this.bV = this.bW;
       if (this.cw.b && !this.bY()) {
-         this.k();
+         this.j();
       }
 
-      super.k_();
+      super.d_();
       this.eZ();
       this.aX = this.dL();
       this.B((float)this.h(bzl.v));
@@ -450,7 +450,7 @@ public abstract class csi extends byf {
       }
 
       this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-      if (this.eG() > 0.0F && !this.aa_()) {
+      if (this.eG() > 0.0F && !this.ak()) {
          ffx $$2;
          if (this.bY() && !this.dk().dQ()) {
             $$2 = this.cR().b(this.dk().cR()).c(1.0, 0.0, 1.0);
@@ -474,15 +474,14 @@ public abstract class csi extends byf {
          }
       }
 
-      this.c(this.gB());
       this.c(this.gC());
+      this.c(this.gD());
       if (!this.dV().C && (this.Z > 0.5 || this.bi()) || this.cw.b || this.fR() || this.av) {
          this.gy();
       }
    }
 
-   @Override
-   protected void j() {
+   protected void i() {
    }
 
    private void c(ua $$0) {
@@ -533,7 +532,7 @@ public abstract class csi extends byf {
    public void a(bvt $$0) {
       super.a($$0);
       this.av();
-      if (!this.aa_() && this.dV() instanceof asb $$1) {
+      if (!this.ak() && this.dV() instanceof asb $$1) {
          this.b($$1, $$0);
       }
 
@@ -579,7 +578,7 @@ public abstract class csi extends byf {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.uY;
    }
 
@@ -673,12 +672,12 @@ public abstract class csi extends byf {
       this.bS.b($$0);
       this.cw.a($$0);
       $$0.a("EnderItems", this.bP.a(this.dX()));
-      if (!this.gB().j()) {
-         $$0.a("ShoulderEntityLeft", this.gB());
+      if (!this.gC().j()) {
+         $$0.a("ShoulderEntityLeft", this.gC());
       }
 
-      if (!this.gC().j()) {
-         $$0.a("ShoulderEntityRight", this.gC());
+      if (!this.gD().j()) {
+         $$0.a("ShoulderEntityRight", this.gD());
       }
 
       this.cC.ifPresent($$1 -> $$0.a("LastDeathLocation", jf.b, $$1));
@@ -794,7 +793,7 @@ public abstract class csi extends byf {
       }
    }
 
-   public boolean X() {
+   public boolean W() {
       return false;
    }
 
@@ -833,7 +832,7 @@ public abstract class csi extends byf {
    }
 
    public bvc a(bxe $$0, bvb $$1) {
-      if (this.aa_()) {
+      if (this.ak()) {
          if ($$0 instanceof bve) {
             this.a((bve)$$0);
          }
@@ -872,8 +871,8 @@ public abstract class csi extends byf {
    }
 
    @Override
-   public void ab() {
-      super.ab();
+   public void aa() {
+      super.aa();
       this.J = 0;
    }
 
@@ -952,7 +951,7 @@ public abstract class csi extends byf {
             float $$5 = this.H(0.5F);
             $$1 *= 0.2F + $$5 * $$5 * 0.8F;
             $$4 *= $$5;
-            this.gE();
+            this.gF();
             if ($$0.an().a(axq.H) && $$0 instanceof ctd $$6 && $$6.a(cte.c, this, this, true)) {
                this.dV().a(null, this.dA(), this.dC(), this.dG(), awy.uR, this.dm());
                return;
@@ -969,7 +968,7 @@ public abstract class csi extends byf {
                }
 
                $$1 += $$2.h().a($$0, $$1, $$3);
-               boolean $$10 = $$7 && this.Z > 0.0 && !this.aH() && !this.d_() && !this.bi() && !this.b(bwk.o) && !this.bY() && $$0 instanceof byf && !this.ci();
+               boolean $$10 = $$7 && this.Z > 0.0 && !this.aH() && !this.k_() && !this.bi() && !this.b(bwk.o) && !this.bY() && $$0 instanceof byf && !this.ci();
                if ($$10) {
                   $$1 *= 1.5F;
                }
@@ -977,7 +976,7 @@ public abstract class csi extends byf {
                float $$11 = $$1 + $$4;
                boolean $$12 = false;
                if ($$7 && !$$10 && !$$8 && this.aH()) {
-                  double $$13 = this.ae().j();
+                  double $$13 = this.ad().j();
                   double $$14 = (double)this.fo() * 2.5;
                   if ($$13 < azz.k($$14) && this.b(bvb.a).a(axv.bI)) {
                      $$12 = true;
@@ -1017,7 +1016,7 @@ public abstract class csi extends byf {
                         if ($$23 != this && $$23 != $$0 && !this.s($$23)) {
                            if ($$23 instanceof coc) {
                               coc $$24 = (coc)$$23;
-                              if ($$24.t()) {
+                              if ($$24.w()) {
                                  continue;
                               }
                            }
@@ -1142,12 +1141,12 @@ public abstract class csi extends byf {
       super.a($$0);
       this.bQ.a(this);
       if (this.bR != null && this.gm()) {
-         this.q();
+         this.p();
       }
    }
 
    @Override
-   public boolean Q_() {
+   public boolean Z_() {
       return true;
    }
 
@@ -1328,16 +1327,16 @@ public abstract class csi extends byf {
             $$4 = Math.min($$0, this.cm.e - this.dC());
             boolean $$5 = $$4 <= 0.0;
             if ($$5) {
-               this.gP();
+               this.gQ();
             } else {
-               this.gO();
+               this.gP();
             }
          } else {
             $$4 = $$0;
          }
 
          if ($$4 > 0.0 && super.a($$4, $$1, $$2)) {
-            this.gP();
+            this.gQ();
             return true;
          } else {
             this.b($$0, $$1, $$2);
@@ -1361,7 +1360,7 @@ public abstract class csi extends byf {
 
    @Override
    protected void bq() {
-      if (!this.aa_()) {
+      if (!this.ak()) {
          super.bq();
       }
    }
@@ -1403,7 +1402,7 @@ public abstract class csi extends byf {
          super.a($$0, $$1);
       }
 
-      this.gO();
+      this.gP();
    }
 
    public void d(int $$0) {
@@ -1475,7 +1474,7 @@ public abstract class csi extends byf {
       }
    }
 
-   public Optional<crn> Z() {
+   public Optional<crn> Y() {
       return Optional.empty();
    }
 
@@ -1507,7 +1506,7 @@ public abstract class csi extends byf {
 
    @Override
    protected int e(asb $$0) {
-      return !$$0.O().c(dkf.e) && !this.aa_() ? Math.min(this.cf * 7, 100) : 0;
+      return !$$0.O().c(dkf.e) && !this.ak() ? Math.min(this.cf * 7, 100) : 0;
    }
 
    @Override
@@ -1525,11 +1524,11 @@ public abstract class csi extends byf {
       return this.cw.b || this.aH() && this.cf() ? bxe.c.a : bxe.c.d;
    }
 
-   public void x() {
+   public void w() {
    }
 
    @Override
-   public xg ai() {
+   public xg ah() {
       return xg.b(this.cy.getName());
    }
 
@@ -1549,11 +1548,11 @@ public abstract class csi extends byf {
    public boolean j(ua $$0) {
       if (this.bY() || !this.aH() || this.bi() || this.av) {
          return false;
-      } else if (this.gB().j()) {
+      } else if (this.gC().j()) {
          this.k($$0);
          this.cs = this.dV().ae();
          return true;
-      } else if (this.gC().j()) {
+      } else if (this.gD().j()) {
          this.l($$0);
          this.cs = this.dV().ae();
          return true;
@@ -1564,9 +1563,9 @@ public abstract class csi extends byf {
 
    protected void gy() {
       if (this.cs + 20L < this.dV().ae()) {
-         this.d(this.gB());
-         this.k(new ua());
          this.d(this.gC());
+         this.k(new ua());
+         this.d(this.gD());
          this.l(new ua());
       }
    }
@@ -1584,33 +1583,40 @@ public abstract class csi extends byf {
       }
    }
 
+   @Nullable
+   public abstract dkg a();
+
    @Override
-   public abstract boolean aa_();
+   public boolean ak() {
+      return this.a() == dkg.d;
+   }
 
    @Override
    public boolean bE() {
-      return !this.aa_() && super.bE();
+      return !this.ak() && super.bE();
    }
 
    @Override
    public boolean cj() {
-      return !this.cw.b && !this.aa_() && super.cj();
+      return !this.cw.b && !this.ak() && super.cj();
    }
 
-   public abstract boolean b();
+   public boolean gz() {
+      return this.a() == dkg.b;
+   }
 
    @Override
    public boolean cJ() {
       return !this.cw.b;
    }
 
-   public fhh gz() {
+   public fhh gA() {
       return this.dV().R();
    }
 
    @Override
-   public xg m_() {
-      xu $$0 = fhc.a(this.cq(), this.ai());
+   public xg P_() {
+      xu $$0 = fhc.a(this.cq(), this.ah());
       return this.a($$0);
    }
 
@@ -1678,7 +1684,7 @@ public abstract class csi extends byf {
       }
    }
 
-   public boolean gA() {
+   public boolean gB() {
       return this.cz;
    }
 
@@ -1700,7 +1706,7 @@ public abstract class csi extends byf {
       this.al.a(bL, (byte)($$0 == bxw.a ? 0 : 1));
    }
 
-   public ua gB() {
+   public ua gC() {
       return this.al.a(bM);
    }
 
@@ -1708,7 +1714,7 @@ public abstract class csi extends byf {
       this.al.a(bM, $$0);
    }
 
-   public ua gC() {
+   public ua gD() {
       return this.al.a(bN);
    }
 
@@ -1716,19 +1722,19 @@ public abstract class csi extends byf {
       this.al.a(bN, $$0);
    }
 
-   public float gD() {
+   public float gE() {
       return (float)(1.0 / this.h(bzl.e) * 20.0);
    }
 
    public float H(float $$0) {
-      return azz.a(((float)this.aS + $$0) / this.gD(), 0.0F, 1.0F);
+      return azz.a(((float)this.aS + $$0) / this.gE(), 0.0F, 1.0F);
    }
 
-   public void gE() {
+   public void gF() {
       this.aS = 0;
    }
 
-   public dah gF() {
+   public dah gG() {
       return this.cB;
    }
 
@@ -1742,16 +1748,16 @@ public abstract class csi extends byf {
       return (float)this.h(bzl.q);
    }
 
-   public boolean gG() {
-      return this.cw.d && this.G() >= 2;
+   public boolean gH() {
+      return this.cw.d && this.F() >= 2;
    }
 
-   public int G() {
+   public int F() {
       return 0;
    }
 
    public boolean s(int $$0) {
-      return this.G() >= $$0;
+      return this.F() >= $$0;
    }
 
    @Override
@@ -1822,7 +1828,7 @@ public abstract class csi extends byf {
       return true;
    }
 
-   public boolean gH() {
+   public boolean gI() {
       return this.fz() && this.fB().a(dao.sf);
    }
 
@@ -1831,7 +1837,7 @@ public abstract class csi extends byf {
       return false;
    }
 
-   public Optional<jf> gI() {
+   public Optional<jf> gJ() {
       return this.cC;
    }
 
@@ -1864,11 +1870,11 @@ public abstract class csi extends byf {
       }
    }
 
-   public boolean gJ() {
+   public boolean gK() {
       return this.cu || this.bU <= 0;
    }
 
-   public void gK() {
+   public void gL() {
       if (!this.cu) {
          this.bU--;
       }
@@ -1881,11 +1887,11 @@ public abstract class csi extends byf {
       }
    }
 
-   public double gL() {
+   public double gM() {
       return this.h(bzl.g);
    }
 
-   public double gM() {
+   public double gN() {
       return this.h(bzl.j);
    }
 
@@ -1894,12 +1900,12 @@ public abstract class csi extends byf {
    }
 
    public boolean a(ffx $$0, double $$1) {
-      double $$2 = this.gM() + $$1;
+      double $$2 = this.gN() + $$1;
       return $$0.e(this.bD()) < $$2 * $$2;
    }
 
    public boolean a(iw $$0, double $$1) {
-      double $$2 = this.gL() + $$1;
+      double $$2 = this.gM() + $$1;
       return new ffx($$0).e(this.bD()) < $$2 * $$2;
    }
 
@@ -1912,30 +1918,40 @@ public abstract class csi extends byf {
       }
    }
 
-   public boolean gN() {
+   public boolean gO() {
       return this.cD;
    }
 
-   public void gO() {
+   public void gP() {
       if (this.cE == 0) {
-         this.gP();
+         this.gQ();
       }
    }
 
-   public void gP() {
+   public void gQ() {
       this.cE = 0;
       this.cn = null;
       this.cm = null;
       this.cD = false;
    }
 
-   public boolean gQ() {
+   public boolean gR() {
       return false;
    }
 
    @Override
-   public boolean d_() {
-      return this.cw.b ? false : super.d_();
+   public boolean k_() {
+      return this.cw.b ? false : super.k_();
+   }
+
+   public String gS() {
+      return MoreObjects.toStringHelper(this)
+         .add("name", this.ah().getString())
+         .add("id", this.ao())
+         .add("pos", this.dt())
+         .add("mode", this.a())
+         .add("permission", this.F())
+         .toString();
    }
 
    public static enum a {

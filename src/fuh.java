@@ -234,7 +234,7 @@ public class fuh extends ftw {
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (this.E() && this.aO_()) {
+      if (this.E() && this.aJ_()) {
          switch ($$0) {
             case 259:
                if (this.u) {
@@ -308,7 +308,7 @@ public class fuh extends ftw {
    }
 
    public boolean c() {
-      return this.E() && this.aO_() && this.l();
+      return this.E() && this.aJ_() && this.l();
    }
 
    @Override
@@ -345,7 +345,7 @@ public class fuh extends ftw {
    public void b(ftk $$0, int $$1, int $$2, float $$3) {
       if (this.i()) {
          if (this.g()) {
-            alr $$4 = d.a(this.E(), this.aO_());
+            alr $$4 = d.a(this.E(), this.aJ_());
             $$0.a(gry::H, $$4, this.F(), this.G(), this.A(), this.y());
          }
 
@@ -353,7 +353,7 @@ public class fuh extends ftw {
          int $$6 = this.w - this.v;
          String $$7 = this.o.a(this.p.substring(this.v), this.h());
          boolean $$8 = $$6 >= 0 && $$6 <= $$7.length();
-         boolean $$9 = this.aO_() && (ag.c() - this.F) / 300L % 2L == 0L && $$8;
+         boolean $$9 = this.aJ_() && (ag.c() - this.F) / 300L % 2L == 0L && $$8;
          int $$10 = this.r ? this.F() + 4 : this.F();
          int $$11 = this.r ? this.G() + (this.h - 8) / 2 : this.G();
          int $$12 = $$10;
@@ -376,7 +376,7 @@ public class fuh extends ftw {
             $$0.b(this.o, this.D.apply($$7.substring($$6), this.w), $$12, $$11, $$5);
          }
 
-         if (this.E != null && $$7.isEmpty() && !this.aO_()) {
+         if (this.E != null && $$7.isEmpty() && !this.aJ_()) {
             $$0.b(this.o, this.E, $$12, $$11, $$5);
          }
 

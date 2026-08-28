@@ -27,7 +27,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
       return super.a($$0, $$1, $$2, $$3);
    }
 
-   public int q() {
+   public int m() {
       return this.al.a(bK);
    }
 
@@ -36,7 +36,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
    }
 
    @Override
-   public int t() {
+   public int p() {
       return 0;
    }
 
@@ -53,22 +53,22 @@ public abstract class crp extends bwu implements crs, crt, dje {
 
    @Nullable
    @Override
-   public csi x() {
+   public csi gu() {
       return this.bM;
    }
 
-   public boolean gu() {
+   public boolean gv() {
       return this.bM != null;
    }
 
    @Override
-   public djg gv() {
+   public djg gw() {
       if (this.dV().C) {
          throw new IllegalStateException("Cannot load Villager offers on the client");
       } else {
          if (this.bJ == null) {
             this.bJ = new djg();
-            this.gA();
+            this.gB();
          }
 
          return this.bJ;
@@ -86,7 +86,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
    @Override
    public void a(djf $$0) {
       $$0.l();
-      this.bz = -this.S();
+      this.bz = -this.R();
       this.b($$0);
       if (this.bM instanceof asc) {
          aq.t.a((asc)this.bM, this, $$0.f());
@@ -96,20 +96,20 @@ public abstract class crp extends bwu implements crs, crt, dje {
    protected abstract void b(djf var1);
 
    @Override
-   public boolean gw() {
+   public boolean gx() {
       return true;
    }
 
    @Override
    public void i(dak $$0) {
-      if (!this.dV().C && this.bz > -this.S() + 20) {
-         this.bz = -this.S();
+      if (!this.dV().C && this.bz > -this.R() + 20) {
+         this.bz = -this.R();
          this.b(this.w(!$$0.f()));
       }
    }
 
    @Override
-   public awx gx() {
+   public awx gy() {
       return awy.Cc;
    }
 
@@ -117,7 +117,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
       return $$0 ? awy.Cc : awy.Ca;
    }
 
-   public void gy() {
+   public void gz() {
       this.b(awy.BX);
    }
 
@@ -125,7 +125,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
    public void b(ua $$0) {
       super.b($$0);
       if (!this.dV().C) {
-         djg $$1 = this.gv();
+         djg $$1 = this.gw();
          if (!$$1.isEmpty()) {
             $$0.a("Offers", djg.a, this.dX().a(uo.a), $$1);
          }
@@ -144,18 +144,18 @@ public abstract class crp extends bwu implements crs, crt, dje {
    @Nullable
    @Override
    public bxe b(eza $$0) {
-      this.gz();
+      this.gA();
       return super.b($$0);
    }
 
-   protected void gz() {
+   protected void gA() {
       this.a(null);
    }
 
    @Override
    public void a(bvt $$0) {
       super.a($$0);
-      this.gz();
+      this.gA();
    }
 
    protected void a(lx $$0) {
@@ -173,7 +173,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
    }
 
    @Override
-   public bvj n() {
+   public bvj u() {
       return this.bN;
    }
 
@@ -183,7 +183,7 @@ public abstract class crp extends bwu implements crs, crt, dje {
       return $$1 >= 0 && $$1 < this.bN.b() ? byw.a(this.bN, $$1) : super.a_($$0);
    }
 
-   protected abstract void gA();
+   protected abstract void gB();
 
    protected void a(djg $$0, cry.g[] $$1, int $$2) {
       ArrayList<cry.g> $$3 = Lists.newArrayList($$1);
@@ -206,12 +206,12 @@ public abstract class crp extends bwu implements crs, crt, dje {
    }
 
    @Override
-   public boolean gB() {
+   public boolean gC() {
       return this.dV().C;
    }
 
    @Override
    public boolean e(csi $$0) {
-      return this.x() == $$0 && this.bJ() && $$0.b(this, 4.0);
+      return this.gu() == $$0 && this.bJ() && $$0.b(this, 4.0);
    }
 }

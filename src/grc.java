@@ -137,7 +137,7 @@ public class grc {
       float $$52;
       if ($$5 == eyc.b) {
          if ($$6 instanceof gqm) {
-            $$52 = ((gqm)$$6).D();
+            $$52 = ((gqm)$$6).E();
          } else {
             $$52 = 1.0F;
          }
@@ -180,7 +180,7 @@ public class grc {
          grc.c $$8 = new grc.c($$1);
          grc.e $$9 = a($$7, $$5);
          if ($$6 == eyc.a) {
-            if ($$7.aa_()) {
+            if ($$7.ak()) {
                $$8.b = -8.0F;
                $$8.c = $$3 * 0.5F;
             } else if ($$7 instanceof byf && ((byf)$$7).b(bwk.l)) {
@@ -191,7 +191,7 @@ public class grc {
                $$8.c = 1.0F;
             }
          } else if ($$6 == eyc.c) {
-            if ($$7.aa_()) {
+            if ($$7.ak()) {
                $$8.b = -8.0F;
                $$8.c = $$3 * 0.5F;
             } else {
@@ -208,7 +208,7 @@ public class grc {
             $$8.b = -8.0F;
             $$8.c = 96.0F;
             if ($$7 instanceof gqm $$12) {
-               $$8.c = $$8.c * Math.max(0.25F, $$12.D());
+               $$8.c = $$8.c * Math.max(0.25F, $$12.E());
                jg<dlm> $$13 = $$12.dV().u($$12.dv());
                if ($$13.a(axm.aa)) {
                   $$8.c *= 0.85F;

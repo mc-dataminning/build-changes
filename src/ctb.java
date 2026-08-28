@@ -26,7 +26,7 @@ public class ctb extends csx {
       super.a($$0);
       if (this.dV() instanceof asb $$1) {
          bxe var6 = $$0.a();
-         bxe $$4 = this.q();
+         bxe $$4 = this.p();
          bvt $$5 = this.dW().a((csx)this, $$4);
          var6.a($$1, $$5, 6.0F);
          dgz.a($$1, var6, $$5);

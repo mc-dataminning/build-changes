@@ -20,7 +20,7 @@ public class fyu extends fzq {
    }
 
    @Override
-   protected void aT_() {
+   protected void aO_() {
       this.b = 0;
       this.u.clear();
       xg $$0 = this.d ? xg.c("deathScreen.spectate") : xg.c("deathScreen.respawn");
@@ -37,7 +37,7 @@ public class fyu extends fzq {
    }
 
    @Override
-   public boolean aI_() {
+   public boolean aD_() {
       return false;
    }
 

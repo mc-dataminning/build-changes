@@ -42,8 +42,8 @@ public class gxp extends gxu<cnf, hdz> {
    public void a(cnf $$0, hdz $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.v = (float)$$0.a + $$2;
-      $$1.a = $$0.g();
-      iw $$3 = $$0.f();
+      $$1.a = $$0.f();
+      iw $$3 = $$0.e();
       if ($$3 != null) {
          $$1.b = fgc.b($$3).d($$0.p($$2));
       } else {
@@ -52,6 +52,6 @@ public class gxp extends gxu<cnf, hdz> {
    }
 
    public boolean a(cnf $$0, gvh $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.f() != null;
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.e() != null;
    }
 }

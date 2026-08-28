@@ -37,13 +37,13 @@ public class cgh extends cfb {
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+      return this.d != null && !this.b.N().k() && this.b.N().g().equals(this.d);
    }
 
    @Override
    public void a() {
       if (this.d != null) {
-         chp $$0 = this.b.O();
+         chp $$0 = this.b.N();
          if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
             fgc $$1 = fgc.c(this.d);
             fgc $$2 = this.b.dt();
@@ -62,6 +62,6 @@ public class cgh extends cfb {
    private void h() {
       bai $$0 = this.b.dY();
       iw $$1 = this.b.dV().a(ehp.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+      this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

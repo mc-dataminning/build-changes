@@ -87,12 +87,12 @@ public final class dcs {
             $$0.e();
             return true;
          } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.aC_(), var8);
+            e.warn("Failed to apply custom data to block entity at {}", $$0.ax_(), var8);
 
             try {
                $$0.d($$3, $$1);
             } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.aC_(), var7);
+               e.warn("Failed to rollback block entity at {} after failure", $$0.ax_(), var7);
             }
          }
       }

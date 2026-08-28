@@ -34,7 +34,7 @@ public class cvl extends cvd {
    public void b() {
       if (this.c() instanceof asb $$0) {
          this.a.be();
-         iw var11 = this.a.j();
+         iw var11 = this.a.l();
          ebq $$3 = this.c().a_(var11);
          boolean $$4 = dnd.h($$3);
          this.a.a($$4);
@@ -80,9 +80,9 @@ public class cvl extends cvd {
 
    @Override
    public void a(asb $$0) {
-      iw $$1 = this.a.j();
+      iw $$1 = this.a.l();
       ebq $$2 = this.c().a_($$1);
-      this.a.k();
+      this.a.j();
       double $$3 = this.a.dA();
       double $$4 = this.a.dC();
       double $$5 = this.a.dG();
@@ -139,7 +139,7 @@ public class cvl extends cvd {
       bxe $$20 = this.a.cZ();
       fgc $$22;
       if (this.a.cZ() instanceof asc $$21) {
-         $$22 = $$21.ag();
+         $$22 = $$21.af();
       } else {
          $$22 = fgc.c;
       }

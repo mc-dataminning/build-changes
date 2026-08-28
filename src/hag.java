@@ -24,7 +24,7 @@ public class hag extends gwp<cpx, hgf, gjs> {
    public void a(cpx $$0, hgf $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.a(bxo.h).v();
-      $$1.b = $$0.q();
+      $$1.b = $$0.m();
       $$1.c = $$0.bZ();
    }
 

@@ -45,11 +45,11 @@ public class dos extends dmi<dyw> implements duz {
             }
 
             @Override
-            public xg m_() {
-               if ($$0.h_()) {
-                  return $$0.m_();
+            public xg P_() {
+               if ($$0.g_()) {
+                  return $$0.P_();
                } else {
-                  return (xg)($$1.h_() ? $$1.m_() : xg.c("container.chestDouble"));
+                  return (xg)($$1.g_() ? $$1.P_() : xg.c("container.chestDouble"));
                }
             }
          });
@@ -243,7 +243,7 @@ public class dos extends dmi<dyw> implements duz {
       );
       if (!$$2.isEmpty()) {
          for (cjy $$3 : $$2) {
-            if ($$3.x()) {
+            if ($$3.u()) {
                return true;
             }
          }

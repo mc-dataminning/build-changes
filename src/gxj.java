@@ -12,15 +12,15 @@ public abstract class gxj<T extends bxb, S, ST extends hdw> extends gxu<T, ST> {
    }
 
    protected ffx a(T $$0) {
-      return $$0.f();
+      return $$0.e();
    }
 
    protected boolean b(T $$0) {
-      return $$0.g();
+      return $$0.f();
    }
 
    private static int c(bxb $$0) {
-      bxb.j $$1 = $$0.j();
+      bxb.j $$1 = $$0.i();
       return $$1 != null ? $$1.c() : -1;
    }
 
@@ -89,7 +89,7 @@ public abstract class gxj<T extends bxb, S, ST extends hdw> extends gxu<T, ST> {
 
    public void a(T $$0, ST $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.j();
+      $$1.b = $$0.i();
       $$1.c = $$0.a($$2);
       $$1.d = a($$0, $$2);
       $$1.e = b($$0, $$2);
@@ -109,7 +109,7 @@ public abstract class gxj<T extends bxb, S, ST extends hdw> extends gxu<T, ST> {
 
       public void a(bxb.b $$0, hdm $$1, float $$2) {
          super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
+         $$1.a = $$0.l();
       }
 
       public void a(hdm $$0, fld $$1, grn $$2, int $$3, float $$4) {
@@ -131,7 +131,7 @@ public abstract class gxj<T extends bxb, S, ST extends hdw> extends gxu<T, ST> {
 
       public void a(bxb.g $$0, hfa $$1, float $$2) {
          super.a($$0, $$1, $$2);
-         bxb.g.a $$3 = $$0.m();
+         bxb.g.a $$3 = $$0.l();
          if ($$3 != null) {
             this.a.a($$1.a, $$3.a(), $$3.b(), $$0);
          } else {
@@ -161,7 +161,7 @@ public abstract class gxj<T extends bxb, S, ST extends hdw> extends gxu<T, ST> {
 
       public void a(bxb.k $$0, hgg $$1, float $$2) {
          super.a($$0, $$1, $$2);
-         $$1.a = $$0.m();
+         $$1.a = $$0.l();
          $$1.f = $$0.a(this::a);
       }
 

@@ -10,11 +10,11 @@ class bwn extends bwg {
 
    @Override
    public boolean a(asb $$0, byf $$1, int $$2) {
-      if ($$1 instanceof asc $$3 && !$$1.aa_()) {
-         iw $$4 = $$3.ad();
+      if ($$1 instanceof asc $$3 && !$$1.ak()) {
+         iw $$4 = $$3.ac();
          if ($$4 != null) {
             $$0.B().a($$3, $$4);
-            $$3.ac();
+            $$3.ab();
             return false;
          }
       }

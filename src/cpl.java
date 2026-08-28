@@ -15,8 +15,8 @@ public abstract class cpl extends cpk {
    }
 
    @Override
-   protected void D() {
-      super.D();
+   protected void C() {
+      super.C();
       this.bF.a(4, new cpl.a<>(this, 0.7, 0.595));
    }
 
@@ -36,18 +36,18 @@ public abstract class cpl extends cpk {
       this.e = $$0.b("Patrolling", false);
    }
 
-   public boolean t() {
+   public boolean gv() {
       return true;
    }
 
    @Nullable
    @Override
    public byx a(dla $$0, bva $$1, bxm $$2, @Nullable byx $$3) {
-      if ($$2 != bxm.p && $$2 != bxm.h && $$2 != bxm.d && $$0.G_().i() < 0.06F && this.t()) {
+      if ($$2 != bxm.p && $$2 != bxm.h && $$2 != bxm.d && $$0.G_().i() < 0.06F && this.gv()) {
          this.d = true;
       }
 
-      if (this.gv()) {
+      if (this.gy()) {
          this.a(bxo.f, cty.a(this.dX().f(mi.aF)));
          this.a(bxo.f, 2.0F);
       }
@@ -73,11 +73,11 @@ public abstract class cpl extends cpk {
       this.e = true;
    }
 
-   public iw x() {
+   public iw gw() {
       return this.c;
    }
 
-   public boolean gu() {
+   public boolean gx() {
       return this.c != null;
    }
 
@@ -86,20 +86,20 @@ public abstract class cpl extends cpk {
       this.e = true;
    }
 
-   public boolean gv() {
+   public boolean gy() {
       return this.d;
    }
 
-   public boolean gy() {
+   public boolean gB() {
       return true;
    }
 
-   public void gz() {
+   public void gC() {
       this.c = this.dv().b(-500 + this.ae.a(1000), 0, -500 + this.ae.a(1000));
       this.e = true;
    }
 
-   protected boolean gA() {
+   protected boolean gD() {
       return this.e;
    }
 
@@ -125,7 +125,7 @@ public abstract class cpl extends cpk {
       @Override
       public boolean b() {
          boolean $$0 = this.b.dV().ae() < this.e;
-         return this.b.gA() && this.b.f() == null && !this.b.cX() && this.b.gu() && !$$0;
+         return this.b.gD() && this.b.e() == null && !this.b.cX() && this.b.gx() && !$$0;
       }
 
       @Override
@@ -138,16 +138,16 @@ public abstract class cpl extends cpk {
 
       @Override
       public void a() {
-         boolean $$0 = this.b.gv();
-         chp $$1 = this.b.O();
+         boolean $$0 = this.b.gy();
+         chp $$1 = this.b.N();
          if ($$1.k()) {
             List<cpl> $$2 = this.h();
-            if (this.b.gA() && $$2.isEmpty()) {
+            if (this.b.gD() && $$2.isEmpty()) {
                this.b.x(false);
-            } else if ($$0 && this.b.x().a(this.b.dt(), 10.0)) {
-               this.b.gz();
+            } else if ($$0 && this.b.gw().a(this.b.dt(), 10.0)) {
+               this.b.gC();
             } else {
-               fgc $$3 = fgc.c(this.b.x());
+               fgc $$3 = fgc.c(this.b.gw());
                fgc $$4 = this.b.dt();
                fgc $$5 = $$4.d($$3);
                $$3 = $$5.b(90.0F).c(0.4).e($$3);
@@ -167,13 +167,13 @@ public abstract class cpl extends cpk {
       }
 
       private List<cpl> h() {
-         return this.b.dV().a(cpl.class, this.b.cR().g(16.0), $$0 -> $$0.gy() && !$$0.u(this.b));
+         return this.b.dV().a(cpl.class, this.b.cR().g(16.0), $$0 -> $$0.gB() && !$$0.u(this.b));
       }
 
       private boolean i() {
          bai $$0 = this.b.dY();
          iw $$1 = this.b.dV().a(ehp.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-         return this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
+         return this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), this.c);
       }
    }
 }

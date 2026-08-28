@@ -30,12 +30,12 @@ public class cnp extends cni {
    @Override
    public void a(asb $$0) {
       if (this.b == null) {
-         this.b = fgc.c($$0.a(ehp.a.f, eku.a(this.a.j())));
+         this.b = fgc.c($$0.a(ehp.a.f, eku.a(this.a.m())));
       }
 
       if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
-         this.a.t().b(cnw.f).i();
-         this.a.t().a(cnw.g);
+         this.a.gr().b(cnw.f).i();
+         this.a.gr().a(cnw.g);
       }
    }
 

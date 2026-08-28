@@ -30,7 +30,7 @@ public class cnf extends bxe {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.a++;
       this.aI();
       this.bV();
@@ -44,8 +44,8 @@ public class cnf extends bxe {
 
    @Override
    protected void b(ua $$0) {
-      $$0.b("beam_target", iw.a, this.f());
-      $$0.a("ShowBottom", this.g());
+      $$0.b("beam_target", iw.a, this.e());
+      $$0.a("ShowBottom", this.f());
    }
 
    @Override
@@ -103,7 +103,7 @@ public class cnf extends bxe {
    }
 
    @Nullable
-   public iw f() {
+   public iw e() {
       return this.ar().a(b).orElse(null);
    }
 
@@ -111,13 +111,13 @@ public class cnf extends bxe {
       this.ar().a(c, $$0);
    }
 
-   public boolean g() {
+   public boolean f() {
       return this.ar().a(c);
    }
 
    @Override
    public boolean a(double $$0) {
-      return super.a($$0) || this.f() != null;
+      return super.a($$0) || this.e() != null;
    }
 
    @Override

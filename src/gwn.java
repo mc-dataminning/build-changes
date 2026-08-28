@@ -11,7 +11,7 @@ public abstract class gwn<T extends cos, S extends hga> extends gym<T, S, gjj<S>
    public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.b = $$0.gl();
-      $$1.c = $$0.x();
+      $$1.c = $$0.gw();
       $$1.d = $$0.fb().a(dao.pj);
    }
 

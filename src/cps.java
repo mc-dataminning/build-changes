@@ -18,7 +18,7 @@ public class cps extends cos {
       $$0.a(c, false);
    }
 
-   public boolean gu() {
+   public boolean gx() {
       return this.ar().a(c);
    }
 
@@ -27,18 +27,18 @@ public class cps extends cos {
    }
 
    @Override
-   public boolean x() {
-      return this.gu();
+   public boolean gw() {
+      return this.gx();
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (!this.dV().C && this.bJ() && !this.gj()) {
          if (this.av) {
-            if (this.gu()) {
+            if (this.gx()) {
                this.f--;
                if (this.f < 0) {
-                  this.gv();
+                  this.gy();
                }
             } else {
                this.e++;
@@ -52,13 +52,13 @@ public class cps extends cos {
          }
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("StrayConversionTime", this.gu() ? this.f : -1);
+      $$0.a("StrayConversionTime", this.gx() ? this.f : -1);
    }
 
    @Override
@@ -78,7 +78,7 @@ public class cps extends cos {
       this.w(true);
    }
 
-   protected void gv() {
+   protected void gy() {
       this.a(bxn.bt, bwy.a(this, true, true), $$0 -> {
          if (!this.ba()) {
             this.dV().a(null, 1048, this.dv(), 0);
@@ -92,7 +92,7 @@ public class cps extends cos {
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.xR;
    }
 
@@ -102,20 +102,20 @@ public class cps extends cos {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.xT;
    }
 
    @Override
-   awx m() {
+   awx p() {
       return awy.ye;
    }
 
    @Override
    protected void a(asb $$0, bvt $$1, boolean $$2) {
       super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof cow $$4 && $$4.x()) {
-         $$4.gu();
+      if ($$1.d() instanceof cow $$4 && $$4.gw()) {
+         $$4.gx();
          this.a($$0, dao.vv);
       }
    }

@@ -16,7 +16,7 @@ public abstract class csx extends csr implements cta {
 
    public void a(dak $$0) {
       if ($$0.f()) {
-         this.ar().a(e, this.o());
+         this.ar().a(e, this.n());
       } else {
          this.ar().a(e, $$0.c(1));
       }
@@ -27,34 +27,36 @@ public abstract class csx extends csr implements cta {
    }
 
    @Override
-   public dak f() {
+   public dak e() {
       return this.ar().a(e);
    }
 
    @Override
    protected void a(aky.a $$0) {
-      $$0.a(e, this.o());
+      $$0.a(e, this.n());
    }
 
    @Override
    public void b(ua $$0) {
+      super.b($$0);
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Item", dak.b, $$1, this.f());
+      $$0.a("Item", dak.b, $$1, this.e());
    }
 
    @Override
    public void a(ua $$0) {
+      super.a($$0);
       alp<va> $$1 = this.dX().a(uo.a);
-      this.a($$0.<dak>a("Item", dak.b, $$1).orElse(this.o()));
+      this.a($$0.<dak>a("Item", dak.b, $$1).orElse(this.n()));
    }
 
-   private dak o() {
+   private dak n() {
       return new dak(dao.vg);
    }
 
    @Override
    public byw a_(int $$0) {
-      return $$0 == 0 ? byw.a(this::f, this::a) : super.a_($$0);
+      return $$0 == 0 ? byw.a(this::e, this::a) : super.a_($$0);
    }
 
    @Override

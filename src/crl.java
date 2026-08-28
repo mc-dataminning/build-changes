@@ -51,7 +51,7 @@ public class crl extends cpk implements egz {
       this.cl = new egz.a();
       this.cj = new egn<>(new egz.b(this));
       this.bA = 5;
-      this.O().a(true);
+      this.N().a(true);
       this.a(eyr.m, 0.0F);
       this.a(eyr.q, 8.0F);
       this.a(eyr.f, 8.0F);
@@ -85,10 +85,10 @@ public class crl extends cpk implements egz {
 
    @Override
    public boolean a(asb $$0, bvt $$1) {
-      return this.gv() && !$$1.a(axo.d) ? true : super.a($$0, $$1);
+      return this.gy() && !$$1.a(axo.d) ? true : super.a($$0, $$1);
    }
 
-   boolean gv() {
+   boolean gy() {
       return this.c(byr.o) || this.c(byr.n);
    }
 
@@ -107,8 +107,8 @@ public class crl extends cpk implements egz {
       return this.X + 0.55F;
    }
 
-   public static bzk.a j() {
-      return cpk.gx().a(bzl.s, 500.0).a(bzl.v, 0.3F).a(bzl.p, 1.0).a(bzl.d, 1.5).a(bzl.c, 30.0).a(bzl.m, 24.0);
+   public static bzk.a m() {
+      return cpk.gA().a(bzl.s, 500.0).a(bzl.v, 0.3F).a(bzl.p, 1.0).a(bzl.d, 1.5).a(bzl.c, 30.0).a(bzl.m, 24.0);
    }
 
    @Override
@@ -123,8 +123,8 @@ public class crl extends cpk implements egz {
 
    @Nullable
    @Override
-   protected awx u() {
-      return !this.c(byr.l) && !this.gv() ? this.n().b() : null;
+   protected awx s() {
+      return !this.c(byr.l) && !this.gy() ? this.u().b() : null;
    }
 
    @Override
@@ -133,7 +133,7 @@ public class crl extends cpk implements egz {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.CO;
    }
 
@@ -156,26 +156,26 @@ public class crl extends cpk implements egz {
       $$0.a(bQ, 0);
    }
 
-   public int m() {
+   public int p() {
       return this.al.a(bQ);
    }
 
-   private void gy() {
-      this.al.a(bQ, this.gB());
+   private void gB() {
+      this.al.a(bQ, this.gE());
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (this.dV() instanceof asb $$0) {
          egz.c.a($$0, this.cl, this.ck);
-         if (this.gd() || this.Z()) {
+         if (this.gd() || this.Y()) {
             crm.a((byf)this);
          }
       }
 
-      super.h();
+      super.g();
       if (this.dV().A_()) {
-         if (this.af % this.gz() == 0) {
+         if (this.af % this.gC() == 0) {
             this.ch = 10;
             if (!this.ba()) {
                this.dV().a(this.dA(), this.dC(), this.dG(), awy.CR, this.dm(), 5.0F, this.ff(), false);
@@ -215,7 +215,7 @@ public class crl extends cpk implements egz {
 
       if (this.af % 20 == 0) {
          this.cm.a($$0, this::b);
-         this.gy();
+         this.gB();
       }
 
       crm.a(this);
@@ -235,8 +235,8 @@ public class crl extends cpk implements egz {
       }
    }
 
-   private int gz() {
-      float $$0 = (float)this.m() / (float)crj.c.a();
+   private int gC() {
+      float $$0 = (float)this.p() / (float)crj.c.a();
       return 40 - azz.d(azz.a($$0, 0.0F, 1.0F) * 30.0F);
    }
 
@@ -286,7 +286,7 @@ public class crl extends cpk implements egz {
 
    @Override
    public boolean a(dkc $$0) {
-      return this.gv();
+      return this.gy();
    }
 
    @Override
@@ -300,8 +300,8 @@ public class crl extends cpk implements egz {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -347,22 +347,22 @@ public class crl extends cpk implements egz {
       super.a($$0);
       alp<va> $$1 = this.dX().a(uo.a);
       this.cm = $$0.<crk>a("anger", crk.a(this::b), $$1).orElseGet(() -> new crk(this::b, Collections.emptyList()));
-      this.gy();
+      this.gB();
       this.cl = $$0.<egz.a>a("listener", egz.a.a, $$1).orElseGet(egz.a::new);
    }
 
-   private void gA() {
+   private void gD() {
       if (!this.c(byr.l)) {
-         this.a(this.n().c(), 10.0F, this.ff());
+         this.a(this.u().c(), 10.0F, this.ff());
       }
    }
 
-   public crj n() {
-      return crj.a(this.gB());
+   public crj u() {
+      return crj.a(this.gE());
    }
 
-   private int gB() {
-      return this.cm.b(this.f());
+   private int gE() {
+      return this.cm.b(this.e());
    }
 
    @Override
@@ -378,26 +378,26 @@ public class crl extends cpk implements egz {
    public void a(@Nullable bxe $$0, int $$1, boolean $$2) {
       if (!this.gj() && this.b($$0)) {
          crm.a((byf)this);
-         boolean $$3 = !(this.f() instanceof csi);
+         boolean $$3 = !(this.e() instanceof csi);
          int $$4 = this.cm.a($$0, $$1);
          if ($$0 instanceof csi && $$3 && crj.a($$4).d()) {
             this.ec().b(chh.p);
          }
 
          if ($$2) {
-            this.gA();
+            this.gD();
          }
       }
    }
 
-   public Optional<byf> q() {
-      return this.n().d() ? this.cm.a() : Optional.empty();
+   public Optional<byf> gu() {
+      return this.u().d() ? this.cm.a() : Optional.empty();
    }
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
    @Override
@@ -421,7 +421,7 @@ public class crl extends cpk implements egz {
    @Override
    public boolean a(asb $$0, bvt $$1, float $$2) {
       boolean $$3 = super.a($$0, $$1, $$2);
-      if (!this.gj() && !this.gv()) {
+      if (!this.gj() && !this.gy()) {
          bxe $$4 = $$1.d();
          this.a($$4, crj.c.a() + 20, false);
          if (this.bs.c(chh.p).isEmpty() && $$4 instanceof byf $$5 && ($$1.b() || this.a($$5, 5.0))) {
@@ -442,12 +442,12 @@ public class crl extends cpk implements egz {
    @Override
    public bxh e(byr $$0) {
       bxh $$1 = super.e($$0);
-      return this.gv() ? bxh.c($$1.a(), 1.0F) : $$1;
+      return this.gy() ? bxh.c($$1.a(), 1.0F) : $$1;
    }
 
    @Override
    public boolean bG() {
-      return !this.gv() && super.bG();
+      return !this.gy() && super.bG();
    }
 
    @Override
@@ -462,7 +462,7 @@ public class crl extends cpk implements egz {
    }
 
    @VisibleForTesting
-   public crk t() {
+   public crk gv() {
       return this.cm;
    }
 
@@ -483,12 +483,12 @@ public class crl extends cpk implements egz {
    }
 
    @Override
-   public egz.a x() {
+   public egz.a gw() {
       return this.cl;
    }
 
    @Override
-   public egz.d gu() {
+   public egz.d gx() {
       return this.ck;
    }
 
@@ -518,7 +518,7 @@ public class crl extends cpk implements egz {
 
       @Override
       public boolean a(asb $$0, iw $$1, jg<egq> $$2, egq.a $$3) {
-         if (!crl.this.gj() && !crl.this.eH() && !crl.this.ec().a(chh.aJ) && !crl.this.gv() && $$0.E_().a($$1)) {
+         if (!crl.this.gj() && !crl.this.eH() && !crl.this.ec().a(chh.aJ) && !crl.this.gy() && $$0.E_().a($$1)) {
             if ($$3.a() instanceof byf $$4 && !crl.this.b($$4)) {
                return false;
             }
@@ -554,7 +554,7 @@ public class crl extends cpk implements egz {
                crl.this.d($$3);
             }
 
-            if (!crl.this.n().d()) {
+            if (!crl.this.u().d()) {
                Optional<byf> $$7 = crl.this.cm.a();
                if ($$4 != null || $$7.isEmpty() || $$7.get() == $$3) {
                   crm.a(crl.this, $$6);

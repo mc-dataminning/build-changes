@@ -37,7 +37,7 @@ class cwf extends cxz {
    @Override
    public boolean a(csi $$0) {
       dak $$1 = this.g();
-      return !$$1.f() && !$$0.b() && dgz.a($$1, dgy.E) ? false : super.a($$0);
+      return !$$1.f() && !$$0.gz() && dgz.a($$1, dgy.E) ? false : super.a($$0);
    }
 
    @Nullable

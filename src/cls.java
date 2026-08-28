@@ -51,11 +51,11 @@ public class cls extends cjv {
    }
 
    @Override
-   public void q() {
+   public void m() {
       this.al.a(bQ, OptionalInt.empty());
    }
 
-   public Optional<bxe> t() {
+   public Optional<bxe> p() {
       return this.al.a(bQ).stream().mapToObj(this.dV()::a).filter(Objects::nonNull).findFirst();
    }
 
@@ -64,16 +64,16 @@ public class cls extends cjv {
    }
 
    @Override
-   public int ah() {
+   public int ag() {
       return 35;
    }
 
    @Override
-   public int af() {
+   public int ae() {
       return 5;
    }
 
-   public jg<clu> x() {
+   public jg<clu> u() {
       return this.al.a(bP);
    }
 
@@ -84,7 +84,7 @@ public class cls extends cjv {
    @Nullable
    @Override
    public <T> T a(kk<? extends T> $$0) {
-      return $$0 == kl.aK ? c((kk<T>)$$0, this.x()) : super.a($$0);
+      return $$0 == kl.aK ? c((kk<T>)$$0, this.u()) : super.a($$0);
    }
 
    @Override
@@ -106,7 +106,7 @@ public class cls extends cjv {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      cur.a($$0, this.x());
+      cur.a($$0, this.u());
    }
 
    @Override
@@ -128,12 +128,12 @@ public class cls extends cjv {
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (this.dV().A_()) {
          this.bO.a(this.bi() && !this.aT.d(), this.af);
       }
 
-      super.h();
+      super.g();
    }
 
    @Override
@@ -171,7 +171,7 @@ public class cls extends cjv {
          $$1 = Math.min($$0 * 25.0F, 1.0F);
       }
 
-      this.aT.a($$1, 0.4F, this.n_() ? 3.0F : 1.0F);
+      this.aT.a($$1, 0.4F, this.e_() ? 3.0F : 1.0F);
    }
 
    @Override
@@ -191,7 +191,7 @@ public class cls extends cjv {
    }
 
    @Override
-   public boolean n_() {
+   public boolean e_() {
       return false;
    }
 
@@ -218,7 +218,7 @@ public class cls extends cjv {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.kp;
    }
 
@@ -230,7 +230,7 @@ public class cls extends cjv {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.kq;
    }
 
@@ -245,8 +245,8 @@ public class cls extends cjv {
    }
 
    @Override
-   protected void ac() {
-      super.ac();
+   protected void ab() {
+      super.ab();
       agx.a(this);
    }
 
@@ -267,7 +267,7 @@ public class cls extends cjv {
    }
 
    public static boolean i(byf $$0) {
-      if ($$0 instanceof cpt $$1 && $$1.gs() != 1) {
+      if ($$0 instanceof cpt $$1 && $$1.gv() != 1) {
          return false;
       }
 
@@ -281,8 +281,8 @@ public class cls extends cjv {
 
    @Nullable
    @Override
-   public byf f() {
-      return this.Q();
+   public byf e() {
+      return this.P();
    }
 
    @Override
@@ -301,7 +301,7 @@ public class cls extends cjv {
 
       @Override
       protected boolean c() {
-         return cls.this.t().isEmpty();
+         return cls.this.p().isEmpty();
       }
    }
 

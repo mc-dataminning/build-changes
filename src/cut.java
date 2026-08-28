@@ -112,7 +112,7 @@ public abstract class cut extends cvn implements byd {
       if (this.dV() instanceof asb) {
          this.aE = true;
          this.aF = $$0;
-         if (this.K() == 0) {
+         if (this.M() == 0) {
             this.m(60);
          }
       }
@@ -148,7 +148,7 @@ public abstract class cut extends cvn implements byd {
    }
 
    @Override
-   public bya S_() {
+   public bya l_() {
       return this.r;
    }
 
@@ -158,9 +158,9 @@ public abstract class cut extends cvn implements byd {
    }
 
    @Override
-   public void h() {
+   public void g() {
       this.aC = this.aB;
-      this.aB = this.x();
+      this.aB = this.D();
       if (this.aB != cut.a.b && this.aB != cut.a.c) {
          this.p = 0.0F;
       } else {
@@ -179,16 +179,16 @@ public abstract class cut extends cvn implements byd {
          this.b(this.G() - 1.0F);
       }
 
-      super.h();
+      super.g();
       this.r.e();
       if (this.dg()) {
          if (!(this.cZ() instanceof csi)) {
             this.a(false, false);
          }
 
-         this.F();
+         this.J();
          if (this.dV().C) {
-            this.J();
+            this.K();
             this.dV().a(new aib(this.c(0), this.c(1)));
          }
 
@@ -199,7 +199,7 @@ public abstract class cut extends cvn implements byd {
 
       this.aI();
       this.aI();
-      this.v();
+      this.C();
 
       for (int $$0 = 0; $$0 <= 1; $$0++) {
          if (this.c($$0)) {
@@ -244,9 +244,9 @@ public abstract class cut extends cvn implements byd {
       }
    }
 
-   private void v() {
+   private void C() {
       if (this.dV().C) {
-         int $$0 = this.K();
+         int $$0 = this.M();
          if ($$0 > 0) {
             this.aG += 0.05F;
          } else {
@@ -261,7 +261,7 @@ public abstract class cut extends cvn implements byd {
             this.m(0);
          }
 
-         int $$1 = this.K();
+         int $$1 = this.M();
          if ($$1 > 0) {
             this.m(--$$1);
             int $$2 = 60 - $$1 - 1;
@@ -283,7 +283,7 @@ public abstract class cut extends cvn implements byd {
 
    @Nullable
    protected awx f() {
-      return switch (this.x()) {
+      return switch (this.D()) {
          case a, b, c -> awy.cm;
          case d -> awy.cl;
          default -> null;
@@ -301,7 +301,7 @@ public abstract class cut extends cvn implements byd {
 
    @Nullable
    @Override
-   public byd.a Z_() {
+   public byd.a S_() {
       return this.aJ;
    }
 
@@ -323,15 +323,15 @@ public abstract class cut extends cvn implements byd {
       this.i($$3.e($$2.c($$4 ? 0.15F : 0.2F)));
    }
 
-   private cut.a x() {
-      cut.a $$0 = this.E();
+   private cut.a D() {
+      cut.a $$0 = this.F();
       if ($$0 != null) {
          this.az = this.cR().e;
          return $$0;
-      } else if (this.D()) {
+      } else if (this.E()) {
          return cut.a.a;
       } else {
-         float $$1 = this.j();
+         float $$1 = this.l();
          if ($$1 > 0.0F) {
             this.aA = $$1;
             return cut.a.d;
@@ -341,7 +341,7 @@ public abstract class cut extends cvn implements byd {
       }
    }
 
-   public float g() {
+   public float i() {
       ffx $$0 = this.cR();
       int $$1 = azz.a($$0.a);
       int $$2 = azz.c($$0.d);
@@ -377,7 +377,7 @@ public abstract class cut extends cvn implements byd {
       return (float)($$4 + 1);
    }
 
-   public float j() {
+   public float l() {
       ffx $$0 = this.cR();
       ffx $$1 = new ffx($$0.a, $$0.b - 0.001, $$0.c, $$0.d, $$0.b, $$0.f);
       int $$2 = azz.a($$1.a) - 1;
@@ -412,7 +412,7 @@ public abstract class cut extends cvn implements byd {
       return $$9 / (float)$$10;
    }
 
-   private boolean D() {
+   private boolean E() {
       ffx $$0 = this.cR();
       int $$1 = azz.a($$0.a);
       int $$2 = azz.c($$0.d);
@@ -442,7 +442,7 @@ public abstract class cut extends cvn implements byd {
    }
 
    @Nullable
-   private cut.a E() {
+   private cut.a F() {
       ffx $$0 = this.cR();
       double $$1 = $$0.e + 0.001;
       int $$2 = azz.a($$0.a);
@@ -478,13 +478,13 @@ public abstract class cut extends cvn implements byd {
       return 0.04;
    }
 
-   private void F() {
+   private void J() {
       double $$0 = -this.bd();
       double $$1 = 0.0;
       float $$2 = 0.05F;
       if (this.aC == cut.a.e && this.aB != cut.a.e && this.aB != cut.a.d) {
          this.az = this.e(1.0);
-         double $$3 = (double)(this.g() - this.dr()) + 0.101;
+         double $$3 = (double)(this.i() - this.dr()) + 0.101;
          if (this.dV().a(this, this.cR().d(0.0, $$3 - this.dC(), 0.0))) {
             this.a_(this.dA(), $$3, this.dG());
             this.i(this.dy().d(1.0, 0.0, 1.0));
@@ -521,7 +521,7 @@ public abstract class cut extends cvn implements byd {
       }
    }
 
-   private void J() {
+   private void K() {
       if (this.bZ()) {
          float $$0 = 0.0F;
          if (this.s) {
@@ -645,8 +645,8 @@ public abstract class cut extends cvn implements byd {
 
    @Override
    public void a(bxe.d $$0) {
-      if (!this.dV().C && $$0.a() && this.T_()) {
-         this.y();
+      if (!this.dV().C && $$0.a() && this.Q_()) {
+         this.x();
       }
 
       super.a($$0);
@@ -657,7 +657,7 @@ public abstract class cut extends cvn implements byd {
       this.aD = this.dy().e;
       if (!this.bY()) {
          if ($$1) {
-            this.k();
+            this.j();
          } else if (!this.dV().b_(this.dv().e()).a(axs.a) && $$0 < 0.0) {
             this.Z -= (double)((float)$$0);
          }
@@ -672,7 +672,7 @@ public abstract class cut extends cvn implements byd {
       this.al.a(l, $$0);
    }
 
-   private int K() {
+   private int M() {
       return this.al.a(l);
    }
 
@@ -708,7 +708,7 @@ public abstract class cut extends cvn implements byd {
    }
 
    @Override
-   protected final dag o() {
+   protected final dag p() {
       return this.aK.get();
    }
 

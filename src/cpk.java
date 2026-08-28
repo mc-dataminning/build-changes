@@ -12,13 +12,13 @@ public abstract class cpk extends byn implements cpc {
    }
 
    @Override
-   public void k_() {
+   public void d_() {
       this.eZ();
-      this.gw();
-      super.k_();
+      this.gz();
+      super.d_();
    }
 
-   protected void gw() {
+   protected void gz() {
       float $$0 = this.bw();
       if ($$0 > 0.5F) {
          this.bd += 2;
@@ -26,7 +26,7 @@ public abstract class cpk extends byn implements cpc {
    }
 
    @Override
-   protected boolean aa() {
+   protected boolean Z() {
       return true;
    }
 
@@ -46,7 +46,7 @@ public abstract class cpk extends byn implements cpc {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.nw;
    }
 
@@ -83,8 +83,8 @@ public abstract class cpk extends byn implements cpc {
       return $$1.an() != buz.a && a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static bzk.a gx() {
-      return byh.E().a(bzl.c);
+   public static bzk.a gA() {
+      return byh.D().a(bzl.c);
    }
 
    @Override

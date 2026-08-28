@@ -31,7 +31,7 @@ public class ckv extends cjv {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cev(this));
       this.bF.a(1, new ceq(this, this.dV()));
       this.bF.a(1, new ckv.e(this, 2.2));
@@ -68,8 +68,8 @@ public class ckv extends cjv {
    }
 
    @Override
-   public void s() {
-      super.s();
+   public void r() {
+      super.r();
       double $$0 = this.bC.c();
       if ($$0 > 0.0) {
          double $$1 = this.dy().j();
@@ -88,7 +88,7 @@ public class ckv extends cjv {
    }
 
    public void i(double $$0) {
-      this.O().a($$0);
+      this.N().a($$0);
       this.bC.a(this.bC.d(), this.bC.e(), this.bC.f(), $$0);
    }
 
@@ -96,12 +96,12 @@ public class ckv extends cjv {
    public void s(boolean $$0) {
       super.s($$0);
       if ($$0) {
-         this.a(this.x(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * 0.8F);
+         this.a(this.u(), this.fe(), ((this.ae.i() - this.ae.i()) * 0.2F + 1.0F) * 0.8F);
       }
    }
 
    @Override
-   public void q() {
+   public void m() {
       this.s(true);
       this.bX = 10;
       this.bW = 0;
@@ -133,11 +133,11 @@ public class ckv extends cjv {
          }
 
          if (this.gu() == ckv.g.g && this.bZ == 0) {
-            byf $$1 = this.f();
+            byf $$1 = this.e();
             if ($$1 != null && this.g((bxe)$$1) < 16.0) {
                this.c($$1.dA(), $$1.dG());
                this.bC.a($$1.dA(), $$1.dC(), $$1.dG(), this.bC.c());
-               this.q();
+               this.m();
                this.bY = true;
             }
          }
@@ -152,7 +152,7 @@ public class ckv extends cjv {
                }
 
                this.c($$4.d, $$4.f);
-               this.q();
+               this.m();
             }
          } else if (!$$2.d()) {
             this.gv();
@@ -193,8 +193,8 @@ public class ckv extends cjv {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.bW != this.bX) {
          this.bW++;
       } else if (this.bX != 0) {
@@ -204,7 +204,7 @@ public class ckv extends cjv {
       }
    }
 
-   public static bzk.a t() {
+   public static bzk.a p() {
       return cjv.gz().a(bzl.s, 3.0).a(bzl.v, 0.3F).a(bzl.c, 3.0);
    }
 
@@ -222,12 +222,12 @@ public class ckv extends cjv {
       this.ca = $$0.b("MoreCarrotTicks", 0);
    }
 
-   protected awx x() {
+   protected awx u() {
       return awy.vP;
    }
 
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.vL;
    }
 
@@ -237,7 +237,7 @@ public class ckv extends cjv {
    }
 
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.vN;
    }
 
@@ -292,7 +292,7 @@ public class ckv extends cjv {
          this.bG.a(2, new cgu<>(this, csi.class, true));
          this.bG.a(2, new cgu<>(this, cmx.class, true));
          this.g(bzl.c).a(new bzj(bT, 5.0, bzj.a.a));
-         if (!this.h_()) {
+         if (!this.g_()) {
             this.b(xg.c(ag.a("entity", bQ)));
          }
       } else {
@@ -421,7 +421,7 @@ public class ckv extends cjv {
       @Override
       public void b() {
          if (this.a) {
-            this.b.q();
+            this.b.m();
             this.a = false;
          }
       }
@@ -507,7 +507,7 @@ public class ckv extends cjv {
       @Override
       public void a() {
          super.a();
-         this.g.J().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.ad());
+         this.g.I().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, 10.0F, (float)this.g.ac());
          if (this.m()) {
             dkj $$0 = this.g.dV();
             iw $$1 = this.e.d();

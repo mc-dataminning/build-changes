@@ -18,9 +18,9 @@ public class gyr extends gxu<coo, hfb> {
 
    public void a(coo $$0, hfb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.v = (float)$$0.g() + $$2;
+      $$1.v = (float)$$0.f() + $$2;
       $$1.d = $$0.b;
-      $$1.a($$0, $$0.f(), this.i);
+      $$1.a($$0, $$0.e(), this.i);
    }
 
    private static ffx a(hhi $$0) {

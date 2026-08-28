@@ -32,7 +32,7 @@ public class hlh extends aus {
 
    @Nullable
    private Path a(Path $$0) {
-      if (ac.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
+      if (ac.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
          Path $$1 = $$0.getParent().resolve("resourcepacks");
          if (Files.isDirectory($$1)) {
             return $$1;

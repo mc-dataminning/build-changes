@@ -39,10 +39,10 @@ public class cnm extends cni {
 
    private void b(asb $$0) {
       if (this.c != null && this.c.c()) {
-         iw $$1 = $$0.a(ehp.a.f, eku.a(this.a.j()));
-         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
+         iw $$1 = $$0.a(ehp.a.f, eku.a(this.a.m()));
+         int $$2 = this.a.gs() == null ? 0 : this.a.gs().e();
          if (this.a.dY().a($$2 + 3) == 0) {
-            this.a.t().a(cnw.c);
+            this.a.gr().a(cnw.c);
             return;
          }
 
@@ -61,7 +61,7 @@ public class cnm extends cni {
       }
 
       if (this.c == null || this.c.c()) {
-         int $$6 = this.a.n();
+         int $$6 = this.a.u();
          int $$7 = $$6;
          if (this.a.dY().a(8) == 0) {
             this.e = !this.e;
@@ -74,7 +74,7 @@ public class cnm extends cni {
             $$7--;
          }
 
-         if (this.a.x() != null && this.a.x().e() >= 0) {
+         if (this.a.gs() != null && this.a.gs().e() >= 0) {
             $$7 %= 12;
             if ($$7 < 0) {
                $$7 += 12;
@@ -95,8 +95,8 @@ public class cnm extends cni {
    }
 
    private void a(csi $$0) {
-      this.a.t().a(cnw.b);
-      this.a.t().b(cnw.b).a($$0);
+      this.a.gr().a(cnw.b);
+      this.a.gr().b(cnw.b).a($$0);
    }
 
    private void i() {

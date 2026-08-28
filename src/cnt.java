@@ -18,7 +18,7 @@ public class cnt extends cnj {
       byf $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
       if ($$1 != null) {
          if (this.h > 25) {
-            this.a.t().a(cnw.h);
+            this.a.gr().a(cnw.h);
          } else {
             fgc $$2 = new fgc($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
             fgc $$3 = new fgc((double)azz.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azz.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
@@ -41,10 +41,10 @@ public class cnt extends cnj {
          }
       } else if (this.h >= 100) {
          $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-         this.a.t().a(cnw.e);
+         this.a.gr().a(cnw.e);
          if ($$1 != null) {
-            this.a.t().a(cnw.i);
-            this.a.t().b(cnw.i).a(new fgc($$1.dA(), $$1.dC(), $$1.dG()));
+            this.a.gr().a(cnw.i);
+            this.a.gr().b(cnw.i).a(new fgc($$1.dA(), $$1.dC(), $$1.dG()));
          }
       }
    }

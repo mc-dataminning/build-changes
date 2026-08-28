@@ -135,7 +135,7 @@ public class ane {
       if ($$1.h().isEmpty()) {
          $$0.a(() -> xg.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> xg.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xj.b($$1.h(), csi::m_)), true);
+         $$0.a(() -> xg.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xj.b($$1.h(), csi::P_)), true);
       }
 
       return $$1.h().size();
@@ -219,7 +219,7 @@ public class ane {
          if ($$1.h().isEmpty()) {
             $$0.a(() -> xg.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> xg.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xj.b($$2, csi::m_)), true);
+            $$0.a(() -> xg.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xj.b($$2, csi::P_)), true);
          }
 
          return $$1.h().size();

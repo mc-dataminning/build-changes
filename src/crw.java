@@ -1,5 +1,5 @@
 public interface crw {
-   crv gC();
+   crv gF();
 
    void a(crv var1);
 }

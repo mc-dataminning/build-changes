@@ -8,8 +8,8 @@ public class cfk extends cfj {
 
    @Override
    public boolean b() {
-      if (this.h.gu()) {
-         this.c = this.h.x();
+      if (this.h.gv()) {
+         this.c = this.h.gu();
          return true;
       } else {
          return false;

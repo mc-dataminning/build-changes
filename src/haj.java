@@ -25,6 +25,6 @@ public class haj extends gxu<ctr, hgi> {
       super.a($$0, $$1, $$2);
       $$1.b = $$0.l($$2);
       $$1.a = $$0.k($$2);
-      $$1.c = $$0.y();
+      $$1.c = $$0.x();
    }
 }

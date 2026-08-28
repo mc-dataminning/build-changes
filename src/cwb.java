@@ -569,7 +569,7 @@ public abstract class cwb {
       boolean var10000;
       label27: {
          $$2 = $$0.dQ() && $$0.dR() != bxe.d.e;
-         if ($$0 instanceof asc $$3 && $$3.u()) {
+         if ($$0 instanceof asc $$3 && $$3.t()) {
             var10000 = true;
             break label27;
          }

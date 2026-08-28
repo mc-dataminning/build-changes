@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Locale;
 import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 import org.apache.commons.io.IOUtils;
@@ -205,8 +204,8 @@ public class grd implements AutoCloseable {
       if ($$1 != null) {
          if (this.j.s != null && this.j.t != null) {
             brl.a().a("pick");
-            double $$2 = this.j.t.gL();
-            double $$3 = this.j.t.gM();
+            double $$2 = this.j.t.gM();
+            double $$3 = this.j.t.gN();
             fga $$4 = this.a($$1, $$2, $$3, $$0);
             this.j.w = $$4;
             this.j.v = $$4 instanceof ffz $$5 ? $$5.a() : null;
@@ -391,8 +390,8 @@ public class grd implements AutoCloseable {
       if (!this.j.y) {
          brm $$2 = brl.a();
          boolean $$3 = this.j.c();
-         int $$4 = (int)(this.j.o.e() * (double)this.j.aO().o() / (double)this.j.aO().m());
-         int $$5 = (int)(this.j.o.f() * (double)this.j.aO().p() / (double)this.j.aO().n());
+         int $$4 = (int)this.j.o.a(this.j.aO());
+         int $$5 = (int)this.j.o.b(this.j.aO());
          if ($$3 && $$1 && this.j.s != null) {
             $$2.a("level");
             this.a($$0);
@@ -445,19 +444,7 @@ public class grd implements AutoCloseable {
                p $$16 = p.a(var17, "Rendering screen");
                q $$17 = $$16.a("Screen render details");
                $$17.a("Screen name", () -> this.j.z.getClass().getCanonicalName());
-               $$17.a("Mouse location", () -> String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%f, %f)", $$4, $$5, this.j.o.e(), this.j.o.f()));
-               $$17.a(
-                  "Screen size",
-                  () -> String.format(
-                        Locale.ROOT,
-                        "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f",
-                        this.j.aO().o(),
-                        this.j.aO().p(),
-                        this.j.aO().k(),
-                        this.j.aO().l(),
-                        this.j.aO().s()
-                     )
-               );
+               this.j.o.a($$17, this.j.aO());
                throw new aa($$16);
             }
 

@@ -27,7 +27,7 @@ public class gyp extends gyo<cpi, hex> {
       super.a($$0, $$1, $$2);
       fgc[] $$3 = $$0.J($$2);
       $$1.a = Arrays.copyOf($$3, $$3.length);
-      $$1.n = $$0.gB();
+      $$1.n = $$0.gE();
    }
 
    public void a(hex $$0, fld $$1, grn $$2, int $$3) {

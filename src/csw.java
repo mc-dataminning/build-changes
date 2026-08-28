@@ -18,20 +18,20 @@ public class csw extends bxe implements cta {
 
    public void a(dak $$0) {
       if ($$0.f()) {
-         this.ar().a(b, this.g());
+         this.ar().a(b, this.f());
       } else {
          this.ar().a(b, $$0.c(1));
       }
    }
 
    @Override
-   public dak f() {
+   public dak e() {
       return this.ar().a(b);
    }
 
    @Override
    protected void a(aky.a $$0) {
-      $$0.a(b, this.g());
+      $$0.a(b, this.f());
    }
 
    @Override
@@ -83,8 +83,8 @@ public class csw extends bxe implements cta {
    }
 
    @Override
-   public void h() {
-      super.h();
+   public void g() {
+      super.g();
       fgc $$0 = this.dy();
       double $$1 = this.dA() + $$0.d;
       double $$2 = this.dC() + $$0.e;
@@ -126,7 +126,7 @@ public class csw extends bxe implements cta {
             this.a(awy.iF, 1.0F, 1.0F);
             this.aq();
             if (this.g) {
-               this.dV().b(new coo(this.dV(), this.dA(), this.dC(), this.dG(), this.f()));
+               this.dV().b(new coo(this.dV(), this.dA(), this.dC(), this.dG(), this.e()));
             } else {
                this.dV().c(2003, this.dv(), 0);
             }
@@ -139,16 +139,16 @@ public class csw extends bxe implements cta {
    @Override
    public void b(ua $$0) {
       alp<va> $$1 = this.dX().a(uo.a);
-      $$0.a("Item", dak.b, $$1, this.f());
+      $$0.a("Item", dak.b, $$1, this.e());
    }
 
    @Override
    public void a(ua $$0) {
       alp<va> $$1 = this.dX().a(uo.a);
-      this.a($$0.<dak>a("Item", dak.b, $$1).orElse(this.g()));
+      this.a($$0.<dak>a("Item", dak.b, $$1).orElse(this.f()));
    }
 
-   private dak g() {
+   private dak f() {
       return new dak(dao.tA);
    }
 

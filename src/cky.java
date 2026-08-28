@@ -10,7 +10,7 @@ public class cky extends cjs implements byv, cpo {
    }
 
    @Override
-   protected void D() {
+   protected void C() {
       this.bF.a(1, new cga(this, 1.25, 20, 10.0F));
       this.bF.a(2, new cgo(this, 1.0, 1.0000001E-5F));
       this.bF.a(3, new cfj(this, csi.class, 6.0F));
@@ -18,8 +18,8 @@ public class cky extends cjs implements byv, cpo {
       this.bG.a(1, new cgu<>(this, byh.class, 10, true, false, ($$0, $$1) -> $$0 instanceof cpc));
    }
 
-   public static bzk.a j() {
-      return byh.E().a(bzl.s, 4.0).a(bzl.v, 0.2F);
+   public static bzk.a m() {
+      return byh.D().a(bzl.s, 4.0).a(bzl.v, 0.2F);
    }
 
    @Override
@@ -31,7 +31,7 @@ public class cky extends cjs implements byv, cpo {
    @Override
    public void b(ua $$0) {
       super.b($$0);
-      $$0.a("Pumpkin", this.m());
+      $$0.a("Pumpkin", this.p());
    }
 
    @Override
@@ -46,8 +46,8 @@ public class cky extends cjs implements byv, cpo {
    }
 
    @Override
-   public void k_() {
-      super.k_();
+   public void d_() {
+      super.d_();
       if (this.dV() instanceof asb $$0) {
          if (this.dV().u(this.dv()).a(axm.ae)) {
             this.a($$0, this.dW().d(), 1.0F);
@@ -111,10 +111,10 @@ public class cky extends cjs implements byv, cpo {
 
    @Override
    public boolean a() {
-      return this.bJ() && this.m();
+      return this.bJ() && this.p();
    }
 
-   public boolean m() {
+   public boolean p() {
       return (this.al.a(a) & 16) != 0;
    }
 
@@ -129,7 +129,7 @@ public class cky extends cjs implements byv, cpo {
 
    @Nullable
    @Override
-   protected awx u() {
+   protected awx s() {
       return awy.zH;
    }
 
@@ -141,7 +141,7 @@ public class cky extends cjs implements byv, cpo {
 
    @Nullable
    @Override
-   protected awx l_() {
+   protected awx j_() {
       return awy.zI;
    }
 

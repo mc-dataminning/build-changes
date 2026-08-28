@@ -22,7 +22,7 @@ public class cnu extends cni {
    public void a(asb $$0) {
       if (this.g == null) {
          b.warn("Skipping player strafe phase because no player was found");
-         this.a.t().a(cnw.a);
+         this.a.gr().a(cnw.a);
       } else {
          if (this.e != null && this.e.c()) {
             double $$1 = this.g.dA();
@@ -72,7 +72,7 @@ public class cnu extends cni {
                      }
                   }
 
-                  this.a.t().a(cnw.a);
+                  this.a.gr().a(cnw.a);
                }
             } else if (this.d > 0) {
                this.d--;
@@ -85,7 +85,7 @@ public class cnu extends cni {
 
    private void i() {
       if (this.e == null || this.e.c()) {
-         int $$0 = this.a.n();
+         int $$0 = this.a.u();
          int $$1 = $$0;
          if (this.a.dY().a(8) == 0) {
             this.h = !this.h;
@@ -98,7 +98,7 @@ public class cnu extends cni {
             $$1--;
          }
 
-         if (this.a.x() != null && this.a.x().e() > 0) {
+         if (this.a.gs() != null && this.a.gs().e() > 0) {
             $$1 %= 12;
             if ($$1 < 0) {
                $$1 += 12;
@@ -144,7 +144,7 @@ public class cnu extends cni {
 
    public void a(byf $$0) {
       this.g = $$0;
-      int $$1 = this.a.n();
+      int $$1 = this.a.u();
       int $$2 = this.a.q(this.g.dA(), this.g.dC(), this.g.dG());
       int $$3 = this.g.dz();
       int $$4 = this.g.dF();

@@ -17,8 +17,8 @@ public class hbd extends gym<cqe, hgw, gki<hgw>> {
 
    public void a(cqe $$0, hgw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gB();
-      $$1.c = $$0.gC();
+      $$1.b = $$0.gE();
+      $$1.c = $$0.gF();
       $$1.a = $$0.gl();
    }
 

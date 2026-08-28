@@ -18,7 +18,7 @@ public class coh extends cod {
    }
 
    @Override
-   protected void f() {
+   protected void e() {
       this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
       double $$0 = (double)this.an().l() / 2.0;
       double $$1 = (double)this.an().m();
@@ -49,13 +49,13 @@ public class coh extends cod {
          return bvc.a;
       } else {
          boolean $$2 = false;
-         List<byd> $$3 = dau.a(this.dV(), this.j(), $$1x -> {
-            bxe $$2x = $$1x.C();
+         List<byd> $$3 = dau.a(this.dV(), this.i(), $$1x -> {
+            bxe $$2x = $$1x.B();
             return $$2x == $$0 || $$2x == this;
          });
 
          for (byd $$4 : $$3) {
-            if ($$4.C() == $$0) {
+            if ($$4.B() == $$0) {
                $$4.a_(this, true);
                $$2 = true;
             }
@@ -66,8 +66,8 @@ public class coh extends cod {
             this.aq();
             if ($$0.gk().d) {
                for (byd $$6 : $$3) {
-                  if ($$6.T_() && $$6.C() == this) {
-                     $$6.z();
+                  if ($$6.Q_() && $$6.B() == this) {
+                     $$6.y();
                      $$5 = true;
                   }
                }
@@ -83,7 +83,7 @@ public class coh extends cod {
    }
 
    @Override
-   public boolean g() {
+   public boolean f() {
       return this.dV().a_(this.a).a(axn.U);
    }
 
@@ -93,7 +93,7 @@ public class coh extends cod {
       int $$4 = $$1.w();
 
       for (coh $$6 : $$0.a(coh.class, new ffx((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.j().equals($$1)) {
+         if ($$6.i().equals($$1)) {
             return $$6;
          }
       }
@@ -103,13 +103,14 @@ public class coh extends cod {
       return $$7;
    }
 
-   public void m() {
+   @Override
+   public void l() {
       this.a(awy.oF, 1.0F, 1.0F);
    }
 
    @Override
    public zo<acf> a(arz $$0) {
-      return new acg(this, 0, this.j());
+      return new acg(this, 0, this.i());
    }
 
    @Override

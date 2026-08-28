@@ -124,7 +124,7 @@ public class fuf<T> extends fto {
       if (this.j) {
          T $$1 = this.b(1);
          xg $$2 = this.c($$1);
-         if (this.aO_()) {
+         if (this.aJ_()) {
             $$0.a(fxu.d, xg.a("narration.cycle_button.usage.focused", $$2));
          } else {
             $$0.a(fxu.d, xg.a("narration.cycle_button.usage.hovered", $$2));

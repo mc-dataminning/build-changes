@@ -18,7 +18,7 @@ public record ddq(float c, Optional<alr> d) {
 
    public void a(dak $$0, byf $$1) {
       if ($$1 instanceof csi $$2) {
-         $$2.gF().a($$0, this.a());
+         $$2.gG().a($$0, this.a());
       }
    }
 

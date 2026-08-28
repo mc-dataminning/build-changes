@@ -65,7 +65,7 @@ public class com extends bxe {
       this.al.a(e, $$0);
    }
 
-   public iw f() {
+   public iw e() {
       return this.al.a(e);
    }
 
@@ -90,7 +90,7 @@ public class com extends bxe {
    }
 
    @Override
-   public void h() {
+   public void g() {
       if (this.m.l()) {
          this.aq();
       } else {
@@ -250,7 +250,7 @@ public class com extends bxe {
       this.p = $$1;
    }
 
-   public void g() {
+   public void f() {
       this.n = true;
    }
 
@@ -265,7 +265,7 @@ public class com extends bxe {
       $$0.a("Immitating BlockState", this.m.toString());
    }
 
-   public ebq j() {
+   public ebq i() {
       return this.m;
    }
 
@@ -276,7 +276,7 @@ public class com extends bxe {
 
    @Override
    public zo<acf> a(arz $$0) {
-      return new acg(this, $$0, dno.j(this.j()));
+      return new acg(this, $$0, dno.j(this.i()));
    }
 
    @Override

@@ -55,8 +55,8 @@ public class fod extends hrc {
    }
 
    @Override
-   public void aT_() {
-      this.J = this.c(fty.a(xf.e, $$0 -> this.aQ_()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
+   public void aO_() {
+      this.J = this.c(fty.a(xf.e, $$0 -> this.aL_()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
       this.E();
    }
 
@@ -107,7 +107,7 @@ public class fod extends hrc {
    }
 
    @Override
-   public void aQ_() {
+   public void aL_() {
       this.P = true;
       if (this.R && this.aa != null && this.M == null) {
          this.aa.accept(true);

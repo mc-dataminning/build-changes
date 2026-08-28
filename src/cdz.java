@@ -33,17 +33,17 @@ public class cdz implements cea {
    }
 
    private void b() {
-      this.a.aV = azz.c(this.a.aV, this.a.aX, (float)this.a.af());
+      this.a.aV = azz.c(this.a.aV, this.a.aX, (float)this.a.ae());
    }
 
    private void c() {
-      this.a.aX = azz.c(this.a.aX, this.a.aV, (float)this.a.af());
+      this.a.aX = azz.c(this.a.aX, this.a.aV, (float)this.a.ae());
    }
 
    private void d() {
       int $$0 = this.e - 10;
       float $$1 = azz.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.af() * (1.0F - $$1);
+      float $$2 = (float)this.a.ae() * (1.0F - $$1);
       this.a.aV = azz.c(this.a.aV, this.a.aX, $$2);
    }
 

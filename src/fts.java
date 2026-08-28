@@ -56,11 +56,11 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
 
    @Nullable
    public E r() {
-      return (E)super.aN_();
+      return (E)super.aI_();
    }
 
    @Override
-   public final List<E> aJ_() {
+   public final List<E> aE_() {
       return this.n;
    }
 
@@ -75,7 +75,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
    }
 
    protected E b(int $$0) {
-      return this.aJ_().get($$0);
+      return this.aE_().get($$0);
    }
 
    protected int b(E $$0) {
@@ -97,11 +97,11 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
    }
 
    protected int t() {
-      return this.aJ_().size();
+      return this.aE_().size();
    }
 
    protected boolean c(int $$0) {
-      return Objects.equals(this.p(), this.aJ_().get($$0));
+      return Objects.equals(this.p(), this.aE_().get($$0));
    }
 
    @Nullable
@@ -112,7 +112,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
       int $$5 = $$3 + $$2;
       int $$6 = azz.a($$1 - (double)this.G()) - this.f + (int)this.g() - 4;
       int $$7 = $$6 / this.d;
-      return $$0 >= (double)$$4 && $$0 <= (double)$$5 && $$7 >= 0 && $$6 >= 0 && $$7 < this.t() ? this.aJ_().get($$7) : null;
+      return $$0 >= (double)$$4 && $$0 <= (double)$$5 && $$7 >= 0 && $$6 >= 0 && $$7 < this.t() ? this.aE_().get($$7) : null;
    }
 
    public void a(int $$0, fxm $$1) {
@@ -171,11 +171,11 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
    }
 
    protected void e(E $$0) {
-      this.a((double)(this.aJ_().indexOf($$0) * this.d + this.d / 2 - this.h / 2));
+      this.a((double)(this.aE_().indexOf($$0) * this.d + this.d / 2 - this.h / 2));
    }
 
    protected void f(E $$0) {
-      int $$1 = this.d(this.aJ_().indexOf($$0));
+      int $$1 = this.d(this.aE_().indexOf($$0));
       int $$2 = $$1 - this.G() - 4 - this.d;
       if ($$2 < 0) {
          this.m($$2);
@@ -241,16 +241,16 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
          case a -> -1;
          case b -> 1;
       };
-      if (!this.aJ_().isEmpty() && $$3 != 0) {
+      if (!this.aE_().isEmpty() && $$3 != 0) {
          int $$4;
          if ($$2 == null) {
-            $$4 = $$3 > 0 ? 0 : this.aJ_().size() - 1;
+            $$4 = $$3 > 0 ? 0 : this.aE_().size() - 1;
          } else {
-            $$4 = this.aJ_().indexOf($$2) + $$3;
+            $$4 = this.aE_().indexOf($$2) + $$3;
          }
 
          for (int $$6 = $$4; $$6 >= 0 && $$6 < this.n.size(); $$6 += $$3) {
-            E $$7 = this.aJ_().get($$6);
+            E $$7 = this.aE_().get($$6);
             if ($$1.test($$7)) {
                return $$7;
             }
@@ -279,7 +279,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
       E $$9 = this.b($$4);
       $$9.b($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, Objects.equals(this.q, $$9), $$3);
       if (this.c($$4)) {
-         int $$10 = this.aO_() ? -1 : -8355712;
+         int $$10 = this.aJ_() ? -1 : -8355712;
          this.a($$0, $$6, $$7, $$8, $$10, -16777216);
       }
 
@@ -315,7 +315,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
 
    @Override
    public fxt.a w() {
-      if (this.aO_()) {
+      if (this.aJ_()) {
          return fxt.a.c;
       } else {
          return this.q != null ? fxt.a.b : fxt.a.a;
@@ -347,7 +347,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
    }
 
    protected void a(fxv $$0, E $$1) {
-      List<E> $$2 = this.aJ_();
+      List<E> $$2 = this.aE_();
       if ($$2.size() > 1) {
          int $$3 = $$2.indexOf($$1);
          if ($$3 != -1) {
@@ -365,7 +365,7 @@ public abstract class fts<E extends fts.a<E>> extends ftp {
       }
 
       @Override
-      public boolean aO_() {
+      public boolean aJ_() {
          return this.a.r() == this;
       }
 
