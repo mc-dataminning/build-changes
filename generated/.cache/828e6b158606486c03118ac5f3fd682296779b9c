@@ -1,4 +1,4 @@
-// 1.20.5 Release Candidate 3	2026-08-28T02:15:07.2182268	vanilla/Loot Tables
+// 1.20.5	2026-08-28T02:17:21.6984011	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 fd0a6fb2e90da2113448c834a464e34fae3a8afd data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -779,8 +779,8 @@ ab8ee2eddba087c4f0d082deef93c54d5bb3a2e6 data\minecraft\loot_tables\chests\trial
 2a25a9b8c88614755332c9ce19ba161081917629 data\minecraft\loot_tables\blocks\pearlescent_froglight.json
 50b34f85470c6512ae02c3fd80a2e578a70b1e76 data\minecraft\loot_tables\blocks\shulker_box.json
 4b9657ae4530c16f97a6f6af5d6d6d3d59a3e48b data\minecraft\loot_tables\blocks\coal_block.json
-c83f1047b76733d5b74bf0998f53daa24bff3024 data\minecraft\loot_tables\blocks\pink_glazed_terracotta.json
 0f34f05745c6adccdde0c3bdde812a4e517912ce data\minecraft\loot_tables\blocks\brown_bed.json
+c83f1047b76733d5b74bf0998f53daa24bff3024 data\minecraft\loot_tables\blocks\pink_glazed_terracotta.json
 f1bcc274c2535ffcade6c3b5df8d87b5c0439390 data\minecraft\loot_tables\blocks\gray_stained_glass_pane.json
 1c68ff0dce2c36667e3259552bab4795964f5e48 data\minecraft\loot_tables\blocks\blue_glazed_terracotta.json
 14966e293d2311bcc9aa67382875799230fbb7b8 data\minecraft\loot_tables\entities\cat.json

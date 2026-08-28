@@ -1,4 +1,4 @@
-// 1.20.5 Release Candidate 3	2026-08-28T02:15:07.1956122	vanilla/Model Definitions
+// 1.20.5	2026-08-28T02:17:21.6744672	vanilla/Model Definitions
 85eef47cc497a4ed9c6f57929bcaa6fbf0137caa assets\minecraft\models\block\cherry_trapdoor_open.json
 7f8c744a8192c2170705d5883fb064210e3d2c93 assets\minecraft\models\item\shulker_shell.json
 8c796e9df7e05371423917450a3dea834bdaa2fe assets\minecraft\models\block\light_07.json
@@ -693,8 +693,8 @@ a9f74f8dc3c0b6c50ad0ad14d2bed450043de889 assets\minecraft\models\block\birch_fen
 bac5db4b6cf659cff54c74a9b1c0ad076217cd0b assets\minecraft\blockstates\infested_cobblestone.json
 971141f4a6f1087c8618a37efdccc665015be9f0 assets\minecraft\models\item\ladder.json
 39b36aae9417e4bcc7056f4d657bdc8d500b4174 assets\minecraft\models\item\oak_wood.json
-eb7f87fb8934f3b7ffa6f5059aa75b864b8cf096 assets\minecraft\blockstates\calibrated_sculk_sensor.json
 4498a5bb5a26c7944b42e6e87ea64d456ae90e17 assets\minecraft\blockstates\mossy_cobblestone_stairs.json
+eb7f87fb8934f3b7ffa6f5059aa75b864b8cf096 assets\minecraft\blockstates\calibrated_sculk_sensor.json
 b64799da01e92acc4aea08b346fa9a9a82c05445 assets\minecraft\models\item\weathered_copper_trapdoor.json
 f94cf64a0bfc9f3c410b23cfd5e850d5b2791a82 assets\minecraft\models\block\verdant_froglight_horizontal.json
 a069a10e74b099fd75037384171859d447122321 assets\minecraft\blockstates\green_stained_glass_pane.json
@@ -1992,8 +1992,8 @@ f37ab6d75417f35c88b6a59eda2d56b08a67f9f4 assets\minecraft\blockstates\pink_stain
 05e417c2568a22bf56ff5ee648741ec04884a230 assets\minecraft\models\item\dark_prismarine_stairs.json
 1dbfff9b6cf804221a17378d793fb7f2b00fb35c assets\minecraft\models\block\chest.json
 a45e4c8d7981b771460e80c1a352f915c7e10afb assets\minecraft\models\item\breeze_rod.json
-78c5218cf6f7b1211701a0a13ba0a25d59156c71 assets\minecraft\blockstates\potted_dandelion.json
 3a50c850d47032db4368fbd4bdeba7d33416c59a assets\minecraft\blockstates\oak_button.json
+78c5218cf6f7b1211701a0a13ba0a25d59156c71 assets\minecraft\blockstates\potted_dandelion.json
 45a1489a19e1c6831c05f89a263b251368ee2414 assets\minecraft\models\block\dead_tube_coral_fan.json
 a9fcf055894f9dcbcd736654daf43148fd9172a2 assets\minecraft\blockstates\light_blue_shulker_box.json
 103a3b6f23fe9b415e60e6cc01d1f8d9fc7d65f5 assets\minecraft\models\item\turtle_helmet.json

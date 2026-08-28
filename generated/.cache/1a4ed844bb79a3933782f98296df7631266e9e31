@@ -1,7 +1,7 @@
-// 1.20.5 Release Candidate 3	2026-08-28T02:15:07.1939949	update_1_21/Tags for minecraft:item
+// 1.20.5	2026-08-28T02:17:21.6729542	update_1_21/Tags for minecraft:item
 ba1949056acc66b717086648b77871601c4cd73c data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\enchantable\durability.json
-e4e0677676c88b770fb2f198c8904b8e4899ab59 data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\slabs.json
 eead159568467477b62e9f2314af15d122a3f48f data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\doors.json
+e4e0677676c88b770fb2f198c8904b8e4899ab59 data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\slabs.json
 894534871bdc1917481c684dc1ec0dc9c065560f data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\trim_templates.json
 5e7030f5aec0cfe272652f20c67807d98bc94854 data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\stairs.json
 ba1949056acc66b717086648b77871601c4cd73c data\minecraft\datapacks\update_1_21\data\minecraft\tags\items\enchantable\mace.json
