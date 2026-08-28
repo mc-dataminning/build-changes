@@ -66,7 +66,7 @@ public class Main {
 
          o.g();
          if ($$18.has($$15)) {
-            bqu.f.a(bqs.b);
+            bqw.f.a(bqu.b);
          }
 
          ali.a();
@@ -75,7 +75,7 @@ public class Main {
          Path $$20 = Paths.get("server.properties");
          aqi $$21 = new aqi($$20);
          $$21.b();
-         edo.a($$21.a().M);
+         edw.a($$21.a().M);
          Path $$22 = Paths.get("eula.txt");
          alm $$23 = new alm($$22);
          if ($$18.has($$3)) {
@@ -91,16 +91,16 @@ public class Main {
          File $$24 = new File((String)$$18.valueOf($$11));
          amb $$25 = amb.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().l);
-         eyn $$27 = eyn.b($$24.toPath());
-         eyn.c $$28 = $$27.d($$26);
+         eyv $$27 = eyv.b($$24.toPath());
+         eyv.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            eyo $$30;
+            eyw $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
             } catch (uk | uq | IOException var41) {
-               eyn.b $$32 = $$28.e();
+               eyv.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
@@ -141,29 +141,29 @@ public class Main {
          try {
             ame.c $$42 = a($$21.a(), $$39, $$40, $$41);
             $$43 = af.<amf>c($$6x -> ame.a($$42, $$5xx -> {
-                  jr<edx> $$6xx = $$5xx.d().f(mg.bo);
+                  jr<eef> $$6xx = $$5xx.d().f(mg.bp);
                   if ($$39 != null) {
-                     eyk $$7x = eyn.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     eys $$7x = eyv.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
                      return new ame.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     diz $$8x;
-                     egw $$9x;
-                     egt $$10x;
+                     dje $$8x;
+                     ehe $$9x;
+                     ehb $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = egw.b;
-                        $$10x = eqj.a($$5xx.c());
+                        $$9x = ehe.b;
+                        $$10x = eqr.a($$5xx.c());
                      } else {
                         aqh $$11x = $$21.a();
-                        $$8x = new diz($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new dir($$5xx.b().b()), $$5xx.b());
+                        $$8x = new dje($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new diw($$5xx.b().b()), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.aa.a(true) : $$11x.aa;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     egt.b $$15x = $$10x.a($$6xx);
+                     ehb.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().d());
-                     return new ame.b<>(new eyr($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new ame.b<>(new eyz($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
                }, amf::new, af.h(), $$6x)).get();
          } catch (Exception var39) {
@@ -172,7 +172,7 @@ public class Main {
          }
 
          js.b $$46 = $$43.c().a();
-         eyt $$47 = $$43.d();
+         ezb $$47 = $$43.d();
          boolean $$48 = $$18.has($$8);
          if ($$18.has($$6) || $$48) {
             a($$28, $$47, bbc.a(), $$18.has($$7), () -> true, $$46, $$48);
@@ -215,24 +215,24 @@ public class Main {
 
    private static ame.c a(aqh $$0, @Nullable Dynamic<?> $$1, boolean $$2, aun $$3) {
       boolean $$5;
-      djt $$6;
+      djy $$6;
       if ($$1 != null) {
-         djt $$4 = eyn.a($$1);
+         djy $$4 = eyv.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new djt($$0.U, cuj.h);
+         $$6 = new djy($$0.U, cuo.h);
       }
 
       ame.d $$9 = new ame.d($$3, $$6, $$2, $$5);
       return new ame.c($$9, ej.a.b, $$0.A);
    }
 
-   private static void a(eyn.c $$0, eyt $$1, DataFixer $$2, boolean $$3, BooleanSupplier $$4, js $$5, boolean $$6) {
+   private static void a(eyv.c $$0, ezb $$1, DataFixer $$2, boolean $$3, BooleanSupplier $$4, js $$5, boolean $$6) {
       a.info("Forcing world upgrade!");
 
-      try (btp $$7 = new btp($$0, $$2, $$1, $$5, $$3, $$6)) {
+      try (btr $$7 = new btr($$0, $$2, $$1, $$5, $$3, $$6)) {
          wy $$8 = null;
 
          while (!$$7.b()) {

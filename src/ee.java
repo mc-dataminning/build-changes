@@ -2,7 +2,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public interface ee extends jg.a {
-   static ee a(final jg.a $$0, final cuh $$1) {
+   static ee a(final jg.a $$0, final cum $$1) {
       return new ee() {
          @Override
          public Stream<alf<? extends jr<?>>> b() {
@@ -15,11 +15,11 @@ public interface ee extends jg.a {
          }
 
          @Override
-         public cuh a() {
+         public cum a() {
             return $$1;
          }
       };
    }
 
-   cuh a();
+   cum a();
 }

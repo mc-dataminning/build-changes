@@ -1,350 +1,388 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import io.netty.buffer.ByteBuf;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 
-public final class dza {
-   public static final String a = "normal_config";
-   public static final String b = "ominous_config";
-   public static final int c = 40;
-   private static final int d = 36000;
-   private static final int e = 14;
-   private static final int f = 47;
-   private static final int g = azm.h(47);
-   private static final float h = 0.02F;
-   private je<dzb> i;
-   private je<dzb> j;
-   private final dzd k;
-   private final int l;
-   private final int m;
-   private final dza.b n;
-   private dyz o;
-   private final dyz.a p;
-   private boolean q;
-   private boolean r;
+public class dza extends dxf implements dwz, dxi {
+   private static final wy a = wy.c("test_instance_block.invalid_test");
+   private static final List<dwz.a> b = List.of();
+   private static final List<dwz.a> c = List.of(new dwz.a(axw.a(128, 128, 128)));
+   private static final List<dwz.a> d = List.of(new dwz.a(axw.a(0, 255, 0)));
+   private static final List<dwz.a> e = List.of(new dwz.a(axw.a(255, 0, 0)));
+   private static final List<dwz.a> f = List.of(new dwz.a(axw.a(255, 128, 0)));
+   private static final jz g = new jz(0, 1, 1);
+   private dza.a h = new dza.a(Optional.empty(), jz.i, dsz.a, false, dza.b.a, Optional.empty());
 
-   public MapCodec<dza> a() {
-      return RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dzb.c.optionalFieldOf("normal_config", je.a(dzb.a)).forGetter($$0x -> $$0x.i),
-                  dzb.c.optionalFieldOf("ominous_config", je.a(dzb.a)).forGetter($$0x -> $$0x.j),
-                  dzd.b.forGetter(dza::f),
-                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dza::g),
-                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dza::h)
-               )
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dza($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
-      );
+   public dza(iu $$0, eah $$1) {
+      super(dxh.U, $$0, $$1);
    }
 
-   public dza(dza.b $$0, dyz $$1, dyz.a $$2) {
-      this(je.a(dzb.a), je.a(dzb.a), new dzd(), 36000, 14, $$0, $$1, $$2);
+   public void a(dza.a $$0) {
+      this.h = $$0;
+      this.e();
    }
 
-   public dza(je<dzb> $$0, je<dzb> $$1, dzd $$2, int $$3, int $$4, dza.b $$5, dyz $$6, dyz.a $$7) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.m = $$3;
-      this.l = $$4;
-      this.n = $$5;
-      this.o = $$6;
-      this.p = $$7;
+   public static Optional<jz> a(arq $$0, alf<sr> $$1) {
+      return b($$0, $$1).map(evd::a);
    }
 
-   public dzb b() {
-      return this.r ? this.d() : this.c();
+   public eqt d() {
+      iu $$0 = this.z();
+      iu $$1 = $$0.a(this.F()).b(-1, -1, -1);
+      return eqt.a($$0, $$1);
    }
 
-   @VisibleForTesting
-   public dzb c() {
-      return this.i.a();
+   public fel f() {
+      return fel.a(this.d());
    }
 
-   @VisibleForTesting
-   public dzb d() {
-      return this.j.a();
+   private static Optional<evd> b(arq $$0, alf<sr> $$1) {
+      return $$0.F_().c($$1).map($$0x -> ((sr)$$0x.a()).e()).flatMap($$1x -> $$0.r().b($$1x));
    }
 
-   public void a(arq $$0, iu $$1) {
-      $$0.a($$1, $$0.a_($$1).b(dvb.c, Boolean.valueOf(true)), 3);
-      $$0.c(3020, $$1, 1);
-      this.r = true;
-      this.k.a(this, $$0);
+   public Optional<alf<sr>> j() {
+      return this.h.a();
    }
 
-   public void b(arq $$0, iu $$1) {
-      $$0.a($$1, $$0.a_($$1).b(dvb.c, Boolean.valueOf(false)), 3);
-      this.r = false;
+   public wy k() {
+      return this.j().map($$0 -> wy.b($$0.a().toString())).orElse(a);
    }
 
-   public boolean e() {
-      return this.r;
+   private Optional<je.c<sr>> E() {
+      return this.j().flatMap(this.n.F_()::c);
    }
 
-   public dzd f() {
-      return this.k;
+   public boolean s() {
+      return this.h.d();
    }
 
-   public int g() {
-      return this.m;
+   public jz t() {
+      return this.h.b();
    }
 
-   public int h() {
-      return this.l;
+   public dsz u() {
+      return this.E().map(je::a).map(sr::m).orElse(dsz.a).a(this.h.c());
    }
 
-   public dze i() {
-      return this.n.d();
+   public Optional<wy> v() {
+      return this.h.f();
    }
 
-   public void a(div $$0, dze $$1) {
-      this.n.a($$0, $$1);
+   public void a(wy $$0) {
+      this.a(this.h.a($$0));
    }
 
-   public void j() {
-      this.n.f();
+   public void w() {
+      this.a(this.h.a(dza.b.c));
+      this.D();
    }
 
-   public dyz k() {
-      return this.o;
+   public void x() {
+      this.a(this.h.a(dza.b.b));
    }
 
-   public dyz.a l() {
-      return this.p;
+   @Override
+   public void e() {
+      super.e();
+      if (this.n instanceof arq) {
+         this.n.a(this.ax_(), dmh.a.m(), this.m(), 3);
+      }
    }
 
-   public boolean a(arq $$0) {
-      if (this.q) {
+   public aca y() {
+      return aca.a(this);
+   }
+
+   @Override
+   public tz a(jg.a $$0) {
+      tz $$1 = new tz();
+      this.b($$1, $$0);
+      return $$1;
+   }
+
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
+      uw $$2 = $$0.c("data");
+      if ($$2 != null) {
+         dza.a.a.parse(un.a, $$2).ifSuccess(this::a);
+      }
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      DataResult<uw> $$2 = dza.a.a.encode(this.h, un.a, new tz());
+      $$2.ifSuccess($$1x -> $$0.a("data", $$1x));
+   }
+
+   @Override
+   public dxi.a b() {
+      return dxi.a.b;
+   }
+
+   public iu z() {
+      return a(this.ax_());
+   }
+
+   public static iu a(iu $$0) {
+      return $$0.a(g);
+   }
+
+   @Override
+   public dxi.b c() {
+      return new dxi.b(new iu(g), this.F());
+   }
+
+   @Override
+   public List<dwz.a> a() {
+      return switch (this.h.e()) {
+         case a -> b;
+         case b -> c;
+         case c -> this.v().isEmpty() ? d : (this.E().map(je::a).map(sr::h).orElse(true) ? e : f);
+      };
+   }
+
+   private jz F() {
+      jz $$0 = this.t();
+      dsz $$1 = this.u();
+      boolean $$2 = $$1 == dsz.b || $$1 == dsz.d;
+      int $$3 = $$2 ? $$0.w() : $$0.u();
+      int $$4 = $$2 ? $$0.u() : $$0.w();
+      return new jz($$3, $$0.v(), $$4);
+   }
+
+   public void a(Consumer<wy> $$0) {
+      this.D();
+      boolean $$1 = this.A();
+      if ($$1) {
+         $$0.accept(wy.a("test_instance_block.reset_success", this.k()).a(n.k));
+      }
+
+      this.a(this.h.a(dza.b.a));
+   }
+
+   public Optional<alg> b(Consumer<wy> $$0) {
+      Optional<je.c<sr>> $$1 = this.E();
+      Optional<alg> $$2;
+      if ($$1.isPresent()) {
+         $$2 = Optional.of($$1.get().a().e());
+      } else {
+         $$2 = this.j().map(alf::a);
+      }
+
+      if ($$2.isEmpty()) {
+         iu $$4 = this.ax_();
+         $$0.accept(wy.a("test_instance_block.error.unable_to_save", $$4.u(), $$4.v(), $$4.w()).a(n.m));
+         return $$2;
+      } else {
+         if (this.n instanceof arq $$5) {
+            dyy.a($$5, $$2.get(), this.z(), this.t(), this.s(), "", true);
+         }
+
+         return $$2;
+      }
+   }
+
+   public boolean c(Consumer<wy> $$0) {
+      Optional<alg> $$1 = this.b($$0);
+      return !$$1.isEmpty() && this.n instanceof arq $$2 ? a($$2, $$1.get(), $$0) : false;
+   }
+
+   public static boolean a(arq $$0, alg $$1, Consumer<wy> $$2) {
+      Path $$3 = ti.c;
+      Path $$4 = $$0.r().a($$1, ".nbt");
+      Path $$5 = ox.a(mk.a, $$4, $$1.a(), $$3.resolve($$1.b()).resolve("structure"));
+      if ($$5 == null) {
+         $$2.accept(wy.b("Failed to export " + $$4).a(n.m));
          return true;
       } else {
-         return $$0.an() == bty.a ? false : $$0.O().c(dir.e);
+         try {
+            v.c($$5.getParent());
+         } catch (IOException var7) {
+            $$2.accept(wy.b("Could not create folder " + $$5.getParent()).a(n.m));
+            return true;
+         }
+
+         $$2.accept(wy.b("Exported " + $$1 + " to " + $$5.toAbsolutePath()));
+         return false;
       }
    }
 
-   public Optional<UUID> c(arq $$0, iu $$1) {
-      azv $$2 = $$0.C_();
-      djp $$3 = this.k.b(this, $$0.C_());
-      tz $$4 = $$3.d();
-      uf $$5 = $$4.c("Pos", 6);
-      Optional<bwm<?>> $$6 = bwm.a($$4);
-      if ($$6.isEmpty()) {
-         return Optional.empty();
-      } else {
-         int $$7 = $$5.size();
-         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
-         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
-         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
-         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
-            return Optional.empty();
+   public void d(Consumer<wy> $$0) {
+      if (this.n instanceof arq $$1) {
+         Optional var7 = this.E();
+         iu $$4 = this.ax_();
+         if (var7.isEmpty()) {
+            $$0.accept(wy.a("test_instance_block.error.no_test", $$4.u(), $$4.v(), $$4.w()).a(n.m));
+         } else if (!this.A()) {
+            $$0.accept(wy.a("test_instance_block.error.no_test_structure", $$4.u(), $$4.v(), $$4.w()).a(n.m));
          } else {
-            fei $$11 = new fei($$8, $$9, $$10);
-            if (!a($$0, $$1.b(), $$11)) {
-               return Optional.empty();
-            } else {
-               iu $$12 = iu.a((jo)$$11);
-               if (!bxx.a($$6.get(), $$0, bwl.q, $$12, $$0.C_())) {
-                  return Optional.empty();
-               } else {
-                  if ($$3.b().isPresent()) {
-                     djp.a $$13 = $$3.b().get();
-                     if (!$$13.a($$12, $$0)) {
-                        return Optional.empty();
-                     }
-                  }
-
-                  bwd $$14 = bwm.a($$4, $$0, bwl.q, $$4x -> {
-                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
-                     return $$4x;
-                  });
-                  if ($$14 == null) {
-                     return Optional.empty();
-                  } else {
-                     if ($$14 instanceof bxe $$15) {
-                        if (!$$15.a((diy)$$0)) {
-                           return Optional.empty();
-                        }
-
-                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
-                        if ($$16) {
-                           $$15.a($$0, $$0.d_($$15.dv()), bwl.q, null);
-                        }
-
-                        $$15.fY();
-                        $$3.c().ifPresent($$15::a);
-                     }
-
-                     if (!$$0.e($$14)) {
-                        return Optional.empty();
-                     } else {
-                        dza.a $$17 = this.r ? dza.a.b : dza.a.a;
-                        $$0.c(3011, $$1, $$17.a());
-                        $$0.c(3012, $$12, $$17.a());
-                        $$0.a($$14, eez.t, $$12);
-                        return Optional.of($$14.cG());
-                     }
-                  }
-               }
-            }
+            sv.a($$1);
+            sy.a.a();
+            sf.b();
+            $$0.accept(wy.a("test_instance_block.starting", ((je.c)var7.get()).g()));
+            sq $$5 = new sq((je.c<sr>)var7.get(), this.h.c(), $$1, tg.a());
+            $$5.a($$4);
+            sv $$6 = sv.a.b(List.of($$5), $$1).a();
+            tj.a($$1.p().aH(), $$6);
          }
       }
    }
 
-   public void a(arq $$0, iu $$1, alf<eze> $$2) {
-      eze $$3 = $$0.p().bc().b($$2);
-      ezc $$4 = new ezc.a($$0).a(fbs.b);
-      ObjectArrayList<cyy> $$5 = $$3.a($$4);
-      if (!$$5.isEmpty()) {
-         ObjectListIterator var7 = $$5.iterator();
-
-         while (var7.hasNext()) {
-            cyy $$6 = (cyy)var7.next();
-            lf.a($$0, $$6, 2, ja.b, fei.c($$1).a(ja.b, 1.2));
-         }
-
-         $$0.c(3014, $$1, 0);
-      }
-   }
-
-   public void a(div $$0, iu $$1, boolean $$2) {
-      dze $$3 = this.i();
-      $$3.a($$0, $$1, $$2);
-      if ($$3.d()) {
-         double $$4 = (double)Math.max(0L, this.k.f - $$0.ae());
-         this.k.l = this.k.k;
-         this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
-      }
-
-      if ($$3.e()) {
-         azv $$5 = $$0.C_();
-         if ($$5.i() <= 0.02F) {
-            awm $$6 = $$2 ? awn.mI : awn.mH;
-            $$0.a($$1, $$6, awo.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
+   public boolean A() {
+      if (this.n instanceof arq $$0) {
+         Optional<evd> $$1 = this.h.a().flatMap($$1x -> b($$0, (alf<sr>)$$1x));
+         if ($$1.isPresent()) {
+            this.a($$0, $$1.get());
+            return true;
          }
       }
+
+      return false;
    }
 
-   public void a(arq $$0, iu $$1, boolean $$2) {
-      this.r = $$2;
-      dze $$3 = this.i();
-      if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
-         this.k.f = $$0.ae() + (long)this.b().h();
-      }
-
-      dze $$4 = $$3.a($$1, this, $$0);
-      if ($$4 != $$3) {
-         this.a($$0, $$4);
-      }
+   private void a(arq $$0, evd $$1) {
+      euz $$2 = new euz().a(this.u()).a(this.h.d()).b(true);
+      iu $$3 = this.B();
+      this.H();
+      this.G();
+      $$1.a($$0, $$3, $$3, $$2, $$0.C_(), 818);
    }
 
-   private static boolean a(arq $$0, iu $$1, UUID $$2) {
-      bwd $$3 = $$0.b($$2);
-      return $$3 == null || !$$3.bK() || !$$3.dV().aj().equals($$0.aj()) || $$3.dv().j($$1) > (double)g;
+   private void G() {
+      this.n.a_(null, this.f()).stream().filter($$0 -> !($$0 instanceof crc)).forEach(bwf::at);
    }
 
-   private static boolean a(div $$0, fei $$1, fei $$2) {
-      fee $$3 = $$0.a(new die($$2, $$1, die.a.c, die.b.a, fen.a()));
-      return $$3.b().equals(iu.a((jo)$$1)) || $$3.d() == feg.a.a;
-   }
-
-   public static void a(div $$0, iu $$1, azv $$2, mb $$3) {
-      for (int $$4 = 0; $$4 < 20; $$4++) {
-         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         $$0.a(lx.ah, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+   private void H() {
+      if (this.n instanceof arq $$0) {
+         this.d().b().forEach($$1 -> $$0.a($$1.h, $$1.i, true));
       }
    }
 
-   public static void a(div $$0, iu $$1, azv $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
-         double $$7 = $$2.k() * 0.02;
-         double $$8 = $$2.k() * 0.02;
-         double $$9 = $$2.k() * 0.02;
-         $$0.a(lx.bh, $$4, $$5, $$6, $$7, $$8, $$9);
-         $$0.a(lx.N, $$4, $$5, $$6, $$7, $$8, $$9);
+   public iu B() {
+      jz $$0 = this.t();
+      dsz $$1 = this.u();
+      iu $$2 = this.z();
+
+      return switch ($$1) {
+         case a -> $$2;
+         case b -> $$2.b($$0.w() - 1, 0, 0);
+         case c -> $$2.b($$0.u() - 1, 0, $$0.w() - 1);
+         case d -> $$2.b(0, 0, $$0.u() - 1);
+      };
+   }
+
+   public void C() {
+      this.e($$0 -> {
+         if (!this.n.a_($$0).a(dmh.pJ)) {
+            this.n.b($$0, dmh.iy.m());
+         }
+      });
+   }
+
+   public void D() {
+      this.e($$0 -> {
+         if (this.n.a_($$0).a(dmh.iy)) {
+            this.n.b($$0, dmh.a.m());
+         }
+      });
+   }
+
+   public void e(Consumer<iu> $$0) {
+      fel $$1 = this.f();
+      boolean $$2 = !this.E().map($$0x -> ((sr)$$0x.a()).l()).orElse(false);
+      iu $$3 = iu.a($$1.a, $$1.b, $$1.c).b(-1, -1, -1);
+      iu $$4 = iu.a($$1.d, $$1.e, $$1.f);
+      iu.d($$3, $$4).forEach($$4x -> {
+         boolean $$5 = $$4x.u() == $$3.u() || $$4x.u() == $$4.u() || $$4x.w() == $$3.w() || $$4x.w() == $$4.w() || $$4x.v() == $$3.v();
+         boolean $$6 = $$4x.v() == $$4.v();
+         if ($$5 || $$6 && $$2) {
+            $$0.accept($$4x);
+         }
+      });
+   }
+
+   public static record a(Optional<alf<sr>> c, jz d, dsz e, boolean f, dza.b g, Optional<wy> h) {
+      public static final Codec<dza.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alf.a(mg.bh).optionalFieldOf("test").forGetter(dza.a::a),
+                  jz.g.fieldOf("size").forGetter(dza.a::b),
+                  dsz.f.fieldOf("rotation").forGetter(dza.a::c),
+                  Codec.BOOL.fieldOf("ignore_entities").forGetter(dza.a::d),
+                  dza.b.d.fieldOf("status").forGetter(dza.a::e),
+                  xa.a.optionalFieldOf("error_message").forGetter(dza.a::f)
+               )
+               .apply($$0, dza.a::new)
+      );
+      public static final yw<wj, dza.a> b = yw.a(
+         yu.a(alf.b(mg.bh)), dza.a::a, jz.h, dza.a::b, dsz.g, dza.a::c, yu.b, dza.a::d, dza.b.e, dza.a::e, yu.a(xa.b), dza.a::f, dza.a::new
+      );
+
+      public dza.a a(jz $$0) {
+         return new dza.a(this.c, $$0, this.e, this.f, this.g, this.h);
+      }
+
+      public dza.a a(dza.b $$0) {
+         return new dza.a(this.c, this.d, this.e, this.f, $$0, Optional.empty());
+      }
+
+      public dza.a a(wy $$0) {
+         return new dza.a(this.c, this.d, this.e, this.f, dza.b.c, Optional.of($$0));
+      }
+
+      public Optional<alf<sr>> a() {
+         return this.c;
+      }
+
+      public jz b() {
+         return this.d;
+      }
+
+      public dsz c() {
+         return this.e;
+      }
+
+      public boolean d() {
+         return this.f;
+      }
+
+      public dza.b e() {
+         return this.g;
+      }
+
+      public Optional<wy> f() {
+         return this.h;
       }
    }
 
-   public static void a(div $$0, iu $$1, azv $$2, int $$3, lv $$4) {
-      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
-         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
-         double $$8 = (double)$$1.u() + 0.5 + $$6;
-         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
-         double $$10 = (double)$$1.w() + 0.5 + $$7;
-         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
-      }
-   }
+   public static enum b implements bak {
+      a("cleared", 0),
+      b("running", 1),
+      c("finished", 2);
 
-   public static void b(div $$0, iu $$1, azv $$2) {
-      for (int $$3 = 0; $$3 < 20; $$3++) {
-         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
-         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
-         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
-         double $$7 = $$2.k() * 0.02;
-         double $$8 = $$2.k() * 0.02;
-         double $$9 = $$2.k() * 0.02;
-         $$0.a(lx.aM, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
-         $$0.a(lx.ah, $$4, $$5, $$6, $$7, $$8, $$9);
-      }
-   }
+      private static final IntFunction<dza.b> f = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
+      public static final Codec<dza.b> d = bak.a(dza.b::values);
+      public static final yw<ByteBuf, dza.b> e = yu.a(dza.b::a, $$0 -> $$0.h);
+      private final String g;
+      private final int h;
 
-   public void a(bwm<?> $$0, div $$1) {
-      this.k.a();
-      this.i = je.a(this.i.a().a($$0));
-      this.j = je.a(this.j.a().a($$0));
-      this.a($$1, dze.a);
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void a(dyz $$0) {
-      this.o = $$0;
-   }
-
-   @Deprecated(
-      forRemoval = true
-   )
-   @VisibleForTesting
-   public void m() {
-      this.q = true;
-   }
-
-   public static enum a {
-      a(lx.F),
-      b(lx.N);
-
-      public final mb c;
-
-      private a(final mb $$0) {
-         this.c = $$0;
+      private b(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      public static dza.a a(int $$0) {
-         dza.a[] $$1 = values();
-         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
+      @Override
+      public String c() {
+         return this.g;
       }
 
-      public int a() {
-         return this.ordinal();
+      public static dza.b a(int $$0) {
+         return f.apply($$0);
       }
-   }
-
-   public interface b {
-      void a(div var1, dze var2);
-
-      dze d();
-
-      void f();
    }
 }

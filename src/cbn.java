@@ -1,28 +1,23 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class cbn<T extends bxe> extends byt<T> {
-   private final float c;
-
-   public cbn(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   public static <T extends bxe> boolean a(T $$0) {
-      return $$0.bj() && $$0.b(axh.a) > $$0.dp() || $$0.bw();
-   }
-
-   protected boolean a(arq $$0, bxe $$1) {
-      return a($$1);
-   }
-
-   protected boolean a(arq $$0, bxe $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arq $$0, bxe $$1, long $$2) {
-      if ($$1.dY().i() < this.c) {
-         $$1.N().a();
-      }
+public class cbn {
+   public static byw<bxm> a(cgg<jd> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return cci.a(
+         (Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$5 -> $$5.group($$5.a(cgg.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jd $$10 = $$5.b($$6);
+                  if ($$7.aj() != $$10.a() || !$$10.b().a($$8.dt(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new cgj($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

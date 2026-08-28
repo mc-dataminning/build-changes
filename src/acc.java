@@ -1,14 +1,14 @@
 public class acc implements zf<abu> {
-   public static final yw<wj, acc> a = yw.a(iu.b, acc::e, yu.a(dma.k), acc::b, acc::new);
+   public static final yw<wj, acc> a = yw.a(iu.b, acc::e, yu.a(dmf.k), acc::b, acc::new);
    private final iu b;
-   private final dzz c;
+   private final eah c;
 
-   public acc(iu $$0, dzz $$1) {
+   public acc(iu $$0, eah $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public acc(dib $$0, iu $$1) {
+   public acc(dig $$0, iu $$1) {
       this($$1, $$0.a_($$1));
    }
 
@@ -21,7 +21,7 @@ public class acc implements zf<abu> {
       $$0.a(this);
    }
 
-   public dzz b() {
+   public eah b() {
       return this.c;
    }
 

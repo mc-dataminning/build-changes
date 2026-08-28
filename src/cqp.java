@@ -1,68 +1,68 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public final class cqp {
-   public static final alf<cqp> a = a("desert");
-   public static final alf<cqp> b = a("jungle");
-   public static final alf<cqp> c = a("plains");
-   public static final alf<cqp> d = a("savanna");
-   public static final alf<cqp> e = a("snow");
-   public static final alf<cqp> f = a("swamp");
-   public static final alf<cqp> g = a("taiga");
-   public static final Codec<je<cqp>> h = ald.a(mg.aE);
-   public static final yw<wj, je<cqp>> i = yu.b(mg.aE);
-   private static final Map<alf<djy>, alf<cqp>> j = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dkf.B, a);
-      $$0.put(dkf.f, a);
-      $$0.put(dkf.C, a);
-      $$0.put(dkf.D, a);
-      $$0.put(dkf.A, b);
-      $$0.put(dkf.y, b);
-      $$0.put(dkf.z, b);
-      $$0.put(dkf.t, d);
-      $$0.put(dkf.s, d);
-      $$0.put(dkf.x, d);
-      $$0.put(dkf.Y, e);
-      $$0.put(dkf.X, e);
-      $$0.put(dkf.M, e);
-      $$0.put(dkf.e, e);
-      $$0.put(dkf.O, e);
-      $$0.put(dkf.r, e);
-      $$0.put(dkf.d, e);
-      $$0.put(dkf.G, e);
-      $$0.put(dkf.H, e);
-      $$0.put(dkf.I, e);
-      $$0.put(dkf.J, e);
-      $$0.put(dkf.g, f);
-      $$0.put(dkf.h, f);
-      $$0.put(dkf.p, g);
-      $$0.put(dkf.o, g);
-      $$0.put(dkf.v, g);
-      $$0.put(dkf.u, g);
-      $$0.put(dkf.q, g);
-      $$0.put(dkf.w, g);
-   });
+public record cqp(je<cqt> e, je<cqr> f, int g) {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] h = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cqp> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               mf.w.r().fieldOf("type").orElseGet(() -> mf.w.b(cqt.c)).forGetter($$0x -> $$0x.e),
+               mf.x.r().fieldOf("profession").orElseGet(() -> mf.x.b(cqr.b)).forGetter($$0x -> $$0x.f),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, cqp::new)
+   );
+   public static final yw<wj, cqp> d = yw.a(yu.b(mg.aE), cqp::a, yu.b(mg.aD), cqp::b, yu.h, cqp::c, cqp::new);
 
-   private static alf<cqp> a(String $$0) {
-      return alf.a(mg.aE, alg.b($$0));
+   public cqp(je<cqt> e, je<cqr> f, int g) {
+      g = Math.max(1, g);
+      this.e = e;
+      this.f = f;
+      this.g = g;
    }
 
-   private static cqp a(jr<cqp> $$0, alf<cqp> $$1) {
-      return jr.a($$0, $$1, new cqp());
+   public cqp a(je<cqt> $$0) {
+      return new cqp($$0, this.f, this.g);
    }
 
-   public static cqp a(jr<cqp> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      return a($$0, g);
+   public cqp a(jf.a $$0, alf<cqt> $$1) {
+      return this.a($$0.d($$1));
    }
 
-   public static alf<cqp> a(je<djy> $$0) {
-      return $$0.e().map(j::get).orElse(c);
+   public cqp b(je<cqr> $$0) {
+      return new cqp(this.e, $$0, this.g);
+   }
+
+   public cqp b(jf.a $$0, alf<cqr> $$1) {
+      return this.b($$0.d($$1));
+   }
+
+   public cqp a(int $$0) {
+      return new cqp(this.e, this.f, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? h[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? h[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
+   }
+
+   public je<cqt> a() {
+      return this.e;
+   }
+
+   public je<cqr> b() {
+      return this.f;
+   }
+
+   public int c() {
+      return this.g;
    }
 }

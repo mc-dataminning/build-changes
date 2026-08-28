@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface eli {
-   elp m = elp.b;
+public class eli implements elq {
+   public static final Codec<eli> a = enr.a.fieldOf("state_provider").xmap(eli::new, $$0 -> $$0.b).codec();
+   public final enr b;
 
-   default Stream<eiq<?, ?>> e() {
-      return Stream.empty();
+   public eli(enr $$0) {
+      this.b = $$0;
    }
 }

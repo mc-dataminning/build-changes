@@ -54,21 +54,21 @@ public class amt {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
                                                                      "color"
                                                                   )
-                                                                  .then(ej.a("pink").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.a))))
-                                                               .then(ej.a("blue").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.b))))
-                                                            .then(ej.a("red").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.c))))
-                                                         .then(ej.a("green").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.d))))
-                                                      .then(ej.a("yellow").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.e))))
-                                                   .then(ej.a("purple").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.f))))
-                                                .then(ej.a("white").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.a.g)))
+                                                                  .then(ej.a("pink").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.a))))
+                                                               .then(ej.a("blue").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.b))))
+                                                            .then(ej.a("red").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.c))))
+                                                         .then(ej.a("green").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.d))))
+                                                      .then(ej.a("yellow").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.e))))
+                                                   .then(ej.a("purple").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.f))))
+                                                .then(ej.a("white").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("style")
-                                                         .then(ej.a("progress").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.b.a))))
-                                                      .then(ej.a("notched_6").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.b.b))))
-                                                   .then(ej.a("notched_10").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.b.c))))
-                                                .then(ej.a("notched_12").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.b.d))))
-                                             .then(ej.a("notched_20").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btr.b.e)))
+                                                         .then(ej.a("progress").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.a))))
+                                                      .then(ej.a("notched_6").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.b))))
+                                                   .then(ej.a("notched_10").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.c))))
+                                                .then(ej.a("notched_12").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.d))))
+                                             .then(ej.a("notched_20").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.e)))
                                        ))
                                     .then(
                                        ej.a("value")
@@ -135,7 +135,7 @@ public class amt {
       if ($$1.g().isEmpty()) {
          $$0.a(() -> wy.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), xb.b($$1.g(), cqy::m_)), true);
+         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), xb.b($$1.g(), crc::m_)), true);
       }
 
       return $$1.g().size();
@@ -180,7 +180,7 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, btr.a $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ami $$1, btt.a $$2) throws CommandSyntaxException {
       if ($$1.k().equals($$2)) {
          throw f.create();
       } else {
@@ -190,7 +190,7 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, btr.b $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ami $$1, btt.b $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw g.create();
       } else {
@@ -219,7 +219,7 @@ public class amt {
          if ($$1.g().isEmpty()) {
             $$0.a(() -> wy.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, cqy::m_)), true);
+            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, crc::m_)), true);
          }
 
          return $$1.g().size();

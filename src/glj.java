@@ -1,85 +1,76 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public final class glj {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final glj c = new glj(HostAndPort.fromParts("server.invalid", 25565));
+public class glj extends gle {
+   final Supplier<hjy> g;
 
-   public glj(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   glj(UUID $$0, Instant $$1, UUID $$2, Supplier<hjy> $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   private glj(HostAndPort $$0) {
-      this.b = $$0;
+   public Supplier<hjy> a() {
+      return this.g;
    }
 
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public glj c() {
+      glj $$0 = new glj(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      return $$0;
+   }
+
+   @Override
+   public fyb a(fyb $$0, gli $$1) {
+      return new gcq($$0, $$1, this);
+   }
+
+   public static class a extends gle.a<glj> {
+      public a(glj $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
-   }
 
-   public int b() {
-      return this.b.getPort();
-   }
+      public a(UUID $$0, Supplier<hjy> $$1, AbuseReportLimits $$2) {
+         super(new glj(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public static glj a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new glj($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      }
+
+      @Nullable
+      @Override
+      public gle.b c() {
+         if (this.a.e == null) {
+            return gle.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gle.b.d : super.c();
          }
       }
-   }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
+      @Override
+      public Either<gle.c, gle.b> a(gli $$0) {
+         gle.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            hjy $$4 = this.a.g.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new gle.c(this.a.a, glh.b, $$6));
          }
-      } catch (IllegalArgumentException var3) {
       }
-
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof glj ? this.b.equals(((glj)$$0).b) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
    }
 }

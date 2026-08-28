@@ -1,36 +1,26 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
 
-public class gjk<C extends gjk.a<C>, D> {
-   private final Function<C, D> a;
-   @Nullable
-   private C b;
-   @Nullable
-   private D c;
+public class gjk {
+   private final gjm a;
 
-   public gjk(Function<C, D> $$0) {
+   public gjk() {
+      this(new gjm(ImmutableList.of(), gje.a));
+   }
+
+   private gjk(gjm $$0) {
       this.a = $$0;
    }
 
-   public D a(C $$0) {
-      if ($$0 == this.b && this.c != null) {
-         return this.c;
-      } else {
-         D $$1 = this.a.apply($$0);
-         this.c = $$1;
-         this.b = $$0;
-         $$0.registerForCleaning(this);
-         return $$1;
-      }
+   public gjm a() {
+      return this.a;
    }
 
-   public void a() {
-      this.c = null;
-      this.b = null;
+   public gjk a(UnaryOperator<gje> $$0) {
+      return new gjk(this.a.a($$0));
    }
 
-   @FunctionalInterface
-   public interface a<C extends gjk.a<C>> {
-      void registerForCleaning(gjk<C, ?> var1);
+   public gjk a(gjl $$0) {
+      return $$0.apply(this);
    }
 }

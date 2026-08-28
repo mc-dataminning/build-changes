@@ -1,45 +1,46 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class hjh {
-   private static final hjq[] a = new hjq[]{
-      a("textures/entity/player/slim/alex.png", hjq.a.a),
-      a("textures/entity/player/slim/ari.png", hjq.a.a),
-      a("textures/entity/player/slim/efe.png", hjq.a.a),
-      a("textures/entity/player/slim/kai.png", hjq.a.a),
-      a("textures/entity/player/slim/makena.png", hjq.a.a),
-      a("textures/entity/player/slim/noor.png", hjq.a.a),
-      a("textures/entity/player/slim/steve.png", hjq.a.a),
-      a("textures/entity/player/slim/sunny.png", hjq.a.a),
-      a("textures/entity/player/slim/zuri.png", hjq.a.a),
-      a("textures/entity/player/wide/alex.png", hjq.a.b),
-      a("textures/entity/player/wide/ari.png", hjq.a.b),
-      a("textures/entity/player/wide/efe.png", hjq.a.b),
-      a("textures/entity/player/wide/kai.png", hjq.a.b),
-      a("textures/entity/player/wide/makena.png", hjq.a.b),
-      a("textures/entity/player/wide/noor.png", hjq.a.b),
-      a("textures/entity/player/wide/steve.png", hjq.a.b),
-      a("textures/entity/player/wide/sunny.png", hjq.a.b),
-      a("textures/entity/player/wide/zuri.png", hjq.a.b)
-   };
+   private final alg a;
+   private final avb b;
+   private final AtomicReference<fik> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public static alg a() {
-      return b().a();
+   public hjh(alg $$0, avb $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   public static hjq b() {
-      return a[6];
+   public fik a() throws IOException {
+      fik $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fik.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   public static hjq a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static hjq a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static hjq a(String $$0, hjq.a $$1) {
-      return new hjq(alg.b($$0), null, null, null, $$1, true);
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fik $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

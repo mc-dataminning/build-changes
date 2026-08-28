@@ -56,12 +56,12 @@ public class anl {
       return new iu(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static dkb a(MutableInt $$0, ebw $$1, eql $$2, je<djy> $$3, Predicate<je<djy>> $$4) {
+   private static dkg a(MutableInt $$0, ece $$1, eqt $$2, je<dkd> $$3, Predicate<je<dkd>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
          int $$9 = jp.c($$5);
          int $$10 = jp.c($$6);
          int $$11 = jp.c($$7);
-         je<djy> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         je<dkd> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -71,25 +71,25 @@ public class anl {
       };
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<djy> $$3) {
+   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<dkd> $$3) {
       return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
       });
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<djy> $$3, Predicate<je<djy>> $$4, Consumer<Supplier<wy>> $$5) {
+   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<dkd> $$3, Predicate<je<dkd>> $$4, Consumer<Supplier<wy>> $$5) {
       iu $$6 = a($$1);
       iu $$7 = a($$2);
-      eql $$8 = eql.a($$6, $$7);
+      eqt $$8 = eqt.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.O().d(dir.A);
+      int $$10 = $$0.O().d(diw.B);
       if ($$9 > $$10) {
          return Either.right(b.create($$10, $$9));
       } else {
-         List<ebw> $$11 = new ArrayList<>();
+         List<ece> $$11 = new ArrayList<>();
 
          for (int $$12 = jx.a($$8.j()); $$12 <= jx.a($$8.m()); $$12++) {
             for (int $$13 = jx.a($$8.h()); $$13 <= jx.a($$8.k()); $$13++) {
-               ebw $$14 = $$0.a($$13, $$12, ecx.n, false);
+               ece $$14 = $$0.a($$13, $$12, edf.n, false);
                if ($$14 == null) {
                   return Either.right(a.create());
                }
@@ -100,18 +100,18 @@ public class anl {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (ebw $$16 : $$11) {
+         for (ece $$16 : $$11) {
             $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
             $$16.i();
          }
 
-         $$0.m().a.a($$11);
+         $$0.m().a.b($$11);
          $$5.accept(() -> wy.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
          return Either.left($$15.getValue());
       }
    }
 
-   private static int a(ei $$0, iu $$1, iu $$2, je.c<djy> $$3, Predicate<je<djy>> $$4) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, iu $$2, je.c<dkd> $$3, Predicate<je<dkd>> $$4) throws CommandSyntaxException {
       Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
       Optional<CommandSyntaxException> $$6 = $$5.right();
       if ($$6.isPresent()) {

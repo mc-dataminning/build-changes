@@ -1,46 +1,32 @@
-public final class ffb extends fer {
-   private final fer d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   protected ffb(fer $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class ffb implements ffc {
+   private final DoubleList a;
+
+   public ffb(DoubleList $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public boolean a(ffc.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public int size() {
+      return this.a.size();
    }
 
    @Override
-   public int a(ja.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(ja.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(ja.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return azm.a($$1, $$2, $$3) - $$2;
+   public DoubleList a() {
+      return this.a;
    }
 }

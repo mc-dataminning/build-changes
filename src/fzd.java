@@ -1,96 +1,100 @@
-public class fzd {
-   private static final alg a = alg.b("alt");
-   private static final xv b = xv.a.a(a);
-   private static final fzd c = new fzd();
-   private final azv d = azv.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class fzd extends fyq<cvl> {
+   private static final alg G = alg.b("container/crafter/disabled_slot");
+   private static final alg H = alg.b("container/crafter/powered_redstone");
+   private static final alg I = alg.b("container/crafter/unpowered_redstone");
+   private static final alg J = alg.b("textures/gui/container/crafter.png");
+   private static final wy K = wy.c("gui.togglable_slot");
+   private final crc L;
 
-   private fzd() {
+   public fzd(cvl $$0, crb $$1, wy $$2) {
+      super($$0, $$1, $$2);
+      this.L = $$1.h;
    }
 
-   public static fzd a() {
-      return c;
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   public xd a(frm $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
+   @Override
+   protected void a(cws $$0, int $$1, int $$2, cvg $$3) {
+      if ($$0 instanceof cvm && !$$0.h() && !this.L.V_()) {
+         switch ($$3) {
+            case a:
+               if (this.z.e($$1)) {
+                  this.a($$1);
+               } else if (this.z.g().f()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               czd $$4 = this.L.gj().a($$2);
+               if (this.z.e($$1) && !$$4.f()) {
+                  this.a($$1);
+               }
          }
-
-         $$2.append(af.a(this.e, this.d));
       }
 
-      return $$0.b().a(wy.b($$2.toString()).c(b), $$1, xv.a);
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.z.a($$0, $$1);
+      super.a($$0, this.z.l, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.L.a(awn.Bv.a(), 0.4F, $$2);
+   }
+
+   @Override
+   public void a(frv $$0, cws $$1) {
+      if ($$1 instanceof cvm $$2 && this.z.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(frv $$0, cvm $$1) {
+      $$0.a(gqk::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
+   }
+
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0);
+      this.a($$0, $$1, $$2);
+      if (this.B instanceof cvm && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.V_()) {
+         $$0.a(this.p, K, $$1, $$2);
+      }
+   }
+
+   private void d(frv $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      alg $$3;
+      if (this.z.l()) {
+         $$3 = H;
+      } else {
+         $$3 = I;
+      }
+
+      $$0.a(gqk::H, $$3, $$1, $$2, 16, 16);
+   }
+
+   @Override
+   protected void a(frv $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gqk::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

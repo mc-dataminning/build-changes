@@ -20,7 +20,7 @@ public class er implements ArgumentType<wy> {
       return (wy)$$0.getArgument($$1, wy.class);
    }
 
-   public static wy a(CommandContext<ei> $$0, String $$1, @Nullable bwd $$2) throws CommandSyntaxException {
+   public static wy a(CommandContext<ei> $$0, String $$1, @Nullable bwf $$2) throws CommandSyntaxException {
       return xb.a((ei)$$0.getSource(), a($$0, $$1), $$2, 0);
    }
 

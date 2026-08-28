@@ -1,51 +1,30 @@
 import javax.annotation.Nullable;
 
-public class cry extends crf {
-   private int d = 200;
-
-   public cry(bwm<? extends cry> $$0, div $$1) {
-      super($$0, $$1);
-   }
-
-   public cry(div $$0, bxc $$1, cyy $$2, @Nullable cyy $$3) {
-      super(bwm.bn, $$1, $$0, $$2, $$3);
-   }
-
-   public cry(div $$0, double $$1, double $$2, double $$3, cyy $$4, @Nullable cyy $$5) {
-      super(bwm.bn, $$1, $$2, $$3, $$0, $$4, $$5);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C && !this.f()) {
-         this.dV().a(lx.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+@FunctionalInterface
+public interface cry {
+   cry a = ($$0, $$1, $$2) -> {
+   };
+   cry b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.i($$0.dy().c(-0.5));
+      $$0.w($$0.dL() + $$3);
+      $$0.N += $$3;
+      $$0.ar = true;
+   };
+   cry c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         feq $$3 = $$1.bT().d();
+         $$0.i($$3);
+         $$0.ar = true;
       }
-   }
-
-   @Override
-   protected void a(bxc $$0) {
-      super.a($$0);
-      bvh $$1 = new bvh(bvj.x, this.d, 0);
-      $$0.b($$1, this.z());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.d = $$0.h("Duration");
+   };
+   cry d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         feq $$3 = $$1.dy().d();
+         $$0.i($$3);
+         $$0.ar = true;
       }
-   }
+   };
 
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.d);
-   }
-
-   @Override
-   protected cyy o() {
-      return new cyy(czc.wv);
-   }
+   void deflect(crx var1, @Nullable bwf var2, azv var3);
 }

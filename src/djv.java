@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class djv {
-   public static final Codec<djv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, djv::new)
-   );
-   private final je<awm> b;
-   private final double c;
+public interface djv {
+   void a(bwo<?> var1, azv var2);
 
-   public djv(je<awm> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(dbl $$0, Consumer<wy> $$1, String $$2) {
+      wy $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.accept($$3);
+      } else {
+         $$1.accept(wx.a);
+         $$1.accept(wy.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.accept(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public je<awm> a() {
-      return this.b;
+   @Nullable
+   static wy a(dbl $$0, String $$1) {
+      tz $$2 = $$0.e();
+      alg $$3 = a($$2, $$1);
+      return $$3 != null ? mf.f.b($$3).map($$0x -> wy.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public double b() {
-      return this.c;
+   @Nullable
+   private static alg a(tz $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return alg.c($$2);
+      } else {
+         return null;
+      }
    }
 }

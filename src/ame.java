@@ -12,7 +12,7 @@ public class ame {
 
    public static <D, R> CompletableFuture<R> a(ame.c $$0, ame.f<D> $$1, ame.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<djt, aus> $$5 = $$0.a.a();
+         Pair<djy, aus> $$5 = $$0.a.a();
          aus $$6 = (aus)$$5.getSecond();
          jl<alp> $$7 = alp.a();
          List<jr.a<?>> $$8 = axs.a($$6, $$7.a(alp.a));
@@ -21,7 +21,7 @@ public class ame {
          js.b $$11 = alb.a($$6, $$10, alb.a);
          List<jg.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
          js.b $$13 = alb.a($$6, $$12, alb.b);
-         djt $$14 = (djt)$$5.getFirst();
+         djy $$14 = (djy)$$5.getFirst();
          jg.a $$15 = jg.a.a($$12.stream());
          ame.b<D> $$16 = $$1.get(new ame.a($$6, $$14, $$15, $$13));
          jl<alp> $$17 = $$7.a(alp.b, $$11, $$16.b);
@@ -38,7 +38,7 @@ public class ame {
       }
    }
 
-   public static record a(avd a, djt b, jg.a c, js.b d) {
+   public static record a(avd a, djy b, jg.a c, js.b d) {
    }
 
    public static record b<D>(D a, js.b b) {
@@ -47,9 +47,9 @@ public class ame {
    public static record c(ame.d a, ej.a b, int c) {
    }
 
-   public static record d(aun a, djt b, boolean c, boolean d) {
-      public Pair<djt, aus> a() {
-         djt $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(aun a, djy b, boolean c, boolean d) {
+      public Pair<djy, aus> a() {
+         djy $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<atp> $$1 = this.a.h();
          aus $$2 = new auv(atr.b, $$1);
          return Pair.of($$0, $$2);
@@ -59,7 +59,7 @@ public class ame {
          return this.a;
       }
 
-      public djt c() {
+      public djy c() {
          return this.b;
       }
 

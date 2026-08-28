@@ -36,7 +36,7 @@ public class oa implements mm {
       return new oa($$0).a(aud.b, new aud($$1, t.a.a(atr.b), Optional.empty()));
    }
 
-   public static oa a(mo $$0, wy $$1, cuh $$2) {
+   public static oa a(mo $$0, wy $$1, cum $$2) {
       return a($$0, $$1).a(atl.a, new atl($$2));
    }
 }

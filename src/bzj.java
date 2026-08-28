@@ -1,79 +1,113 @@
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class bzj<E extends bxc & cqi> extends byt<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<bxc, Optional<cah>> e;
-   private final float f;
+public class bzj<E extends bxe> implements byw<E> {
+   private final Map<cgg<?>, cgh> a;
+   private final Set<cgg<?>> b;
+   private final bzj.a c;
+   private final bzj.b d;
+   private final cbe<byw<? super E>> e = new cbe<>();
+   private byv.a f = byv.a.a;
 
-   public bzj(Function<bxc, Optional<cah>> $$0, float $$1, int $$2) {
-      super(Map.of(cge.o, cgf.c, cge.n, cgf.c, cge.aQ, cgf.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public bzj(Map<cgg<?>, cgh> $$0, Set<cgg<?>> $$1, bzj.a $$2, bzj.b $$3, List<Pair<? extends byw<? super E>, Integer>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      $$4.forEach($$0x -> this.e.a((byw<? super E>)$$0x.getFirst(), (Integer)$$0x.getSecond()));
    }
 
    @Override
-   protected boolean a(arq $$0, E $$1) {
-      return this.b($$1);
+   public byv.a a() {
+      return this.f;
    }
 
-   @Override
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return this.b($$1);
-   }
-
-   @Override
-   protected void d(arq $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> byv.a($$1, $$1x, this.f, 3));
-   }
-
-   @Override
-   protected void c(arq $$0, E $$1, long $$2) {
-      Optional<cah> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         cah $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.bE());
-         if ($$5 < 3.0) {
-            cyy $$6 = $$1.n().a(0, 1);
-            if (!$$6.f()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof ckd $$7) {
-                  cke.a((bxc)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
-
-               $$1.eb().a(cge.aQ, 60);
-            }
+   private boolean a(E $$0) {
+      for (Entry<cgg<?>, cgh> $$1 : this.a.entrySet()) {
+         cgg<?> $$2 = $$1.getKey();
+         cgh $$3 = $$1.getValue();
+         if (!$$0.ec().a($$2, $$3)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   private void a(cah $$0, cyy $$1, arr $$2) {
-      iu $$3 = $$0.b().e();
-      ap.aa.a($$2, $$3, $$1);
-   }
-
-   private boolean b(E $$0) {
-      if ($$0.n().c()) {
-         return false;
+   @Override
+   public final boolean e(arq $$0, E $$1, long $$2) {
+      if (this.a($$1)) {
+         this.f = byv.a.b;
+         this.c.a(this.e);
+         this.d.a(this.e.b(), $$0, $$1, $$2);
+         return true;
       } else {
-         Optional<cah> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
+         return false;
       }
    }
 
-   private static fei a(cah $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
+   @Override
+   public final void f(arq $$0, E $$1, long $$2) {
+      this.e.b().filter($$0x -> $$0x.a() == byv.a.b).forEach($$3 -> $$3.f($$0, $$1, $$2));
+      if (this.e.b().noneMatch($$0x -> $$0x.a() == byv.a.b)) {
+         this.g($$0, $$1, $$2);
+      }
    }
 
-   public static void a(bxc $$0, cyy $$1, fei $$2) {
-      fei $$3 = new fei(0.2F, 0.3F, 0.2F);
-      byv.a($$0, $$1, $$2, $$3, 0.2F);
-      div $$4 = $$0.dV();
-      if ($$4.ae() % 7L == 0L && $$4.A.j() < 0.9) {
-         float $$5 = af.<Float>a(ckd.d, $$4.C_());
-         $$4.a(null, $$0, awn.g, awo.g, 1.0F, $$5);
+   @Override
+   public final void g(arq $$0, E $$1, long $$2) {
+      this.f = byv.a.a;
+      this.e.b().filter($$0x -> $$0x.a() == byv.a.b).forEach($$3 -> $$3.g($$0, $$1, $$2));
+      this.b.forEach($$1.ec()::b);
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   @Override
+   public String toString() {
+      Set<? extends byw<? super E>> $$0 = this.e.b().filter($$0x -> $$0x.a() == byv.a.b).collect(Collectors.toSet());
+      return "(" + this.getClass().getSimpleName() + "): " + $$0;
+   }
+
+   public static enum a {
+      a($$0 -> {
+      }),
+      b(cbe::a);
+
+      private final Consumer<cbe<?>> c;
+
+      private a(final Consumer<cbe<?>> $$0) {
+         this.c = $$0;
       }
+
+      public void a(cbe<?> $$0) {
+         this.c.accept($$0);
+      }
+   }
+
+   public static enum b {
+      a {
+         @Override
+         public <E extends bxe> void a(Stream<byw<? super E>> $$0, arq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == byv.a.a).filter($$3x -> $$3x.e($$1, $$2, $$3)).findFirst();
+         }
+      },
+      b {
+         @Override
+         public <E extends bxe> void a(Stream<byw<? super E>> $$0, arq $$1, E $$2, long $$3) {
+            $$0.filter($$0x -> $$0x.a() == byv.a.a).forEach($$3x -> $$3x.e($$1, $$2, $$3));
+         }
+      };
+
+      public abstract <E extends bxe> void a(Stream<byw<? super E>> var1, arq var2, E var3, long var4);
    }
 }

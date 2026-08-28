@@ -1,24 +1,40 @@
-import org.joml.Vector3f;
-
-public class gmc extends gmd<ls> {
-   protected gmc(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ls $$7, gnv $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      Vector3f $$10 = $$7.b();
-      this.v = this.a($$10.x(), $$9);
-      this.w = this.a($$10.y(), $$9);
-      this.x = this.a($$10.z(), $$9);
+public class gmc extends goi {
+   gmc(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public static class a implements gnd<ls> {
-      private final gnv a;
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o && !this.c.b_(iu.a(this.g, this.h, this.i)).a(axh.a)) {
+         this.k();
+      }
+   }
 
-      public a(gnv $$0) {
+   @Override
+   public gnm b() {
+      return gnm.b;
+   }
+
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
          this.a = $$0;
       }
 
-      public gna a(ls $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmc($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmc $$8 = new gmc($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

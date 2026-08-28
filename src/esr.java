@@ -1,31 +1,25 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class esr extends eqt {
-   public static final MapCodec<esr> d = a(esr::new);
+record esr(bso<List<esn>> c) implements esn {
+   static MapCodec<esr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bso.b(Codec.list(esn.b)).fieldOf("groups").forGetter(esr::c)).apply($$0, esr::new));
 
-   public esr(eqt.c $$0) {
-      super($$0);
+   @Override
+   public void a(azv $$0, BiConsumer<alf<esl>, alf<esl>> $$1) {
+      this.c.a($$0).ifPresent($$2 -> $$2.forEach($$2x -> $$2x.a($$0, $$1)));
    }
 
    @Override
-   public Optional<eqt.b> a(eqt.a $$0) {
-      dst $$1 = dst.a($$0.f());
-      iu $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eqt.b($$2, (Consumer<erl>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(erl $$0, iu $$1, dst $$2, eqt.a $$3) {
-      List<eqx> $$4 = Lists.newArrayList();
-      esq.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   public Stream<alf<esl>> a() {
+      return this.c.d().stream().flatMap($$0 -> $$0.a().stream()).flatMap(esn::a);
    }
 
    @Override
-   public erc<?> e() {
-      return erc.c;
+   public MapCodec<esr> b() {
+      return a;
    }
 }

@@ -1,43 +1,45 @@
+import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class eew<T extends efb> {
-   private final T a;
-   @Nullable
-   private jx b;
+public class eew<T extends eem> implements eev<T> {
+   private final eeo<T> a;
+   private final eer<T> b;
 
-   public eew(T $$0) {
+   public eew(eeo<T> $$0, eer<T> $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(arq $$0) {
-      this.c($$0);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public T a() {
-      return this.a;
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public void b(arq $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public void c(arq $$0) {
-      this.a.a().a($$0).map(jx::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
+   @Override
+   public <U extends T> void a(eet<T, U> $$0, axx<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   private static void a(diy $$0, @Nullable jx $$1, Consumer<efc> $$2) {
-      if ($$1 != null) {
-         ebw $$3 = $$0.a($$1.a(), $$1.c(), ecx.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
-      }
+   @Override
+   public void a(fel $$0, Consumer<T> $$1) {
+      this.b.b($$0, axx.forConsumer($$1));
+   }
+
+   @Override
+   public <U extends T> void a(eet<T, U> $$0, fel $$1, axx<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

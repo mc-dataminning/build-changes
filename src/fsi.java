@@ -1,199 +1,160 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
 
-public abstract class fsi<E extends fsi.a<E>> extends frw<E> {
-   public fsi(fos $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fsi {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final alg[] c = new alg[]{
+      alg.b("boss_bar/pink_background"),
+      alg.b("boss_bar/blue_background"),
+      alg.b("boss_bar/red_background"),
+      alg.b("boss_bar/green_background"),
+      alg.b("boss_bar/yellow_background"),
+      alg.b("boss_bar/purple_background"),
+      alg.b("boss_bar/white_background")
+   };
+   private static final alg[] d = new alg[]{
+      alg.b("boss_bar/pink_progress"),
+      alg.b("boss_bar/blue_progress"),
+      alg.b("boss_bar/red_progress"),
+      alg.b("boss_bar/green_progress"),
+      alg.b("boss_bar/yellow_progress"),
+      alg.b("boss_bar/purple_progress"),
+      alg.b("boss_bar/white_progress")
+   };
+   private static final alg[] e = new alg[]{
+      alg.b("boss_bar/notched_6_background"),
+      alg.b("boss_bar/notched_10_background"),
+      alg.b("boss_bar/notched_12_background"),
+      alg.b("boss_bar/notched_20_background")
+   };
+   private static final alg[] f = new alg[]{
+      alg.b("boss_bar/notched_6_progress"), alg.b("boss_bar/notched_10_progress"), alg.b("boss_bar/notched_12_progress"), alg.b("boss_bar/notched_20_progress")
+   };
+   private final foz g;
+   final Map<UUID, fsx> h = Maps.newLinkedHashMap();
+
+   public fsi(foz $$0) {
+      this.g = $$0;
    }
 
-   public fsi(fos $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public void a(frv $$0) {
+      if (!this.h.isEmpty()) {
+         bqo $$1 = bqn.a();
+         $$1.a("bossHealth");
+         int $$2 = $$0.a();
+         int $$3 = 12;
 
-   @Nullable
-   @Override
-   public frl a(fwf $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (!($$0 instanceof fwf.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.r();
-         if ($$1.b().a() == fwg.a && $$2 != null) {
-            return frl.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            fwh $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.aD_().indexOf($$2.aH_());
+         for (fsx $$4 : this.h.values()) {
+            int $$5 = $$2 / 2 - 91;
+            this.a($$0, $$5, $$3, $$4);
+            wy $$7 = $$4.i();
+            int $$8 = this.g.h.a($$7);
+            int $$9 = $$2 / 2 - $$8 / 2;
+            int $$10 = $$3 - 9;
+            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
+            $$3 += 10 + 9;
+            if ($$3 >= $$0.b() / 3) {
+               break;
             }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = fwh.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = fwh.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            frl $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aD_().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return frl.a(this, $$6);
          }
+
+         $$1.c();
       }
    }
 
-   @Override
-   public void a(@Nullable ftz $$0) {
-      if (this.r() != $$0) {
-         super.a($$0);
-         if ($$0 == null) {
-            this.a(null);
-         }
+   private void a(frv $$0, int $$1, int $$2, btt $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = azm.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
       }
    }
 
-   @Override
-   public fvx.a w() {
-      return this.aI_() ? fvx.a.c : super.w();
+   private void a(frv $$0, int $$1, int $$2, btt $$3, int $$4, alg[] $$5, alg[] $$6) {
+      $$0.a(gqk::H, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != btt.b.a) {
+         $$0.a(gqk::H, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
    }
 
-   @Override
-   protected boolean c(int $$0) {
+   public void a(acd $$0) {
+      $$0.a(new acd.b() {
+         @Override
+         public void a(UUID $$0, wy $$1, float $$2, btt.a $$3, btt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fsi.this.h.put($$0, new fsx($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fsi.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fsi.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, wy $$1) {
+            fsi.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, btt.a $$1, btt.b $$2) {
+            fsx $$3 = fsi.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fsx $$4 = fsi.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (btt $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
+            }
+         }
+      }
+
       return false;
    }
 
-   @Override
-   public void a(fvz $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.r();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (btt $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
          }
       }
 
-      $$0.a(fvy.d, wy.c("narration.component_list.usage"));
+      return false;
    }
 
-   public abstract static class a<E extends fsi.a<E>> extends frw.a<E> implements fty {
-      @Nullable
-      private ftz a;
-      @Nullable
-      private fvx b;
-      private boolean c;
-
-      @Override
-      public boolean aG_() {
-         return this.c;
-      }
-
-      @Override
-      public void b_(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return fty.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable ftz $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public ftz aH_() {
-         return this.a;
-      }
-
-      @Nullable
-      public frl a(fwf $$0, int $$1) {
-         if (this.aD_().isEmpty()) {
-            return null;
-         } else {
-            frl $$2 = this.aD_().get(Math.min($$1, this.aD_().size() - 1)).a($$0);
-            return frl.a(this, $$2);
-         }
-      }
-
-      @Nullable
-      @Override
-      public frl a(fwf $$0) {
-         if ($$0 instanceof fwf.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = azm.a($$2 + this.aD_().indexOf(this.aH_()), 0, this.aD_().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aD_().size(); $$4 += $$2) {
-               ftz $$5 = this.aD_().get($$4);
-               frl $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return frl.a(this, $$6);
-               }
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (btt $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
             }
          }
-
-         return fty.super.a($$0);
       }
 
-      public abstract List<? extends fvx> b();
-
-      void a(fvz $$0) {
-         List<? extends fvx> $$1 = this.b();
-         fxu.b $$2 = fxu.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
-
-            if ($$1.size() > 1) {
-               $$0.a(fvy.b, wy.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == fvx.a.c) {
-                  $$0.a(fvy.d, wy.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
-         }
-      }
+      return false;
    }
 }

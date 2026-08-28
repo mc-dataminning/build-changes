@@ -1,130 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class dkk {
+   public static final alf<dkd> a = a("the_void");
+   public static final alf<dkd> b = a("plains");
+   public static final alf<dkd> c = a("sunflower_plains");
+   public static final alf<dkd> d = a("snowy_plains");
+   public static final alf<dkd> e = a("ice_spikes");
+   public static final alf<dkd> f = a("desert");
+   public static final alf<dkd> g = a("swamp");
+   public static final alf<dkd> h = a("mangrove_swamp");
+   public static final alf<dkd> i = a("forest");
+   public static final alf<dkd> j = a("flower_forest");
+   public static final alf<dkd> k = a("birch_forest");
+   public static final alf<dkd> l = a("dark_forest");
+   public static final alf<dkd> m = a("pale_garden");
+   public static final alf<dkd> n = a("old_growth_birch_forest");
+   public static final alf<dkd> o = a("old_growth_pine_taiga");
+   public static final alf<dkd> p = a("old_growth_spruce_taiga");
+   public static final alf<dkd> q = a("taiga");
+   public static final alf<dkd> r = a("snowy_taiga");
+   public static final alf<dkd> s = a("savanna");
+   public static final alf<dkd> t = a("savanna_plateau");
+   public static final alf<dkd> u = a("windswept_hills");
+   public static final alf<dkd> v = a("windswept_gravelly_hills");
+   public static final alf<dkd> w = a("windswept_forest");
+   public static final alf<dkd> x = a("windswept_savanna");
+   public static final alf<dkd> y = a("jungle");
+   public static final alf<dkd> z = a("sparse_jungle");
+   public static final alf<dkd> A = a("bamboo_jungle");
+   public static final alf<dkd> B = a("badlands");
+   public static final alf<dkd> C = a("eroded_badlands");
+   public static final alf<dkd> D = a("wooded_badlands");
+   public static final alf<dkd> E = a("meadow");
+   public static final alf<dkd> F = a("cherry_grove");
+   public static final alf<dkd> G = a("grove");
+   public static final alf<dkd> H = a("snowy_slopes");
+   public static final alf<dkd> I = a("frozen_peaks");
+   public static final alf<dkd> J = a("jagged_peaks");
+   public static final alf<dkd> K = a("stony_peaks");
+   public static final alf<dkd> L = a("river");
+   public static final alf<dkd> M = a("frozen_river");
+   public static final alf<dkd> N = a("beach");
+   public static final alf<dkd> O = a("snowy_beach");
+   public static final alf<dkd> P = a("stony_shore");
+   public static final alf<dkd> Q = a("warm_ocean");
+   public static final alf<dkd> R = a("lukewarm_ocean");
+   public static final alf<dkd> S = a("deep_lukewarm_ocean");
+   public static final alf<dkd> T = a("ocean");
+   public static final alf<dkd> U = a("deep_ocean");
+   public static final alf<dkd> V = a("cold_ocean");
+   public static final alf<dkd> W = a("deep_cold_ocean");
+   public static final alf<dkd> X = a("frozen_ocean");
+   public static final alf<dkd> Y = a("deep_frozen_ocean");
+   public static final alf<dkd> Z = a("mushroom_fields");
+   public static final alf<dkd> aa = a("dripstone_caves");
+   public static final alf<dkd> ab = a("lush_caves");
+   public static final alf<dkd> ac = a("deep_dark");
+   public static final alf<dkd> ad = a("nether_wastes");
+   public static final alf<dkd> ae = a("warped_forest");
+   public static final alf<dkd> af = a("crimson_forest");
+   public static final alf<dkd> ag = a("soul_sand_valley");
+   public static final alf<dkd> ah = a("basalt_deltas");
+   public static final alf<dkd> ai = a("the_end");
+   public static final alf<dkd> aj = a("end_highlands");
+   public static final alf<dkd> ak = a("end_midlands");
+   public static final alf<dkd> al = a("small_end_islands");
+   public static final alf<dkd> am = a("end_barrens");
 
-public class dkk {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bsm<dkk.c> a = bsm.a();
-   public static final dkk b = new dkk.a().a();
-   public static final MapCodec<dkk> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bxf.i, bsm.a(dkk.c.a).promotePartial(af.a("Spawn data: ", d::error)), bak.a(bxf.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(mf.f.q(), dkk.b.a, mf.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dkk::new)
-   );
-   private final float f;
-   private final Map<bxf, bsm<dkk.c>> g;
-   private final Map<bwm<?>, dkk.b> h;
-
-   dkk(float $$0, Map<bxf, bsm<dkk.c>> $$1, Map<bwm<?>, dkk.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
-   }
-
-   public bsm<dkk.c> a(bxf $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public dkk.b a(bwm<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bxf, bsm.a<dkk.c>> a = af.a(bxf.class, $$0 -> bsm.b());
-      private final Map<bwm<?>, dkk.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public dkk.a a(bxf $$0, int $$1, dkk.c $$2) {
-         this.a.get($$0).a($$2, $$1);
-         return this;
-      }
-
-      public dkk.a a(bwm<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new dkk.b($$2, $$1));
-         return this;
-      }
-
-      public dkk.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public dkk a() {
-         return new dkk(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((bsm.a)$$0.getValue()).a())),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<dkk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, dkk.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static record c(bwm<?> b, int c, int d) {
-      public static final MapCodec<dkk.c> a = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     mf.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     ayu.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     ayu.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, dkk.c::new)
-         )
-         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
-
-      public c(bwm<?> b, int c, int d) {
-         b = b.f() == bxf.h ? bwm.aQ : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-
-      @Override
-      public String toString() {
-         return bwm.a(this.b) + "*(" + this.c + "-" + this.d + ")";
-      }
-
-      public bwm<?> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   private static alf<dkd> a(String $$0) {
+      return alf.a(mg.aG, alg.b($$0));
    }
 }

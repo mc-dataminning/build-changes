@@ -1,11 +1,11 @@
 public class ais implements zf<agp> {
    public static final yw<vu, ais> a = zf.a(ais::a, ais::new);
-   private final bua b;
+   private final buc b;
    private final int c;
    private final float d;
    private final float e;
 
-   public ais(bua $$0, int $$1, float $$2, float $$3) {
+   public ais(buc $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -13,7 +13,7 @@ public class ais implements zf<agp> {
    }
 
    private ais(vu $$0) {
-      this.b = $$0.b(bua.class);
+      this.b = $$0.b(buc.class);
       this.c = $$0.l();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -35,7 +35,7 @@ public class ais implements zf<agp> {
       $$0.a(this);
    }
 
-   public bua b() {
+   public buc b() {
       return this.b;
    }
 

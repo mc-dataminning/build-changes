@@ -1,69 +1,52 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
 
-public class dqd extends dma {
-   public static final MapCodec<dqd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(mf.e.q().fieldOf("host").forGetter(dqd::b), t()).apply($$0, dqd::new));
-   private final dma b;
-   private static final Map<dma, dma> c = Maps.newIdentityHashMap();
-   private static final Map<dzz, dzz> d = Maps.newIdentityHashMap();
-   private static final Map<dzz, dzz> e = Maps.newIdentityHashMap();
+public class dqd extends dmf implements dtq {
+   public static final MapCodec<dqd> a = b(dqd::new);
+   public static final eay b = eax.I;
+   private static final ffk c = dmf.b(8.0, 0.0, 8.0);
+
+   public dqd(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
+   }
 
    @Override
-   public MapCodec<? extends dqd> a() {
+   public MapCodec<dqd> a() {
       return a;
    }
 
-   public dqd(dma $$0, dzy.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
-   }
-
-   public dma b() {
-      return this.b;
-   }
-
-   public static boolean o(dzz $$0) {
-      return c.containsKey($$0.b());
-   }
-
-   private void a(arq $$0, iu $$1) {
-      cog $$2 = bwm.be.a($$0, bwl.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.U();
-      }
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, cyy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.O().c(dir.h) && !dfn.a($$3, axe.t)) {
-         this.a($$1, $$2);
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, ewp.c, ewp.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public static dzz p(dzz $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).m());
+   @Override
+   protected ewo b_(eah $$0) {
+      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
    }
 
-   public dzz q(dzz $$0) {
-      return a(e, $$0, () -> this.b().m());
+   @Override
+   public eah a(dcw $$0) {
+      ewo $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.b(ewp.c)));
    }
 
-   private static dzz a(Map<dzz, dzz> $$0, dzz $$1, Supplier<dzz> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dzz $$2x = $$2.get();
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return c;
+   }
 
-         for (ebc $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   @Override
+   protected boolean a(eah $$0, exd $$1) {
+      return false;
    }
 }

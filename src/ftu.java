@@ -1,29 +1,47 @@
-import java.util.Locale;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ftu extends ftr {
-   private static final int f = 500;
+public class ftu implements fwh {
+   private static final int a = 170;
+   private final wy b;
+   @Nullable
+   private List<ayy> c;
+   @Nullable
+   private tu d;
+   @Nullable
+   private final wy e;
 
-   public ftu(frm $$0, bpa $$1) {
-      super($$0, $$1);
+   private ftu(wy $$0, @Nullable wy $$1) {
+      this.b = $$0;
+      this.e = $$1;
+   }
+
+   public static ftu a(wy $$0, @Nullable wy $$1) {
+      return new ftu($$0, $$1);
+   }
+
+   public static ftu a(wy $$0) {
+      return new ftu($$0, $$0);
    }
 
    @Override
-   protected void d(fro $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void b(fwg $$0) {
+      if (this.e != null) {
+         $$0.a(fwf.c, this.e);
+      }
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   public List<ayy> a(foz $$0) {
+      tu $$1 = tu.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
+      }
+
+      return this.c;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public static List<ayy> a(foz $$0, wy $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

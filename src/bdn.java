@@ -10,7 +10,7 @@ public class bdn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(biw.s), bdn::a);
+      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(bix.s), bdn::a);
    }
 
    private static Typed<?> a(Typed<?> $$0) {

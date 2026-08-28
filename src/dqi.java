@@ -1,59 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dqi extends dps implements dqw {
-   public static final MapCodec<dqi> c = b(dqi::new);
-   private static final double g = 0.14;
-   private static final ffc h = dma.b(16.0, 0.0, 9.0);
+public class dqi extends dpz {
+   public static final MapCodec<dqi> e = b(dqi::new);
 
    @Override
-   public MapCodec<dqi> a() {
-      return c;
+   public MapCodec<? extends dqi> a() {
+      return e;
    }
 
-   protected dqi(dzy.d $$0) {
-      super($$0, ja.b, h, true, 0.14);
+   public dqi(eag.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected boolean h(dzz $$0) {
-      return $$0.a(dmc.J);
+   public static eah b() {
+      return dmh.J.m();
    }
 
    @Override
-   protected dma b() {
-      return dmc.mG;
+   public void a(dja $$0, crc $$1, iu $$2, eah $$3, @Nullable dxf $$4, czd $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!dfs.a($$5, axe.s)) {
+         if ($$0.B_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         eah $$6 = $$0.a_($$2.e());
+         if ($$6.d() || $$6.n()) {
+            $$0.b($$2, b());
+         }
+      }
    }
 
    @Override
-   protected boolean o(dzz $$0) {
-      return !$$0.a(dmc.lm);
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$1.a(djj.b, $$2) > 11 - $$0.g()) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public boolean a(@Nullable bxc $$0, dib $$1, iu $$2, dzz $$3, ewf $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(diw $$0, iu $$1, dzz $$2, ewg $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dzz a(dcr $$0) {
-      ewg $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected ewg b_(dzz $$0) {
-      return ewh.c.a(false);
+   protected void d(eah $$0, dja $$1, iu $$2) {
+      if ($$1.B_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.b($$2, b().b(), null);
+      }
    }
 }

@@ -20,13 +20,13 @@ public class bbt extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
       OpticFinder<?> $$1 = $$0.findField("tag");
       return TypeRewriteRule.seq(
          this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(biw.D), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(biw.b), this::b)
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bix.D), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bix.b), this::b)
          }
       );
    }

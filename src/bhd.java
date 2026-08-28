@@ -20,13 +20,13 @@ public class bhd extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<? extends Pair<String, ?>> $$0 = this.getInputSchema().getType(biw.z).findFieldType("hoverEvent");
-      return this.a(this.getInputSchema().getTypeRaw(biw.z), $$0);
+      Type<? extends Pair<String, ?>> $$0 = this.getInputSchema().getType(bix.z).findFieldType("hoverEvent");
+      return this.a(this.getInputSchema().getTypeRaw(bix.z), $$0);
    }
 
    private <C, H extends Pair<String, ?>> TypeRewriteRule a(Type<C> $$0, Type<H> $$1) {
       Type<Pair<String, Either<Either<String, List<C>>, Pair<Either<List<C>, Unit>, Pair<Either<C, Unit>, Pair<Either<H, Unit>, Dynamic<?>>>>>>> $$2 = DSL.named(
-         biw.z.typeName(),
+         bix.z.typeName(),
          DSL.or(
             DSL.or(DSL.string(), DSL.list($$0)),
             DSL.and(
@@ -37,8 +37,8 @@ public class bhd extends DataFix {
             )
          )
       );
-      if (!$$2.equals(this.getInputSchema().getType(biw.z))) {
-         throw new IllegalStateException("Text component type did not match, expected " + $$2 + " but got " + this.getInputSchema().getType(biw.z));
+      if (!$$2.equals(this.getInputSchema().getType(bix.z))) {
+         throw new IllegalStateException("Text component type did not match, expected " + $$2 + " but got " + this.getInputSchema().getType(bix.z));
       } else {
          return this.fixTypeEverywhere(
             "LegacyHoverEventFix",

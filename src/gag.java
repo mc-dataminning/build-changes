@@ -1,32 +1,74 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface gag {
-   static gag a(ayy $$0) {
-      return new gaf($$0);
+public class gag extends fyb {
+   private static final List<ebs> a = List.of(ebs.values());
+   private static final wy b = wy.c(dmh.pI.v());
+   private static final wy c = wy.c("test_block.message");
+   private final iu d;
+   private ebs s;
+   private String u;
+   @Nullable
+   private fss v;
+
+   public gag(dyz $$0) {
+      super(b);
+      this.d = $$0.ax_();
+      this.s = $$0.d();
+      this.u = $$0.t();
    }
 
-   static gag a(cwx $$0) {
-      Objects.requireNonNull($$0);
-
-      return (gag)(switch ($$0) {
-         case cww $$1 -> new gae($$1.a());
-         case gad.a $$2 -> new gad($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   public void aO_() {
+      this.v = new fss(this.p, this.n / 2 - 152, 80, 240, 20, wy.c("test_block.message"));
+      this.v.f(128);
+      this.v.a(this.u);
+      this.c(this.v);
+      this.b(this.v);
+      this.a(this.s);
+      this.c(fsq.<ebs>a(ebs::a).a(a).a().a(this.s).a(this.n / 2 - 4 - 150, 185, 50, 20, b, ($$0, $$1) -> this.a($$1)));
+      this.c(fsj.a(wx.d, $$0 -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
+      this.c(fsj.a(wx.e, $$0 -> this.E()).a(this.n / 2 + 4, 210, 150, 20).a());
    }
 
-   int a(frm var1);
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
+      if (this.s != ebs.a) {
+         $$0.b(this.p, c, this.n / 2 - 153, 70, 10526880);
+      }
 
-   int b(frm var1);
+      $$0.b(this.p, this.s.b(), this.n / 2 - 153, 174, 10526880);
+   }
 
-   default boolean a() {
+   @Override
+   public boolean k() {
       return false;
    }
 
-   default void a(frm $$0, int $$1, int $$2, Matrix4f $$3, gps.a $$4) {
+   private void m() {
+      this.u = this.v.a();
+      this.m.L().b(new aim(this.d, this.s, this.u));
+      this.aL_();
    }
 
-   default void a(frm $$0, int $$1, int $$2, int $$3, int $$4, fro $$5) {
+   @Override
+   public void aL_() {
+      this.E();
+   }
+
+   private void E() {
+      this.m.a(null);
+   }
+
+   private void a(ebs $$0) {
+      this.s = $$0;
+      this.v.k = $$0 != ebs.a;
+   }
+
+   @Override
+   public void b(frv $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

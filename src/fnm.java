@@ -1,38 +1,58 @@
-public class fnm extends fnp {
-   private static final wy b = wy.c("mco.connect.connecting");
-   private final hoz c;
-   private final fkt d;
-   private final fku e;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-   public fnm(fxu $$0, fkt $$1, fku $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hoz($$0);
+public class fnm {
+   private static final String a = "realms_persistence.json";
+   private static final fkr b = new fkr();
+   private static final Logger c = LogUtils.getLogger();
+
+   public fnm.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      if (this.e.a != null) {
-         this.c.a(this.d, glj.a(this.e.a));
-      } else {
-         this.b();
+   public void a(fnm.a $$0) {
+      b($$0);
+   }
+
+   public static fnm.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fnm.a $$2 = b.a($$1, fnm.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fnm.a();
+   }
+
+   public static void b(fnm.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fos.Q().af().i();
+   private static Path c() {
+      return foz.Q().q.toPath().resolve("realms_persistence.json");
    }
 
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public wy a() {
-      return b;
+   public static class a implements fli {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

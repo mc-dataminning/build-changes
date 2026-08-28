@@ -1,201 +1,117 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ewu {
-   private final List<ews> a;
-   @Nullable
-   private ewu.a b;
-   private int c;
-   private final iu d;
-   private final float e;
-   private final boolean f;
-
-   public ewu(List<ews> $$0, iu $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
-
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public ews d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public ews a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, ews $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public fei a(bwd $$0, int $$1) {
-      ews $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dq() + 1.0F)) * 0.5;
-      return new fei($$3, $$4, $$5);
-   }
-
-   public iu d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public fei a(bwd $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public iu g() {
-      return this.a.get(this.c).a();
-   }
-
-   public ews h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public ews i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable ewu $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            ews $$2 = this.a.get($$1);
-            ews $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @bav
-   void a(ews[] $$0, ews[] $$1, Set<exb> $$2) {
-      this.b = new ewu.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public ewu.a k() {
-      return this.b;
-   }
-
-   public void a(vu $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.q(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static ewu b(vu $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      iu $$3 = $$0.e();
-      List<ews> $$4 = $$0.a(ews::b);
-      ewu.a $$5 = ewu.a.b($$0);
-      ewu $$6 = new ewu($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
+public abstract class ewu extends ewm {
+   @Override
+   public ewn d() {
+      return ewp.b;
    }
 
    @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
+   public ewn e() {
+      return ewp.c;
    }
 
-   public iu l() {
-      return this.d;
+   @Override
+   public cyz a() {
+      return czh.rp;
    }
 
-   public float m() {
-      return this.e;
-   }
-
-   static ews[] c(vu $$0) {
-      ews[] $$1 = new ews[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = ews.b($$0);
-      }
-
-      return $$1;
-   }
-
-   static void a(vu $$0, ews[] $$1) {
-      $$0.c($$1.length);
-
-      for (ews $$2 : $$1) {
-         $$2.a($$0);
+   @Override
+   public void a(dja $$0, iu $$1, ewo $$2, azv $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awn.Dg, awo.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lx.ao, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 
-   public ewu n() {
-      ewu $$0 = new ewu(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
+   @Nullable
+   @Override
+   public lv h() {
+      return lx.l;
    }
 
-   public static record a(ews[] a, ews[] b, Set<exb> c) {
+   @Override
+   protected boolean a(arq $$0) {
+      return $$0.O().c(diw.W);
+   }
 
-      public void a(vu $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         ewu.a($$0, this.a);
-         ewu.a($$0, this.b);
+   @Override
+   protected void a(djb $$0, iu $$1, eah $$2) {
+      dxf $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dmf.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(djd $$0) {
+      return 4;
+   }
+
+   @Override
+   public eah b(ewo $$0) {
+      return dmh.J.m().b(drb.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ewn $$0) {
+      return $$0 == ewp.c || $$0 == ewp.b;
+   }
+
+   @Override
+   public int c(djd $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(djd $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(ewo $$0, dig $$1, iu $$2, ewn $$3, ja $$4) {
+      return $$4 == ja.a && !$$3.a(axh.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awm> j() {
+      return Optional.of(awn.dj);
+   }
+
+   public static class a extends ewu {
+      @Override
+      protected void a(eai.a<ewn, ewo> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      public static ewu.a b(vu $$0) {
-         HashSet<exb> $$1 = $$0.a(HashSet::new, exb::c);
-         ews[] $$2 = ewu.c($$0);
-         ews[] $$3 = ewu.c($$0);
-         return new ewu.a($$2, $$3, $$1);
+      @Override
+      public int d(ewo $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(ewo $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ewu {
+      @Override
+      public int d(ewo $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(ewo $$0) {
+         return true;
       }
    }
 }

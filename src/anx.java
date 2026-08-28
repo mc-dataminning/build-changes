@@ -12,8 +12,8 @@ public class anx {
       );
    }
 
-   private static int a(ei $$0, Collection<? extends bwd> $$1) {
-      for (bwd $$2 : $$1) {
+   private static int a(ei $$0, Collection<? extends bwf> $$1) {
+      for (bwf $$2 : $$1) {
          $$2.c($$0.e());
       }
 

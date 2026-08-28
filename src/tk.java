@@ -3,7 +3,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public record tk<EnvironmentType>(EnvironmentType b, alg c, int d, int e, boolean f, dst g, boolean h, int i, int j, boolean k) {
+public record tk<EnvironmentType>(EnvironmentType b, alg c, int d, int e, boolean f, dsz g, boolean h, int i, int j, boolean k) {
    public static final MapCodec<tk<je<tl>>> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                tl.b.fieldOf("environment").forGetter(tk::a),
@@ -11,7 +11,7 @@ public record tk<EnvironmentType>(EnvironmentType b, alg c, int d, int e, boolea
                ayu.m.fieldOf("max_ticks").forGetter(tk::c),
                ayu.l.optionalFieldOf("setup_ticks", 0).forGetter(tk::d),
                Codec.BOOL.optionalFieldOf("required", true).forGetter(tk::e),
-               dst.f.optionalFieldOf("rotation", dst.a).forGetter(tk::f),
+               dsz.f.optionalFieldOf("rotation", dsz.a).forGetter(tk::f),
                Codec.BOOL.optionalFieldOf("manual_only", false).forGetter(tk::g),
                ayu.m.optionalFieldOf("max_attempts", 1).forGetter(tk::h),
                ayu.m.optionalFieldOf("required_successes", 1).forGetter(tk::i),
@@ -20,12 +20,12 @@ public record tk<EnvironmentType>(EnvironmentType b, alg c, int d, int e, boolea
             .apply($$0, tk::new)
    );
 
-   public tk(EnvironmentType $$0, alg $$1, int $$2, int $$3, boolean $$4, dst $$5) {
+   public tk(EnvironmentType $$0, alg $$1, int $$2, int $$3, boolean $$4, dsz $$5) {
       this($$0, $$1, $$2, $$3, $$4, $$5, false, 1, 1, false);
    }
 
    public tk(EnvironmentType $$0, alg $$1, int $$2, int $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, dst.a);
+      this($$0, $$1, $$2, $$3, $$4, dsz.a);
    }
 
    public <T> tk<T> a(Function<EnvironmentType, T> $$0) {
@@ -52,7 +52,7 @@ public record tk<EnvironmentType>(EnvironmentType b, alg c, int d, int e, boolea
       return this.f;
    }
 
-   public dst f() {
+   public dsz f() {
       return this.g;
    }
 

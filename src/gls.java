@@ -1,25 +1,22 @@
-public class gls extends goa {
-   gls(gjr $$0, double $$1, double $$2, double $$3, dzz $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(fos.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
-   }
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   @Override
-   public gne b() {
-      return gne.a;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
-
-   public static class a implements gnd<lp> {
-      public gna a(lp $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gls($$1, $$2, $$3, $$4, $$0.b());
+@FunctionalInterface
+public interface gls {
+   Logger a = LogUtils.getLogger();
+   gls b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(glq.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
-   }
+   };
+
+   Optional<glq> resolve(glr var1);
 }

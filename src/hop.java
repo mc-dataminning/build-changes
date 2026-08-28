@@ -1,69 +1,74 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class hop implements hov {
-   private static final int a = 1200;
-   private static final wy b = wy.c("tutorial.craft_planks.title");
-   private static final wy c = wy.c("tutorial.craft_planks.description");
-   private final hou d;
-   @Nullable
-   private fuo e;
-   private int f;
+public class hop {
+   public static final hop a = new hop(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<hol<hop.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public hop(hou $$0) {
-      this.d = $$0;
+   protected hop(Ticker $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(how.f);
+   public synchronized void a(hol<hop.a> $$0) {
+      this.a($$0, (Function<hol<hop.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(hol<hop.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<hol<hop.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(hol<hop.a> $$0, Function<hol<hop.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(hol<hop.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
       } else {
-         fos $$0 = this.d.e();
-         if (this.f == 1) {
-            gop $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gi().a(axk.b)) {
-                  this.d.a(how.f);
-                  return;
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(hoi $$0) {
+      $$0.send(hoj.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((hol<hop.a>)$$1, new hop.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hoj.g.a());
                }
-
-               if (a($$1, axk.b)) {
-                  this.d.a(how.f);
-                  return;
-               }
-            }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(hol.B, new hop.a((int)$$1)));
+            this.d.clear();
          }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fuo($$0.h, fuo.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+      });
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   @Override
-   public void a(cyy $$0) {
-      if ($$0.a(axk.b)) {
-         this.d.a(how.f);
-      }
-   }
+   public static record a(int b) {
+      public static final Codec<hop.a> a = Codec.INT.xmap(hop.a::new, $$0 -> $$0.b);
 
-   public static boolean a(gop $$0, axr<cyu> $$1) {
-      for (je<cyu> $$2 : mf.g.c($$1)) {
-         if ($$0.l().a(awx.b.b($$2.a())) > 0) {
-            return true;
-         }
+      public int a() {
+         return this.b;
       }
-
-      return false;
    }
 }

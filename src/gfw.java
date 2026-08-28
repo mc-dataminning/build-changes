@@ -1,39 +1,45 @@
-public class gfw extends gfq<hcq> {
-   private final giu[] a = new giu[9];
-
-   public gfw(giu $$0) {
+public class gfw<T extends hcm> extends ggm<T> {
+   public gfw(gjc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1] = $$0.b(a($$1));
-      }
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static gji a() {
+      float $$0 = -14.0F;
+      gjk $$1 = ggm.a(gjg.a, -14.0F);
+      gjm $$2 = $$1.a();
+      gjm $$3 = $$2.a("head", gjh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a(0.0F, -13.0F, 0.0F));
+      $$3.a("hat", gjh.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gjg(-0.5F)), gje.a);
+      $$2.a("body", gjh.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gje.a(0.0F, -14.0F, 0.0F));
+      $$2.a("right_arm", gjh.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gje.a(-5.0F, -12.0F, 0.0F));
+      $$2.a("left_arm", gjh.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gje.a(5.0F, -12.0F, 0.0F));
+      $$2.a("right_leg", gjh.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gje.a(-2.0F, -5.0F, 0.0F));
+      $$2.a("left_leg", gjh.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gje.a(2.0F, -5.0F, 0.0F));
+      return gji.a($$1, 64, 32);
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("body", giz.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), giw.a(0.0F, 17.6F, 0.0F));
-      azv $$2 = azv.a(1660L);
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), giz.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), giw.a($$4, 24.6F, $$5));
-      }
-
-      return gja.a($$0, 64, 32).a(gjd.scaling(4.5F));
-   }
-
-   public void a(hcq $$0) {
+   public void a(T $$0) {
       super.a($$0);
+      this.o.k = true;
+      this.r.e *= 0.5F;
+      this.s.e *= 0.5F;
+      this.t.e *= 0.5F;
+      this.u.e *= 0.5F;
+      float $$1 = 0.4F;
+      this.r.e = azm.a(this.r.e, -0.4F, 0.4F);
+      this.s.e = azm.a(this.s.e, -0.4F, 0.4F);
+      this.t.e = azm.a(this.t.e, -0.4F, 0.4F);
+      this.u.e = azm.a(this.u.e, -0.4F, 0.4F);
+      if ($$0.b != null) {
+         this.r.e = -0.5F;
+         this.s.e = -0.5F;
+         this.r.g = 0.05F;
+         this.s.g = -0.05F;
+      }
 
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         this.a[$$1].e = 0.2F * azm.a($$0.u * 0.3F + (float)$$1) + 0.4F;
+      if ($$0.a) {
+         float $$2 = 5.0F;
+         this.o.c -= 5.0F;
+         this.p.c += 5.0F;
       }
    }
 }

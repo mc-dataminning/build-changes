@@ -1,32 +1,30 @@
-import javax.annotation.Nullable;
+public class gmh extends goi {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final god M;
 
-public class gmh extends goa {
-   private final float a;
-   private final gnv b;
-
-   gmh(gjr $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gnv $$7) {
+   gmh(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
       super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = azm.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = azm.a(this.r, 0.0F, 0.0F);
+      this.x = azm.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
       this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
-   }
-
-   @Override
-   public gne b() {
-      return gne.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
@@ -37,43 +35,49 @@ public class gmh extends goa {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         this.b(this.M);
          if (this.m) {
-            this.A = this.z = 0.0F;
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
          }
 
          this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
       }
    }
 
-   public static class a implements gnd<lp> {
-      private final gnv a;
+   @Override
+   public gnm b() {
+      return gnm.b;
+   }
 
-      public a(gnv $$0) {
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public gna a(lp $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dzz $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dsm.a) {
-            return null;
-         } else {
-            iu $$9 = iu.a($$2, $$3, $$4);
-            int $$10 = fos.Q().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dox) {
-               $$10 = ((dox)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gmh($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmh($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

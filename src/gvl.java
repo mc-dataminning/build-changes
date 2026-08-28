@@ -1,33 +1,22 @@
-public class gvl<T extends cpe> extends gxf<T, hbx, gfh> {
-   private static final alg a = alg.b("textures/entity/creaking/creaking.png");
-   private static final alg j = alg.b("textures/entity/creaking/creaking_eyes.png");
+public class gvl extends guz<cnn, hbz> {
+   private static final alg a = alg.b("textures/entity/skeleton/bogged.png");
+   private static final alg j = alg.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gvl(gvz.a $$0) {
-      super($$0, new gfh($$0.a(git.an)), 0.6F);
-      this.a(new hag<>(this, j, ($$0x, $$1) -> 1.0F, gfh::b, gqc::q, true));
+   public gvl(gwh.a $$0) {
+      super($$0, gjb.G, gjb.H, new gfc($$0.a(gjb.F)));
+      this.a(new hay<>(this, $$0.f(), gjb.I, j));
    }
 
-   public alg a(hbx $$0) {
+   public alg a(hbz $$0) {
       return a;
    }
 
-   public hbx a() {
-      return new hbx();
+   public hbz a() {
+      return new hbz();
    }
 
-   public void a(T $$0, hbx $$1, float $$2) {
+   public void a(cnn $$0, hbz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b.a($$0.bH);
-      $$1.a.a($$0.bI);
-      $$1.c.a($$0.bJ);
-      if ($$0.gr()) {
-         $$1.ac = 0.0F;
-         $$1.am = false;
-         $$1.d = $$0.gu();
-      } else {
-         $$1.d = $$0.gy();
-      }
-
-      $$1.e = $$0.n();
+      $$1.a = $$0.gs();
    }
 }

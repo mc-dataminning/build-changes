@@ -3,59 +3,51 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class btb extends btg {
+public class btb extends bti {
    public static final MapCodec<btb> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+                  bti.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
                )
                .apply($$0, btb::new)
       )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
-   private final float b;
-   private final float f;
+      .validate(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0)
+      );
+   private final bti b;
+   private final int f;
    private final int g;
-   private final int h;
 
-   public static btb a(float $$0, float $$1, int $$2, int $$3) {
-      return new btb($$0, $$1, $$2, $$3);
+   public static btb a(bti $$0, int $$1, int $$2) {
+      return new btb($$0, $$1, $$2);
    }
 
-   private btb(float $$0, float $$1, int $$2, int $$3) {
+   public btb(bti $$0, int $$1, int $$2) {
       this.b = $$0;
       this.f = $$1;
       this.g = $$2;
-      this.h = $$3;
    }
 
    @Override
    public int a(azv $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(azv $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)azm.a(azm.c($$0, $$1, $$2), $$3, $$4);
+      return azm.a(this.b.a($$0), this.f, this.g);
    }
 
    @Override
    public int a() {
-      return this.g;
+      return Math.max(this.f, this.b.a());
    }
 
    @Override
    public int b() {
-      return this.h;
+      return Math.min(this.g, this.b.b());
    }
 
    @Override
-   public bth<?> c() {
-      return bth.f;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   public btj<?> c() {
+      return btj.d;
    }
 }

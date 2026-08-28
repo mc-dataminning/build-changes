@@ -39,17 +39,17 @@ public class alv {
    }
 
    private void a(Collection<hw<ei>> $$0, alg $$1) {
-      bql.a().a($$1::toString);
+      bqn.a().a($$1::toString);
 
       for (hw<ei> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      bql.a().c();
+      bqn.a().c();
    }
 
    public void a(hw<ei> $$0, ei $$1) {
-      bqm $$2 = bql.a();
+      bqo $$2 = bqn.a();
       $$2.a(() -> "function " + $$0.a());
 
       try {

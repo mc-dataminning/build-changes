@@ -26,7 +26,7 @@ public class amo {
                                        .then(
                                           ej.a("only")
                                              .then(
-                                                ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bs))
+                                                ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bt))
                                                       .executes(
                                                          $$0x -> a(
                                                                (ei)$$0x.getSource(),
@@ -53,7 +53,7 @@ public class amo {
                                     .then(
                                        ej.a("from")
                                           .then(
-                                             ej.a("advancement", fi.a(mg.bs))
+                                             ej.a("advancement", fi.a(mg.bt))
                                                 .executes(
                                                    $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.c))
                                                 )
@@ -62,7 +62,7 @@ public class amo {
                                  .then(
                                     ej.a("until")
                                        .then(
-                                          ej.a("advancement", fi.a(mg.bs))
+                                          ej.a("advancement", fi.a(mg.bt))
                                              .executes(
                                                 $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.d))
                                              )
@@ -71,7 +71,7 @@ public class amo {
                               .then(
                                  ej.a("through")
                                     .then(
-                                       ej.a("advancement", fi.a(mg.bs))
+                                       ej.a("advancement", fi.a(mg.bt))
                                           .executes(
                                              $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.b))
                                           )
@@ -90,7 +90,7 @@ public class amo {
                                     .then(
                                        ej.a("only")
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bs))
+                                             ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bt))
                                                    .executes(
                                                       $$0x -> a(
                                                             (ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.a)
@@ -114,7 +114,7 @@ public class amo {
                                  .then(
                                     ej.a("from")
                                        .then(
-                                          ej.a("advancement", fi.a(mg.bs))
+                                          ej.a("advancement", fi.a(mg.bt))
                                              .executes(
                                                 $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.c))
                                              )
@@ -123,7 +123,7 @@ public class amo {
                               .then(
                                  ej.a("until")
                                     .then(
-                                       ej.a("advancement", fi.a(mg.bs))
+                                       ej.a("advancement", fi.a(mg.bt))
                                           .executes(
                                              $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.d))
                                           )
@@ -132,7 +132,7 @@ public class amo {
                            .then(
                               ej.a("through")
                                  .then(
-                                    ej.a("advancement", fi.a(mg.bs))
+                                    ej.a("advancement", fi.a(mg.bt))
                                        .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.b)))
                                  )
                            ))

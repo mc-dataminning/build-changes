@@ -1,58 +1,63 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gay extends gba {
-   private static final wy a = wy.c("options.online.title");
+public abstract class gay extends fyb {
+   private static final int b = 100;
+   private final wy c;
    @Nullable
-   private fov<Unit> u;
+   private final wy d;
+   private final wy s;
+   @Nullable
+   protected fsl a;
+   @Nullable
+   private fsu u;
+   private final fvv v;
 
-   public gay(fxu $$0, fow $$1) {
-      super($$0, $$1, a);
+   protected gay(wy $$0, wy $$1, wy $$2) {
+      this($$0, $$1, null, $$2);
+   }
+
+   protected gay(wy $$0, wy $$1, @Nullable wy $$2, wy $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.s = $$3;
+      this.v = new fvv(0, 0, this.n, this.o);
+   }
+
+   protected abstract fvy m();
+
+   @Override
+   protected void aO_() {
+      fwb $$0 = this.v.a(fwb.d().a(8));
+      $$0.c().b();
+      $$0.a(new ftq(this.n(), this.p));
+      this.u = $$0.a(new fsu(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
+      this.u.b(false);
+      fwb $$1 = $$0.a(fwb.d().a(8));
+      $$1.c().b();
+      if (this.d != null) {
+         this.a = $$1.a(fsl.a(this.d, this.p).a());
+      }
+
+      $$1.a(this.m());
+      this.v.a($$1x -> {
+         fsh var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
+   protected void c() {
       if (this.u != null) {
-         fsa $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fov<?>[] a(fow $$0, fos $$1) {
-      List<fov<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      fov<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bty $$1x = $$0x.an();
-            return new fov<>(
-               "options.difficulty.online",
-               fov.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fov.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
+         this.u.d(this.n - 100);
       }
 
-      return $$2.toArray(new fov[0]);
+      this.v.a();
+      fvv.a(this.v, this.J());
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   public wy i() {
+      return this.s;
    }
 }

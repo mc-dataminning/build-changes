@@ -21,7 +21,7 @@ public class ei implements ek<ei>, en {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("permissions.requires.entity"));
    private final eh d;
-   private final fei e;
+   private final feq e;
    private final arq f;
    private final int g;
    private final String h;
@@ -29,27 +29,27 @@ public class ei implements ek<ei>, en {
    private final MinecraftServer j;
    private final boolean k;
    @Nullable
-   private final bwd l;
+   private final bwf l;
    private final ef m;
    private final eu.a n;
-   private final feh o;
+   private final fep o;
    private final eg p;
    private final bam q;
 
-   public ei(eh $$0, fei $$1, feh $$2, arq $$3, int $$4, String $$5, wy $$6, MinecraftServer $$7, @Nullable bwd $$8) {
+   public ei(eh $$0, feq $$1, fep $$2, arq $$3, int $$4, String $$5, wy $$6, MinecraftServer $$7, @Nullable bwf $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, ef.a, eu.a.a, eg.a, bam.immediate($$7));
    }
 
    protected ei(
       eh $$0,
-      fei $$1,
-      feh $$2,
+      feq $$1,
+      fep $$2,
       arq $$3,
       int $$4,
       String $$5,
       wy $$6,
       MinecraftServer $$7,
-      @Nullable bwd $$8,
+      @Nullable bwf $$8,
       boolean $$9,
       ef $$10,
       eu.a $$11,
@@ -76,17 +76,17 @@ public class ei implements ek<ei>, en {
       return this.d == $$0 ? this : new ei($$0, this.e, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ei a(bwd $$0) {
+   public ei a(bwf $$0) {
       return this.l == $$0
          ? this
          : new ei(this.d, this.e, this.o, this.f, this.g, $$0.al().getString(), $$0.m_(), this.j, $$0, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ei a(fei $$0) {
+   public ei a(feq $$0) {
       return this.e.equals($$0) ? this : new ei(this.d, $$0, this.o, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
-   public ei a(feh $$0) {
+   public ei a(fep $$0) {
       return this.o.c($$0) ? this : new ei(this.d, this.e, $$0, this.f, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
    }
 
@@ -123,25 +123,25 @@ public class ei implements ek<ei>, en {
       if ($$0 == this.f) {
          return this;
       } else {
-         double $$1 = edw.a(this.f.B_(), $$0.B_());
-         fei $$2 = new fei(this.e.d * $$1, this.e.e, this.e.f * $$1);
+         double $$1 = eee.a(this.f.B_(), $$0.B_());
+         feq $$2 = new feq(this.e.d * $$1, this.e.e, this.e.f * $$1);
          return new ei(this.d, $$2, this.o, $$0, this.g, this.h, this.i, this.j, this.l, this.k, this.m, this.n, this.p, this.q);
       }
    }
 
-   public ei a(bwd $$0, eu.a $$1) {
+   public ei a(bwf $$0, eu.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public ei b(fei $$0) {
-      fei $$1 = this.n.a(this);
+   public ei b(feq $$0) {
+      feq $$1 = this.n.a(this);
       double $$2 = $$0.d - $$1.d;
       double $$3 = $$0.e - $$1.e;
       double $$4 = $$0.f - $$1.f;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = azm.h((float)(-(azm.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = azm.h((float)(azm.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new feh($$6, $$7));
+      return this.a(new fep($$6, $$7));
    }
 
    public ei a(eg $$0, bam $$1) {
@@ -163,7 +163,7 @@ public class ei implements ek<ei>, en {
       return this.g >= $$0;
    }
 
-   public fei d() {
+   public feq d() {
       return this.e;
    }
 
@@ -172,11 +172,11 @@ public class ei implements ek<ei>, en {
    }
 
    @Nullable
-   public bwd f() {
+   public bwf f() {
       return this.l;
    }
 
-   public bwd g() throws CommandSyntaxException {
+   public bwf g() throws CommandSyntaxException {
       if (this.l == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class ei implements ek<ei>, en {
    }
 
    public arr h() throws CommandSyntaxException {
-      bwd var2 = this.l;
+      bwf var2 = this.l;
       if (var2 instanceof arr) {
          return (arr)var2;
       } else {
@@ -202,7 +202,7 @@ public class ei implements ek<ei>, en {
       return this.l instanceof arr;
    }
 
-   public feh k() {
+   public fep k() {
       return this.o;
    }
 
@@ -266,15 +266,15 @@ public class ei implements ek<ei>, en {
 
    private void c(wy $$0) {
       wy $$1 = wy.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.j.aL().c(dir.p)) {
+      if (this.j.aL().c(diw.q)) {
          for (arr $$2 : this.j.ag().t()) {
-            if ($$2.z() != this.d && this.j.ag().f($$2.gh())) {
+            if ($$2.z() != this.d && this.j.ag().f($$2.gi())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.d != this.j && this.j.aL().c(dir.m)) {
+      if (this.d != this.j && this.j.aL().c(diw.n)) {
          this.j.a($$1);
       }
    }
@@ -312,9 +312,9 @@ public class ei implements ek<ei>, en {
 
    @Override
    public CompletableFuture<Suggestions> a(alf<? extends jr<?>> $$0, en.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      if ($$0 == mg.bt) {
+      if ($$0 == mg.bu) {
          return en.a(this.j.aI().e().stream().map($$0x -> $$0x.a().a()), $$2);
-      } else if ($$0 == mg.bs) {
+      } else if ($$0 == mg.bt) {
          Collection<ai> $$4 = this.j.aD().b();
          return en.a($$4.stream().map(ai::a), $$2);
       } else {
@@ -326,7 +326,7 @@ public class ei implements ek<ei>, en {
    }
 
    @Override
-   public Set<alf<div>> t() {
+   public Set<alf<dja>> t() {
       return this.j.K();
    }
 
@@ -336,7 +336,7 @@ public class ei implements ek<ei>, en {
    }
 
    @Override
-   public cuh v() {
+   public cum v() {
       return this.f.K();
    }
 

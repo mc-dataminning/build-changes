@@ -17,8 +17,8 @@ public class bfs extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.D);
-      Type<?> $$1 = this.getOutputSchema().getType(biw.D);
+      Type<?> $$0 = this.getInputSchema().getType(bix.D);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.D);
       return this.fixTypeEverywhereTyped(
          "Fix AbstractArrow item type",
          $$0,
@@ -28,8 +28,8 @@ public class bfs extends DataFix {
    }
 
    private Function<Typed<?>, Typed<?>> a(String $$0, bfs.a<?> $$1) {
-      Type<?> $$2 = this.getInputSchema().getChoiceType(biw.D, $$0);
-      Type<?> $$3 = this.getOutputSchema().getChoiceType(biw.D, $$0);
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bix.D, $$0);
+      Type<?> $$3 = this.getOutputSchema().getChoiceType(bix.D, $$0);
       return a($$0, $$1, $$2, $$3);
    }
 

@@ -1,83 +1,384 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class giz {
-   private static final Set<ja> a = EnumSet.allOf(ja.class);
-   private final List<gix> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
+   private static final gjg a = new gjg(0.008F);
+   private static final gjg b = new gjg(1.0F);
+   private static final gjg c = new gjg(0.5F);
 
-   public giz a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
-   }
+   public static Map<gja, gji> a() {
+      Builder<gja, gji> $$0 = ImmutableMap.builder();
+      gji $$1 = gji.a(ggm.a(gjg.a, 0.0F), 64, 64);
+      gji $$2 = gji.a(ggl.a(b), 64, 32);
+      gji $$3 = gji.a(ggl.a(new gjg(1.02F)), 64, 32);
+      gji $$4 = gji.a(ggl.a(c), 64, 32);
+      gji $$5 = ggt.a();
+      gji $$6 = ghv.c();
+      gji $$7 = gji.a(geh.a(gjg.a), 64, 64);
+      gji $$8 = gji.a(geh.b(gjg.a), 64, 64);
+      gji $$9 = gfz.a(false);
+      gji $$10 = gfz.a(true);
+      gjl $$11 = gjl.scaling(0.9375F);
+      gji $$12 = ggn.a().a($$11);
+      gji $$13 = ges.a();
+      gji $$14 = gex.a();
+      gji $$15 = gfo.b();
+      gji $$16 = gfl.c();
+      gji $$17 = gfm.a();
+      gji $$18 = gfn.a(gjg.a);
+      gji $$19 = gfu.a();
+      gji $$20 = gji.a(ggb.a(gjg.a), 64, 32);
+      gji $$21 = $$20.a(ggb.b);
+      gji $$22 = gji.a(ggb.a(new gjg(0.01F)), 64, 32);
+      gji $$23 = gji.a(ghb.a(gjg.a), 64, 64);
+      gji $$24 = gji.a(gha.a(), 64, 64);
+      gji $$25 = ghv.b();
+      gji $$26 = ggr.a(gjg.a);
+      gji $$27 = ggr.a(new gjg(0.5F));
+      gji $$28 = gid.a();
+      gji $$29 = ggj.a();
+      gji $$30 = ggj.b();
+      gji $$31 = ghu.c();
+      gji $$32 = gji.a(gil.a(), 64, 64).a($$11);
+      gji $$33 = gia.a();
+      gji $$34 = gen.a();
+      gji $$35 = gff.a();
+      gji $$36 = gfg.c();
+      gji $$37 = gfj.a();
+      gji $$38 = ggg.a();
+      gji $$39 = ggw.a();
+      gji $$40 = ggz.b(gjg.a);
+      gji $$41 = ggz.b(new gjg(0.5F));
+      gji $$42 = ghp.a();
+      gji $$43 = gho.a();
+      gji $$44 = ghy.a();
+      gji $$45 = gii.a();
+      gji $$46 = gin.a();
+      gji $$47 = gji.a(gir.a(gjg.a), 64, 32);
+      gji $$48 = gji.a(gir.a(new gjg(0.2F)), 64, 32);
+      gji $$49 = git.a();
+      gji $$50 = geq.a();
+      gji $$51 = gep.a(c);
+      gji $$52 = gep.a(b);
+      gji $$53 = gft.a(gjg.a);
+      gji $$54 = gft.a(new gjg(0.25F));
+      gji $$55 = gic.a();
+      gji $$56 = gfr.a();
+      gji $$57 = ghn.a();
+      $$0.put(gjb.c, gel.a());
+      $$0.put(gjb.d, $$34);
+      $$0.put(gjb.e, $$34.a(gen.a));
+      $$0.put(gjb.f, $$50);
+      $$0.put(gjb.g, $$51);
+      $$0.put(gjb.h, $$52);
+      $$0.put(gjb.i, $$50.a(ggm.i));
+      $$0.put(gjb.j, $$51.a(ggm.i));
+      $$0.put(gjb.k, $$52.a(ggm.i));
+      $$0.put(gjb.l, ger.a());
+      $$0.put(gjb.m, $$13);
+      $$0.put(gjb.n, $$13.a(ges.b));
+      $$0.put(gjb.q, gev.a(true));
+      $$0.put(gjb.s, gev.a(false));
+      $$0.put(gjb.r, geu.a(true));
+      $$0.put(gjb.t, geu.a(false));
+      $$0.put(gjb.u, gew.a());
+      $$0.put(gjb.v, gsj.c());
+      $$0.put(gjb.w, gsj.b());
+      $$0.put(gjb.x, $$14);
+      $$0.put(gjb.y, $$14.a(gex.a));
+      $$0.put(gjb.z, gey.a());
+      $$0.put(gjb.A, gez.a());
+      $$0.put(gjb.D, gfa.a());
+      $$0.put(gjb.E, gfb.c());
+      $$0.put(gjb.F, gfc.a());
+      $$0.put(gjb.G, $$4);
+      $$0.put(gjb.H, $$2);
+      $$0.put(gjb.I, gji.a(ggm.a(new gjg(0.2F), 0.0F), 64, 32));
+      $$0.put(gjb.J, gfd.a());
+      $$0.put(gjb.K, gfe.a(32, 32));
+      $$0.put(gjb.L, gfe.a(128, 128));
+      $$0.put(gjb.Q, $$20.a(gfh.a));
+      $$0.put(gjb.R, $$21.a(gfh.a));
+      $$0.put(gjb.T, $$22.a(gfh.a));
+      $$0.put(gjb.S, $$22.a(ggb.b).a(gfh.a));
+      $$0.put(gjb.M, $$35);
+      $$0.put(gjb.N, $$35.a(gff.a));
+      $$0.put(gjb.O, $$36);
+      $$0.put(gjb.P, $$36.a(gff.a));
+      $$0.put(gjb.U, $$33.a(gjl.scaling(0.7F)));
+      $$0.put(gjb.X, gfi.a());
+      $$0.put(gjb.Y, $$5);
+      $$0.put(gjb.Z, $$37);
+      $$0.put(gjb.aa, $$37.a(gfj.c));
+      $$0.put(gjb.ab, gfk.a());
+      $$0.put(gjb.ac, $$16);
+      $$0.put(gjb.ad, $$16.a(gfj.c));
+      $$0.put(gjb.ae, $$17);
+      $$0.put(gjb.af, $$17.a(gfo.a));
+      $$0.put(gjb.ag, $$18);
+      $$0.put(gjb.ah, $$18.a(ggz.a));
+      $$0.put(gjb.ai, $$5);
+      $$0.put(gjb.ak, gsu.b());
+      $$0.put(gjb.am, gsu.c());
+      $$0.put(gjb.al, gsu.d());
+      $$0.put(gjb.aj, gsu.e());
+      $$0.put(gjb.an, $$15);
+      $$0.put(gjb.ao, $$15.a(gfo.a));
+      $$0.put(gjb.ap, gfp.a());
+      $$0.put(gjb.aq, gfq.a(gjg.a));
+      $$0.put(gjb.ar, gfq.a(new gjg(2.0F)));
+      $$0.put(gjb.as, $$6);
+      $$0.put(gjb.av, gsv.b());
+      $$0.put(gjb.aw, gsv.c());
+      $$0.put(gjb.ax, $$56);
+      $$0.put(gjb.ay, $$56.a(gfr.a));
+      $$0.put(gjb.az, gfs.a(0.87F));
+      $$0.put(gjb.aA, gfs.b(0.87F));
+      $$0.put(gjb.aB, gfs.a(0.87F, false));
+      $$0.put(gjb.aC, gfs.a(0.87F, true));
+      $$0.put(gjb.aD, gfi.c());
+      $$0.put(gjb.aE, gfi.b());
+      $$0.put(gjb.aF, giv.a());
+      $$0.put(gjb.aG, $$53);
+      $$0.put(gjb.aL, $$4);
+      $$0.put(gjb.aM, $$4);
+      $$0.put(gjb.aN, $$54);
+      $$0.put(gjb.aH, $$53.a(ggm.i));
+      $$0.put(gjb.aI, $$4.a(ggm.i));
+      $$0.put(gjb.aJ, $$4.a(ggm.i));
+      $$0.put(gjb.aK, $$54.a(ggm.i));
+      $$0.put(gjb.aO, ggh.b());
+      $$0.put(gjb.aP, $$19);
+      $$0.put(gjb.aQ, $$19.a(gfu.a));
+      $$0.put(gjb.aR, gfw.a());
+      $$0.put(gjb.aS, gfx.a());
+      $$0.put(gjb.aT, giw.a());
+      $$0.put(gjb.aU, gfv.a());
+      $$0.put(gjb.aV, $$12);
+      $$0.put(gjb.aW, gga.a());
+      $$0.put(gjb.aX, ggc.a());
+      $$0.put(gjb.aY, ggc.a().a(ggc.a));
+      $$0.put(gjb.aZ, ggd.a());
+      $$0.put(gjb.ba, $$5);
+      $$0.put(gjb.bb, gge.a());
+      gjl $$58 = gjl.scaling(6.0F);
+      $$0.put(gjb.bc, $$1.a($$58));
+      $$0.put(gjb.bd, $$4.a($$58));
+      $$0.put(gjb.be, $$2.a($$58));
+      $$0.put(gjb.bf, $$55);
+      $$0.put(gjb.bg, $$55.a(gic.a));
+      $$0.put(gjb.bh, $$38);
+      $$0.put(gjb.bi, $$38.a(ggg.a));
+      $$0.put(gjb.bj, ggh.a());
+      $$0.put(gjb.bk, $$29);
+      $$0.put(gjb.bl, $$30);
+      $$0.put(gjb.bm, $$5);
+      gjl $$59 = gjl.scaling(1.1F);
+      $$0.put(gjb.bn, $$7.a($$59));
+      $$0.put(gjb.bq, $$8.a($$59));
+      $$0.put(gjb.bo, gji.a(geh.a(new gjg(0.1F)), 64, 64).a($$59));
+      $$0.put(gjb.br, gji.a(geh.b(new gjg(0.1F)), 64, 64).a($$59));
+      $$0.put(gjb.bp, $$9.a($$59));
+      $$0.put(gjb.bs, $$10.a($$59));
+      gjl $$60 = gjl.scaling(1.0625F);
+      $$0.put(gjb.bt, $$1.a($$60));
+      $$0.put(gjb.bx, $$4.a($$60));
+      $$0.put(gjb.by, $$2.a($$60));
+      $$0.put(gjb.bu, $$1.a(ggm.i).a($$60));
+      $$0.put(gjb.bv, $$4.a(ggm.i).a($$60));
+      $$0.put(gjb.bw, $$2.a(ggm.i).a($$60));
+      $$0.put(gjb.bz, $$12);
+      $$0.put(gjb.bA, ggo.a());
+      $$0.put(gjb.bD, ggq.a());
+      $$0.put(gjb.bE, $$26);
+      $$0.put(gjb.bF, $$26.a(ggr.a));
+      $$0.put(gjb.bH, $$27);
+      $$0.put(gjb.bG, $$27.a(ggr.a));
+      $$0.put(gjb.bI, ggs.a());
+      $$0.put(gjb.bJ, ggp.a());
+      $$0.put(gjb.bM, $$5);
+      $$0.put(gjb.bN, $$15);
+      $$0.put(gjb.bO, $$15.a(gfo.a));
+      $$0.put(gjb.bP, gfs.a(0.92F));
+      $$0.put(gjb.bQ, gfs.b(0.92F));
+      $$0.put(gjb.bR, gfs.a(0.92F, false));
+      $$0.put(gjb.bS, gfs.a(0.92F, true));
+      $$0.put(gjb.bV, $$20);
+      $$0.put(gjb.bW, $$21);
+      $$0.put(gjb.bZ, $$39);
+      $$0.put(gjb.ca, $$39.a(ggw.a));
+      $$0.put(gjb.cb, ggx.a());
+      $$0.put(gjb.cc, ggy.a());
+      $$0.put(gjb.cd, $$40);
+      $$0.put(gjb.co, $$40.a(ggz.a));
+      $$0.put(gjb.cq, $$41);
+      $$0.put(gjb.cp, $$41.a(ggz.a));
+      $$0.put(gjb.ce, $$23);
+      $$0.put(gjb.cm, $$4);
+      $$0.put(gjb.cn, $$3);
+      $$0.put(gjb.ci, $$23);
+      $$0.put(gjb.cj, $$4);
+      $$0.put(gjb.ck, $$3);
+      $$0.put(gjb.cf, $$23.a(ggm.i));
+      $$0.put(gjb.cg, $$4.a(ggm.i));
+      $$0.put(gjb.ch, $$3.a(ggm.i));
+      $$0.put(gjb.cl, $$24);
+      $$0.put(gjb.cr, $$12);
+      $$0.put(gjb.cs, gji.a(ghe.a(gjg.a, false), 64, 64));
+      $$0.put(gjb.cu, ghd.a());
+      $$0.put(gjb.ct, ghc.a());
+      $$0.put(gjb.cv, $$25);
+      $$0.put(gjb.cw, $$4);
+      $$0.put(gjb.cx, $$2);
+      $$0.put(gjb.cy, gji.a(ghe.a(gjg.a, true), 64, 64));
+      $$0.put(gjb.cz, $$4);
+      $$0.put(gjb.cA, $$2);
+      $$0.put(gjb.cB, gib.a());
+      $$0.put(gjb.cC, ghf.a(false));
+      $$0.put(gjb.cD, ghf.a(true));
+      $$0.put(gjb.cE, ghg.a());
+      $$0.put(gjb.cF, ghh.a());
+      $$0.put(gjb.cG, ghi.a());
+      $$0.put(gjb.cH, ghk.a(false));
+      $$0.put(gjb.cI, ghk.a(true));
+      $$0.put(gjb.cJ, ghm.a());
+      $$0.put(gjb.cK, $$57);
+      $$0.put(gjb.cM, $$57.a(ghn.a));
+      $$0.put(gjb.cL, $$57.a(ghn.b));
+      $$0.put(gjb.cN, $$42);
+      $$0.put(gjb.cO, $$42.a(ghp.a));
+      $$0.put(gjb.cQ, $$43);
+      $$0.put(gjb.cP, $$43.a(ghp.a));
+      $$0.put(gjb.cR, ghq.a());
+      $$0.put(gjb.cS, ghs.a());
+      $$0.put(gjb.cT, ghs.b());
+      $$0.put(gjb.cU, ghr.a());
+      $$0.put(gjb.cV, ght.a());
+      $$0.put(gjb.cW, $$31);
+      $$0.put(gjb.db, $$4);
+      $$0.put(gjb.dc, $$2);
+      $$0.put(gjb.cX, $$7);
+      $$0.put(gjb.cY, $$8);
+      $$0.put(gjb.cZ, $$9);
+      $$0.put(gjb.da, $$10);
+      $$0.put(gjb.dd, $$6);
+      $$0.put(gjb.de, ghx.b());
+      $$0.put(gjb.df, ghx.a());
+      $$0.put(gjb.dg, $$44);
+      $$0.put(gjb.dh, $$44.a(ghy.a));
+      $$0.put(gjb.di, ghz.a());
+      $$0.put(gjb.dj, $$5);
+      $$0.put(gjb.dk, $$33);
+      $$0.put(gjb.dn, $$55);
+      $$0.put(gjb.do, $$55.a(gic.a));
+      $$0.put(gjb.dp, $$31);
+      $$0.put(gjb.dq, $$4);
+      $$0.put(gjb.dr, $$2);
+      $$0.put(gjb.ds, gji.a(ggm.a(new gjg(0.25F), 0.0F), 64, 32));
+      $$0.put(gjb.dt, $$28);
+      $$0.put(gjb.du, $$28);
+      $$0.put(gjb.dv, $$28.a(gid.a));
+      $$0.put(gjb.dw, $$28.a(gid.a));
+      $$0.put(gjb.dx, gie.a());
+      $$0.put(gjb.dy, $$5);
+      $$0.put(gjb.dz, $$26);
+      $$0.put(gjb.dA, $$26.a(ggr.a));
+      $$0.put(gjb.dB, gif.a());
+      $$0.put(gjb.dC, gih.a(gjg.a));
+      $$0.put(gjb.dD, gih.a(a));
+      $$0.put(gjb.dE, gig.a(gjg.a));
+      $$0.put(gjb.dF, gig.a(a));
+      $$0.put(gjb.dG, $$45);
+      $$0.put(gjb.dH, $$45.a(gii.a));
+      $$0.put(gjb.dI, gij.a());
+      $$0.put(gjb.dJ, $$32);
+      $$0.put(gjb.dK, $$32.a(gil.a));
+      $$0.put(gjb.dL, $$12);
+      $$0.put(gjb.dN, gim.a());
+      $$0.put(gjb.dO, $$46);
+      $$0.put(gjb.dP, $$46.a(gfo.a));
+      $$0.put(gjb.dM, $$32);
+      $$0.put(gjb.dQ, gio.a());
+      $$0.put(gjb.dR, gip.a().a($$11));
+      $$0.put(gjb.dS, giq.a(gjg.a));
+      $$0.put(gjb.dT, giq.a(c));
+      $$0.put(gjb.dY, gzl.a());
+      gjl $$61 = gjl.scaling(1.2F);
+      $$0.put(gjb.dU, $$31.a($$61));
+      $$0.put(gjb.dV, $$4.a($$61));
+      $$0.put(gjb.dW, $$2.a($$61));
+      $$0.put(gjb.dX, $$6);
+      $$0.put(gjb.dZ, $$47);
+      $$0.put(gjb.ea, $$48);
+      $$0.put(gjb.eb, $$47.a(gir.a));
+      $$0.put(gjb.ec, $$48.a(gir.a));
+      $$0.put(gjb.ed, $$29);
+      $$0.put(gjb.ee, $$30);
+      $$0.put(gjb.ef, $$1);
+      $$0.put(gjb.eo, $$4);
+      $$0.put(gjb.ep, $$2);
+      $$0.put(gjb.eg, $$1.a(ggm.i));
+      $$0.put(gjb.eh, $$4.a(ggm.i));
+      $$0.put(gjb.ei, $$2.a(ggm.i));
+      $$0.put(gjb.ej, $$25);
+      $$0.put(gjb.ek, $$7);
+      $$0.put(gjb.el, $$8);
+      $$0.put(gjb.em, $$9);
+      $$0.put(gjb.en, $$10);
+      $$0.put(gjb.eq, $$49);
+      $$0.put(gjb.eu, git.a(c));
+      $$0.put(gjb.ev, git.a(b));
+      $$0.put(gjb.er, $$49.a(ggm.i));
+      $$0.put(gjb.es, git.a(c).a(ggm.i));
+      $$0.put(gjb.et, git.a(b).a(ggm.i));
+      $$0.put(gjb.ew, $$23);
+      $$0.put(gjb.eA, $$4);
+      $$0.put(gjb.eB, $$3);
+      $$0.put(gjb.ex, $$23.a(ggm.i));
+      $$0.put(gjb.ey, $$4.a(ggm.i));
+      $$0.put(gjb.ez, $$3.a(ggm.i));
+      $$0.put(gjb.p, ghl.a());
+      $$0.put(gjb.o, ghl.b());
+      gji $$62 = gfb.a();
+      gji $$63 = gfb.b();
+      $$0.put(gjb.bT, $$62);
+      $$0.put(gjb.bU, $$63);
+      $$0.put(gjb.dl, $$62);
+      $$0.put(gjb.dm, $$63);
+      $$0.put(gjb.B, $$62);
+      $$0.put(gjb.C, $$63);
+      $$0.put(gjb.bB, $$62);
+      $$0.put(gjb.bC, $$63);
+      $$0.put(gjb.a, $$62);
+      $$0.put(gjb.b, $$63);
+      $$0.put(gjb.V, $$62);
+      $$0.put(gjb.W, $$63);
+      $$0.put(gjb.at, $$62);
+      $$0.put(gjb.au, $$63);
+      $$0.put(gjb.bX, $$62);
+      $$0.put(gjb.bY, $$63);
+      $$0.put(gjb.bK, $$62);
+      $$0.put(gjb.bL, $$63);
+      gji $$64 = gtb.a(true);
+      gji $$65 = gtb.a(false);
+      ebv.a().forEach($$3x -> {
+         $$0.put(gjb.a($$3x), $$64);
+         $$0.put(gjb.b($$3x), $$65);
 
-   public giz a() {
-      return this.a(true);
-   }
-
-   public giz a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public giz a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, giy $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new gix($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new gix($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, giy.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new gix(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, giy.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<ja> $$6) {
-      this.b.add(new gix(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, giy.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public giz a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new gix($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, giy.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, giy $$7) {
-      this.b.add(new gix($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new gix(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, giy.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public giz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, giy $$6, float $$7, float $$8) {
-      this.b.add(new gix(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public giz a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, giy $$6) {
-      this.b.add(new gix(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<gix> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static giz c() {
-      return new giz();
+         for (gsx.a $$4x : gsx.a.values()) {
+            gji $$5x = gsx.a($$4x);
+            $$0.put(gjb.a($$3x, $$4x), $$5x);
+         }
+      });
+      ImmutableMap<gja, gji> $$66 = $$0.build();
+      List<gja> $$67 = gjb.a().filter($$1x -> !$$66.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$67.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$67);
+      } else {
+         return $$66;
+      }
    }
 }

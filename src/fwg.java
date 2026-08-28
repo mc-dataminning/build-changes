@@ -1,29 +1,19 @@
-public enum fwg {
-   a,
-   b;
+import com.google.common.collect.ImmutableList;
 
-   public fwg a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public interface fwg {
+   default void a(fwf $$0, wy $$1) {
+      this.a($$0, fwi.a($$1.getString()));
    }
 
-   public fwh b() {
-      return switch (this) {
-         case a -> fwh.d;
-         case b -> fwh.b;
-      };
+   default void a(fwf $$0, String $$1) {
+      this.a($$0, fwi.a($$1));
    }
 
-   public fwh c() {
-      return switch (this) {
-         case a -> fwh.c;
-         case b -> fwh.a;
-      };
+   default void a(fwf $$0, wy... $$1) {
+      this.a($$0, fwi.a(ImmutableList.copyOf($$1)));
    }
 
-   public fwh a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
-   }
+   void a(fwf var1, fwi<?> var2);
+
+   fwg a();
 }

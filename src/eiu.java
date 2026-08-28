@@ -1,44 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class eiu extends eis {
-   public eiu(Codec<elp> $$0) {
+public class eiu extends ejm<eli> {
+   public eiu(Codec<eli> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(diw $$0, azv $$1, iu $$2, dzz $$3) {
-      iu.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(ejo<eli> $$0) {
+      iu $$1 = $$0.e();
+      djz $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      eli $$4 = $$0.f();
+      if ($$1.v() < $$2.G_() + 5) {
+         return false;
+      } else {
+         int $$5 = 2 + $$3.a(2);
+         int $$6 = 2 + $$3.a(2);
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(ja.b);
-      }
-
-      iu $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<ja> $$9 = ja.c.a.c($$1);
-
-      for (ja $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ja.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
+         for (iu $$7 : iu.c($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
+            int $$8 = $$1.u() - $$7.u();
+            int $$9 = $$1.w() - $$7.w();
+            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
+               this.a($$2, $$7, $$3, $$4);
+            } else if ((double)$$3.i() < 0.031) {
+               this.a($$2, $$7, $$3, $$4);
             }
          }
-      }
 
-      return true;
+         return true;
+      }
+   }
+
+   private boolean a(djb $$0, iu $$1, azv $$2) {
+      iu $$3 = $$1.e();
+      eah $$4 = $$0.a_($$3);
+      return $$4.a(dmh.lk) ? $$2.h() : $$4.c($$0, $$3, ja.b);
+   }
+
+   private void a(djb $$0, iu $$1, azv $$2, eli $$3) {
+      if ($$0.v($$1) && this.a($$0, $$1, $$2)) {
+         $$0.a($$1, $$3.b.a($$2, $$1), 260);
+      }
    }
 }

@@ -1,61 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmo extends dta {
-   public static final MapCodec<dmo> a = b(dmo::new);
-   public static final eax<ja> b = eap.T;
+public class dmo extends dld {
+   public static final MapCodec<dmo> b = b(dmo::new);
+   public static final int c = 5;
+   private static final ja[] d = ja.values();
 
    @Override
    public MapCodec<dmo> a() {
-      return a;
+      return b;
    }
 
-   public dmo(dzy.d $$0) {
+   public dmo(eag.d $$0) {
       super($$0);
-      this.l(this.m().b(b, ja.c));
-   }
-
-   @Nullable
-   @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return new dxd($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
-      return !$$0.C ? a($$2, dwz.K, ($$0x, $$1x, $$2x, $$3) -> efi.c.a($$0x, $$3.x(), $$3.gq())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dzz a(dcr $$0) {
-      return super.a($$0).b(b, $$0.g());
    }
 
    @Override
-   public int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$3.a(5) == 0) {
+         ja $$4 = d[$$3.a(d.length)];
+         iu $$5 = $$2.a($$4);
+         eah $$6 = $$1.a_($$5);
+         dmf $$7 = null;
+         if (h($$6)) {
+            $$7 = dmh.rg;
+         } else if ($$6.a(dmh.rg) && $$6.c(dle.d) == $$4) {
+            $$7 = dmh.rf;
+         } else if ($$6.a(dmh.rf) && $$6.c(dle.d) == $$4) {
+            $$7 = dmh.re;
+         } else if ($$6.a(dmh.re) && $$6.c(dle.d) == $$4) {
+            $$7 = dmh.rd;
+         }
+
+         if ($$7 != null) {
+            eah $$8 = $$7.m().b(dle.d, $$4).b(dle.c, Boolean.valueOf($$6.y().a() == ewp.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      super.a($$0);
-      $$0.a(b);
-   }
-
-   @Override
-   public dzz a(dzz $$0, dst $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dzz a(dzz $$0, drc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   public static boolean h(eah $$0) {
+      return $$0.l() || $$0.a(dmh.J) && $$0.y().e() == 8;
    }
 }

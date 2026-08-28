@@ -149,7 +149,7 @@ public class aom {
    }
 
    private static int a(ei $$0, int $$1, boolean $$2, boolean $$3) {
-      bug $$4 = $$0.e().N();
+      bui $$4 = $$0.e().N();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> wy.a("commands.random.reset.all.success", $$5), false);

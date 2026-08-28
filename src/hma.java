@@ -1,123 +1,374 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Optional;
+import com.google.common.hash.HashCode;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class hma implements hlw {
-   private static final int a = 40;
-   private static final float b = 0.001F;
-   private final gop c;
-   private final hns d;
-   private final dka e;
-   private final azv f;
-   private final Object2ObjectArrayMap<djy, hma.a> g = new Object2ObjectArrayMap();
-   private Optional<djw> h = Optional.empty();
-   private Optional<djv> i = Optional.empty();
-   private float j;
-   @Nullable
-   private djy k;
+public class hma {
+   private final hlx a;
+   final hly b;
+   private final hlz c;
+   private final Runnable d;
+   private hma.c e;
+   final List<hma.e> f = new ArrayList<>();
 
-   public hma(gop $$0, hns $$1, dka $$2) {
-      this.f = $$0.dV().C_();
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public hma(hlx $$0, hly $$1, hlz $$2, Runnable $$3, hma.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public float b() {
-      return this.j;
+   void f() {
+      this.d.run();
    }
 
-   @Override
-   public void a() {
-      this.g.values().removeIf(hlv::m);
-      djy $$0 = this.e.a(this.c.dA(), this.c.dC(), this.c.dG()).a();
-      if ($$0 != this.k) {
-         this.k = $$0;
-         this.h = $$0.m();
-         this.i = $$0.n();
-         this.g.values().forEach(hma.a::o);
-         $$0.l().ifPresent($$1 -> this.g.compute($$0, ($$1x, $$2) -> {
-               if ($$2 == null) {
-                  $$2 = new hma.a((awm)$$1.a());
-                  this.d.a((hmm)$$2);
-               }
+   private void b(UUID $$0) {
+      for (hma.e $$1 : this.f) {
+         if ($$1.a.equals($$0)) {
+            $$1.a(hma.d.f);
+         }
+      }
+   }
 
-               $$2.p();
-               return $$2;
-            }));
+   public void a(UUID $$0, URL $$1, @Nullable HashCode $$2) {
+      if (this.e == hma.c.c) {
+         this.b.a($$0, hly.a.a);
+      } else {
+         this.a($$0, new hma.e($$0, $$1, $$2));
+      }
+   }
+
+   public void a(UUID $$0, Path $$1) {
+      if (this.e == hma.c.c) {
+         this.b.a($$0, hly.a.a);
+      } else {
+         URL $$2;
+         try {
+            $$2 = $$1.toUri().toURL();
+         } catch (MalformedURLException var5) {
+            throw new IllegalStateException("Can't convert path to URL " + $$1, var5);
+         }
+
+         hma.e $$5 = new hma.e($$0, $$2, null);
+         $$5.f = hma.b.c;
+         $$5.d = $$1;
+         this.a($$0, $$5);
+      }
+   }
+
+   private void a(UUID $$0, hma.e $$1) {
+      this.b($$0);
+      this.f.add($$1);
+      if (this.e == hma.c.b) {
+         this.a($$1);
       }
 
-      this.i.ifPresent($$0x -> {
-         if (this.f.j() < $$0x.b()) {
-            this.d.a(hmh.b($$0x.a().a()));
+      this.f();
+   }
+
+   private void a(hma.e $$0) {
+      this.b.a($$0.a, hly.b.a);
+      $$0.h = true;
+   }
+
+   @Nullable
+   private hma.e c(UUID $$0) {
+      for (hma.e $$1 : this.f) {
+         if (!$$1.a() && $$1.a.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(UUID $$0) {
+      hma.e $$1 = this.c($$0);
+      if ($$1 != null) {
+         $$1.a(hma.d.e);
+         this.f();
+      }
+   }
+
+   public void a() {
+      for (hma.e $$0 : this.f) {
+         $$0.a(hma.d.e);
+      }
+
+      this.f();
+   }
+
+   public void b() {
+      this.e = hma.c.b;
+
+      for (hma.e $$0 : this.f) {
+         if (!$$0.h && !$$0.a()) {
+            this.a($$0);
+         }
+      }
+
+      this.f();
+   }
+
+   public void c() {
+      this.e = hma.c.c;
+
+      for (hma.e $$0 : this.f) {
+         if (!$$0.h) {
+            $$0.a(hma.d.c);
+         }
+      }
+
+      this.f();
+   }
+
+   public void d() {
+      this.e = hma.c.a;
+   }
+
+   public void e() {
+      boolean $$0 = this.h();
+      if (!$$0) {
+         this.i();
+      }
+
+      this.g();
+   }
+
+   private void g() {
+      this.f.removeIf($$0 -> {
+         if ($$0.g != hma.a.a) {
+            return false;
+         } else if ($$0.e != null) {
+            hly.a $$1 = $$0.e.g;
+            if ($$1 != null) {
+               this.b.a($$0.a, $$1);
+            }
+
+            return true;
+         } else {
+            return false;
          }
       });
-      this.h
-         .ifPresent(
-            $$0x -> {
-               div $$1 = this.c.dV();
-               int $$2 = $$0x.c() * 2 + 1;
-               iu $$3 = iu.a(
-                  this.c.dA() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dE() + (double)this.f.a($$2) - (double)$$0x.c(),
-                  this.c.dG() + (double)this.f.a($$2) - (double)$$0x.c()
-               );
-               int $$4 = $$1.a(dje.a, $$3);
-               if ($$4 > 0) {
-                  this.j -= (float)$$4 / 15.0F * 0.001F;
-               } else {
-                  this.j = this.j - (float)($$1.a(dje.b, $$3) - 1) / (float)$$0x.b();
-               }
-
-               if (this.j >= 1.0F) {
-                  double $$5 = (double)$$3.u() + 0.5;
-                  double $$6 = (double)$$3.v() + 0.5;
-                  double $$7 = (double)$$3.w() + 0.5;
-                  double $$8 = $$5 - this.c.dA();
-                  double $$9 = $$6 - this.c.dE();
-                  double $$10 = $$7 - this.c.dG();
-                  double $$11 = Math.sqrt($$8 * $$8 + $$9 * $$9 + $$10 * $$10);
-                  double $$12 = $$11 + $$0x.d();
-                  hmh $$13 = hmh.a($$0x.a().a(), this.f, this.c.dA() + $$8 / $$11 * $$12, this.c.dE() + $$9 / $$11 * $$12, this.c.dG() + $$10 / $$11 * $$12);
-                  this.d.a($$13);
-                  this.j = 0.0F;
-               } else {
-                  this.j = Math.max(this.j, 0.0F);
-               }
-            }
-         );
    }
 
-   public static class a extends hlv {
-      private int n;
-      private int o;
-
-      public a(awm $$0) {
-         super($$0, awo.i, hmm.t());
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
+   private void a(Collection<hma.e> $$0, atk.b $$1) {
+      if (!$$1.b().isEmpty()) {
+         for (hma.e $$2 : this.f) {
+            if ($$2.g != hma.a.c) {
+               if ($$1.b().contains($$2.a)) {
+                  $$2.a(hma.d.a);
+               } else {
+                  $$2.a(hma.d.d);
+               }
+            }
+         }
       }
 
-      @Override
-      public void q() {
-         if (this.o < 0) {
-            this.n();
+      for (hma.e $$3 : $$0) {
+         Path $$4 = $$1.a().get($$3.a);
+         if ($$4 != null) {
+            $$3.f = hma.b.c;
+            $$3.d = $$4;
+            if (!$$3.a()) {
+               this.b.a($$3.a, hly.b.b);
+            }
+         }
+      }
+
+      this.f();
+   }
+
+   private boolean h() {
+      List<hma.e> $$0 = new ArrayList<>();
+      boolean $$1 = false;
+
+      for (hma.e $$2 : this.f) {
+         if (!$$2.a() && $$2.h) {
+            if ($$2.f != hma.b.c) {
+               $$1 = true;
+            }
+
+            if ($$2.f == hma.b.a) {
+               $$2.f = hma.b.b;
+               $$0.add($$2);
+            }
+         }
+      }
+
+      if (!$$0.isEmpty()) {
+         Map<UUID, atk.c> $$3 = new HashMap<>();
+
+         for (hma.e $$4 : $$0) {
+            $$3.put($$4.a, new atk.c($$4.b, $$4.c));
          }
 
-         this.o = this.o + this.n;
-         this.d = azm.a((float)this.o / 40.0F, 0.0F, 1.0F);
+         this.a.a($$3, $$1x -> this.a($$0, $$1x));
       }
 
-      public void o() {
-         this.o = Math.min(this.o, 40);
-         this.n = -1;
+      return $$1;
+   }
+
+   private void i() {
+      boolean $$0 = false;
+      final List<hma.e> $$1 = new ArrayList<>();
+      final List<hma.e> $$2 = new ArrayList<>();
+
+      for (hma.e $$3 : this.f) {
+         if ($$3.g == hma.a.b) {
+            return;
+         }
+
+         boolean $$4 = $$3.h && $$3.f == hma.b.c && !$$3.a();
+         if ($$4 && $$3.g == hma.a.a) {
+            $$1.add($$3);
+            $$0 = true;
+         }
+
+         if ($$3.g == hma.a.c) {
+            if (!$$4) {
+               $$0 = true;
+               $$2.add($$3);
+            } else {
+               $$1.add($$3);
+            }
+         }
       }
 
-      public void p() {
-         this.o = Math.max(0, this.o);
-         this.n = 1;
+      if ($$0) {
+         for (hma.e $$5 : $$1) {
+            if ($$5.g != hma.a.c) {
+               $$5.g = hma.a.b;
+            }
+         }
+
+         for (hma.e $$6 : $$2) {
+            $$6.g = hma.a.b;
+         }
+
+         this.c.scheduleReload(new hlz.a() {
+            @Override
+            public void a() {
+               for (hma.e $$0 : $$1) {
+                  $$0.g = hma.a.c;
+                  if ($$0.e == null) {
+                     hma.this.b.a($$0.a, hly.a.b);
+                  }
+               }
+
+               for (hma.e $$1 : $$2) {
+                  $$1.g = hma.a.a;
+               }
+
+               hma.this.f();
+            }
+
+            @Override
+            public void a(boolean $$0) {
+               if (!$$0) {
+                  $$1.clear();
+
+                  for (hma.e $$1 : hma.this.f) {
+                     switch ($$1.g) {
+                        case a:
+                           $$1.a(hma.d.d);
+                           break;
+                        case b:
+                           $$1.g = hma.a.a;
+                           $$1.a(hma.d.b);
+                           break;
+                        case c:
+                           $$1.add($$1);
+                     }
+                  }
+
+                  hma.this.f();
+               } else {
+                  for (hma.e $$2 : hma.this.f) {
+                     if ($$2.g == hma.a.b) {
+                        $$2.g = hma.a.a;
+                     }
+                  }
+               }
+            }
+
+            @Override
+            public List<hlz.b> b() {
+               return $$1.stream().map($$0 -> new hlz.b($$0.a, $$0.d)).toList();
+            }
+         });
+      }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
+   }
+
+   public static enum c {
+      a,
+      b,
+      c;
+   }
+
+   static enum d {
+      a(hly.a.d),
+      b(hly.a.e),
+      c(hly.a.a),
+      d(hly.a.c),
+      e(null),
+      f(null);
+
+      @Nullable
+      final hly.a g;
+
+      private d(@Nullable final hly.a $$0) {
+         this.g = $$0;
+      }
+   }
+
+   static class e {
+      final UUID a;
+      final URL b;
+      @Nullable
+      final HashCode c;
+      @Nullable
+      Path d;
+      @Nullable
+      hma.d e;
+      hma.b f = hma.b.a;
+      hma.a g = hma.a.a;
+      boolean h;
+
+      e(UUID $$0, URL $$1, @Nullable HashCode $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public void a(hma.d $$0) {
+         if (this.e == null) {
+            this.e = $$0;
+         }
+      }
+
+      public boolean a() {
+         return this.e != null;
       }
    }
 }

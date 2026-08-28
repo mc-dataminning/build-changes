@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bej extends bhr {
    public bej(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", biw.D, "minecraft:goat");
+      super($$0, false, "EntityGoatMissingStateFix", bix.D, "minecraft:goat");
    }
 
    @Override

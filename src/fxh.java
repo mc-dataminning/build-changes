@@ -1,64 +1,79 @@
-public class fxh extends fwq {
-   private fsc c;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fxh() {
-      super("");
-   }
+public class fxh extends fyb {
+   private static final wy a = wy.c("addServer.enterIp");
+   private fsj b;
+   private final gko c;
+   private fss d;
+   private final BooleanConsumer s;
+   private final fyb u;
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.c = fsc.a(wy.c("multiplayer.stopSleeping"), $$0 -> this.E()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void aK_() {
-      this.E();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   public fxh(fyb $$0, BooleanConsumer $$1, gko $$2) {
+      super(wy.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.E();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
+      if (!this.b.j || this.aI_() != this.d || $$0 != 257 && $$0 != 335) {
          return super.a($$0, $$1, $$2);
       } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
+         this.m();
          return true;
       }
+   }
+
+   @Override
+   protected void aO_() {
+      this.d = new fss(this.p, this.n / 2 - 100, 116, 200, 20, wy.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(fsj.a(wy.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fsj.a(wx.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.d);
+   }
+
+   @Override
+   public void a(foz $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
+   }
+
+   @Override
+   public void aL_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aF_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
    }
 
    private void E() {
-      gjs $$0 = this.m.t.j;
-      $$0.b(new ahw(this.m.t, ahw.a.c));
+      this.b.j = glr.b(this.d.a());
    }
 
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new fwq(this.b.a()));
-      }
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

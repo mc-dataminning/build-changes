@@ -1,261 +1,120 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fmf extends hpb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int C = 80;
-   private static final int D = 95;
-   private static final int E = 1;
-   private final fxu F;
-   private final fli G;
-   private final wy H;
-   private final RateLimiter I;
-   private fsc J;
-   private final String K;
-   private final fmf.a L;
-   @Nullable
-   private volatile wy M;
-   private volatile wy N = wy.c("mco.download.preparing");
-   @Nullable
-   private volatile String O;
-   private volatile boolean P;
-   private volatile boolean Q = true;
-   private volatile boolean R;
-   private volatile boolean S;
-   @Nullable
-   private Long T;
-   @Nullable
-   private Long U;
-   private long V;
-   private int W;
-   private static final String[] X = new String[]{"", ".", ". .", ". . ."};
-   private int Y;
-   private boolean Z;
-   private final BooleanConsumer aa;
+public class fmf extends hpj {
+   private static final wy a = wy.c("mco.backup.info.title");
+   private static final wy b = wy.c("mco.backup.unknown");
+   private final fyb c;
+   final fkp C;
+   final fvx D = new fvx(this);
+   private fmf.a E;
 
-   public fmf(fxu $$0, fli $$1, String $$2, BooleanConsumer $$3) {
-      super(foi.a);
-      this.aa = $$3;
-      this.F = $$0;
-      this.K = $$2;
-      this.G = $$1;
-      this.L = new fmf.a();
-      this.H = wy.c("mco.download.title");
-      this.I = RateLimiter.create(0.1F);
+   public fmf(fyb $$0, fkp $$1) {
+      super(a);
+      this.c = $$0;
+      this.C = $$1;
    }
 
    @Override
-   public void aN_() {
-      this.J = this.c(fsc.a(wx.e, $$0 -> this.aK_()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
-      this.E();
-   }
-
-   private void E() {
-      if (!this.R && !this.Z) {
-         this.Z = true;
-         if (this.a(this.G.a) >= 5368709120L) {
-            wy $$0 = wy.a("mco.download.confirmation.oversized", fjo.b(5368709120L));
-            this.m.a(fmo.c(this, $$0, $$0x -> {
-               this.m.a(this);
-               this.G();
-            }));
-         } else {
-            this.G();
-         }
-      }
-   }
-
-   private long a(String $$0) {
-      fjp $$1 = new fjp();
-      return $$1.a($$0);
+   public void aO_() {
+      this.D.a(a, this.p);
+      this.E = this.D.c(new fmf.a(this.m));
+      this.D.b(fsj.a(wx.k, $$0 -> this.aL_()).a());
+      this.c();
+      this.D.a($$1 -> {
+         fsh var10000 = this.c($$1);
+      });
    }
 
    @Override
-   public void e() {
-      super.e();
-      this.W++;
-      if (this.N != null && this.I.tryAcquire(1)) {
-         wy $$0 = this.F();
-         this.m.aY().c($$0);
-      }
-   }
-
-   private wy F() {
-      List<wy> $$0 = Lists.newArrayList();
-      $$0.add(this.H);
-      $$0.add(this.N);
-      if (this.O != null) {
-         $$0.add(wy.a("mco.download.percent", this.O));
-         $$0.add(wy.a("mco.download.speed.narration", fjo.b(this.V)));
-      }
-
-      if (this.M != null) {
-         $$0.add(this.M);
-      }
-
-      return wx.a($$0);
+   protected void c() {
+      this.E.b(this.n, this.D.d());
+      this.D.a();
    }
 
    @Override
-   public void aK_() {
-      this.P = true;
-      if (this.R && this.aa != null && this.M == null) {
-         this.aa.accept(true);
-      }
-
-      this.m.a(this.F);
+   public void aL_() {
+      this.m.a(this.c);
    }
 
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.H, this.n / 2, 20, -1);
-      $$0.a(this.p, this.N, this.n / 2, 50, -1);
-      if (this.Q) {
-         this.c($$0);
-      }
-
-      if (this.L.a != 0L && !this.P) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.M != null) {
-         $$0.a(this.p, this.M, this.n / 2, 110, -65536);
-      }
-   }
-
-   private void c(fro $$0) {
-      int $$1 = this.p.a(this.N);
-      if (this.W != 0 && this.W % 10 == 0) {
-         this.Y++;
-      }
-
-      $$0.b(this.p, X[this.Y % X.length], this.n / 2 + $$1 / 2 + 5, 50, -1);
-   }
-
-   private void d(fro $$0) {
-      double $$1 = Math.min((double)this.L.a / (double)this.L.b, 1.0);
-      this.O = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.n - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.p, wy.a("mco.download.percent", this.O), this.n / 2, 84, -1);
-   }
-
-   private void e(fro $$0) {
-      if (this.W % 20 == 0) {
-         if (this.T != null) {
-            long $$1 = af.c() - this.U;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.V = 1000L * (this.L.a - this.T) / $$1;
-            this.a($$0, this.V);
-         }
-
-         this.T = this.L.a;
-         this.U = af.c();
+   wy a(String $$0, String $$1) {
+      String $$2 = $$0.toLowerCase(Locale.ROOT);
+      if ($$2.contains("game") && $$2.contains("mode")) {
+         return this.b($$1);
       } else {
-         this.a($$0, this.V);
+         return (wy)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : wy.b($$1));
       }
    }
 
-   private void a(fro $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.p.b(this.O);
-         $$0.b(this.p, wy.a("mco.download.speed", fjo.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1);
+   private wy a(String $$0) {
+      try {
+         return fna.a.get(Integer.parseInt($$0)).b();
+      } catch (Exception var3) {
+         return b;
       }
    }
 
-   private void G() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.N = wy.c("mco.download.failed");
-                  return;
-               }
+   private wy b(String $$0) {
+      try {
+         return fna.b.get(Integer.parseInt($$0)).e();
+      } catch (Exception var3) {
+         return b;
+      }
+   }
 
-               if (this.P) {
-                  this.H();
-                  return;
-               }
-
-               this.N = wy.a("mco.download.downloading", this.K);
-               fjp $$0 = new fjp();
-               $$0.a(this.G.a);
-               $$0.a(this.G, this.K, this.L, this.m.m());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.M = wy.c("mco.download.failed");
-                     this.J.b(wx.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.S) {
-                        this.N = wy.c("mco.download.extracting");
-                     }
-
-                     this.S = true;
-                  }
-
-                  if (this.P) {
-                     $$0.a();
-                     this.H();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.R = true;
-               this.N = wy.c("mco.download.done");
-               this.J.b(wx.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.M = wy.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
-            }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
-            } else {
-               b.unlock();
-               this.Q = false;
-               this.R = true;
-            }
+   class a extends ftf<fmf.b> {
+      public a(final foz $$0) {
+         super($$0, fmf.this.n, fmf.this.D.d(), fmf.this.D.c(), 36);
+         if (fmf.this.C.e != null) {
+            fmf.this.C.e.forEach(($$0x, $$1) -> this.b(fmf.this.new b($$0x, $$1)));
          }
-      }).start();
+      }
    }
 
-   private void H() {
-      this.N = wy.c("mco.download.cancelled");
-   }
+   class b extends ftf.a<fmf.b> {
+      private static final wy b = wy.c("mco.backup.entry.templateName");
+      private static final wy c = wy.c("mco.backup.entry.gameDifficulty");
+      private static final wy d = wy.c("mco.backup.entry.name");
+      private static final wy e = wy.c("mco.backup.entry.gameServerVersion");
+      private static final wy f = wy.c("mco.backup.entry.uploaded");
+      private static final wy g = wy.c("mco.backup.entry.enabledPack");
+      private static final wy h = wy.c("mco.backup.entry.description");
+      private static final wy i = wy.c("mco.backup.entry.gameMode");
+      private static final wy j = wy.c("mco.backup.entry.seed");
+      private static final wy k = wy.c("mco.backup.entry.worldType");
+      private static final wy l = wy.c("mco.backup.entry.undefined");
+      private final String m;
+      private final String n;
 
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+      public b(final String $$0, final String $$1) {
+         this.m = $$0;
+         this.n = $$1;
+      }
+
+      @Override
+      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(fmf.this.p, this.a(this.m), $$3, $$2, -6250336);
+         $$0.b(fmf.this.p, fmf.this.a(this.m, this.n), $$3, $$2 + 12, -1);
+      }
+
+      private wy a(String $$0) {
+         return switch ($$0) {
+            case "template_name" -> b;
+            case "game_difficulty" -> c;
+            case "name" -> d;
+            case "game_server_version" -> e;
+            case "uploaded" -> f;
+            case "enabled_packs" -> g;
+            case "description" -> h;
+            case "game_mode" -> i;
+            case "seed" -> j;
+            case "world_type" -> k;
+            default -> l;
+         };
+      }
+
+      @Override
+      public wy a() {
+         return wy.a("narrator.select", this.m + " " + this.n);
+      }
    }
 }

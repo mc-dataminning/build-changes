@@ -1,11 +1,13 @@
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteMaps;
 import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2IntMap;
 import it.unimi.dsi.fastutil.longs.Long2IntMaps;
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongConsumer;
 import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
@@ -26,7 +28,7 @@ public abstract class ard {
    final Long2ObjectMap<ObjectSet<arr>> d = new Long2ObjectOpenHashMap();
    private final arh e;
    private final art f;
-   final djs g;
+   final djx g;
    private final ard.a h = new ard.a(8);
    private final ard.b i = new ard.b(32);
    protected final Set<aqs> b = new ReferenceOpenHashSet();
@@ -35,11 +37,11 @@ public abstract class ard {
    final Executor l;
    private int m = 10;
 
-   protected ard(djs $$0, Executor $$1, Executor $$2) {
+   protected ard(djx $$0, Executor $$1, Executor $$2) {
       this.g = $$0;
       this.e = new arh(this, $$0);
       this.f = new art($$0);
-      bsw<Runnable> $$3 = bsw.a("player ticket throttler", $$2);
+      bsy<Runnable> $$3 = bsy.a("player ticket throttler", $$2);
       this.j = new arv($$3, $$1, 4);
       this.l = $$2;
    }
@@ -84,7 +86,7 @@ public abstract class ard {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<aqv<ecg>> $$8 = $$7.b();
+                  CompletableFuture<aqv<eco>> $$8 = $$7.b();
                   $$8.thenAccept($$1x -> this.l.execute(() -> this.j.a($$6, () -> {
                         }, false)));
                }
@@ -98,7 +100,7 @@ public abstract class ard {
    }
 
    public void a(jx $$0, arr $$1) {
-      dic $$2 = $$0.r();
+      dih $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.h.b($$3, 0, true);
@@ -107,7 +109,7 @@ public abstract class ard {
    }
 
    public void b(jx $$0, arr $$1) {
-      dic $$2 = $$0.r();
+      dih $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<arr> $$4 = (ObjectSet<arr>)this.d.get($$3);
       $$4.remove($$1);
@@ -151,9 +153,27 @@ public abstract class ard {
       return this.h.a.size();
    }
 
-   public boolean e(long $$0) {
+   public bas e(long $$0) {
       this.h.a();
-      return this.h.a.containsKey($$0);
+      int $$1 = this.h.c($$0);
+      if ($$1 <= djl.c) {
+         return bas.a;
+      } else {
+         return $$1 > 8 ? bas.b : bas.c;
+      }
+   }
+
+   public void a(LongConsumer $$0) {
+      ObjectIterator var2 = Long2ByteMaps.fastIterable(this.f.b).iterator();
+
+      while (var2.hasNext()) {
+         Entry $$1 = (Entry)var2.next();
+         byte $$2 = $$1.getByteValue();
+         long $$3 = $$1.getLongKey();
+         if (aqt.e($$2)) {
+            $$0.accept($$3);
+         }
+      }
    }
 
    public LongIterator b() {
@@ -273,7 +293,7 @@ public abstract class ard {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  ard.this.j.onLevelChange(new dic($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  ard.this.j.onLevelChange(new dih($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

@@ -89,24 +89,24 @@ public class apl {
                                        ))
                                     .then(
                                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("nametagVisibility")
-                                                   .then(ej.a("never").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.b))))
-                                                .then(ej.a("hideForOtherTeams").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.c))))
-                                             .then(ej.a("hideForOwnTeam").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.d))))
-                                          .then(ej.a("always").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.a)))
+                                                   .then(ej.a("never").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.b))))
+                                                .then(ej.a("hideForOtherTeams").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.c))))
+                                             .then(ej.a("hideForOwnTeam").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.d))))
+                                          .then(ej.a("always").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.a)))
                                     ))
                                  .then(
                                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("deathMessageVisibility")
-                                                .then(ej.a("never").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.b))))
-                                             .then(ej.a("hideForOtherTeams").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.c))))
-                                          .then(ej.a("hideForOwnTeam").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.d))))
-                                       .then(ej.a("always").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.b.a)))
+                                                .then(ej.a("never").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.b))))
+                                             .then(ej.a("hideForOtherTeams").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.c))))
+                                          .then(ej.a("hideForOwnTeam").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.d))))
+                                       .then(ej.a("always").executes($$0x -> b((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.b.a)))
                                  ))
                               .then(
                                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("collisionRule")
-                                             .then(ej.a("never").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.a.b))))
-                                          .then(ej.a("pushOwnTeam").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.a.d))))
-                                       .then(ej.a("pushOtherTeams").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.a.c))))
-                                    .then(ej.a("always").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffp.a.a)))
+                                             .then(ej.a("never").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.a.b))))
+                                          .then(ej.a("pushOwnTeam").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.a.d))))
+                                       .then(ej.a("pushOtherTeams").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.a.c))))
+                                    .then(ej.a("always").executes($$0x -> a((ei)$$0x.getSource(), fv.a($$0x, "team"), ffx.a.a)))
                               ))
                            .then(
                               ej.a("prefix")
@@ -120,14 +120,14 @@ public class apl {
       );
    }
 
-   private static wy a(Collection<ffm> $$0) {
-      return $$0.iterator().next().hc();
+   private static wy a(Collection<ffu> $$0) {
+      return $$0.iterator().next().hd();
    }
 
-   private static int a(ei $$0, Collection<ffm> $$1) {
-      ffn $$2 = $$0.l().aJ();
+   private static int a(ei $$0, Collection<ffu> $$1) {
+      ffv $$2 = $$0.l().aJ();
 
-      for (ffm $$3 : $$1) {
+      for (ffu $$3 : $$1) {
          $$2.d($$3.cI());
       }
 
@@ -140,10 +140,10 @@ public class apl {
       return $$1.size();
    }
 
-   private static int a(ei $$0, ffi $$1, Collection<ffm> $$2) {
-      ffn $$3 = $$0.l().aJ();
+   private static int a(ei $$0, ffq $$1, Collection<ffu> $$2) {
+      ffv $$3 = $$0.l().aJ();
 
-      for (ffm $$4 : $$2) {
+      for (ffu $$4 : $$2) {
          $$3.a($$4.cI(), $$1);
       }
 
@@ -156,7 +156,7 @@ public class apl {
       return $$2.size();
    }
 
-   private static int a(ei $$0, ffi $$1, ffp.b $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ffq $$1, ffx.b $$2) throws CommandSyntaxException {
       if ($$1.k() == $$2) {
          throw i.create();
       } else {
@@ -166,7 +166,7 @@ public class apl {
       }
    }
 
-   private static int b(ei $$0, ffi $$1, ffp.b $$2) throws CommandSyntaxException {
+   private static int b(ei $$0, ffq $$1, ffx.b $$2) throws CommandSyntaxException {
       if ($$1.l() == $$2) {
          throw j.create();
       } else {
@@ -176,7 +176,7 @@ public class apl {
       }
    }
 
-   private static int a(ei $$0, ffi $$1, ffp.a $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ffq $$1, ffx.a $$2) throws CommandSyntaxException {
       if ($$1.m() == $$2) {
          throw k.create();
       } else {
@@ -186,7 +186,7 @@ public class apl {
       }
    }
 
-   private static int a(ei $$0, ffi $$1, boolean $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ffq $$1, boolean $$2) throws CommandSyntaxException {
       if ($$1.j() == $$2) {
          if ($$2) {
             throw g.create();
@@ -200,7 +200,7 @@ public class apl {
       }
    }
 
-   private static int b(ei $$0, ffi $$1, boolean $$2) throws CommandSyntaxException {
+   private static int b(ei $$0, ffq $$1, boolean $$2) throws CommandSyntaxException {
       if ($$1.i() == $$2) {
          if ($$2) {
             throw e.create();
@@ -214,7 +214,7 @@ public class apl {
       }
    }
 
-   private static int a(ei $$0, ffi $$1, wy $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ffq $$1, wy $$2) throws CommandSyntaxException {
       if ($$1.d().equals($$2)) {
          throw c.create();
       } else {
@@ -224,7 +224,7 @@ public class apl {
       }
    }
 
-   private static int a(ei $$0, ffi $$1, n $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, ffq $$1, n $$2) throws CommandSyntaxException {
       if ($$1.o() == $$2) {
          throw d.create();
       } else {
@@ -234,8 +234,8 @@ public class apl {
       }
    }
 
-   private static int a(ei $$0, ffi $$1) throws CommandSyntaxException {
-      ffn $$2 = $$0.l().aJ();
+   private static int a(ei $$0, ffq $$1) throws CommandSyntaxException {
+      ffv $$2 = $$0.l().aJ();
       Collection<String> $$3 = Lists.newArrayList($$1.h());
       if ($$3.isEmpty()) {
          throw b.create();
@@ -249,8 +249,8 @@ public class apl {
       }
    }
 
-   private static int b(ei $$0, ffi $$1) {
-      ffn $$2 = $$0.l().aJ();
+   private static int b(ei $$0, ffq $$1) {
+      ffv $$2 = $$0.l().aJ();
       $$2.d($$1);
       $$0.a(() -> wy.a("commands.team.remove.success", $$1.e()), true);
       return $$2.f().size();
@@ -261,18 +261,18 @@ public class apl {
    }
 
    private static int a(ei $$0, String $$1, wy $$2) throws CommandSyntaxException {
-      ffn $$3 = $$0.l().aJ();
+      ffv $$3 = $$0.l().aJ();
       if ($$3.b($$1) != null) {
          throw a.create();
       } else {
-         ffi $$4 = $$3.c($$1);
+         ffq $$4 = $$3.c($$1);
          $$4.a($$2);
          $$0.a(() -> wy.a("commands.team.add.success", $$4.e()), true);
          return $$3.f().size();
       }
    }
 
-   private static int c(ei $$0, ffi $$1) {
+   private static int c(ei $$0, ffq $$1) {
       Collection<String> $$2 = $$1.h();
       if ($$2.isEmpty()) {
          $$0.a(() -> wy.a("commands.team.list.members.empty", $$1.e()), false);
@@ -284,23 +284,23 @@ public class apl {
    }
 
    private static int a(ei $$0) {
-      Collection<ffi> $$1 = $$0.l().aJ().f();
+      Collection<ffq> $$1 = $$0.l().aJ().f();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.team.list.teams.empty"), false);
       } else {
-         $$0.a(() -> wy.a("commands.team.list.teams.success", $$1.size(), xb.b($$1, ffi::e)), false);
+         $$0.a(() -> wy.a("commands.team.list.teams.success", $$1.size(), xb.b($$1, ffq::e)), false);
       }
 
       return $$1.size();
    }
 
-   private static int b(ei $$0, ffi $$1, wy $$2) {
+   private static int b(ei $$0, ffq $$1, wy $$2) {
       $$1.b($$2);
       $$0.a(() -> wy.a("commands.team.option.prefix.success", $$2), false);
       return 1;
    }
 
-   private static int c(ei $$0, ffi $$1, wy $$2) {
+   private static int c(ei $$0, ffq $$1, wy $$2) {
       $$1.c($$2);
       $$0.a(() -> wy.a("commands.team.option.suffix.success", $$2), false);
       return 1;

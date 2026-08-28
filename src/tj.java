@@ -62,8 +62,8 @@ public class tj {
       sv.a($$2);
       Stream<iu> $$3 = $$0.findTestPos();
       int $$4 = $$3.mapToInt($$1x -> {
-         if ($$2.c_($$1x) instanceof dys $$3x) {
-            eql $$4x = $$3x.d();
+         if ($$2.c_($$1x) instanceof dza $$3x) {
+            eqt $$4x = $$3x.d();
             ti.a($$4x, $$2);
             return 1;
          } else {
@@ -86,7 +86,7 @@ public class tj {
 
       for (Iterator<iu> $$5 = $$0.findTestPos().iterator(); $$5.hasNext(); $$3++) {
          iu $$6 = $$5.next();
-         if (!($$2.c_($$6) instanceof dys $$7)) {
+         if (!($$2.c_($$6) instanceof dza $$7)) {
             throw n.create();
          }
 
@@ -115,7 +115,7 @@ public class tj {
       Collection<sj> $$5 = new ArrayList<>();
 
       for (sq $$6 : $$4) {
-         for (dst $$7 : dst.values()) {
+         for (dsz $$7 : dsz.values()) {
             Collection<sq> $$8 = new ArrayList<>();
 
             for (int $$9 = 0; $$9 < 100; $$9++) {
@@ -159,9 +159,9 @@ public class tj {
       $$0.findTestPos()
          .forEach(
             $$3x -> {
-               if ($$0.b().e().c_($$3x) instanceof dys $$5) {
+               if ($$0.b().e().c_($$3x) instanceof dza $$5) {
                   ja var13 = $$5.u().a(ja.c);
-                  iu $$8 = $$5.aw_().a(var13, 2);
+                  iu $$8 = $$5.ax_().a(var13, 2);
                   int $$9 = (int)var13.g().p();
                   String $$10 = String.format(Locale.ROOT, "/tp @s %d %d %d %d 0", $$8.u(), $$8.v(), $$8.w(), $$9);
                   int $$11 = $$2.u() - $$3x.u();
@@ -249,20 +249,20 @@ public class tj {
                                                             .requires($$0x -> $$0x.c(2)))
                                                          .then(
                                                             ej.a("run")
-                                                               .then(b(ej.a("tests", fn.a($$1, mg.bg)), $$0x -> tm.a().a($$0x, fn.a($$0x, "tests", mg.bg))))
+                                                               .then(b(ej.a("tests", fn.a($$1, mg.bh)), $$0x -> tm.a().a($$0x, fn.a($$0x, "tests", mg.bh))))
                                                          ))
                                                       .then(
                                                          ej.a("runmultiple")
                                                             .then(
-                                                               ((RequiredArgumentBuilder)ej.a("tests", fn.a($$1, mg.bg))
-                                                                     .executes($$0x -> a(tm.a().a($$0x, fn.a($$0x, "tests", mg.bg)), tg.a(), 0, 8)))
+                                                               ((RequiredArgumentBuilder)ej.a("tests", fn.a($$1, mg.bh))
+                                                                     .executes($$0x -> a(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)), tg.a(), 0, 8)))
                                                                   .then(
                                                                      ej.a("amount", IntegerArgumentType.integer())
                                                                         .executes(
                                                                            $$0x -> a(
                                                                                  tm.a()
                                                                                     .a(IntegerArgumentType.getInteger($$0x, "amount"))
-                                                                                    .a($$0x, fn.a($$0x, "tests", mg.bg)),
+                                                                                    .a($$0x, fn.a($$0x, "tests", mg.bh)),
                                                                                  tg.a(),
                                                                                  0,
                                                                                  8
@@ -276,9 +276,9 @@ public class tj {
                                              .then(a(ej.a("runthat"), tm.a()::c)))
                                           .then(b(ej.a("runfailed").then($$2), tm.a()::d)))
                                        .then(
-                                          ej.a("verify").then(ej.a("tests", fn.a($$1, mg.bg)).executes($$0x -> d(tm.a().a($$0x, fn.a($$0x, "tests", mg.bg)))))
+                                          ej.a("verify").then(ej.a("tests", fn.a($$1, mg.bh)).executes($$0x -> d(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)))))
                                        ))
-                                    .then(ej.a("locate").then(ej.a("tests", fn.a($$1, mg.bg)).executes($$0x -> e(tm.a().a($$0x, fn.a($$0x, "tests", mg.bg)))))))
+                                    .then(ej.a("locate").then(ej.a("tests", fn.a($$1, mg.bh)).executes($$0x -> e(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)))))))
                                  .then(ej.a("resetclosest").executes($$0x -> a(tm.a().a($$0x)))))
                               .then(ej.a("resetthese").executes($$0x -> a(tm.a().b($$0x)))))
                            .then(ej.a("resetthat").executes($$0x -> a(tm.a().c($$0x)))))
@@ -331,7 +331,7 @@ public class tj {
          );
       if (ab.aU) {
          $$3 = (LiteralArgumentBuilder<ei>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$3.then(
-                     ej.a("export").then(ej.a("test", fh.a($$1, mg.bg)).executes($$0x -> a((ei)$$0x.getSource(), fh.a($$0x, "test", mg.bg))))
+                     ej.a("export").then(ej.a("test", fh.a($$1, mg.bh)).executes($$0x -> a((ei)$$0x.getSource(), fh.a($$0x, "test", mg.bh))))
                   ))
                   .then(ej.a("exportclosest").executes($$0x -> c(tm.a().a($$0x)))))
                .then(ej.a("exportthese").executes($$0x -> c(tm.a().b($$0x)))))
@@ -347,7 +347,7 @@ public class tj {
    }
 
    private static int a(ei $$0, sq $$1) {
-      dys $$2 = $$1.f();
+      dza $$2 = $$1.f();
       $$2.a($$0::a);
       return 1;
    }
@@ -362,8 +362,8 @@ public class tj {
 
    private static Optional<sq> a(iu $$0, ei $$1, tg $$2) {
       arq $$3 = $$1.e();
-      if ($$3.c_($$0) instanceof dys $$4) {
-         Optional<je.c<sr>> $$6 = $$4.j().flatMap($$1.u().f(mg.bg)::a);
+      if ($$3.c_($$0) instanceof dza $$4) {
+         Optional<je.c<sr>> $$6 = $$4.j().flatMap($$1.u().f(mg.bh)::a);
          if ($$6.isEmpty()) {
             $$1.b(wy.a("commands.test.error.non_existant_test", $$4.k()));
             return Optional.empty();
@@ -383,10 +383,10 @@ public class tj {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          arq $$5 = $$0.e();
          iu $$6 = a($$0);
-         dys $$7 = ti.a($$1, $$6, new jz($$2, $$3, $$4), dst.a, $$5);
+         dza $$7 = ti.a($$1, $$6, new jz($$2, $$3, $$4), dsz.a, $$5);
          iu $$8 = $$7.z();
          iu $$9 = $$8.b($$2 - 1, 0, $$4 - 1);
-         iu.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmc.I.m()));
+         iu.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmh.I.m()));
          $$0.a(() -> wy.a("commands.test.success", $$7.k()), true);
          return 1;
       } else {
@@ -395,7 +395,7 @@ public class tj {
    }
 
    private static int a(ei $$0, String $$1) throws CommandSyntaxException {
-      fee $$2 = (fee)$$0.h().a(10.0, 1.0F, false);
+      fem $$2 = (fem)$$0.h().a(10.0, 1.0F, false);
       iu $$3 = $$2.b();
       arq $$4 = $$0.e();
       Optional<iu> $$5 = ti.a($$3, 15, $$4);
@@ -405,7 +405,7 @@ public class tj {
 
       if ($$5.isEmpty()) {
          throw q.create($$3.u(), $$3.v(), $$3.w());
-      } else if ($$4.c_($$5.get()) instanceof dys $$6) {
+      } else if ($$4.c_($$5.get()) instanceof dza $$6) {
          iu var12 = $$6.z();
          iu $$9 = $$3.b(var12);
          String $$10 = $$9.u() + ", " + $$9.v() + ", " + $$9.w();
@@ -435,7 +435,7 @@ public class tj {
    }
 
    private static int a(ei $$0, je<sr> $$1) {
-      return !dys.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
+      return !dza.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
    }
 
    private static boolean a(ei $$0, alg $$1) {
@@ -449,7 +449,7 @@ public class tj {
 
    private static iu a(ei $$0) {
       iu $$1 = iu.a((jo)$$0.d());
-      int $$2 = $$0.e().a(efy.a.b, $$1).v();
+      int $$2 = $$0.e().a(egg.a.b, $$1).v();
       return new iu($$1.u(), $$2, $$1.w() + 3);
    }
 

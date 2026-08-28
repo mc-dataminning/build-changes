@@ -1,12 +1,12 @@
 public class awx {
-   public static final aww<dma> a = a("mined", mf.e);
-   public static final aww<cyu> b = a("crafted", mf.g);
-   public static final aww<cyu> c = a("used", mf.g);
-   public static final aww<cyu> d = a("broken", mf.g);
-   public static final aww<cyu> e = a("picked_up", mf.g);
-   public static final aww<cyu> f = a("dropped", mf.g);
-   public static final aww<bwm<?>> g = a("killed", mf.f);
-   public static final aww<bwm<?>> h = a("killed_by", mf.f);
+   public static final aww<dmf> a = a("mined", mf.e);
+   public static final aww<cyz> b = a("crafted", mf.g);
+   public static final aww<cyz> c = a("used", mf.g);
+   public static final aww<cyz> d = a("broken", mf.g);
+   public static final aww<cyz> e = a("picked_up", mf.g);
+   public static final aww<cyz> f = a("dropped", mf.g);
+   public static final aww<bwo<?>> g = a("killed", mf.f);
+   public static final aww<bwo<?>> h = a("killed_by", mf.f);
    public static final aww<alg> i = a("custom", mf.k);
    public static final alg j = a("leave_game", awv.b);
    public static final alg k = a("play_time", awv.e);

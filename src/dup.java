@@ -1,91 +1,86 @@
 import com.mojang.serialization.MapCodec;
 
-public class dup extends dma {
+public class dup extends dmf {
    public static final MapCodec<dup> a = b(dup::new);
-   private static final eaz b = eap.aW;
-   private static final int c = 20;
-   private static final int d = 8;
+   public static final ebh b = eax.az;
+   private static final ffk c = dmf.b(12.0, 0.0, 16.0);
 
    @Override
    public MapCodec<dup> a() {
       return a;
    }
 
-   public dup(dzy.d $$0) {
+   protected dup(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Integer.valueOf(0)));
+      this.l(this.C.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(div $$0, dzz $$1, fee $$2, crs $$3) {
-      int $$4 = a((diw)$$0, $$1, $$2, (bwd)$$3);
-      if ($$3.q() instanceof arr $$6) {
-         $$6.a(awx.aE);
-         ap.M.a($$6, $$3, $$2.g(), $$4);
-      }
-   }
-
-   private static int a(diw $$0, dzz $$1, fee $$2, bwd $$3) {
-      int $$4 = a($$2, $$2.g());
-      int $$5 = $$3 instanceof crf ? 20 : 8;
-      if (!$$0.U().a($$2.b(), $$1.b())) {
-         a($$0, $$1, $$4, $$2.b(), $$5);
-      }
-
-      return $$4;
-   }
-
-   private static int a(fee $$0, fei $$1) {
-      ja $$2 = $$0.c();
-      double $$3 = Math.abs(azm.e($$1.d) - 0.5);
-      double $$4 = Math.abs(azm.e($$1.e) - 0.5);
-      double $$5 = Math.abs(azm.e($$1.f) - 0.5);
-      ja.a $$6 = $$2.o();
-      double $$7;
-      if ($$6 == ja.a.b) {
-         $$7 = Math.max($$3, $$5);
-      } else if ($$6 == ja.a.c) {
-         $$7 = Math.max($$3, $$4);
-      } else {
-         $$7 = Math.max($$4, $$5);
-      }
-
-      return Math.max(1, azm.c(15.0 * azm.a((0.5 - $$7) / 0.5, 0.0, 1.0)));
-   }
-
-   private static void a(diw $$0, dzz $$1, int $$2, iu $$3, int $$4) {
-      $$0.a($$3, $$1.b(b, Integer.valueOf($$2)), 3);
-      $$0.a($$3, $$1.b(), $$4);
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$0.c(b) != 0) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 3);
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return $$0.c(b);
-   }
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$1.v($$2.d())) {
+         int $$4 = 1;
 
-   @Override
-   protected boolean f_(dzz $$0) {
-      return true;
-   }
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
 
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
-      if (!$$1.w_() && !$$0.a($$3.b())) {
-         if ($$0.c(b) > 0 && !$$1.U().a($$2, this)) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 18);
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.d(), this.m());
+               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 260);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 260);
+            }
          }
       }
+   }
+
+   @Override
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      eah $$3 = $$1.a_($$2.e());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(axc.ah) || $$3.a(axc.J)) {
+            iu $$4 = $$2.e();
+
+            for (ja $$5 : ja.c.a) {
+               eah $$6 = $$1.a_($$4.a($$5));
+               ewo $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(axh.a) || $$6.a(dmh.lo)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 }

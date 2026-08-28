@@ -58,7 +58,7 @@ public abstract class sr {
       return this.a.j();
    }
 
-   public dst m() {
+   public dsz m() {
       return this.a.f();
    }
 

@@ -1,18 +1,15 @@
-public interface dea<T extends ddp<?>> {
-   dea<dde> a = a("crafting");
-   dea<dej> b = a("smelting");
-   dea<dcy> c = a("blasting");
-   dea<deo> d = a("smoking");
-   dea<dda> e = a("campfire_cooking");
-   dea<dep> f = a("stonecutting");
-   dea<dek> g = a("smithing");
+public interface dea {
+   czd a(int var1);
 
-   static <T extends ddp<?>> dea<T> a(final String $$0) {
-      return jr.a(mf.q, alg.b($$0), new dea<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   int a();
+
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).f()) {
+            return false;
          }
-      });
+      }
+
+      return true;
    }
 }

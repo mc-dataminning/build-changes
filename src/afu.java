@@ -7,7 +7,7 @@ public class afu implements zf<abu> {
    private final float f;
    private final long g;
 
-   public afu(je<awm> $$0, awo $$1, bwd $$2, float $$3, float $$4, long $$5) {
+   public afu(je<awm> $$0, awo $$1, bwf $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2.ar();

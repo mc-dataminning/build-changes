@@ -1,13 +1,13 @@
 public class adr implements zf<abu> {
    public static final yw<vu, adr> a = zf.a(adr::a, adr::new);
-   private final bua b;
+   private final buc b;
 
-   public adr(bua $$0) {
+   public adr(buc $$0) {
       this.b = $$0;
    }
 
    private adr(vu $$0) {
-      this.b = $$0.b(bua.class);
+      this.b = $$0.b(buc.class);
    }
 
    private void a(vu $$0) {
@@ -23,7 +23,7 @@ public class adr implements zf<abu> {
       $$0.a(this);
    }
 
-   public bua b() {
+   public buc b() {
       return this.b;
    }
 }

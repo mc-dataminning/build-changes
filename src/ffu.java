@@ -1,59 +1,53 @@
-public interface ffu extends btu {
-   cyy f();
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   default cyy c(int $$0) {
-      return this.f().a($$0);
-   }
-
-   void b(cyy var1);
-
-   default cyy h() {
-      return this.c(this.aj_());
-   }
-
-   @Override
-   default int b() {
-      return 1;
-   }
-
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cyy b(int $$0) {
-      return this.a($$0, this.aj_());
-   }
-
-   @Override
-   default cyy a(int $$0) {
-      return $$0 == 0 ? this.f() : cyy.k;
-   }
-
-   @Override
-   default cyy a(int $$0, int $$1) {
-      return $$0 != 0 ? cyy.k : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cyy $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends ffu {
-      dwx t();
-
+public interface ffu {
+   String co = "*";
+   ffu cp = new ffu() {
       @Override
-      default boolean a(cqy $$0) {
-         return btu.a(this.t(), $$0);
+      public String cI() {
+         return "*";
       }
+   };
+
+   String cI();
+
+   @Nullable
+   default wy m_() {
+      return null;
+   }
+
+   default wy hd() {
+      wy $$0 = this.m_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xe.e(wy.b(this.cI())))) : wy.b(this.cI());
+   }
+
+   static ffu c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cp;
+      } else {
+         final wy $$1 = wy.b($$0);
+         return new ffu() {
+            @Override
+            public String cI() {
+               return $$0;
+            }
+
+            @Override
+            public wy hd() {
+               return $$1;
+            }
+         };
+      }
+   }
+
+   static ffu a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new ffu() {
+         @Override
+         public String cI() {
+            return $$1;
+         }
+      };
    }
 }

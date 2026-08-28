@@ -10,23 +10,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class gq {
-   public static <T, C, P> bpv<List<T>> a(gq.b<T, C, P> $$0) {
-      bpl<List<T>> $$1 = bpl.a("top");
-      bpl<Optional<T>> $$2 = bpl.a("type");
-      bpl<bau> $$3 = bpl.a("any_type");
-      bpl<T> $$4 = bpl.a("element_type");
-      bpl<T> $$5 = bpl.a("tag_type");
-      bpl<List<T>> $$6 = bpl.a("conditions");
-      bpl<List<T>> $$7 = bpl.a("alternatives");
-      bpl<T> $$8 = bpl.a("term");
-      bpl<T> $$9 = bpl.a("negation");
-      bpl<T> $$10 = bpl.a("test");
-      bpl<C> $$11 = bpl.a("component_type");
-      bpl<P> $$12 = bpl.a("predicate_type");
-      bpl<alg> $$13 = bpl.a("id");
-      bpl<Dynamic<?>> $$14 = bpl.a("tag");
-      bpn<StringReader> $$15 = new bpn<>();
-      $$15.a($$1, bpu.b(bpu.a(bpu.a($$2), bqa.a('['), bpu.a(), bpu.a(bpu.a($$6)), bqa.a(']')), bpu.a($$2)), $$2x -> {
+   public static <T, C, P> bpx<List<T>> a(gq.b<T, C, P> $$0) {
+      bpn<List<T>> $$1 = bpn.a("top");
+      bpn<Optional<T>> $$2 = bpn.a("type");
+      bpn<bau> $$3 = bpn.a("any_type");
+      bpn<T> $$4 = bpn.a("element_type");
+      bpn<T> $$5 = bpn.a("tag_type");
+      bpn<List<T>> $$6 = bpn.a("conditions");
+      bpn<List<T>> $$7 = bpn.a("alternatives");
+      bpn<T> $$8 = bpn.a("term");
+      bpn<T> $$9 = bpn.a("negation");
+      bpn<T> $$10 = bpn.a("test");
+      bpn<C> $$11 = bpn.a("component_type");
+      bpn<P> $$12 = bpn.a("predicate_type");
+      bpn<alg> $$13 = bpn.a("id");
+      bpn<Dynamic<?>> $$14 = bpn.a("tag");
+      bpp<StringReader> $$15 = new bpp<>();
+      $$15.a($$1, bpw.b(bpw.a(bpw.a($$2), bqc.a('['), bpw.a(), bpw.a(bpw.a($$6)), bqc.a(']')), bpw.a($$2)), $$2x -> {
          Builder<T> $$3x = ImmutableList.builder();
          $$2x.b($$2).ifPresent($$3x::add);
          List<T> $$4x = $$2x.a($$6);
@@ -36,23 +36,23 @@ public class gq {
 
          return $$3x.build();
       });
-      $$15.a($$2, bpu.b(bpu.a($$4), bpu.a(bqa.a('#'), bpu.a(), bpu.a($$5)), bpu.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
-      $$15.a($$3, bqa.a('*'), $$0x -> bau.a);
+      $$15.a($$2, bpw.b(bpw.a($$4), bpw.a(bqc.a('#'), bpw.a(), bpw.a($$5)), bpw.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
+      $$15.a($$3, bqc.a('*'), $$0x -> bau.a);
       $$15.a($$4, new gq.c<>($$13, $$0));
       $$15.a($$5, new gq.e<>($$13, $$0));
-      $$15.a($$6, bpu.a(bpu.a($$7), bpu.a(bpu.a(bqa.a(','), bpu.a($$6)))), $$3x -> {
+      $$15.a($$6, bpw.a(bpw.a($$7), bpw.a(bpw.a(bqc.a(','), bpw.a($$6)))), $$3x -> {
          T $$4x = $$0.a($$3x.b($$7));
          return Optional.ofNullable($$3x.a($$6)).map($$1xx -> af.a($$4x, $$1xx)).orElse(List.of($$4x));
       });
-      $$15.a($$7, bpu.a(bpu.a($$8), bpu.a(bpu.a(bqa.a('|'), bpu.a($$7)))), $$2x -> {
+      $$15.a($$7, bpw.a(bpw.a($$8), bpw.a(bpw.a(bqc.a('|'), bpw.a($$7)))), $$2x -> {
          T $$3x = $$2x.b($$8);
          return Optional.ofNullable($$2x.a($$7)).map($$1xx -> af.a($$3x, $$1xx)).orElse(List.of($$3x));
       });
-      $$15.a($$8, bpu.b(bpu.a($$10), bpu.a(bqa.a('!'), bpu.a($$9))), $$2x -> $$2x.b($$10, $$9));
-      $$15.a($$9, bpu.a($$10), $$2x -> $$0.a($$2x.b($$10)));
+      $$15.a($$8, bpw.b(bpw.a($$10), bpw.a(bqc.a('!'), bpw.a($$9))), $$2x -> $$2x.b($$10, $$9));
+      $$15.a($$9, bpw.a($$10), $$2x -> $$0.a($$2x.b($$10)));
       $$15.a(
          $$10,
-         bpu.b(bpu.a(bpu.a($$11), bqa.a('='), bpu.a(), bpu.a($$14)), bpu.a(bpu.a($$12), bqa.a('~'), bpu.a(), bpu.a($$14)), bpu.a($$11)),
+         bpw.b(bpw.a(bpw.a($$11), bqc.a('='), bpw.a(), bpw.a($$14)), bpw.a(bpw.a($$12), bqc.a('~'), bpw.a(), bpw.a($$14)), bpw.a($$11)),
          ($$4x, $$5x) -> {
             P $$6x = $$5x.a($$12);
 
@@ -73,13 +73,13 @@ public class gq {
       );
       $$15.a($$11, new gq.a<>($$13, $$0));
       $$15.a($$12, new gq.d<>($$13, $$0));
-      $$15.a($$14, new bqb(JavaOps.INSTANCE));
-      $$15.a($$13, bpw.a);
-      return new bpv<>($$15, $$1);
+      $$15.a($$14, new bqd(JavaOps.INSTANCE));
+      $$15.a($$13, bpy.a);
+      return new bpx<>($$15, $$1);
    }
 
-   static class a<T, C, P> extends bpx<gq.b<T, C, P>, C> {
-      a(bpl<alg> $$0, gq.b<T, C, P> $$1) {
+   static class a<T, C, P> extends bpz<gq.b<T, C, P>, C> {
+      a(bpn<alg> $$0, gq.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -122,8 +122,8 @@ public class gq {
       T a(List<T> var1);
    }
 
-   static class c<T, C, P> extends bpx<gq.b<T, C, P>, T> {
-      c(bpl<alg> $$0, gq.b<T, C, P> $$1) {
+   static class c<T, C, P> extends bpz<gq.b<T, C, P>, T> {
+      c(bpn<alg> $$0, gq.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -138,8 +138,8 @@ public class gq {
       }
    }
 
-   static class d<T, C, P> extends bpx<gq.b<T, C, P>, P> {
-      d(bpl<alg> $$0, gq.b<T, C, P> $$1) {
+   static class d<T, C, P> extends bpz<gq.b<T, C, P>, P> {
+      d(bpn<alg> $$0, gq.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -154,8 +154,8 @@ public class gq {
       }
    }
 
-   static class e<T, C, P> extends bpx<gq.b<T, C, P>, T> {
-      e(bpl<alg> $$0, gq.b<T, C, P> $$1) {
+   static class e<T, C, P> extends bpz<gq.b<T, C, P>, T> {
+      e(bpn<alg> $$0, gq.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 

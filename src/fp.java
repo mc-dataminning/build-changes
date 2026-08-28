@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fp implements ArgumentType<ffe> {
+public class fp implements ArgumentType<ffm> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
@@ -20,13 +20,13 @@ public class fp implements ArgumentType<ffe> {
       return new fp();
    }
 
-   public static ffe a(CommandContext<ei> $$0, String $$1) {
-      return (ffe)$$0.getArgument($$1, ffe.class);
+   public static ffm a(CommandContext<ei> $$0, String $$1) {
+      return (ffm)$$0.getArgument($$1, ffm.class);
    }
 
-   public ffe a(StringReader $$0) throws CommandSyntaxException {
+   public ffm a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      ffe $$2 = ffe.t.a($$1);
+      ffm $$2 = ffm.t.a($$1);
       if ($$2 == null) {
          throw a.createWithContext($$0, $$1);
       } else {
@@ -35,7 +35,7 @@ public class fp implements ArgumentType<ffe> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return en.b(Arrays.stream(ffe.values()).map(ffe::c), $$1);
+      return en.b(Arrays.stream(ffm.values()).map(ffm::c), $$1);
    }
 
    public Collection<String> getExamples() {

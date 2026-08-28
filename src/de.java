@@ -16,8 +16,8 @@ public record de(boolean d, boolean e) implements by {
    }
 
    @Override
-   public boolean a(bwd $$0, arq $$1, @Nullable fei $$2) {
-      return !($$0 instanceof cso $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
+   public boolean a(bwf $$0, arq $$1, @Nullable feq $$2) {
+      return !($$0 instanceof cst $$3) ? false : $$3.gE() == this.d && $$3.gD() == this.e;
    }
 
    public boolean b() {

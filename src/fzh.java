@@ -1,30 +1,49 @@
-import org.joml.Vector3f;
+import java.util.List;
 
-public class fzh extends fym {
-   public static final float c = 4.5F;
-   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int s = 16;
-   private static final int u = 16;
-   private final alg v = alg.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
+public class fzh {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<alg> e = List.of();
+   private int f;
+   private int g;
 
-   public fzh(dyl $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, wy.c("hanging_sign.edit"));
+   public fzh(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   protected void a(fro $$0, dzz $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   public void a(List<alg> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   protected void c(fro $$0) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(gqc::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   public void a(cuv $$0, frv $$1, float $$2, int $$3, int $$4) {
+      cws $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   protected Vector3f m() {
-      return d;
+   private void a(cws $$0, alg $$1, float $$2, frv $$3, int $$4, int $$5) {
+      $$3.a(gqk::H, $$1, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axw.a($$2));
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

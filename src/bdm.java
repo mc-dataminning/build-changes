@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bdm extends bhr {
    public bdm(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Colorless shulker entity fix", biw.D, "minecraft:shulker");
+      super($$0, $$1, "Colorless shulker entity fix", bix.D, "minecraft:shulker");
    }
 
    @Override

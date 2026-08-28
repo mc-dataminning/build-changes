@@ -1,27 +1,17 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.function.Function;
 
-public interface fci extends eza, Predicate<eyz> {
-   Codec<fci> d = mf.F.q().dispatch("condition", fci::b, fcj::a);
-   Codec<fci> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fbv.b));
-   Codec<je<fci>> f = alc.a(mg.br, e);
+public interface fci<T extends fci<T>> {
+   T b(fcq.a var1);
 
-   fcj b();
+   default <E> T a_(Iterable<E> $$0, Function<E, fcq.a> $$1) {
+      T $$2 = this.d();
 
-   @FunctionalInterface
-   public interface a {
-      fci build();
-
-      default fci.a invert() {
-         return fcf.a(this);
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      default fbw.a or(fci.a $$0) {
-         return fbw.a(this, $$0);
-      }
-
-      default fbv.a and(fci.a $$0) {
-         return fbv.a(this, $$0);
-      }
+      return $$2;
    }
+
+   T d();
 }

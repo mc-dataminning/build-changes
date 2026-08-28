@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcc extends bhr {
    public bcc(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", biw.s, "minecraft:banner");
+      super($$0, $$1, "BlockEntityBannerColorFix", bix.s, "minecraft:banner");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

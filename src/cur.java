@@ -1,86 +1,101 @@
-import java.util.List;
+public class cur {
+   private int a = 20;
+   private float b = 5.0F;
+   private float c;
+   private int d;
 
-public abstract class cur extends cwf {
-   private final int o;
-   private final int p;
-   protected final cvi m;
-   protected final cwi n = new cwi();
-
-   public cur(cvz<?> $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1);
-      this.o = $$2;
-      this.p = $$3;
-      this.m = new cwu(this, $$2, $$3);
+   private void b(int $$0, float $$1) {
+      this.a = azm.a($$0 + this.a, 0, 20);
+      this.b = azm.a($$1 + this.b, 0.0F, (float)this.a);
    }
 
-   protected cwn a(cqy $$0, int $$1, int $$2) {
-      return this.a(new cwj($$0, this.m, this.n, 0, $$1, $$2));
+   public void a(int $$0, float $$1) {
+      this.b($$0, cuq.a($$0, $$1));
    }
 
-   @Override
-   protected void d(int $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.o; $$2++) {
-         for (int $$3 = 0; $$3 < this.p; $$3++) {
-            this.a(new cwn(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
+   public void a(cus $$0) {
+      this.b($$0.a(), $$0.b());
+   }
+
+   public void a(arr $$0) {
+      arq $$1 = $$0.y();
+      bua $$2 = $$1.an();
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$2 != bua.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
       }
-   }
 
-   @Override
-   public cwf.a a(boolean $$0, boolean $$1, ddu<?> $$2, arq $$3, cqx $$4) {
-      ddu<dde> $$5 = (ddu<dde>)$$2;
-      this.l();
-
-      cwf.a var8;
-      try {
-         List<cwn> $$6 = this.n();
-         var8 = aks.a(new aks.a<dde>() {
-            @Override
-            public void a(crd $$0) {
-               cur.this.a($$0);
+      boolean $$3 = $$1.O().c(diw.l);
+      if ($$3 && this.b > 0.0F && $$0.gv() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
+         }
+      } else if ($$3 && this.a >= 18 && $$0.gv()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eG() > 10.0F || $$2 == bua.d || $$0.eG() > 1.0F && $$2 == bua.c) {
+               $$0.a($$1, $$0.dW().j(), 1.0F);
             }
 
-            @Override
-            public void a() {
-               cur.this.n.a();
-               cur.this.m.a();
-            }
-
-            @Override
-            public boolean a(ddu<dde> $$0) {
-               return $$0.b().a(cur.this.m.ax_(), cur.this.q().dV());
-            }
-         }, this.o, this.p, $$6, $$6, $$4, $$5, $$0, $$1);
-      } finally {
-         this.a($$3, (ddu<dde>)$$2);
+            this.d = 0;
+         }
+      } else {
+         this.d = 0;
       }
-
-      return var8;
    }
 
-   @Override
-   protected void l() {
+   public void a(tz $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
+      }
    }
 
-   protected void a(arq $$0, ddu<dde> $$1) {
+   public void b(tz $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   public abstract cwn m();
-
-   public abstract List<cwn> n();
-
-   public int o() {
-      return this.o;
+   public int a() {
+      return this.a;
    }
 
-   public int p() {
-      return this.p;
+   public boolean b() {
+      return this.a < 20;
    }
 
-   protected abstract cqy q();
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
+   }
 
-   @Override
-   public void a(crd $$0) {
-      this.m.fillStackedContents($$0);
+   public float c() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
    }
 }

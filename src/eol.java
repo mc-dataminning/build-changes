@@ -1,77 +1,71 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class eol extends eop {
-   public static final MapCodec<eol> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eol::new));
+public abstract class eol {
+   public static final Codec<eol> h = mf.X.q().dispatch(eol::a, eom::a);
 
-   public eol(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
+   protected abstract eom<?> a();
 
-   @Override
-   protected eoq<?> a() {
-      return eoq.b;
-   }
+   public abstract void a(eol.a var1);
 
-   @Override
-   public List<emu.a> a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, int $$3, iu $$4, eme $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<emu.a> $$6 = Lists.newArrayList();
-      ja $$7 = ja.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      iu.a $$10 = new iu.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+   public static final class a {
+      private final djg a;
+      private final BiConsumer<iu, eah> b;
+      private final azv c;
+      private final ObjectArrayList<iu> d;
+      private final ObjectArrayList<iu> e;
+      private final ObjectArrayList<iu> f;
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
+      public a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, Set<iu> $$3, Set<iu> $$4, Set<iu> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(jz::v));
+         this.e.sort(Comparator.comparingInt(jz::v));
+         this.f.sort(Comparator.comparingInt(jz::v));
       }
 
-      if ($$13.isPresent()) {
-         $$6.add(new emu.a(new iu($$11, $$13.getAsInt(), $$12), 1, false));
+      public void a(iu $$0, eay $$1) {
+         this.a($$0, dmh.fx.m().b($$1, Boolean.valueOf(true)));
       }
 
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ja $$16 = ja.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new emu.a(new iu($$11, $$13.getAsInt(), $$12), 0, false));
-         }
+      public void a(iu $$0, eah $$1) {
+         this.b.accept($$0, $$1);
       }
 
-      return $$6;
+      public boolean a(iu $$0) {
+         return this.a.a($$0, eag.a::l);
+      }
+
+      public boolean a(iu $$0, Predicate<eah> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public djg a() {
+         return this.a;
+      }
+
+      public azv b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<iu> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<iu> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<iu> e() {
+         return this.f;
+      }
    }
 }

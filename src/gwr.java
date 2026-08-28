@@ -1,12 +1,21 @@
-public class gwr extends gzg {
-   private static final alg a = alg.b("textures/entity/zombie/husk.png");
+public class gwr extends gxn<cnx, hcy, gge> {
+   private static final alg a = alg.b("textures/entity/ghast/ghast.png");
+   private static final alg j = alg.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gwr(gvz.a $$0) {
-      super($$0, git.br, git.bs, git.bv, git.bw, git.bt, git.bu);
+   public gwr(gwh.a $$0) {
+      super($$0, new gge($$0.a(gjb.bb)), 1.5F);
    }
 
-   @Override
-   public alg a(hev $$0) {
-      return a;
+   public alg a(hcy $$0) {
+      return $$0.a ? j : a;
+   }
+
+   public hcy b() {
+      return new hcy();
+   }
+
+   public void a(cnx $$0, hcy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.j();
    }
 }

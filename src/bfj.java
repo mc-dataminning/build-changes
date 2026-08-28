@@ -8,7 +8,7 @@ import com.mojang.serialization.Dynamic;
 import java.util.function.Supplier;
 
 public class bfj extends bew {
-   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(biw.D, "ZombieVillager"));
+   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bix.D, "ZombieVillager"));
 
    public bfj(Schema $$0) {
       super("EntityZombieSplitFix", $$0, true);

@@ -1,38 +1,63 @@
-public class ght extends gfq<hdr> {
-   private static final int a = 2;
-   private final giu[] b = new giu[2];
+import java.util.Arrays;
 
-   public ght(giu $$0) {
+public class ght extends gfy<hcn> {
+   private static final int a = 7;
+   private final gjc[] b = new gjc[7];
+   private final gjc[] c = new gjc[3];
+   private static final int[][] d = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] e = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public ght(gjc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      Arrays.setAll(this.b, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
    }
 
    private static String a(int $$0) {
-      return "box" + $$0;
+      return "layer" + $$0;
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
 
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), giz.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), giw.a.a($$4));
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            gjh.c().a(e[$$4][0], e[$$4][1]).a((float)d[$$4][0] * -0.5F, 0.0F, (float)d[$$4][2] * -0.5F, (float)d[$$4][0], (float)d[$$4][1], (float)d[$$4][2]),
+            gje.a(0.0F, (float)(24 - d[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(d[$$4][2] + d[$$4 + 1][2]) * 0.5F;
+         }
       }
 
-      return gja.a($$0, 64, 64);
+      $$1.a(a(0), gjh.c().a(20, 0).a(-5.0F, 0.0F, (float)d[2][2] * -0.5F, 10.0F, 8.0F, (float)d[2][2]), gje.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), gjh.c().a(20, 11).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 4.0F, (float)d[4][2]), gje.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), gjh.c().a(20, 18).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 5.0F, (float)d[1][2]), gje.a(0.0F, 19.0F, $$2[1]));
+      return gji.a($$0, 64, 32);
    }
 
-   public void a(hdr $$0) {
+   @Override
+   public void a(hcn $$0) {
       super.a($$0);
 
       for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azm.h($$2) * (float) (Math.PI / 180.0);
+         this.b[$$1].f = azm.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
+         this.b[$$1].b = azm.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
       }
+
+      this.c[0].f = this.b[2].f;
+      this.c[1].f = this.b[4].f;
+      this.c[1].b = this.b[4].b;
+      this.c[2].f = this.b[1].f;
+      this.c[2].b = this.b[1].b;
    }
 }

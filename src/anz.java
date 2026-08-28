@@ -24,23 +24,23 @@ public class anz {
    public static void a(CommandDispatcher<ei> $$0, ee $$1) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(ej.a("structure").then(ej.a("structure", fm.a(mg.bd)).executes($$0x -> a((ei)$$0x.getSource(), fm.a($$0x, "structure", mg.bd, c))))))
+                  .then(ej.a("structure").then(ej.a("structure", fm.a(mg.be)).executes($$0x -> a((ei)$$0x.getSource(), fm.a($$0x, "structure", mg.be, c))))))
                .then(ej.a("biome").then(ej.a("biome", fl.a($$1, mg.aG)).executes($$0x -> a((ei)$$0x.getSource(), fl.a($$0x, "biome", mg.aG))))))
             .then(ej.a("poi").then(ej.a("poi", fl.a($$1, mg.aa)).executes($$0x -> b((ei)$$0x.getSource(), fl.a($$0x, "poi", mg.aa)))))
       );
    }
 
-   private static Optional<? extends ji.b<eqt>> a(fm.c<eqt> $$0, jr<eqt> $$1) {
-      return (Optional<? extends ji.b<eqt>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> ji.a($$0xx)), $$1::a);
+   private static Optional<? extends ji.b<erb>> a(fm.c<erb> $$0, jr<erb> $$1) {
+      return (Optional<? extends ji.b<erb>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> ji.a($$0xx)), $$1::a);
    }
 
-   private static int a(ei $$0, fm.c<eqt> $$1) throws CommandSyntaxException {
-      jr<eqt> $$2 = $$0.e().F_().f(mg.bd);
-      ji<eqt> $$3 = (ji<eqt>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+   private static int a(ei $$0, fm.c<erb> $$1) throws CommandSyntaxException {
+      jr<erb> $$2 = $$0.e().F_().f(mg.be);
+      ji<erb> $$3 = (ji<erb>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
       iu $$4 = iu.a((jo)$$0.d());
       arq $$5 = $$0.e();
       Stopwatch $$6 = Stopwatch.createStarted(af.d);
-      Pair<iu, je<eqt>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
+      Pair<iu, je<erb>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class anz {
       }
    }
 
-   private static int a(ei $$0, fl.c<djy> $$1) throws CommandSyntaxException {
+   private static int a(ei $$0, fl.c<dkd> $$1) throws CommandSyntaxException {
       iu $$2 = iu.a((jo)$$0.d());
       Stopwatch $$3 = Stopwatch.createStarted(af.d);
-      Pair<iu, je<djy>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+      Pair<iu, je<dkd>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class anz {
       }
    }
 
-   private static int b(ei $$0, fl.c<cih> $$1) throws CommandSyntaxException {
+   private static int b(ei $$0, fl.c<cij> $$1) throws CommandSyntaxException {
       iu $$2 = iu.a((jo)$$0.d());
       arq $$3 = $$0.e();
       Stopwatch $$4 = Stopwatch.createStarted(af.d);
-      Optional<Pair<je<cih>, iu>> $$5 = $$3.A().e($$1, $$2, 256, cie.b.c);
+      Optional<Pair<je<cij>, iu>> $$5 = $$3.A().e($$1, $$2, 256, cig.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());

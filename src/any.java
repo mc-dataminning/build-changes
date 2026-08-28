@@ -12,11 +12,11 @@ public class any {
    }
 
    private static int a(ei $$0) {
-      return a($$0, cqy::m_);
+      return a($$0, crc::m_);
    }
 
    private static int b(ei $$0) {
-      return a($$0, $$0x -> wy.a("commands.list.nameAndId", $$0x.al(), wy.a($$0x.gh().getId())));
+      return a($$0, $$0x -> wy.a("commands.list.nameAndId", $$0x.al(), wy.a($$0x.gi().getId())));
    }
 
    private static int a(ei $$0, Function<arr, wy> $$1) {

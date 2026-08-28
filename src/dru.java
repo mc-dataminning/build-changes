@@ -1,183 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dru extends doj implements dmd {
-   public static final MapCodec<dru> c = b(dru::new);
-   public static final int d = 4;
-   public static final eaz e = eap.aw;
-   public static final eax<eav> f = doj.b;
-   private static final int g = 3;
-   private static final int h = 1;
-   private static final ffc i = dma.b(6.0, -1.0, 3.0);
-   private static final ffc C = dma.b(10.0, -1.0, 5.0);
-   private final Function<dzz, ffc> Q = this.b();
+public class dru extends dmf implements dmi {
+   public static final MapCodec<dru> a = b(dru::new);
 
    @Override
    public MapCodec<dru> a() {
-      return c;
+      return a;
    }
 
-   public dru(dzy.d $$0) {
+   public dru(eag.d $$0) {
       super($$0);
    }
 
-   private Function<dzz, ffc> b() {
-      int[] $$0 = new int[]{0, 9, 11, 22, 26};
-      return this.a($$1 -> {
-         int $$2 = ($$1.c(e) == 0 ? 4 : 6) + $$0[$$1.c(e)];
-         int $$3 = $$1.c(e) == 0 ? 6 : 10;
-
-         return switch ((eav)$$1.c(f)) {
-            case b -> dma.b((double)$$3, -1.0, (double)Math.min(16, -1 + $$2));
-            case a -> dma.b((double)$$3, 0.0, (double)Math.max(0, -1 + $$2 - 16));
-         };
-      });
-   }
-
-   @Nullable
    @Override
-   public dzz a(dcr $$0) {
-      return this.m();
-   }
-
-   @Override
-   public ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.Q.apply($$0);
-   }
-
-   @Override
-   public ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      if ($$0.c(f) == eav.b) {
-         return $$0.c(e) == 0 ? i : C;
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
       } else {
-         return fez.a();
-      }
-   }
-
-   @Override
-   public dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      if (b($$0.c(e))) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         return $$0.a($$1, $$3) ? $$0 : dmc.a.m();
-      }
-   }
-
-   @Override
-   public boolean a(dzz $$0, diy $$1, iu $$2) {
-      return o($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean b(dzz $$0, dib $$1, iu $$2) {
-      return $$0.a(dmc.cL);
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(e);
-      super.a($$0);
-   }
-
-   @Override
-   public void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
-      if ($$1 instanceof arq $$4 && $$3 instanceof coe && $$4.O().c(dir.c)) {
-         $$4.a($$2, true, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(dzz $$0, dcr $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(div $$0, iu $$1, dzz $$2, bxc $$3, cyy $$4) {
-   }
-
-   @Override
-   public boolean f(dzz $$0) {
-      return $$0.c(f) == eav.b && !this.q($$0);
-   }
-
-   @Override
-   public void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      float $$4 = dnw.a(this, $$1, $$2);
-      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
-      if ($$5) {
-         this.a($$1, $$0, $$2, 1);
-      }
-   }
-
-   private void a(arq $$0, dzz $$1, iu $$2, int $$3) {
-      int $$4 = Math.min($$1.c(e) + $$3, 4);
-      if (this.a($$0, $$2, $$1, $$4)) {
-         dzz $$5 = $$1.b(e, Integer.valueOf($$4));
-         $$0.a($$2, $$5, 2);
-         if (b($$4)) {
-            $$0.a($$2.d(), $$5.b(f, eav.a), 3);
+         for (iu $$3 : iu.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(axc.aO)) {
+               return true;
+            }
          }
-      }
-   }
 
-   private static boolean a(diy $$0, iu $$1) {
-      dzz $$2 = $$0.a_($$1);
-      return $$2.l() || $$2.a(dmc.le);
-   }
-
-   private static boolean b(diy $$0, iu $$1) {
-      return dnw.a($$0, $$1);
-   }
-
-   private static boolean o(dzz $$0) {
-      return $$0.a(dmc.le) && $$0.c(f) == eav.b;
-   }
-
-   private static boolean b(int $$0) {
-      return $$0 >= 3;
-   }
-
-   private boolean a(diy $$0, iu $$1, dzz $$2, int $$3) {
-      return !this.q($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.d()));
-   }
-
-   private boolean q(dzz $$0) {
-      return $$0.c(e) >= 4;
-   }
-
-   @Nullable
-   private dru.a c(diy $$0, iu $$1, dzz $$2) {
-      if (o($$2)) {
-         return new dru.a($$1, $$2);
-      } else {
-         iu $$3 = $$1.e();
-         dzz $$4 = $$0.a_($$3);
-         return o($$4) ? new dru.a($$3, $$4) : null;
+         return false;
       }
    }
 
    @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      dru.a $$3 = this.c($$0, $$1, $$2);
-      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(e) + 1);
-   }
-
-   @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
       return true;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      dru.a $$4 = this.c($$0, $$2, $$3);
-      if ($$4 != null) {
-         this.a($$0, $$4.b, $$4.a, 1);
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (iu $$6 : iu.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         eah $$7 = $$0.a_($$6);
+         if ($$7.a(dmh.oT)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dmh.pc)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dmh.oT.m() : dmh.pc.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dmh.oT.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dmh.pc.m(), 3);
       }
    }
 
-   static record a(iu a, dzz b) {
+   @Override
+   public dmi.a an_() {
+      return dmi.a.a;
    }
 }

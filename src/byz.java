@@ -1,37 +1,48 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class byz extends byt<bxc> {
-   private final cge<Integer> c;
+public class byz extends byv<cqo> {
+   @Nullable
+   private css c;
 
-   public byz(cge<Integer> $$0) {
-      super(ImmutableMap.of($$0, cgf.a));
-      this.c = $$0;
+   public byz(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   private Optional<Integer> b(bxc $$0) {
-      return $$0.eb().c(this.c);
+   protected boolean a(arq $$0, cqo $$1) {
+      iu $$2 = $$1.dv();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && cae.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected boolean a(arq $$0, cqo $$1, long $$2) {
+      return this.c != null && !this.c.d();
    }
 
-   @Override
-   protected boolean a(arq $$0, bxc $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   protected void b(arq $$0, cqo $$1, long $$2) {
+      this.c = null;
+      $$1.ec().a($$0.af(), $$0.ae());
    }
 
-   @Override
-   protected void c(arq $$0, bxc $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.eb().a(this.c, $$3.get() - 1);
+   protected void c(arq $$0, cqo $$1, long $$2) {
+      azv $$3 = $$1.dY();
+      if ($$3.a(100) == 0) {
+         $$1.gv();
+      }
+
+      if ($$3.a(200) == 0 && cae.a($$0, $$1, $$1.dv())) {
+         cyb $$4 = af.a(cyb.values(), $$3);
+         int $$5 = $$3.a(3);
+         czd $$6 = this.a($$4, $$5);
+         crx.a(new crs($$1.dV(), $$1, $$1.dA(), $$1.dE(), $$1.dG(), $$6), $$0, $$6);
+      }
    }
 
-   @Override
-   protected void b(arq $$0, bxc $$1, long $$2) {
-      $$1.eb().b(this.c);
+   private czd a(cyb $$0, int $$1) {
+      czd $$2 = new czd(czh.vE);
+      $$2.b(kj.aj, new dbs((byte)$$1, List.of(new dbr(dbr.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

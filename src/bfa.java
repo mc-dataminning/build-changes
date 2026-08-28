@@ -6,7 +6,7 @@ import java.util.List;
 
 public class bfa extends bhr {
    public bfa(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", biw.D, "minecraft:shulker");
+      super($$0, false, "EntityShulkerRotationFix", bix.D, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

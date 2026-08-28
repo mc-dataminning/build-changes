@@ -1,77 +1,53 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class hoq implements hov {
-   private static final int a = 6000;
-   private static final wy b = wy.c("tutorial.find_tree.title");
-   private static final wy c = wy.c("tutorial.find_tree.description");
-   private final hou d;
-   @Nullable
-   private fuo e;
-   private int f;
+public final class hoq extends hoo {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public hoq(hou $$0) {
-      this.d = $$0;
+   @Override
+   public void a(hoi $$0) {
+      if (foz.Q().C()) {
+         super.a($$0);
+      }
+   }
+
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(how.f);
-      } else {
-         fos $$0 = this.d.e();
-         if (this.f == 1) {
-            gop $$1 = $$0.t;
-            if ($$1 != null && (b($$1) || a($$1))) {
-               this.d.a(how.e);
-               return;
-            }
-         }
+   public void f() {
+      this.b.add((long)foz.Q().o());
+      this.h();
+      this.c.add(foz.Q().p());
+   }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fuo($$0.h, fuo.a.c, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
    @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
-      }
+   public void b(hoi $$0) {
+      $$0.send(hoj.c, $$0x -> {
+         $$0x.a(hol.r, new LongArrayList(this.b));
+         $$0x.a(hol.s, new LongArrayList(this.c));
+         $$0x.a(hol.t, new LongArrayList(this.d));
+         $$0x.a(hol.u, this.e());
+         $$0x.a(hol.v, foz.Q().n.aH());
+         $$0x.a(hol.w, (int)a);
+      });
+      this.g();
    }
 
-   @Override
-   public void a(gjr $$0, feg $$1) {
-      if ($$1.d() == feg.a.b) {
-         dzz $$2 = $$0.a_(((fee)$$1).b());
-         if ($$2.a(axc.al)) {
-            this.d.a(how.c);
-         }
-      }
-   }
-
-   @Override
-   public void a(cyy $$0) {
-      if ($$0.a(axk.aQ)) {
-         this.d.a(how.e);
-      }
-   }
-
-   private static boolean b(gop $$0) {
-      return $$0.gi().a_($$0x -> $$0x.a(axk.aQ));
-   }
-
-   public static boolean a(gop $$0) {
-      for (je<dma> $$1 : mf.e.c(axc.al)) {
-         dma $$2 = $$1.a();
-         if ($$0.l().a(awx.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

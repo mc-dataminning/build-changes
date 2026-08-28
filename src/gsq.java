@@ -1,23 +1,23 @@
-public class gsq implements gse<dyd> {
-   private final gew a;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public gsq(gsf.a $$0) {
-      this.a = new gew($$0.a(git.J));
+public class gsq<S extends dxf> implements don.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = gpv.a($$0.i(), $$0.ax_());
+         int $$4 = gpv.a($$1.i(), $$1.ax_());
+         int $$5 = gpx.a($$3);
+         int $$6 = gpx.a($$4);
+         int $$7 = gpx.b($$3);
+         int $$8 = gpx.b($$4);
+         return gpx.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dyd $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      dzz $$7 = $$0.m();
-      if ($$7.c(dqq.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$8 = $$7.c(dqq.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$8));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         fjg $$9 = gso.a.a($$3, gqc::d);
-         this.a.a($$2, $$9, $$4, $$5);
-         $$2.b();
-      }
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
+
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

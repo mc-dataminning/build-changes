@@ -1,27 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class che extends chk<bxc> {
-   protected abstract boolean a(arq var1, bxc var2, bxc var3);
-
-   protected abstract cge<bxc> b();
-
-   @Override
-   public Set<cge<?>> a() {
-      return ImmutableSet.of(this.b());
-   }
+public class che extends chm<bxg> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   protected void a(arq $$0, bxc $$1) {
-      $$1.eb().a(this.b(), this.c($$0, $$1));
+   public Set<cgg<?>> a() {
+      return ImmutableSet.of(cgg.M);
    }
 
-   private Optional<bxc> c(arq $$0, bxc $$1) {
-      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
-   }
-
-   protected Optional<cgg> a(bxc $$0) {
-      return $$0.eb().c(cge.h);
+   protected void a(arq $$0, bxg $$1) {
+      bye<?> $$2 = $$1.ec();
+      List<cnh> $$3 = $$0.a(cnh.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cnh> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.f())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cgg.M, $$4);
    }
 }

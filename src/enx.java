@@ -1,51 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class enx extends eod {
-   public static final MapCodec<enx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(enx::new, $$0 -> $$0.d);
-   private static final ja b = ja.d;
-   private static final ja[] c = ja.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ja[]::new);
-   private final float d;
+public class enx extends enr {
+   public static final MapCodec<enx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               enr.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bti.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, enx::new)
+   );
+   private final enr c;
+   private final String d;
+   @Nullable
+   private ebh e;
+   private final bti f;
 
-   public enx(float $$0) {
-      this.d = $$0;
-   }
+   public enx(enr $$0, ebh $$1, bti $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   protected eoe<?> a() {
-      return eoe.f;
-   }
-
-   @Override
-   public void a(eod.a $$0) {
-      List<iu> $$1 = $$0.d();
-      List<iu> $$2 = $$0.c();
-      if (!$$2.isEmpty()) {
-         azv $$3 = $$0.b();
-         if (!($$3.i() >= this.d)) {
-            int $$4 = !$$1.isEmpty()
-               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
-               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
-            List<iu> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-            if (!$$5.isEmpty()) {
-               af.c($$5, $$3);
-               Optional<iu> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-               if (!$$6.isEmpty()) {
-                  $$0.a($$6.get(), dmc.pJ.m().b(dlu.b, b));
-                  $$0.a().a($$6.get(), dwz.I).ifPresent($$1x -> {
-                     int $$2x = 2 + $$3.a(2);
-
-                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                        $$1x.a(dwu.c.a($$3.a(599)));
-                     }
-                  });
-               }
-            }
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
+   }
+
+   public enx(enr $$0, String $$1, bti $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   protected ens<?> a() {
+      return ens.g;
+   }
+
+   @Override
+   public eah a(azv $$0, iu $$1) {
+      eah $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         ebh $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
+         }
+
+         this.e = $$3;
+      }
+
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   @Nullable
+   private static ebh a(eah $$0, String $$1) {
+      Collection<ebk<?>> $$2 = $$0.F();
+      Optional<ebh> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ebh).map($$0x -> (ebh)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

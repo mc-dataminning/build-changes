@@ -1,115 +1,101 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public interface fqp extends Supplier<JsonElement> {
-   void a(eaa<?, ?> var1);
+public class fqp implements mm {
+   private static final alg d = alg.b("trims/color_palettes/trim_palette");
+   private static final Map<String, alg> e = c().collect(Collectors.toMap(dhp.a::a, $$0 -> alg.b("trims/color_palettes/" + $$0.a())));
+   private static final List<alf<dhs>> f = List.of(
+      dht.a, dht.b, dht.c, dht.d, dht.e, dht.f, dht.g, dht.h, dht.i, dht.j, dht.k, dht.l, dht.m, dht.n, dht.o, dht.p, dht.q, dht.r
+   );
+   private static final List<hld.d> g = List.of(hld.d.a, hld.d.b);
+   private final mo.a h;
 
-   static fqp.c a() {
-      return new fqp.c();
+   public fqp(mo $$0) {
+      this.h = $$0.a(mo.b.b, "atlases");
    }
 
-   static fqp a(fqp... $$0) {
-      return new fqp.a(fqp.b.a, Arrays.asList($$0));
-   }
+   private static List<alg> b() {
+      List<alg> $$0 = new ArrayList<>(f.size() * g.size());
 
-   static fqp b(fqp... $$0) {
-      return new fqp.a(fqp.b.b, Arrays.asList($$0));
-   }
+      for (alf<dhs> $$1 : f) {
+         alg $$2 = dht.a($$1);
 
-   public static class a implements fqp {
-      private final fqp.b a;
-      private final List<fqp> b;
-
-      a(fqp.b $$0, List<fqp> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(eaa<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
-   }
-
-   public static enum b {
-      a("AND"),
-      b("OR");
-
-      final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements fqp {
-      private final Map<ebc<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(ebc<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(ebc<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(ebc<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         for (hld.d $$3 : g) {
+            $$0.add($$2.a((UnaryOperator<String>)($$1x -> $$3.a() + "/" + $$1x)));
          }
       }
 
-      public final <T extends Comparable<T>> fqp.c a(ebc<T> $$0, T $$1) {
-         this.a($$0, $$0.b($$1));
-         return this;
-      }
+      return $$0;
+   }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fqp.c a(ebc<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
-      }
+   private static hjc a(hle $$0) {
+      return new hjj($$0.b());
+   }
 
-      public final <T extends Comparable<T>> fqp.c b(ebc<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.b($$1));
-         return this;
-      }
+   private static hjc a(gpz $$0) {
+      return new hjg($$0.b(), $$0.b() + "/");
+   }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fqp.c b(ebc<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
+   private static List<hjc> b(gpz $$0) {
+      return List.of(a($$0));
+   }
 
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
-      }
+   private static List<hjc> a(String $$0) {
+      return List.of(new hjg($$0, ""));
+   }
 
-      @Override
-      public void a(eaa<?, ?> $$0) {
-         List<ebc<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
-         }
-      }
+   private static Stream<dhp.a> c() {
+      return fqs.e.stream().map(fqs.a::a).flatMap($$0 -> Stream.concat(Stream.of($$0.a()), $$0.b().values().stream())).sorted(Comparator.comparing(dhp.a::a));
+   }
+
+   private static List<hjc> d() {
+      return List.of(new hji(b(), d, e));
+   }
+
+   private static List<hjc> e() {
+      return List.of(a(gqv.j), a(gqv.i), a(gsu.a), a(gsk.a), a(gqv.A), a(gsw.a), new hji(List.of(fqs.a, fqs.b, fqs.c, fqs.d), d, e));
+   }
+
+   private static List<hjc> f() {
+      return List.of(a(hlh.f), a(gqv.k));
+   }
+
+   private static List<hjc> g() {
+      return List.of(a(hlh.g), a(hlh.h), a(gqv.l));
+   }
+
+   @Override
+   public CompletableFuture<?> a(mk $$0) {
+      return CompletableFuture.allOf(
+         this.a($$0, hkv.a, d()),
+         this.a($$0, hkv.b, f()),
+         this.a($$0, hkv.c, b(gqv.o)),
+         this.a($$0, hkv.d, e()),
+         this.a($$0, hkv.e, b(gqv.m)),
+         this.a($$0, hkv.f, b(gqv.n)),
+         this.a($$0, hkv.g, a("gui/sprites")),
+         this.a($$0, hkv.h, a("map/decorations")),
+         this.a($$0, hkv.i, a("mob_effect")),
+         this.a($$0, hkv.j, a("painting")),
+         this.a($$0, hkv.k, a("particle")),
+         this.a($$0, hkv.l, g()),
+         this.a($$0, hkv.m, b(gqv.p)),
+         this.a($$0, hkv.n, b(gqv.q))
+      );
+   }
+
+   private CompletableFuture<?> a(mk $$0, alg $$1, List<hjc> $$2) {
+      return mm.a($$0, hje.b, $$2, this.h.a($$1));
+   }
+
+   @Override
+   public String a() {
+      return "Atlas Definitions";
    }
 }

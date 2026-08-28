@@ -41,24 +41,24 @@ public class fh<T> implements ArgumentType<je.c<T>> {
       }
    }
 
-   public static je.c<byd> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static je.c<byf> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mg.c);
    }
 
-   public static je.c<eiq<?, ?>> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, mg.aK);
+   public static je.c<eiy<?, ?>> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mg.aL);
    }
 
-   public static je.c<eqt> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, mg.bd);
+   public static je.c<erb> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mg.be);
    }
 
-   public static je.c<bwm<?>> d(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static je.c<bwo<?>> d(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mg.B);
    }
 
-   public static je.c<bwm<?>> e(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      je.c<bwm<?>> $$2 = a($$0, $$1, mg.B);
+   public static je.c<bwo<?>> e(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      je.c<bwo<?>> $$2 = a($$0, $$1, mg.B);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,12 +66,12 @@ public class fh<T> implements ArgumentType<je.c<T>> {
       }
    }
 
-   public static je.c<bvf> f(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static je.c<bvh> f(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, mg.W);
    }
 
-   public static je.c<dfl> g(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, mg.aQ);
+   public static je.c<dfq> g(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mg.aR);
    }
 
    public je.c<T> a(StringReader $$0) throws CommandSyntaxException {

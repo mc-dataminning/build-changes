@@ -1,159 +1,101 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class eaa<O, S extends eab<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, ebc<?>> c;
-   private final ImmutableList<S> d;
+public class eaa extends doj {
+   public static final MapCodec<eaa> b = b(eaa::new);
+   public static final ebf<ebj> c = eax.bj;
+   public static final eay d = eax.B;
+   public static final int e = 4;
+   private static final ffk f = dmf.c(16.0, 0.0, 4.0);
+   private static final Map<ja, ffk> g = ffh.d(ffh.a(f, dmf.c(4.0, 4.0, 16.0)));
+   private static final Map<ja, ffk> h = ffh.d(ffh.a(f, dmf.c(4.0, 4.0, 20.0)));
 
-   protected eaa(Function<O, S> $$0, O $$1, eaa.b<O, S> $$2, Map<String, ebc<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, ebc<?>> $$6 = (Entry<String, ebc<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
-      }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<ebc<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<ebc<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         ebc<?> $$11 = (ebc<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<ebc<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<ebc<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<ebc<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((ebc)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
+   @Override
+   protected MapCodec<eaa> a() {
+      return b;
    }
 
-   private static <S extends eab<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, ebc<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (eab)((eab)$$1x.getFirst()).b($$3, ((ebc.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<ebc<?>> d() {
-      return this.c.values();
+   public eaa(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(a, ja.c).b(c, ebj.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(ebc::f).collect(Collectors.toList()))
-         .toString();
+   protected boolean g_(eah $$0) {
+      return true;
    }
 
-   @Nullable
-   public ebc<?> a(String $$0) {
-      return (ebc<?>)this.c.get($$0);
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return ($$0.c(d) ? g : h).get($$0.c(a));
    }
 
-   public static class a<O, S extends eab<O, S>> {
-      private final O a;
-      private final Map<String, ebc<?>> b = Maps.newHashMap();
+   private boolean a(eah $$0, eah $$1) {
+      dmf $$2 = $$0.c(c) == ebj.a ? dmh.bI : dmh.by;
+      return $$1.a($$2) && $$1.c(dzz.c) && $$1.c(a) == $$0.c(a);
+   }
 
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public eaa.a<O, S> a(ebc<?>... $$0) {
-         for (ebc<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(ebc<T> $$0) {
-         String $$1 = $$0.f();
-         if (!eaa.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
-            } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.b($$3);
-                  if (!eaa.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
-            }
+   @Override
+   public eah a(dja $$0, iu $$1, eah $$2, crc $$3) {
+      if (!$$0.C && $$3.gl()) {
+         iu $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
          }
       }
 
-      public eaa<O, S> a(Function<O, S> $$0, eaa.b<O, S> $$1) {
-         return new eaa<>($$0, this.a, $$1, this.b);
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
+      iu $$4 = $$2.a($$0.c(a).g());
+      if (this.a($$0, $$1.a_($$4))) {
+         $$1.b($$4, true);
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<ebc<?>, Comparable<?>> var2, MapCodec<S> var3);
+   @Override
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      eah $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(dmh.ca) && $$3.c(a) == $$0.c(a);
+   }
+
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
+      if ($$0.a((djd)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, exs.a($$4, $$0.c(a).g()));
+      }
+   }
+
+   @Override
+   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
+      return new czd($$2.c(c) == ebj.b ? dmh.by : dmh.bI);
+   }
+
+   @Override
+   protected eah a(eah $$0, dsz $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected eah a(eah $$0, dri $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(eah $$0, exd $$1) {
+      return false;
    }
 }

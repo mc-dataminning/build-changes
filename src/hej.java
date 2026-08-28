@@ -1,3 +1,4 @@
-public class hej extends hbl {
-   public boolean d;
+public class hej extends hdn {
+   public float a;
+   public int b = 1;
 }

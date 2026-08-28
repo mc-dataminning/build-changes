@@ -14,7 +14,7 @@ public class aqx {
       this.d = $$0;
    }
 
-   protected void a(int $$0, dic $$1, int $$2) {
+   protected void a(int $$0, dih $$1, int $$2) {
       if ($$0 < a) {
          Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
          List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());

@@ -1,20 +1,33 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dgh(dfs c) implements dge {
-   public static final MapCodec<dgh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfs.b.fieldOf("factor").forGetter(dgh::b)).apply($$0, dgh::new));
+public interface dgh extends dgi {
+   Codec<dgh> b = mf.as.q().dispatch(dgh::a, Function.identity());
+
+   static MapCodec<? extends dgh> a(jr<MapCodec<? extends dgh>> $$0) {
+      jr.a($$0, "all_of", dgb.a.a);
+      jr.a($$0, "apply_mob_effect", dgc.a);
+      jr.a($$0, "change_item_damage", dgd.a);
+      jr.a($$0, "damage_entity", dge.a);
+      jr.a($$0, "explode", dgk.a);
+      jr.a($$0, "ignite", dgl.a);
+      jr.a($$0, "play_sound", dgn.a);
+      jr.a($$0, "replace_block", dgp.a);
+      jr.a($$0, "replace_disk", dgq.a);
+      jr.a($$0, "run_function", dgr.a);
+      jr.a($$0, "set_block_properties", dgs.a);
+      jr.a($$0, "spawn_particles", dgu.a);
+      return jr.a($$0, "summon_entity", dgv.a);
+   }
+
+   void a(arq var1, int var2, dfp var3, bwf var4, feq var5);
 
    @Override
-   public float a(int $$0, azv $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   default void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public MapCodec<dgh> a() {
-      return a;
-   }
-
-   public dfs b() {
-      return this.c;
-   }
+   MapCodec<? extends dgh> a();
 }

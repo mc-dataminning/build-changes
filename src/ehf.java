@@ -1,127 +1,84 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import java.util.function.LongFunction;
 
-public interface ehf extends BiPredicate<dju, iu> {
-   Codec<ehf> b = mf.M.q().dispatch(ehf::a, ehg::codec);
-   ehf c = a(dmc.a);
-   ehf d = a(dmc.a, dmc.J);
+public class ehf extends egh {
+   private final azv d;
+   private int e;
 
-   ehg<?> a();
-
-   static ehf a(List<ehf> $$0) {
-      return new ehd($$0);
+   public ehf(azv $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   static ehf a(ehf... $$0) {
-      return a(List.of($$0));
+   public int l() {
+      return this.e;
    }
 
-   static ehf a(ehf $$0, ehf $$1) {
-      return a(List.of($$0, $$1));
+   @Override
+   public azv d() {
+      return this.d.d();
    }
 
-   static ehf b(List<ehf> $$0) {
-      return new ehe($$0);
+   @Override
+   public egt e() {
+      return this.d.e();
    }
 
-   static ehf b(ehf... $$0) {
-      return b(List.of($$0));
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof egh $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
    }
 
-   static ehf b(ehf $$0, ehf $$1) {
-      return b(List.of($$0, $$1));
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
    }
 
-   static ehf a(jz $$0, List<dma> $$1) {
-      return new ehl($$0, ji.a(dma::p, $$1));
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
    }
 
-   static ehf c(List<dma> $$0) {
-      return a(jz.i, $$0);
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
    }
 
-   static ehf a(jz $$0, dma... $$1) {
-      return a($$0, List.of($$1));
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
    }
 
-   static ehf a(dma... $$0) {
-      return a(jz.i, $$0);
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
    }
 
-   static ehf a(jz $$0, axr<dma> $$1) {
-      return new ehk($$0, $$1);
+   public static azv a(int $$0, int $$1, long $$2, long $$3) {
+      return azv.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
    }
 
-   static ehf a(axr<dma> $$0) {
-      return a(jz.i, $$0);
-   }
+   public static enum a {
+      a(egh::new),
+      b(ehh::new);
 
-   static ehf b(jz $$0, List<ewf> $$1) {
-      return new ehm($$0, ji.a(ewf::k, $$1));
-   }
+      private final LongFunction<azv> c;
 
-   static ehf a(jz $$0, ewf... $$1) {
-      return b($$0, List.of($$1));
-   }
+      private a(final LongFunction<azv> $$0) {
+         this.c = $$0;
+      }
 
-   static ehf a(ewf... $$0) {
-      return a(jz.i, $$0);
-   }
-
-   static ehf a(ehf $$0) {
-      return new ehn($$0);
-   }
-
-   static ehf a(jz $$0) {
-      return new eho($$0);
-   }
-
-   static ehf b() {
-      return a(jz.i);
-   }
-
-   static ehf a(dzz $$0, jz $$1) {
-      return new eht($$1, $$0);
-   }
-
-   static ehf a(jz $$0, ja $$1) {
-      return new ehi($$0, $$1);
-   }
-
-   static ehf a(ja $$0) {
-      return a(jz.i, $$0);
-   }
-
-   static ehf b(jz $$0) {
-      return new ehp($$0);
-   }
-
-   static ehf c() {
-      return b(jz.i);
-   }
-
-   static ehf d() {
-      return c(jz.i);
-   }
-
-   static ehf c(jz $$0) {
-      return a($$0, ewh.a);
-   }
-
-   static ehf d(jz $$0) {
-      return new ehj($$0);
-   }
-
-   static ehf e() {
-      return ehr.a;
-   }
-
-   static ehf e(jz $$0) {
-      return new ehs($$0);
-   }
-
-   static ehf f() {
-      return e(jz.i);
+      public azv a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

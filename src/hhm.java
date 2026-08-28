@@ -1,32 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class hhm implements hhp {
-   private final giu a;
+public class hhm {
+   private static final ayu.b<alg, hhn.a<?, ?>> b = new ayu.b<>();
+   public static final Codec<hhn.a<?, ?>> a = b.a(alg.a);
 
-   public hhm(giu $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(cyw $$0, fjc $$1, gps $$2, int $$3, int $$4, boolean $$5) {
-      fjg $$6 = gsm.b.a($$2, gqc::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
-   }
-
-   public static record a() implements hht.a {
-      public static final MapCodec<hhm.a> a = MapCodec.unit(new hhm.a());
-
-      @Override
-      public MapCodec<hhm.a> a() {
-         return a;
-      }
-
-      @Override
-      public hht<?> a(giq $$0) {
-         return new hhm($$0.a(git.aj));
-      }
+   public static void a() {
+      b.a(alg.b("custom_model_data"), hhh.b);
+      b.a(alg.b("main_hand"), hhl.b);
+      b.a(alg.b("charge_type"), hhd.b);
+      b.a(alg.b("trim_material"), hho.b);
+      b.a(alg.b("block_state"), hhj.b);
+      b.a(alg.b("display_context"), hhi.b);
+      b.a(alg.b("local_time"), hhk.c);
+      b.a(alg.b("context_entity_type"), hhg.b);
+      b.a(alg.b("context_dimension"), hhf.b);
+      b.a(alg.b("component"), hhe.c());
    }
 }

@@ -1,22 +1,40 @@
-public enum fne {
-   a(0, eqj.a),
-   b(1, eqj.b),
-   c(2, eqj.c),
-   d(3, eqj.d);
+import javax.annotation.Nullable;
 
-   private final int e;
-   private final wy f;
+public class fne {
+   public final int a;
+   @Nullable
+   public final String b;
 
-   private fne(final int $$0, final alf<eqi> $$1) {
-      this.e = $$0;
-      this.f = wy.c($$1.a().h("generator"));
+   fne(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public wy a() {
-      return this.f;
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
+      }
    }
 
-   public int b() {
-      return this.e;
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fne.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public fne.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fne a() {
+         return new fne(this.a, this.b);
+      }
    }
 }

@@ -1,185 +1,194 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.Queues;
 import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.IntFunction;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class fuu implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final azv b = azv.a();
-   private static final float c = 32.0F;
-   private final hir d;
-   private final alg e;
-   private fuy f;
-   private fuy g;
-   private List<fhb.a> h = List.of();
-   private List<fhb> i = List.of();
-   private final fur<fuy> j = new fur<>(fuy[]::new, fuy[][]::new);
-   private final fur<fuu.a> k = new fur<>(fuu.a[]::new, fuu.a[][]::new);
-   private final Int2ObjectMap<IntList> l = new Int2ObjectOpenHashMap();
-   private final List<fuv> m = Lists.newArrayList();
-   private final IntFunction<fuu.a> n = this::b;
-   private final IntFunction<fuy> o = this::c;
+public class fuu {
+   private static final int a = 5;
+   private static final int b = -1;
+   final foz c;
+   private final List<fuu.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fut> f = Queues.newArrayDeque();
+   private final Set<awm> g = new HashSet<>();
 
-   public fuu(hir $$0, alg $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public fuu(foz $$0) {
+      this.c = $$0;
    }
 
-   public void a(List<fhb.a> $$0, Set<fut> $$1) {
-      this.h = $$0;
-      this.a($$1);
-   }
-
-   public void a(Set<fut> $$0) {
-      this.i = List.of();
-      this.c();
-      this.i = this.b(this.h, $$0);
-   }
-
-   private void c() {
-      this.d();
-      this.j.a();
-      this.k.a();
-      this.l.clear();
-      this.f = fva.b.bake(this::a);
-      this.g = fva.a.bake(this::a);
-   }
-
-   private List<fhb> b(List<fhb.a> $$0, Set<fut> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<fhb> $$3 = new ArrayList<>();
-
-      for (fhb.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
+   public void a() {
+      MutableBoolean $$0 = new MutableBoolean(false);
+      this.d.removeIf($$1 -> {
+         fut.a $$2 = $$1.h;
+         $$1.c();
+         if ($$1.h != $$2 && $$0.isFalse()) {
+            $$0.setTrue();
+            $$1.h.a(this.c.ak());
          }
-      }
 
-      Set<fhb> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (fhb $$3x : $$3) {
-            fha $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fva.b) {
-                  ((IntList)this.l.computeIfAbsent(azm.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
-               }
-               break;
-            }
+         if ($$1.b()) {
+            this.e.clear($$1.d, $$1.d + $$1.e);
+            return true;
+         } else {
+            return false;
          }
       });
-      return $$3.stream().filter($$5::contains).toList();
-   }
+      if (!this.f.isEmpty() && this.e() > 0) {
+         this.f.removeIf($$0x -> {
+            int $$1 = $$0x.h();
+            int $$2 = this.a($$1);
+            if ($$2 == -1) {
+               return false;
+            } else {
+               this.d.add(new fuu.a<>($$0x, $$2, $$1));
+               this.e.set($$2, $$2 + $$1);
+               awm $$3 = $$0x.b();
+               if ($$3 != null && this.g.add($$3)) {
+                  this.c.ak().a(hmp.a($$3, 1.0F, 1.0F));
+               }
 
-   @Override
-   public void close() {
-      this.d();
-   }
-
-   private void d() {
-      for (fuv $$0 : this.m) {
-         $$0.close();
-      }
-
-      this.m.clear();
-   }
-
-   private static boolean b(fha $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
-      }
-   }
-
-   private fuu.a b(int $$0) {
-      fha $$1 = null;
-
-      for (fhb $$2 : this.i) {
-         fha $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
+               return true;
             }
+         });
+      }
 
-            if (!b($$3)) {
-               return new fuu.a($$1, $$3);
+      this.g.clear();
+   }
+
+   public void a(frv $$0) {
+      if (!this.c.n.X) {
+         int $$1 = $$0.a();
+
+         for (fuu.a<?> $$2 : this.d) {
+            $$2.a($$0, $$1);
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      if (this.e() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
             }
          }
       }
 
-      return $$1 != null ? new fuu.a($$1, fva.b) : fuu.a.c;
+      return -1;
    }
 
-   public fha a(int $$0, boolean $$1) {
-      return this.k.a($$0, this.n).a($$1);
+   private int e() {
+      return 5 - this.e.cardinality();
    }
 
-   private fuy c(int $$0) {
-      for (fhb $$1 : this.i) {
-         fha $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
+   @Nullable
+   public <T extends fut> T a(Class<? extends T> $$0, Object $$1) {
+      for (fuu.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().g().equals($$1)) {
+            return (T)$$2.a();
          }
       }
 
-      a.warn("Couldn't find glyph for character {} (\\u{})", Character.toString($$0), String.format("%04x", $$0));
-      return this.f;
-   }
-
-   public fuy a(int $$0) {
-      return this.j.a($$0, this.o);
-   }
-
-   private fuy a(fhc $$0) {
-      for (fuv $$1 : this.m) {
-         fuy $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
+      for (fut $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.g().equals($$1)) {
+            return (T)$$3;
          }
       }
 
-      alg $$3 = this.e.g("/" + this.m.size());
-      boolean $$4 = $$0.c();
-      fuw $$5 = $$4 ? fuw.b($$3) : fuw.a($$3);
-      fuv $$6 = new fuv($$5, $$4);
-      this.m.add($$6);
-      this.d.a($$3, $$6);
-      fuy $$7 = $$6.a($$0);
-      return $$7 == null ? this.f : $$7;
+      return null;
    }
 
-   public fuy a(fha $$0) {
-      IntList $$1 = (IntList)this.l.get(azm.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(b.a($$1.size()))) : this.f;
+   public void b() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
    }
 
-   public alg a() {
-      return this.e;
+   public void a(fut $$0) {
+      this.f.add($$0);
    }
 
-   public fuy b() {
-      return this.g;
+   public foz c() {
+      return this.c;
    }
 
-   static record a(fha a, fha b) {
-      static final fuu.a c = new fuu.a(fva.b, fva.b);
+   public double d() {
+      return this.c.n.D().c();
+   }
 
-      fha a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+   class a<T extends fut> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      fut.a h = fut.a.b;
+      private long i;
+      private float j;
+      private boolean k;
+
+      a(final T $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      public boolean b() {
+         return this.k;
+      }
+
+      private void a(long $$0) {
+         float $$1 = azm.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         if (this.h == fut.a.b) {
+            this.j = 1.0F - $$1;
+         } else {
+            this.j = $$1;
+         }
+      }
+
+      public void c() {
+         long $$0 = af.c();
+         if (this.f == -1L) {
+            this.f = $$0;
+            this.h = fut.a.a;
+         }
+
+         if (this.h == fut.a.a && $$0 - this.f <= 600L) {
+            this.g = $$0;
+         }
+
+         this.i = $$0 - this.g;
+         this.a($$0);
+         this.c.a(fuu.this, this.i);
+         fut.a $$1 = this.c.a();
+         if ($$1 != this.h) {
+            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
+            this.h = $$1;
+         }
+
+         this.k = this.h == fut.a.b && $$0 - this.f > 600L;
+      }
+
+      public void a(frv $$0, int $$1) {
+         $$0.c().a();
+         $$0.c().a((float)$$1 - (float)this.c.c() * this.j, (float)(this.d * 32), 800.0F);
+         this.c.a($$0, fuu.this.c.h, this.i);
+         $$0.c().b();
       }
    }
 }

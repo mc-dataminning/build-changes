@@ -2,63 +2,63 @@ import java.util.function.BiConsumer;
 
 public record nt(jg.a a) implements nk {
    @Override
-   public void generate(BiConsumer<alf<eze>, eze.a> $$0) {
-      jg.b<dhn> $$1 = this.a.e(mg.bk);
-      jg.b<dhl> $$2 = this.a.e(mg.bj);
-      jg.b<dfl> $$3 = this.a.e(mg.aQ);
-      dhj $$4 = new dhj($$2.b(dhm.e), $$1.b(dho.q));
-      dhj $$5 = new dhj($$2.b(dhm.e), $$1.b(dho.r));
+   public void generate(BiConsumer<alf<ezm>, ezm.a> $$0) {
+      jg.b<dhs> $$1 = this.a.e(mg.bl);
+      jg.b<dhq> $$2 = this.a.e(mg.bk);
+      jg.b<dfq> $$3 = this.a.e(mg.aR);
+      dho $$4 = new dho($$2.b(dhr.e), $$1.b(dht.q));
+      dho $$5 = new dho($$2.b(dhr.e), $$1.b(dht.r));
       $$0.accept(
-         eyv.ai,
-         eze.b()
+         ezd.ai,
+         ezm.b()
             .a(
-               ezd.a()
-                  .a(fdb.a(1.0F))
-                  .a(ezs.a(a(czc.qn, czc.qo, $$5, $$3).b()).a(4))
-                  .a(ezs.a(a(czc.qr, czc.qs, $$4, $$3).b()).a(2))
-                  .a(ezs.a(a(czc.qv, czc.qw, $$4, $$3).b()).a(1))
+               ezl.a()
+                  .a(fdj.a(1.0F))
+                  .a(faa.a(a(czh.qq, czh.qr, $$5, $$3).b()).a(4))
+                  .a(faa.a(a(czh.qu, czh.qv, $$4, $$3).b()).a(2))
+                  .a(faa.a(a(czh.qy, czh.qz, $$4, $$3).b()).a(1))
             )
       );
       $$0.accept(
-         eyv.ak,
-         eze.b()
-            .a(ezd.a().a(fdb.a(1.0F)).a(ezs.a(eyv.ai)))
+         ezd.ak,
+         ezm.b()
+            .a(ezl.a().a(fdj.a(1.0F)).a(faa.a(ezd.ai)))
             .a(
-               ezd.a()
-                  .a(fdb.a(1.0F))
-                  .a(ezm.a(czc.pM).a(4))
-                  .a(ezm.a(czc.pM).a(new fba.a().a($$3.b(dfq.n), fdb.a(1.0F))))
-                  .a(ezm.a(czc.pM).a(new fba.a().a($$3.b(dfq.q), fdb.a(1.0F))))
-                  .a(ezm.a(czc.pR))
+               ezl.a()
+                  .a(fdj.a(1.0F))
+                  .a(ezu.a(czh.pP).a(4))
+                  .a(ezu.a(czh.pP).a(new fbi.a().a($$3.b(dfv.n), fdj.a(1.0F))))
+                  .a(ezu.a(czh.pP).a(new fbi.a().a($$3.b(dfv.q), fdj.a(1.0F))))
+                  .a(ezu.a(czh.pU))
             )
       );
       $$0.accept(
-         eyv.aj,
-         eze.b()
-            .a(ezd.a().a(fdb.a(1.0F)).a(ezs.a(eyv.ai)))
+         ezd.aj,
+         ezm.b()
+            .a(ezl.a().a(fdj.a(1.0F)).a(faa.a(ezd.ai)))
             .a(
-               ezd.a()
-                  .a(fdb.a(1.0F))
-                  .a(ezm.a(czc.pg).a(2))
-                  .a(ezm.a(czc.pg).a(new fba.a().a($$3.b(dfq.y), fdb.a(1.0F))))
-                  .a(ezm.a(czc.pg).a(new fba.a().a($$3.b(dfq.z), fdb.a(1.0F))))
+               ezl.a()
+                  .a(fdj.a(1.0F))
+                  .a(ezu.a(czh.pj).a(2))
+                  .a(ezu.a(czh.pj).a(new fbi.a().a($$3.b(dfv.y), fdj.a(1.0F))))
+                  .a(ezu.a(czh.pj).a(new fbi.a().a($$3.b(dfv.z), fdj.a(1.0F))))
             )
       );
    }
 
-   public static eze.a a(cyu $$0, cyu $$1, dhj $$2, jg.b<dfl> $$3) {
-      return eze.b()
+   public static ezm.a a(cyz $$0, cyz $$1, dho $$2, jg.b<dfq> $$3) {
+      return ezm.b()
          .a(
-            ezd.a()
-               .a(fdb.a(1.0F))
-               .a(fcn.a(0.5F))
-               .a(ezm.a($$0).a(fav.a(kj.W, $$2)).a(new fba.a().a($$3.b(dfq.a), fdb.a(4.0F)).a($$3.b(dfq.e), fdb.a(4.0F)).a($$3.b(dfq.b), fdb.a(4.0F))))
+            ezl.a()
+               .a(fdj.a(1.0F))
+               .a(fcv.a(0.5F))
+               .a(ezu.a($$0).a(fbd.a(kj.W, $$2)).a(new fbi.a().a($$3.b(dfv.a), fdj.a(4.0F)).a($$3.b(dfv.e), fdj.a(4.0F)).a($$3.b(dfv.b), fdj.a(4.0F))))
          )
          .a(
-            ezd.a()
-               .a(fdb.a(1.0F))
-               .a(fcn.a(0.5F))
-               .a(ezm.a($$1).a(fav.a(kj.W, $$2)).a(new fba.a().a($$3.b(dfq.a), fdb.a(4.0F)).a($$3.b(dfq.e), fdb.a(4.0F)).a($$3.b(dfq.b), fdb.a(4.0F))))
+            ezl.a()
+               .a(fdj.a(1.0F))
+               .a(fcv.a(0.5F))
+               .a(ezu.a($$1).a(fbd.a(kj.W, $$2)).a(new fbi.a().a($$3.b(dfv.a), fdj.a(4.0F)).a($$3.b(dfv.e), fdj.a(4.0F)).a($$3.b(dfv.b), fdj.a(4.0F))))
          );
    }
 }

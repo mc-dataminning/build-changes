@@ -1,37 +1,13 @@
-public class ced extends cdy {
-   private final cjt a;
-   private boolean b;
+import java.util.EnumSet;
 
-   public ced(cjt $$0) {
-      this.a = $$0;
+public class ced extends cei {
+   public ced(bxg $$0, Class<? extends bxe> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(cea.a.b, cea.a.a));
    }
 
-   @Override
-   public boolean b() {
-      if (!(this.a.e() instanceof arr $$0)) {
-         return false;
-      } else {
-         boolean $$1 = !$$0.U_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
-         return !this.a.gq() && $$1 && this.a.gG();
-      }
-   }
-
-   @Override
-   public boolean P_() {
-      return !this.b;
-   }
-
-   @Override
-   public void d() {
-      this.b = false;
-   }
-
-   @Override
-   public void a() {
-      if (!this.b && !this.a.x() && !this.a.O_()) {
-         if (this.a.e() instanceof arr $$0 && this.a.cR().c($$0.cR())) {
-            this.b = this.a.b($$0);
-         }
-      }
+   public ced(bxg $$0, Class<? extends bxe> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(cea.a.b, cea.a.a));
    }
 }

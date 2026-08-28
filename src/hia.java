@@ -1,108 +1,59 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public abstract class hia implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   private int d = 10497;
-   private int e = 10497;
-   private int f = 9986;
-   private int g = 9729;
+public class hia implements hib<dcd> {
+   private final dtr.a a;
+   private final ghw b;
+   @Nullable
+   private final alg c;
+   private final float d;
 
-   public void a(boolean $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      int $$1;
-      int $$2;
-      if ($$0) {
-         $$1 = 33071;
-         $$2 = 33071;
-      } else {
-         $$1 = 10497;
-         $$2 = 10497;
-      }
-
-      boolean $$5 = this.d != $$1;
-      boolean $$6 = this.e != $$2;
-      if ($$5 || $$6) {
-         this.c();
-         if ($$5) {
-            GlStateManager._texParameter(3553, 10242, $$1);
-            this.d = $$1;
-         }
-
-         if ($$6) {
-            GlStateManager._texParameter(3553, 10243, $$2);
-            this.e = $$2;
-         }
-      }
+   public hia(dtr.a $$0, ghw $$1, @Nullable alg $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(bas $$0, boolean $$1) {
-      this.a($$0.a(this.c), $$1);
+   @Nullable
+   public dcd a(czd $$0) {
+      return $$0.a(kj.ak);
    }
 
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      boolean $$6 = this.f != $$2;
-      boolean $$7 = this.g != $$3;
-      if ($$7 || $$6) {
-         this.c();
-         if ($$6) {
-            GlStateManager._texParameter(3553, 10241, $$2);
-            this.f = $$2;
-         }
-
-         if ($$7) {
-            GlStateManager._texParameter(3553, 10240, $$3);
-            this.g = $$3;
-         }
-      }
+   public void a(@Nullable dcd $$0, czb $$1, fjj $$2, gqa $$3, int $$4, int $$5, boolean $$6) {
+      gqk $$7 = gtc.a(this.a, $$0, this.c);
+      gtc.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
    }
 
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
+   public static record a(dtr.a b, Optional<alg> c, float d) implements hib.a {
+      public static final MapCodec<hia.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dtr.a.b.fieldOf("kind").forGetter(hia.a::b),
+                  alg.a.optionalFieldOf("texture").forGetter(hia.a::c),
+                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hia.a::d)
+               )
+               .apply($$0, hia.a::new)
+      );
+
+      public a(dtr.a $$0) {
+         this($$0, Optional.empty(), 0.0F);
       }
 
-      return this.b;
-   }
-
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
+      @Override
+      public MapCodec<hia.a> a() {
+         return a;
       }
-   }
 
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
+      @Nullable
+      @Override
+      public hib<?> a(giy $$0) {
+         ghw $$1 = gtc.a($$0, this.b);
+         alg $$2 = this.c.<alg>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
+         return $$1 != null ? new hia(this.b, $$1, $$2, this.d) : null;
       }
-   }
-
-   @Override
-   public void close() {
    }
 }

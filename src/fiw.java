@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fiw<T> {
+   fiw<?> a = () -> {
+      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
+   };
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fgk
-@fgj
-interface fiw {
+   static <T> fiw<T> a() {
+      return (fiw<T>)a;
+   }
+
+   T get();
 }

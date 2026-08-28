@@ -38,7 +38,7 @@ public class aok {
       );
    }
 
-   private static int a(ei $$0, int $$1, boolean $$2, @Nullable dis $$3) throws CommandSyntaxException {
+   private static int a(ei $$0, int $$1, boolean $$2, @Nullable dix $$3) throws CommandSyntaxException {
       if ($$0.l().r()) {
          throw b.create($$0.l().S());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

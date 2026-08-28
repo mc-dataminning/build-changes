@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record ehs(jz e) implements ehf {
-   public static MapCodec<ehs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jz.g.optionalFieldOf("offset", jz.i).forGetter(ehs::g)).apply($$0, ehs::new));
+public class ehs extends ehy {
+   final axr<dmf> a;
+   public static final MapCodec<ehs> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axr.a(mg.i).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ehs::new)
+   );
+
+   protected ehs(jz $$0, axr<dmf> $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
    @Override
-   public ehg<?> a() {
-      return ehg.m;
+   protected boolean a(eah $$0) {
+      return $$0.a(this.a);
    }
 
-   public boolean a(dju $$0, iu $$1) {
-      return $$0.a(null, fez.b().a($$1));
-   }
-
-   public jz g() {
-      return this.e;
+   @Override
+   public eho<?> a() {
+      return eho.b;
    }
 }

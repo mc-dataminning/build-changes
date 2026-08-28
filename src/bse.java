@@ -1,30 +1,29 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+public class bse implements bsf {
+   public static final bsf a = new bse();
 
-public class bse {
-   private final Set<String> a = new ObjectOpenHashSet();
-
-   public Set<brw> a(Supplier<bqj> $$0) {
-      Set<brw> $$1 = $$0.get()
-         .e()
-         .stream()
-         .filter($$0x -> !this.a.contains($$0x.getLeft()))
-         .map($$1x -> a($$0, (String)$$1x.getLeft(), (brv)$$1x.getRight()))
-         .collect(Collectors.toSet());
-
-      for (brw $$2 : $$1) {
-         this.a.add($$2.d());
-      }
-
-      return $$1;
+   @Override
+   public void a() {
    }
 
-   private static brw a(Supplier<bqj> $$0, String $$1, brv $$2) {
-      return brw.a($$1, $$2, () -> {
-         bqe.a $$2x = $$0.get().c($$1);
-         return $$2x == null ? 0.0 : (double)$$2x.b() / (double)baq.b;
-      });
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bqo f() {
+      return bqk.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

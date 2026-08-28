@@ -1,44 +1,158 @@
 import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Function;
 
-public class ekh extends eje<elq> {
-   private static final int a = 7;
-
-   ekh(Codec<elq> $$0) {
+public class ekh extends ejm<ely> {
+   public ekh(Codec<ely> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elq> $$0) {
-      dju $$1 = $$0.b();
-      azv $$2 = $$0.d();
-      elq $$3 = $$0.f();
-      iu $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      iu.a $$6 = new iu.a();
+   public boolean a(ejo<ely> $$0) {
+      azv $$1 = $$0.d();
+      iu $$2 = $$0.e();
+      djz $$3 = $$0.b();
+      ely $$4 = $$0.f();
+      float $$5 = $$1.i() * (float) Math.PI;
+      float $$6 = (float)$$4.c / 8.0F;
+      int $$7 = azm.f(((float)$$4.c / 16.0F * 2.0F + 1.0F) / 2.0F);
+      double $$8 = (double)$$2.u() + Math.sin((double)$$5) * (double)$$6;
+      double $$9 = (double)$$2.u() - Math.sin((double)$$5) * (double)$$6;
+      double $$10 = (double)$$2.w() + Math.cos((double)$$5) * (double)$$6;
+      double $$11 = (double)$$2.w() - Math.cos((double)$$5) * (double)$$6;
+      int $$12 = 2;
+      double $$13 = (double)($$2.v() + $$1.a(3) - 2);
+      double $$14 = (double)($$2.v() + $$1.a(3) - 2);
+      int $$15 = $$2.u() - azm.f($$6) - $$7;
+      int $$16 = $$2.v() - 2 - $$7;
+      int $$17 = $$2.w() - azm.f($$6) - $$7;
+      int $$18 = 2 * (azm.f($$6) + $$7);
+      int $$19 = 2 * (2 + $$7);
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dzz $$8 = $$1.a_($$6);
-
-         for (elq.a $$9 : $$3.b) {
-            if (ejz.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
+      for (int $$20 = $$15; $$20 <= $$15 + $$18; $$20++) {
+         for (int $$21 = $$17; $$21 <= $$17 + $$18; $$21++) {
+            if ($$16 <= $$3.a(egg.a.c, $$20, $$21)) {
+               return this.a($$3, $$1, $$4, $$8, $$9, $$10, $$11, $$13, $$14, $$15, $$16, $$17, $$18, $$19);
             }
          }
       }
 
-      return true;
+      return false;
    }
 
-   private void a(iu.a $$0, azv $$1, iu $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
+   protected boolean a(
+      djz $$0, azv $$1, ely $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8, int $$9, int $$10, int $$11, int $$12, int $$13
+   ) {
+      int $$14 = 0;
+      BitSet $$15 = new BitSet($$12 * $$13 * $$12);
+      iu.a $$16 = new iu.a();
+      int $$17 = $$2.c;
+      double[] $$18 = new double[$$17 * 4];
+
+      for (int $$19 = 0; $$19 < $$17; $$19++) {
+         float $$20 = (float)$$19 / (float)$$17;
+         double $$21 = azm.d((double)$$20, $$3, $$4);
+         double $$22 = azm.d((double)$$20, $$7, $$8);
+         double $$23 = azm.d((double)$$20, $$5, $$6);
+         double $$24 = $$1.j() * (double)$$17 / 16.0;
+         double $$25 = ((double)(azm.a((float) Math.PI * $$20) + 1.0F) * $$24 + 1.0) / 2.0;
+         $$18[$$19 * 4 + 0] = $$21;
+         $$18[$$19 * 4 + 1] = $$22;
+         $$18[$$19 * 4 + 2] = $$23;
+         $$18[$$19 * 4 + 3] = $$25;
+      }
+
+      for (int $$26 = 0; $$26 < $$17 - 1; $$26++) {
+         if (!($$18[$$26 * 4 + 3] <= 0.0)) {
+            for (int $$27 = $$26 + 1; $$27 < $$17; $$27++) {
+               if (!($$18[$$27 * 4 + 3] <= 0.0)) {
+                  double $$28 = $$18[$$26 * 4 + 0] - $$18[$$27 * 4 + 0];
+                  double $$29 = $$18[$$26 * 4 + 1] - $$18[$$27 * 4 + 1];
+                  double $$30 = $$18[$$26 * 4 + 2] - $$18[$$27 * 4 + 2];
+                  double $$31 = $$18[$$26 * 4 + 3] - $$18[$$27 * 4 + 3];
+                  if ($$31 * $$31 > $$28 * $$28 + $$29 * $$29 + $$30 * $$30) {
+                     if ($$31 > 0.0) {
+                        $$18[$$27 * 4 + 3] = -1.0;
+                     } else {
+                        $$18[$$26 * 4 + 3] = -1.0;
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      try (ecc $$32 = new ecc($$0)) {
+         for (int $$33 = 0; $$33 < $$17; $$33++) {
+            double $$34 = $$18[$$33 * 4 + 3];
+            if (!($$34 < 0.0)) {
+               double $$35 = $$18[$$33 * 4 + 0];
+               double $$36 = $$18[$$33 * 4 + 1];
+               double $$37 = $$18[$$33 * 4 + 2];
+               int $$38 = Math.max(azm.a($$35 - $$34), $$9);
+               int $$39 = Math.max(azm.a($$36 - $$34), $$10);
+               int $$40 = Math.max(azm.a($$37 - $$34), $$11);
+               int $$41 = Math.max(azm.a($$35 + $$34), $$38);
+               int $$42 = Math.max(azm.a($$36 + $$34), $$39);
+               int $$43 = Math.max(azm.a($$37 + $$34), $$40);
+
+               for (int $$44 = $$38; $$44 <= $$41; $$44++) {
+                  double $$45 = ((double)$$44 + 0.5 - $$35) / $$34;
+                  if ($$45 * $$45 < 1.0) {
+                     for (int $$46 = $$39; $$46 <= $$42; $$46++) {
+                        double $$47 = ((double)$$46 + 0.5 - $$36) / $$34;
+                        if ($$45 * $$45 + $$47 * $$47 < 1.0) {
+                           for (int $$48 = $$40; $$48 <= $$43; $$48++) {
+                              double $$49 = ((double)$$48 + 0.5 - $$37) / $$34;
+                              if ($$45 * $$45 + $$47 * $$47 + $$49 * $$49 < 1.0 && !$$0.e($$46)) {
+                                 int $$50 = $$44 - $$9 + ($$46 - $$10) * $$12 + ($$48 - $$11) * $$12 * $$13;
+                                 if (!$$15.get($$50)) {
+                                    $$15.set($$50);
+                                    $$16.d($$44, $$46, $$48);
+                                    if ($$0.f_($$16)) {
+                                       ecp $$51 = $$32.a($$16);
+                                       if ($$51 != null) {
+                                          int $$52 = jx.b($$44);
+                                          int $$53 = jx.b($$46);
+                                          int $$54 = jx.b($$48);
+                                          eah $$55 = $$51.a($$52, $$53, $$54);
+
+                                          for (ely.a $$56 : $$2.b) {
+                                             if (a($$55, $$32::b, $$1, $$2, $$56, $$16)) {
+                                                $$51.a($$52, $$53, $$54, $$56.c, false);
+                                                $$14++;
+                                                break;
+                                             }
+                                          }
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$14 > 0;
    }
 
-   private int a(azv $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   public static boolean a(eah $$0, Function<iu, eah> $$1, azv $$2, ely $$3, ely.a $$4, iu.a $$5) {
+      if (!$$4.b.a($$0, $$2)) {
+         return false;
+      } else {
+         return a($$2, $$3.d) ? true : !a($$1, $$5);
+      }
+   }
+
+   protected static boolean a(azv $$0, float $$1) {
+      if ($$1 <= 0.0F) {
+         return true;
+      } else {
+         return $$1 >= 1.0F ? false : $$0.i() >= $$1;
+      }
    }
 }

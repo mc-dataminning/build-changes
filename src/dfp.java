@@ -1,19 +1,8 @@
-import com.mojang.serialization.Codec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum dfp implements bak {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<dfp> d = bak.a(dfp::values);
-   private final String e;
-
-   private dfp(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+public record dfp(czd a, @Nullable bwp b, @Nullable bxe c, Consumer<cyz> d) {
+   public dfp(czd $$0, bwp $$1, bxe $$2) {
+      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
    }
 }

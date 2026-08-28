@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class flw extends flv {
+   public static final int b = 5;
+   public final int c;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface flw {
+   public flw(int $$0, int $$1) {
+      super(fkb.b.a($$1));
+      if ($$0 >= 0 && $$0 <= 120) {
+         this.c = $$0;
+      } else {
+         this.c = 5;
+      }
+   }
 }

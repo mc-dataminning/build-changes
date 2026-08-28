@@ -81,7 +81,7 @@ public class apg {
       );
    }
 
-   private static int a(ei $$0, feh $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwd> $$6) throws CommandSyntaxException {
+   private static int a(ei $$0, fep $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwf> $$6) throws CommandSyntaxException {
       arq $$7 = $$0.e();
       int $$8 = $$7.G_();
       if ($$4 < $$8) {
@@ -103,11 +103,11 @@ public class apg {
       }
    }
 
-   private static int a(Collection<? extends bwd> $$0) {
-      Set<ffp> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bwf> $$0) {
+      Set<ffx> $$1 = Sets.newHashSet();
 
-      for (bwd $$2 : $$0) {
-         if ($$2 instanceof cqy) {
+      for (bwf $$2 : $$0) {
+         if ($$2 instanceof crc) {
             $$1.add($$2.cr());
          } else {
             $$1.add(null);
@@ -117,7 +117,7 @@ public class apg {
       return $$1.size();
    }
 
-   private static void a(feh $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(fep $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class apg {
       }
    }
 
-   private static double a(Collection<? extends bwd> $$0, arq $$1, apg.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bwf> $$0, arq $$1, apg.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<ffp, apg.a> $$7 = Maps.newHashMap();
+      Map<ffx, apg.a> $$7 = Maps.newHashMap();
 
-      for (bwd $$8 : $$0) {
+      for (bwf $$8 : $$0) {
          apg.a $$10;
          if ($$4) {
-            ffp $$9 = $$8 instanceof cqy ? $$8.cr() : null;
+            ffx $$9 = $$8 instanceof crc ? $$8.cr() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -278,7 +278,7 @@ public class apg {
          return $$4;
       }
 
-      public int a(dib $$0, int $$1) {
+      public int a(dig $$0, int $$1) {
          iu.a $$2 = new iu.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
          $$2.c(ja.a);
@@ -298,9 +298,9 @@ public class apg {
          return $$1 + 1;
       }
 
-      public boolean b(dib $$0, int $$1) {
+      public boolean b(dig $$0, int $$1) {
          iu $$2 = iu.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dzz $$3 = $$0.a_($$2);
+         eah $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.n() && !$$3.a(axc.aN);
       }
 

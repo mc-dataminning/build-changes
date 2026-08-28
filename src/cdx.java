@@ -1,78 +1,89 @@
+import java.util.EnumSet;
 import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdx extends cdy {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final cis d;
+public class cdx extends cea {
+   private final bxg a;
+   private final Predicate<bxg> b;
    @Nullable
-   private cis e;
-   private final double f;
-   private int g;
+   private bxg c;
+   private final double d;
+   private final cgo e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public cdx(cis $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public cdx(bxg $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.O();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cea.a.a, cea.a.b));
+      if (!($$0.O() instanceof cgn) && !($$0.O() instanceof cgm)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else {
-         List<? extends cis> $$0 = this.d.dV().a((Class<? extends cis>)this.d.getClass(), this.d.cR().c(8.0, 4.0, 8.0));
-         cis $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (cis $$3 : $$0) {
-            if ($$3.g() >= 0) {
-               double $$4 = this.d.g($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
+      List<bxg> $$0 = this.a.dV().a(bxg.class, this.a.cR().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bxg $$1 : $$0) {
+            if (!$$1.cp()) {
+               this.c = $$1;
+               return true;
             }
          }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
       }
+
+      return false;
    }
 
    @Override
    public boolean c() {
-      if (this.d.g() >= 0) {
-         return false;
-      } else if (!this.e.bK()) {
-         return false;
-      } else {
-         double $$0 = this.d.g(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      return this.c != null && !this.e.k() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.g = 0;
+      this.f = 0;
+      this.h = this.a.a(exf.j);
+      this.a.a(exf.j, 0.0F);
    }
 
    @Override
    public void e() {
-      this.e = null;
+      this.c = null;
+      this.e.m();
+      this.a.a(exf.j, this.h);
    }
 
    @Override
    public void a() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.O().a(this.e, this.f);
+      if (this.c != null && !this.a.O_()) {
+         this.a.J().a(this.c, 10.0F, (float)this.a.ac());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dA() - this.c.dA();
+            double $$1 = this.a.dC() - this.c.dC();
+            double $$2 = this.a.dG() - this.c.dG();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.m();
+               cdc $$4 = this.c.J();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dA() && $$4.f() == this.a.dC() && $$4.g() == this.a.dG()) {
+                  double $$5 = this.c.dA() - this.a.dA();
+                  double $$6 = this.c.dG() - this.a.dG();
+                  this.e.a(this.a.dA() - $$5, this.a.dC(), this.a.dG() - $$6, this.d);
+               }
+            }
+         }
       }
    }
 }

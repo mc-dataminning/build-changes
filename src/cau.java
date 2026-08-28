@@ -1,30 +1,31 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.function.Predicate;
 
 public class cau {
-   private static final int a = 300;
+   public static byw<bxe> a(bxh $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
+   }
 
-   public static byu<bxc> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$3x -> $$3x.group($$3x.b(cge.D), $$3x.b(cge.E))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        iu $$11 = $$3x.<jd>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
-                           $$3.increment();
-                        }
+   public static cag<bxe> a(bwo<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq()), $$1);
+   }
 
-                        return true;
+   public static cag<bxe> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static cag<bxe> a(Predicate<bxe> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return cci.a(
+         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$2x -> $$2x.group($$2x.c(cgg.o), $$2x.b(cgg.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bxe> $$8 = $$2x.<cgi>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g($$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
                      } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.eb().a($$6.af(), $$6.ae());
-                        $$3.setValue(0);
+                        $$3.a(new bzg($$8.get(), true));
                         return true;
                      }
                   }))

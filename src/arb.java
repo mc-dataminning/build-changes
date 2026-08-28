@@ -2,8 +2,8 @@ public record arb(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dic a() {
-      return new dic(jx.a(this.a), jx.a(this.b));
+   public dih a() {
+      return new dih(jx.a(this.a), jx.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record arb(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dic.d(this.a, this.b);
+      return dih.d(this.a, this.b);
    }
 
    public int c() {

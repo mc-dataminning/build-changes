@@ -1,13 +1,36 @@
-public class gzg extends gus<cot, hev, gik<hev>> {
-   public gzg(gvz.a $$0) {
-      this($$0, git.ed, git.ee, git.em, git.en, git.ef, git.eg);
+public class gzg extends gxn<cqf, hey, gim> {
+   private static final alg a = alg.b("textures/entity/warden/warden.png");
+   private static final alg j = alg.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final alg k = alg.b("textures/entity/warden/warden_heart.png");
+   private static final alg l = alg.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final alg m = alg.b("textures/entity/warden/warden_pulsating_spots_2.png");
+
+   public gzg(gwh.a $$0) {
+      super($$0, new gim($$0.a(gjb.dN)), 0.9F);
+      this.a(new hao<>(this, j, ($$0x, $$1) -> 1.0F, gim::d, gqk::k, false));
+      this.a(new hao<>(this, l, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F) * 0.25F), gim::e, gqk::k, false));
+      this.a(new hao<>(this, m, ($$0x, $$1) -> Math.max(0.0F, azm.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gim::e, gqk::k, false));
+      this.a(new hao<>(this, a, ($$0x, $$1) -> $$0x.a, gim::b, gqk::k, false));
+      this.a(new hao<>(this, k, ($$0x, $$1) -> $$0x.b, gim::c, gqk::k, false));
    }
 
-   public hev b() {
-      return new hev();
+   public alg a(hey $$0) {
+      return a;
    }
 
-   public gzg(gvz.a $$0, gis $$1, gis $$2, gis $$3, gis $$4, gis $$5, gis $$6) {
-      super($$0, new gik<>($$0.a($$1)), new gik<>($$0.a($$2)), new gik<>($$0.a($$3)), new gik<>($$0.a($$4)), new gik<>($$0.a($$5)), new gik<>($$0.a($$6)));
+   public hey b() {
+      return new hey();
+   }
+
+   public void a(cqf $$0, hey $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.a);
+      $$1.d.a($$0.b);
+      $$1.e.a($$0.c);
+      $$1.f.a($$0.d);
+      $$1.g.a($$0.bG);
+      $$1.h.a($$0.bH);
    }
 }

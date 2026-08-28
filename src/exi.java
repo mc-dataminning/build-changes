@@ -1,154 +1,122 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class exi implements exn {
-   private static final Logger b = LogUtils.getLogger();
-   private final div c;
-   private final int d;
-   private final ArrayDeque<exi.c> e = new ArrayDeque<>();
-   private final List<exi.c> f = new ArrayList<>();
-   private int g = 0;
+public class exi extends exb {
+   private final boolean a;
+   private final Long2ObjectMap<exf> l = new Long2ObjectOpenHashMap();
 
-   public exi(div $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public exi(boolean $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(ja $$0, dzz $$1, iu $$2, iu $$3, int $$4, int $$5) {
-      this.a($$2, new exi.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
+   public void a(djn $$0, bxg $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
    @Override
-   public void a(iu $$0, dma $$1, @Nullable exo $$2) {
-      this.a($$0, new exi.e($$0, $$1, $$2));
+   public void b() {
+      super.b();
+      this.l.clear();
    }
 
    @Override
-   public void a(dzz $$0, iu $$1, dma $$2, @Nullable exo $$3, boolean $$4) {
-      this.a($$1, new exi.a($$0, $$1.j(), $$2, $$3, $$4));
+   public exa a() {
+      return this.c(azm.a(this.c.cR().a), azm.a(this.c.cR().b + 0.5), azm.a(this.c.cR().c));
    }
 
    @Override
-   public void a(iu $$0, dma $$1, @Nullable ja $$2, @Nullable exo $$3) {
-      this.a($$0, new exi.b($$0.j(), $$1, $$3, $$2));
+   public exj a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
    }
 
-   private void a(iu $$0, exi.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
+   @Override
+   public int a(exa[] $$0, exa $$1) {
+      int $$2 = 0;
+      Map<ja, exa> $$3 = Maps.newEnumMap(ja.class);
+
+      for (ja $$4 : ja.values()) {
+         exa $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
          }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
       }
 
-      if (!$$2) {
-         this.a();
+      for (ja $$6 : ja.c.a) {
+         ja $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            exa $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
       }
+
+      return $$2;
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
+   protected boolean a(@Nullable exa $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   private static boolean b(@Nullable exa $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   @Nullable
+   protected exa a(int $$0, int $$1, int $$2) {
+      exa $$3 = null;
+      exf $$4 = this.b($$0, $$1, $$2);
+      if (this.a && $$4 == exf.u || $$4 == exf.j) {
+         float $$5 = this.c.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.b.a().b_(new iu($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
             }
+         }
+      }
 
-            this.f.clear();
-            exi.c $$1 = this.e.peek();
+      return $$3;
+   }
 
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
+   protected exf b(int $$0, int $$1, int $$2) {
+      return (exf)this.l.computeIfAbsent(iu.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   }
+
+   @Override
+   public exf a(exh $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.c);
+   }
+
+   @Override
+   public exf a(exh $$0, int $$1, int $$2, int $$3, bxg $$4) {
+      iu.a $$5 = new iu.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
+               eah $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               ewo $$10 = $$9.y();
+               if ($$10.c() && $$9.a(exd.b) && $$9.l()) {
+                  return exf.u;
+               }
+
+               if (!$$10.a(axh.a)) {
+                  return exf.a;
                }
             }
          }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
-   }
-
-   static record a(dzz a, iu b, dma c, @Nullable exo d, boolean e) implements exi.c {
-      @Override
-      public boolean a(div $$0) {
-         exn.a($$0, this.a, this.b, this.c, this.d, this.e);
-         return false;
-      }
-   }
-
-   static final class b implements exi.c {
-      private final iu a;
-      private final dma b;
-      @Nullable
-      private exo c;
-      @Nullable
-      private final ja d;
-      private int e = 0;
-
-      b(iu $$0, dma $$1, @Nullable exo $$2, @Nullable ja $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (exn.a[this.e] == $$3) {
-            this.e++;
-         }
       }
 
-      @Override
-      public boolean a(div $$0) {
-         ja $$1 = exn.a[this.e++];
-         iu $$2 = this.a.a($$1);
-         dzz $$3 = $$0.a_($$2);
-         exo $$4 = null;
-         if ($$0.K().b(cuj.c)) {
-            if (this.c == null) {
-               this.c = exk.a($$0, this.d == null ? null : this.d.g(), null);
-            }
-
-            $$4 = this.c.b($$1);
-         }
-
-         exn.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < exn.a.length && exn.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < exn.a.length;
-      }
-   }
-
-   interface c {
-      boolean a(div var1);
-   }
-
-   static record d(ja a, dzz b, iu c, iu d, int e, int f) implements exi.c {
-      @Override
-      public boolean a(div $$0) {
-         exn.a($$0, this.a, this.c, this.d, this.b, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(iu a, dma b, @Nullable exo c) implements exi.c {
-      @Override
-      public boolean a(div $$0) {
-         dzz $$1 = $$0.a_(this.a);
-         exn.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
-      }
+      eah $$11 = $$0.a($$5);
+      return $$11.a(exd.b) ? exf.j : exf.a;
    }
 }

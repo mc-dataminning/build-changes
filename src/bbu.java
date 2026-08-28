@@ -17,10 +17,10 @@ public class bbu extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(biw.s);
+      Type<?> $$0 = this.getInputSchema().getType(bix.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bix.s);
       OpticFinder<?> $$2 = $$0.findField("CustomName");
-      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(biw.z));
+      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(bix.z));
       return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$3x -> {
          Object $$4 = ((Pair)$$3x.get($$1.finder())).getFirst();
          return $$4.equals("minecraft:banner") ? this.a($$3x, $$3, $$2) : $$3x;

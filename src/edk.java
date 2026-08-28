@@ -1,31 +1,4 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
+import java.util.concurrent.Executor;
 
-public class edk extends eds {
-   private final edi a;
-   private final Path b;
-
-   public edk(edp $$0, Path $$1, edp $$2, Path $$3, DataFixer $$4, boolean $$5, bbb $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new edi($$2, $$3, $$5);
-   }
-
-   @Override
-   public CompletableFuture<Void> a(dic $$0, @Nullable tz $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
-   }
+public record edk(arq a, ecf b, eve c, aru d, Executor e, eco.e f) {
 }

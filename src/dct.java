@@ -1,71 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dct {
-   @Nullable
-   private final cqy a;
-   private final bua b;
-   private final fee c;
-   private final div d;
-   private final cyy e;
+public record dct(ji<bvh> c) implements dcr {
+   public static final MapCodec<dct> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jt.a(mg.W).fieldOf("effects").forGetter(dct::b)).apply($$0, dct::new));
+   public static final yw<wj, dct> b = yw.a(yu.c(mg.W), dct::b, dct::new);
 
-   public dct(cqy $$0, bua $$1, fee $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
+   public dct(je<bvh> $$0) {
+      this(ji.a($$0));
    }
 
-   protected dct(div $$0, @Nullable cqy $$1, bua $$2, cyy $$3, fee $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public dcr.a<dct> a() {
+      return dcr.a.b;
    }
 
-   protected final fee j() {
+   @Override
+   public boolean a(dja $$0, czd $$1, bxe $$2) {
+      boolean $$3 = false;
+
+      for (je<bvh> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   public ji<bvh> b() {
       return this.c;
-   }
-
-   public iu a() {
-      return this.c.b();
-   }
-
-   public ja k() {
-      return this.c.c();
-   }
-
-   public fei l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cyy n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cqy o() {
-      return this.a;
-   }
-
-   public bua p() {
-      return this.b;
-   }
-
-   public div q() {
-      return this.d;
-   }
-
-   public ja g() {
-      return this.a == null ? ja.c : this.a.cO();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fX();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
    }
 }

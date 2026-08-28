@@ -1,159 +1,78 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class gre implements hlk {
-   @VisibleForTesting
-   static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gre.class, new gre.a())
-      .registerTypeAdapter(gra.class, new gra.a())
-      .registerTypeAdapter(grb.class, new grb.a())
-      .registerTypeAdapter(grd.class, new grd.a())
-      .registerTypeAdapter(gri.class, new gri.a())
-      .registerTypeAdapter(grj.class, new grj.a())
-      .create();
-   private final List<gra> b;
-   @Nullable
-   private final hlk.a e;
-   @Nullable
-   private final Boolean f;
-   @Nullable
-   private final grj g;
-   @VisibleForTesting
-   private final grl.a h;
-   @Nullable
-   private hlk i;
-   @Nullable
-   private final alg j;
+public class gre implements ave {
+   private final grd a;
+   private final grg b;
+   private final Supplier<gqx> c;
+   private final grf d;
+   private final azv e = azv.a();
+   private final fqb f;
 
-   public static gre a(Reader $$0) {
-      return azc.a(a, $$0, gre.class);
+   public gre(grd $$0, Supplier<gqx> $$1, fqb $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new grg(this.f);
+      this.d = new grf();
    }
 
-   public gre(@Nullable alg $$0, List<gra> $$1, grl.a $$2, @Nullable Boolean $$3, @Nullable hlk.a $$4, @Nullable grj $$5) {
-      this.b = $$1;
-      this.f = $$3;
-      this.e = $$4;
-      this.h = $$2;
-      this.j = $$0;
-      this.g = $$5;
+   public grd a() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public Boolean a() {
-      return this.f;
-   }
-
-   @Nullable
-   @Override
-   public hlk.a b() {
-      return this.e;
-   }
-
-   @Override
-   public void a(hlh.a $$0) {
-      if (this.j != null) {
-         this.i = $$0.a(this.j);
+   public void a(eah $$0, iu $$1, did $$2, fjj $$3, fjn $$4) {
+      if ($$0.o() == dss.b) {
+         hkx $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hin.d);
       }
    }
 
-   @Nullable
-   @Override
-   public hlk c() {
-      return this.i;
+   public void a(eah $$0, iu $$1, did $$2, fjj $$3, fjn $$4, boolean $$5, azv $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hin.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
+      }
    }
 
-   @Override
-   public grl.a d() {
-      return this.h;
+   public void a(iu $$0, did $$1, fjn $$2, eah $$3, ewo $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
+      }
    }
 
-   @Nullable
-   @Override
-   public grj e() {
-      return this.g;
-   }
-
-   @Override
-   public hkp a(grl $$0, hky $$1, hlf $$2, boolean $$3, boolean $$4, grj $$5) {
-      return this.b.isEmpty() && this.i != null ? this.i.a($$0, $$1, $$2, $$3, $$4, $$5) : hli.a(this.b, $$0, $$1.a(), $$2, $$3, $$4, true, $$5);
-   }
-
-   @Nullable
-   @VisibleForTesting
-   List<gra> f() {
+   public grg b() {
       return this.b;
    }
 
-   @Nullable
-   @VisibleForTesting
-   alg g() {
-      return this.j;
+   public hkx a(eah $$0) {
+      return this.a.b($$0);
    }
 
-   public static class a implements JsonDeserializer<gre> {
-      public gre a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         List<gra> $$4 = this.a($$2, $$3);
-         String $$5 = this.c($$3);
-         grl.a $$6 = this.b($$3);
-         Boolean $$7 = this.a($$3);
-         grj $$8 = null;
-         if ($$3.has("display")) {
-            JsonObject $$9 = azc.u($$3, "display");
-            $$8 = (grj)$$2.deserialize($$9, grj.class);
-         }
-
-         hlk.a $$10 = null;
-         if ($$3.has("gui_light")) {
-            $$10 = hlk.a.a(azc.i($$3, "gui_light"));
-         }
-
-         alg $$11 = $$5.isEmpty() ? null : alg.a($$5);
-         return new gre($$11, $$4, $$6, $$7, $$10, $$8);
+   public void a(eah $$0, fjj $$1, gqa $$2, int $$3, int $$4) {
+      dss $$5 = $$0.o();
+      if ($$5 != dss.a) {
+         hkx $$6 = this.a($$0);
+         int $$7 = this.f.a($$0, null, null, 0);
+         float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+         float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+         float $$10 = (float)($$7 & 0xFF) / 255.0F;
+         this.b.a($$1.c(), $$2.getBuffer(gps.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+         this.c.get().a($$0.b(), czb.a, $$1, $$2, $$3, $$4);
       }
+   }
 
-      private grl.a b(JsonObject $$0) {
-         if ($$0.has("textures")) {
-            JsonObject $$1 = azc.u($$0, "textures");
-            return grl.a($$1, hio.d);
-         } else {
-            return grl.a.a;
-         }
-      }
-
-      private String c(JsonObject $$0) {
-         return azc.a($$0, "parent", "");
-      }
-
-      @Nullable
-      protected Boolean a(JsonObject $$0) {
-         return $$0.has("ambientocclusion") ? azc.k($$0, "ambientocclusion") : null;
-      }
-
-      protected List<gra> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("elements")) {
-            return List.of();
-         } else {
-            List<gra> $$2 = new ArrayList<>();
-
-            for (JsonElement $$3 : azc.v($$1, "elements")) {
-               $$2.add((gra)$$0.deserialize($$3, gra.class));
-            }
-
-            return $$2;
-         }
-      }
+   @Override
+   public void a(avd $$0) {
+      this.d.a();
    }
 }

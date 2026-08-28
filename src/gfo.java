@@ -1,45 +1,49 @@
-public class gfo<T extends hce> extends gge<T> {
-   public gfo(giu $$0) {
+import java.util.Set;
+
+public class gfo extends ghj<hdn> {
+   public static final gjl a = new get(false, 10.0F, 4.0F, Set.of("head"));
+   private static final int i = 12;
+
+   public gfo(gjc $$0) {
       super($$0);
    }
 
-   public static gja a() {
-      float $$0 = -14.0F;
-      gjc $$1 = gge.a(giy.a, -14.0F);
-      gje $$2 = $$1.a();
-      gje $$3 = $$2.a("head", giz.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), giw.a(0.0F, -13.0F, 0.0F));
-      $$3.a("hat", giz.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new giy(-0.5F)), giw.a);
-      $$2.a("body", giz.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), giw.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", giz.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), giw.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", giz.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), giw.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", giz.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), giw.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", giz.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), giw.a(2.0F, -5.0F, 0.0F));
-      return gja.a($$1, 64, 32);
+   public static gji b() {
+      gjk $$0 = c();
+      return gji.a($$0, 64, 64);
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.o.k = true;
-      this.r.e *= 0.5F;
-      this.s.e *= 0.5F;
-      this.t.e *= 0.5F;
-      this.u.e *= 0.5F;
-      float $$1 = 0.4F;
-      this.r.e = azm.a(this.r.e, -0.4F, 0.4F);
-      this.s.e = azm.a(this.s.e, -0.4F, 0.4F);
-      this.t.e = azm.a(this.t.e, -0.4F, 0.4F);
-      this.u.e = azm.a(this.u.e, -0.4F, 0.4F);
-      if ($$0.b != null) {
-         this.r.e = -0.5F;
-         this.s.e = -0.5F;
-         this.r.g = 0.05F;
-         this.s.g = -0.05F;
-      }
+   static gjk c() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a(
+         "head",
+         gjh.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(0, 32)
+            .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         gje.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         gjh.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         gje.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      gjh $$2 = gjh.c().a().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      gjh $$3 = gjh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, gje.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gje.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, gje.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$2, gje.a(4.0F, 12.0F, -6.0F));
+      return $$0;
+   }
 
-      if ($$0.a) {
-         float $$2 = 5.0F;
-         this.o.c -= 5.0F;
-         this.p.c += 5.0F;
-      }
+   public gjc d() {
+      return this.b;
    }
 }

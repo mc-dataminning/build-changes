@@ -1,48 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
+import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
-public class bzv<E extends bxe> extends bzw<E> {
-   private final axr<dma> m;
-   private final float n;
-   private final List<bzw.a> o = new ArrayList<>();
-   private boolean p;
-
-   public bzv(btm $$0, int $$1, int $$2, float $$3, Function<E, awm> $$4, axr<dma> $$5, float $$6, BiPredicate<E, iu> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
-   }
-
-   @Override
-   protected void a(arq $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dY().i() < this.n;
-   }
-
-   @Override
-   protected Optional<bzw.a> a(arq $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         iu.a $$1 = new iu.a();
-
-         while (!this.h.isEmpty()) {
-            Optional<bzw.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bzw.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.a(), ja.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
-      }
+public class bzv {
+   public static cag<bxe> a(int $$0, float $$1, int $$2) {
+      return cci.a(
+         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$3 -> $$3.group(
+                  $$3.c(cgg.n), $$3.a(cgg.b), $$3.a(cgg.D), $$3.a(cgg.u), $$3.a(cgg.o), $$3.a(cgg.s), $$3.a(cgg.r)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.A()
+                           .d($$0xxxx -> $$0xxxx.a(cik.n), $$0xxxx -> true, $$12.dv(), $$2 + 1, cig.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dt(), (double)$$2))
+                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(cik.n), $$0xxxxx -> true, cig.b.c, $$12.dv(), $$0, $$12.dY()))
+                           .or(() -> $$3.<jd>a($$5).map(jd::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(jd.a($$11.aj(), $$10xx));
+                              if (!$$10xx.a($$12.dt(), (double)$$2)) {
+                                 $$4.a(new cgj($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

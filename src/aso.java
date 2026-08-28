@@ -24,11 +24,11 @@ public class aso {
       this.g = $$0;
    }
 
-   public void a(ecg $$0) {
+   public void a(eco $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(arr $$0, dic $$1) {
+   public void a(arr $$0, dih $$1) {
       if (!this.f.remove($$1.a()) && $$0.bK()) {
          $$0.f.b(new ada($$1));
       }
@@ -42,13 +42,13 @@ public class aso {
             if (!this.f.isEmpty()) {
                arq $$2 = $$0.y();
                aqu $$3 = $$2.m().a;
-               List<ecg> $$4 = this.a($$3, $$0.dx());
+               List<eco> $$4 = this.a($$3, $$0.dx());
                if (!$$4.isEmpty()) {
                   ast $$5 = $$0.f;
                   this.j++;
                   $$5.b(aci.a);
 
-                  for (ecg $$6 : $$4) {
+                  for (eco $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class aso {
       }
    }
 
-   private static void a(ast $$0, arq $$1, ecg $$2) {
+   private static void a(ast $$0, arq $$1, eco $$2) {
       $$0.b(new adg($$2, $$1.x_(), null, null));
-      dic $$3 = $$2.f();
+      dih $$3 = $$2.f();
       agm.a($$1, $$3);
    }
 
-   private List<ecg> a(aqu $$0, dic $$1) {
+   private List<eco> a(aqu $$0, dih $$1) {
       int $$2 = azm.d(this.i);
-      List<ecg> $$4;
+      List<eco> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class aso {
          $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (ecg $$5 : $$4) {
+      for (eco $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 

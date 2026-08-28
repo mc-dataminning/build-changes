@@ -1,43 +1,67 @@
-public class ghb<T extends hdf> extends gfq<T> {
-   protected final giu b;
-   protected final giu c;
-   protected final giu d;
-   protected final giu e;
-   protected final giu f;
-   protected final giu g;
-
-   protected ghb(giu $$0) {
+public class ghb extends gei<hdy> {
+   public ghb(gjc $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.c = $$0.b("body");
-      this.d = $$0.b("right_hind_leg");
-      this.e = $$0.b("left_hind_leg");
-      this.f = $$0.b("right_front_leg");
-      this.g = $$0.b("left_front_leg");
    }
 
-   public static gjc a(int $$0, giy $$1) {
-      gjc $$2 = new gjc();
-      gje $$3 = $$2.a();
-      $$3.a("head", giz.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), giw.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", giz.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), giw.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      giz $$4 = giz.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, giw.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, giw.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, giw.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, giw.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
-   }
-
-   public void a(T $$0) {
+   public void a(hdy $$0) {
       super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      this.d.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.e.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.g.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.H;
+      cpt $$3 = $$0.d;
+      if ($$3 == cpt.e) {
+         float $$4 = $$0.u / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azm.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azm.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + azm.a($$4 * 10.0F);
+         this.o.c = this.o.c + azm.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azm.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (azm.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + azm.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + azm.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == cpt.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == cpt.b) {
+         gem.a(this.r, this.s, this.o, $$0.e == bwx.b);
+      } else if ($$3 == cpt.c) {
+         gem.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bwx.b);
+      } else if ($$3 == cpt.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.e == bwx.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
+   }
+
+   protected void a(hdy $$0, float $$1) {
+      float $$2 = $$0.H;
+      if ($$2 > 0.0F && $$0.d == cpt.a) {
+         gem.a(this.r, this.s, $$0.e, $$2, $$0.u);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(hdy $$0) {
+      if ($$0.e == bwx.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

@@ -1,144 +1,79 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import org.joml.Matrix4f;
 
 public class gpy {
-   private final String a;
-   private final gpb b;
-   private final alg c;
-   private final List<gpx.h> d;
-   private final List<gpy.a> e = new ArrayList<>();
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hjv e;
+   private final hju f;
 
-   public gpy(String $$0, gpb $$1, alg $$2, List<gpx.h> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public gpy(hju $$0, hjv $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public void a(gpy.a $$0) {
-      this.e.add($$0);
-   }
+   public void a(hig $$0, fjj $$1, gqa $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      fjn $$6 = $$2.getBuffer(gqk.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
 
-   public void a(fhg $$0, Map<alg, fio<fhm>> $$1, Matrix4f $$2) {
-      fhh $$3 = $$0.a(this.a);
-
-      for (gpy.a $$4 : this.e) {
-         $$4.a($$3, $$1);
-      }
-
-      fio<fhm> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
-      if ($$5 == null) {
-         throw new IllegalStateException("Missing handle for target " + this.c);
-      } else {
-         $$3.a(() -> {
-            fhm $$3x = $$5.get();
-            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
-
-            for (gpy.a $$4x : this.e) {
-               $$4x.a(this.b, $$1);
+      for (hig.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hix $$10 = $$8.a;
+            if ($$10 != null) {
+               fjn $$11 = $$2.getBuffer(gqk.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
             }
 
-            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
-
-            for (gpx.h $$5x : this.d) {
-               fit $$6 = this.b.a($$5x.a());
-               if ($$6 != null) {
-                  $$6.a($$5x.b(), $$5x.b().size());
-               }
+            if ($$8.f != null) {
+               frt $$12 = foz.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azm.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, frt.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
             }
 
-            $$3x.a(false);
-            RenderSystem.depthFunc(519);
-            RenderSystem.setShader(this.b);
-            RenderSystem.backupProjectionMatrix();
-            RenderSystem.setProjectionMatrix($$2, fgl.b);
-            fix $$7 = fje.b().a(fjh.c.h, fja.e);
-            $$7.a(0.0F, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, 0.0F, 500.0F);
-            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
-            $$7.a(0.0F, (float)$$3x.d, 500.0F);
-            fiy.a($$7.b());
-            RenderSystem.depthFunc(515);
-            RenderSystem.restoreProjectionMatrix();
-            $$3x.e();
-
-            for (gpy.a $$8 : this.e) {
-               $$8.a($$1);
-            }
-
-            this.b();
-         });
-      }
-   }
-
-   private void b() {
-      for (gpx.h $$0 : this.d) {
-         String $$1 = $$0.a();
-         fit $$2 = this.b.a($$1);
-         gql.b $$3 = this.b.b($$1);
-         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
-            $$2.a($$3);
+            $$7++;
          }
       }
    }
 
-   public gpb a() {
-      return this.b;
-   }
+   public void a(eyh $$0, eyj $$1, hig $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
 
-   public interface a {
-      void a(fhh var1, Map<alg, fio<fhm>> var2);
-
-      void a(gpb var1, Map<alg, fio<fhm>> var2);
-
-      default void a(Map<alg, fio<fhm>> $$0) {
+      for (eyd $$3 : $$1.e()) {
+         $$2.b.add(this.a($$3));
       }
    }
 
-   public static record b(String a, alg b, boolean c, boolean d) implements gpy.a {
-      private fio<fhm> b(Map<alg, fio<fhm>> $$0) {
-         fio<fhm> $$1 = $$0.get(this.b);
-         if ($$1 == null) {
-            throw new IllegalStateException("Missing handle for target " + this.b);
-         } else {
-            return $$1;
-         }
-      }
-
-      @Override
-      public void a(fhh $$0, Map<alg, fio<fhm>> $$1) {
-         $$0.a(this.b($$1));
-      }
-
-      @Override
-      public void a(gpb $$0, Map<alg, fio<fhm>> $$1) {
-         fio<fhm> $$2 = this.b($$1);
-         fhm $$3 = $$2.get();
-         $$3.a(this.d ? 9729 : 9728);
-         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
-         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
-      }
-
-      @Override
-      public void a(Map<alg, fio<fhm>> $$0) {
-         if (this.d) {
-            this.b($$0).get().a(9728);
-         }
-      }
-   }
-
-   public static record c(String a, hia b, int c, int d) implements gpy.a {
-      @Override
-      public void a(fhh $$0, Map<alg, fio<fhm>> $$1) {
-      }
-
-      @Override
-      public void a(gpb $$0, Map<alg, fio<fhm>> $$1) {
-         $$0.a(this.a + "Sampler", this.b.a());
-         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
-      }
+   private hig.a a(eyd $$0) {
+      hig.a $$1 = new hig.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

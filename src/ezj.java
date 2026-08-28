@@ -1,30 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class ezj extends ezr {
-   public static final MapCodec<ezj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ezj::new)
-   );
-   private final alg j;
+public record ezj<T>(alf<jr<T>> d, Codec<T> e, ezj.a<T> f) {
+   public static final ezj<fcq> a = new ezj<>(mg.bs, fcq.e, e());
+   public static final ezj<fav> b = new ezj<>(mg.br, fax.c, e());
+   public static final ezj<ezm> c = new ezj<>(mg.bq, ezm.d, f());
 
-   private ezj(alg $$0, int $$1, int $$2, List<fci> $$3, List<fan> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public void a(ezn $$0, alf<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   @Override
-   public ezq a() {
-      return ezn.e;
+   public static Stream<ezj<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   @Override
-   public void a(Consumer<cyy> $$0, eyz $$1) {
-      $$1.a(this.j, $$0);
+   private static <T extends ezi> ezj.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public static ezr.a<?> a(alg $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ezj($$0, $$1, $$2, $$3, $$4));
+   private static ezj.a<ezm> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
+
+   public alf<jr<T>> b() {
+      return this.d;
+   }
+
+   public Codec<T> c() {
+      return this.e;
+   }
+
+   public ezj.a<T> d() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void run(ezn var1, alf<T> var2, T var3);
    }
 }

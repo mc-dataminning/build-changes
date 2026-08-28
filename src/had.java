@@ -1,27 +1,16 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class had extends hav<hfd, gft> {
+   private static final alg a = alg.b("textures/entity/zombie/drowned_outer_layer.png");
+   private final gft b;
+   private final gft c;
 
-public class had extends han<hcz, ggg> {
-   private static final Map<bvz.a, alg> a = ImmutableMap.of(
-      bvz.a.b,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bvz.a.c,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bvz.a.d,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public had(gxw<hcz, ggg> $$0) {
+   public had(gye<hfd, gft> $$0, giy $$1) {
       super($$0);
+      this.b = new gft($$1.a(gjb.aN));
+      this.c = new gft($$1.a(gjb.aK));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hcz $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bvz.a $$6 = $$3.c;
-         if ($$6 != bvz.a.a) {
-            alg $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
-      }
+   public void a(fjj $$0, gqa $$1, int $$2, hfd $$3, float $$4, float $$5) {
+      gft $$6 = $$3.aj ? this.c : this.b;
+      a($$6, a, $$0, $$1, $$2, $$3, -1);
    }
 }

@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emd implements eli {
+public record emd(int b, int c, int d, je<eqf> e) implements elq {
    public static final Codec<emd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ewg.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               jt.a(mg.i).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               ayu.m.fieldOf("tries").orElse(128).forGetter(emd::a),
+               ayu.l.fieldOf("xz_spread").orElse(7).forGetter(emd::b),
+               ayu.l.fieldOf("y_spread").orElse(3).forGetter(emd::c),
+               eqf.b.fieldOf("feature").forGetter(emd::d)
             )
             .apply($$0, emd::new)
    );
-   public final ewg b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ji<dma> f;
 
-   public emd(ewg $$0, boolean $$1, int $$2, int $$3, ji<dma> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public int a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public je<eqf> d() {
+      return this.e;
    }
 }

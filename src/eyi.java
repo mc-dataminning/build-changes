@@ -1,22 +1,25 @@
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.format.SignStyle;
-import java.time.temporal.ChronoField;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eyi {
-   public static DateTimeFormatter a() {
-      return new DateTimeFormatterBuilder()
-         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.DAY_OF_MONTH, 2)
-         .appendLiteral('_')
-         .appendValue(ChronoField.HOUR_OF_DAY, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
-         .appendLiteral('-')
-         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
-         .toFormatter();
+public class eyi extends eya {
+   private static final int c = -1;
+   public static final Codec<eyi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eyi::new)
+   );
+   public static final eyb<eyi> b = new eyb<>("idcounts", eyi::new, a, bbb.k);
+   private int d;
+
+   public eyi() {
+      this(-1);
+   }
+
+   public eyi(int $$0) {
+      this.d = $$0;
+   }
+
+   public eyh a() {
+      eyh $$0 = new eyh(++this.d);
+      this.f();
+      return $$0;
    }
 }

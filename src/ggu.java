@@ -1,36 +1,71 @@
-import org.joml.Quaternionf;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-public class ggu<T extends hdr> extends gge<T> {
-   private static final String a = "cape";
-   private final giu b = this.q.b("cape");
+public abstract class ggu {
+   private static final Vector3f a = new Vector3f();
+   protected final gjc v;
+   protected final Function<alg, gqk> w;
+   private final List<gjc> b;
 
-   public ggu(giu $$0) {
-      super($$0);
+   public ggu(gjc $$0, Function<alg, gqk> $$1) {
+      this.v = $$0;
+      this.w = $$1;
+      this.b = $$0.e().toList();
    }
 
-   public static gja a() {
-      gjc $$0 = gge.a(giy.a, 0.0F);
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.a("head");
-      $$2.a("hat");
-      gje $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", giz.c().a(0, 0).a(-5.0F, 0.0F, -1.0F, 10.0F, 16.0F, 1.0F, giy.a, 1.0F, 0.5F), giw.a(0.0F, 0.0F, 2.0F, 0.0F, (float) Math.PI, 0.0F));
-      return gja.a($$0, 64, 64);
+   public final gqk a(alg $$0) {
+      return this.w.apply($$0);
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.b
-         .a(
-            new Quaternionf()
-               .rotateY((float) -Math.PI)
-               .rotateX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY((180.0F - $$0.d / 2.0F) * (float) (Math.PI / 180.0))
-         );
+   public final void a(fjj $$0, fjn $$1, int $$2, int $$3, int $$4) {
+      this.e().a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public final void a(fjj $$0, fjn $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public final gjc e() {
+      return this.v;
+   }
+
+   public Optional<gjc> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.e()) : this.e().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
+   }
+
+   public final List<gjc> f() {
+      return this.b;
+   }
+
+   public final void g() {
+      for (gjc $$0 : this.b) {
+         $$0.c();
+      }
+   }
+
+   protected void a(bvw $$0, fpn $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
+   }
+
+   protected void a(fpn $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      fpp.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(bvw $$0, fpn $$1, float $$2, float $$3) {
+      $$0.a($$3x -> fpp.a(this, $$1, (long)((float)$$3x.a($$2) * $$3), 1.0F, a));
+   }
+
+   protected void a(fpn $$0) {
+      fpp.a(this, $$0, 0L, 1.0F, a);
+   }
+
+   public static class a extends ggu {
+      public a(gjc $$0, Function<alg, gqk> $$1) {
+         super($$0, $$1);
+      }
    }
 }

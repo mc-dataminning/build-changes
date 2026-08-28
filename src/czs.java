@@ -1,57 +1,39 @@
-import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public interface czs {
-   crs a(div var1, jo var2, cyy var3, ja var4);
+public class czs extends cxr {
+   private final bwo<? extends bxg> a;
+   private final awm b;
 
-   default czs.a a() {
-      return czs.a.a;
+   public czs(bwo<? extends bxg> $$0, ewn $$1, awm $$2, cyz.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
-   default void a(crs $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(czs.b b, float c, float d, OptionalInt e) {
-      public static final czs.a a = a().a();
-
-      public static czs.a.a a() {
-         return new czs.a.a();
-      }
-
-      public static class a {
-         private czs.b a = ($$0, $$1) -> dog.a($$0, 0.7, new fei(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public czs.a.a a(czs.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public czs.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public czs.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public czs.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public czs.a a() {
-            return new czs.a(this.a, this.b, this.c, this.d);
-         }
+   @Override
+   public void a(@Nullable bxe $$0, dja $$1, czd $$2, iu $$3) {
+      if ($$1 instanceof arq) {
+         this.a((arq)$$1, $$2, $$3);
+         $$1.a($$0, efh.t, $$3);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      jo getDispensePosition(ld var1, ja var2);
+   @Override
+   protected void a(@Nullable bxe $$0, djb $$1, iu $$2) {
+      $$1.a($$0, $$2, this.b, awo.g, 1.0F, 1.0F);
+   }
+
+   private void a(arq $$0, czd $$1, iu $$2) {
+      bxg $$3 = this.a.b($$0, bwo.a($$0, $$1, null), $$2, bwn.l, true, false);
+      if ($$3 instanceof ciw $$4) {
+         dbl $$5 = $$1.a(kj.Z, dbl.a);
+         $$4.h($$5.d());
+         $$4.w(true);
+      }
+
+      if ($$3 != null) {
+         $$0.a_($$3);
+         $$3.T();
+      }
    }
 }

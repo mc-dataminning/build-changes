@@ -1,50 +1,112 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class epd extends epa {
-   public static final MapCodec<epd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(egs.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), egs.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, epd::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final egs d;
-   private final egs e;
-   private final LongSet f = new LongOpenHashSet();
+public class epd {
+   public static final alf<epc> a = a("classic_flat");
+   public static final alf<epc> b = a("tunnelers_dream");
+   public static final alf<epc> c = a("water_world");
+   public static final alf<epc> d = a("overworld");
+   public static final alf<epc> e = a("snowy_kingdom");
+   public static final alf<epc> f = a("bottomless_pit");
+   public static final alf<epc> g = a("desert");
+   public static final alf<epc> h = a("redstone_ready");
+   public static final alf<epc> i = a("the_void");
 
-   private epd(egs $$0, egs $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public static void a(qh<epc> $$0) {
+      new epd.a($$0).a();
    }
 
-   public static epd a(egs $$0, egs $$1) {
-      return new epd($$0, $$1);
+   private static alf<epc> a(String $$0) {
+      return alf.a(mg.aS, alg.b($$0));
    }
 
-   @Override
-   public int a(azv $$0, egv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   static class a {
+      private final qh<epc> a;
+
+      a(qh<epc> $$0) {
+         this.a = $$0;
+      }
+
+      private void a(alf<epc> $$0, diz $$1, alf<dkd> $$2, Set<alf<erh>> $$3, boolean $$4, boolean $$5, epb... $$6) {
+         jf<erh> $$7 = this.a.a(mg.bd);
+         jf<eqf> $$8 = this.a.a(mg.bb);
+         jf<dkd> $$9 = this.a.a(mg.aG);
+         ji.a<erh> $$10 = ji.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         epe $$11 = new epe(Optional.of($$10), $$9.b($$2), epe.b($$8));
+         if ($$4) {
+            $$11.a();
          }
 
-         return $$2;
-      } else {
-         return azm.b($$0, $$2, $$3);
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new epc($$1.h().e(), $$11));
       }
-   }
 
-   @Override
-   public epb<?> a() {
-      return epb.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+      public void a() {
+         this.a(epd.a, dmh.i, dkk.b, ImmutableSet.of(equ.a), false, false, new epb(1, dmh.i), new epb(2, dmh.j), new epb(1, dmh.I));
+         this.a(epd.b, dmh.b, dkk.u, ImmutableSet.of(equ.j, equ.r), true, false, new epb(1, dmh.i), new epb(5, dmh.j), new epb(230, dmh.b), new epb(1, dmh.I));
+         this.a(
+            epd.c,
+            czh.rp,
+            dkk.U,
+            ImmutableSet.of(equ.m, equ.l, equ.g),
+            false,
+            false,
+            new epb(90, dmh.J),
+            new epb(5, dmh.O),
+            new epb(5, dmh.j),
+            new epb(5, dmh.b),
+            new epb(64, dmh.tt),
+            new epb(1, dmh.I)
+         );
+         this.a(
+            epd.d,
+            dmh.bA,
+            dkk.b,
+            ImmutableSet.of(equ.a, equ.j, equ.f, equ.k, equ.r),
+            true,
+            true,
+            new epb(1, dmh.i),
+            new epb(3, dmh.j),
+            new epb(59, dmh.b),
+            new epb(1, dmh.I)
+         );
+         this.a(
+            epd.e,
+            dmh.ed,
+            dkk.d,
+            ImmutableSet.of(equ.a, equ.c),
+            false,
+            false,
+            new epb(1, dmh.ed),
+            new epb(1, dmh.i),
+            new epb(3, dmh.j),
+            new epb(59, dmh.b),
+            new epb(1, dmh.I)
+         );
+         this.a(epd.f, czh.qh, dkk.b, ImmutableSet.of(equ.a), false, false, new epb(1, dmh.i), new epb(3, dmh.j), new epb(2, dmh.m));
+         this.a(
+            epd.g,
+            dmh.L,
+            dkk.f,
+            ImmutableSet.of(equ.a, equ.b, equ.j, equ.r),
+            true,
+            false,
+            new epb(8, dmh.L),
+            new epb(52, dmh.bc),
+            new epb(3, dmh.b),
+            new epb(1, dmh.I)
+         );
+         this.a(epd.h, czh.ml, dkk.f, ImmutableSet.of(), false, false, new epb(116, dmh.bc), new epb(3, dmh.b), new epb(1, dmh.I));
+         this.a(epd.i, dmh.iy, dkk.a, ImmutableSet.of(), true, false, new epb(1, dmh.a));
+      }
    }
 }

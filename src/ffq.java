@@ -1,140 +1,260 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ffq {
-   private static final Map<String, ffq> a = Maps.newHashMap();
-   private static final Map<String, ffq> p = Maps.newHashMap();
-   public static final Codec<ffq> b = Codec.STRING
-      .comapFlatMap($$0 -> a($$0).<DataResult>map(DataResult::success).orElse(DataResult.error(() -> "No scoreboard criteria with name: " + $$0)), ffq::d);
-   public static final ffq c = b("dummy");
-   public static final ffq d = b("trigger");
-   public static final ffq e = b("deathCount");
-   public static final ffq f = b("playerKillCount");
-   public static final ffq g = b("totalKillCount");
-   public static final ffq h = a("health", true, ffq.a.b);
-   public static final ffq i = a("food", true, ffq.a.a);
-   public static final ffq j = a("air", true, ffq.a.a);
-   public static final ffq k = a("armor", true, ffq.a.a);
-   public static final ffq l = a("xp", true, ffq.a.a);
-   public static final ffq m = a("level", true, ffq.a.a);
-   public static final ffq[] n = new ffq[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final ffq[] o = new ffq[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String q;
-   private final boolean r;
-   private final ffq.a s;
+public class ffq extends ffx {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final ffv c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wy f;
+   private wy g = wx.a;
+   private wy h = wx.a;
+   private boolean i = true;
+   private boolean j = true;
+   private ffx.b k = ffx.b.a;
+   private ffx.b l = ffx.b.a;
+   private n m = n.v;
+   private ffx.a n = ffx.a.a;
+   private final xv o;
 
-   private static ffq a(String $$0, boolean $$1, ffq.a $$2) {
-      ffq $$3 = new ffq($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public ffq(ffv $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = wy.b($$1);
+      this.o = xv.a.a($$1).a(new xe.e(wy.b($$1)));
    }
 
-   private static ffq b(String $$0) {
-      return a($$0, false, ffq.a.a);
+   public ffq.a a() {
+      return new ffq.a(
+         this.d,
+         Optional.of(this.f),
+         this.m != n.v ? Optional.of(this.m) : Optional.empty(),
+         this.i,
+         this.j,
+         this.g,
+         this.h,
+         this.k,
+         this.l,
+         this.n,
+         List.copyOf(this.e)
+      );
    }
 
-   protected ffq(String $$0) {
-      this($$0, false, ffq.a.a);
+   public ffv b() {
+      return this.c;
    }
 
-   protected ffq(String $$0, boolean $$1, ffq.a $$2) {
-      this.q = $$0;
-      this.r = $$1;
-      this.s = $$2;
-      p.put($$0, this);
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
+   public wy d() {
+      return this.f;
    }
 
-   public static Optional<ffq> a(String $$0) {
-      ffq $$1 = p.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
+   public xm e() {
+      xm $$0 = xb.a((wy)this.f.f().c(this.o));
+      n $$1 = this.o();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(wy $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
       } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : mf.v.b(alg.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, alg.a($$0.substring($$2 + 1), '.')));
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   private static <T> Optional<ffq> a(aww<T> $$0, alg $$1) {
-      return $$0.b().b($$1).map($$0::b);
+   public void b(@Nullable wy $$0) {
+      this.g = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
    }
 
-   public String d() {
-      return this.q;
+   public wy f() {
+      return this.g;
    }
 
-   public boolean e() {
-      return this.r;
+   public void c(@Nullable wy $$0) {
+      this.h = $$0 == null ? wx.a : $$0;
+      this.c.b(this);
    }
 
-   public ffq.a f() {
-      return this.s;
+   public wy g() {
+      return this.h;
    }
 
-   public static enum a implements bak {
-      a("integer"),
-      b("hearts");
+   @Override
+   public Collection<String> h() {
+      return this.e;
+   }
 
-      private final String d;
-      public static final bak.a<ffq.a> c = bak.a(ffq.a::values);
-
-      private a(final String $$0) {
-         this.d = $$0;
+   @Override
+   public xm d(wy $$0) {
+      xm $$1 = wy.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.o();
+      if ($$2 != n.v) {
+         $$1.a($$2);
       }
+
+      return $$1;
+   }
+
+   public static xm a(@Nullable ffx $$0, wy $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
+   }
+
+   @Override
+   public boolean i() {
+      return this.i;
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public boolean j() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public ffx.b k() {
+      return this.k;
+   }
+
+   @Override
+   public ffx.b l() {
+      return this.l;
+   }
+
+   public void a(ffx.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(ffx.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public ffx.a m() {
+      return this.n;
+   }
+
+   public void a(ffx.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int n() {
+      int $$0 = 0;
+      if (this.i()) {
+         $$0 |= 1;
+      }
+
+      if (this.j()) {
+         $$0 |= 2;
+      }
+
+      return $$0;
+   }
+
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
+   }
+
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public n o() {
+      return this.m;
+   }
+
+   public static record a(String b, Optional<wy> c, Optional<n> d, boolean e, boolean f, wy g, wy h, ffx.b i, ffx.b j, ffx.a k, List<String> l) {
+      public static final Codec<ffq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("Name").forGetter(ffq.a::a),
+                  xa.a.optionalFieldOf("DisplayName").forGetter(ffq.a::b),
+                  n.x.optionalFieldOf("TeamColor").forGetter(ffq.a::c),
+                  Codec.BOOL.optionalFieldOf("AllowFriendlyFire", true).forGetter(ffq.a::d),
+                  Codec.BOOL.optionalFieldOf("SeeFriendlyInvisibles", true).forGetter(ffq.a::e),
+                  xa.a.optionalFieldOf("MemberNamePrefix", wx.a).forGetter(ffq.a::f),
+                  xa.a.optionalFieldOf("MemberNameSuffix", wx.a).forGetter(ffq.a::g),
+                  ffx.b.e.optionalFieldOf("NameTagVisibility", ffx.b.a).forGetter(ffq.a::h),
+                  ffx.b.e.optionalFieldOf("DeathMessageVisibility", ffx.b.a).forGetter(ffq.a::i),
+                  ffx.a.e.optionalFieldOf("CollisionRule", ffx.a.a).forGetter(ffq.a::j),
+                  Codec.STRING.listOf().optionalFieldOf("Players", List.of()).forGetter(ffq.a::k)
+               )
+               .apply($$0, ffq.a::new)
+      );
 
       public String a() {
+         return this.b;
+      }
+
+      public Optional<wy> b() {
+         return this.c;
+      }
+
+      public Optional<n> c() {
          return this.d;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public boolean d() {
+         return this.e;
       }
 
-      public static ffq.a a(String $$0) {
-         return c.a($$0, a);
+      public boolean e() {
+         return this.f;
+      }
+
+      public wy f() {
+         return this.g;
+      }
+
+      public wy g() {
+         return this.h;
+      }
+
+      public ffx.b h() {
+         return this.i;
+      }
+
+      public ffx.b i() {
+         return this.j;
+      }
+
+      public ffx.a j() {
+         return this.k;
+      }
+
+      public List<String> k() {
+         return this.l;
       }
    }
 }

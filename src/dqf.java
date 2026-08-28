@@ -1,82 +1,132 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dqf extends dnx {
-   public static final MapCodec<dqf> g = b(dqf::new);
-
-   @Override
-   public MapCodec<? extends dqf> a() {
-      return g;
-   }
-
-   protected dqf(dzy.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.B
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-   }
+public class dqf extends dlr {
+   public static final MapCodec<dqf> a = b(dqf::new);
+   public static final ebf<ja> b = eax.S;
+   public static final eay c = eax.i;
+   private final Function<eah, ffk> d;
+   private final Map<ja, ffk> e;
 
    @Override
-   public dzz a(dcr $$0) {
-      dib $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      ewg $$3 = $$0.q().b_($$0.a());
-      iu $$4 = $$2.f();
-      iu $$5 = $$2.g();
-      iu $$6 = $$2.h();
-      iu $$7 = $$2.i();
-      dzz $$8 = $$1.a_($$4);
-      dzz $$9 = $$1.a_($$5);
-      dzz $$10 = $$1.a_($$6);
-      dzz $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, ja.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, ja.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, ja.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, ja.e))))
-         .b(e, Boolean.valueOf($$3.a() == ewh.c));
+   public MapCodec<dqf> a() {
+      return a;
+   }
+
+   public dqf(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, ja.a).b(c, Boolean.valueOf(true)));
+      ffk $$1 = dmf.b(12.0, 11.0, 16.0);
+      this.d = this.b($$1);
+      this.e = ImmutableMap.builderWithExpectedSize(5).putAll(ffh.c(ffh.a($$1, dmf.a(4.0, 8.0, 10.0, 0.0, 4.0)))).put(ja.a, $$1).build();
+   }
+
+   private Function<eah, ffk> b(ffk $$0) {
+      ffk $$1 = ffh.a(dmf.b(16.0, 10.0, 16.0), dmf.b(8.0, 4.0, 10.0));
+      ffk $$2 = ffh.a($$1, $$0, feu.e);
+      Map<ja, ffk> $$3 = ffh.d(dmf.a(4.0, 4.0, 8.0, 0.0, 8.0), new feq(8.0, 6.0, 8.0).c(0.0625));
+      return this.a($$2x -> ffh.a($$2, ffh.a($$3.get($$2x.c(b)), ffh.b(), feu.i)), new ebk[]{c});
    }
 
    @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, ewh.c, ewh.c.a($$1));
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return this.d.apply($$0);
+   }
+
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2) {
+      return this.e.get($$0.c(b));
+   }
+
+   @Override
+   public eah a(dcw $$0) {
+      ja $$1 = $$0.k().g();
+      return this.m().b(b, $$1.o() == ja.a.b ? ja.a : $$1).b(c, Boolean.valueOf(true));
+   }
+
+   @Override
+   public dxf a(iu $$0, eah $$1) {
+      return new dyi($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return $$0.C ? null : a($$2, dxh.s, dyi::a);
+   }
+
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, eah $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dyi $$5) {
+         $$3.a($$5);
+         $$3.a(awx.ad);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return bud.a;
    }
 
    @Override
-   protected ffc c(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return fez.a();
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
    }
 
-   @Override
-   protected boolean b(dzz $$0, dzz $$1, ja $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
+   private void a(dja $$0, iu $$1, eah $$2) {
+      boolean $$3 = !$$0.D($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
       }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   public final boolean a(dzz $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dqf || $$0.a(axc.N);
    }
 
    @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
+      btz.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean c_(eah $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eah $$0, dja $$1, iu $$2) {
+      return cuv.a($$1.c_($$2));
+   }
+
+   @Override
+   protected eah a(eah $$0, dsz $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected eah a(eah $$0, dri $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, bwf $$3) {
+      dxf $$4 = $$1.c_($$2);
+      if ($$4 instanceof dyi) {
+         dyi.a($$1, $$2, $$0, $$3, (dyi)$$4);
+      }
+   }
+
+   @Override
+   protected boolean a(eah $$0, exd $$1) {
+      return false;
    }
 }

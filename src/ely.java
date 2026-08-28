@@ -1,52 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ely implements eli {
+public class ely implements elq {
    public static final Codec<ely> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               epx.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               axr.b(mg.i).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               enj.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               enj.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               ehf.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+               Codec.list(ely.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, ely::new)
    );
-   public final je<epx> b;
+   public final List<ely.a> b;
    public final int c;
-   public final int d;
-   public final axr<dma> e;
-   public final enj f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final enj k;
-   public final int l;
-   public final int n;
-   public final ehf o;
+   public final float d;
 
-   public ely(je<epx> $$0, int $$1, int $$2, axr<dma> $$3, enj $$4, int $$5, int $$6, int $$7, int $$8, enj $$9, int $$10, int $$11, ehf $$12) {
-      this.b = $$0;
+   public ely(List<ely.a> $$0, int $$1, float $$2) {
       this.c = $$1;
+      this.b = $$0;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   }
+
+   public ely(List<ely.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public ely(eux $$0, eah $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new ely.a($$0, $$1)), $$2, $$3);
+   }
+
+   public ely(eux $$0, eah $$1, int $$2) {
+      this(ImmutableList.of(new ely.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static ely.a a(eux $$0, eah $$1) {
+      return new ely.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<ely.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eux.c.fieldOf("target").forGetter($$0x -> $$0x.b), eah.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ely.a::new)
+      );
+      public final eux b;
+      public final eah c;
+
+      a(eux $$0, eah $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

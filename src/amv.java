@@ -31,17 +31,17 @@ public class amv {
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, Predicate<cyy> $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, Collection<arr> $$1, Predicate<czd> $$2) throws CommandSyntaxException {
       return a($$0, $$1, $$2, -1);
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, Predicate<cyy> $$2, int $$3) throws CommandSyntaxException {
+   private static int a(ei $$0, Collection<arr> $$1, Predicate<czd> $$2, int $$3) throws CommandSyntaxException {
       int $$4 = 0;
 
       for (arr $$5 : $$1) {
-         $$4 += $$5.gi().a($$2, $$3, $$5.bP.r());
-         $$5.bQ.d();
-         $$5.bP.a($$5.gi());
+         $$4 += $$5.gj().a($$2, $$3, $$5.bQ.r());
+         $$5.bR.d();
+         $$5.bQ.a($$5.gj());
       }
 
       if ($$4 == 0) {

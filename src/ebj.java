@@ -1,23 +1,20 @@
 public enum ebj implements bak {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+   a("normal"),
+   b("sticky");
 
-   private final String e;
-   private final wy f;
+   private final String c;
 
    private ebj(final String $$0) {
-      this.e = $$0;
-      this.f = wy.c("structure_block.mode_info." + $$0);
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public wy a() {
-      return this.f;
+      return this.c;
    }
 }

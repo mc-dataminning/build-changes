@@ -1,41 +1,23 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bod extends bkr {
+public class bod extends bks {
    public bod(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         biw.z,
-         () -> DSL.or(
-               DSL.or(DSL.constType(DSL.string()), DSL.list(biw.z.in($$0))),
-               DSL.optionalFields(
-                  "extra",
-                  DSL.list(biw.z.in($$0)),
-                  "separator",
-                  biw.z.in($$0),
-                  "hoverEvent",
-                  DSL.taggedChoice(
-                     "action",
-                     DSL.string(),
-                     Map.of(
-                        "show_text",
-                        DSL.optionalFields("contents", biw.z.in($$0)),
-                        "show_item",
-                        DSL.optionalFields("contents", DSL.or(biw.t.in($$0), biw.F.in($$0))),
-                        "show_entity",
-                        DSL.optionalFields("type", biw.B.in($$0), "name", biw.z.in($$0))
-                     )
-                  )
-               )
-            )
-      );
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.registerSimple($$1, "minecraft:creaking");
+      $$0.registerSimple($$1, "minecraft:creaking_transient");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      this.registerSimple($$1, "minecraft:creaking_heart");
+      return $$1;
    }
 }

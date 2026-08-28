@@ -1,32 +1,26 @@
-public class cfn extends cei {
-   private final cot b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cfn(cot $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class cfn extends cex {
+   public static final float i = 0.001F;
+   protected final float j;
+
+   public cfn(bxm $$0, double $$1) {
+      this($$0, $$1, 0.001F);
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.c = 0;
+   public cfn(bxm $$0, double $$1, float $$2) {
+      super($$0, $$1);
+      this.j = $$2;
    }
 
+   @Nullable
    @Override
-   public void e() {
-      super.e();
-      this.b.v(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
+   protected feq h() {
+      if (this.b.bj()) {
+         feq $$0 = cia.a(this.b, 15, 7);
+         return $$0 == null ? super.h() : $$0;
       } else {
-         this.b.v(false);
+         return this.b.dY().i() >= this.j ? cia.a(this.b, 10, 7) : super.h();
       }
    }
 }

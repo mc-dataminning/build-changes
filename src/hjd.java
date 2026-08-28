@@ -1,129 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public record hjd(alg c, List<hjd.a> d, double e, double f) implements hiu {
-   static final Logger g = LogUtils.getLogger();
-   public static final MapCodec<hjd> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("resource").forGetter(hjd::b),
-               ayu.b(hjd.a.a.listOf()).fieldOf("regions").forGetter(hjd::c),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter(hjd::d),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter(hjd::e)
-            )
-            .apply($$0, hjd::new)
-   );
+public class hjd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final akz b = new akz("atlases", ".json");
+   private final List<hjc> c;
 
-   @Override
-   public void a(avd $$0, hiu.a $$1) {
-      alg $$2 = a.a(this.c);
-      Optional<avb> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         hiz $$4 = new hiz($$2, $$3.get(), this.d.size());
-
-         for (hjd.a $$5 : this.d) {
-            $$1.a($$5.b, new hjd.b($$4, $$5, this.e, this.f));
-         }
-      } else {
-         g.warn("Missing sprite: {}", $$2);
-      }
+   private hjd(List<hjc> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public MapCodec<hjd> a() {
-      return b;
-   }
-
-   public alg b() {
-      return this.c;
-   }
-
-   public List<hjd.a> c() {
-      return this.d;
-   }
-
-   public double d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public static record a(alg b, double c, double d, double e, double f) {
-      public static final Codec<hjd.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alg.a.fieldOf("sprite").forGetter(hjd.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(hjd.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(hjd.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(hjd.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(hjd.a::e)
-               )
-               .apply($$0, hjd.a::new)
-      );
-
-      public alg a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements hiu.b {
-      private final hiz a;
-      private final hjd.a b;
-      private final double c;
-      private final double d;
-
-      b(hiz $$0, hjd.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public hij a(hit $$0) {
-         try {
-            fic $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = azm.a(this.b.c * $$2);
-            int $$5 = azm.a(this.b.d * $$3);
-            int $$6 = azm.a(this.b.e * $$2);
-            int $$7 = azm.a(this.b.f * $$3);
-            fic $$8 = new fic(fic.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new hij(this.b.b, new hkc($$6, $$7), $$8, avf.a);
-         } catch (Exception var16) {
-            hjd.g.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
+   public List<Function<hjb, hir>> a(avd $$0) {
+      final Map<alg, hjc.b> $$1 = new HashMap<>();
+      hjc.a $$2 = new hjc.a() {
+         @Override
+         public void a(alg $$0, hjc.b $$1x) {
+            hjc.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
          }
 
-         return hie.b();
+         @Override
+         public void a(Predicate<alg> $$0) {
+            Iterator<Entry<alg, hjc.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<alg, hjc.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<hjb, hir>> $$3 = ImmutableList.builder();
+      $$3.add((Function<hjb, hir>)$$0x -> him.b());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static hjd a(avd $$0, alg $$1) {
+      alg $$2 = b.a($$1);
+      List<hjc> $$3 = new ArrayList<>();
+
+      for (avb $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends hjc>)hje.b.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
 
-      @Override
-      public void a() {
-         this.a.b();
-      }
+      return new hjd($$3);
    }
 }

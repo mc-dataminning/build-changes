@@ -100,7 +100,7 @@ public class ex implements ArgumentType<ex.a> {
             List<GameProfile> $$2 = Lists.newArrayList();
 
             for (arr $$3 : $$1) {
-               $$2.add($$3.gh());
+               $$2.add($$3.gi());
             }
 
             return $$2;

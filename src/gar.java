@@ -1,63 +1,34 @@
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public abstract class gar extends fxu {
-   private static final int b = 100;
-   private final wy c;
-   @Nullable
-   private final wy d;
-   private final wy s;
-   @Nullable
-   protected fse a;
-   @Nullable
-   private fsn u;
-   private final fvo v;
+public class gar {
+   private static final alg f = alg.b("tooltip/background");
+   private static final alg g = alg.b("tooltip/frame");
+   public static final int a = 12;
+   private static final int h = 3;
+   public static final int b = 3;
+   public static final int c = 3;
+   public static final int d = 3;
+   public static final int e = 3;
+   private static final int i = 9;
 
-   protected gar(wy $$0, wy $$1, wy $$2) {
-      this($$0, $$1, null, $$2);
-   }
-
-   protected gar(wy $$0, wy $$1, @Nullable wy $$2, wy $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fvo(0, 0, this.n, this.o);
-   }
-
-   protected abstract fvr m();
-
-   @Override
-   protected void aN_() {
-      fvu $$0 = this.v.a(fvu.d().a(8));
+   public static void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alg $$6) {
+      int $$7 = $$1 - 3 - 9;
+      int $$8 = $$2 - 3 - 9;
+      int $$9 = $$3 + 3 + 3 + 18;
+      int $$10 = $$4 + 3 + 3 + 18;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, (float)$$5);
+      $$0.a(gqk::H, a($$6), $$7, $$8, $$9, $$10);
+      $$0.a(gqk::H, b($$6), $$7, $$8, $$9, $$10);
       $$0.c().b();
-      $$0.a(new ftj(this.n(), this.p));
-      this.u = $$0.a(new fsn(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fvu $$1 = $$0.a(fvu.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fse.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fsa var10000 = this.c($$1x);
-      });
-      this.c();
    }
 
-   @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
-
-      this.v.a();
-      fvo.a(this.v, this.J());
+   private static alg a(@Nullable alg $$0) {
+      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
    }
 
-   @Override
-   public wy i() {
-      return this.s;
+   private static alg b(@Nullable alg $$0) {
+      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
    }
 }

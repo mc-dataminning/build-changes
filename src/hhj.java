@@ -1,37 +1,27 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hhj implements hht<dwn> {
-   private final grz a;
-   private final cxw b;
-
-   public hhj(cxw $$0, grz $$1) {
-      this.a = $$1;
-      this.b = $$0;
-   }
+public record hhj(String c) implements hhn<String> {
+   public static final PrimitiveCodec<String> a = Codec.STRING;
+   public static final hhn.a<hhj, String> b = hhn.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hhj::c)).apply($$0, hhj::new)), a
+   );
 
    @Nullable
-   public dwn a(cyy $$0) {
-      return $$0.a(kj.am);
+   public String a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
+      dbd $$5 = $$0.a(kj.aq);
+      return $$5 == null ? null : $$5.b().get(this.c);
    }
 
-   public void a(@Nullable dwn $$0, cyw $$1, fjc $$2, gps $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dwn.a));
+   @Override
+   public hhn.a<hhj, String> a() {
+      return b;
    }
 
-   public static record a(cxw b) implements hht.a {
-      public static final MapCodec<hhj.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cxw.q.fieldOf("color").forGetter(hhj.a::b)).apply($$0, hhj.a::new));
-
-      @Override
-      public MapCodec<hhj.a> a() {
-         return a;
-      }
-
-      @Override
-      public hht<?> a(giq $$0) {
-         return new hhj(this.b, new grz($$0));
-      }
+   @Override
+   public Codec<String> b() {
+      return a;
    }
 }

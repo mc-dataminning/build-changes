@@ -1,34 +1,46 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class cbt {
-   public static byu<bxc> a(dma $$0) {
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$1 -> $$1.group($$1.c(cge.p), $$1.b(cge.n), $$1.b(cge.Z))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bj() && $$3x.aJ()) {
-                        iu $$5 = $$3x.dv().e();
+   public static byw<bxm> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return cci.a(
+         (Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$3 -> $$3.group($$3.c(cgg.p), $$3.c(cgg.n), $$3.a(cgg.o))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dv()).a(axh.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           fev $$8 = fev.a($$6);
+                           iu $$9 = $$6.dv();
+                           iu.a $$10 = new iu.a();
 
-                        for (ja $$6 : ja.c.a) {
-                           iu $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).g($$2x, $$7).a(ja.b).c() && $$2x.b_($$7).b(ewh.c)) {
-                              iu $$8 = $$7.d();
-                              if ($$2x.a_($$8).l()) {
-                                 dzz $$9 = $$0.m();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(eez.i, $$8, eez.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, awn.kq, awo.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
+                           label45:
+                           for (iu $$11 : iu.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, ja.a)).b($$5x, $$11, $$8).c()) {
+                                 for (ja $$12 : ja.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(ja.a)).a(dmh.J)) {
+                                       $$5.a(new byy($$11));
+                                       $$4.a(new cgj(new byy($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
                               }
                            }
-                        }
 
-                        return true;
-                     } else {
-                        return false;
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
                      }
-                  }))
+               ))
       );
    }
 }

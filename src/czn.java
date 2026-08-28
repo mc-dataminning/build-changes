@@ -1,39 +1,59 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class czn extends cxm {
-   private final bwm<? extends bxe> a;
-   private final awm b;
-
-   public czn(bwm<? extends bxe> $$0, ewf $$1, awm $$2, cyu.a $$3) {
-      super($$1, $$3);
-      this.a = $$0;
-      this.b = $$2;
+public class czn extends cyz {
+   public czn(cyz.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(@Nullable bxc $$0, div $$1, cyy $$2, iu $$3) {
-      if ($$1 instanceof arq) {
-         this.a((arq)$$1, $$2, $$3);
-         $$1.a($$0, eez.t, $$3);
+   public bud a(dcy $$0) {
+      dja $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      eah $$3 = $$1.a_($$2);
+      if ($$3.a(axc.U)) {
+         crc $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            return a($$4, $$1, $$2);
+         }
+      }
+
+      return bud.e;
+   }
+
+   public static bud a(crc $$0, dja $$1, iu $$2) {
+      cnb $$3 = null;
+      List<bxc> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+
+      for (bxc $$5 : $$4) {
+         if ($$3 == null) {
+            $$3 = cnb.b($$1, $$2);
+            $$3.m();
+         }
+
+         $$5.a_($$3, true);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.a(efh.b, $$2, efh.a.a($$0));
+         return bud.b;
+      } else {
+         return bud.e;
       }
    }
 
-   @Override
-   protected void a(@Nullable bxc $$0, diw $$1, iu $$2) {
-      $$1.a($$0, $$2, this.b, awo.g, 1.0F, 1.0F);
-   }
+   public static List<bxc> a(dja $$0, iu $$1, Predicate<bxc> $$2) {
+      double $$3 = 7.0;
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      fel $$7 = new fel((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
+      return $$0.a(bwf.class, $$7, $$1x -> {
+         if ($$1x instanceof bxc $$2x && $$2.test($$2x)) {
+            return true;
+         }
 
-   private void a(arq $$0, cyy $$1, iu $$2) {
-      bxe $$3 = this.a.b($$0, bwm.a($$0, $$1, null), $$2, bwl.l, true, false);
-      if ($$3 instanceof ciu $$4) {
-         dbg $$5 = $$1.a(kj.Z, dbg.a);
-         $$4.h($$5.d());
-         $$4.w(true);
-      }
-
-      if ($$3 != null) {
-         $$0.a_($$3);
-         $$3.T();
-      }
+         return false;
+      }).stream().map(bxc.class::cast).toList();
    }
 }

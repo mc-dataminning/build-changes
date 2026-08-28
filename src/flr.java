@@ -1,35 +1,56 @@
-import java.time.Duration;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
 
-public class flr {
-   public final fmz a = new fmz(af.i(), TimeUnit.MILLISECONDS, af.c);
-   private final List<fmz.e<?>> i;
-   public final fmz.e<List<fks>> b;
-   public final fmz.e<flr.a> c;
-   public final fmz.e<Integer> d;
-   public final fmz.e<Boolean> e;
-   public final fmz.e<fkr> f;
-   public final fmz.e<fkw> g;
-   public final fls h = new fls(new fnf());
+public class flr extends flo {
+   private static final Logger e = LogUtils.getLogger();
+   public List<flq> a;
+   public int b;
+   public int c;
+   public int d;
 
-   public flr(fjs $$0) {
-      this.c = this.a.a("server list", () -> {
-         fkv $$1 = $$0.b();
-         return fjn.b() ? new flr.a($$1.a, $$0.c()) : new flr.a($$1.a, List.of());
-      }, Duration.ofSeconds(60L), fna.a);
-      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fna.a(360));
-      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fna.a(60));
-      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fna.a);
-      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fna.a);
-      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fna.a);
-      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
+   public flr() {
    }
 
-   public List<fmz.e<?>> a() {
-      return this.i;
+   public flr(int $$0) {
+      this.a = Collections.emptyList();
+      this.b = 0;
+      this.c = $$0;
+      this.d = -1;
    }
 
-   public static record a(List<fkt> a, List<fkt> b) {
+   public boolean a() {
+      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   }
+
+   public static flr a(String $$0) {
+      flr $$1 = new flr();
+      $$1.a = Lists.newArrayList();
+
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("templates").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
+
+            while ($$4.hasNext()) {
+               $$1.a.add(flq.a($$4.next().getAsJsonObject()));
+            }
+         }
+
+         $$1.b = fnk.a("page", $$3, 0);
+         $$1.c = fnk.a("size", $$3, 0);
+         $$1.d = fnk.a("total", $$3, 0);
+      } catch (Exception var5) {
+         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      }
+
+      return $$1;
    }
 }

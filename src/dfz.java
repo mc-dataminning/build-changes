@@ -1,34 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dfz(dfs d, dfs e, je<buu> f) implements dgc {
-   public static final MapCodec<dfz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dfs.b.fieldOf("min_damage").forGetter(dfz::b), dfs.b.fieldOf("max_damage").forGetter(dfz::c), buu.b.fieldOf("damage_type").forGetter(dfz::d)
-            )
-            .apply($$0, dfz::new)
-   );
-
-   @Override
-   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
-      float $$5 = azm.b($$3.dY(), this.d.a($$1), this.e.a($$1));
-      $$3.a($$0, new bus(this.f, $$2.c()), $$5);
+public record dfz<T>(dfu a, dfu b, T c, Optional<fcq> d) {
+   public static <S> Codec<dfz<S>> a(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dfu.d.fieldOf("enchanted").forGetter(dfz::a),
+                  dfu.d.fieldOf("affected").forGetter(dfz::b),
+                  $$0.fieldOf("effect").forGetter(dfz::c),
+                  dfn.a($$1).optionalFieldOf("requirements").forGetter(dfz::d)
+               )
+               .apply($$2, dfz::new)
+      );
    }
 
-   @Override
-   public MapCodec<dfz> a() {
-      return a;
+   public static <S> Codec<dfz<S>> b(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dfu.d
+                     .validate($$0xx -> $$0xx != dfu.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dfz::a),
+                  $$0.fieldOf("effect").forGetter(dfz::c),
+                  dfn.a($$1).optionalFieldOf("requirements").forGetter(dfz::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dfz<>($$0xx, dfu.c, $$1xx, $$2x))
+      );
    }
 
-   public dfs b() {
-      return this.d;
-   }
-
-   public dfs c() {
-      return this.e;
-   }
-
-   public je<buu> d() {
-      return this.f;
+   public boolean a(ezh $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

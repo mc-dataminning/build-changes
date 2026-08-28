@@ -1,81 +1,109 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Set;
 import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ezg extends ezi {
-   public static final MapCodec<ezg> a = a(ezg::new);
+public class ezg {
+   private static final Codec<ezg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fdn.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fdn.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ezg::new)
+   );
+   public static final Codec<ezg> a = Codec.either(Codec.INT, b).xmap($$0 -> (ezg)$$0.map(ezg::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fdm c;
+   @Nullable
+   private final fdm d;
+   private final ezg.b e;
+   private final ezg.a f;
 
-   ezg(List<ezp> $$0, List<fci> $$1) {
-      super($$0, $$1);
+   public Set<bax<?>> a() {
+      Builder<bax<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public ezq a() {
-      return ezn.g;
+   private ezg(Optional<fdm> $$0, Optional<fdm> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   protected ezh a(List<? extends ezh> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (ezh)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ezh $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
+   private ezg(@Nullable fdm $$0, @Nullable fdm $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         return false;
-      };
-      };
-   }
-
-   @Override
-   public void a(ezf $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> azm.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static ezg.a a(ezp.a<?>... $$0) {
-      return new ezg.a($$0);
+   public static ezg a(int $$0) {
+      fdj $$1 = fdj.a((float)$$0);
+      return new ezg(Optional.of($$1), Optional.of($$1));
    }
 
-   public static <E> ezg.a a(Collection<E> $$0, Function<E, ezp.a<?>> $$1) {
-      return new ezg.a($$0.stream().map($$1::apply).toArray(ezp.a[]::new));
+   public static ezg a(int $$0, int $$1) {
+      return new ezg(Optional.of(fdj.a((float)$$0)), Optional.of(fdj.a((float)$$1)));
    }
 
-   public static class a extends ezp.a<ezg.a> {
-      private final Builder<ezp> a = ImmutableList.builder();
+   public static ezg b(int $$0) {
+      return new ezg(Optional.of(fdj.a((float)$$0)), Optional.empty());
+   }
 
-      public a(ezp.a<?>... $$0) {
-         for (ezp.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public static ezg c(int $$0) {
+      return new ezg(Optional.empty(), Optional.of(fdj.a((float)$$0)));
+   }
 
-      protected ezg.a a() {
-         return this;
-      }
+   public int a(ezh $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      @Override
-      public ezg.a a(ezp.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public boolean b(ezh $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      @Override
-      public ezp b() {
-         return new ezg(this.a.build(), this.f());
-      }
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fdj $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ezh var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ezh var1, int var2);
    }
 }

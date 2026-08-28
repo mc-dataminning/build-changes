@@ -1,112 +1,191 @@
-public class cxl extends cyu {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public cxl(cyu.a $$0) {
-      super($$0);
+public class cxl extends cyz {
+   @Deprecated
+   private final dmf a;
+
+   public cxl(dmf $$0, cyz.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bub a(dct $$0) {
-      cqy $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).d() == feg.a.b) {
-         $$1.c($$0.p());
-      }
-
-      return bub.c;
+   public bud a(dcy $$0) {
+      bud $$1 = this.a(new dcw($$0));
+      return !$$1.a() && $$0.n().c(kj.w) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
    }
 
-   @Override
-   public cza b(cyy $$0) {
-      return cza.j;
-   }
-
-   @Override
-   public int a(cyy $$0, bxc $$1) {
-      return 200;
-   }
-
-   @Override
-   public void a(div $$0, bxc $$1, cyy $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof cqy $$4) {
-         feg $$6 = this.a($$4);
-         if ($$6 instanceof fee $$7 && $$6.d() == feg.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               iu $$11 = $$7.b();
-               dzz $$12 = $$0.a_($$11);
-               bwv $$13 = $$1.fz() == bua.a ? $$4.fx() : $$4.fx().e();
-               if ($$12.D() && $$12.o() != dsm.a) {
-                  this.a($$0, $$7, $$12, $$1.h(0.0F), $$13);
-               }
-
-               awm $$15;
-               if ($$12.b() instanceof dmg $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = awn.cS;
-               }
-
-               $$0.a($$4, $$11, $$15, awo.e);
-               if ($$0 instanceof arq $$17 && $$0.c_($$11) instanceof dxc $$18) {
-                  boolean $$19 = $$18.a($$0.ae(), $$17, $$4, $$7.c(), $$2);
-                  if ($$19) {
-                     bwn $$20 = $$2.equals($$4.a(bwn.b)) ? bwn.b : bwn.a;
-                     $$2.a(1, $$4, $$20);
+   public bud a(dcw $$0) {
+      if (!this.c().a($$0.q().K())) {
+         return bud.d;
+      } else if (!$$0.b()) {
+         return bud.d;
+      } else {
+         dcw $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bud.d;
+         } else {
+            eah $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bud.d;
+            } else if (!this.a($$1, $$2)) {
+               return bud.d;
+            } else {
+               iu $$3 = $$1.a();
+               dja $$4 = $$1.q();
+               crc $$5 = $$1.o();
+               czd $$6 = $$1.n();
+               eah $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof arr) {
+                     ap.z.a((arr)$$5, $$3, $$6);
                   }
                }
-            }
 
-            return;
+               duc $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), awo.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(efh.i, $$3, efh.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bud.a;
+            }
+         }
+      }
+   }
+
+   protected awm a(eah $$0) {
+      return $$0.A().e();
+   }
+
+   @Nullable
+   public dcw b(dcw $$0) {
+      return $$0;
+   }
+
+   private static void a(dja $$0, iu $$1, czd $$2) {
+      dxf $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
+      }
+   }
+
+   protected boolean a(iu $$0, dja $$1, @Nullable crc $$2, czd $$3, eah $$4) {
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   @Nullable
+   protected eah c(dcw $$0) {
+      eah $$1 = this.c().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   }
+
+   private eah a(iu $$0, dja $$1, czd $$2, eah $$3) {
+      dbd $$4 = $$2.a(kj.aq, dbd.a);
+      if ($$4.a()) {
+         return $$3;
+      } else {
+         eah $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
          }
 
-         $$1.fD();
+         return $$5;
+      }
+   }
+
+   protected boolean b(dcw $$0, eah $$1) {
+      return (!this.b() || $$1.a((djd)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), fev.a());
+   }
+
+   protected boolean b() {
+      return true;
+   }
+
+   protected boolean a(dcw $$0, eah $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(dja $$0, @Nullable crc $$1, iu $$2, czd $$3) {
+      if ($$0.C) {
+         return false;
       } else {
-         $$1.fD();
+         dbl $$4 = $$3.a(kj.aa, dbl.a);
+         if (!$$4.c()) {
+            dxh<?> $$5 = $$4.a($$0.F_(), mg.e);
+            if ($$5 == null) {
+               return false;
+            }
+
+            dxf $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               dxh<?> $$7 = $$6.p();
+               if ($$7 != $$5) {
+                  return false;
+               }
+
+               if (!$$7.b() || $$1 != null && $$1.gG()) {
+                  return $$4.a($$6, $$0.F_());
+               }
+
+               return false;
+            }
+         }
+
+         return false;
       }
    }
 
-   private feg a(cqy $$0) {
-      return cru.a($$0, bwk.h, $$0.gK());
+   @Override
+   public boolean a(czd $$0, @Nullable crc $$1) {
+      if ($$1 != null && $$1.G() >= 2) {
+         dbl $$2 = $$0.a(kj.aa);
+         if ($$2 != null) {
+            dxh<?> $$3 = $$2.a($$1.dV().F_(), mg.e);
+            return $$3 != null && $$3.b();
+         }
+      }
+
+      return false;
    }
 
-   private void a(div $$0, fee $$1, dzz $$2, fei $$3, bwv $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == bwv.b ? 1 : -1;
-      int $$7 = $$0.C_().b(7, 12);
-      lp $$8 = new lp(lx.b, $$2);
-      ja $$9 = $$1.c();
-      cxl.a $$10 = cxl.a.a($$3, $$9);
-      fei $$11 = $$1.g();
+   public dmf c() {
+      return this.a;
+   }
 
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.d - (double)($$9 == ja.e ? 1.0E-6F : 0.0F),
-            $$11.e,
-            $$11.f - (double)($$9 == ja.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
-         );
+   public void a(Map<dmf, cyz> $$0, cyz $$1) {
+      $$0.put(this.c(), $$1);
+   }
+
+   @Override
+   public boolean d() {
+      return !(this.c() instanceof dto);
+   }
+
+   @Override
+   public void a(cnh $$0) {
+      dbv $$1 = $$0.f().b(kj.ap, dbv.a);
+      if ($$1 != null) {
+         czg.a($$0, $$1.e());
       }
    }
 
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static cxl.a a(fei $$0, ja $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new cxl.a($$0.c(), 0.0, -$$0.a());
-            case c -> new cxl.a(1.0, 0.0, -0.1);
-            case d -> new cxl.a(-1.0, 0.0, 0.1);
-            case e -> new cxl.a(-0.1, 0.0, -1.0);
-            case f -> new cxl.a(0.1, 0.0, 1.0);
-         };
+   public static void a(czd $$0, dxh<?> $$1, tz $$2) {
+      $$2.r("id");
+      if ($$2.g()) {
+         $$0.e(kj.aa);
+      } else {
+         dxf.a($$2, $$1);
+         $$0.b(kj.aa, dbl.a($$2));
       }
+   }
+
+   @Override
+   public cum k() {
+      return this.c().k();
    }
 }

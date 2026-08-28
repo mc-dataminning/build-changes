@@ -1,26 +1,41 @@
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cfl extends cev {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public cfl(bxk $$0, double $$1) {
-      this($$0, $$1, 0.001F);
-   }
-
-   public cfl(bxk $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
+public class cfl<T extends bxg> extends cea {
+   private final T a;
+   private final czd b;
+   private final Predicate<? super T> c;
    @Nullable
+   private final awm d;
+
+   public cfl(T $$0, czd $$1, @Nullable awm $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
+   }
+
    @Override
-   protected fei h() {
-      if (this.b.bj()) {
-         fei $$0 = chy.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dY().i() >= this.j ? chy.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.c.test(this.a);
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.fz();
+   }
+
+   @Override
+   public void d() {
+      this.a.a(bwp.a, this.b.v());
+      this.a.c(buc.a);
+   }
+
+   @Override
+   public void e() {
+      this.a.a(bwp.a, czd.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
       }
    }
 }

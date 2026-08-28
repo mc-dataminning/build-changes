@@ -1,52 +1,27 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface dio {
-   static bus a(div $$0, @Nullable bwd $$1) {
-      return $$0.al().d($$1, a($$1));
+public class dio {
+   public static final dio a = new dio(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dio> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dio::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
+
+   public dio(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   @Nullable
-   static bxc a(@Nullable bwd $$0) {
-      return switch ($$0) {
-         case null, default -> null;
-         case cne $$1 -> $$1.f();
-         case bxc $$2 -> $$2;
-         case crs $$3 when $$3.q() instanceof bxc $$4 -> $$4;
-      };
+   public List<String> a() {
+      return this.c;
    }
 
-   arq a();
-
-   dio.a b();
-
-   @Nullable
-   bxc c();
-
-   @Nullable
-   bwd d();
-
-   float e();
-
-   fei f();
-
-   boolean g();
-
-   boolean h();
-
-   public static enum a {
-      a(false),
-      b(true),
-      c(true),
-      d(false);
-
-      private final boolean e;
-
-      private a(final boolean $$0) {
-         this.e = $$0;
-      }
-
-      public boolean a() {
-         return this.e;
-      }
+   public List<String> b() {
+      return this.d;
    }
 }

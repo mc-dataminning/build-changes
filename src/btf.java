@@ -1,14 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface btf<P extends bte> {
-   btf<btc> a = a("constant", btc.b);
-   btf<btl> b = a("uniform", btl.a);
-   btf<bta> c = a("clamped_normal", bta.a);
-   btf<btk> d = a("trapezoid", btk.a);
+public class btf extends bti {
+   public static final btf a = new btf(0);
+   public static final MapCodec<btf> b = Codec.INT.fieldOf("value").xmap(btf::a, btf::d);
+   private final int f;
 
-   MapCodec<P> codec();
+   public static btf a(int $$0) {
+      return $$0 == 0 ? a : new btf($$0);
+   }
 
-   static <P extends bte> btf<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.J, $$0, () -> $$1);
+   private btf(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   @Override
+   public int a(azv $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public btj<?> c() {
+      return btj.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
    }
 }

@@ -1,14 +1,43 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface efe<T extends efd> {
-   efe<eev> a = a("block", new eev.a());
-   efe<eex> b = a("entity", new eex.a());
+public class efe<T extends efj> {
+   private final T a;
+   @Nullable
+   private jx b;
 
-   MapCodec<T> a();
+   public efe(T $$0) {
+      this.a = $$0;
+   }
 
-   yw<? super wj, T> b();
+   public void a(arq $$0) {
+      this.c($$0);
+   }
 
-   static <S extends efe<T>, T extends efd> S a(String $$0, S $$1) {
-      return jr.a(mf.t, $$0, $$1);
+   public T a() {
+      return this.a;
+   }
+
+   public void b(arq $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
+   }
+
+   public void c(arq $$0) {
+      this.a.a().a($$0).map(jx::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
+   }
+
+   private static void a(djd $$0, @Nullable jx $$1, Consumer<efk> $$2) {
+      if ($$1 != null) {
+         ece $$3 = $$0.a($$1.a(), $$1.c(), edf.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
+      }
    }
 }

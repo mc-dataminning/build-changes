@@ -64,20 +64,20 @@ public class arc extends ars {
    }
 
    @Override
-   public bub a(arr $$0, div $$1, cyy $$2, bua $$3) {
+   public bud a(arr $$0, dja $$1, czd $$2, buc $$3) {
       if (this.f) {
          this.f();
-         return bub.e;
+         return bud.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bub a(arr $$0, div $$1, cyy $$2, bua $$3, fee $$4) {
+   public bud a(arr $$0, dja $$1, czd $$2, buc $$3, fem $$4) {
       if (this.f) {
          this.f();
-         return bub.e;
+         return bud.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

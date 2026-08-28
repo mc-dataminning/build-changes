@@ -16,7 +16,7 @@ public class aoi {
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wy.b("commands.place.template.invalid", $$0));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.place.template.failed"));
    private static final SuggestionProvider<ei> f = ($$0, $$1) -> {
-      euw $$2 = ((ei)$$0.getSource()).e().r();
+      eve $$2 = ((ei)$$0.getSource()).e().r();
       return en.a($$2.a(), $$1);
    };
 
@@ -27,7 +27,7 @@ public class aoi {
                      .then(
                         ej.a("feature")
                            .then(
-                              ((RequiredArgumentBuilder)ej.a("feature", fi.a(mg.aK))
+                              ((RequiredArgumentBuilder)ej.a("feature", fi.a(mg.aL))
                                     .executes($$0x -> a((ei)$$0x.getSource(), fi.a($$0x, "feature"), iu.a((jo)((ei)$$0x.getSource()).d()))))
                                  .then(ej.a("pos", gf.a()).executes($$0x -> a((ei)$$0x.getSource(), fi.a($$0x, "feature"), gf.a($$0x, "pos"))))
                            )
@@ -35,7 +35,7 @@ public class aoi {
                   .then(
                      ej.a("jigsaw")
                         .then(
-                           ej.a("pool", fi.a(mg.be))
+                           ej.a("pool", fi.a(mg.bf))
                               .then(
                                  ej.a("target", fj.a())
                                     .then(
@@ -68,7 +68,7 @@ public class aoi {
                .then(
                   ej.a("structure")
                      .then(
-                        ((RequiredArgumentBuilder)ej.a("structure", fi.a(mg.bd))
+                        ((RequiredArgumentBuilder)ej.a("structure", fi.a(mg.be))
                               .executes($$0x -> b((ei)$$0x.getSource(), fi.b($$0x, "structure"), iu.a((jo)((ei)$$0x.getSource()).d()))))
                            .then(ej.a("pos", gf.a()).executes($$0x -> b((ei)$$0x.getSource(), fi.b($$0x, "structure"), gf.a($$0x, "pos"))))
                      )
@@ -79,16 +79,16 @@ public class aoi {
                      ((RequiredArgumentBuilder)ej.a("template", fj.a())
                            .suggests(f)
                            .executes(
-                              $$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "template"), iu.a((jo)((ei)$$0x.getSource()).d()), dst.a, drc.a, 1.0F, 0, false)
+                              $$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "template"), iu.a((jo)((ei)$$0x.getSource()).d()), dsz.a, dri.a, 1.0F, 0, false)
                            ))
                         .then(
                            ((RequiredArgumentBuilder)ej.a("pos", gf.a())
-                                 .executes($$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "template"), gf.a($$0x, "pos"), dst.a, drc.a, 1.0F, 0, false)))
+                                 .executes($$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "template"), gf.a($$0x, "pos"), dsz.a, dri.a, 1.0F, 0, false)))
                               .then(
                                  ((RequiredArgumentBuilder)ej.a("rotation", fx.a())
                                        .executes(
                                           $$0x -> a(
-                                                (ei)$$0x.getSource(), fj.a($$0x, "template"), gf.a($$0x, "pos"), fx.a($$0x, "rotation"), drc.a, 1.0F, 0, false
+                                                (ei)$$0x.getSource(), fj.a($$0x, "template"), gf.a($$0x, "pos"), fx.a($$0x, "rotation"), dri.a, 1.0F, 0, false
                                              )
                                        ))
                                     .then(
@@ -158,11 +158,11 @@ public class aoi {
       );
    }
 
-   public static int a(ei $$0, je.c<eiq<?, ?>> $$1, iu $$2) throws CommandSyntaxException {
+   public static int a(ei $$0, je.c<eiy<?, ?>> $$1, iu $$2) throws CommandSyntaxException {
       arq $$3 = $$0.e();
-      eiq<?, ?> $$4 = $$1.a();
-      dic $$5 = new dic($$2);
-      a($$3, new dic($$5.h - 1, $$5.i - 1), new dic($$5.h + 1, $$5.i + 1));
+      eiy<?, ?> $$4 = $$1.a();
+      dih $$5 = new dih($$2);
+      a($$3, new dih($$5.h - 1, $$5.i - 1), new dih($$5.h + 1, $$5.i + 1));
       if (!$$4.a($$3, $$3.m().g(), $$3.C_(), $$2)) {
          throw a.create();
       } else {
@@ -172,11 +172,11 @@ public class aoi {
       }
    }
 
-   public static int a(ei $$0, je<esd> $$1, alg $$2, int $$3, iu $$4) throws CommandSyntaxException {
+   public static int a(ei $$0, je<esl> $$1, alg $$2, int $$3, iu $$4) throws CommandSyntaxException {
       arq $$5 = $$0.e();
-      dic $$6 = new dic($$4);
+      dih $$6 = new dih($$4);
       a($$5, $$6, $$6);
-      if (!erx.a($$5, $$1, $$2, $$3, $$4, false)) {
+      if (!esf.a($$5, $$1, $$2, $$3, $$4, false)) {
          throw b.create();
       } else {
          $$0.a(() -> wy.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
@@ -184,30 +184,30 @@ public class aoi {
       }
    }
 
-   public static int b(ei $$0, je.c<eqt> $$1, iu $$2) throws CommandSyntaxException {
+   public static int b(ei $$0, je.c<erb> $$1, iu $$2) throws CommandSyntaxException {
       arq $$3 = $$0.e();
-      eqt $$4 = $$1.a();
-      ebx $$5 = $$3.m().g();
-      erb $$6 = $$4.a($$1, $$3.aj(), $$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.E(), new dic($$2), 0, $$3, $$0x -> true);
+      erb $$4 = $$1.a();
+      ecf $$5 = $$3.m().g();
+      erj $$6 = $$4.a($$1, $$3.aj(), $$0.u(), $$5, $$5.d(), $$3.m().i(), $$3.r(), $$3.E(), new dih($$2), 0, $$3, $$0x -> true);
       if (!$$6.b()) {
          throw c.create();
       } else {
-         eql $$7 = $$6.a();
-         dic $$8 = new dic(jx.a($$7.h()), jx.a($$7.j()));
-         dic $$9 = new dic(jx.a($$7.k()), jx.a($$7.m()));
+         eqt $$7 = $$6.a();
+         dih $$8 = new dih(jx.a($$7.h()), jx.a($$7.j()));
+         dih $$9 = new dih(jx.a($$7.k()), jx.a($$7.m()));
          a($$3, $$8, $$9);
-         dic.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.C_(), new eql($$3x.d(), $$3.G_(), $$3x.e(), $$3x.f(), $$3.ao() + 1, $$3x.g()), $$3x));
+         dih.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.b(), $$5, $$3.C_(), new eqt($$3x.d(), $$3.G_(), $$3x.e(), $$3x.f(), $$3.ao() + 1, $$3x.g()), $$3x));
          String $$10 = $$1.h().a().toString();
          $$0.a(() -> wy.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
          return 1;
       }
    }
 
-   public static int a(ei $$0, alg $$1, iu $$2, dst $$3, drc $$4, float $$5, int $$6, boolean $$7) throws CommandSyntaxException {
+   public static int a(ei $$0, alg $$1, iu $$2, dsz $$3, dri $$4, float $$5, int $$6, boolean $$7) throws CommandSyntaxException {
       arq $$8 = $$0.e();
-      euw $$9 = $$8.r();
+      eve $$9 = $$8.r();
 
-      Optional<euv> $$10;
+      Optional<evd> $$10;
       try {
          $$10 = $$9.b($$1);
       } catch (aa var14) {
@@ -217,14 +217,14 @@ public class aoi {
       if ($$10.isEmpty()) {
          throw d.create($$1);
       } else {
-         euv $$13 = $$10.get();
-         a($$8, new dic($$2), new dic($$2.a($$13.a())));
-         eur $$14 = new eur().a($$4).a($$3).b($$7);
+         evd $$13 = $$10.get();
+         a($$8, new dih($$2), new dih($$2.a($$13.a())));
+         euz $$14 = new euz().a($$4).a($$3).b($$7);
          if ($$5 < 1.0F) {
-            $$14.b().a(new ety($$5)).a(dyq.b((long)$$6));
+            $$14.b().a(new eug($$5)).a(dyy.b((long)$$6));
          }
 
-         boolean $$15 = $$13.a($$8, $$2, $$2, $$14, dyq.b((long)$$6), 2 | ($$7 ? 304 : 0));
+         boolean $$15 = $$13.a($$8, $$2, $$2, $$14, dyy.b((long)$$6), 2 | ($$7 ? 816 : 0));
          if (!$$15) {
             throw e.create();
          } else {
@@ -234,8 +234,8 @@ public class aoi {
       }
    }
 
-   private static void a(arq $$0, dic $$1, dic $$2) throws CommandSyntaxException {
-      if (dic.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+   private static void a(arq $$0, dih $$1, dih $$2) throws CommandSyntaxException {
+      if (dih.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
          throw gf.a.create();
       }
    }

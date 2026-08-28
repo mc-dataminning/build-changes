@@ -1,32 +1,30 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fds implements fdt<MinecraftServer> {
-   final alg a;
+public record fds(ezh.b c) implements fdv {
+   public static final MapCodec<fds> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezh.b.e.fieldOf("target").forGetter(fds::c)).apply($$0, fds::new));
+   public static final Codec<fds> b = ezh.b.e.xmap(fds::new, fds::c);
 
-   public fds(alg $$0) {
-      this.a = $$0;
+   public static fdv a(ezh.b $$0) {
+      return new fds($$0);
    }
 
-   public void a(MinecraftServer $$0, fdv<MinecraftServer> $$1, long $$2) {
-      alv $$3 = $$0.aE();
-
-      for (hw<ei> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public fdu a() {
+      return fdw.c;
    }
 
-   public static class a extends fdt.a<MinecraftServer, fds> {
-      public a() {
-         super(alg.b("function_tag"), fds.class);
-      }
+   @Nullable
+   @Override
+   public ffu a(ezh $$0) {
+      return $$0.c(this.c.a());
+   }
 
-      public void a(tz $$0, fds $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public fds a(tz $$0) {
-         alg $$1 = alg.a($$0.l("Name"));
-         return new fds($$1);
-      }
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of(this.c.a());
    }
 }

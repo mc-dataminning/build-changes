@@ -27,7 +27,7 @@ public class xs {
       };
    }
 
-   public xs.b a(final crb $$0) {
+   public xs.b a(final crg $$0) {
       final bab $$1 = $$0.a();
       return new xs.b() {
          @Override

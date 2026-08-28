@@ -1,25 +1,69 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.ArrayList;
+import java.util.List;
 
-public enum ddb implements bak {
-   a(0, "food"),
-   b(1, "blocks"),
-   c(2, "misc");
+public class ddb extends ddk {
+   public ddb(ddh $$0) {
+      super($$0);
+   }
 
-   private static final IntFunction<ddb> f = ayc.a($$0 -> $$0.g, values(), ayc.a.a);
-   public static final Codec<ddb> d = bak.a(ddb::values);
-   public static final yw<ByteBuf, ddb> e = yu.a(f, $$0 -> $$0.g);
-   private final int g;
-   private final String h;
+   public boolean a(ddi $$0, dja $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   private ddb(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czd $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(axk.bP)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cyc)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public czd a(ddi $$0, jg.a $$1) {
+      List<cyc> $$2 = new ArrayList<>();
+      czd $$3 = czd.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czd $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axk.bP)) {
+               if (!$$3.f()) {
+                  return czd.k;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cyc $$6)) {
+                  return czd.k;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? dbq.a($$3, $$2) : czd.k;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public dee<ddb> a() {
+      return dee.c;
    }
 }

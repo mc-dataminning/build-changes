@@ -1,109 +1,94 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class hoe {
-   final Map<hod<?>, Object> a;
+public class hoe implements AutoCloseable {
+   private static final AtomicInteger a = new AtomicInteger(1);
+   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
+      return $$1;
+   });
+   private final foz c;
+   private final UserApiService d;
+   private final hom e;
+   private final Path f;
+   private final CompletableFuture<Optional<hok>> g;
+   private final Supplier<hoi> h = Suppliers.memoize(this::c);
 
-   hoe(Map<hod<?>, Object> $$0) {
-      this.a = $$0;
+   public hoe(foz $$0, UserApiService $$1, fpl $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      hom.a $$3 = hom.a();
+      $$2.f().ifPresent($$1x -> $$3.a(hol.a, $$1x));
+      $$2.e().ifPresent($$1x -> $$3.a(hol.b, $$1x));
+      $$3.a(hol.c, UUID.randomUUID());
+      $$3.a(hol.d, ab.b().b());
+      $$3.a(hol.e, af.n().a());
+      $$3.a(hol.f, System.getProperty("os.name"));
+      $$3.a(hol.g, foz.e().a());
+      $$3.b(hol.h, foz.bg());
+      this.e = $$3.a();
+      this.f = $$0.q.toPath().resolve("logs/telemetry");
+      this.g = hok.a(this.f);
    }
 
-   public static hoe.a a() {
-      return new hoe.a();
+   public hon a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
+      return new hon(this.c(), $$0, $$1, $$2);
    }
 
-   public static MapCodec<hoe> a(final List<hod<?>> $$0) {
-      return new MapCodec<hoe>() {
-         public <T> RecordBuilder<T> a(hoe $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (hod<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(hoe $$0x, RecordBuilder<T> $$1, hod<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<hoe> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<hoe.a> $$2 = DataResult.success(new hoe.a());
-
-            for (hod<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(hoe.a::a);
-         }
-
-         private <T, V> DataResult<hoe.a> a(DataResult<hoe.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hod<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(hod::b).map($$0::createString);
-         }
-      };
+   public hoi a() {
+      return this.h.get();
    }
 
-   @Nullable
-   public <T> T a(hod<T> $$0) {
-      return (T)this.a.get($$0);
+   private hoi c() {
+      if (!this.c.E()) {
+         return hoi.a;
+      } else {
+         TelemetrySession $$0 = this.d.newTelemetrySession(b);
+         if (!$$0.isEnabled()) {
+            return hoi.a;
+         } else {
+            CompletableFuture<Optional<hoh>> $$1 = this.g
+               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<hoh>>>map(hok::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
+            return ($$2, $$3) -> {
+               if (!$$2.d() || foz.Q().C()) {
+                  hom.a $$4 = hom.a();
+                  $$4.a(this.e);
+                  $$4.a(hol.m, Instant.now());
+                  $$4.a(hol.l, $$2.d());
+                  $$3.accept($$4);
+                  hof $$5 = new hof($$2, $$4.a());
+                  $$1.thenAccept($$2x -> {
+                     if (!$$2x.isEmpty()) {
+                        ((hoh)$$2x.get()).log($$5);
+                        $$5.a($$0).send();
+                     }
+                  });
+               }
+            };
+         }
+      }
+   }
+
+   public Path b() {
+      return this.f;
    }
 
    @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<hod<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<hod<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> hoe.a a(hod<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> hoe.a b(hod<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public hoe.a a(hoe $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public hoe a() {
-         return new hoe(this.a);
-      }
+   public void close() {
+      this.g.thenAccept($$0 -> $$0.ifPresent(hok::close));
    }
 }

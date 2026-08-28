@@ -1,38 +1,42 @@
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bjv extends bew {
-   private final Supplier<bjv.a> b = Suppliers.memoize(() -> {
-      Type<?> $$0x = this.getInputSchema().getChoiceType(biw.D, "minecraft:potion");
-      Type<?> $$1 = bbd.a($$0x, this.getInputSchema().getType(biw.D), this.getOutputSchema().getType(biw.D));
-      OpticFinder<?> $$2 = $$1.findField("Item");
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
-      return new bjv.a($$2, $$3);
-   });
-
+public class bjv extends DataFix {
    public bjv(Schema $$0) {
-      super("ThrownPotionSplitFix", $$0, true);
+      super($$0, false);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("minecraft:potion")) {
-         return Pair.of($$0, $$1);
-      } else {
-         String $$2 = this.b.get().a($$1);
-         return "minecraft:lingering_potion".equals($$2) ? Pair.of("minecraft:lingering_potion", $$1) : Pair.of("minecraft:splash_potion", $$1);
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, Either<?, Pair<?, Pair<?, Pair<?, Dynamic<?>>>>>>> $$0 = this.getInputSchema().getType(bix.z);
+      return this.fixTypeEverywhere(
+         "TextComponentStringyFlagsFix",
+         $$0,
+         $$0x -> $$0xx -> $$0xx.mapSecond(
+                  $$0xxx -> $$0xxx.mapRight(
+                        $$0xxxx -> $$0xxxx.mapSecond(
+                              $$0xxxxx -> $$0xxxxx.mapSecond(
+                                    $$0xxxxxx -> $$0xxxxxx.mapSecond(
+                                          $$0xxxxxxx -> $$0xxxxxxx.update("bold", bjv::a)
+                                                .update("italic", bjv::a)
+                                                .update("underlined", bjv::a)
+                                                .update("strikethrough", bjv::a)
+                                                .update("obfuscated", bjv::a)
+                                       )
+                                 )
+                           )
+                     )
+               )
+      );
    }
 
-   static record a(OpticFinder<?> a, OpticFinder<Pair<String, String>> b) {
-      public String a(Typed<?> $$0) {
-         return $$0.getOptionalTyped(this.a).flatMap($$0x -> $$0x.getOptional(this.b)).<String>map(Pair::getSecond).map(bkr::a).orElse("");
-      }
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      return $$1.isPresent() ? $$0.createBoolean(Boolean.parseBoolean($$1.get())) : $$0;
    }
 }

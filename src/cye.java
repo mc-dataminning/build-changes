@@ -1,28 +1,40 @@
-public class cye extends cyu implements czs {
-   public cye(cyu.a $$0) {
-      super($$0);
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
+
+public record cye<T>(Either<je<T>, alf<T>> a) {
+   public cye(je<T> $$0) {
+      this(Either.left($$0));
    }
 
-   @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      cyy $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.jc, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arq $$4) {
-         crs.a(csd::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
-      }
-
-      $$1.b(awx.c.b(this));
-      $$3.a(1, $$1);
-      return bub.a;
+   public cye(alf<T> $$0) {
+      this(Either.right($$0));
    }
 
-   @Override
-   public crs a(div $$0, jo $$1, cyy $$2, ja $$3) {
-      return new csd($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public static <T> Codec<cye<T>> a(alf<jr<T>> $$0, Codec<je<T>> $$1) {
+      return Codec.either($$1, alf.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cye::new, cye::b);
    }
 
-   @Override
-   public czs.a a() {
-      return czs.a.a().a(czs.a.a.c() * 0.5F).b(czs.a.a.d() * 1.25F).a();
+   public static <T> yw<wj, cye<T>> a(alf<jr<T>> $$0, yw<wj, je<T>> $$1) {
+      return yw.a(yu.a($$1, alf.b($$0)), cye::b, cye::new);
+   }
+
+   public Optional<T> a(jr<T> $$0) {
+      return (Optional<T>)this.a.map($$0x -> Optional.of($$0x.a()), $$0::f);
+   }
+
+   public Optional<je<T>> a(jg.a $$0) {
+      return (Optional<je<T>>)this.a.map(Optional::of, $$1 -> $$0.c($$1).map($$0xx -> $$0xx));
+   }
+
+   public Optional<alf<T>> a() {
+      return (Optional<alf<T>>)this.a.map(je::e, Optional::of);
+   }
+
+   public Either<je<T>, alf<T>> b() {
+      return this.a;
    }
 }

@@ -1,4 +1,4 @@
-public record ada(dic b) implements zf<abu> {
+public record ada(dih b) implements zf<abu> {
    public static final yw<vu, ada> a = zf.a(ada::a, ada::new);
 
    private ada(vu $$0) {

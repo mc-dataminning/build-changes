@@ -1,9 +1,22 @@
-public class cwr extends cus {
-   public cwr(int $$0, cqx $$1) {
-      super(cvz.w, dea.d, ddy.g, cwg.d, $$0, $$1);
+public class cwr implements cvh {
+   private final int[] a;
+
+   public cwr(int $$0) {
+      this.a = new int[$$0];
    }
 
-   public cwr(int $$0, cqx $$1, btu $$2, cvc $$3) {
-      super(cvz.w, dea.d, ddy.g, cwg.d, $$0, $$1, $$2, $$3);
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

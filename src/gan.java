@@ -1,32 +1,32 @@
-public class gan extends gar {
-   private static final wy b = wy.c("multiplayerWarning.header").a(n.r);
-   private static final wy c = wy.c("multiplayerWarning.message");
-   private static final wy d = wy.c("multiplayerWarning.check");
-   private static final wy s = b.f().f("\n").b(c);
-   private final fxu u;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-   public gan(fxu $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public interface gan {
+   static gan a(ayy $$0) {
+      return new gam($$0);
    }
 
-   @Override
-   protected fvr m() {
-      fvu $$0 = fvu.e().a(8);
-      $$0.a(fsc.a(wx.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
+   static gan a(cxc $$0) {
+      Objects.requireNonNull($$0);
 
-         this.m.a(new gam(this.u));
-      }).a());
-      $$0.a(fsc.a(wx.k, $$0x -> this.aK_()).a());
-      return $$0;
+      return (gan)(switch ($$0) {
+         case cxb $$1 -> new gal($$1.a());
+         case gak.a $$2 -> new gak($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
+      });
    }
 
-   @Override
-   public void aK_() {
-      this.m.a(this.u);
+   int a(frt var1);
+
+   int b(frt var1);
+
+   default boolean a() {
+      return false;
+   }
+
+   default void a(frt $$0, int $$1, int $$2, Matrix4f $$3, gqa.a $$4) {
+   }
+
+   default void a(frt $$0, int $$1, int $$2, int $$3, int $$4, frv $$5) {
    }
 }

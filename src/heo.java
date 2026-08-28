@@ -1,6 +1,13 @@
 import javax.annotation.Nullable;
 
-public interface heo {
+public class heo extends hch {
    @Nullable
-   cql a();
+   public bwc.k.e a;
+   @Nullable
+   public bwc.k.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

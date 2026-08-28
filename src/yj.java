@@ -180,7 +180,7 @@ public class yj implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwd $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

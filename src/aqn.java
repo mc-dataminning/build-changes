@@ -16,7 +16,7 @@ public class aqn extends JList<String> {
          Vector<String> $$0 = new Vector<>();
 
          for (int $$1 = 0; $$1 < this.a.ag().t().size(); $$1++) {
-            $$0.add(this.a.ag().t().get($$1).gh().getName());
+            $$0.add(this.a.ag().t().get($$1).gi().getName());
          }
 
          this.setListData($$0);

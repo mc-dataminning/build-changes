@@ -1,7 +1,14 @@
+import java.time.Duration;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record brk(double a, double b, double c) {
+public record brk(Duration a, dih b, arb c, edf d, String e) implements bru {
    public static brk a(RecordedEvent $$0) {
-      return new brk((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
+      return new brk(
+         $$0.getDuration(),
+         new dih($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new arb($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         edf.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

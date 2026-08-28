@@ -31,7 +31,7 @@ public record wu(wv l, wv m) {
       $$0.a(k, new wu(wv.a("chat.type.emote"), wv.a("chat.type.emote")));
    }
 
-   public static wu.a a(alf<wu> $$0, bwd $$1) {
+   public static wu.a a(alf<wu> $$0, bwf $$1) {
       return a($$0, $$1.dV().F_(), $$1.m_());
    }
 

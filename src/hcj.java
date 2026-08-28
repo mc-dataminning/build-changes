@@ -1,3 +1,3 @@
-public class hcj extends hcf {
-   public int a;
+public class hcj extends hco {
+   public boolean a;
 }

@@ -16,8 +16,8 @@ public class bfc extends DataFix {
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<?> $$2 = $$0.findField("components");
       return this.fixTypeEverywhereTyped("ItemStack bucket_entity_data variants to separate components", $$0, $$2x -> {
          String $$3 = $$2x.getOptional($$1).<String>map(Pair::getSecond).orElse("");

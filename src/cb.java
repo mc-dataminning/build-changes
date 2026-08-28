@@ -9,9 +9,9 @@ public class cb extends dj<cb.a> {
       return cb.a.a;
    }
 
-   public void a(arr $$0, fei $$1, @Nullable bwd $$2) {
-      fei $$3 = $$0.dt();
-      eyz $$4 = $$2 != null ? bx.b($$0, $$2) : null;
+   public void a(arr $$0, feq $$1, @Nullable bwf $$2) {
+      feq $$3 = $$0.dt();
+      ezh $$4 = $$2 != null ? bx.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.y(), $$1, $$3, $$4));
    }
 
@@ -36,7 +36,7 @@ public class cb extends dj<cb.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arq $$0, fei $$1, fei $$2, @Nullable eyz $$3) {
+      public boolean a(arq $$0, feq $$1, feq $$2, @Nullable ezh $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

@@ -1,32 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
-
-public record fcb(Optional<bm> b) implements fci {
-   public static final MapCodec<fcb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bm.a.optionalFieldOf("predicate").forGetter(fcb::c)).apply($$0, fcb::new));
-
-   @Override
-   public fcj b() {
-      return fck.m;
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fbt.f, fbt.c);
-   }
-
-   public boolean a(eyz $$0) {
-      bus $$1 = $$0.c(fbt.c);
-      fei $$2 = $$0.c(fbt.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
-   }
-
-   public static fci.a a(bm.a $$0) {
-      return () -> new fcb(Optional.of($$0.b()));
-   }
-
-   public Optional<bm> c() {
-      return this.b;
-   }
+public class fcb {
+   public static final bax<bwf> a = bax.a("this_entity");
+   public static final bax<crc> b = bax.a("last_damage_player");
+   public static final bax<buu> c = bax.a("damage_source");
+   public static final bax<bwf> d = bax.a("attacking_entity");
+   public static final bax<bwf> e = bax.a("direct_attacking_entity");
+   public static final bax<feq> f = bax.a("origin");
+   public static final bax<eah> g = bax.a("block_state");
+   public static final bax<dxf> h = bax.a("block_entity");
+   public static final bax<czd> i = bax.a("tool");
+   public static final bax<Float> j = bax.a("explosion_radius");
+   public static final bax<Integer> k = bax.a("enchantment_level");
+   public static final bax<Boolean> l = bax.a("enchantment_active");
 }

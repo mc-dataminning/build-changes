@@ -1,61 +1,70 @@
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public interface bwq {
-   void a(bwn var1, cyy var2);
+public enum bwq implements bak, Iterable<bwp> {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bwp.a),
+   c(2, "offhand", bwp.b),
+   d(3, "hand", $$0 -> $$0.a() == bwp.a.a),
+   e(4, "feet", bwp.c),
+   f(5, "legs", bwp.d),
+   g(6, "chest", bwp.e),
+   h(7, "head", bwp.f),
+   i(8, "armor", bwp::f),
+   j(9, "body", bwp.g),
+   k(10, "saddle", bwp.h);
 
-   cyy a(bwn var1);
+   public static final IntFunction<bwq> l = ayc.a($$0 -> $$0.o, values(), ayc.a.a);
+   public static final Codec<bwq> m = bak.a(bwq::values);
+   public static final yw<ByteBuf, bwq> n = yu.a(l, $$0 -> $$0.o);
+   private final int o;
+   private final String p;
+   private final Predicate<bwp> q;
+   private final List<bwp> r;
 
-   void a(bwn var1, float var2);
-
-   default void a(bwp $$0, ezc $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private bwq(final int $$0, final String $$1, final Predicate<bwp> $$2) {
+      this.o = $$0;
+      this.p = $$1;
+      this.q = $$2;
+      this.r = bwp.j.stream().filter($$2).toList();
    }
 
-   default void a(alf<eze> $$0, ezc $$1, Map<bwn, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private bwq(final int $$0, final String $$1, final bwp $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   default void a(alf<eze> $$0, ezc $$1, long $$2, Map<bwn, Float> $$3) {
-      eze $$4 = $$1.a().p().bc().b($$0);
-      if ($$4 != eze.a) {
-         List<cyy> $$5 = $$4.a($$1, $$2);
-         List<bwn> $$6 = new ArrayList<>();
-
-         for (cyy $$7 : $$5) {
-            bwn $$8 = this.a($$7, $$6);
-            if ($$8 != null) {
-               cyy $$9 = $$8.a($$7);
-               this.a($$8, $$9);
-               Float $$10 = $$3.get($$8);
-               if ($$10 != null) {
-                  this.a($$8, $$10);
-               }
-
-               $$6.add($$8);
-            }
-         }
-      }
+   public static bwq a(bwp $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+         case h -> k;
+      };
    }
 
-   @Nullable
-   default bwn a(cyy $$0, List<bwn> $$1) {
-      if ($$0.f()) {
-         return null;
-      } else {
-         dhh $$2 = $$0.a(kj.D);
-         if ($$2 != null) {
-            bwn $$3 = $$2.b();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bwn.a)) {
-            return bwn.a;
-         }
+   @Override
+   public String c() {
+      return this.p;
+   }
 
-         return null;
-      }
+   public boolean b(bwp $$0) {
+      return this.q.test($$0);
+   }
+
+   public List<bwp> a() {
+      return this.r;
+   }
+
+   @Override
+   public Iterator<bwp> iterator() {
+      return this.r.iterator();
    }
 }

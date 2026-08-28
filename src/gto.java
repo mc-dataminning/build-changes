@@ -1,320 +1,107 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gto implements gtu.a {
-   private static final Logger a = LogUtils.getLogger();
-   private static final boolean b = true;
-   private static final boolean c = false;
-   private static final boolean d = false;
-   private static final boolean e = false;
-   private static final boolean f = false;
-   private static final boolean g = false;
-   private static final boolean h = false;
-   private static final boolean i = false;
-   private static final boolean j = true;
-   private static final boolean k = false;
-   private static final boolean l = true;
-   private static final boolean m = true;
-   private static final boolean n = true;
-   private static final boolean o = true;
-   private static final boolean p = true;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final boolean u = true;
-   private static final boolean v = true;
-   private static final boolean w = true;
-   private static final int x = 30;
-   private static final int y = 30;
-   private static final int z = 8;
-   private static final float A = 0.02F;
-   private static final int B = -16711681;
-   private static final int C = -3355444;
-   private static final int D = -98404;
-   private static final int E = -23296;
-   private final fos F;
-   private final Map<iu, gto.a> G = Maps.newHashMap();
-   private final Map<UUID, aaf.a> H = Maps.newHashMap();
-   @Nullable
-   private UUID I;
+public class gto {
+   private final gre a;
+   private final gsl b;
 
-   public gto(fos $$0) {
-      this.F = $$0;
+   public gto(gre $$0, gsl $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.G.clear();
-      this.H.clear();
-      this.I = null;
-   }
+   public gto.a a(jx $$0, gtm $$1, fjr $$2, gqn $$3) {
+      gto.a $$4 = new gto.a();
+      iu $$5 = $$0.j();
+      iu $$6 = $$5.b(15, 15, 15);
+      gtq $$7 = new gtq();
+      fjj $$8 = new fjj();
+      grg.a();
+      Map<gqk, fjf> $$9 = new Reference2ObjectArrayMap(gqk.R().size());
+      azv $$10 = azv.a();
 
-   public void a(gto.a $$0) {
-      this.G.put($$0.a, $$0);
-   }
-
-   public void a(iu $$0) {
-      this.G.remove($$0);
-   }
-
-   public void a(iu $$0, int $$1) {
-      gto.a $$2 = this.G.get($$0);
-      if ($$2 == null) {
-         a.warn("Strange, setFreeTicketCount was called for an unknown POI: {}", $$0);
-      } else {
-         $$2.c = $$1;
-      }
-   }
-
-   public void a(aaf.a $$0) {
-      this.H.put($$0.a(), $$0);
-   }
-
-   public void a(int $$0) {
-      this.H.values().removeIf($$1 -> $$1.b() == $$0);
-   }
-
-   @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      this.b();
-      this.b($$0, $$1, $$2, $$3, $$4);
-      if (!this.F.t.U_()) {
-         this.d();
-      }
-   }
-
-   private void b() {
-      this.H.entrySet().removeIf($$0 -> {
-         bwd $$1 = this.F.s.a($$0.getValue().b());
-         return $$1 == null || $$1.dQ();
-      });
-   }
-
-   private void b(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      iu $$5 = iu.a($$2, $$3, $$4);
-      this.H.values().forEach($$5x -> {
-         if (this.c($$5x)) {
-            this.b($$0, $$1, $$5x, $$2, $$3, $$4);
+      for (iu $$11 : iu.c($$5, $$6)) {
+         eah $$12 = $$1.a_($$11);
+         if ($$12.s()) {
+            $$7.a($$11);
          }
-      });
 
-      for (iu $$6 : this.G.keySet()) {
-         if ($$5.a($$6, 30.0)) {
-            a($$0, $$1, $$6);
-         }
-      }
-
-      this.G.values().forEach($$3x -> {
-         if ($$5.a($$3x.a, 30.0)) {
-            this.a($$0, $$1, $$3x);
-         }
-      });
-      this.c().forEach(($$3x, $$4x) -> {
-         if ($$5.a($$3x, 30.0)) {
-            this.a($$0, $$1, $$3x, $$4x);
-         }
-      });
-   }
-
-   private static void a(fjc $$0, gps $$1, iu $$2) {
-      float $$3 = 0.05F;
-      gtu.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-   }
-
-   private void a(fjc $$0, gps $$1, iu $$2, List<String> $$3) {
-      float $$4 = 0.05F;
-      gtu.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
-      a($$0, $$1, $$3 + "", $$2, 0, -256);
-      a($$0, $$1, "Ghost POI", $$2, 1, -65536);
-   }
-
-   private void a(fjc $$0, gps $$1, gto.a $$2) {
-      int $$3 = 0;
-      Set<String> $$4 = this.b($$2);
-      if ($$4.size() < 4) {
-         a($$0, $$1, "Owners: " + $$4, $$2, $$3, -256);
-      } else {
-         a($$0, $$1, $$4.size() + " ticket holders", $$2, $$3, -256);
-      }
-
-      $$3++;
-      Set<String> $$5 = this.c($$2);
-      if ($$5.size() < 4) {
-         a($$0, $$1, "Candidates: " + $$5, $$2, $$3, -23296);
-      } else {
-         a($$0, $$1, $$5.size() + " potential owners", $$2, $$3, -23296);
-      }
-
-      a($$0, $$1, "Free tickets: " + $$2.c, $$2, ++$$3, -256);
-      a($$0, $$1, $$2.b, $$2, ++$$3, -1);
-   }
-
-   private void a(fjc $$0, gps $$1, aaf.a $$2, double $$3, double $$4, double $$5) {
-      if ($$2.j() != null) {
-         gud.a($$0, $$1, $$2.j(), 0.5F, false, false, $$3, $$4, $$5);
-      }
-   }
-
-   private void b(fjc $$0, gps $$1, aaf.a $$2, double $$3, double $$4, double $$5) {
-      boolean $$6 = this.b($$2);
-      int $$7 = 0;
-      a($$0, $$1, $$2.h(), $$7, $$2.c(), -1, 0.03F);
-      $$7++;
-      if ($$6) {
-         a($$0, $$1, $$2.h(), $$7, $$2.d() + " " + $$2.e() + " xp", -1, 0.02F);
-         $$7++;
-      }
-
-      if ($$6) {
-         int $$8 = $$2.f() < $$2.g() ? -23296 : -1;
-         a($$0, $$1, $$2.h(), $$7, "health: " + String.format(Locale.ROOT, "%.1f", $$2.f()) + " / " + String.format(Locale.ROOT, "%.1f", $$2.g()), $$8, 0.02F);
-         $$7++;
-      }
-
-      if ($$6 && !$$2.i().equals("")) {
-         a($$0, $$1, $$2.h(), $$7, $$2.i(), -98404, 0.02F);
-         $$7++;
-      }
-
-      if ($$6) {
-         for (String $$9 : $$2.n()) {
-            a($$0, $$1, $$2.h(), $$7, $$9, -16711681, 0.02F);
-            $$7++;
-         }
-      }
-
-      if ($$6) {
-         for (String $$10 : $$2.m()) {
-            a($$0, $$1, $$2.h(), $$7, $$10, -16711936, 0.02F);
-            $$7++;
-         }
-      }
-
-      if ($$2.k()) {
-         a($$0, $$1, $$2.h(), $$7, "Wants Golem", -23296, 0.02F);
-         $$7++;
-      }
-
-      if ($$6 && $$2.l() != -1) {
-         a($$0, $$1, $$2.h(), $$7, "Anger Level: " + $$2.l(), -98404, 0.02F);
-         $$7++;
-      }
-
-      if ($$6) {
-         for (String $$11 : $$2.p()) {
-            if ($$11.startsWith($$2.c())) {
-               a($$0, $$1, $$2.h(), $$7, $$11, -1, 0.02F);
-            } else {
-               a($$0, $$1, $$2.h(), $$7, $$11, -23296, 0.02F);
-            }
-
-            $$7++;
-         }
-      }
-
-      if ($$6) {
-         for (String $$12 : Lists.reverse($$2.o())) {
-            a($$0, $$1, $$2.h(), $$7, $$12, -3355444, 0.02F);
-            $$7++;
-         }
-      }
-
-      if ($$6) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static void a(fjc $$0, gps $$1, String $$2, gto.a $$3, int $$4, int $$5) {
-      a($$0, $$1, $$2, $$3.a, $$4, $$5);
-   }
-
-   private static void a(fjc $$0, gps $$1, String $$2, iu $$3, int $$4, int $$5) {
-      double $$6 = 1.3;
-      double $$7 = 0.2;
-      double $$8 = (double)$$3.u() + 0.5;
-      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
-      double $$10 = (double)$$3.w() + 0.5;
-      gtu.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
-   }
-
-   private static void a(fjc $$0, gps $$1, jo $$2, int $$3, String $$4, int $$5, float $$6) {
-      double $$7 = 2.4;
-      double $$8 = 0.25;
-      iu $$9 = iu.a($$2);
-      double $$10 = (double)$$9.u() + 0.5;
-      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
-      double $$12 = (double)$$9.w() + 0.5;
-      float $$13 = 0.5F;
-      gtu.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
-   }
-
-   private Set<String> b(gto.a $$0) {
-      return this.b($$0.a).stream().map(agl::a).collect(Collectors.toSet());
-   }
-
-   private Set<String> c(gto.a $$0) {
-      return this.c($$0.a).stream().map(agl::a).collect(Collectors.toSet());
-   }
-
-   private boolean b(aaf.a $$0) {
-      return Objects.equals(this.I, $$0.a());
-   }
-
-   private boolean c(aaf.a $$0) {
-      cqy $$1 = this.F.t;
-      iu $$2 = iu.a($$1.dA(), $$0.h().b(), $$1.dG());
-      iu $$3 = iu.a((jo)$$0.h());
-      return $$2.a($$3, 30.0);
-   }
-
-   private Collection<UUID> b(iu $$0) {
-      return this.H.values().stream().filter($$1 -> $$1.a($$0)).map(aaf.a::a).collect(Collectors.toSet());
-   }
-
-   private Collection<UUID> c(iu $$0) {
-      return this.H.values().stream().filter($$1 -> $$1.b($$0)).map(aaf.a::a).collect(Collectors.toSet());
-   }
-
-   private Map<iu, List<String>> c() {
-      Map<iu, List<String>> $$0 = Maps.newHashMap();
-
-      for (aaf.a $$1 : this.H.values()) {
-         for (iu $$2 : Iterables.concat($$1.q(), $$1.r())) {
-            if (!this.G.containsKey($$2)) {
-               $$0.computeIfAbsent($$2, $$0x -> Lists.newArrayList()).add($$1.c());
+         if ($$12.x()) {
+            dxf $$13 = $$1.c_($$11);
+            if ($$13 != null) {
+               this.a($$4, $$13);
             }
          }
+
+         ewo $$14 = $$12.y();
+         if (!$$14.c()) {
+            gqk $$15 = gps.a($$14);
+            fjf $$16 = this.a($$9, $$3, $$15);
+            this.a.a($$11, $$1, $$16, $$12, $$14);
+         }
+
+         if ($$12.o() == dss.b) {
+            gqk $$17 = gps.a($$12);
+            fjf $$18 = this.a($$9, $$3, $$17);
+            $$8.a();
+            $$8.a((float)jx.b($$11.u()), (float)jx.b($$11.v()), (float)jx.b($$11.w()));
+            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
+            $$8.b();
+         }
       }
 
-      return $$0;
+      for (Entry<gqk, fjf> $$19 : $$9.entrySet()) {
+         gqk $$20 = $$19.getKey();
+         fji $$21 = $$19.getValue().a();
+         if ($$21 != null) {
+            if ($$20 == gqk.f()) {
+               $$4.e = $$21.a($$3.a(gqk.f()), $$2);
+            }
+
+            $$4.c.put($$20, $$21);
+         }
+      }
+
+      grg.b();
+      $$4.d = $$7.a();
+      return $$4;
    }
 
-   private void d() {
-      gtu.a(this.F.ao(), 8).ifPresent($$0 -> this.I = $$0.cG());
+   private fjf a(Map<gqk, fjf> $$0, gqn $$1, gqk $$2) {
+      fjf $$3 = $$0.get($$2);
+      if ($$3 == null) {
+         fjg $$4 = $$1.a($$2);
+         $$3 = new fjf($$4, fjo.c.h, fjh.b);
+         $$0.put($$2, $$3);
+      }
+
+      return $$3;
    }
 
-   public static class a {
-      public final iu a;
-      public final String b;
-      public int c;
+   private <E extends dxf> void a(gto.a $$0, E $$1) {
+      gsm<E> $$2 = this.b.a($$1);
+      if ($$2 != null) {
+         $$0.b.add($$1);
+         if ($$2.a($$1)) {
+            $$0.a.add($$1);
+         }
+      }
+   }
 
-      public a(iu $$0, String $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static final class a {
+      public final List<dxf> a = new ArrayList<>();
+      public final List<dxf> b = new ArrayList<>();
+      public final Map<gqk, fji> c = new Reference2ObjectArrayMap();
+      public gtr d = new gtr();
+      @Nullable
+      public fji.b e;
+
+      public void a() {
+         this.c.values().forEach(fji::close);
       }
    }
 }

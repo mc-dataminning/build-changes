@@ -1,37 +1,59 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
-public class guj implements gtu.a {
-   private static final int a = 60;
-   private final Set<jx> b = Sets.newHashSet();
+public class guj implements guc.a {
+   private final foz a;
+   private final Map<Long, Map<iu, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   guj() {
+   guj(foz $$0) {
+      this.a = $$0;
+   }
+
+   public void a(long $$0, iu $$1) {
+      Map<iu, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
    @Override
-   public void a() {
-      this.b.clear();
-   }
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ae();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<iu> $$8 = Sets.newHashSet();
+      Map<iu, Integer> $$9 = Maps.newHashMap();
+      fjn $$10 = $$1.getBuffer(gqk.y());
+      Iterator<Entry<Long, Map<iu, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   public void a(jx $$0) {
-      this.b.add($$0);
-   }
-
-   public void b(jx $$0) {
-      this.b.remove($$0);
-   }
-
-   @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      iu $$5 = iu.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<iu, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<iu, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<iu, Integer> $$16 : $$14.entrySet()) {
+               iu $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  fel $$19 = new fel(iu.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gqu.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
          }
-      });
-   }
+      }
 
-   private static void a(fjc $$0, gps $$1, jx $$2) {
-      gtu.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+      for (Entry<iu, Integer> $$20 : $$9.entrySet()) {
+         iu $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         guc.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

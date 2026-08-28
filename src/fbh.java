@@ -1,93 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class fbh extends fam {
+public class fbh extends fau {
+   private static final Codec<fdm> b = Codec.withAlternative(fdn.a, ayu.i, fdj::new);
    public static final MapCodec<fbh> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xa.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  fal.a(256).forGetter($$0x -> $$0x.c),
-                  eyz.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+                  fat.e.a(fdn.a, Integer.MAX_VALUE).optionalFieldOf("floats").forGetter($$0x -> $$0x.c),
+                  fat.e.a(Codec.BOOL, Integer.MAX_VALUE).optionalFieldOf("flags").forGetter($$0x -> $$0x.d),
+                  fat.e.a(Codec.STRING, Integer.MAX_VALUE).optionalFieldOf("strings").forGetter($$0x -> $$0x.e),
+                  fat.e.a(b, Integer.MAX_VALUE).optionalFieldOf("colors").forGetter($$0x -> $$0x.f)
                )
             )
             .apply($$0, fbh::new)
    );
-   private final List<wy> b;
-   private final fal c;
-   private final Optional<eyz.b> d;
+   private final Optional<fat.e<fdm>> c;
+   private final Optional<fat.e<Boolean>> d;
+   private final Optional<fat.e<String>> e;
+   private final Optional<fat.e<fdm>> f;
 
-   public fbh(List<fci> $$0, List<wy> $$1, fal $$2, Optional<eyz.b> $$3) {
+   public fbh(List<fcq> $$0, Optional<fat.e<fdm>> $$1, Optional<fat.e<Boolean>> $$2, Optional<fat.e<String>> $$3, Optional<fat.e<fdm>> $$4) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public fao<fbh> b() {
-      return fap.A;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return this.d.<Set<bax<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+      return Stream.concat(this.c.stream(), this.f.stream()).flatMap($$0 -> $$0.a().stream()).flatMap($$0 -> $$0.a().stream()).collect(Collectors.toSet());
    }
 
    @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      $$0.a(kj.j, dbr.a, $$1x -> new dbr(this.a($$1x, $$1)));
+   public faw<fbh> b() {
+      return fax.R;
+   }
+
+   private static <T> List<T> a(Optional<fat.e<T>> $$0, List<T> $$1) {
+      return $$0.<List<T>>map($$1x -> $$1x.a($$1)).orElse($$1);
+   }
+
+   private static <T, E> List<E> a(Optional<fat.e<T>> $$0, List<E> $$1, Function<T, E> $$2) {
+      return $$0.<List<E>>map($$2x -> {
+         List<E> $$3 = $$2x.a().stream().map($$2).toList();
+         return $$2x.b().a($$1, $$3);
+      }).orElse($$1);
+   }
+
+   @Override
+   public czd a(czd $$0, ezh $$1) {
+      dbm $$2 = $$0.a(kj.p, dbm.a);
+      $$0.b(kj.p, new dbm(a(this.c, $$2.a(), $$1x -> $$1x.b($$1)), a(this.d, $$2.b()), a(this.e, $$2.c()), a(this.f, $$2.d(), $$1x -> $$1x.a($$1))));
       return $$0;
-   }
-
-   private List<wy> a(@Nullable dbr $$0, eyz $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<wy> $$2 = fbi.a($$1, this.d.orElse(null));
-         List<wy> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
-   }
-
-   public static fbh.a c() {
-      return new fbh.a();
-   }
-
-   public static class a extends fam.a<fbh.a> {
-      private Optional<eyz.b> a = Optional.empty();
-      private final Builder<wy> b = ImmutableList.builder();
-      private fal c = fal.a.b;
-
-      public fbh.a a(fal $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fbh.a a(eyz.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fbh.a a(wy $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected fbh.a a() {
-         return this;
-      }
-
-      @Override
-      public fan b() {
-         return new fbh(this.g(), this.b.build(), this.c, this.a);
-      }
    }
 }

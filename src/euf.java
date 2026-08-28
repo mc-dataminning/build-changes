@@ -1,18 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum euf implements bak {
-   a("ignore_waterlogging"),
-   b("apply_waterlogging");
+public class euf extends eux {
+   public static final MapCodec<euf> a = mf.e.q().fieldOf("block").xmap(euf::new, $$0 -> $$0.b);
+   private final dmf b;
 
-   public static Codec<euf> c = bak.b(euf::values);
-   private final String d;
-
-   private euf(final String $$0) {
-      this.d = $$0;
+   public euf(dmf $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.d;
+   public boolean a(eah $$0, azv $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected euy<?> a() {
+      return euy.b;
    }
 }

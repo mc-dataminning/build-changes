@@ -16,10 +16,10 @@ public class bdw extends DataFix {
 
    public TypeRewriteRule makeRule() {
       OpticFinder<Pair<String, Pair<Either<Pair<String, String>, Unit>, Pair<Either<?, Unit>, Dynamic<?>>>>> $$0 = DSL.typeFinder(
-         this.getInputSchema().getType(biw.t)
+         this.getInputSchema().getType(bix.t)
       );
       return this.fixTypeEverywhereTyped(
-         "EmptyItemInHotbarFix", this.getInputSchema().getType(biw.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
+         "EmptyItemInHotbarFix", this.getInputSchema().getType(bix.d), $$1 -> $$1.update($$0, $$0xx -> $$0xx.mapSecond($$0xxx -> {
                   Optional<String> $$1x = ((Either)$$0xxx.getFirst()).left().map(Pair::getSecond);
                   Dynamic<?> $$2 = (Dynamic<?>)((Pair)$$0xxx.getSecond()).getSecond();
                   boolean $$3 = $$1x.isEmpty() || $$1x.get().equals("minecraft:air");

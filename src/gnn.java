@@ -1,80 +1,79 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+public class gnn extends goi {
+   private final god a;
 
-public abstract class gnn extends gna {
-   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
-
-   protected gnn(gjr $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gnn(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public gnn.a p() {
-      return gnn.a.a;
+   gnn(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+      this.n = false;
+      this.b($$7);
    }
 
    @Override
-   public void a(fjg $$0, fnz $$1, float $$2) {
-      Quaternionf $$3 = new Quaternionf();
-      this.p().setRotation($$3, $$1, $$2);
-      if (this.z != 0.0F) {
-         $$3.rotateZ(azm.h($$2, this.A, this.z));
+   public gnm b() {
+      return gnm.c;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         crc $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.dC();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dy().e - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
+         }
+      }
+   }
+
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
+         this.a = $$0;
       }
 
-      this.a($$0, $$1, $$3, $$2);
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 
-   protected void a(fjg $$0, fnz $$1, Quaternionf $$2, float $$3) {
-      fei $$4 = $$1.b();
-      float $$5 = (float)(azm.d((double)$$3, this.d, this.g) - $$4.a());
-      float $$6 = (float)(azm.d((double)$$3, this.e, this.h) - $$4.b());
-      float $$7 = (float)(azm.d((double)$$3, this.f, this.i) - $$4.c());
-      this.a($$0, $$2, $$5, $$6, $$7, $$3);
-   }
+   public static class b implements gnl<mb> {
+      private final god a;
 
-   protected void a(fjg $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = this.b($$5);
-      float $$7 = this.c();
-      float $$8 = this.d();
-      float $$9 = this.e();
-      float $$10 = this.f();
-      int $$11 = this.a($$5);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
-      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
-   }
+      public b(god $$0) {
+         this.a = $$0;
+      }
 
-   private void a(fjg $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
-      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
-      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
-   }
-
-   public float b(float $$0) {
-      return this.D;
-   }
-
-   @Override
-   public gna d(float $$0) {
-      this.D *= $$0;
-      return super.d($$0);
-   }
-
-   protected abstract float c();
-
-   protected abstract float d();
-
-   protected abstract float e();
-
-   protected abstract float f();
-
-   public interface a {
-      gnn.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
-      gnn.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
-
-      void setRotation(Quaternionf var1, fnz var2, float var3);
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gni $$8 = new gnn($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
+         return $$8;
+      }
    }
 }

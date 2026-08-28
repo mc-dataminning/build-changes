@@ -1,22 +1,41 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class cby {
-   private static final int a = 36;
+   private static final int a = 16;
 
-   public static byu<bxc> a() {
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.group($$0.a(cge.y), $$0.a(cge.z), $$0.a(cge.B))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bxc>a($$2).filter($$1xx -> $$1xx.g($$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.eb().a($$4.af(), $$4.ae());
+   public static byw<bxe> a(Predicate<je<cij>> $$0, cgg<jd> $$1) {
+      return cci.a((Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jd $$6 = $$2.b($$2x);
+               iu $$7 = $$6.b();
+               if ($$3.aj() == $$6.a() && $$7.a($$4.dt(), 16.0)) {
+                  arq $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        agm.c($$3, $$7);
                      }
+                  }
 
-                     return true;
-                  }))
-      );
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
+   }
+
+   private static boolean a(arq $$0, iu $$1, bxe $$2) {
+      eah $$3 = $$0.a_($$1);
+      return $$3.a(axc.T) && $$3.c(dly.c) && !$$2.fR();
+   }
+
+   private static boolean a(arq $$0, iu $$1) {
+      List<cqo> $$2 = $$0.a(cqo.class, new fel($$1), bxe::fR);
+      return !$$2.isEmpty();
    }
 }

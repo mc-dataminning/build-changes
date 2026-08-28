@@ -84,7 +84,7 @@ public abstract class asq implements zy {
    }
 
    protected void e() {
-      bql.a().a("keepAlive");
+      bqn.a().a("keepAlive");
       long $$0 = af.c();
       if (!this.h() && $$0 - this.j >= 15000L) {
          if (this.k) {
@@ -97,7 +97,7 @@ public abstract class asq implements zy {
          }
       }
 
-      bql.a().c();
+      bqn.a().c();
    }
 
    private boolean a(long $$0) {

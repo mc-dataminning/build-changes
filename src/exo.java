@@ -1,196 +1,98 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.Set;
 
-public class exo {
-   public static final yw<ByteBuf, exo> a = yu.a(exo::a, exo::i);
-   private static final exo[] b = af.a(() -> {
-      exo[] $$0 = new exo[48];
-      a(new exo(ja.b, ja.c, exo.a.a), $$0);
-      return $$0;
-   });
-   private final ja c;
-   private final ja d;
-   private final ja e;
-   private final exo.a f;
-   private final int g;
-   private final List<ja> h;
-   private final List<ja> i;
-   private final List<ja> j;
-   private final Map<ja, exo> k = new EnumMap<>(ja.class);
-   private final Map<ja, exo> l = new EnumMap<>(ja.class);
-   private final Map<exo.a, exo> m = new EnumMap<>(exo.a.class);
+public record exo(arq d, feq e, feq f, float g, float h, boolean i, boolean j, Set<bxs> k, exo.a l) {
+   public static final exo.a a = $$0 -> {
+   };
+   public static final exo.a b = exo::a;
+   public static final exo.a c = exo::b;
 
-   private exo(ja $$0, ja $$1, exo.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      jz $$3 = $$1.q().d($$0.q());
-      ja $$4 = ja.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == exo.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
+   public exo(arq $$0, feq $$1, feq $$2, float $$3, float $$4, exo.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   }
+
+   public exo(arq $$0, feq $$1, feq $$2, float $$3, float $$4, Set<bxs> $$5, exo.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   }
+
+   public exo(arq $$0, bwf $$1, exo.a $$2) {
+      this($$0, a($$0, $$1), feq.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
+   }
+
+   private static void a(bwf $$0) {
+      if ($$0 instanceof arr $$1) {
+         $$1.f.b(new adh(1032, iu.c, 0, false));
       }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
    }
 
-   public static exo a(ja $$0, ja $$1, exo.a $$2) {
-      return b[b($$0, $$1, $$2)];
+   private static void b(bwf $$0) {
+      $$0.f(iu.a((jo)$$0.dt()));
    }
 
-   public exo a(ja $$0) {
-      return this.l.get($$0);
+   public static exo a(arq $$0, bwf $$1, exo.a $$2) {
+      return new exo($$0, a($$0, $$1), feq.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
    }
 
-   public exo b(ja $$0) {
-      return this.k.get($$0);
+   private static feq a(arq $$0, bwf $$1) {
+      return $$1.a($$0, $$0.aa()).c();
    }
 
-   public exo c(ja $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
+   public exo a(float $$0, float $$1) {
+      return new exo(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
    }
 
-   public exo d(ja $$0) {
-      exo $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public exo a(exo.a $$0) {
-      return this.m.get($$0);
+   public exo a(feq $$0) {
+      return new exo(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
    }
 
    public exo a() {
-      return this.a(this.f.a());
+      return new exo(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
    }
 
-   public ja b() {
+   public arq b() {
       return this.d;
    }
 
-   public ja c() {
-      return this.c;
-   }
-
-   public ja d() {
+   public feq c() {
       return this.e;
    }
 
-   public exo.a e() {
+   public feq d() {
       return this.f;
    }
 
-   public List<ja> f() {
-      return this.h;
-   }
-
-   public List<ja> g() {
-      return this.i;
-   }
-
-   public List<ja> h() {
-      return this.j;
-   }
-
-   @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
-   }
-
-   public int i() {
+   public float e() {
       return this.g;
    }
 
-   public static exo a(int $$0) {
-      return b[$$0];
+   public float f() {
+      return this.h;
    }
 
-   public static exo a(azv $$0) {
-      return af.a(b, $$0);
+   public boolean g() {
+      return this.i;
    }
 
-   private static exo a(exo $$0, exo[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (exo.a $$2 : exo.a.values()) {
-            $$0.m.put($$2, a(new exo($$0.c, $$0.d, $$2), $$1));
-         }
-
-         for (ja $$3 : ja.values()) {
-            ja $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new exo($$4, $$3, $$0.f), $$1));
-         }
-
-         for (ja $$5 : ja.values()) {
-            ja $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new exo($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
-      }
+   public boolean h() {
+      return this.j;
    }
 
-   @VisibleForTesting
-   protected static int b(ja $$0, ja $$1, exo.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == ja.a.b) {
-            $$3 = $$1.o() == ja.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == ja.a.b ? 1 : 0;
-         }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
-      }
+   public Set<bxs> i() {
+      return this.k;
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   public exo.a j() {
+      return this.l;
+   }
 
-      private final String c;
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bwf var1);
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public exo.a a() {
-         return this == a ? b : a;
-      }
-
-      @Override
-      public String toString() {
-         return this.c;
+      default exo.a then(exo.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
    }
 }

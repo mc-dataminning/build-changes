@@ -1,17 +1,13 @@
-public class gkc {
-   private final gjs a;
-   private final bow b;
+import java.util.List;
 
-   public gkc(gjs $$0, bow $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public enum gkc {
+   a,
+   b;
 
-   public void a() {
-      this.a.b(new ajz(af.c()));
-   }
+   private static final List<gkc> c = List.of(values());
+   private static final js.b d = js.a(mf.aF);
 
-   public void a(ajw $$0) {
-      this.b.a(af.c() - $$0.b());
+   public static jl<gkc> a() {
+      return new jl<>(c).a(a, d);
    }
 }

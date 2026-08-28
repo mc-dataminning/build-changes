@@ -1,78 +1,45 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
-public class bqi implements bqj {
+public class bqi implements bqm {
    public static final bqi a = new bqi();
 
    private bqi() {
    }
 
    @Override
-   public void a() {
+   public List<bqq> a(String $$0) {
+      return Collections.emptyList();
    }
 
    @Override
-   public void b() {
+   public boolean a(Path $$0) {
+      return false;
    }
 
    @Override
-   public void a(String $$0) {
+   public long a() {
+      return 0L;
    }
 
    @Override
-   public void a(Supplier<String> $$0) {
+   public int b() {
+      return 0;
    }
 
    @Override
-   public void a(brv $$0) {
+   public long c() {
+      return 0L;
    }
 
    @Override
-   public void c() {
+   public int d() {
+      return 0;
    }
 
    @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public bqr d(String $$0) {
-      return bqr.a;
-   }
-
-   @Override
-   public bqr c(Supplier<String> $$0) {
-      return bqr.a;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bqk d() {
-      return bqg.a;
-   }
-
-   @Nullable
-   @Override
-   public bqe.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, brv>> e() {
-      return ImmutableSet.of();
+   public String e() {
+      return "";
    }
 }

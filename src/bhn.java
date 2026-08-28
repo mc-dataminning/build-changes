@@ -50,11 +50,11 @@ public class bhn extends DataFix {
                   DSL.string(),
                   ImmutableMap.of(
                      "minecraft:fixed",
-                     a("biome", $$0.getType(biw.M)),
+                     a("biome", $$0.getType(bix.M)),
                      "minecraft:multi_noise",
-                     DSL.list(a("biome", $$0.getType(biw.M))),
+                     DSL.list(a("biome", $$0.getType(bix.M))),
                      "minecraft:checkerboard",
-                     a("biomes", DSL.list($$0.getType(biw.M))),
+                     a("biomes", DSL.list($$0.getType(bix.M))),
                      "minecraft:vanilla_layered",
                      DSL.remainderType(),
                      "minecraft:the_end",
@@ -62,13 +62,13 @@ public class bhn extends DataFix {
                   )
                ),
                "settings",
-               DSL.or(DSL.string(), a("default_block", $$0.getType(biw.E), "default_fluid", $$0.getType(biw.E)))
+               DSL.or(DSL.string(), a("default_block", $$0.getType(bix.E), "default_fluid", $$0.getType(bix.E)))
             )
          )
       );
-      CompoundListType<String, ?> $$2 = DSL.compoundList(bkr.a(), a("generator", $$1));
+      CompoundListType<String, ?> $$2 = DSL.compoundList(bks.a(), a("generator", $$1));
       Type<?> $$3 = DSL.and($$2, DSL.remainderType());
-      Type<?> $$4 = $$0.getType(biw.O);
+      Type<?> $$4 = $$0.getType(bix.O);
       FieldFinder<?> $$5 = new FieldFinder("dimensions", $$3);
       if (!$$4.findFieldType("dimensions").equals($$3)) {
          throw new IllegalStateException();
@@ -91,11 +91,11 @@ public class bhn extends DataFix {
    protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> a(
       Schema $$0
    ) {
-      return b("settings", a("biome", $$0.getType(biw.M), "layers", DSL.list(b("block", $$0.getType(biw.E)))));
+      return b("settings", a("biome", $$0.getType(bix.M), "layers", DSL.list(b("block", $$0.getType(bix.E)))));
    }
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {
       long $$1 = $$0.get("seed").asLong(0L);
-      return new Dynamic($$0.getOps(), bkl.a($$0, $$1, bkl.a($$0, $$1), false));
+      return new Dynamic($$0.getOps(), bkm.a($$0, $$1, bkm.a($$0, $$1), false));
    }
 }

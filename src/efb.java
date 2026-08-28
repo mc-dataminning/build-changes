@@ -1,20 +1,29 @@
-public interface efb {
-   efd a();
+public enum efb {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-   int b();
+   private final boolean d;
+   private final boolean e;
 
-   boolean a(arq var1, je<eez> var2, eez.a var3, fei var4);
-
-   default efb.a c() {
-      return efb.a.a;
+   private efb(final boolean $$0, final boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean a() {
+      return this.e;
    }
 
-   public interface b<T extends efb> {
-      T c();
+   public boolean b() {
+      return this.d;
+   }
+
+   public static efb a(are $$0) {
+      if ($$0.a(are.d)) {
+         return c;
+      } else {
+         return $$0.a(are.b) ? b : a;
+      }
    }
 }

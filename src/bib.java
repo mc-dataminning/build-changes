@@ -13,7 +13,7 @@ public class bib extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(biw.e),
+         this.getInputSchema().getType(bix.e),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
                $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)

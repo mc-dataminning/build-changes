@@ -1,32 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record dce(float c, Optional<alg> d) {
+public record dce(alf<ezm> b, long c) implements dci {
+   private static final wy d = wy.c("item.container.loot_table.unknown");
    public static final Codec<dce> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.o.fieldOf("seconds").forGetter(dce::b), alg.a.optionalFieldOf("cooldown_group").forGetter(dce::c)).apply($$0, dce::new)
+      $$0 -> $$0.group(alf.a(mg.bq).fieldOf("loot_table").forGetter(dce::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dce::b)).apply($$0, dce::new)
    );
-   public static final yw<wj, dce> b = yw.a(yu.l, dce::b, alg.b.a(yu::a), dce::c, dce::new);
 
-   public dce(float $$0) {
-      this($$0, Optional.empty());
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      $$1.accept(d);
    }
 
-   public int a() {
-      return (int)(this.c * 20.0F);
+   public alf<ezm> a() {
+      return this.b;
    }
 
-   public void a(cyy $$0, bxc $$1) {
-      if ($$1 instanceof cqy $$2) {
-         $$2.gE().a($$0, this.a());
-      }
-   }
-
-   public float b() {
+   public long b() {
       return this.c;
-   }
-
-   public Optional<alg> c() {
-      return this.d;
    }
 }

@@ -1,52 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record fcs(Optional<Boolean> b, Optional<Boolean> c) implements fci {
-   public static final MapCodec<fcs> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fcs::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fcs::e))
-            .apply($$0, fcs::new)
-   );
+public class fcs {
+   public static final fcr a = a("inverted", fcn.a);
+   public static final fcr b = a("any_of", fce.a);
+   public static final fcr c = a("all_of", fcd.a);
+   public static final fcr d = a("random_chance", fcv.a);
+   public static final fcr e = a("random_chance_with_enchanted_bonus", fcw.a);
+   public static final fcr f = a("entity_properties", fct.a);
+   public static final fcr g = a("killed_by_player", fcu.a);
+   public static final fcr h = a("entity_scores", fcl.a);
+   public static final fcr i = a("block_state_property", fcp.a);
+   public static final fcr j = a("match_tool", fcx.a);
+   public static final fcr k = a("table_bonus", fcf.a);
+   public static final fcr l = a("survives_explosion", fcm.a);
+   public static final fcr m = a("damage_source_properties", fcj.a);
+   public static final fcr n = a("location_check", fco.a);
+   public static final fcr o = a("weather_check", fda.a);
+   public static final fcr p = a("reference", fch.a);
+   public static final fcr q = a("time_check", fcy.a);
+   public static final fcr r = a("value_check", fcz.a);
+   public static final fcr s = a("enchantment_active_check", fck.a);
 
-   @Override
-   public fcj b() {
-      return fck.o;
-   }
-
-   public boolean a(eyz $$0) {
-      arq $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
-   }
-
-   public static fcs.a c() {
-      return new fcs.a();
-   }
-
-   public Optional<Boolean> d() {
-      return this.b;
-   }
-
-   public Optional<Boolean> e() {
-      return this.c;
-   }
-
-   public static class a implements fci.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public fcs.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fcs.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public fcs a() {
-         return new fcs(this.a, this.b);
-      }
+   private static fcr a(String $$0, MapCodec<? extends fcq> $$1) {
+      return jr.a(mf.F, alg.b($$0), new fcr($$1));
    }
 }

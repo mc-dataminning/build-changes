@@ -1,91 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dnx extends dma implements dtj {
-   public static final eaq a = drt.b;
-   public static final eaq b = drt.c;
-   public static final eaq c = drt.d;
-   public static final eaq d = drt.e;
-   public static final eaq e = eap.I;
-   public static final Map<ja, eaq> f = drt.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
-   private final Function<dzz, ffc> g;
-   private final Function<dzz, ffc> h;
+public class dnx extends dlp {
+   public static final MapCodec<dnx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dnv.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dnx::new));
+   private final dmf c;
+   private static final ffk d = dmf.b(12.0, 0.0, 15.0);
 
-   protected dnx(float $$0, float $$1, float $$2, float $$3, float $$4, dzy.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+   @Override
+   public MapCodec<dnx> a() {
+      return a;
+   }
+
+   protected dnx(dmf $$0, eag.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dnx> a();
+   protected void a(eah $$0, dja $$1, iu $$2, eah $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
 
-   protected Function<dzz, ffc> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      ffc $$5 = dma.b((double)$$0, 0.0, (double)$$1);
-      Map<ja, ffc> $$6 = fez.c(dma.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
-      return this.a($$2x -> {
-         ffc $$3x = $$5;
+   @Override
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(b, Boolean.valueOf(false)), 2);
+      }
+   }
 
-         for (Entry<ja, eaq> $$4x : f.entrySet()) {
-            if ($$2x.c($$4x.getValue())) {
-               $$3x = fez.a($$3x, $$6.get($$4x.getKey()));
-            }
+   @Override
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if ($$4 == ja.a && !$$0.a($$1, $$3)) {
+         return dmh.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(b)) {
+            $$2.a($$3, ewp.c, ewp.c.a($$1));
          }
 
-         return $$3x;
-      }, new ebc[]{e});
-   }
-
-   @Override
-   protected boolean e_(dzz $$0) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.h.apply($$0);
-   }
-
-   @Override
-   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.g.apply($$0);
-   }
-
-   @Override
-   protected ewg b_(dzz $$0) {
-      return $$0.c(e) ? ewh.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
-   }
-
-   @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
-         case d:
-            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
-         case b:
-            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
-         default:
-            return $$0;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 
    @Override
-   protected dzz a(dzz $$0, drc $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
-         case c:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
-      }
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return d;
    }
 }

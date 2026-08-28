@@ -1,70 +1,23 @@
-public abstract class gwq<T extends bxe, S extends hcw, M extends gge<S>> extends gut<T, S, M> {
-   public gwq(gvz.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$1, $$2);
+public class gwq extends gxn<ckv, hcx, ggd> {
+   public gwq(gwh.a $$0) {
+      super($$0, new ggd($$0.a(gjb.aZ)), 0.3F);
    }
 
-   public gwq(gvz.a $$0, M $$1, M $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, gzs.a.a);
+   public alg a(hcx $$0) {
+      return $$0.f;
    }
 
-   public gwq(gvz.a $$0, M $$1, M $$2, float $$3, gzs.a $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(new gzs<>(this, $$0.f(), $$4));
-      this.a(new hay<>(this, $$0.f(), $$0.h()));
-      this.a(new haf<>(this));
+   public hcx b() {
+      return new hcx();
    }
 
-   protected gge.a a(T $$0, bwv $$1) {
-      return gge.a.a;
-   }
-
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(ckv $$0, hcx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      a($$0, $$1, $$2, this.h);
-      $$1.h = this.a($$0, bwv.a);
-      $$1.f = this.a($$0, bwv.b);
-   }
-
-   public static void a(bxc $$0, hcw $$1, float $$2, hfg $$3) {
-      hbj.a($$0, $$1, $$3);
-      $$1.N = $$0.ci();
-      $$1.O = $$0.fI();
-      $$1.P = $$0.cl();
-      $$1.Q = $$0.bZ();
-      $$1.I = 1.0F;
-      if ($$1.O) {
-         $$1.I = (float)$$0.dy().h();
-         $$1.I /= 0.2F;
-         $$1.I = $$1.I * $$1.I * $$1.I;
-      }
-
-      if ($$1.I < 1.0F) {
-         $$1.I = 1.0F;
-      }
-
-      $$1.H = $$0.D($$2);
-      $$1.G = $$0.a($$2);
-      $$1.L = c($$0);
-      $$1.M = $$0.fz();
-      $$1.J = (float)cxr.b($$0.fA(), $$0);
-      $$1.K = $$0.fC();
-      $$1.R = $$0.fy();
-      $$1.S = $$0.aZ.a($$2);
-      $$1.T = $$0.aZ.b($$2);
-      $$1.U = $$0.aZ.c($$2);
-      $$1.V = a($$0, bwn.f);
-      $$1.W = a($$0, bwn.e);
-      $$1.X = a($$0, bwn.d);
-      $$1.Y = a($$0, bwn.c);
-   }
-
-   private static cyy a(bxc $$0, bwn $$1) {
-      cyy $$2 = $$0.a($$1);
-      return hac.a($$2, $$1) ? $$2.v() : cyy.k;
-   }
-
-   private static bwv c(bxc $$0) {
-      bwv $$1 = $$0.fx();
-      return $$0.aJ == bua.a ? $$1 : $$1.e();
+      $$1.a = $$0.bj();
+      $$1.b.a($$0.bI);
+      $$1.c.a($$0.bK);
+      $$1.d.a($$0.bL);
+      $$1.e.a($$0.bM);
+      $$1.f = $$0.x().a().b().b();
    }
 }

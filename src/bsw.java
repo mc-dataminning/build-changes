@@ -1,45 +1,27 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+public abstract class bsw<R extends Runnable> extends bss<R> {
+   private int b;
 
-public interface bsw<R extends Runnable> extends AutoCloseable {
-   String v_();
-
-   void a_(R var1);
+   public bsw(String $$0) {
+      super($$0);
+   }
 
    @Override
-   default void close() {
+   public boolean ax() {
+      return this.bB() || super.ax();
    }
 
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
+   protected boolean bB() {
+      return this.b != 0;
    }
 
-   static bsw<Runnable> a(final String $$0, final Executor $$1) {
-      return new bsw<Runnable>() {
-         @Override
-         public String v_() {
-            return $$0;
-         }
+   @Override
+   public void d(R $$0) {
+      this.b++;
 
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

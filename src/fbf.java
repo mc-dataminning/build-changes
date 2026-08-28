@@ -1,56 +1,63 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class fbf extends fam {
-   private static final Logger b = LogUtils.getLogger();
+public class fbf extends fau {
    public static final MapCodec<fbf> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(fdf.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  alf.a(mg.bq).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  mf.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, fbf::new)
    );
-   private final fde c;
-   private final boolean d;
+   private final alf<ezm> b;
+   private final long c;
+   private final je<dxh<?>> d;
 
-   private fbf(List<fci> $$0, fde $$1, boolean $$2) {
+   private fbf(List<fcq> $$0, alf<ezm> $$1, long $$2, je<dxh<?>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public fao<fbf> b() {
-      return fap.n;
+   public faw<fbf> b() {
+      return fax.y;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azm.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azm.d($$4 * (float)$$2));
+   public czd a(czd $$0, ezh $$1) {
+      if ($$0.f()) {
+         return $$0;
       } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+         $$0.b(kj.at, new dce(this.b, this.c));
+         return $$0;
       }
-
-      return $$0;
    }
 
-   public static fam.a<?> a(fde $$0) {
-      return a($$1 -> new fbf($$1, $$0, false));
+   @Override
+   public void a(ezn $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else {
+         if ($$0.a().c(this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
+         }
+      }
    }
 
-   public static fam.a<?> a(fde $$0, boolean $$1) {
-      return a($$2 -> new fbf($$2, $$0, $$1));
+   public static fau.a<?> a(dxh<?> $$0, alf<ezm> $$1) {
+      return a($$2 -> new fbf($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static fau.a<?> a(dxh<?> $$0, alf<ezm> $$1, long $$2) {
+      return a($$3 -> new fbf($$3, $$1, $$2, $$0.a()));
    }
 }

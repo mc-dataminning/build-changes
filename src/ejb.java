@@ -1,27 +1,32 @@
 import com.mojang.serialization.Codec;
 
-public class ejb extends eje<elp> {
-   public ejb(Codec<elp> $$0) {
+public class ejb extends eja {
+   public ejb(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elp> $$0) {
-      dju $$1 = $$0.b();
-      azv $$2 = $$0.d();
-      iu $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   protected boolean a(djb $$0, azv $$1, iu $$2, eah $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      iu.a $$8 = $$2.k();
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = azm.d(-$$4); $$6 <= azm.f($$4); $$6++) {
-            for (int $$7 = azm.d(-$$4); $$7 <= azm.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dmc.fV.m());
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ja.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
             }
          }
-
-         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

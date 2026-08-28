@@ -1,43 +1,57 @@
-import java.util.List;
+import java.util.OptionalInt;
 
-public class czx extends cyu {
-   public czx(cyu.a $$0) {
-      super($$0);
+public interface czx {
+   crx a(dja var1, jo var2, czd var3, ja var4);
+
+   default czx.a a() {
+      return czx.a.a;
    }
 
-   public static dcb a() {
-      jf<dma> $$0 = mf.a(mf.e);
-      return new dcb(
-         List.of(dcb.a.a(ji.a(dmc.bz.p()), 15.0F), dcb.a.b($$0.b(axc.Q), 15.0F), dcb.a.b($$0.b(axc.a), 5.0F), dcb.a.b(ji.a(dmc.fu.p(), dmc.fv.p()), 2.0F)),
-         1.0F,
-         1,
-         true
-      );
+   default void a(crx $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public bub a(dct $$0) {
-      div $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      dzz $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dps $$5 && !$$5.q($$3)) {
-         cqy $$6 = $$0.o();
-         cyy $$7 = $$0.n();
-         if ($$6 instanceof arr) {
-            ap.N.a((arr)$$6, $$2, $$7);
-         }
+   public static record a(czx.b b, float c, float d, OptionalInt e) {
+      public static final czx.a a = a().a();
 
-         $$1.a($$6, $$2, awn.lO, awo.e, 1.0F, 1.0F);
-         dzz $$8 = $$5.p($$3);
-         $$1.b($$2, $$8);
-         $$1.a(eez.c, $$2, eez.a.a($$0.o(), $$8));
-         if ($$6 != null) {
-            $$7.a(1, $$6, bxc.d($$0.p()));
-         }
-
-         return bub.a;
+      public static czx.a.a a() {
+         return new czx.a.a();
       }
 
-      return super.a($$0);
+      public static class a {
+         private czx.b a = ($$0, $$1) -> dol.a($$0, 0.7, new feq(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public czx.a.a a(czx.b $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public czx.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public czx.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public czx.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public czx.a a() {
+            return new czx.a(this.a, this.b, this.c, this.d);
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      jo getDispensePosition(ld var1, ja var2);
    }
 }

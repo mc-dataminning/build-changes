@@ -1,7 +1,8 @@
-@FunctionalInterface
-public interface erg<C extends eli> {
-   void generatePieces(erl var1, erg.a<C> var2);
+import javax.annotation.Nullable;
 
-   public static record a<C extends eli>(C a, ebx b, euw c, dic d, dix e, egx f, long g) {
-   }
+public interface erg {
+   void a(erf var1);
+
+   @Nullable
+   erf a(eqt var1);
 }

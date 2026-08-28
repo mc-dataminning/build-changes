@@ -1,63 +1,199 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class fat extends fam {
-   public static final MapCodec<fat> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dwn.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, fat::new)
-   );
-   private final dwn b;
-   private final boolean c;
+public interface fat {
+   MapCodec<fat> a = a(Integer.MAX_VALUE);
 
-   fat(List<fci> $$0, dwn $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   static MapCodec<fat> a(int $$0) {
+      return fat.f.e.dispatchMap("mode", fat::a, $$0x -> $$0x.g).validate($$1 -> {
+         if ($$1 instanceof fat.d $$2 && $$2.c().isPresent()) {
+            int $$3 = $$2.c().get();
+            if ($$3 > $$0) {
+               return DataResult.error(() -> "Size value too large: " + $$3 + ", max size is " + $$0);
+            }
+         }
+
+         return DataResult.success($$1);
+      });
    }
 
-   @Override
-   protected cyy a(cyy $$0, eyz $$1) {
-      if (this.c) {
-         $$0.a(kj.am, dwn.a, this.b, ($$0x, $$1x) -> new dwn.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(kj.am, this.b);
-      }
+   fat.f a();
 
-      return $$0;
+   default <T> List<T> a(List<T> $$0, List<T> $$1) {
+      return this.a($$0, $$1, Integer.MAX_VALUE);
    }
 
-   @Override
-   public fao<fat> b() {
-      return fap.E;
-   }
+   <T> List<T> a(List<T> var1, List<T> var2, int var3);
 
-   public static fat.a a(boolean $$0) {
-      return new fat.a($$0);
-   }
+   public static class a implements fat {
+      private static final Logger d = LogUtils.getLogger();
+      public static final fat.a b = new fat.a();
+      public static final MapCodec<fat.a> c = MapCodec.unit(() -> b);
 
-   public static class a extends fam.a<fat.a> {
-      private final dwn.a a = new dwn.a();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected fat.a a() {
-         return this;
+      private a() {
       }
 
       @Override
-      public fan b() {
-         return new fat(this.g(), this.a.a(), this.b);
+      public fat.f a() {
+         return fat.f.d;
       }
 
-      public fat.a a(je<dwm> $$0, cxw $$1) {
-         this.a.a($$0, $$1);
-         return this;
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         if ($$0.size() + $$1.size() > $$2) {
+            d.error("Contents overflow in section append");
+            return $$0;
+         } else {
+            return Stream.concat($$0.stream(), $$1.stream()).toList();
+         }
+      }
+   }
+
+   public static record b(int c) implements fat {
+      private static final Logger d = LogUtils.getLogger();
+      public static final MapCodec<fat.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayu.l.optionalFieldOf("offset", 0).forGetter(fat.b::b)).apply($$0, fat.b::new)
+      );
+
+      @Override
+      public fat.f a() {
+         return fat.f.c;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            d.error("Cannot insert when offset is out of bounds");
+            return $$0;
+         } else if ($$3 + $$1.size() > $$2) {
+            d.error("Contents overflow in section insertion");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            $$4.addAll($$0.subList(this.c, $$3));
+            return $$4.build();
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public static class c implements fat {
+      public static final fat.c b = new fat.c();
+      public static final MapCodec<fat.c> c = MapCodec.unit(() -> b);
+
+      private c() {
+      }
+
+      @Override
+      public fat.f a() {
+         return fat.f.a;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         return $$1;
+      }
+   }
+
+   public static record d(int c, Optional<Integer> d) implements fat {
+      private static final Logger e = LogUtils.getLogger();
+      public static final MapCodec<fat.d> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ayu.l.optionalFieldOf("offset", 0).forGetter(fat.d::b), ayu.l.optionalFieldOf("size").forGetter(fat.d::c)).apply($$0, fat.d::new)
+      );
+
+      public d(int $$0) {
+         this($$0, Optional.empty());
+      }
+
+      @Override
+      public fat.f a() {
+         return fat.f.b;
+      }
+
+      @Override
+      public <T> List<T> a(List<T> $$0, List<T> $$1, int $$2) {
+         int $$3 = $$0.size();
+         if (this.c > $$3) {
+            e.error("Cannot replace when offset is out of bounds");
+            return $$0;
+         } else {
+            Builder<T> $$4 = ImmutableList.builder();
+            $$4.addAll($$0.subList(0, this.c));
+            $$4.addAll($$1);
+            int $$5 = this.c + this.d.orElse($$1.size());
+            if ($$5 < $$3) {
+               $$4.addAll($$0.subList($$5, $$3));
+            }
+
+            List<T> $$6 = $$4.build();
+            if ($$6.size() > $$2) {
+               e.error("Contents overflow in section replacement");
+               return $$0;
+            } else {
+               return $$6;
+            }
+         }
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public Optional<Integer> c() {
+         return this.d;
+      }
+   }
+
+   public static record e<T>(List<T> a, fat b) {
+      public static <T> Codec<fat.e<T>> a(Codec<T> $$0, int $$1) {
+         return RecordCodecBuilder.create(
+            $$2 -> $$2.group($$0.sizeLimitedListOf($$1).fieldOf("values").forGetter($$0xx -> $$0xx.a), fat.a($$1).forGetter($$0xx -> $$0xx.b))
+                  .apply($$2, fat.e::new)
+         );
+      }
+
+      public List<T> a(List<T> $$0) {
+         return this.b.a($$0, this.a);
+      }
+   }
+
+   public static enum f implements bak {
+      a("replace_all", fat.c.c),
+      b("replace_section", fat.d.b),
+      c("insert", fat.b.b),
+      d("append", fat.a.c);
+
+      public static final Codec<fat.f> e = bak.a(fat.f::values);
+      private final String f;
+      final MapCodec<? extends fat> g;
+
+      private f(final String $$0, final MapCodec<? extends fat> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public MapCodec<? extends fat> a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 }

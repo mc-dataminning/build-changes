@@ -1,51 +1,59 @@
-public class ccy extends cdb {
-   private final int l;
-   private final boolean m;
+public class ccy implements ccz {
+   private final bxg a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-   public ccy(bxe $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+   public ccy(bxg $$0) {
+      this.a = $$0;
    }
 
-   @Override
    public void a() {
-      if (this.k == cdb.a.b) {
-         this.k = cdb.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.dA();
-         double $$1 = this.f - this.d.dC();
-         double $$2 = this.g - this.d.dG();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.H(0.0F);
-            this.d.G(0.0F);
-            return;
-         }
-
-         float $$4 = (float)(azm.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.w(this.b(this.d.dL(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aJ()) {
-            $$5 = (float)(this.h * this.d.h(byi.v));
-         } else {
-            $$5 = (float)(this.h * this.d.h(byi.l));
-         }
-
-         this.d.B($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(azm.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.x(this.b(this.d.dN(), $$8, (float)this.l));
-            this.d.H($$1 > 0.0 ? $$5 : -$$5);
-         }
+      if (this.f()) {
+         this.a.aV = this.a.dL();
+         this.c();
+         this.f = this.a.aX;
+         this.e = 0;
       } else {
-         if (!this.m) {
-            this.d.f(false);
+         if (this.e()) {
+            if (Math.abs(this.a.aX - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aX;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
-
-         this.d.H(0.0F);
-         this.d.G(0.0F);
       }
+   }
+
+   private void b() {
+      this.a.aV = azm.c(this.a.aV, this.a.aX, (float)this.a.ad());
+   }
+
+   private void c() {
+      this.a.aX = azm.c(this.a.aX, this.a.aV, (float)this.a.ad());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azm.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ad() * (1.0F - $$1);
+      this.a.aV = azm.c(this.a.aV, this.a.aX, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cZ() instanceof bxg);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dA() - this.a.K;
+      double $$1 = this.a.dG() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

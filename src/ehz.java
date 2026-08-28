@@ -1,31 +1,18 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
 
-public class ehz extends egv {
-   private final js a;
-   private final egc b;
-   private final egm c;
-   private final egp.o d;
+class ehz implements ehn {
+   public static ehz a = new ehz();
+   public static final MapCodec<ehz> e = MapCodec.unit(() -> a);
 
-   public ehz(egb $$0, js $$1, dix $$2, egc $$3, egm $$4, egp.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   private ehz() {
    }
 
-   @Deprecated
-   public Optional<dzz> a(Function<iu, je<djy>> $$0, ebw $$1, iu $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(djz $$0, iu $$1) {
+      return true;
    }
 
-   @Deprecated
-   public js c() {
-      return this.a;
-   }
-
-   public egm d() {
-      return this.c;
+   @Override
+   public eho<?> a() {
+      return eho.l;
    }
 }

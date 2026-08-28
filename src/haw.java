@@ -1,47 +1,42 @@
-public class haw extends han<hel, gfq<hel>> {
-   private static final alg a = alg.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final alg b = alg.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final alg c = alg.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final alg d = alg.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final alg e = alg.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final alg f = alg.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final alg g = alg.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final alg h = alg.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final alg i = alg.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final alg j = alg.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final alg k = alg.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final alg l = alg.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final ghy m;
-   private final ghz n;
+public class haw extends hav<hef, ghp> {
+   private static final alg a = alg.b("textures/entity/sheep/sheep_fur.png");
+   private final gfy<hef> b;
+   private final gfy<hef> c;
 
-   public haw(gxw<hel, gfq<hel>> $$0, giq $$1) {
+   public haw(gye<hef, ghp> $$0, giy $$1) {
       super($$0);
-      this.m = new ghy($$1.a(git.dD));
-      this.n = new ghz($$1.a(git.dB));
+      this.b = new gho($$1.a(gjb.cQ));
+      this.c = new gho($$1.a(gjb.cP));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hel $$3, float $$4, float $$5) {
-      cjx.b $$6 = $$3.a;
+   public void a(fjj $$0, gqa $$1, int $$2, hef $$3, float $$4, float $$5) {
+      if (!$$3.c) {
+         gfy<hef> $$6 = $$3.aj ? this.c : this.b;
+         if ($$3.z) {
+            if ($$3.ao) {
+               $$6.a($$3);
+               fjn $$7 = $$1.getBuffer(gqk.s(a));
+               $$6.a($$0, $$7, $$2, gxi.a($$3, 0.0F), -16777216);
+            }
+         } else {
+            int $$17;
+            if ($$3.aq != null && "jeb_".equals($$3.aq.getString())) {
+               int $$8 = 25;
+               int $$9 = azm.d($$3.u);
+               int $$10 = $$9 / 25 + $$3.e;
+               int $$11 = cyb.values().length;
+               int $$12 = $$10 % $$11;
+               int $$13 = ($$10 + 1) % $$11;
+               float $$14 = ((float)($$9 % 25) + azm.i($$3.u)) / 25.0F;
+               int $$15 = cjw.a(cyb.a($$12));
+               int $$16 = cjw.a(cyb.a($$13));
+               $$17 = axw.a($$14, $$15, $$16);
+            } else {
+               $$17 = cjw.a($$3.d);
+            }
 
-      gfq<hel> $$7 = (gfq<hel>)(switch ($$6.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
-
-      alg $$8 = switch ($$6) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
+            a($$6, a, $$0, $$1, $$2, $$3, $$17);
+         }
+      }
    }
 }

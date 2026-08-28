@@ -1,169 +1,266 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.jetbrains.annotations.VisibleForTesting;
+import org.joml.Matrix4f;
 
-public class gpj extends avi<gpj.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alg b = alg.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return this.a() && !this.e;
-   }
-
-   public void d() {
-      this.d = true;
-   }
-
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
+public class gpj implements AutoCloseable {
+   private static final fiy p = new fiy();
+   private static final int q = -1;
+   private final List<gqt.a> r = new ArrayList<>();
+   private final Object2IntMap<String> s = new Object2IntArrayMap();
+   private final IntList t = new IntArrayList();
+   private final List<fjb> u = new ArrayList<>();
+   private final Map<String, fjb> v = new HashMap<>();
+   private final Map<String, gqt.b> w = new HashMap<>();
+   private final int x;
    @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
+   public fjb a;
    @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
+   public fjb b;
    @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
+   public fjb c;
    @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
+   public fjb d;
+   @Nullable
+   public fjb e;
+   @Nullable
+   public fjb f;
+   @Nullable
+   public fjb g;
+   @Nullable
+   public fjb h;
+   @Nullable
+   public fjb i;
+   @Nullable
+   public fjb j;
+   @Nullable
+   public fjb k;
+   @Nullable
+   public fjb l;
+   @Nullable
+   public fjb m;
+   @Nullable
+   public fjb n;
+   @Nullable
+   public fjb o;
+
+   private gpj(int $$0) {
+      this.x = $$0;
+      this.s.defaultReturnValue(-1);
    }
 
-   protected gpj.a a(avd $$0, bqm $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (bqr $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
+   public static gpj a(fiz $$0, fiz $$1, fjo $$2) throws gqr.b {
+      int $$3 = GlStateManager.glCreateProgram();
+      if ($$3 <= 0) {
+         throw new gqr.b("Could not create shader program (returned program ID " + $$3 + ")");
+      } else {
+         $$2.a($$3);
+         GlStateManager.glAttachShader($$3, $$0.b());
+         GlStateManager.glAttachShader($$3, $$1.b());
+         GlStateManager.glLinkProgram($$3);
+         int $$4 = GlStateManager.glGetProgrami($$3, 35714);
+         if ($$4 == 0) {
+            String $$5 = GlStateManager.glGetProgramInfoLog($$3, 32768);
+            throw new gqr.b("Error encountered when linking program containing VS " + $$0.a() + " and FS " + $$1.a() + ". Log output: " + $$5);
+         } else {
+            return new gpj($$3);
          }
-      }
-
-      return new gpj.a($$2, $$3, $$4);
-   }
-
-   protected void a(gpj.a $$0, avd $$1, bqm $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(avd $$0, bqm $$1) {
-      try {
-         JsonObject var4;
-         try (
-            bqr $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
-         }
-
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
       }
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public void a(List<gqt.b> $$0, List<gqt.a> $$1) {
+      RenderSystem.assertOnRenderThread();
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      for (gqt.b $$2 : $$0) {
+         String $$3 = $$2.a();
+         int $$4 = fjb.a(this.x, $$3);
+         if ($$4 != -1) {
+            fjb $$5 = this.a($$2);
+            $$5.b($$4);
+            this.u.add($$5);
+            this.v.put($$3, $$5);
+            this.w.put($$3, $$2);
+         }
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
+      for (gqt.a $$6 : $$1) {
+         int $$7 = fjb.a(this.x, $$6.a());
+         if ($$7 != -1) {
+            this.r.add($$6);
+            this.t.add($$7);
          }
-
-         return String.join(", ", $$2);
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, fhv.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
+      this.a = this.a("ModelViewMat");
+      this.b = this.a("ProjMat");
+      this.c = this.a("TextureMat");
+      this.d = this.a("ScreenSize");
+      this.e = this.a("ColorModulator");
+      this.f = this.a("Light0_Direction");
+      this.g = this.a("Light1_Direction");
+      this.h = this.a("GlintAlpha");
+      this.i = this.a("FogStart");
+      this.j = this.a("FogEnd");
+      this.k = this.a("FogColor");
+      this.l = this.a("FogShape");
+      this.m = this.a("LineWidth");
+      this.n = this.a("GameTime");
+      this.o = this.a("ModelOffset");
+   }
 
-         String $$2 = a(this.b, fhv.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
+   @Override
+   public void close() {
+      this.u.forEach(fjb::close);
+      GlStateManager.glDeleteProgram(this.x);
+   }
 
-         String $$3 = a(this.c, fhv.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(0);
+      int $$0 = GlStateManager._getActiveTexture();
 
-         return $$0.build();
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         gqt.a $$2 = this.r.get($$1);
+         if (!this.s.containsKey($$2.a())) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
       }
+
+      GlStateManager._activeTexture($$0);
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(this.x);
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         String $$2 = this.r.get($$1).a();
+         int $$3 = this.s.getInt($$2);
+         if ($$3 != -1) {
+            int $$4 = this.t.getInt($$1);
+            fjb.b($$4, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            RenderSystem.bindTexture($$3);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (fjb $$5 : this.u) {
+         $$5.b();
+      }
+   }
+
+   @Nullable
+   public fjb a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.v.get($$0);
+   }
+
+   @Nullable
+   public gqt.b b(String $$0) {
+      return this.w.get($$0);
+   }
+
+   public fiy c(String $$0) {
+      fjb $$1 = this.a($$0);
+      return (fiy)($$1 == null ? p : $$1);
+   }
+
+   public void a(String $$0, int $$1) {
+      this.s.put($$0, $$1);
+   }
+
+   private fjb a(gqt.b $$0) {
+      int $$1 = fjb.a($$0.b());
+      int $$2 = $$0.c();
+      int $$3 = $$2 > 1 && $$2 <= 4 && $$1 < 8 ? $$2 - 1 : 0;
+      fjb $$4 = new fjb($$0.a(), $$1 + $$3, $$2);
+      $$4.a($$0);
+      return $$4;
+   }
+
+   public void a(fjo.c $$0, Matrix4f $$1, Matrix4f $$2, fin $$3) {
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         int $$5 = RenderSystem.getShaderTexture($$4);
+         this.a("Sampler" + $$4, $$5);
+      }
+
+      if (this.a != null) {
+         this.a.a($$1);
+      }
+
+      if (this.b != null) {
+         this.b.a($$2);
+      }
+
+      if (this.e != null) {
+         this.e.a(RenderSystem.getShaderColor());
+      }
+
+      if (this.h != null) {
+         this.h.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      gpo $$6 = RenderSystem.getShaderFog();
+      if (this.i != null) {
+         this.i.a($$6.a());
+      }
+
+      if (this.j != null) {
+         this.j.a($$6.b());
+      }
+
+      if (this.k != null) {
+         this.k.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
+      }
+
+      if (this.l != null) {
+         this.l.a($$6.c().a());
+      }
+
+      if (this.c != null) {
+         this.c.a(RenderSystem.getTextureMatrix());
+      }
+
+      if (this.n != null) {
+         this.n.a(RenderSystem.getShaderGameTime());
+      }
+
+      if (this.o != null) {
+         this.o.a(RenderSystem.getModelOffset());
+      }
+
+      if (this.d != null) {
+         this.d.a((float)$$3.k(), (float)$$3.l());
+      }
+
+      if (this.m != null && ($$0 == fjo.c.a || $$0 == fjo.c.b)) {
+         this.m.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights(this);
+   }
+
+   @VisibleForTesting
+   public void a(fjb $$0) {
+      this.u.add($$0);
+      this.v.put($$0.a(), $$0);
+   }
+
+   @VisibleForTesting
+   public int c() {
+      return this.x;
    }
 }

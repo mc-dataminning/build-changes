@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 
 public class anm {
    private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.fill.toobig", $$0, $$1));
-   static final ga b = new ga(dmc.a.m(), Collections.emptySet(), null);
+   static final ga b = new ga(dmh.a.m(), Collections.emptySet(), null);
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("commands.fill.failed"));
 
    public static void a(CommandDispatcher<ei> $$0, ee $$1) {
@@ -29,7 +29,7 @@ public class anm {
                                  ((LiteralArgumentBuilder)ej.a("replace")
                                        .executes(
                                           $$0x -> a(
-                                                (ei)$$0x.getSource(), eql.a(gf.a($$0x, "from"), gf.a($$0x, "to")), gc.a($$0x, "block"), anm.c.a, null, false
+                                                (ei)$$0x.getSource(), eqt.a(gf.a($$0x, "from"), gf.a($$0x, "to")), gc.a($$0x, "block"), anm.c.a, null, false
                                              )
                                        ))
                                     .then(
@@ -48,7 +48,7 @@ public class anm {
                                     .executes(
                                        $$0x -> a(
                                              (ei)$$0x.getSource(),
-                                             eql.a(gf.a($$0x, "from"), gf.a($$0x, "to")),
+                                             eqt.a(gf.a($$0x, "from"), gf.a($$0x, "to")),
                                              gc.a($$0x, "block"),
                                              anm.c.a,
                                              $$0xx -> $$0xx.c().v($$0xx.d()),
@@ -68,28 +68,28 @@ public class anm {
       ant<CommandContext<ei>, iu> $$2,
       ant<CommandContext<ei>, iu> $$3,
       ant<CommandContext<ei>, ga> $$4,
-      anm.d<CommandContext<ei>, Predicate<ead>> $$5
+      anm.d<CommandContext<ei>, Predicate<eal>> $$5
    ) {
-      return $$1.executes($$4x -> a((ei)$$4x.getSource(), eql.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.a, $$5.apply($$4x), false))
+      return $$1.executes($$4x -> a((ei)$$4x.getSource(), eqt.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.a, $$5.apply($$4x), false))
          .then(
             ej.a("outline")
-               .executes($$4x -> a((ei)$$4x.getSource(), eql.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.b, $$5.apply($$4x), false))
+               .executes($$4x -> a((ei)$$4x.getSource(), eqt.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.b, $$5.apply($$4x), false))
          )
          .then(
-            ej.a("hollow").executes($$4x -> a((ei)$$4x.getSource(), eql.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.c, $$5.apply($$4x), false))
+            ej.a("hollow").executes($$4x -> a((ei)$$4x.getSource(), eqt.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.c, $$5.apply($$4x), false))
          )
          .then(
             ej.a("destroy")
-               .executes($$4x -> a((ei)$$4x.getSource(), eql.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.d, $$5.apply($$4x), false))
+               .executes($$4x -> a((ei)$$4x.getSource(), eqt.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.d, $$5.apply($$4x), false))
          )
          .then(
-            ej.a("strict").executes($$4x -> a((ei)$$4x.getSource(), eql.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.a, $$5.apply($$4x), true))
+            ej.a("strict").executes($$4x -> a((ei)$$4x.getSource(), eqt.a($$2.apply($$4x), $$3.apply($$4x)), $$4.apply($$4x), anm.c.a, $$5.apply($$4x), true))
          );
    }
 
-   private static int a(ei $$0, eql $$1, ga $$2, anm.c $$3, @Nullable Predicate<ead> $$4, boolean $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, eqt $$1, ga $$2, anm.c $$3, @Nullable Predicate<eal> $$4, boolean $$5) throws CommandSyntaxException {
       int $$6 = $$1.d() * $$1.e() * $$1.f();
-      int $$7 = $$0.e().O().d(dir.A);
+      int $$7 = $$0.e().O().d(diw.B);
       if ($$6 > $$7) {
          throw a.create($$7, $$6);
       } else {
@@ -101,7 +101,7 @@ public class anm {
             int $$10 = 0;
 
             for (iu $$11 : iu.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
-               if ($$4 == null || $$4.test(new ead($$9, $$11, true))) {
+               if ($$4 == null || $$4.test(new eal($$9, $$11, true))) {
                   boolean $$12 = false;
                   if ($$3.f.affect($$9, $$11)) {
                      $$12 = true;
@@ -112,7 +112,7 @@ public class anm {
                      if ($$12) {
                         $$10++;
                      }
-                  } else if (!$$13.a($$9, $$11, 2 | ($$5 ? 304 : 256))) {
+                  } else if (!$$13.a($$9, $$11, 2 | ($$5 ? 816 : 256))) {
                      if ($$12) {
                         $$10++;
                      }
@@ -127,7 +127,7 @@ public class anm {
             }
 
             for (iu $$14 : $$8) {
-               dma $$15 = $$9.a_($$14).b();
+               dmf $$15 = $$9.a_($$14).b();
                $$9.a($$14, $$15);
             }
 
@@ -154,7 +154,7 @@ public class anm {
       anm.b a = ($$0, $$1, $$2, $$3) -> $$2;
 
       @Nullable
-      ga filter(eql var1, iu var2, ga var3, arq var4);
+      ga filter(eqt var1, iu var2, ga var3, arq var4);
    }
 
    static enum c {

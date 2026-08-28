@@ -1,35 +1,21 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ccs<E extends cqb> extends byt<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
-   public ccs(int $$0) {
-      super(ImmutableMap.of(cge.aC, cgf.a, cge.p, cgf.b, cge.n, cgf.b, cge.o, cgf.c, cge.C, cgf.c, cge.aA, cgf.c, cge.aH, cgf.c), $$0);
-   }
-
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arq $$0, E $$1, long $$2) {
-      $$1.a(awn.CW, 5.0F, 1.0F);
-   }
-
-   protected void c(arq $$0, E $$1, long $$2) {
-      if ($$1.c(bxo.m)) {
-         $$1.b(bxo.a);
-      }
-
-      $$1.eb().b(cge.aC);
-      $$1.eb().c(cge.C).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
-
-         if (!$$1.eb().a(cge.aA)) {
-            cqc.a($$1, $$1x.dv());
-         }
-      });
+public class ccs {
+   public static <E extends cqf> byw<E> a(Function<E, Optional<? extends bxe>> $$0) {
+      return cci.a(
+         (Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$1 -> $$1.group($$1.c(cgg.az), $$1.c(cgg.p), $$1.a(cgg.F))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends bxe> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::b).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

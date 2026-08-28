@@ -1,8 +1,8 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ctb extends cta.b<ctd> {
-   Codec<ctb> b = mf.aD.q().dispatch(ctb::a, $$0 -> $$0);
-
-   MapCodec<? extends ctb> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ctb {
 }

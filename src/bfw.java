@@ -11,7 +11,7 @@ public class bfw extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "ForcedChunkToTicketFix",
-         this.getInputSchema().getType(biw.i),
+         this.getInputSchema().getType(bix.i),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
                $$0x -> $$0x.update(

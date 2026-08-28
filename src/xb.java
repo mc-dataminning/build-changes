@@ -26,11 +26,11 @@ public class xb {
       }
    }
 
-   public static Optional<xm> a(@Nullable ei $$0, Optional<wy> $$1, @Nullable bwd $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<xm> a(@Nullable ei $$0, Optional<wy> $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static xm a(@Nullable ei $$0, wy $$1, @Nullable bwd $$2, int $$3) throws CommandSyntaxException {
+   public static xm a(@Nullable ei $$0, wy $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class xb {
       }
    }
 
-   private static xv a(@Nullable ei $$0, xv $$1, @Nullable bwd $$2, int $$3) throws CommandSyntaxException {
+   private static xv a(@Nullable ei $$0, xv $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
       if ($$1.j() instanceof xe.e var5) {
          xe.e var10000 = var5;
 

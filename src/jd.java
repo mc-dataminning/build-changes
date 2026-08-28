@@ -3,14 +3,14 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
 
-public record jd(alf<div> d, iu e) {
+public record jd(alf<dja> d, iu e) {
    public static final MapCodec<jd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(div.h.fieldOf("dimension").forGetter(jd::a), iu.a.fieldOf("pos").forGetter(jd::b)).apply($$0, jd::a)
+      $$0 -> $$0.group(dja.h.fieldOf("dimension").forGetter(jd::a), iu.a.fieldOf("pos").forGetter(jd::b)).apply($$0, jd::a)
    );
    public static final Codec<jd> b = a.codec();
-   public static final yw<ByteBuf, jd> c = yw.a(alf.b(mg.bn), jd::a, iu.b, jd::b, jd::a);
+   public static final yw<ByteBuf, jd> c = yw.a(alf.b(mg.bo), jd::a, iu.b, jd::b, jd::a);
 
-   public static jd a(alf<div> $$0, iu $$1) {
+   public static jd a(alf<dja> $$0, iu $$1) {
       return new jd($$0, $$1);
    }
 
@@ -19,11 +19,11 @@ public record jd(alf<div> d, iu e) {
       return this.d + " " + this.e;
    }
 
-   public boolean a(alf<div> $$0, iu $$1, int $$2) {
+   public boolean a(alf<dja> $$0, iu $$1, int $$2) {
       return this.d.equals($$0) && this.e.l($$1) <= $$2;
    }
 
-   public alf<div> a() {
+   public alf<dja> a() {
       return this.d;
    }
 

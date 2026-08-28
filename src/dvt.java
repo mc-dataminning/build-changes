@@ -1,96 +1,69 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public interface dvt extends dnc<dvt.a> {
-   Supplier<BiMap<dma, dma>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dmc.rB, dmc.rC)
-            .put(dmc.rC, dmc.rD)
-            .put(dmc.rD, dmc.rE)
-            .put(dmc.rK, dmc.rJ)
-            .put(dmc.rJ, dmc.rI)
-            .put(dmc.rI, dmc.rH)
-            .put(dmc.rO, dmc.rN)
-            .put(dmc.rN, dmc.rM)
-            .put(dmc.rM, dmc.rL)
-            .put(dmc.sa, dmc.rZ)
-            .put(dmc.rZ, dmc.rY)
-            .put(dmc.rY, dmc.rX)
-            .put(dmc.rW, dmc.rV)
-            .put(dmc.rV, dmc.rU)
-            .put(dmc.rU, dmc.rT)
-            .put(dmc.sr, dmc.ss)
-            .put(dmc.ss, dmc.su)
-            .put(dmc.su, dmc.st)
-            .put(dmc.sz, dmc.sA)
-            .put(dmc.sA, dmc.sC)
-            .put(dmc.sC, dmc.sB)
-            .put(dmc.sH, dmc.sI)
-            .put(dmc.sI, dmc.sJ)
-            .put(dmc.sJ, dmc.sK)
-            .put(dmc.sP, dmc.sQ)
-            .put(dmc.sQ, dmc.sR)
-            .put(dmc.sR, dmc.sS)
-            .build()
-   );
-   Supplier<BiMap<dma, dma>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class dvt extends dkw {
+   public static final MapCodec<dvt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyb.q.fieldOf("color").forGetter(dkw::b), t()).apply($$0, dvt::new));
+   public static final ebf<ja> b = dqg.e;
+   private static final Map<ja, ffk> c = ffh.c(dmf.a(16.0, 0.0, 12.5, 14.0, 16.0));
 
-   static Optional<dma> a(dma $$0) {
-      return Optional.ofNullable((dma)w_.get().get($$0));
+   @Override
+   public MapCodec<dvt> a() {
+      return a;
    }
 
-   static dma b(dma $$0) {
-      dma $$1 = $$0;
-
-      for (dma $$2 = (dma)w_.get().get($$0); $$2 != null; $$2 = (dma)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dzz> b(dzz $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<dma> c(dma $$0) {
-      return Optional.ofNullable((dma)v_.get().get($$0));
-   }
-
-   static dzz c(dzz $$0) {
-      return b($$0.b()).m($$0);
+   public dvt(cyb $$0, eag.d $$1) {
+      super($$0, $$1);
+      this.l(this.C.b().b(b, ja.c));
    }
 
    @Override
-   default Optional<dzz> k_(dzz $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
    }
 
    @Override
-   default float aq_() {
-      return this.c() == dvt.a.a ? 0.75F : 1.0F;
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      return $$4 == $$0.c(b).g() && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public static enum a implements bak {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return c.get($$0.c(b));
+   }
 
-      public static final Codec<dvt.a> e = bak.a(dvt.a::values);
-      private final String f;
+   @Override
+   public eah a(dcw $$0) {
+      eah $$1 = this.m();
+      djd $$2 = $$0.q();
+      iu $$3 = $$0.a();
+      ja[] $$4 = $$0.f();
 
-      private a(final String $$0) {
-         this.f = $$0;
+      for (ja $$5 : $$4) {
+         if ($$5.o().d()) {
+            ja $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   protected eah a(eah $$0, dsz $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected eah a(eah $$0, dri $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 }

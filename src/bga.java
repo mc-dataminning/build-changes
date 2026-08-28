@@ -13,7 +13,7 @@ public class bga extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.c);
+      Type<?> $$0 = this.getInputSchema().getType(bix.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       return this.fixTypeEverywhereTyped("HeightmapRenamingFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }

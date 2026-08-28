@@ -1,70 +1,95 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public abstract class cdr extends cea {
+   protected bxg d;
+   protected iu e = iu.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class cdr extends cdy {
-   protected final bxk a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final div f;
-
-   public cdr(bxk $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dV();
-      this.a(EnumSet.of(cdy.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.f() != null) {
-         return false;
-      } else if (!this.f.V()) {
-         return false;
-      } else if (!this.a.bY()) {
-         return false;
-      } else if (!this.f.h(this.a.dv())) {
-         return false;
-      } else {
-         return !this.a.a(bwn.f).f() ? false : this.h();
+   public cdr(bxg $$0) {
+      this.d = $$0;
+      if (!chy.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
       }
    }
 
    protected boolean h() {
-      fei $$0 = this.i();
-      if ($$0 == null) {
+      if (!this.f) {
          return false;
       } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
+         eah $$0 = this.d.dV().a_(this.e);
+         if (!($$0.b() instanceof dom)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(dom.e);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         eah $$1 = this.d.dV().a_(this.e);
+         if ($$1.b() instanceof dom) {
+            ((dom)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
+         }
+      }
+   }
+
+   @Override
+   public boolean b() {
+      if (!chy.a(this.d)) {
+         return false;
+      } else if (!this.d.P) {
+         return false;
+      } else {
+         cgn $$0 = (cgn)this.d.O();
+         exc $$1 = $$0.i();
+         if ($$1 != null && !$$1.c()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               exa $$3 = $$1.a($$2);
+               this.e = new iu($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.h((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
+                  this.f = dom.a(this.d.dV(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.dv().d();
+            this.f = dom.a(this.d.dV(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k();
+      return !this.a;
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
    }
 
-   @Nullable
-   protected fei i() {
-      azv $$0 = this.a.dY();
-      iu $$1 = this.a.dv();
+   @Override
+   public boolean R_() {
+      return true;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         iu $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return fei.c($$3);
-         }
+   @Override
+   public void a() {
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
-
-      return null;
    }
 }

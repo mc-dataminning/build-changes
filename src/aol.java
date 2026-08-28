@@ -33,10 +33,10 @@ public class aol {
    }
 
    private static int a(ei $$0) throws CommandSyntaxException {
-      csn $$1 = a($$0.h());
+      css $$1 = a($$0.h());
       if ($$1 != null) {
-         for (cso $$3 : $$1.h()) {
-            $$3.a(new bvh(bvj.x, 1000, 1));
+         for (cst $$3 : $$1.h()) {
+            $$3.a(new bvj(bvl.x, 1000, 1));
          }
       }
 
@@ -44,7 +44,7 @@ public class aol {
    }
 
    private static int a(ei $$0, int $$1) throws CommandSyntaxException {
-      csn $$2 = a($$0.h());
+      css $$2 = a($$0.h());
       if ($$2 != null) {
          int $$3 = $$2.k();
          if ($$1 > $$3) {
@@ -63,15 +63,15 @@ public class aol {
 
    private static int b(ei $$0) {
       $$0.a(() -> wy.b("Spawned a raid captain"), false);
-      cso $$1 = bwm.aT.a($$0.e(), bwl.n);
+      cst $$1 = bwo.aT.a($$0.e(), bwn.n);
       if ($$1 == null) {
          $$0.b(wy.b("Pillager failed to spawn"));
          return 0;
       } else {
          $$1.w(true);
-         $$1.a(bwn.f, csn.a($$0.u().f(mg.aF)));
+         $$1.a(bwp.f, css.a($$0.u().f(mg.aF)));
          $$1.a_($$0.d().d, $$0.d().e, $$0.d().f);
-         $$1.a($$0.e(), $$0.e().d_(iu.a((jo)$$0.d())), bwl.n, null);
+         $$1.a($$0.e(), $$0.e().d_(iu.a((jo)$$0.d())), bwn.n, null);
          $$0.e().a_($$1);
          return 1;
       }
@@ -80,8 +80,8 @@ public class aol {
    private static int a(ei $$0, @Nullable wy $$1) {
       if ($$1 != null && $$1.getString().equals("local")) {
          arq $$2 = $$0.e();
-         fei $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.d, $$3.e, $$3.f, awn.vN, awo.g, 2.0F, 1.0F, $$2.A.g());
+         feq $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.d, $$3.e, $$3.f, awn.vQ, awo.g, 2.0F, 1.0F, $$2.A.g());
       }
 
       return 1;
@@ -94,8 +94,8 @@ public class aol {
          $$0.b(wy.b("Raid already started close by"));
          return -1;
       } else {
-         csp $$4 = $$2.y().B();
-         csn $$5 = $$4.a($$2, $$2.dv());
+         csu $$4 = $$2.y().B();
+         css $$5 = $$4.a($$2, $$2.dv());
          if ($$5 != null) {
             $$5.a($$1);
             $$4.f();
@@ -111,7 +111,7 @@ public class aol {
    private static int c(ei $$0) throws CommandSyntaxException {
       arr $$1 = $$0.h();
       iu $$2 = $$1.dv();
-      csn $$3 = $$1.y().d($$2);
+      css $$3 = $$1.y().d($$2);
       if ($$3 != null) {
          $$3.m();
          $$0.a(() -> wy.b("Stopped raid"), false);
@@ -123,7 +123,7 @@ public class aol {
    }
 
    private static int d(ei $$0) throws CommandSyntaxException {
-      csn $$1 = a($$0.h());
+      css $$1 = a($$0.h());
       if ($$1 != null) {
          StringBuilder $$2 = new StringBuilder();
          $$2.append("Found a started raid! ");
@@ -148,7 +148,7 @@ public class aol {
    }
 
    @Nullable
-   private static csn a(arr $$0) {
+   private static css a(arr $$0) {
       return $$0.y().d($$0.dv());
    }
 }

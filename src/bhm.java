@@ -7,7 +7,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bhm extends bhr {
    public bhm(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", biw.D, $$1);
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bix.D, $$1);
    }
 
    @Override

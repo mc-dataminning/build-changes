@@ -1,8 +1,8 @@
 public record add(int b, float c) implements zf<abu> {
    public static final yw<vu, add> a = zf.a(add::a, add::new);
 
-   public add(bxc $$0) {
-      this($$0.ar(), $$0.eL());
+   public add(bxe $$0) {
+      this($$0.ar(), $$0.eM());
    }
 
    private add(vu $$0) {

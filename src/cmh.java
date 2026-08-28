@@ -1,30 +1,43 @@
-public class cmh extends clz {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public cmh(clw $$0) {
+public class cmh extends cmc {
+   @Nullable
+   private feq b;
+
+   public cmh(cma $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      this.a.dV().a(this.a.dA(), this.a.dC(), this.a.dG(), awn.iA, this.a.dm(), 2.5F, 0.8F + this.a.dY().i() * 0.3F, false);
-   }
-
-   @Override
    public void a(arq $$0) {
-      if (this.c++ >= 40) {
-         this.a.t().a(cmm.f);
+      if (this.b == null) {
+         this.b = this.a.dt();
       }
    }
 
    @Override
-   public void c() {
-      this.c = 0;
+   public boolean a() {
+      return true;
    }
 
    @Override
-   public cmm<cmh> h() {
-      return cmm.h;
+   public void c() {
+      this.b = null;
+   }
+
+   @Override
+   public float e() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public feq f() {
+      return this.b;
+   }
+
+   @Override
+   public cmq<cmh> h() {
+      return cmq.k;
    }
 }

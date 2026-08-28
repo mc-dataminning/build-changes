@@ -1,11 +1,11 @@
-import javax.annotation.Nullable;
+public class hdd extends hco {
+   public clq a;
+   public cll h;
+   public czd i;
 
-public class hdd extends hcf {
-   public ja a = ja.c;
-   public final hfi b = new hfi();
-   public int c;
-   public boolean d;
-   @Nullable
-   public exz e;
-   public final hhy f = new hhy();
+   public hdd() {
+      this.a = clq.a;
+      this.h = cll.a;
+      this.i = czd.k;
+   }
 }

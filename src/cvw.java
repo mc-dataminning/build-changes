@@ -1,88 +1,57 @@
-public class cvw extends cuq {
-   private static final int q = 1;
-   private static final int r = 1;
-   public static final int m = 1;
-   public static final int n = 2;
-   public static final int o = 3;
-   public static final int p = 100;
-   private final btu s;
-   private final cvc t;
+public class cvw extends cuv {
+   public static final int m = 5;
+   private final btw n;
 
-   public cvw(int $$0) {
-      this($$0, new bui(1), new cwm(1));
+   public cvw(int $$0, crb $$1) {
+      this($$0, $$1, new buk(5));
    }
 
-   public cvw(int $$0, btu $$1, cvc $$2) {
-      super(cvz.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.s = $$1;
-      this.t = $$2;
-      this.a(new cwn($$1, 0, 0, 0) {
-         @Override
-         public void d() {
-            super.d();
-            cvw.this.a(this.c);
-         }
-      });
-      this.a($$2);
+   public cvw(int $$0, crb $$1, btw $$2) {
+      super(cwe.q, $$0);
+      this.n = $$2;
+      a($$2, 5);
+      $$2.c_($$1.h);
+
+      for (int $$3 = 0; $$3 < 5; $$3++) {
+         this.a(new cws($$2, $$3, 44 + $$3 * 18, 20));
+      }
+
+      this.c($$1, 8, 51);
    }
 
    @Override
-   public boolean a(cqy $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.b(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.t.a(0);
-               this.b(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.t.a(0);
-               this.b(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gv()) {
-                  return false;
-               }
+   public boolean b(crc $$0) {
+      return this.n.a($$0);
+   }
 
-               cyy $$5 = this.s.b(0);
-               this.s.e();
-               if (!$$0.gi().f($$5)) {
-                  $$0.a($$5, false);
-               }
+   @Override
+   public czd b(crc $$0, int $$1) {
+      czd $$2 = czd.k;
+      cws $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czd $$4 = $$3.g();
+         $$2 = $$4.v();
+         if ($$1 < this.n.b()) {
+            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
+               return czd.k;
+            }
+         } else if (!this.a($$4, 0, this.n.b(), false)) {
+            return czd.k;
+         }
 
-               return true;
-            default:
-               return false;
+         if ($$4.f()) {
+            $$3.e(czd.k);
+         } else {
+            $$3.d();
          }
       }
+
+      return $$2;
    }
 
    @Override
-   public cyy b(cqy $$0, int $$1) {
-      return cyy.k;
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public boolean b(cqy $$0) {
-      return this.s.a($$0);
-   }
-
-   public cyy l() {
-      return this.s.a(0);
-   }
-
-   public int m() {
-      return this.t.a(0);
+   public void a(crc $$0) {
+      super.a($$0);
+      this.n.c($$0);
    }
 }

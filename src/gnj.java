@@ -1,40 +1,27 @@
-public class gnj extends goa {
-   private final gnv a;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   gnj(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gnv $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+public class gnj {
+   private final List<alg> a;
+
+   private gnj(List<alg> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 240;
+   public List<alg> a() {
+      return this.a;
    }
 
-   @Override
-   public gne b() {
-      return gne.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(gnv a) implements gnd<lz> {
-      public gna a(lz $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnj $$8 = new gnj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+   public static gnj a(JsonObject $$0) {
+      JsonArray $$1 = azc.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new gnj(List.of());
+      } else {
+         List<alg> $$2 = Streams.stream($$1).map($$0x -> azc.a($$0x, "texture")).map(alg::a).collect(ImmutableList.toImmutableList());
+         return new gnj($$2);
       }
    }
 }

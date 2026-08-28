@@ -1,43 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class cgx extends chk<cph> {
+public class cgx extends chg {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cge<?>> a() {
-      return ImmutableSet.of(cge.h, cge.ax, cge.ar, cge.aq, cge.at, cge.au, new cge[0]);
+   protected boolean a(arq $$0, bxe $$1, bxe $$2) {
+      return !$$1.ec().a(cgg.V) && chm.c($$0, $$1, $$2) && ckv.i($$2) && !this.a($$1, $$2) ? $$2.a($$1, 10.0) : false;
    }
 
-   protected void a(arq $$0, cph $$1) {
-      byc<?> $$2 = $$1.eb();
-      $$2.a(cge.ax, this.b($$0, $$1));
-      Optional<cpn> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<cph> $$5 = Lists.newArrayList();
-      cgg $$6 = $$2.c(cge.h).orElse(cgg.a());
-
-      for (bxc $$7 : $$6.b($$0x -> !$$0x.n_() && ($$0x instanceof cpn || $$0x instanceof cph))) {
-         if ($$7 instanceof cpn $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof cph $$9) {
-            $$5.add($$9);
-         }
-      }
-
-      $$2.a(cge.ar, $$3);
-      $$2.a(cge.aq, $$5);
-      $$2.a(cge.at, $$4);
-      $$2.a(cge.au, $$5.size());
+   private boolean a(bxe $$0, bxe $$1) {
+      List<UUID> $$2 = $$0.ec().c(cgg.ab).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cG());
    }
 
-   private Optional<iu> b(arq $$0, cph $$1) {
-      return iu.a($$1.dv(), 8, 4, $$1x -> $$0.a_($$1x).a(axc.aU));
+   @Override
+   protected cgg<bxe> b() {
+      return cgg.C;
    }
 }

@@ -1,79 +1,666 @@
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Locale;
+import javax.annotation.Nullable;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+import org.slf4j.Logger;
 
-public class gpq {
-   private static final float a = -0.01F;
-   private static final float b = -0.001F;
-   private static final int c = 128;
-   private static final int d = 128;
-   private final hjn e;
-   private final hjm f;
+public class gpq implements AutoCloseable {
+   private static final alg e = alg.b("blur");
+   public static final int a = 10;
+   private static final Logger f = LogUtils.getLogger();
+   private static final boolean g = false;
+   public static final float b = 0.05F;
+   private static final float h = 1000.0F;
+   private static final float i = 20.0F;
+   private static final float j = 7.0F;
+   private final foz k;
+   private final avd l;
+   private final azv m = azv.a();
+   private float n;
+   public final gpt c;
+   private final gqi o;
+   private float p;
+   private float q;
+   private float r;
+   private float s;
+   private float t;
+   private float u;
+   private boolean v = true;
+   private boolean w = true;
+   private long x;
+   private boolean y;
+   private long z = af.c();
+   private final gpx A;
+   private final hin B = new hin();
+   private boolean C;
+   private float D = 1.0F;
+   private float E;
+   private float F;
+   public static final int d = 40;
+   @Nullable
+   private czd G;
+   private int H;
+   private float I;
+   private float J;
+   private final fis K = new fis(3);
+   @Nullable
+   private alg L;
+   private boolean M;
+   private final fog N = new fog();
 
-   public gpq(hjm $$0, hjn $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public gpq(foz $$0, gpt $$1, avd $$2, gqi $$3) {
+      this.k = $$0;
+      this.l = $$2;
+      this.c = $$1;
+      this.A = new gpx(this, $$0);
+      this.o = $$3;
    }
 
-   public void a(hhy $$0, fjc $$1, gps $$2, boolean $$3, int $$4) {
-      Matrix4f $$5 = $$1.c().a();
-      fjg $$6 = $$2.getBuffer(gqc.u($$0.a));
-      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
-      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
-      int $$7 = 0;
+   @Override
+   public void close() {
+      this.A.close();
+      this.B.close();
+      this.K.close();
+   }
 
-      for (hhy.a $$8 : $$0.b) {
-         if (!$$3 || $$8.e) {
-            $$1.a();
-            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
-            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
-            $$1.b(4.0F, 4.0F, 3.0F);
-            $$1.a(-0.125F, 0.125F, 0.0F);
-            Matrix4f $$9 = $$1.c().a();
-            hip $$10 = $$8.a;
-            if ($$10 != null) {
-               fjg $$11 = $$2.getBuffer(gqc.u($$10.i()));
-               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
-               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
-               $$1.b();
-            }
+   public void a(boolean $$0) {
+      this.v = $$0;
+   }
 
-            if ($$8.f != null) {
-               frm $$12 = fos.Q().h;
-               float $$13 = (float)$$12.a($$8.f);
-               float $$14 = azm.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
-               $$1.a();
-               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
-               $$1.b($$14, $$14, 1.0F);
-               $$1.a(0.0F, 0.0F, -0.1F);
-               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, frm.a.a, Integer.MIN_VALUE, $$4, false);
-               $$1.b();
-            }
+   public void b(boolean $$0) {
+      this.w = $$0;
+   }
 
-            $$7++;
+   public void c(boolean $$0) {
+      this.C = $$0;
+   }
+
+   public boolean a() {
+      return this.C;
+   }
+
+   public void b() {
+      this.L = null;
+   }
+
+   public void c() {
+      this.M = !this.M;
+   }
+
+   public void a(@Nullable bwf $$0) {
+      this.L = null;
+      if ($$0 instanceof cnp) {
+         this.a(alg.b("creeper"));
+      } else if ($$0 instanceof cop) {
+         this.a(alg.b("spider"));
+      } else if ($$0 instanceof cnt) {
+         this.a(alg.b("invert"));
+      }
+   }
+
+   private void a(alg $$0) {
+      this.L = $$0;
+      this.M = true;
+   }
+
+   public void d() {
+      float $$0 = (float)this.k.n.r();
+      if (!($$0 < 1.0F)) {
+         gqe $$1 = this.k.ab().a(e, gpw.h);
+         if ($$1 != null) {
+            $$1.a("Radius", $$0);
+            $$1.a(this.k.h(), this.K);
          }
       }
    }
 
-   public void a(exz $$0, eyb $$1, hhy $$2) {
-      $$2.a = this.e.b($$0, $$1);
-      $$2.b.clear();
-
-      for (exv $$3 : $$1.e()) {
-         $$2.b.add(this.a($$3));
+   public void a(avg $$0) {
+      try {
+         this.k.ab().a($$0, gpk.aa, gpk.ab, gpk.i, gpk.e);
+      } catch (gqr.b | IOException var3) {
+         throw new RuntimeException("Could not preload shaders for loading UI", var3);
       }
    }
 
-   private hhy.a a(exv $$0) {
-      hhy.a $$1 = new hhy.a();
-      $$1.a = this.f.a($$0);
-      $$1.b = $$0.d();
-      $$1.c = $$0.e();
-      $$1.d = $$0.f();
-      $$1.f = $$0.g().orElse(null);
-      $$1.e = $$0.b();
-      return $$1;
+   public void e() {
+      this.n();
+      this.A.a();
+      gox $$0 = this.k.t;
+      if (this.k.ao() == null) {
+         this.k.a($$0);
+      }
+
+      this.N.a();
+      this.c.a();
+      float $$1 = $$0.cw;
+      float $$2 = $$0.a(bvl.i, 1.0F);
+      if (!($$1 > 0.0F) && !($$2 > 0.0F)) {
+         this.q = 0.0F;
+      } else {
+         this.q = ($$1 * 20.0F + $$2 * 7.0F) / ($$1 + $$2);
+         this.p = this.p + this.q;
+      }
+
+      if (this.k.s.u().i()) {
+         this.k.f.a(this.N);
+         this.u = this.t;
+         if (this.k.m.j().c()) {
+            this.t += 0.05F;
+            if (this.t > 1.0F) {
+               this.t = 1.0F;
+            }
+         } else if (this.t > 0.0F) {
+            this.t -= 0.0125F;
+         }
+
+         if (this.H > 0) {
+            this.H--;
+            if (this.H == 0) {
+               this.G = null;
+            }
+         }
+      }
+   }
+
+   @Nullable
+   public alg f() {
+      return this.L;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.K.b();
+      this.k.f.a($$0, $$1);
+   }
+
+   public void a(float $$0) {
+      bwf $$1 = this.k.ao();
+      if ($$1 != null) {
+         if (this.k.s != null && this.k.t != null) {
+            bqn.a().a("pick");
+            double $$2 = this.k.t.gL();
+            double $$3 = this.k.t.gM();
+            feo $$4 = this.a($$1, $$2, $$3, $$0);
+            this.k.w = $$4;
+            this.k.v = $$4 instanceof fen $$5 ? $$5.a() : null;
+            bqn.a().c();
+         }
+      }
+   }
+
+   private feo a(bwf $$0, double $$1, double $$2, float $$3) {
+      double $$4 = Math.max($$1, $$2);
+      double $$5 = azm.k($$4);
+      feq $$6 = $$0.n($$3);
+      feo $$7 = $$0.a($$4, $$3, false);
+      double $$8 = $$7.g().g($$6);
+      if ($$7.d() != feo.a.a) {
+         $$5 = $$8;
+         $$4 = Math.sqrt($$8);
+      }
+
+      feq $$9 = $$0.h($$3);
+      feq $$10 = $$6.b($$9.d * $$4, $$9.e * $$4, $$9.f * $$4);
+      float $$11 = 1.0F;
+      fel $$12 = $$0.cR().b($$9.c($$4)).c(1.0, 1.0, 1.0);
+      fen $$13 = crz.a($$0, $$6, $$10, $$12, bwm.h, $$5);
+      return $$13 != null && $$13.g().g($$6) < $$8 ? a($$13, $$6, $$2) : a($$7, $$6, $$1);
+   }
+
+   private static feo a(feo $$0, feq $$1, double $$2) {
+      feq $$3 = $$0.g();
+      if (!$$3.a((jo)$$1, $$2)) {
+         feq $$4 = $$0.g();
+         ja $$5 = ja.a($$4.d - $$1.d, $$4.e - $$1.e, $$4.f - $$1.f);
+         return fem.a($$4, $$5, iu.a((jo)$$4));
+      } else {
+         return $$0;
+      }
+   }
+
+   private void n() {
+      float $$4;
+      if (this.k.ao() instanceof gou $$0) {
+         fpd $$1 = this.k.n;
+         boolean $$2 = $$1.aE().a();
+         float $$3 = $$1.an().c().floatValue();
+         $$4 = $$0.a($$2, $$3);
+      } else {
+         $$4 = 1.0F;
+      }
+
+      this.s = this.r;
+      this.r = this.r + ($$4 - this.r) * 0.5F;
+      this.r = azm.a(this.r, 0.1F, 1.5F);
+   }
+
+   private float a(fog $$0, float $$1, boolean $$2) {
+      if (this.C) {
+         return 90.0F;
+      } else {
+         float $$3 = 70.0F;
+         if ($$2) {
+            $$3 = (float)this.k.n.ak().c().intValue();
+            $$3 *= azm.h($$1, this.s, this.r);
+         }
+
+         if ($$0.g() instanceof bxe $$4 && $$4.eH()) {
+            float $$5 = Math.min((float)$$4.aP + $$1, 20.0F);
+            $$3 /= (1.0F - 500.0F / ($$5 + 500.0F)) * 2.0F + 1.0F;
+         }
+
+         ewq $$6 = $$0.k();
+         if ($$6 == ewq.a || $$6 == ewq.b) {
+            float $$7 = this.k.n.an().c().floatValue();
+            $$3 *= azm.h($$7, 1.0F, 0.85714287F);
+         }
+
+         return $$3;
+      }
+   }
+
+   private void a(fjj $$0, float $$1) {
+      if (this.k.ao() instanceof bxe $$2) {
+         float $$3 = (float)$$2.aN - $$1;
+         if ($$2.eH()) {
+            float $$4 = Math.min((float)$$2.aP + $$1, 20.0F);
+            $$0.a(a.f.rotationDegrees(40.0F - 8000.0F / ($$4 + 200.0F)));
+         }
+
+         if ($$3 < 0.0F) {
+            return;
+         }
+
+         $$3 /= (float)$$2.aO;
+         $$3 = azm.a($$3 * $$3 * $$3 * $$3 * (float) Math.PI);
+         float $$5 = $$2.eM();
+         $$0.a(a.d.rotationDegrees(-$$5));
+         float $$6 = (float)((double)(-$$3) * 14.0 * this.k.n.ar().c());
+         $$0.a(a.f.rotationDegrees($$6));
+         $$0.a(a.d.rotationDegrees($$5));
+      }
+   }
+
+   private void b(fjj $$0, float $$1) {
+      if (this.k.ao() instanceof gou $$2) {
+         float var7 = $$2.g - $$2.f;
+         float $$5 = -($$2.g + var7 * $$1);
+         float $$6 = azm.h($$1, $$2.bV, $$2.bW);
+         $$0.a(azm.a($$5 * (float) Math.PI) * $$6 * 0.5F, -Math.abs(azm.b($$5 * (float) Math.PI) * $$6), 0.0F);
+         $$0.a(a.f.rotationDegrees(azm.a($$5 * (float) Math.PI) * $$6 * 3.0F));
+         $$0.a(a.b.rotationDegrees(Math.abs(azm.b($$5 * (float) Math.PI - 0.2F) * $$6) * 5.0F));
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.D = $$0;
+      this.E = $$1;
+      this.F = $$2;
+      this.b(false);
+      this.a(false);
+      this.a(foo.a);
+      this.D = 1.0F;
+   }
+
+   private void a(fog $$0, float $$1, Matrix4f $$2) {
+      if (!this.C) {
+         Matrix4f $$3 = this.b(this.a($$0, $$1, false));
+         RenderSystem.setProjectionMatrix($$3, fgt.a);
+         fjj $$4 = new fjj();
+         $$4.a();
+         $$4.a($$2.invert(new Matrix4f()));
+         Matrix4fStack $$5 = RenderSystem.getModelViewStack();
+         $$5.pushMatrix().mul($$2);
+         this.a($$4, $$1);
+         if (this.k.n.ae().c()) {
+            this.b($$4, $$1);
+         }
+
+         boolean $$6 = this.k.ao() instanceof bxe && ((bxe)this.k.ao()).fR();
+         if (this.k.n.aE().a() && !$$6 && !this.k.n.X && this.k.r.i() != dix.d) {
+            this.A.c();
+            this.c.a($$1, $$4, this.o.c(), this.k.t, this.k.aq().a(this.k.t, $$1));
+            this.A.b();
+         }
+
+         $$5.popMatrix();
+         $$4.b();
+         if (this.k.n.aE().a() && !$$6) {
+            gqa.a $$7 = this.o.c();
+            gqm.a(this.k, $$4, $$7);
+            $$7.b();
+         }
+      }
+   }
+
+   public Matrix4f b(float $$0) {
+      Matrix4f $$1 = new Matrix4f();
+      if (this.D != 1.0F) {
+         $$1.translate(this.E, -this.F, 0.0F);
+         $$1.scale(this.D, this.D, 1.0F);
+      }
+
+      return $$1.perspective($$0 * (float) (Math.PI / 180.0), (float)this.k.aO().k() / (float)this.k.aO().l(), 0.05F, this.g());
+   }
+
+   public float g() {
+      return this.n * 4.0F;
+   }
+
+   public static float a(bxe $$0, float $$1) {
+      bvj $$2 = $$0.c(bvl.p);
+      return !$$2.a(200) ? 1.0F : 0.7F + azm.a(((float)$$2.d() - $$1) * (float) Math.PI * 0.2F) * 0.3F;
+   }
+
+   public void a(foo $$0, boolean $$1) {
+      if (!this.k.aC() && this.k.n.n && (!this.k.n.ac().c() || !this.k.o.d())) {
+         if (af.c() - this.z > 500L) {
+            this.k.b(false);
+         }
+      } else {
+         this.z = af.c();
+      }
+
+      if (!this.k.y) {
+         bqo $$2 = bqn.a();
+         boolean $$3 = this.k.c();
+         int $$4 = (int)(this.k.o.e() * (double)this.k.aO().o() / (double)this.k.aO().m());
+         int $$5 = (int)(this.k.o.f() * (double)this.k.aO().p() / (double)this.k.aO().n());
+         RenderSystem.viewport(0, 0, this.k.aO().k(), this.k.aO().l());
+         if ($$3 && $$1 && this.k.s != null) {
+            $$2.a("level");
+            this.a($$0);
+            this.o();
+            this.k.f.b();
+            if (this.L != null && this.M) {
+               RenderSystem.disableBlend();
+               RenderSystem.disableDepthTest();
+               RenderSystem.resetTextureMatrix();
+               gqe $$6 = this.k.ab().a(this.L, gpw.h);
+               if ($$6 != null) {
+                  $$6.a(this.k.h(), this.K);
+               }
+            }
+
+            this.k.h().a(true);
+         }
+
+         fin $$7 = this.k.aO();
+         RenderSystem.clear(256);
+         Matrix4f $$8 = new Matrix4f().setOrtho(0.0F, (float)((double)$$7.k() / $$7.s()), (float)((double)$$7.l() / $$7.s()), 0.0F, 1000.0F, 21000.0F);
+         RenderSystem.setProjectionMatrix($$8, fgt.b);
+         Matrix4fStack $$9 = RenderSystem.getModelViewStack();
+         $$9.pushMatrix();
+         $$9.translation(0.0F, 0.0F, -11000.0F);
+         fig.d();
+         frv $$10 = new frv(this.k, this.o.c());
+         if ($$3 && $$1 && this.k.s != null) {
+            $$2.b("gui");
+            if (!this.k.n.X) {
+               this.a($$10, $$0.a(false));
+            }
+
+            this.k.m.a($$10, $$0);
+            $$10.d();
+            RenderSystem.clear(256);
+            $$2.c();
+         }
+
+         if (this.k.aM() != null) {
+            try {
+               this.k.aM().a($$10, $$4, $$5, $$0.a());
+            } catch (Throwable var17) {
+               o $$12 = o.a(var17, "Rendering overlay");
+               p $$13 = $$12.a("Overlay render details");
+               $$13.a("Overlay name", () -> this.k.aM().getClass().getCanonicalName());
+               throw new z($$12);
+            }
+         } else if ($$3 && this.k.z != null) {
+            try {
+               this.k.z.c($$10, $$4, $$5, $$0.a());
+            } catch (Throwable var16) {
+               o $$15 = o.a(var16, "Rendering screen");
+               p $$16 = $$15.a("Screen render details");
+               $$16.a("Screen name", () -> this.k.z.getClass().getCanonicalName());
+               $$16.a("Mouse location", () -> String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%f, %f)", $$4, $$5, this.k.o.e(), this.k.o.f()));
+               $$16.a(
+                  "Screen size",
+                  () -> String.format(
+                        Locale.ROOT,
+                        "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f",
+                        this.k.aO().o(),
+                        this.k.aO().p(),
+                        this.k.aO().k(),
+                        this.k.aO().l(),
+                        this.k.aO().s()
+                     )
+               );
+               throw new z($$15);
+            }
+
+            try {
+               if (this.k.z != null) {
+                  this.k.z.y();
+               }
+            } catch (Throwable var15) {
+               o $$18 = o.a(var15, "Narrating screen");
+               p $$19 = $$18.a("Screen details");
+               $$19.a("Screen name", () -> this.k.z.getClass().getCanonicalName());
+               throw new z($$18);
+            }
+         }
+
+         if ($$3 && $$1 && this.k.s != null) {
+            this.k.m.b($$10, $$0);
+         }
+
+         if ($$3) {
+            try (bqt $$20 = $$2.d("toasts")) {
+               this.k.aA().a($$10);
+            }
+         }
+
+         $$10.d();
+         $$9.popMatrix();
+         this.K.a();
+      }
+   }
+
+   private void o() {
+      if (!this.y && this.k.T()) {
+         long $$0 = af.c();
+         if ($$0 - this.x >= 1000L) {
+            this.x = $$0;
+            hni $$1 = this.k.V();
+            if ($$1 != null && !$$1.af()) {
+               $$1.C().ifPresent($$0x -> {
+                  if (Files.isRegularFile($$0x)) {
+                     this.y = true;
+                  } else {
+                     this.a($$0x);
+                  }
+               });
+            }
+         }
+      }
+   }
+
+   private void a(Path $$0) {
+      if (this.k.f.j() > 10 && this.k.f.o()) {
+         fik $$1 = fph.a(this.k.h());
+         af.i().execute(() -> {
+            int $$2 = $$1.a();
+            int $$3 = $$1.b();
+            int $$4 = 0;
+            int $$5 = 0;
+            if ($$2 > $$3) {
+               $$4 = ($$2 - $$3) / 2;
+               $$2 = $$3;
+            } else {
+               $$5 = ($$3 - $$2) / 2;
+               $$3 = $$2;
+            }
+
+            try (fik $$6 = new fik(64, 64, false)) {
+               $$1.a($$4, $$5, $$2, $$3, $$6);
+               $$6.a($$0);
+            } catch (IOException var16) {
+               f.warn("Couldn't save auto screenshot", var16);
+            } finally {
+               $$1.close();
+            }
+         });
+      }
+   }
+
+   private boolean p() {
+      if (!this.w) {
+         return false;
+      } else {
+         bwf $$0 = this.k.ao();
+         boolean $$1 = $$0 instanceof crc && !this.k.n.X;
+         if ($$1 && !((crc)$$0).gk().e) {
+            czd $$2 = ((bxe)$$0).fb();
+            feo $$3 = this.k.w;
+            if ($$3 != null && $$3.d() == feo.a.b) {
+               iu $$4 = ((fem)$$3).b();
+               eah $$5 = this.k.s.a_($$4);
+               if (this.k.r.i() == dix.d) {
+                  $$1 = $$5.b(this.k.s, $$4) != null;
+               } else {
+                  eal $$6 = new eal(this.k.s, $$4, false);
+                  jr<dmf> $$7 = this.k.s.F_().f(mg.i);
+                  $$1 = !$$2.f() && ($$2.b($$6) || $$2.a($$6));
+               }
+            }
+         }
+
+         return $$1;
+      }
+   }
+
+   public void a(foo $$0) {
+      float $$1 = $$0.a(true);
+      gox $$2 = this.k.t;
+      this.A.a($$1);
+      if (this.k.ao() == null) {
+         this.k.a($$2);
+      }
+
+      this.a($$1);
+      bqo $$3 = bqn.a();
+      $$3.a("center");
+      boolean $$4 = this.p();
+      $$3.b("camera");
+      fog $$5 = this.N;
+      bwf $$6 = (bwf)(this.k.ao() == null ? $$2 : this.k.ao());
+      float $$7 = this.k.s.u().a($$6) ? 1.0F : $$1;
+      $$5.a(this.k.s, $$6, !this.k.n.aE().a(), this.k.n.aE().b(), $$7);
+      this.n = (float)(this.k.n.aH() * 16);
+      float $$8 = this.a($$5, $$1, true);
+      Matrix4f $$9 = this.b($$8);
+      fjj $$10 = new fjj();
+      this.a($$10, $$5.p());
+      if (this.k.n.ae().c()) {
+         this.b($$10, $$5.p());
+      }
+
+      $$9.mul($$10.c().a());
+      float $$11 = this.k.n.am().c().floatValue();
+      float $$12 = azm.h($$1, $$2.cx, $$2.cw);
+      float $$13 = $$2.a(bvl.i, $$1);
+      float $$14 = Math.max($$12, $$13) * $$11 * $$11;
+      if ($$14 > 0.0F) {
+         float $$15 = 5.0F / ($$14 * $$14 + 5.0F) - $$14 * 0.04F;
+         $$15 *= $$15;
+         Vector3f $$16 = new Vector3f(0.0F, azm.g / 2.0F, azm.g / 2.0F);
+         float $$17 = (this.p + $$1 * this.q) * (float) (Math.PI / 180.0);
+         $$9.rotate($$17, $$16);
+         $$9.scale(1.0F / $$15, 1.0F, 1.0F);
+         $$9.rotate(-$$17, $$16);
+      }
+
+      float $$18 = Math.max($$8, (float)this.k.n.ak().c().intValue());
+      Matrix4f $$19 = this.b($$18);
+      RenderSystem.setProjectionMatrix($$9, fgt.a);
+      Quaternionf $$20 = $$5.f().conjugate(new Quaternionf());
+      Matrix4f $$21 = new Matrix4f().rotation($$20);
+      this.k.f.a($$5.b(), $$21, $$19);
+      this.k.h().a(true);
+      this.k.f.a(this.K, $$0, $$4, $$5, this, $$21, $$9);
+      $$3.b("hand");
+      if (this.v) {
+         RenderSystem.clear(256);
+         this.a($$5, $$1, $$21);
+      }
+
+      $$3.c();
+   }
+
+   public void h() {
+      this.G = null;
+      this.k.aH().a();
+      this.N.o();
+      this.y = false;
+   }
+
+   public void a(czd $$0) {
+      this.G = $$0;
+      this.H = 40;
+      this.I = this.m.i() * 2.0F - 1.0F;
+      this.J = this.m.i() * 2.0F - 1.0F;
+   }
+
+   private void a(frv $$0, float $$1) {
+      if (this.G != null && this.H > 0) {
+         int $$2 = 40 - this.H;
+         float $$3 = ((float)$$2 + $$1) / 40.0F;
+         float $$4 = $$3 * $$3;
+         float $$5 = $$3 * $$4;
+         float $$6 = 10.25F * $$5 * $$4 - 24.95F * $$4 * $$4 + 25.5F * $$5 - 13.8F * $$4 + 4.0F * $$3;
+         float $$7 = $$6 * (float) Math.PI;
+         float $$8 = this.I * (float)($$0.a() / 4);
+         float $$9 = this.J * (float)($$0.b() / 4);
+         fjj $$10 = $$0.c();
+         $$10.a();
+         $$10.a((float)($$0.a() / 2) + $$8 * azm.e(azm.a($$7 * 2.0F)), (float)($$0.b() / 2) + $$9 * azm.e(azm.a($$7 * 2.0F)), -50.0F);
+         float $$11 = 50.0F + 175.0F * azm.a($$7);
+         $$10.b($$11, -$$11, $$11);
+         $$10.a(a.d.rotationDegrees(900.0F * azm.e(azm.a($$7))));
+         $$10.a(a.b.rotationDegrees(6.0F * azm.b($$3 * 8.0F)));
+         $$10.a(a.f.rotationDegrees(6.0F * azm.b($$3 * 8.0F)));
+         $$0.a($$1x -> this.k.as().a(this.G, czb.i, 15728880, hin.d, $$10, $$1x, this.k.s, 0));
+         $$10.b();
+      }
+   }
+
+   public foz i() {
+      return this.k;
+   }
+
+   public float c(float $$0) {
+      return azm.h($$0, this.u, this.t);
+   }
+
+   public float j() {
+      return this.n;
+   }
+
+   public fog k() {
+      return this.N;
+   }
+
+   public gpx l() {
+      return this.A;
+   }
+
+   public hin m() {
+      return this.B;
    }
 }

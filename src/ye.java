@@ -94,7 +94,7 @@ public class ye implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwd $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<uw> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

@@ -1,15 +1,19 @@
-public interface eef {
-   eef a = new eef() {
-      @Override
-      public void a() {
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-      @Override
-      public void a(bwd.e $$0) {
-      }
-   };
+public record eef(je<eee> e, ecf f) {
+   public static final Codec<eef> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eee.l.fieldOf("type").forGetter(eef::a), ecf.a.fieldOf("generator").forGetter(eef::b)).apply($$0, $$0.stable(eef::new))
+   );
+   public static final alf<eef> b = alf.a(mg.bp, alg.b("overworld"));
+   public static final alf<eef> c = alf.a(mg.bp, alg.b("the_nether"));
+   public static final alf<eef> d = alf.a(mg.bp, alg.b("the_end"));
 
-   void a();
+   public je<eee> a() {
+      return this.e;
+   }
 
-   void a(bwd.e var1);
+   public ecf b() {
+      return this.f;
+   }
 }

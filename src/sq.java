@@ -28,13 +28,13 @@ public class sq {
    private final tg l;
    private final Stopwatch m = Stopwatch.createUnstarted();
    private boolean n;
-   private final dst o;
+   private final dsz o;
    @Nullable
    private so p;
    @Nullable
-   private dys q;
+   private dza q;
 
-   public sq(je.c<sr> $$0, dst $$1, arq $$2, tg $$3) {
+   public sq(je.c<sr> $$0, dsz $$1, arq $$2, tg $$3) {
       this.a = $$0;
       this.c = $$2;
       this.l = $$3;
@@ -53,14 +53,14 @@ public class sq {
 
    public void a() {
       if (!this.h) {
-         dys $$0 = this.f();
+         dza $$0 = this.f();
          if (!$$0.A()) {
             this.a(wy.a("test.error.structure.failure", $$0.k().getString()));
          }
 
          this.h = true;
          $$0.C();
-         eql $$1 = $$0.d();
+         eqt $$1 = $$0.d();
          this.c.n().a($$1);
          this.c.a($$1);
          this.d.forEach($$0x -> $$0x.a(this));
@@ -166,18 +166,18 @@ public class sq {
       return this.q.B();
    }
 
-   public fed e() {
-      dys $$0 = this.f();
+   public fel e() {
+      dza $$0 = this.f();
       return $$0.f();
    }
 
-   public dys f() {
+   public dza f() {
       if (this.q == null) {
          if (this.b == null) {
             throw new IllegalStateException("This GameTestInfo has no position");
          }
 
-         if (this.c.c_(this.b) instanceof dys $$0) {
+         if (this.c.c_(this.b) instanceof dza $$0) {
             this.q = $$0;
          }
 
@@ -225,9 +225,9 @@ public class sq {
    public void m() {
       if (this.p == null) {
          this.G();
-         fed $$0 = this.e();
-         List<bwd> $$1 = this.g().a(bwd.class, $$0.g(1.0), $$0x -> !($$0x instanceof cqy));
-         $$1.forEach($$0x -> $$0x.a(bwd.e.b));
+         fel $$0 = this.e();
+         List<bwf> $$1 = this.g().a(bwf.class, $$0.g(1.0), $$0x -> !($$0x instanceof crc));
+         $$1.forEach($$0x -> $$0x.a(bwf.e.b));
       }
    }
 
@@ -259,12 +259,12 @@ public class sq {
       return this;
    }
 
-   private dys a(iu $$0, dst $$1, arq $$2) {
-      $$2.b($$0, dmc.pG.m());
-      dys $$3 = Objects.requireNonNull((dys)$$2.c_($$0));
+   private dza a(iu $$0, dsz $$1, arq $$2) {
+      $$2.b($$0, dmh.pJ.m());
+      dza $$3 = Objects.requireNonNull((dza)$$2.c_($$0));
       alf<sr> $$4 = this.w().h();
-      jz $$5 = dys.a($$2, $$4).orElse(new jz(1, 1, 1));
-      $$3.a(new dys.a(Optional.of($$4), $$5, $$1, false, dys.b.a, Optional.empty()));
+      jz $$5 = dza.a($$2, $$4).orElse(new jz(1, 1, 1));
+      $$3.a(new dza.a(Optional.of($$4), $$5, $$1, false, dza.b.a, Optional.empty()));
       return $$3;
    }
 
@@ -290,7 +290,7 @@ public class sq {
       return this.a.a().e();
    }
 
-   public dst u() {
+   public dsz u() {
       return this.a.a().n().f().a(this.o);
    }
 

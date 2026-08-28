@@ -19,7 +19,7 @@ public class bdo extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(biw.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bix.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {

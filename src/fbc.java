@@ -1,41 +1,44 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public class fbc extends fam {
+public class fbc extends fau {
    public static final MapCodec<fbc> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  fal.e.a(dbm.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  ayu.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+                  asi.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayu.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, fbc::new)
    );
-   public static final dbn b = new dbn(0, List.of());
-   private final Optional<fal.e<dbm>> c;
+   private final Optional<String> b;
+   private final Optional<asi<String>> c;
    private final Optional<Integer> d;
 
-   protected fbc(List<fci> $$0, Optional<fal.e<dbm>> $$1, Optional<Integer> $$2) {
+   public fbc(List<fcq> $$0, Optional<asi<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
+      this.b = $$2;
       this.c = $$1;
-      this.d = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cyy a(cyy $$0, eyz $$1) {
-      $$0.a(kj.aj, b, this::a);
+   protected czd a(czd $$0, ezh $$1) {
+      $$0.a(kj.V, dcn.a, this::a);
       return $$0;
    }
 
-   private dbn a(dbn $$0) {
-      return new dbn(this.d.orElseGet($$0::a), this.c.<List<dbm>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
+   private dcn a(dcn $$0) {
+      return new dcn(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
    }
 
    @Override
-   public fao<fbc> b() {
-      return fap.K;
+   public faw<fbc> b() {
+      return fax.M;
    }
 }

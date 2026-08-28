@@ -1,43 +1,72 @@
-public class gwh extends gut<cjf, hco, gfu> {
-   private static final alg a = alg.b("textures/entity/fox/fox.png");
-   private static final alg j = alg.b("textures/entity/fox/fox_sleep.png");
-   private static final alg k = alg.b("textures/entity/fox/snow_fox.png");
-   private static final alg l = alg.b("textures/entity/fox/snow_fox_sleep.png");
+@FunctionalInterface
+public interface gwh<T extends bwf> {
+   gwg<T, ?> create(gwh.a var1);
 
-   public gwh(gvz.a $$0) {
-      super($$0, new gfu($$0.a(git.aV)), new gfu($$0.a(git.aW)), 0.4F);
-      this.a(new haa(this));
-   }
+   public static class a {
+      private final gwf a;
+      private final hfo b;
+      private final gpy c;
+      private final gre d;
+      private final avd e;
+      private final giy f;
+      private final hlc g;
+      private final frt h;
+      private final hag i;
 
-   protected void a(hco $$0, fjc $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.ab));
+      public a(gwf $$0, hfo $$1, gpy $$2, gre $$3, avd $$4, giy $$5, hlc $$6, frt $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new hag($$6, this.i().c(gqv.g));
       }
-   }
 
-   public alg a(hco $$0) {
-      if ($$0.h == cjf.v.a) {
-         return $$0.d ? j : a;
-      } else {
-         return $$0.d ? l : k;
+      public gwf a() {
+         return this.a;
       }
-   }
 
-   public hco b() {
-      return new hco();
-   }
+      public hfo b() {
+         return this.b;
+      }
 
-   public void a(cjf $$0, hco $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hcu.a($$0, $$1, this.h);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ci();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fQ();
-      $$1.e = $$0.x();
-      $$1.f = $$0.gq();
-      $$1.g = $$0.gr();
-      $$1.h = $$0.t();
+      public gpy c() {
+         return this.c;
+      }
+
+      public gre d() {
+         return this.d;
+      }
+
+      public avd e() {
+         return this.e;
+      }
+
+      public giy f() {
+         return this.f;
+      }
+
+      public hlc g() {
+         return this.g;
+      }
+
+      public hag h() {
+         return this.i;
+      }
+
+      public hll i() {
+         return this.d.a().a();
+      }
+
+      public gjc a(gja $$0) {
+         return this.f.a($$0);
+      }
+
+      public frt j() {
+         return this.h;
+      }
    }
 }

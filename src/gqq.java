@@ -1,44 +1,103 @@
-public class gqq implements fjg {
-   private final fjg a;
-   private final hip b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public gqq(fjg $$0, hip $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record gqq(Map<String, String> c, Set<String> d) {
+   public static final gqq a = new gqq(Map.of(), Set.of());
+   public static final Codec<gqq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(gqq::d),
+               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(gqq::e)
+            )
+            .apply($$0, gqq::new)
+   );
+
+   public static gqq.a a() {
+      return new gqq.a();
    }
 
-   @Override
-   public fjg a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public gqq a(gqq $$0) {
+      if (this.c()) {
+         return $$0;
+      } else if ($$0.c()) {
+         return this;
+      } else {
+         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
+         $$1.putAll(this.c);
+         $$1.putAll($$0.c);
+         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
+         $$2.addAll(this.d);
+         $$2.addAll($$0.d);
+         return new gqq($$1.buildKeepingLast(), $$2.build());
+      }
    }
 
-   @Override
-   public fjg a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public String b() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (Entry<String, String> $$1 : this.c.entrySet()) {
+         String $$2 = $$1.getKey();
+         String $$3 = $$1.getValue();
+         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
+      }
+
+      for (String $$4 : this.d) {
+         $$0.append("#define ").append($$4).append('\n');
+      }
+
+      return $$0.toString();
    }
 
-   @Override
-   public fjg a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public boolean c() {
+      return this.c.isEmpty() && this.d.isEmpty();
    }
 
-   @Override
-   public fjg a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public Map<String, String> d() {
+      return this.c;
    }
 
-   @Override
-   public fjg b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
+   public Set<String> e() {
+      return this.d;
    }
 
-   @Override
-   public fjg b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
+   public static class a {
+      private final Builder<String, String> a = ImmutableMap.builder();
+      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
 
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+      a() {
+      }
+
+      public gqq.a a(String $$0, String $$1) {
+         if ($$1.isBlank()) {
+            throw new IllegalArgumentException("Cannot define empty string");
+         } else {
+            this.a.put($$0, b($$1));
+            return this;
+         }
+      }
+
+      private static String b(String $$0) {
+         return $$0.replaceAll("\n", "\\\\\n");
+      }
+
+      public gqq.a a(String $$0, float $$1) {
+         this.a.put($$0, String.valueOf($$1));
+         return this;
+      }
+
+      public gqq.a a(String $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public gqq a() {
+         return new gqq(this.a.build(), this.b.build());
+      }
    }
 }

@@ -1,47 +1,77 @@
-import java.util.concurrent.atomic.AtomicLong;
-
-@Deprecated
-public class egr implements efn {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final ega i = new ega(this);
-
-   public egr(long $$0) {
-      this.b($$0);
-   }
+public class egr implements din {
+   private int a;
 
    @Override
-   public azv d() {
-      return new egr(this.g());
+   public void a(arq $$0, boolean $$1, boolean $$2) {
+      if ($$1) {
+         if ($$0.O().c(diw.M)) {
+            azv $$3 = $$0.A;
+            this.a--;
+            if (this.a <= 0) {
+               this.a = this.a + 12000 + $$3.a(1200);
+               long $$4 = $$0.af() / 24000L;
+               if ($$4 >= 5L && $$0.V()) {
+                  if ($$3.a(5) == 0) {
+                     int $$5 = $$0.z().size();
+                     if ($$5 >= 1) {
+                        crc $$6 = $$0.z().get($$3.a($$5));
+                        if (!$$6.V_()) {
+                           if (!$$0.a($$6.dv(), 2)) {
+                              int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                              int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                              iu.a $$9 = $$6.dv().k().e($$7, 0, $$8);
+                              int $$10 = 10;
+                              if ($$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                                 je<dkd> $$11 = $$0.u($$9);
+                                 if (!$$11.a(axb.ag)) {
+                                    int $$12 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+
+                                    for (int $$13 = 0; $$13 < $$12; $$13++) {
+                                       $$9.q($$0.a(egg.a.f, $$9).v());
+                                       if ($$13 == 0) {
+                                          if (!this.a($$0, $$9, $$3, true)) {
+                                             break;
+                                          }
+                                       } else {
+                                          this.a($$0, $$9, $$3, false);
+                                       }
+
+                                       $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                                       $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public egl e() {
-      return new efz.a(this.g());
-   }
+   private boolean a(arq $$0, iu $$1, azv $$2, boolean $$3) {
+      eah $$4 = $$0.a_($$1);
+      if (!djl.a($$0, $$1, $$4, $$4.y(), bwo.aT)) {
+         return false;
+      } else if (!coe.b(bwo.aT, $$0, bwn.p, $$1, $$2)) {
+         return false;
+      } else {
+         coe $$5 = bwo.aT.a($$0, bwn.p);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gw();
+            }
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bwn.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

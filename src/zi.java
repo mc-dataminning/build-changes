@@ -9,7 +9,7 @@ public class zi {
       a($$0, $$1, $$2.p());
    }
 
-   public static <T extends we> void a(zf<T> $$0, T $$1, bsq<?> $$2) throws als {
+   public static <T extends we> void a(zf<T> $$0, T $$1, bss<?> $$2) throws als {
       if (!$$2.bx()) {
          $$2.c(() -> {
             if ($$1.a($$0)) {

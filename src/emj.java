@@ -1,29 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.stream.Stream;
 
-public abstract class emj {
-   public static final Codec<emj> a = mf.Y.q().dispatch(emj::b, emk::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class emj implements elq {
+   public static final Codec<emj> a = ayu.c(eqf.c).fieldOf("features").xmap(emj::new, $$0 -> $$0.b).codec();
+   public final ji<eqf> b;
 
-   protected static <S extends emj> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public emj(ji<eqf> $$0) {
+      this.b = $$0;
    }
 
-   public emj(OptionalInt $$0) {
-      this.c = $$0;
-   }
-
-   protected abstract emk<?> b();
-
-   public abstract int a(int var1, int var2);
-
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public Stream<eiy<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

@@ -1,167 +1,83 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public abstract class crg extends crs {
-   public static final double a = 0.1;
-   public static final double b = 0.5;
-   public double c = 0.1;
+public record crg(crg.a d) {
+   public static final wy a = wy.c("multiplayer.disconnect.expired_public_key");
+   private static final wy e = wy.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<crg> c = crg.a.a.xmap(crg::new, crg::b);
 
-   protected crg(bwm<? extends crg> $$0, div $$1) {
-      super($$0, $$1);
-   }
-
-   protected crg(bwm<? extends crg> $$0, double $$1, double $$2, double $$3, div $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
-   }
-
-   public crg(bwm<? extends crg> $$0, double $$1, double $$2, double $$3, fei $$4, div $$5) {
-      this($$0, $$5);
-      this.b($$1, $$2, $$3, this.dL(), this.dN());
-      this.ay();
-      this.a($$4, this.c);
-   }
-
-   public crg(bwm<? extends crg> $$0, bxc $$1, fei $$2, div $$3) {
-      this($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2, $$3);
-      this.c($$1);
-      this.b($$1.dL(), $$1.dN());
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 4.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 4.0;
-      }
-
-      $$1 *= 64.0;
-      return $$0 < $$1 * $$1;
-   }
-
-   protected die.a ae_() {
-      return die.a.a;
-   }
-
-   @Override
-   public void h() {
-      bwd $$0 = this.q();
-      this.o();
-      if (this.dV().C || ($$0 == null || !$$0.dQ()) && this.dV().C(this.dv())) {
-         feg $$1 = cru.a(this, this::b, this.ae_());
-         fei $$2;
-         if ($$1.d() != feg.a.a) {
-            $$2 = $$1.g();
-         } else {
-            $$2 = this.dt().e(this.dy());
-         }
-
-         cru.a(this, 0.2F);
-         this.b($$2);
-         this.aK();
-         super.h();
-         if (this.g()) {
-            this.e(1.0F);
-         }
-
-         if ($$1.d() != feg.a.a && this.bK()) {
-            this.b($$1);
-         }
-
-         this.s();
+   public static crg a(bab $$0, UUID $$1, crg.a $$2) throws crg.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new crg.b(e);
       } else {
-         this.at();
+         return new crg($$2);
       }
    }
 
-   private void o() {
-      fei $$0 = this.dy();
-      fei $$1 = this.dt();
-      float $$4;
-      if (this.bj()) {
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            float $$3 = 0.25F;
-            this.dV().a(lx.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
-         }
+   public bab a() {
+      return bab.a(this.d.c, "SHA256withRSA");
+   }
 
-         $$4 = this.n();
-      } else {
-         $$4 = this.m();
+   public crg.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<crg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayu.q.fieldOf("expires_at").forGetter(crg.a::b), ayj.f.fieldOf("key").forGetter(crg.a::c), ayu.r.fieldOf("signature_v2").forGetter(crg.a::d)
+               )
+               .apply($$0, crg.a::new)
+      );
+
+      public a(vu $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
       }
 
-      this.i($$0.e($$0.d().c(this.c)).c((double)$$4));
-   }
-
-   private void s() {
-      lv $$0 = this.j();
-      fei $$1 = this.dt();
-      if ($$0 != null) {
-         this.dV().a($$0, $$1.d, $$1.e + 0.5, $$1.f, 0.0, 0.0, 0.0);
+      public void a(vu $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
       }
-   }
 
-   @Override
-   public boolean a(arq $$0, bus $$1, float $$2) {
-      return false;
-   }
+      boolean a(bab $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
 
-   @Override
-   protected boolean b(bwd $$0) {
-      return super.b($$0) && !$$0.ad;
-   }
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
 
-   @Override
-   protected boolean g() {
-      return true;
-   }
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
 
-   @Nullable
-   protected lv j() {
-      return lx.ah;
-   }
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
 
-   protected float m() {
-      return 0.95F;
-   }
-
-   protected float n() {
-      return 0.8F;
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("acceleration_power", this.c);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.b("acceleration_power", 6)) {
-         this.c = $$0.k("acceleration_power");
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof crg.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
       }
    }
 
-   @Override
-   public float bx() {
-      return 1.0F;
-   }
-
-   private void a(fei $$0, double $$1) {
-      this.i($$0.d().c($$1));
-      this.ar = true;
-   }
-
-   @Override
-   protected void c(@Nullable bwd $$0, boolean $$1) {
-      super.c($$0, $$1);
-      if ($$1) {
-         this.c = 0.1;
-      } else {
-         this.c *= 0.5;
+   public static class b extends xy {
+      public b(wy $$0) {
+         super($$0);
       }
    }
 }

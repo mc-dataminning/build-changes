@@ -1,173 +1,223 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.math.Fraction;
 
-public final class dbg implements dcd {
-   private static final Logger e = LogUtils.getLogger();
-   public static final dbg a = new dbg(new tz());
-   private static final String f = "id";
-   public static final Codec<dbg> b = Codec.withAlternative(tz.a, ux.i).xmap(dbg::new, $$0 -> $$0.i);
-   public static final Codec<dbg> c = b.validate(
-      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final yw<ByteBuf, dbg> d = yu.r.a(dbg::new, $$0 -> $$0.i);
-   private static final alg g = dwz.j.a().h().a();
-   private static final alg h = dwz.R.a().h().a();
-   private final tz i;
+public final class dbg implements cxc {
+   public static final dbg a = new dbg(List.of());
+   public static final Codec<dbg> b = czd.b.listOf().flatXmap(dbg::a, $$0 -> DataResult.success($$0.g));
+   public static final yw<wj, dbg> c = czd.i.a(yu.a()).a(dbg::new, $$0 -> $$0.g);
+   private static final Fraction e = Fraction.getFraction(1, 16);
+   private static final int f = -1;
+   public static final int d = -1;
+   final List<czd> g;
+   final Fraction h;
+   final int i;
 
-   private dbg(tz $$0) {
-      this.i = $$0;
+   dbg(List<czd> $$0, Fraction $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   public static dbg a(tz $$0) {
-      return new dbg($$0.i());
+   private static DataResult<dbg> a(List<czd> $$0) {
+      try {
+         Fraction $$1 = b($$0);
+         return DataResult.success(new dbg($$0, $$1, -1));
+      } catch (ArithmeticException var2) {
+         return DataResult.error(() -> "Excessive total bundle weight");
+      }
    }
 
-   public static Predicate<cyy> a(ki<dbg> $$0, tz $$1) {
-      return $$2 -> {
-         dbg $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   public dbg(List<czd> $$0) {
+      this($$0, b($$0), -1);
    }
 
-   public boolean b(tz $$0) {
-      return uo.a($$0, this.i, true);
+   private static Fraction b(List<czd> $$0) {
+      Fraction $$1 = Fraction.ZERO;
+
+      for (czd $$2 : $$0) {
+         $$1 = $$1.add(b($$2).multiplyBy(Fraction.getFraction($$2.M(), 1)));
+      }
+
+      return $$1;
    }
 
-   public static void a(ki<dbg> $$0, cyy $$1, Consumer<tz> $$2) {
-      dbg $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.i.g()) {
-         $$1.e($$0);
+   static Fraction b(czd $$0) {
+      dbg $$1 = $$0.a(kj.Q);
+      if ($$1 != null) {
+         return e.add($$1.f());
       } else {
-         $$1.b($$0, $$3);
+         List<dxc.c> $$2 = $$0.a(kj.ar, dbc.c).a();
+         return !$$2.isEmpty() ? Fraction.ONE : Fraction.getFraction(1, $$0.k());
       }
    }
 
-   public static void a(ki<dbg> $$0, cyy $$1, tz $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.e($$0);
-      }
+   public static boolean a(czd $$0) {
+      return !$$0.f() && $$0.h().d();
    }
 
-   public dbg a(Consumer<tz> $$0) {
-      tz $$1 = this.i.i();
-      $$0.accept($$1);
-      return new dbg($$1);
+   public int a() {
+      int $$0 = this.e();
+      int $$1 = $$0 > 12 ? 11 : 12;
+      int $$2 = $$0 % 4;
+      int $$3 = $$2 == 0 ? 0 : 4 - $$2;
+      return Math.min($$0, $$1 - $$3);
    }
 
-   @Nullable
-   public alg a() {
-      return !this.i.b("id", 8) ? null : alg.c(this.i.l("id"));
+   public czd a(int $$0) {
+      return this.g.get($$0);
    }
 
-   @Nullable
-   public <T> T a(jg.a $$0, alf<? extends jr<T>> $$1) {
-      alg $$2 = this.a();
-      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alf.a($$1, $$2))).map(je::a).orElse(null);
+   public Stream<czd> b() {
+      return this.g.stream().map(czd::v);
    }
 
-   public void a(bwd $$0) {
-      tz $$1 = $$0.f(new tz());
-      UUID $$2 = $$0.cG();
-      $$1.a(this.i);
-      $$0.g($$1);
-      $$0.a_($$2);
+   public Iterable<czd> c() {
+      return this.g;
    }
 
-   public boolean a(dwx $$0, jg.a $$1) {
-      tz $$2 = $$0.e($$1);
-      tz $$3 = $$2.i();
-      $$2.a(this.i);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.aw_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.aw_(), var7);
-            }
-         }
-      }
-
-      return false;
+   public Iterable<czd> d() {
+      return Lists.transform(this.g, czd::v);
    }
 
-   public <T> DataResult<dbg> a(DynamicOps<uw> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.i).map($$0x -> new dbg((tz)$$0x));
+   public int e() {
+      return this.g.size();
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(un.a, $$0);
+   public Fraction f() {
+      return this.h;
    }
 
-   public <T> DataResult<T> a(DynamicOps<uw> $$0, MapDecoder<T> $$1) {
-      MapLike<uw> $$2 = (MapLike<uw>)$$0.getMap(this.i).getOrThrow();
-      return $$1.decode($$0, $$2);
+   public boolean g() {
+      return this.g.isEmpty();
    }
 
-   public int b() {
-      return this.i.f();
+   public int h() {
+      return this.i;
    }
 
-   public boolean c() {
-      return this.i.g();
-   }
-
-   public tz d() {
-      return this.i.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.i.e($$0);
+   public boolean i() {
+      return this.i != -1;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
+      if (this == $$0) {
          return true;
       } else {
-         return $$0 instanceof dbg $$1 ? this.i.equals($$1.i) : false;
+         return !($$0 instanceof dbg $$1) ? false : this.h.equals($$1.h) && czd.a(this.g, $$1.g);
       }
    }
 
    @Override
    public int hashCode() {
-      return this.i.hashCode();
+      return czd.a(this.g);
    }
 
    @Override
    public String toString() {
-      return this.i.toString();
+      return "BundleContents" + this.g;
    }
 
-   @Deprecated
-   public tz e() {
-      return this.i;
-   }
+   public static class a {
+      private final List<czd> a;
+      private Fraction b;
+      private int c;
 
-   @Override
-   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
-      alg $$4 = alg.c(this.i.l("id"));
-      if (g.equals($$4) || h.equals($$4)) {
-         djq.a(this, $$1, "SpawnData");
+      public a(dbg $$0) {
+         this.a = new ArrayList<>($$0.g);
+         this.b = $$0.h;
+         this.c = $$0.i;
+      }
+
+      public dbg.a a() {
+         this.a.clear();
+         this.b = Fraction.ZERO;
+         this.c = -1;
+         return this;
+      }
+
+      private int b(czd $$0) {
+         if (!$$0.l()) {
+            return -1;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (czd.c(this.a.get($$1), $$0)) {
+                  return $$1;
+               }
+            }
+
+            return -1;
+         }
+      }
+
+      private int c(czd $$0) {
+         Fraction $$1 = Fraction.ONE.subtract(this.b);
+         return Math.max($$1.divideBy(dbg.b($$0)).intValue(), 0);
+      }
+
+      public int a(czd $$0) {
+         if (!dbg.a($$0)) {
+            return 0;
+         } else {
+            int $$1 = Math.min($$0.M(), this.c($$0));
+            if ($$1 == 0) {
+               return 0;
+            } else {
+               this.b = this.b.add(dbg.b($$0).multiplyBy(Fraction.getFraction($$1, 1)));
+               int $$2 = this.b($$0);
+               if ($$2 != -1) {
+                  czd $$3 = this.a.remove($$2);
+                  czd $$4 = $$3.c($$3.M() + $$1);
+                  $$0.h($$1);
+                  this.a.add(0, $$4);
+               } else {
+                  this.a.add(0, $$0.a($$1));
+               }
+
+               return $$1;
+            }
+         }
+      }
+
+      public int a(cws $$0, crc $$1) {
+         czd $$2 = $$0.g();
+         int $$3 = this.c($$2);
+         return dbg.a($$2) ? this.a($$0.b($$2.M(), $$3, $$1)) : 0;
+      }
+
+      public void a(int $$0) {
+         this.c = this.c != $$0 && !this.b($$0) ? $$0 : -1;
+      }
+
+      private boolean b(int $$0) {
+         return $$0 < 0 || $$0 >= this.a.size();
+      }
+
+      @Nullable
+      public czd b() {
+         if (this.a.isEmpty()) {
+            return null;
+         } else {
+            int $$0 = this.b(this.c) ? 0 : this.c;
+            czd $$1 = this.a.remove($$0).v();
+            this.b = this.b.subtract(dbg.b($$1).multiplyBy(Fraction.getFraction($$1.M(), 1)));
+            this.a(-1);
+            return $$1;
+         }
+      }
+
+      public Fraction c() {
+         return this.b;
+      }
+
+      public dbg d() {
+         return new dbg(List.copyOf(this.a), this.b, this.c);
       }
    }
 }

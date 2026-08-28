@@ -1,53 +1,30 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
 import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
-public class cha<T extends bxc> extends chk<T> {
-   private final BiPredicate<T, bxc> a;
-   private final Predicate<T> b;
-   private final cge<Boolean> c;
-   private final int d;
-
-   public cha(int $$0, BiPredicate<T, bxc> $$1, Predicate<T> $$2, cge<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+public class cha extends chm<bxe> {
+   @Override
+   public Set<cgg<?>> a() {
+      return ImmutableSet.of(cgg.y, cgg.z);
    }
 
    @Override
-   protected void a(arq $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   @Override
-   public Set<cge<?>> a() {
-      return Set.of(cge.g);
-   }
-
-   @Override
-   public void a(T $$0) {
-      Optional<List<bxc>> $$1 = $$0.eb().c(cge.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+   protected void a(arq $$0, bxe $$1) {
+      bye<?> $$2 = $$1.ec();
+      buu $$3 = $$1.eI();
+      if ($$3 != null) {
+         $$2.a(cgg.y, $$1.eI());
+         bwf $$4 = $$3.d();
+         if ($$4 instanceof bxe) {
+            $$2.a(cgg.z, (bxe)$$4);
          }
+      } else {
+         $$2.b(cgg.y);
       }
-   }
 
-   public void b(T $$0) {
-      $$0.eb().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.eb().b(this.c);
+      $$2.c(cgg.z).ifPresent($$2x -> {
+         if (!$$2x.bK() || $$2x.dV() != $$0) {
+            $$2.b(cgg.z);
+         }
+      });
    }
 }

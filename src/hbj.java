@@ -1,17 +1,42 @@
-public class hbj extends hdf {
-   public bwv e = bwv.b;
-   public gge.a f = gge.a.a;
-   public final hfi g = new hfi();
-   public gge.a h = gge.a.a;
-   public final hfi i = new hfi();
+import java.util.Map;
 
-   public hfi aS_() {
-      return this.e == bwv.b ? this.g : this.i;
+public class hbj extends hav<hfc, gir> {
+   private final gir a;
+   private final gir b;
+   private final hag c;
+   private static final Map<bwb.a, alg> d = Map.of(
+      bwb.a.b,
+      alg.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
+      bwb.a.c,
+      alg.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
+      bwb.a.d,
+      alg.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
+   );
+
+   public hbj(gye<hfc, gir> $$0, giy $$1, hag $$2) {
+      super($$0);
+      this.a = new gir($$1.a(gjb.ea));
+      this.b = new gir($$1.a(gjb.ec));
+      this.c = $$2;
    }
 
-   public static void a(bxc $$0, hbj $$1, hfg $$2) {
-      $$1.e = $$0.fx();
-      $$2.a($$1.g, $$0.a(bwv.b), cyw.c, false, $$0);
-      $$2.a($$1.i, $$0.a(bwv.a), cyw.b, true, $$0);
+   public void a(fjj $$0, gqa $$1, int $$2, hfc $$3, float $$4, float $$5) {
+      czd $$6 = $$3.i;
+      dhm $$7 = $$6.a(kj.D);
+      if ($$7 != null && !$$7.d().isEmpty()) {
+         gir $$8 = $$3.aj ? this.b : this.a;
+         $$8.a($$3);
+         this.c.a(hld.d.d, $$7.d().get(), $$8, $$6, $$0, $$1, $$2);
+         this.a($$0, $$1, $$2, $$6, $$8);
+      }
+   }
+
+   private void a(fjj $$0, gqa $$1, int $$2, czd $$3, ggu $$4) {
+      bwb.a $$5 = bwb.b.a($$3);
+      if ($$5 != bwb.a.a) {
+         alg $$6 = d.get($$5);
+         fjn $$7 = $$1.getBuffer(gqk.c($$6));
+         $$4.a($$0, $$7, $$2, hin.d);
+      }
    }
 }

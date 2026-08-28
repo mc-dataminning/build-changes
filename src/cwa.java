@@ -1,135 +1,77 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cwa implements btu {
-   private final dhs b;
-   private final jn<cyy> c = jn.a(3, cyy.k);
-   @Nullable
-   private dht d;
-   private int e;
-   private int f;
+public class cwa {
+   private final List<cwa.b> a;
+   private final cwa.b b;
 
-   public cwa(dhs $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.c.size();
-   }
-
-   @Override
-   public boolean c() {
-      for (cyy $$0 : this.c) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cyy a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cyy a(int $$0, int $$1) {
-      cyy $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.f()) {
-         return btv.a(this.c, $$0, $$2.M());
+   cwa(List<cwa.b> $$0, cwa.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cwa.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         cyy $$3 = btv.a(this.c, $$0, $$1);
-         if (!$$3.f() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
+   public static cwa.a a() {
+      return new cwa.a();
    }
 
-   @Override
-   public cyy b(int $$0) {
-      return btv.a(this.c, $$0);
+   public cwa.b a(int $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public void a(int $$0, cyy $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.f_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
+   public cwa.b b() {
+      return this.b;
    }
 
-   @Override
-   public boolean a(cqy $$0) {
-      return this.b.x() == $$0;
+   public List<cwa.b> c() {
+      return this.a;
    }
 
-   @Override
-   public void e() {
-      this.f();
+   public int d() {
+      return this.a.size();
    }
 
-   public void f() {
-      this.d = null;
-      cyy $$0;
-      cyy $$1;
-      if (this.c.get(0).f()) {
-         $$0 = this.c.get(1);
-         $$1 = cyy.k;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
+   public int e() {
+      return this.d();
+   }
+
+   public static class a {
+      private final List<cwa.b> a = new ArrayList<>();
+      private cwa.b b = cwa.b.e;
+
+      public cwa.a a(int $$0, int $$1, int $$2, Predicate<czd> $$3) {
+         this.a.add(new cwa.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      if ($$0.f()) {
-         this.a(2, cyy.k);
-         this.f = 0;
-      } else {
-         dhu $$4 = this.b.gr();
-         if (!$$4.isEmpty()) {
-            dht $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
+      public cwa.a a(int $$0, int $$1, int $$2) {
+         this.b = new cwa.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
 
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cyy.k);
-               this.f = 0;
+      public cwa a() {
+         int $$0 = this.a.size();
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            cwa.b $$2 = this.a.get($$1);
+            if ($$2.a != $$1) {
+               throw new IllegalArgumentException("Expected input slots to have continous indexes");
             }
          }
 
-         this.b.j(this.a(2));
+         if (this.b.a != $$0) {
+            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         } else {
+            return new cwa(this.a, this.b);
+         }
       }
    }
 
-   @Nullable
-   public dht g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   public static record b(int a, int b, int c, Predicate<czd> d) {
+      static final cwa.b e = new cwa.b(0, 0, 0, $$0 -> true);
    }
 }

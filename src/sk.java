@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class sk {
    private static final int b = 50;
-   public static final sk.a a = ($$0, $$1) -> Stream.of(new sq($$0, dst.a, $$1, tg.a()));
+   public static final sk.a a = ($$0, $$1) -> Stream.of(new sq($$0, dsz.a, $$1, tg.a()));
 
    public static List<sj> a(Collection<je.c<sr>> $$0, sk.a $$1, arq $$2) {
       Map<je<tl>, List<sq>> $$3 = $$0.stream().flatMap($$2x -> $$1.decorate($$2x, $$2)).collect(Collectors.groupingBy($$0x -> $$0x.v().d()));

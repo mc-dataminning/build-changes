@@ -1,26 +1,31 @@
-@FunctionalInterface
-public interface fdt<T> {
-   void handle(T var1, fdv<T> var2, long var3);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public abstract static class a<T, C extends fdt<T>> {
-      private final alg a;
-      private final Class<?> b;
+public record fdt(String b) implements fdv {
+   public static final MapCodec<fdt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fdt::c)).apply($$0, fdt::new));
 
-      public a(alg $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static fdv a(String $$0) {
+      return new fdt($$0);
+   }
 
-      public alg a() {
-         return this.a;
-      }
+   @Override
+   public fdu a() {
+      return fdw.b;
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   @Override
+   public ffu a(ezh $$0) {
+      return ffu.c(this.b);
+   }
 
-      public abstract void a(tz var1, C var2);
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of();
+   }
 
-      public abstract C b(tz var1);
+   public String c() {
+      return this.b;
    }
 }

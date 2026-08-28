@@ -1,78 +1,62 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public class fqr implements fqo {
-   private final dma a;
-   private final List<fqu> b;
-   private final Set<ebc<?>> c = Sets.newHashSet();
-   private final List<fqs> d = Lists.newArrayList();
+public class fqr implements mm {
+   private final mo.a d;
 
-   private fqr(dma $$0, List<fqu> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fqr(mo $$0) {
+      this.d = $$0.a(mo.b.b, "equipment");
    }
 
-   public fqr a(fqs $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.l().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
-         }
-      });
-      this.d.add($$0);
-      return this;
-   }
+   private static void a(BiConsumer<alf<dhk>, hld> $$0) {
+      $$0.accept(dhl.b, hld.a().a(alg.b("leather"), true).a(alg.b("leather_overlay"), false).a(hld.d.e, hld.c.a(alg.b("leather"), true)).a());
+      $$0.accept(dhl.c, a("chainmail"));
+      $$0.accept(dhl.d, b("iron"));
+      $$0.accept(dhl.e, b("gold"));
+      $$0.accept(dhl.f, b("diamond"));
+      $$0.accept(dhl.g, hld.a().b(alg.b("turtle_scute"), false).a());
+      $$0.accept(dhl.h, a("netherite"));
+      $$0.accept(dhl.i, hld.a().a(hld.d.d, hld.c.b(alg.b("armadillo_scute"), false)).a(hld.d.d, hld.c.b(alg.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(dhl.j, hld.a().a(hld.d.c, new hld.c(alg.b("elytra"), Optional.empty(), true)).a());
+      hld.c $$1 = new hld.c(alg.b("saddle"));
+      $$0.accept(
+         dhl.k, hld.a().a(hld.d.g, $$1).a(hld.d.h, $$1).a(hld.d.i, $$1).a(hld.d.j, $$1).a(hld.d.k, $$1).a(hld.d.l, $$1).a(hld.d.n, $$1).a(hld.d.m, $$1).a()
+      );
 
-   public JsonElement b() {
-      Stream<Pair<fqt, List<fqu>>> $$0 = Stream.of(Pair.of(fqt.a(), this.b));
-
-      for (fqs $$1 : this.d) {
-         Map<fqt, List<fqu>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               fqt $$2x = ((fqt)$$1.getFirst()).a((fqt)$$1xx.getKey());
-               List<fqu> $$3 = a((List<fqu>)$$1.getSecond(), (List<fqu>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
+      for (Entry<cyb, alf<dhk>> $$2 : dhl.l.entrySet()) {
+         cyb $$3 = $$2.getKey();
+         alf<dhk> $$4 = $$2.getValue();
+         $$0.accept($$4, hld.a().a(hld.d.f, new hld.c(alg.b($$3.c()))).a());
       }
 
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((fqt)$$1.getFirst()).b(), fqu.a((List<fqu>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", af.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
+      $$0.accept(dhl.m, hld.a().a(hld.d.f, new hld.c(alg.b("trader_llama"))).a());
    }
 
-   private static List<fqu> a(List<fqu> $$0, List<fqu> $$1) {
-      Builder<fqu> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(fqu.a($$2x, $$2xx))));
-      return $$2.build();
+   private static hld a(String $$0) {
+      return hld.a().a(alg.b($$0)).a();
+   }
+
+   private static hld b(String $$0) {
+      return hld.a().a(alg.b($$0)).a(hld.d.e, hld.c.a(alg.b($$0), false)).a();
    }
 
    @Override
-   public dma a() {
-      return this.a;
+   public CompletableFuture<?> a(mk $$0) {
+      Map<alf<dhk>, hld> $$1 = new HashMap<>();
+      a(($$1x, $$2) -> {
+         if ($$1.putIfAbsent($$1x, $$2) != null) {
+            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
+         }
+      });
+      return mm.a($$0, hld.a, this.d::a, $$1);
    }
 
-   public static fqr a(dma $$0) {
-      return new fqr($$0, ImmutableList.of(fqu.a()));
-   }
-
-   public static fqr a(dma $$0, fqu $$1) {
-      return new fqr($$0, ImmutableList.of($$1));
-   }
-
-   public static fqr a(dma $$0, fqu... $$1) {
-      return new fqr($$0, ImmutableList.copyOf($$1));
+   @Override
+   public String a() {
+      return "Equipment Asset Definitions";
    }
 }

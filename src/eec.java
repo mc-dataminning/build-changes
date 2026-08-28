@@ -1,24 +1,13 @@
-import java.util.List;
-import java.util.stream.Stream;
+public class eec {
+   public static final alf<eee> a = a("overworld");
+   public static final alf<eee> b = a("the_nether");
+   public static final alf<eee> c = a("the_end");
+   public static final alf<eee> d = a("overworld_caves");
+   public static final alg e = alg.b("overworld");
+   public static final alg f = alg.b("the_nether");
+   public static final alg g = alg.b("the_end");
 
-public class eec<T> {
-   private final dic a;
-   private final List<T> b;
-
-   public eec(dic $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public dic a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
+   private static alf<eee> a(String $$0) {
+      return alf.a(mg.aP, alg.b($$0));
    }
 }

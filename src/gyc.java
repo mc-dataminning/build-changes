@@ -1,15 +1,22 @@
-public class gyc extends gur<coh, hea> {
-   private static final alg a = alg.b("textures/entity/skeleton/skeleton.png");
+import java.util.function.UnaryOperator;
 
-   public gyc(gvz.a $$0) {
-      super($$0, git.cU, git.cZ, git.da);
+public class gyc extends guv {
+   private final gfy<hby> a;
+   private final alg g;
+
+   public gyc(gwh.a $$0, gja $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new ghl($$0.a($$1));
    }
 
-   public alg b(hea $$0) {
-      return a;
+   @Override
+   protected gfy<hby> a() {
+      return this.a;
    }
 
-   public hea b() {
-      return new hea();
+   @Override
+   protected gqk b() {
+      return this.a.a(this.g);
    }
 }

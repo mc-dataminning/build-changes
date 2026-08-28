@@ -1,8 +1,29 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
+import java.util.function.Predicate;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cij {
+public record cij(Set<eah> b, int c, int d) {
+   public static final Predicate<je<cij>> a = $$0 -> false;
+
+   public cij(Set<eah> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+   }
+
+   public boolean a(eah $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<eah> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
 }

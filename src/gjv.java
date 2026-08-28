@@ -1,157 +1,279 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gjv implements en {
-   private final gjs a;
-   private final fos b;
-   private int d = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> e;
-   private final Set<String> f = new HashSet<>();
+public class gjv extends eci {
+   static final Logger a = LogUtils.getLogger();
+   private final eco b;
+   private final ewd c;
+   volatile gjv.a d;
+   final gjz e;
 
-   public gjv(gjs $$0, fos $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gjv(gjz $$0, int $$1) {
+      this.e = $$0;
+      this.b = new eck($$0, new dih(0, 0), $$0.F_().f(mg.aG).b(dkk.b));
+      this.c = new ewd(this, true, $$0.B_().g());
+      this.d = new gjv.a(b($$1));
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (gkd $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
+   public ewd q() {
+      return this.c;
    }
 
-   @Override
-   public Collection<String> y() {
-      if (this.f.isEmpty()) {
-         return this.q();
+   private static boolean a(@Nullable eco $$0, int $$1, int $$2) {
+      if ($$0 == null) {
+         return false;
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.f);
-         return $$0;
+         dih $$3 = $$0.f();
+         return $$3.h == $$1 && $$3.i == $$2;
       }
    }
 
-   @Override
-   public Collection<String> z() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == feg.a.c ? Collections.singleton(((fef)this.b.w).a().cH()) : Collections.emptyList());
+   public void a(dih $$0) {
+      if (this.d.b($$0.h, $$0.i)) {
+         int $$1 = this.d.a($$0.h, $$0.i);
+         eco $$2 = this.d.a($$1);
+         if (a($$2, $$0.h, $$0.i)) {
+            this.d.b($$1, $$2);
+         }
+      }
    }
 
-   @Override
-   public Collection<String> r() {
-      return this.a.z().e();
-   }
-
-   @Override
-   public Stream<alg> s() {
-      return this.b.ak().d().stream();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      gop $$1 = this.b.t;
-      return $$1 != null ? $$1.s($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(alf<? extends jr<?>> $$0, en.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.u().a($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.e != null) {
-         this.e.cancel(false);
+   @Nullable
+   public eco b(int $$0, int $$1, edf $$2, boolean $$3) {
+      if (this.d.b($$0, $$1)) {
+         eco $$4 = this.d.a(this.d.a($$0, $$1));
+         if (a($$4, $$0, $$1)) {
+            return $$4;
+         }
       }
 
-      this.e = new CompletableFuture<>();
-      int $$1 = ++this.d;
-      this.a.b(new ahc($$1, $$0.getInput()));
+      return $$3 ? this.b : null;
+   }
+
+   @Override
+   public dig r() {
       return this.e;
    }
 
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<en.b> A() {
-      feg $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == feg.a.b) {
-         iu $$1 = ((fee)$$0).b();
-         return Collections.singleton(new en.b(a($$1.u()), a($$1.v()), a($$1.w())));
+   public void a(int $$0, int $$1, vu $$2) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
       } else {
-         return en.super.A();
+         int $$3 = this.d.a($$0, $$1);
+         eco $$4 = this.d.b.get($$3);
+         if (!a($$4, $$0, $$1)) {
+            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
+         } else {
+            $$4.a($$2);
+         }
       }
    }
 
-   @Override
-   public Collection<en.b> B() {
-      feg $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == feg.a.b) {
-         fei $$1 = $$0.g();
-         return Collections.singleton(new en.b(a($$1.d), a($$1.e), a($$1.f)));
+   @Nullable
+   public eco a(int $$0, int $$1, vu $$2, tz $$3, Consumer<adf.b> $$4) {
+      if (!this.d.b($$0, $$1)) {
+         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
+         return null;
       } else {
-         return en.super.B();
+         int $$5 = this.d.a($$0, $$1);
+         eco $$6 = this.d.b.get($$5);
+         dih $$7 = new dih($$0, $$1);
+         if (!a($$6, $$0, $$1)) {
+            $$6 = new eco(this.e, $$7);
+            $$6.a($$2, $$3, $$4);
+            this.d.a($$5, $$6);
+         } else {
+            $$6.a($$2, $$3, $$4);
+            this.d.c($$6);
+         }
+
+         this.e.a($$7);
+         return $$6;
       }
    }
 
    @Override
-   public Set<alf<div>> t() {
-      return this.a.u();
+   public void a(BooleanSupplier $$0, boolean $$1) {
    }
 
-   @Override
-   public js u() {
-      return this.a.v();
+   public void d(int $$0, int $$1) {
+      this.d.f = $$0;
+      this.d.g = $$1;
    }
 
-   @Override
-   public cuh v() {
-      return this.a.y();
-   }
+   public void a(int $$0) {
+      int $$1 = this.d.d;
+      int $$2 = b($$0);
+      if ($$1 != $$2) {
+         gjv.a $$3 = new gjv.a($$2);
+         $$3.f = this.d.f;
+         $$3.g = this.d.g;
 
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.d) {
-         this.e.complete($$1);
-         this.e = null;
-         this.d = -1;
+         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
+            eco $$5 = this.d.b.get($$4);
+            if ($$5 != null) {
+               dih $$6 = $$5.f();
+               if ($$3.b($$6.h, $$6.i)) {
+                  $$3.a($$3.a($$6.h, $$6.i), $$5);
+               }
+            }
+         }
+
+         this.d = $$3;
       }
    }
 
-   public void a(acs.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.f.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.f::remove);
-            break;
-         case c:
-            this.f.clear();
-            this.f.addAll($$1);
+   private static int b(int $$0) {
+      return Math.max(2, $$0) + 3;
+   }
+
+   @Override
+   public String e() {
+      return this.d.b.length() + ", " + this.j();
+   }
+
+   @Override
+   public int j() {
+      return this.d.h;
+   }
+
+   @Override
+   public void a(djj $$0, jx $$1) {
+      foz.Q().f.b($$1.a(), $$1.b(), $$1.c());
+   }
+
+   public LongOpenHashSet a() {
+      return this.d.c;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.a($$0, $$1, $$2, $$3);
+   }
+
+   final class a {
+      final AtomicReferenceArray<eco> b;
+      final LongOpenHashSet c = new LongOpenHashSet();
+      final int d;
+      private final int e;
+      volatile int f;
+      volatile int g;
+      int h;
+
+      a(final int $$0) {
+         this.d = $$0;
+         this.e = $$0 * 2 + 1;
+         this.b = new AtomicReferenceArray<>(this.e * this.e);
+      }
+
+      int a(int $$0, int $$1) {
+         return Math.floorMod($$1, this.e) * this.e + Math.floorMod($$0, this.e);
+      }
+
+      void a(int $$0, @Nullable eco $$1) {
+         eco $$2 = this.b.getAndSet($$0, $$1);
+         if ($$2 != null) {
+            this.h--;
+            this.a($$2);
+            gjv.this.e.a($$2);
+         }
+
+         if ($$1 != null) {
+            this.h++;
+            this.b($$1);
+         }
+      }
+
+      void b(int $$0, eco $$1) {
+         if (this.b.compareAndSet($$0, $$1, null)) {
+            this.h--;
+            this.a($$1);
+         }
+
+         gjv.this.e.a($$1);
+      }
+
+      public void a(int $$0, int $$1, int $$2, boolean $$3) {
+         if (this.b($$0, $$2)) {
+            long $$4 = jx.b($$0, $$1, $$2);
+            if ($$3) {
+               this.c.add($$4);
+            } else if (this.c.remove($$4)) {
+               gjv.this.e.b($$4);
+            }
+         }
+      }
+
+      private void a(eco $$0) {
+         ecp[] $$1 = $$0.d();
+
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            dih $$3 = $$0.f();
+            this.c.remove(jx.b($$3.h, $$0.h($$2), $$3.i));
+         }
+      }
+
+      private void b(eco $$0) {
+         ecp[] $$1 = $$0.d();
+
+         for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+            ecp $$3 = $$1[$$2];
+            if ($$3.c()) {
+               dih $$4 = $$0.f();
+               this.c.add(jx.b($$4.h, $$0.h($$2), $$4.i));
+            }
+         }
+      }
+
+      void c(eco $$0) {
+         dih $$1 = $$0.f();
+         ecp[] $$2 = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+            ecp $$4 = $$2[$$3];
+            long $$5 = jx.b($$1.h, $$0.h($$3), $$1.i);
+            if ($$4.c()) {
+               this.c.add($$5);
+            } else if (this.c.remove($$5)) {
+               gjv.this.e.b($$5);
+            }
+         }
+      }
+
+      boolean b(int $$0, int $$1) {
+         return Math.abs($$0 - this.f) <= this.d && Math.abs($$1 - this.g) <= this.d;
+      }
+
+      @Nullable
+      protected eco a(int $$0) {
+         return this.b.get($$0);
+      }
+
+      private void a(String $$0) {
+         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
+            int $$2 = gjv.this.d.d;
+
+            for (int $$3 = this.g - $$2; $$3 <= this.g + $$2; $$3++) {
+               for (int $$4 = this.f - $$2; $$4 <= this.f + $$2; $$4++) {
+                  eco $$5 = gjv.this.d.b.get(gjv.this.d.a($$4, $$3));
+                  if ($$5 != null) {
+                     dih $$6 = $$5.f();
+                     $$1.write(($$6.h + "\t" + $$6.i + "\t" + $$5.E() + "\n").getBytes(StandardCharsets.UTF_8));
+                  }
+               }
+            }
+         } catch (IOException var10) {
+            gjv.a.error("Failed to dump chunks to file {}", $$0, var10);
+         }
       }
    }
 }

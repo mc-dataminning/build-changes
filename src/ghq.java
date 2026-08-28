@@ -1,64 +1,30 @@
-public class ghq extends gfq<hec> {
-   public static final gjd a = gjd.scaling(0.5F);
-   private static final float b = 9.0F;
-   private static final float c = 100.0F;
-   private final giu d;
+public class ghq extends ggu {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final gjc e;
+   private final gjc f;
 
-   public ghq(giu $$0) {
-      super($$0);
-      this.d = $$0.b("bone").b("body").b("head");
+   public ghq(gjc $$0) {
+      super($$0, gqk::d);
+      this.e = $$0.b("plate");
+      this.f = $$0.b("handle");
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.a("bone", giz.c(), giw.a(0.0F, 5.0F, 0.0F));
-      gje $$3 = $$2.a(
-         "body",
-         giz.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new giy(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new giy(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new giy(0.0F)),
-         giw.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", giz.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", giz.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", giz.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", giz.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", giz.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", giz.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new giy(0.0F)), giw.a(7.5F, 10.0F, 15.0F));
-      gje $$4 = $$3.a(
-         "head",
-         giz.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new giy(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new giy(0.0F)),
-         giw.a(0.0F, 6.5F, -19.48F)
-      );
-      $$4.a("left_ear", giz.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new giy(0.0F)), giw.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", giz.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new giy(0.0F)), giw.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", giz.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new giy(0.0F)), giw.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", giz.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new giy(0.0F)), giw.a(0.0F, 2.5F, -12.5F));
-      return gja.a($$0, 192, 192);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("plate", gjh.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), gje.a);
+      $$1.a("handle", gjh.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), gje.a);
+      return gji.a($$0, 64, 64);
    }
 
-   public void a(hec $$0) {
-      super.a($$0);
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.a(fpp.e, $$0.ad, $$0.ae, 9.0F, 100.0F);
-      } else {
-         this.a(fpp.d, $$0.ad, $$0.ae, 9.0F, 100.0F);
-      }
+   public gjc b() {
+      return this.e;
+   }
 
-      this.a($$0.b, fpp.f, $$0.u);
-      this.a($$0.c, fpp.c, $$0.u);
-      this.a($$0.d, fpp.g, $$0.u);
-      this.a($$0.e, fpp.i, $$0.u);
-      this.a($$0.f, fpp.b, $$0.u);
-      if ($$0.aj) {
-         this.a(fpp.a);
-      }
+   public gjc c() {
+      return this.f;
    }
 }

@@ -1,16 +1,17 @@
-public class hbc extends han<heu, gij> {
-   private static final alg a = alg.b("textures/entity/wolf/wolf_collar.png");
+public class hbc extends hav<hdz, ghe> {
+   public static final alg a = alg.b("textures/entity/trident_riptide.png");
+   private final gib b;
 
-   public hbc(gxw<heu, gij> $$0) {
+   public hbc(gye<hdz, ghe> $$0, giy $$1) {
       super($$0);
+      this.b = new gib($$1.a(gjb.cB));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, heu $$3, float $$4, float $$5) {
-      cxw $$6 = $$3.h;
-      if ($$6 != null && !$$3.z) {
-         int $$7 = $$6.d();
-         fjg $$8 = $$1.getBuffer(gqc.g(a));
-         this.d().a($$0, $$8, $$2, hif.d, $$7);
+   public void a(fjj $$0, gqa $$1, int $$2, hdz $$3, float $$4, float $$5) {
+      if ($$3.al) {
+         fjn $$6 = $$1.getBuffer(this.b.a(a));
+         this.b.a($$3);
+         this.b.a($$0, $$6, $$2, hin.d);
       }
    }
 }

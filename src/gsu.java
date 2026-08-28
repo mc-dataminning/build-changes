@@ -1,76 +1,104 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gsu implements gse<dyn> {
-   private final Function<dtk.a, gho> a;
-   private static final Map<dtk.a, alg> b = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dtk.b.c, alg.b("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dtk.b.d, alg.b("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dtk.b.f, alg.b("textures/entity/zombie/zombie.png"));
-      $$0.put(dtk.b.g, alg.b("textures/entity/creeper/creeper.png"));
-      $$0.put(dtk.b.i, alg.b("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dtk.b.h, alg.b("textures/entity/piglin/piglin.png"));
-      $$0.put(dtk.b.e, hjh.a());
-   });
+public class gsu implements gsm<dxs> {
+   public static final gpz a = new gpz(hiw.d, "entity/conduit");
+   public static final hle b = a.a("base");
+   public static final hle c = a.a("cage");
+   public static final hle d = a.a("wind");
+   public static final hle e = a.a("wind_vertical");
+   public static final hle f = a.a("open_eye");
+   public static final hle g = a.a("closed_eye");
+   private final gjc h;
+   private final gjc i;
+   private final gjc j;
+   private final gjc k;
+   private final gsl l;
 
-   @Nullable
-   public static gho a(giq $$0, dtk.a $$1) {
-      if ($$1 instanceof dtk.b $$2) {
-         return (gho)(switch ($$2) {
-            case c -> new ghn($$0.a(git.db));
-            case d -> new ghn($$0.a(git.dV));
-            case e -> new ghn($$0.a(git.ct));
-            case f -> new ghn($$0.a(git.eh));
-            case g -> new ghn($$0.a(git.aq));
-            case i -> new gin($$0.a(git.aD));
-            case h -> new ggs($$0.a(git.cj));
-         });
+   public gsu(gsn.a $$0) {
+      this.l = $$0.a();
+      this.h = $$0.a(gjb.ak);
+      this.i = $$0.a(gjb.am);
+      this.j = $$0.a(gjb.al);
+      this.k = $$0.a(gjb.aj);
+   }
+
+   public static gji b() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("eye", gjh.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gjg(0.01F)), gje.a);
+      return gji.a($$0, 16, 16);
+   }
+
+   public static gji c() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("wind", gjh.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gje.a);
+      return gji.a($$0, 64, 32);
+   }
+
+   public static gji d() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("shell", gjh.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gje.a);
+      return gji.a($$0, 32, 16);
+   }
+
+   public static gji e() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("shell", gjh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
+      return gji.a($$0, 32, 16);
+   }
+
+   public void a(dxs $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      float $$7 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$8 = $$0.a(0.0F);
+         fjn $$9 = b.a($$3, gqk::d);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$8 * (float) (Math.PI / 180.0)));
+         this.j.a($$2, $$9, $$4, $$5);
+         $$2.b();
       } else {
-         return null;
+         float $$10 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$11 = azm.a($$7 * 0.1F) / 2.0F + 0.5F;
+         $$11 = $$11 * $$11 + $$11;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$11 * 0.2F, 0.5F);
+         Vector3f $$12 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$10 * (float) (Math.PI / 180.0), $$12));
+         this.k.a($$2, c.a($$3, gqk::g), $$4, $$5);
+         $$2.b();
+         int $$13 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$13 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$13 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+         }
+
+         fjn $$14 = ($$13 == 1 ? e : d).a($$3, gqk::g);
+         this.i.a($$2, $$14, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.i.a($$2, $$14, $$4, $$5);
+         $$2.b();
+         fog $$15 = this.l.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$11 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$16 = -$$15.e();
+         $$2.a(new Quaternionf().rotationYXZ($$16 * (float) (Math.PI / 180.0), $$15.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$17 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.h.a($$2, ($$0.d() ? f : g).a($$3, gqk::g), $$4, $$5);
+         $$2.b();
       }
-   }
-
-   public gsu(gsf.a $$0) {
-      giq $$1 = $$0.f();
-      this.a = af.b($$1x -> a($$1, $$1x));
-   }
-
-   public void a(dyn $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      float $$7 = $$0.a($$1);
-      dzz $$8 = $$0.m();
-      boolean $$9 = $$8.b() instanceof dvp;
-      ja $$10 = $$9 ? $$8.c(dvp.d) : null;
-      int $$11 = $$9 ? ebf.a($$10.g()) : $$8.c(dtk.e);
-      float $$12 = ebf.b($$11);
-      dtk.a $$13 = ((dkw)$$8.b()).b();
-      gho $$14 = this.a.apply($$13);
-      gqc $$15 = a($$13, $$0.c());
-      a($$10, $$12, $$7, $$2, $$3, $$4, $$14, $$15);
-   }
-
-   public static void a(@Nullable ja $$0, float $$1, float $$2, fjc $$3, gps $$4, int $$5, gho $$6, gqc $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
-      }
-
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      fjg $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, hif.d);
-      $$3.b();
-   }
-
-   public static gqc a(dtk.a $$0, @Nullable dby $$1) {
-      return a($$0, $$1, null);
-   }
-
-   public static gqc a(dtk.a $$0, @Nullable dby $$1, @Nullable alg $$2) {
-      return $$0 == dtk.b.e && $$1 != null ? gqc.j($$2 != null ? $$2 : fos.Q().an().b($$1.f()).a()) : gqc.h($$2 != null ? $$2 : b.get($$0));
    }
 }

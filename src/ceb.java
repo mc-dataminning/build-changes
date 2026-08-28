@@ -1,13 +1,126 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ceb extends ceg {
-   public ceb(bxe $$0, Class<? extends bxc> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(cdy.a.b, cdy.a.a));
+public class ceb {
+   private static final cfo a = new cfo(Integer.MAX_VALUE, new cea() {
+      @Override
+      public boolean b() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<cea.a, cfo> b = new EnumMap<>(cea.a.class);
+   private final Set<cfo> c = new ObjectLinkedOpenHashSet();
+   private final EnumSet<cea.a> d = EnumSet.noneOf(cea.a.class);
+
+   public void a(int $$0, cea $$1) {
+      this.c.add(new cfo($$0, $$1));
    }
 
-   public ceb(bxe $$0, Class<? extends bxc> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(cdy.a.b, cdy.a.a));
+   @VisibleForTesting
+   public void a(Predicate<cea> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(cea $$0) {
+      for (cfo $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
+         }
+      }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
+   }
+
+   private static boolean a(cfo $$0, EnumSet<cea.a> $$1) {
+      for (cea.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(cfo $$0, Map<cea.a, cfo> $$1) {
+      for (cea.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bqo $$0 = bqn.a();
+      $$0.a("goalCleanup");
+
+      for (cfo $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
+            $$1.e();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cfo)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cfo $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
+            for (cea.a $$3 : $$2.j()) {
+               cfo $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bqo $$1 = bqn.a();
+      $$1.a("goalTick");
+
+      for (cfo $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cfo> b() {
+      return this.c;
+   }
+
+   public void a(cea.a $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(cea.a $$0) {
+      this.d.remove($$0);
+   }
+
+   public void a(cea.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

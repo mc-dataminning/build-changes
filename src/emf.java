@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record emf(int b, int c, int d) implements eli {
+public class emf implements elq {
    public static final Codec<emf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayu.m.fieldOf("spread_width").forGetter(emf::a), ayu.m.fieldOf("spread_height").forGetter(emf::b), ayu.m.fieldOf("max_height").forGetter(emf::c)
+               eah.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               eah.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bti.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, emf::new)
    );
+   public final eah b;
+   public final eah c;
+   private final bti d;
 
-   public int a() {
-      return this.b;
+   public emf(eah $$0, eah $$1, bti $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public bti a() {
       return this.d;
    }
 }

@@ -1,25 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dfy(dfs d) implements dgc {
-   public static final MapCodec<dfy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfs.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dfy::new));
+public record dfy(ji<cyz> c) {
+   public static final Codec<dfy> a = RecordCodecBuilder.create($$0 -> $$0.group(jt.a(mg.K).fieldOf("items").forGetter(dfy::a)).apply($$0, dfy::new));
+   public static final yw<wj, dfy> b = yw.a(yu.c(mg.K), dfy::a, dfy::new);
 
-   @Override
-   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
-      cyy $$5 = $$2.a();
-      if ($$5.c(kj.d) && $$5.c(kj.e)) {
-         arr $$7 = $$2.c() instanceof arr $$6 ? $$6 : null;
-         int $$8 = (int)this.d.a($$1);
-         $$5.a($$8, $$0, $$7, $$2.d());
-      }
+   public boolean a(czd $$0) {
+      return $$0.a(this.c);
    }
 
-   @Override
-   public MapCodec<dfy> a() {
-      return a;
-   }
-
-   public dfs b() {
-      return this.d;
+   public ji<cyz> a() {
+      return this.c;
    }
 }

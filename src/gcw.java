@@ -1,2 +1,8 @@
-public record gcw(egu a, djt b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gcw {
 }

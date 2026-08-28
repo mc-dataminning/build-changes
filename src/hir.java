@@ -1,183 +1,304 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class hir implements auw, his, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final alg a = alg.b("");
-   private final Map<alg, hia> c = new HashMap<>();
-   private final Set<his> d = new HashSet<>();
-   private final avd e;
+public class hir implements hiu.a, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final alg b;
+   final int c;
+   final int d;
+   private final fik e;
+   fik[] f;
+   @Nullable
+   private final hir.a g;
+   private final avf h;
 
-   public hir(avd $$0) {
-      this.e = $$0;
-      fic $$1 = hie.a();
-      this.a(hie.c(), new hic($$1));
+   public hir(alg $$0, hkk $$1, fik $$2, avf $$3) {
+      this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$1.b();
+      this.h = $$3;
+      this.g = $$3.a(hkj.b).map($$2x -> this.a($$1, $$2.a(), $$2.b(), $$2x)).orElse(null);
+      this.e = $$2;
+      this.f = new fik[]{this.e};
    }
 
-   public void a(alg $$0, hig $$1) {
+   public void a(int $$0) {
       try {
-         $$1.a(this.b($$0, $$1));
+         this.f = hil.a(this.f, $$0);
       } catch (Throwable var6) {
-         o $$3 = o.a(var6, "Uploading texture");
-         p $$4 = $$3.a("Uploaded texture");
-         $$4.a("Resource location", $$1.d());
-         $$4.a("Texture id", $$0);
-         throw new z($$3);
+         o $$2 = o.a(var6, "Generating mipmaps for frame");
+         p $$3 = $$2.a("Sprite being mipmapped");
+         $$3.a("First frame", () -> {
+            StringBuilder $$0x = new StringBuilder();
+            if ($$0x.length() > 0) {
+               $$0x.append(", ");
+            }
+
+            $$0x.append(this.e.a()).append("x").append(this.e.b());
+            return $$0x.toString();
+         });
+         p $$4 = $$2.a("Frame being iterated");
+         $$4.a("Sprite name", this.b);
+         $$4.a("Sprite size", () -> this.c + " x " + this.d);
+         $$4.a("Sprite frames", () -> this.g() + " frames");
+         $$4.a("Mipmap levels", $$0);
+         throw new z($$2);
       }
-
-      this.a($$0, (hia)$$1);
    }
 
-   private hiq b(alg $$0, hig $$1) {
-      try {
-         return a(this.e, $$0, $$1);
-      } catch (Exception var4) {
-         b.error("Failed to load texture {} into slot {}", new Object[]{$$1.d(), $$0, var4});
-         return hiq.a();
-      }
+   private int g() {
+      return this.g != null ? this.g.b.size() : 1;
    }
 
-   public void a(alg $$0) {
-      this.a($$0, (hia)(new hih($$0)));
-   }
+   @Nullable
+   private hir.a a(hkk $$0, int $$1, int $$2, hkj $$3) {
+      int $$4 = $$1 / $$0.a();
+      int $$5 = $$2 / $$0.b();
+      int $$6 = $$4 * $$5;
+      int $$7 = $$3.d();
+      List<hir.b> $$8;
+      if ($$3.a().isEmpty()) {
+         $$8 = new ArrayList<>($$6);
 
-   public void a(alg $$0, hia $$1) {
-      hia $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null) {
-            this.b($$0, $$2);
+         for (int $$9 = 0; $$9 < $$6; $$9++) {
+            $$8.add(new hir.b($$9, $$7));
          }
-
-         if ($$1 instanceof his $$3) {
-            this.d.add($$3);
-         }
-      }
-   }
-
-   private void b(alg $$0, hia $$1) {
-      this.d.remove($$1);
-
-      try {
-         $$1.close();
-      } catch (Exception var4) {
-         b.warn("Failed to close texture {}", $$0, var4);
-      }
-
-      $$1.b();
-   }
-
-   public hia b(alg $$0) {
-      hia $$1 = this.c.get($$0);
-      if ($$1 != null) {
-         return $$1;
       } else {
-         hih $$2 = new hih($$0);
-         this.a($$0, (hig)$$2);
-         return $$2;
+         List<hki> $$10 = $$3.a().get();
+         $$8 = new ArrayList<>($$10.size());
+
+         for (hki $$12 : $$10) {
+            $$8.add(new hir.b($$12.a(), $$12.a($$7)));
+         }
+
+         int $$13 = 0;
+         IntSet $$14 = new IntOpenHashSet();
+
+         for (Iterator<hir.b> $$15 = $$8.iterator(); $$15.hasNext(); $$13++) {
+            hir.b $$16 = $$15.next();
+            boolean $$17 = true;
+            if ($$16.b <= 0) {
+               a.warn("Invalid frame duration on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.b});
+               $$17 = false;
+            }
+
+            if ($$16.a < 0 || $$16.a >= $$6) {
+               a.warn("Invalid frame index on sprite {} frame {}: {}", new Object[]{this.b, $$13, $$16.a});
+               $$17 = false;
+            }
+
+            if ($$17) {
+               $$14.add($$16.a);
+            } else {
+               $$15.remove();
+            }
+         }
+
+         int[] $$18 = IntStream.range(0, $$6).filter($$1x -> !$$14.contains($$1x)).toArray();
+         if ($$18.length > 0) {
+            a.warn("Unused frames in sprite {}: {}", this.b, Arrays.toString($$18));
+         }
+      }
+
+      return $$8.size() <= 1 ? null : new hir.a(List.copyOf($$8), $$4, $$3.e());
+   }
+
+   void a(int $$0, int $$1, int $$2, int $$3, fik[] $$4) {
+      for (int $$5 = 0; $$5 < this.f.length; $$5++) {
+         $$4[$$5].a($$5, $$0 >> $$5, $$1 >> $$5, $$2 >> $$5, $$3 >> $$5, this.c >> $$5, this.d >> $$5, false);
       }
    }
 
    @Override
-   public void e() {
-      for (his $$0 : this.d) {
-         $$0.e();
-      }
+   public int a() {
+      return this.c;
    }
 
-   public void c(alg $$0) {
-      hia $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.b($$0, $$1);
-      }
+   @Override
+   public int b() {
+      return this.d;
+   }
+
+   @Override
+   public alg c() {
+      return this.b;
+   }
+
+   public IntStream d() {
+      return this.g != null ? this.g.b() : IntStream.of(1);
+   }
+
+   @Nullable
+   public hit e() {
+      return this.g != null ? this.g.a() : null;
+   }
+
+   public avf f() {
+      return this.h;
    }
 
    @Override
    public void close() {
-      this.c.forEach(this::b);
-      this.c.clear();
-      this.d.clear();
+      for (fik $$0 : this.f) {
+         $$0.close();
+      }
    }
 
    @Override
-   public CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      List<hir.a> $$4 = new ArrayList<>();
-      this.c.forEach(($$3x, $$4x) -> {
-         if ($$4x instanceof hig $$5) {
-            $$4.add(a($$1, $$3x, $$5, $$2));
-         }
-      });
-      return CompletableFuture.allOf($$4.stream().map(hir.a::b).toArray(CompletableFuture[]::new)).thenCompose($$0::a).thenAcceptAsync($$1x -> {
-         flx.a(this.e);
-
-         for (hir.a $$2x : $$4) {
-            $$2x.a.a($$2x.b.join());
-         }
-      }, $$3);
+   public String toString() {
+      return "SpriteContents{name=" + this.b + ", frameCount=" + this.g() + ", height=" + this.d + ", width=" + this.c + "}";
    }
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
+   public boolean a(int $$0, int $$1, int $$2) {
+      int $$3 = $$1;
+      int $$4 = $$2;
+      if (this.g != null) {
+         $$3 = $$1 + this.g.a($$0) * this.c;
+         $$4 = $$2 + this.g.b($$0) * this.d;
+      }
+
+      return axw.a(this.e.a($$3, $$4)) == 0;
+   }
+
+   public void a(int $$0, int $$1) {
+      if (this.g != null) {
+         this.g.a($$0, $$1);
       } else {
-         this.b($$0);
+         this.a($$0, $$1, 0, 0, this.f);
       }
    }
 
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
+   class a {
+      final List<hir.b> b;
+      private final int c;
+      private final boolean d;
+
+      a(final List<hir.b> $$0, final int $$1, final boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
       }
 
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof hib $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
+      int a(int $$0) {
+         return $$0 % this.c;
+      }
+
+      int b(int $$0) {
+         return $$0 / this.c;
+      }
+
+      void a(int $$0, int $$1, int $$2) {
+         int $$3 = this.a($$2) * hir.this.c;
+         int $$4 = this.b($$2) * hir.this.d;
+         hir.this.a($$0, $$1, $$3, $$4, hir.this.f);
+      }
+
+      public hit a() {
+         return hir.this.new d(this, this.d ? hir.this.new c() : null);
+      }
+
+      public void a(int $$0, int $$1) {
+         this.a($$0, $$1, this.b.get(0).a);
+      }
+
+      public IntStream b() {
+         return this.b.stream().mapToInt($$0 -> $$0.a).distinct();
+      }
+   }
+
+   static record b(int a, int b) {
+   }
+
+   final class c implements AutoCloseable {
+      private final fik[] b = new fik[hir.this.f.length];
+
+      c() {
+         for (int $$0 = 0; $$0 < this.b.length; $$0++) {
+            int $$1 = hir.this.c >> $$0;
+            int $$2 = hir.this.d >> $$0;
+            this.b[$$0] = new fik($$1, $$2, false);
+         }
+      }
+
+      void a(int $$0, int $$1, hir.d $$2) {
+         hir.a $$3 = $$2.c;
+         List<hir.b> $$4 = $$3.b;
+         hir.b $$5 = $$4.get($$2.a);
+         float $$6 = (float)$$2.b / (float)$$5.b;
+         int $$7 = $$5.a;
+         int $$8 = $$4.get(($$2.a + 1) % $$4.size()).a;
+         if ($$7 != $$8) {
+            for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+               int $$10 = hir.this.c >> $$9;
+               int $$11 = hir.this.d >> $$9;
+
+               for (int $$12 = 0; $$12 < $$11; $$12++) {
+                  for (int $$13 = 0; $$13 < $$10; $$13++) {
+                     int $$14 = this.a($$3, $$7, $$9, $$13, $$12);
+                     int $$15 = this.a($$3, $$8, $$9, $$13, $$12);
+                     this.b[$$9].a($$13, $$12, axw.a($$6, $$14, $$15));
+                  }
+               }
             }
-         }
-      });
-   }
 
-   private static hiq a(avd $$0, alg $$1, hig $$2) throws IOException {
-      try {
-         return $$2.a($$0);
-      } catch (FileNotFoundException var4) {
-         if ($$1 != a) {
-            b.warn("Missing resource {} referenced from {}", $$2.d(), $$1);
+            hir.this.a($$0, $$1, 0, 0, this.b);
          }
+      }
 
-         return hiq.a();
+      private int a(hir.a $$0, int $$1, int $$2, int $$3, int $$4) {
+         return hir.this.f[$$2].a($$3 + ($$0.a($$1) * hir.this.c >> $$2), $$4 + ($$0.b($$1) * hir.this.d >> $$2));
+      }
+
+      @Override
+      public void close() {
+         for (fik $$0 : this.b) {
+            $$0.close();
+         }
       }
    }
 
-   private static hir.a a(avd $$0, alg $$1, hig $$2, Executor $$3) {
-      return new hir.a($$2, CompletableFuture.supplyAsync(() -> {
-         try {
-            return a($$0, $$1, $$2);
-         } catch (IOException var4) {
-            throw new UncheckedIOException(var4);
-         }
-      }, $$3));
-   }
+   class d implements hit {
+      int a;
+      int b;
+      final hir.a c;
+      @Nullable
+      private final hir.c d;
 
-   static record a(hig a, CompletableFuture<hiq> b) {
+      d(final hir.a $$0, @Nullable final hir.c $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         this.b++;
+         hir.b $$2 = this.c.b.get(this.a);
+         if (this.b >= $$2.b) {
+            int $$3 = $$2.a;
+            this.a = (this.a + 1) % this.c.b.size();
+            this.b = 0;
+            int $$4 = this.c.b.get(this.a).a;
+            if ($$3 != $$4) {
+               this.c.a($$0, $$1, $$4);
+            }
+         } else if (this.d != null) {
+            this.d.a($$0, $$1, this);
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.d != null) {
+            this.d.close();
+         }
+      }
    }
 }

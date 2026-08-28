@@ -21,13 +21,13 @@ public class amx {
                                  )
                            ))
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("damageType", fh.a($$1, mg.aM))
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("damageType", fh.a($$1, mg.aN))
                                     .executes(
                                        $$0x -> a(
                                              (ei)$$0x.getSource(),
                                              ev.a($$0x, "target"),
                                              FloatArgumentType.getFloat($$0x, "amount"),
-                                             new bus(fh.a($$0x, "damageType", mg.aM))
+                                             new buu(fh.a($$0x, "damageType", mg.aN))
                                           )
                                     ))
                                  .then(
@@ -39,7 +39,7 @@ public class amx {
                                                       (ei)$$0x.getSource(),
                                                       ev.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bus(fh.a($$0x, "damageType", mg.aM), gm.a($$0x, "location"))
+                                                      new buu(fh.a($$0x, "damageType", mg.aN), gm.a($$0x, "location"))
                                                    )
                                              )
                                        )
@@ -53,7 +53,7 @@ public class amx {
                                                       (ei)$$0x.getSource(),
                                                       ev.a($$0x, "target"),
                                                       FloatArgumentType.getFloat($$0x, "amount"),
-                                                      new bus(fh.a($$0x, "damageType", mg.aM), ev.a($$0x, "entity"))
+                                                      new buu(fh.a($$0x, "damageType", mg.aN), ev.a($$0x, "entity"))
                                                    )
                                              ))
                                           .then(
@@ -65,7 +65,7 @@ public class amx {
                                                                (ei)$$0x.getSource(),
                                                                ev.a($$0x, "target"),
                                                                FloatArgumentType.getFloat($$0x, "amount"),
-                                                               new bus(fh.a($$0x, "damageType", mg.aM), ev.a($$0x, "entity"), ev.a($$0x, "cause"))
+                                                               new buu(fh.a($$0x, "damageType", mg.aN), ev.a($$0x, "entity"), ev.a($$0x, "cause"))
                                                             )
                                                       )
                                                 )
@@ -78,7 +78,7 @@ public class amx {
       );
    }
 
-   private static int a(ei $$0, bwd $$1, float $$2, bus $$3) throws CommandSyntaxException {
+   private static int a(ei $$0, bwf $$1, float $$2, buu $$3) throws CommandSyntaxException {
       if ($$1.a($$0.e(), $$3, $$2)) {
          $$0.a(() -> wy.a("commands.damage.success", $$2, $$1.m_()), true);
          return 1;

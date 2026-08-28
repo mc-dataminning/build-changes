@@ -1,13 +1,27 @@
-public class flp extends flo {
-   public static final int b = 5;
-   public final int c;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public flp(int $$0, int $$1) {
-      super(fju.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
+public class flp extends flo {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
+
+   public static flp a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      flp $$3 = new flp();
+
+      try {
+         $$3.a = fnk.b("downloadLink", $$2, "");
+         $$3.b = fnk.b("resourcePackUrl", $$2, "");
+         $$3.c = fnk.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
+
+      return $$3;
    }
 }

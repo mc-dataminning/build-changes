@@ -1,19 +1,25 @@
-import java.util.List;
-
-public interface det<T> {
-   public interface a<T> extends det<T> {
-      T a(T var1, List<T> var2);
+public class det extends dda {
+   public det(String $$0, ddg $$1, ddq $$2, czd $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public interface b<T> extends det<T> {
-      default T a(je<cyu> $$0) {
-         return this.a(new cyy($$0));
-      }
+   @Override
+   protected cyz f() {
+      return czh.xw;
+   }
 
-      default T a(cyu $$0) {
-         return this.a(new cyy($$0));
-      }
+   @Override
+   public def<det> b() {
+      return def.d;
+   }
 
-      T a(cyy var1);
+   @Override
+   public dee<det> a() {
+      return dee.q;
+   }
+
+   @Override
+   public ddx h() {
+      return ddw.j;
    }
 }

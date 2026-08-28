@@ -1,34 +1,32 @@
-public class gau extends gba {
-   private static final wy a = wy.c("options.chat.title");
+public class gau extends gay {
+   private static final wy b = wy.c("multiplayerWarning.header").a(n.r);
+   private static final wy c = wy.c("multiplayerWarning.message");
+   private static final wy d = wy.c("multiplayerWarning.check");
+   private static final wy s = b.f().f("\n").b(c);
+   private final fyb u;
 
-   private static fov<?>[] a(fow $$0) {
-      return new fov[]{
-         $$0.n(),
-         $$0.N(),
-         $$0.O(),
-         $$0.P(),
-         $$0.o(),
-         $$0.s(),
-         $$0.y(),
-         $$0.p(),
-         $$0.C(),
-         $$0.z(),
-         $$0.B(),
-         $$0.A(),
-         $$0.av(),
-         $$0.M(),
-         $$0.ah(),
-         $$0.Y(),
-         $$0.aj()
-      };
-   }
-
-   public gau(fxu $$0, fow $$1) {
-      super($$0, $$1, a);
+   public gau(fyb $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void m() {
-      this.d.a(a(this.c));
+   protected fvy m() {
+      fwb $$0 = fwb.e().a(8);
+      $$0.a(fsj.a(wx.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.az();
+         }
+
+         this.m.a(new gat(this.u));
+      }).a());
+      $$0.a(fsj.a(wx.k, $$0x -> this.aL_()).a());
+      return $$0;
+   }
+
+   @Override
+   public void aL_() {
+      this.m.a(this.u);
    }
 }

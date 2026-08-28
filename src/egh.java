@@ -1,71 +1,82 @@
-public class egh {
-   public static final alf<evj.a> a = a("temperature");
-   public static final alf<evj.a> b = a("vegetation");
-   public static final alf<evj.a> c = a("continentalness");
-   public static final alf<evj.a> d = a("erosion");
-   public static final alf<evj.a> e = a("temperature_large");
-   public static final alf<evj.a> f = a("vegetation_large");
-   public static final alf<evj.a> g = a("continentalness_large");
-   public static final alf<evj.a> h = a("erosion_large");
-   public static final alf<evj.a> i = a("ridge");
-   public static final alf<evj.a> j = a("offset");
-   public static final alf<evj.a> k = a("aquifer_barrier");
-   public static final alf<evj.a> l = a("aquifer_fluid_level_floodedness");
-   public static final alf<evj.a> m = a("aquifer_lava");
-   public static final alf<evj.a> n = a("aquifer_fluid_level_spread");
-   public static final alf<evj.a> o = a("pillar");
-   public static final alf<evj.a> p = a("pillar_rareness");
-   public static final alf<evj.a> q = a("pillar_thickness");
-   public static final alf<evj.a> r = a("spaghetti_2d");
-   public static final alf<evj.a> s = a("spaghetti_2d_elevation");
-   public static final alf<evj.a> t = a("spaghetti_2d_modulator");
-   public static final alf<evj.a> u = a("spaghetti_2d_thickness");
-   public static final alf<evj.a> v = a("spaghetti_3d_1");
-   public static final alf<evj.a> w = a("spaghetti_3d_2");
-   public static final alf<evj.a> x = a("spaghetti_3d_rarity");
-   public static final alf<evj.a> y = a("spaghetti_3d_thickness");
-   public static final alf<evj.a> z = a("spaghetti_roughness");
-   public static final alf<evj.a> A = a("spaghetti_roughness_modulator");
-   public static final alf<evj.a> B = a("cave_entrance");
-   public static final alf<evj.a> C = a("cave_layer");
-   public static final alf<evj.a> D = a("cave_cheese");
-   public static final alf<evj.a> E = a("ore_veininess");
-   public static final alf<evj.a> F = a("ore_vein_a");
-   public static final alf<evj.a> G = a("ore_vein_b");
-   public static final alf<evj.a> H = a("ore_gap");
-   public static final alf<evj.a> I = a("noodle");
-   public static final alf<evj.a> J = a("noodle_thickness");
-   public static final alf<evj.a> K = a("noodle_ridge_a");
-   public static final alf<evj.a> L = a("noodle_ridge_b");
-   public static final alf<evj.a> M = a("jagged");
-   public static final alf<evj.a> N = a("surface");
-   public static final alf<evj.a> O = a("surface_secondary");
-   public static final alf<evj.a> P = a("clay_bands_offset");
-   public static final alf<evj.a> Q = a("badlands_pillar");
-   public static final alf<evj.a> R = a("badlands_pillar_roof");
-   public static final alf<evj.a> S = a("badlands_surface");
-   public static final alf<evj.a> T = a("iceberg_pillar");
-   public static final alf<evj.a> U = a("iceberg_pillar_roof");
-   public static final alf<evj.a> V = a("iceberg_surface");
-   public static final alf<evj.a> W = a("surface_swamp");
-   public static final alf<evj.a> X = a("calcite");
-   public static final alf<evj.a> Y = a("gravel");
-   public static final alf<evj.a> Z = a("powder_snow");
-   public static final alf<evj.a> aa = a("packed_ice");
-   public static final alf<evj.a> ab = a("ice");
-   public static final alf<evj.a> ac = a("soul_sand_layer");
-   public static final alf<evj.a> ad = a("gravel_layer");
-   public static final alf<evj.a> ae = a("patch");
-   public static final alf<evj.a> af = a("netherrack");
-   public static final alf<evj.a> ag = a("nether_wart");
-   public static final alf<evj.a> ah = a("nether_state_selector");
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-   private static alf<evj.a> a(String $$0) {
-      return alf.a(mg.aX, alg.b($$0));
+public class egh implements efv {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final egi i = new egi(this);
+
+   public egh(long $$0) {
+      this.b($$0);
    }
 
-   public static evj a(jf<evj.a> $$0, egl $$1, alf<evj.a> $$2) {
-      je<evj.a> $$3 = $$0.b($$2);
-      return evj.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @Override
+   public azv d() {
+      return new egh(this.g());
+   }
+
+   @Override
+   public egt e() {
+      return new egh.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw ban.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw ban.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
+
+   public static class a implements egt {
+      private final long a;
+
+      public a(long $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public azv a(int $$0, int $$1, int $$2) {
+         long $$3 = azm.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new egh($$4);
+      }
+
+      @Override
+      public azv a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new egh((long)$$1 ^ this.a);
+      }
+
+      @Override
+      public azv a(long $$0) {
+         return new egh($$0);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

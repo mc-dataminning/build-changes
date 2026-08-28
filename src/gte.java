@@ -1,66 +1,27 @@
-import javax.annotation.Nullable;
+public class gte implements gsm<dza> {
+   private final gsi<dza> a;
+   private final gsp<dza> b;
 
-public class gte implements dhy {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gtd[] c;
-   protected final div d;
+   public gte(gsn.a $$0) {
+      this.a = new gsi<>($$0);
+      this.b = new gsp<>($$0);
+   }
 
-   gte(div $$0, int $$1, int $$2, gtd[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public void a(dza $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public boolean a(dza $$0) {
+      return this.a.a($$0) || this.b.a($$0);
    }
 
    @Override
-   public dzz a_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0);
+   public int aR_() {
+      return Math.max(this.a.aR_(), this.b.aR_());
    }
 
-   @Override
-   public ewg b_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0).y();
-   }
-
-   @Override
-   public float a(ja $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public evv x_() {
-      return this.d.x_();
-   }
-
-   @Nullable
-   @Override
-   public dwx c_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).a($$0);
-   }
-
-   private gtd a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
-
-   @Override
-   public int a(iu $$0, dig $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public int G_() {
-      return this.d.G_();
-   }
-
-   @Override
-   public int H_() {
-      return this.d.H_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+   public boolean a(dza $$0, feq $$1) {
+      return this.a.a($$0, $$1) || this.b.a($$0, $$1);
    }
 }

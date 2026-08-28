@@ -1,25 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class eya extends exs {
-   private static final int c = -1;
-   public static final Codec<eya> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eya::new)
-   );
-   public static final ext<eya> b = new ext<>("idcounts", eya::new, a, bbb.k);
-   private int d;
+public abstract class eya {
+   private boolean a;
 
-   public eya() {
-      this(-1);
+   public void f() {
+      this.a(true);
    }
 
-   public eya(int $$0) {
-      this.d = $$0;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   public exz a() {
-      exz $$0 = new exz(++this.d);
-      this.f();
-      return $$0;
+   public boolean g() {
+      return this.a;
+   }
+
+   public static record a(@Nullable arq a, long b) {
+      public a(arq $$0) {
+         this($$0, $$0.E());
+      }
+
+      public arq a() {
+         return Objects.requireNonNull(this.a);
+      }
+
+      @Nullable
+      public arq b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

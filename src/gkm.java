@@ -1,67 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class gkm {
-   private final gko[] a;
-   private int b;
-
-   public static Codec<gkm> a(int $$0) {
-      return Codec.list(gko.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new gkm($$0, $$1));
-            },
-            gkm::c
-         );
-   }
-
-   public gkm(int $$0) {
-      this.a = new gko[$$0];
-   }
-
-   private gkm(int $$0, List<gko> $$1) {
-      this.a = $$1.toArray(gko[]::new);
-      this.b = $$1.size();
-   }
-
-   private List<gko> c() {
-      List<gko> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+public interface gkm {
+   gkm a = new gkm() {
+      @Override
+      public CompletableFuture<Optional<crf>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
-      return $$0;
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static gkm a(UserApiService $$0, fpl $$1, Path $$2) {
+      return (gkm)($$1.g() == fpl.a.c ? new gjr($$0, $$1.b(), $$2) : a);
    }
 
-   public void a(gko $$0) {
-      this.a[this.c(this.b++)] = $$0;
-   }
+   CompletableFuture<Optional<crf>> a();
 
-   @Nullable
-   public gko b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
-   }
-
-   private int c(int $$0) {
-      return $$0 % this.a.length;
-   }
-
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
-   }
-
-   public int b() {
-      return this.b - 1;
-   }
-
-   private int d() {
-      return this.b() - this.a() + 1;
-   }
+   boolean b();
 }

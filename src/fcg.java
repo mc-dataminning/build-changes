@@ -1,51 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record fcg(Optional<ct> b, iu c) implements fci {
-   private static final MapCodec<iu> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(jz::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(jz::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(jz::w)
-            )
-            .apply($$0, iu::new)
-   );
-   public static final MapCodec<fcg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ct.a.optionalFieldOf("predicate").forGetter(fcg::c), g.forGetter(fcg::d)).apply($$0, fcg::new)
-   );
+public abstract class fcg implements fcq {
+   protected final List<fcq> c;
+   private final Predicate<ezh> a;
 
-   @Override
-   public fcj b() {
-      return fck.n;
+   protected fcg(List<fcq> $$0, Predicate<ezh> $$1) {
+      this.c = $$0;
+      this.a = $$1;
    }
 
-   public boolean a(eyz $$0) {
-      fei $$1 = $$0.c(fbt.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   protected static <T extends fcg> MapCodec<T> a(Function<List<fcq>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fcq.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fcg> Codec<T> b(Function<List<fcq>, T> $$0) {
+      return fcq.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ezh $$0) {
+      return this.a.test($$0);
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fbt.f);
+   public void a(ezn $$0) {
+      fcq.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public static fci.a a(ct.a $$0) {
-      return () -> new fcg(Optional.of($$0.b()), iu.c);
-   }
+   public abstract static class a implements fcq.a {
+      private final Builder<fcq> a = ImmutableList.builder();
 
-   public static fci.a a(ct.a $$0, iu $$1) {
-      return () -> new fcg(Optional.of($$0.b()), $$1);
-   }
+      protected a(fcq.a... $$0) {
+         for (fcq.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   public Optional<ct> c() {
-      return this.b;
-   }
+      public void a(fcq.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public iu d() {
-      return this.c;
+      @Override
+      public fcq build() {
+         return this.a(this.a.build());
+      }
+
+      protected abstract fcq a(List<fcq> var1);
    }
 }

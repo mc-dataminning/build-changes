@@ -53,9 +53,9 @@ public class bct extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bkr.a());
-      Type<?> $$1 = this.getInputSchema().getType(biw.D);
-      Type<?> $$2 = this.getOutputSchema().getType(biw.D);
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bks.a());
+      Type<?> $$1 = this.getInputSchema().getType(bix.D);
+      Type<?> $$2 = this.getOutputSchema().getType(bix.D);
       return this.fixTypeEverywhereTyped("BoatSplitFix", $$1, $$2, $$2x -> {
          Optional<String> $$3 = $$2x.getOptional($$0);
          if ($$3.isPresent() && c($$3.get())) {

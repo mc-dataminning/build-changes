@@ -1,71 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gtd implements gsm<dyx> {
+   private final gwf a;
 
-class gtd {
-   private final Map<iu, dwx> a;
-   @Nullable
-   private final List<eco<dzz>> b;
-   private final boolean c;
-   private final ecg d;
+   public gtd(gsn.a $$0) {
+      this.a = $$0.c();
+   }
 
-   gtd(ecg $$0) {
-      this.d = $$0;
-      this.c = $$0.H().ak();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof ecc) {
-         this.b = null;
-      } else {
-         ech[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (ech $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+   public void a(dyx $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      dja $$7 = $$0.i();
+      if ($$7 != null) {
+         dic $$8 = $$0.c();
+         bwf $$9 = $$8.b($$7, $$0.ax_());
+         if ($$9 != null) {
+            a($$1, $$2, $$3, $$4, $$9, this.a, $$8.b(), $$8.a());
          }
       }
    }
 
-   @Nullable
-   public dwx a(iu $$0) {
-      return this.a.get($$0);
-   }
-
-   public dzz b(iu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dzz $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dmc.iv.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = efp.a($$1, $$3);
-         }
-
-         return $$4 == null ? dmc.a.m() : $$4;
-      } else if (this.b == null) {
-         return dmc.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               eco<dzz> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dmc.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
-         }
+   public static void a(float $$0, fjj $$1, gqa $$2, int $$3, bwf $$4, gwf $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dq(), $$4.dr());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azm.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

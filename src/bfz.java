@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bfz extends bhr {
    public bfz(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, biw.D, $$1);
+      super($$0, false, "Gossip for for " + $$1, bix.D, $$1);
    }
 
    @Override

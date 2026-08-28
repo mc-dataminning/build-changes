@@ -23,8 +23,8 @@ public class bik extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.y);
-      Type<?> $$1 = this.getOutputSchema().getType(biw.y);
+      Type<?> $$0 = this.getInputSchema().getType(bix.y);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.y);
       return this.writeFixAndRead("ParticleUnflatteningFix", $$0, $$1, this::a);
    }
 
@@ -35,7 +35,7 @@ public class bik extends DataFix {
       } else {
          String $$2 = $$1.get();
          String[] $$3 = $$2.split(" ", 2);
-         String $$4 = bkr.a($$3[0]);
+         String $$4 = bks.a($$3[0]);
          Dynamic<T> $$5 = $$0.createMap(Map.of($$0.createString("type"), $$0.createString($$4)));
 
          return switch ($$4) {
@@ -81,9 +81,9 @@ public class bik extends DataFix {
       int $$2 = $$1.indexOf("[");
       Dynamic<T> $$3 = $$0.emptyMap();
       if ($$2 == -1) {
-         $$3 = $$3.set("Name", $$0.createString(bkr.a($$1)));
+         $$3 = $$3.set("Name", $$0.createString(bks.a($$1)));
       } else {
-         $$3 = $$3.set("Name", $$0.createString(bkr.a($$1.substring(0, $$2))));
+         $$3 = $$3.set("Name", $$0.createString(bks.a($$1.substring(0, $$2))));
          Map<Dynamic<T>, Dynamic<T>> $$4 = c($$0, $$1.substring($$2));
          if (!$$4.isEmpty()) {
             $$3 = $$3.set("Properties", $$0.createMap($$4));

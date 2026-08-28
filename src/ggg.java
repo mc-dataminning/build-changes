@@ -1,63 +1,44 @@
-public class ggg extends gfq<hcz> {
-   private final giu a;
-   private final giu b;
-   private final giu c;
-   private final giu d;
-   private final giu e;
+import java.util.Set;
 
-   public ggg(giu $$0) {
+public class ggg extends ghj<hcz> {
+   public static final gjl a = new get(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
+
+   public ggg(gjc $$0) {
       super($$0);
-      this.a = $$0.b("head");
-      this.b = $$0.b("right_arm");
-      this.c = $$0.b("left_arm");
-      this.d = $$0.b("right_leg");
-      this.e = $$0.b("left_leg");
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("head", giz.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), giw.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         giz.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new giy(0.5F)),
-         giw.a(0.0F, -7.0F, 0.0F)
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      gjm $$2 = $$1.a(
+         "head",
+         gjh.c()
+            .a(2, 61)
+            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(2, 61)
+            .a()
+            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
+            .a(23, 52)
+            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
+         gje.a(1.0F, 14.0F, 0.0F)
       );
-      $$1.a("right_arm", giz.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), giw.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", giz.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), giw.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", giz.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), giw.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", giz.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), giw.a(5.0F, 11.0F, 0.0F));
-      return gja.a($$0, 128, 128);
+      $$2.a("left_horn", gjh.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gje.a(0.0F, 0.0F, 0.0F));
+      $$2.a("right_horn", gjh.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gje.a(0.0F, 0.0F, 0.0F));
+      $$2.a("nose", gjh.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gje.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
+      $$1.a("body", gjh.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gje.a(0.0F, 24.0F, 0.0F));
+      $$1.a("left_hind_leg", gjh.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gje.a(1.0F, 14.0F, 4.0F));
+      $$1.a("right_hind_leg", gjh.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gje.a(-3.0F, 14.0F, 4.0F));
+      $$1.a("left_front_leg", gjh.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gje.a(1.0F, 14.0F, -6.0F));
+      $$1.a("right_front_leg", gjh.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gje.a(-3.0F, 14.0F, -6.0F));
+      return gji.a($$0, 64, 64);
    }
 
    public void a(hcz $$0) {
       super.a($$0);
-      float $$1 = $$0.a;
-      float $$2 = $$0.ae;
-      float $$3 = $$0.ad;
-      if ($$1 > 0.0F) {
-         this.b.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
-         this.c.e = -2.0F + 1.5F * azm.e($$1, 10.0F);
-      } else {
-         int $$4 = $$0.b;
-         if ($$4 > 0) {
-            this.b.e = -0.8F + 0.025F * azm.e((float)$$4, 70.0F);
-            this.c.e = 0.0F;
-         } else {
-            this.b.e = (-0.2F + 1.5F * azm.e($$3, 13.0F)) * $$2;
-            this.c.e = (-0.2F - 1.5F * azm.e($$3, 13.0F)) * $$2;
-         }
+      this.b.b("left_horn").k = $$0.a;
+      this.b.b("right_horn").k = $$0.b;
+      if ($$0.c != 0.0F) {
+         this.b.e = $$0.c;
       }
-
-      this.a.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.a.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.e = -1.5F * azm.e($$3, 13.0F) * $$2;
-      this.e.e = 1.5F * azm.e($$3, 13.0F) * $$2;
-      this.d.f = 0.0F;
-      this.e.f = 0.0F;
-   }
-
-   public giu b() {
-      return this.b;
    }
 }

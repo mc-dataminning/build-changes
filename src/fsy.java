@@ -1,71 +1,39 @@
 import javax.annotation.Nullable;
 
-public abstract class fsy<E extends fsy.a<E>> extends frw<E> {
-   private static final wy a = wy.c("narration.selection.usage");
+public class fsy extends fsh {
+   private final frt a;
 
-   public fsy(fos $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fsy(frt $$0, wy $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   public fsy(fos $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   protected void b(frv $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.F() + this.A() / 2;
+      int $$5 = this.G() + this.y() / 2;
+      wy $$6 = this.B();
+      $$0.b(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1);
+      String $$7 = fxq.a(af.c());
+      $$0.b(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712);
+   }
+
+   @Override
+   protected void a(fwg $$0) {
+   }
+
+   @Override
+   public void a(hoa $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return false;
    }
 
    @Nullable
    @Override
-   public frl a(fwf $$0) {
-      if (this.t() == 0) {
-         return null;
-      } else if (this.aI_() && $$0 instanceof fwf.a $$1) {
-         E $$2 = this.a($$1.b());
-         if ($$2 != null) {
-            return frl.a(this, frl.a($$2));
-         } else {
-            this.a(null);
-            return null;
-         }
-      } else if (!this.aI_()) {
-         E $$3 = this.p();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : frl.a(this, frl.a($$3));
-      } else {
-         return null;
-      }
-   }
-
-   @Override
-   public void a(fvz $$0) {
-      E $$1 = this.x();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.p();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aI_()) {
-         $$0.a(fvy.d, a);
-      }
-   }
-
-   public abstract static class a<E extends fsy.a<E>> extends frw.a<E> implements fwa {
-      public abstract wy a();
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(fvz $$0) {
-         $$0.a(fvy.a, this.a());
-      }
+   public frs a(fwm $$0) {
+      return null;
    }
 }

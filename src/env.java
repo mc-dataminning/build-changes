@@ -1,63 +1,40 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public class env extends eod {
-   public static final MapCodec<env> a = enj.a.fieldOf("provider").xmap(env::new, $$0 -> $$0.b);
-   private final enj b;
+public class env extends enu {
+   public static final MapCodec<env> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, env::new));
+   protected final List<eah> h;
 
-   public env(enj $$0) {
-      this.b = $$0;
+   protected static <P extends env> P4<Mu<P>, Long, evr.a, Float, List<eah>> b(Instance<P> $$0) {
+      return a($$0).and(ayu.b(eah.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public env(long $$0, evr.a $$1, float $$2, List<eah> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.g;
+   protected ens<?> a() {
+      return ens.d;
    }
 
    @Override
-   public void a(eod.a $$0) {
-      List<iu> $$1 = ekq.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
-      }
+   public eah a(azv $$0, iu $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   private void a(eod.a $$0, iu $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
+   protected eah a(List<eah> $$0, iu $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
    }
 
-   private void b(eod.a $$0, iu $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         iu $$3 = $$1.b($$2);
-         if (eje.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   protected eah a(List<eah> $$0, double $$1) {
+      double $$2 = azm.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

@@ -5,9 +5,9 @@ public class afl implements zf<abu> {
    private final int b;
    private final int[] c;
 
-   public afl(bwd $$0) {
+   public afl(bwf $$0) {
       this.b = $$0.ar();
-      List<bwd> $$1 = $$0.cY();
+      List<bwf> $$1 = $$0.cY();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

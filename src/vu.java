@@ -342,20 +342,20 @@ public class vu extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dic f() {
-      return new dic(this.readLong());
+   public dih f() {
+      return new dih(this.readLong());
    }
 
-   public vu a(dic $$0) {
+   public vu a(dih $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dic c(ByteBuf $$0) {
-      return new dic($$0.readLong());
+   public static dih c(ByteBuf $$0) {
+      return new dih($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dic $$1) {
+   public static void a(ByteBuf $$0, dih $$1) {
       $$0.writeLong($$1.a());
    }
 
@@ -369,7 +369,7 @@ public class vu extends ByteBuf {
    }
 
    public jd h() {
-      alf<div> $$0 = this.a(mg.bn);
+      alf<dja> $$0 = this.a(mg.bo);
       iu $$1 = this.e();
       return jd.a($$0, $$1);
    }
@@ -416,21 +416,21 @@ public class vu extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static fei f(ByteBuf $$0) {
-      return new fei($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static feq f(ByteBuf $$0) {
+      return new feq($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public fei k() {
+   public feq k() {
       return f(this);
    }
 
-   public static void a(ByteBuf $$0, fei $$1) {
+   public static void a(ByteBuf $$0, feq $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(fei $$0) {
+   public void a(feq $$0) {
       a(this, $$0);
    }
 
@@ -605,7 +605,7 @@ public class vu extends ByteBuf {
       return this;
    }
 
-   public fee v() {
+   public fem v() {
       iu $$0 = this.e();
       ja $$1 = this.b(ja.class);
       float $$2 = this.readFloat();
@@ -613,14 +613,14 @@ public class vu extends ByteBuf {
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new fee(new fei((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new fem(new feq((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(fee $$0) {
+   public void a(fem $$0) {
       iu $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      fei $$2 = $$0.g();
+      feq $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));

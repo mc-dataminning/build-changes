@@ -1,174 +1,104 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
 import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class eie<C extends ehx> {
-   public static final eie<eia> a = a("cave", new eib(eia.a));
-   public static final eie<eia> b = a("nether_cave", new eid(eia.a));
-   public static final eie<ehv> c = a("canyon", new ehw(ehv.a));
-   protected static final dzz d = dmc.a.m();
-   protected static final dzz e = dmc.nF.m();
-   protected static final ewg f = ewh.c.g();
-   protected static final ewg g = ewh.e.g();
-   protected Set<ewf> h = ImmutableSet.of(ewh.c);
-   private final MapCodec<eic<C>> i;
-
-   private static <C extends ehx, F extends eie<C>> F a(String $$0, F $$1) {
-      return jr.a(mf.N, $$0, $$1);
+public class eie extends eim<eid> {
+   public eie(Codec<eid> $$0) {
+      super($$0);
    }
 
-   public eie(Codec<C> $$0) {
-      this.i = $$0.fieldOf("config").xmap(this::a, eic::b);
+   public boolean a(eid $$0, azv $$1) {
+      return $$1.i() <= $$0.l;
    }
 
-   public eic<C> a(C $$0) {
-      return new eic<>(this, $$0);
+   public boolean a(eih $$0, eid $$1, ece $$2, Function<iu, je<dkd>> $$3, azv $$4, efs $$5, dih $$6, ecd $$7) {
+      int $$8 = (this.d() * 2 - 1) * 16;
+      double $$9 = (double)$$6.a($$4.a(16));
+      int $$10 = $$1.e.a($$4, $$0);
+      double $$11 = (double)$$6.b($$4.a(16));
+      float $$12 = $$4.i() * (float) (Math.PI * 2);
+      float $$13 = $$1.b.a($$4);
+      double $$14 = (double)$$1.f.a($$4);
+      float $$15 = $$1.c.c.a($$4);
+      int $$16 = (int)((float)$$8 * $$1.c.b.a($$4));
+      int $$17 = 0;
+      this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$9, (double)$$10, $$11, $$15, $$12, $$13, 0, $$16, $$14, $$7);
+      return true;
    }
 
-   public MapCodec<eic<C>> c() {
-      return this.i;
-   }
-
-   public int d() {
-      return 4;
-   }
-
-   protected boolean a(
-      ehz $$0, C $$1, ebw $$2, Function<iu, je<djy>> $$3, efk $$4, double $$5, double $$6, double $$7, double $$8, double $$9, ebv $$10, eie.a $$11
+   private void a(
+      eih $$0,
+      eid $$1,
+      ece $$2,
+      Function<iu, je<dkd>> $$3,
+      long $$4,
+      efs $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      int $$12,
+      int $$13,
+      double $$14,
+      ecd $$15
    ) {
-      dic $$12 = $$2.f();
-      double $$13 = (double)$$12.b();
-      double $$14 = (double)$$12.c();
-      double $$15 = 16.0 + $$8 * 2.0;
-      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
-         int $$16 = $$12.d();
-         int $$17 = $$12.e();
-         int $$18 = Math.max(azm.a($$5 - $$8) - $$16 - 1, 0);
-         int $$19 = Math.min(azm.a($$5 + $$8) - $$16, 15);
-         int $$20 = Math.max(azm.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.A() ? 0 : 7;
-         int $$22 = Math.min(azm.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
-         int $$23 = Math.max(azm.a($$7 - $$8) - $$17 - 1, 0);
-         int $$24 = Math.min(azm.a($$7 + $$8) - $$17, 15);
-         boolean $$25 = false;
-         iu.a $$26 = new iu.a();
-         iu.a $$27 = new iu.a();
+      azv $$16 = azv.a($$4);
+      float[] $$17 = this.a($$0, $$1, $$16);
+      float $$18 = 0.0F;
+      float $$19 = 0.0F;
 
-         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
-            int $$29 = $$12.a($$28);
-            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
-
-            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
-               int $$32 = $$12.b($$31);
-               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
-               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
-                  MutableBoolean $$34 = new MutableBoolean(false);
-
-                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
-                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
-                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
-                        $$10.a($$28, $$35, $$31);
-                        $$26.d($$29, $$35, $$32);
-                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$25;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean a(ehz $$0, C $$1, ebw $$2, Function<iu, je<djy>> $$3, ebv $$4, iu.a $$5, iu.a $$6, efk $$7, MutableBoolean $$8) {
-      dzz $$9 = $$2.a_($$5);
-      if ($$9.a(dmc.i) || $$9.a(dmc.fB)) {
-         $$8.setTrue();
-      }
-
-      if (!this.a($$1, $$9) && !b($$1)) {
-         return false;
-      } else {
-         dzz $$10 = this.a($$0, $$1, $$5, $$7);
-         if ($$10 == null) {
-            return false;
-         } else {
-            $$2.a($$5, $$10);
-            if ($$7.a() && !$$10.y().c()) {
-               $$2.e($$5);
+      for (int $$20 = $$12; $$20 < $$13; $$20++) {
+         double $$21 = 1.5 + (double)(azm.a((float)$$20 * (float) Math.PI / (float)$$13) * $$9);
+         double $$22 = $$21 * $$14;
+         $$21 *= (double)$$1.c.e.a($$16);
+         $$22 = this.a($$1, $$16, $$22, (float)$$13, (float)$$20);
+         float $$23 = azm.b($$11);
+         float $$24 = azm.a($$11);
+         $$6 += (double)(azm.b($$10) * $$23);
+         $$7 += (double)$$24;
+         $$8 += (double)(azm.a($$10) * $$23);
+         $$11 *= 0.7F;
+         $$11 += $$19 * 0.05F;
+         $$10 += $$18 * 0.05F;
+         $$19 *= 0.8F;
+         $$18 *= 0.5F;
+         $$19 += ($$16.i() - $$16.i()) * $$16.i() * 2.0F;
+         $$18 += ($$16.i() - $$16.i()) * $$16.i() * 4.0F;
+         if ($$16.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$20, $$13, $$9)) {
+               return;
             }
 
-            if ($$8.isTrue()) {
-               $$6.a($$5, ja.a);
-               if ($$2.a_($$6).a(dmc.j)) {
-                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
-                     $$2.a($$6, $$2x);
-                     if (!$$2x.y().c()) {
-                        $$2.e($$6);
-                     }
-                  });
-               }
-            }
-
-            return true;
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$21, $$22, $$15, ($$1x, $$2x, $$3x, $$4x, $$5x) -> this.a($$1x, $$17, $$2x, $$3x, $$4x, $$5x));
          }
       }
    }
 
-   @Nullable
-   private dzz a(ehz $$0, C $$1, iu $$2, efk $$3) {
-      if ($$2.v() <= $$1.g.a($$0)) {
-         return g.g();
-      } else {
-         dzz $$4 = $$3.a(new efr.e($$2.u(), $$2.v(), $$2.w()), 0.0);
-         if ($$4 == null) {
-            return b($$1) ? $$1.h.e() : null;
-         } else {
-            return b($$1) ? b($$1, $$4) : $$4;
+   private float[] a(eih $$0, eid $$1, azv $$2) {
+      int $$3 = $$0.b();
+      float[] $$4 = new float[$$3];
+      float $$5 = 1.0F;
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         if ($$6 == 0 || $$2.a($$1.c.d) == 0) {
+            $$5 = 1.0F + $$2.i() * $$2.i();
          }
+
+         $$4[$$6] = $$5 * $$5;
       }
+
+      return $$4;
    }
 
-   private static dzz b(ehx $$0, dzz $$1) {
-      if ($$1.a(dmc.a)) {
-         return $$0.h.b();
-      } else if ($$1.a(dmc.J)) {
-         dzz $$2 = $$0.h.c();
-         return $$2.b(eap.I) ? $$2.b(eap.I, Boolean.valueOf(true)) : $$2;
-      } else {
-         return $$1.a(dmc.K) ? $$0.h.d() : $$1;
-      }
+   private double a(eid $$0, azv $$1, double $$2, float $$3, float $$4) {
+      float $$5 = 1.0F - azm.e(0.5F - $$4 / $$3) * 2.0F;
+      float $$6 = $$0.c.f + $$0.c.g * $$5;
+      return (double)$$6 * $$2 * (double)azm.b($$1, 0.75F, 1.0F);
    }
 
-   public abstract boolean a(ehz var1, C var2, ebw var3, Function<iu, je<djy>> var4, azv var5, efk var6, dic var7, ebv var8);
-
-   public abstract boolean a(C var1, azv var2);
-
-   protected boolean a(C $$0, dzz $$1) {
-      return $$1.a($$0.i);
-   }
-
-   protected static boolean a(dic $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
-      double $$6 = (double)$$0.b();
-      double $$7 = (double)$$0.c();
-      double $$8 = $$1 - $$6;
-      double $$9 = $$2 - $$7;
-      double $$10 = (double)($$4 - $$3);
-      double $$11 = (double)($$5 + 2.0F + 16.0F);
-      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
-   }
-
-   private static boolean b(ehx $$0) {
-      return $$0.h.a();
-   }
-
-   public interface a {
-      boolean shouldSkip(ehz var1, double var2, double var4, double var6, int var8);
+   private boolean a(eih $$0, float[] $$1, double $$2, double $$3, double $$4, int $$5) {
+      int $$6 = $$5 - $$0.a();
+      return ($$2 * $$2 + $$4 * $$4) * (double)$$1[$$6 - 1] + $$3 * $$3 / 6.0 >= 1.0;
    }
 }

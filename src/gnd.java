@@ -1,11 +1,17 @@
-import javax.annotation.Nullable;
+public class gnd extends gnw {
+   protected gnd(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
+   }
 
-public interface gnd<T extends lv> {
-   @Nullable
-   gna createParticle(T var1, gjr var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   public static class a implements gnl<mb> {
+      private final god a;
 
-   public interface a<T extends lv> {
-      @Nullable
-      goa createParticle(T var1, gjr var2, double var3, double var5, double var7, double var9, double var11, double var13);
+      public a(god $$0) {
+         this.a = $$0;
+      }
+
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

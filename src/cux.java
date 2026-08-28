@@ -1,176 +1,158 @@
-import java.util.Optional;
+import java.util.List;
 
-public class cux extends cuq {
-   static final alg m = alg.b("container/slot/brewing_fuel");
-   static final alg n = alg.b("container/slot/potion");
-   private static final int o = 0;
-   private static final int p = 2;
-   private static final int q = 3;
-   private static final int r = 4;
-   private static final int s = 5;
-   private static final int t = 2;
-   private static final int u = 5;
-   private static final int v = 32;
-   private static final int w = 32;
-   private static final int x = 41;
-   private final btu y;
-   private final cvc z;
-   private final cwn A;
+public abstract class cux extends cwk {
+   public static final int m = 0;
+   public static final int n = 1;
+   public static final int o = 2;
+   public static final int p = 3;
+   public static final int q = 4;
+   private static final int s = 3;
+   private static final int t = 30;
+   private static final int u = 30;
+   private static final int v = 39;
+   final btw w;
+   private final cvh x;
+   protected final dja r;
+   private final def<? extends dda> y;
+   private final ded z;
+   private final cwl A;
 
-   public cux(int $$0, cqx $$1) {
-      this($$0, $$1, new bui(5), new cwm(2));
+   protected cux(cwe<?> $$0, def<? extends dda> $$1, alf<ded> $$2, cwl $$3, int $$4, crb $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, new buk(3), new cwr(4));
    }
 
-   public cux(int $$0, cqx $$1, btu $$2, cvc $$3) {
-      super(cvz.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.y = $$2;
-      this.z = $$3;
-      dat $$4 = $$1.k.dV().L();
-      this.a(new cux.c($$2, 0, 56, 51));
-      this.a(new cux.c($$2, 1, 79, 58));
-      this.a(new cux.c($$2, 2, 102, 51));
-      this.A = this.a(new cux.b($$4, $$2, 3, 79, 17));
-      this.a(new cux.a($$2, 4, 17, 17));
-      this.a($$3);
-      this.c($$1, 8, 84);
-   }
-
-   @Override
-   public boolean b(cqy $$0) {
-      return this.y.a($$0);
+   protected cux(cwe<?> $$0, def<? extends dda> $$1, alf<ded> $$2, cwl $$3, int $$4, crb $$5, btw $$6, cvh $$7) {
+      super($$0, $$4);
+      this.y = $$1;
+      this.A = $$3;
+      a($$6, 3);
+      a($$7, 4);
+      this.w = $$6;
+      this.x = $$7;
+      this.r = $$5.h.dV();
+      this.z = this.r.Q().a($$2);
+      this.a(new cws($$6, 0, 56, 17));
+      this.a(new cvs(this, $$6, 1, 56, 53));
+      this.a(new cvu($$5.h, $$6, 2, 116, 35));
+      this.c($$5, 8, 84);
+      this.a($$7);
    }
 
    @Override
-   public cyy b(cqy $$0, int $$1) {
-      cyy $$2 = cyy.k;
-      cwn $$3 = this.k.get($$1);
+   public void a(cri $$0) {
+      if (this.w instanceof cwx) {
+         ((cwx)this.w).fillStackedContents($$0);
+      }
+   }
+
+   public cws l() {
+      return this.k.get(2);
+   }
+
+   @Override
+   public boolean b(crc $$0) {
+      return this.w.a($$0);
+   }
+
+   @Override
+   public czd b(crc $$0, int $$1) {
+      czd $$2 = czd.k;
+      cws $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cyy $$4 = $$3.g();
+         czd $$4 = $$3.g();
          $$2 = $$4.v();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (cux.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.A.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return cyy.k;
-               }
-            } else if (this.A.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return cyy.k;
-               }
-            } else if (cux.c.b($$2)) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return cyy.k;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return cyy.k;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return cyy.k;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return cyy.k;
-            }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return cyy.k;
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return czd.k;
             }
 
             $$3.b($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return czd.k;
+               }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return czd.k;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return czd.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return czd.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return czd.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cyy.k);
+            $$3.e(czd.k);
          } else {
             $$3.d();
          }
 
          if ($$4.M() == $$2.M()) {
-            return cyy.k;
+            return czd.k;
          }
 
-         $$3.a($$0, $$2);
+         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
-   public int l() {
-      return this.z.a(1);
+   protected boolean c(czd $$0) {
+      return this.z.a($$0);
    }
 
-   public int m() {
-      return this.z.a(0);
+   protected boolean d(czd $$0) {
+      return this.r.M().a($$0);
    }
 
-   static class a extends cwn {
-      public a(btu $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cyy $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(cyy $$0) {
-         return $$0.a(axk.X);
-      }
-
-      @Override
-      public alg c() {
-         return cux.m;
-      }
+   public float m() {
+      int $$0 = this.x.a(2);
+      int $$1 = this.x.a(3);
+      return $$1 != 0 && $$0 != 0 ? azm.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
    }
 
-   static class b extends cwn {
-      private final dat a;
-
-      public b(dat $$0, btu $$1, int $$2, int $$3, int $$4) {
-         super($$1, $$2, $$3, $$4);
-         this.a = $$0;
+   public float n() {
+      int $$0 = this.x.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
       }
 
-      @Override
-      public boolean a(cyy $$0) {
-         return this.a.a($$0);
-      }
+      return azm.a((float)this.x.a(0) / (float)$$0, 0.0F, 1.0F);
    }
 
-   static class c extends cwn {
-      public c(btu $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
+   public boolean o() {
+      return this.x.a(0) > 0;
+   }
 
-      @Override
-      public boolean a(cyy $$0) {
-         return b($$0);
-      }
+   @Override
+   public cwl aj_() {
+      return this.A;
+   }
 
-      @Override
-      public int a() {
-         return 1;
-      }
-
-      @Override
-      public void a(cqy $$0, cyy $$1) {
-         Optional<je<das>> $$2 = $$1.a(kj.R, dau.a).e();
-         if ($$2.isPresent() && $$0 instanceof arr $$3) {
-            ap.l.a($$3, $$2.get());
+   @Override
+   public cwk.a a(boolean $$0, boolean $$1, ddz<?> $$2, final arq $$3, crb $$4) {
+      final List<cws> $$5 = List.of(this.b(0), this.b(2));
+      return aks.a(new aks.a<dda>() {
+         @Override
+         public void a(cri $$0) {
+            cux.this.a($$0);
          }
 
-         super.a($$0, $$1);
-      }
+         @Override
+         public void a() {
+            $$5.forEach($$0 -> $$0.f(czd.k));
+         }
 
-      public static boolean b(cyy $$0) {
-         return $$0.a(czc.to) || $$0.a(czc.wu) || $$0.a(czc.wx) || $$0.a(czc.tn);
-      }
-
-      @Override
-      public alg c() {
-         return cux.n;
-      }
+         @Override
+         public boolean a(ddz<dda> $$0) {
+            return $$0.b().a(new den(cux.this.w.a(0)), $$3);
+         }
+      }, 1, 1, List.of(this.b(0)), $$5, $$4, (ddz<dda>)$$2, $$0, $$1);
    }
 }

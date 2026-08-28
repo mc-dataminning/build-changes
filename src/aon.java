@@ -18,7 +18,7 @@ public class aon {
                      .then(
                         ((RequiredArgumentBuilder)ej.a("targets", ev.d())
                               .then(
-                                 ej.a("recipe", fi.a(mg.bt))
+                                 ej.a("recipe", fi.a(mg.bu))
                                     .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
                               ))
                            .then(ej.a("*").executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
@@ -29,7 +29,7 @@ public class aon {
                   .then(
                      ((RequiredArgumentBuilder)ej.a("targets", ev.d())
                            .then(
-                              ej.a("recipe", fi.a(mg.bt))
+                              ej.a("recipe", fi.a(mg.bu))
                                  .executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
                            ))
                         .then(ej.a("*").executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
@@ -38,7 +38,7 @@ public class aon {
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, Collection<ddu<?>> $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, Collection<arr> $$1, Collection<ddz<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arr $$4 : $$1) {
@@ -58,7 +58,7 @@ public class aon {
       }
    }
 
-   private static int b(ei $$0, Collection<arr> $$1, Collection<ddu<?>> $$2) throws CommandSyntaxException {
+   private static int b(ei $$0, Collection<arr> $$1, Collection<ddz<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arr $$4 : $$1) {

@@ -1,46 +1,37 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.BufferUtils;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
+import javax.annotation.Nullable;
 
-public class hnh implements FloatConsumer {
-   private final List<ByteBuffer> a = Lists.newArrayList();
-   private final int b;
-   private int c;
-   private ByteBuffer d;
+public class hnh extends avq {
+   @Nullable
+   private tz h;
 
-   public hnh(int $$0) {
-      this.b = $$0 + 1 & -2;
-      this.d = BufferUtils.createByteBuffer($$0);
+   public hnh(hni $$0, jl<alp> $$1, eyy $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public void accept(float $$0) {
-      if (this.d.remaining() == 0) {
-         this.d.flip();
-         this.a.add(this.d);
-         this.d = BufferUtils.createByteBuffer(this.b);
+   @Override
+   protected void b(arr $$0) {
+      if (this.b().a($$0.gi())) {
+         this.h = $$0.f(new tz());
       }
 
-      int $$1 = azm.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
-      this.d.putShort((short)$$1);
-      this.c += 2;
+      super.b($$0);
    }
 
-   public ByteBuffer a() {
-      this.d.flip();
-      if (this.a.isEmpty()) {
-         return this.d;
-      } else {
-         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
-         this.a.forEach($$0::put);
-         $$0.put(this.d);
-         $$0.flip();
-         return $$0;
-      }
+   @Override
+   public wy a(SocketAddress $$0, GameProfile $$1) {
+      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
    }
 
-   public int b() {
-      return this.c;
+   public hni b() {
+      return (hni)super.c();
+   }
+
+   @Nullable
+   @Override
+   public tz r() {
+      return this.h;
    }
 }

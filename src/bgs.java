@@ -72,9 +72,9 @@ public class bgs extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bkr.a());
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
+      OpticFinder<String> $$2 = DSL.fieldFinder("id", bks.a());
       OpticFinder<?> $$3 = $$0.findField("tag");
       OpticFinder<?> $$4 = $$3.type().findField("EntityTag");
       return this.fixTypeEverywhereTyped("ItemInstanceSpawnEggFix" + this.getOutputSchema().getVersionKey(), $$0, $$4x -> {
@@ -84,7 +84,7 @@ public class bgs extends DataFix {
             Typed<?> $$7 = $$6.getOrCreateTyped($$4);
             Optional<String> $$8 = $$7.getOptional($$2);
             if ($$8.isPresent()) {
-               return $$4x.set($$1, Pair.of(biw.F.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
+               return $$4x.set($$1, Pair.of(bix.F.typeName(), b.getOrDefault($$8.get(), "minecraft:pig_spawn_egg")));
             }
          }
 

@@ -1,167 +1,68 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gkh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bsr b = new bsr(af.h(), "server-list-io");
-   private static final int c = 16;
-   private final fos d;
-   private final List<gkg> e = Lists.newArrayList();
-   private final List<gkg> f = Lists.newArrayList();
+public class gkh extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final glr b;
+   private final gkh.a c;
 
-   public gkh(fos $$0) {
-      this.d = $$0;
+   public gkh(glr $$0, gkh.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
       try {
-         this.e.clear();
-         this.f.clear();
-         tz $$0 = um.a(this.d.q.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         uf $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            tz $$3 = $$1.a($$2);
-            gkg $$4 = gkg.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ask.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ask.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
       } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
+         $$1.release();
+         throw var6;
       }
    }
 
-   public void b() {
-      try {
-         uf $$0 = new uf();
-
-         for (gkg $$1 : this.e) {
-            tz $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (gkg $$3 : this.f) {
-            tz $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         tz $$5 = new tz();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.q.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         um.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         af.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public gkg a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Nullable
-   public gkg a(String $$0) {
-      for (gkg $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ask.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azm.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azm.a($$4.get(4), -1);
+            int $$9 = azm.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
 
-      for (gkg $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
+      $$0.close();
    }
 
-   @Nullable
-   public gkg b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         gkg $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
-      }
-
-      return null;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public void a(gkg $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(gkg $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
-      } else {
-         this.e.add($$0);
-      }
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public void a(int $$0, int $$1) {
-      gkg $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
-   }
-
-   public void a(int $$0, gkg $$1) {
-      this.e.set($$0, $$1);
-   }
-
-   private static boolean a(gkg $$0, List<gkg> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         gkg $$3 = $$1.get($$2);
-         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static void b(gkg $$0) {
-      b.a_(() -> {
-         gkh $$1 = new gkh(fos.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
-
-         $$1.b();
-      });
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

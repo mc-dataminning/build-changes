@@ -21,10 +21,10 @@ public record yg(Either<ha, String> d, String e) implements wz {
       return c;
    }
 
-   private ffm a(ei $$0) throws CommandSyntaxException {
+   private ffu a(ei $$0) throws CommandSyntaxException {
       Optional<ha> $$1 = this.d.left();
       if ($$1.isPresent()) {
-         List<? extends bwd> $$2 = $$1.get().b().b($$0);
+         List<? extends bwf> $$2 = $$1.get().b().b($$0);
          if (!$$2.isEmpty()) {
             if ($$2.size() != 1) {
                throw ev.a.create();
@@ -32,20 +32,20 @@ public record yg(Either<ha, String> d, String e) implements wz {
                return $$2.getFirst();
             }
          } else {
-            return ffm.c($$1.get().a());
+            return ffu.c($$1.get().a());
          }
       } else {
-         return ffm.c((String)this.d.right().orElseThrow());
+         return ffu.c((String)this.d.right().orElseThrow());
       }
    }
 
-   private xm a(ffm $$0, ei $$1) {
+   private xm a(ffu $$0, ei $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         ffn $$3 = $$2.aJ();
-         fff $$4 = $$3.a(this.e);
+         ffv $$3 = $$2.aJ();
+         ffn $$4 = $$3.a(this.e);
          if ($$4 != null) {
-            ffj $$5 = $$3.d($$0, $$4);
+            ffr $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(yr.b));
             }
@@ -56,12 +56,12 @@ public record yg(Either<ha, String> d, String e) implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwd $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wy.i();
       } else {
-         ffm $$3 = this.a($$0);
-         ffm $$4 = (ffm)($$1 != null && $$3.equals(ffm.co) ? $$1 : $$3);
+         ffu $$3 = this.a($$0);
+         ffu $$4 = (ffu)($$1 != null && $$3.equals(ffu.cp) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

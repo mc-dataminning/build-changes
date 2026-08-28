@@ -1,77 +1,50 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dtf extends dvj implements dmd, dqw {
+public class dtf extends dlr {
    public static final MapCodec<dtf> a = b(dtf::new);
-   private static final ffc b = dma.b(12.0, 0.0, 12.0);
+   public static final eay b = eax.c;
+   private final bti c = btf.a(5);
 
    @Override
    public MapCodec<dtf> a() {
       return a;
    }
 
-   protected dtf(dzy.d $$0) {
+   public dtf(eag.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return b;
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected boolean b(dzz $$0, dib $$1, iu $$2) {
-      return $$0.c($$1, $$2, ja.b) && !$$0.a(dmc.lm);
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+      }
    }
 
    @Nullable
    @Override
-   public dzz a(dcr $$0) {
-      ewg $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public dxf a(iu $$0, eah $$1) {
+      return new dyp($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return $$0.C ? null : a($$2, dxh.L, dyp::a);
    }
 
    @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      dzz $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if (!$$8.l()) {
-         $$2.a($$3, ewh.c, ewh.c.a($$1));
+   protected void a(eah $$0, arq $$1, iu $$2, czd $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
       }
-
-      return $$8;
-   }
-
-   @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return $$0.a_($$1.d()).a(dmc.J);
-   }
-
-   @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return true;
-   }
-
-   @Override
-   protected ewg b_(dzz $$0) {
-      return ewh.c.a(false);
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      dzz $$4 = dmc.bF.m();
-      dzz $$5 = $$4.b(duo.d, eav.a);
-      iu $$6 = $$2.d();
-      $$0.a($$2, $$4, 2);
-      $$0.a($$6, $$5, 2);
-   }
-
-   @Override
-   public boolean a(@Nullable bxc $$0, dib $$1, iu $$2, dzz $$3, ewf $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(diw $$0, iu $$1, dzz $$2, ewg $$3) {
-      return false;
    }
 }

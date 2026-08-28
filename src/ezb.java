@@ -1,41 +1,94 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.Lifecycle;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record ezb<T>(alf<jr<T>> d, Codec<T> e, ezb.a<T> f) {
-   public static final ezb<fci> a = new ezb<>(mg.br, fci.e, e());
-   public static final ezb<fan> b = new ezb<>(mg.bq, fap.c, e());
-   public static final ezb<eze> c = new ezb<>(mg.bp, eze.d, f());
+public interface ezb {
+   int d = 19133;
+   int e = 19132;
 
-   public void a(ezf $$0, alf<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   djy D();
+
+   void a(djy var1);
+
+   boolean F();
+
+   Set<String> G();
+
+   Set<String> H();
+
+   void a(String var1, boolean var2);
+
+   default void a(p $$0) {
+      $$0.a("Known server brands", () -> String.join(", ", this.G()));
+      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
+      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
+      $$0.a("Level storage version", () -> {
+         int $$0x = this.x();
+         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
+      });
    }
 
-   public static Stream<ezb<?>> a() {
-      return Stream.of(a, b, c);
+   default String f(int $$0) {
+      switch ($$0) {
+         case 19132:
+            return "McRegion";
+         case 19133:
+            return "Anvil";
+         default:
+            return "Unknown?";
+      }
    }
 
-   private static <T extends eza> ezb.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+   @Nullable
+   tz E();
 
-   private static ezb.a<eze> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+   void a(@Nullable tz var1);
 
-   public alf<jr<T>> b() {
-      return this.d;
-   }
+   eza I();
 
-   public Codec<T> c() {
-      return this.e;
-   }
+   dje J();
 
-   public ezb.a<T> d() {
-      return this.f;
-   }
+   tz a(js var1, @Nullable tz var2);
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(ezf var1, alf<T> var2, T var3);
+   boolean l();
+
+   int x();
+
+   String e();
+
+   dix k();
+
+   void a(dix var1);
+
+   boolean m();
+
+   bua q();
+
+   void a(bua var1);
+
+   boolean r();
+
+   void d(boolean var1);
+
+   diw o();
+
+   @Nullable
+   tz w();
+
+   eeh.a C();
+
+   void a(eeh.a var1);
+
+   ehe y();
+
+   boolean z();
+
+   boolean A();
+
+   Lifecycle B();
+
+   default cum K() {
+      return this.D().b();
    }
 }

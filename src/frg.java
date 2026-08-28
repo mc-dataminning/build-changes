@@ -1,89 +1,104 @@
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
 
 public class frg {
-   public static final frg.a a = a(fre::a, frd.c);
-   public static final frg.a b = a(fre::a, frd.d);
-   public static final frg.a c = a(fre::a, frd.e);
-   public static final frg.a d = a(fre::n, frd.j);
-   public static final frg.a e = a(fre::n, frd.k);
-   public static final frg.a f = a(fre::t, frd.n);
-   public static final frg.a g = a(fre::o, frd.m);
-   public static final frg.a h = a(fre::E, frd.p);
-   public static final frg.a i = a(fre::D, frd.q);
-   public static final frg.a j = a(fre::i, frd.ay);
-   public static final frg.a k = a(fre::d, frd.az);
-   public static final frg.a l = a(fre::j, frd.aA);
-   public static final frg.a m = a(fre::j, frd.aB);
-   public static final frg.a n = a(fre::j, frd.aC);
-   public static final frg.a o = a(fre::j, frd.aD);
-   public static final frg.a p = a(fre::b, frd.aE);
-   public static final frg.a q = a(fre::b, frd.aF);
-   public static final frg.a r = a(fre::b, frd.aG);
-   public static final frg.a s = a(fre::b, frd.aH);
-   public static final frg.a t = a(fre::l, frd.aK);
-   public static final frg.a u = a(fre::m, frd.aI);
-   public static final frg.a v = a(fre::G, frd.aZ);
-   public static final frg.a w = a(fre::a, frd.ad);
-   public static final frg.a x = a(fre::A, frd.bk);
-   public static final frg.a y = a(fre::A, frd.bl);
-   public static final frg.a z = a(fre::b, frd.bv);
-   public static final frg.a A = a(fre::q, frd.j);
-   public static final frg.a B = a(fre::q, frd.k);
-   public static final frg.a C = a(fre::u, frd.n);
-   public static final frg.a D = a(fre::v, frd.j);
-   private final fre E;
-   private final frc F;
-
-   private frg(fre $$0, frc $$1) {
-      this.E = $$0;
-      this.F = $$1;
+   public static hfn.b a(alg $$0) {
+      return new hfh.a($$0, List.of());
    }
 
-   public frc a() {
-      return this.F;
+   public static hfn.b a(alg $$0, fqj... $$1) {
+      return new hfh.a($$0, List.of($$1));
    }
 
-   public fre b() {
-      return this.E;
+   public static fqj a(int $$0) {
+      return new fqe($$0);
    }
 
-   public frg a(Consumer<fre> $$0) {
-      $$0.accept(this.E);
-      return this;
+   public static hfn.b a(hfn.b... $$0) {
+      return new hfk.a(List.of($$0));
    }
 
-   public alg a(dma $$0, BiConsumer<alg, fra> $$1) {
-      return this.F.a($$0, this.E, $$1);
+   public static hfn.b a(alg $$0, hib.a $$1) {
+      return new hfu.a($$0, $$1);
    }
 
-   public alg a(dma $$0, String $$1, BiConsumer<alg, fra> $$2) {
-      return this.F.a($$0, $$1, this.E, $$2);
+   public static hfs.a a(hfn.b $$0, float $$1) {
+      return new hfs.a($$1, $$0);
    }
 
-   private static frg.a a(Function<dma, fre> $$0, frc $$1) {
-      return $$2 -> new frg($$0.apply($$2), $$1);
+   public static hfn.b a(hgx $$0, hfn.b $$1, hfs.a... $$2) {
+      return new hfs.b($$0, 1.0F, List.of($$2), Optional.of($$1));
    }
 
-   public static frg a(alg $$0) {
-      return new frg(fre.b($$0), frd.c);
+   public static hfn.b a(hgx $$0, float $$1, hfn.b $$2, hfs.a... $$3) {
+      return new hfs.b($$0, $$1, List.of($$3), Optional.of($$2));
    }
 
-   @FunctionalInterface
-   public interface a {
-      frg get(dma var1);
+   public static hfn.b a(hgx $$0, hfn.b $$1, List<hfs.a> $$2) {
+      return new hfs.b($$0, 1.0F, $$2, Optional.of($$1));
+   }
 
-      default alg create(dma $$0, BiConsumer<alg, fra> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
+   public static hfn.b a(hgx $$0, List<hfs.a> $$1) {
+      return new hfs.b($$0, 1.0F, $$1, Optional.empty());
+   }
 
-      default alg createWithSuffix(dma $$0, String $$1, BiConsumer<alg, fra> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+   public static hfn.b a(hgx $$0, float $$1, List<hfs.a> $$2) {
+      return new hfs.b($$0, $$1, $$2, Optional.empty());
+   }
 
-      default frg.a updateTexture(Consumer<fre> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   public static hfn.b a(hga $$0, hfn.b $$1, hfn.b $$2) {
+      return new hfl.a($$0, $$1, $$2);
+   }
+
+   public static <T> hft.b<T> a(T $$0, hfn.b $$1) {
+      return new hft.b<>(List.of($$0), $$1);
+   }
+
+   public static <T> hft.b<T> a(List<T> $$0, hfn.b $$1) {
+      return new hft.b<>($$0, $$1);
+   }
+
+   @SafeVarargs
+   public static <T> hfn.b a(hhn<T> $$0, hfn.b $$1, hft.b<T>... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T> hfn.b a(hhn<T> $$0, hfn.b $$1, List<hft.b<T>> $$2) {
+      return new hft.c(new hft.d<>($$0, $$2), Optional.of($$1));
+   }
+
+   @SafeVarargs
+   public static <T> hfn.b a(hhn<T> $$0, hft.b<T>... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   public static <T> hfn.b a(hhn<T> $$0, List<hft.b<T>> $$1) {
+      return new hft.c(new hft.d<>($$0, $$1), Optional.empty());
+   }
+
+   public static hga a() {
+      return new hgj();
+   }
+
+   public static hga a(ki<?> $$0) {
+      return new hgf($$0, false);
+   }
+
+   public static hfn.b a(hfn.b $$0, hfn.b $$1) {
+      return a(new hhf(), $$1, a(dja.i, $$0));
+   }
+
+   public static <T extends Comparable<T>> hfn.b a(ebk<T> $$0, hfn.b $$1, Map<T, hfn.b> $$2) {
+      List<hft.b<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
+         String $$2x = $$0.b((T)$$1x.getKey());
+         return new hft.b<>(List.of($$2x), (hfn.b)$$1x.getValue());
+      }).toList();
+      return a(new hhj($$0.f()), $$1, $$3);
+   }
+
+   public static hfn.b b(hfn.b $$0, hfn.b $$1) {
+      return a(hhk.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
    }
 }

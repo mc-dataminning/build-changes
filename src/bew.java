@@ -18,8 +18,8 @@ public abstract class bew extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(biw.D);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(biw.D);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bix.D);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bix.D);
       Function<String, Type<?>> $$2 = af.b($$2x -> {
          Type<?> $$3 = (Type<?>)$$0.types().get($$2x);
          return bbd.a($$3, $$0, $$1);

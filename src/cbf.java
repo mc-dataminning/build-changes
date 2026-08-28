@@ -1,43 +1,81 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
+import java.util.Set;
 
-public class cbf {
-   public static <E extends bxe> byu<E> a(cbf.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
+public class cbf extends byv<bxe> {
+   public static final int c = 100;
+   private long d;
+
+   public cbf() {
+      super(ImmutableMap.of(cgg.b, cgh.a, cgg.J, cgh.c));
    }
 
-   public static <E extends bxe> byu<E> a(cbf.a<E> $$0, cbf.b<E> $$1) {
-      return ccg.a(
-         (Function<ccg.b<E>, ? extends App<ccg.c<E>, ccj<E>>>)($$2 -> $$2.group($$2.c(cge.p), $$2.a(cge.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bxc> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bxc $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
-                  }
-               }))
-      );
+   @Override
+   protected boolean a(arq $$0, bxe $$1) {
+      if ($$1.bZ()) {
+         return false;
+      } else {
+         bye<?> $$2 = $$1.ec();
+         jd $$3 = $$2.c(cgg.b).get();
+         if ($$0.aj() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cgg.J);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.ae() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            eah $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dt(), 2.0) && $$6.a(axc.T) && !$$6.c(dly.c);
+         }
+      }
    }
 
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(arq var1, E var2);
+   @Override
+   protected boolean a(arq $$0, bxe $$1, long $$2) {
+      Optional<jd> $$3 = $$1.ec().c(cgg.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         iu $$4 = $$3.get().b();
+         return $$1.ec().c(csw.e) && $$1.dC() > (double)$$4.v() + 0.4 && $$4.a($$1.dt(), 1.14);
+      }
    }
 
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bxc> get(arq var1, E var2);
+   @Override
+   protected void d(arq $$0, bxe $$1, long $$2) {
+      if ($$2 > this.d) {
+         bye<?> $$3 = $$1.ec();
+         if ($$3.a(cgg.w)) {
+            Set<jd> $$4 = $$3.c(cgg.w).get();
+            Optional<List<bxe>> $$5;
+            if ($$3.a(cgg.g)) {
+               $$5 = $$3.c(cgg.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bzt.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.ec().c(cgg.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(arq $$0, bxe $$1, long $$2) {
+      if ($$1.fR()) {
+         $$1.fS();
+         this.d = $$2 + 40L;
+      }
    }
 }

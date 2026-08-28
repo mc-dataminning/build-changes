@@ -11,7 +11,7 @@ public class bfn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.w);
+      Type<?> $$0 = this.getInputSchema().getType(bix.w);
       OpticFinder<?> $$1 = $$0.findField("minecraft:equippable");
       return this.fixTypeEverywhereTyped(
          "equippable asset rename fix",

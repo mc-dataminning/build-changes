@@ -1,181 +1,70 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public abstract class efo {
-   public static efo.b a(int $$0, int $$1) {
-      return new efo.b($$0 - 1, $$1 + 1);
+public record efo(je<efh> b, float c, feq d, @Nullable UUID e, @Nullable UUID f, @Nullable bwf g) {
+   public static final Codec<efo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               efh.aj.fieldOf("game_event").forGetter(efo::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(efo::b),
+               feq.a.fieldOf("pos").forGetter(efo::c),
+               jy.a.lenientOptionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               jy.a.lenientOptionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new efo($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
+
+   public efo(je<efh> $$0, float $$1, feq $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public static efo.b b(int $$0, int $$1) {
-      return new efo.b($$0, $$1);
+   public efo(je<efh> $$0, float $$1, feq $$2, @Nullable bwf $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cG(), a($$3), $$3);
    }
 
-   public static efo a(int $$0) {
-      return new efo.c($$0, false);
+   @Nullable
+   private static UUID a(@Nullable bwf $$0) {
+      if ($$0 instanceof crx $$1 && $$1.q() != null) {
+         return $$1.q().cG();
+      }
+
+      return null;
    }
 
-   public static efo b(int $$0) {
-      return new efo.c($$0 + 1, false);
+   public Optional<bwf> a(arq $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::b));
    }
 
-   public static efo c(int $$0) {
-      return new efo.c($$0, true);
+   public Optional<bwf> b(arq $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof crx).map($$0x -> (crx)$$0x).map(crx::q).or(() -> Optional.ofNullable(this.f).map($$0::b));
    }
 
-   public static efo d(int $$0) {
-      return new efo.c($$0 - 1, true);
+   public je<efh> a() {
+      return this.b;
    }
 
-   public static efo a() {
-      return efo.a.a;
+   public float b() {
+      return this.c;
    }
 
-   public static efo a(OptionalInt $$0, OptionalInt $$1) {
-      if ($$0.isPresent() && $$1.isPresent()) {
-         return b($$0.getAsInt(), $$1.getAsInt());
-      } else if ($$0.isPresent()) {
-         return c($$0.getAsInt());
-      } else {
-         return $$1.isPresent() ? a($$1.getAsInt()) : a();
-      }
+   public feq c() {
+      return this.d;
    }
 
-   public abstract OptionalInt b();
-
-   public abstract OptionalInt c();
-
-   public abstract OptionalInt d();
-
-   public efo a(OptionalInt $$0) {
-      return a($$0, this.b());
+   @Nullable
+   public UUID d() {
+      return this.e;
    }
 
-   public efo b(OptionalInt $$0) {
-      return a(this.c(), $$0);
+   @Nullable
+   public UUID e() {
+      return this.f;
    }
 
-   public static Optional<efo> a(djb $$0, iu $$1, int $$2, Predicate<dzz> $$3, Predicate<dzz> $$4) {
-      iu.a $$5 = $$1.k();
-      if (!$$0.a($$1, $$3)) {
-         return Optional.empty();
-      } else {
-         int $$6 = $$1.v();
-         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, ja.b);
-         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, ja.a);
-         return Optional.of(a($$8, $$7));
-      }
-   }
-
-   private static OptionalInt a(djb $$0, int $$1, Predicate<dzz> $$2, Predicate<dzz> $$3, iu.a $$4, int $$5, ja $$6) {
-      $$4.q($$5);
-
-      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
-         $$4.c($$6);
-      }
-
-      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
-   }
-
-   public static final class a extends efo {
-      static final efo.a a = new efo.a();
-
-      private a() {
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return "C(-)";
-      }
-   }
-
-   public static final class b extends efo {
-      private final int a;
-      private final int b;
-
-      protected b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         if (this.g() < 0) {
-            throw new IllegalArgumentException("Column of negative height: " + this);
-         }
-      }
-
-      @Override
-      public OptionalInt b() {
-         return OptionalInt.of(this.b);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.of(this.g());
-      }
-
-      public int e() {
-         return this.b;
-      }
-
-      public int f() {
-         return this.a;
-      }
-
-      public int g() {
-         return this.b - this.a - 1;
-      }
-
-      @Override
-      public String toString() {
-         return "C(" + this.b + "-" + this.a + ")";
-      }
-   }
-
-   public static final class c extends efo {
-      private final int a;
-      private final boolean b;
-
-      public c(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public OptionalInt b() {
-         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
-      }
-
-      @Override
-      public OptionalInt c() {
-         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
-      }
-
-      @Override
-      public OptionalInt d() {
-         return OptionalInt.empty();
-      }
-
-      @Override
-      public String toString() {
-         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
-      }
+   @Nullable
+   public bwf f() {
+      return this.g;
    }
 }

@@ -1,84 +1,49 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dhz<T> extends AbstractIterator<T> {
-   private final fed a;
-   private final fen b;
-   private final ix c;
-   private final iu.a d;
-   private final ffc e;
-   private final dif f;
-   private final boolean g;
-   @Nullable
-   private dib h;
-   private long i;
-   private final BiFunction<iu.a, ffc, T> j;
+public class dhz extends ArrayList<dhy> {
+   public static final Codec<dhz> a = dhy.a.listOf().optionalFieldOf("Recipes", List.of()).xmap(dhz::new, Function.identity()).codec();
+   public static final yw<wj, dhz> b = dhy.b.a(yu.a(dhz::new));
 
-   public dhz(dif $$0, @Nullable bwd $$1, fed $$2, boolean $$3, BiFunction<iu.a, ffc, T> $$4) {
-      this($$0, $$1 == null ? fen.a() : fen.a($$1), $$2, $$3, $$4);
+   public dhz() {
    }
 
-   public dhz(dif $$0, fen $$1, fed $$2, boolean $$3, BiFunction<iu.a, ffc, T> $$4) {
-      this.b = $$1;
-      this.d = new iu.a();
-      this.e = fez.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = azm.a($$2.a - 1.0E-7) - 1;
-      int $$6 = azm.a($$2.d + 1.0E-7) + 1;
-      int $$7 = azm.a($$2.b - 1.0E-7) - 1;
-      int $$8 = azm.a($$2.e + 1.0E-7) + 1;
-      int $$9 = azm.a($$2.c - 1.0E-7) - 1;
-      int $$10 = azm.a($$2.f + 1.0E-7) + 1;
-      this.c = new ix($$5, $$7, $$9, $$6, $$8, $$10);
+   private dhz(int $$0) {
+      super($$0);
+   }
+
+   private dhz(Collection<dhy> $$0) {
+      super($$0);
    }
 
    @Nullable
-   private dib a(int $$0, int $$1) {
-      int $$2 = jx.a($$0);
-      int $$3 = jx.a($$1);
-      long $$4 = dic.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
+   public dhy a(czd $$0, czd $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dhy $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
       } else {
-         dib $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
-      }
-   }
-
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            dib $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               dzz $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.j($$4, this.d)) && ($$3 != 1 || $$5.i()) && ($$3 != 2 || $$5.a(dmc.bY))) {
-                  ffc $$6 = this.b.a($$5, this.f, this.d);
-                  if ($$6 == fez.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a(this.d));
-                     }
-                  } else {
-                     ffc $$7 = $$6.a(this.d);
-                     if (!$$7.c() && fez.c($$7, this.e, fem.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
-                  }
-               }
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dhy $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
             }
          }
+
+         return null;
+      }
+   }
+
+   public dhz a() {
+      dhz $$0 = new dhz(this.size());
+
+      for (dhy $$1 : this) {
+         $$0.add($$1.v());
       }
 
-      return (T)this.endOfData();
+      return $$0;
    }
 }

@@ -1,30 +1,36 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fny implements azp {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class fny extends fnw {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   private static final IntFunction<fny> d = ayc.a(fny::b, values(), ayc.a.b);
-   private final int e;
-   private final String f;
-
-   private fny(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fny(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void run() {
+      fjz $$0 = fjz.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (flv var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
+      }
    }
 
    @Override
-   public String a() {
-      return this.f;
-   }
-
-   public static fny a(int $$0) {
-      return d.apply($$0);
+   public wy a() {
+      return c;
    }
 }

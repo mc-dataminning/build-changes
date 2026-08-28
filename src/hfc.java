@@ -1,44 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class hfc implements hff {
-   private final List<hff> a;
+public class hfc extends hdn {
+   private static final alg j = alg.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public alg g = j;
+   @Nullable
+   public cyb h;
+   public czd i = czd.k;
 
-   public hfc(List<hff> $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(hfi $$0, cyy $$1, hfg $$2, cyw $$3, @Nullable gjr $$4, @Nullable bxc $$5, int $$6) {
-      $$0.a(this.a.size());
-
-      for (hff $$7 : this.a) {
-         $$7.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      }
-   }
-
-   public static record a(List<hff.b> b) implements hff.b {
-      public static final MapCodec<hfc.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(hfh.a.listOf().fieldOf("models").forGetter(hfc.a::b)).apply($$0, hfc.a::new)
-      );
-
-      @Override
-      public MapCodec<hfc.a> a() {
-         return a;
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
       }
 
-      @Override
-      public void a(hlh.a $$0) {
-         for (hff.b $$1 : this.b) {
-            $$1.a($$0);
-         }
-      }
-
-      @Override
-      public hff a(hff.a $$0) {
-         return new hfc(this.b.stream().map($$1 -> $$1.a($$0)).toList());
-      }
+      return azm.a($$1 * (float) Math.PI) * azm.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
    }
 }

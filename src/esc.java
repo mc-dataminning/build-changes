@@ -1,15 +1,42 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
+import java.util.List;
 
-public interface esc<P extends esb> {
-   esc<esa> a = a("single_pool_element", esa.b);
-   esc<erz> b = a("list_pool_element", erz.a);
-   esc<erv> c = a("feature_pool_element", erv.a);
-   esc<eru> d = a("empty_pool_element", eru.a);
-   esc<ery> e = a("legacy_single_pool_element", ery.a);
+public class esc extends esj {
+   public static final MapCodec<esc> a = MapCodec.unit(() -> esc.b);
+   public static final esc b = new esc();
 
-   MapCodec<P> codec();
+   private esc() {
+      super(esl.a.a);
+   }
 
-   static <P extends esb> esc<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.ag, $$0, () -> $$1);
+   @Override
+   public jz a(eve $$0, dsz $$1) {
+      return jz.i;
+   }
+
+   @Override
+   public List<evd.a> a(eve $$0, iu $$1, dsz $$2, azv $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eqt a(eve $$0, iu $$1, dsz $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(eve $$0, djz $$1, djw $$2, ecf $$3, iu $$4, iu $$5, dsz $$6, eqt $$7, azv $$8, eun $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public esk<?> a() {
+      return esk.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

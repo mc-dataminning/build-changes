@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fw extends ft<drc> {
+public class fw extends ft<dri> {
    private fw() {
-      super(drc.d, drc::values);
+      super(dri.d, dri::values);
    }
 
-   public static ft<drc> a() {
+   public static ft<dri> a() {
       return new fw();
    }
 
-   public static drc a(CommandContext<ei> $$0, String $$1) {
-      return (drc)$$0.getArgument($$1, drc.class);
+   public static dri a(CommandContext<ei> $$0, String $$1) {
+      return (dri)$$0.getArgument($$1, dri.class);
    }
 }

@@ -1,66 +1,37 @@
-import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public enum ffe implements bak {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
+public class ffe extends ffa {
+   @Nullable
+   private iu b;
+   @Nullable
+   private iu c;
 
-   public static final bak.a<ffe> t = bak.a(ffe::values);
-   public static final IntFunction<ffe> u = ayc.a(ffe::a, values(), ayc.a.a);
-   private final int v;
-   private final String w;
-
-   private ffe(final int $$0, final String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+   protected ffe(ctp $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   public int a() {
-      return this.v;
+   private void a(ctp $$0) {
+      iu $$1 = $$0.j();
+      eah $$2 = $$0.dV().a_($$1);
+      boolean $$3 = dlu.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         ebl $$4 = $$2.c(((dlu)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public String c() {
-      return this.w;
-   }
-
-   @Nullable
-   public static ffe a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+   public ffk a(eah $$0, dik $$1, iu $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : ffh.a();
    }
 }

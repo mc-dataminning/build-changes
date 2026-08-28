@@ -1,50 +1,58 @@
-public class gsr implements gse<dzu> {
-   private final gqw a;
+public class gsr implements gsm<dxk> {
+   private final gxf a;
 
-   public gsr(gsf.a $$0) {
-      this.a = $$0.b();
+   public gsr(gsn.a $$0) {
+      this.a = $$0.e();
    }
 
-   public void a(dzu $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      div $$7 = $$0.i();
-      if ($$7 != null) {
-         iu $$8 = $$0.aw_().a($$0.f().g());
-         dzz $$9 = $$0.j();
-         if (!$$9.l()) {
-            gqy.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$9.a(dmc.bH) && $$0.a($$1) <= 4.0F) {
-               $$9 = $$9.b(dzs.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
-            } else if ($$0.d() && !$$0.a()) {
-               ebb $$10 = $$9.a(dmc.by) ? ebb.b : ebb.a;
-               dzz $$11 = dmc.bH.m().b(dzs.c, $$10).b(dzs.a, $$9.c(dzr.a));
-               $$11 = $$11.b(dzs.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$8, $$11, $$2, $$3, $$7, false, $$5);
-               iu $$12 = $$8.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$9 = $$9.b(dzr.c, Boolean.valueOf(true));
-               this.a($$12, $$9, $$2, $$3, $$7, true, $$5);
-            } else {
-               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
+   public void a(dxk $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      if ($$0.i() != null) {
+         int $$7 = $$0.m().c(eax.by);
+         if ($$7 > 0) {
+            ja $$8 = $$0.c();
+            if ($$8 != null) {
+               czd $$9 = $$0.d();
+               if (!$$9.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$10 = this.a($$8, $$7);
+                  $$2.a($$10[0], $$10[1], $$10[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$11 = $$8 == ja.f || $$8 == ja.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$12 = gpv.a($$0.i(), $$0.m(), $$0.ax_().a($$8));
+                  this.a.a($$9, czb.i, $$12, hin.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
-
-            $$2.b();
-            gqy.b();
          }
       }
    }
 
-   private void a(iu $$0, dzz $$1, fjc $$2, gps $$3, div $$4, boolean $$5, int $$6) {
-      gqc $$7 = gpk.b($$1);
-      fjg $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azv.a(), $$1.b($$0), $$6);
-   }
+   private float[] a(ja $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
 
-   @Override
-   public int aQ_() {
-      return 68;
+      return $$2;
    }
 }

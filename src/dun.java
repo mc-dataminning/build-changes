@@ -1,39 +1,79 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dun extends dvj implements dmd {
+public class dun extends dlr implements dpr {
    public static final MapCodec<dun> a = b(dun::new);
-   private static final ffc b = dma.b(12.0, 0.0, 13.0);
+   public static final ebf<ebr> b = eax.bm;
 
    @Override
    public MapCodec<dun> a() {
       return a;
    }
 
-   protected dun(dzy.d $$0) {
+   protected dun(eag.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, ebr.b));
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return b;
+   public dxf a(iu $$0, eah $$1) {
+      return new dyy($$0, $$1);
    }
 
    @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
+      dxf $$5 = $$1.c_($$2);
+      if ($$5 instanceof dyy) {
+         return (bud)(((dyy)$$5).a($$3) ? bud.a : bud.e);
+      } else {
+         return bud.e;
+      }
    }
 
    @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return true;
+   public void a(dja $$0, iu $$1, eah $$2, @Nullable bxe $$3, czd $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            dxf $$5 = $$0.c_($$1);
+            if ($$5 instanceof dyy) {
+               ((dyy)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      doj.a($$0, o($$3).m(), $$2, 2);
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 
-   private static doj o(dzz $$0) {
-      return (doj)($$0.a(dmc.bB) ? dmc.jh : dmc.jg);
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
+      if ($$1 instanceof arq) {
+         if ($$1.c_($$2) instanceof dyy $$7) {
+            boolean $$8 = $$1.D($$2);
+            boolean $$9 = $$7.E();
+            if ($$8 && !$$9) {
+               $$7.d(true);
+               this.a((arq)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.d(false);
+            }
+         }
+      }
+   }
+
+   private void a(arq $$0, dyy $$1) {
+      switch ($$1.v()) {
+         case a:
+            $$1.c(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.C();
+         case d:
+      }
    }
 }

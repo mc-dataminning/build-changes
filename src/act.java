@@ -1,14 +1,14 @@
 import java.util.Optional;
 
-public record act(int b, je<buu> c, int d, int e, Optional<fei> f) implements zf<abu> {
+public record act(int b, je<buw> c, int d, int e, Optional<feq> f) implements zf<abu> {
    public static final yw<wj, act> a = zf.a(act::a, act::new);
 
-   public act(bwd $$0, bus $$1) {
+   public act(bwf $$0, buu $$1) {
       this($$0.ar(), $$1.l(), $$1.d() != null ? $$1.d().ar() : -1, $$1.c() != null ? $$1.c().ar() : -1, Optional.ofNullable($$1.j()));
    }
 
    private act(wj $$0) {
-      this($$0.l(), buu.c.decode($$0), a((vu)$$0), a((vu)$$0), $$0.b($$0x -> new fei($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+      this($$0.l(), buw.c.decode($$0), a((vu)$$0), a((vu)$$0), $$0.b($$0x -> new feq($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
    private static void a(vu $$0, int $$1) {
@@ -21,7 +21,7 @@ public record act(int b, je<buu> c, int d, int e, Optional<fei> f) implements zf
 
    private void a(wj $$0) {
       $$0.c(this.b);
-      buu.c.encode($$0, this.c);
+      buw.c.encode($$0, this.c);
       a($$0, this.d);
       a($$0, this.e);
       $$0.a(this.f, ($$0x, $$1) -> {
@@ -40,17 +40,17 @@ public record act(int b, je<buu> c, int d, int e, Optional<fei> f) implements zf
       $$0.a(this);
    }
 
-   public bus a(div $$0) {
+   public buu a(dja $$0) {
       if (this.f.isPresent()) {
-         return new bus(this.c, this.f.get());
+         return new buu(this.c, this.f.get());
       } else {
-         bwd $$1 = $$0.a(this.d);
-         bwd $$2 = $$0.a(this.e);
-         return new bus(this.c, $$2, $$1);
+         bwf $$1 = $$0.a(this.d);
+         bwf $$2 = $$0.a(this.e);
+         return new buu(this.c, $$2, $$1);
       }
    }
 
-   public je<buu> e() {
+   public je<buw> e() {
       return this.c;
    }
 
@@ -62,7 +62,7 @@ public record act(int b, je<buu> c, int d, int e, Optional<fei> f) implements zf
       return this.e;
    }
 
-   public Optional<fei> h() {
+   public Optional<feq> h() {
       return this.f;
    }
 }

@@ -1,24 +1,8 @@
-public enum ear implements bak {
-   a("single"),
-   b("left"),
-   c("right");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String d;
-
-   private ear(final String $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public ear a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ear {
 }

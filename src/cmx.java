@@ -1,124 +1,137 @@
-import java.util.List;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cmx extends cmt {
-   public static final double b = 0.375;
+public abstract class cmx extends bwf {
+   private static final Logger b = LogUtils.getLogger();
+   private int c;
+   protected iu a;
 
-   public cmx(bwm<? extends cmx> $$0, div $$1) {
+   protected cmx(bwo<? extends cmx> $$0, dja $$1) {
       super($$0, $$1);
    }
 
-   public cmx(div $$0, iu $$1) {
-      super(bwm.av, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   protected cmx(bwo<? extends cmx> $$0, dja $$1, iu $$2) {
+      this($$0, $$1);
+      this.a = $$2;
+   }
+
+   protected abstract void f();
+
+   @Override
+   public void h() {
+      if (this.dV() instanceof arq $$0) {
+         this.aA();
+         if (this.c++ == 100) {
+            this.c = 0;
+            if (!this.dQ() && !this.g()) {
+               this.at();
+               this.a($$0, null);
+            }
+         }
+      }
+   }
+
+   public abstract boolean g();
+
+   @Override
+   public boolean bG() {
+      return true;
    }
 
    @Override
-   protected void a(akn.a $$0) {
+   public boolean v(bwf $$0) {
+      if ($$0 instanceof crc $$1) {
+         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected void f() {
-      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
-      double $$0 = (double)this.aq().l() / 2.0;
-      double $$1 = (double)this.aq().m();
-      this.a(new fed(this.dA() - $$0, this.dC(), this.dG() - $$0, this.dA() + $$0, this.dC() + $$1, this.dG() + $$0));
+   public boolean b(buu $$0) {
+      return !this.d($$0);
    }
 
    @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
+   public boolean a(arq $$0, buu $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if (!$$0.O().c(diw.d) && $$1.d() instanceof bxg) {
+         return false;
+      } else {
+         if (!this.dQ()) {
+            this.c($$0);
+            this.bC();
+            this.a($$0, $$1.d());
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public void a(arq $$0, @Nullable bwd $$1) {
-      this.a(awn.oB, 1.0F, 1.0F);
+   public boolean a(dit $$0) {
+      return $$0.h() ? super.a($$0) : true;
+   }
+
+   @Override
+   public void a(bxi $$0, feq $$1) {
+      if (this.dV() instanceof arq $$2 && !this.dQ() && $$1.h() > 0.0) {
+         this.c($$2);
+         this.a($$2, null);
+      }
+   }
+
+   @Override
+   public void i(double $$0, double $$1, double $$2) {
+      if (this.dV() instanceof arq $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.c($$3);
+         this.a($$3, null);
+      }
    }
 
    @Override
    public void b(tz $$0) {
+      iu $$1 = this.j();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
    }
 
    @Override
    public void a(tz $$0) {
-   }
-
-   @Override
-   public bub a(cqy $$0, bua $$1) {
-      if (this.dV().C) {
-         return bub.a;
+      iu $$1 = new iu($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dv(), 16.0)) {
+         b.error("Block-attached entity at invalid position: {}", $$1);
       } else {
-         boolean $$2 = false;
-         List<bxa> $$3 = czi.a(this.dV(), this.j(), $$1x -> {
-            bwd $$2x = $$1x.C();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (bxa $$4 : $$3) {
-            if ($$4.C() == $$0) {
-               $$4.a_(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.at();
-            if ($$0.gj().d) {
-               for (bxa $$6 : $$3) {
-                  if ($$6.O_() && $$6.C() == this) {
-                     $$6.z();
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(eez.b, $$0);
-         }
-
-         return bub.a;
+         this.a = $$1;
       }
    }
 
+   public abstract void a(arq var1, @Nullable bwf var2);
+
    @Override
-   public boolean g() {
-      return this.dV().a_(this.a).a(axc.U);
-   }
-
-   public static cmx b(div $$0, iu $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-
-      for (cmx $$6 : $$0.a(cmx.class, new fed((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.j().equals($$1)) {
-            return $$6;
-         }
-      }
-
-      cmx $$7 = new cmx($$0, $$1);
-      $$0.b($$7);
-      return $$7;
-   }
-
-   public void m() {
-      this.a(awn.oC, 1.0F, 1.0F);
+   protected boolean bI() {
+      return false;
    }
 
    @Override
-   public zf<abu> a(aro $$0) {
-      return new abv(this, 0, this.j());
+   public void a_(double $$0, double $$1, double $$2) {
+      this.a = iu.a($$0, $$1, $$2);
+      this.f();
+      this.ar = true;
+   }
+
+   public iu j() {
+      return this.a;
    }
 
    @Override
-   public fei v(float $$0) {
-      return this.p($$0).b(0.0, 0.2, 0.0);
+   public void a(arq $$0, bxd $$1) {
    }
 
    @Override
-   public cyy dI() {
-      return new cyy(czc.vQ);
+   public void i_() {
    }
 }

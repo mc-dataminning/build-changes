@@ -1,51 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record des(je<cyu> c, int d, kh e) {
-   private static final Codec<des> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cyu.e.fieldOf("id").forGetter(des::b),
-               ayu.a(1, 99).optionalFieldOf("count", 1).forGetter(des::c),
-               kh.b.optionalFieldOf("components", kh.a).forGetter(des::d)
-            )
-            .apply($$0, des::new)
-   );
-   public static final Codec<des> a = Codec.withAlternative(f, cyu.e, $$0 -> new des((cyu)$$0.a())).validate(des::a);
-   public static final yw<wj, des> b = yw.a(cyu.f, des::b, yu.h, des::c, kh.c, des::d, des::new);
+public class des implements dep {
+   final ddq c;
+   final ddq d;
+   final ddq e;
+   final je<dhs> f;
+   @Nullable
+   private ddt g;
 
-   public des(cyu $$0) {
-      this($$0.e(), 1, kh.a);
+   public des(ddq $$0, ddq $$1, ddq $$2, je<dhs> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private static DataResult<des> a(des $$0) {
-      return cyy.a(new cyy($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
+   public czd a(deq $$0, jg.a $$1) {
+      return a($$1, $$0.d(), $$0.e(), this.f);
    }
 
-   public cyy a(cyy $$0) {
-      cyy $$1 = $$0.a(this.c.a(), this.d);
-      $$1.b(this.e);
-      return $$1;
+   public static czd a(jg.a $$0, czd $$1, czd $$2, je<dhs> $$3) {
+      Optional<je<dhq>> $$4 = dhr.a($$0, $$2);
+      if ($$4.isPresent()) {
+         dho $$5 = $$1.a(kj.W);
+         dho $$6 = new dho($$4.get(), $$3);
+         if (Objects.equals($$5, $$6)) {
+            return czd.k;
+         } else {
+            czd $$7 = $$1.c(1);
+            $$7.b(kj.W, $$6);
+            return $$7;
+         }
+      } else {
+         return czd.k;
+      }
    }
 
-   public boolean b(cyy $$0) {
-      cyy $$1 = this.a($$0);
-      return cyy.a($$0, $$1);
+   @Override
+   public Optional<ddq> c() {
+      return Optional.of(this.c);
    }
 
-   public dfb a() {
-      return new dfb.f(new cyy(this.c, this.d, this.e));
-   }
-
-   public je<cyu> b() {
-      return this.c;
-   }
-
-   public int c() {
+   @Override
+   public ddq f() {
       return this.d;
    }
 
-   public kh d() {
-      return this.e;
+   @Override
+   public Optional<ddq> k() {
+      return Optional.of(this.e);
+   }
+
+   @Override
+   public dee<des> a() {
+      return dee.u;
+   }
+
+   @Override
+   public ddt al_() {
+      if (this.g == null) {
+         this.g = ddt.b(List.of(this.c, this.d, this.e));
+      }
+
+      return this.g;
+   }
+
+   @Override
+   public List<dfa> g() {
+      dfg $$0 = this.d.c();
+      dfg $$1 = this.e.c();
+      dfg $$2 = this.c.c();
+      return List.of(new dfj($$2, $$0, $$1, new dfg.g($$0, $$1, this.f), new dfg.d(czh.xB)));
+   }
+
+   public static class a implements dee<des> {
+      private static final MapCodec<des> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ddq.d.fieldOf("template").forGetter($$0x -> $$0x.c),
+                  ddq.d.fieldOf("base").forGetter($$0x -> $$0x.d),
+                  ddq.d.fieldOf("addition").forGetter($$0x -> $$0x.e),
+                  dhs.c.fieldOf("pattern").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, des::new)
+      );
+      public static final yw<wj, des> w = yw.a(ddq.a, $$0 -> $$0.c, ddq.a, $$0 -> $$0.d, ddq.a, $$0 -> $$0.e, dhs.d, $$0 -> $$0.f, des::new);
+
+      @Override
+      public MapCodec<des> a() {
+         return x;
+      }
+
+      @Override
+      public yw<wj, des> b() {
+         return w;
+      }
    }
 }

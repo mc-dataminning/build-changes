@@ -1,27 +1,27 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class gnb {
-   private final List<alg> a;
-
-   private gnb(List<alg> $$0) {
-      this.a = $$0;
+public class gnb extends gng {
+   gnb(gjz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 8;
    }
 
-   public List<alg> a() {
-      return this.a;
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(lx.w, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
    }
 
-   public static gnb a(JsonObject $$0) {
-      JsonArray $$1 = azc.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gnb(List.of());
-      } else {
-         List<alg> $$2 = Streams.stream($$1).map($$0x -> azc.a($$0x, "texture")).map(alg::a).collect(ImmutableList.toImmutableList());
-         return new gnb($$2);
+   public static class a implements gnl<mb> {
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnb($$1, $$2, $$3, $$4);
       }
    }
 }

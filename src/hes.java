@@ -1,6 +1,7 @@
-public class hes extends hdf {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class hes extends hcn {
+   public float a;
+   @Nullable
+   public eah b;
 }

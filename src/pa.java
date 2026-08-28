@@ -11,7 +11,7 @@ public class pa implements oz.a {
    }
 
    public static tz a(String $$0, tz $$1) {
-      euv $$2 = new euv();
+      evd $$2 = new evd();
       int $$3 = uo.b($$1, 500);
       int $$4 = 4292;
       if ($$3 < 4292) {

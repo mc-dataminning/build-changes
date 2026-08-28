@@ -1,45 +1,34 @@
-public class fft {
-   private static final fgd<Object> a = new fgd<Object>() {
-      @Override
-      public void a(fga<Object> $$0) {
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      public boolean a(iu $$0, Object $$1) {
-         return false;
-      }
+public interface fft {
+   int a();
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final ffw<Object> b = new ffw<Object>() {
-      @Override
-      public void a(fga<Object> $$0) {
-      }
+   void a(int var1);
 
-      @Override
-      public boolean a(iu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(iu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> fgd<T> a() {
-      return (fgd<T>)a;
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
 
-   public static <T> ffw<T> b() {
-      return (ffw<T>)b;
+   default int b() {
+      return this.b(1);
    }
+
+   default void c() {
+      this.a(0);
+   }
+
+   boolean d();
+
+   void e();
+
+   void f();
+
+   @Nullable
+   wy g();
+
+   void a(@Nullable wy var1);
+
+   void a(@Nullable yo var1);
 }

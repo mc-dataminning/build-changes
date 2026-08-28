@@ -12,8 +12,8 @@ public class bgi extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(biw.z);
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(bix.z);
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("display");
       OpticFinder<?> $$4 = $$3.type().findField("Lore");

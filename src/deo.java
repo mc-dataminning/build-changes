@@ -1,25 +1,29 @@
-public class deo extends dcv {
-   public deo(String $$0, ddb $$1, ddl $$2, cyy $$3, float $$4, int $$5) {
+public class deo extends dda {
+   public deo(String $$0, ddg $$1, ddq $$2, czd $$3, float $$4, int $$5) {
       super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected cyu f() {
-      return czc.xr;
+   protected cyz f() {
+      return czh.fk;
    }
 
    @Override
-   public dea<deo> b() {
-      return dea.d;
+   public dee<deo> a() {
+      return dee.o;
    }
 
    @Override
-   public ddz<deo> a() {
-      return ddz.q;
+   public def<deo> b() {
+      return def.b;
    }
 
    @Override
-   public dds h() {
-      return ddr.j;
+   public ddx h() {
+      return switch (this.e()) {
+         case b -> ddw.f;
+         case a -> ddw.e;
+         case c -> ddw.g;
+      };
    }
 }

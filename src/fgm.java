@@ -1,26 +1,29 @@
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogListeners;
-import org.slf4j.event.Level;
+public enum fgm {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class fgm {
-   private static boolean a;
+   private final int h;
 
-   public static void a() {
-      if (!a) {
-         TracyClient.load();
-         if (TracyClient.isAvailable()) {
-            LogListeners.addListener("Tracy", ($$0, $$1) -> TracyClient.message($$0, a($$1)));
-            a = true;
-         }
-      }
+   private fgm(final int $$0) {
+      this.h = $$0;
    }
 
-   private static int a(Level $$0) {
-      return switch ($$0) {
-         case DEBUG -> 11184810;
-         case WARN -> 16777130;
-         case ERROR -> 16755370;
-         default -> 16777215;
-      };
+   public static fgm a(int $$0) {
+      for (fgm $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
+      }
+
+      return $$0 < a.h ? a : g;
+   }
+
+   public int a() {
+      return this.h;
    }
 }

@@ -76,20 +76,20 @@ public class Main {
       String $$35 = "Pre-bootstrap";
 
       Logger $$39;
-      gdw $$71;
+      ged $$71;
       try {
          if ($$32.has($$2)) {
-            bqu.f.a(bqs.a);
+            bqw.f.a(bqu.a);
          }
 
          if ($$32.has($$3)) {
-            fgm.a();
+            fgu.a();
          }
 
          Stopwatch $$36 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$37 = Stopwatch.createStarted(Ticker.systemTicker());
-         hoh.a.a(hod.z, $$36);
-         hoh.a.a(hod.A, $$37);
+         hop.a.a(hol.z, $$36);
+         hop.a.a(hol.A, $$37);
          ab.a();
          TracyClient.reportAppInfo("Minecraft Java Edition " + ab.b().c());
          CompletableFuture<?> $$38 = bbc.a(bbb.t);
@@ -97,8 +97,8 @@ public class Main {
          $$39 = LogUtils.getLogger();
          $$35 = "Bootstrap";
          ali.a();
-         fob.a();
-         hoh.a.a(ali.b.get());
+         foi.a();
+         hop.a.a(ali.b.get());
          ali.c();
          $$35 = "Argument parsing";
          List<String> $$40 = $$32.valuesOf($$31);
@@ -107,7 +107,7 @@ public class Main {
          }
 
          String $$41 = (String)$$29.value($$32);
-         fpe.a $$42 = fpe.a.a($$41);
+         fpl.a $$42 = fpl.a.a($$41);
          if ($$42 == null) {
             $$39.warn("Unrecognized user type: {}", $$41);
          }
@@ -155,13 +155,13 @@ public class Main {
          String $$67 = a(a($$32, $$6));
          String $$68 = a(a($$32, $$7));
          String $$69 = a(a($$32, $$8));
-         fpe $$70 = new fpe((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
-         $$71 = new gdw(
-            new gdw.d($$70, $$57, $$58, $$44),
-            new fhs($$47, $$48, $$49, $$50, $$51),
-            new gdw.a($$33, $$61, $$60, $$63),
-            new gdw.b($$52, $$34, $$59, $$53, $$54, $$55),
-            new gdw.c($$66, $$67, $$68, $$69)
+         fpl $$70 = new fpl((String)$$16.value($$32), $$62, (String)$$20.value($$32), b($$64), b($$65), $$42);
+         $$71 = new ged(
+            new ged.d($$70, $$57, $$58, $$44),
+            new fia($$47, $$48, $$49, $$50, $$51),
+            new ged.a($$33, $$61, $$60, $$63),
+            new ged.b($$52, $$34, $$59, $$53, $$54, $$55),
+            new ged.c($$66, $$67, $$68, $$69)
          );
          af.p();
          $$38.join();
@@ -169,17 +169,17 @@ public class Main {
          o $$73 = o.a(var82, $$35);
          p $$74 = $$73.a("Initialization");
          azn.a($$74);
-         fos.a(null, null, $$34, null, $$73);
-         fos.a(null, $$33, $$73);
+         foz.a(null, null, $$34, null, $$73);
+         foz.a(null, $$33, $$73);
          return;
       }
 
       Thread $$77 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fos $$0 = fos.Q();
+            foz $$0 = foz.Q();
             if ($$0 != null) {
-               hna $$1 = $$0.V();
+               hni $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -188,15 +188,15 @@ public class Main {
       };
       $$77.setUncaughtExceptionHandler(new r($$39));
       Runtime.getRuntime().addShutdownHook($$77);
-      fos $$78 = null;
+      foz $$78 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$78 = new fos($$71);
+         $$78 = new foz($$71);
          RenderSystem.finishInitialization();
-      } catch (gdx var79) {
+      } catch (gee var79) {
          af.k();
          $$39.warn("Failed to create window: ", var79);
          return;
@@ -204,14 +204,13 @@ public class Main {
          o $$81 = o.a(var80, "Initializing game");
          p $$82 = $$81.a("Initialization");
          azn.a($$82);
-         fos.a($$78, null, $$71.d.b, null, $$81);
-         fos.a($$78, $$71.c.a, $$81);
+         foz.a($$78, null, $$71.d.b, null, $$81);
+         foz.a($$78, $$71.c.a, $$81);
          return;
       }
 
-      fos $$83 = $$78;
+      foz $$83 = $$78;
       $$78.f();
-      fiy.a();
 
       try {
          $$83.q();

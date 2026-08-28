@@ -1,64 +1,26 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class gor extends glz {
+   private static final int a = 12235202;
 
-public class gor {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cqx.g();
-   public static final Codec<gor> a = Codec.PASSTHROUGH.listOf().validate($$0 -> af.a($$0, c)).xmap(gor::new, $$0 -> $$0.f);
-   private static final DynamicOps<uw> d = un.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uw)cyy.f.encodeStart(d, cyy.k).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private gor(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+   protected gor(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, god $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
+      this.v = (float)axw.b(12235202) / 255.0F;
+      this.w = (float)axw.c(12235202) / 255.0F;
+      this.x = (float)axw.d(12235202) / 255.0F;
    }
 
-   public gor() {
-      this(Collections.nCopies(c, e));
-   }
+   public static class a implements gnl<mb> {
+      private final god a;
 
-   public List<cyy> a(jg.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cyy.f.parse(ale.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cyy.k))
-         .toList();
-   }
-
-   public void a(cqx $$0, js $$1) {
-      ale<uw> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cyy $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cyy.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+      public a(god $$0) {
+         this.a = $$0;
       }
 
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azv $$8 = $$1.A;
+         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
+         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
+         return new gor($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
       }
-
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
    }
 }

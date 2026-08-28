@@ -36,7 +36,7 @@ public abstract class ado implements zf<abu> {
    }
 
    @Nullable
-   public bwd a(div $$0) {
+   public bwf a(dja $$0) {
       return $$0.a(this.a);
    }
 

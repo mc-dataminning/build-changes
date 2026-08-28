@@ -1,12 +1,14 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hgb() implements hfs {
-   public static final MapCodec<hgb> a = MapCodec.unit(new hgb());
+public record hgb(int b) implements hga {
+   public static final MapCodec<hgb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hgb::b)).apply($$0, hgb::new));
 
    @Override
-   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
-      return $$2 == null ? false : $$2.fy() && $$2.fA() == $$0;
+   public boolean get(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
+      dbm $$5 = $$0.a(kj.p);
+      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
    }
 
    @Override

@@ -1,33 +1,49 @@
 import com.mojang.serialization.MapCodec;
 
-public class dtt extends dln {
-   public static final MapCodec<dtt> b = b(dtt::new);
+public class dtt extends dpz {
+   public static final MapCodec<dtt> a = b(dtt::new);
 
    @Override
    public MapCodec<dtt> a() {
-      return b;
+      return a;
    }
 
-   public dtt(dzy.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : dmc.a.m();
+   public dtt(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      return o($$1.a_($$2.e()));
-   }
-
-   public static boolean o(dzz $$0) {
-      return $$0.a(axc.aV);
+   public void a(dja $$0, eah $$1, iu $$2, bwf $$3, double $$4) {
+      if (!$$3.cf()) {
+         $$3.a($$4, 0.0F, $$0.al().l());
+      }
    }
 
    @Override
-   protected boolean g(dzz $$0) {
-      return true;
+   public void a(dig $$0, bwf $$1) {
+      if ($$1.cf()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bwf $$0) {
+      feq $$1 = $$0.dy();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bxe ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
+   }
+
+   @Override
+   public void a(dja $$0, iu $$1, eah $$2, bwf $$3) {
+      double $$4 = Math.abs($$3.dy().e);
+      if ($$4 < 0.1 && !$$3.ce()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.i($$3.dy().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

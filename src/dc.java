@@ -18,14 +18,14 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g, Map<alg, dc.c> h, Optional<bx> i, Optional<ci> j) implements by {
+public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddu<?>>> g, Map<alg, dc.c> h, Optional<bx> i, Optional<ci> j) implements by {
    public static final int b = 100;
    public static final MapCodec<dc> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                cv.d.d.optionalFieldOf("level", cv.d.c).forGetter(dc::b),
                cg.c.optionalFieldOf("gamemode", cg.a).forGetter(dc::c),
                dc.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dc::d),
-               ayu.f(alf.a(mg.bt)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dc::e),
+               ayu.f(alf.a(mg.bu)).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dc::e),
                Codec.unboundedMap(alg.a, dc.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dc::f),
                bx.a.optionalFieldOf("looking_at").forGetter(dc::g),
                ci.a.optionalFieldOf("input").forGetter(dc::h)
@@ -34,10 +34,10 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
    );
 
    @Override
-   public boolean a(bwd $$0, arq $$1, @Nullable fei $$2) {
+   public boolean a(bwf $$0, arq $$1, @Nullable feq $$2) {
       if (!($$0 instanceof arr $$3)) {
          return false;
-      } else if (!this.d.d($$3.ce)) {
+      } else if (!this.d.d($$3.cf)) {
          return false;
       } else if (!this.e.a($$3.h.b())) {
          return false;
@@ -54,8 +54,8 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
-            Entry<alf<ddp<?>>> $$8 = (Entry<alf<ddp<?>>>)var13.next();
-            if ($$7.b((alf<ddp<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
+            Entry<alf<ddu<?>>> $$8 = (Entry<alf<ddu<?>>>)var13.next();
+            if ($$7.b((alf<ddu<?>>)$$8.getKey()) != $$8.getBooleanValue()) {
                return false;
             }
          }
@@ -73,15 +73,15 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
          }
 
          if (this.i.isPresent()) {
-            fei $$13 = $$3.bE();
-            fei $$14 = $$3.h(1.0F);
-            fei $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
-            fef $$16 = cru.a($$3.dV(), $$3, $$13, $$15, new fed($$13, $$15).g(1.0), $$0x -> !$$0x.U_(), 0.0F);
-            if ($$16 == null || $$16.d() != feg.a.c) {
+            feq $$13 = $$3.bE();
+            feq $$14 = $$3.h(1.0F);
+            feq $$15 = $$13.b($$14.d * 100.0, $$14.e * 100.0, $$14.f * 100.0);
+            fen $$16 = crz.a($$3.dV(), $$3, $$13, $$15, new fel($$13, $$15).g(1.0), $$0x -> !$$0x.V_(), 0.0F);
+            if ($$16 == null || $$16.d() != feo.a.c) {
                return false;
             }
 
-            bwd $$17 = $$16.a();
+            bwf $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.E($$17)) {
                return false;
             }
@@ -108,7 +108,7 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
       return this.f;
    }
 
-   public Object2BooleanMap<alf<ddp<?>>> e() {
+   public Object2BooleanMap<alf<ddu<?>>> e() {
       return this.g;
    }
 
@@ -174,7 +174,7 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
       private cv.d a = cv.d.c;
       private cg b = cg.a;
       private final Builder<dc.e<?>> c = ImmutableList.builder();
-      private final Object2BooleanMap<alf<ddp<?>>> d = new Object2BooleanOpenHashMap();
+      private final Object2BooleanMap<alf<ddu<?>>> d = new Object2BooleanOpenHashMap();
       private final Map<alg, dc.c> e = Maps.newHashMap();
       private Optional<bx> f = Optional.empty();
       private Optional<ci> g = Optional.empty();
@@ -193,7 +193,7 @@ public record dc(cv.d d, cg e, List<dc.e<?>> f, Object2BooleanMap<alf<ddp<?>>> g
          return this;
       }
 
-      public dc.d a(alf<ddp<?>> $$0, boolean $$1) {
+      public dc.d a(alf<ddu<?>> $$0, boolean $$1) {
          this.d.put($$0, $$1);
          return this;
       }

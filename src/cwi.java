@@ -1,68 +1,65 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cwi implements btu, cwh {
-   private final jn<cyy> b = jn.a(1, cyy.k);
-   @Nullable
-   private ddu<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+public class cwi extends cws {
+   public cwi(btw $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean c() {
-      for (cyy $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
+   public void b(czd $$0, czd $$1) {
+   }
 
+   @Override
+   public boolean a(crc $$0) {
+      return false;
+   }
+
+   @Override
+   public Optional<czd> a(int $$0, int $$1, crc $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public czd b(int $$0, int $$1, crc $$2) {
+      return czd.k;
+   }
+
+   @Override
+   public czd d(czd $$0) {
+      return $$0;
+   }
+
+   @Override
+   public czd b(czd $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(crc $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(czd $$0) {
+      return false;
+   }
+
+   @Override
+   public czd a(int $$0) {
+      return czd.k;
+   }
+
+   @Override
+   public void a(crc $$0, czd $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
       return true;
-   }
-
-   @Override
-   public cyy a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cyy a(int $$0, int $$1) {
-      return btv.a(this.b, 0);
-   }
-
-   @Override
-   public cyy b(int $$0) {
-      return btv.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cyy $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cqy $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable ddu<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ddu<?> d() {
-      return this.c;
    }
 }

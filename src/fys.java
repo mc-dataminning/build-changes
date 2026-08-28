@@ -1,48 +1,111 @@
-public class fys extends fyj<cux> {
-   private static final alg G = alg.b("container/brewing_stand/fuel_length");
-   private static final alg H = alg.b("container/brewing_stand/brew_progress");
-   private static final alg I = alg.b("container/brewing_stand/bubbles");
-   private static final alg J = alg.b("textures/gui/container/brewing_stand.png");
-   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
+public abstract class fys<T extends cwk> extends fyq<T> implements gcf {
+   private final gca<?> G;
+   private boolean H;
 
-   public fys(cux $$0, cqx $$1, wy $$2) {
-      super($$0, $$1, $$2);
+   public fys(T $$0, gca<?> $$1, crb $$2, wy $$3) {
+      super($$0, $$2, $$3);
+      this.G = $$1;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   protected void aO_() {
+      super.aO_();
+      this.H = this.n < 379;
+      this.G.a(this.n, this.o, this.m, this.H);
+      this.C = this.G.a(this.n, this.s);
+      this.M();
+   }
+
+   protected abstract fwp G();
+
+   private void M() {
+      fwp $$0 = this.G();
+      this.c(new fsv($$0.a(), $$0.b(), 20, 18, gca.a, $$0x -> {
+         this.G.c();
+         this.C = this.G.a(this.n, this.s);
+         fwp $$1 = this.G();
+         $$0x.c($$1.a(), $$1.b());
+         this.H();
+      }));
+      this.d(this.G);
+   }
+
+   protected void H() {
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      if (this.G.d() && this.H) {
+         this.b($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+
+      this.G.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
+      this.G.a($$0, $$1, $$2, this.B);
    }
 
    @Override
-   protected void a(fro $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqc::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      int $$6 = this.z.l();
-      int $$7 = azm.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(gqc::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
-      }
+   protected void c(frv $$0) {
+      super.c($$0);
+      this.G.a($$0, this.I());
+   }
 
-      int $$8 = this.z.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(gqc::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
+   protected boolean I() {
+      return true;
+   }
 
-         $$9 = K[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(gqc::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
-         }
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.G.a($$0, $$1, $$2)) {
+         this.a(this.G);
+         return true;
+      } else {
+         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
       }
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cws $$0, int $$1, int $$2, cvg $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.G.b($$0);
+   }
+
+   @Override
+   public void E() {
+      super.E();
+      this.G.e();
+   }
+
+   @Override
+   public void L() {
+      this.G.g();
+   }
+
+   @Override
+   public void a(dfa $$0) {
+      this.G.a($$0);
    }
 }

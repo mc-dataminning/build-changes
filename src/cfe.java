@@ -1,67 +1,67 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cfe extends cdy {
-   private static final int a = 10;
-   private final bxk b;
-   private final int c;
-   @Nullable
-   private iu d;
+public class cfe extends cea {
+   private final clh a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public cfe(bxk $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cdy.a.a));
+   public cfe(clh $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cea.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cX()) {
-         return false;
-      } else if (this.b.dV().V()) {
-         return false;
-      } else if (this.b.dY().a(this.c) != 0) {
-         return false;
-      } else {
-         arq $$0 = (arq)this.b.dV();
-         iu $$1 = this.b.dv();
-         if (!$$0.a($$1, 6)) {
+      if (!this.a.gI() && this.a.ca()) {
+         feq $$0 = chx.a(this.a, 5, 4);
+         if ($$0 == null) {
             return false;
          } else {
-            fei $$2 = chy.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(jx.a($$1x))));
-            this.d = $$2 == null ? null : iu.a((jo)$$2);
-            return this.d != null;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
          }
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.O().k() && this.b.O().g().equals(this.d);
+      return !this.a.gI() && !this.a.O().k() && this.a.ca();
    }
 
    @Override
    public void a() {
-      if (this.d != null) {
-         cgm $$0 = this.b.O();
-         if ($$0.k() && !this.d.a(this.b.dt(), 10.0)) {
-            fei $$1 = fei.c(this.d);
-            fei $$2 = this.b.dt();
-            fei $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            fei $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            iu $$5 = iu.a((jo)$$4);
-            $$5 = this.b.dV().a(efy.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
+      if (!this.a.gI() && this.a.dY().a(this.a(50)) == 0) {
+         bwf $$0 = this.a.cZ();
+         if ($$0 == null) {
+            return;
          }
-      }
-   }
 
-   private void h() {
-      azv $$0 = this.b.dY();
-      iu $$1 = this.b.dV().a(efy.a.f, this.b.dv().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.O().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+         if ($$0 instanceof crc $$1) {
+            int $$2 = this.a.gO();
+            int $$3 = this.a.gT();
+            if ($$3 > 0 && this.a.dY().a($$3) < $$2) {
+               this.a.f($$1);
+               return;
+            }
+
+            this.a.u(5);
+         }
+
+         this.a.bO();
+         this.a.gX();
+         this.a.dV().a(this.a, (byte)6);
+      }
    }
 }

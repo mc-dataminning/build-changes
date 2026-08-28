@@ -1,32 +1,78 @@
-import java.nio.file.Path;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bqk {
-   char d = '\u001e';
+public class bqk implements bql {
+   public static final bqk a = new bqk();
 
-   List<bqo> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   private bqk() {
    }
 
-   default int f() {
-      return this.d() - this.b();
+   @Override
+   public void a() {
    }
 
-   String e();
+   @Override
+   public void b() {
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(brx $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public bqt d(String $$0) {
+      return bqt.a;
+   }
+
+   @Override
+   public bqt c(Supplier<String> $$0) {
+      return bqt.a;
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bqm d() {
+      return bqi.a;
+   }
+
+   @Nullable
+   @Override
+   public bqg.a c(String $$0) {
+      return null;
+   }
+
+   @Override
+   public Set<Pair<String, brx>> e() {
+      return ImmutableSet.of();
    }
 }

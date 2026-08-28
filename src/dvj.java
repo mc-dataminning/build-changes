@@ -1,35 +1,37 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dvj extends dma {
-   protected dvj(dzy.d $$0) {
+public class dvj extends dlr {
+   public static final MapCodec<dvj> a = b(dvj::new);
+   public static final ebf<dzm> b = eax.bB;
+   public static final eay c = eax.bE;
+
+   @Override
+   public MapCodec<dvj> a() {
+      return a;
+   }
+
+   public dvj(eag.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, dzm.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dvj> a();
-
-   protected boolean b(dzz $$0, dib $$1, iu $$2) {
-      return $$0.a(axc.ah) || $$0.a(dmc.cL);
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b, c);
    }
 
+   @Nullable
    @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      return !$$0.a($$1, $$3) ? dmc.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public dxf a(iu $$0, eah $$1) {
+      return new dzf($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected boolean e_(dzz $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return $$1 == ewv.c && !this.E ? true : super.a($$0, $$1);
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return $$0 instanceof arq $$3
+         ? a($$2, dxh.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(eax.bE).orElse(false)))
+         : a($$2, dxh.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(eax.bE).orElse(false)));
    }
 }

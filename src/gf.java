@@ -42,7 +42,7 @@ public class gf implements ArgumentType<gh> {
 
    public static iu c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       iu $$2 = b($$0, $$1);
-      if (!div.l($$2)) {
+      if (!dja.l($$2)) {
          throw c.create();
       } else {
          return $$2;

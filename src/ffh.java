@@ -1,46 +1,362 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.google.common.math.DoubleMath;
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-class ffh {
-   private final Reference2ObjectOpenHashMap<fff, ffk> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public final class ffh {
+   public static final double a = 1.0E-7;
+   public static final double b = 1.0E-6;
+   private static final ffk d = af.a(() -> {
+      fez $$0 = new fet(1, 1, 1);
+      $$0.c(0, 0, 0);
+      return new fex($$0);
+   });
+   private static final feq e = new feq(0.5, 0.5, 0.5);
+   public static final ffk c = a(
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.NEGATIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY,
+      Double.POSITIVE_INFINITY
+   );
+   private static final ffk f = new fes(
+      new fet(0, 0, 0), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0}), new DoubleArrayList(new double[]{0.0})
+   );
 
-   @Nullable
-   public ffk a(fff $$0) {
-      return (ffk)this.a.get($$0);
+   public static ffk a() {
+      return f;
    }
 
-   public ffk a(fff $$0, Consumer<ffk> $$1) {
-      return (ffk)this.a.computeIfAbsent($$0, $$1x -> {
-         ffk $$2 = new ffk();
-         $$1.accept($$2);
-         return $$2;
-      });
+   public static ffk b() {
+      return d;
    }
 
-   public boolean b(fff $$0) {
-      return this.a.remove($$0) != null;
+   public static ffk a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$0 > $$3) && !($$1 > $$4) && !($$2 > $$5)) {
+         return b($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         throw new IllegalArgumentException("The min values need to be smaller or equals to the max values");
+      }
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   public static ffk b(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      if (!($$3 - $$0 < 1.0E-7) && !($$4 - $$1 < 1.0E-7) && !($$5 - $$2 < 1.0E-7)) {
+         int $$6 = a($$0, $$3);
+         int $$7 = a($$1, $$4);
+         int $$8 = a($$2, $$5);
+         if ($$6 < 0 || $$7 < 0 || $$8 < 0) {
+            return new fes(
+               d.a, DoubleArrayList.wrap(new double[]{$$0, $$3}), DoubleArrayList.wrap(new double[]{$$1, $$4}), DoubleArrayList.wrap(new double[]{$$2, $$5})
+            );
+         } else if ($$6 == 0 && $$7 == 0 && $$8 == 0) {
+            return b();
+         } else {
+            int $$9 = 1 << $$6;
+            int $$10 = 1 << $$7;
+            int $$11 = 1 << $$8;
+            fet $$12 = fet.a(
+               $$9,
+               $$10,
+               $$11,
+               (int)Math.round($$0 * (double)$$9),
+               (int)Math.round($$1 * (double)$$10),
+               (int)Math.round($$2 * (double)$$11),
+               (int)Math.round($$3 * (double)$$9),
+               (int)Math.round($$4 * (double)$$10),
+               (int)Math.round($$5 * (double)$$11)
+            );
+            return new fex($$12);
+         }
+      } else {
+         return a();
+      }
    }
 
-   public Object2IntMap<fff> b() {
-      Object2IntMap<fff> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   public static ffk a(fel $$0) {
+      return b($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
    }
 
-   void a(fff $$0, ffk $$1) {
-      this.a.put($$0, $$1);
+   @VisibleForTesting
+   protected static int a(double $$0, double $$1) {
+      if (!($$0 < -1.0E-7) && !($$1 > 1.0000001)) {
+         for (int $$2 = 0; $$2 <= 3; $$2++) {
+            int $$3 = 1 << $$2;
+            double $$4 = $$0 * (double)$$3;
+            double $$5 = $$1 * (double)$$3;
+            boolean $$6 = Math.abs($$4 - (double)Math.round($$4)) < 1.0E-7 * (double)$$3;
+            boolean $$7 = Math.abs($$5 - (double)Math.round($$5)) < 1.0E-7 * (double)$$3;
+            if ($$6 && $$7) {
+               return $$2;
+            }
+         }
+
+         return -1;
+      } else {
+         return -1;
+      }
    }
 
-   Map<fff, ffk> c() {
-      return Collections.unmodifiableMap(this.a);
+   protected static long a(int $$0, int $$1) {
+      return (long)$$0 * (long)($$1 / IntMath.gcd($$0, $$1));
+   }
+
+   public static ffk a(ffk $$0, ffk $$1) {
+      return a($$0, $$1, feu.o);
+   }
+
+   public static ffk a(ffk $$0, ffk... $$1) {
+      return Arrays.stream($$1).reduce($$0, ffh::a);
+   }
+
+   public static ffk a(ffk $$0, ffk $$1, feu $$2) {
+      return b($$0, $$1, $$2).d();
+   }
+
+   public static ffk b(ffk $$0, ffk $$1, feu $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException());
+      } else if ($$0 == $$1) {
+         return $$2.apply(true, true) ? $$0 : a();
+      } else {
+         boolean $$3 = $$2.apply(true, false);
+         boolean $$4 = $$2.apply(false, true);
+         if ($$0.c()) {
+            return $$4 ? $$1 : a();
+         } else if ($$1.c()) {
+            return $$3 ? $$0 : a();
+         } else {
+            ffc $$5 = a(1, $$0.a(ja.a.a), $$1.a(ja.a.a), $$3, $$4);
+            ffc $$6 = a($$5.size() - 1, $$0.a(ja.a.b), $$1.a(ja.a.b), $$3, $$4);
+            ffc $$7 = a(($$5.size() - 1) * ($$6.size() - 1), $$0.a(ja.a.c), $$1.a(ja.a.c), $$3, $$4);
+            fet $$8 = fet.a($$0.a, $$1.a, $$5, $$6, $$7, $$2);
+            return (ffk)($$5 instanceof fey && $$6 instanceof fey && $$7 instanceof fey ? new fex($$8) : new fes($$8, $$5.a(), $$6.a(), $$7.a()));
+         }
+      }
+   }
+
+   public static boolean c(ffk $$0, ffk $$1, feu $$2) {
+      if ($$2.apply(false, false)) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException());
+      } else {
+         boolean $$3 = $$0.c();
+         boolean $$4 = $$1.c();
+         if (!$$3 && !$$4) {
+            if ($$0 == $$1) {
+               return $$2.apply(true, true);
+            } else {
+               boolean $$5 = $$2.apply(true, false);
+               boolean $$6 = $$2.apply(false, true);
+
+               for (ja.a $$7 : ir.d) {
+                  if ($$0.c($$7) < $$1.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
+
+                  if ($$1.c($$7) < $$0.b($$7) - 1.0E-7) {
+                     return $$5 || $$6;
+                  }
+               }
+
+               ffc $$8 = a(1, $$0.a(ja.a.a), $$1.a(ja.a.a), $$5, $$6);
+               ffc $$9 = a($$8.size() - 1, $$0.a(ja.a.b), $$1.a(ja.a.b), $$5, $$6);
+               ffc $$10 = a(($$8.size() - 1) * ($$9.size() - 1), $$0.a(ja.a.c), $$1.a(ja.a.c), $$5, $$6);
+               return a($$8, $$9, $$10, $$0.a, $$1.a, $$2);
+            }
+         } else {
+            return $$2.apply(!$$3, !$$4);
+         }
+      }
+   }
+
+   private static boolean a(ffc $$0, ffc $$1, ffc $$2, fez $$3, fez $$4, feu $$5) {
+      return !$$0.a(($$5x, $$6, $$7) -> $$1.a(($$6x, $$7x, $$8) -> $$2.a(($$7xx, $$8x, $$9) -> !$$5.apply($$3.e($$5x, $$6x, $$7xx), $$4.e($$6, $$7x, $$8x)))));
+   }
+
+   public static double a(ja.a $$0, fel $$1, Iterable<ffk> $$2, double $$3) {
+      for (ffk $$4 : $$2) {
+         if (Math.abs($$3) < 1.0E-7) {
+            return 0.0;
+         }
+
+         $$3 = $$4.a($$0, $$1, $$3);
+      }
+
+      return $$3;
+   }
+
+   public static boolean a(ffk $$0, ffk $$1, ja $$2) {
+      if ($$0 == b() && $$1 == b()) {
+         return true;
+      } else if ($$1.c()) {
+         return false;
+      } else {
+         ja.a $$3 = $$2.o();
+         ja.b $$4 = $$2.f();
+         ffk $$5 = $$4 == ja.b.a ? $$0 : $$1;
+         ffk $$6 = $$4 == ja.b.a ? $$1 : $$0;
+         feu $$7 = $$4 == ja.b.a ? feu.e : feu.c;
+         return DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)
+            && DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)
+            && !c(new ffi($$5, $$3, $$5.a.c($$3) - 1), new ffi($$6, $$3, 0), $$7);
+      }
+   }
+
+   public static boolean b(ffk $$0, ffk $$1, ja $$2) {
+      if ($$0 != b() && $$1 != b()) {
+         ja.a $$3 = $$2.o();
+         ja.b $$4 = $$2.f();
+         ffk $$5 = $$4 == ja.b.a ? $$0 : $$1;
+         ffk $$6 = $$4 == ja.b.a ? $$1 : $$0;
+         if (!DoubleMath.fuzzyEquals($$5.c($$3), 1.0, 1.0E-7)) {
+            $$5 = a();
+         }
+
+         if (!DoubleMath.fuzzyEquals($$6.b($$3), 0.0, 1.0E-7)) {
+            $$6 = a();
+         }
+
+         return !c(b(), b(new ffi($$5, $$3, $$5.a.c($$3) - 1), new ffi($$6, $$3, 0), feu.o), feu.e);
+      } else {
+         return true;
+      }
+   }
+
+   public static boolean b(ffk $$0, ffk $$1) {
+      if ($$0 == b() || $$1 == b()) {
+         return true;
+      } else {
+         return $$0.c() && $$1.c() ? false : !c(b(), b($$0, $$1, feu.o), feu.e);
+      }
+   }
+
+   @VisibleForTesting
+   protected static ffc a(int $$0, DoubleList $$1, DoubleList $$2, boolean $$3, boolean $$4) {
+      int $$5 = $$1.size() - 1;
+      int $$6 = $$2.size() - 1;
+      if ($$1 instanceof few && $$2 instanceof few) {
+         long $$7 = a($$5, $$6);
+         if ((long)$$0 * $$7 <= 256L) {
+            return new fey($$5, $$6);
+         }
+      }
+
+      if ($$1.getDouble($$5) < $$2.getDouble(0) - 1.0E-7) {
+         return new fff($$1, $$2, false);
+      } else if ($$2.getDouble($$6) < $$1.getDouble(0) - 1.0E-7) {
+         return new fff($$2, $$1, true);
+      } else {
+         return (ffc)($$5 == $$6 && Objects.equals($$1, $$2) ? new ffb($$1) : new ffd($$1, $$2, $$3, $$4));
+      }
+   }
+
+   public static ffk a(ffk $$0, h $$1) {
+      return a($$0, $$1, e);
+   }
+
+   public static ffk a(ffk $$0, h $$1, feq $$2) {
+      if ($$1 == h.a) {
+         return $$0;
+      } else {
+         fez $$3 = $$0.a.a($$1);
+         if ($$0 instanceof fex && e.equals($$2)) {
+            return new fex($$3);
+         } else {
+            ja.a $$4 = $$1.b(ja.a.a);
+            ja.a $$5 = $$1.b(ja.a.b);
+            ja.a $$6 = $$1.b(ja.a.c);
+            DoubleList $$7 = $$0.a($$4);
+            DoubleList $$8 = $$0.a($$5);
+            DoubleList $$9 = $$0.a($$6);
+            boolean $$10 = $$1.a($$4);
+            boolean $$11 = $$1.a($$5);
+            boolean $$12 = $$1.a($$6);
+            boolean $$13 = $$4.a($$10, $$11, $$12);
+            boolean $$14 = $$5.a($$10, $$11, $$12);
+            boolean $$15 = $$6.a($$10, $$11, $$12);
+            return new fes($$3, a($$7, $$13, $$2.a($$4), $$2.d), a($$8, $$14, $$2.a($$5), $$2.e), a($$9, $$15, $$2.a($$6), $$2.f));
+         }
+      }
+   }
+
+   @VisibleForTesting
+   static DoubleList a(DoubleList $$0, boolean $$1, double $$2, double $$3) {
+      if (!$$1 && $$2 == $$3) {
+         return $$0;
+      } else {
+         int $$4 = $$0.size();
+         DoubleList $$5 = new DoubleArrayList($$4);
+         int $$6 = $$1 ? -1 : 1;
+
+         for (int $$7 = $$1 ? $$4 - 1 : 0; $$7 >= 0 && $$7 < $$4; $$7 += $$6) {
+            $$5.add($$3 + (double)$$6 * ($$0.getDouble($$7) - $$2));
+         }
+
+         return $$5;
+      }
+   }
+
+   public static boolean c(ffk $$0, ffk $$1) {
+      return !c($$0, $$1, feu.g);
+   }
+
+   public static Map<ja.a, ffk> a(ffk $$0) {
+      return a($$0, e);
+   }
+
+   public static Map<ja.a, ffk> a(ffk $$0, feq $$1) {
+      return Maps.newEnumMap(Map.of(ja.a.c, $$0, ja.a.a, a($$0, h.a(0, 90), $$1)));
+   }
+
+   public static Map<ja.a, ffk> b(ffk $$0) {
+      return b($$0, e);
+   }
+
+   public static Map<ja.a, ffk> b(ffk $$0, feq $$1) {
+      return Maps.newEnumMap(Map.of(ja.a.c, $$0, ja.a.a, a($$0, h.a(0, 90), $$1), ja.a.b, a($$0, h.a(90, 0), $$1)));
+   }
+
+   public static Map<ja, ffk> c(ffk $$0) {
+      return c($$0, e);
+   }
+
+   public static Map<ja, ffk> c(ffk $$0, feq $$1) {
+      return Maps.newEnumMap(Map.of(ja.c, $$0, ja.f, a($$0, h.a(0, 90), $$1), ja.d, a($$0, h.a(0, 180), $$1), ja.e, a($$0, h.a(0, 270), $$1)));
+   }
+
+   public static Map<ja, ffk> d(ffk $$0) {
+      return d($$0, e);
+   }
+
+   public static Map<ja, ffk> d(ffk $$0, feq $$1) {
+      return Maps.newEnumMap(
+         Map.of(
+            ja.c,
+            $$0,
+            ja.f,
+            a($$0, h.a(0, 90), $$1),
+            ja.d,
+            a($$0, h.a(0, 180), $$1),
+            ja.e,
+            a($$0, h.a(0, 270), $$1),
+            ja.b,
+            a($$0, h.a(270, 0), $$1),
+            ja.a,
+            a($$0, h.a(90, 0), $$1)
+         )
+      );
+   }
+
+   public static Map<eas, Map<ja, ffk>> e(ffk $$0) {
+      return Map.of(eas.b, c($$0), eas.a, c(a($$0, h.a(270, 0))), eas.c, c(a($$0, h.a(90, 180))));
+   }
+
+   public interface a {
+      void consume(double var1, double var3, double var5, double var7, double var9, double var11);
    }
 }

@@ -1,256 +1,136 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class cxr extends czt {
-   private static final float o = 1.25F;
-   public static final int a = 8;
-   private boolean p = false;
-   private boolean q = false;
-   private static final float r = 0.2F;
-   private static final float s = 0.5F;
-   private static final float t = 3.15F;
-   private static final float u = 1.6F;
-   public static final float b = 1.6F;
-   private static final cxr.b v = new cxr.b(Optional.of(awn.gL), Optional.of(awn.gK), Optional.of(awn.gJ));
+public class cxr extends cyz implements cxz {
+   private final ewn a;
 
-   public cxr(cyu.a $$0) {
-      super($$0);
+   public cxr(ewn $$0, cyz.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public Predicate<cyy> c() {
-      return d;
-   }
-
-   @Override
-   public Predicate<cyy> a() {
-      return c;
-   }
-
-   @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      cyy $$3 = $$1.b($$2);
-      dbc $$4 = $$3.a(kj.P);
-      if ($$4 != null && !$$4.b()) {
-         this.a($$0, $$1, $$2, $$3, a($$4), 1.0F, null);
-         return bub.c;
-      } else if (!$$1.e($$3).f()) {
-         this.p = false;
-         this.q = false;
-         $$1.c($$2);
-         return bub.c;
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      czd $$3 = $$1.b($$2);
+      fem $$4 = a($$0, $$1, this.a == ewp.a ? dij.b.b : dij.b.a);
+      if ($$4.d() == feo.a.a) {
+         return bud.e;
+      } else if ($$4.d() != feo.a.b) {
+         return bud.e;
       } else {
-         return bub.d;
-      }
-   }
+         iu $$5 = $$4.b();
+         ja $$6 = $$4.c();
+         iu $$7 = $$5.a($$6);
+         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
+            return bud.d;
+         } else if (this.a == ewp.a) {
+            eah $$8 = $$0.a_($$5);
+            if ($$8.b() instanceof dmn $$9) {
+               czd $$10 = $$9.a($$1, $$0, $$5, $$8);
+               if (!$$10.f()) {
+                  $$1.b(awx.c.b(this));
+                  $$9.ap_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
+                  $$0.a($$1, efh.y, $$5);
+                  czd $$11 = czg.a($$3, $$1, $$10);
+                  if (!$$0.C) {
+                     ap.k.a((arr)$$1, $$10);
+                  }
 
-   private static float a(dbc $$0) {
-      return $$0.a(czc.vz) ? 1.6F : 3.15F;
-   }
+                  return bud.a.a($$11);
+               }
+            }
 
-   @Override
-   public boolean a(cyy $$0, div $$1, bxc $$2, int $$3) {
-      int $$4 = this.a($$0, $$2) - $$3;
-      return a($$4, $$0, $$2) >= 1.0F && g($$0);
-   }
+            return bud.d;
+         } else {
+            eah $$12 = $$0.a_($$5);
+            iu $$13 = $$12.b() instanceof drc && this.a == ewp.c ? $$5 : $$7;
+            if (this.a($$1, $$0, $$13, $$4)) {
+               this.a($$1, $$0, $$3, $$13);
+               if ($$1 instanceof arr) {
+                  ap.z.a((arr)$$1, $$13, $$3);
+               }
 
-   private static boolean a(bxc $$0, cyy $$1) {
-      List<cyy> $$2 = a($$1, $$0.e($$1), $$0);
-      if (!$$2.isEmpty()) {
-         $$1.b(kj.P, dbc.a($$2));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public static boolean g(cyy $$0) {
-      dbc $$1 = $$0.a(kj.P, dbc.a);
-      return !$$1.b();
-   }
-
-   @Override
-   protected void a(bxc $$0, crs $$1, int $$2, float $$3, float $$4, float $$5, @Nullable bxc $$6) {
-      Vector3f $$11;
-      if ($$6 != null) {
-         double $$7 = $$6.dA() - $$0.dA();
-         double $$8 = $$6.dG() - $$0.dG();
-         double $$9 = Math.sqrt($$7 * $$7 + $$8 * $$8);
-         double $$10 = $$6.e(0.3333333333333333) - $$1.dC() + $$9 * 0.2F;
-         $$11 = a($$0, new fei($$7, $$10, $$8), $$5);
-      } else {
-         fei $$12 = $$0.m(1.0F);
-         Quaternionf $$13 = new Quaternionf().setAngleAxis((double)($$5 * (float) (Math.PI / 180.0)), $$12.d, $$12.e, $$12.f);
-         fei $$14 = $$0.h(1.0F);
-         $$11 = $$14.k().rotate($$13);
-      }
-
-      $$1.c((double)$$11.x(), (double)$$11.y(), (double)$$11.z(), $$3, $$4);
-      float $$16 = a($$0.dY(), $$2);
-      $$0.dV().a(null, $$0.dA(), $$0.dC(), $$0.dG(), awn.gP, $$0.dm(), 1.0F, $$16);
-   }
-
-   private static Vector3f a(bxc $$0, fei $$1, float $$2) {
-      Vector3f $$3 = $$1.k().normalize();
-      Vector3f $$4 = new Vector3f($$3).cross(new Vector3f(0.0F, 1.0F, 0.0F));
-      if ((double)$$4.lengthSquared() <= 1.0E-7) {
-         fei $$5 = $$0.m(1.0F);
-         $$4 = new Vector3f($$3).cross($$5.k());
-      }
-
-      Vector3f $$6 = new Vector3f($$3).rotateAxis((float) (Math.PI / 2), $$4.x, $$4.y, $$4.z);
-      return new Vector3f($$3).rotateAxis($$2 * (float) (Math.PI / 180.0), $$6.x, $$6.y, $$6.z);
-   }
-
-   @Override
-   protected crs a(div $$0, bxc $$1, cyy $$2, cyy $$3, boolean $$4) {
-      if ($$3.a(czc.vz)) {
-         return new crn($$0, $$3, $$1, $$1.dA(), $$1.dE() - 0.15F, $$1.dG(), true);
-      } else {
-         crs $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$5 instanceof crf $$6) {
-            $$6.b(awn.gI);
-         }
-
-         return $$5;
-      }
-   }
-
-   @Override
-   protected int h(cyy $$0) {
-      return $$0.a(czc.vz) ? 3 : 1;
-   }
-
-   public void a(div $$0, bxc $$1, bua $$2, cyy $$3, float $$4, float $$5, @Nullable bxc $$6) {
-      if ($$0 instanceof arq $$7) {
-         dbc $$9 = $$3.b(kj.P, dbc.a);
-         if ($$9 != null && !$$9.b()) {
-            this.a($$7, $$1, $$2, $$3, $$9.a(), $$4, $$5, $$1 instanceof cqy, $$6);
-            if ($$1 instanceof arr $$10) {
-               ap.G.a($$10, $$3);
-               $$10.b(awx.c.b($$3.h()));
+               $$1.b(awx.c.b(this));
+               czd $$14 = czg.a($$3, $$1, b($$3, $$1));
+               return bud.a.a($$14);
+            } else {
+               return bud.d;
             }
          }
       }
    }
 
-   private static float a(azv $$0, int $$1) {
-      return $$1 == 0 ? 1.0F : a(($$1 & 1) == 1, $$0);
-   }
-
-   private static float a(boolean $$0, azv $$1) {
-      float $$2 = $$0 ? 0.63F : 0.43F;
-      return 1.0F / ($$1.i() * 0.5F + 1.8F) + $$2;
+   public static czd b(czd $$0, crc $$1) {
+      return !$$1.fV() ? new czd(czh.ro) : $$0;
    }
 
    @Override
-   public void a(div $$0, bxc $$1, cyy $$2, int $$3) {
-      if (!$$0.C) {
-         cxr.b $$4 = this.i($$2);
-         float $$5 = (float)($$2.a($$1) - $$3) / (float)b($$2, $$1);
-         if ($$5 < 0.2F) {
-            this.p = false;
-            this.q = false;
+   public void a(@Nullable bxe $$0, dja $$1, czd $$2, iu $$3) {
+   }
+
+   @Override
+   public boolean a(@Nullable bxe $$0, dja $$1, iu $$2, @Nullable fem $$3) {
+      if (!(this.a instanceof ewm $$4)) {
+         return false;
+      } else {
+         dmf $$7;
+         boolean $$8;
+         eah $$6;
+         boolean var10000;
+         label82: {
+            $$6 = $$1.a_($$2);
+            $$7 = $$6.b();
+            $$8 = $$6.a(this.a);
+            label70:
+            if (!$$6.l() && !$$8) {
+               if ($$7 instanceof drc $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
+                  break label70;
+               }
+
+               var10000 = false;
+               break label82;
+            }
+
+            var10000 = true;
          }
 
-         if ($$5 >= 0.2F && !this.p) {
-            this.p = true;
-            $$4.a().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (awm)$$2x.a(), awo.h, 0.5F, 1.0F));
+         boolean $$10 = var10000;
+         if (!$$10) {
+            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
+         } else if ($$1.B_().i() && this.a.a(axh.a)) {
+            int $$11 = $$2.u();
+            int $$12 = $$2.v();
+            int $$13 = $$2.w();
+            $$1.a($$0, $$2, awn.jy, awo.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
+
+            for (int $$14 = 0; $$14 < 8; $$14++) {
+               $$1.a(lx.aa, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
+            }
+
+            return true;
+         } else {
+            if ($$7 instanceof drc $$15 && this.a == ewp.c) {
+               $$15.a($$1, $$2, $$6, $$4.a(false));
+               this.a($$0, $$1, $$2);
+               return true;
+            }
+
+            if (!$$1.C && $$8 && !$$6.n()) {
+               $$1.b($$2, true);
+            }
+
+            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
+               return false;
+            } else {
+               this.a($$0, $$1, $$2);
+               return true;
+            }
          }
-
-         if ($$5 >= 0.5F && !this.q) {
-            this.q = true;
-            $$4.b().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (awm)$$2x.a(), awo.h, 0.5F, 1.0F));
-         }
-
-         if ($$5 >= 1.0F && !g($$2) && a($$1, $$2)) {
-            $$4.c().ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (awm)$$2x.a(), $$1.dm(), 1.0F, 1.0F / ($$0.C_().i() * 0.5F + 1.0F) + 0.2F));
-         }
       }
    }
 
-   @Override
-   public int a(cyy $$0, bxc $$1) {
-      return 72000;
-   }
-
-   public static int b(cyy $$0, bxc $$1) {
-      float $$2 = dfn.a($$0, $$1, 1.25F);
-      return azm.d($$2 * 20.0F);
-   }
-
-   @Override
-   public cza b(cyy $$0) {
-      return cza.g;
-   }
-
-   cxr.b i(cyy $$0) {
-      return dfn.b($$0, dfm.B).orElse(v);
-   }
-
-   private static float a(int $$0, cyy $$1, bxc $$2) {
-      float $$3 = (float)$$0 / (float)b($$1, $$2);
-      if ($$3 > 1.0F) {
-         $$3 = 1.0F;
-      }
-
-      return $$3;
-   }
-
-   @Override
-   public boolean e_(cyy $$0) {
-      return $$0.a((cyu)this);
-   }
-
-   @Override
-   public int b() {
-      return 8;
-   }
-
-   public static enum a implements bak {
-      a("none"),
-      b("arrow"),
-      c("rocket");
-
-      public static final Codec<cxr.a> d = bak.a(cxr.a::values);
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-   }
-
-   public static record b(Optional<je<awm>> b, Optional<je<awm>> c, Optional<je<awm>> d) {
-      public static final Codec<cxr.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  awm.b.optionalFieldOf("start").forGetter(cxr.b::a),
-                  awm.b.optionalFieldOf("mid").forGetter(cxr.b::b),
-                  awm.b.optionalFieldOf("end").forGetter(cxr.b::c)
-               )
-               .apply($$0, cxr.b::new)
-      );
-
-      public Optional<je<awm>> a() {
-         return this.b;
-      }
-
-      public Optional<je<awm>> b() {
-         return this.c;
-      }
-
-      public Optional<je<awm>> c() {
-         return this.d;
-      }
+   protected void a(@Nullable bxe $$0, djb $$1, iu $$2) {
+      awm $$3 = this.a.a(axh.b) ? awn.dg : awn.dd;
+      $$1.a($$0, $$2, $$3, awo.e, 1.0F, 1.0F);
+      $$1.a($$0, efh.z, $$2);
    }
 }

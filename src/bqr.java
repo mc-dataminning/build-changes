@@ -1,51 +1,47 @@
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bqr implements AutoCloseable {
-   public static final bqr a = new bqr(null);
-   @Nullable
-   private final bqm b;
+public class bqr {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bql f = bqk.a;
 
-   bqr(@Nullable bqm $$0) {
+   public bqr(LongSupplier $$0, String $$1, long $$2) {
       this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public bqr a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
+   public bqo a() {
+      this.f = new bqg(this.b, () -> this.d, () -> true);
+      this.d++;
+      return this.f;
    }
 
-   public bqr a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
+   public void b() {
+      if (this.f != bqk.a) {
+         bqm $$0 = this.f.d();
+         this.f = bqk.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + af.f() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
       }
-
-      return this;
    }
 
-   public bqr a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
+   @Nullable
+   public static bqr a(String $$0) {
+      return null;
    }
 
-   public bqr a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+   public static bqo a(bqo $$0, @Nullable bqr $$1) {
+      return $$1 != null ? bqo.a($$1.a(), $$0) : $$0;
    }
 }

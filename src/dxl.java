@@ -1,82 +1,34 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class dxl {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(div var1, iu var2, dzz var3);
-
-   protected abstract void b(div var1, iu var2, dzz var3);
-
-   protected abstract void a(div var1, iu var2, dzz var3, int var4, int var5);
-
-   protected abstract boolean a(cqy var1);
-
-   public void a(cqy $$0, div $$1, iu $$2, dzz $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, eez.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gK(), this.c);
+public class dxl extends dyq {
+   public dxl(iu $$0, eah $$1) {
+      super(dxh.K, $$0, $$1);
    }
 
-   public void b(cqy $$0, div $$1, iu $$2, dzz $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, eez.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   @Override
+   public efq.d a() {
+      return new dxl.a(this.ax_());
    }
 
-   private List<cqy> a(div $$0, iu $$1) {
-      double $$2 = this.c + 4.0;
-      fed $$3 = new fed($$1).g($$2);
-      return $$0.a(eel.a(cqy.class), $$3, this::a);
-   }
-
-   public void c(div $$0, iu $$1, dzz $$2) {
-      List<cqy> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cqy $$4 : $$3) {
-         this.c = Math.max($$4.gK(), this.c);
+   protected class a extends dyq.a {
+      public a(final iu $$1) {
+         super($$1);
       }
 
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, eez.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, eez.j, $$1);
-         }
-
-         this.b = $$5;
+      @Override
+      public int a() {
+         return 16;
       }
 
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
+      @Override
+      public boolean a(arq $$0, iu $$1, je<efh> $$2, @Nullable efh.a $$3) {
+         int $$4 = this.a($$0, this.c, dxl.this.m());
+         return $$4 != 0 && efq.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
       }
-   }
 
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(div $$0, iu $$1, dzz $$2) {
-      $$0.a($$1, $$2.b(), 5);
+      private int a(dja $$0, iu $$1, eah $$2) {
+         ja $$3 = $$2.c(dmu.b).g();
+         return $$0.c($$1.a($$3), $$3);
+      }
    }
 }

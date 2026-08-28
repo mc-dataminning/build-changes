@@ -1,78 +1,61 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eig extends eje<elk> {
-   public eig(Codec<elk> $$0) {
-      super($$0);
+public class eig {
+   public static final eig a = new eig(false, dmh.gZ.m(), dmh.qt.m(), dmh.eA.m(), dmh.aX.m());
+   public static final Codec<eig> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eig::a),
+               eah.a.optionalFieldOf("air_state", a.b()).forGetter(eig::b),
+               eah.a.optionalFieldOf("water_state", a.b()).forGetter(eig::c),
+               eah.a.optionalFieldOf("lava_state", a.b()).forGetter(eig::d),
+               eah.a.optionalFieldOf("barrier_state", a.b()).forGetter(eig::e)
+            )
+            .apply($$0, eig::new)
+   );
+   private final boolean c;
+   private final eah d;
+   private final eah e;
+   private final eah f;
+   private final eah g;
+
+   public static eig a(boolean $$0, eah $$1, eah $$2, eah $$3, eah $$4) {
+      return new eig($$0, $$1, $$2, $$3, $$4);
    }
 
-   protected void a(diw $$0, azv $$1, iu $$2, elk $$3, int $$4, iu.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ja.b, $$6);
-         this.a($$0, $$5, $$3.c.a($$1, $$2));
-      }
+   public static eig a(eah $$0, eah $$1, eah $$2, eah $$3) {
+      return new eig(false, $$0, $$1, $$2, $$3);
    }
 
-   protected void a(diw $$0, iu.a $$1, dzz $$2) {
-      dzz $$3 = $$0.a_($$1);
-      if ($$3.l() || $$3.a(axc.cs)) {
-         this.a($$0, $$1, $$2);
-      }
+   public static eig a(boolean $$0, eah $$1) {
+      return new eig($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   protected int a(azv $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
+   private eig(boolean $$0, eah $$1, eah $$2, eah $$3, eah $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   protected boolean a(diw $$0, iu $$1, int $$2, iu.a $$3, elk $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
-         dzz $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(axc.bc)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dzz $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.l() && !$$11.a(axc.Q)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   public boolean a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(ejg<elk> $$0) {
-      dju $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      elk $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      iu.a $$6 = new iu.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
+   public eah b() {
+      return this.d;
    }
 
-   protected abstract int a(int var1, int var2, int var3, int var4);
+   public eah c() {
+      return this.e;
+   }
 
-   protected abstract void a(diw var1, azv var2, iu var3, int var4, iu.a var5, elk var6);
+   public eah d() {
+      return this.f;
+   }
+
+   public eah e() {
+      return this.g;
+   }
 }

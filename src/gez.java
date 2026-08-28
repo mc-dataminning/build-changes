@@ -1,63 +1,38 @@
-public class gez extends gey {
-   private static final String c = "saddle";
-   private static final String d = "bridle";
-   private static final String e = "reins";
-   private final giu f = this.b.b("reins");
+public class gez extends ggu {
+   private static final String a = "bell_body";
+   private final gjc b;
 
-   public gez(giu $$0) {
-      super($$0);
+   public gez(gjc $$0) {
+      super($$0, gqk::d);
+      this.b = $$0.b("bell_body");
    }
 
-   public static gja c() {
-      gjc $$0 = b();
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.b("body");
-      gje $$3 = $$2.b("head");
-      giy $$4 = new giy(0.05F);
-      $$2.a(
-         "saddle",
-         giz.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$4)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$4)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$4),
-         giw.a(0.0F, 0.0F, 0.0F)
-      );
-      $$3.a(
-         "reins",
-         giz.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         giw.a(0.0F, 0.0F, 0.0F)
-      );
-      $$3.a(
-         "bridle",
-         giz.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$4)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$4)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$4)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         giw.a(0.0F, 0.0F, 0.0F)
-      );
-      return gja.a($$0, 128, 128);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      gjm $$2 = $$1.a("bell_body", gjh.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), gje.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", gjh.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), gje.a(-8.0F, -12.0F, -8.0F));
+      return gji.a($$0, 32, 32);
    }
 
-   @Override
-   public void a(hbt $$0) {
-      super.a($$0);
-      this.f.k = $$0.b;
+   public void a(dxd $$0, float $$1) {
+      float $$2 = (float)$$0.a + $$1;
+      float $$3 = 0.0F;
+      float $$4 = 0.0F;
+      if ($$0.b) {
+         float $$5 = azm.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
+         if ($$0.c == ja.c) {
+            $$3 = -$$5;
+         } else if ($$0.c == ja.d) {
+            $$3 = $$5;
+         } else if ($$0.c == ja.f) {
+            $$4 = -$$5;
+         } else if ($$0.c == ja.e) {
+            $$4 = $$5;
+         }
+      }
+
+      this.b.e = $$3;
+      this.b.g = $$4;
    }
 }

@@ -1,86 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class deh implements ddp<dei> {
-   private final ddl c;
-   private final cyy d;
-   private final String e;
-   @Nullable
-   private ddo f;
-
-   public deh(String $$0, ddl $$1, cyy $$2) {
-      this.e = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record deh<T extends ddu<?>>(dfg a, Optional<ddz<T>> b) {
+   public static <T extends ddu<?>> yw<wj, deh<T>> a() {
+      return yw.a(dfg.b, deh::b, $$0 -> new deh<>($$0, Optional.empty()));
    }
 
-   @Override
-   public abstract ddz<? extends deh> a();
-
-   @Override
-   public abstract dea<? extends deh> b();
-
-   public boolean a(dei $$0, div $$1) {
-      return this.c.a($$0.c());
+   public dfg b() {
+      return this.a;
    }
 
-   @Override
-   public String j() {
-      return this.e;
+   public Optional<ddz<T>> c() {
+      return this.b;
    }
 
-   public ddl k() {
-      return this.c;
-   }
+   public static record a<T extends ddu<?>>(ddq a, deh<T> b) {
 
-   protected cyy l() {
-      return this.d;
-   }
-
-   @Override
-   public ddo ak_() {
-      if (this.f == null) {
-         this.f = ddo.a(this.c);
+      public static <T extends ddu<?>> yw<wj, deh.a<T>> a() {
+         return yw.a(ddq.a, deh.a::b, deh.a(), deh.a::c, deh.a::new);
       }
 
-      return this.f;
-   }
-
-   public cyy a(dei $$0, jg.a $$1) {
-      return this.d.v();
-   }
-
-   @FunctionalInterface
-   public interface a<T extends deh> {
-      T create(String var1, ddl var2, cyy var3);
-   }
-
-   public static class b<T extends deh> implements ddz<T> {
-      private final MapCodec<T> w;
-      private final yw<wj, T> x;
-
-      protected b(deh.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter(deh::j),
-                     ddl.d.fieldOf("ingredient").forGetter(deh::k),
-                     cyy.d.fieldOf("result").forGetter(deh::l)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.x = yw.a(yu.o, deh::j, ddl.a, deh::k, cyy.i, deh::l, $$0::create);
+      public ddq b() {
+         return this.a;
       }
 
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
+      public deh<T> c() {
+         return this.b;
+      }
+   }
+
+   public static record b<T extends ddu<?>>(List<deh.a<T>> a) {
+      public static <T extends ddu<?>> deh.b<T> a() {
+         return new deh.b<>(List.of());
       }
 
-      @Override
-      public yw<wj, T> b() {
-         return this.x;
+      public static <T extends ddu<?>> yw<wj, deh.b<T>> b() {
+         return yw.a(deh.a.<T>a().a(yu.a()), deh.b::e, deh.b::new);
+      }
+
+      public boolean a(czd $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public deh.b<T> b(czd $$0) {
+         return new deh.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<deh.a<T>> e() {
+         return this.a;
       }
    }
 }

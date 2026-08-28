@@ -1,37 +1,69 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public enum cza implements bak {
-   a(0, "none"),
-   b(1, "eat"),
-   c(2, "drink"),
-   d(3, "block"),
-   e(4, "bow"),
-   f(5, "spear"),
-   g(6, "crossbow"),
-   h(7, "spyglass"),
-   i(8, "toot_horn"),
-   j(9, "brush"),
-   k(10, "bundle");
+public class cza {
+   private final Map<alg, cza.a> a = Maps.newHashMap();
+   private int b;
 
-   private static final IntFunction<cza> n = ayc.a(cza::a, values(), ayc.a.a);
-   public static final Codec<cza> l = bak.a(cza::values);
-   public static final yw<ByteBuf, cza> m = yu.a(n, cza::a);
-   private final int o;
-   private final String p;
-
-   private cza(final int $$0, final String $$1) {
-      this.o = $$0;
-      this.p = $$1;
+   public boolean a(czd $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   public int a() {
-      return this.o;
+   public float a(czd $$0, float $$1) {
+      alg $$2 = this.b($$0);
+      cza.a $$3 = this.a.get($$2);
+      if ($$3 != null) {
+         float $$4 = (float)($$3.b - $$3.a);
+         float $$5 = (float)$$3.b - ((float)this.b + $$1);
+         return azm.a($$5 / $$4, 0.0F, 1.0F);
+      } else {
+         return 0.0F;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.p;
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<alg, cza.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<alg, cza.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.b($$1.getKey());
+            }
+         }
+      }
+   }
+
+   public alg b(czd $$0) {
+      dcj $$1 = $$0.a(kj.y);
+      alg $$2 = mf.g.b($$0.h());
+      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   }
+
+   public void a(czd $$0, int $$1) {
+      this.a(this.b($$0), $$1);
+   }
+
+   public void a(alg $$0, int $$1) {
+      this.a.put($$0, new cza.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
+   }
+
+   public void a(alg $$0) {
+      this.a.remove($$0);
+      this.b($$0);
+   }
+
+   protected void b(alg $$0, int $$1) {
+   }
+
+   protected void b(alg $$0) {
+   }
+
+   static record a(int a, int b) {
    }
 }

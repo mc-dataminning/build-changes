@@ -1,20 +1,17 @@
-public class gvb extends gxf<cni, hdf, get> {
-   private static final alg a = alg.b("textures/entity/blaze.png");
+@Deprecated
+public abstract class gvb<T extends bxg, S extends hdn, M extends gfy<? super S>> extends gxn<T, S, M> {
+   private final M a;
+   private final M j;
 
-   public gvb(gvz.a $$0) {
-      super($$0, new get($$0.a(git.D)), 0.5F);
-   }
-
-   protected int a(cni $$0, iu $$1) {
-      return 15;
+   public gvb(gwh.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.j = $$2;
    }
 
    @Override
-   public alg b(hdf $$0) {
-      return a;
-   }
-
-   public hdf a() {
-      return new hdf();
+   public void a(S $$0, fjj $$1, gqa $$2, int $$3) {
+      this.g = $$0.aj ? this.j : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

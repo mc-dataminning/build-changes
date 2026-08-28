@@ -16,7 +16,7 @@ public class bds extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("DropChancesFormatFix", this.getInputSchema().getType(biw.D), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+      return this.fixTypeEverywhereTyped("DropChancesFormatFix", this.getInputSchema().getType(bix.D), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
             List<Float> $$1 = a($$0x.get("ArmorDropChances"));
             List<Float> $$2 = a($$0x.get("HandDropChances"));
             float $$3 = $$0x.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);

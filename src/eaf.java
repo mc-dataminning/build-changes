@@ -1,96 +1,38 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-
 public class eaf {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<ead>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+   private static final int a = 1600;
+   private static final int b = 10000;
+   private static final int c = 3;
+   private static final int d = 8;
 
-   private eaf() {
-      this.c.put(' ', $$0 -> true);
-   }
-
-   public eaf a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
+   public static void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if ($$0.a(axc.cG) && $$1.h($$2.d())) {
+         if ($$3.a(1600) == 0 && a($$1, $$2)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.wC, awo.e, 1.0F, 1.0F, false);
          }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
-
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
+         if ($$3.a(10000) == 0 && a($$1.u($$2)) && a($$1, $$2)) {
+            $$1.a(awn.wD, awo.e, 1.0F, 1.0F);
          }
-      } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
       }
    }
 
-   public static eaf a() {
-      return new eaf();
+   private static boolean a(je<dkd> $$0) {
+      return $$0.a(dkk.f) || $$0.a(axb.f);
    }
 
-   public eaf a(char $$0, Predicate<ead> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
+   private static boolean a(dja $$0, iu $$1) {
+      int $$2 = 0;
 
-   public eae b() {
-      return new eae(this.c());
-   }
-
-   private Predicate<ead>[][][] c() {
-      this.d();
-      Predicate<ead>[][][] $$0 = (Predicate<ead>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+      for (ja $$3 : ja.c.a) {
+         iu $$4 = $$1.a($$3, 8);
+         eah $$5 = $$0.a_($$4.h($$0.b(egg.a.b, $$4) - 1));
+         if ($$5.a(axc.cG)) {
+            if (++$$2 >= 3) {
+               return true;
             }
          }
       }
 
-      return $$0;
-   }
-
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
-
-      for (Entry<Character, Predicate<ead>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
-
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+      return false;
    }
 }

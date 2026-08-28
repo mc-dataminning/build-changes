@@ -1,98 +1,57 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class dri extends dvj implements dmd {
-   public static final MapCodec<dri> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mg.aK).fieldOf("feature").forGetter($$0x -> $$0x.c), t()).apply($$0, dri::new)
-   );
-   private static final ffc b = dma.b(6.0, 0.0, 6.0);
-   private final alf<eiq<?, ?>> c;
+public enum dri implements bak {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dri> a() {
-      return a;
+   public static final Codec<dri> d = bak.a(dri::values);
+   private final String e;
+   private final wy f;
+   private final h g;
+
+   private dri(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = wy.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dri(alf<eiq<?, ?>> $$0, dzy.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return b;
-   }
-
-   @Override
-   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (iu $$6 : iu.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         iu $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.v($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.v($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
       }
    }
 
-   @Override
-   protected boolean b(dzz $$0, dib $$1, iu $$2) {
-      return $$0.s();
+   public dsz a(ja $$0) {
+      ja.a $$1 = $$0.o();
+      return (this != b || $$1 != ja.a.c) && (this != c || $$1 != ja.a.a) ? dsz.a : dsz.c;
    }
 
-   @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      dzz $$4 = $$1.a_($$3);
-      return $$4.a(axc.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(arq $$0, iu $$1, dzz $$2, azv $$3) {
-      Optional<? extends je<eiq<?, ?>>> $$4 = $$0.F_().f(mg.aK).a(this.c);
-      if ($$4.isEmpty()) {
-         return false;
+   public ja b(ja $$0) {
+      if (this == c && $$0.o() == ja.a.a) {
+         return $$0.g();
       } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
+         return this == b && $$0.o() == ja.a.c ? $$0.g() : $$0;
       }
    }
 
-   @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return true;
+   public h a() {
+      return this.g;
+   }
+
+   public wy b() {
+      return this.f;
    }
 
    @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public String c() {
+      return this.e;
    }
 }

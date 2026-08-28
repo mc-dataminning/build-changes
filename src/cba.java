@@ -1,22 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cba {
-   public static cae<bxc> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
+   private static final int a = 1;
+
+   public static byw<bxg> a(float $$0) {
+      return a($$1 -> $$0);
    }
 
-   public static cae<bxc> a(Predicate<bxc> $$0, Function<bxc, Float> $$1, int $$2) {
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$3 -> $$3.group($$3.c(cge.n), $$3.b(cge.o)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new cgh($$3.b($$5), $$1.apply($$7), $$2));
+   public static byw<bxg> a(Function<bxe, Float> $$0) {
+      return cci.a(
+         (Function<cci.b<bxg>, ? extends App<cci.c<bxg>, ccl<bxg>>>)($$1 -> $$1.group($$1.a(cgg.n), $$1.a(cgg.o), $$1.b(cgg.p), $$1.a(cgg.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bxe $$9 = $$1.b($$4);
+                     Optional<cgi> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && byx.a($$7, $$9, 1)) {
+                        $$2.b();
+                     } else {
+                        $$3.a(new bzg($$9, true));
+                        $$2.a(new cgj(new bzg($$9, false), $$0.apply($$7), 0));
+                     }
+
                      return true;
-                  }
-               }))
+                  }))
       );
    }
 }

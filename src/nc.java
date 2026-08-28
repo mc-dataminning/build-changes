@@ -14,7 +14,7 @@ public class nc implements mm {
    private static final nc.b f = new nc.b(true, true, true);
    private static final nc.b g = new nc.b(true, true, false);
    private static final nc.b h = new nc.b(false, true, true);
-   private static final Map<alf<? extends jr<?>>, nc.b> i = Map.of(mg.bt, e, mg.bs, e, mg.bp, f, mg.bq, f, mg.br, f);
+   private static final Map<alf<? extends jr<?>>, nc.b> i = Map.of(mg.bu, e, mg.bt, e, mg.bq, f, mg.br, f, mg.bs, f);
    private static final Map<String, nc.a> j = Map.of(
       "structure", new nc.a(nc.c.a, new nc.b(true, false, true)), "function", new nc.a(nc.c.b, new nc.b(true, true, true))
    );

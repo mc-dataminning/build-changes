@@ -1,20 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dvg extends dpr {
-   public static final MapCodec<dvg> c = b(dvg::new);
-   private static final ffc e = dma.b(8.0, 0.0, 16.0);
+public class dvg extends dpz {
+   public static final MapCodec<dvg> b = b(dvg::new);
 
-   @Override
-   public MapCodec<dvg> a() {
-      return c;
-   }
-
-   public dvg(dzy.d $$0) {
-      super($$0, ja.b, e, false);
+   protected dvg(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dps c() {
-      return (dps)dmc.pe;
+   protected MapCodec<? extends dvg> a() {
+      return b;
+   }
+
+   @Override
+   protected ffk c(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return ffh.a();
+   }
+
+   @Override
+   protected float c(eah $$0, dig $$1, iu $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(eah $$0) {
+      return true;
    }
 }

@@ -1,58 +1,51 @@
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public class ecd<T> implements ecm<T> {
-   private final jj<T> a;
+public class ecd {
+   private final int a;
+   private final BitSet b;
+   private ecd.a c = ($$0x, $$1x, $$2) -> false;
 
-   public ecd(jj<T> $$0) {
-      this.a = $$0;
+   public ecd(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   public static <A> ecm<A> a(int $$0, jj<A> $$1, ecn<A> $$2, List<A> $$3) {
-      return new ecd<>($$1);
+   public void a(ecd.a $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
+   public ecd(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new ecl($$0);
-      } else {
-         return $$1;
-      }
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   @Override
-   public void a(vu $$0) {
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
    }
 
-   @Override
-   public void b(vu $$0) {
+   public Stream<iu> a(dih $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
    }
 
-   @Override
-   public int a() {
-      return 0;
+   public long[] a() {
+      return this.b.toLongArray();
    }
 
-   @Override
-   public int b() {
-      return this.a.d();
-   }
-
-   @Override
-   public ecm<T> a(ecn<T> $$0) {
-      return this;
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

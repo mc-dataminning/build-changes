@@ -1,87 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+public class egw implements efv {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final egi i = new egi(this);
 
-public class egw {
-   public static final MapCodec<egw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(egw::c),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(egw::d),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(egw::e),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(egw::new))
-   );
-   public static final egw b = new egw((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
-
-   public egw(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public egw(long $$0) {
+      this.b($$0);
    }
 
-   public static egw a() {
-      return new egw(g(), true, false);
+   @Override
+   public azv d() {
+      return new egw(this.g());
    }
 
-   public static egw b() {
-      return new egw(g(), false, false);
+   @Override
+   public egt e() {
+      return new egh.a(this.g());
    }
 
-   private egw(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
    }
 
-   public long c() {
-      return this.c;
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
    }
 
-   public boolean d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public boolean f() {
-      return this.f.isPresent();
-   }
-
-   public egw a(boolean $$0) {
-      return new egw(this.c, this.d, $$0, this.f);
-   }
-
-   public egw b(boolean $$0) {
-      return new egw(this.c, $$0, this.e, this.f);
-   }
-
-   public egw a(OptionalLong $$0) {
-      return new egw($$0.orElse(g()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
-      }
-   }
-
-   public static long g() {
-      return azv.a().g();
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

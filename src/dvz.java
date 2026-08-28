@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvz extends duc implements dvt {
-   public static final MapCodec<dvz> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dvt.a.e.fieldOf("weathering_state").forGetter(dnc::c), dzz.a.fieldOf("base_state").forGetter($$0x -> $$0x.f), t()).apply($$0, dvz::new)
-   );
-   private final dvt.a h;
+public class dvz extends dvr {
+   public static final MapCodec<dvz> a = b(dvz::new);
+   private static final ffk b = dmf.b(14.0, 0.0, 1.5);
 
    @Override
    public MapCodec<dvz> a() {
-      return g;
+      return a;
    }
 
-   public dvz(dvt.a $$0, dzz $$1, dzy.d $$2) {
-      super($$1, $$2);
-      this.h = $$0;
-   }
-
-   @Override
-   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dvz(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean f(dzz $$0) {
-      return dvt.c($$0.b()).isPresent();
+   protected void a(eah $$0, dja $$1, iu $$2, bwf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof arq && $$3 instanceof ctn) {
+         $$1.a(new iu($$2), true, $$3);
+      }
    }
 
-   public dvt.a q() {
-      return this.h;
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(eah $$0, dig $$1, iu $$2) {
+      ewo $$3 = $$1.b_($$2);
+      ewo $$4 = $$1.b_($$2.d());
+      return ($$3.a() == ewp.c || $$0.b() instanceof dqi) && $$4.a() == ewp.a;
    }
 }

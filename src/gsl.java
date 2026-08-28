@@ -1,64 +1,83 @@
-import java.util.Calendar;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class gsl<T extends dwx & dye> implements gse<T> {
-   private final gfb a;
-   private final gfb b;
-   private final gfb c;
-   private final boolean d = b();
+public class gsl implements ave {
+   private Map<dxh<?>, gsm<?>> d = ImmutableMap.of();
+   private final frt e;
+   private final Supplier<giy> f;
+   public dja a;
+   public fog b;
+   public feo c;
+   private final gre g;
+   private final hfo h;
+   private final gxf i;
+   private final gwf j;
 
-   public gsl(gsf.a $$0) {
-      this.a = new gfb($$0.a(git.X));
-      this.b = new gfb($$0.a(git.aB));
-      this.c = new gfb($$0.a(git.aC));
+   public gsl(frt $$0, Supplier<giy> $$1, gre $$2, hfo $$3, gxf $$4, gwf $$5) {
+      this.i = $$4;
+      this.h = $$3;
+      this.j = $$5;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   @Nullable
+   public <E extends dxf> gsm<E> a(E $$0) {
+      return (gsm<E>)this.d.get($$0.p());
    }
 
-   @Override
-   public void a(T $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      div $$7 = $$0.i();
-      boolean $$8 = $$7 != null;
-      dzz $$9 = $$8 ? $$0.m() : dmc.cE.m().b(dnd.c, ja.d);
-      ear $$10 = $$9.b(dnd.d) ? $$9.c(dnd.d) : ear.a;
-      if ($$9.b() instanceof dku<?> $$12) {
-         boolean $$13 = $$10 != ear.a;
-         $$2.a();
-         float $$14 = $$9.c(dnd.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$14));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         doi.c<? extends dxf> $$15;
-         if ($$8) {
-            $$15 = $$12.a($$9, $$7, $$0.aw_(), true);
-         } else {
-            $$15 = doi.b::b;
-         }
+   public void a(dja $$0, fog $$1, feo $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
 
-         float $$17 = $$15.apply(dnd.a($$0)).get($$1);
-         $$17 = 1.0F - $$17;
-         $$17 = 1.0F - $$17 * $$17 * $$17;
-         int $$18 = $$15.apply(new gsi<>()).applyAsInt($$4);
-         hkw $$19 = gqn.a($$0, $$10, this.d);
-         fjg $$20 = $$19.a($$3, gqc::f);
-         if ($$13) {
-            if ($$10 == ear.b) {
-               this.a($$2, $$20, this.b, $$17, $$18, $$5);
-            } else {
-               this.a($$2, $$20, this.c, $$17, $$18, $$5);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends dxf> void a(E $$0, float $$1, fjj $$2, gqa $$3) {
+      gsm<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.p().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               try {
+                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
+               } catch (Throwable var9) {
+                  o $$6 = o.a(var9, "Rendering Block Entity");
+                  p $$7 = $$6.a("Block Entity Details");
+                  $$0.a($$7);
+                  throw new z($$6);
+               }
             }
-         } else {
-            this.a($$2, $$20, this.a, $$17, $$18, $$5);
          }
-
-         $$2.b();
       }
    }
 
-   private void a(fjc $$0, fjg $$1, gfb $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   private static <T extends dxf> void a(gsm<T> $$0, T $$1, float $$2, fjj $$3, gqa $$4, feq $$5) {
+      dja $$6 = $$1.i();
+      int $$7;
+      if ($$6 != null) {
+         $$7 = gpv.a($$6, $$1.ax_());
+      } else {
+         $$7 = 15728880;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$7, hin.d, $$5);
+   }
+
+   public void a(@Nullable dja $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(avd $$0) {
+      gsn.a $$1 = new gsn.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
+      this.d = gso.a($$1);
    }
 }

@@ -5,48 +5,63 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class btm extends btg {
    public static final MapCodec<btm> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
                .apply($$0, btm::new)
       )
       .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         }
       );
-   private final int b;
-   private final int f;
+   private final float b;
+   private final float d;
+   private final float e;
 
-   private btm(int $$0, int $$1) {
+   public static btm a(float $$0, float $$1, float $$2) {
+      return new btm($$0, $$1, $$2);
+   }
+
+   private btm(float $$0, float $$1, float $$2) {
       this.b = $$0;
-      this.f = $$1;
-   }
-
-   public static btm a(int $$0, int $$1) {
-      return new btm($$0, $$1);
+      this.d = $$1;
+      this.e = $$2;
    }
 
    @Override
-   public int a(azv $$0) {
-      return azm.b($$0, this.b, this.f);
+   public float a(azv $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
    }
 
    @Override
-   public int a() {
+   public float a() {
       return this.b;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float b() {
+      return this.d;
    }
 
    @Override
    public bth<?> c() {
-      return bth.b;
+      return bth.d;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

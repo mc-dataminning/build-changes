@@ -1,10 +1,8 @@
-public class hco extends hcu {
-   public float a;
-   public float b;
+public class hco extends hdn {
+   public czd b = czd.k;
    public boolean c;
    public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public cjf.v h = cjf.v.a;
+   public float e;
+   public float f;
+   public float g;
 }

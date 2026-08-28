@@ -1,142 +1,46 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public class dfr implements dcd {
-   public static final dfr a = new dfr(new Object2IntOpenHashMap());
-   private static final Codec<Integer> d = Codec.intRange(1, 255);
-   public static final Codec<dfr> b = Codec.unboundedMap(dfl.c, d).xmap($$0 -> new dfr(new Object2IntOpenHashMap($$0)), $$0 -> $$0.e);
-   public static final yw<wj, dfr> c = yw.a(yu.a(Object2IntOpenHashMap::new, dfl.d, yu.h), $$0 -> $$0.e, dfr::new);
-   final Object2IntOpenHashMap<je<dfl>> e;
+public interface dfr {
+   Codec<ki<?>> a = Codec.lazyInitialized(() -> mf.aq.q());
+   Codec<kg> b = kg.a(a);
+   ki<List<dfn<dgj>>> c = a("damage_protection", $$0 -> $$0.a(dfn.a(dgj.b, fca.t).listOf()));
+   ki<List<dfn<dgf>>> d = a("damage_immunity", $$0 -> $$0.a(dfn.a(dgf.b, fca.t).listOf()));
+   ki<List<dfn<dgj>>> e = a("damage", $$0 -> $$0.a(dfn.a(dgj.b, fca.t).listOf()));
+   ki<List<dfn<dgj>>> f = a("smash_damage_per_fallen_block", $$0 -> $$0.a(dfn.a(dgj.b, fca.t).listOf()));
+   ki<List<dfn<dgj>>> g = a("knockback", $$0 -> $$0.a(dfn.a(dgj.b, fca.t).listOf()));
+   ki<List<dfn<dgj>>> h = a("armor_effectiveness", $$0 -> $$0.a(dfn.a(dgj.b, fca.t).listOf()));
+   ki<List<dfz<dgh>>> i = a("post_attack", $$0 -> $$0.a(dfz.a(dgh.b, fca.t).listOf()));
+   ki<List<dfn<dgh>>> j = a("hit_block", $$0 -> $$0.a(dfn.a(dgh.b, fca.x).listOf()));
+   ki<List<dfn<dgj>>> k = a("item_damage", $$0 -> $$0.a(dfn.a(dgj.b, fca.u).listOf()));
+   ki<List<dgg>> l = a("attributes", $$0 -> $$0.a(dgg.a.codec().listOf()));
+   ki<List<dfz<dgj>>> m = a("equipment_drops", $$0 -> $$0.a(dfz.b(dgj.b, fca.t).listOf()));
+   ki<List<dfn<dgi>>> n = a("location_changed", $$0 -> $$0.a(dfn.a(dgi.c, fca.v).listOf()));
+   ki<List<dfn<dgh>>> o = a("tick", $$0 -> $$0.a(dfn.a(dgh.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> p = a("ammo_use", $$0 -> $$0.a(dfn.a(dgj.b, fca.u).listOf()));
+   ki<List<dfn<dgj>>> q = a("projectile_piercing", $$0 -> $$0.a(dfn.a(dgj.b, fca.u).listOf()));
+   ki<List<dfn<dgh>>> r = a("projectile_spawned", $$0 -> $$0.a(dfn.a(dgh.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> s = a("projectile_spread", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> t = a("projectile_count", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> u = a("trident_return_acceleration", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> v = a("fishing_time_reduction", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> w = a("fishing_luck_bonus", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> x = a("block_experience", $$0 -> $$0.a(dfn.a(dgj.b, fca.u).listOf()));
+   ki<List<dfn<dgj>>> y = a("mob_experience", $$0 -> $$0.a(dfn.a(dgj.b, fca.w).listOf()));
+   ki<List<dfn<dgj>>> z = a("repair_with_xp", $$0 -> $$0.a(dfn.a(dgj.b, fca.u).listOf()));
+   ki<dgj> A = a("crossbow_charge_time", $$0 -> $$0.a(dgj.b));
+   ki<List<cxw.b>> B = a("crossbow_charging_sounds", $$0 -> $$0.a(cxw.b.a.listOf()));
+   ki<List<je<awm>>> C = a("trident_sound", $$0 -> $$0.a(awm.b.listOf()));
+   ki<bau> D = a("prevent_equipment_drop", $$0 -> $$0.a(bau.b));
+   ki<bau> E = a("prevent_armor_change", $$0 -> $$0.a(bau.b));
+   ki<dgj> F = a("trident_spin_attack_strength", $$0 -> $$0.a(dgj.b));
 
-   dfr(Object2IntOpenHashMap<je<dfl>> $$0) {
-      this.e = $$0;
-      ObjectIterator var2 = $$0.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<je<dfl>> $$1 = (Entry<je<dfl>>)var2.next();
-         int $$2 = $$1.getIntValue();
-         if ($$2 < 0 || $$2 > 255) {
-            throw new IllegalArgumentException("Enchantment " + $$1.getKey() + " has invalid level " + $$2);
-         }
-      }
+   static ki<?> a(jr<ki<?>> $$0) {
+      return c;
    }
 
-   public int a(je<dfl> $$0) {
-      return this.e.getInt($$0);
-   }
-
-   @Override
-   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
-      jg.a $$4 = $$0.a();
-      ji<dfl> $$5 = a($$4, mg.aQ, axe.a);
-
-      for (je<dfl> $$6 : $$5) {
-         int $$7 = this.e.getInt($$6);
-         if ($$7 > 0) {
-            $$1.accept(dfl.a($$6, $$7));
-         }
-      }
-
-      ObjectIterator var10 = this.e.object2IntEntrySet().iterator();
-
-      while (var10.hasNext()) {
-         Entry<je<dfl>> $$8 = (Entry<je<dfl>>)var10.next();
-         je<dfl> $$9 = (je<dfl>)$$8.getKey();
-         if (!$$5.a($$9)) {
-            $$1.accept(dfl.a((je<dfl>)$$8.getKey(), $$8.getIntValue()));
-         }
-      }
-   }
-
-   private static <T> ji<T> a(@Nullable jg.a $$0, alf<jr<T>> $$1, axr<T> $$2) {
-      if ($$0 != null) {
-         Optional<ji.c<T>> $$3 = $$0.e($$1).a($$2);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-      }
-
-      return ji.a();
-   }
-
-   public Set<je<dfl>> a() {
-      return Collections.unmodifiableSet(this.e.keySet());
-   }
-
-   public Set<Entry<je<dfl>>> b() {
-      return Collections.unmodifiableSet(this.e.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.e.size();
-   }
-
-   public boolean d() {
-      return this.e.isEmpty();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof dfr $$1 ? this.e.equals($$1.e) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.e.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.e + "}";
-   }
-
-   public static class a {
-      private final Object2IntOpenHashMap<je<dfl>> a = new Object2IntOpenHashMap();
-
-      public a(dfr $$0) {
-         this.a.putAll($$0.e);
-      }
-
-      public void a(je<dfl> $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0);
-         } else {
-            this.a.put($$0, Math.min($$1, 255));
-         }
-      }
-
-      public void b(je<dfl> $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0, Math.min($$1, 255), Integer::max);
-         }
-      }
-
-      public void a(Predicate<je<dfl>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(je<dfl> $$0) {
-         return this.a.getOrDefault($$0, 0);
-      }
-
-      public Set<je<dfl>> a() {
-         return this.a.keySet();
-      }
-
-      public dfr b() {
-         return new dfr(this.a);
-      }
+   private static <T> ki<T> a(String $$0, UnaryOperator<ki.a<T>> $$1) {
+      return jr.a(mf.aq, $$0, $$1.apply(ki.a()).b());
    }
 }

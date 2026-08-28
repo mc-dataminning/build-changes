@@ -1,111 +1,75 @@
-public class gsh<T extends dwx & dxa> implements gse<T> {
-   public gsh(gsf.a $$0) {
+public class gsh implements gsm<dwt> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final gev c;
+   private final gev d;
+   private final geu e;
+   private final geu f;
+
+   public gsh(gsn.a $$0) {
+      this($$0.f());
    }
 
-   @Override
-   public void a(T $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      if (fos.Q().t.gF() || fos.Q().t.U_()) {
-         dxa.a $$7 = $$0.b();
-         if ($$7 != dxa.a.a) {
-            dxa.b $$8 = $$0.c();
-            iu $$9 = $$8.a();
-            jz $$10 = $$8.b();
-            if ($$10.u() >= 1 && $$10.v() >= 1 && $$10.w() >= 1) {
-               float $$11 = 1.0F;
-               float $$12 = 0.9F;
-               float $$13 = 0.5F;
-               fjg $$14 = $$3.getBuffer(gqc.y());
-               iu $$15 = $$9.a($$10);
-               gqm.a(
-                  $$2,
-                  $$14,
-                  (double)$$9.u(),
-                  (double)$$9.v(),
-                  (double)$$9.w(),
-                  (double)$$15.u(),
-                  (double)$$15.v(),
-                  (double)$$15.w(),
-                  0.9F,
-                  0.9F,
-                  0.9F,
-                  1.0F,
-                  0.5F,
-                  0.5F,
-                  0.5F
-               );
-               if ($$7 == dxa.a.c && $$0.i() != null) {
-                  this.a($$0, $$0.i(), $$9, $$10, $$3, $$2);
-               }
-            }
-         }
+   public gsh(giy $$0) {
+      this.c = new gev($$0.a(gjb.q));
+      this.d = new gev($$0.a(gjb.s));
+      this.e = new geu($$0.a(gjb.r));
+      this.f = new geu($$0.a(gjb.t));
+   }
+
+   public void a(dwt $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      eah $$7 = $$0.m();
+      gev $$9;
+      geu $$10;
+      float $$8;
+      if ($$7.b() instanceof dlk) {
+         $$8 = -ebn.b($$7.c(dlk.b));
+         $$9 = this.c;
+         $$10 = this.e;
+      } else {
+         $$8 = -$$7.c(dvt.b).p();
+         $$9 = this.d;
+         $$10 = this.f;
+      }
+
+      long $$14 = $$0.i().ae();
+      iu $$15 = $$0.ax_();
+      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$14, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$8, $$9, $$10, $$16, $$0.f(), $$0.b());
+   }
+
+   public void a(fjj $$0, gqa $$1, int $$2, int $$3, cyb $$4, dwv $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
+   }
+
+   private static void a(fjj $$0, gqa $$1, int $$2, int $$3, float $$4, gev $$5, geu $$6, float $$7, cyb $$8, dwv $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hlh.f.a($$1, gqk::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hlh.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(fjj $$0, gqa $$1, int $$2, int $$3, gjc $$4, hle $$5, boolean $$6, cyb $$7, dwv $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(fjj $$0, gqa $$1, int $$2, int $$3, gjc $$4, hle $$5, boolean $$6, cyb $$7, dwv $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gqk::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gqv.w : gqv.x, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dwv.b $$12 = $$8.b().get($$11);
+         hle $$13 = $$6 ? gqv.a($$12.b()) : gqv.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   private void a(T $$0, dib $$1, iu $$2, jz $$3, gps $$4, fjc $$5) {
-      fjg $$6 = $$4.getBuffer(gqc.y());
-      iu $$7 = $$0.aw_();
-      iu $$8 = $$7.a((jz)$$2);
-
-      for (iu $$9 : iu.c($$8, $$8.a($$3).b(-1, -1, -1))) {
-         dzz $$10 = $$1.a_($$9);
-         boolean $$11 = $$10.l();
-         boolean $$12 = $$10.a(dmc.lq);
-         boolean $$13 = $$10.a(dmc.iv);
-         boolean $$14 = $$10.a(dmc.iw);
-         boolean $$15 = $$12 || $$13 || $$14;
-         if ($$11 || $$15) {
-            float $$16 = $$11 ? 0.05F : 0.0F;
-            double $$17 = (double)((float)($$9.u() - $$7.u()) + 0.45F - $$16);
-            double $$18 = (double)((float)($$9.v() - $$7.v()) + 0.45F - $$16);
-            double $$19 = (double)((float)($$9.w() - $$7.w()) + 0.45F - $$16);
-            double $$20 = (double)((float)($$9.u() - $$7.u()) + 0.55F + $$16);
-            double $$21 = (double)((float)($$9.v() - $$7.v()) + 0.55F + $$16);
-            double $$22 = (double)((float)($$9.w() - $$7.w()) + 0.55F + $$16);
-            if ($$11) {
-               gqm.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$12) {
-               gqm.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$13) {
-               gqm.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$14) {
-               gqm.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
-   }
-
-   private void a(T $$0, iu $$1, jz $$2, fjg $$3, fjc $$4) {
-      dib $$5 = $$0.i();
-      if ($$5 != null) {
-         iu $$6 = $$0.aw_();
-         fer $$7 = new fel($$2.u(), $$2.v(), $$2.w());
-
-         for (iu $$8 : iu.c($$1, $$1.a($$2).b(-1, -1, -1))) {
-            if ($$5.a_($$8).a(dmc.lq)) {
-               $$7.c($$8.u() - $$1.u(), $$8.v() - $$1.v(), $$8.w() - $$1.w());
-            }
-         }
-
-         $$7.a(($$4x, $$5x, $$6x, $$7x) -> {
-            float $$8x = 0.48F;
-            float $$9 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F - 0.48F;
-            float $$10 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F - 0.48F;
-            float $$11 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F - 0.48F;
-            float $$12 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F + 0.48F;
-            float $$13 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F + 0.48F;
-            float $$14 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F + 0.48F;
-            gqm.a($$4, $$3, $$4x, $$9, $$10, $$11, $$12, $$13, $$14, 0.75F, 0.75F, 1.0F, 0.2F);
-         });
-      }
-   }
-
-   @Override
-   public boolean a(T $$0) {
-      return true;
-   }
-
-   @Override
-   public int aQ_() {
-      return 96;
+   private static void a(fjj $$0, gqa $$1, int $$2, int $$3, gjc $$4, hle $$5, cyb $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gqk::n), $$2, $$3, $$7);
    }
 }

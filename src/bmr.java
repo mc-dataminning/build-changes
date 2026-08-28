@@ -1,11 +1,10 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bmr extends bkr {
+public class bmr extends bks {
    public bmr(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -13,75 +12,10 @@ public class bmr extends bkr {
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
-         false,
-         biw.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(biw.C.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(biw.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", biw.E.in($$0))),
-                  "Sections",
-                  DSL.list(
-                     DSL.optionalFields(
-                        "biomes",
-                        DSL.optionalFields("palette", DSL.list(biw.M.in($$0))),
-                        "block_states",
-                        DSL.optionalFields("palette", DSL.list(biw.u.in($$0)))
-                     )
-                  ),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(biw.I.in($$0)))
-               )
-            )
-      );
-      $$0.registerType(false, biw.N, () -> DSL.constType(a()));
-      $$0.registerType(
-         false,
-         biw.O,
-         () -> DSL.fields(
-               "dimensions",
-               DSL.compoundList(
-                  DSL.constType(a()),
-                  DSL.fields(
-                     "generator",
-                     DSL.taggedChoiceLazy(
-                        "type",
-                        DSL.string(),
-                        ImmutableMap.of(
-                           "minecraft:debug",
-                           DSL::remainder,
-                           "minecraft:flat",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "settings", DSL.optionalFields("biome", biw.M.in($$0), "layers", DSL.list(DSL.optionalFields("block", biw.E.in($$0))))
-                              ),
-                           "minecraft:noise",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "biome_source",
-                                 DSL.taggedChoiceLazy(
-                                    "type",
-                                    DSL.string(),
-                                    ImmutableMap.of(
-                                       "minecraft:fixed",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", biw.M.in($$0)),
-                                       "minecraft:multi_noise",
-                                       (Supplier<TypeTemplate>)() -> DSL.or(DSL.fields("preset", biw.N.in($$0)), DSL.list(DSL.fields("biome", biw.M.in($$0)))),
-                                       "minecraft:checkerboard",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(biw.M.in($$0))),
-                                       "minecraft:the_end",
-                                       DSL::remainder
-                                    )
-                                 ),
-                                 "settings",
-                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", biw.E.in($$0), "default_fluid", biw.E.in($$0)))
-                              )
-                        )
-                     )
-                  )
-               )
+         true,
+         bix.H,
+         () -> DSL.optionalFields(
+               "SpawnPotentials", DSL.list(DSL.fields("data", DSL.fields("entity", bix.C.in($$0)))), "SpawnData", DSL.fields("entity", bix.C.in($$0))
             )
       );
    }

@@ -1,16 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface euq<P extends eup> {
-   euq<ets> a = a("always_true", ets.a);
-   euq<etx> b = a("block_match", etx.a);
-   euq<etz> c = a("blockstate_match", etz.a);
-   euq<eux> d = a("tag_match", eux.a);
-   euq<eum> e = a("random_block_match", eum.a);
-   euq<eun> f = a("random_blockstate_match", eun.a);
+public abstract class euq {
+   public static final Codec<euq> c = mf.o.q().dispatch("predicate_type", euq::a, eur::codec);
 
-   MapCodec<P> codec();
+   public abstract boolean a(iu var1, iu var2, iu var3, azv var4);
 
-   static <P extends eup> euq<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.m, $$0, () -> $$1);
-   }
+   protected abstract eur<?> a();
 }

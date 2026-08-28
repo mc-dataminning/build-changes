@@ -1,58 +1,68 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.Optional;
 
-public class erv extends esb {
-   public static final MapCodec<erv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(epx.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, erv::new)
-   );
-   private final je<epx> b;
-   private final tz c;
+public class erv extends ery {
+   public static final MapCodec<erv> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, erv::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final ji<dkd> f;
 
-   protected erv(je<epx> $$0, esd.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   private static P9<Mu<erv>, jz, ery.c, Float, Integer, Optional<ery.a>, Integer, Integer, Integer, ji<dkd>> b(Instance<erv> $$0) {
+      P5<Mu<erv>, jz, ery.c, Float, Integer, Optional<ery.a>> $$1 = a($$0);
+      P4<Mu<erv>, Integer, Integer, Integer, ji<dkd>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(erv::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(erv::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(erv::c),
+         jt.a(mg.aG).fieldOf("preferred_biomes").forGetter(erv::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
    }
 
-   private tz b() {
-      tz $$0 = new tz();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dyb.a.a.c());
-      return $$0;
+   public erv(jz $$0, ery.c $$1, float $$2, int $$3, Optional<ery.a> $$4, int $$5, int $$6, int $$7, ji<dkd> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
+   }
+
+   public erv(int $$0, int $$1, int $$2, ji<dkd> $$3) {
+      this(jz.i, ery.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public ji<dkd> d() {
+      return this.f;
    }
 
    @Override
-   public jz a(euw $$0, dst $$1) {
-      return jz.i;
+   protected boolean a(ecg $$0, int $$1, int $$2) {
+      List<dih> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new dih($$1, $$2));
    }
 
    @Override
-   public List<euv.a> a(euw $$0, iu $$1, dst $$2, azv $$3) {
-      return List.of(euv.a.a(new euv.d($$1, dmc.pE.m().b(dqg.b, jc.a(ja.a, ja.d)), this.c)));
-   }
-
-   @Override
-   public eql a(euw $$0, iu $$1, dst $$2) {
-      jz $$3 = this.a($$0, $$2);
-      return new eql($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(euw $$0, dju $$1, djr $$2, ebx $$3, iu $$4, iu $$5, dst $$6, eql $$7, azv $$8, euf $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public esc<?> a() {
-      return esc.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public erz<?> e() {
+      return erz.b;
    }
 }

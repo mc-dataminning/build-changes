@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public record aek(int b, je<bvf> c) implements zf<abu> {
-   public static final yw<wj, aek> a = yw.a(yu.h, aek::b, bvf.b, aek::e, aek::new);
+public record aek(int b, je<bvh> c) implements zf<abu> {
+   public static final yw<wj, aek> a = yw.a(yu.h, aek::b, bvh.b, aek::e, aek::new);
 
    @Override
    public zh<aek> a() {
@@ -13,11 +13,11 @@ public record aek(int b, je<bvf> c) implements zf<abu> {
    }
 
    @Nullable
-   public bwd a(div $$0) {
+   public bwf a(dja $$0) {
       return $$0.a(this.b);
    }
 
-   public je<bvf> e() {
+   public je<bvh> e() {
       return this.c;
    }
 }

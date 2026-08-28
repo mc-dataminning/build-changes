@@ -1,30 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class fav extends fam {
-   public static final MapCodec<fav> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kh.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, fav::new)
-   );
-   private final kh b;
+public interface fav extends ezi, BiFunction<czd, ezh, czd> {
+   faw<? extends fav> b();
 
-   private fav(List<fci> $$0, kh $$1) {
-      super($$0);
-      this.b = $$1;
+   static Consumer<czd> a(BiFunction<czd, ezh, czd> $$0, Consumer<czd> $$1, ezh $$2) {
+      return $$3 -> $$1.accept($$0.apply($$3, $$2));
    }
 
-   @Override
-   public fao<fav> b() {
-      return fap.k;
-   }
-
-   @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      $$0.a(this.b);
-      return $$0;
-   }
-
-   public static <T> fam.a<?> a(ki<T> $$0, T $$1) {
-      return a($$2 -> new fav($$2, kh.a().a($$0, $$1).a()));
+   public interface a {
+      fav b();
    }
 }

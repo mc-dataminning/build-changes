@@ -1,19 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class euh extends eui {
-   public static final MapCodec<euh> a = MapCodec.unit(() -> euh.b);
-   public static final euh b = new euh();
+public class euh extends eux {
+   public static final MapCodec<euh> a = eah.a.fieldOf("block_state").xmap(euh::new, $$0 -> $$0.b);
+   private final eah b;
 
-   private euh() {
+   public euh(eah $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean a(iu $$0, iu $$1, iu $$2, azv $$3) {
-      return true;
+   public boolean a(eah $$0, azv $$1) {
+      return $$0 == this.b;
    }
 
    @Override
-   protected euj<?> a() {
-      return euj.a;
+   protected euy<?> a() {
+      return euy.c;
    }
 }

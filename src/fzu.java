@@ -1,48 +1,97 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.Objects;
 
-public class fzu extends fym {
-   public static final float c = 62.500004F;
-   public static final float d = 0.9765628F;
-   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private ggm u;
+public class fzu extends fyy implements fzw<cwb> {
+   private final cwb y;
+   private final cvj z = new cvj() {
+      @Override
+      public void a(cuv $$0, int $$1, czd $$2) {
+         fzu.this.M();
+      }
 
-   public fzu(dyl $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+      @Override
+      public void a(cuv $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            fzu.this.N();
+         }
+      }
+   };
+
+   public fzu(cwb $$0, crb $$1, wy $$2) {
+      this.y = $$0;
+   }
+
+   public cwb L() {
+      return this.y;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      boolean $$0 = this.a.m().b() instanceof dud;
-      this.u = gst.a(this.m.aS(), this.b, $$0);
+   protected void aO_() {
+      super.aO_();
+      this.y.a(this.z);
    }
 
    @Override
-   protected void a(fro $$0, dzz $$1) {
-      super.a($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dud;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public void aL_() {
+      this.m.t.p();
+      super.aL_();
+   }
+
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.y.b(this.z);
+   }
+
+   @Override
+   protected void m() {
+      if (this.m.t.gw()) {
+         this.c(fsj.a(wx.d, $$0 -> this.aL_()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fsj.a(wy.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
       }
    }
 
    @Override
-   protected void c(fro $$0) {
-      if (this.u != null) {
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         $$0.a($$1 -> {
-            hkw $$2 = gqn.a(this.b);
-            fjg $$3 = $$2.a($$1, this.u::a);
-            this.u.a($$0.c(), $$3, 15728880, hif.d);
-         });
-      }
+   protected void G() {
+      this.g(1);
    }
 
    @Override
-   protected Vector3f m() {
-      return s;
+   protected void H() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.y.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.m.r.a(this.y.l, $$0);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   void M() {
+      czd $$0 = this.y.l();
+      this.a(Objects.requireNonNullElse(fyy.a.a($$0), fyy.d));
+   }
+
+   void N() {
+      this.a(this.y.m());
+   }
+
+   @Override
+   protected void I() {
+      this.m.t.p();
    }
 }

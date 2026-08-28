@@ -1,57 +1,50 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public class fkp extends flh implements flb {
-   @SerializedName("name")
-   @Nullable
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class fkp extends flo {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public String a() {
-      return this.a == null ? "" : this.a;
+   public static fkp a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fkp $$2 = new fkp();
+
+      try {
+         $$2.a = fnk.b("backupId", $$1, "");
+         $$2.b = fnk.b("lastModifiedDate", $$1);
+         $$2.c = fnk.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
+      }
+
+      return $$2;
    }
 
-   public void a(String $$0) {
-      this.a = $$0;
-   }
-
-   public UUID b() {
-      return this.b;
-   }
-
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
+   public boolean a() {
+      return this.g;
    }
 
    public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      this.g = $$0;
    }
 }

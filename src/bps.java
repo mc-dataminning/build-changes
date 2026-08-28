@@ -1,66 +1,67 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class bps {
-   private final Object2ObjectMap<bpl<?>, Object> a = new Object2ObjectArrayMap();
+public abstract class bps<S> {
+   private final Map<bps.b<?>, bps.a<?>> a = new HashMap<>();
+   private final bpp<S> b;
+   private final bpq<S> c;
 
-   public <T> void a(bpl<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
+   protected bps(bpp<S> $$0, bpq<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Nullable
-   public <T> T a(bpl<T> $$0) {
-      return (T)this.a.get($$0);
+   public bpq<S> a() {
+      return this.c;
    }
 
-   public <T> T b(bpl<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
+   public <T> Optional<T> a(bpn<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
+
+      return $$1;
    }
 
-   public <T> T b(bpl<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
-   }
-
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(bpl<T>... $$0) {
-      for (bpl<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
+   public <T> Optional<T> b(bpn<T> $$0) {
+      bps.b<T> $$1 = new bps.b<>($$0, this.c());
+      bps.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
+      } else {
+         bpt<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
+         } else {
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
          }
       }
-
-      return null;
    }
 
-   @SafeVarargs
-   public final <T> T b(bpl<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
+   @Nullable
+   private <T> bps.a<T> a(bps.b<T> $$0) {
+      return (bps.a<T>)this.a.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return this.a.toString();
+   private <T> void a(bps.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bps.a<>($$1, this.c()));
    }
 
-   public void a(bps $$0) {
-      this.a.putAll($$0.a);
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof bps $$1 ? this.a.equals($$1.a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   static record b<T>(bpn<T> a, int b) {
    }
 }

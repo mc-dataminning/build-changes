@@ -1,7 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.types.templates.Hook.HookFunction;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -12,22 +12,6 @@ public class bku extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, biw.L, () -> DSL.constType(bkr.a()));
-      $$0.registerType(
-         false,
-         biw.b,
-         () -> DSL.optionalFields(
-               new Pair[]{
-                  Pair.of("RootVehicle", DSL.optionalFields("Entity", biw.C.in($$0))),
-                  Pair.of("ender_pearls", DSL.list(biw.C.in($$0))),
-                  Pair.of("Inventory", DSL.list(biw.t.in($$0))),
-                  Pair.of("EnderItems", DSL.list(biw.t.in($$0))),
-                  Pair.of("ShoulderEntityLeft", biw.C.in($$0)),
-                  Pair.of("ShoulderEntityRight", biw.C.in($$0)),
-                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(biw.L.in($$0)), "toBeDisplayed", DSL.list(biw.L.in($$0))))
-               }
-            )
-      );
-      $$0.registerType(false, biw.d, () -> DSL.compoundList(DSL.list(biw.t.in($$0))));
+      $$0.registerType(true, bix.t, () -> DSL.hook(DSL.optionalFields("id", bix.F.in($$0), "tag", bou.b($$0)), bou.b, HookFunction.IDENTITY));
    }
 }

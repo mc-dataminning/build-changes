@@ -1,18 +1,13 @@
-public class gzt extends han<hdr, ggw> {
-   private final gge<hdr> a;
+public class gzt extends hav<hca, gfe> {
+   private static final gqk a = gqk.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gzt(gxw<hdr, ggw> $$0, giq $$1) {
+   public gzt(gye<hca, gfe> $$0) {
       super($$0);
-      this.a = new ggv($$1.a(git.cs));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hdr $$3, float $$4, float $$5) {
-      if ("deadmau5".equals($$3.aH) && !$$3.z) {
-         fjg $$6 = $$1.getBuffer(gqc.d($$3.a.a()));
-         int $$7 = gxa.a($$3, 0.0F);
-         this.d().a(this.a);
-         this.a.a($$3);
-         this.a.a($$0, $$6, $$2, $$7);
-      }
+   public void a(fjj $$0, gqa $$1, int $$2, hca $$3, float $$4, float $$5) {
+      fjn $$6 = $$1.getBuffer(a);
+      gfe $$7 = this.d();
+      gvm.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hin.d);
    }
 }

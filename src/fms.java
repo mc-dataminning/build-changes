@@ -1,64 +1,50 @@
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fms extends hpb {
-   private static final int a = 212;
-   private static final wy b = wy.c("mco.configure.world.name");
-   private static final wy c = wy.c("mco.configure.world.description");
-   private final fmc C;
-   private final fkt D;
-   private fsl E;
-   private fsl F;
+public class fms extends hpj {
+   private static final wy a = wy.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fwb c = fwb.d();
+   private final fyb C;
+   @Nullable
+   private ftd D;
 
-   public fms(fmc $$0, fkt $$1) {
-      super(wy.c("mco.configure.world.settings.title"));
+   public fms(fyb $$0) {
+      super(fop.a);
       this.C = $$0;
-      this.D = $$1;
    }
 
    @Override
-   public void aN_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.D.e == fkt.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fsc $$2 = fsc.a(wy.c($$1), $$0x -> {
-         if (this.D.e == fkt.c.b) {
-            this.m.a(fmo.a(this, wy.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
-         } else {
-            this.C.b(false);
-         }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.F = new fsl(this.m.h, $$0, g(4), 212, 20, wy.c("mco.configure.world.name"));
-      this.F.f(32);
-      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
-      this.c(this.F);
-      this.E = new fsl(this.m.h, $$0, g(8), 212, 20, wy.c("mco.configure.world.description"));
-      this.E.f(32);
-      this.E.a(this.D.a());
-      this.c(this.E);
-      fsc $$3 = this.c(fsc.a(wy.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.F.b($$1x -> $$3.j = !bal.h($$1x));
-      this.c(fsc.a(wx.e, $$0x -> this.aK_()).a(this.n / 2 + 2, g(12), 106, 20).a());
+   public void aO_() {
+      this.c.a(15).c().b();
+      this.D = new ftd(a, this.p).b(true);
+      this.c.a(this.D);
+      fwb $$0 = this.c.a(fwb.e().a(8));
+      wy $$1 = wy.c("mco.account.privacy.info.button");
+      $$0.a(fsj.a($$1, fwy.b(this, ayh.a)).a());
+      $$0.a(fsj.a(wx.k, $$0x -> this.aL_()).a());
+      this.c.a($$1x -> {
+         fsh var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void aB_() {
-      this.b(this.F);
-   }
-
-   @Override
-   public void aK_() {
+   public void aL_() {
       this.m.a(this.C);
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
-      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
+   protected void c() {
+      if (this.D != null) {
+         this.D.d(this.n - 15);
+      }
+
+      this.c.a();
+      fvv.a(this.c, this.J());
    }
 
-   public void g() {
-      this.C.a(this.F.a(), this.E.a());
+   @Override
+   public wy i() {
+      return a;
    }
 }

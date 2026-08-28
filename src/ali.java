@@ -25,16 +25,16 @@ public class ali {
          if (mf.aF.i().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dpb.b();
-            dnl.b();
-            if (bwm.a(bwm.bS) == null) {
+            dph.b();
+            dnr.b();
+            if (bwo.a(bwo.bS) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
                hb.a();
                lg.a();
                kb.a();
                mf.a();
-               cxq.a();
+               cxv.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -54,10 +54,10 @@ public class ali {
 
    private static void a(final Set<String> $$0) {
       final tu $$1 = tu.a();
-      dir $$2 = new dir(cuj.e.a());
-      $$2.a(new dir.c() {
+      diw $$2 = new diw(cuo.e.a());
+      $$2.a(new diw.c() {
          @Override
-         public <T extends dir.g<T>> void a(dir.e<T> $$0x, dir.f<T> $$1x) {
+         public <T extends diw.g<T>> void a(diw.e<T> $$0x, diw.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -67,11 +67,11 @@ public class ali {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(mf.s, byd::c, $$0);
-      a(mf.f, bwm::g, $$0);
-      a(mf.d, bvf::f, $$0);
-      a(mf.g, cyu::j, $$0);
-      a(mf.e, dzy::v, $$0);
+      a(mf.s, byf::c, $$0);
+      a(mf.f, bwo::g, $$0);
+      a(mf.d, bvh::f, $$0);
+      a(mf.g, cyz::j, $$0);
+      a(mf.e, eag::v, $$0);
       a(mf.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
@@ -101,7 +101,7 @@ public class ali {
          ej.b();
       }
 
-      byj.a();
+      byl.a();
    }
 
    private static void d() {

@@ -1,20 +1,31 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record hkl(boolean e, boolean f) {
-   public static final boolean a = false;
-   public static final boolean b = false;
-   public static final Codec<hkl> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hkl::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hkl::b))
-            .apply($$0, hkl::new)
+public record hkl(hkl.a c) {
+   public static final Codec<hkl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hkl.a.d.optionalFieldOf("hat", hkl.a.a).forGetter(hkl::a)).apply($$0, hkl::new)
    );
-   public static final auc<hkl> d = new auc<>("texture", c);
+   public static final auc<hkl> b = new auc<>("villager", a);
 
-   public boolean a() {
-      return this.e;
+   public hkl.a a() {
+      return this.c;
    }
 
-   public boolean b() {
-      return this.f;
+   public static enum a implements bak {
+      a("none"),
+      b("partial"),
+      c("full");
+
+      public static final Codec<hkl.a> d = bak.a(hkl.a::values);
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

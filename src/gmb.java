@@ -1,43 +1,87 @@
-import org.joml.Vector3f;
+public class gmb extends goi {
+   private final float a;
+   private final float b;
 
-public class gmb extends gmd<lr> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gmb(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lr $$7, gnv $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   gmb(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hfq $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a(fjg $$0, fnz $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public gnm b() {
+      return gnm.a;
    }
 
-   public static class a implements gnd<lr> {
-      private final gnv a;
-
-      public a(gnv $$0) {
-         this.a = $$0;
+   protected gmb(gjz $$0, double $$1, double $$2, double $$3, hfq $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      hix $$5 = $$4.a(this.r);
+      if ($$5 != null) {
+         this.a($$5);
+      } else {
+         this.a(foz.Q().a(hiw.d).apply(him.c()));
       }
 
-      public gna a(lr $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmb($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a extends gmb.b<mb> {
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmb($$1, $$2, $$3, $$4, this.a(new czd(czh.cT), $$1));
+      }
+   }
+
+   public abstract static class b<T extends lv> implements gnl<T> {
+      private final hfq a = new hfq();
+
+      protected hfq a(czd $$0, gjz $$1) {
+         foz.Q().bf().a(this.a, $$0, czb.h, false, $$1, null, 0);
+         return this.a;
+      }
+   }
+
+   public static class c extends gmb.b<lt> {
+      public gni a(lt $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      }
+   }
+
+   public static class d extends gmb.b<mb> {
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmb($$1, $$2, $$3, $$4, this.a(new czd(czh.rG), $$1));
+      }
+   }
+
+   public static class e extends gmb.b<mb> {
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmb($$1, $$2, $$3, $$4, this.a(new czd(czh.rs), $$1));
       }
    }
 }

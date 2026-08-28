@@ -1,40 +1,38 @@
-public class gzb extends gxf<cmq, hes, gii> {
-   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alg j = alg.b("textures/entity/wither/wither.png");
+public class gzb extends gux<clh, hco, geh<hco>> {
+   private final alg a;
 
-   public gzb(gvz.a $$0) {
-      super($$0, new gii($$0.a(git.dQ)), 1.0F);
-      this.a(new hba(this, $$0.f()));
+   public gzb(gwh.a $$0, gzb.a $$1) {
+      super($$0, new ggk($$0.a($$1.d)), new ggk($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hax<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfz($$0.a($$1.g)), new gfz($$0.a($$1.h))));
    }
 
-   protected int a(cmq $$0, iu $$1) {
-      return 15;
+   public alg a(hco $$0) {
+      return this.a;
    }
 
-   public alg a(hes $$0) {
-      int $$1 = azm.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   public hco b() {
+      return new hco();
    }
 
-   public hes b() {
-      return new hes();
-   }
+   public static enum a {
+      a(alg.b("textures/entity/horse/horse_skeleton.png"), gjb.cX, gjb.cY, hld.d.n, gjb.cZ, gjb.da),
+      b(alg.b("textures/entity/horse/horse_zombie.png"), gjb.ek, gjb.el, hld.d.m, gjb.em, gjb.en);
 
-   protected void a(hes $$0, fjc $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
+      final alg c;
+      final gja d;
+      final gja e;
+      final hld.d f;
+      final gja g;
+      final gja h;
+
+      private a(final alg $$0, final gja $$1, final gja $$2, final hld.d $$3, final gja $$4, final gja $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
       }
-
-      $$1.b($$2, $$2, $$2);
-   }
-
-   public void a(cmq $$0, hes $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      int $$3 = $$0.t();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.x();
    }
 }

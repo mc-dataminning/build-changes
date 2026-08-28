@@ -1,36 +1,26 @@
-public class gyd extends gxf<coi, heb, ghp> {
-   public static final alg a = alg.b("textures/entity/slime/slime.png");
+public class gyd extends gxn<coi, hed, ghm> {
+   private static final alg a = alg.b("textures/entity/illager/ravager.png");
 
-   public gyd(gvz.a $$0) {
-      super($$0, new ghp($$0.a(git.dc)), 0.25F);
-      this.a(new har(this, $$0.f()));
+   public gyd(gwh.a $$0) {
+      super($$0, new ghm($$0.a(gjb.cJ)), 1.1F);
    }
 
-   protected float a(heb $$0) {
-      return (float)$$0.b * 0.25F;
-   }
-
-   protected void a(heb $$0, fjc $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
-   }
-
-   public alg b(heb $$0) {
+   public alg a(hed $$0) {
       return a;
    }
 
-   public heb b() {
-      return new heb();
+   public hed b() {
+      return new hed();
    }
 
-   public void a(coi $$0, heb $$1, float $$2) {
+   public void a(coi $$0, hed $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azm.h($$2, $$0.bF, $$0.bE);
-      $$1.b = $$0.go();
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gy() > 0) {
+         $$1.c = ((float)(20 - $$0.gy()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

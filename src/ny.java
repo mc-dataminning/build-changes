@@ -2,22 +2,22 @@ import java.util.function.BiConsumer;
 
 public record ny(jg.a a) implements nk {
    @Override
-   public void generate(BiConsumer<alf<eze>, eze.a> $$0) {
-      $$0.accept(eyv.aQ, eze.b().a(ezd.a().a(fdb.a(2.0F)).a(ezm.a(czc.dL).a(fbe.a(fdb.a(1.0F)))).a(ezm.a(czc.dM).a(fbe.a(fdb.a(1.0F))))));
-      nm.a.forEach(($$1, $$2) -> $$0.accept(eyv.aW.get($$1), eze.b().a(ezd.a().a(fdi.a(1.0F, 3.0F)).a(ezm.a($$2)))));
-      $$0.accept(eyv.aV, eze.b().a(ni.a(eyv.aW)));
+   public void generate(BiConsumer<alf<ezm>, ezm.a> $$0) {
+      $$0.accept(ezd.aQ, ezm.b().a(ezl.a().a(fdj.a(2.0F)).a(ezu.a(czh.dN).a(fbm.a(fdj.a(1.0F)))).a(ezu.a(czh.dO).a(fbm.a(fdj.a(1.0F))))));
+      nm.a.forEach(($$1, $$2) -> $$0.accept(ezd.aW.get($$1), ezm.b().a(ezl.a().a(fdq.a(1.0F, 3.0F)).a(ezu.a($$2)))));
+      $$0.accept(ezd.aV, ezm.b().a(ni.a(ezd.aW)));
       $$0.accept(
-         eyv.aR,
-         eze.b()
+         ezd.aR,
+         ezm.b()
             .a(
-               ezd.a()
+               ezl.a()
                   .a(
-                     ezg.a(ezs.a(eyv.aS).a(fcl.a(eyz.b.a, bx.a.a().a(kd.a(kj.aE, cjh.a.a)))), ezs.a(eyv.aT).a(fcl.a(eyz.b.a, bx.a.a().a(kd.a(kj.aE, cjh.a.b)))))
+                     ezo.a(faa.a(ezd.aS).a(fct.a(ezh.b.a, bx.a.a().a(kd.a(kj.aE, cjl.a.a)))), faa.a(ezd.aT).a(fct.a(ezh.b.a, bx.a.a().a(kd.a(kj.aE, cjl.a.b)))))
                   )
             )
       );
-      $$0.accept(eyv.aS, eze.b().a(ezd.a().a(fdb.a(5.0F)).a(ezm.a(czc.dM))));
-      $$0.accept(eyv.aT, eze.b().a(ezd.a().a(fdb.a(5.0F)).a(ezm.a(czc.dL))));
-      $$0.accept(eyv.aU, eze.b().a(ezd.a().a(fdb.a(1.0F)).a(ezm.a(czc.fE))));
+      $$0.accept(ezd.aS, ezm.b().a(ezl.a().a(fdj.a(5.0F)).a(ezu.a(czh.dO))));
+      $$0.accept(ezd.aT, ezm.b().a(ezl.a().a(fdj.a(5.0F)).a(ezu.a(czh.dN))));
+      $$0.accept(ezd.aU, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.fH))));
    }
 }

@@ -16,7 +16,7 @@ public class apd {
 
    private static int a(ei $$0, iu $$1, float $$2) {
       arq $$3 = $$0.e();
-      if ($$3.aj() != div.i) {
+      if ($$3.aj() != dja.i) {
          $$0.b(wy.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

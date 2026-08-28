@@ -11,7 +11,7 @@ public class big extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsMenuBlurrinessFix",
-         this.getInputSchema().getType(biw.e),
+         this.getInputSchema().getType(bix.e),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> $$0xx.createInt(this.a($$0xx.asString("0.5")))))
       );
    }

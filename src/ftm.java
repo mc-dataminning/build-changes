@@ -1,5 +1,3 @@
 public interface ftm {
-   default int K() {
-      return 0;
-   }
+   void a(frv var1, int var2, int var3, float var4);
 }

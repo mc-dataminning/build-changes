@@ -1,45 +1,11 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Set;
 
-public abstract class ezi extends ezp {
-   protected final List<ezp> d;
-   private final ezh a;
-
-   protected ezi(List<ezp> $$0, List<fci> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+public interface ezi {
+   default Set<bax<?>> a() {
+      return Set.of();
    }
 
-   @Override
-   public void a(ezf $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
-   }
-
-   protected abstract ezh a(List<? extends ezh> var1);
-
-   @Override
-   public final boolean expand(eyz $$0, Consumer<ezo> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
-   }
-
-   public static <T extends ezi> MapCodec<T> a(ezi.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(ezn.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ezi> {
-      T create(List<ezp> var1, List<fci> var2);
+   default void a(ezn $$0) {
+      $$0.a(this);
    }
 }

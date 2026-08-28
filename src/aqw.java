@@ -10,14 +10,14 @@ public class aqw implements aqs.a, AutoCloseable {
    public static final int a = 4;
    private static final Logger c = LogUtils.getLogger();
    private final aqx d;
-   private final bsw<Runnable> e;
-   private final bst f;
+   private final bsy<Runnable> e;
+   private final bsv f;
    protected boolean b;
 
-   public aqw(bsw<Runnable> $$0, Executor $$1) {
+   public aqw(bsy<Runnable> $$0, Executor $$1) {
       this.d = new aqx($$0.v_() + "_queue");
       this.e = $$0;
-      this.f = new bst(4, $$1, "dispatcher");
+      this.f = new bsv(4, $$1, "dispatcher");
       this.b = true;
    }
 
@@ -26,8 +26,8 @@ public class aqw implements aqs.a, AutoCloseable {
    }
 
    @Override
-   public void onLevelChange(dic $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.f.a_(new bsv.c(0, () -> {
+   public void onLevelChange(dih $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new bsx.c(0, () -> {
          int $$4 = $$1.getAsInt();
          this.d.a($$4, $$0, $$2);
          $$3.accept($$2);
@@ -35,7 +35,7 @@ public class aqw implements aqs.a, AutoCloseable {
    }
 
    public void a(long $$0, Runnable $$1, boolean $$2) {
-      this.f.a_(new bsv.c(1, () -> {
+      this.f.a_(new bsx.c(1, () -> {
          this.d.a($$0, $$2);
          this.a($$0);
          if (this.b) {
@@ -48,7 +48,7 @@ public class aqw implements aqs.a, AutoCloseable {
    }
 
    public void a(Runnable $$0, long $$1, IntSupplier $$2) {
-      this.f.a_(new bsv.c(2, () -> {
+      this.f.a_(new bsx.c(2, () -> {
          int $$3 = $$2.getAsInt();
          this.d.a($$0, $$1, $$3);
          if (this.b) {
@@ -59,7 +59,7 @@ public class aqw implements aqs.a, AutoCloseable {
    }
 
    protected void b() {
-      this.f.a_(new bsv.c(3, () -> {
+      this.f.a_(new bsx.c(3, () -> {
          aqx.a $$0 = this.c();
          if ($$0 == null) {
             this.b = true;

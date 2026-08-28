@@ -10,10 +10,10 @@ public class ot {
          alb.a.forEach($$1xx -> $$1xx.a($$3::a));
          ju.g $$4 = $$1.a($$2, $$1x, $$3);
          jg.a $$5 = $$4.a();
-         Optional<? extends jg.b<djy>> $$6 = $$5.a(mg.aG);
-         Optional<? extends jg.b<epx>> $$7 = $$5.a(mg.ba);
+         Optional<? extends jg.b<dkd>> $$6 = $$5.a(mg.aG);
+         Optional<? extends jg.b<eqf>> $$7 = $$5.a(mg.bb);
          if ($$6.isPresent() || $$7.isPresent()) {
-            ov.a((jf<epx>)DataFixUtils.orElseGet($$7, () -> $$1x.e(mg.ba)), (jg<djy>)DataFixUtils.orElseGet($$6, () -> $$1x.e(mg.aG)));
+            ov.a((jf<eqf>)DataFixUtils.orElseGet($$7, () -> $$1x.e(mg.bb)), (jg<dkd>)DataFixUtils.orElseGet($$6, () -> $$1x.e(mg.aG)));
          }
 
          return $$4;

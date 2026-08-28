@@ -9,7 +9,7 @@ public class bdz extends bhr {
    private final DoubleUnaryOperator d;
 
    public bdz(Schema $$0, String $$1, String $$2, String $$3, DoubleUnaryOperator $$4) {
-      super($$0, false, $$1, biw.D, $$2);
+      super($$0, false, $$1, bix.D, $$2);
       this.c = $$3;
       this.d = $$4;
    }
@@ -21,7 +21,7 @@ public class bdz extends bhr {
 
    private Dynamic<?> a(Dynamic<?> $$0) {
       return $$0.update("attributes", $$1 -> $$0.createList($$1.asStream().map($$0xx -> {
-            String $$1x = bkr.a($$0xx.get("id").asString(""));
+            String $$1x = bks.a($$0xx.get("id").asString(""));
             if (!$$1x.equals(this.c)) {
                return $$0xx;
             } else {

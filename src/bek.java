@@ -70,6 +70,6 @@ public class bek extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(biw.D), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bix.D), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

@@ -19,14 +19,14 @@ public class bhu extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      CompoundListType<String, ?> $$0 = DSL.compoundList(DSL.string(), this.getInputSchema().getType(biw.I));
+      CompoundListType<String, ?> $$0 = DSL.compoundList(DSL.string(), this.getInputSchema().getType(bix.I));
       OpticFinder<? extends List<? extends Pair<String, ?>>> $$1 = $$0.finder();
       return this.a($$0);
    }
 
    private <SF> TypeRewriteRule a(CompoundListType<String, SF> $$0) {
-      Type<?> $$1 = this.getInputSchema().getType(biw.c);
-      Type<?> $$2 = this.getInputSchema().getType(biw.I);
+      Type<?> $$1 = this.getInputSchema().getType(bix.c);
+      Type<?> $$2 = this.getInputSchema().getType(bix.I);
       OpticFinder<?> $$3 = $$1.findField("Level");
       OpticFinder<?> $$4 = $$3.type().findField("Structures");
       OpticFinder<?> $$5 = $$4.type().findField("Starts");
@@ -71,7 +71,7 @@ public class bhu extends DataFix {
             $$0x -> $$0x.update(
                   DSL.remainderFinder(),
                   $$0xx -> $$0xx.update(
-                        "id", $$0xxx -> Objects.equals(bkr.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
+                        "id", $$0xxx -> Objects.equals(bks.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
                      )
                )
          )

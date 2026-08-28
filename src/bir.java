@@ -1,38 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class bir extends DataFix {
    public bir(Schema $$0) {
-      super($$0, false);
+      super($$0, true);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RaidRenamesDataFix", this.getInputSchema().getType(biw.l), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bir::a))
-      );
+      Type<?> $$0 = this.getInputSchema().getType(bix.D);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.D);
+      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bbd.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameAndFixField("Raids", "raids", $$0x -> $$0x.createList($$0x.asStream().map(bir::b)))
-         .renameField("Tick", "tick")
-         .renameField("NextAvailableID", "next_id");
+   private Function<Typed<?>, Typed<?>> a(String $$0) {
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bix.D, $$0);
+      Type<?> $$2 = this.getOutputSchema().getChoiceType(bix.D, $$0);
+      return a($$0, $$1, $$2);
    }
 
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      return bbd.a($$0, "CX", "CY", "CZ", "center")
-         .renameField("Id", "id")
-         .renameField("Started", "started")
-         .renameField("Active", "active")
-         .renameField("TicksActive", "ticks_active")
-         .renameField("BadOmenLevel", "raid_omen_level")
-         .renameField("GroupsSpawned", "groups_spawned")
-         .renameField("PreRaidTicks", "cooldown_ticks")
-         .renameField("PostRaidTicks", "post_raid_ticks")
-         .renameField("TotalHealth", "total_health")
-         .renameField("NumGroups", "group_count")
-         .renameField("Status", "status");
+   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
+      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
+      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> af.a($$1xx, $$2, UnaryOperator.identity()));
    }
 }

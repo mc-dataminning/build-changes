@@ -1,20 +1,38 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class fey extends AbstractDoubleList {
-   private final DoubleList a;
-   private final double b;
+public final class fey implements ffc {
+   private final few a;
+   private final int b;
+   private final int c;
 
-   public fey(DoubleList $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   fey(int $$0, int $$1) {
+      this.a = new few((int)ffh.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   public double getDouble(int $$0) {
-      return this.a.getDouble($$0) + this.b;
+   @Override
+   public boolean a(ffc.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
+   @Override
    public int size() {
       return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

@@ -1,7 +1,11 @@
-public record fgr(fei b, fei c, fei d) {
-   public static final fgr a = new fgr(fei.c, new fei(0.0, 0.0, -1.0), new fei(0.0, 1.0, 0.0));
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.Nonnull;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   public fei a() {
-      return this.c.c(this.d);
-   }
+@Nonnull
+@TypeQualifierDefault({ElementType.FIELD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface fgr {
 }

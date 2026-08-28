@@ -1,29 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dgj(dfs c) implements dge {
-   public static final MapCodec<dgj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfs.b.fieldOf("chance").forGetter(dgj::b)).apply($$0, dgj::new));
+public interface dgj {
+   Codec<dgj> b = mf.au.q().dispatch(dgj::a, Function.identity());
 
-   @Override
-   public float a(int $$0, azv $$1, float $$2) {
-      float $$3 = this.c.a($$0);
-      int $$4 = 0;
-
-      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
-         if ($$1.i() < $$3) {
-            $$4++;
-         }
-      }
-
-      return $$2 - (float)$$4;
+   static MapCodec<? extends dgj> a(jr<MapCodec<? extends dgj>> $$0) {
+      jr.a($$0, "add", dga.a);
+      jr.a($$0, "all_of", dgb.c.a);
+      jr.a($$0, "multiply", dgm.a);
+      jr.a($$0, "remove_binomial", dgo.a);
+      return jr.a($$0, "set", dgt.a);
    }
 
-   @Override
-   public MapCodec<dgj> a() {
-      return a;
-   }
+   float a(int var1, azv var2, float var3);
 
-   public dfs b() {
-      return this.c;
-   }
+   MapCodec<? extends dgj> a();
 }

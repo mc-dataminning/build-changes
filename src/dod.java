@@ -1,176 +1,91 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 
-public abstract class dod extends dqa {
-   public static final eaq c = eap.A;
-   private static final ffc a = dma.b(16.0, 0.0, 2.0);
+public abstract class dod extends dmf implements dtq {
+   public static final eay a = drz.b;
+   public static final eay b = drz.c;
+   public static final eay c = drz.d;
+   public static final eay d = drz.e;
+   public static final eay e = eax.I;
+   public static final Map<ja, eay> f = drz.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
+   private final Function<eah, ffk> g;
+   private final Function<eah, ffk> h;
 
-   protected dod(dzy.d $$0) {
-      super($$0);
+   protected dod(float $$0, float $$1, float $$2, float $$3, float $$4, eag.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$4, $$2, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
    }
 
    @Override
    protected abstract MapCodec<? extends dod> a();
 
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return a;
-   }
+   protected Function<eah, ffk> a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      ffk $$5 = dmf.b((double)$$0, 0.0, (double)$$1);
+      Map<ja, ffk> $$6 = ffh.c(dmf.a((double)$$2, (double)$$3, (double)$$4, 0.0, 8.0));
+      return this.a($$2x -> {
+         ffk $$3x = $$5;
 
-   @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      return this.a($$1, $$3, $$1.a_($$3));
-   }
-
-   protected boolean a(diy $$0, iu $$1, dzz $$2) {
-      return $$2.a($$0, $$1, ja.b, duj.c);
-   }
-
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if (!this.b((diy)$$1, $$2, $$0)) {
-         boolean $$4 = $$0.c(c);
-         boolean $$5 = this.a((div)$$1, $$2, $$0);
-         if ($$4 && !$$5) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
-         } else if (!$$4) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
-            if (!$$5) {
-               $$1.a($$2, this, this.h($$0), fge.b);
+         for (Entry<ja, eay> $$4x : f.entrySet()) {
+            if ($$2x.c($$4x.getValue())) {
+               $$3x = ffh.a($$3x, $$6.get($$4x.getKey()));
             }
          }
-      }
+
+         return $$3x;
+      }, new ebk[]{e});
    }
 
    @Override
-   protected int b(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return $$0.a($$1, $$2, $$3);
+   protected boolean e_(eah $$0) {
+      return !$$0.c(e);
    }
 
    @Override
-   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      if (!$$0.c(c)) {
-         return 0;
-      } else {
-         return $$0.c(e) == $$3 ? this.a($$1, $$2, $$0) : 0;
-      }
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return this.h.apply($$0);
    }
 
    @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
-      if ($$0.a((diy)$$1, $$2)) {
-         this.c($$1, $$2, $$0);
-      } else {
-         dwx $$6 = $$0.x() ? $$1.c_($$2) : null;
-         a($$0, $$1, $$2, $$6);
-         $$1.a($$2, false);
-
-         for (ja $$7 : ja.values()) {
-            $$1.a($$2.a($$7), this);
-         }
-      }
+   protected ffk b(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return this.g.apply($$0);
    }
 
-   protected void c(div $$0, iu $$1, dzz $$2) {
-      if (!this.b((diy)$$0, $$1, $$2)) {
-         boolean $$3 = $$2.c(c);
-         boolean $$4 = this.a($$0, $$1, $$2);
-         if ($$3 != $$4 && !$$0.U().b($$1, this)) {
-            fge $$5 = fge.c;
-            if (this.b((dib)$$0, $$1, $$2)) {
-               $$5 = fge.a;
-            } else if ($$3) {
-               $$5 = fge.b;
-            }
-
-            $$0.a($$1, this, this.h($$2), $$5);
-         }
-      }
+   @Override
+   protected ewo b_(eah $$0) {
+      return $$0.c(e) ? ewp.c.a(false) : super.b_($$0);
    }
 
-   public boolean b(diy $$0, iu $$1, dzz $$2) {
+   @Override
+   protected boolean a(eah $$0, exd $$1) {
       return false;
    }
 
-   protected boolean a(div $$0, iu $$1, dzz $$2) {
-      return this.b($$0, $$1, $$2) > 0;
-   }
-
-   protected int b(div $$0, iu $$1, dzz $$2) {
-      ja $$3 = $$2.c(e);
-      iu $$4 = $$1.a($$3);
-      int $$5 = $$0.c($$4, $$3);
-      if ($$5 >= 15) {
-         return $$5;
-      } else {
-         dzz $$6 = $$0.a_($$4);
-         return Math.max($$5, $$6.a(dmc.cF) ? $$6.c(dsi.f) : 0);
-      }
-   }
-
-   protected int a(djn $$0, iu $$1, dzz $$2) {
-      ja $$3 = $$2.c(e);
-      ja $$4 = $$3.h();
-      ja $$5 = $$3.i();
-      boolean $$6 = this.b();
-      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
-   }
-
    @Override
-   protected boolean f_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   public dzz a(dcr $$0) {
-      return this.m().b(e, $$0.g().g());
-   }
-
-   @Override
-   public void a(div $$0, iu $$1, dzz $$2, bxc $$3, cyy $$4) {
-      if (this.a($$0, $$1, $$2)) {
-         $$0.a($$1, this, 1);
+   protected eah a(eah $$0, dsz $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
    @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
-      this.d($$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
-      if (!$$3) {
-         this.d($$1, $$2, $$0);
+   protected eah a(eah $$0, dri $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
    }
-
-   protected void d(div $$0, iu $$1, dzz $$2) {
-      ja $$3 = $$2.c(e);
-      iu $$4 = $$1.a($$3.g());
-      exo $$5 = exk.a($$0, $$3.g(), ja.b);
-      $$0.b($$4, this, $$5);
-      $$0.a($$4, this, $$3, $$5);
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected int a(dib $$0, iu $$1, dzz $$2) {
-      return 15;
-   }
-
-   public static boolean n(dzz $$0) {
-      return $$0.b() instanceof dod;
-   }
-
-   public boolean b(dib $$0, iu $$1, dzz $$2) {
-      ja $$3 = $$2.c(e).g();
-      dzz $$4 = $$0.a_($$1.a($$3));
-      return n($$4) && $$4.c(e) != $$3;
-   }
-
-   protected abstract int h(dzz var1);
 }

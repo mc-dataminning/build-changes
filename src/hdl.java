@@ -1,8 +1,11 @@
 import javax.annotation.Nullable;
 
-public class hdl extends hcf {
+public class hdl extends hcn {
    public ja a = ja.c;
+   public final hfq b = new hfq();
+   public int c;
+   public boolean d;
    @Nullable
-   public cmz b;
-   public int[] c = new int[0];
+   public eyh e;
+   public final hig f = new hig();
 }

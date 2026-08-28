@@ -1,5 +1,3 @@
-public class her extends hcu {
-   public int a;
-   public boolean b;
-   public boolean c;
+public class her extends hbt {
+   public boolean d;
 }

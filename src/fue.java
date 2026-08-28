@@ -1,26 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fue implements fuf {
-   private final wy b;
-   protected final fvp a = new fvp();
-
-   public fue(wy $$0) {
-      this.b = $$0;
-   }
+public abstract class fue implements fuf {
+   @Nullable
+   private fug a;
+   private boolean b;
 
    @Override
-   public wy a() {
+   public final boolean aH_() {
       return this.b;
    }
 
    @Override
-   public void a(Consumer<fsa> $$0) {
-      this.a.a($$0);
+   public final void b_(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fug aI_() {
+      return this.a;
    }
 
    @Override
-   public void a(fwj $$0) {
-      this.a.a();
-      fvo.a(this.a, $$0, 0.5F, 0.16666667F);
+   public void a(@Nullable fug $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 }

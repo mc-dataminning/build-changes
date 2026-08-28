@@ -1,140 +1,122 @@
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
 public class hkz {
-   public static final hkw a = new hkw(hio.d, alg.b("block/fire_0"));
-   public static final hkw b = new hkw(hio.d, alg.b("block/fire_1"));
-   public static final hkw c = new hkw(hio.d, alg.b("block/lava_flow"));
-   public static final hkw d = new hkw(hio.d, alg.b("block/water_flow"));
-   public static final hkw e = new hkw(hio.d, alg.b("block/water_overlay"));
-   public static final hkw f = new hkw(gqn.c, alg.b("entity/banner_base"));
-   public static final hkw g = new hkw(gqn.d, alg.b("entity/shield_base"));
-   public static final hkw h = new hkw(gqn.d, alg.b("entity/shield_base_nopattern"));
-   public static final int i = 10;
-   public static final List<alg> j = IntStream.range(0, 10).mapToObj($$0 -> alg.b("block/destroy_stage_" + $$0)).collect(Collectors.toList());
-   public static final List<alg> k = j.stream().map($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).collect(Collectors.toList());
-   public static final List<gqc> l = k.stream().map(gqc::t).collect(Collectors.toList());
-   static final Logger m = LogUtils.getLogger();
-   private final giq n;
-   final Map<hkz.a, hkp> o = new HashMap<>();
-   private final Map<hle, grm> p;
-   private final Map<alg, hfb> q;
-   final Map<alg, hlk> r;
-   final hlk s;
+   private static final Logger e = LogUtils.getLogger();
+   private static final akz f = akz.a("blockstates");
+   private static final String g = "map";
+   private static final String h = "map=true";
+   private static final String i = "map=false";
+   private static final eai<dmf, eah> j = new eai.a<dmf, eah>(dmh.a).a(eay.a("map")).a(dmf::m, eah::new);
+   private static final alg k = alg.b("glow_item_frame");
+   private static final alg l = alg.b("item_frame");
+   private static final Map<alg, eai<dmf, eah>> m = Map.of(l, j, k, j);
+   public static final hlm a = new hlm(k, "map=true");
+   public static final hlm b = new hlm(k, "map=false");
+   public static final hlm c = new hlm(l, "map=true");
+   public static final hlm d = new hlm(l, "map=false");
 
-   public hkz(giq $$0, Map<hle, grm> $$1, Map<alg, hfb> $$2, Map<alg, hlk> $$3, hlk $$4) {
-      this.n = $$0;
-      this.p = $$1;
-      this.q = $$2;
-      this.r = $$3;
-      this.s = $$4;
+   private static Function<alg, eai<dmf, eah>> a() {
+      Map<alg, eai<dmf, eah>> $$0 = new HashMap<>(m);
+
+      for (dmf $$1 : mf.e) {
+         $$0.put($$1.p().h().a(), $$1.l());
+      }
+
+      return $$0::get;
    }
 
-   public hkz.b a(hkz.d $$0) {
-      hkp $$1 = hlk.a(this.s, new hkz.c($$0, () -> "missing"), hkq.a);
-      Map<hle, hkp> $$2 = new HashMap<>(this.p.size());
-      this.p.forEach(($$2x, $$3x) -> {
-         try {
-            hkp $$4x = $$3x.a(new hkz.c($$0, $$2x::toString));
-            $$2.put($$2x, $$4x);
-         } catch (Exception var6x) {
-            m.warn("Unable to bake model: '{}': {}", $$2x, var6x);
+   public static CompletableFuture<hkz.c> a(hls $$0, avd $$1, Executor $$2) {
+      Function<alg, eai<dmf, eah>> $$3 = a();
+      return CompletableFuture.<Map<alg, List<avb>>>supplyAsync(() -> f.b($$1), $$2).thenCompose($$3x -> {
+         List<CompletableFuture<hkz.c>> $$4 = new ArrayList<>($$3x.size());
+
+         for (Entry<alg, List<avb>> $$5 : $$3x.entrySet()) {
+            $$4.add(CompletableFuture.supplyAsync(() -> {
+               alg $$3xx = f.b($$5.getKey());
+               eai<dmf, eah> $$4x = $$3.apply($$3xx);
+               if ($$4x == null) {
+                  e.debug("Discovered unknown block state definition {}, ignoring", $$3xx);
+                  return null;
+               } else {
+                  List<avb> $$5x = $$5.getValue();
+                  List<hkz.a> $$6 = new ArrayList<>($$5x.size());
+
+                  for (avb $$7 : $$5x) {
+                     try (Reader $$8 = $$7.e()) {
+                        JsonObject $$9 = azc.a($$8);
+                        grn $$10 = grn.a($$9);
+                        $$6.add(new hkz.a($$7.b(), $$10));
+                     } catch (Exception var15) {
+                        e.error("Failed to load blockstate definition {} from pack {}", new Object[]{$$3xx, $$7.b(), var15});
+                     }
+                  }
+
+                  try {
+                     return a($$3xx, $$4x, $$6, $$0);
+                  } catch (Exception var12) {
+                     e.error("Failed to load blockstate definition {}", $$3xx, var12);
+                     return null;
+                  }
+               }
+            }, $$2));
          }
+
+         return af.d($$4).thenApply($$0xx -> {
+            Map<hlm, hkz.b> $$1xx = new HashMap<>();
+
+            for (hkz.c $$2xx : $$0xx) {
+               if ($$2xx != null) {
+                  $$1xx.putAll($$2xx.c());
+               }
+            }
+
+            return new hkz.c($$1xx);
+         });
       });
-      hff $$3 = new hfj($$1);
-      Map<alg, hff> $$4 = new HashMap<>(this.q.size());
-      Map<alg, hfb.a> $$5 = new HashMap<>(this.q.size());
-      this.q.forEach(($$4x, $$5x) -> {
-         hla $$6 = () -> $$4x + "#inventory";
-         hkz.c $$7 = new hkz.c($$0, $$6);
-         hff.a $$8 = new hff.a($$7, this.n, $$3, $$5x.c());
-
-         try {
-            hff $$9 = $$5x.a().a($$8);
-            $$4.put($$4x, $$9);
-            if (!$$5x.b().equals(hfb.a.a)) {
-               $$5.put($$4x, $$5x.b());
-            }
-         } catch (Exception var11) {
-            m.warn("Unable to bake item model: '{}'", $$4x, var11);
-         }
-      });
-      return new hkz.b($$1, $$2, $$3, $$4, $$5);
    }
 
-   static record a(alg a, j b, boolean c) {
+   private static hkz.c a(alg $$0, eai<dmf, eah> $$1, List<hkz.a> $$2, hls $$3) {
+      Map<hlm, hkz.b> $$4 = new HashMap<>();
+
+      for (hkz.a $$5 : $$2) {
+         $$5.b.a($$1, $$0 + "/" + $$5.a).forEach(($$2x, $$3x) -> {
+            hlm $$4x = grd.a($$0, $$2x);
+            $$4.put($$4x, new hkz.b($$2x, $$3x));
+         });
+      }
+
+      return new hkz.c($$4);
    }
 
-   public static record b(hkp a, Map<hle, hkp> b, hff c, Map<alg, hff> d, Map<alg, hfb.a> e) {
+   static record a(String a, grn b) {
    }
 
-   class c implements hky {
-      private final hla b;
-      private final hlj c;
-
-      c(final hkz.d $$0, final hla $$1) {
-         this.c = $$0.a($$1);
-         this.b = $$1;
-      }
-
-      @Override
-      public hlj a() {
-         return this.c;
-      }
-
-      private hlk a(alg $$0) {
-         hlk $$1 = hkz.this.r.get($$0);
-         if ($$1 == null) {
-            hkz.m.warn("Requested a model that was not discovered previously: {}", $$0);
-            return hkz.this.s;
-         } else {
-            return $$1;
-         }
-      }
-
-      @Override
-      public hkp a(alg $$0, hlf $$1) {
-         hkz.a $$2 = new hkz.a($$0, $$1.a(), $$1.b());
-         hkp $$3 = hkz.this.o.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         } else {
-            hlk $$4 = this.a($$0);
-            hkp $$5 = hlk.a($$4, this, $$1);
-            hkz.this.o.put($$2, $$5);
-            return $$5;
-         }
-      }
-
-      @Override
-      public hla b() {
-         return this.b;
-      }
+   public static record b(eah a, gru b) {
    }
 
-   public interface d {
-      hip a(hla var1, hkw var2);
+   public static record c(Map<hlm, hkz.b> a) {
+      public Stream<hlp> a() {
+         return this.a.values().stream().map(hkz.b::b);
+      }
 
-      hip a(hla var1, String var2);
+      public Map<hlm, gru> b() {
+         return af.a(this.a, hkz.b::b);
+      }
 
-      default hlj a(final hla $$0) {
-         return new hlj() {
-            @Override
-            public hip a(hkw $$0x) {
-               return d.this.a($$0, $$0);
-            }
-
-            @Override
-            public hip a(String $$0x) {
-               return d.this.a($$0, $$0);
-            }
-         };
+      public Map<hlm, hkz.b> c() {
+         return this.a;
       }
    }
 }

@@ -1,7 +1,7 @@
 public enum ebm implements bak {
-   a("none"),
-   b("low"),
-   c("tall");
+   a("up"),
+   b("side"),
+   c("none");
 
    private final String d;
 
@@ -17,5 +17,9 @@ public enum ebm implements bak {
    @Override
    public String c() {
       return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

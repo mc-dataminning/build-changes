@@ -1,104 +1,79 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class dpu extends dma implements dmd {
+public class dpu extends dug implements dmi {
    public static final MapCodec<dpu> a = b(dpu::new);
-   private static final ffc c = dma.b(14.0, 0.0, 16.0);
-   private static final ffc d = dma.b(14.0, 2.0, 16.0);
-   public static final eaq b = eap.F;
 
    @Override
    public MapCodec<dpu> a() {
       return a;
    }
 
-   public dpu(dzy.d $$0) {
+   public dpu(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return $$0.c(b) ? d : c;
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
-      if ($$3.a(500) == 0) {
-         dzz $$4 = $$1.a_($$2.d());
-         if ($$4.a(axc.w) || $$4.a(dmc.aR)) {
-            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.td, awo.e, 1.0F, 1.0F, false);
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      iu $$4 = $$2.d();
+      eah $$5 = dmh.bA.m();
+      Optional<je.c<eqf>> $$6 = $$0.F_().f(mg.bb).a(rz.o);
+
+      label51:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         iu $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label51;
+            }
+         }
+
+         eah $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            dmi $$11 = (dmi)$$5.b();
+            if ($$11.a((djd)$$0, $$8, $$10)) {
+               $$11.a($$0, $$1, $$8, $$10);
+            }
+         }
+
+         if ($$10.l()) {
+            je<eqf> $$14;
+            if ($$1.a(8) == 0) {
+               List<eiy<?, ?>> $$12 = $$0.u($$8).a().d().b();
+               if ($$12.isEmpty()) {
+                  continue;
+               }
+
+               int $$13 = $$1.a($$12.size());
+               $$14 = ((emd)$$12.get($$13).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$14 = $$6.get();
+            }
+
+            $$14.a().a($$0, $$0.m().g(), $$1, $$8);
          }
       }
    }
 
    @Override
-   protected boolean e_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      return this.b($$1, $$2);
-   }
-
-   private boolean b(dib $$0, iu $$1) {
-      iu $$2 = $$1.a(ja.b);
-      dzz $$3 = $$0.a_($$2);
-      return drf.a($$0, ja.b, $$2, $$3) || $$3.a(dmc.ud);
-   }
-
-   @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      if (!this.b($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      return $$0.b(b, Boolean.valueOf(!$$1.a_($$3.e()).a(this)));
-   }
-
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if (!this.b($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return this.o($$0.a_(this.a($$0, $$1).e()));
-   }
-
-   private boolean o(dzz $$0) {
-      return $$0.l();
-   }
-
-   public iu a(dib $$0, iu $$1) {
-      iu.a $$2 = $$1.k();
-
-      dzz $$3;
-      do {
-         $$2.c(ja.a);
-         $$3 = $$0.a_($$2);
-      } while ($$3.a(this));
-
-      return $$2.a(ja.b).j();
-   }
-
-   @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      iu $$4 = this.a($$0, $$2).e();
-      if (this.o($$0.a_($$4))) {
-         $$0.b($$4, $$3.b(b, Boolean.valueOf(true)));
-      }
+   public dmi.a an_() {
+      return dmi.a.a;
    }
 }

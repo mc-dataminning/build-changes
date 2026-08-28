@@ -1,110 +1,72 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class fur<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class fur implements fut {
+   private static final alg a = alg.b("toast/recipe");
+   private static final long e = 5000L;
+   private static final wy f = wy.c("recipe.toast.title");
+   private static final wy g = wy.c("recipe.toast.description");
+   private final List<fur.a> h = new ArrayList<>();
+   private long i;
+   private boolean j;
+   private fut.a k = fut.a.b;
+   private int l;
 
-   public fur(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   private fur() {
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   @Override
+   public fut.a a() {
+      return this.k;
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
-   }
+   @Override
+   public void a(fuu $$0, long $$1) {
+      if (this.j) {
+         this.i = $$1;
+         this.j = false;
+      }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
+      if (this.h.isEmpty()) {
+         this.k = fut.a.b;
       } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
+         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fut.a.b : fut.a.a;
       }
+
+      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
-         }
+   @Override
+   public void a(frv $$0, frt $$1, long $$2) {
+      $$0.a(gqk::H, a, 0, 0, this.c(), this.d());
+      $$0.a($$1, f, 30, 7, -11534256, false);
+      $$0.a($$1, g, 30, 18, -16777216, false);
+      fur.a $$3 = this.h.get(this.l);
+      $$0.c().a();
+      $$0.c().b(0.6F, 0.6F, 1.0F);
+      $$0.b($$3.a(), 3, 3);
+      $$0.c().b();
+      $$0.b($$3.b(), 8, 8);
+   }
 
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
+   private void a(czd $$0, czd $$1) {
+      this.h.add(new fur.a($$0, $$1));
+      this.j = true;
+   }
+
+   public static void a(fuu $$0, dfa $$1) {
+      fur $$2 = $$0.a(fur.class, b);
+      if ($$2 == null) {
+         $$2 = new fur();
+         $$0.a($$2);
       }
+
+      baz $$3 = dfh.a($$0.c().s);
+      czd $$4 = $$1.e().b($$3);
+      czd $$5 = $$1.d().b($$3);
+      $$2.a($$4, $$5);
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
-   }
-
-   public void a(fur.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
-            }
-         }
-      }
-   }
-
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
+   static record a(czd a, czd b) {
    }
 }

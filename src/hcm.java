@@ -1,4 +1,7 @@
-public class hcm extends hcf {
+import javax.annotation.Nullable;
+
+public class hcm extends hde {
    public boolean a;
-   public final hfi b = new hfi();
+   @Nullable
+   public eah b;
 }

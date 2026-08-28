@@ -13,11 +13,11 @@ public class alt extends avh<ah> {
    private final jg.a d;
 
    public alt(jg.a $$0) {
-      super($$0, ah.a, mg.bs);
+      super($$0, ah.a, mg.bt);
       this.d = $$0;
    }
 
-   protected void a(Map<alg, ah> $$0, avd $$1, bqm $$2) {
+   protected void a(Map<alg, ah> $$0, avd $$1, bqo $$2) {
       Builder<alg, ai> $$3 = ImmutableMap.builder();
       $$0.forEach(($$1x, $$2x) -> {
          this.a($$1x, $$2x);

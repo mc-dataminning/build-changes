@@ -5,7 +5,7 @@ public record age(float b, boolean c) implements zf<abu> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static age a(buk $$0) {
+   public static age a(bum $$0) {
       return new age($$0.f(), $$0.l());
    }
 

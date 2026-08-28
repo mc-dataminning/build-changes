@@ -1,19 +1,26 @@
-import com.mojang.serialization.MapCodec;
+public enum duq {
+   a {
+      @Override
+      public boolean a(eah $$0, dig $$1, iu $$2, ja $$3) {
+         return dmf.a($$0.h($$1, $$2), $$3);
+      }
+   },
+   b {
+      private final ffk d = dmf.b(2.0, 0.0, 10.0);
 
-public class duq extends dma {
-   public static final MapCodec<duq> a = b(duq::new);
+      @Override
+      public boolean a(eah $$0, dig $$1, iu $$2, ja $$3) {
+         return !ffh.c($$0.h($$1, $$2).a($$3), this.d, feu.c);
+      }
+   },
+   c {
+      private final ffk d = ffh.a(ffh.b(), dmf.b(12.0, 0.0, 16.0), feu.e);
 
-   @Override
-   public MapCodec<duq> a() {
-      return a;
-   }
+      @Override
+      public boolean a(eah $$0, dig $$1, iu $$2, ja $$3) {
+         return !ffh.c($$0.h($$1, $$2).a($$3), this.d, feu.c);
+      }
+   };
 
-   public duq(dzy.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
-      dzx.a($$0, $$1, $$2, $$3);
-   }
+   public abstract boolean a(eah var1, dig var2, iu var3, ja var4);
 }

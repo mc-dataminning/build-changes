@@ -1,23 +1,19 @@
-public class gzu extends han<hca, gfj> {
-   public gzu(gxw<hca, gfj> $$0) {
-      super($$0);
+public class gzu extends hav<hca, gfe> {
+   private static final alg a = alg.b("textures/entity/breeze/breeze_wind.png");
+   private final gfe b;
+
+   public gzu(gwh.a $$0, gye<hca, gfe> $$1) {
+      super($$1);
+      this.b = new gfe($$0.a(gjb.L));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hca $$3, float $$4, float $$5) {
-      hfi $$6 = $$3.i;
-      if (!$$6.c()) {
-         $$0.a();
-         float $$7 = 1.0F;
-         float $$8 = -1.0F;
-         float $$9 = azm.e($$3.ab) / 60.0F;
-         if ($$3.ab < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
-         }
+   public void a(fjj $$0, gqa $$1, int $$2, hca $$3, float $$4, float $$5) {
+      fjn $$6 = $$1.getBuffer(gqk.a(a, this.a($$3.u) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gvm.a(this.b, this.b.d()).a($$0, $$6, $$2, hin.d);
+   }
 
-         $$6.a($$0, $$1, $$2, hif.d);
-         $$0.b();
-      }
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

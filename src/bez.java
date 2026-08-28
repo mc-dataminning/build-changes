@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bez extends bhr {
    public bez(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", biw.D, "minecraft:shulker");
+      super($$0, $$1, "EntityShulkerColorFix", bix.D, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

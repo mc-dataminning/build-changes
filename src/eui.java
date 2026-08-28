@@ -1,9 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public abstract class eui {
-   public static final Codec<eui> c = mf.o.q().dispatch("predicate_type", eui::a, euj::codec);
+public class eui extends eva {
+   public static final MapCodec<eui> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(evc.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bti.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eui::new)
+   );
+   private final eva b;
+   private final bti c;
 
-   public abstract boolean a(iu var1, iu var2, iu var3, azv var4);
+   public eui(eva $$0, bti $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   protected abstract euj<?> a();
+   @Override
+   protected evc<?> a() {
+      return evc.o;
+   }
+
+   @Override
+   public final List<evd.d> a(djr $$0, iu $$1, iu $$2, List<evd.d> $$3, List<evd.d> $$4, euz $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            af.b(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            azv $$6 = azv.a($$0.a().E()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = af.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  evd.d $$12 = $$3.get($$11);
+                  evd.d $$13 = $$4.get($$11);
+                  evd.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
+      } else {
+         return $$4;
+      }
+   }
 }

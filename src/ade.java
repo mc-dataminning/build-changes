@@ -20,7 +20,7 @@ public class ade implements zf<abu> {
       this.i = $$0.l();
    }
 
-   public ade(ebr $$0) {
+   public ade(ebz $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

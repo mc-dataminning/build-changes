@@ -1,150 +1,232 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.nio.file.Path;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import java.util.function.BiPredicate;
+import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public class cig {
-   private static final Logger a = LogUtils.getLogger();
-   private final Short2ObjectMap<cif> b = new Short2ObjectOpenHashMap();
-   private final Map<je<cih>, Set<cif>> c = Maps.newHashMap();
-   private final Runnable d;
-   private boolean e;
+public class cig extends edy<cii, cii.a> {
+   public static final int a = 6;
+   public static final int b = 1;
+   private final cig.a d;
+   private final LongSet e = new LongOpenHashSet();
 
-   public cig(Runnable $$0) {
-      this($$0, true, ImmutableList.of());
+   public cig(edx $$0, Path $$1, DataFixer $$2, boolean $$3, js $$4, edm $$5, djc $$6) {
+      super(new eea($$0, $$1, $$2, $$3, bbb.q), cii.a.a, cii::a, cii.a::a, cii::new, $$4, $$5, $$6);
+      this.d = new cig.a();
    }
 
-   cig(Runnable $$0, boolean $$1, List<cif> $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      $$2.forEach(this::a);
-   }
-
-   public cig.a a() {
-      return new cig.a(this.e, this.b.values().stream().map(cif::a).toList());
-   }
-
-   public Stream<cif> a(Predicate<je<cih>> $$0, cie.b $$1) {
-      return this.c.entrySet().stream().filter($$1x -> $$0.test((je<cih>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
-   }
-
-   public void a(iu $$0, je<cih> $$1) {
-      if (this.a(new cif($$0, $$1, this.d))) {
-         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
-         this.d.run();
-      }
-   }
-
-   private boolean a(cif $$0) {
-      iu $$1 = $$0.g();
-      je<cih> $$2 = $$0.h();
-      short $$3 = jx.b($$1);
-      cif $$4 = (cif)this.b.get($$3);
-      if ($$4 != null) {
-         if ($$2.equals($$4.h())) {
-            return false;
-         }
-
-         af.b("POI data mismatch: already registered at " + $$1);
-      }
-
-      this.b.put($$3, $$0);
-      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
-      return true;
+   public void a(iu $$0, je<cij> $$1) {
+      this.f(jx.c($$0)).a($$0, $$1);
    }
 
    public void a(iu $$0) {
-      cif $$1 = (cif)this.b.remove(jx.b($$0));
-      if ($$1 == null) {
-         a.error("POI data mismatch: never registered at {}", $$0);
-      } else {
-         this.c.get($$1.h()).remove($$1);
-         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
-         this.d.run();
-      }
+      this.d(jx.c($$0)).ifPresent($$1 -> $$1.a($$0));
+   }
+
+   public long a(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).count();
+   }
+
+   public boolean a(alf<cij> $$0, iu $$1) {
+      return this.a($$1, (Predicate<je<cij>>)($$1x -> $$1x.a($$0)));
+   }
+
+   public Stream<cih> b(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
+      int $$4 = Math.floorDiv($$2, 16) + 1;
+      return dih.a(new dih($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
+         iu $$3x = $$2x.g();
+         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
+      });
+   }
+
+   public Stream<cih> c(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
+      int $$4 = $$2 * $$2;
+      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.g().j($$1) <= (double)$$4);
+   }
+
+   @bav
+   public Stream<cih> a(Predicate<je<cij>> $$0, dih $$1, cig.b $$2) {
+      return IntStream.rangeClosed(this.c.aq(), this.c.ar())
+         .boxed()
+         .map($$1x -> this.d(jx.a($$1, $$1x).s()))
+         .filter(Optional::isPresent)
+         .flatMap($$2x -> ((cii)$$2x.get()).a($$0, $$2));
+   }
+
+   public Stream<iu> a(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(cih::g).filter($$1);
+   }
+
+   public Stream<Pair<je<cij>, iu>> b(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.g())).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
+   }
+
+   public Stream<Pair<je<cij>, iu>> c(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
+      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((iu)$$1x.getSecond()).j($$2)));
+   }
+
+   public Optional<iu> d(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
+   }
+
+   public Optional<iu> d(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).map(cih::g).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
+   }
+
+   public Optional<Pair<je<cij>, iu>> e(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
+      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.g().j($$1))).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
+   }
+
+   public Optional<iu> e(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
+      return this.c($$0, $$2, $$3, $$4).map(cih::g).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
+   }
+
+   public Optional<iu> a(Predicate<je<cij>> $$0, BiPredicate<je<cij>, iu> $$1, iu $$2, int $$3) {
+      return this.c($$0, $$2, $$3, cig.b.a).filter($$1x -> $$1.test($$1x.h(), $$1x.g())).findFirst().map($$0x -> {
+         $$0x.c();
+         return $$0x.g();
+      });
+   }
+
+   public Optional<iu> a(Predicate<je<cij>> $$0, Predicate<iu> $$1, cig.b $$2, iu $$3, int $$4, azv $$5) {
+      List<cih> $$6 = af.a(this.c($$0, $$3, $$4, $$2), $$5);
+      return $$6.stream().filter($$1x -> $$1.test($$1x.g())).findFirst().map(cih::g);
+   }
+
+   public boolean b(iu $$0) {
+      return this.d(jx.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> af.b(new IllegalStateException("POI never registered at " + $$0)));
+   }
+
+   public boolean a(iu $$0, Predicate<je<cij>> $$1) {
+      return this.d(jx.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
+   }
+
+   public Optional<je<cij>> c(iu $$0) {
+      return this.d(jx.c($$0)).flatMap($$1 -> $$1.d($$0));
    }
 
    @Deprecated
    @bav
-   public int b(iu $$0) {
-      return this.e($$0).map(cif::b).orElse(0);
+   public int d(iu $$0) {
+      return this.d(jx.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
    }
 
-   public boolean c(iu $$0) {
-      cif $$1 = (cif)this.b.get(jx.b($$0));
-      if ($$1 == null) {
-         throw (IllegalStateException)af.b(new IllegalStateException("POI never registered at " + $$0));
-      } else {
-         boolean $$2 = $$1.d();
-         this.d.run();
-         return $$2;
+   public int a(jx $$0) {
+      this.d.a();
+      return this.d.c($$0.s());
+   }
+
+   boolean g(long $$0) {
+      Optional<cii> $$1 = this.c($$0);
+      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(axm.b), cig.b.b).findAny().isPresent()).orElse(false);
+   }
+
+   @Override
+   public void a(BooleanSupplier $$0) {
+      super.a($$0);
+      this.d.a();
+   }
+
+   @Override
+   protected void a(long $$0) {
+      super.a($$0);
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   @Override
+   protected void b(long $$0) {
+      this.d.b($$0, this.d.b($$0), false);
+   }
+
+   public void a(jx $$0, ecp $$1) {
+      af.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
+            if (a($$1)) {
+               this.a($$1, $$0, $$2x);
+            }
+         }), () -> {
+         if (a($$1)) {
+            cii $$2 = this.f($$0.s());
+            this.a($$1, $$0, $$2::a);
+         }
+      });
+   }
+
+   private static boolean a(ecp $$0) {
+      return $$0.a(cik::b);
+   }
+
+   private void a(ecp $$0, jx $$1, BiConsumer<iu, je<cij>> $$2) {
+      $$1.t().forEach($$2x -> {
+         eah $$3 = $$0.a(jx.b($$2x.u()), jx.b($$2x.v()), jx.b($$2x.w()));
+         cik.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
+      });
+   }
+
+   public void a(djd $$0, iu $$1, int $$2) {
+      jx.a(new dih($$1), Math.floorDiv($$2, 16), this.c.aq(), this.c.ar())
+         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
+         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(cii::b).orElse(false))
+         .map($$0x -> ((jx)$$0x.getFirst()).r())
+         .filter($$0x -> this.e.add($$0x.a()))
+         .forEach($$1x -> $$0.a($$1x.h, $$1x.i, edf.c));
+   }
+
+   final class a extends arl {
+      private final Long2ByteMap b = new Long2ByteOpenHashMap();
+
+      protected a() {
+         super(7, 16, 256);
+         this.b.defaultReturnValue((byte)7);
+      }
+
+      @Override
+      protected int b(long $$0) {
+         return cig.this.g($$0) ? 0 : 7;
+      }
+
+      @Override
+      protected int c(long $$0) {
+         return this.b.get($$0);
+      }
+
+      @Override
+      protected void a(long $$0, int $$1) {
+         if ($$1 > 6) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, (byte)$$1);
+         }
+      }
+
+      public void a() {
+         super.b(Integer.MAX_VALUE);
       }
    }
 
-   public boolean a(iu $$0, Predicate<je<cih>> $$1) {
-      return this.d($$0).filter($$1).isPresent();
-   }
+   public static enum b {
+      a(cih::e),
+      b(cih::f),
+      c($$0 -> true);
 
-   public Optional<je<cih>> d(iu $$0) {
-      return this.e($$0).map(cif::h);
-   }
+      private final Predicate<? super cih> d;
 
-   private Optional<cif> e(iu $$0) {
-      return Optional.ofNullable((cif)this.b.get(jx.b($$0)));
-   }
-
-   public void a(Consumer<BiConsumer<iu, je<cih>>> $$0) {
-      if (!this.e) {
-         Short2ObjectMap<cif> $$1 = new Short2ObjectOpenHashMap(this.b);
-         this.c();
-         $$0.accept(($$1x, $$2) -> {
-            short $$3 = jx.b($$1x);
-            cif $$4 = (cif)$$1.computeIfAbsent($$3, $$2x -> new cif($$1x, $$2, this.d));
-            this.a($$4);
-         });
-         this.e = true;
-         this.d.run();
-      }
-   }
-
-   private void c() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   boolean b() {
-      return this.e;
-   }
-
-   public static record a(boolean b, List<cif.a> c) {
-      public static final Codec<cig.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(cig.a::a), cif.a.a.listOf().fieldOf("Records").forGetter(cig.a::b))
-               .apply($$0, cig.a::new)
-      );
-
-      public cig a(Runnable $$0) {
-         return new cig($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+      private b(final Predicate<? super cih> $$0) {
+         this.d = $$0;
       }
 
-      public boolean a() {
-         return this.b;
-      }
-
-      public List<cif.a> b() {
-         return this.c;
+      public Predicate<? super cih> a() {
+         return this.d;
       }
    }
 }

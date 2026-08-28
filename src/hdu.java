@@ -1,5 +1,17 @@
-public class hdu extends hdf {
-   public float a;
+public class hdu extends hdc {
+   public cjn.a a;
    public boolean b;
-   public cjq.g c = cjq.g.a;
+   public boolean c;
+   public int d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public float h;
+   public float j;
+   public float k;
+   public float l;
+
+   public hdu() {
+      this.a = cjn.a.a;
+   }
 }

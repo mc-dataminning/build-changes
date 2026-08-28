@@ -7,13 +7,13 @@ public class aeo implements zf<abu> {
    private static final int b = 12;
    private final jx c;
    private final short[] d;
-   private final dzz[] e;
+   private final eah[] e;
 
-   public aeo(jx $$0, ShortSet $$1, ech $$2) {
+   public aeo(jx $$0, ShortSet $$1, ecp $$2) {
       this.c = $$0;
       int $$3 = $$1.size();
       this.d = new short[$$3];
-      this.e = new dzz[$$3];
+      this.e = new eah[$$3];
       int $$4 = 0;
 
       for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
@@ -27,12 +27,12 @@ public class aeo implements zf<abu> {
       this.c = jx.a($$0.readLong());
       int $$1 = $$0.l();
       this.d = new short[$$1];
-      this.e = new dzz[$$1];
+      this.e = new eah[$$1];
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          long $$3 = $$0.m();
          this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = dma.k.a((int)($$3 >>> 12));
+         this.e[$$2] = dmf.k.a((int)($$3 >>> 12));
       }
    }
 
@@ -41,7 +41,7 @@ public class aeo implements zf<abu> {
       $$0.c(this.d.length);
 
       for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)dma.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
+         $$0.a((long)dmf.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
       }
    }
 
@@ -54,7 +54,7 @@ public class aeo implements zf<abu> {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<iu, dzz> $$0) {
+   public void a(BiConsumer<iu, eah> $$0) {
       iu.a $$1 = new iu.a();
 
       for (int $$2 = 0; $$2 < this.d.length; $$2++) {

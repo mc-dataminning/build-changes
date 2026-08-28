@@ -1,2 +1,8 @@
-public record eyk(eyt a, egt.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eyk {
 }

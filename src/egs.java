@@ -1,93 +1,49 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
+public class egs implements din {
+   private int a;
 
-public interface egs {
-   Codec<egs> a = Codec.xor(egs.b.d, Codec.xor(egs.a.d, egs.c.d)).xmap(egs::a, egs::a);
-   egs b = b(0);
-   egs c = c(0);
+   @Override
+   public void a(arq $$0, boolean $$1, boolean $$2) {
+      if ($$1) {
+         if ($$0.O().c(diw.E)) {
+            azv $$3 = $$0.A;
+            this.a--;
+            if (this.a <= 0) {
+               this.a = this.a + (60 + $$3.a(60)) * 20;
+               if ($$0.z_() >= 5 || !$$0.B_().g()) {
+                  for (arr $$4 : $$0.z()) {
+                     if (!$$4.V_()) {
+                        iu $$5 = $$4.dv();
+                        if (!$$0.B_().g() || $$5.v() >= $$0.P() && $$0.h($$5)) {
+                           bub $$6 = $$0.d_($$5);
+                           if ($$6.a($$3.i() * 3.0F)) {
+                              awt $$7 = $$4.I();
+                              int $$8 = azm.a($$7.a(awx.i.b(awx.n)), 1, Integer.MAX_VALUE);
+                              int $$9 = 24000;
+                              if ($$3.a($$8) >= 72000) {
+                                 iu $$10 = $$5.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                                 eah $$11 = $$0.a_($$10);
+                                 ewo $$12 = $$0.b_($$10);
+                                 if (djl.a($$0, $$10, $$11, $$12, bwo.aP)) {
+                                    bxw $$13 = null;
+                                    int $$14 = 1 + $$3.a($$6.a().a() + 1);
 
-   static egs a(int $$0) {
-      return new egs.b($$0);
-   }
-
-   static egs b(int $$0) {
-      return new egs.a($$0);
-   }
-
-   static egs c(int $$0) {
-      return new egs.c($$0);
-   }
-
-   static egs a() {
-      return b;
-   }
-
-   static egs b() {
-      return c;
-   }
-
-   private static egs a(Either<egs.b, Either<egs.a, egs.c>> $$0) {
-      return (egs)$$0.map(Function.identity(), Either::unwrap);
-   }
-
-   private static Either<egs.b, Either<egs.a, egs.c>> a(egs $$0) {
-      return $$0 instanceof egs.b ? Either.left((egs.b)$$0) : Either.right($$0 instanceof egs.a ? Either.left((egs.a)$$0) : Either.right((egs.c)$$0));
-   }
-
-   int a(egv var1);
-
-   public static record a(int e) implements egs {
-      public static final Codec<egs.a> d = Codec.intRange(edw.e, edw.d).fieldOf("above_bottom").xmap(egs.a::new, egs.a::c).codec();
-
-      @Override
-      public int a(egv $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record b(int e) implements egs {
-      public static final Codec<egs.b> d = Codec.intRange(edw.e, edw.d).fieldOf("absolute").xmap(egs.b::new, egs.b::c).codec();
-
-      @Override
-      public int a(egv $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static record c(int e) implements egs {
-      public static final Codec<egs.c> d = Codec.intRange(edw.e, edw.d).fieldOf("below_top").xmap(egs.c::new, egs.c::c).codec();
-
-      @Override
-      public int a(egv $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
-
-      public int c() {
-         return this.e;
+                                    for (int $$15 = 0; $$15 < $$14; $$15++) {
+                                       cof $$16 = bwo.aP.a($$0, bwn.a);
+                                       if ($$16 != null) {
+                                          $$16.a($$10, 0.0F, 0.0F);
+                                          $$13 = $$16.a($$0, $$6, bwn.a, $$13);
+                                          $$0.a_($$16);
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 }

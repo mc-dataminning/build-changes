@@ -1,19 +1,99 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fmo {
-   private static final int a = 8226750;
-   private static final wy b = wy.c("mco.info").b(8226750);
-   private static final wy c = wy.c("mco.warning").b(-65536);
+public class fmo extends hpj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wy b = wy.c("mco.configure.world.buttons.invite");
+   private static final wy c = wy.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final wy C = wy.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final wy D = wy.c("mco.configure.world.players.error").b(-65536);
+   private final fvx E = new fvx(this);
+   private fss F;
+   private fsj G;
+   private final fla H;
+   private final fmj I;
+   private final fyb J;
+   @Nullable
+   private wy K;
 
-   public static fte a(fxu $$0, wy $$1, Consumer<fte> $$2) {
-      return new fte.a($$0, b).a($$1).a(wx.j, $$2).a(wx.e, fte::aK_).a();
+   public fmo(fmj $$0, fyb $$1, fla $$2) {
+      super(b);
+      this.I = $$0;
+      this.J = $$1;
+      this.H = $$2;
    }
 
-   public static fte b(fxu $$0, wy $$1, Consumer<fte> $$2) {
-      return new fte.a($$0, c).a($$1).a(wx.j, $$2).a(wx.e, fte::aK_).a();
+   @Override
+   public void aO_() {
+      this.E.a(b, this.p);
+      fwb $$0 = this.E.c(fwb.d().a(8));
+      this.F = new fss(this.m.h, 200, 20, wy.c("mco.configure.world.invite.profile.name"));
+      $$0.a(fvt.a(this.p, this.F, c));
+      this.G = $$0.a(fsj.a(b, $$0x -> this.E()).a(200).a());
+      this.E.b(fsj.a(wx.k, $$0x -> this.aL_()).a(200).a());
+      this.E.a($$1 -> {
+         fsh var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public static fte c(fxu $$0, wy $$1, Consumer<fte> $$2) {
-      return new fte.a($$0, c).a($$1).a(wx.h, $$2).a();
+   @Override
+   protected void c() {
+      this.E.a();
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.F);
+   }
+
+   private void E() {
+      if (bal.h(this.F.a())) {
+         this.a(D);
+      } else {
+         long $$0 = this.H.a;
+         String $$1 = this.F.a().trim();
+         this.G.j = false;
+         this.F.e(false);
+         this.a(C);
+         CompletableFuture.<fla>supplyAsync(() -> {
+            try {
+               return fjz.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
+            }
+         }, af.i()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.H.h = $$0x.h;
+               this.m.a(new fmu(this.I, this.H));
+            } else {
+               this.a(D);
+            }
+
+            this.F.e(true);
+            this.G.j = true;
+         }, this.r);
+      }
+   }
+
+   private void a(wy $$0) {
+      this.K = $$0;
+      this.m.aY().c($$0);
+   }
+
+   @Override
+   public void aL_() {
+      this.m.a(this.J);
+   }
+
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.K != null) {
+         $$0.a(this.p, this.K, this.n / 2, this.G.G() + this.G.y() + 8, -1);
+      }
    }
 }

@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bgy extends bhr {
    public bgy(Schema $$0, boolean $$1) {
-      super($$0, $$1, "JigsawPropertiesFix", biw.s, "minecraft:jigsaw");
+      super($$0, $$1, "JigsawPropertiesFix", bix.s, "minecraft:jigsaw");
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {

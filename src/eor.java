@@ -1,96 +1,72 @@
 import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-public class eor extends eop {
-   public static final MapCodec<eor> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  btg.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
-                  btg.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
-                  jt.a(mg.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
-               )
-            )
-            .apply($$0, eor::new)
-   );
-   private final btg b;
-   private final float h;
-   private final btg i;
-   private final ji<dma> j;
+public class eor extends eox {
+   public static final MapCodec<eor> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eor::new));
 
-   public eor(int $$0, int $$1, int $$2, btg $$3, float $$4, btg $$5, ji<dma> $$6) {
+   public eor(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
    }
 
    @Override
-   protected eoq<?> a() {
-      return eoq.h;
+   protected eoy<?> a() {
+      return eoy.e;
    }
 
    @Override
-   public List<emu.a> a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, int $$3, iu $$4, eme $$5) {
-      List<emu.a> $$6 = Lists.newArrayList();
-      iu.a $$7 = new iu.a();
+   public List<enc.a> a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, int $$3, iu $$4, emm $$5) {
+      List<enc.a> $$6 = Lists.newArrayList();
+      iu $$7 = $$4.e();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.i(), $$5);
+      a($$0, $$1, $$2, $$7.g(), $$5);
+      a($$0, $$1, $$2, $$7.g().i(), $$5);
+      ja $$8 = ja.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         int $$9 = $$4.v() + $$8;
-         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
-            ja $$10 = ja.c.a.a($$2);
-            int $$11 = this.i.a($$2);
-            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
-            int $$13 = this.b.a($$2);
-            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
          }
 
-         if ($$8 == $$3 - 1) {
-            $$6.add(new emu.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         int $$18 = $$12 + $$17;
+         iu $$19 = new iu($$14, $$18, $$15);
+         if (eky.c($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.i(), $$5);
+            this.b($$0, $$1, $$2, $$19.g(), $$5);
+            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
+         }
+      }
+
+      $$6.add(new enc.a(new iu($$14, $$16, $$15), 0, true));
+
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
+
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new iu($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
+
+               $$6.add(new enc.a(new iu($$11 + $$20, $$16, $$13 + $$21), 0, false));
+            }
          }
       }
 
       return $$6;
-   }
-
-   private void a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, int $$3, eme $$4, List<emu.a> $$5, iu.a $$6, int $$7, ja $$8, int $$9, int $$10) {
-      int $$11 = $$7 + $$9;
-      int $$12 = $$6.u();
-      int $$13 = $$6.w();
-      int $$14 = $$9;
-
-      while ($$14 < $$3 && $$10 > 0) {
-         if ($$14 >= 1) {
-            int $$15 = $$7 + $$14;
-            $$12 += $$8.j();
-            $$13 += $$8.l();
-            $$11 = $$15;
-            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
-               $$11 = $$15 + 1;
-            }
-
-            $$5.add(new emu.a($$6.j(), 0, false));
-         }
-
-         $$14++;
-         $$10--;
-      }
-
-      if ($$11 - $$7 > 1) {
-         iu $$16 = new iu($$12, $$11, $$13);
-         $$5.add(new emu.a($$16, 0, false));
-         $$5.add(new emu.a($$16.c(2), 0, false));
-      }
-   }
-
-   @Override
-   protected boolean a(djb $$0, iu $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

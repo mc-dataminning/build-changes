@@ -1,35 +1,81 @@
-public class hak extends han<hdr, ggw> {
-   private final ggp a;
-   private final hdn b = new hdn();
+public class hak<S extends hde, M extends ggm<S>, A extends ggm<S>> extends hav<S, M> {
+   private final A a;
+   private final A b;
+   private final A c;
+   private final A d;
+   private final hag e;
 
-   public hak(gxw<hdr, ggw> $$0, giq $$1) {
+   public hak(gye<S, M> $$0, A $$1, A $$2, hag $$3) {
+      this($$0, $$1, $$2, $$1, $$2, $$3);
+   }
+
+   public hak(gye<S, M> $$0, A $$1, A $$2, A $$3, A $$4, hag $$5) {
       super($$0);
-      this.a = new ggp($$1.a(git.bZ));
-      this.b.c = ggp.a.e;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hdr $$3, float $$4, float $$5) {
-      cjk.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
+   public static boolean a(czd $$0, bwp $$1) {
+      dhm $$2 = $$0.a(kj.D);
+      return $$2 != null && a($$2, $$1);
+   }
 
-      cjk.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+   private static boolean a(dhm $$0, bwp $$1) {
+      return $$0.d().isPresent() && $$0.b() == $$1;
+   }
+
+   public void a(fjj $$0, gqa $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$0, $$1, $$3.W, bwp.e, $$2, this.a($$3, bwp.e));
+      this.a($$0, $$1, $$3.X, bwp.d, $$2, this.a($$3, bwp.d));
+      this.a($$0, $$1, $$3.Y, bwp.c, $$2, this.a($$3, bwp.c));
+      this.a($$0, $$1, $$3.V, bwp.f, $$2, this.a($$3, bwp.f));
+   }
+
+   private void a(fjj $$0, gqa $$1, czd $$2, bwp $$3, int $$4, A $$5) {
+      dhm $$6 = $$2.a(kj.D);
+      if ($$6 != null && a($$6, $$3)) {
+         this.d().a($$5);
+         this.a($$5, $$3);
+         hld.d $$7 = this.a($$3) ? hld.d.b : hld.d.a;
+         this.e.a($$7, $$6.d().orElseThrow(), $$5, $$2, $$0, $$1, $$4);
       }
    }
 
-   private void a(fjc $$0, gps $$1, int $$2, hdr $$3, cjk.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
-      this.b.u = $$3.u;
-      this.b.ad = $$3.ad;
-      this.b.ae = $$3.ae;
-      this.b.aa = $$5;
-      this.b.ab = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gxm.a($$4))), $$2, hif.d);
-      $$0.b();
+   protected void a(A $$0, bwp $$1) {
+      $$0.c_(false);
+      switch ($$1) {
+         case f:
+            $$0.o.k = true;
+            $$0.p.k = true;
+            break;
+         case e:
+            $$0.q.k = true;
+            $$0.r.k = true;
+            $$0.s.k = true;
+            break;
+         case d:
+            $$0.q.k = true;
+            $$0.t.k = true;
+            $$0.u.k = true;
+            break;
+         case c:
+            $$0.t.k = true;
+            $$0.u.k = true;
+      }
+   }
+
+   private A a(S $$0, bwp $$1) {
+      if (this.a($$1)) {
+         return $$0.aj ? this.c : this.a;
+      } else {
+         return $$0.aj ? this.d : this.b;
+      }
+   }
+
+   private boolean a(bwp $$0) {
+      return $$0 == bwp.d;
    }
 }

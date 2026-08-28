@@ -1,84 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsl extends dsk {
-   public static final MapCodec<dsl> f = b(dsl::new);
-   public static final eax<ja> g = dqa.e;
-   public static final eaq h = dsk.b;
+public class dsl extends dlu {
+   public static final MapCodec<dsl> b = b(dsl::new);
+   public static final ebf<ebl> c = eax.aj;
 
    @Override
    public MapCodec<dsl> a() {
-      return f;
+      return b;
    }
 
-   protected dsl(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(g, ja.c).b(h, Boolean.valueOf(true)));
-   }
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return dvq.o($$0);
+   protected dsl(eag.d $$0) {
+      super(false, $$0);
+      this.l(this.C.b().b(c, ebl.a).b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      return dvq.b($$1, $$2, $$0.c(g));
-   }
-
-   @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dmc.a.m() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public dzz a(dcr $$0) {
-      dzz $$1 = dmc.cy.a($$0);
-      return $$1 == null ? null : this.m().b(g, $$1.c(g));
-   }
-
-   @Override
-   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
-      if ($$0.c(h)) {
-         ja $$4 = $$0.c(g).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(ls.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3) {
+      if ($$3.m().p() && new dsm($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean a(div $$0, iu $$1, dzz $$2) {
-      ja $$3 = $$2.c(g).g();
-      return $$0.b($$1.a($$3), $$3);
+   public ebk<ebl> c() {
+      return c;
    }
 
    @Override
-   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return $$0.c(h) && $$0.c(g) != $$3 ? 15 : 0;
+   protected eah a(eah $$0, dsz $$1) {
+      ebl $$2 = $$0.c(c);
+
+      return $$0.b(c, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield ebl.a;
+               case b:
+                  yield ebl.b;
+               case c:
+                  yield ebl.d;
+               case d:
+                  yield ebl.c;
+               case e:
+                  yield ebl.f;
+               case f:
+                  yield ebl.e;
+               case g:
+                  yield ebl.i;
+               case h:
+                  yield ebl.j;
+               case i:
+                  yield ebl.g;
+               case j:
+                  yield ebl.h;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield ebl.b;
+               case b:
+                  yield ebl.a;
+               case c:
+                  yield ebl.e;
+               case d:
+                  yield ebl.f;
+               case e:
+                  yield ebl.d;
+               case f:
+                  yield ebl.c;
+               case g:
+                  yield ebl.j;
+               case h:
+                  yield ebl.g;
+               case i:
+                  yield ebl.h;
+               case j:
+                  yield ebl.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield ebl.b;
+               case b:
+                  yield ebl.a;
+               case c:
+                  yield ebl.f;
+               case d:
+                  yield ebl.e;
+               case e:
+                  yield ebl.c;
+               case f:
+                  yield ebl.d;
+               case g:
+                  yield ebl.h;
+               case h:
+                  yield ebl.i;
+               case i:
+                  yield ebl.j;
+               case j:
+                  yield ebl.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
+   protected eah a(eah $$0, dri $$1) {
+      ebl $$2 = $$0.c(c);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(c, ebl.f);
+               case f:
+                  return $$0.b(c, ebl.e);
+               case g:
+                  return $$0.b(c, ebl.j);
+               case h:
+                  return $$0.b(c, ebl.i);
+               case i:
+                  return $$0.b(c, ebl.h);
+               case j:
+                  return $$0.b(c, ebl.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(c, ebl.d);
+               case d:
+                  return $$0.b(c, ebl.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(c, ebl.h);
+               case h:
+                  return $$0.b(c, ebl.g);
+               case i:
+                  return $$0.b(c, ebl.j);
+               case j:
+                  return $$0.b(c, ebl.i);
+            }
+      }
+
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected dzz a(dzz $$0, drc $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(g, h);
-   }
-
-   @Nullable
-   @Override
-   protected exo a(div $$0, dzz $$1) {
-      return exk.a($$0, $$1.c(g).g(), ja.b);
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(c, a);
    }
 }

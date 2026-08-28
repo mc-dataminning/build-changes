@@ -21,10 +21,10 @@ public class apf {
       );
    }
 
-   private static int a(ei $$0, @Nullable bwd $$1, arr $$2) throws CommandSyntaxException {
+   private static int a(ei $$0, @Nullable bwf $$1, arr $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.h.b() != dis.d) {
+      } else if ($$2.h.b() != dix.d) {
          throw b.create($$2.m_());
       } else {
          $$2.d($$1);

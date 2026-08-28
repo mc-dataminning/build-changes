@@ -5,13 +5,13 @@ public class ail implements zf<agp> {
    private static final int d = 4;
    private static final int e = 8;
    private final iu f;
-   private final dyq.a g;
-   private final ebj h;
+   private final dyy.a g;
+   private final ebr h;
    private final String i;
    private final iu j;
    private final jz k;
-   private final drc l;
-   private final dst m;
+   private final dri l;
+   private final dsz m;
    private final String n;
    private final boolean o;
    private final boolean p;
@@ -22,13 +22,13 @@ public class ail implements zf<agp> {
 
    public ail(
       iu $$0,
-      dyq.a $$1,
-      ebj $$2,
+      dyy.a $$1,
+      ebr $$2,
       String $$3,
       iu $$4,
       jz $$5,
-      drc $$6,
-      dst $$7,
+      dri $$6,
+      dsz $$7,
       String $$8,
       boolean $$9,
       boolean $$10,
@@ -56,15 +56,15 @@ public class ail implements zf<agp> {
 
    private ail(vu $$0) {
       this.f = $$0.e();
-      this.g = $$0.b(dyq.a.class);
-      this.h = $$0.b(ebj.class);
+      this.g = $$0.b(dyy.a.class);
+      this.h = $$0.b(ebr.class);
       this.i = $$0.p();
       int $$1 = 48;
       this.j = new iu(azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.k = new jz(azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48));
-      this.l = $$0.b(drc.class);
-      this.m = $$0.b(dst.class);
+      this.l = $$0.b(dri.class);
+      this.m = $$0.b(dsz.class);
       this.n = $$0.d(128);
       this.s = azm.a($$0.readFloat(), 0.0F, 1.0F);
       this.t = $$0.m();
@@ -124,11 +124,11 @@ public class ail implements zf<agp> {
       return this.f;
    }
 
-   public dyq.a e() {
+   public dyy.a e() {
       return this.g;
    }
 
-   public ebj f() {
+   public ebr f() {
       return this.h;
    }
 
@@ -144,11 +144,11 @@ public class ail implements zf<agp> {
       return this.k;
    }
 
-   public drc j() {
+   public dri j() {
       return this.l;
    }
 
-   public dst k() {
+   public dsz k() {
       return this.m;
    }
 

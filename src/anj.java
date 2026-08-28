@@ -41,7 +41,7 @@ public class anj {
    );
    private static final SuggestionProvider<ei> f = ($$0, $$1) -> {
       alq.a $$2 = ((ei)$$0.getSource()).l().bc();
-      return en.a($$2.a(mg.br), $$1);
+      return en.a($$2.a(mg.bs), $$1);
    };
 
    public static void a(CommandDispatcher<ei> $$0, ee $$1) {
@@ -57,7 +57,7 @@ public class anj {
                                           .then(ej.a("as").then(ej.a("targets", ev.b()).fork($$2, $$0x -> {
                                              List<ei> $$1x = Lists.newArrayList();
 
-                                             for (bwd $$2x : ev.c($$0x, "targets")) {
+                                             for (bwf $$2x : ev.c($$0x, "targets")) {
                                                 $$1x.add(((ei)$$0x.getSource()).a($$2x));
                                              }
 
@@ -66,7 +66,7 @@ public class anj {
                                        .then(ej.a("at").then(ej.a("targets", ev.b()).fork($$2, $$0x -> {
                                           List<ei> $$1x = Lists.newArrayList();
 
-                                          for (bwd $$2x : ev.c($$0x, "targets")) {
+                                          for (bwf $$2x : ev.c($$0x, "targets")) {
                                              $$1x.add(((ei)$$0x.getSource()).a((arq)$$2x.dV()).a($$2x.dt()).a($$2x.bU()));
                                           }
 
@@ -79,14 +79,14 @@ public class anj {
                                           .then(ej.a("as").then(ej.a("targets", ev.b()).fork($$2, $$0x -> {
                                              List<ei> $$1x = Lists.newArrayList();
 
-                                             for (bwd $$2x : ev.c($$0x, "targets")) {
+                                             for (bwf $$2x : ev.c($$0x, "targets")) {
                                                 $$1x.add(((ei)$$0x.getSource()).a($$2x.dt()));
                                              }
 
                                              return $$1x;
                                           }))))
                                        .then(ej.a("over").then(ej.a("heightmap", ey.a()).redirect($$2, $$0x -> {
-                                          fei $$1x = ((ei)$$0x.getSource()).d();
+                                          feq $$1x = ((ei)$$0x.getSource()).d();
                                           arq $$2x = ((ei)$$0x.getSource()).e();
                                           double $$3 = $$1x.a();
                                           double $$4 = $$1x.c();
@@ -94,7 +94,7 @@ public class anj {
                                              throw gf.a.create();
                                           } else {
                                              int $$5 = $$2x.a(ey.a($$0x, "heightmap"), azm.a($$3), azm.a($$4));
-                                             return ((ei)$$0x.getSource()).a(new fei($$3, (double)$$5, $$4));
+                                             return ((ei)$$0x.getSource()).a(new feq($$3, (double)$$5, $$4));
                                           }
                                        })))
                                  ))
@@ -104,7 +104,7 @@ public class anj {
                                     .then(ej.a("as").then(ej.a("targets", ev.b()).fork($$2, $$0x -> {
                                        List<ei> $$1x = Lists.newArrayList();
 
-                                       for (bwd $$2x : ev.c($$0x, "targets")) {
+                                       for (bwf $$2x : ev.c($$0x, "targets")) {
                                           $$1x.add(((ei)$$0x.getSource()).a($$2x.bU()));
                                        }
 
@@ -117,7 +117,7 @@ public class anj {
                                        List<ei> $$1x = Lists.newArrayList();
                                        eu.a $$2x = eu.a($$0x, "anchor");
 
-                                       for (bwd $$3 : ev.c($$0x, "targets")) {
+                                       for (bwf $$3 : ev.c($$0x, "targets")) {
                                           $$1x.add(((ei)$$0x.getSource()).a($$3, $$2x));
                                        }
 
@@ -265,11 +265,11 @@ public class anj {
       return $$1;
    }
 
-   private static ei a(ei $$0, Collection<ffm> $$1, fff $$2, boolean $$3) {
-      ffn $$4 = $$0.l().aJ();
+   private static ei a(ei $$0, Collection<ffu> $$1, ffn $$2, boolean $$3) {
+      ffv $$4 = $$0.l().aJ();
       return $$0.a(($$4x, $$5) -> {
-         for (ffm $$6 : $$1) {
-            ffl $$7 = $$4.c($$6, $$2);
+         for (ffu $$6 : $$1) {
+            fft $$7 = $$4.c($$6, $$2);
             int $$8 = $$3 ? $$5 : ($$4x ? 1 : 0);
             $$7.a($$8);
          }
@@ -300,8 +300,8 @@ public class anj {
    }
 
    private static boolean a(arq $$0, iu $$1) {
-      dic $$2 = new dic($$1);
-      ecg $$3 = $$0.m().a($$2.h, $$2.i);
+      dih $$2 = new dih($$1);
+      eco $$3 = $$0.m().a($$2.h, $$2.i);
       return $$3 == null ? false : $$3.F() == are.d && $$0.c($$2.a());
    }
 
@@ -315,7 +315,7 @@ public class anj {
                                                    $$0,
                                                    ej.a("block", gb.a($$3)),
                                                    $$2,
-                                                   $$0x -> gb.a($$0x, "block").test(new ead(((ei)$$0x.getSource()).e(), gf.a($$0x, "pos"), true))
+                                                   $$0x -> gb.a($$0x, "block").test(new eal(((ei)$$0x.getSource()).e(), gf.a($$0x, "pos"), true))
                                                 )
                                              )
                                        )
@@ -500,16 +500,16 @@ public class anj {
       return $$1;
    }
 
-   private static int a(Iterable<? extends bwd> $$0, cwo $$1, Predicate<cyy> $$2) {
+   private static int a(Iterable<? extends bwf> $$0, cwt $$1, Predicate<czd> $$2) {
       int $$3 = 0;
 
-      for (bwd $$4 : $$0) {
+      for (bwf $$4 : $$0) {
          IntList $$5 = $$1.a();
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             int $$7 = $$5.getInt($$6);
-            bxt $$8 = $$4.a_($$7);
-            cyy $$9 = $$8.a();
+            bxv $$8 = $$4.a_($$7);
+            czd $$9 = $$8.a();
             if ($$2.test($$9)) {
                $$3 += $$9.M();
             }
@@ -519,16 +519,16 @@ public class anj {
       return $$3;
    }
 
-   private static int a(ei $$0, iu $$1, cwo $$2, Predicate<cyy> $$3) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, cwt $$2, Predicate<czd> $$3) throws CommandSyntaxException {
       int $$4 = 0;
-      btu $$5 = anu.a($$0, $$1, anu.b);
+      btw $$5 = anu.a($$0, $$1, anu.b);
       int $$6 = $$5.b();
       IntList $$7 = $$2.a();
 
       for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
          int $$9 = $$7.getInt($$8);
          if ($$9 >= 0 && $$9 < $$6) {
-            cyy $$10 = $$5.a($$9);
+            czd $$10 = $$5.a($$9);
             if ($$3.test($$10)) {
                $$4 += $$10.M();
             }
@@ -563,29 +563,29 @@ public class anj {
    }
 
    private static boolean a(CommandContext<ei> $$0, anj.d $$1) throws CommandSyntaxException {
-      ffm $$2 = fo.a($$0, "target");
-      fff $$3 = fc.a($$0, "targetObjective");
-      ffm $$4 = fo.a($$0, "source");
-      fff $$5 = fc.a($$0, "sourceObjective");
-      ffn $$6 = ((ei)$$0.getSource()).l().aJ();
-      ffj $$7 = $$6.d($$2, $$3);
-      ffj $$8 = $$6.d($$4, $$5);
+      ffu $$2 = fo.a($$0, "target");
+      ffn $$3 = fc.a($$0, "targetObjective");
+      ffu $$4 = fo.a($$0, "source");
+      ffn $$5 = fc.a($$0, "sourceObjective");
+      ffv $$6 = ((ei)$$0.getSource()).l().aJ();
+      ffr $$7 = $$6.d($$2, $$3);
+      ffr $$8 = $$6.d($$4, $$5);
       return $$7 != null && $$8 != null ? $$1.test($$7.a(), $$8.a()) : false;
    }
 
    private static boolean a(CommandContext<ei> $$0, cv.d $$1) throws CommandSyntaxException {
-      ffm $$2 = fo.a($$0, "target");
-      fff $$3 = fc.a($$0, "targetObjective");
-      ffn $$4 = ((ei)$$0.getSource()).l().aJ();
-      ffj $$5 = $$4.d($$2, $$3);
+      ffu $$2 = fo.a($$0, "target");
+      ffn $$3 = fc.a($$0, "targetObjective");
+      ffv $$4 = ((ei)$$0.getSource()).l().aJ();
+      ffr $$5 = $$4.d($$2, $$3);
       return $$5 == null ? false : $$1.d($$5.a());
    }
 
-   private static boolean a(ei $$0, je<fci> $$1) {
+   private static boolean a(ei $$0, je<fcq> $$1) {
       arq $$2 = $$0.e();
-      ezc $$3 = new ezc.a($$2).a(fbt.f, $$0.d()).b(fbt.a, $$0.f()).a(fbs.d);
-      eyz $$4 = new eyz.a($$3).a(Optional.empty());
-      $$4.b(eyz.a($$1.a()));
+      ezk $$3 = new ezk.a($$2).a(fcb.f, $$0.d()).b(fcb.a, $$0.f()).a(fca.d);
+      ezh $$4 = new ezh.a($$3).a(Optional.empty());
+      $$4.b(ezh.a($$1.a()));
       return $$1.a().test($$4);
    }
 
@@ -633,8 +633,8 @@ public class anj {
    }
 
    private static OptionalInt a(arq $$0, iu $$1, iu $$2, iu $$3, boolean $$4) throws CommandSyntaxException {
-      eql $$5 = eql.a($$1, $$2);
-      eql $$6 = eql.a($$3, $$3.a($$5.c()));
+      eqt $$5 = eqt.a($$1, $$2);
+      eqt $$6 = eqt.a($$3, $$3.a($$5.c()));
       iu $$7 = new iu($$6.h() - $$5.h(), $$6.i() - $$5.i(), $$6.j() - $$5.j());
       int $$8 = $$5.d() * $$5.e() * $$5.f();
       if ($$8 > 32768) {
@@ -648,14 +648,14 @@ public class anj {
                for (int $$13 = $$5.h(); $$13 <= $$5.k(); $$13++) {
                   iu $$14 = new iu($$13, $$12, $$11);
                   iu $$15 = $$14.a((jz)$$7);
-                  dzz $$16 = $$0.a_($$14);
-                  if (!$$4 || !$$16.a(dmc.a)) {
+                  eah $$16 = $$0.a_($$14);
+                  if (!$$4 || !$$16.a(dmh.a)) {
                      if ($$16 != $$0.a_($$15)) {
                         return OptionalInt.empty();
                      }
 
-                     dwx $$17 = $$0.c_($$14);
-                     dwx $$18 = $$0.c_($$15);
+                     dxf $$17 = $$0.c_($$14);
+                     dxf $$18 = $$0.c_($$15);
                      if ($$17 != null) {
                         if ($$18 == null) {
                            return OptionalInt.empty();
@@ -686,18 +686,18 @@ public class anj {
       }
    }
 
-   private static RedirectModifier<ei> a(Function<bwd, Optional<bwd>> $$0) {
+   private static RedirectModifier<ei> a(Function<bwf, Optional<bwf>> $$0) {
       return $$1 -> {
          ei $$2 = (ei)$$1.getSource();
-         bwd $$3 = $$2.f();
+         bwf $$3 = $$2.f();
          return (Collection)($$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$1x -> List.of($$2.a($$1x))).orElse(List.of()));
       };
    }
 
-   private static RedirectModifier<ei> b(Function<bwd, Stream<bwd>> $$0) {
+   private static RedirectModifier<ei> b(Function<bwf, Stream<bwf>> $$0) {
       return $$1 -> {
          ei $$2 = (ei)$$1.getSource();
-         bwd $$3 = $$2.f();
+         bwf $$3 = $$2.f();
          return $$3 == null ? List.of() : $$0.apply($$3).filter($$0xx -> !$$0xx.dQ()).map($$2::a).toList();
       };
    }
@@ -706,33 +706,33 @@ public class anj {
       return (LiteralArgumentBuilder<ei>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.then(
                               ej.a("owner")
                                  .fork(
-                                    $$0, a((Function<bwd, Optional<bwd>>)($$0x -> $$0x instanceof bxj $$1x ? Optional.ofNullable($$1x.e()) : Optional.empty()))
+                                    $$0, a((Function<bwf, Optional<bwf>>)($$0x -> $$0x instanceof bxl $$1x ? Optional.ofNullable($$1x.e()) : Optional.empty()))
                                  )
                            ))
                            .then(
                               ej.a("leasher")
                                  .fork(
-                                    $$0, a((Function<bwd, Optional<bwd>>)($$0x -> $$0x instanceof bxa $$1x ? Optional.ofNullable($$1x.C()) : Optional.empty()))
+                                    $$0, a((Function<bwf, Optional<bwf>>)($$0x -> $$0x instanceof bxc $$1x ? Optional.ofNullable($$1x.C()) : Optional.empty()))
                                  )
                            ))
                         .then(
                            ej.a("target")
-                              .fork($$0, a((Function<bwd, Optional<bwd>>)($$0x -> $$0x instanceof bxz $$1x ? Optional.ofNullable($$1x.f()) : Optional.empty())))
+                              .fork($$0, a((Function<bwf, Optional<bwf>>)($$0x -> $$0x instanceof byb $$1x ? Optional.ofNullable($$1x.f()) : Optional.empty())))
                         ))
                      .then(
                         ej.a("attacker")
-                           .fork($$0, a((Function<bwd, Optional<bwd>>)($$0x -> $$0x instanceof bvw $$1x ? Optional.ofNullable($$1x.am()) : Optional.empty())))
+                           .fork($$0, a((Function<bwf, Optional<bwf>>)($$0x -> $$0x instanceof bvy $$1x ? Optional.ofNullable($$1x.am()) : Optional.empty())))
                      ))
-                  .then(ej.a("vehicle").fork($$0, a((Function<bwd, Optional<bwd>>)($$0x -> Optional.ofNullable($$0x.dk()))))))
-               .then(ej.a("controller").fork($$0, a((Function<bwd, Optional<bwd>>)($$0x -> Optional.ofNullable($$0x.cW()))))))
+                  .then(ej.a("vehicle").fork($$0, a((Function<bwf, Optional<bwf>>)($$0x -> Optional.ofNullable($$0x.dk()))))))
+               .then(ej.a("controller").fork($$0, a((Function<bwf, Optional<bwf>>)($$0x -> Optional.ofNullable($$0x.cW()))))))
             .then(
-               ej.a("origin").fork($$0, a((Function<bwd, Optional<bwd>>)($$0x -> $$0x instanceof bya $$1x ? Optional.ofNullable($$1x.q()) : Optional.empty())))
+               ej.a("origin").fork($$0, a((Function<bwf, Optional<bwf>>)($$0x -> $$0x instanceof byc $$1x ? Optional.ofNullable($$1x.q()) : Optional.empty())))
             ))
-         .then(ej.a("passengers").fork($$0, b((Function<bwd, Stream<bwd>>)($$0x -> $$0x.cY().stream()))));
+         .then(ej.a("passengers").fork($$0, b((Function<bwf, Stream<bwf>>)($$0x -> $$0x.cY().stream()))));
    }
 
-   private static ei a(ei $$0, je.c<bwm<?>> $$1) throws CommandSyntaxException {
-      bwd $$2 = apj.a($$0, $$1, $$0.d(), new tz(), true);
+   private static ei a(ei $$0, je.c<bwo<?>> $$1) throws CommandSyntaxException {
+      bwf $$2 = apj.a($$0, $$1, $$0.d(), new tz(), true);
       return $$0.a($$2);
    }
 

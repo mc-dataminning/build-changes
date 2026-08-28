@@ -1,47 +1,43 @@
-public class czm extends cyu {
-   private final bwm<? extends ctk> a;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public czm(bwm<? extends ctk> $$0, cyu.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class czm extends cyz {
+   private static final Logger a = LogUtils.getLogger();
+
+   public czm(cyz.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bub a(dct $$0) {
-      div $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      dzz $$3 = $$1.a_($$2);
-      if (!$$3.a(axc.P)) {
-         return bub.d;
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      czd $$3 = $$1.b($$2);
+      List<alf<ddu<?>>> $$4 = $$3.a(kj.ag, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return bud.d;
       } else {
-         cyy $$4 = $$0.n();
-         ebd $$5 = $$3.b() instanceof dlp ? $$3.c(((dlp)$$3.b()).c()) : ebd.a;
-         double $$6 = 0.0;
-         if ($$5.b()) {
-            $$6 = 0.5;
-         }
+         if (!$$0.C) {
+            deb $$5 = $$0.p().aI();
+            List<ddz<?>> $$6 = new ArrayList<>($$4.size());
 
-         fei $$7 = new fei((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
-         ctk $$8 = ctk.a($$1, $$7.d, $$7.e, $$7.f, this.a, bwl.o, $$4, $$0.o());
-         if ($$8 == null) {
-            return bub.d;
-         } else {
-            if (ctk.b($$1)) {
-               for (bwd $$10 : $$1.a_(null, $$8.cR())) {
-                  if ($$10 instanceof ctk) {
-                     return bub.d;
-                  }
+            for (alf<ddu<?>> $$7 : $$4) {
+               Optional<ddz<?>> $$8 = $$5.b($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bud.d;
                }
+
+               $$6.add($$8.get());
             }
 
-            if ($$1 instanceof arq $$11) {
-               $$11.b($$8);
-               $$11.a(eez.t, $$2, eez.a.a($$0.o(), $$11.a_($$2.e())));
-            }
-
-            $$4.h(1);
-            return bub.a;
+            $$1.a($$6);
+            $$1.b(awx.c.b(this));
          }
+
+         return bud.a;
       }
    }
 }

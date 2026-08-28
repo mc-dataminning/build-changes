@@ -1,16 +1,62 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fdo {
-   private static final Codec<fdn> d = mf.I.q().dispatch(fdn::a, fdm::a);
-   public static final Codec<fdn> a = Codec.lazyInitialized(
-      () -> Codec.either(fdk.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fdk $$1 ? Either.left($$1) : Either.right($$0))
+public record fdo(fdv b, String c, float d) implements fdm {
+   public static final MapCodec<fdo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               fdw.a.fieldOf("target").forGetter(fdo::c),
+               Codec.STRING.fieldOf("score").forGetter(fdo::d),
+               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(fdo::e)
+            )
+            .apply($$0, fdo::new)
    );
-   public static final fdm b = a("fixed", fdl.a);
-   public static final fdm c = a("context", fdk.a);
 
-   private static fdm a(String $$0, MapCodec<? extends fdn> $$1) {
-      return jr.a(mf.I, alg.b($$0), new fdm($$1));
+   @Override
+   public fdl b() {
+      return fdn.e;
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return this.b.b();
+   }
+
+   public static fdo a(ezh.b $$0, String $$1) {
+      return a($$0, $$1, 1.0F);
+   }
+
+   public static fdo a(ezh.b $$0, String $$1, float $$2) {
+      return new fdo(fds.a($$0), $$1, $$2);
+   }
+
+   @Override
+   public float b(ezh $$0) {
+      ffu $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         return 0.0F;
+      } else {
+         ffv $$2 = $$0.d().g();
+         ffn $$3 = $$2.a(this.c);
+         if ($$3 == null) {
+            return 0.0F;
+         } else {
+            ffr $$4 = $$2.d($$1, $$3);
+            return $$4 == null ? 0.0F : (float)$$4.a() * this.d;
+         }
+      }
+   }
+
+   public fdv c() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public float e() {
+      return this.d;
    }
 }

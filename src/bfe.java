@@ -2,7 +2,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
 import java.util.Map;
 
-public class bfe extends bjk {
+public class bfe extends bjl {
    public static final Map<String, String> a = ImmutableMap.builder()
       .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
       .put("minecraft:ender_crystal", "minecraft:end_crystal")

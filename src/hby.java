@@ -1,4 +1,10 @@
-public class hby extends hdf {
+public class hby extends hcn {
    public float a;
-   public boolean b;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

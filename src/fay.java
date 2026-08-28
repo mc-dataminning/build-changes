@@ -2,28 +2,39 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fay extends fam {
-   public static final MapCodec<fay> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(ux.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, fay::new));
-   private final tz b;
+public class fay extends fau {
+   public static final MapCodec<fay> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(ezf.e.fieldOf("component").forGetter($$0x -> $$0x.b), fax.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, fay::new)
+   );
+   private final eze<?> b;
+   private final fav c;
 
-   private fay(List<fci> $$0, tz $$1) {
+   private fay(List<fcq> $$0, eze<?> $$1, fav $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fao<fay> b() {
-      return fap.j;
+   public faw<fay> b() {
+      return fax.u;
    }
 
    @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      dbg.a(kj.b, $$0, $$0x -> $$0x.a(this.b));
-      return $$0;
+   public czd a(czd $$0, ezh $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
+         return $$0;
+      }
    }
 
-   @Deprecated
-   public static fam.a<?> a(tz $$0) {
-      return a($$1 -> new fay($$1, $$0));
+   @Override
+   public void a(ezn $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

@@ -32,7 +32,7 @@ public class ev implements ArgumentType<gy> {
       return new ev(true, false);
    }
 
-   public static bwd a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static bwf a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return ((gy)$$0.getArgument($$1, gy.class)).a((ei)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class ev implements ArgumentType<gy> {
       return new ev(false, false);
    }
 
-   public static Collection<? extends bwd> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bwd> $$2 = c($$0, $$1);
+   public static Collection<? extends bwf> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bwf> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class ev implements ArgumentType<gy> {
       }
    }
 
-   public static Collection<? extends bwd> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bwf> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return ((gy)$$0.getArgument($$1, gy.class)).b((ei)$$0.getSource());
    }
 

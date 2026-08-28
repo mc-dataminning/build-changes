@@ -1,24 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-class ehm extends ehq {
-   private final ji<ewf> e;
-   public static final MapCodec<ehm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(jt.a(mg.F).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ehm::new)
-   );
+class ehm extends ehp {
+   public static final MapCodec<ehm> a = a(ehm::new);
 
-   public ehm(jz $$0, ji<ewf> $$1) {
+   public ehm(List<ehn> $$0) {
       super($$0);
-      this.e = $$1;
+   }
+
+   public boolean a(djz $$0, iu $$1) {
+      for (ehn $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(dzz $$0) {
-      return $$0.y().a(this.e);
-   }
-
-   @Override
-   public ehg<?> a() {
-      return ehg.c;
+   public eho<?> a() {
+      return eho.i;
    }
 }

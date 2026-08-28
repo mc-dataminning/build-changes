@@ -1,76 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fmv extends hpb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("mco.terms.title");
-   private static final wy c = wy.c("mco.terms.sentence.1");
-   private static final wy C = wx.a().b(wy.c("mco.terms.sentence.2").c(xv.a.c(true)));
-   private final fxu D;
-   private final fkt E;
-   private boolean F;
+public class fmv {
+   private static final int a = 8226750;
+   private static final wy b = wy.c("mco.info").b(8226750);
+   private static final wy c = wy.c("mco.warning").b(-65536);
 
-   public fmv(fxu $$0, fkt $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public static ftl a(fyb $$0, wy $$1, Consumer<ftl> $$2) {
+      return new ftl.a($$0, b).a($$1).a(wx.j, $$2).a(wx.e, ftl::aL_).a();
    }
 
-   @Override
-   public void aN_() {
-      int $$0 = this.n / 4 - 2;
-      this.c(fsc.a(wy.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
-      this.c(fsc.a(wy.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
+   public static ftl b(fyb $$0, wy $$1, Consumer<ftl> $$2) {
+      return new ftl.a($$0, c).a($$1).a(wx.j, $$2).a(wx.e, ftl::aL_).a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.D);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void E() {
-      fjs $$0 = fjs.a();
-
-      try {
-         $$0.j();
-         this.m.a(new fmi(this.D, new fno(this.D, this.E)));
-      } catch (flo var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.F) {
-         this.m.p.a(ayh.s.toString());
-         af.n().a(ayh.s);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public wy i() {
-      return wx.a(super.i(), c).b(wx.v).b(C);
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
-      int $$4 = this.p.a(c);
-      int $$5 = this.n / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.p.a(C) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
+   public static ftl c(fyb $$0, wy $$1, Consumer<ftl> $$2) {
+      return new ftl.a($$0, c).a($$1).a(wx.h, $$2).a();
    }
 }

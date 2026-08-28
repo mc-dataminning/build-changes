@@ -1,5 +1,5 @@
-public class hcz extends hdf {
-   public float a;
-   public int b;
-   public bvz.a c = bvz.a.a;
+public class hcz extends hdn {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

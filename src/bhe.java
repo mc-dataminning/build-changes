@@ -103,8 +103,8 @@ public class bhe extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(biw.a);
-      return this.fixTypeEverywhereTyped("LevelDataGeneratorOptionsFix", this.getInputSchema().getType(biw.a), $$0, $$1 -> af.a($$1, $$0, $$0xx -> {
+      Type<?> $$0 = this.getOutputSchema().getType(bix.a);
+      return this.fixTypeEverywhereTyped("LevelDataGeneratorOptionsFix", this.getInputSchema().getType(bix.a), $$0, $$1 -> af.a($$1, $$0, $$0xx -> {
             Optional<String> $$1x = $$0xx.get("generatorOptions").asString().result();
             if ("flat".equalsIgnoreCase($$0xx.get("generatorName").asString(""))) {
                String $$2 = $$1x.orElse("");

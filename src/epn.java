@@ -1,30 +1,23 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum epn implements bak {
-   a(ja.b, 1, "ceiling"),
-   b(ja.a, -1, "floor");
+public class epn extends epi {
+   public static final MapCodec<epn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bso.b(epi.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, epn::new)
+   );
+   private final bso<epi> b;
 
-   public static final Codec<epn> c = bak.a(epn::values);
-   private final ja d;
-   private final int e;
-   private final String f;
-
-   private epn(final ja $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public ja a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
+   public epn(bso<epi> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public int a(azv $$0, ehd $$1) {
+      return this.b.b($$0).a($$0, $$1);
+   }
+
+   @Override
+   public epj<?> a() {
+      return epj.f;
    }
 }

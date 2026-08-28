@@ -2,7 +2,7 @@ public class adx implements zf<abu> {
    public static final yw<vu, adx> a = zf.a(adx::a, adx::new);
    private final int b;
 
-   public adx(bup $$0) {
+   public adx(bur $$0) {
       this($$0.b());
    }
 

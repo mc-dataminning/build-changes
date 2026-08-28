@@ -1,45 +1,65 @@
-public class gfb extends ggm {
-   private static final String a = "bottom";
-   private static final String b = "lid";
-   private static final String c = "lock";
-   private final giu d;
-   private final giu e;
+public class gfb extends geg {
+   private static final int a = 28;
+   private static final int b = 32;
+   private static final int c = 6;
+   private static final int d = 20;
+   private static final int e = 4;
+   private static final String f = "water_patch";
+   private static final String g = "back";
+   private static final String i = "front";
+   private static final String j = "right";
+   private static final String k = "left";
 
-   public gfb(giu $$0) {
-      super($$0, gqc::d);
-      this.d = $$0.b("lid");
-      this.e = $$0.b("lock");
+   public gfb(gjc $$0) {
+      super($$0);
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("bottom", giz.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), giw.a);
-      $$1.a("lid", giz.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), giw.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", giz.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), giw.a(0.0F, 9.0F, 1.0F));
-      return gja.a($$0, 64, 64);
+   private static void a(gjm $$0) {
+      int $$1 = 16;
+      int $$2 = 14;
+      int $$3 = 10;
+      $$0.a("bottom", gjh.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gje.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$0.a("back", gjh.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gje.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$0.a("front", gjh.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gje.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$0.a("right", gjh.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gje.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$0.a("left", gjh.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gje.a(0.0F, 4.0F, 9.0F));
+      int $$4 = 20;
+      int $$5 = 7;
+      int $$6 = 6;
+      float $$7 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         gjh.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gje.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         gjh.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gje.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public static gja b() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("bottom", giz.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), giw.a);
-      $$1.a("lid", giz.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), giw.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", giz.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), giw.a(0.0F, 9.0F, 1.0F));
-      return gja.a($$0, 64, 64);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      a($$1);
+      return gji.a($$0, 128, 64);
    }
 
-   public static gja c() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("bottom", giz.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), giw.a);
-      $$1.a("lid", giz.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), giw.a(0.0F, 9.0F, 1.0F));
-      $$1.a("lock", giz.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), giw.a(0.0F, 9.0F, 1.0F));
-      return gja.a($$0, 64, 64);
+   public static gji b() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", gjh.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gje.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gje.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gje.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gji.a($$0, 128, 128);
    }
 
-   public void a(float $$0) {
-      this.d.e = -($$0 * (float) (Math.PI / 2));
-      this.e.e = this.d.e;
+   public static gji c() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("water_patch", gjh.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gje.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gji.a($$0, 0, 0);
    }
 }

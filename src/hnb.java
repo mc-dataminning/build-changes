@@ -1,23 +1,35 @@
-public class hnb {
-   private final String a;
-   private final String b;
-   private long c;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-   public hnb(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = af.c();
+public class hnb<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
+
+   public hnb(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public String a() {
-      return this.a;
-   }
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
 
-   public String b() {
-      return this.b;
-   }
+         if ($$0 < 0) {
+            this.a.next();
+         } else {
+            this.b.next();
+         }
+      }
 
-   public void c() {
-      this.c = af.c();
+      return (T)this.endOfData();
    }
 }

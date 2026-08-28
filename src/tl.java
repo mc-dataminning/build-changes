@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 
 public interface tl {
    Codec<tl> a = mf.aB.q().dispatch(tl::a, $$0 -> $$0);
-   Codec<je<tl>> b = alc.a(mg.bf, a);
+   Codec<je<tl>> b = alc.a(mg.bg, a);
 
    static MapCodec<? extends tl> a(jr<MapCodec<? extends tl>> $$0) {
       jr.a($$0, "all_of", tl.a.c);
@@ -98,40 +98,40 @@ public interface tl {
       }
    }
 
-   public static record c(List<tl.c.a<Boolean, dir.a>> d, List<tl.c.a<Integer, dir.d>> e) implements tl {
+   public static record c(List<tl.c.a<Boolean, diw.a>> d, List<tl.c.a<Integer, diw.d>> e) implements tl {
       public static final MapCodec<tl.c> c = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  tl.c.a.a(dir.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
-                  tl.c.a.a(dir.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
+                  tl.c.a.a(diw.a.class, Codec.BOOL).listOf().fieldOf("bool_rules").forGetter(tl.c::b),
+                  tl.c.a.a(diw.d.class, Codec.INT).listOf().fieldOf("int_rules").forGetter(tl.c::c)
                )
                .apply($$0, tl.c::new)
       );
 
       @Override
       public void a(arq $$0) {
-         dir $$1 = $$0.O();
+         diw $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, dir.a> $$3 : this.d) {
+         for (tl.c.a<Boolean, diw.a> $$3 : this.d) {
             $$1.b($$3.a()).a($$3.b(), $$2);
          }
 
-         for (tl.c.a<Integer, dir.d> $$4 : this.e) {
+         for (tl.c.a<Integer, diw.d> $$4 : this.e) {
             $$1.b($$4.a()).a($$4.b(), $$2);
          }
       }
 
       @Override
       public void b(arq $$0) {
-         dir $$1 = $$0.O();
+         diw $$1 = $$0.O();
          MinecraftServer $$2 = $$0.p();
 
-         for (tl.c.a<Boolean, dir.a> $$3 : this.d) {
-            $$1.b($$3.a()).a(dir.a($$3.a()).a(), $$2);
+         for (tl.c.a<Boolean, diw.a> $$3 : this.d) {
+            $$1.b($$3.a()).a(diw.a($$3.a()).a(), $$2);
          }
 
-         for (tl.c.a<Integer, dir.d> $$4 : this.e) {
-            $$1.b($$4.a()).a(dir.a($$4.a()).a(), $$2);
+         for (tl.c.a<Integer, diw.d> $$4 : this.e) {
+            $$1.b($$4.a()).a(diw.a($$4.a()).a(), $$2);
          }
       }
 
@@ -140,22 +140,22 @@ public interface tl {
          return c;
       }
 
-      public static <S, T extends dir.g<T>> tl.c.a<S, T> a(dir.e<T> $$0, S $$1) {
+      public static <S, T extends diw.g<T>> tl.c.a<S, T> a(diw.e<T> $$0, S $$1) {
          return new tl.c.a<>($$0, $$1);
       }
 
-      public List<tl.c.a<Boolean, dir.a>> b() {
+      public List<tl.c.a<Boolean, diw.a>> b() {
          return this.d;
       }
 
-      public List<tl.c.a<Integer, dir.d>> c() {
+      public List<tl.c.a<Integer, diw.d>> c() {
          return this.e;
       }
 
-      public static record a<S, T extends dir.g<T>>(dir.e<T> a, S b) {
-         public static <S, T extends dir.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
+      public static record a<S, T extends diw.g<T>>(diw.e<T> a, S b) {
+         public static <S, T extends diw.g<T>> Codec<tl.c.a<S, T>> a(Class<T> $$0, Codec<S> $$1) {
             return RecordCodecBuilder.create(
-               $$2 -> $$2.group(dir.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
+               $$2 -> $$2.group(diw.a($$0).fieldOf("rule").forGetter(tl.c.a::a), $$1.fieldOf("value").forGetter(tl.c.a::b)).apply($$2, tl.c.a::new)
             );
          }
       }

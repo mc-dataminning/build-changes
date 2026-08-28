@@ -1,94 +1,82 @@
-public class gex extends gfq<hbs> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float c = 1.0F;
-   private final giu d;
-   private final giu e;
-   private final giu f;
-   private final giu g;
-   private final giu i;
-   private final giu j;
-   private final giu k;
+public class gex extends gfy<hbw> {
+   public static final gjl a = gjl.scaling(0.5F);
+   private static final String b = "bone";
+   private static final String c = "stinger";
+   private static final String d = "left_antenna";
+   private static final String e = "right_antenna";
+   private static final String f = "front_legs";
+   private static final String g = "middle_legs";
+   private static final String i = "back_legs";
+   private final gjc j;
+   private final gjc k;
+   private final gjc l;
+   private final gjc m;
+   private final gjc n;
+   private final gjc o;
+   private final gjc p;
+   private final gjc q;
+   private final gjc r;
+   private float s;
 
-   public gex(giu $$0) {
-      super($$0, gqc::j);
-      this.f = $$0.b("wind_body");
-      this.j = this.f.b("wind_bottom");
-      this.i = this.j.b("wind_mid");
-      this.g = this.i.b("wind_top");
-      this.d = $$0.b("body").b("head");
-      this.e = this.d.b("eyes");
-      this.k = $$0.b("body").b("rods");
+   public gex(gjc $$0) {
+      super($$0);
+      this.j = $$0.b("bone");
+      gjc $$1 = this.j.b("body");
+      this.p = $$1.b("stinger");
+      this.q = $$1.b("left_antenna");
+      this.r = $$1.b("right_antenna");
+      this.k = this.j.b("right_wing");
+      this.l = this.j.b("left_wing");
+      this.m = this.j.b("front_legs");
+      this.n = this.j.b("middle_legs");
+      this.o = this.j.b("back_legs");
    }
 
-   public static gja a(int $$0, int $$1) {
-      gjc $$2 = new gjc();
-      gje $$3 = $$2.a();
-      gje $$4 = $$3.a("body", giz.c(), giw.a(0.0F, 0.0F, 0.0F));
-      gje $$5 = $$4.a("rods", giz.c(), giw.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", giz.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new giy(0.0F)), giw.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", giz.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new giy(0.0F)), giw.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", giz.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new giy(0.0F)), giw.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      gje $$6 = $$4.a(
-         "head",
-         giz.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new giy(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new giy(0.0F)),
-         giw.a(0.0F, 4.0F, 0.0F)
-      );
-      $$6.a(
-         "eyes",
-         giz.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new giy(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new giy(0.0F)),
-         giw.a(0.0F, 0.0F, 0.0F)
-      );
-      gje $$7 = $$3.a("wind_body", giz.c(), giw.a(0.0F, 0.0F, 0.0F));
-      gje $$8 = $$7.a("wind_bottom", giz.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new giy(0.0F)), giw.a(0.0F, 24.0F, 0.0F));
-      gje $$9 = $$8.a(
-         "wind_mid",
-         giz.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new giy(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new giy(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new giy(0.0F)),
-         giw.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         giz.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new giy(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new giy(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new giy(0.0F)),
-         giw.a(0.0F, -6.0F, 0.0F)
-      );
-      return gja.a($$2, $$0, $$1);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      gjm $$2 = $$1.a("bone", gjh.c(), gje.a(0.0F, 19.0F, 0.0F));
+      gjm $$3 = $$2.a("body", gjh.c().a(0, 0).a(-3.5F, -4.0F, -5.0F, 7.0F, 7.0F, 10.0F), gje.a);
+      $$3.a("stinger", gjh.c().a(26, 7).a(0.0F, -1.0F, 5.0F, 0.0F, 1.0F, 2.0F), gje.a);
+      $$3.a("left_antenna", gjh.c().a(2, 0).a(1.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gje.a(0.0F, -2.0F, -5.0F));
+      $$3.a("right_antenna", gjh.c().a(2, 3).a(-2.5F, -2.0F, -3.0F, 1.0F, 2.0F, 3.0F), gje.a(0.0F, -2.0F, -5.0F));
+      gjg $$4 = new gjg(0.001F);
+      $$2.a("right_wing", gjh.c().a(0, 18).a(-9.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gje.a(-1.5F, -4.0F, -3.0F, 0.0F, -0.2618F, 0.0F));
+      $$2.a("left_wing", gjh.c().a(0, 18).a().a(0.0F, 0.0F, 0.0F, 9.0F, 0.0F, 6.0F, $$4), gje.a(1.5F, -4.0F, -3.0F, 0.0F, 0.2618F, 0.0F));
+      $$2.a("front_legs", gjh.c().a("front_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 1), gje.a(1.5F, 3.0F, -2.0F));
+      $$2.a("middle_legs", gjh.c().a("middle_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 3), gje.a(1.5F, 3.0F, 0.0F));
+      $$2.a("back_legs", gjh.c().a("back_legs", -5.0F, 0.0F, 0.0F, 7, 2, 0, 26, 5), gje.a(1.5F, 3.0F, 2.0F));
+      return gji.a($$0, 64, 64);
    }
 
-   public void a(hbs $$0) {
+   public void a(hbw $$0) {
       super.a($$0);
-      this.a($$0.a, fpl.a, $$0.u);
-      this.a($$0.b, fpl.b, $$0.u);
-      this.a($$0.c, fpl.e, $$0.u);
-      this.a($$0.d, fpl.f, $$0.u);
-      this.a($$0.e, fpl.d, $$0.u);
-      this.a($$0.f, fpl.c, $$0.u);
-   }
+      this.s = $$0.a;
+      this.p.k = $$0.b;
+      if (!$$0.c) {
+         float $$1 = $$0.u * 120.32113F * (float) (Math.PI / 180.0);
+         this.k.f = 0.0F;
+         this.k.g = azm.b($$1) * (float) Math.PI * 0.15F;
+         this.l.e = this.k.e;
+         this.l.f = this.k.f;
+         this.l.g = -this.k.g;
+         this.m.e = (float) (Math.PI / 4);
+         this.n.e = (float) (Math.PI / 4);
+         this.o.e = (float) (Math.PI / 4);
+      }
 
-   public giu a() {
-      return this.d;
-   }
+      if (!$$0.d && !$$0.c) {
+         float $$2 = azm.b($$0.u * 0.18F);
+         this.j.e = 0.1F + $$2 * (float) Math.PI * 0.025F;
+         this.q.e = $$2 * (float) Math.PI * 0.03F;
+         this.r.e = $$2 * (float) Math.PI * 0.03F;
+         this.m.e = -$$2 * (float) Math.PI * 0.1F + (float) (Math.PI / 8);
+         this.o.e = -$$2 * (float) Math.PI * 0.05F + (float) (Math.PI / 4);
+         this.j.c = this.j.c - azm.b($$0.u * 0.18F) * 0.9F;
+      }
 
-   public giu b() {
-      return this.e;
-   }
-
-   public giu c() {
-      return this.k;
-   }
-
-   public giu d() {
-      return this.f;
+      if (this.s > 0.0F) {
+         this.j.e = azm.j(this.s, this.j.e, 3.0915928F);
+      }
    }
 }

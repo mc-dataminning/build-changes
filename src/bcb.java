@@ -12,7 +12,7 @@ public class bcb extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(biw.c);
+      Type<?> $$0 = this.getOutputSchema().getType(bix.c);
       return this.fixTypeEverywhereTyped(
          "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
       );

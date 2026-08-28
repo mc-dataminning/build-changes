@@ -1,35 +1,73 @@
-import java.net.InetSocketAddress;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public interface gli {
-   String a();
+public final class gli {
+   private static final int a = 1024;
+   private final gkz b;
+   private final glf c;
+   private final gku d;
+   @Nullable
+   private gle e;
 
-   String b();
+   public gli(gkz $$0, glf $$1, gku $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
 
-   int c();
+   public static gli a(glf $$0, UserApiService $$1) {
+      gku $$2 = new gku(1024);
+      gkz $$3 = gkz.a($$0, $$1);
+      return new gli($$3, $$0, $$2);
+   }
 
-   InetSocketAddress d();
+   public void a(foz $$0, fyb $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gle $$4 = this.e.b();
+         $$0.a(
+            new fwz(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wy.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wy.c("gui.abuseReport.draft.edit"),
+               wy.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
+      }
+   }
 
-   static gli a(final InetSocketAddress $$0) {
-      return new gli() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
+   public gkz a() {
+      return this.b;
+   }
 
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
+   public gku b() {
+      return this.d;
+   }
 
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
+   public boolean a(glf $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
-      };
+   public void a(@Nullable gle $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

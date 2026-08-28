@@ -1,80 +1,56 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cme extends cly {
-   private static final chr b = chr.a().d();
+public class cme extends cmc {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private ewu c;
-   @Nullable
-   private fei d;
+   private feq d;
+   private int e;
 
-   public cme(clw $$0) {
+   public cme(cma $$0) {
       super($$0);
    }
 
    @Override
-   public cmm<cme> h() {
-      return cmm.c;
+   public void a(arq $$0) {
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.t().a(cmq.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.t().a(cmq.a);
+      } else {
+         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
+         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
+      }
    }
 
    @Override
    public void c() {
-      this.c = null;
       this.d = null;
+      this.e = 0;
+   }
+
+   public void a(feq $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void a(arq $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
+   public float e() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public fei f() {
+   public feq f() {
       return this.d;
    }
 
-   private void b(arq $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.n();
-         iu $$2 = $$0.a(efy.a.f, ejd.a(this.a.j()));
-         cqy $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fei $$4 = new fei($$3.dA(), 0.0, $$3.dG()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
-         }
-
-         ews $$7 = new ews($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.t().a(cmm.d);
-      }
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         jz $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fei($$1, $$3, $$2);
-      }
+   @Override
+   public cmq<cme> h() {
+      return cmq.i;
    }
 }

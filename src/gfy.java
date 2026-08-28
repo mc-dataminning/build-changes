@@ -1,44 +1,17 @@
-import java.util.Set;
+import java.util.function.Function;
 
-public class gfy extends ghb<hcr> {
-   public static final gjd a = new gem(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
+public abstract class gfy<T extends hcn> extends ggu {
+   public static final float h = -1.501F;
 
-   public gfy(giu $$0) {
-      super($$0);
+   protected gfy(gjc $$0) {
+      this($$0, gqk::g);
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.a(
-         "head",
-         giz.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         giw.a(1.0F, 14.0F, 0.0F)
-      );
-      $$2.a("left_horn", giz.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), giw.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", giz.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), giw.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", giz.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), giw.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", giz.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), giw.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", giz.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), giw.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", giz.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), giw.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", giz.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), giw.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", giz.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), giw.a(-3.0F, 14.0F, -6.0F));
-      return gja.a($$0, 64, 64);
+   protected gfy(gjc $$0, Function<alg, gqk> $$1) {
+      super($$0, $$1);
    }
 
-   public void a(hcr $$0) {
-      super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
-      }
+   public void a(T $$0) {
+      this.g();
    }
 }

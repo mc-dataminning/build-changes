@@ -8,11 +8,11 @@ public class ax extends dj<ax.a> {
       return ax.a.a;
    }
 
-   public void a(arr $$0, dzz $$1, cyy $$2, int $$3) {
+   public void a(arr $$0, eah $$1, czd $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bi> b, Optional<je<dma>> c, Optional<cl> d, cv.d e) implements dj.a {
+   public static record a(Optional<bi> b, Optional<je<dmf>> c, Optional<cl> d, cv.d e) implements dj.a {
       public static final Codec<ax.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bx.b.optionalFieldOf("player").forGetter(ax.a::a),
@@ -23,11 +23,11 @@ public class ax extends dj<ax.a> {
                .apply($$0, ax.a::new)
       );
 
-      public static aq<ax.a> a(dma $$0, cl.a $$1, cv.d $$2) {
+      public static aq<ax.a> a(dmf $$0, cl.a $$1, cv.d $$2) {
          return ap.L.a(new ax.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dzz $$0, cyy $$1, int $$2) {
+      public boolean a(eah $$0, czd $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class ax extends dj<ax.a> {
          return this.b;
       }
 
-      public Optional<je<dma>> b() {
+      public Optional<je<dmf>> b() {
          return this.c;
       }
 

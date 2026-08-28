@@ -4,24 +4,38 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bof extends bkr {
+public class bof extends bks {
    public bof(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
-      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
-      $$0.registerSimple($$1, "minecraft:horse");
-      $$0.registerSimple($$1, "minecraft:skeleton_horse");
-      $$0.registerSimple($$1, "minecraft:zombie_horse");
-      return $$1;
-   }
-
-   private static TypeTemplate a(Schema $$0) {
-      return DSL.optionalFields("Items", DSL.list(biw.t.in($$0)));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bix.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(bix.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(bix.z.in($$0)),
+                  "separator",
+                  bix.z.in($$0),
+                  "hover_event",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("value", bix.z.in($$0)),
+                        "show_item",
+                        bix.t.in($$0),
+                        "show_entity",
+                        DSL.optionalFields("id", bix.B.in($$0), "name", bix.z.in($$0))
+                     )
+                  )
+               )
+            )
+      );
    }
 }

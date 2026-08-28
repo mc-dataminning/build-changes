@@ -1,77 +1,86 @@
-import java.util.List;
-import java.util.function.Predicate;
+public class btv implements btw {
+   private final btw b;
+   private final btw c;
 
-public class btv {
-   public static final String a = "Items";
-
-   public static cyy a(List<cyy> $$0, int $$1, int $$2) {
-      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cyy.k;
+   public btv(btw $$0, btw $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static cyy a(List<cyy> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cyy.k) : cyy.k;
+   @Override
+   public int b() {
+      return this.b.b() + this.c.b();
    }
 
-   public static tz a(tz $$0, jn<cyy> $$1, jg.a $$2) {
-      return a($$0, $$1, true, $$2);
+   @Override
+   public boolean c() {
+      return this.b.c() && this.c.c();
    }
 
-   public static tz a(tz $$0, jn<cyy> $$1, boolean $$2, jg.a $$3) {
-      uf $$4 = new uf();
-
-      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
-         cyy $$6 = $$1.get($$5);
-         if (!$$6.f()) {
-            tz $$7 = new tz();
-            $$7.a("Slot", (byte)$$5);
-            $$4.add($$6.b($$3, $$7));
-         }
-      }
-
-      if (!$$4.isEmpty() || $$2) {
-         $$0.a("Items", $$4);
-      }
-
-      return $$0;
+   public boolean a(btw $$0) {
+      return this.b == $$0 || this.c == $$0;
    }
 
-   public static void b(tz $$0, jn<cyy> $$1, jg.a $$2) {
-      uf $$3 = $$0.c("Items", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         tz $$5 = $$3.a($$4);
-         int $$6 = $$5.f("Slot") & 255;
-         if ($$6 >= 0 && $$6 < $$1.size()) {
-            $$1.set($$6, cyy.a($$2, (uw)$$5).orElse(cyy.k));
-         }
-      }
+   @Override
+   public czd a(int $$0) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
    }
 
-   public static int a(btu $$0, Predicate<cyy> $$1, int $$2, boolean $$3) {
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
-         cyy $$6 = $$0.a($$5);
-         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
-         if ($$7 > 0 && !$$3 && $$6.f()) {
-            $$0.a($$5, cyy.k);
-         }
-
-         $$4 += $$7;
-      }
-
-      return $$4;
+   @Override
+   public czd a(int $$0, int $$1) {
+      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
    }
 
-   public static int a(cyy $$0, Predicate<cyy> $$1, int $$2, boolean $$3) {
-      if ($$0.f() || !$$1.test($$0)) {
-         return 0;
-      } else if ($$3) {
-         return $$0.M();
+   @Override
+   public czd b(int $$0) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, czd $$1) {
+      if ($$0 >= this.b.b()) {
+         this.c.a($$0 - this.b.b(), $$1);
       } else {
-         int $$4 = $$2 < 0 ? $$0.M() : Math.min($$2, $$0.M());
-         $$0.h($$4);
-         return $$4;
+         this.b.a($$0, $$1);
       }
+   }
+
+   @Override
+   public int ak_() {
+      return this.b.ak_();
+   }
+
+   @Override
+   public void e() {
+      this.b.e();
+      this.c.e();
+   }
+
+   @Override
+   public boolean a(crc $$0) {
+      return this.b.a($$0) && this.c.a($$0);
+   }
+
+   @Override
+   public void c_(crc $$0) {
+      this.b.c_($$0);
+      this.c.c_($$0);
+   }
+
+   @Override
+   public void c(crc $$0) {
+      this.b.c($$0);
+      this.c.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, czd $$1) {
+      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.b.a();
+      this.c.a();
    }
 }

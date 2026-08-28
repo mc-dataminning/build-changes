@@ -1,19 +1,25 @@
+import java.util.List;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dim extends dip {
-   private final bwd a;
-
-   public dim(bwd $$0) {
-      this.a = $$0;
+public interface dim extends dis, djd, djf {
+   @Override
+   default <T extends dxf> Optional<T> a(iu $$0, dxh<T> $$1) {
+      return djd.super.a($$0, $$1);
    }
 
    @Override
-   public Optional<Float> a(dio $$0, dib $$1, iu $$2, dzz $$3, ewg $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default List<ffk> c(@Nullable bwf $$0, fel $$1) {
+      return dis.super.c($$0, $$1);
    }
 
    @Override
-   public boolean a(dio $$0, dib $$1, iu $$2, dzz $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   default boolean a(@Nullable bwf $$0, ffk $$1) {
+      return dis.super.a($$0, $$1);
+   }
+
+   @Override
+   default iu a(egg.a $$0, iu $$1) {
+      return djd.super.a($$0, $$1);
    }
 }

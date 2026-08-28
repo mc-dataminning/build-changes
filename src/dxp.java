@@ -1,167 +1,139 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dxp extends dwx implements buh, ffu.a {
-   public static final String d = "sherds";
-   public static final String e = "item";
-   public static final int f = 1;
-   public long g;
-   @Nullable
-   public dxp.a h;
-   private dyf k;
-   private cyy l = cyy.k;
-   @Nullable
-   protected alf<eze> i;
-   protected long j;
+public class dxp extends dxf implements btw {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jn<czd> d = jn.a(6, czd.k);
+   private int e = -1;
 
-   public dxp(iu $$0, dzz $$1) {
-      super(dwz.P, $$0, $$1);
-      this.k = dyf.a;
+   public dxp(iu $$0, eah $$1) {
+      super(dxh.N, $$0, $$1);
    }
 
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      if (!this.k.equals(dyf.a)) {
-         $$0.a("sherds", dyf.b, this.k);
-      }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         eah $$1 = this.m();
 
-      if (!this.c_($$0) && !this.l.f()) {
-         $$0.a("item", this.l.a($$1));
+         for (int $$2 = 0; $$2 < dnk.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            eay $$4 = dnk.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.n).a(this.o, $$1, 3);
+         this.n.a(efh.c, this.o, efh.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
       }
    }
 
    @Override
    protected void a(tz $$0, jg.a $$1) {
       super.a($$0, $$1);
-      this.k = $$0.<dyf>a("sherds", dyf.b).orElse(dyf.a);
-      if (!this.b_($$0)) {
-         if ($$0.b("item", 10)) {
-            this.l = cyy.a($$1, (uw)$$0.p("item")).orElse(cyy.k);
-         } else {
-            this.l = cyy.k;
-         }
+      this.d.clear();
+      btx.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      btx.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(czd::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(czd::f);
+   }
+
+   @Override
+   public czd a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public czd a(int $$0, int $$1) {
+      czd $$2 = Objects.requireNonNullElse(this.d.get($$0), czd.k);
+      this.d.set($$0, czd.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public czd b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, czd $$1) {
+      if ($$1.a(axk.ba)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
       }
    }
 
-   public aca j() {
-      return aca.a(this);
+   @Override
+   public boolean a(btw $$0, int $$1, czd $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : czd.c($$2, $$2x) && $$2x.M() + $$2.M() <= $$0.f_($$2x));
    }
 
    @Override
-   public tz a(jg.a $$0) {
-      return this.e($$0);
-   }
-
-   public ja k() {
-      return this.m().c(eap.T);
-   }
-
-   public dyf s() {
-      return this.k;
-   }
-
-   public static cyy a(dyf $$0) {
-      cyy $$1 = czc.eT.m();
-      $$1.b(kj.ao, $$0);
-      return $$1;
-   }
-
-   @Nullable
-   @Override
-   public alf<eze> as_() {
-      return this.i;
+   public int ak_() {
+      return 1;
    }
 
    @Override
-   public void a(@Nullable alf<eze> $$0) {
-      this.i = $$0;
+   public boolean a(crc $$0) {
+      return btw.a(this, $$0);
    }
 
    @Override
-   public long av_() {
-      return this.j;
+   public boolean b(int $$0, czd $$1) {
+      return $$1.a(axk.ba) && this.a($$0).f() && $$1.M() == this.ak_();
    }
 
-   @Override
-   public void a(long $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   protected void a(kg.a $$0) {
-      super.a($$0);
-      $$0.a(kj.ao, this.k);
-      $$0.a(kj.ap, dbq.a(List.of(this.l)));
+   public int j() {
+      return this.e;
    }
 
    @Override
    protected void a(ke $$0) {
       super.a($$0);
-      this.k = $$0.a(kj.ao, dyf.a);
-      this.l = $$0.a(kj.ap, dbq.a).a();
+      $$0.a(kj.ap, dbv.a).a(this.d);
+   }
+
+   @Override
+   protected void a(kg.a $$0) {
+      super.a($$0);
+      $$0.a(kj.ap, dbv.a(this.d));
    }
 
    @Override
    public void a(tz $$0) {
-      super.a($$0);
-      $$0.r("sherds");
-      $$0.r("item");
-   }
-
-   @Override
-   public cyy f() {
-      this.d_(null);
-      return this.l;
-   }
-
-   @Override
-   public cyy c(int $$0) {
-      this.d_(null);
-      cyy $$1 = this.l.a($$0);
-      if (this.l.f()) {
-         this.l = cyy.k;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public void b(cyy $$0) {
-      this.d_(null);
-      this.l = $$0;
-   }
-
-   @Override
-   public dwx t() {
-      return this;
-   }
-
-   public void a(dxp.a $$0) {
-      if (this.n != null && !this.n.w_()) {
-         this.n.a(this.aw_(), this.m().b(), 1, $$0.ordinal());
-      }
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dxp.a.values().length) {
-         this.g = this.n.ae();
-         this.h = dxp.a.values()[$$1];
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public static enum a {
-      a(7),
-      b(10);
-
-      public final int c;
-
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+      $$0.r("Items");
    }
 }

@@ -1,94 +1,28 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class eyt {
+   public static final eyt a = new eyt("advancements");
+   public static final eyt b = new eyt("stats");
+   public static final eyt c = new eyt("playerdata");
+   public static final eyt d = new eyt("players");
+   public static final eyt e = new eyt("level.dat");
+   public static final eyt f = new eyt("level.dat_old");
+   public static final eyt g = new eyt("icon.png");
+   public static final eyt h = new eyt("session.lock");
+   public static final eyt i = new eyt("generated");
+   public static final eyt j = new eyt("datapacks");
+   public static final eyt k = new eyt("resources.zip");
+   public static final eyt l = new eyt(".");
+   private final String m;
 
-public interface eyt {
-   int d = 19133;
-   int e = 19132;
-
-   djt D();
-
-   void a(djt var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   private eyt(String $$0) {
+      this.m = $$0;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   public String a() {
+      return this.m;
    }
 
-   @Nullable
-   tz E();
-
-   void a(@Nullable tz var1);
-
-   eys I();
-
-   diz J();
-
-   tz a(js var1, @Nullable tz var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dis k();
-
-   void a(dis var1);
-
-   boolean m();
-
-   bty q();
-
-   void a(bty var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dir o();
-
-   @Nullable
-   tz w();
-
-   edz.a C();
-
-   void a(edz.a var1);
-
-   egw y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cuh K() {
-      return this.D().b();
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

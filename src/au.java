@@ -5,7 +5,7 @@ import java.util.Optional;
 public class au {
    public static final Codec<au> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cyy.d.fieldOf("icon").forGetter(au::c),
+               czd.d.fieldOf("icon").forGetter(au::c),
                xa.a.fieldOf("title").forGetter(au::a),
                xa.a.fieldOf("description").forGetter(au::b),
                iv.a.optionalFieldOf("background").forGetter(au::d),
@@ -19,7 +19,7 @@ public class au {
    public static final yw<wj, au> b = yw.a(au::a, au::b);
    private final wy c;
    private final wy d;
-   private final cyy e;
+   private final czd e;
    private final Optional<iv> f;
    private final ao g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class au {
    private float k;
    private float l;
 
-   public au(cyy $$0, wy $$1, wy $$2, Optional<iv> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public au(czd $$0, wy $$1, wy $$2, Optional<iv> $$3, ao $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class au {
       return this.d;
    }
 
-   public cyy c() {
+   public czd c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class au {
    private void a(wj $$0) {
       xa.d.encode($$0, this.c);
       xa.d.encode($$0, this.d);
-      cyy.i.encode($$0, this.e);
+      czd.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class au {
    private static au b(wj $$0) {
       wy $$1 = xa.d.decode($$0);
       wy $$2 = xa.d.decode($$0);
-      cyy $$3 = cyy.i.decode($$0);
+      czd $$3 = czd.i.decode($$0);
       ao $$4 = $$0.b(ao.class);
       int $$5 = $$0.readInt();
       Optional<iv> $$6 = ($$5 & 1) != 0 ? Optional.of(new iv($$0.q())) : Optional.empty();

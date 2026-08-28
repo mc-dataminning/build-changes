@@ -1,9 +1,9 @@
-public class dfc {
-   public static final bax<dxw> a = bax.a("fuel_values");
-   public static final bax<jg.a> b = bax.a("registries");
-   public static final bay c = new bay.a().b(a).b(b).a();
+import io.netty.buffer.ByteBuf;
 
-   public static baz a(div $$0) {
-      return new baz.a().a(a, $$0.M()).a(b, $$0.F_()).a(c);
+public record dfc(int b) {
+   public static final yw<ByteBuf, dfc> a = yw.a(yu.h, dfc::a, dfc::new);
+
+   public int a() {
+      return this.b;
    }
 }

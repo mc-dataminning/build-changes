@@ -1,59 +1,130 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dkp extends dkc {
-   public static final MapCodec<dkp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ale.d(dkf.ai), ale.d(dkf.aj), ale.d(dkf.ak), ale.d(dkf.al), ale.d(dkf.am)).apply($$0, $$0.stable(dkp::new))
+public class dkp {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bso<dkp.c> a = bso.a();
+   public static final dkp b = new dkp.a().a();
+   public static final MapCodec<dkp> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(bxh.i, bso.a(dkp.c.a).promotePartial(af.a("Spawn data: ", d::error)), bak.a(bxh.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(mf.f.q(), dkp.b.a, mf.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dkp::new)
    );
-   private final je<djy> c;
-   private final je<djy> d;
-   private final je<djy> e;
-   private final je<djy> f;
-   private final je<djy> g;
+   private final float f;
+   private final Map<bxh, bso<dkp.c>> g;
+   private final Map<bwo<?>, dkp.b> h;
 
-   public static dkp a(jf<djy> $$0) {
-      return new dkp($$0.b(dkf.ai), $$0.b(dkf.aj), $$0.b(dkf.ak), $$0.b(dkf.al), $$0.b(dkf.am));
+   dkp(float $$0, Map<bxh, bso<dkp.c>> $$1, Map<bwo<?>, dkp.b> $$2) {
+      this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   private dkp(je<djy> $$0, je<djy> $$1, je<djy> $$2, je<djy> $$3, je<djy> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public bso<dkp.c> a(bxh $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   @Override
-   protected Stream<je<djy>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   @Nullable
+   public dkp.b a(bwo<?> $$0) {
+      return this.h.get($$0);
    }
 
-   @Override
-   protected MapCodec<? extends dkc> a() {
-      return b;
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   public je<djy> getNoiseBiome(int $$0, int $$1, int $$2, dkh.f $$3) {
-      int $$4 = jp.c($$0);
-      int $$5 = jp.c($$1);
-      int $$6 = jp.c($$2);
-      int $$7 = jx.a($$4);
-      int $$8 = jx.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+   public static class a {
+      private final Map<bxh, bso.a<dkp.c>> a = af.a(bxh.class, $$0 -> bso.b());
+      private final Map<bwo<?>, dkp.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dkp.a a(bxh $$0, int $$1, dkp.c $$2) {
+         this.a.get($$0).a($$2, $$1);
+         return this;
+      }
+
+      public dkp.a a(bwo<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dkp.b($$2, $$1));
+         return this;
+      }
+
+      public dkp.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dkp a() {
+         return new dkp(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> ((bso.a)$$0.getValue()).a())),
+            ImmutableMap.copyOf(this.b)
+         );
+      }
+   }
+
+   public static record b(double b, double c) {
+      public static final Codec<dkp.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dkp.b::new)
+      );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
          return this.c;
-      } else {
-         int $$9 = (jx.a($$4) * 2 + 1) * 8;
-         int $$10 = (jx.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new efr.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
+      }
+   }
+
+   public static record c(bwo<?> b, int c, int d) {
+      public static final MapCodec<dkp.c> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     mf.f.q().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     ayu.m.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     ayu.m.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dkp.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+
+      public c(bwo<?> b, int c, int d) {
+         b = b.f() == bxh.h ? bwo.aQ : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+
+      @Override
+      public String toString() {
+         return bwo.a(this.b) + "*(" + this.c + "-" + this.d + ")";
+      }
+
+      public bwo<?> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
       }
    }
 }

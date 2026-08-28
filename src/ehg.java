@@ -1,23 +1,32 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-public interface ehg<P extends ehf> {
-   ehg<ehl> a = a("matching_blocks", ehl.a);
-   ehg<ehk> b = a("matching_block_tag", ehk.e);
-   ehg<ehm> c = a("matching_fluids", ehm.a);
-   ehg<ehi> d = a("has_sturdy_face", ehi.a);
-   ehg<ehp> e = a("solid", ehp.a);
-   ehg<eho> f = a("replaceable", eho.a);
-   ehg<eht> g = a("would_survive", eht.a);
-   ehg<ehj> h = a("inside_world_bounds", ehj.a);
-   ehg<ehe> i = a("any_of", ehe.a);
-   ehg<ehd> j = a("all_of", ehd.a);
-   ehg<ehn> k = a("not", ehn.a);
-   ehg<ehr> l = a("true", ehr.e);
-   ehg<ehs> m = a("unobstructed", ehs.a);
+public class ehg {
+   private long b;
+   private long c;
+   public static final Codec<ehg> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new ehg($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   MapCodec<P> codec();
+   public ehg(egv.a $$0) {
+      this($$0.b(), $$0.c());
+   }
 
-   private static <P extends ehf> ehg<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.M, $$0, () -> $$1);
+   public ehg(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
+   }
+
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

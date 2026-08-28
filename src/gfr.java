@@ -1,45 +1,48 @@
-public class gfr extends gea<hcg> {
-   private static final String e = "saddle";
-   private static final String f = "left_saddle_mouth";
-   private static final String g = "left_saddle_line";
-   private static final String i = "right_saddle_mouth";
-   private static final String j = "right_saddle_line";
-   private static final String k = "head_saddle";
-   private static final String l = "mouth_saddle_wrap";
-   private final giu[] m;
+public class gfr extends gfy<hci> {
+   public static final gjl a = gjl.scaling(0.5F);
+   private final gjc b;
+   private final gjc c;
+   private final gjc d;
 
-   public gfr(giu $$0) {
+   public gfr(gjc $$0) {
       super($$0);
-      giu $$1 = this.d.b("left_saddle_line");
-      giu $$2 = this.d.b("right_saddle_line");
-      this.m = new giu[]{$$1, $$2};
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public static gja a(boolean $$0) {
-      return b($$0).a($$0 ? b : gjd.a);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      gjm $$4 = $$1.a("body", gjh.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gje.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", gjh.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gje.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         gjh.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gje.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         gjh.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gje.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      gjm $$5 = $$4.a("tail", gjh.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gje.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", gjh.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gje.a(0.0F, 0.0F, 9.0F));
+      gjm $$6 = $$4.a("head", gjh.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gje.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", gjh.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gje.a);
+      return gji.a($$0, 64, 64);
    }
 
-   public static gja b(boolean $$0) {
-      gjc $$1 = $$0 ? c(giy.a) : a(giy.a);
-      gje $$2 = $$1.a();
-      gje $$3 = $$2.b("body");
-      gje $$4 = $$2.b("head_parts");
-      $$3.a("saddle", giz.c().a(26, 0).a(-5.0F, -8.0F, -9.0F, 10.0F, 9.0F, 9.0F, new giy(0.5F)), giw.a);
-      $$4.a("left_saddle_mouth", giz.c().a(29, 5).a(2.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F), giw.a);
-      $$4.a("right_saddle_mouth", giz.c().a(29, 5).a(-3.0F, -9.0F, -6.0F, 1.0F, 2.0F, 2.0F), giw.a);
-      $$4.a("left_saddle_line", giz.c().a(32, 2).a(3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), giw.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("right_saddle_line", giz.c().a(32, 2).a(-3.1F, -6.0F, -8.0F, 0.0F, 3.0F, 16.0F), giw.b((float) (-Math.PI / 6), 0.0F, 0.0F));
-      $$4.a("head_saddle", giz.c().a(1, 1).a(-3.0F, -11.0F, -1.9F, 6.0F, 5.0F, 6.0F, new giy(0.22F)), giw.a);
-      $$4.a("mouth_saddle_wrap", giz.c().a(19, 0).a(-2.0F, -11.0F, -4.0F, 4.0F, 5.0F, 2.0F, new giy(0.2F)), giw.a);
-      return gja.a($$1, 64, 64);
-   }
-
-   @Override
-   public void a(hcg $$0) {
+   public void a(hci $$0) {
       super.a($$0);
-
-      for (giu $$1 : this.m) {
-         $$1.k = $$0.c;
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * azm.b($$0.u * 0.3F));
+         this.c.e = -0.1F * azm.b($$0.u * 0.3F);
+         this.d.e = -0.2F * azm.b($$0.u * 0.3F);
       }
    }
 }

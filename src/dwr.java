@@ -1,27 +1,21 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dwr {
-   List<dwr.a> a();
+public class dwr extends dmy {
+   public static final MapCodec<dwr> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyb.q.fieldOf("color").forGetter(dwr::b), t()).apply($$0, dwr::new));
+   private final cyb c;
 
-   public static class a {
-      private final int a;
-      private int b;
+   @Override
+   public MapCodec<dwr> a() {
+      return b;
+   }
 
-      public a(int $$0) {
-         this.a = $$0;
-         this.b = 1;
-      }
+   protected dwr(cyb $$0, eag.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
-      public void a() {
-         this.b++;
-      }
-
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
+   public cyb b() {
+      return this.c;
    }
 }

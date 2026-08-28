@@ -1,146 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class ezd {
-   public static final Codec<ezd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ezn.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               fci.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               fap.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               fdf.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               fdf.a.fieldOf("bonus_rolls").orElse(fdb.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ezd::new)
-   );
-   private final List<ezp> b;
-   private final List<fci> c;
-   private final Predicate<eyz> d;
-   private final List<fan> e;
-   private final BiFunction<cyy, eyz, cyy> f;
-   private final fde g;
-   private final fde h;
+   private static final Set<alf<ezm>> bd = new HashSet<>();
+   private static final Set<alf<ezm>> be = Collections.unmodifiableSet(bd);
+   public static final alf<ezm> a = b("chests/spawn_bonus_chest");
+   public static final alf<ezm> b = b("chests/end_city_treasure");
+   public static final alf<ezm> c = b("chests/simple_dungeon");
+   public static final alf<ezm> d = b("chests/village/village_weaponsmith");
+   public static final alf<ezm> e = b("chests/village/village_toolsmith");
+   public static final alf<ezm> f = b("chests/village/village_armorer");
+   public static final alf<ezm> g = b("chests/village/village_cartographer");
+   public static final alf<ezm> h = b("chests/village/village_mason");
+   public static final alf<ezm> i = b("chests/village/village_shepherd");
+   public static final alf<ezm> j = b("chests/village/village_butcher");
+   public static final alf<ezm> k = b("chests/village/village_fletcher");
+   public static final alf<ezm> l = b("chests/village/village_fisher");
+   public static final alf<ezm> m = b("chests/village/village_tannery");
+   public static final alf<ezm> n = b("chests/village/village_temple");
+   public static final alf<ezm> o = b("chests/village/village_desert_house");
+   public static final alf<ezm> p = b("chests/village/village_plains_house");
+   public static final alf<ezm> q = b("chests/village/village_taiga_house");
+   public static final alf<ezm> r = b("chests/village/village_snowy_house");
+   public static final alf<ezm> s = b("chests/village/village_savanna_house");
+   public static final alf<ezm> t = b("chests/abandoned_mineshaft");
+   public static final alf<ezm> u = b("chests/nether_bridge");
+   public static final alf<ezm> v = b("chests/stronghold_library");
+   public static final alf<ezm> w = b("chests/stronghold_crossing");
+   public static final alf<ezm> x = b("chests/stronghold_corridor");
+   public static final alf<ezm> y = b("chests/desert_pyramid");
+   public static final alf<ezm> z = b("chests/jungle_temple");
+   public static final alf<ezm> A = b("chests/jungle_temple_dispenser");
+   public static final alf<ezm> B = b("chests/igloo_chest");
+   public static final alf<ezm> C = b("chests/woodland_mansion");
+   public static final alf<ezm> D = b("chests/underwater_ruin_small");
+   public static final alf<ezm> E = b("chests/underwater_ruin_big");
+   public static final alf<ezm> F = b("chests/buried_treasure");
+   public static final alf<ezm> G = b("chests/shipwreck_map");
+   public static final alf<ezm> H = b("chests/shipwreck_supply");
+   public static final alf<ezm> I = b("chests/shipwreck_treasure");
+   public static final alf<ezm> J = b("chests/pillager_outpost");
+   public static final alf<ezm> K = b("chests/bastion_treasure");
+   public static final alf<ezm> L = b("chests/bastion_other");
+   public static final alf<ezm> M = b("chests/bastion_bridge");
+   public static final alf<ezm> N = b("chests/bastion_hoglin_stable");
+   public static final alf<ezm> O = b("chests/ancient_city");
+   public static final alf<ezm> P = b("chests/ancient_city_ice_box");
+   public static final alf<ezm> Q = b("chests/ruined_portal");
+   public static final alf<ezm> R = b("chests/trial_chambers/reward");
+   public static final alf<ezm> S = b("chests/trial_chambers/reward_common");
+   public static final alf<ezm> T = b("chests/trial_chambers/reward_rare");
+   public static final alf<ezm> U = b("chests/trial_chambers/reward_unique");
+   public static final alf<ezm> V = b("chests/trial_chambers/reward_ominous");
+   public static final alf<ezm> W = b("chests/trial_chambers/reward_ominous_common");
+   public static final alf<ezm> X = b("chests/trial_chambers/reward_ominous_rare");
+   public static final alf<ezm> Y = b("chests/trial_chambers/reward_ominous_unique");
+   public static final alf<ezm> Z = b("chests/trial_chambers/supply");
+   public static final alf<ezm> aa = b("chests/trial_chambers/corridor");
+   public static final alf<ezm> ab = b("chests/trial_chambers/intersection");
+   public static final alf<ezm> ac = b("chests/trial_chambers/intersection_barrel");
+   public static final alf<ezm> ad = b("chests/trial_chambers/entrance");
+   public static final alf<ezm> ae = b("dispensers/trial_chambers/corridor");
+   public static final alf<ezm> af = b("dispensers/trial_chambers/chamber");
+   public static final alf<ezm> ag = b("dispensers/trial_chambers/water");
+   public static final alf<ezm> ah = b("pots/trial_chambers/corridor");
+   public static final alf<ezm> ai = b("equipment/trial_chamber");
+   public static final alf<ezm> aj = b("equipment/trial_chamber_ranged");
+   public static final alf<ezm> ak = b("equipment/trial_chamber_melee");
+   public static final Map<cyb, alf<ezm>> al = a("entities/sheep");
+   public static final alf<ezm> am = b("gameplay/fishing");
+   public static final alf<ezm> an = b("gameplay/fishing/junk");
+   public static final alf<ezm> ao = b("gameplay/fishing/treasure");
+   public static final alf<ezm> ap = b("gameplay/fishing/fish");
+   public static final alf<ezm> aq = b("gameplay/cat_morning_gift");
+   public static final alf<ezm> ar = b("gameplay/hero_of_the_village/armorer_gift");
+   public static final alf<ezm> as = b("gameplay/hero_of_the_village/butcher_gift");
+   public static final alf<ezm> at = b("gameplay/hero_of_the_village/cartographer_gift");
+   public static final alf<ezm> au = b("gameplay/hero_of_the_village/cleric_gift");
+   public static final alf<ezm> av = b("gameplay/hero_of_the_village/farmer_gift");
+   public static final alf<ezm> aw = b("gameplay/hero_of_the_village/fisherman_gift");
+   public static final alf<ezm> ax = b("gameplay/hero_of_the_village/fletcher_gift");
+   public static final alf<ezm> ay = b("gameplay/hero_of_the_village/leatherworker_gift");
+   public static final alf<ezm> az = b("gameplay/hero_of_the_village/librarian_gift");
+   public static final alf<ezm> aA = b("gameplay/hero_of_the_village/mason_gift");
+   public static final alf<ezm> aB = b("gameplay/hero_of_the_village/shepherd_gift");
+   public static final alf<ezm> aC = b("gameplay/hero_of_the_village/toolsmith_gift");
+   public static final alf<ezm> aD = b("gameplay/hero_of_the_village/weaponsmith_gift");
+   public static final alf<ezm> aE = b("gameplay/hero_of_the_village/unemployed_gift");
+   public static final alf<ezm> aF = b("gameplay/hero_of_the_village/baby_gift");
+   public static final alf<ezm> aG = b("gameplay/sniffer_digging");
+   public static final alf<ezm> aH = b("gameplay/panda_sneeze");
+   public static final alf<ezm> aI = b("gameplay/chicken_lay");
+   public static final alf<ezm> aJ = b("gameplay/armadillo_shed");
+   public static final alf<ezm> aK = b("gameplay/piglin_bartering");
+   public static final alf<ezm> aL = b("spawners/trial_chamber/key");
+   public static final alf<ezm> aM = b("spawners/trial_chamber/consumables");
+   public static final alf<ezm> aN = b("spawners/ominous/trial_chamber/key");
+   public static final alf<ezm> aO = b("spawners/ominous/trial_chamber/consumables");
+   public static final alf<ezm> aP = b("spawners/trial_chamber/items_to_drop_when_ominous");
+   public static final alf<ezm> aQ = b("shearing/bogged");
+   public static final alf<ezm> aR = b("shearing/mooshroom");
+   public static final alf<ezm> aS = b("shearing/mooshroom/red");
+   public static final alf<ezm> aT = b("shearing/mooshroom/brown");
+   public static final alf<ezm> aU = b("shearing/snow_golem");
+   public static final alf<ezm> aV = b("shearing/sheep");
+   public static final Map<cyb, alf<ezm>> aW = a("shearing/sheep");
+   public static final alf<ezm> aX = b("archaeology/desert_well");
+   public static final alf<ezm> aY = b("archaeology/desert_pyramid");
+   public static final alf<ezm> aZ = b("archaeology/trail_ruins_common");
+   public static final alf<ezm> ba = b("archaeology/trail_ruins_rare");
+   public static final alf<ezm> bb = b("archaeology/ocean_ruin_warm");
+   public static final alf<ezm> bc = b("archaeology/ocean_ruin_cold");
 
-   ezd(List<ezp> $$0, List<fci> $$1, List<fan> $$2, fde $$3, fde $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = af.a($$1);
-      this.e = $$2;
-      this.f = fap.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private static Map<cyb, alf<ezm>> a(String $$0) {
+      return af.a(cyb.class, $$1 -> b($$0 + "/" + $$1.b()));
    }
 
-   private void b(Consumer<cyy> $$0, eyz $$1) {
-      azv $$2 = $$1.b();
-      List<ezo> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   private static alf<ezm> b(String $$0) {
+      return a(alf.a(mg.bq, alg.b($$0)));
+   }
 
-      for (ezp $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (ezo $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
+   private static alf<ezm> a(alf<ezm> $$0) {
+      if (bd.add($$0)) {
+         return $$0;
+      } else {
+         throw new IllegalArgumentException($$0.a() + " is already a registered built-in loot table");
       }
    }
 
-   public void a(Consumer<cyy> $$0, eyz $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cyy> $$2 = fan.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azm.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
-   }
-
-   public void a(ezf $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static ezd.a a() {
-      return new ezd.a();
-   }
-
-   public static class a implements faj<ezd.a>, fca<ezd.a> {
-      private final Builder<ezp> a = ImmutableList.builder();
-      private final Builder<fci> b = ImmutableList.builder();
-      private final Builder<fan> c = ImmutableList.builder();
-      private fde d = fdb.a(1.0F);
-      private fde e = fdb.a(0.0F);
-
-      public ezd.a a(fde $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ezd.a a() {
-         return this;
-      }
-
-      public ezd.a b(fde $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ezd.a a(ezp.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ezd.a a(fci.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ezd.a a(fan.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ezd b() {
-         return new ezd(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static Set<alf<ezm>> a() {
+      return be;
    }
 }

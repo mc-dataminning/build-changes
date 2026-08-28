@@ -1,29 +1,38 @@
-public enum eet {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import javax.annotation.Nullable;
 
-   private final boolean d;
-   private final boolean e;
+public interface eet<B, T extends B> {
+   static <B, T extends B> eet<B, T> a(final Class<T> $$0) {
+      return new eet<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   private eet(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   public boolean a() {
-      return this.e;
+   static <B, T extends B> eet<B, T> b(final Class<T> $$0) {
+      return new eet<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   public boolean b() {
-      return this.d;
-   }
+   @Nullable
+   T a(B var1);
 
-   public static eet a(are $$0) {
-      if ($$0.a(are.d)) {
-         return c;
-      } else {
-         return $$0.a(are.b) ? b : a;
-      }
-   }
+   Class<? extends B> a();
 }

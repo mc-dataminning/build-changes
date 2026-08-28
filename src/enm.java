@@ -1,30 +1,40 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class enm extends enj {
-   protected final long c;
-   protected final evj.a d;
-   protected final float e;
-   protected final evj f;
+public record enm(ji<dmf> b, ji<dmf> c, enr d, int e, int f, float g) {
+   public static final Codec<enm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jt.a(mg.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               jt.a(mg.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               enr.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, enm::new)
+   );
 
-   protected static <P extends enm> P3<Mu<P>, Long, evj.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         evj.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayu.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public ji<dmf> a() {
+      return this.b;
    }
 
-   protected enm(long $$0, evj.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = evj.b(new egx(new efz($$0)), $$1);
+   public ji<dmf> b() {
+      return this.c;
    }
 
-   protected double a(iu $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public enr c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

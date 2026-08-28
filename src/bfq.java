@@ -3,7 +3,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bfq extends bhs {
    public bfq(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", biw.s, "minecraft:sign");
+      super($$0, false, "Remove filtered text from signs", bix.s, "minecraft:sign");
    }
 
    @Override

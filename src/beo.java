@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class beo extends bhr {
    public beo(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", biw.D, "minecraft:item_frame");
+      super($$0, $$1, "EntityItemFrameDirectionFix", bix.D, "minecraft:item_frame");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

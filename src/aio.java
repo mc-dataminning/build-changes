@@ -1,13 +1,13 @@
 public class aio implements zf<agp> {
    public static final yw<vu, aio> a = zf.a(aio::a, aio::new);
-   private final bua b;
+   private final buc b;
 
-   public aio(bua $$0) {
+   public aio(buc $$0) {
       this.b = $$0;
    }
 
    private aio(vu $$0) {
-      this.b = $$0.b(bua.class);
+      this.b = $$0.b(buc.class);
    }
 
    private void a(vu $$0) {
@@ -23,7 +23,7 @@ public class aio implements zf<agp> {
       $$0.a(this);
    }
 
-   public bua b() {
+   public buc b() {
       return this.b;
    }
 }

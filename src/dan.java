@@ -1,32 +1,41 @@
-public interface dan {
-   dan.a a = new dan.a(false, false);
-   dan.a b = new dan.a(true, false);
+public class dan extends cyz {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-   boolean a();
+   public dan(cyz.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public int a(czd $$0, bxe $$1) {
+      return 1200;
+   }
 
-   public static record a(boolean c, boolean d) implements dan {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public czf b(czd $$0) {
+      return czf.h;
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
+   @Override
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      $$1.a(awn.Ab, 1.0F, 1.0F);
+      $$1.b(awx.c.b(this));
+      return czg.a($$0, $$1, $$2);
+   }
 
-      public dan.a c() {
-         return new dan.a(this.c, true);
-      }
+   @Override
+   public czd a(czd $$0, dja $$1, bxe $$2) {
+      this.b($$2);
+      return $$0;
+   }
 
-      public boolean d() {
-         return this.c;
-      }
+   @Override
+   public boolean a(czd $$0, dja $$1, bxe $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
 
-      public boolean e() {
-         return this.d;
-      }
+   private void b(bxe $$0) {
+      $$0.a(awn.Ac, 1.0F, 1.0F);
    }
 }

@@ -14,27 +14,27 @@ public class sc extends sr {
    @Override
    public void a(sp $$0) {
       iu $$1 = this.b($$0);
-      dyr $$2 = $$0.a($$1, dyr.class);
+      dyz $$2 = $$0.a($$1, dyz.class);
       $$2.j();
       $$0.e(() -> {
-         List<iu> $$1x = this.a($$0, ebk.d);
+         List<iu> $$1x = this.a($$0, ebs.d);
          if ($$1x.isEmpty()) {
-            $$0.b(wy.a("test_block.error.missing", ebk.d.a()));
+            $$0.b(wy.a("test_block.error.missing", ebs.d.a()));
          }
 
-         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dyr.class)).anyMatch(dyr::s);
+         boolean $$2x = $$1x.stream().map($$1xx -> $$0.a($$1xx, dyz.class)).anyMatch(dyz::s);
          if ($$2x) {
             $$0.e();
          } else {
-            this.a($$0, ebk.c, $$1xx -> $$0.b(wy.b($$1xx.t())));
-            this.a($$0, ebk.b, dyr::j);
+            this.a($$0, ebs.c, $$1xx -> $$0.b(wy.b($$1xx.t())));
+            this.a($$0, ebs.b, dyz::j);
          }
       });
    }
 
-   private void a(sp $$0, ebk $$1, Consumer<dyr> $$2) {
+   private void a(sp $$0, ebs $$1, Consumer<dyz> $$2) {
       for (iu $$4 : this.a($$0, $$1)) {
-         dyr $$5 = $$0.a($$4, dyr.class);
+         dyz $$5 = $$0.a($$4, dyz.class);
          if ($$5.s()) {
             $$2.accept($$5);
             $$5.f();
@@ -43,23 +43,23 @@ public class sc extends sr {
    }
 
    private iu b(sp $$0) {
-      List<iu> $$1 = this.a($$0, ebk.a);
+      List<iu> $$1 = this.a($$0, ebs.a);
       if ($$1.isEmpty()) {
-         $$0.b(wy.a("test_block.error.missing", ebk.a.a()));
+         $$0.b(wy.a("test_block.error.missing", ebs.a.a()));
       }
 
       if ($$1.size() != 1) {
-         $$0.b(wy.a("test_block.error.too_many", ebk.a.a()));
+         $$0.b(wy.a("test_block.error.too_many", ebs.a.a()));
       }
 
       return $$1.getFirst();
    }
 
-   private List<iu> a(sp $$0, ebk $$1) {
+   private List<iu> a(sp $$0, ebs $$1) {
       List<iu> $$2 = new ArrayList<>();
       $$0.a($$3 -> {
-         dzz $$4 = $$0.a($$3);
-         if ($$4.a(dmc.pF) && $$4.c(dur.b) == $$1) {
+         eah $$4 = $$0.a($$3);
+         if ($$4.a(dmh.pI) && $$4.c(duz.b) == $$1) {
             $$2.add($$3.j());
          }
       });

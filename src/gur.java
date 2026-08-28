@@ -1,25 +1,37 @@
-public abstract class gur<T extends cnh, S extends hea> extends gwq<T, S, ghm<S>> {
-   public gur(gvz.a $$0, gis $$1, gis $$2, gis $$3) {
-      this($$0, $$2, $$3, new ghm<>($$0.a($$1)));
+import com.google.common.collect.Sets;
+import java.util.Set;
+
+public class gur implements guc.a {
+   private static final int a = 60;
+   private final Set<jx> b = Sets.newHashSet();
+
+   gur() {
    }
 
-   public gur(gvz.a $$0, gis $$1, gis $$2, ghm<S> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new hac<>(this, new ghm($$0.a($$1)), new ghm($$0.a($$2)), $$0.h()));
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gh();
-      $$1.c = $$0.x();
-      $$1.d = $$0.fa().a(czc.pg);
+   public void a(jx $$0) {
+      this.b.add($$0);
    }
 
-   protected boolean a(S $$0) {
-      return $$0.c;
+   public void b(jx $$0) {
+      this.b.remove($$0);
    }
 
-   protected gge.a a(cnh $$0, bwv $$1) {
-      return $$0.fx() == $$1 && $$0.gh() && $$0.fa().a(czc.pg) ? gge.a.d : gge.a.a;
+   @Override
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      iu $$5 = iu.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fjj $$0, gqa $$1, jx $$2) {
+      guc.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

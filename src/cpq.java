@@ -1,116 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
 
-public class cpq extends cpm {
-   private static final int bG = 50;
-   private static final float bH = 0.35F;
-   private static final int bI = 7;
-   private static final double bJ = 12.0;
-   protected static final ImmutableList<chl<? extends chk<? super cpq>>> d = ImmutableList.of(chl.c, chl.d, chl.b, chl.f, chl.m);
-   protected static final ImmutableList<cge<?>> bF = ImmutableList.of(
-      cge.o, cge.w, cge.g, cge.h, cge.k, cge.l, cge.ap, cge.ao, cge.y, cge.z, cge.n, cge.F, new cge[]{cge.p, cge.q, cge.r, cge.u, cge.ac, cge.N, cge.b}
-   );
+public abstract class cpq extends cod {
+   protected static final akj<Boolean> a = akn.a(cpq.class, akl.k);
+   public static final int b = 300;
+   protected int c;
 
-   public cpq(bwm<? extends cpq> $$0, div $$1) {
+   public cpq(bwo<? extends cpq> $$0, dja $$1) {
       super($$0, $$1);
-      this.bx = 20;
+      this.a_(true);
+      this.n();
+      this.a(exf.n, 16.0F);
+      this.a(exf.o, -1.0F);
    }
 
-   public static byh.a n() {
-      return cnz.gt().a(byi.s, 50.0).a(byi.v, 0.35F).a(byi.c, 7.0).a(byi.m, 12.0);
+   private void n() {
+      if (chy.a(this)) {
+         ((cgn)this.O()).b(true);
+      }
    }
 
-   @Nullable
-   @Override
-   public bxu a(djm $$0, btz $$1, bwl $$2, @Nullable bxu $$3) {
-      cpr.a(this);
-      this.a($$0.C_(), $$1);
-      return super.a($$0, $$1, $$2, $$3);
+   protected abstract boolean j();
+
+   public void w(boolean $$0) {
+      this.au().a(a, $$0);
    }
 
-   @Override
-   protected void a(azv $$0, btz $$1) {
-      this.a(bwn.a, new cyy(czc.pK));
-   }
-
-   @Override
-   protected byc.b<cpq> ec() {
-      return byc.a(bF, d);
+   protected boolean m() {
+      return this.au().a(a);
    }
 
    @Override
-   protected byc<?> a(Dynamic<?> $$0) {
-      return cpr.a(this, this.ec().a($$0));
+   protected void a(akn.a $$0) {
+      super.a($$0);
+      $$0.a(a, false);
    }
 
    @Override
-   public byc<cpq> eb() {
-      return (byc<cpq>)super.eb();
+   public void b(tz $$0) {
+      super.b($$0);
+      if (this.m()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
+
+      $$0.a("TimeInOverworld", this.c);
    }
 
    @Override
-   public boolean j() {
-      return false;
-   }
+   public void a(tz $$0) {
+      super.a($$0);
+      if (!$$0.e("CanPickUpLoot")) {
+         this.a_(true);
+      }
 
-   @Override
-   public boolean c(arq $$0, cyy $$1) {
-      return $$1.a(czc.pK) ? super.c($$0, $$1) : false;
+      this.w($$0.q("IsImmuneToZombification"));
+      this.c = $$0.h("TimeInOverworld");
    }
 
    @Override
    protected void a(arq $$0) {
-      bqm $$1 = bql.a();
-      $$1.a("piglinBruteBrain");
-      this.eb().a($$0, this);
-      $$1.c();
-      cpr.b(this);
-      cpr.c(this);
       super.a($$0);
-   }
-
-   @Override
-   public cpp x() {
-      return this.gh() && this.gq() ? cpp.a : cpp.f;
-   }
-
-   @Override
-   public boolean a(arq $$0, bus $$1, float $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      if ($$3 && $$1.d() instanceof bxc $$4) {
-         cpr.a($$0, this, $$4);
+      if (this.q()) {
+         this.c++;
+      } else {
+         this.c = 0;
       }
 
-      return $$3;
+      if (this.c > 300) {
+         this.gs();
+         this.g($$0);
+      }
+   }
+
+   @VisibleForTesting
+   public void b(int $$0) {
+      this.c = $$0;
+   }
+
+   public boolean q() {
+      return !this.dV().B_().b() && !this.m() && !this.gg();
+   }
+
+   protected void g(arq $$0) {
+      this.a(bwo.bR, bvz.a(this, true, true), $$0x -> $$0x.a(new bvj(bvl.i, 200, 0)));
+   }
+
+   public boolean t() {
+      return !this.n_();
+   }
+
+   public abstract cpt x();
+
+   @Nullable
+   @Override
+   public bxe f() {
+      return this.Q();
+   }
+
+   protected boolean gr() {
+      return this.fb().c(kj.A);
    }
 
    @Override
-   protected awm u() {
-      return awn.uA;
+   public void T() {
+      if (cps.c(this)) {
+         super.T();
+      }
    }
 
    @Override
-   protected awm e(bus $$0) {
-      return awn.uD;
+   protected void ab() {
+      super.ab();
+      agm.a(this);
    }
 
-   @Override
-   protected awm l_() {
-      return awn.uC;
-   }
-
-   @Override
-   protected void b(iu $$0, dzz $$1) {
-      this.a(awn.uE, 0.15F, 1.0F);
-   }
-
-   protected void gu() {
-      this.b(awn.uB);
-   }
-
-   @Override
-   protected void gr() {
-      this.b(awn.uF);
-   }
+   protected abstract void gs();
 }

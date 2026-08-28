@@ -1,31 +1,29 @@
-import java.util.function.UnaryOperator;
+public class gvc extends gxn<ckh, hbp, gel> {
+   private static final alg a = alg.b("textures/entity/allay/allay.png");
 
-public class gvc extends gun {
-   private final ggm a;
-   private final alg g;
-   private final gfq<hbq> h;
-
-   public gvc(gvz.a $$0, gis $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new ggm.a($$0.a(git.E), $$0x -> gqc.i());
-      this.h = new geu($$0.a($$1));
+   public gvc(gwh.a $$0) {
+      super($$0, new gel($$0.a(gjb.c)), 0.4F);
+      this.a(new han<>(this));
    }
 
-   @Override
-   protected gfq<hbq> a() {
-      return this.h;
+   public alg a(hbp $$0) {
+      return a;
    }
 
-   @Override
-   protected gqc b() {
-      return this.h.a(this.g);
+   public hbp a() {
+      return new hbp();
    }
 
-   @Override
-   protected void b(hbq $$0, fjc $$1, gps $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hif.d);
-      }
+   public void a(ckh $$0, hbp $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hbr.a($$0, $$1, this.h);
+      $$1.a = $$0.q();
+      $$1.b = $$0.t();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(ckh $$0, iu $$1) {
+      return 15;
    }
 }

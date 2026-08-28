@@ -1,22 +1,25 @@
-public class fso extends fsc {
-   protected final ftp a;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fso(int $$0, int $$1, int $$2, int $$3, ftp $$4, fsc.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, wx.a);
+public class fso {
+   private static final ayy a = ayy.codepoint(32, xv.a);
+
+   private static String a(String $$0) {
+      return foz.Q().n.N().c() ? $$0 : n.a($$0);
    }
 
-   public fso(int $$0, int $$1, int $$2, int $$3, ftp $$4, fsc.c $$5, wy $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
-   }
-
-   public fso(int $$0, int $$1, ftp $$2, fsc.c $$3, wy $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      alg $$4 = this.a.a(this.E(), this.D());
-      $$0.a(gqc::H, $$4, this.F(), this.G(), this.g, this.h);
+   public static List<ayy> a(xd $$0, int $$1, frt $$2) {
+      fom $$3 = new fom();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(xd.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xv.a);
+      List<ayy> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xv.a, ($$1x, $$2x) -> {
+         ayy $$3x = tu.a().a($$1x);
+         $$4.add($$2x ? ayy.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayy>)($$4.isEmpty() ? Lists.newArrayList(new ayy[]{ayy.a}) : $$4);
    }
 }

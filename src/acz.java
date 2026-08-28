@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record acz(fei b, Optional<fei> c, lv d, je<awm> e) implements zf<abu> {
-   public static final yw<wj, acz> a = yw.a(fei.b, acz::b, fei.b.a(yu::a), acz::e, lx.bl, acz::f, awm.d, acz::g, acz::new);
+public record acz(feq b, Optional<feq> c, lv d, je<awm> e) implements zf<abu> {
+   public static final yw<wj, acz> a = yw.a(feq.b, acz::b, feq.b.a(yu::a), acz::e, lx.bl, acz::f, awm.d, acz::g, acz::new);
 
    @Override
    public zh<acz> a() {
@@ -12,7 +12,7 @@ public record acz(fei b, Optional<fei> c, lv d, je<awm> e) implements zf<abu> {
       $$0.a(this);
    }
 
-   public Optional<fei> e() {
+   public Optional<feq> e() {
       return this.c;
    }
 

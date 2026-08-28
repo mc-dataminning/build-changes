@@ -19,7 +19,7 @@ public class wc<T extends we> extends ByteToMessageDecoder implements wh {
       if ($$3 != 0) {
          zf<? super T> $$4 = this.b.c().decode($$1);
          zh<? extends zf<? super T>> $$5 = $$4.a();
-         bqu.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         bqw.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

@@ -1,85 +1,124 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.App;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class caf {
-   private static final int a = 20;
-   private static final int b = 8;
-   private static final float c = 0.6F;
-   private static final float d = 0.6F;
-   private static final int e = 5;
-   private static final int f = 10;
+public class caf extends byv<bxg> {
+   private static final int c = 40;
+   private int d;
+   @Nullable
+   private exc e;
+   @Nullable
+   private iu f;
+   private float g;
 
-   public static byu<bxk> a() {
-      return ccg.a(
-         (Function<ccg.b<bxk>, ? extends App<ccg.c<bxk>, ccj<bxk>>>)($$0 -> $$0.group($$0.b(cge.i), $$0.c(cge.n), $$0.a(cge.o), $$0.a(cge.r))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$5.C_().a(10) != 0) {
-                        return false;
-                     } else {
-                        List<bxc> $$8 = $$0.b($$1);
-                        Optional<bxc> $$9 = $$8.stream().filter($$1xx -> a((bxc)$$6, $$1xx)).findAny();
-                        if (!$$9.isPresent()) {
-                           Optional<bxc> $$12 = a($$8);
-                           if ($$12.isPresent()) {
-                              a($$4, $$3, $$2, $$12.get());
-                              return true;
-                           } else {
-                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
-                              return true;
-                           }
-                        } else {
-                           for (int $$10 = 0; $$10 < 10; $$10++) {
-                              fei $$11 = chy.a($$6, 20, 8);
-                              if ($$11 != null && $$5.c(iu.a((jo)$$11))) {
-                                 $$2.a(new cgh($$11, 0.6F, 0));
-                                 break;
-                              }
-                           }
-
-                           return true;
-                        }
-                     }
-                  }))
-      );
+   public caf() {
+      this(150, 250);
    }
 
-   private static void a(cch<?, bxc> $$0, cch<?, cah> $$1, cch<?, cgh> $$2, bxc $$3) {
-      $$0.a($$3);
-      $$1.a(new bze($$3, true));
-      $$2.a(new cgh(new bze($$3, false), 0.6F, 1));
+   public caf(int $$0, int $$1) {
+      super(ImmutableMap.of(cgg.F, cgh.c, cgg.u, cgh.b, cgg.n, cgh.a), $$0, $$1);
    }
 
-   private static Optional<bxc> a(List<bxc> $$0) {
-      Map<bxc, Integer> $$1 = b($$0);
-      return $$1.entrySet()
-         .stream()
-         .sorted(Comparator.comparingInt(Entry::getValue))
-         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
-         .map(Entry::getKey)
-         .findFirst();
+   protected boolean a(arq $$0, bxg $$1) {
+      if (this.d > 0) {
+         this.d--;
+         return false;
+      } else {
+         bye<?> $$2 = $$1.ec();
+         cgj $$3 = $$2.c(cgg.n).get();
+         boolean $$4 = this.a($$1, $$3);
+         if (!$$4 && this.a($$1, $$3, $$0.ae())) {
+            this.f = $$3.a().b();
+            return true;
+         } else {
+            $$2.b(cgg.n);
+            if ($$4) {
+               $$2.b(cgg.F);
+            }
+
+            return false;
+         }
+      }
    }
 
-   private static Map<bxc, Integer> b(List<bxc> $$0) {
-      Map<bxc, Integer> $$1 = Maps.newHashMap();
-      $$0.stream().filter(caf::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
-      return $$1;
+   protected boolean a(arq $$0, bxg $$1, long $$2) {
+      if (this.e != null && this.f != null) {
+         Optional<cgj> $$3 = $$1.ec().c(cgg.n);
+         boolean $$4 = $$3.<Boolean>map(caf::a).orElse(false);
+         cgo $$5 = $$1.O();
+         return !$$5.k() && $$3.isPresent() && !this.a($$1, $$3.get()) && !$$4;
+      } else {
+         return false;
+      }
    }
 
-   private static bxc a(bxc $$0) {
-      return $$0.eb().c(cge.r).get();
+   protected void b(arq $$0, bxg $$1, long $$2) {
+      if ($$1.ec().a(cgg.n) && !this.a($$1, $$1.ec().c(cgg.n).get()) && $$1.O().q()) {
+         this.d = $$0.C_().a(40);
+      }
+
+      $$1.O().m();
+      $$1.ec().b(cgg.n);
+      $$1.ec().b(cgg.u);
+      this.e = null;
    }
 
-   private static boolean b(bxc $$0) {
-      return $$0.eb().c(cge.r).isPresent();
+   protected void c(arq $$0, bxg $$1, long $$2) {
+      $$1.ec().a(cgg.u, this.e);
+      $$1.O().a(this.e, (double)this.g);
    }
 
-   private static boolean a(bxc $$0, bxc $$1) {
-      return $$1.eb().c(cge.r).filter($$1x -> $$1x == $$0).isPresent();
+   protected void d(arq $$0, bxg $$1, long $$2) {
+      exc $$3 = $$1.O().i();
+      bye<?> $$4 = $$1.ec();
+      if (this.e != $$3) {
+         this.e = $$3;
+         $$4.a(cgg.u, $$3);
+      }
+
+      if ($$3 != null && this.f != null) {
+         cgj $$5 = $$4.c(cgg.n).get();
+         if ($$5.a().b().j(this.f) > 4.0 && this.a($$1, $$5, $$0.ae())) {
+            this.f = $$5.a().b();
+            this.c($$0, $$1, $$2);
+         }
+      }
+   }
+
+   private boolean a(bxg $$0, cgj $$1, long $$2) {
+      iu $$3 = $$1.a().b();
+      this.e = $$0.O().a($$3, 0);
+      this.g = $$1.b();
+      bye<?> $$4 = $$0.ec();
+      if (this.a($$0, $$1)) {
+         $$4.b(cgg.F);
+      } else {
+         boolean $$5 = this.e != null && this.e.j();
+         if ($$5) {
+            $$4.b(cgg.F);
+         } else if (!$$4.a(cgg.F)) {
+            $$4.a(cgg.F, $$2);
+         }
+
+         if (this.e != null) {
+            return true;
+         }
+
+         feq $$6 = chx.a((bxm)$$0, 10, 7, feq.c($$3), (float) (Math.PI / 2));
+         if ($$6 != null) {
+            this.e = $$0.O().a($$6.d, $$6.e, $$6.f, 0);
+            return this.e != null;
+         }
+      }
+
+      return false;
+   }
+
+   private boolean a(bxg $$0, cgj $$1) {
+      return $$1.a().b().k($$0.dv()) <= $$1.c();
+   }
+
+   private static boolean a(cgj $$0) {
+      return $$0.a() instanceof bzg $$2 ? $$2.c().V_() : false;
    }
 }

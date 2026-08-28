@@ -1,22 +1,15 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class eva implements evd {
-   public static final MapCodec<eva> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tz.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, eva::new));
-   private final tz b;
-
-   public eva(tz $$0) {
-      this.b = $$0;
+public abstract class eva {
+   @Nullable
+   public evd.d a(djd $$0, iu $$1, iu $$2, evd.d $$3, evd.d $$4, euz $$5) {
+      return $$4;
    }
 
-   @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
-   }
+   protected abstract evc<?> a();
 
-   @Override
-   public eve<?> a() {
-      return eve.c;
+   public List<evd.d> a(djr $$0, iu $$1, iu $$2, List<evd.d> $$3, List<evd.d> $$4, euz $$5) {
+      return $$4;
    }
 }

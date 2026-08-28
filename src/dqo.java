@@ -1,53 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dqo extends dvj implements dtg {
-   public static final MapCodec<dqo> a = b(dqo::new);
-   public static final eax<ja> b = eap.T;
-   private final Function<dzz, ffc> c;
+public class dqo extends dpy implements drc {
+   public static final MapCodec<dqo> c = b(dqo::new);
+   private static final double g = 0.14;
+   private static final ffk h = dmf.b(16.0, 0.0, 9.0);
 
-   public dqo(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, ja.c).b(this.c(), Integer.valueOf(1)));
-      this.c = this.q();
+   @Override
+   public MapCodec<dqo> a() {
+      return c;
    }
 
-   private Function<dzz, ffc> q() {
-      return this.a(this.a(b, this.c()));
+   protected dqo(eag.d $$0) {
+      super($$0, ja.b, h, true, 0.14);
    }
 
    @Override
-   protected MapCodec<dqo> a() {
-      return a;
+   protected boolean h(eah $$0) {
+      return $$0.a(dmh.J);
    }
 
    @Override
-   public dzz a(dzz $$0, dst $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected dmf b() {
+      return dmh.mJ;
    }
 
    @Override
-   public dzz a(dzz $$0, drc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected boolean o(eah $$0) {
+      return !$$0.a(dmh.lp);
    }
 
    @Override
-   public boolean a(dzz $$0, dcr $$1) {
-      return this.a($$0, $$1, this.c()) ? true : super.a($$0, $$1);
+   public boolean a(@Nullable bxe $$0, dig $$1, iu $$2, eah $$3, ewn $$4) {
+      return false;
    }
 
    @Override
-   public ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.c.apply($$0);
+   public boolean a(djb $$0, iu $$1, eah $$2, ewo $$3) {
+      return false;
    }
 
    @Override
-   public dzz a(dcr $$0) {
-      return this.a($$0, this, this.c(), b);
+   protected int a(azv $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public eah a(dcw $$0) {
+      ewo $$1 = $$0.q().b_($$0.a());
+      return $$1.a(axh.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b, this.c());
+   protected ewo b_(eah $$0) {
+      return ewp.c.a(false);
    }
 }

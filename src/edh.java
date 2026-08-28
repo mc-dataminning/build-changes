@@ -1,122 +1,137 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
 
-public class edh implements eeh<bwd> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arq d;
-   private final eds e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bsr g;
-
-   public edh(eds $$0, arq $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new bsr($$2, "entity-deserializer");
+public class edh {
+   private static boolean a(ece $$0) {
+      return $$0.n().a(edf.l) && $$0.x();
    }
 
-   @Override
-   public CompletableFuture<eec<bwd>> a(dic $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
-      } else {
-         CompletableFuture<Optional<tz>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  dic $$2 = a((tz)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
+   static CompletableFuture<ece> a(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> b(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      if ($$4.p().aZ().y().d()) {
+         $$0.b().a($$4.F_(), $$4.m().h(), $$4.b(), $$3, $$0.c(), $$4.aj());
+      }
+
+      $$4.a($$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> c(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      $$0.a().a($$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> d(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> e(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      return $$0.b().a($$4.m().i(), ehi.a($$5), $$4.b().a($$5), $$3);
+   }
+
+   static CompletableFuture<ece> f(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      return $$0.b().a(ehi.a($$5), $$4.m().i(), $$4.b().a($$5), $$3).thenApply($$0x -> {
+         if ($$0x instanceof ecy $$1x) {
+            efu $$2x = $$1x.z();
+            if ($$2x != null) {
+               efu.a($$1x);
+               if ($$2x.b()) {
+                  $$2x.b($$1x);
                }
-
-               tz $$4 = this.e.a((tz)$$1x.get(), -1);
-               uf $$5 = $$4.c("Entities", 10);
-               List<bwd> $$6 = bwm.a($$5, this.d, bwl.r).collect(ImmutableList.toImmutableList());
-               return new eec<>($$0, $$6);
             }
-         }, this.g::a_);
-      }
-   }
-
-   private static dic a(tz $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dic($$1[0], $$1[1]);
-   }
-
-   private static void a(tz $$0, dic $$1) {
-      $$0.a("Position", new ud(new int[]{$$1.h, $$1.i}));
-   }
-
-   private static eec<bwd> b(dic $$0) {
-      return new eec<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(eec<bwd> $$0) {
-      dic $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
          }
-      } else {
-         uf $$2 = new uf();
-         $$0.b().forEach($$1x -> {
-            tz $$2x = new tz();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         tz $$3 = uo.e(new tz());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
+
+         return $$0x;
+      });
+   }
+
+   static CompletableFuture<ece> g(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$4.b().a($$5), $$4.m().i(), $$3);
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> h(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      if ($$3 instanceof ecy $$6) {
+         ehi.a($$5, $$6);
       }
+
+      $$0.b().a($$5, $$4.E(), $$4.m().i(), $$4.D_(), $$4.b().a($$5), $$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   private void a(CompletableFuture<?> $$0, dic $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
+   static CompletableFuture<ece> i(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      arq $$4 = $$0.a();
+      egg.a($$3, EnumSet.of(egg.a.e, egg.a.f, egg.a.d, egg.a.b));
+      ary $$5 = new ary($$4, $$2, $$1, $$3);
+      $$0.b().a($$5, $$3, $$4.b().a($$5));
+      ehi.a($$5, $$3);
+      return CompletableFuture.completedFuture($$3);
    }
 
-   private void b(CompletableFuture<?> $$0, dic $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
+   static CompletableFuture<ece> j(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      aru $$4 = $$0.d();
+      $$3.C();
+      ((ecy)$$3).a($$4);
+      boolean $$5 = a($$3);
+      return $$4.a($$3, $$5);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
+   static CompletableFuture<ece> k(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      boolean $$4 = a($$3);
+      return $$0.d().b($$3, $$4);
    }
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
+   static CompletableFuture<ece> l(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      if (!$$3.A()) {
+         $$0.b().a(new ary($$0.a(), $$2, $$1, $$3));
+      }
+
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   static CompletableFuture<ece> m(edk $$0, edi $$1, bai<arg> $$2, ece $$3) {
+      dih $$4 = $$3.f();
+      arg $$5 = $$2.a($$4.h, $$4.i);
+      return CompletableFuture.supplyAsync(() -> {
+         ecy $$3x = (ecy)$$3;
+         arq $$4x = $$0.a();
+         eco $$6;
+         if ($$3x instanceof ecn $$5x) {
+            $$6 = $$5x.G();
+         } else {
+            $$6 = new eco($$4x, $$3x, $$2xx -> a($$4x, $$3x.I()));
+            $$5.a(new ecn($$6, false));
+         }
+
+         $$6.b($$5::s);
+         $$6.G();
+         $$6.b(true);
+         $$6.K();
+         $$6.b($$4x);
+         $$6.a($$0.f());
+         return $$6;
+      }, $$0.e());
+   }
+
+   private static void a(arq $$0, List<tz> $$1) {
+      if (!$$1.isEmpty()) {
+         $$0.b(bwo.a($$1, $$0, bwn.r));
+      }
    }
 }

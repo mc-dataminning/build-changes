@@ -1,10 +1,40 @@
-public class gzj<M extends ggw> extends hav<M> {
-   public gzj(gxa<?, hdr, M> $$0, gvz.a $$1) {
-      super($$0, new gek($$1.a(git.l)), gyo.a, hav.a.a);
+public class gzj extends gxn<cmu, hfa, giq> {
+   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alg j = alg.b("textures/entity/wither/wither.png");
+
+   public gzj(gwh.a $$0) {
+      super($$0, new giq($$0.a(gjb.dS)), 1.0F);
+      this.a(new hbi(this, $$0.f()));
    }
 
-   @Override
-   protected int a(hdr $$0) {
-      return $$0.j;
+   protected int a(cmu $$0, iu $$1) {
+      return 15;
+   }
+
+   public alg a(hfa $$0) {
+      int $$1 = azm.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   }
+
+   public hfa b() {
+      return new hfa();
+   }
+
+   protected void a(hfa $$0, fjj $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
+      }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(cmu $$0, hfa $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.t();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.x();
    }
 }

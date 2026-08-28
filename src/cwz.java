@@ -1,100 +1,97 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-public class cwz {
-   public static final Codec<cwz> a = ayu.c(ay.a, ayu.b(ay.a.listOf())).xmap(cwz::new, $$0 -> $$0.f);
-   public static final yw<wj, cwz> b = yw.a(ay.b.a(yu.a()), $$0 -> $$0.f, cwz::new);
-   public static final wy c = wy.c("item.canBreak").a(n.h);
-   public static final wy d = wy.c("item.canPlace").a(n.h);
-   private static final wy e = wy.c("item.canUse.unknown").a(n.h);
-   private final List<ay> f;
-   @Nullable
-   private List<wy> g;
-   @Nullable
-   private ead h;
-   private boolean i;
-   private boolean j;
+public class cwz implements cvn {
+   private final jn<czd> b;
+   private final int c;
+   private final int d;
+   private final cuv e;
 
-   public cwz(List<ay> $$0) {
-      this.f = $$0;
+   public cwz(cuv $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, jn.a($$1 * $$2, czd.k));
    }
 
-   private static boolean a(ead $$0, @Nullable ead $$1, boolean $$2) {
-      if ($$1 == null || $$0.a() != $$1.a()) {
-         return false;
-      } else if (!$$2) {
-         return true;
-      } else if ($$0.b() == null && $$1.b() == null) {
-         return true;
-      } else if ($$0.b() != null && $$1.b() != null) {
-         js $$3 = $$0.c().F_();
-         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
-      } else {
-         return false;
-      }
+   private cwz(cuv $$0, int $$1, int $$2, jn<czd> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public boolean a(ead $$0) {
-      if (a($$0, this.h, this.j)) {
-         return this.i;
-      } else {
-         this.h = $$0;
-         this.j = false;
-
-         for (ay $$1 : this.f) {
-            if ($$1.a($$0)) {
-               this.j = this.j | $$1.a();
-               this.i = true;
-               return true;
-            }
-         }
-
-         this.i = false;
-         return false;
-      }
+   @Override
+   public int b() {
+      return this.b.size();
    }
 
-   private List<wy> a() {
-      if (this.g == null) {
-         this.g = a(this.f);
-      }
-
-      return this.g;
-   }
-
-   public void a(Consumer<wy> $$0) {
-      this.a().forEach($$0);
-   }
-
-   private static List<wy> a(List<ay> $$0) {
-      for (ay $$1 : $$0) {
-         if ($$1.b().isEmpty()) {
-            return List.of(e);
+   @Override
+   public boolean c() {
+      for (czd $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dma)$$0x.a()).f().a(n.i)).toList();
+      return true;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof cwz $$1 ? this.f.equals($$1.f) : false;
+   public czd a(int $$0) {
+      return $$0 >= this.b() ? czd.k : this.b.get($$0);
+   }
+
+   @Override
+   public czd b(int $$0) {
+      return btx.a(this.b, $$0);
+   }
+
+   @Override
+   public czd a(int $$0, int $$1) {
+      czd $$2 = btx.a(this.b, $$0, $$1);
+      if (!$$2.f()) {
+         this.e.a(this);
       }
+
+      return $$2;
    }
 
    @Override
-   public int hashCode() {
-      return this.f.hashCode();
+   public void a(int $$0, czd $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
    }
 
    @Override
-   public String toString() {
-      return "AdventureModePredicate{predicates=" + this.f + "}";
+   public void e() {
+   }
+
+   @Override
+   public boolean a(crc $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int av_() {
+      return this.c;
+   }
+
+   @Override
+   public List<czd> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void fillStackedContents(cri $$0) {
+      for (czd $$1 : this.b) {
+         $$0.a($$1);
+      }
    }
 }

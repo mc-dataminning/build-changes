@@ -38,11 +38,11 @@ public class beq extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(biw.D, "Painting");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bix.D, "Painting");
       OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
-      Type<?> $$2 = this.getInputSchema().getChoiceType(biw.D, "ItemFrame");
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bix.D, "ItemFrame");
       OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
-      Type<?> $$4 = this.getInputSchema().getType(biw.D);
+      Type<?> $$4 = this.getInputSchema().getType(bix.D);
       TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
          "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
       );

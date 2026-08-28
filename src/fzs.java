@@ -1,33 +1,51 @@
-public class fzs extends fsc {
-   private static final alg a = alg.b("widget/page_forward_highlighted");
-   private static final alg b = alg.b("widget/page_forward");
-   private static final alg c = alg.b("widget/page_backward_highlighted");
-   private static final alg d = alg.b("widget/page_backward");
-   private final boolean u;
-   private final boolean v;
+public abstract class fzs<T extends cvz> extends fyq<T> implements cvj {
+   private final alg G;
 
-   public fzs(int $$0, int $$1, boolean $$2, fsc.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, wx.a, $$3, q);
-      this.u = $$2;
-      this.v = $$4;
+   public fzs(T $$0, crb $$1, wy $$2, alg $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
    }
 
    @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      alg $$4;
-      if (this.u) {
-         $$4 = this.D() ? a : b;
-      } else {
-         $$4 = this.D() ? c : d;
-      }
-
-      $$0.a(gqc::H, $$4, this.F(), this.G(), 23, 13);
+   protected void G() {
    }
 
    @Override
-   public void a(hns $$0) {
-      if (this.v) {
-         $$0.a(hmh.a(awn.cy, 1.0F));
-      }
+   protected void aO_() {
+      super.aO_();
+      this.G();
+      this.z.a(this);
+   }
+
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.z.b(this);
+   }
+
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(frv $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(frv $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gqk::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
+
+   protected abstract void c(frv var1, int var2, int var3);
+
+   @Override
+   public void a(cuv $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(cuv $$0, int $$1, czd $$2) {
    }
 }

@@ -1,25 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class esn extends eqt {
-   public static final MapCodec<esn> d = a(esn::new);
+public interface esn {
+   Codec<esn> b = mf.ah.q().dispatch(esn::b, Function.identity());
 
-   public esn(eqt.c $$0) {
-      super($$0);
+   void a(azv var1, BiConsumer<alf<esl>, alf<esl>> var2);
+
+   Stream<alf<esl>> a();
+
+   static esm a(String $$0, String $$1) {
+      return a(qo.a($$0), qo.a($$1));
    }
 
-   @Override
-   public Optional<eqt.b> a(eqt.a $$0) {
-      return a($$0, efy.a.c, $$1 -> a($$1, $$0));
+   static esm a(alf<esl> $$0, alf<esl> $$1) {
+      return new esm($$0, $$1);
    }
 
-   private static void a(erl $$0, eqt.a $$1) {
-      iu $$2 = new iu($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new esm.a($$2));
+   static esq a(String $$0, bso<String> $$1) {
+      bso.a<alf<esl>> $$2 = bso.b();
+      $$1.d().forEach($$1x -> $$2.a(qo.a((String)$$1x.a()), $$1x.b()));
+      return a(qo.a($$0), $$2.a());
    }
 
-   @Override
-   public erc<?> e() {
-      return erc.a;
+   static esq a(alf<esl> $$0, bso<alf<esl>> $$1) {
+      return new esq($$0, $$1);
    }
+
+   static esr a(bso<List<esn>> $$0) {
+      return new esr($$0);
+   }
+
+   MapCodec<? extends esn> b();
 }

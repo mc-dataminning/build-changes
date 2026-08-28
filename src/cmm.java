@@ -1,63 +1,101 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cmm<T extends cmg> {
-   private static cmm<?>[] l = new cmm[0];
-   public static final cmm<cmc> a = a(cmc.class, "HoldingPattern");
-   public static final cmm<cmk> b = a(cmk.class, "StrafePlayer");
-   public static final cmm<cme> c = a(cme.class, "LandingApproach");
-   public static final cmm<cmf> d = a(cmf.class, "Landing");
-   public static final cmm<cml> e = a(cml.class, "Takeoff");
-   public static final cmm<cmi> f = a(cmi.class, "SittingFlaming");
-   public static final cmm<cmj> g = a(cmj.class, "SittingScanning");
-   public static final cmm<cmh> h = a(cmh.class, "SittingAttacking");
-   public static final cmm<cma> i = a(cma.class, "ChargingPlayer");
-   public static final cmm<cmb> j = a(cmb.class, "Dying");
-   public static final cmm<cmd> k = a(cmd.class, "Hover");
-   private final Class<? extends cmg> m;
-   private final int n;
-   private final String o;
+public class cmm extends cmd {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bvx g;
 
-   private cmm(int $$0, Class<? extends cmg> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cmg a(clw $$0) {
-      try {
-         Constructor<? extends cmg> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cmg> a() throws NoSuchMethodException {
-      return this.m.getConstructor(clw.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cmm(cma $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         feq $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.c.dA();
+         double $$2 = this.a.c.e(0.5);
+         double $$3 = this.a.c.dG();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.dY().k() / 2.0;
+            double $$6 = $$2 + this.a.dY().k() / 2.0;
+            double $$7 = $$3 + this.a.dY().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dV().a(lx.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
-   public static cmm<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void a(arq $$0) {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.t().a(cmq.e);
+         } else {
+            this.a.t().a(cmq.g);
+         }
+      } else if (this.e == 10) {
+         feq $$1 = new feq(this.a.c.dA() - this.a.dA(), 0.0, this.a.c.dG() - this.a.dG()).d();
+         float $$2 = 5.0F;
+         double $$3 = this.a.c.dA() + $$1.d * 5.0 / 2.0;
+         double $$4 = this.a.c.dG() + $$1.f * 5.0 / 2.0;
+         double $$5 = this.a.c.e(0.5);
+         double $$6 = $$5;
+         iu.a $$7 = new iu.a($$3, $$5, $$4);
+
+         while ($$0.v($$7)) {
+            if (--$$6 < 0.0) {
+               $$6 = $$5;
+               break;
+            }
+
+            $$7.b($$3, $$6, $$4);
+         }
+
+         $$6 = (double)(azm.a($$6) + 1);
+         this.g = new bvx($$0, $$3, $$6, $$4);
+         this.g.a((bxe)this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(lx.h);
+         this.g.b(0.25F);
+         this.g.a(new bvj(bvl.g));
+         $$0.b(this.g);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public void c() {
+      this.e = 0;
+      this.f++;
    }
 
-   private static <T extends cmg> cmm<T> a(Class<T> $$0, String $$1) {
-      cmm<T> $$2 = new cmm<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public void d() {
+      if (this.g != null) {
+         this.g.at();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cmq<cmm> h() {
+      return cmq.f;
+   }
+
+   public void i() {
+      this.f = 0;
    }
 }

@@ -1,54 +1,32 @@
-public class dho {
-   public static final alf<dhn> a = a("sentry");
-   public static final alf<dhn> b = a("dune");
-   public static final alf<dhn> c = a("coast");
-   public static final alf<dhn> d = a("wild");
-   public static final alf<dhn> e = a("ward");
-   public static final alf<dhn> f = a("eye");
-   public static final alf<dhn> g = a("vex");
-   public static final alf<dhn> h = a("tide");
-   public static final alf<dhn> i = a("snout");
-   public static final alf<dhn> j = a("rib");
-   public static final alf<dhn> k = a("spire");
-   public static final alf<dhn> l = a("wayfinder");
-   public static final alf<dhn> m = a("shaper");
-   public static final alf<dhn> n = a("silence");
-   public static final alf<dhn> o = a("raiser");
-   public static final alf<dhn> p = a("host");
-   public static final alf<dhn> q = a("flow");
-   public static final alf<dhn> r = a("bolt");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
-   public static void a(qh<dhn> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
+public record dho(je<dhq> c, je<dhs> d) implements dci {
+   public static final Codec<dho> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhq.c.fieldOf("material").forGetter(dho::a), dhs.c.fieldOf("pattern").forGetter(dho::b)).apply($$0, dho::new)
+   );
+   public static final yw<wj, dho> b = yw.a(dhq.d, dho::a, dhs.d, dho::b, dho::new);
+   private static final wy e = wy.c(af.a("item", alg.b("smithing_template.upgrade"))).a(n.h);
+
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      $$1.accept(e);
+      $$1.accept(wx.a().b(this.d.a().a(this.c)));
+      $$1.accept(wx.a().b(this.c.a().b()));
    }
 
-   public static void a(qh<dhn> $$0, alf<dhn> $$1) {
-      dhn $$2 = new dhn(a($$1), wy.c(af.a("trim_pattern", $$1.a())), false);
-      $$0.a($$1, $$2);
+   public alg a(String $$0, alf<dhk> $$1) {
+      dhp.a $$2 = this.a().a().a().a($$1);
+      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
    }
 
-   private static alf<dhn> a(String $$0) {
-      return alf.a(mg.bk, alg.b($$0));
+   public je<dhq> a() {
+      return this.c;
    }
 
-   public static alg a(alf<dhn> $$0) {
-      return $$0.a();
+   public je<dhs> b() {
+      return this.d;
    }
 }

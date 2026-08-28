@@ -1,39 +1,37 @@
-public class czb {
-   public static bub a(div $$0, cqy $$1, bua $$2) {
-      $$1.c($$2);
-      return bub.c;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
+
+public enum czb implements bak {
+   a(0, "none"),
+   b(1, "thirdperson_lefthand"),
+   c(2, "thirdperson_righthand"),
+   d(3, "firstperson_lefthand"),
+   e(4, "firstperson_righthand"),
+   f(5, "head"),
+   g(6, "gui"),
+   h(7, "ground"),
+   i(8, "fixed");
+
+   public static final Codec<czb> j = bak.a(czb::values);
+   public static final IntFunction<czb> k = ayc.a(czb::a, values(), ayc.a.a);
+   private final byte l;
+   private final String m;
+
+   private czb(final int $$0, final String $$1) {
+      this.m = $$1;
+      this.l = (byte)$$0;
    }
 
-   public static cyy a(cyy $$0, cqy $$1, cyy $$2, boolean $$3) {
-      boolean $$4 = $$1.fU();
-      if ($$3 && $$4) {
-         if (!$$1.gi().i($$2)) {
-            $$1.gi().f($$2);
-         }
-
-         return $$0;
-      } else {
-         $$0.a(1, $$1);
-         if ($$0.f()) {
-            return $$2;
-         } else {
-            if (!$$1.gi().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
-         }
-      }
+   @Override
+   public String c() {
+      return this.m;
    }
 
-   public static cyy a(cyy $$0, cqy $$1, cyy $$2) {
-      return a($$0, $$1, $$2, true);
+   public byte a() {
+      return this.l;
    }
 
-   public static void a(cnd $$0, Iterable<cyy> $$1) {
-      div $$2 = $$0.dV();
-      if (!$$2.C) {
-         $$1.forEach($$2x -> $$2.b(new cnd($$2, $$0.dA(), $$0.dC(), $$0.dG(), $$2x)));
-      }
+   public boolean b() {
+      return this == d || this == e;
    }
 }

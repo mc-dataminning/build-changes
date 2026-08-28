@@ -1,15 +1,59 @@
-public interface djc extends diy {
-   long am();
+public interface djc {
+   int H_();
 
-   default float as() {
-      return edw.k[this.B_().b(this.am())];
+   int G_();
+
+   default int ao() {
+      return this.G_() + this.H_() - 1;
    }
 
-   default float f(float $$0) {
-      return this.B_().a(this.am());
+   default int ap() {
+      return this.ar() - this.aq() + 1;
    }
 
-   default int at() {
-      return this.B_().b(this.am());
+   default int aq() {
+      return jx.a(this.G_());
+   }
+
+   default int ar() {
+      return jx.a(this.ao());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 >= this.G_() && $$0 <= this.ao();
+   }
+
+   default boolean t(iu $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.G_() || $$0 > this.ao();
+   }
+
+   default int f(int $$0) {
+      return this.g(jx.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.aq();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.aq();
+   }
+
+   static djc e(final int $$0, final int $$1) {
+      return new djc() {
+         @Override
+         public int H_() {
+            return $$1;
+         }
+
+         @Override
+         public int G_() {
+            return $$0;
+         }
+      };
    }
 }

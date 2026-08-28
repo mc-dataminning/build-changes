@@ -1,73 +1,48 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public enum fva implements fha {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public enum fva implements bak {
+   a("uniform"),
+   b("jp");
 
-   final fic c;
+   public static final Codec<fva> c = bak.a(fva::values);
+   private final String d;
 
-   private static fic a(int $$0, int $$1, fva.a $$2) {
-      fic $$3 = new fic(fic.a.a, $$0, $$1, false);
+   private fva(final String $$0) {
+      this.d = $$0;
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Map<fva, Boolean> c;
+      public static final Codec<fva.a> a = Codec.unboundedMap(fva.c, Codec.BOOL).xmap(fva.a::new, $$0 -> $$0.c);
+      public static final fva.a b = new fva.a(Map.of());
+
+      public a(Map<fva, Boolean> $$0) {
+         this.c = $$0;
       }
 
-      $$3.i();
-      return $$3;
-   }
-
-   private fva(final Supplier<fic> $$0) {
-      this.c = $$0.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
-
-   @Override
-   public fuy bake(Function<fhc, fuy> $$0) {
-      return $$0.apply(new fhc() {
-         @Override
-         public int a() {
-            return fva.this.c.a();
+      public boolean a(Set<fva> $$0) {
+         for (Entry<fva, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
          }
 
-         @Override
-         public int b() {
-            return fva.this.c.b();
-         }
+         return true;
+      }
 
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fva.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+      public fva.a a(fva.a $$0) {
+         Map<fva, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fva.a(Map.copyOf($$1));
+      }
    }
 }

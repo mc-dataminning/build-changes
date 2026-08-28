@@ -1,32 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
-public class biq extends DataFix {
+public class biq extends bhs {
    public biq(Schema $$0) {
-      super($$0, true);
+      super($$0, true, "PrimedTnt BlockState fixer", bix.D, "minecraft:tnt");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.D);
-      Type<?> $$1 = this.getOutputSchema().getType(biw.D);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bbd.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
+      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
    }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(biw.D, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(biw.D, $$0);
-      return a($$0, $$1, $$2);
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
    }
 
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> af.a($$1xx, $$2, UnaryOperator.identity()));
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b(c($$0));
    }
 }

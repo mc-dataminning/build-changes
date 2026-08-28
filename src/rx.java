@@ -1,18 +1,18 @@
 import java.util.List;
 
 public class rx {
-   public static final eqa a = ept.a(efy.a.e);
-   public static final eqa b = ept.a(efy.a.f);
-   public static final eqa c = ept.a(efy.a.c);
-   public static final eqa d = ept.a(efy.a.a);
-   public static final eqa e = ept.a(efy.a.d);
-   public static final eqa f = eps.a(egs.a(), egs.b());
-   public static final eqa g = eps.a(egs.b(10), egs.c(10));
-   public static final eqa h = eps.a(egs.b(8), egs.c(8));
-   public static final eqa i = eps.a(egs.b(4), egs.c(4));
-   public static final eqa j = eps.a(egs.a(), egs.a(256));
+   public static final eqi a = eqb.a(egg.a.e);
+   public static final eqi b = eqb.a(egg.a.f);
+   public static final eqi c = eqb.a(egg.a.c);
+   public static final eqi d = eqb.a(egg.a.a);
+   public static final eqi e = eqb.a(egg.a.d);
+   public static final eqi f = eqa.a(eha.a(), eha.b());
+   public static final eqi g = eqa.a(eha.b(10), eha.c(10));
+   public static final eqi h = eqa.a(eha.b(8), eha.c(8));
+   public static final eqi i = eqa.a(eha.b(4), eha.c(4));
+   public static final eqi j = eqa.a(eha.a(), eha.a(256));
 
-   public static void a(qh<epx> $$0) {
+   public static void a(qh<eqf> $$0) {
       rr.a($$0);
       rs.a($$0);
       rt.a($$0);
@@ -24,49 +24,49 @@ public class rx {
       sa.a($$0);
    }
 
-   public static alf<epx> a(String $$0) {
-      return alf.a(mg.ba, alg.b($$0));
+   public static alf<eqf> a(String $$0) {
+      return alf.a(mg.bb, alg.b($$0));
    }
 
-   public static void a(qh<epx> $$0, alf<epx> $$1, je<eiq<?, ?>> $$2, List<eqa> $$3) {
-      $$0.a($$1, new epx($$2, List.copyOf($$3)));
+   public static void a(qh<eqf> $$0, alf<eqf> $$1, je<eiy<?, ?>> $$2, List<eqi> $$3) {
+      $$0.a($$1, new eqf($$2, List.copyOf($$3)));
    }
 
-   public static void a(qh<epx> $$0, alf<epx> $$1, je<eiq<?, ?>> $$2, eqa... $$3) {
+   public static void a(qh<eqf> $$0, alf<eqf> $$1, je<eiy<?, ?>> $$2, eqi... $$3) {
       a($$0, $$1, $$2, List.of($$3));
    }
 
-   public static eqa a(int $$0, float $$1, int $$2) {
+   public static eqi a(int $$0, float $$1, int $$2) {
       float $$3 = 1.0F / $$1;
       if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
          throw new IllegalStateException("Chance data cannot be represented as list weight");
       } else {
-         bsm<btg> $$4 = bsm.<btg>b().a(btd.a($$0), (int)$$3 - 1).a(btd.a($$0 + $$2), 1).a();
-         return epp.a(new btn($$4));
+         bso<bti> $$4 = bso.<bti>b().a(btf.a($$0), (int)$$3 - 1).a(btf.a($$0 + $$2), 1).a();
+         return epx.a(new btp($$4));
       }
    }
 
-   public static epz a() {
-      return epm.a(ehf.c);
+   public static eqh a() {
+      return epu.a(ehn.c);
    }
 
-   public static epm a(dma $$0) {
-      return epm.a(ehf.a($$0.m(), iu.c));
+   public static epu a(dmf $$0) {
+      return epu.a(ehn.a($$0.m(), iu.c));
    }
 
-   public static je<epx> a(je<eiq<?, ?>> $$0, eqa... $$1) {
-      return je.a(new epx($$0, List.of($$1)));
+   public static je<eqf> a(je<eiy<?, ?>> $$0, eqi... $$1) {
+      return je.a(new eqf($$0, List.of($$1)));
    }
 
-   public static <FC extends eli, F extends eje<FC>> je<epx> a(F $$0, FC $$1, eqa... $$2) {
-      return a(je.a(new eiq($$0, $$1)), $$2);
+   public static <FC extends elq, F extends ejm<FC>> je<eqf> a(F $$0, FC $$1, eqi... $$2) {
+      return a(je.a(new eiy($$0, $$1)), $$2);
    }
 
-   public static <FC extends eli, F extends eje<FC>> je<epx> a(F $$0, FC $$1) {
-      return a($$0, $$1, ehf.c);
+   public static <FC extends elq, F extends ejm<FC>> je<eqf> a(F $$0, FC $$1) {
+      return a($$0, $$1, ehn.c);
    }
 
-   public static <FC extends eli, F extends eje<FC>> je<epx> a(F $$0, FC $$1, ehf $$2) {
-      return a($$0, $$1, epm.a($$2));
+   public static <FC extends elq, F extends ejm<FC>> je<eqf> a(F $$0, FC $$1, ehn $$2) {
+      return a($$0, $$1, epu.a($$2));
    }
 }

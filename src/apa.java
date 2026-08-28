@@ -10,7 +10,7 @@ public class apa {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.setblock.failed"));
 
    public static void a(CommandDispatcher<ei> $$0, ee $$1) {
-      Predicate<ead> $$2 = $$0x -> $$0x.c().v($$0x.d());
+      Predicate<eal> $$2 = $$0x -> $$0x.c().v($$0x.d());
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("setblock").requires($$0x -> $$0x.c(2)))
             .then(
@@ -27,11 +27,11 @@ public class apa {
       );
    }
 
-   private static int a(ei $$0, iu $$1, ga $$2, apa.a $$3, @Nullable Predicate<ead> $$4, boolean $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, ga $$2, apa.a $$3, @Nullable Predicate<eal> $$4, boolean $$5) throws CommandSyntaxException {
       arq $$6 = $$0.e();
       if ($$6.ak()) {
          throw a.create();
-      } else if ($$4 != null && !$$4.test(new ead($$6, $$1, true))) {
+      } else if ($$4 != null && !$$4.test(new eal($$6, $$1, true))) {
          throw a.create();
       } else {
          boolean $$7;
@@ -42,7 +42,7 @@ public class apa {
             $$7 = true;
          }
 
-         if ($$7 && !$$2.a($$6, $$1, 2 | ($$5 ? 304 : 256))) {
+         if ($$7 && !$$2.a($$6, $$1, 2 | ($$5 ? 816 : 256))) {
             throw a.create();
          } else {
             if (!$$5) {

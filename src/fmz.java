@@ -1,167 +1,64 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class fmz {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bap d;
+public class fmz extends hpj {
+   private static final int a = 212;
+   private static final wy b = wy.c("mco.configure.world.name");
+   private static final wy c = wy.c("mco.configure.world.description");
+   private final fmj C;
+   private final fla D;
+   private fss E;
+   private fss F;
 
-   public fmz(Executor $$0, TimeUnit $$1, bap $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fmz(fmj $$0, fla $$1) {
+      super(wy.c("mco.configure.world.settings.title"));
+      this.C = $$0;
+      this.D = $$1;
    }
 
-   public <T> fmz.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fna $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fmz.e<>($$0, $$1, $$4, $$3);
-      }
+   @Override
+   public void aO_() {
+      int $$0 = this.n / 2 - 106;
+      String $$1 = this.D.e == fla.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
+      fsj $$2 = fsj.a(wy.c($$1), $$0x -> {
+         if (this.D.e == fla.c.b) {
+            this.m.a(fmv.a(this, wy.c("mco.configure.world.close.question.line1"), $$0xx -> this.C.b()));
+         } else {
+            this.C.b(false);
+         }
+      }).a(this.n / 2 - 53, g(0), 106, 20).a();
+      this.c($$2);
+      this.F = new fss(this.m.h, $$0, g(4), 212, 20, wy.c("mco.configure.world.name"));
+      this.F.f(32);
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
+      this.c(this.F);
+      this.E = new fss(this.m.h, $$0, g(8), 212, 20, wy.c("mco.configure.world.description"));
+      this.E.f(32);
+      this.E.a(this.D.a());
+      this.c(this.E);
+      fsj $$3 = this.c(fsj.a(wy.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
+      this.F.b($$1x -> $$3.j = !bal.h($$1x));
+      this.c(fsj.a(wx.e, $$0x -> this.aL_()).a(this.n / 2 + 2, g(12), 106, 20).a());
    }
 
-   public fmz.c a() {
-      return new fmz.c();
+   @Override
+   protected void aC_() {
+      this.b(this.F);
    }
 
-   static record a<T>(Either<T, Exception> a, long b) {
+   @Override
+   public void aL_() {
+      this.m.a(this.C);
    }
 
-   class b<T> {
-      private final fmz.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fmz.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fmz.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void b() {
-         fmz.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, b, this.n / 2 - 106, g(3), -1);
+      $$0.b(this.p, c, this.n / 2 - 106, g(7), -1);
    }
 
-   public class c {
-      private final List<fmz.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fmz.e<T> $$0, Consumer<T> $$1) {
-         fmz.b<T> $$2 = fmz.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fmz.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fmz.b<?> $$0 : this.b) {
-            $$0.a(fmz.this.d.get(fmz.this.c));
-         }
-      }
-
-      public void c() {
-         for (fmz.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fna e;
-      @Nullable
-      private CompletableFuture<fmz.a<T>> f;
-      @Nullable
-      fmz.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fna $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fmz.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fmz.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fmz.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fmz.this.d.get(fmz.this.c);
-                  return new fmz.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fmz.this.d.get(fmz.this.c);
-                  return new fmz.a<>(Either.right(var4x), $$3);
-               }
-            }, fmz.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   public void g() {
+      this.C.a(this.F.a(), this.E.a());
    }
 }

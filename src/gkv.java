@@ -1,66 +1,60 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import java.time.Instant;
-import java.util.UUID;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class gkv extends gkw {
-   private final String g;
+public enum gkv implements bak {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
 
-   gkv(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public static final Codec<gkv> d = bak.a(gkv::values);
+   private final String e;
+
+   private gkv(final String $$0) {
+      this.e = $$0;
    }
 
-   public String a() {
-      return this.g;
+   public static gkv a(xo $$0, wy $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
+      }
    }
 
-   public gkv c() {
-      gkv $$0 = new gkv(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.f = this.f;
-      return $$0;
+   private static boolean a(xo $$0, wy $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wy $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
+      }
+   }
+
+   private static boolean a(wy $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xv.a).orElse(false);
+   }
+
+   private static boolean a(xv $$0) {
+      return !$$0.l().equals(xv.b);
+   }
+
+   public boolean a() {
+      return this == c;
+   }
+
+   @Nullable
+   public fot a(xo $$0) {
+      return switch (this) {
+         case b -> fot.a($$0.c());
+         case c -> fot.c();
+         default -> null;
+      };
    }
 
    @Override
-   public fxu a(fxu $$0, gla $$1) {
-      return new gcg($$0, $$1, this);
-   }
-
-   public static class a extends gkw.a<gkv> {
-      public a(gkv $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new gkv(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public gkw.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gkw.b.d : super.c();
-      }
-
-      @Override
-      public Either<gkw.c, gkw.b> a(gla $$0) {
-         gkw.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new gkw.c(this.a.a, gkz.c, $$3));
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

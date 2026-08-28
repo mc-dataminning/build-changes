@@ -10,7 +10,7 @@ public class ami extends arm {
    private int k = 100;
 
    public ami(alg $$0, wy $$1) {
-      super($$1, btr.a.g, btr.b.a);
+      super($$1, btt.a.g, btt.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -143,8 +143,8 @@ public class ami extends arm {
       $$5.d($$0.q("Visible"));
       $$5.a($$0.h("Value"));
       $$5.b($$0.h("Max"));
-      $$5.a(btr.a.a($$0.l("Color")));
-      $$5.a(btr.b.a($$0.l("Overlay")));
+      $$5.a(btt.a.a($$0.l("Color")));
+      $$5.a(btt.b.a($$0.l("Overlay")));
       $$5.a($$0.q("DarkenScreen"));
       $$5.b($$0.q("PlayBossMusic"));
       $$5.c($$0.q("CreateWorldFog"));

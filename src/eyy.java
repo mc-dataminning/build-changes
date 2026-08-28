@@ -1,109 +1,77 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class eyy {
-   private static final Codec<eyy> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fdf.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               fdf.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, eyy::new)
-   );
-   public static final Codec<eyy> a = Codec.either(Codec.INT, b).xmap($$0 -> (eyy)$$0.map(eyy::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final fde c;
-   @Nullable
-   private final fde d;
-   private final eyy.b e;
-   private final eyy.a f;
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = eyq.a();
 
-   public Set<bax<?>> a() {
-      Builder<bax<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public eyy(eyv.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eyt.c).toFile();
+      this.c.mkdirs();
    }
 
-   private eyy(Optional<fde> $$0, Optional<fde> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public void a(crc $$0) {
+      try {
+         tz $$1 = $$0.f(new tz());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cH() + "-", ".dat");
+         um.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cH() + ".dat");
+         Path $$5 = $$2.resolve($$0.cH() + ".dat_old");
+         af.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.al().getString());
+      }
    }
 
-   private eyy(@Nullable fde $$0, @Nullable fde $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   private void a(crc $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cH() + $$1);
+      Path $$4 = $$2.resolve($$0.cH() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.al().getString(), var7);
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> azm.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public static eyy a(int $$0) {
-      fdb $$1 = fdb.a((float)$$0);
-      return new eyy(Optional.of($$1), Optional.of($$1));
+   private Optional<tz> b(crc $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cH() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(um.a($$2.toPath(), ui.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.al().getString());
+         }
+      }
+
+      return Optional.empty();
    }
 
-   public static eyy a(int $$0, int $$1) {
-      return new eyy(Optional.of(fdb.a((float)$$0)), Optional.of(fdb.a((float)$$1)));
-   }
+   public Optional<tz> b(crc $$0) {
+      Optional<tz> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
 
-   public static eyy b(int $$0) {
-      return new eyy(Optional.of(fdb.a((float)$$0)), Optional.empty());
-   }
-
-   public static eyy c(int $$0) {
-      return new eyy(Optional.empty(), Optional.of(fdb.a((float)$$0)));
-   }
-
-   public int a(eyz $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(eyz $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof fdb $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(eyz var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(eyz var1, int var2);
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = uo.b($$1x, -1);
+         $$1x = bbb.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
    }
 }

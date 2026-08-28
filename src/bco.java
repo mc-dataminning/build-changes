@@ -49,10 +49,10 @@ public class bco extends DataFix {
       this.b($$0);
       $$0.add(
          this.writeFixAndRead(
-            "BlockPos format for map frames", this.getInputSchema().getType(biw.j), this.getOutputSchema().getType(biw.j), $$0x -> $$0x.update("data", this::a)
+            "BlockPos format for map frames", this.getInputSchema().getType(bix.j), this.getOutputSchema().getType(bix.j), $$0x -> $$0x.update("data", this::a)
          )
       );
-      Type<?> $$1 = this.getInputSchema().getType(biw.t);
+      Type<?> $$1 = this.getInputSchema().getType(bix.t);
       $$0.add(
          this.fixTypeEverywhereTyped(
             "BlockPos format for compass target",
@@ -64,26 +64,26 @@ public class bco extends DataFix {
    }
 
    private void a(List<TypeRewriteRule> $$0) {
-      $$0.add(this.a(biw.D, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
-      $$0.add(this.a(biw.D, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
-      $$0.add(this.a(biw.D, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
+      $$0.add(this.a(bix.D, "minecraft:bee", Map.of("HivePos", "hive_pos", "FlowerPos", "flower_pos")));
+      $$0.add(this.a(bix.D, "minecraft:end_crystal", Map.of("BeamTarget", "beam_target")));
+      $$0.add(this.a(bix.D, "minecraft:wandering_trader", Map.of("WanderTarget", "wander_target")));
 
       for (String $$1 : a) {
-         $$0.add(this.a(biw.D, $$1, Map.of("PatrolTarget", "patrol_target")));
+         $$0.add(this.a(bix.D, $$1, Map.of("PatrolTarget", "patrol_target")));
       }
 
       $$0.add(
          this.fixTypeEverywhereTyped(
             "BlockPos format in Leash for mobs",
-            this.getInputSchema().getType(biw.D),
+            this.getInputSchema().getType(bix.D),
             $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.renameAndFixField("Leash", "leash", bbd::a))
          )
       );
    }
 
    private void b(List<TypeRewriteRule> $$0) {
-      $$0.add(this.a(biw.s, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
-      $$0.add(this.a(biw.s, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
+      $$0.add(this.a(bix.s, "minecraft:beehive", Map.of("FlowerPos", "flower_pos")));
+      $$0.add(this.a(bix.s, "minecraft:end_gateway", Map.of("ExitPortal", "exit_portal")));
    }
 
    private TypeRewriteRule a(TypeReference $$0, String $$1, Map<String, String> $$2) {

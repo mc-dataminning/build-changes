@@ -1,44 +1,43 @@
-public class gfs extends gfq<hch> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final giu d;
-   private final giu e;
-   private final giu f;
+public class gfs extends geh<hcj> {
+   public static final float e = 0.87F;
+   public static final float f = 0.92F;
+   private static final gjl g = $$0 -> {
+      a($$0.a());
+      return $$0;
+   };
+   private final gjc i = this.c.b("left_chest");
+   private final gjc j = this.c.b("right_chest");
 
-   public gfs(giu $$0) {
+   public gfs(gjc $$0) {
       super($$0);
-      this.d = $$0.b("base");
-      this.e = this.d.b("upper_jaw");
-      this.f = this.d.b("lower_jaw");
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.a("base", giz.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), giw.a(-5.0F, 24.0F, -5.0F));
-      giz $$3 = giz.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, giw.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, giw.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gja.a($$0, 64, 32);
+   public static gji a(float $$0) {
+      return gji.a(geh.a(gjg.a), 64, 64).a(g).a(gjl.scaling($$0));
    }
 
-   public void a(hch $$0) {
+   public static gji b(float $$0) {
+      return gji.a(geh.c(gjg.a), 64, 64).a(g).a(b).a(gjl.scaling($$0));
+   }
+
+   public static gji a(float $$0, boolean $$1) {
+      return gfz.b($$1).a(g).a($$1 ? geh.b : gjl.a).a(gjl.scaling($$0));
+   }
+
+   private static void a(gjm $$0) {
+      gjm $$1 = $$0.b("body");
+      gjh $$2 = gjh.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gje.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gje.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      gjm $$3 = $$0.b("head_parts").b("head");
+      gjh $$4 = gjh.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gje.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gje.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(hcj $$0) {
       super.a($$0);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.d.c = this.d.c - ($$1 + azm.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.v.c = 24.0F - 20.0F * $$3;
-      this.v.h = $$3;
-      this.v.i = $$3;
-      this.v.j = $$3;
+      this.i.k = $$0.a;
+      this.j.k = $$0.a;
    }
 }

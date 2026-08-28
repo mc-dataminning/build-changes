@@ -18,8 +18,8 @@ public class bgf extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
       return this.fixTypeEverywhereTyped("ItemBannerColorFix", $$0, $$3x -> {

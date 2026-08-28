@@ -1,108 +1,62 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dzq extends dlm {
-   public static final MapCodec<dzq> a = b(dzq::new);
-   public static final eax<ja> b = dzs.a;
-   public static final eax<ebb> c = dzs.c;
+public record dzq(alf<ezm> d, double e, double f, czd g, Optional<alf<ezm>> h, dzh i, dzh.a j) {
+   static final String a = "config";
+   static dzq b = new dzq();
+   static Codec<dzq> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alf.a(mg.bq).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dzq::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dzq::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dzq::d),
+                  czd.a("key_item").forGetter(dzq::e),
+                  alf.a(mg.bq).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dzq::f)
+               )
+               .apply($$0, dzq::new)
+      )
+      .validate(dzq::h);
 
-   @Override
-   public MapCodec<dzq> a() {
-      return a;
+   private dzq() {
+      this(ezd.R, 4.0, 4.5, new czd(czh.zO), Optional.empty(), dzh.b, dzh.a.a);
    }
 
-   public dzq(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, ja.c).b(c, ebb.a));
+   public dzq(alf<ezm> $$0, double $$1, double $$2, czd $$3, Optional<alf<ezm>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   @Nullable
-   @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return null;
+   public dzh a() {
+      return this.i;
    }
 
-   public static dwx a(iu $$0, dzz $$1, dzz $$2, ja $$3, boolean $$4, boolean $$5) {
-      return new dzu($$0, $$1, $$2, $$3, $$4, $$5);
+   private DataResult<dzq> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   @Nullable
-   @Override
-   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
-      return a($$2, dwz.l, dzu::a);
+   public alf<ezm> b() {
+      return this.d;
    }
 
-   @Override
-   public void a(diw $$0, iu $$1, dzz $$2) {
-      iu $$3 = $$1.a($$2.c(b).g());
-      dzz $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dzr && $$4.c(dzr.c)) {
-         $$0.a($$3, false);
-      }
+   public double c() {
+      return this.e;
    }
 
-   @Override
-   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
-      if (!$$1.C && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bub.c;
-      } else {
-         return bub.e;
-      }
+   public double d() {
+      return this.f;
    }
 
-   @Override
-   protected List<cyy> a(dzz $$0, ezc.a $$1) {
-      dzu $$2 = this.a($$1.a(), iu.a($$1.a(fbt.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   public czd e() {
+      return this.g;
    }
 
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return fez.a();
+   public Optional<alf<ezm>> f() {
+      return this.h;
    }
 
-   @Override
-   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      dzu $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : fez.a();
-   }
-
-   @Nullable
-   private dzu a(dib $$0, iu $$1) {
-      dwx $$2 = $$0.c_($$1);
-      return $$2 instanceof dzu ? (dzu)$$2 : null;
-   }
-
-   @Override
-   protected dsm a_(dzz $$0) {
-      return dsm.a;
-   }
-
-   @Override
-   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
-      return cyy.k;
-   }
-
-   @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dzz a(dzz $$0, drc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
+   public dzh.a g() {
+      return this.j;
    }
 }

@@ -1,61 +1,64 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class fab extends fam {
-   public static final MapCodec<fab> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(fab.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, fab::new)
-   );
-   private final fab.a b;
+public class fab extends ezq {
+   public static final MapCodec<fab> a = a(fab::new);
 
-   private fab(List<fci> $$0, fab.a $$1) {
-      super($$0);
-      this.b = $$1;
+   fab(List<ezx> $$0, List<fcq> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public fao<fab> b() {
-      return fap.s;
+   public ezy a() {
+      return ezv.h;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(this.b.g);
+   protected ezp a(List<? extends ezp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ezp)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ezp $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      if ($$1.c(this.b.g) instanceof bue $$3) {
-         $$0.b(kj.g, $$3.an());
+   public static fab.a a(ezx.a<?>... $$0) {
+      return new fab.a($$0);
+   }
+
+   public static class a extends ezx.a<fab.a> {
+      private final Builder<ezx> a = ImmutableList.builder();
+
+      public a(ezx.a<?>... $$0) {
+         for (ezx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return $$0;
-   }
-
-   public static fam.a<?> a(fab.a $$0) {
-      return a($$1 -> new fab($$1, $$0));
-   }
-
-   public static enum a implements bak {
-      a("this", fbt.a),
-      b("attacking_entity", fbt.d),
-      c("last_damage_player", fbt.b),
-      d("block_entity", fbt.h);
-
-      public static final Codec<fab.a> e = bak.a(fab.a::values);
-      private final String f;
-      final bax<?> g;
-
-      private a(final String $$0, final bax<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      protected fab.a a() {
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.f;
+      public fab.a c(ezx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ezx b() {
+         return new fab(this.a.build(), this.f());
       }
    }
 }

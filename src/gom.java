@@ -1,80 +1,61 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class gom extends goi {
+   private final god a;
+   private static final int b = 8;
 
-public abstract class gom extends cqy {
-   @Nullable
-   private gkd h;
-   protected fei a = fei.c;
-   public float b;
-   public float c;
-   public float d;
-   public final gjr e;
-   public float f;
-   public float g;
-
-   public gom(gjr $$0, GameProfile $$1) {
-      super($$0, $$0.aa(), $$0.ab(), $$1);
-      this.e = $$0;
+   protected gom(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, god $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / azm.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
    @Override
-   public boolean U_() {
-      gkd $$0 = this.a();
-      return $$0 != null && $$0.e() == dis.d;
+   public gnm b() {
+      return gnm.b;
    }
 
    @Override
-   public boolean b() {
-      gkd $$0 = this.a();
-      return $$0 != null && $$0.e() == dis.b;
-   }
-
-   @Nullable
-   protected gkd a() {
-      if (this.h == null) {
-         this.h = fos.Q().L().a(this.cG());
-      }
-
-      return this.h;
+   public int a(float $$0) {
+      return 240;
    }
 
    @Override
-   public void h() {
-      this.f = this.g;
-      this.a = this.dy();
-      super.h();
+   public gnv.a p() {
+      return gnv.a.b;
    }
 
-   public fei I(float $$0) {
-      return this.a.a(this.dy(), (double)$$0);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public hjq c() {
-      gkd $$0 = this.a();
-      return $$0 == null ? hjh.a(this.cG()) : $$0.g();
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public float a(boolean $$0, float $$1) {
-      float $$2 = 1.0F;
-      if (this.gj().b) {
-         $$2 *= 1.1F;
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
+         this.a = $$0;
       }
 
-      float $$3 = this.gj().b();
-      if ($$3 != 0.0F) {
-         float $$4 = (float)this.h(byi.v) / $$3;
-         $$2 *= ($$4 + 1.0F) / 2.0F;
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gom($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
-
-      if (this.fy()) {
-         if (this.fA().a(czc.pg)) {
-            float $$5 = Math.min((float)this.fC() / 20.0F, 1.0F);
-            $$2 *= 1.0F - azm.l($$5) * 0.15F;
-         } else if ($$0 && this.gG()) {
-            return 0.1F;
-         }
-      }
-
-      return azm.h($$1, 1.0F, $$2);
    }
 }

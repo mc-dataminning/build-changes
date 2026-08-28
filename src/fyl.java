@@ -1,111 +1,245 @@
-public abstract class fyl<T extends cwf> extends fyj<T> implements gby {
-   private final gbt<?> G;
-   private boolean H;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public fyl(T $$0, gbt<?> $$1, cqx $$2, wy $$3) {
-      super($$0, $$2, $$3);
-      this.G = $$1;
+public class fyl extends fyb implements gju.a {
+   private static final alg x = alg.b("textures/gui/advancements/window.png");
+   public static final int a = 252;
+   public static final int b = 140;
+   private static final int y = 9;
+   private static final int z = 18;
+   public static final int c = 234;
+   public static final int d = 113;
+   private static final int A = 8;
+   private static final int B = 6;
+   private static final int C = 256;
+   private static final int D = 256;
+   public static final int s = 16;
+   public static final int u = 16;
+   public static final int v = 14;
+   public static final int w = 7;
+   private static final double E = 16.0;
+   private static final wy F = wy.c("advancements.sad_label");
+   private static final wy G = wy.c("advancements.empty");
+   private static final wy H = wy.c("gui.advancements");
+   private final fvx I = new fvx(this);
+   @Nullable
+   private final fyb J;
+   private final gju K;
+   private final Map<ai, fyh> L = Maps.newLinkedHashMap();
+   @Nullable
+   private fyh M;
+   private boolean N;
+
+   public fyl(gju $$0) {
+      this($$0, null);
+   }
+
+   public fyl(gju $$0, @Nullable fyb $$1) {
+      super(H);
+      this.K = $$0;
+      this.J = $$1;
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.H = this.n < 379;
-      this.G.a(this.n, this.o, this.m, this.H);
-      this.C = this.G.a(this.n, this.s);
-      this.M();
-   }
-
-   protected abstract fwi G();
-
-   private void M() {
-      fwi $$0 = this.G();
-      this.c(new fso($$0.a(), $$0.b(), 20, 18, gbt.a, $$0x -> {
-         this.G.c();
-         this.C = this.G.a(this.n, this.s);
-         fwi $$1 = this.G();
-         $$0x.c($$1.a(), $$1.b());
-         this.H();
-      }));
-      this.d(this.G);
-   }
-
-   protected void H() {
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      if (this.G.d() && this.H) {
-         this.b($$0, $$1, $$2, $$3);
+   protected void aO_() {
+      this.I.a(H, this.p);
+      this.L.clear();
+      this.M = null;
+      this.K.a(this);
+      if (this.M == null && !this.L.isEmpty()) {
+         fyh $$0 = this.L.values().iterator().next();
+         this.K.a($$0.c().b(), true);
       } else {
-         super.a($$0, $$1, $$2, $$3);
+         this.K.a(this.M == null ? null : this.M.c().b(), true);
       }
 
-      this.G.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-      this.G.a($$0, $$1, $$2, this.B);
+      this.I.b(fsj.a(wx.d, $$0x -> this.aL_()).a(200).a());
+      this.I.a($$1 -> {
+         fsh var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected void c(fro $$0) {
-      super.c($$0);
-      this.G.a($$0, this.I());
-   }
-
-   protected boolean I() {
-      return true;
+   protected void c() {
+      this.I.a();
    }
 
    @Override
-   public boolean a(char $$0, int $$1) {
-      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   public void aL_() {
+      this.m.a(this.J);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   public void aF_() {
+      this.K.a(null);
+      gka $$0 = this.m.L();
+      if ($$0 != null) {
+         $$0.b(aic.b());
+      }
    }
 
    @Override
    public boolean a(double $$0, double $$1, int $$2) {
-      if (this.G.a($$0, $$1, $$2)) {
-         this.a(this.G);
+      if ($$2 == 0) {
+         int $$3 = (this.n - 252) / 2;
+         int $$4 = (this.o - 140) / 2;
+
+         for (fyh $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, $$0, $$1)) {
+               this.K.a($$5.c().b(), true);
+               break;
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.m.n.R.a($$0, $$1)) {
+         this.m.a(null);
+         this.m.o.i();
          return true;
       } else {
-         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
+         return super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
-      return (!this.H || !this.G.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
-      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
-   }
-
-   @Override
-   protected void a(cwn $$0, int $$1, int $$2, cvb $$3) {
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.G.b($$0);
+      int $$4 = (this.n - 252) / 2;
+      int $$5 = (this.o - 140) / 2;
+      this.b($$0, $$1, $$2, $$4, $$5);
+      this.a($$0, $$4, $$5);
+      this.c($$0, $$1, $$2, $$4, $$5);
    }
 
    @Override
-   public void E() {
-      super.E();
-      this.G.e();
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if ($$2 != 0) {
+         this.N = false;
+         return false;
+      } else {
+         if (!this.N) {
+            this.N = true;
+         } else if (this.M != null) {
+            this.M.a($$3, $$4);
+         }
+
+         return true;
+      }
    }
 
    @Override
-   public void L() {
-      this.G.g();
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.M != null) {
+         this.M.a($$2 * 16.0, $$3 * 16.0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void b(frv $$0, int $$1, int $$2, int $$3, int $$4) {
+      fyh $$5 = this.M;
+      if ($$5 == null) {
+         $$0.a($$3 + 9, $$4 + 18, $$3 + 9 + 234, $$4 + 18 + 113, -16777216);
+         int $$6 = $$3 + 9 + 117;
+         $$0.a(this.p, G, $$6, $$4 + 18 + 56 - 9 / 2, -1);
+         $$0.a(this.p, F, $$6, $$4 + 18 + 113 - 9, -1);
+      } else {
+         $$5.b($$0, $$3 + 9, $$4 + 18);
+      }
+   }
+
+   public void a(frv $$0, int $$1, int $$2) {
+      $$0.a(gqk::H, x, $$1, $$2, 0.0F, 0.0F, 252, 140, 256, 256);
+      if (this.L.size() > 1) {
+         for (fyh $$3 : this.L.values()) {
+            $$3.a($$0, $$1, $$2, $$3 == this.M);
+         }
+
+         for (fyh $$4 : this.L.values()) {
+            $$4.a($$0, $$1, $$2);
+         }
+      }
+
+      $$0.a(this.p, this.M != null ? this.M.d() : H, $$1 + 8, $$2 + 6, 4210752, false);
+   }
+
+   private void c(frv $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.M != null) {
+         $$0.c().a();
+         $$0.c().a((float)($$3 + 9), (float)($$4 + 18), 400.0F);
+         this.M.a($$0, $$1 - $$3 - 9, $$2 - $$4 - 18, $$3, $$4);
+         $$0.c().b();
+      }
+
+      if (this.L.size() > 1) {
+         for (fyh $$5 : this.L.values()) {
+            if ($$5.a($$3, $$4, (double)$$1, (double)$$2)) {
+               $$0.a(this.p, $$5.d(), $$1, $$2);
+            }
+         }
+      }
    }
 
    @Override
-   public void a(dev $$0) {
-      this.G.a($$0);
+   public void a(aj $$0) {
+      fyh $$1 = fyh.a(this.m, this, this.L.size(), $$0);
+      if ($$1 != null) {
+         this.L.put($$0.b(), $$1);
+      }
+   }
+
+   @Override
+   public void b(aj $$0) {
+   }
+
+   @Override
+   public void c(aj $$0) {
+      fyh $$1 = this.f($$0);
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
+   }
+
+   @Override
+   public void d(aj $$0) {
+   }
+
+   @Override
+   public void a(aj $$0, ak $$1) {
+      fyj $$2 = this.e($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
+      }
+   }
+
+   @Override
+   public void a(@Nullable ai $$0) {
+      this.M = this.L.get($$0);
+   }
+
+   @Override
+   public void a() {
+      this.L.clear();
+      this.M = null;
+   }
+
+   @Nullable
+   public fyj e(aj $$0) {
+      fyh $$1 = this.f($$0);
+      return $$1 == null ? null : $$1.a($$0.b());
+   }
+
+   @Nullable
+   private fyh f(aj $$0) {
+      aj $$1 = $$0.d();
+      return this.L.get($$1.b());
    }
 }

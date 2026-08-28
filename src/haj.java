@@ -1,22 +1,32 @@
-public class haj extends han<hdm, ggo> {
-   public haj(gxw<hdm, ggo> $$0) {
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class haj extends hav<hdd, ggk> {
+   private static final alg a = alg.b("invisible");
+   private static final Map<cll, alg> b = Maps.newEnumMap(
+      Map.of(
+         cll.a,
+         a,
+         cll.b,
+         alg.b("textures/entity/horse/horse_markings_white.png"),
+         cll.c,
+         alg.b("textures/entity/horse/horse_markings_whitefield.png"),
+         cll.d,
+         alg.b("textures/entity/horse/horse_markings_whitedots.png"),
+         cll.e,
+         alg.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
+   );
+
+   public haj(gye<hdd, ggk> $$0) {
       super($$0);
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hdm $$3, float $$4, float $$5) {
-      hfi $$6 = $$3.i;
-      if (!$$6.c() && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * azm.a($$3.u * 0.6F) + 0.2F;
-            $$8 -= 0.09F * azm.a($$3.u * 0.6F);
-         }
-
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         $$6.a($$0, $$1, $$2, hif.d);
-         $$0.b();
+   public void a(fjj $$0, gqa $$1, int $$2, hdd $$3, float $$4, float $$5) {
+      alg $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         fjn $$7 = $$1.getBuffer(gqk.j($$6));
+         this.d().a($$0, $$7, $$2, gxi.a($$3, 0.0F));
       }
    }
 }

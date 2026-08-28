@@ -1,61 +1,27 @@
-import java.nio.ByteBuffer;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
-import javax.sound.sampled.AudioFormat;
-import org.lwjgl.openal.AL10;
+import org.joml.Matrix4f;
 
-public class fgt {
-   @Nullable
-   private ByteBuffer a;
-   private final AudioFormat b;
-   private boolean c;
-   private int d;
+public enum fgt {
+   a(fjr.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
+   b(fjr.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
 
-   public fgt(ByteBuffer $$0, AudioFormat $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private final fjr c;
+   private final fgt.a d;
+
+   private fgt(final fjr $$0, final fgt.a $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   OptionalInt a() {
-      if (!this.c) {
-         if (this.a == null) {
-            return OptionalInt.empty();
-         }
-
-         int $$0 = fgs.a(this.b);
-         int[] $$1 = new int[1];
-         AL10.alGenBuffers($$1);
-         if (fgs.a("Creating buffer")) {
-            return OptionalInt.empty();
-         }
-
-         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
-         if (fgs.a("Assigning buffer data")) {
-            return OptionalInt.empty();
-         }
-
-         this.d = $$1[0];
-         this.c = true;
-         this.a = null;
-      }
-
-      return OptionalInt.of(this.d);
+   public fjr a() {
+      return this.c;
    }
 
-   public void b() {
-      if (this.c) {
-         AL10.alDeleteBuffers(new int[]{this.d});
-         if (fgs.a("Deleting stream buffers")) {
-            return;
-         }
-      }
-
-      this.c = false;
+   public void a(Matrix4f $$0, float $$1) {
+      this.d.apply($$0, $$1);
    }
 
-   public OptionalInt c() {
-      OptionalInt $$0 = this.a();
-      this.c = false;
-      return $$0;
+   @FunctionalInterface
+   interface a {
+      void apply(Matrix4f var1, float var2);
    }
 }

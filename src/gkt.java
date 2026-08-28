@@ -1,121 +1,200 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
+import com.google.common.collect.Queues;
+import com.mojang.authlib.GameProfile;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Deque;
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
-public class gkt extends gkw {
-   final IntSet g = new IntOpenHashSet();
+public class gkt {
+   private static final wy a = wy.c("chat.validation_error").a(n.m, n.u);
+   private final foz b;
+   private final Deque<gkt.a> c = Queues.newArrayDeque();
+   private long d;
+   private long e;
 
-   gkt(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public gkt(foz $$0) {
+      this.b = $$0;
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
+   public void a() {
+      if (this.d != 0L) {
+         if (af.c() >= this.e + this.d) {
+            gkt.a $$0 = this.c.poll();
+
+            while ($$0 != null && !$$0.a()) {
+               $$0 = this.c.poll();
+            }
+         }
       }
    }
 
-   public gkt a() {
-      gkt $$0 = new gkt(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   public void a(double $$0) {
+      long $$1 = (long)($$0 * 1000.0);
+      if ($$1 == 0L && this.d > 0L) {
+         this.c.forEach(gkt.a::a);
+         this.c.clear();
+      }
+
+      this.d = $$1;
    }
 
-   @Override
-   public fxu a(fxu $$0, gla $$1) {
-      return new gcd($$0, $$1, this);
+   public void b() {
+      this.c.remove().a();
    }
 
-   public static class a extends gkw.a<gkt> {
-      public a(gkt $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
+   public long c() {
+      return (long)this.c.size();
+   }
 
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new gkt(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
+   public void d() {
+      this.c.forEach(gkt.a::a);
+      this.c.clear();
+   }
 
-      public IntSet a() {
-         return this.a.g;
-      }
+   public boolean a(xk $$0) {
+      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
+   }
 
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
+   private boolean e() {
+      return this.d > 0L && af.c() < this.e + this.d;
+   }
 
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
+   private void a(@Nullable xk $$0, BooleanSupplier $$1) {
+      if (this.e()) {
+         this.c.add(new gkt.a($$0, $$1));
+      } else {
+         $$1.getAsBoolean();
       }
+   }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
+   public void a(xo $$0, GameProfile $$1, wu.a $$2) {
+      boolean $$3 = this.b.n.aj().c();
+      xo $$4 = $$3 ? $$0.a() : $$0;
+      wy $$5 = $$2.a($$4.d());
+      Instant $$6 = Instant.now();
+      this.a($$0.l(), () -> {
+         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
+         gka $$7 = this.b.L();
+         if ($$7 != null) {
+            $$7.a($$0, $$6x);
+         }
+
+         return $$6x;
+      });
+   }
+
+   public void a(UUID $$0, wu.a $$1) {
+      this.a(null, () -> {
+         if (this.b.a($$0)) {
+            return false;
+         } else {
+            wy $$2 = $$1.a(a);
+            this.b.m.d().a($$2, null, fot.d());
+            this.e = af.c();
+            return true;
+         }
+      });
+   }
+
+   public void a(wy $$0, wu.a $$1) {
+      Instant $$2 = Instant.now();
+      this.a(null, () -> {
+         wy $$3 = $$1.a($$0);
+         this.b.m.d().a($$3);
+         this.a($$1, $$0);
+         this.a($$3, $$2);
+         this.e = af.c();
+         return true;
+      });
+   }
+
+   private boolean a(wu.a $$0, xo $$1, wy $$2, GameProfile $$3, boolean $$4, Instant $$5) {
+      gkv $$6 = this.a($$1, $$2, $$5);
+      if ($$4 && $$6.a()) {
+         return false;
+      } else if (!this.b.a($$1.g()) && !$$1.j()) {
+         fot $$7 = $$6.a($$1);
+         xk $$8 = $$1.l();
+         xc $$9 = $$1.o();
+         if ($$9.a()) {
+            this.b.m.d().a($$2, $$8, $$7);
+            this.a($$0, $$1.d());
+         } else {
+            wy $$10 = $$9.b($$1.c());
+            if ($$10 != null) {
+               this.b.m.d().a($$0.a($$10), $$8, $$7);
+               this.a($$0, $$10);
+            }
+         }
+
+         this.a($$1, $$0, $$3, $$6);
+         this.e = af.c();
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(wu.a $$0, wy $$1) {
+      this.b.aY().a($$0.b($$1));
+   }
+
+   private gkv a(xo $$0, wy $$1, Instant $$2) {
+      return this.a($$0.g()) ? gkv.a : gkv.a($$0, $$1, $$2);
+   }
+
+   private void a(xo $$0, wu.a $$1, GameProfile $$2, gkv $$3) {
+      gku $$4 = this.b.ba().b();
+      $$4.a(gkx.a($$2, $$0, $$3));
+   }
+
+   private void a(wy $$0, Instant $$1) {
+      gku $$2 = this.b.ba().b();
+      $$2.a(gkx.a($$0, $$1));
+   }
+
+   public void a(wy $$0, boolean $$1) {
+      if (!this.b.n.ah().c() || !this.b.a(this.a($$0))) {
+         if ($$1) {
+            this.b.m.a($$0, false);
+         } else {
+            this.b.m.d().a($$0);
+            this.a($$0, Instant.now());
+         }
+
+         this.b.aY().b($$0);
+      }
+   }
+
+   private UUID a(wy $$0) {
+      String $$1 = baj.a($$0);
+      String $$2 = StringUtils.substringBetween($$1, "<", ">");
+      return $$2 == null ? af.e : this.b.aN().a($$2);
+   }
+
+   private boolean a(UUID $$0) {
+      if (this.b.T() && this.b.t != null) {
+         UUID $$1 = this.b.t.gi().getId();
+         return $$1.equals($$0);
+      } else {
+         return false;
+      }
+   }
+
+   static record a(@Nullable xk a, BooleanSupplier b) {
+      public boolean a() {
+         return this.b.getAsBoolean();
       }
 
       @Nullable
-      @Override
-      public gkw.b c() {
-         if (this.a.g.isEmpty()) {
-            return gkw.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return gkw.b.c;
-         } else if (this.a.e == null) {
-            return gkw.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gkw.b.d : super.c();
-         }
+      public xk b() {
+         return this.a;
       }
 
-      @Override
-      public Either<gkw.c, gkw.b> a(gla $$0) {
-         gkw.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new gkw.c(this.a.a, gkz.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(gla $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         gku $$2 = new gku(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(gkp.a $$0, boolean $$1) {
-         xt $$2 = $$0.g().k();
-         xr $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xk::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xk::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public gkt.a d() {
-         return new gkt.a(this.a.a(), this.b);
+      public BooleanSupplier c() {
+         return this.b;
       }
    }
 }

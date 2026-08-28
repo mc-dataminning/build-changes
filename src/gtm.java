@@ -1,8 +1,66 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gtm {
+public class gtm implements did {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gtl[] c;
+   protected final dja d;
+
+   gtm(dja $$0, int $$1, int $$2, gtl[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public eah a_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0);
+   }
+
+   @Override
+   public ewo b_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0).y();
+   }
+
+   @Override
+   public float a(ja $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public ewd x_() {
+      return this.d.x_();
+   }
+
+   @Nullable
+   @Override
+   public dxf c_(iu $$0) {
+      return this.a(jx.a($$0.u()), jx.a($$0.w())).a($$0);
+   }
+
+   private gtl a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
+
+   @Override
+   public int a(iu $$0, dil $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int G_() {
+      return this.d.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
+   }
 }

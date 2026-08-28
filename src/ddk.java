@@ -1,118 +1,53 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ddk extends ddf {
-   private static final Map<cyu, dbm.a> c = Map.of(
-      czc.vb,
-      dbm.a.b,
-      czc.qe,
-      dbm.a.e,
-      czc.tl,
-      dbm.a.c,
-      czc.vq,
-      dbm.a.d,
-      czc.vr,
-      dbm.a.d,
-      czc.vu,
-      dbm.a.d,
-      czc.vs,
-      dbm.a.d,
-      czc.vv,
-      dbm.a.d,
-      czc.vt,
-      dbm.a.d,
-      czc.vw,
-      dbm.a.d
-   );
-   private static final ddl d = ddl.a(czc.pk);
-   private static final ddl e = ddl.a(czc.sb);
-   private static final ddl f = ddl.a(czc.qf);
+public abstract class ddk implements ddj {
+   private final ddh c;
 
-   public ddk(ddc $$0) {
-      super($$0);
-   }
-
-   public boolean a(ddd $$0, div $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
-
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            cyy $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (c.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (e.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
-
-                  $$6 = true;
-               } else if (d.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
-
-                  $$5 = true;
-               } else if (f.a($$8)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$8.h() instanceof cxx)) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$2 && $$3;
-      }
-   }
-
-   public cyy a(ddd $$0, jg.a $$1) {
-      dbm.a $$2 = dbm.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cyy $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            dbm.a $$8 = c.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (e.a($$7)) {
-               $$3 = true;
-            } else if (d.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cxx $$9) {
-               $$5.add($$9.a().f());
-            }
-         }
-      }
-
-      cyy $$10 = new cyy(czc.vA);
-      $$10.b(kj.ai, new dbm($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
+   public ddk(ddh $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public ddz<ddk> a() {
-      return ddz.h;
+   public boolean am_() {
+      return true;
+   }
+
+   @Override
+   public ddh c() {
+      return this.c;
+   }
+
+   @Override
+   public ddt al_() {
+      return ddt.b;
+   }
+
+   @Override
+   public abstract dee<? extends ddk> a();
+
+   public static class a<T extends ddj> implements dee<T> {
+      private final MapCodec<T> w;
+      private final yw<wj, T> x;
+
+      public a(ddk.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(ddh.e.fieldOf("category").orElse(ddh.d).forGetter(ddj::c)).apply($$1, $$0::create));
+         this.x = yw.a(ddh.g, ddj::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yw<wj, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends ddj> {
+         T create(ddh var1);
+      }
    }
 }

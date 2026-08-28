@@ -1,250 +1,229 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dyl extends dwx {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private dym e = this.f();
-   private dym f = this.f();
-   private boolean g;
+public class dyl extends dxf implements btu, buf {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final btw e = new btw() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
-   public dyl(iu $$0, dzz $$1) {
-      this(dwz.h, $$0, $$1);
-   }
+      @Override
+      public boolean c() {
+         return dyl.this.g.f();
+      }
 
-   public dyl(dwz $$0, iu $$1, dzz $$2) {
-      super($$0, $$1, $$2);
-   }
+      @Override
+      public czd a(int $$0) {
+         return $$0 == 0 ? dyl.this.g : czd.k;
+      }
 
-   protected dym f() {
-      return new dym();
-   }
+      @Override
+      public czd a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            czd $$2 = dyl.this.g.a($$1);
+            if (dyl.this.g.f()) {
+               dyl.this.s();
+            }
 
-   public boolean a(cqy $$0) {
-      if (this.m().b() instanceof dti $$1) {
-         fei $$2 = $$1.o(this.m());
-         double $$3 = $$0.dA() - ((double)this.aw_().u() + $$2.d);
-         double $$4 = $$0.dG() - ((double)this.aw_().w() + $$2.f);
-         float $$5 = $$1.h(this.m());
-         float $$6 = (float)(azm.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return azm.d($$5, $$6) <= 90.0F;
-      } else {
+            return $$2;
+         } else {
+            return czd.k;
+         }
+      }
+
+      @Override
+      public czd b(int $$0) {
+         if ($$0 == 0) {
+            czd $$1 = dyl.this.g;
+            dyl.this.g = czd.k;
+            dyl.this.s();
+            return $$1;
+         } else {
+            return czd.k;
+         }
+      }
+
+      @Override
+      public void a(int $$0, czd $$1) {
+      }
+
+      @Override
+      public int ak_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dyl.this.e();
+      }
+
+      @Override
+      public boolean a(crc $$0) {
+         return btw.a(dyl.this, $$0) && dyl.this.f();
+      }
+
+      @Override
+      public boolean b(int $$0, czd $$1) {
          return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cvh f = new cvh() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? dyl.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            dyl.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   czd g = czd.k;
+   int h;
+   private int i;
+
+   public dyl(iu $$0, eah $$1) {
+      super(dxh.E, $$0, $$1);
+   }
+
+   public czd c() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.g.c(kj.U) || this.g.c(kj.V);
+   }
+
+   public void b(czd $$0) {
+      this.a($$0, null);
+   }
+
+   void s() {
+      this.h = 0;
+      this.i = 0;
+      dqw.a(null, this.i(), this.ax_(), this.m(), false);
+   }
+
+   public void a(czd $$0, @Nullable crc $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = c(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = azm.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dqw.a(this.i(), this.ax_(), this.m());
       }
    }
 
-   public dym a(boolean $$0) {
-      return $$0 ? this.e : this.f;
+   public int j() {
+      return this.h;
    }
 
-   public dym j() {
-      return this.e;
+   public int k() {
+      float $$0 = this.i > 1 ? (float)this.j() / ((float)this.i - 1.0F) : 1.0F;
+      return azm.d($$0 * 14.0F) + (this.f() ? 1 : 0);
    }
 
-   public dym k() {
-      return this.f;
+   private czd b(czd $$0, @Nullable crc $$1) {
+      if (this.n instanceof arq $$2) {
+         dcn.a($$0, this.a($$1, $$2), $$1);
+      }
+
+      return $$0;
    }
 
-   public int a() {
-      return 10;
-   }
+   private ei a(@Nullable crc $$0, arq $$1) {
+      String $$2;
+      wy $$3;
+      if ($$0 == null) {
+         $$2 = "Lectern";
+         $$3 = wy.b("Lectern");
+      } else {
+         $$2 = $$0.al().getString();
+         $$3 = $$0.m_();
+      }
 
-   public int c() {
-      return 90;
-   }
-
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      DynamicOps<uw> $$2 = $$1.a(un.a);
-      $$0.a("front_text", dym.a, $$2, this.e);
-      $$0.a("back_text", dym.a, $$2, this.f);
-      $$0.a("is_waxed", this.g);
+      feq $$6 = feq.b(this.o);
+      return new ei(eh.a, $$6, fep.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
    }
 
    @Override
    protected void a(tz $$0, jg.a $$1) {
       super.a($$0, $$1);
-      DynamicOps<uw> $$2 = $$1.a(un.a);
-      this.e = $$0.<dym>a("front_text", dym.a, $$2).map(this::a).orElseGet(dym::new);
-      this.f = $$0.<dym>a("back_text", dym.a, $$2).map(this::a).orElseGet(dym::new);
-      this.g = $$0.q("is_waxed");
-   }
-
-   private dym a(dym $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         wy $$2 = this.a($$0.a($$1, false));
-         wy $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private wy a(wy $$0) {
-      if (this.n instanceof arq $$1) {
-         try {
-            return xb.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cqy $$0, boolean $$1, List<asj> $$2) {
-      if (!this.u() && $$0.cG().equals(this.t()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.aw_(), this.m(), this.m(), 3);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(czd.a($$1, (uw)$$0.p("Book")).orElse(czd.k), null);
       } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.al().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<dym> $$0, boolean $$1) {
-      dym $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private dym a(cqy $$0, List<asj> $$1, dym $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         asj $$4 = $$1.get($$3);
-         xv $$5 = $$2.a($$3, $$0.aa()).a();
-         if ($$0.aa()) {
-            $$2 = $$2.a($$3, wy.b($$4.b()).b($$5));
-         } else {
-            $$2 = $$2.a($$3, wy.b($$4.d()).b($$5), wy.b($$4.b()).b($$5));
-         }
+         this.g = czd.k;
       }
 
-      return $$2;
-   }
-
-   public boolean a(dym $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dym $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean c(dym $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.v();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(boolean $$0, cqy $$1) {
-      return this.u() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cqy $$0, div $$1, iu $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (wy $$5 : this.a($$3).b($$0.aa())) {
-         xv $$6 = $$5.a();
-         ww $$7 = $$6.i();
-         if ($$7 instanceof ww.f) {
-            ww.f var12 = (ww.f)$$7;
-            ww.f var10000 = var12;
-
-            try {
-               var16 = var10000.b();
-            } catch (Throwable var15) {
-               throw new MatchException(var15.toString(), var15);
-            }
-
-            String var14 = var16;
-            $$0.cV().aG().a(a($$0, $$1, $$2), var14);
-            $$4 = true;
-         }
-      }
-
-      return $$4;
-   }
-
-   private static ei a(@Nullable cqy $$0, div $$1, iu $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.al().getString();
-      wy $$4 = (wy)($$0 == null ? wy.b("Sign") : $$0.m_());
-      return new ei(eh.a, fei.b($$2), feh.a, (arq)$$1, 2, $$3, $$4, $$1.p(), $$0);
-   }
-
-   public aca s() {
-      return aca.a(this);
+      this.i = c(this.g);
+      this.h = azm.a($$0.h("Page"), 0, this.i - 1);
    }
 
    @Override
-   public tz a(jg.a $$0) {
-      return this.e($$0);
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c().f()) {
+         $$0.a("Book", this.c().a($$1));
+         $$0.a("Page", this.h);
+      }
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
+   @Override
+   public void a() {
+      this.b(czd.k);
    }
 
-   @Nullable
-   public UUID t() {
-      return this.d;
+   @Override
+   public void a(iu $$0, eah $$1) {
+      if ($$1.c(dqw.d) && this.n != null) {
+         ja $$2 = $$1.c(dqw.b);
+         czd $$3 = this.c().v();
+         float $$4 = 0.25F * (float)$$2.j();
+         float $$5 = 0.25F * (float)$$2.l();
+         cnh $$6 = new cnh(this.n, (double)$$0.u() + 0.5 + (double)$$4, (double)($$0.v() + 1), (double)$$0.w() + 0.5 + (double)$$5, $$3);
+         $$6.j();
+         this.n.b($$6);
+      }
    }
 
-   private void v() {
-      this.e();
-      this.n.a(this.aw_(), this.m(), this.m(), 3);
+   @Override
+   public cuv createMenu(int $$0, crb $$1, crc $$2) {
+      return new cwb($$0, this.e, this.f);
    }
 
-   public boolean u() {
-      return this.g;
+   @Override
+   public wy m_() {
+      return wy.c("container.lectern");
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.v();
-         return true;
+   private static int c(czd $$0) {
+      dcn $$1 = $$0.a(kj.V);
+      if ($$1 != null) {
+         return $$1.a().size();
       } else {
-         return false;
+         dcm $$2 = $$0.a(kj.U);
+         return $$2 != null ? $$2.a().size() : 0;
       }
-   }
-
-   public boolean b(UUID $$0) {
-      cqy $$1 = this.n.a($$0);
-      return $$1 == null || !$$1.a(this.aw_(), 4.0);
-   }
-
-   public static void a(div $$0, iu $$1, dzz $$2, dyl $$3) {
-      UUID $$4 = $$3.t();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(dyl $$0, div $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
-   }
-
-   public awm d() {
-      return awn.Dc;
    }
 }

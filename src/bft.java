@@ -8,7 +8,7 @@ public class bft extends bhr {
    private static final String d = "minecraft:generic.max_health";
 
    public bft(Schema $$0) {
-      super($$0, false, "FixWolfHealth", biw.D, "minecraft:wolf");
+      super($$0, false, "FixWolfHealth", bix.D, "minecraft:wolf");
    }
 
    @Override
@@ -21,7 +21,7 @@ public class bft extends bhr {
                "Attributes",
                $$1x -> $$1x.createList(
                      $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bkr.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bks.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
                               if ($$1xxx.asDouble(0.0) == 20.0) {
                                  $$1.setTrue();
                                  return $$1xxx.createDouble(40.0);

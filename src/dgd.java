@@ -1,31 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dgd {
-   Codec<dgd> c = mf.at.q().dispatch(dgd::a, Function.identity());
+public record dgd(dfx d) implements dgh {
+   public static final MapCodec<dgd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfx.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dgd::new));
 
-   static MapCodec<? extends dgd> b(jr<MapCodec<? extends dgd>> $$0) {
-      jr.a($$0, "all_of", dfw.b.a);
-      jr.a($$0, "apply_mob_effect", dfx.a);
-      jr.a($$0, "attribute", dgb.a);
-      jr.a($$0, "change_item_damage", dfy.a);
-      jr.a($$0, "damage_entity", dfz.a);
-      jr.a($$0, "explode", dgf.a);
-      jr.a($$0, "ignite", dgg.a);
-      jr.a($$0, "play_sound", dgi.a);
-      jr.a($$0, "replace_block", dgk.a);
-      jr.a($$0, "replace_disk", dgl.a);
-      jr.a($$0, "run_function", dgm.a);
-      jr.a($$0, "set_block_properties", dgn.a);
-      jr.a($$0, "spawn_particles", dgp.a);
-      return jr.a($$0, "summon_entity", dgq.a);
+   @Override
+   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
+      czd $$5 = $$2.a();
+      if ($$5.c(kj.d) && $$5.c(kj.e)) {
+         arr $$7 = $$2.c() instanceof arr $$6 ? $$6 : null;
+         int $$8 = (int)this.d.a($$1);
+         $$5.a($$8, $$0, $$7, $$2.d());
+      }
    }
 
-   void a(arq var1, int var2, dfk var3, bwd var4, fei var5, boolean var6);
-
-   default void a(dfk $$0, bwd $$1, fei $$2, int $$3) {
+   @Override
+   public MapCodec<dgd> a() {
+      return a;
    }
 
-   MapCodec<? extends dgd> a();
+   public dfx b() {
+      return this.d;
+   }
 }

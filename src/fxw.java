@@ -1,294 +1,168 @@
-import com.mojang.authlib.minecraft.BanDetails;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.Objects;
+import java.net.URI;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class fxw extends fxu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("narrator.screen.title");
-   private static final wy c = wy.c("title.credits");
-   private static final String d = "Demo_World";
-   private static final float s = 2000.0F;
+public class fxw extends fyb {
+   private static final alg a = alg.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final wy v = wy.c("menu.returnToGame");
+   private static final wy w = wy.c("gui.advancements");
+   private static final wy x = wy.c("gui.stats");
+   private static final wy y = wy.c("menu.sendFeedback");
+   private static final wy z = wy.c("menu.reportBugs");
+   private static final wy A = wy.c("menu.feedback");
+   private static final wy B = wy.c("menu.server_links");
+   private static final wy C = wy.c("menu.options");
+   private static final wy D = wy.c("menu.shareToLan");
+   private static final wy E = wy.c("menu.playerReporting");
+   private static final wy F = wy.c("menu.returnToMenu");
+   private static final wy G = wy.c("menu.savingLevel");
+   private static final wy H = wy.c("menu.game");
+   private static final wy I = wy.c("menu.paused");
+   private final boolean J;
    @Nullable
-   private ftg u;
-   private fsc v;
-   @Nullable
-   private fmk w;
-   private float x = 1.0F;
-   private boolean y;
-   private long z;
-   private final fst A;
-
-   public fxw() {
-      this(false);
-   }
+   private fsj K;
 
    public fxw(boolean $$0) {
-      this($$0, null);
+      super($$0 ? H : I);
+      this.J = $$0;
    }
 
-   public fxw(boolean $$0, @Nullable fst $$1) {
-      super(b);
-      this.y = $$0;
-      this.A = Objects.requireNonNullElseGet($$1, () -> new fst(false));
+   public boolean m() {
+      return this.J;
    }
 
-   private boolean m() {
-      return this.w != null;
+   @Override
+   protected void aO_() {
+      if (this.J) {
+         this.E();
+      }
+
+      this.c(new ftq(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   }
+
+   private void E() {
+      fvw $$0 = new fvw();
+      $$0.c().a(4, 4, 4, 0);
+      fvw.b $$1 = $$0.d(2);
+      $$1.a(fsj.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fyl(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new fyf(this, this.m.t.l())));
+      aly $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
+      } else {
+         $$1.a(this.a(A, () -> new fxw.a(this)));
+         $$1.a(this.a(B, () -> new gav(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new gbg(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fyc(this)));
+      } else {
+         $$1.a(this.a(E, () -> new gcv(this)));
+      }
+
+      wy $$3 = this.m.T() ? F : wx.p;
+      this.K = $$1.a(fsj.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.ba().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fvv.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(fyb $$0, fvw.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? ayh.i : ayh.h));
+      $$1.a(a($$0, z, ayh.j)).j = !ab.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      gko $$1 = this.m.S();
+      this.m.s.ad();
+      if ($$0) {
+         this.m.b(new fxm(G));
+      } else {
+         this.m.y();
+      }
+
+      fyd $$2 = new fyd();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fju($$2));
+      } else {
+         this.m.a(new gat($$2));
+      }
    }
 
    @Override
    public void e() {
-      if (this.m()) {
-         this.w.e();
-      }
-   }
-
-   public static void a(hir $$0) {
-      $$0.a(fst.a);
-      $$0.a(fst.c);
-      $$0.a(gpv.a);
-      e.a($$0);
+      super.e();
    }
 
    @Override
-   public boolean k() {
-      return false;
-   }
-
-   @Override
-   public boolean aC_() {
-      return false;
-   }
-
-   @Override
-   protected void aN_() {
-      if (this.u == null) {
-         this.u = this.m.aL().a();
-      }
-
-      int $$0 = this.p.a(c);
-      int $$1 = this.n - $$0 - 2;
-      int $$2 = 24;
-      int $$3 = this.o / 4 + 48;
-      if (this.m.K()) {
-         $$3 = this.c($$3, 24);
-      } else {
-         $$3 = this.b($$3, 24);
-      }
-
-      $$3 = this.a($$3, 24);
-      fth $$4 = this.c(fsg.a(20, $$0x -> this.m.a(new gaw(this, this.m.n, this.m.ah())), true));
-      int var10001 = this.n / 2 - 124;
-      $$3 += 36;
-      $$4.c(var10001, $$3);
-      this.c(fsc.a(wy.c("menu.options"), $$0x -> this.m.a(new gaz(this, this.m.n))).a(this.n / 2 - 100, $$3, 98, 20).a());
-      this.c(fsc.a(wy.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3, 98, 20).a());
-      fth $$5 = this.c(fsg.b(20, $$0x -> this.m.a(new gat(this, this.m.n)), true));
-      $$5.c(this.n / 2 + 104, $$3);
-      this.c(new fta($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new fww(this)), this.p));
-      if (this.w == null) {
-         this.w = new fmk();
-      }
-
-      if (this.m()) {
-         this.w.b(this.m, this.n, this.o);
-      }
-   }
-
-   private int a(int $$0, int $$1) {
-      if (ab.aU) {
-         this.c(fsc.a(wy.b("Create Test World"), $$0x -> gcv.b(this.m, this)).a(this.n / 2 - 100, $$0 += $$1, 200, 20).a());
-      }
-
-      return $$0;
-   }
-
-   private int b(int $$0, int $$1) {
-      this.c(fsc.a(wy.c("menu.singleplayer"), $$0x -> this.m.a(new gdd(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
-      wy $$2 = this.E();
-      boolean $$3 = $$2 == null;
-      ftn $$4 = $$2 != null ? ftn.a($$2) : null;
-      int var6;
-      this.c(fsc.a(wy.c("menu.multiplayer"), $$0x -> {
-         fxu $$1x = (fxu)(this.m.n.u ? new gam(this) : new gan(this));
-         this.m.a($$1x);
-      }).a(this.n / 2 - 100, var6 = $$0 + $$1, 200, 20).a($$4).a()).j = $$3;
-      this.c(fsc.a(wy.c("menu.online"), $$0x -> this.m.a(new fjn(this))).a(this.n / 2 - 100, $$0 = var6 + $$1, 200, 20).a($$4).a()).j = $$3;
-      return $$0;
-   }
-
-   @Nullable
-   private wy E() {
-      if (this.m.F()) {
-         return null;
-      } else if (this.m.I()) {
-         return wy.c("title.multiplayer.disabled.banned.name");
-      } else {
-         BanDetails $$0 = this.m.H();
-         if ($$0 != null) {
-            return $$0.expires() != null ? wy.c("title.multiplayer.disabled.banned.temporary") : wy.c("title.multiplayer.disabled.banned.permanent");
-         } else {
-            return wy.c("title.multiplayer.disabled");
-         }
-      }
-   }
-
-   private int c(int $$0, int $$1) {
-      boolean $$2 = this.F();
-      this.c(fsc.a(wy.c("menu.playdemo"), $$1x -> {
-         if ($$2) {
-            this.m.x().a("Demo_World", () -> this.m.a(this));
-         } else {
-            this.m.x().a("Demo_World", MinecraftServer.d, egw.b, eqj::a, this);
-         }
-      }).a(this.n / 2 - 100, $$0, 200, 20).a());
-      int var4;
-      this.v = this.c(
-         fsc.a(
-               wy.c("menu.resetdemo"),
-               $$0x -> {
-                  eyn $$1x = this.m.m();
-
-                  try (eyn.c $$2x = $$1x.e("Demo_World")) {
-                     if ($$2x.m()) {
-                        this.m
-                           .a(
-                              new fws(
-                                 this::c,
-                                 wy.c("selectWorld.deleteQuestion"),
-                                 wy.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
-                                 wy.c("selectWorld.deleteButton"),
-                                 wx.e
-                              )
-                           );
-                     }
-                  } catch (IOException var8) {
-                     ful.a(this.m, "Demo_World");
-                     a.warn("Failed to access demo world", var8);
-                  }
-               }
-            )
-            .a(this.n / 2 - 100, var4 = $$0 + $$1, 200, 20)
-            .a()
-      );
-      this.v.j = $$2;
-      return var4;
-   }
-
-   private boolean F() {
-      try {
-         boolean var2;
-         try (eyn.c $$0 = this.m.m().e("Demo_World")) {
-            var2 = $$0.m();
-         }
-
-         return var2;
-      } catch (IOException var6) {
-         ful.a(this.m, "Demo_World");
-         a.warn("Failed to read demo world data", var6);
-         return false;
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
+         $$0.a(gqk::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
       }
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      if (this.z == 0L && this.y) {
-         this.z = af.c();
-      }
-
-      float $$4 = 1.0F;
-      if (this.y) {
-         float $$5 = (float)(af.c() - this.z) / 2000.0F;
-         if ($$5 > 1.0F) {
-            this.y = false;
-            this.x = 1.0F;
-         } else {
-            $$5 = azm.a($$5, 0.0F, 1.0F);
-            $$4 = azm.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
-            this.x = azm.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
-         }
-
-         this.a($$4);
-      }
-
-      this.a($$0, $$3);
-      int $$6 = azm.f($$4 * 255.0F) << 24;
-      if (($$6 & -67108864) != 0) {
-         super.a($$0, $$1, $$2, $$3);
-         this.A.a($$0, this.n, $$4);
-         if (this.u != null && !this.m.n.c().c()) {
-            this.u.a($$0, this.n, this.p, $$6);
-         }
-
-         String $$7 = "Minecraft " + ab.b().c();
-         if (this.m.K()) {
-            $$7 = $$7 + " Demo";
-         } else {
-            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
-         }
-
-         if (fos.e().a()) {
-            $$7 = $$7 + hjw.a("menu.modded");
-         }
-
-         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
-         if (this.m() && $$4 >= 1.0F) {
-            this.w.a($$0, $$1, $$2, $$3);
-         }
+   public void b(frv $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
       }
    }
 
-   private void a(float $$0) {
-      for (ftz $$1 : this.aD_()) {
-         if ($$1 instanceof fsa $$2) {
-            $$2.a($$0);
-         }
-      }
+   private fsj a(wy $$0, Supplier<fyb> $$1) {
+      return fsj.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
    }
 
-   @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
+   private static fsj a(fyb $$0, wy $$1, URI $$2) {
+      return fsj.a($$1, fwy.b($$0, $$2)).a(98).a();
    }
 
-   @Override
-   protected void a(fro $$0, float $$1) {
-      f.a($$0, this.n, this.o, this.x, $$1);
-   }
+   static class a extends fyb {
+      private static final wy b = wy.c("menu.feedback.title");
+      public final fyb a;
+      private final fvx c = new fvx(this);
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return super.a($$0, $$1, $$2) ? true : this.m() && this.w.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void aE_() {
-      if (this.w != null) {
-         this.w.aE_();
-      }
-   }
-
-   @Override
-   public void aF_() {
-      super.aF_();
-      if (this.w != null) {
-         this.w.aF_();
-      }
-   }
-
-   private void c(boolean $$0) {
-      if ($$0) {
-         try (eyn.c $$1 = this.m.m().e("Demo_World")) {
-            $$1.k();
-         } catch (IOException var7) {
-            ful.b(this.m, "Demo_World");
-            a.warn("Failed to delete demo world", var7);
-         }
+      protected a(fyb $$0) {
+         super(b);
+         this.a = $$0;
       }
 
-      this.m.a(this);
+      @Override
+      protected void aO_() {
+         this.c.a(b, this.p);
+         fvw $$0 = this.c.c(new fvw());
+         $$0.c().a(4, 4, 4, 0);
+         fvw.b $$1 = $$0.d(2);
+         fxw.a(this, $$1);
+         this.c.b(fsj.a(wx.k, $$0x -> this.aL_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void aL_() {
+         this.m.a(this.a);
+      }
    }
 }

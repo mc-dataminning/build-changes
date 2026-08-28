@@ -1,40 +1,20 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dfa(List<dfb> f, dfb g, dfb h) implements dev {
-   public static final MapCodec<dfa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dfb.a.listOf().fieldOf("ingredients").forGetter(dfa::b),
-               dfb.a.fieldOf("result").forGetter(dfa::d),
-               dfb.a.fieldOf("crafting_station").forGetter(dfa::e)
-            )
-            .apply($$0, dfa::new)
-   );
-   public static final yw<wj, dfa> b = yw.a(dfb.b.a(yu.a()), dfa::b, dfb.b, dfa::d, dfb.b, dfa::e, dfa::new);
-   public static final dev.a<dfa> c = new dev.a<>(a, b);
+public interface dfa {
+   Codec<dfa> d = mf.ax.q().dispatch(dfa::a, dfa.a::a);
+   yw<wj, dfa> e = yu.a(mg.ag).b(dfa::a, dfa.a::b);
 
-   @Override
-   public dev.a<dfa> a() {
-      return c;
+   dfg d();
+
+   dfg e();
+
+   dfa.a<? extends dfa> a();
+
+   default boolean a(cum $$0) {
+      return this.d().a($$0) && this.e().a($$0);
    }
 
-   @Override
-   public boolean a(cuh $$0) {
-      return this.f.stream().allMatch($$1 -> $$1.a($$0)) && dev.super.a($$0);
-   }
-
-   public List<dfb> b() {
-      return this.f;
-   }
-
-   @Override
-   public dfb d() {
-      return this.g;
-   }
-
-   @Override
-   public dfb e() {
-      return this.h;
+   public static record a<T extends dfa>(MapCodec<T> a, yw<wj, T> b) {
    }
 }

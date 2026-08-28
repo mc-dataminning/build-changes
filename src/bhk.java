@@ -12,7 +12,7 @@ public class bhk extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.j);
+      Type<?> $$0 = this.getInputSchema().getType(bix.j);
       OpticFinder<?> $$1 = $$0.findField("data");
       OpticFinder<?> $$2 = $$1.type().findField("banners");
       OpticFinder<?> $$3 = DSL.typeFinder(((ListType)$$2.type()).getElement());

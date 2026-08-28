@@ -1,6 +1,8 @@
-public interface bpm {
-   bpm a = () -> {
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void cut();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bpm {
 }

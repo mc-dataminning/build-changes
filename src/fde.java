@@ -1,9 +1,11 @@
-public interface fde extends eza {
-   float b(eyz var1);
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   default int a(eyz $$0) {
-      return Math.round(this.b($$0));
-   }
+public interface fde {
+   @Nullable
+   uw a(ezh var1);
 
-   fdd b();
+   Set<bax<?>> b();
+
+   fdd a();
 }

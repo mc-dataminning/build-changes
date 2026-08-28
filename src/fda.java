@@ -1,53 +1,52 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.Optional;
 
-public record fda(fde b, fde c) implements fde {
+public record fda(Optional<Boolean> b, Optional<Boolean> c) implements fcq {
    public static final MapCodec<fda> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fdf.a.fieldOf("n").forGetter(fda::c), fdf.a.fieldOf("p").forGetter(fda::d)).apply($$0, fda::new)
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(fda::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(fda::e))
+            .apply($$0, fda::new)
    );
 
    @Override
-   public fdd b() {
-      return fdf.d;
+   public fcr b() {
+      return fcs.o;
    }
 
-   @Override
-   public int a(eyz $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      azv $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public boolean a(ezh $$0) {
+      arq $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ah() ? false : !this.c.isPresent() || this.c.get() == $$1.ag();
    }
 
-   @Override
-   public float b(eyz $$0) {
-      return (float)this.a($$0);
+   public static fda.a c() {
+      return new fda.a();
    }
 
-   public static fda a(int $$0, float $$1) {
-      return new fda(fdb.a((float)$$0), fdb.a($$1));
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fde c() {
+   public Optional<Boolean> d() {
       return this.b;
    }
 
-   public fde d() {
+   public Optional<Boolean> e() {
       return this.c;
+   }
+
+   public static class a implements fcq.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public fda.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public fda.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public fda a() {
+         return new fda(this.a, this.b);
+      }
    }
 }

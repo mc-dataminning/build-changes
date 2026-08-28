@@ -1,28 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import org.joml.Matrix4f;
 
-public enum fvg implements bak {
-   a("bitmap", fvd.a.a),
-   b("ttf", fvi.a),
-   c("space", fhd.a.a),
-   d("unihex", fvj.b.a),
-   e("reference", fvh.a);
+public class fvg extends fvf {
+   public static final fvg b = new fvg();
 
-   public static final Codec<fvg> f = bak.a(fvg::values);
-   private final String g;
-   private final MapCodec<? extends fvf> h;
-
-   private fvg(final String $$0, final MapCodec<? extends fvf> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public fvg() {
+      super(fvd.b(alg.b("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public String c() {
-      return this.g;
-   }
-
-   public MapCodec<? extends fvf> a() {
-      return this.h;
+   public void a(fvf.b $$0, Matrix4f $$1, fjn $$2, int $$3) {
    }
 }

@@ -11,7 +11,7 @@ public class bdc extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.c);
+      Type<?> $$0 = this.getInputSchema().getType(bix.c);
       OpticFinder<?> $$1 = $$0.findField("sections");
       return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
          $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));

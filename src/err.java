@@ -1,12 +1,8 @@
-import com.mojang.serialization.MapCodec;
+import net.minecraft.server.MinecraftServer;
 
-public interface err<SP extends erq> {
-   err<ero> a = a("random_spread", ero.a);
-   err<ern> b = a("concentric_rings", ern.a);
-
-   MapCodec<SP> codec();
-
-   private static <SP extends erq> err<SP> a(String $$0, MapCodec<SP> $$1) {
-      return jr.a(mf.P, $$0, () -> $$1);
+public record err(avd a, js b, eve c) {
+   public static err a(arq $$0) {
+      MinecraftServer $$1 = $$0.p();
+      return new err($$1.be(), $$1.ba(), $$1.aY());
    }
 }

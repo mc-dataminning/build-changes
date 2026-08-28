@@ -15,27 +15,27 @@ public class gi implements gh {
    }
 
    @Override
-   public fei a(ei $$0) {
-      feh $$1 = $$0.k();
-      fei $$2 = $$0.m().a($$0);
+   public feq a(ei $$0) {
+      fep $$1 = $$0.k();
+      feq $$2 = $$0.m().a($$0);
       float $$3 = azm.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = azm.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = azm.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = azm.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = azm.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = azm.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      fei $$9 = new fei((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      fei $$10 = new fei((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      fei $$11 = $$9.c($$10).c(-1.0);
+      feq $$9 = new feq((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      feq $$10 = new feq((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      feq $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new fei($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new feq($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public feh b(ei $$0) {
-      return feh.a;
+   public fep b(ei $$0) {
+      return fep.a;
    }
 
    @Override

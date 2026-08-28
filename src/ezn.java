@@ -1,18 +1,67 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 
 public class ezn {
-   public static final Codec<ezp> a = mf.D.q().dispatch(ezp::a, ezq::a);
-   public static final ezq b = a("empty", ezk.a);
-   public static final ezq c = a("item", ezm.a);
-   public static final ezq d = a("loot_table", ezs.a);
-   public static final ezq e = a("dynamic", ezj.a);
-   public static final ezq f = a("tag", ezu.a);
-   public static final ezq g = a("alternatives", ezg.a);
-   public static final ezq h = a("sequence", ezt.a);
-   public static final ezq i = a("group", ezl.a);
+   private final azt a;
+   private final bay b;
+   private final Optional<jf.a> c;
+   private final Set<alf<?>> d;
 
-   private static ezq a(String $$0, MapCodec<? extends ezp> $$1) {
-      return jr.a(mf.D, alg.b($$0), new ezq($$1));
+   public ezn(azt $$0, bay $$1, jf.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
+   }
+
+   public ezn(azt $$0, bay $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
+   }
+
+   private ezn(azt $$0, bay $$1, Optional<jf.a> $$2, Set<alf<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public ezn a(String $$0) {
+      return new ezn(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public ezn a(String $$0, alf<?> $$1) {
+      Set<alf<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ezn(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(alf<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(ezi $$0) {
+      Set<bax<?>> $$1 = $$0.a();
+      Set<bax<?>> $$2 = Sets.difference($$1, this.b.b());
+      if (!$$2.isEmpty()) {
+         this.a.b("Parameters " + $$2 + " are not provided in this context");
+      }
+   }
+
+   public jf.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public ezn a(bay $$0) {
+      return new ezn(this.a, $$0, this.c, this.d);
+   }
+
+   public azt c() {
+      return this.a;
    }
 }

@@ -1,7 +1,7 @@
 import com.mojang.datafixers.schemas.Schema;
 import java.util.Objects;
 
-public class bff extends bjk {
+public class bff extends bjl {
    public bff(Schema $$0, boolean $$1) {
       super("EntityTippedArrowFix", $$0, $$1);
    }

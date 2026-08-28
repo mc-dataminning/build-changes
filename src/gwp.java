@@ -1,45 +1,43 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gwp extends gvb<cjj, hcw, ggc> {
+   private static final alg a = alg.b("textures/entity/fox/fox.png");
+   private static final alg j = alg.b("textures/entity/fox/fox_sleep.png");
+   private static final alg k = alg.b("textures/entity/fox/snow_fox.png");
+   private static final alg l = alg.b("textures/entity/fox/snow_fox_sleep.png");
 
-public final class gwp extends gup<clf, hcv, ggc> {
-   private static final Map<clm, alg> a = Maps.newEnumMap(
-      Map.of(
-         clm.a,
-         alg.b("textures/entity/horse/horse_white.png"),
-         clm.b,
-         alg.b("textures/entity/horse/horse_creamy.png"),
-         clm.c,
-         alg.b("textures/entity/horse/horse_chestnut.png"),
-         clm.d,
-         alg.b("textures/entity/horse/horse_brown.png"),
-         clm.e,
-         alg.b("textures/entity/horse/horse_black.png"),
-         clm.f,
-         alg.b("textures/entity/horse/horse_gray.png"),
-         clm.g,
-         alg.b("textures/entity/horse/horse_darkbrown.png")
-      )
-   );
-
-   public gwp(gvz.a $$0) {
-      super($$0, new ggc($$0.a(git.bl)), new ggc($$0.a(git.bo)));
-      this.a(new hab(this));
-      this.a(new hap<>(this, $$0.h(), hkv.d.e, $$0x -> $$0x.i, new ggc($$0.a(git.bm)), new ggc($$0.a(git.bp))));
-      this.a(new hap<>(this, $$0.h(), hkv.d.j, $$0x -> $$0x.b, new gfr($$0.a(git.bn)), new gfr($$0.a(git.bq))));
+   public gwp(gwh.a $$0) {
+      super($$0, new ggc($$0.a(gjb.aX)), new ggc($$0.a(gjb.aY)), 0.4F);
+      this.a(new hai(this));
    }
 
-   public alg a(hcv $$0) {
-      return a.get($$0.a);
+   protected void a(hcw $$0, fjj $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.g || $$0.f) {
+         $$1.a(a.b.rotationDegrees(-$$0.ab));
+      }
    }
 
-   public hcv b() {
-      return new hcv();
+   public alg a(hcw $$0) {
+      if ($$0.h == cjj.v.a) {
+         return $$0.d ? j : a;
+      } else {
+         return $$0.d ? l : k;
+      }
    }
 
-   public void a(clf $$0, hcv $$1, float $$2) {
+   public hcw b() {
+      return new hcw();
+   }
+
+   public void a(cjj $$0, hcw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
+      hdc.a($$0, $$1, this.h);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.ci();
+      $$1.b = $$0.K($$2);
+      $$1.d = $$0.fR();
+      $$1.e = $$0.x();
+      $$1.f = $$0.gr();
+      $$1.g = $$0.gs();
       $$1.h = $$0.t();
-      $$1.i = $$0.aj().v();
    }
 }

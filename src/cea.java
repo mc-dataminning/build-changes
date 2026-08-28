@@ -1,86 +1,65 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cea extends cev {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public abstract class cea {
+   private final EnumSet<cea.a> a = EnumSet.noneOf(cea.a.class);
 
-   public cea(bxk $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public abstract boolean b();
+
+   public boolean c() {
+      return this.b();
    }
 
-   @Nullable
+   public boolean Q_() {
+      return true;
+   }
+
+   public void d() {
+   }
+
+   public void e() {
+   }
+
+   public boolean R_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<cea.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
    @Override
-   protected fei h() {
-      float $$0 = this.b.dV().A.i();
-      if (this.b.dV().A.i() < 0.3F) {
-         return this.k();
-      } else {
-         fei $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
-         }
-
-         return $$1 == null ? this.k() : $$1;
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
    }
 
-   @Nullable
-   private fei k() {
-      return chy.a(this.b, 10, 7);
+   public EnumSet<cea.a> j() {
+      return this.a;
    }
 
-   @Nullable
-   private fei l() {
-      arq $$0 = (arq)this.b.dV();
-      List<cqk> $$1 = $$0.a(bwm.bD, this.b.cR().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cqk $$2 = $$1.get(this.b.dV().A.a($$1.size()));
-         fei $$3 = $$2.dt();
-         return chy.a(this.b, 10, 7, $$3);
-      }
+   protected int a(int $$0) {
+      return this.R_() ? $$0 : b($$0);
    }
 
-   @Nullable
-   private fei m() {
-      jx $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         iu $$1 = this.a($$0);
-         return $$1 == null ? null : chy.a(this.b, 10, 7, fei.c($$1));
-      }
+   protected static int b(int $$0) {
+      return azm.e($$0, 2);
    }
 
-   @Nullable
-   private jx n() {
-      arq $$0 = (arq)this.b.dV();
-      List<jx> $$1 = jx.a(jx.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   protected static arq a(bwf $$0) {
+      return (arq)$$0.dV();
    }
 
-   @Nullable
-   private iu a(jx $$0) {
-      arq $$1 = (arq)this.b.dV();
-      cie $$2 = $$1.A();
-      List<iu> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cie.b.b).map(cif::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   protected static arq a(dja $$0) {
+      return (arq)$$0;
    }
 
-   private boolean a(cqk $$0) {
-      return $$0.a(this.b.dV().ae());
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,33 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record era(era.a b, bsm<dkk.c> c) {
-   public static final Codec<era> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(era.a.c.fieldOf("bounding_box").forGetter(era::a), bsm.a(dkk.c.a).fieldOf("spawns").forGetter(era::b)).apply($$0, era::new)
-   );
+public abstract class era extends erb {
+   private final era.a d;
+   private final int e;
+   private final int f;
 
-   public era.a a() {
-      return this.b;
+   protected era(era.a $$0, int $$1, int $$2, erb.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public bsm<dkk.c> b() {
-      return this.c;
+   @Override
+   public Optional<erb.b> a(erb.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, egg.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   public static enum a implements bak {
-      a("piece"),
-      b("full");
+   private void a(ert $$0, erb.a $$1) {
+      dih $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
 
-      public static final Codec<era.a> c = bak.a(era.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @FunctionalInterface
+   protected interface a {
+      erf construct(ehf var1, int var2, int var3);
    }
 }

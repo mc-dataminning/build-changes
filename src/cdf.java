@@ -1,83 +1,68 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class cdf extends cdd {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class cdf<T extends bxc> extends cdy {
-   protected final bxk a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected ewu d;
-   protected final cgm e;
-   protected final Class<T> f;
-   protected final Predicate<bxc> g;
-   protected final Predicate<bxc> h;
-   private final chr k;
-
-   public cdf(bxk $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bwk.e::test);
-   }
-
-   public cdf(bxk $$0, Class<T> $$1, Predicate<bxc> $$2, float $$3, double $$4, double $$5, Predicate<bxc> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.O();
-      this.a(EnumSet.of(cdy.a.a));
-      this.k = chr.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
-   }
-
-   public cdf(bxk $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bxc> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean b() {
-      this.b = a(this.a)
-         .a(this.a.dV().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if (this.b == null) {
-         return false;
-      } else {
-         fei $$0 = chv.a(this.a, 16, 7, this.b.dt());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
-         }
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.e.k();
-   }
-
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
+   public cdf(bxg $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
    public void a() {
-      if (this.a.g((bwd)this.b) < 49.0) {
-         this.a.O().a(this.j);
-      } else {
-         this.a.O().a(this.i);
+      if (this.r && this.d.bj()) {
+         this.d.i(this.d.dy().b(0.0, 0.005, 0.0));
       }
+
+      if (this.k == cdd.a.b && !this.d.O().k()) {
+         double $$0 = this.e - this.d.dA();
+         double $$1 = this.f - this.d.dC();
+         double $$2 = this.g - this.d.dG();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.G(0.0F);
+         } else {
+            float $$4 = (float)(azm.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.w(this.b(this.d.dL(), $$4, (float)this.o));
+            this.d.aV = this.d.dL();
+            this.d.aX = this.d.dL();
+            float $$5 = (float)(this.h * this.d.h(byk.v));
+            if (this.d.bj()) {
+               this.d.B($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(azm.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = azm.a(azm.h($$7), (float)(-this.n), (float)this.n);
+                  this.d.x(this.a(this.d.dN(), $$7, 5.0F));
+               }
+
+               float $$8 = azm.b(this.d.dN() * (float) (Math.PI / 180.0));
+               float $$9 = azm.a(this.d.dN() * (float) (Math.PI / 180.0));
+               this.d.bi = $$8 * $$5;
+               this.d.bh = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(azm.h(this.d.dL() - $$4));
+               float $$11 = a($$10);
+               this.d.B($$5 * this.q * $$11);
+            }
+         }
+      } else {
+         this.d.B(0.0F);
+         this.d.I(0.0F);
+         this.d.H(0.0F);
+         this.d.G(0.0F);
+      }
+   }
+
+   private static float a(float $$0) {
+      return 1.0F - azm.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

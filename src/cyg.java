@@ -1,52 +1,44 @@
-public class cyg extends cyu implements czs {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+import java.util.List;
 
-   public cyg(cyu.a $$0) {
+public class cyg extends cyz {
+   public cyg(cyz.a $$0) {
       super($$0);
    }
 
    @Override
-   public bub a(dct $$0) {
-      div $$1 = $$0.q();
-      if ($$1 instanceof arq $$2) {
-         cyy $$3 = $$0.n();
-         fei $$4 = $$0.l();
-         ja $$5 = $$0.k();
-         crs.a(new crn($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
-
-      return bub.a;
-   }
-
-   @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      if ($$1.fI()) {
-         cyy $$3 = $$1.b($$2);
-         if ($$0 instanceof arq $$4) {
-            crs.a(new crn($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awx.c.b(this));
-         }
-
-         return bub.a;
+   public bud a(dcy $$0) {
+      dja $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      eah $$3 = $$1.a_($$2);
+      if (!$$3.a(dmh.cy) && !$$3.a(dmh.I)) {
+         return bud.d;
       } else {
-         return bub.e;
+         iu $$4 = $$2.d();
+         if (!$$1.v($$4)) {
+            return bud.d;
+         } else {
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<bwf> $$8 = $$1.a_(null, new fel($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return bud.d;
+            } else {
+               if ($$1 instanceof arq) {
+                  clz $$9 = new clz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), efh.t, $$4);
+                  eeh $$10 = ((arq)$$1).F();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
+
+               $$0.n().h(1);
+               return bud.a;
+            }
+         }
       }
-   }
-
-   @Override
-   public crs a(div $$0, jo $$1, cyy $$2, ja $$3) {
-      return new crn($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
-
-   @Override
-   public czs.a a() {
-      return czs.a.a().a(cyg::a).a(1.0F).b(0.5F).a(1004).a();
-   }
-
-   private static fei a(ld $$0, ja $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

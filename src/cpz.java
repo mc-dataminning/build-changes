@@ -1,44 +1,24 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cpz {
-   a(0, awn.CI, awn.CQ),
-   b(40, awn.CH, awn.CR),
-   c(80, awn.CJ, awn.CR);
-
-   private static final cpz[] d = af.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awm f;
-   private final awm g;
-
-   private cpz(final int $$0, final awm $$1, final awm $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public awm b() {
-      return this.f;
-   }
-
-   public awm c() {
-      return this.g;
-   }
-
-   public static cpz a(int $$0) {
-      for (cpz $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+public class cpz<E extends cpr> {
+   public static byw<bxe> a(int $$0) {
+      return cci.a(
+         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$1 -> $$1.group($$1.b(cgg.ae), $$1.a(cgg.M))
+               .apply($$1, ($$2, $$3) -> ($$4, $$5, $$6) -> {
+                     if (!$$5.fc().f()) {
+                        return false;
+                     } else {
+                        Optional<cnh> $$7 = $$1.a($$3);
+                        if ($$7.isPresent() && $$7.get().a($$5, (double)$$0)) {
+                           return false;
+                        } else {
+                           $$2.b();
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 }

@@ -20,7 +20,7 @@ public class bii extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          this.a,
-         this.getInputSchema().getType(biw.e),
+         this.getInputSchema().getType(bix.e),
          $$0 -> $$0.update(
                DSL.remainderFinder(), $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get(this.b).result().map($$1 -> $$0x.set(this.c, $$1).remove(this.b)), $$0x)
             )

@@ -1,41 +1,33 @@
-public class dap extends cyu implements czs {
-   public static float a = 1.5F;
+public abstract class dap extends czw implements czx {
+   public static float a = 0.5F;
 
-   public dap(cyu.a $$0) {
+   public dap(cyz.a $$0) {
       super($$0);
    }
 
    @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      cyy $$3 = $$1.b($$2);
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      czd $$3 = $$1.b($$2);
       if ($$0 instanceof arq $$4) {
-         crs.a(($$2x, $$3x, $$4x) -> new csl($$1, $$0, $$1.dt().a(), $$1.bE().b(), $$1.dt().c()), $$4, $$3, $$1, 0.0F, a, 1.0F);
+         crx.a(this::a, $$4, $$3, $$1, -20.0F, a, 1.0F);
       }
 
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.Ds, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
       $$1.b(awx.c.b(this));
       $$3.a(1, $$1);
-      return bub.a;
+      return bud.a;
+   }
+
+   protected abstract crm a(arq var1, bxe var2, czd var3);
+
+   protected abstract crm a(dja var1, jo var2, czd var3);
+
+   @Override
+   public crx a(dja $$0, jo $$1, czd $$2, ja $$3) {
+      return this.a($$0, $$1, $$2);
    }
 
    @Override
-   public crs a(div $$0, jo $$1, cyy $$2, ja $$3) {
-      azv $$4 = $$0.C_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      fei $$8 = new fei($$5, $$6, $$7);
-      csl $$9 = new csl($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
-   }
-
-   @Override
-   public void a(crs $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public czs.a a() {
-      return czs.a.a().a(($$0, $$1) -> dog.a($$0, 1.0, fei.c)).a(6.6666665F).b(1.0F).a(1051).a();
+   public czx.a a() {
+      return czx.a.a().a(czx.a.a.c() * 0.5F).b(czx.a.a.d() * 1.25F).a();
    }
 }

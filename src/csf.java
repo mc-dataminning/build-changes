@@ -1,60 +1,88 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class csf extends crx {
+   private static final float a = 12.25F;
 
-public class csf extends crh {
-   public csf(bwm<? extends csf> $$0, div $$1) {
+   protected csf(bwo<? extends csf> $$0, dja $$1) {
       super($$0, $$1);
    }
 
-   public csf(div $$0, bxc $$1, cyy $$2) {
-      super(bwm.aV, $$0, $$1, $$2);
-   }
-
-   public csf(div $$0, double $$1, double $$2, double $$3, cyy $$4) {
-      super(bwm.aV, $$0, $$1, $$2, $$3, $$4);
+   protected csf(bwo<? extends csf> $$0, double $$1, double $$2, double $$3, dja $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected cyu g() {
-      return czc.wu;
+   public boolean a(double $$0) {
+      if (this.af < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cR().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
+
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
    }
 
    @Override
-   public void a(arq $$0, cyy $$1, @Nullable bwd $$2) {
-      dau $$3 = $$1.a(kj.R, dau.a);
-      float $$4 = $$1.a(kj.S, 1.0F);
-      Iterable<bvh> $$5 = $$3.a();
-      fed $$6 = this.cR().c(4.0, 2.0, 4.0);
-      List<bxc> $$7 = this.dV().a(bxc.class, $$6);
-      if (!$$7.isEmpty()) {
-         bwd $$8 = this.z();
+   public boolean n(boolean $$0) {
+      return true;
+   }
 
-         for (bxc $$9 : $$7) {
-            if ($$9.fK()) {
-               double $$10 = this.g($$9);
-               if ($$10 < 16.0) {
-                  double $$11;
-                  if ($$9 == $$2) {
-                     $$11 = 1.0;
-                  } else {
-                     $$11 = 1.0 - Math.sqrt($$10) / 4.0;
-                  }
+   @Override
+   public void h() {
+      this.j();
+      this.bf();
+      this.g();
+      feo $$0 = crz.a(this, this::b);
+      feq $$1;
+      if ($$0.d() != feo.a.a) {
+         $$1 = $$0.g();
+      } else {
+         $$1 = this.dt().e(this.dy());
+      }
 
-                  for (bvh $$13 : $$5) {
-                     je<bvf> $$14 = $$13.c();
-                     if ($$14.a().a()) {
-                        $$14.a().a($$0, this, this.q(), $$9, $$13.e(), $$11);
-                     } else {
-                        int $$15 = $$13.a($$2x -> (int)($$11 * (double)$$2x * (double)$$4 + 0.5));
-                        bvh $$16 = new bvh($$14, $$15, $$13.e(), $$13.f(), $$13.g());
-                        if (!$$16.a(20)) {
-                           $$9.b($$16, $$8);
-                        }
-                     }
-                  }
-               }
+      this.b($$1);
+      this.A();
+      this.aK();
+      super.h();
+      if ($$0.d() != feo.a.a && this.bK()) {
+         this.b($$0);
+      }
+   }
+
+   private void g() {
+      feq $$0 = this.dy();
+      feq $$1 = this.dt();
+      float $$4;
+      if (this.bj()) {
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            float $$3 = 0.25F;
+            this.dV().a(lx.d, $$1.d - $$0.d * 0.25, $$1.e - $$0.e * 0.25, $$1.f - $$0.f * 0.25, $$0.d, $$0.e, $$0.f);
+         }
+
+         $$4 = 0.8F;
+      } else {
+         $$4 = 0.99F;
+      }
+
+      this.i($$0.c((double)$$4));
+   }
+
+   private void j() {
+      if (this.ak) {
+         for (iu $$0 : iu.a(this.cR())) {
+            eah $$1 = this.dV().a_($$0);
+            if ($$1.a(dmh.nJ)) {
+               $$1.a(this.dV(), $$0, this);
             }
          }
       }
+   }
+
+   @Override
+   protected double bd() {
+      return 0.03;
    }
 }

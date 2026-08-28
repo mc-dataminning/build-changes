@@ -1,179 +1,186 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Consumer;
 
-public record daz(float c, float d, List<daz.a> e, daz.b f, Optional<axr<buu>> g, Optional<je<awm>> h, Optional<je<awm>> i) {
-   public static final Codec<daz> a = RecordCodecBuilder.create(
+public record daz(Optional<je<dax>> e, Optional<Integer> f, List<bvj> g, Optional<String> h) implements dbj, dci {
+   public static final daz a = new daz(Optional.empty(), Optional.empty(), List.of(), Optional.empty());
+   private static final wy i = wy.c("effect.none").a(n.h);
+   public static final int b = -13083194;
+   private static final Codec<daz> j = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayu.n.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(daz::b),
-               ayu.n.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(daz::c),
-               daz.a.a.listOf().optionalFieldOf("damage_reductions", List.of(new daz.a(90.0F, Optional.empty(), 0.0F, 1.0F))).forGetter(daz::d),
-               daz.b.a.optionalFieldOf("item_damage", daz.b.c).forGetter(daz::e),
-               axr.b(mg.aM).optionalFieldOf("bypassed_by").forGetter(daz::f),
-               awm.b.optionalFieldOf("block_sound").forGetter(daz::g),
-               awm.b.optionalFieldOf("disabled_sound").forGetter(daz::h)
+               dax.a.optionalFieldOf("potion").forGetter(daz::e),
+               Codec.INT.optionalFieldOf("custom_color").forGetter(daz::f),
+               bvj.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(daz::d),
+               Codec.STRING.optionalFieldOf("custom_name").forGetter(daz::g)
             )
             .apply($$0, daz::new)
    );
-   public static final yw<wj, daz> b = yw.a(
-      yu.l,
-      daz::b,
-      yu.l,
-      daz::c,
-      daz.a.b.a(yu.a()),
-      daz::d,
-      daz.b.b,
-      daz::e,
-      axr.c(mg.aM).a(yu::a),
-      daz::f,
-      awm.d.a(yu::a),
-      daz::g,
-      awm.d.a(yu::a),
-      daz::h,
-      daz::new
-   );
+   public static final Codec<daz> c = Codec.withAlternative(j, dax.a, daz::new);
+   public static final yw<wj, daz> d = yw.a(dax.b.a(yu::a), daz::e, yu.g.a(yu::a), daz::f, bvj.e.a(yu.a()), daz::d, yu.o.a(yu::a), daz::g, daz::new);
 
-   public void a(arq $$0, bxc $$1) {
-      this.h.ifPresent($$2 -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), (je<awm>)$$2, $$1.dm(), 1.0F, 0.8F + $$0.A.i() * 0.4F));
+   public daz(je<dax> $$0) {
+      this(Optional.of($$0), Optional.empty(), List.of(), Optional.empty());
    }
 
-   public void a(arq $$0, bxc $$1, float $$2, cyy $$3) {
-      int $$4 = this.a($$2);
-      if ($$4 > 0) {
-         if ($$1 instanceof cqy $$5) {
-            $$5.gE().a($$3, $$4);
-         }
+   public static czd a(cyz $$0, je<dax> $$1) {
+      czd $$2 = new czd($$0);
+      $$2.b(kj.R, new daz($$1));
+      return $$2;
+   }
 
-         $$1.fE();
-         this.i.ifPresent($$2x -> $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$2x, $$1.dm(), 0.8F, 0.8F + $$0.A.i() * 0.4F));
+   public boolean a(je<dax> $$0) {
+      return this.e.isPresent() && this.e.get().a($$0) && this.g.isEmpty();
+   }
+
+   public Iterable<bvj> a() {
+      if (this.e.isEmpty()) {
+         return this.g;
+      } else {
+         return (Iterable<bvj>)(this.g.isEmpty() ? this.e.get().a().a() : Iterables.concat(this.e.get().a().a(), this.g));
       }
    }
 
-   public void a(div $$0, cyy $$1, bxc $$2, bua $$3, float $$4) {
-      if ($$2 instanceof cqy $$5) {
-         if (!$$0.C) {
-            $$5.b(awx.c.b($$1.h()));
+   public void a(Consumer<bvj> $$0, float $$1) {
+      if (this.e.isPresent()) {
+         for (bvj $$2 : this.e.get().a().a()) {
+            $$0.accept($$2.a($$1));
+         }
+      }
+
+      for (bvj $$3 : this.g) {
+         $$0.accept($$3.a($$1));
+      }
+   }
+
+   public daz b(je<dax> $$0) {
+      return new daz(Optional.of($$0), this.f, this.g, this.h);
+   }
+
+   public daz a(bvj $$0) {
+      return new daz(this.e, this.f, af.a(this.g, $$0), this.h);
+   }
+
+   public int b() {
+      return this.a(-13083194);
+   }
+
+   public int a(int $$0) {
+      return this.f.isPresent() ? this.f.get() : a(this.a()).orElse($$0);
+   }
+
+   public wy a(String $$0) {
+      String $$1 = this.h.or(() -> this.e.map($$0x -> ((dax)$$0x.a()).b())).orElse("empty");
+      return wy.c($$0 + $$1);
+   }
+
+   public static OptionalInt a(Iterable<bvj> $$0) {
+      int $$1 = 0;
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (bvj $$5 : $$0) {
+         if ($$5.g()) {
+            int $$6 = $$5.c().a().i();
+            int $$7 = $$5.e() + 1;
+            $$1 += $$7 * axw.b($$6);
+            $$2 += $$7 * axw.c($$6);
+            $$3 += $$7 * axw.d($$6);
+            $$4 += $$7;
+         }
+      }
+
+      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axw.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
+   }
+
+   public boolean c() {
+      return !this.g.isEmpty() ? true : this.e.isPresent() && !this.e.get().a().a().isEmpty();
+   }
+
+   public List<bvj> d() {
+      return Lists.transform(this.g, bvj::new);
+   }
+
+   public void a(bxe $$0, float $$1) {
+      if ($$0.dV() instanceof arq $$2) {
+         crc $$5 = $$0 instanceof crc $$4 ? $$4 : null;
+         this.a($$3x -> {
+            if ($$3x.c().a().a()) {
+               $$3x.c().a().a($$2, $$5, $$5, $$0, $$3x.e(), 1.0);
+            } else {
+               $$0.a($$3x);
+            }
+         }, $$1);
+      }
+   }
+
+   public static void a(Iterable<bvj> $$0, Consumer<wy> $$1, float $$2, float $$3) {
+      List<Pair<je<byf>, byi>> $$4 = Lists.newArrayList();
+      boolean $$5 = true;
+
+      for (bvj $$6 : $$0) {
+         $$5 = false;
+         je<bvh> $$7 = $$6.c();
+         int $$8 = $$6.e();
+         $$7.a().a($$8, ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
+         xm $$9 = a($$7, $$8);
+         if (!$$6.a(20)) {
+            $$9 = wy.a("potion.withDuration", $$9, bvk.a($$6, $$2, $$3));
          }
 
-         int $$7 = this.f.a($$4);
-         if ($$7 > 0) {
-            $$1.a($$7, $$2, bxc.d($$3));
+         $$1.accept($$9.a($$7.a().h().a()));
+      }
+
+      if ($$5) {
+         $$1.accept(i);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.accept(wx.a);
+         $$1.accept(wy.c("potion.whenDrank").a(n.f));
+
+         for (Pair<je<byf>, byi> $$10 : $$4) {
+            byi $$11 = (byi)$$10.getSecond();
+            double $$12 = $$11.b();
+            double $$14;
+            if ($$11.c() != byi.a.b && $$11.c() != byi.a.c) {
+               $$14 = $$11.b();
+            } else {
+               $$14 = $$11.b() * 100.0;
+            }
+
+            if ($$12 > 0.0) {
+               $$1.accept(wy.a("attribute.modifier.plus." + $$11.c().a(), dbu.d.format($$14), wy.c(((byf)((je)$$10.getFirst()).a()).c())).a(n.j));
+            } else if ($$12 < 0.0) {
+               $$14 *= -1.0;
+               $$1.accept(wy.a("attribute.modifier.take." + $$11.c().a(), dbu.d.format($$14), wy.c(((byf)((je)$$10.getFirst()).a()).c())).a(n.m));
+            }
          }
       }
    }
 
-   private int a(float $$0) {
-      float $$1 = $$0 * this.d;
-      return $$1 > 0.0F ? Math.round($$1 * 20.0F) : 0;
+   public static xm a(je<bvh> $$0, int $$1) {
+      xm $$2 = wy.c($$0.a().f());
+      return $$1 > 0 ? wy.a("potion.withAmplifier", $$2, wy.c("potion.potency." + $$1)) : $$2;
    }
 
-   public int a() {
-      return Math.round(this.c * 20.0F);
+   @Override
+   public void a(dja $$0, bxe $$1, czd $$2, dbi $$3) {
+      this.a($$1, $$2.a(kj.S, 1.0F));
    }
 
-   public float a(bus $$0, float $$1, double $$2) {
-      float $$3 = 0.0F;
-
-      for (daz.a $$4 : this.e) {
-         $$3 += $$4.a($$0, $$1, $$2);
-      }
-
-      return azm.a($$3, 0.0F, $$1);
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      a(this.a(), $$1, $$3.a(kj.S, 1.0F), $$0.b());
    }
 
-   public float b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public List<daz.a> d() {
-      return this.e;
-   }
-
-   public daz.b e() {
-      return this.f;
-   }
-
-   public Optional<axr<buu>> f() {
-      return this.g;
-   }
-
-   public Optional<je<awm>> g() {
+   public Optional<String> g() {
       return this.h;
-   }
-
-   public Optional<je<awm>> h() {
-      return this.i;
-   }
-
-   public static record a(float c, Optional<ji<buu>> d, float e, float f) {
-      public static final Codec<daz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayu.o.optionalFieldOf("horizontal_blocking_angle", 90.0F).forGetter(daz.a::a),
-                  jt.a(mg.aM).optionalFieldOf("type").forGetter(daz.a::b),
-                  Codec.FLOAT.fieldOf("base").forGetter(daz.a::c),
-                  Codec.FLOAT.fieldOf("factor").forGetter(daz.a::d)
-               )
-               .apply($$0, daz.a::new)
-      );
-      public static final yw<wj, daz.a> b = yw.a(yu.l, daz.a::a, yu.c(mg.aM).a(yu::a), daz.a::b, yu.l, daz.a::c, yu.l, daz.a::d, daz.a::new);
-
-      public float a(bus $$0, float $$1, double $$2) {
-         if ($$2 > (double)((float) (Math.PI / 180.0) * this.c)) {
-            return 0.0F;
-         } else {
-            return this.d.isPresent() && !this.d.get().a($$0.l()) ? 0.0F : azm.a(this.e + this.f * $$1, 0.0F, $$1);
-         }
-      }
-
-      public float a() {
-         return this.c;
-      }
-
-      public Optional<ji<buu>> b() {
-         return this.d;
-      }
-
-      public float c() {
-         return this.e;
-      }
-
-      public float d() {
-         return this.f;
-      }
-   }
-
-   public static record b(float d, float e, float f) {
-      public static final Codec<daz.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayu.n.fieldOf("threshold").forGetter(daz.b::a),
-                  Codec.FLOAT.fieldOf("base").forGetter(daz.b::b),
-                  Codec.FLOAT.fieldOf("factor").forGetter(daz.b::c)
-               )
-               .apply($$0, daz.b::new)
-      );
-      public static final yw<ByteBuf, daz.b> b = yw.a(yu.l, daz.b::a, yu.l, daz.b::b, yu.l, daz.b::c, daz.b::new);
-      public static final daz.b c = new daz.b(1.0F, 0.0F, 1.0F);
-
-      public int a(float $$0) {
-         return $$0 < this.d ? 0 : azm.d(this.e + this.f * $$0);
-      }
-
-      public float a() {
-         return this.d;
-      }
-
-      public float b() {
-         return this.e;
-      }
-
-      public float c() {
-         return this.f;
-      }
    }
 }

@@ -1,27 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hgz(int c) implements hhf<String> {
-   public static final PrimitiveCodec<String> a = Codec.STRING;
-   public static final hhf.a<hgz, String> b = hhf.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hgz::c)).apply($$0, hgz::new)), a
+public record hgz(float b) implements hgx {
+   public static final MapCodec<hgz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayu.o.optionalFieldOf("period", 1.0F).forGetter(hgz::b)).apply($$0, hgz::new)
    );
 
-   @Nullable
-   public String a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
-      dbh $$5 = $$0.a(kj.p);
-      return $$5 != null ? $$5.c(this.c) : null;
+   @Override
+   public float a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3) {
+      return $$2 != null && $$2.fB() == $$0 ? (float)$$2.fC() % this.b : 0.0F;
    }
 
    @Override
-   public hhf.a<hgz, String> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<String> b() {
+   public MapCodec<hgz> a() {
       return a;
    }
 }

@@ -1,28 +1,21 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record dgn(day d, jz e, Optional<je<eez>> f) implements dgc {
+public record dgn(je<awm> d, btg e, btg f) implements dgh {
    public static final MapCodec<dgn> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               day.b.fieldOf("properties").forGetter(dgn::b),
-               jz.g.optionalFieldOf("offset", jz.i).forGetter(dgn::c),
-               eez.aj.optionalFieldOf("trigger_game_event").forGetter(dgn::d)
+               awm.b.fieldOf("sound").forGetter(dgn::b),
+               btg.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dgn::c),
+               btg.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dgn::d)
             )
             .apply($$0, dgn::new)
    );
 
-   public dgn(day $$0) {
-      this($$0, jz.i, Optional.of(eez.c));
-   }
-
    @Override
-   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
-      iu $$5 = iu.a((jo)$$4).a(this.e);
-      dzz $$6 = $$3.dV().a_($$5);
-      dzz $$7 = this.d.a($$6);
-      if ($$6 != $$7 && $$3.dV().a($$5, $$7, 3)) {
-         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
+      azv $$5 = $$3.dY();
+      if (!$$3.bb()) {
+         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dm(), this.e.a($$5), this.f.a($$5));
       }
    }
 
@@ -31,15 +24,15 @@ public record dgn(day d, jz e, Optional<je<eez>> f) implements dgc {
       return a;
    }
 
-   public day b() {
+   public je<awm> b() {
       return this.d;
    }
 
-   public jz c() {
+   public btg c() {
       return this.e;
    }
 
-   public Optional<je<eez>> d() {
+   public btg d() {
       return this.f;
    }
 }

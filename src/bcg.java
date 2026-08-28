@@ -39,10 +39,10 @@ public class bcg extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      Type<?> $$1 = this.getOutputSchema().getType(biw.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(biw.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(biw.s);
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bix.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bix.s);
       return TypeRewriteRule.seq(
          this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
          this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))

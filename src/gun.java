@@ -1,55 +1,41 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-public abstract class gun extends gvy<cti, hbq> {
-   public gun(gvz.a $$0) {
-      super($$0);
-      this.e = 0.8F;
+public class gun implements guc.a {
+   public static final int a = 200;
+   private final foz b;
+   private final List<aaw> c = Lists.newArrayList();
+
+   gun(foz $$0) {
+      this.b = $$0;
    }
 
-   public void a(hbq $$0, fjc $$1, gps $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(azm.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+   public void a(aaw $$0) {
+      this.c.add($$0);
+   }
+
+   @Override
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      fjn $$5 = $$1.getBuffer(gqk.y());
+      long $$6 = this.b.s.ae();
+      Iterator<aaw> $$7 = this.c.iterator();
+
+      while ($$7.hasNext()) {
+         aaw $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (aaw.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               exw $$12 = $$10.b();
+               gqu.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gqu.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gqu.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
       }
-
-      if (!$$0.f && !azm.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
-      }
-
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      gfq<hbq> $$5 = this.a();
-      $$5.a($$0);
-      fjg $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hif.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void b(hbq $$0, fjc $$1, gps $$2, int $$3) {
-   }
-
-   protected abstract gfq<hbq> a();
-
-   protected abstract gqc b();
-
-   public hbq c() {
-      return new hbq();
-   }
-
-   public void a(cti $$0, hbq $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.l($$2);
-      $$1.c = (float)$$0.I() - $$2;
-      $$1.b = $$0.J();
-      $$1.d = Math.max($$0.H() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bn();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
    }
 }

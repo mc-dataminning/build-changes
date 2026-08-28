@@ -1,71 +1,72 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class gce {
-   private final gkm a;
-   private final gku b;
-   private final Predicate<gkp.a> c;
-   @Nullable
-   private xt d = null;
-   private int e;
-   private int f;
-   @Nullable
-   private xo g;
+   public static final gce a = new gce(List.of());
+   private final List<dfb> b;
+   private final Set<dfc> c = new HashSet<>();
+   private final Set<dfc> d = new HashSet<>();
 
-   public gce(gla $$0, Predicate<gkp.a> $$1) {
-      this.a = $$0.b();
-      this.b = new gku($$0.a().b().leadingContextMessageCount());
-      this.c = $$1;
-      this.e = this.a.b();
+   public gce(List<dfb> $$0) {
+      this.b = $$0;
    }
 
-   public void a(int $$0, gce.a $$1) {
-      int $$2 = 0;
-
-      while ($$2 < $$0) {
-         gko $$3 = this.a.b(this.e);
-         if ($$3 == null) {
-            break;
+   public void a(cri $$0, Predicate<dfa> $$1) {
+      for (dfb $$2 : this.b) {
+         boolean $$3 = $$1.test($$2.b());
+         if ($$3) {
+            this.d.add($$2.a());
+         } else {
+            this.d.remove($$2.a());
          }
 
-         int $$4 = this.e--;
-         if ($$3 instanceof gkp.a $$5 && !$$5.g().equals(this.g)) {
-            if (this.a($$1, $$5)) {
-               if (this.f > 0) {
-                  $$1.a(wy.a("gui.chatSelection.fold", this.f));
-                  this.f = 0;
-               }
-
-               $$1.a($$4, $$5);
-               $$2++;
-            } else {
-               this.f++;
-            }
-
-            this.g = $$5.g();
+         if ($$3 && $$2.a($$0)) {
+            this.c.add($$2.a());
+         } else {
+            this.c.remove($$2.a());
          }
       }
    }
 
-   private boolean a(gce.a $$0, gkp.a $$1) {
-      xo $$2 = $$1.g();
-      boolean $$3 = this.b.b($$2);
-      if (this.c.test($$1)) {
-         this.b.a($$2);
-         if (this.d != null && !this.d.a($$2.k())) {
-            $$0.a(wy.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
-         }
-
-         this.d = $$2.k();
-         return true;
-      } else {
-         return $$3;
-      }
+   public boolean a(dfc $$0) {
+      return this.c.contains($$0);
    }
 
-   public interface a {
-      void a(int var1, gkp.a var2);
+   public boolean a() {
+      return !this.c.isEmpty();
+   }
 
-      void a(wy var1);
+   public boolean b() {
+      return !this.d.isEmpty();
+   }
+
+   public List<dfb> c() {
+      return this.b;
+   }
+
+   public List<dfb> a(gce.a $$0) {
+      Predicate<dfc> $$1 = switch ($$0) {
+         case a -> this.d::contains;
+         case b -> this.c::contains;
+         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
+      };
+      List<dfb> $$2 = new ArrayList<>();
+
+      for (dfb $$3 : this.b) {
+         if ($$1.test($$3.a())) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

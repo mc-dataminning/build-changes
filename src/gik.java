@@ -1,5 +1,5 @@
-public class gik<S extends hev> extends gec<S> {
-   public gik(giu $$0) {
-      super($$0);
-   }
+public interface gik {
+   void a(boolean var1);
+
+   void a(fjj var1);
 }

@@ -68,7 +68,7 @@ public class su {
             a($$3, $$4);
          }
 
-         eyn.c $$5 = eyn.b(Paths.get($$3)).e("gametestworld");
+         eyv.c $$5 = eyv.b(Paths.get($$3)).e("gametestworld");
          aun $$6 = auq.a($$5);
          MinecraftServer.a((Function<Thread, sx>)($$3x -> sx.a($$3x, $$5, $$6, a($$2, g), $$2.has(h))));
       }

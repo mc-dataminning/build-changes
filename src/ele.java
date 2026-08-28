@@ -1,41 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ele implements eli {
-   public static final Codec<ele> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dzz.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dzz.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               btg.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               btg.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ele::new)
-   );
-   private final dzz b;
-   private final dzz c;
-   private final btg d;
-   private final btg e;
-
-   public ele(dzz $$0, dzz $$1, btg $$2, btg $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+public class ele extends elb {
+   public ele(Codec<emp> $$0) {
+      super($$0);
    }
 
-   public dzz a() {
-      return this.b;
+   @Override
+   protected Set<iu> a(djz $$0, emp $$1, azv $$2, iu $$3, Predicate<eah> $$4, int $$5, int $$6) {
+      Set<iu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<iu> $$8 = new HashSet<>();
+      iu.a $$9 = new iu.a();
+
+      for (iu $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (iu $$11 : $$8) {
+         $$0.a($$11, dmh.J.m(), 2);
+      }
+
+      return $$8;
    }
 
-   public dzz b() {
-      return this.c;
+   private static boolean a(djz $$0, Set<iu> $$1, iu $$2, iu.a $$3) {
+      return a($$0, $$2, $$3, ja.c) || a($$0, $$2, $$3, ja.f) || a($$0, $$2, $$3, ja.d) || a($$0, $$2, $$3, ja.e) || a($$0, $$2, $$3, ja.a);
    }
 
-   public btg c() {
-      return this.d;
+   private static boolean a(djz $$0, iu $$1, iu.a $$2, ja $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
    }
 
-   public btg d() {
-      return this.e;
+   @Override
+   protected boolean a(djz $$0, emp $$1, ecf $$2, azv $$3, iu $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         eah $$5 = $$0.a_($$4);
+         if ($$5.b(eax.I) && !$$5.c(eax.I)) {
+            $$0.a($$4, $$5.b(eax.I, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

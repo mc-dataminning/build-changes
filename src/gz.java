@@ -38,9 +38,9 @@ public class gz {
    public static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wy.c("argument.entity.selector.missing"));
    public static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wy.c("argument.entity.options.unterminated"));
    public static final DynamicCommandExceptionType j = new DynamicCommandExceptionType($$0 -> wy.b("argument.entity.options.valueless", $$0));
-   public static final BiConsumer<fei, List<? extends bwd>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.g($$0), $$2.g($$0)));
-   public static final BiConsumer<fei, List<? extends bwd>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.g($$0), $$1x.g($$0)));
-   public static final BiConsumer<fei, List<? extends bwd>> m = ($$0, $$1) -> Collections.shuffle($$1);
+   public static final BiConsumer<feq, List<? extends bwf>> k = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$1x.g($$0), $$2.g($$0)));
+   public static final BiConsumer<feq, List<? extends bwf>> l = ($$0, $$1) -> $$1.sort(($$1x, $$2) -> Doubles.compare($$2.g($$0), $$1x.g($$0)));
+   public static final BiConsumer<feq, List<? extends bwf>> m = ($$0, $$1) -> Collections.shuffle($$1);
    public static final BiFunction<SuggestionsBuilder, Consumer<SuggestionsBuilder>, CompletableFuture<Suggestions>> n = ($$0, $$1) -> $$0.buildFuture();
    private final StringReader x;
    private final boolean y;
@@ -63,8 +63,8 @@ public class gz {
    private Double J;
    private dz K = dz.a;
    private dz L = dz.a;
-   private final List<Predicate<bwd>> M = new ArrayList<>();
-   private BiConsumer<fei, List<? extends bwd>> N = gy.b;
+   private final List<Predicate<bwf>> M = new ArrayList<>();
+   private BiConsumer<feq, List<? extends bwf>> N = gy.b;
    private boolean O;
    @Nullable
    private String P;
@@ -81,7 +81,7 @@ public class gz {
    private boolean Z;
    private boolean aa;
    @Nullable
-   private bwm<?> ab;
+   private bwo<?> ab;
    private boolean ac;
    private boolean ad;
    private boolean ae;
@@ -101,11 +101,11 @@ public class gz {
    }
 
    public gy a() {
-      fed $$2;
+      fel $$2;
       if (this.H == null && this.I == null && this.J == null) {
          if (this.C.b().isPresent()) {
             double $$1 = this.C.b().get();
-            $$2 = new fed(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
+            $$2 = new fel(-$$1, -$$1, -$$1, $$1 + 1.0, $$1 + 1.0, $$1 + 1.0);
          } else {
             $$2 = null;
          }
@@ -113,17 +113,17 @@ public class gz {
          $$2 = this.a(this.H == null ? 0.0 : this.H, this.I == null ? 0.0 : this.I, this.J == null ? 0.0 : this.J);
       }
 
-      Function<fei, fei> $$4;
+      Function<feq, feq> $$4;
       if (this.E == null && this.F == null && this.G == null) {
          $$4 = $$0 -> $$0;
       } else {
-         $$4 = $$0 -> new fei(this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F, this.G == null ? $$0.f : this.G);
+         $$4 = $$0 -> new feq(this.E == null ? $$0.d : this.E, this.F == null ? $$0.e : this.F, this.G == null ? $$0.f : this.G);
       }
 
       return new gy(this.z, this.A, this.B, List.copyOf(this.M), this.C, $$4, $$2, this.N, this.O, this.P, this.R, this.ab, this.af);
    }
 
-   private fed a(double $$0, double $$1, double $$2) {
+   private fel a(double $$0, double $$1, double $$2) {
       boolean $$3 = $$0 < 0.0;
       boolean $$4 = $$1 < 0.0;
       boolean $$5 = $$2 < 0.0;
@@ -133,24 +133,24 @@ public class gz {
       double $$9 = ($$3 ? 0.0 : $$0) + 1.0;
       double $$10 = ($$4 ? 0.0 : $$1) + 1.0;
       double $$11 = ($$5 ? 0.0 : $$2) + 1.0;
-      return new fed($$6, $$7, $$8, $$9, $$10, $$11);
+      return new fel($$6, $$7, $$8, $$9, $$10, $$11);
    }
 
    private void I() {
       if (this.K != dz.a) {
-         this.M.add(this.a(this.K, bwd::dN));
+         this.M.add(this.a(this.K, bwf::dN));
       }
 
       if (this.L != dz.a) {
-         this.M.add(this.a(this.L, bwd::dL));
+         this.M.add(this.a(this.L, bwf::dL));
       }
 
       if (!this.D.c()) {
-         this.M.add($$0 -> !($$0 instanceof arr) ? false : this.D.d(((arr)$$0).ce));
+         this.M.add($$0 -> !($$0 instanceof arr) ? false : this.D.d(((arr)$$0).cf));
       }
    }
 
-   private Predicate<bwd> a(dz $$0, ToDoubleFunction<bwd> $$1) {
+   private Predicate<bwf> a(dz $$0, ToDoubleFunction<bwf> $$1) {
       double $$2 = (double)azm.h($$0.b() == null ? 0.0F : $$0.b());
       double $$3 = (double)azm.h($$0.c() == null ? 359.0F : $$0.c());
       return $$3x -> {
@@ -173,7 +173,7 @@ public class gz {
                this.z = Integer.MAX_VALUE;
                this.A = false;
                this.N = gy.b;
-               this.a(bwm.bS);
+               this.a(bwo.bS);
                yield false;
             }
             default -> {
@@ -196,14 +196,14 @@ public class gz {
                this.z = 1;
                this.A = false;
                this.N = k;
-               this.a(bwm.bS);
+               this.a(bwo.bS);
                yield false;
             }
             case 'r' -> {
                this.z = 1;
                this.A = false;
                this.N = m;
-               this.a(bwm.bS);
+               this.a(bwo.bS);
                yield false;
             }
             case 's' -> {
@@ -213,7 +213,7 @@ public class gz {
                yield false;
             }
          }) {
-            this.M.add(bwd::bK);
+            this.M.add(bwf::bK);
          }
 
          this.S = this::e;
@@ -317,7 +317,7 @@ public class gz {
       return this.x;
    }
 
-   public void a(Predicate<bwd> $$0) {
+   public void a(Predicate<bwf> $$0) {
       this.M.add($$0);
    }
 
@@ -419,11 +419,11 @@ public class gz {
       this.A = $$0;
    }
 
-   public BiConsumer<fei, List<? extends bwd>> s() {
+   public BiConsumer<feq, List<? extends bwf>> s() {
       return this.N;
    }
 
-   public void a(BiConsumer<fei, List<? extends bwd>> $$0) {
+   public void a(BiConsumer<feq, List<? extends bwf>> $$0) {
       this.N = $$0;
    }
 
@@ -579,7 +579,7 @@ public class gz {
       this.aa = $$0;
    }
 
-   public void a(bwm<?> $$0) {
+   public void a(bwo<?> $$0) {
       this.ab = $$0;
    }
 

@@ -1,52 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class crd extends bwj {
+   private final crc b;
 
-public class crd {
-   private final crc<je<cyu>> a = new crc<>();
-
-   public void a(cyy $$0) {
-      if (cqx.d($$0)) {
-         this.b($$0);
-      }
+   public crd(crc $$0) {
+      this.b = $$0;
    }
 
-   public void b(cyy $$0) {
-      this.a($$0, $$0.k());
+   @Override
+   public czd a(bwp $$0, czd $$1) {
+      return $$0 == bwp.a ? this.b.gj().b($$1) : super.a($$0, $$1);
    }
 
-   public void a(cyy $$0, int $$1) {
-      if (!$$0.f()) {
-         int $$2 = Math.min($$1, $$0.M());
-         this.a.a($$0.i(), $$2);
-      }
+   @Override
+   public czd a(bwp $$0) {
+      return $$0 == bwp.a ? this.b.gj().g() : super.a($$0);
    }
 
-   public boolean a(ddp<?> $$0, @Nullable crc.b<je<cyu>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   public boolean a(ddp<?> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
-      ddo $$3 = $$0.ak_();
-      return $$3.c() ? false : this.a($$3.b(), $$1, $$2);
-   }
-
-   public boolean a(List<? extends crc.a<je<cyu>>> $$0, @Nullable crc.b<je<cyu>> $$1) {
-      return this.a($$0, 1, $$1);
-   }
-
-   private boolean a(List<? extends crc.a<je<cyu>>> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   public int b(ddp<?> $$0, @Nullable crc.b<je<cyu>> $$1) {
-      return this.b($$0, Integer.MAX_VALUE, $$1);
-   }
-
-   public int b(ddp<?> $$0, int $$1, @Nullable crc.b<je<cyu>> $$2) {
-      return this.a.b($$0.ak_().b(), $$1, $$2);
-   }
-
-   public void a() {
-      this.a.a();
+   @Override
+   public boolean a() {
+      return this.b.gj().g().f() && super.a();
    }
 }

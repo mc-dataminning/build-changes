@@ -1,9 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eup {
-   public static final Codec<eup> c = mf.m.q().dispatch("predicate_type", eup::a, euq::codec);
+public class eup extends euq {
+   public static final MapCodec<eup> a = MapCodec.unit(() -> eup.b);
+   public static final eup b = new eup();
 
-   public abstract boolean a(dzz var1, azv var2);
+   private eup() {
+   }
 
-   protected abstract euq<?> a();
+   @Override
+   public boolean a(iu $$0, iu $$1, iu $$2, azv $$3) {
+      return true;
+   }
+
+   @Override
+   protected eur<?> a() {
+      return eur.a;
+   }
 }

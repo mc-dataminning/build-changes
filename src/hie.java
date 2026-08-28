@@ -1,36 +1,32 @@
-public final class hie {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final alg d = alg.b("missingno");
+import com.mojang.serialization.MapCodec;
 
-   public static fic a() {
-      return a(16, 16);
+public class hie implements hhx {
+   private final gif a;
+
+   public hie(gif $$0) {
+      this.a = $$0;
    }
 
-   public static fic a(int $$0, int $$1) {
-      fic $$2 = new fic($$0, $$1, false);
-      int $$3 = -524040;
+   @Override
+   public void a(czb $$0, fjj $$1, gqa $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      fjn $$6 = gxf.a($$2, this.a.a(gif.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
-               $$2.a($$5, $$4, -524040);
-            } else {
-               $$2.a($$5, $$4, -16777216);
-            }
-         }
+   public static record a() implements hib.a {
+      public static final MapCodec<hie.a> a = MapCodec.unit(new hie.a());
+
+      @Override
+      public MapCodec<hie.a> a() {
+         return a;
       }
 
-      return $$2;
-   }
-
-   public static hij b() {
-      fic $$0 = a(16, 16);
-      return new hij(d, new hkc(16, 16), $$0, avf.a);
-   }
-
-   public static alg c() {
-      return d;
+      @Override
+      public hib<?> a(giy $$0) {
+         return new hie(new gif($$0.a(gjb.dB)));
+      }
    }
 }

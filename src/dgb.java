@@ -1,60 +1,88 @@
-import com.google.common.collect.HashMultimap;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-public record dgb(alg b, je<byd> d, dfs e, byg.a f) implements dgd {
-   public static final MapCodec<dgb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("id").forGetter(dgb::b),
-               byd.a.fieldOf("attribute").forGetter(dgb::c),
-               dfs.b.fieldOf("amount").forGetter(dgb::d),
-               byg.a.f.fieldOf("operation").forGetter(dgb::e)
-            )
-            .apply($$0, dgb::new)
-   );
-
-   private alg a(bak $$0) {
-      return this.b.g("/" + $$0.c());
+public interface dgb {
+   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
+      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
    }
 
-   public byg a(int $$0, bak $$1) {
-      return new byg(this.a($$1), (double)this.d().a($$0), this.e());
+   static dgb.a a(dgh... $$0) {
+      return new dgb.a(List.of($$0));
    }
 
-   @Override
-   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4, boolean $$5) {
-      if ($$5 && $$3 instanceof bxc $$6) {
-         $$6.eZ().a(this.a($$1, $$2.b()));
+   static dgb.b a(dgi... $$0) {
+      return new dgb.b(List.of($$0));
+   }
+
+   static dgb.c a(dgj... $$0) {
+      return new dgb.c(List.of($$0));
+   }
+
+   public static record a(List<dgh> d) implements dgh {
+      public static final MapCodec<dgb.a> a = dgb.a(dgh.b, dgb.a::new, dgb.a::b);
+
+      @Override
+      public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
+         for (dgh $$5 : this.d) {
+            $$5.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
+
+      @Override
+      public MapCodec<dgb.a> a() {
+         return a;
+      }
+
+      public List<dgh> b() {
+         return this.d;
       }
    }
 
-   @Override
-   public void a(dfk $$0, bwd $$1, fei $$2, int $$3) {
-      if ($$1 instanceof bxc $$4) {
-         $$4.eZ().b(this.a($$3, $$0.b()));
+   public static record b(List<dgi> b) implements dgi {
+      public static final MapCodec<dgb.b> a = dgb.a(dgi.c, dgb.b::new, dgb.b::b);
+
+      @Override
+      public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4, boolean $$5) {
+         for (dgi $$6 : this.b) {
+            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
+      }
+
+      @Override
+      public void a(dfp $$0, bwf $$1, feq $$2, int $$3) {
+         for (dgi $$4 : this.b) {
+            $$4.a($$0, $$1, $$2, $$3);
+         }
+      }
+
+      @Override
+      public MapCodec<dgb.b> a() {
+         return a;
       }
    }
 
-   private HashMultimap<je<byd>, byg> a(int $$0, bwn $$1) {
-      HashMultimap<je<byd>, byg> $$2 = HashMultimap.create();
-      $$2.put(this.d, this.a($$0, (bak)$$1));
-      return $$2;
-   }
+   public static record c(List<dgj> c) implements dgj {
+      public static final MapCodec<dgb.c> a = dgb.a(dgj.b, dgb.c::new, dgb.c::b);
 
-   @Override
-   public MapCodec<dgb> a() {
-      return a;
-   }
+      @Override
+      public float a(int $$0, azv $$1, float $$2) {
+         for (dgj $$3 : this.c) {
+            $$2 = $$3.a($$0, $$1, $$2);
+         }
 
-   public je<byd> c() {
-      return this.d;
-   }
+         return $$2;
+      }
 
-   public dfs d() {
-      return this.e;
-   }
+      @Override
+      public MapCodec<dgb.c> a() {
+         return a;
+      }
 
-   public byg.a e() {
-      return this.f;
+      public List<dgj> b() {
+         return this.c;
+      }
    }
 }

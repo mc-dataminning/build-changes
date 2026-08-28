@@ -7,7 +7,7 @@ public class adj implements zf<abu> {
    private final int c;
    private final adk d;
 
-   public adj(dic $$0, evv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adj(dih $$0, ewd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.h;
       this.c = $$0.i;
       this.d = new adk($$0, $$1, $$2, $$3);

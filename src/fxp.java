@@ -1,168 +1,101 @@
-import java.net.URI;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fxp extends fxu {
-   private static final alg a = alg.b("icon/draft_report");
-   private static final int b = 2;
-   private static final int c = 50;
-   private static final int d = 4;
-   private static final int s = 204;
-   private static final int u = 98;
-   private static final wy v = wy.c("menu.returnToGame");
-   private static final wy w = wy.c("gui.advancements");
-   private static final wy x = wy.c("gui.stats");
-   private static final wy y = wy.c("menu.sendFeedback");
-   private static final wy z = wy.c("menu.reportBugs");
-   private static final wy A = wy.c("menu.feedback");
-   private static final wy B = wy.c("menu.server_links");
-   private static final wy C = wy.c("menu.options");
-   private static final wy D = wy.c("menu.shareToLan");
-   private static final wy E = wy.c("menu.playerReporting");
-   private static final wy F = wy.c("menu.returnToMenu");
-   private static final wy G = wy.c("menu.savingLevel");
-   private static final wy H = wy.c("menu.game");
-   private static final wy I = wy.c("menu.paused");
-   private final boolean J;
-   @Nullable
-   private fsc K;
+public class fxp extends fyb {
+   private static final long a = 2000L;
+   private final ase b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<edf> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(edf.c, 5526612);
+      $$0.put(edf.d, 10066329);
+      $$0.put(edf.e, 6250897);
+      $$0.put(edf.f, 8434258);
+      $$0.put(edf.g, 13750737);
+      $$0.put(edf.h, 7497737);
+      $$0.put(edf.i, 3159410);
+      $$0.put(edf.j, 2213376);
+      $$0.put(edf.k, 13421772);
+      $$0.put(edf.l, 16769184);
+      $$0.put(edf.m, 15884384);
+      $$0.put(edf.n, 16777215);
+   });
 
-   public fxp(boolean $$0) {
-      super($$0 ? H : I);
-      this.J = $$0;
-   }
-
-   public boolean m() {
-      return this.J;
+   public fxp(ase $$0) {
+      super(fop.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void aN_() {
-      if (this.J) {
-         this.E();
-      }
-
-      this.c(new ftj(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
-   }
-
-   private void E() {
-      fvp $$0 = new fvp();
-      $$0.c().a(4, 4, 4, 0);
-      fvp.b $$1 = $$0.d(2);
-      $$1.a(fsc.a(v, $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(204).a(), 2, $$0.b().c(50));
-      $$1.a(this.a(w, () -> new fye(this.m.t.j.p(), this)));
-      $$1.a(this.a(x, () -> new fxy(this, this.m.t.l())));
-      aly $$2 = this.m.t.j.E();
-      if ($$2.a()) {
-         a(this, $$1);
-      } else {
-         $$1.a(this.a(A, () -> new fxp.a(this)));
-         $$1.a(this.a(B, () -> new gao(this, $$2)));
-      }
-
-      $$1.a(this.a(C, () -> new gaz(this, this.m.n)));
-      if (this.m.U() && !this.m.V().r()) {
-         $$1.a(this.a(D, () -> new fxv(this)));
-      } else {
-         $$1.a(this.a(E, () -> new gco(this)));
-      }
-
-      wy $$3 = this.m.T() ? F : wx.p;
-      this.K = $$1.a(fsc.a($$3, $$0x -> {
-         $$0x.j = false;
-         this.m.ba().a(this.m, this, this::F, true);
-      }).a(204).a(), 2);
-      $$0.a();
-      fvo.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
-      $$0.a(this::c);
-   }
-
-   static void a(fxu $$0, fvp.b $$1) {
-      $$1.a(a($$0, y, ab.b().g() ? ayh.i : ayh.h));
-      $$1.a(a($$0, z, ayh.j)).j = !ab.b().d().a();
-   }
-
-   private void F() {
-      boolean $$0 = this.m.T();
-      gkg $$1 = this.m.S();
-      this.m.s.ad();
-      if ($$0) {
-         this.m.b(new fxf(G));
-      } else {
-         this.m.y();
-      }
-
-      fxw $$2 = new fxw();
-      if ($$0) {
-         this.m.a($$2);
-      } else if ($$1 != null && $$1.e()) {
-         this.m.a(new fjn($$2));
-      } else {
-         this.m.a(new gam($$2));
-      }
+   public boolean aD_() {
+      return false;
    }
 
    @Override
-   public void e() {
-      super.e();
+   protected boolean aN_() {
+      return false;
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
+   public void aF_() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fwg $$0) {
+      if (this.d) {
+         $$0.a(fwf.a, wy.c("narrator.loading.done"));
+      } else {
+         $$0.a(fwf.a, this.m());
+      }
+   }
+
+   private wy m() {
+      return wy.a("loading.progress", azm.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
-         $$0.a(gqc::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
+      long $$4 = af.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
       }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      if (this.J) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private fsc a(wy $$0, Supplier<fxu> $$1) {
-      return fsc.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
-   }
-
-   private static fsc a(fxu $$0, wy $$1, URI $$2) {
-      return fsc.a($$1, fwr.b($$0, $$2)).a(98).a();
-   }
-
-   static class a extends fxu {
-      private static final wy b = wy.c("menu.feedback.title");
-      public final fxu a;
-      private final fvq c = new fvq(this);
-
-      protected a(fxu $$0) {
-         super(b);
-         this.a = $$0;
+   public static void a(frv $$0, ase $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
       }
 
-      @Override
-      protected void aN_() {
-         this.c.a(b, this.p);
-         fvp $$0 = this.c.c(new fvp());
-         $$0.c().a(4, 4, 4, 0);
-         fvp.b $$1 = $$0.d(2);
-         fxp.a(this, $$1);
-         this.c.b(fsc.a(wx.k, $$0x -> this.aK_()).a(200).a());
-         this.c.a(this::c);
-         this.c();
-      }
-
-      @Override
-      protected void c() {
-         this.c.a();
-      }
-
-      @Override
-      public void aK_() {
-         this.m.a(this.a);
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            edf $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axw.f(s.getInt($$17)));
+         }
       }
    }
 }

@@ -15,8 +15,8 @@ public record dh(Optional<Boolean> c) implements by {
    }
 
    @Override
-   public boolean a(bwd $$0, arq $$1, @Nullable fei $$2) {
-      return $$0 instanceof cjs $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
+   public boolean a(bwf $$0, arq $$1, @Nullable feq $$2) {
+      return $$0 instanceof cjw $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
    }
 
    public static dh b() {

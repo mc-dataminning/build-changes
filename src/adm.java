@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adm(exz b, byte c, boolean d, Optional<List<exv>> e, Optional<eyb.c> f) implements zf<abu> {
-   public static final yw<wj, adm> a = yw.a(exz.b, adm::b, yu.c, adm::e, yu.b, adm::f, exv.a.a(yu.a()).a(yu::a), adm::g, eyb.c.a, adm::h, adm::new);
+public record adm(eyh b, byte c, boolean d, Optional<List<eyd>> e, Optional<eyj.c> f) implements zf<abu> {
+   public static final yw<wj, adm> a = yw.a(eyh.b, adm::b, yu.c, adm::e, yu.b, adm::f, eyd.a.a(yu.a()).a(yu::a), adm::g, eyj.c.a, adm::h, adm::new);
 
-   public adm(exz $$0, byte $$1, boolean $$2, @Nullable Collection<exv> $$3, @Nullable eyb.c $$4) {
+   public adm(eyh $$0, byte $$1, boolean $$2, @Nullable Collection<eyd> $$3, @Nullable eyj.c $$4) {
       this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
@@ -19,7 +19,7 @@ public record adm(exz b, byte c, boolean d, Optional<List<exv>> e, Optional<eyb.
       $$0.a(this);
    }
 
-   public void a(eyb $$0) {
+   public void a(eyj $$0) {
       this.e.ifPresent($$0::a);
       this.f.ifPresent($$1 -> $$1.a($$0));
    }
@@ -32,11 +32,11 @@ public record adm(exz b, byte c, boolean d, Optional<List<exv>> e, Optional<eyb.
       return this.d;
    }
 
-   public Optional<List<exv>> g() {
+   public Optional<List<eyd>> g() {
       return this.e;
    }
 
-   public Optional<eyb.c> h() {
+   public Optional<eyj.c> h() {
       return this.f;
    }
 }

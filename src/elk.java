@@ -1,22 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elk implements eli {
+public class elk implements elq {
    public static final Codec<elk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enj.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               enj.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, elk::new)
+      $$0 -> $$0.group(bti.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bti.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, elk::new)
    );
-   public final enj b;
-   public final enj c;
-   public final int d;
+   private final bti b;
+   private final bti c;
 
-   public elk(enj $$0, enj $$1, int $$2) {
+   public elk(bti $$0, bti $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+   }
+
+   public bti a() {
+      return this.b;
+   }
+
+   public bti b() {
+      return this.c;
    }
 }

@@ -1,51 +1,125 @@
-public enum gpf {
-   a(new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a)),
-   b(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d)),
-   c(new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d)),
-   d(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a)),
-   e(new gpf.b(gpf.a.f, gpf.a.b, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.f, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.f, gpf.a.b, gpf.a.a)),
-   f(new gpf.b(gpf.a.c, gpf.a.b, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.a), new gpf.b(gpf.a.c, gpf.a.e, gpf.a.d), new gpf.b(gpf.a.c, gpf.a.b, gpf.a.d));
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   private static final gpf[] g = af.a(new gpf[6], $$0 -> {
-      $$0[gpf.a.e] = a;
-      $$0[gpf.a.b] = b;
-      $$0[gpf.a.d] = c;
-      $$0[gpf.a.a] = d;
-      $$0[gpf.a.f] = e;
-      $$0[gpf.a.c] = f;
-   });
-   private final gpf.b[] h;
+public class gpf {
+   private static final gpf a = new gpf("") {
+      @Override
+      public void a(foz $$0) {
+      }
 
-   public static gpf a(ja $$0) {
-      return g[$$0.d()];
+      @Override
+      public void a(gpf.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gpf.b e;
+
+   gpf(String $$0) {
+      this.d = foz.Q().q.toPath().resolve($$0);
    }
 
-   private gpf(final gpf.b... $$0) {
-      this.h = $$0;
+   public static gpf a(@Nullable String $$0) {
+      return $$0 == null ? a : new gpf($$0);
    }
 
-   public gpf.b a(int $$0) {
-      return this.h[$$0];
+   public void a(gpf.c $$0, String $$1, String $$2) {
+      this.e = new gpf.b($$0, $$1, $$2);
    }
 
-   public static final class a {
-      public static final int a = ja.d.d();
-      public static final int b = ja.b.d();
-      public static final int c = ja.f.d();
-      public static final int d = ja.c.d();
-      public static final int e = ja.a.d();
-      public static final int f = ja.e.d();
+   public void a(foz $$0) {
+      if ($$0.r != null && this.e != null) {
+         af.i().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            gpf.a $$2 = new gpf.a(this.e, Instant.now(), $$0.r.i());
+            Codec.list(gpf.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(af.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
+   static record a(gpf.b b, Instant c, dix d) {
+      public static final Codec<gpf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gpf.b.a.forGetter(gpf.a::a), ayu.q.fieldOf("lastPlayedTime").forGetter(gpf.a::b), dix.f.fieldOf("gamemode").forGetter(gpf.a::c))
+               .apply($$0, gpf.a::new)
+      );
 
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      public gpf.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public dix c() {
+         return this.d;
+      }
+   }
+
+   static record b(gpf.c b, String c, String d) {
+      public static final MapCodec<gpf.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gpf.c.d.fieldOf("type").forGetter(gpf.b::a), ayu.s.fieldOf("id").forGetter(gpf.b::b), Codec.STRING.fieldOf("name").forGetter(gpf.b::c)
+               )
+               .apply($$0, gpf.b::new)
+      );
+
+      public gpf.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements bak {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gpf.c> d = bak.a(gpf.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

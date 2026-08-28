@@ -32,7 +32,7 @@ public abstract class avh<T> extends avi<Map<alg, T>> {
       this.d = $$2;
    }
 
-   protected Map<alg, T> a(avd $$0, bqm $$1) {
+   protected Map<alg, T> a(avd $$0, bqo $$1) {
       Map<alg, T> $$2 = new HashMap<>();
       a($$0, this.d, this.b, this.c, $$2);
       return $$2;

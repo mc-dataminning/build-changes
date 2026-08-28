@@ -1,38 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epv extends eqe {
-   public static final MapCodec<epv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, epv::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public enum epv implements bak {
+   a(ja.b, 1, "ceiling"),
+   b(ja.a, -1, "floor");
 
-   private epv(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static final Codec<epv> c = bak.a(epv::values);
+   private final ja d;
+   private final int e;
+   private final String f;
+
+   private epv(final ja $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static epv a(int $$0, double $$1, double $$2) {
-      return new epv($$0, $$1, $$2);
+   public ja a() {
+      return this.d;
    }
 
-   @Override
-   protected int a(azv $$0, iu $$1) {
-      double $$2 = djy.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public eqb<?> b() {
-      return eqb.g;
+   public String c() {
+      return this.f;
    }
 }

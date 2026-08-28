@@ -16,11 +16,11 @@ public class and {
    }
 
    private static int a(ei $$0, iu $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bxe $$3)) {
+      if (!($$0.f() instanceof bxg $$3)) {
          throw a.create();
       } else {
-         cgm $$4 = new cgl($$3, $$0.e());
-         ewu $$5 = $$4.a($$1, 0);
+         cgo $$4 = new cgn($$3, $$0.e());
+         exc $$5 = $$4.a($$1, 0);
          agm.a($$0.e(), $$3, $$5, $$4.p());
          if ($$5 == null) {
             throw b.create();

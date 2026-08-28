@@ -1,98 +1,114 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
 
-public class edo {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<edo> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, edo> i = new Object2ObjectOpenHashMap();
-   public static final edo a = a(new edo(1, null, $$0 -> new ayv(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final edo b = a(
-      new edo(2, "deflate", $$0 -> new ayv(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final edo c = a(new edo(3, "none", ayv::new, BufferedOutputStream::new));
-   public static final edo d = a(
-      new edo(4, "lz4", $$0 -> new ayv(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final edo e = a(new edo(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final edo f = b;
-   private static volatile edo j = f;
-   private final int k;
+public class edo implements AutoCloseable {
+   public static final int d = 1493;
+   private final edq a;
+   protected final DataFixer e;
    @Nullable
-   private final String l;
-   private final edo.a<InputStream> m;
-   private final edo.a<OutputStream> n;
+   private volatile eqw b;
 
-   private edo(int $$0, @Nullable String $$1, edo.a<InputStream> $$2, edo.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   public edo(edx $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new edq($$0, $$1, $$3);
    }
 
-   private static edo a(edo $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
-      }
-
-      return $$0;
+   public boolean b(dih $$0, int $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   @Nullable
-   public static edo a(int $$0) {
-      return (edo)h.get($$0);
-   }
-
-   public static void a(String $$0) {
-      edo $$1 = (edo)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
+   public tz a(alf<dja> $$0, Supplier<eyp> $$1, tz $$2, Optional<alf<MapCodec<? extends ecf>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
       } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+         try {
+            if ($$4 < 1493) {
+               $$2 = bbb.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  eqw $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
+               }
+            }
+
+            a($$2, $$0, $$3);
+            $$2 = bbb.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            uo.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
+         }
       }
    }
 
-   public static edo a() {
-      return j;
+   private eqw a(alf<dja> $$0, Supplier<eyp> $$1) {
+      eqw $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = eqw.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
+   public static void a(tz $$0, alf<dja> $$1, Optional<alf<MapCodec<? extends ecf>>> $$2) {
+      tz $$3 = new tz();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
    }
 
-   public int b() {
-      return this.k;
+   private static void b(tz $$0) {
+      $$0.r("__context");
    }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
+   public static int a(tz $$0) {
+      return uo.b($$0, -1);
    }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
+   public CompletableFuture<Optional<tz>> d(dih $$0) {
+      return this.a.a($$0);
    }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+   public CompletableFuture<Void> a(dih $$0, Supplier<tz> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(dih $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public edn p() {
+      return this.a;
+   }
+
+   protected edx q() {
+      return this.a.a();
    }
 }

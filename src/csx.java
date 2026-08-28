@@ -1,19 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class csx {
+   private final int a;
+   private final float b;
 
-public record csx(ji<djy> c) implements ctb {
-   public static final MapCodec<csx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jt.a(mg.aG).fieldOf("biomes").forGetter(csx::b)).apply($$0, csx::new));
-
-   public boolean a(ctd $$0) {
-      return this.c.a($$0.c());
+   public csx(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public MapCodec<csx> a() {
-      return a;
+   public int a() {
+      return this.a;
    }
 
-   public ji<djy> b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 }

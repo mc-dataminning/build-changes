@@ -1,82 +1,121 @@
-public class fyu extends fyi {
-   private final dxi u;
-   private fsj<dxi.a> v;
-   private fsj<Boolean> w;
-   private fsj<Boolean> x;
-   private dxi.a y = dxi.a.c;
-   private boolean z;
-   private boolean A;
+public class fyu extends fzs<cuy> {
+   private static final alg G = alg.b("container/anvil/text_field");
+   private static final alg H = alg.b("container/anvil/text_field_disabled");
+   private static final alg I = alg.b("container/anvil/error");
+   private static final alg J = alg.b("textures/gui/container/anvil.png");
+   private static final wy K = wy.c("container.repair.expensive");
+   private fss L;
+   private final crc M;
 
-   public fyu(dxi $$0) {
-      this.u = $$0;
+   public fyu(cuy $$0, crb $$1, wy $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.h;
+      this.v = 60;
    }
 
    @Override
-   dhw m() {
-      return this.u.a();
+   protected void G() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new fss(this.p, $$0 + 62, $$1 + 24, 103, 12, wy.c("container.repair"));
+      this.L.f(false);
+      this.L.m(-1);
+      this.L.n(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
    }
 
    @Override
-   int E() {
-      return 135;
+   protected void aC_() {
+      this.b(this.L);
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.v = this.c(fsj.<dxi.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> wy.c("advMode.mode.sequence");
-            case b -> wy.c("advMode.mode.auto");
-            case c -> wy.c("advMode.mode.redstone");
-         };
-      }).a(dxi.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, wy.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         fsj.a(wy.c("advMode.mode.conditional"), wy.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.n / 2 - 50, 165, 100, 20, wy.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         fsj.a(wy.c("advMode.mode.autoexec.bat"), wy.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.n / 2 + 50 + 4, 165, 100, 20, wy.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void G() {
-      dhw $$0 = this.u.a();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.s();
-      this.z = this.u.t();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
+   public void a(foz $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
    }
 
    @Override
-   public void a(fos $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.p();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      cws $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().c(kj.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.z.a($$2)) {
+            this.m.t.j.b(new aib($$2));
+         }
+      }
    }
 
    @Override
-   protected void a(dhw $$0) {
-      this.m.L().b(new aih(iu.a((jo)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   protected void b(frv $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.m();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         wy $$5;
+         if ($$3 >= 40 && !this.m.t.fV()) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = wy.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
+         }
+      }
+   }
+
+   @Override
+   protected void a(frv $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(gqk::H, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
+   }
+
+   @Override
+   public void d(frv $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected void c(frv $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
+         $$0.a(gqk::H, I, $$1 + 99, $$2 + 45, 28, 21);
+      }
+   }
+
+   @Override
+   public void a(cuv $$0, int $$1, czd $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
+      }
    }
 }

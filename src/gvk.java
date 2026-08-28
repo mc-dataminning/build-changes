@@ -1,44 +1,31 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.function.UnaryOperator;
 
-public class gvk extends gxf<cja, hbw, gfg> {
-   private final Map<cjb.a, ged<gfg>> a;
+public class gvk extends guv {
+   private final ggu a;
+   private final alg g;
+   private final gfy<hby> h;
 
-   public gvk(gvz.a $$0) {
-      super($$0, new gfg($$0.a(git.al)), 0.7F);
-      this.a = a($$0);
+   public gvk(gwh.a $$0, gja $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new ggu.a($$0.a(gjb.E), $$0x -> gqk.i());
+      this.h = new gfb($$0.a($$1));
    }
 
-   private static Map<cjb.a, ged<gfg>> a(gvz.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(
-            cjb.a.a,
-            new ged<>(new gfg($$0.a(git.al)), new gfg($$0.a(git.am))),
-            cjb.a.c,
-            new ged<>(new gfg($$0.a(git.dM)), new gfg($$0.a(git.dN))),
-            cjb.a.b,
-            new ged<>(new gfg($$0.a(git.ac)), new gfg($$0.a(git.ad)))
-         )
-      );
+   @Override
+   protected gfy<hby> a() {
+      return this.h;
    }
 
-   public alg a(hbw $$0) {
-      return $$0.a == null ? hie.c() : $$0.a.b().b().b();
+   @Override
+   protected gqk b() {
+      return this.h.a(this.g);
    }
 
-   public hbw a() {
-      return new hbw();
-   }
-
-   public void a(cja $$0, hbw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t().a();
-   }
-
-   public void a(hbw $$0, fjc $$1, gps $$2, int $$3) {
-      if ($$0.a != null) {
-         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
+   @Override
+   protected void b(hby $$0, fjj $$1, gqa $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hin.d);
       }
    }
 }

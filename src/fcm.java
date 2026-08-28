@@ -1,7 +1,7 @@
 import com.mojang.serialization.MapCodec;
 import java.util.Set;
 
-public class fcm implements fci {
+public class fcm implements fcq {
    private static final fcm b = new fcm();
    public static final MapCodec<fcm> a = MapCodec.unit(b);
 
@@ -9,20 +9,27 @@ public class fcm implements fci {
    }
 
    @Override
-   public fcj b() {
-      return fck.g;
+   public fcr b() {
+      return fcs.l;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Set.of(fbt.b);
+      return Set.of(fcb.j);
    }
 
-   public boolean a(eyz $$0) {
-      return $$0.a(fbt.b);
+   public boolean a(ezh $$0) {
+      Float $$1 = $$0.c(fcb.j);
+      if ($$1 != null) {
+         azv $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public static fci.a c() {
+   public static fcq.a c() {
       return () -> b;
    }
 }

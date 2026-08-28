@@ -1,1309 +1,1816 @@
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Set;
 
 public class etl {
-   private static final int b = 3;
-   private static final int c = 3;
-   private static final int d = 50;
-   private static final int e = 10;
-   private static final boolean f = true;
-   public static final int a = 64;
-   private static final etl.f[] g = new etl.f[]{
-      new etl.f(etl.n.class, 40, 0),
-      new etl.f(etl.h.class, 5, 5),
-      new etl.f(etl.d.class, 20, 0),
-      new etl.f(etl.i.class, 20, 0),
-      new etl.f(etl.j.class, 10, 6),
-      new etl.f(etl.o.class, 5, 5),
-      new etl.f(etl.l.class, 5, 5),
-      new etl.f(etl.c.class, 5, 4),
-      new etl.f(etl.a.class, 5, 4),
-      new etl.f(etl.e.class, 10, 2) {
-         @Override
-         public boolean a(int $$0) {
-            return super.a($$0) && $$0 > 4;
-         }
-      },
-      new etl.f(etl.g.class, 20, 1) {
-         @Override
-         public boolean a(int $$0) {
-            return super.a($$0) && $$0 > 5;
-         }
-      }
-   };
-   private static List<etl.f> h;
-   static Class<? extends etl.p> i;
-   private static int j;
-   static final etl.k k = new etl.k();
-
-   public static void a() {
-      h = Lists.newArrayList();
-
-      for (etl.f $$0 : g) {
-         $$0.c = 0;
-         h.add($$0);
-      }
-
-      i = null;
+   private etl() {
    }
 
-   private static boolean b() {
-      boolean $$0 = false;
-      j = 0;
-
-      for (etl.f $$1 : h) {
-         if ($$1.d > 0 && $$1.c < $$1.d) {
-            $$0 = true;
-         }
-
-         j = j + $$1.b;
+   static class a implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         return $$0.c[ja.f.d()] && !$$0.b[ja.f.d()].d;
       }
 
-      return $$0;
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         $$1.b[ja.f.d()].d = true;
+         return new etl.k($$0, $$1);
+      }
    }
 
-   private static etl.p a(Class<? extends etl.p> $$0, eqy $$1, azv $$2, int $$3, int $$4, int $$5, @Nullable ja $$6, int $$7) {
-      etl.p $$8 = null;
-      if ($$0 == etl.n.class) {
-         $$8 = etl.n.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.h.class) {
-         $$8 = etl.h.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.d.class) {
-         $$8 = etl.d.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.i.class) {
-         $$8 = etl.i.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.j.class) {
-         $$8 = etl.j.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.o.class) {
-         $$8 = etl.o.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.l.class) {
-         $$8 = etl.l.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.c.class) {
-         $$8 = etl.c.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.a.class) {
-         $$8 = etl.a.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.e.class) {
-         $$8 = etl.e.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == etl.g.class) {
-         $$8 = etl.g.a($$1, $$3, $$4, $$5, $$6, $$7);
+   static class b implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         if ($$0.c[ja.f.d()] && !$$0.b[ja.f.d()].d && $$0.c[ja.b.d()] && !$$0.b[ja.b.d()].d) {
+            etl.v $$1 = $$0.b[ja.f.d()];
+            return $$1.c[ja.b.d()] && !$$1.b[ja.b.d()].d;
+         } else {
+            return false;
+         }
       }
 
-      return $$8;
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         $$1.b[ja.f.d()].d = true;
+         $$1.b[ja.b.d()].d = true;
+         $$1.b[ja.f.d()].b[ja.b.d()].d = true;
+         return new etl.l($$0, $$1);
+      }
    }
 
-   private static etl.p a(etl.m $$0, eqy $$1, azv $$2, int $$3, int $$4, int $$5, ja $$6, int $$7) {
-      if (!b()) {
-         return null;
-      } else {
-         if (i != null) {
-            etl.p $$8 = a(i, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            i = null;
-            if ($$8 != null) {
-               return $$8;
-            }
+   static class c implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         return $$0.c[ja.b.d()] && !$$0.b[ja.b.d()].d;
+      }
+
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         $$1.b[ja.b.d()].d = true;
+         return new etl.m($$0, $$1);
+      }
+   }
+
+   static class d implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         if ($$0.c[ja.c.d()] && !$$0.b[ja.c.d()].d && $$0.c[ja.b.d()] && !$$0.b[ja.b.d()].d) {
+            etl.v $$1 = $$0.b[ja.c.d()];
+            return $$1.c[ja.b.d()] && !$$1.b[ja.b.d()].d;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         $$1.b[ja.c.d()].d = true;
+         $$1.b[ja.b.d()].d = true;
+         $$1.b[ja.c.d()].b[ja.b.d()].d = true;
+         return new etl.n($$0, $$1);
+      }
+   }
+
+   static class e implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         return $$0.c[ja.c.d()] && !$$0.b[ja.c.d()].d;
+      }
+
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         etl.v $$3 = $$1;
+         if (!$$1.c[ja.c.d()] || $$1.b[ja.c.d()].d) {
+            $$3 = $$1.b[ja.d.d()];
          }
 
-         int $$9 = 0;
+         $$3.d = true;
+         $$3.b[ja.c.d()].d = true;
+         return new etl.o($$0, $$3);
+      }
+   }
 
-         while ($$9 < 5) {
-            $$9++;
-            int $$10 = $$2.a(j);
+   static class f implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         return true;
+      }
 
-            for (etl.f $$11 : h) {
-               $$10 -= $$11.b;
-               if ($$10 < 0) {
-                  if (!$$11.a($$7) || $$11 == $$0.a) {
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         return new etl.s($$0, $$1, $$2);
+      }
+   }
+
+   static class g implements etl.i {
+      @Override
+      public boolean a(etl.v $$0) {
+         return !$$0.c[ja.e.d()] && !$$0.c[ja.f.d()] && !$$0.c[ja.c.d()] && !$$0.c[ja.d.d()] && !$$0.c[ja.b.d()];
+      }
+
+      @Override
+      public etl.r a(ja $$0, etl.v $$1, azv $$2) {
+         $$1.d = true;
+         return new etl.t($$0, $$1);
+      }
+   }
+
+   public static class h extends etl.r {
+      private static final int C = 58;
+      private static final int D = 22;
+      private static final int E = 58;
+      public static final int a = 29;
+      private static final int F = 61;
+      private etl.v G;
+      private etl.v H;
+      private final List<etl.r> I = Lists.newArrayList();
+
+      public h(azv $$0, int $$1, int $$2, ja $$3) {
+         super(ers.M, $$3, 0, a($$1, 39, $$2, $$3, 58, 23, 58));
+         this.a($$3);
+         List<etl.v> $$4 = this.b($$0);
+         this.G.d = true;
+         this.I.add(new etl.p($$3, this.G));
+         this.I.add(new etl.j($$3, this.H));
+         List<etl.i> $$5 = Lists.newArrayList();
+         $$5.add(new etl.b());
+         $$5.add(new etl.d());
+         $$5.add(new etl.e());
+         $$5.add(new etl.a());
+         $$5.add(new etl.c());
+         $$5.add(new etl.g());
+         $$5.add(new etl.f());
+
+         for (etl.v $$6 : $$4) {
+            if (!$$6.d && !$$6.b()) {
+               for (etl.i $$7 : $$5) {
+                  if ($$7.a($$6)) {
+                     this.I.add($$7.a($$3, $$6, $$0));
                      break;
                   }
-
-                  etl.p $$12 = a($$11.a, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-                  if ($$12 != null) {
-                     $$11.c++;
-                     $$0.a = $$11;
-                     if (!$$11.a()) {
-                        h.remove($$11);
-                     }
-
-                     return $$12;
-                  }
                }
             }
          }
 
-         eql $$13 = etl.b.a($$1, $$2, $$3, $$4, $$5, $$6);
-         return $$13 != null && $$13.i() > 1 ? new etl.b($$7, $$13, $$6) : null;
-      }
-   }
+         iu $$8 = this.b(9, 0, 22);
 
-   static eqx b(etl.m $$0, eqy $$1, azv $$2, int $$3, int $$4, int $$5, @Nullable ja $$6, int $$7) {
-      if ($$7 > 50) {
-         return null;
-      } else if (Math.abs($$3 - $$0.f().h()) <= 112 && Math.abs($$5 - $$0.f().j()) <= 112) {
-         eqx $$8 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1);
-         if ($$8 != null) {
-            $$1.a($$8);
-            $$0.c.add($$8);
+         for (etl.r $$9 : this.I) {
+            $$9.f().a((jz)$$8);
          }
 
-         return $$8;
-      } else {
-         return null;
-      }
-   }
-
-   public static class a extends etl.p {
-      private static final int a = 5;
-      private static final int b = 5;
-      private static final int c = 7;
-      private boolean d;
-
-      public a(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.t, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public a(tz $$0) {
-         super(erk.t, $$0);
-         this.d = $$0.q("Chest");
-      }
-
-      @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Chest", this.d);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         this.a((etl.m)$$0, $$1, $$2, 1, 1);
-      }
-
-      public static etl.a a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 7, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.a($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 6, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$3, $$4, etl.p.a.a, 1, 1, 6);
-         this.a($$0, $$4, 3, 1, 2, 3, 1, 4, dmc.eW.m(), dmc.eW.m(), false);
-         this.a($$0, dmc.kk.m(), 3, 1, 1, $$4);
-         this.a($$0, dmc.kk.m(), 3, 1, 5, $$4);
-         this.a($$0, dmc.kk.m(), 3, 2, 2, $$4);
-         this.a($$0, dmc.kk.m(), 3, 2, 4, $$4);
-
-         for (int $$7 = 2; $$7 <= 4; $$7++) {
-            this.a($$0, dmc.kk.m(), 2, 1, $$7, $$4);
-         }
-
-         if (!this.d && $$4.b(this.b(3, 2, 3))) {
-            this.d = true;
-            this.a($$0, $$4, $$3, 3, 2, 3, eyv.x);
-         }
-      }
-   }
-
-   public static class b extends etl.p {
-      private final int a;
-
-      public b(int $$0, eql $$1, ja $$2) {
-         super(erk.u, $$0, $$1);
-         this.a($$2);
-         this.a = $$2 != ja.c && $$2 != ja.d ? $$1.d() : $$1.f();
-      }
-
-      public b(tz $$0) {
-         super(erk.u, $$0);
-         this.a = $$0.h("Steps");
-      }
-
-      @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Steps", this.a);
-      }
-
-      public static eql a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5) {
-         int $$6 = 3;
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 4, $$5);
-         eqx $$8 = $$0.a($$7);
-         if ($$8 == null) {
-            return null;
-         } else {
-            if ($$8.f().i() == $$7.i()) {
-               for (int $$9 = 2; $$9 >= 1; $$9--) {
-                  $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, $$9, $$5);
-                  if (!$$8.f().a($$7)) {
-                     return eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, $$9 + 1, $$5);
-                  }
-               }
-            }
-
-            return null;
-         }
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         for (int $$7 = 0; $$7 < this.a; $$7++) {
-            this.a($$0, dmc.eW.m(), 0, 0, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 1, 0, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 2, 0, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 3, 0, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 4, 0, $$7, $$4);
-
-            for (int $$8 = 1; $$8 <= 3; $$8++) {
-               this.a($$0, dmc.eW.m(), 0, $$8, $$7, $$4);
-               this.a($$0, dmc.nF.m(), 1, $$8, $$7, $$4);
-               this.a($$0, dmc.nF.m(), 2, $$8, $$7, $$4);
-               this.a($$0, dmc.nF.m(), 3, $$8, $$7, $$4);
-               this.a($$0, dmc.eW.m(), 4, $$8, $$7, $$4);
-            }
-
-            this.a($$0, dmc.eW.m(), 0, 4, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 1, 4, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 2, 4, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 3, 4, $$7, $$4);
-            this.a($$0, dmc.eW.m(), 4, 4, $$7, $$4);
-         }
-      }
-   }
-
-   public static class c extends etl.p {
-      protected static final int a = 10;
-      protected static final int b = 9;
-      protected static final int c = 11;
-      private final boolean d;
-      private final boolean i;
-      private final boolean j;
-      private final boolean k;
-
-      public c(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.v, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.h();
-         this.i = $$1.h();
-         this.j = $$1.h();
-         this.k = $$1.a(3) > 0;
-      }
-
-      public c(tz $$0) {
-         super(erk.v, $$0);
-         this.d = $$0.q("leftLow");
-         this.i = $$0.q("leftHigh");
-         this.j = $$0.q("rightLow");
-         this.k = $$0.q("rightHigh");
-      }
-
-      @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("leftLow", this.d);
-         $$1.a("leftHigh", this.i);
-         $$1.a("rightLow", this.j);
-         $$1.a("rightHigh", this.k);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         int $$3 = 3;
-         int $$4 = 5;
-         ja $$5 = this.i();
-         if ($$5 == ja.e || $$5 == ja.c) {
-            $$3 = 8 - $$3;
-            $$4 = 8 - $$4;
-         }
-
-         this.a((etl.m)$$0, $$1, $$2, 5, 1);
-         if (this.d) {
-            this.b((etl.m)$$0, $$1, $$2, $$3, 1);
-         }
-
-         if (this.i) {
-            this.b((etl.m)$$0, $$1, $$2, $$4, 7);
-         }
-
-         if (this.j) {
-            this.c((etl.m)$$0, $$1, $$2, $$3, 1);
-         }
-
-         if (this.k) {
-            this.c((etl.m)$$0, $$1, $$2, $$4, 7);
-         }
-      }
-
-      public static etl.c a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -4, -3, 0, 10, 9, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.c($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 9, 8, 10, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 4, 3, 0);
-         if (this.d) {
-            this.a($$0, $$4, 0, 3, 1, 0, 5, 3, e, e, false);
-         }
-
-         if (this.j) {
-            this.a($$0, $$4, 9, 3, 1, 9, 5, 3, e, e, false);
-         }
-
-         if (this.i) {
-            this.a($$0, $$4, 0, 5, 7, 0, 7, 9, e, e, false);
-         }
-
-         if (this.k) {
-            this.a($$0, $$4, 9, 5, 7, 9, 7, 9, e, e, false);
-         }
-
-         this.a($$0, $$4, 5, 1, 10, 7, 3, 10, e, e, false);
-         this.a($$0, $$4, 1, 2, 1, 8, 2, 6, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 1, 5, 4, 4, 9, false, $$3, etl.k);
-         this.a($$0, $$4, 8, 1, 5, 8, 4, 9, false, $$3, etl.k);
-         this.a($$0, $$4, 1, 4, 7, 3, 4, 9, false, $$3, etl.k);
-         this.a($$0, $$4, 1, 3, 5, 3, 3, 6, false, $$3, etl.k);
-         this.a($$0, $$4, 1, 3, 4, 3, 3, 4, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 1, 4, 6, 3, 4, 6, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 5, 1, 7, 7, 1, 8, false, $$3, etl.k);
-         this.a($$0, $$4, 5, 1, 9, 7, 1, 9, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 5, 2, 7, 7, 2, 7, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 4, 5, 7, 4, 5, 9, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 8, 5, 7, 8, 5, 9, dmc.ke.m(), dmc.ke.m(), false);
-         this.a($$0, $$4, 5, 5, 7, 7, 5, 9, dmc.ke.m().b(dtl.b, ebh.c), dmc.ke.m().b(dtl.b, ebh.c), false);
-         this.a($$0, dmc.cy.m().b(dvq.e, ja.d), 6, 5, 6, $$4);
-      }
-   }
-
-   public static class d extends etl.q {
-      public d(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.w, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public d(tz $$0) {
-         super(erk.w, $$0);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         ja $$3 = this.i();
-         if ($$3 != ja.c && $$3 != ja.f) {
-            this.c((etl.m)$$0, $$1, $$2, 1, 1);
-         } else {
-            this.b((etl.m)$$0, $$1, $$2, 1, 1);
-         }
-      }
-
-      public static etl.d a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.d($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 4, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         ja $$7 = this.i();
-         if ($$7 != ja.c && $$7 != ja.f) {
-            this.a($$0, $$4, 4, 1, 1, 4, 3, 3, e, e, false);
-         } else {
-            this.a($$0, $$4, 0, 1, 1, 0, 3, 3, e, e, false);
-         }
-      }
-   }
-
-   public static class e extends etl.p {
-      protected static final int a = 14;
-      protected static final int b = 6;
-      protected static final int c = 11;
-      protected static final int d = 15;
-      private final boolean i;
-
-      public e(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.x, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.i = $$2.e() > 6;
-      }
-
-      public e(tz $$0) {
-         super(erk.x, $$0);
-         this.i = $$0.q("Tall");
-      }
-
-      @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Tall", this.i);
-      }
-
-      public static etl.e a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -4, -1, 0, 14, 11, 15, $$5);
-         if (!a($$7) || $$0.a($$7) != null) {
-            $$7 = eql.a($$2, $$3, $$4, -4, -1, 0, 14, 6, 15, $$5);
-            if (!a($$7) || $$0.a($$7) != null) {
-               return null;
-            }
-         }
-
-         return new etl.e($$6, $$1, $$7, $$5);
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         int $$7 = 11;
-         if (!this.i) {
-            $$7 = 6;
-         }
-
-         this.a($$0, $$4, 0, 0, 0, 13, $$7 - 1, 14, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 4, 1, 0);
-         this.a($$0, $$4, $$3, 0.07F, 2, 1, 1, 11, 4, 13, dmc.bz.m(), dmc.bz.m(), false, false);
-         int $$8 = 1;
-         int $$9 = 12;
-
-         for (int $$10 = 1; $$10 <= 13; $$10++) {
-            if (($$10 - 1) % 4 == 0) {
-               this.a($$0, $$4, 1, 1, $$10, 1, 4, $$10, dmc.n.m(), dmc.n.m(), false);
-               this.a($$0, $$4, 12, 1, $$10, 12, 4, $$10, dmc.n.m(), dmc.n.m(), false);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.f), 2, 3, $$10, $$4);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.e), 11, 3, $$10, $$4);
-               if (this.i) {
-                  this.a($$0, $$4, 1, 6, $$10, 1, 9, $$10, dmc.n.m(), dmc.n.m(), false);
-                  this.a($$0, $$4, 12, 6, $$10, 12, 9, $$10, dmc.n.m(), dmc.n.m(), false);
-               }
-            } else {
-               this.a($$0, $$4, 1, 1, $$10, 1, 4, $$10, dmc.ct.m(), dmc.ct.m(), false);
-               this.a($$0, $$4, 12, 1, $$10, 12, 4, $$10, dmc.ct.m(), dmc.ct.m(), false);
-               if (this.i) {
-                  this.a($$0, $$4, 1, 6, $$10, 1, 9, $$10, dmc.ct.m(), dmc.ct.m(), false);
-                  this.a($$0, $$4, 12, 6, $$10, 12, 9, $$10, dmc.ct.m(), dmc.ct.m(), false);
-               }
-            }
-         }
-
-         for (int $$11 = 3; $$11 < 12; $$11 += 2) {
-            this.a($$0, $$4, 3, 1, $$11, 4, 3, $$11, dmc.ct.m(), dmc.ct.m(), false);
-            this.a($$0, $$4, 6, 1, $$11, 7, 3, $$11, dmc.ct.m(), dmc.ct.m(), false);
-            this.a($$0, $$4, 9, 1, $$11, 10, 3, $$11, dmc.ct.m(), dmc.ct.m(), false);
-         }
-
-         if (this.i) {
-            this.a($$0, $$4, 1, 5, 1, 3, 5, 13, dmc.n.m(), dmc.n.m(), false);
-            this.a($$0, $$4, 10, 5, 1, 12, 5, 13, dmc.n.m(), dmc.n.m(), false);
-            this.a($$0, $$4, 4, 5, 1, 9, 5, 2, dmc.n.m(), dmc.n.m(), false);
-            this.a($$0, $$4, 4, 5, 12, 9, 5, 13, dmc.n.m(), dmc.n.m(), false);
-            this.a($$0, dmc.n.m(), 9, 5, 11, $$4);
-            this.a($$0, dmc.n.m(), 8, 5, 11, $$4);
-            this.a($$0, dmc.n.m(), 9, 5, 10, $$4);
-            dzz $$12 = dmc.ei.m().b(doz.d, Boolean.valueOf(true)).b(doz.b, Boolean.valueOf(true));
-            dzz $$13 = dmc.ei.m().b(doz.a, Boolean.valueOf(true)).b(doz.c, Boolean.valueOf(true));
-            this.a($$0, $$4, 3, 6, 3, 3, 6, 11, $$13, $$13, false);
-            this.a($$0, $$4, 10, 6, 3, 10, 6, 9, $$13, $$13, false);
-            this.a($$0, $$4, 4, 6, 2, 9, 6, 2, $$12, $$12, false);
-            this.a($$0, $$4, 4, 6, 12, 7, 6, 12, $$12, $$12, false);
-            this.a($$0, dmc.ei.m().b(doz.a, Boolean.valueOf(true)).b(doz.b, Boolean.valueOf(true)), 3, 6, 2, $$4);
-            this.a($$0, dmc.ei.m().b(doz.c, Boolean.valueOf(true)).b(doz.b, Boolean.valueOf(true)), 3, 6, 12, $$4);
-            this.a($$0, dmc.ei.m().b(doz.a, Boolean.valueOf(true)).b(doz.d, Boolean.valueOf(true)), 10, 6, 2, $$4);
-
-            for (int $$14 = 0; $$14 <= 2; $$14++) {
-               this.a($$0, dmc.ei.m().b(doz.c, Boolean.valueOf(true)).b(doz.d, Boolean.valueOf(true)), 8 + $$14, 6, 12 - $$14, $$4);
-               if ($$14 != 2) {
-                  this.a($$0, dmc.ei.m().b(doz.a, Boolean.valueOf(true)).b(doz.b, Boolean.valueOf(true)), 8 + $$14, 6, 11 - $$14, $$4);
-               }
-            }
-
-            dzz $$15 = dmc.cY.m().b(dqk.b, ja.d);
-            this.a($$0, $$15, 10, 1, 13, $$4);
-            this.a($$0, $$15, 10, 2, 13, $$4);
-            this.a($$0, $$15, 10, 3, 13, $$4);
-            this.a($$0, $$15, 10, 4, 13, $$4);
-            this.a($$0, $$15, 10, 5, 13, $$4);
-            this.a($$0, $$15, 10, 6, 13, $$4);
-            this.a($$0, $$15, 10, 7, 13, $$4);
-            int $$16 = 7;
-            int $$17 = 7;
-            dzz $$18 = dmc.ei.m().b(doz.b, Boolean.valueOf(true));
-            this.a($$0, $$18, 6, 9, 7, $$4);
-            dzz $$19 = dmc.ei.m().b(doz.d, Boolean.valueOf(true));
-            this.a($$0, $$19, 7, 9, 7, $$4);
-            this.a($$0, $$18, 6, 8, 7, $$4);
-            this.a($$0, $$19, 7, 8, 7, $$4);
-            dzz $$20 = $$13.b(doz.d, Boolean.valueOf(true)).b(doz.b, Boolean.valueOf(true));
-            this.a($$0, $$20, 6, 7, 7, $$4);
-            this.a($$0, $$20, 7, 7, 7, $$4);
-            this.a($$0, $$18, 5, 7, 7, $$4);
-            this.a($$0, $$19, 8, 7, 7, $$4);
-            this.a($$0, $$18.b(doz.a, Boolean.valueOf(true)), 6, 7, 6, $$4);
-            this.a($$0, $$18.b(doz.c, Boolean.valueOf(true)), 6, 7, 8, $$4);
-            this.a($$0, $$19.b(doz.a, Boolean.valueOf(true)), 7, 7, 6, $$4);
-            this.a($$0, $$19.b(doz.c, Boolean.valueOf(true)), 7, 7, 8, $$4);
-            dzz $$21 = dmc.cx.m();
-            this.a($$0, $$21, 5, 8, 7, $$4);
-            this.a($$0, $$21, 8, 8, 7, $$4);
-            this.a($$0, $$21, 6, 8, 6, $$4);
-            this.a($$0, $$21, 6, 8, 8, $$4);
-            this.a($$0, $$21, 7, 8, 6, $$4);
-            this.a($$0, $$21, 7, 8, 8, $$4);
-         }
-
-         this.a($$0, $$4, $$3, 3, 3, 5, eyv.v);
-         if (this.i) {
-            this.a($$0, e, 12, 9, 1, $$4);
-            this.a($$0, $$4, $$3, 12, 8, 1, eyv.v);
-         }
-      }
-   }
-
-   static class f {
-      public final Class<? extends etl.p> a;
-      public final int b;
-      public int c;
-      public final int d;
-
-      public f(Class<? extends etl.p> $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.d = $$2;
-      }
-
-      public boolean a(int $$0) {
-         return this.d == 0 || this.c < this.d;
-      }
-
-      public boolean a() {
-         return this.d == 0 || this.c < this.d;
-      }
-   }
-
-   public static class g extends etl.p {
-      protected static final int a = 11;
-      protected static final int b = 8;
-      protected static final int c = 16;
-      private boolean d;
-
-      public g(int $$0, eql $$1, ja $$2) {
-         super(erk.y, $$0, $$1);
-         this.a($$2);
-      }
-
-      public g(tz $$0) {
-         super(erk.y, $$0);
-         this.d = $$0.q("Mob");
-      }
-
-      @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Mob", this.d);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         if ($$0 != null) {
-            ((etl.m)$$0).b = this;
-         }
-      }
-
-      public static etl.g a(eqy $$0, int $$1, int $$2, int $$3, ja $$4, int $$5) {
-         eql $$6 = eql.a($$1, $$2, $$3, -4, -1, 0, 11, 8, 16, $$4);
-         return a($$6) && $$0.a($$6) == null ? new etl.g($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 10, 7, 15, false, $$3, etl.k);
-         this.a($$0, $$3, $$4, etl.p.a.c, 4, 1, 0);
-         int $$7 = 6;
-         this.a($$0, $$4, 1, 6, 1, 1, 6, 14, false, $$3, etl.k);
-         this.a($$0, $$4, 9, 6, 1, 9, 6, 14, false, $$3, etl.k);
-         this.a($$0, $$4, 2, 6, 1, 8, 6, 2, false, $$3, etl.k);
-         this.a($$0, $$4, 2, 6, 14, 8, 6, 14, false, $$3, etl.k);
-         this.a($$0, $$4, 1, 1, 1, 2, 1, 4, false, $$3, etl.k);
-         this.a($$0, $$4, 8, 1, 1, 9, 1, 4, false, $$3, etl.k);
-         this.a($$0, $$4, 1, 1, 1, 1, 1, 3, dmc.K.m(), dmc.K.m(), false);
-         this.a($$0, $$4, 9, 1, 1, 9, 1, 3, dmc.K.m(), dmc.K.m(), false);
-         this.a($$0, $$4, 3, 1, 8, 7, 1, 12, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 1, 9, 6, 1, 11, dmc.K.m(), dmc.K.m(), false);
-         dzz $$8 = dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true));
-         dzz $$9 = dmc.fl.m().b(dqf.d, Boolean.valueOf(true)).b(dqf.b, Boolean.valueOf(true));
-
-         for (int $$10 = 3; $$10 < 14; $$10 += 2) {
-            this.a($$0, $$4, 0, 3, $$10, 0, 4, $$10, $$8, $$8, false);
-            this.a($$0, $$4, 10, 3, $$10, 10, 4, $$10, $$8, $$8, false);
-         }
-
-         for (int $$11 = 2; $$11 < 9; $$11 += 2) {
-            this.a($$0, $$4, $$11, 3, 15, $$11, 4, 15, $$9, $$9, false);
-         }
-
-         dzz $$12 = dmc.fz.m().b(duc.b, ja.c);
-         this.a($$0, $$4, 4, 1, 5, 6, 1, 7, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 2, 6, 6, 2, 7, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 3, 7, 6, 3, 7, false, $$3, etl.k);
-
-         for (int $$13 = 4; $$13 <= 6; $$13++) {
-            this.a($$0, $$12, $$13, 1, 4, $$4);
-            this.a($$0, $$12, $$13, 2, 5, $$4);
-            this.a($$0, $$12, $$13, 3, 6, $$4);
-         }
-
-         dzz $$14 = dmc.fU.m().b(doq.b, ja.c);
-         dzz $$15 = dmc.fU.m().b(doq.b, ja.d);
-         dzz $$16 = dmc.fU.m().b(doq.b, ja.f);
-         dzz $$17 = dmc.fU.m().b(doq.b, ja.e);
-         boolean $$18 = true;
-         boolean[] $$19 = new boolean[12];
-
-         for (int $$20 = 0; $$20 < $$19.length; $$20++) {
-            $$19[$$20] = $$3.i() > 0.9F;
-            $$18 &= $$19[$$20];
-         }
-
-         this.a($$0, $$14.b(doq.c, Boolean.valueOf($$19[0])), 4, 3, 8, $$4);
-         this.a($$0, $$14.b(doq.c, Boolean.valueOf($$19[1])), 5, 3, 8, $$4);
-         this.a($$0, $$14.b(doq.c, Boolean.valueOf($$19[2])), 6, 3, 8, $$4);
-         this.a($$0, $$15.b(doq.c, Boolean.valueOf($$19[3])), 4, 3, 12, $$4);
-         this.a($$0, $$15.b(doq.c, Boolean.valueOf($$19[4])), 5, 3, 12, $$4);
-         this.a($$0, $$15.b(doq.c, Boolean.valueOf($$19[5])), 6, 3, 12, $$4);
-         this.a($$0, $$16.b(doq.c, Boolean.valueOf($$19[6])), 3, 3, 9, $$4);
-         this.a($$0, $$16.b(doq.c, Boolean.valueOf($$19[7])), 3, 3, 10, $$4);
-         this.a($$0, $$16.b(doq.c, Boolean.valueOf($$19[8])), 3, 3, 11, $$4);
-         this.a($$0, $$17.b(doq.c, Boolean.valueOf($$19[9])), 7, 3, 9, $$4);
-         this.a($$0, $$17.b(doq.c, Boolean.valueOf($$19[10])), 7, 3, 10, $$4);
-         this.a($$0, $$17.b(doq.c, Boolean.valueOf($$19[11])), 7, 3, 11, $$4);
-         if ($$18) {
-            dzz $$21 = dmc.fT.m();
-            this.a($$0, $$21, 4, 3, 9, $$4);
-            this.a($$0, $$21, 5, 3, 9, $$4);
-            this.a($$0, $$21, 6, 3, 9, $$4);
-            this.a($$0, $$21, 4, 3, 10, $$4);
-            this.a($$0, $$21, 5, 3, 10, $$4);
-            this.a($$0, $$21, 6, 3, 10, $$4);
-            this.a($$0, $$21, 4, 3, 11, $$4);
-            this.a($$0, $$21, 5, 3, 11, $$4);
-            this.a($$0, $$21, 6, 3, 11, $$4);
-         }
-
-         if (!this.d) {
-            iu $$22 = this.b(5, 3, 6);
-            if ($$4.b($$22)) {
-               this.d = true;
-               $$0.a($$22, dmc.cB.m(), 2);
-               if ($$0.c_($$22) instanceof dyp $$24) {
-                  $$24.a(bwm.be, $$3);
-               }
-            }
-         }
-      }
-   }
-
-   public static class h extends etl.p {
-      protected static final int a = 9;
-      protected static final int b = 5;
-      protected static final int c = 11;
-
-      public h(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.z, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
+         eqt $$10 = eqt.a(this.b(1, 1, 1), this.b(23, 8, 21));
+         eqt $$11 = eqt.a(this.b(34, 1, 1), this.b(56, 8, 21));
+         eqt $$12 = eqt.a(this.b(22, 13, 22), this.b(35, 17, 35));
+         int $$13 = $$0.f();
+         this.I.add(new etl.u($$3, $$10, $$13++));
+         this.I.add(new etl.u($$3, $$11, $$13++));
+         this.I.add(new etl.q($$3, $$12));
       }
 
       public h(tz $$0) {
-         super(erk.z, $$0);
+         super(ers.M, $$0);
       }
 
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         this.a((etl.m)$$0, $$1, $$2, 1, 1);
-      }
+      private List<etl.v> b(azv $$0) {
+         etl.v[] $$1 = new etl.v[75];
 
-      public static etl.h a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 9, 5, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.h($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 8, 4, 10, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$4, 1, 1, 10, 3, 3, 10, e, e, false);
-         this.a($$0, $$4, 4, 1, 1, 4, 3, 1, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 1, 3, 4, 3, 3, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 1, 7, 4, 3, 7, false, $$3, etl.k);
-         this.a($$0, $$4, 4, 1, 9, 4, 3, 9, false, $$3, etl.k);
-
-         for (int $$7 = 1; $$7 <= 3; $$7++) {
-            this.a($$0, dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true)), 4, $$7, 4, $$4);
-            this.a($$0, dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true)).b(dqf.b, Boolean.valueOf(true)), 4, $$7, 5, $$4);
-            this.a($$0, dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true)), 4, $$7, 6, $$4);
-            this.a($$0, dmc.fl.m().b(dqf.d, Boolean.valueOf(true)).b(dqf.b, Boolean.valueOf(true)), 5, $$7, 5, $$4);
-            this.a($$0, dmc.fl.m().b(dqf.d, Boolean.valueOf(true)).b(dqf.b, Boolean.valueOf(true)), 6, $$7, 5, $$4);
-            this.a($$0, dmc.fl.m().b(dqf.d, Boolean.valueOf(true)).b(dqf.b, Boolean.valueOf(true)), 7, $$7, 5, $$4);
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               int $$4 = 0;
+               int $$5 = c($$2, 0, $$3);
+               $$1[$$5] = new etl.v($$5);
+            }
          }
 
-         this.a($$0, dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true)), 4, 3, 2, $$4);
-         this.a($$0, dmc.fl.m().b(dqf.a, Boolean.valueOf(true)).b(dqf.c, Boolean.valueOf(true)), 4, 3, 8, $$4);
-         dzz $$8 = dmc.dL.m().b(doh.b, ja.e);
-         dzz $$9 = dmc.dL.m().b(doh.b, ja.e).b(doh.c, eav.a);
-         this.a($$0, $$8, 4, 1, 2, $$4);
-         this.a($$0, $$9, 4, 2, 2, $$4);
-         this.a($$0, $$8, 4, 1, 8, $$4);
-         this.a($$0, $$9, 4, 2, 8, $$4);
+         for (int $$6 = 0; $$6 < 5; $$6++) {
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               int $$8 = 1;
+               int $$9 = c($$6, 1, $$7);
+               $$1[$$9] = new etl.v($$9);
+            }
+         }
+
+         for (int $$10 = 1; $$10 < 4; $$10++) {
+            for (int $$11 = 0; $$11 < 2; $$11++) {
+               int $$12 = 2;
+               int $$13 = c($$10, 2, $$11);
+               $$1[$$13] = new etl.v($$13);
+            }
+         }
+
+         this.G = $$1[u];
+
+         for (int $$14 = 0; $$14 < 5; $$14++) {
+            for (int $$15 = 0; $$15 < 5; $$15++) {
+               for (int $$16 = 0; $$16 < 3; $$16++) {
+                  int $$17 = c($$14, $$16, $$15);
+                  if ($$1[$$17] != null) {
+                     for (ja $$18 : ja.values()) {
+                        int $$19 = $$14 + $$18.j();
+                        int $$20 = $$16 + $$18.k();
+                        int $$21 = $$15 + $$18.l();
+                        if ($$19 >= 0 && $$19 < 5 && $$21 >= 0 && $$21 < 5 && $$20 >= 0 && $$20 < 3) {
+                           int $$22 = c($$19, $$20, $$21);
+                           if ($$1[$$22] != null) {
+                              if ($$21 == $$15) {
+                                 $$1[$$17].a($$18, $$1[$$22]);
+                              } else {
+                                 $$1[$$17].a($$18.g(), $$1[$$22]);
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+
+         etl.v $$23 = new etl.v(1003);
+         etl.v $$24 = new etl.v(1001);
+         etl.v $$25 = new etl.v(1002);
+         $$1[v].a(ja.b, $$23);
+         $$1[w].a(ja.d, $$24);
+         $$1[x].a(ja.d, $$25);
+         $$23.d = true;
+         $$24.d = true;
+         $$25.d = true;
+         this.G.e = true;
+         this.H = $$1[c($$0.a(4), 0, 2)];
+         this.H.d = true;
+         this.H.b[ja.f.d()].d = true;
+         this.H.b[ja.c.d()].d = true;
+         this.H.b[ja.f.d()].b[ja.c.d()].d = true;
+         this.H.b[ja.b.d()].d = true;
+         this.H.b[ja.f.d()].b[ja.b.d()].d = true;
+         this.H.b[ja.c.d()].b[ja.b.d()].d = true;
+         this.H.b[ja.f.d()].b[ja.c.d()].b[ja.b.d()].d = true;
+         ObjectArrayList<etl.v> $$26 = new ObjectArrayList();
+
+         for (etl.v $$27 : $$1) {
+            if ($$27 != null) {
+               $$27.a();
+               $$26.add($$27);
+            }
+         }
+
+         $$23.a();
+         af.c($$26, $$0);
+         int $$28 = 1;
+         ObjectListIterator var34 = $$26.iterator();
+
+         while (var34.hasNext()) {
+            etl.v $$29 = (etl.v)var34.next();
+            int $$30 = 0;
+            int $$31 = 0;
+
+            while ($$30 < 2 && $$31 < 5) {
+               $$31++;
+               int $$32 = $$0.a(6);
+               if ($$29.c[$$32]) {
+                  int $$33 = ja.a($$32).g().d();
+                  $$29.c[$$32] = false;
+                  $$29.b[$$32].c[$$33] = false;
+                  if ($$29.a($$28++) && $$29.b[$$32].a($$28++)) {
+                     $$30++;
+                  } else {
+                     $$29.c[$$32] = true;
+                     $$29.b[$$32].c[$$33] = true;
+                  }
+               }
+            }
+         }
+
+         $$26.add($$23);
+         $$26.add($$24);
+         $$26.add($$25);
+         return $$26;
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         int $$7 = Math.max($$0.P(), 64) - this.f.i();
+         this.b($$0, $$4, 0, 0, 0, 58, $$7, 58);
+         this.a(false, 0, $$0, $$3, $$4);
+         this.a(true, 33, $$0, $$3, $$4);
+         this.a($$0, $$3, $$4);
+         this.b($$0, $$3, $$4);
+         this.c($$0, $$3, $$4);
+         this.d($$0, $$3, $$4);
+         this.e($$0, $$3, $$4);
+         this.f($$0, $$3, $$4);
+
+         for (int $$8 = 0; $$8 < 7; $$8++) {
+            int $$9 = 0;
+
+            while ($$9 < 7) {
+               if ($$9 == 0 && $$8 == 3) {
+                  $$9 = 6;
+               }
+
+               int $$10 = $$8 * 9;
+               int $$11 = $$9 * 9;
+
+               for (int $$12 = 0; $$12 < 4; $$12++) {
+                  for (int $$13 = 0; $$13 < 4; $$13++) {
+                     this.a($$0, c, $$10 + $$12, 0, $$11 + $$13, $$4);
+                     this.b($$0, c, $$10 + $$12, -1, $$11 + $$13, $$4);
+                  }
+               }
+
+               if ($$8 != 0 && $$8 != 6) {
+                  $$9 += 6;
+               } else {
+                  $$9++;
+               }
+            }
+         }
+
+         for (int $$14 = 0; $$14 < 5; $$14++) {
+            this.b($$0, $$4, -1 - $$14, 0 + $$14 * 2, -1 - $$14, -1 - $$14, 23, 58 + $$14);
+            this.b($$0, $$4, 58 + $$14, 0 + $$14 * 2, -1 - $$14, 58 + $$14, 23, 58 + $$14);
+            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, -1 - $$14, 57 + $$14, 23, -1 - $$14);
+            this.b($$0, $$4, 0 - $$14, 0 + $$14 * 2, 58 + $$14, 57 + $$14, 23, 58 + $$14);
+         }
+
+         for (etl.r $$15 : this.I) {
+            if ($$15.f().a($$4)) {
+               $$15.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            }
+         }
+      }
+
+      private void a(boolean $$0, int $$1, djz $$2, azv $$3, eqt $$4) {
+         int $$5 = 24;
+         if (this.a($$4, $$1, 0, $$1 + 23, 20)) {
+            this.a($$2, $$4, $$1 + 0, 0, 0, $$1 + 24, 0, 20, b, b, false);
+            this.b($$2, $$4, $$1 + 0, 1, 0, $$1 + 24, 10, 20);
+
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               this.a($$2, $$4, $$1 + $$6, $$6 + 1, $$6, $$1 + $$6, $$6 + 1, 20, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 7, $$6 + 5, $$6 + 7, $$1 + $$6 + 7, $$6 + 5, 20, c, c, false);
+               this.a($$2, $$4, $$1 + 17 - $$6, $$6 + 5, $$6 + 7, $$1 + 17 - $$6, $$6 + 5, 20, c, c, false);
+               this.a($$2, $$4, $$1 + 24 - $$6, $$6 + 1, $$6, $$1 + 24 - $$6, $$6 + 1, 20, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 1, $$6 + 1, $$6, $$1 + 23 - $$6, $$6 + 1, $$6, c, c, false);
+               this.a($$2, $$4, $$1 + $$6 + 8, $$6 + 5, $$6 + 7, $$1 + 16 - $$6, $$6 + 5, $$6 + 7, c, c, false);
+            }
+
+            this.a($$2, $$4, $$1 + 4, 4, 4, $$1 + 6, 4, 20, b, b, false);
+            this.a($$2, $$4, $$1 + 7, 4, 4, $$1 + 17, 4, 6, b, b, false);
+            this.a($$2, $$4, $$1 + 18, 4, 4, $$1 + 20, 4, 20, b, b, false);
+            this.a($$2, $$4, $$1 + 11, 8, 11, $$1 + 13, 8, 20, b, b, false);
+            this.a($$2, h, $$1 + 12, 9, 12, $$4);
+            this.a($$2, h, $$1 + 12, 9, 15, $$4);
+            this.a($$2, h, $$1 + 12, 9, 18, $$4);
+            int $$7 = $$1 + ($$0 ? 19 : 5);
+            int $$8 = $$1 + ($$0 ? 5 : 19);
+
+            for (int $$9 = 20; $$9 >= 5; $$9 -= 3) {
+               this.a($$2, h, $$7, 5, $$9, $$4);
+            }
+
+            for (int $$10 = 19; $$10 >= 7; $$10 -= 3) {
+               this.a($$2, h, $$8, 5, $$10, $$4);
+            }
+
+            for (int $$11 = 0; $$11 < 4; $$11++) {
+               int $$12 = $$0 ? $$1 + 24 - (17 - $$11 * 3) : $$1 + 17 - $$11 * 3;
+               this.a($$2, h, $$12, 5, 5, $$4);
+            }
+
+            this.a($$2, h, $$8, 5, 5, $$4);
+            this.a($$2, $$4, $$1 + 11, 1, 12, $$1 + 13, 7, 12, b, b, false);
+            this.a($$2, $$4, $$1 + 12, 1, 11, $$1 + 12, 7, 13, b, b, false);
+         }
+      }
+
+      private void a(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 22, 5, 35, 17)) {
+            this.b($$0, $$2, 25, 0, 0, 32, 8, 20);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, 24, 2, 5 + $$3 * 4, 24, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, $$2, 22, 4, 5 + $$3 * 4, 23, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, c, 25, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, c, 26, 6, 5 + $$3 * 4, $$2);
+               this.a($$0, i, 26, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, $$2, 33, 2, 5 + $$3 * 4, 33, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, $$2, 34, 4, 5 + $$3 * 4, 35, 4, 5 + $$3 * 4, c, c, false);
+               this.a($$0, c, 32, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, c, 31, 6, 5 + $$3 * 4, $$2);
+               this.a($$0, i, 31, 5, 5 + $$3 * 4, $$2);
+               this.a($$0, $$2, 27, 6, 5 + $$3 * 4, 30, 6, 5 + $$3 * 4, b, b, false);
+            }
+         }
+      }
+
+      private void b(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 15, 20, 42, 21)) {
+            this.a($$0, $$2, 15, 0, 21, 42, 0, 21, b, b, false);
+            this.b($$0, $$2, 26, 1, 21, 31, 3, 21);
+            this.a($$0, $$2, 21, 12, 21, 36, 12, 21, b, b, false);
+            this.a($$0, $$2, 17, 11, 21, 40, 11, 21, b, b, false);
+            this.a($$0, $$2, 16, 10, 21, 41, 10, 21, b, b, false);
+            this.a($$0, $$2, 15, 7, 21, 42, 9, 21, b, b, false);
+            this.a($$0, $$2, 16, 6, 21, 41, 6, 21, b, b, false);
+            this.a($$0, $$2, 17, 5, 21, 40, 5, 21, b, b, false);
+            this.a($$0, $$2, 21, 4, 21, 36, 4, 21, b, b, false);
+            this.a($$0, $$2, 22, 3, 21, 26, 3, 21, b, b, false);
+            this.a($$0, $$2, 31, 3, 21, 35, 3, 21, b, b, false);
+            this.a($$0, $$2, 23, 2, 21, 25, 2, 21, b, b, false);
+            this.a($$0, $$2, 32, 2, 21, 34, 2, 21, b, b, false);
+            this.a($$0, $$2, 28, 4, 20, 29, 4, 21, c, c, false);
+            this.a($$0, c, 27, 3, 21, $$2);
+            this.a($$0, c, 30, 3, 21, $$2);
+            this.a($$0, c, 26, 2, 21, $$2);
+            this.a($$0, c, 31, 2, 21, $$2);
+            this.a($$0, c, 25, 1, 21, $$2);
+            this.a($$0, c, 32, 1, 21, $$2);
+
+            for (int $$3 = 0; $$3 < 7; $$3++) {
+               this.a($$0, d, 28 - $$3, 6 + $$3, 21, $$2);
+               this.a($$0, d, 29 + $$3, 6 + $$3, 21, $$2);
+            }
+
+            for (int $$4 = 0; $$4 < 4; $$4++) {
+               this.a($$0, d, 28 - $$4, 9 + $$4, 21, $$2);
+               this.a($$0, d, 29 + $$4, 9 + $$4, 21, $$2);
+            }
+
+            this.a($$0, d, 28, 12, 21, $$2);
+            this.a($$0, d, 29, 12, 21, $$2);
+
+            for (int $$5 = 0; $$5 < 3; $$5++) {
+               this.a($$0, d, 22 - $$5 * 2, 8, 21, $$2);
+               this.a($$0, d, 22 - $$5 * 2, 9, 21, $$2);
+               this.a($$0, d, 35 + $$5 * 2, 8, 21, $$2);
+               this.a($$0, d, 35 + $$5 * 2, 9, 21, $$2);
+            }
+
+            this.b($$0, $$2, 15, 13, 21, 42, 15, 21);
+            this.b($$0, $$2, 15, 1, 21, 15, 6, 21);
+            this.b($$0, $$2, 16, 1, 21, 16, 5, 21);
+            this.b($$0, $$2, 17, 1, 21, 20, 4, 21);
+            this.b($$0, $$2, 21, 1, 21, 21, 3, 21);
+            this.b($$0, $$2, 22, 1, 21, 22, 2, 21);
+            this.b($$0, $$2, 23, 1, 21, 24, 1, 21);
+            this.b($$0, $$2, 42, 1, 21, 42, 6, 21);
+            this.b($$0, $$2, 41, 1, 21, 41, 5, 21);
+            this.b($$0, $$2, 37, 1, 21, 40, 4, 21);
+            this.b($$0, $$2, 36, 1, 21, 36, 3, 21);
+            this.b($$0, $$2, 33, 1, 21, 34, 1, 21);
+            this.b($$0, $$2, 35, 1, 21, 35, 2, 21);
+         }
+      }
+
+      private void c(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 21, 21, 36, 36)) {
+            this.a($$0, $$2, 21, 0, 22, 36, 0, 36, b, b, false);
+            this.b($$0, $$2, 21, 1, 22, 36, 23, 36);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 21 + $$3, 36 - $$3, 13 + $$3, 21 + $$3, c, c, false);
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 36 - $$3, 36 - $$3, 13 + $$3, 36 - $$3, c, c, false);
+               this.a($$0, $$2, 21 + $$3, 13 + $$3, 22 + $$3, 21 + $$3, 13 + $$3, 35 - $$3, c, c, false);
+               this.a($$0, $$2, 36 - $$3, 13 + $$3, 22 + $$3, 36 - $$3, 13 + $$3, 35 - $$3, c, c, false);
+            }
+
+            this.a($$0, $$2, 25, 16, 25, 32, 16, 32, b, b, false);
+            this.a($$0, $$2, 25, 17, 25, 25, 19, 25, c, c, false);
+            this.a($$0, $$2, 32, 17, 25, 32, 19, 25, c, c, false);
+            this.a($$0, $$2, 25, 17, 32, 25, 19, 32, c, c, false);
+            this.a($$0, $$2, 32, 17, 32, 32, 19, 32, c, c, false);
+            this.a($$0, c, 26, 20, 26, $$2);
+            this.a($$0, c, 27, 21, 27, $$2);
+            this.a($$0, i, 27, 20, 27, $$2);
+            this.a($$0, c, 26, 20, 31, $$2);
+            this.a($$0, c, 27, 21, 30, $$2);
+            this.a($$0, i, 27, 20, 30, $$2);
+            this.a($$0, c, 31, 20, 31, $$2);
+            this.a($$0, c, 30, 21, 30, $$2);
+            this.a($$0, i, 30, 20, 30, $$2);
+            this.a($$0, c, 31, 20, 26, $$2);
+            this.a($$0, c, 30, 21, 27, $$2);
+            this.a($$0, i, 30, 20, 27, $$2);
+            this.a($$0, $$2, 28, 21, 27, 29, 21, 27, b, b, false);
+            this.a($$0, $$2, 27, 21, 28, 27, 21, 29, b, b, false);
+            this.a($$0, $$2, 28, 21, 30, 29, 21, 30, b, b, false);
+            this.a($$0, $$2, 30, 21, 28, 30, 21, 29, b, b, false);
+         }
+      }
+
+      private void d(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 0, 21, 6, 58)) {
+            this.a($$0, $$2, 0, 0, 21, 6, 0, 57, b, b, false);
+            this.b($$0, $$2, 0, 1, 21, 6, 7, 57);
+            this.a($$0, $$2, 4, 4, 21, 6, 4, 53, b, b, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3, $$3 + 1, 21, $$3, $$3 + 1, 57 - $$3, c, c, false);
+            }
+
+            for (int $$4 = 23; $$4 < 53; $$4 += 3) {
+               this.a($$0, h, 5, 5, $$4, $$2);
+            }
+
+            this.a($$0, h, 5, 5, 52, $$2);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, $$5, $$5 + 1, 21, $$5, $$5 + 1, 57 - $$5, c, c, false);
+            }
+
+            this.a($$0, $$2, 4, 1, 52, 6, 3, 52, b, b, false);
+            this.a($$0, $$2, 5, 1, 51, 5, 3, 53, b, b, false);
+         }
+
+         if (this.a($$2, 51, 21, 58, 58)) {
+            this.a($$0, $$2, 51, 0, 21, 57, 0, 57, b, b, false);
+            this.b($$0, $$2, 51, 1, 21, 57, 7, 57);
+            this.a($$0, $$2, 51, 4, 21, 53, 4, 53, b, b, false);
+
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               this.a($$0, $$2, 57 - $$6, $$6 + 1, 21, 57 - $$6, $$6 + 1, 57 - $$6, c, c, false);
+            }
+
+            for (int $$7 = 23; $$7 < 53; $$7 += 3) {
+               this.a($$0, h, 52, 5, $$7, $$2);
+            }
+
+            this.a($$0, h, 52, 5, 52, $$2);
+            this.a($$0, $$2, 51, 1, 52, 53, 3, 52, b, b, false);
+            this.a($$0, $$2, 52, 1, 51, 52, 3, 53, b, b, false);
+         }
+
+         if (this.a($$2, 0, 51, 57, 57)) {
+            this.a($$0, $$2, 7, 0, 51, 50, 0, 57, b, b, false);
+            this.b($$0, $$2, 7, 1, 51, 50, 10, 57);
+
+            for (int $$8 = 0; $$8 < 4; $$8++) {
+               this.a($$0, $$2, $$8 + 1, $$8 + 1, 57 - $$8, 56 - $$8, $$8 + 1, 57 - $$8, c, c, false);
+            }
+         }
+      }
+
+      private void e(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 7, 21, 13, 50)) {
+            this.a($$0, $$2, 7, 0, 21, 13, 0, 50, b, b, false);
+            this.b($$0, $$2, 7, 1, 21, 13, 10, 50);
+            this.a($$0, $$2, 11, 8, 21, 13, 8, 53, b, b, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3 + 7, $$3 + 5, 21, $$3 + 7, $$3 + 5, 54, c, c, false);
+            }
+
+            for (int $$4 = 21; $$4 <= 45; $$4 += 3) {
+               this.a($$0, h, 12, 9, $$4, $$2);
+            }
+         }
+
+         if (this.a($$2, 44, 21, 50, 54)) {
+            this.a($$0, $$2, 44, 0, 21, 50, 0, 50, b, b, false);
+            this.b($$0, $$2, 44, 1, 21, 50, 10, 50);
+            this.a($$0, $$2, 44, 8, 21, 46, 8, 53, b, b, false);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, 50 - $$5, $$5 + 5, 21, 50 - $$5, $$5 + 5, 54, c, c, false);
+            }
+
+            for (int $$6 = 21; $$6 <= 45; $$6 += 3) {
+               this.a($$0, h, 45, 9, $$6, $$2);
+            }
+         }
+
+         if (this.a($$2, 8, 44, 49, 54)) {
+            this.a($$0, $$2, 14, 0, 44, 43, 0, 50, b, b, false);
+            this.b($$0, $$2, 14, 1, 44, 43, 10, 50);
+
+            for (int $$7 = 12; $$7 <= 45; $$7 += 3) {
+               this.a($$0, h, $$7, 9, 45, $$2);
+               this.a($$0, h, $$7, 9, 52, $$2);
+               if ($$7 == 12 || $$7 == 18 || $$7 == 24 || $$7 == 33 || $$7 == 39 || $$7 == 45) {
+                  this.a($$0, h, $$7, 9, 47, $$2);
+                  this.a($$0, h, $$7, 9, 50, $$2);
+                  this.a($$0, h, $$7, 10, 45, $$2);
+                  this.a($$0, h, $$7, 10, 46, $$2);
+                  this.a($$0, h, $$7, 10, 51, $$2);
+                  this.a($$0, h, $$7, 10, 52, $$2);
+                  this.a($$0, h, $$7, 11, 47, $$2);
+                  this.a($$0, h, $$7, 11, 50, $$2);
+                  this.a($$0, h, $$7, 12, 48, $$2);
+                  this.a($$0, h, $$7, 12, 49, $$2);
+               }
+            }
+
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               this.a($$0, $$2, 8 + $$8, 5 + $$8, 54, 49 - $$8, 5 + $$8, 54, b, b, false);
+            }
+
+            this.a($$0, $$2, 11, 8, 54, 46, 8, 54, c, c, false);
+            this.a($$0, $$2, 14, 8, 44, 43, 8, 53, b, b, false);
+         }
+      }
+
+      private void f(djz $$0, azv $$1, eqt $$2) {
+         if (this.a($$2, 14, 21, 20, 43)) {
+            this.a($$0, $$2, 14, 0, 21, 20, 0, 43, b, b, false);
+            this.b($$0, $$2, 14, 1, 22, 20, 14, 43);
+            this.a($$0, $$2, 18, 12, 22, 20, 12, 39, b, b, false);
+            this.a($$0, $$2, 18, 12, 21, 20, 12, 21, c, c, false);
+
+            for (int $$3 = 0; $$3 < 4; $$3++) {
+               this.a($$0, $$2, $$3 + 14, $$3 + 9, 21, $$3 + 14, $$3 + 9, 43 - $$3, c, c, false);
+            }
+
+            for (int $$4 = 23; $$4 <= 39; $$4 += 3) {
+               this.a($$0, h, 19, 13, $$4, $$2);
+            }
+         }
+
+         if (this.a($$2, 37, 21, 43, 43)) {
+            this.a($$0, $$2, 37, 0, 21, 43, 0, 43, b, b, false);
+            this.b($$0, $$2, 37, 1, 22, 43, 14, 43);
+            this.a($$0, $$2, 37, 12, 22, 39, 12, 39, b, b, false);
+            this.a($$0, $$2, 37, 12, 21, 39, 12, 21, c, c, false);
+
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               this.a($$0, $$2, 43 - $$5, $$5 + 9, 21, 43 - $$5, $$5 + 9, 43 - $$5, c, c, false);
+            }
+
+            for (int $$6 = 23; $$6 <= 39; $$6 += 3) {
+               this.a($$0, h, 38, 13, $$6, $$2);
+            }
+         }
+
+         if (this.a($$2, 15, 37, 42, 43)) {
+            this.a($$0, $$2, 21, 0, 37, 36, 0, 43, b, b, false);
+            this.b($$0, $$2, 21, 1, 37, 36, 14, 43);
+            this.a($$0, $$2, 21, 12, 37, 36, 12, 39, b, b, false);
+
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               this.a($$0, $$2, 15 + $$7, $$7 + 9, 43 - $$7, 42 - $$7, $$7 + 9, 43 - $$7, c, c, false);
+            }
+
+            for (int $$8 = 21; $$8 <= 36; $$8 += 3) {
+               this.a($$0, h, $$8, 13, 38, $$2);
+            }
+         }
       }
    }
 
-   public static class i extends etl.q {
-      public i(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.A, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
+   interface i {
+      boolean a(etl.v var1);
 
-      public i(tz $$0) {
-         super(erk.A, $$0);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         ja $$3 = this.i();
-         if ($$3 != ja.c && $$3 != ja.f) {
-            this.b((etl.m)$$0, $$1, $$2, 1, 1);
-         } else {
-            this.c((etl.m)$$0, $$1, $$2, 1, 1);
-         }
-      }
-
-      public static etl.i a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.i($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 4, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         ja $$7 = this.i();
-         if ($$7 != ja.c && $$7 != ja.f) {
-            this.a($$0, $$4, 0, 1, 1, 0, 3, 3, e, e, false);
-         } else {
-            this.a($$0, $$4, 4, 1, 1, 4, 3, 3, e, e, false);
-         }
-      }
+      etl.r a(ja var1, etl.v var2, azv var3);
    }
 
-   public static class j extends etl.p {
-      protected static final int a = 11;
-      protected static final int b = 7;
-      protected static final int c = 11;
-      protected final int d;
-
-      public j(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.B, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.a(5);
+   public static class j extends etl.r {
+      public j(ja $$0, etl.v $$1) {
+         super(ers.N, 1, $$0, $$1, 2, 2, 2);
       }
 
       public j(tz $$0) {
-         super(erk.B, $$0);
-         this.d = $$0.h("Type");
+         super(ers.N, $$0);
       }
 
       @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Type", this.d);
-      }
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         this.a($$0, $$4, 1, 8, 0, 14, 8, 14, b);
+         int $$7 = 7;
+         eah $$8 = c;
+         this.a($$0, $$4, 0, 7, 0, 0, 7, 15, $$8, $$8, false);
+         this.a($$0, $$4, 15, 7, 0, 15, 7, 15, $$8, $$8, false);
+         this.a($$0, $$4, 1, 7, 0, 15, 7, 0, $$8, $$8, false);
+         this.a($$0, $$4, 1, 7, 15, 14, 7, 15, $$8, $$8, false);
 
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         this.a((etl.m)$$0, $$1, $$2, 4, 1);
-         this.b((etl.m)$$0, $$1, $$2, 1, 4);
-         this.c((etl.m)$$0, $$1, $$2, 1, 4);
-      }
-
-      public static etl.j a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -4, -1, 0, 11, 7, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.j($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 10, 6, 10, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 4, 1, 0);
-         this.a($$0, $$4, 4, 1, 10, 6, 3, 10, e, e, false);
-         this.a($$0, $$4, 0, 1, 4, 0, 3, 6, e, e, false);
-         this.a($$0, $$4, 10, 1, 4, 10, 3, 6, e, e, false);
-         switch (this.d) {
-            case 0:
-               this.a($$0, dmc.eW.m(), 5, 1, 5, $$4);
-               this.a($$0, dmc.eW.m(), 5, 2, 5, $$4);
-               this.a($$0, dmc.eW.m(), 5, 3, 5, $$4);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.e), 4, 3, 5, $$4);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.f), 6, 3, 5, $$4);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.d), 5, 3, 4, $$4);
-               this.a($$0, dmc.cy.m().b(dvq.e, ja.c), 5, 3, 6, $$4);
-               this.a($$0, dmc.ke.m(), 4, 1, 4, $$4);
-               this.a($$0, dmc.ke.m(), 4, 1, 5, $$4);
-               this.a($$0, dmc.ke.m(), 4, 1, 6, $$4);
-               this.a($$0, dmc.ke.m(), 6, 1, 4, $$4);
-               this.a($$0, dmc.ke.m(), 6, 1, 5, $$4);
-               this.a($$0, dmc.ke.m(), 6, 1, 6, $$4);
-               this.a($$0, dmc.ke.m(), 5, 1, 4, $$4);
-               this.a($$0, dmc.ke.m(), 5, 1, 6, $$4);
-               break;
-            case 1:
-               for (int $$7 = 0; $$7 < 5; $$7++) {
-                  this.a($$0, dmc.eW.m(), 3, 1, 3 + $$7, $$4);
-                  this.a($$0, dmc.eW.m(), 7, 1, 3 + $$7, $$4);
-                  this.a($$0, dmc.eW.m(), 3 + $$7, 1, 3, $$4);
-                  this.a($$0, dmc.eW.m(), 3 + $$7, 1, 7, $$4);
-               }
-
-               this.a($$0, dmc.eW.m(), 5, 1, 5, $$4);
-               this.a($$0, dmc.eW.m(), 5, 2, 5, $$4);
-               this.a($$0, dmc.eW.m(), 5, 3, 5, $$4);
-               this.a($$0, dmc.J.m(), 5, 4, 5, $$4);
-               break;
-            case 2:
-               for (int $$8 = 1; $$8 <= 9; $$8++) {
-                  this.a($$0, dmc.m.m(), 1, 3, $$8, $$4);
-                  this.a($$0, dmc.m.m(), 9, 3, $$8, $$4);
-               }
-
-               for (int $$9 = 1; $$9 <= 9; $$9++) {
-                  this.a($$0, dmc.m.m(), $$9, 3, 1, $$4);
-                  this.a($$0, dmc.m.m(), $$9, 3, 9, $$4);
-               }
-
-               this.a($$0, dmc.m.m(), 5, 1, 4, $$4);
-               this.a($$0, dmc.m.m(), 5, 1, 6, $$4);
-               this.a($$0, dmc.m.m(), 5, 3, 4, $$4);
-               this.a($$0, dmc.m.m(), 5, 3, 6, $$4);
-               this.a($$0, dmc.m.m(), 4, 1, 5, $$4);
-               this.a($$0, dmc.m.m(), 6, 1, 5, $$4);
-               this.a($$0, dmc.m.m(), 4, 3, 5, $$4);
-               this.a($$0, dmc.m.m(), 6, 3, 5, $$4);
-
-               for (int $$10 = 1; $$10 <= 3; $$10++) {
-                  this.a($$0, dmc.m.m(), 4, $$10, 4, $$4);
-                  this.a($$0, dmc.m.m(), 6, $$10, 4, $$4);
-                  this.a($$0, dmc.m.m(), 4, $$10, 6, $$4);
-                  this.a($$0, dmc.m.m(), 6, $$10, 6, $$4);
-               }
-
-               this.a($$0, dmc.cy.m(), 5, 3, 5, $$4);
-
-               for (int $$11 = 2; $$11 <= 8; $$11++) {
-                  this.a($$0, dmc.n.m(), 2, 3, $$11, $$4);
-                  this.a($$0, dmc.n.m(), 3, 3, $$11, $$4);
-                  if ($$11 <= 3 || $$11 >= 7) {
-                     this.a($$0, dmc.n.m(), 4, 3, $$11, $$4);
-                     this.a($$0, dmc.n.m(), 5, 3, $$11, $$4);
-                     this.a($$0, dmc.n.m(), 6, 3, $$11, $$4);
-                  }
-
-                  this.a($$0, dmc.n.m(), 7, 3, $$11, $$4);
-                  this.a($$0, dmc.n.m(), 8, 3, $$11, $$4);
-               }
-
-               dzz $$12 = dmc.cY.m().b(dqk.b, ja.e);
-               this.a($$0, $$12, 9, 1, 3, $$4);
-               this.a($$0, $$12, 9, 2, 3, $$4);
-               this.a($$0, $$12, 9, 3, 3, $$4);
-               this.a($$0, $$4, $$3, 3, 4, 8, eyv.w);
-         }
-      }
-   }
-
-   static class k extends eqx.a {
-      @Override
-      public void a(azv $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         if ($$4) {
-            float $$5 = $$0.i();
-            if ($$5 < 0.2F) {
-               this.a = dmc.eY.m();
-            } else if ($$5 < 0.5F) {
-               this.a = dmc.eX.m();
-            } else if ($$5 < 0.55F) {
-               this.a = dmc.fe.m();
-            } else {
-               this.a = dmc.eW.m();
+         for (int $$9 = 1; $$9 <= 6; $$9++) {
+            $$8 = c;
+            if ($$9 == 2 || $$9 == 6) {
+               $$8 = b;
             }
-         } else {
-            this.a = dmc.nF.m();
+
+            for (int $$11 = 0; $$11 <= 15; $$11 += 15) {
+               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9, 1, $$8, $$8, false);
+               this.a($$0, $$4, $$11, $$9, 6, $$11, $$9, 9, $$8, $$8, false);
+               this.a($$0, $$4, $$11, $$9, 14, $$11, $$9, 15, $$8, $$8, false);
+            }
+
+            this.a($$0, $$4, 1, $$9, 0, 1, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 6, $$9, 0, 9, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 14, $$9, 0, 14, $$9, 0, $$8, $$8, false);
+            this.a($$0, $$4, 1, $$9, 15, 14, $$9, 15, $$8, $$8, false);
+         }
+
+         this.a($$0, $$4, 6, 3, 6, 9, 6, 9, d, d, false);
+         this.a($$0, $$4, 7, 4, 7, 8, 5, 8, dmh.cr.m(), dmh.cr.m(), false);
+
+         for (int $$12 = 3; $$12 <= 6; $$12 += 3) {
+            for (int $$13 = 6; $$13 <= 9; $$13 += 3) {
+               this.a($$0, i, $$13, $$12, 6, $$4);
+               this.a($$0, i, $$13, $$12, 9, $$4);
+            }
+         }
+
+         this.a($$0, $$4, 5, 1, 6, 5, 2, 6, c, c, false);
+         this.a($$0, $$4, 5, 1, 9, 5, 2, 9, c, c, false);
+         this.a($$0, $$4, 10, 1, 6, 10, 2, 6, c, c, false);
+         this.a($$0, $$4, 10, 1, 9, 10, 2, 9, c, c, false);
+         this.a($$0, $$4, 6, 1, 5, 6, 2, 5, c, c, false);
+         this.a($$0, $$4, 9, 1, 5, 9, 2, 5, c, c, false);
+         this.a($$0, $$4, 6, 1, 10, 6, 2, 10, c, c, false);
+         this.a($$0, $$4, 9, 1, 10, 9, 2, 10, c, c, false);
+         this.a($$0, $$4, 5, 2, 5, 5, 6, 5, c, c, false);
+         this.a($$0, $$4, 5, 2, 10, 5, 6, 10, c, c, false);
+         this.a($$0, $$4, 10, 2, 5, 10, 6, 5, c, c, false);
+         this.a($$0, $$4, 10, 2, 10, 10, 6, 10, c, c, false);
+         this.a($$0, $$4, 5, 7, 1, 5, 7, 6, c, c, false);
+         this.a($$0, $$4, 10, 7, 1, 10, 7, 6, c, c, false);
+         this.a($$0, $$4, 5, 7, 9, 5, 7, 14, c, c, false);
+         this.a($$0, $$4, 10, 7, 9, 10, 7, 14, c, c, false);
+         this.a($$0, $$4, 1, 7, 5, 6, 7, 5, c, c, false);
+         this.a($$0, $$4, 1, 7, 10, 6, 7, 10, c, c, false);
+         this.a($$0, $$4, 9, 7, 5, 14, 7, 5, c, c, false);
+         this.a($$0, $$4, 9, 7, 10, 14, 7, 10, c, c, false);
+         this.a($$0, $$4, 2, 1, 2, 2, 1, 3, c, c, false);
+         this.a($$0, $$4, 3, 1, 2, 3, 1, 2, c, c, false);
+         this.a($$0, $$4, 13, 1, 2, 13, 1, 3, c, c, false);
+         this.a($$0, $$4, 12, 1, 2, 12, 1, 2, c, c, false);
+         this.a($$0, $$4, 2, 1, 12, 2, 1, 13, c, c, false);
+         this.a($$0, $$4, 3, 1, 13, 3, 1, 13, c, c, false);
+         this.a($$0, $$4, 13, 1, 12, 13, 1, 13, c, c, false);
+         this.a($$0, $$4, 12, 1, 13, 12, 1, 13, c, c, false);
+      }
+   }
+
+   public static class k extends etl.r {
+      public k(ja $$0, etl.v $$1) {
+         super(ers.O, 1, $$0, $$1, 2, 1, 1);
+      }
+
+      public k(tz $$0) {
+         super(ers.O, $$0);
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         etl.v $$7 = this.B.b[ja.f.d()];
+         etl.v $$8 = this.B;
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 8, 0, $$7.c[ja.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[ja.a.d()]);
+         }
+
+         if ($$8.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 7, 4, 6, b);
+         }
+
+         if ($$7.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 8, 4, 1, 14, 4, 6, b);
+         }
+
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+         this.a($$0, $$4, 15, 3, 0, 15, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 15, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 7, 14, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, b, b, false);
+         this.a($$0, $$4, 15, 2, 0, 15, 2, 7, b, b, false);
+         this.a($$0, $$4, 1, 2, 0, 15, 2, 0, b, b, false);
+         this.a($$0, $$4, 1, 2, 7, 14, 2, 7, b, b, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 15, 1, 0, 15, 1, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 15, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 7, 14, 1, 7, c, c, false);
+         this.a($$0, $$4, 5, 1, 0, 10, 1, 4, c, c, false);
+         this.a($$0, $$4, 6, 2, 0, 9, 2, 3, b, b, false);
+         this.a($$0, $$4, 5, 3, 0, 10, 3, 4, c, c, false);
+         this.a($$0, i, 6, 2, 3, $$4);
+         this.a($$0, i, 9, 2, 3, $$4);
+         if ($$8.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if ($$8.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[ja.d.d()]) {
+            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
+         }
+
+         if ($$7.c[ja.c.d()]) {
+            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
+         }
+
+         if ($$7.c[ja.f.d()]) {
+            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
          }
       }
    }
 
-   public static class l extends etl.p {
-      private static final int a = 5;
-      private static final int b = 11;
-      private static final int c = 5;
-      private final boolean d;
-
-      public l(erk $$0, int $$1, int $$2, int $$3, ja $$4) {
-         super($$0, $$1, a($$2, 64, $$3, $$4, 5, 11, 5));
-         this.d = true;
-         this.a($$4);
-         this.h = etl.p.a.a;
-      }
-
-      public l(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.C, $$0, $$2);
-         this.d = false;
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public l(erk $$0, tz $$1) {
-         super($$0, $$1);
-         this.d = $$1.q("Source");
+   public static class l extends etl.r {
+      public l(ja $$0, etl.v $$1) {
+         super(ers.P, 1, $$0, $$1, 2, 2, 1);
       }
 
       public l(tz $$0) {
-         this(erk.C, $$0);
+         super(ers.P, $$0);
       }
 
       @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Source", this.d);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         if (this.d) {
-            etl.i = etl.c.class;
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         etl.v $$7 = this.B.b[ja.f.d()];
+         etl.v $$8 = this.B;
+         etl.v $$9 = $$8.b[ja.b.d()];
+         etl.v $$10 = $$7.b[ja.b.d()];
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 8, 0, $$7.c[ja.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[ja.a.d()]);
          }
 
-         this.a((etl.m)$$0, $$1, $$2, 1, 1);
-      }
+         if ($$9.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 7, 8, 6, b);
+         }
 
-      public static etl.l a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -7, 0, 5, 11, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.l($$6, $$1, $$7, $$5) : null;
-      }
+         if ($$10.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 8, 8, 1, 14, 8, 6, b);
+         }
 
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 10, 4, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 7, 0);
-         this.a($$0, $$3, $$4, etl.p.a.a, 1, 1, 4);
-         this.a($$0, dmc.eW.m(), 2, 6, 1, $$4);
-         this.a($$0, dmc.eW.m(), 1, 5, 1, $$4);
-         this.a($$0, dmc.ke.m(), 1, 6, 1, $$4);
-         this.a($$0, dmc.eW.m(), 1, 5, 2, $$4);
-         this.a($$0, dmc.eW.m(), 1, 4, 3, $$4);
-         this.a($$0, dmc.ke.m(), 1, 5, 3, $$4);
-         this.a($$0, dmc.eW.m(), 2, 4, 3, $$4);
-         this.a($$0, dmc.eW.m(), 3, 3, 3, $$4);
-         this.a($$0, dmc.ke.m(), 3, 4, 3, $$4);
-         this.a($$0, dmc.eW.m(), 3, 3, 2, $$4);
-         this.a($$0, dmc.eW.m(), 3, 2, 1, $$4);
-         this.a($$0, dmc.ke.m(), 3, 3, 1, $$4);
-         this.a($$0, dmc.eW.m(), 2, 2, 1, $$4);
-         this.a($$0, dmc.eW.m(), 1, 1, 1, $$4);
-         this.a($$0, dmc.ke.m(), 1, 2, 1, $$4);
-         this.a($$0, dmc.eW.m(), 1, 1, 2, $$4);
-         this.a($$0, dmc.ke.m(), 1, 1, 3, $$4);
+         for (int $$11 = 1; $$11 <= 7; $$11++) {
+            eah $$12 = c;
+            if ($$11 == 2 || $$11 == 6) {
+               $$12 = b;
+            }
+
+            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 7, $$12, $$12, false);
+            this.a($$0, $$4, 15, $$11, 0, 15, $$11, 7, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 0, 15, $$11, 0, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 7, 14, $$11, 7, $$12, $$12, false);
+         }
+
+         this.a($$0, $$4, 2, 1, 3, 2, 7, 4, c, c, false);
+         this.a($$0, $$4, 3, 1, 2, 4, 7, 2, c, c, false);
+         this.a($$0, $$4, 3, 1, 5, 4, 7, 5, c, c, false);
+         this.a($$0, $$4, 13, 1, 3, 13, 7, 4, c, c, false);
+         this.a($$0, $$4, 11, 1, 2, 12, 7, 2, c, c, false);
+         this.a($$0, $$4, 11, 1, 5, 12, 7, 5, c, c, false);
+         this.a($$0, $$4, 5, 1, 3, 5, 3, 4, c, c, false);
+         this.a($$0, $$4, 10, 1, 3, 10, 3, 4, c, c, false);
+         this.a($$0, $$4, 5, 7, 2, 10, 7, 5, c, c, false);
+         this.a($$0, $$4, 5, 5, 2, 5, 7, 2, c, c, false);
+         this.a($$0, $$4, 10, 5, 2, 10, 7, 2, c, c, false);
+         this.a($$0, $$4, 5, 5, 5, 5, 7, 5, c, c, false);
+         this.a($$0, $$4, 10, 5, 5, 10, 7, 5, c, c, false);
+         this.a($$0, c, 6, 6, 2, $$4);
+         this.a($$0, c, 9, 6, 2, $$4);
+         this.a($$0, c, 6, 6, 5, $$4);
+         this.a($$0, c, 9, 6, 5, $$4);
+         this.a($$0, $$4, 5, 4, 3, 6, 4, 4, c, c, false);
+         this.a($$0, $$4, 9, 4, 3, 10, 4, 4, c, c, false);
+         this.a($$0, i, 5, 4, 2, $$4);
+         this.a($$0, i, 5, 4, 5, $$4);
+         this.a($$0, i, 10, 4, 2, $$4);
+         this.a($$0, i, 10, 4, 5, $$4);
+         if ($$8.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if ($$8.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[ja.d.d()]) {
+            this.b($$0, $$4, 11, 1, 0, 12, 2, 0);
+         }
+
+         if ($$7.c[ja.c.d()]) {
+            this.b($$0, $$4, 11, 1, 7, 12, 2, 7);
+         }
+
+         if ($$7.c[ja.f.d()]) {
+            this.b($$0, $$4, 15, 1, 3, 15, 2, 4);
+         }
+
+         if ($$9.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
+         }
+
+         if ($$9.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 5, 7, 4, 6, 7);
+         }
+
+         if ($$9.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
+         }
+
+         if ($$10.c[ja.d.d()]) {
+            this.b($$0, $$4, 11, 5, 0, 12, 6, 0);
+         }
+
+         if ($$10.c[ja.c.d()]) {
+            this.b($$0, $$4, 11, 5, 7, 12, 6, 7);
+         }
+
+         if ($$10.c[ja.f.d()]) {
+            this.b($$0, $$4, 15, 5, 3, 15, 6, 4);
+         }
       }
    }
 
-   public static class m extends etl.l {
-      public etl.f a;
-      @Nullable
-      public etl.g b;
-      public final List<eqx> c = Lists.newArrayList();
-
-      public m(azv $$0, int $$1, int $$2) {
-         super(erk.D, 0, $$1, $$2, a($$0));
+   public static class m extends etl.r {
+      public m(ja $$0, etl.v $$1) {
+         super(ers.Q, 1, $$0, $$1, 1, 2, 1);
       }
 
       public m(tz $$0) {
-         super(erk.D, $$0);
+         super(ers.Q, $$0);
       }
 
       @Override
-      public iu h() {
-         return this.b != null ? this.b.h() : super.h();
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[ja.a.d()]);
+         }
+
+         etl.v $$7 = this.B.b[ja.b.d()];
+         if ($$7.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 6, 8, 6, b);
+         }
+
+         this.a($$0, $$4, 0, 4, 0, 0, 4, 7, c, c, false);
+         this.a($$0, $$4, 7, 4, 0, 7, 4, 7, c, c, false);
+         this.a($$0, $$4, 1, 4, 0, 6, 4, 0, c, c, false);
+         this.a($$0, $$4, 1, 4, 7, 6, 4, 7, c, c, false);
+         this.a($$0, $$4, 2, 4, 1, 2, 4, 2, c, c, false);
+         this.a($$0, $$4, 1, 4, 2, 1, 4, 2, c, c, false);
+         this.a($$0, $$4, 5, 4, 1, 5, 4, 2, c, c, false);
+         this.a($$0, $$4, 6, 4, 2, 6, 4, 2, c, c, false);
+         this.a($$0, $$4, 2, 4, 5, 2, 4, 6, c, c, false);
+         this.a($$0, $$4, 1, 4, 5, 1, 4, 5, c, c, false);
+         this.a($$0, $$4, 5, 4, 5, 5, 4, 6, c, c, false);
+         this.a($$0, $$4, 6, 4, 5, 6, 4, 5, c, c, false);
+         etl.v $$8 = this.B;
+
+         for (int $$9 = 1; $$9 <= 5; $$9 += 4) {
+            int $$10 = 0;
+            if ($$8.c[ja.d.d()]) {
+               this.a($$0, $$4, 2, $$9, $$10, 2, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 5, $$9, $$10, 5, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 3, $$9 + 2, $$10, 4, $$9 + 2, $$10, c, c, false);
+            } else {
+               this.a($$0, $$4, 0, $$9, $$10, 7, $$9 + 2, $$10, c, c, false);
+               this.a($$0, $$4, 0, $$9 + 1, $$10, 7, $$9 + 1, $$10, b, b, false);
+            }
+
+            int var13 = 7;
+            if ($$8.c[ja.c.d()]) {
+               this.a($$0, $$4, 2, $$9, var13, 2, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 5, $$9, var13, 5, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 3, $$9 + 2, var13, 4, $$9 + 2, var13, c, c, false);
+            } else {
+               this.a($$0, $$4, 0, $$9, var13, 7, $$9 + 2, var13, c, c, false);
+               this.a($$0, $$4, 0, $$9 + 1, var13, 7, $$9 + 1, var13, b, b, false);
+            }
+
+            int $$11 = 0;
+            if ($$8.c[ja.e.d()]) {
+               this.a($$0, $$4, $$11, $$9, 2, $$11, $$9 + 2, 2, c, c, false);
+               this.a($$0, $$4, $$11, $$9, 5, $$11, $$9 + 2, 5, c, c, false);
+               this.a($$0, $$4, $$11, $$9 + 2, 3, $$11, $$9 + 2, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, $$11, $$9, 0, $$11, $$9 + 2, 7, c, c, false);
+               this.a($$0, $$4, $$11, $$9 + 1, 0, $$11, $$9 + 1, 7, b, b, false);
+            }
+
+            int var14 = 7;
+            if ($$8.c[ja.f.d()]) {
+               this.a($$0, $$4, var14, $$9, 2, var14, $$9 + 2, 2, c, c, false);
+               this.a($$0, $$4, var14, $$9, 5, var14, $$9 + 2, 5, c, c, false);
+               this.a($$0, $$4, var14, $$9 + 2, 3, var14, $$9 + 2, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, var14, $$9, 0, var14, $$9 + 2, 7, c, c, false);
+               this.a($$0, $$4, var14, $$9 + 1, 0, var14, $$9 + 1, 7, b, b, false);
+            }
+
+            $$8 = $$7;
+         }
       }
    }
 
-   public static class n extends etl.p {
-      private static final int a = 5;
-      private static final int b = 5;
-      private static final int c = 7;
-      private final boolean d;
-      private final boolean i;
-
-      public n(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.E, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.a(2) == 0;
-         this.i = $$1.a(2) == 0;
+   public static class n extends etl.r {
+      public n(ja $$0, etl.v $$1) {
+         super(ers.R, 1, $$0, $$1, 1, 2, 2);
       }
 
       public n(tz $$0) {
-         super(erk.E, $$0);
-         this.d = $$0.q("Left");
-         this.i = $$0.q("Right");
+         super(ers.R, $$0);
       }
 
       @Override
-      protected void a(erj $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Left", this.d);
-         $$1.a("Right", this.i);
-      }
-
-      @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         this.a((etl.m)$$0, $$1, $$2, 1, 1);
-         if (this.d) {
-            this.b((etl.m)$$0, $$1, $$2, 1, 2);
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         etl.v $$7 = this.B.b[ja.c.d()];
+         etl.v $$8 = this.B;
+         etl.v $$9 = $$7.b[ja.b.d()];
+         etl.v $$10 = $$8.b[ja.b.d()];
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 8, $$7.c[ja.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[ja.a.d()]);
          }
 
-         if (this.i) {
-            this.c((etl.m)$$0, $$1, $$2, 1, 2);
-         }
-      }
-
-      public static etl.n a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 7, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.n($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 6, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$3, $$4, etl.p.a.a, 1, 1, 6);
-         dzz $$7 = dmc.cy.m().b(dvq.e, ja.f);
-         dzz $$8 = dmc.cy.m().b(dvq.e, ja.e);
-         this.a($$0, $$4, $$3, 0.1F, 1, 2, 1, $$7);
-         this.a($$0, $$4, $$3, 0.1F, 3, 2, 1, $$8);
-         this.a($$0, $$4, $$3, 0.1F, 1, 2, 5, $$7);
-         this.a($$0, $$4, $$3, 0.1F, 3, 2, 5, $$8);
-         if (this.d) {
-            this.a($$0, $$4, 0, 1, 2, 0, 3, 4, e, e, false);
+         if ($$10.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 1, 6, 8, 7, b);
          }
 
-         if (this.i) {
-            this.a($$0, $$4, 4, 1, 2, 4, 3, 4, e, e, false);
+         if ($$9.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 8, 8, 6, 8, 14, b);
+         }
+
+         for (int $$11 = 1; $$11 <= 7; $$11++) {
+            eah $$12 = c;
+            if ($$11 == 2 || $$11 == 6) {
+               $$12 = b;
+            }
+
+            this.a($$0, $$4, 0, $$11, 0, 0, $$11, 15, $$12, $$12, false);
+            this.a($$0, $$4, 7, $$11, 0, 7, $$11, 15, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 0, 6, $$11, 0, $$12, $$12, false);
+            this.a($$0, $$4, 1, $$11, 15, 6, $$11, 15, $$12, $$12, false);
+         }
+
+         for (int $$13 = 1; $$13 <= 7; $$13++) {
+            eah $$14 = d;
+            if ($$13 == 2 || $$13 == 6) {
+               $$14 = i;
+            }
+
+            this.a($$0, $$4, 3, $$13, 7, 4, $$13, 8, $$14, $$14, false);
+         }
+
+         if ($$8.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+         }
+
+         if ($$8.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
+         }
+
+         if ($$7.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
+         }
+
+         if ($$7.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
+         }
+
+         if ($$10.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 5, 0, 4, 6, 0);
+         }
+
+         if ($$10.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 5, 3, 7, 6, 4);
+            this.a($$0, $$4, 5, 4, 2, 6, 4, 5, c, c, false);
+            this.a($$0, $$4, 6, 1, 2, 6, 3, 2, c, c, false);
+            this.a($$0, $$4, 6, 1, 5, 6, 3, 5, c, c, false);
+         }
+
+         if ($$10.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 5, 3, 0, 6, 4);
+            this.a($$0, $$4, 1, 4, 2, 2, 4, 5, c, c, false);
+            this.a($$0, $$4, 1, 1, 2, 1, 3, 2, c, c, false);
+            this.a($$0, $$4, 1, 1, 5, 1, 3, 5, c, c, false);
+         }
+
+         if ($$9.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 5, 15, 4, 6, 15);
+         }
+
+         if ($$9.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 5, 11, 0, 6, 12);
+            this.a($$0, $$4, 1, 4, 10, 2, 4, 13, c, c, false);
+            this.a($$0, $$4, 1, 1, 10, 1, 3, 10, c, c, false);
+            this.a($$0, $$4, 1, 1, 13, 1, 3, 13, c, c, false);
+         }
+
+         if ($$9.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 5, 11, 7, 6, 12);
+            this.a($$0, $$4, 5, 4, 10, 6, 4, 13, c, c, false);
+            this.a($$0, $$4, 6, 1, 10, 6, 3, 10, c, c, false);
+            this.a($$0, $$4, 6, 1, 13, 6, 3, 13, c, c, false);
          }
       }
    }
 
-   public static class o extends etl.p {
-      private static final int a = 5;
-      private static final int b = 11;
-      private static final int c = 8;
-
-      public o(int $$0, azv $$1, eql $$2, ja $$3) {
-         super(erk.F, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
+   public static class o extends etl.r {
+      public o(ja $$0, etl.v $$1) {
+         super(ers.S, 1, $$0, $$1, 1, 1, 2);
       }
 
       public o(tz $$0) {
-         super(erk.F, $$0);
+         super(ers.S, $$0);
       }
 
       @Override
-      public void a(eqx $$0, eqy $$1, azv $$2) {
-         this.a((etl.m)$$0, $$1, $$2, 1, 1);
-      }
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         etl.v $$7 = this.B.b[ja.c.d()];
+         etl.v $$8 = this.B;
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 8, $$7.c[ja.a.d()]);
+            this.a($$0, $$4, 0, 0, $$8.c[ja.a.d()]);
+         }
 
-      public static etl.o a(eqy $$0, azv $$1, int $$2, int $$3, int $$4, ja $$5, int $$6) {
-         eql $$7 = eql.a($$2, $$3, $$4, -1, -7, 0, 5, 11, 8, $$5);
-         return a($$7) && $$0.a($$7) == null ? new etl.o($$6, $$1, $$7, $$5) : null;
-      }
+         if ($$8.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 7, b);
+         }
 
-      @Override
-      public void a(dju $$0, djr $$1, ebx $$2, azv $$3, eql $$4, dic $$5, iu $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 10, 7, true, $$3, etl.k);
-         this.a($$0, $$3, $$4, this.h, 1, 7, 0);
-         this.a($$0, $$3, $$4, etl.p.a.a, 1, 1, 7);
-         dzz $$7 = dmc.da.m().b(duc.b, ja.d);
+         if ($$7.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 8, 6, 4, 14, b);
+         }
 
-         for (int $$8 = 0; $$8 < 6; $$8++) {
-            this.a($$0, $$7, 1, 6 - $$8, 1 + $$8, $$4);
-            this.a($$0, $$7, 2, 6 - $$8, 1 + $$8, $$4);
-            this.a($$0, $$7, 3, 6 - $$8, 1 + $$8, $$4);
-            if ($$8 < 5) {
-               this.a($$0, dmc.eW.m(), 1, 5 - $$8, 1 + $$8, $$4);
-               this.a($$0, dmc.eW.m(), 2, 5 - $$8, 1 + $$8, $$4);
-               this.a($$0, dmc.eW.m(), 3, 5 - $$8, 1 + $$8, $$4);
-            }
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 15, c, c, false);
+         this.a($$0, $$4, 7, 3, 0, 7, 3, 15, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 7, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 15, 6, 3, 15, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 15, b, b, false);
+         this.a($$0, $$4, 7, 2, 0, 7, 2, 15, b, b, false);
+         this.a($$0, $$4, 1, 2, 0, 7, 2, 0, b, b, false);
+         this.a($$0, $$4, 1, 2, 15, 6, 2, 15, b, b, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 15, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 15, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 7, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 15, 6, 1, 15, c, c, false);
+         this.a($$0, $$4, 1, 1, 1, 1, 1, 2, c, c, false);
+         this.a($$0, $$4, 6, 1, 1, 6, 1, 2, c, c, false);
+         this.a($$0, $$4, 1, 3, 1, 1, 3, 2, c, c, false);
+         this.a($$0, $$4, 6, 3, 1, 6, 3, 2, c, c, false);
+         this.a($$0, $$4, 1, 1, 13, 1, 1, 14, c, c, false);
+         this.a($$0, $$4, 6, 1, 13, 6, 1, 14, c, c, false);
+         this.a($$0, $$4, 1, 3, 13, 1, 3, 14, c, c, false);
+         this.a($$0, $$4, 6, 3, 13, 6, 3, 14, c, c, false);
+         this.a($$0, $$4, 2, 1, 6, 2, 3, 6, c, c, false);
+         this.a($$0, $$4, 5, 1, 6, 5, 3, 6, c, c, false);
+         this.a($$0, $$4, 2, 1, 9, 2, 3, 9, c, c, false);
+         this.a($$0, $$4, 5, 1, 9, 5, 3, 9, c, c, false);
+         this.a($$0, $$4, 3, 2, 6, 4, 2, 6, c, c, false);
+         this.a($$0, $$4, 3, 2, 9, 4, 2, 9, c, c, false);
+         this.a($$0, $$4, 2, 2, 7, 2, 2, 8, c, c, false);
+         this.a($$0, $$4, 5, 2, 7, 5, 2, 8, c, c, false);
+         this.a($$0, i, 2, 2, 5, $$4);
+         this.a($$0, i, 5, 2, 5, $$4);
+         this.a($$0, i, 2, 2, 10, $$4);
+         this.a($$0, i, 5, 2, 10, $$4);
+         this.a($$0, c, 2, 3, 5, $$4);
+         this.a($$0, c, 5, 3, 5, $$4);
+         this.a($$0, c, 2, 3, 10, $$4);
+         this.a($$0, c, 5, 3, 10, $$4);
+         if ($$8.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+
+         if ($$8.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+         }
+
+         if ($$8.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+         }
+
+         if ($$7.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 1, 15, 4, 2, 15);
+         }
+
+         if ($$7.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 11, 0, 2, 12);
+         }
+
+         if ($$7.c[ja.f.d()]) {
+            this.b($$0, $$4, 7, 1, 11, 7, 2, 12);
          }
       }
    }
 
-   abstract static class p extends eqx {
-      protected etl.p.a h = etl.p.a.a;
-
-      protected p(erk $$0, int $$1, eql $$2) {
-         super($$0, $$1, $$2);
+   public static class p extends etl.r {
+      public p(ja $$0, etl.v $$1) {
+         super(ers.T, 1, $$0, $$1, 1, 1, 1);
       }
 
-      public p(erk $$0, tz $$1) {
-         super($$0, $$1);
-         this.h = etl.p.a.valueOf($$1.l("EntryDoor"));
+      public p(tz $$0) {
+         super(ers.T, $$0);
       }
 
       @Override
-      protected void a(erj $$0, tz $$1) {
-         $$1.a("EntryDoor", this.h.name());
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         this.a($$0, $$4, 0, 3, 0, 2, 3, 7, c, c, false);
+         this.a($$0, $$4, 5, 3, 0, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 1, 2, 7, c, c, false);
+         this.a($$0, $$4, 6, 2, 0, 7, 2, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 7, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 2, 3, 0, c, c, false);
+         this.a($$0, $$4, 5, 1, 0, 6, 3, 0, c, c, false);
+         if (this.B.c[ja.c.d()]) {
+            this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+         }
+
+         if (this.B.c[ja.e.d()]) {
+            this.b($$0, $$4, 0, 1, 3, 1, 2, 4);
+         }
+
+         if (this.B.c[ja.f.d()]) {
+            this.b($$0, $$4, 6, 1, 3, 7, 2, 4);
+         }
+      }
+   }
+
+   public static class q extends etl.r {
+      public q(ja $$0, eqt $$1) {
+         super(ers.U, $$0, 1, $$1);
       }
 
-      protected void a(dju $$0, azv $$1, eql $$2, etl.p.a $$3, int $$4, int $$5, int $$6) {
-         switch ($$3) {
-            case a:
-               this.a($$0, $$2, $$4, $$5, $$6, $$4 + 3 - 1, $$5 + 3 - 1, $$6, e, e, false);
-               break;
-            case b:
-               this.a($$0, dmc.eW.m(), $$4, $$5, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5, $$6, $$2);
-               this.a($$0, dmc.cX.m(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, dmc.cX.m().b(doh.c, eav.a), $$4 + 1, $$5 + 1, $$6, $$2);
-               break;
+      public q(tz $$0) {
+         super(ers.U, $$0);
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         this.a($$0, $$4, 2, -1, 2, 11, -1, 11, c, c, false);
+         this.a($$0, $$4, 0, -1, 0, 1, -1, 11, b, b, false);
+         this.a($$0, $$4, 12, -1, 0, 13, -1, 11, b, b, false);
+         this.a($$0, $$4, 2, -1, 0, 11, -1, 1, b, b, false);
+         this.a($$0, $$4, 2, -1, 12, 11, -1, 13, b, b, false);
+         this.a($$0, $$4, 0, 0, 0, 0, 0, 13, c, c, false);
+         this.a($$0, $$4, 13, 0, 0, 13, 0, 13, c, c, false);
+         this.a($$0, $$4, 1, 0, 0, 12, 0, 0, c, c, false);
+         this.a($$0, $$4, 1, 0, 13, 12, 0, 13, c, c, false);
+
+         for (int $$7 = 2; $$7 <= 11; $$7 += 3) {
+            this.a($$0, i, 0, 0, $$7, $$4);
+            this.a($$0, i, 13, 0, $$7, $$4);
+            this.a($$0, i, $$7, 0, 0, $$4);
+         }
+
+         this.a($$0, $$4, 2, 0, 3, 4, 0, 9, c, c, false);
+         this.a($$0, $$4, 9, 0, 3, 11, 0, 9, c, c, false);
+         this.a($$0, $$4, 4, 0, 9, 9, 0, 11, c, c, false);
+         this.a($$0, c, 5, 0, 8, $$4);
+         this.a($$0, c, 8, 0, 8, $$4);
+         this.a($$0, c, 10, 0, 10, $$4);
+         this.a($$0, c, 3, 0, 10, $$4);
+         this.a($$0, $$4, 3, 0, 3, 3, 0, 7, d, d, false);
+         this.a($$0, $$4, 10, 0, 3, 10, 0, 7, d, d, false);
+         this.a($$0, $$4, 6, 0, 10, 7, 0, 10, d, d, false);
+         int $$8 = 3;
+
+         for (int $$9 = 0; $$9 < 2; $$9++) {
+            for (int $$10 = 2; $$10 <= 8; $$10 += 3) {
+               this.a($$0, $$4, $$8, 0, $$10, $$8, 2, $$10, c, c, false);
+            }
+
+            $$8 = 10;
+         }
+
+         this.a($$0, $$4, 5, 0, 10, 5, 2, 10, c, c, false);
+         this.a($$0, $$4, 8, 0, 10, 8, 2, 10, c, c, false);
+         this.a($$0, $$4, 6, -1, 7, 7, -1, 8, d, d, false);
+         this.b($$0, $$4, 6, -1, 3, 7, -1, 4);
+         this.a($$0, $$4, 6, 1, 6);
+      }
+   }
+
+   protected abstract static class r extends erf {
+      protected static final eah b = dmh.iB.m();
+      protected static final eah c = dmh.iC.m();
+      protected static final eah d = dmh.iD.m();
+      protected static final eah h = c;
+      protected static final eah i = dmh.iK.m();
+      protected static final boolean j = true;
+      protected static final eah k = dmh.J.m();
+      protected static final Set<dmf> l = ImmutableSet.builder().add(dmh.ee).add(dmh.je).add(dmh.nC).add(k.b()).build();
+      protected static final int m = 8;
+      protected static final int n = 8;
+      protected static final int o = 4;
+      protected static final int p = 5;
+      protected static final int q = 5;
+      protected static final int r = 3;
+      protected static final int s = 25;
+      protected static final int t = 75;
+      protected static final int u = c(2, 0, 0);
+      protected static final int v = c(2, 2, 0);
+      protected static final int w = c(0, 1, 0);
+      protected static final int x = c(4, 1, 0);
+      protected static final int y = 1001;
+      protected static final int z = 1002;
+      protected static final int A = 1003;
+      protected etl.v B;
+
+      protected static int c(int $$0, int $$1, int $$2) {
+         return $$1 * 25 + $$2 * 5 + $$0;
+      }
+
+      public r(ers $$0, ja $$1, int $$2, eqt $$3) {
+         super($$0, $$2, $$3);
+         this.a($$1);
+      }
+
+      protected r(ers $$0, int $$1, ja $$2, etl.v $$3, int $$4, int $$5, int $$6) {
+         super($$0, $$1, a($$2, $$3, $$4, $$5, $$6));
+         this.a($$2);
+         this.B = $$3;
+      }
+
+      private static eqt a(ja $$0, etl.v $$1, int $$2, int $$3, int $$4) {
+         int $$5 = $$1.a;
+         int $$6 = $$5 % 5;
+         int $$7 = $$5 / 5 % 5;
+         int $$8 = $$5 / 25;
+         eqt $$9 = a(0, 0, 0, $$0, $$2 * 8, $$3 * 4, $$4 * 8);
+         switch ($$0) {
             case c:
-               this.a($$0, dmc.nF.m(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, dmc.nF.m(), $$4 + 1, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.d, Boolean.valueOf(true)), $$4, $$5, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.d, Boolean.valueOf(true)), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.b, Boolean.valueOf(true)).b(dqf.d, Boolean.valueOf(true)), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.b, Boolean.valueOf(true)).b(dqf.d, Boolean.valueOf(true)), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.b, Boolean.valueOf(true)).b(dqf.d, Boolean.valueOf(true)), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.b, Boolean.valueOf(true)), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.fl.m().b(dqf.b, Boolean.valueOf(true)), $$4 + 2, $$5, $$6, $$2);
+               $$9.a($$6 * 8, $$8 * 4, -($$7 + $$4) * 8 + 1);
                break;
             case d:
-               this.a($$0, dmc.eW.m(), $$4, $$5, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.eW.m(), $$4 + 2, $$5, $$6, $$2);
-               this.a($$0, dmc.dL.m(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, dmc.dL.m().b(doh.c, eav.a), $$4 + 1, $$5 + 1, $$6, $$2);
-               this.a($$0, dmc.ea.m().b(dml.e, ja.c), $$4 + 2, $$5 + 1, $$6 + 1, $$2);
-               this.a($$0, dmc.ea.m().b(dml.e, ja.d), $$4 + 2, $$5 + 1, $$6 - 1, $$2);
-         }
-      }
-
-      protected etl.p.a b(azv $$0) {
-         int $$1 = $$0.a(5);
-         switch ($$1) {
-            case 0:
-            case 1:
+               $$9.a($$6 * 8, $$8 * 4, $$7 * 8);
+               break;
+            case e:
+               $$9.a(-($$7 + $$4) * 8 + 1, $$8 * 4, $$6 * 8);
+               break;
+            case f:
             default:
-               return etl.p.a.a;
-            case 2:
-               return etl.p.a.b;
-            case 3:
-               return etl.p.a.c;
-            case 4:
-               return etl.p.a.d;
+               $$9.a($$7 * 8, $$8 * 4, $$6 * 8);
          }
+
+         return $$9;
       }
 
-      @Nullable
-      protected eqx a(etl.m $$0, eqy $$1, azv $$2, int $$3, int $$4) {
-         ja $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$3, this.f.i() + $$4, this.f.j() - 1, $$5, this.g());
-               case d:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$3, this.f.i() + $$4, this.f.m() + 1, $$5, this.g());
-               case e:
-                  return etl.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$4, this.f.j() + $$3, $$5, this.g());
-               case f:
-                  return etl.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$4, this.f.j() + $$3, $$5, this.g());
+      public r(ers $$0, tz $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void a(err $$0, tz $$1) {
+      }
+
+      protected void b(djz $$0, eqt $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+         for (int $$8 = $$3; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$2; $$9 <= $$5; $$9++) {
+               for (int $$10 = $$4; $$10 <= $$7; $$10++) {
+                  eah $$11 = this.a($$0, $$9, $$8, $$10, $$1);
+                  if (!l.contains($$11.b())) {
+                     if (this.b($$8) >= $$0.P() && $$11 != k) {
+                        this.a($$0, dmh.a.m(), $$9, $$8, $$10, $$1);
+                     } else {
+                        this.a($$0, k, $$9, $$8, $$10, $$1);
+                     }
+                  }
+               }
             }
          }
-
-         return null;
       }
 
-      @Nullable
-      protected eqx b(etl.m $$0, eqy $$1, azv $$2, int $$3, int $$4) {
-         ja $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return etl.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$3, this.f.j() + $$4, ja.e, this.g());
-               case d:
-                  return etl.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$3, this.f.j() + $$4, ja.e, this.g());
-               case e:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.j() - 1, ja.c, this.g());
-               case f:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.j() - 1, ja.c, this.g());
+      protected void a(djz $$0, eqt $$1, int $$2, int $$3, boolean $$4) {
+         if ($$4) {
+            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 2, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 5, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 0, $$2 + 4, 0, $$3 + 2, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 8 - 1, b, b, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 2, $$2 + 4, 0, $$3 + 2, c, c, false);
+            this.a($$0, $$1, $$2 + 3, 0, $$3 + 5, $$2 + 4, 0, $$3 + 5, c, c, false);
+            this.a($$0, $$1, $$2 + 2, 0, $$3 + 3, $$2 + 2, 0, $$3 + 4, c, c, false);
+            this.a($$0, $$1, $$2 + 5, 0, $$3 + 3, $$2 + 5, 0, $$3 + 4, c, c, false);
+         } else {
+            this.a($$0, $$1, $$2 + 0, 0, $$3 + 0, $$2 + 8 - 1, 0, $$3 + 8 - 1, b, b, false);
+         }
+      }
+
+      protected void a(djz $$0, eqt $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, eah $$8) {
+         for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+            for (int $$10 = $$2; $$10 <= $$5; $$10++) {
+               for (int $$11 = $$4; $$11 <= $$7; $$11++) {
+                  if (this.a($$0, $$10, $$9, $$11, $$1) == k) {
+                     this.a($$0, $$8, $$10, $$9, $$11, $$1);
+                  }
+               }
             }
          }
-
-         return null;
       }
 
-      @Nullable
-      protected eqx c(etl.m $$0, eqy $$1, azv $$2, int $$3, int $$4) {
-         ja $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return etl.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$3, this.f.j() + $$4, ja.f, this.g());
-               case d:
-                  return etl.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$3, this.f.j() + $$4, ja.f, this.g());
-               case e:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.m() + 1, ja.d, this.g());
-               case f:
-                  return etl.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.m() + 1, ja.d, this.g());
+      protected boolean a(eqt $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5 = this.a($$1, $$2);
+         int $$6 = this.b($$1, $$2);
+         int $$7 = this.a($$3, $$4);
+         int $$8 = this.b($$3, $$4);
+         return $$0.a(Math.min($$5, $$7), Math.min($$6, $$8), Math.max($$5, $$7), Math.max($$6, $$8));
+      }
+
+      protected void a(djz $$0, eqt $$1, int $$2, int $$3, int $$4) {
+         iu $$5 = this.b($$2, $$3, $$4);
+         if ($$1.b($$5)) {
+            cns $$6 = bwo.M.a($$0.a(), bwn.d);
+            if ($$6 != null) {
+               $$6.c($$6.eU());
+               $$6.b((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5, 0.0F, 0.0F);
+               $$6.a($$0, $$0.d_($$6.dv()), bwn.d, null);
+               $$0.a_($$6);
             }
          }
-
-         return null;
-      }
-
-      protected static boolean a(eql $$0) {
-         return $$0 != null && $$0.i() > 10;
-      }
-
-      protected static enum a {
-         a,
-         b,
-         c,
-         d;
       }
    }
 
-   public abstract static class q extends etl.p {
-      protected static final int a = 5;
-      protected static final int b = 5;
-      protected static final int c = 5;
+   public static class s extends etl.r {
+      private int a;
 
-      protected q(erk $$0, int $$1, eql $$2) {
-         super($$0, $$1, $$2);
+      public s(ja $$0, etl.v $$1, azv $$2) {
+         super(ers.V, 1, $$0, $$1, 1, 1, 1);
+         this.a = $$2.a(3);
       }
 
-      public q(erk $$0, tz $$1) {
-         super($$0, $$1);
+      public s(tz $$0) {
+         super(ers.V, $$0);
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[ja.a.d()]);
+         }
+
+         if (this.B.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
+         }
+
+         boolean $$7 = this.a != 0 && $$3.h() && !this.B.c[ja.a.d()] && !this.B.c[ja.b.d()] && this.B.c() > 1;
+         if (this.a == 0) {
+            this.a($$0, $$4, 0, 1, 0, 2, 1, 2, c, c, false);
+            this.a($$0, $$4, 0, 3, 0, 2, 3, 2, c, c, false);
+            this.a($$0, $$4, 0, 2, 0, 0, 2, 2, b, b, false);
+            this.a($$0, $$4, 1, 2, 0, 2, 2, 0, b, b, false);
+            this.a($$0, i, 1, 2, 1, $$4);
+            this.a($$0, $$4, 5, 1, 0, 7, 1, 2, c, c, false);
+            this.a($$0, $$4, 5, 3, 0, 7, 3, 2, c, c, false);
+            this.a($$0, $$4, 7, 2, 0, 7, 2, 2, b, b, false);
+            this.a($$0, $$4, 5, 2, 0, 6, 2, 0, b, b, false);
+            this.a($$0, i, 6, 2, 1, $$4);
+            this.a($$0, $$4, 0, 1, 5, 2, 1, 7, c, c, false);
+            this.a($$0, $$4, 0, 3, 5, 2, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 2, 5, 0, 2, 7, b, b, false);
+            this.a($$0, $$4, 1, 2, 7, 2, 2, 7, b, b, false);
+            this.a($$0, i, 1, 2, 6, $$4);
+            this.a($$0, $$4, 5, 1, 5, 7, 1, 7, c, c, false);
+            this.a($$0, $$4, 5, 3, 5, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 2, 5, 7, 2, 7, b, b, false);
+            this.a($$0, $$4, 5, 2, 7, 6, 2, 7, b, b, false);
+            this.a($$0, i, 6, 2, 6, $$4);
+            if (this.B.c[ja.d.d()]) {
+               this.a($$0, $$4, 3, 3, 0, 4, 3, 0, c, c, false);
+            } else {
+               this.a($$0, $$4, 3, 3, 0, 4, 3, 1, c, c, false);
+               this.a($$0, $$4, 3, 2, 0, 4, 2, 0, b, b, false);
+               this.a($$0, $$4, 3, 1, 0, 4, 1, 1, c, c, false);
+            }
+
+            if (this.B.c[ja.c.d()]) {
+               this.a($$0, $$4, 3, 3, 7, 4, 3, 7, c, c, false);
+            } else {
+               this.a($$0, $$4, 3, 3, 6, 4, 3, 7, c, c, false);
+               this.a($$0, $$4, 3, 2, 7, 4, 2, 7, b, b, false);
+               this.a($$0, $$4, 3, 1, 6, 4, 1, 7, c, c, false);
+            }
+
+            if (this.B.c[ja.e.d()]) {
+               this.a($$0, $$4, 0, 3, 3, 0, 3, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, 0, 3, 3, 1, 3, 4, c, c, false);
+               this.a($$0, $$4, 0, 2, 3, 0, 2, 4, b, b, false);
+               this.a($$0, $$4, 0, 1, 3, 1, 1, 4, c, c, false);
+            }
+
+            if (this.B.c[ja.f.d()]) {
+               this.a($$0, $$4, 7, 3, 3, 7, 3, 4, c, c, false);
+            } else {
+               this.a($$0, $$4, 6, 3, 3, 7, 3, 4, c, c, false);
+               this.a($$0, $$4, 7, 2, 3, 7, 2, 4, b, b, false);
+               this.a($$0, $$4, 6, 1, 3, 7, 1, 4, c, c, false);
+            }
+         } else if (this.a == 1) {
+            this.a($$0, $$4, 2, 1, 2, 2, 3, 2, c, c, false);
+            this.a($$0, $$4, 2, 1, 5, 2, 3, 5, c, c, false);
+            this.a($$0, $$4, 5, 1, 5, 5, 3, 5, c, c, false);
+            this.a($$0, $$4, 5, 1, 2, 5, 3, 2, c, c, false);
+            this.a($$0, i, 2, 2, 2, $$4);
+            this.a($$0, i, 2, 2, 5, $$4);
+            this.a($$0, i, 5, 2, 5, $$4);
+            this.a($$0, i, 5, 2, 2, $$4);
+            this.a($$0, $$4, 0, 1, 0, 1, 3, 0, c, c, false);
+            this.a($$0, $$4, 0, 1, 1, 0, 3, 1, c, c, false);
+            this.a($$0, $$4, 0, 1, 7, 1, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 1, 6, 0, 3, 6, c, c, false);
+            this.a($$0, $$4, 6, 1, 7, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 1, 6, 7, 3, 6, c, c, false);
+            this.a($$0, $$4, 6, 1, 0, 7, 3, 0, c, c, false);
+            this.a($$0, $$4, 7, 1, 1, 7, 3, 1, c, c, false);
+            this.a($$0, b, 1, 2, 0, $$4);
+            this.a($$0, b, 0, 2, 1, $$4);
+            this.a($$0, b, 1, 2, 7, $$4);
+            this.a($$0, b, 0, 2, 6, $$4);
+            this.a($$0, b, 6, 2, 7, $$4);
+            this.a($$0, b, 7, 2, 6, $$4);
+            this.a($$0, b, 6, 2, 0, $$4);
+            this.a($$0, b, 7, 2, 1, $$4);
+            if (!this.B.c[ja.d.d()]) {
+               this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+               this.a($$0, $$4, 1, 2, 0, 6, 2, 0, b, b, false);
+               this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+            }
+
+            if (!this.B.c[ja.c.d()]) {
+               this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+               this.a($$0, $$4, 1, 2, 7, 6, 2, 7, b, b, false);
+               this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+            }
+
+            if (!this.B.c[ja.e.d()]) {
+               this.a($$0, $$4, 0, 3, 1, 0, 3, 6, c, c, false);
+               this.a($$0, $$4, 0, 2, 1, 0, 2, 6, b, b, false);
+               this.a($$0, $$4, 0, 1, 1, 0, 1, 6, c, c, false);
+            }
+
+            if (!this.B.c[ja.f.d()]) {
+               this.a($$0, $$4, 7, 3, 1, 7, 3, 6, c, c, false);
+               this.a($$0, $$4, 7, 2, 1, 7, 2, 6, b, b, false);
+               this.a($$0, $$4, 7, 1, 1, 7, 1, 6, c, c, false);
+            }
+         } else if (this.a == 2) {
+            this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+            this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+            this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+            this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+            this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
+            this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
+            this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
+            this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
+            this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+            this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
+            this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+            this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+            this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
+            this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
+            this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
+            this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
+            if (this.B.c[ja.d.d()]) {
+               this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+            }
+
+            if (this.B.c[ja.c.d()]) {
+               this.b($$0, $$4, 3, 1, 7, 4, 2, 7);
+            }
+
+            if (this.B.c[ja.e.d()]) {
+               this.b($$0, $$4, 0, 1, 3, 0, 2, 4);
+            }
+
+            if (this.B.c[ja.f.d()]) {
+               this.b($$0, $$4, 7, 1, 3, 7, 2, 4);
+            }
+         }
+
+         if ($$7) {
+            this.a($$0, $$4, 3, 1, 3, 4, 1, 4, c, c, false);
+            this.a($$0, $$4, 3, 2, 3, 4, 2, 4, b, b, false);
+            this.a($$0, $$4, 3, 3, 3, 4, 3, 4, c, c, false);
+         }
+      }
+   }
+
+   public static class t extends etl.r {
+      public t(ja $$0, etl.v $$1) {
+         super(ers.W, 1, $$0, $$1, 1, 1, 1);
+      }
+
+      public t(tz $$0) {
+         super(ers.W, $$0);
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         if (this.B.a / 25 > 0) {
+            this.a($$0, $$4, 0, 0, this.B.c[ja.a.d()]);
+         }
+
+         if (this.B.b[ja.b.d()] == null) {
+            this.a($$0, $$4, 1, 4, 1, 6, 4, 6, b);
+         }
+
+         for (int $$7 = 1; $$7 <= 6; $$7++) {
+            for (int $$8 = 1; $$8 <= 6; $$8++) {
+               if ($$3.a(3) != 0) {
+                  int $$9 = 2 + ($$3.a(4) == 0 ? 0 : 1);
+                  eah $$10 = dmh.aW.m();
+                  this.a($$0, $$4, $$7, $$9, $$8, $$7, 3, $$8, $$10, $$10, false);
+               }
+            }
+         }
+
+         this.a($$0, $$4, 0, 1, 0, 0, 1, 7, c, c, false);
+         this.a($$0, $$4, 7, 1, 0, 7, 1, 7, c, c, false);
+         this.a($$0, $$4, 1, 1, 0, 6, 1, 0, c, c, false);
+         this.a($$0, $$4, 1, 1, 7, 6, 1, 7, c, c, false);
+         this.a($$0, $$4, 0, 2, 0, 0, 2, 7, d, d, false);
+         this.a($$0, $$4, 7, 2, 0, 7, 2, 7, d, d, false);
+         this.a($$0, $$4, 1, 2, 0, 6, 2, 0, d, d, false);
+         this.a($$0, $$4, 1, 2, 7, 6, 2, 7, d, d, false);
+         this.a($$0, $$4, 0, 3, 0, 0, 3, 7, c, c, false);
+         this.a($$0, $$4, 7, 3, 0, 7, 3, 7, c, c, false);
+         this.a($$0, $$4, 1, 3, 0, 6, 3, 0, c, c, false);
+         this.a($$0, $$4, 1, 3, 7, 6, 3, 7, c, c, false);
+         this.a($$0, $$4, 0, 1, 3, 0, 2, 4, d, d, false);
+         this.a($$0, $$4, 7, 1, 3, 7, 2, 4, d, d, false);
+         this.a($$0, $$4, 3, 1, 0, 4, 2, 0, d, d, false);
+         this.a($$0, $$4, 3, 1, 7, 4, 2, 7, d, d, false);
+         if (this.B.c[ja.d.d()]) {
+            this.b($$0, $$4, 3, 1, 0, 4, 2, 0);
+         }
+      }
+   }
+
+   public static class u extends etl.r {
+      private int a;
+
+      public u(ja $$0, eqt $$1, int $$2) {
+         super(ers.X, $$0, 1, $$1);
+         this.a = $$2 & 1;
+      }
+
+      public u(tz $$0) {
+         super(ers.X, $$0);
+      }
+
+      @Override
+      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
+         if (this.a == 0) {
+            for (int $$7 = 0; $$7 < 4; $$7++) {
+               this.a($$0, $$4, 10 - $$7, 3 - $$7, 20 - $$7, 12 + $$7, 3 - $$7, 20, c, c, false);
+            }
+
+            this.a($$0, $$4, 7, 0, 6, 15, 0, 16, c, c, false);
+            this.a($$0, $$4, 6, 0, 6, 6, 3, 20, c, c, false);
+            this.a($$0, $$4, 16, 0, 6, 16, 3, 20, c, c, false);
+            this.a($$0, $$4, 7, 1, 7, 7, 1, 20, c, c, false);
+            this.a($$0, $$4, 15, 1, 7, 15, 1, 20, c, c, false);
+            this.a($$0, $$4, 7, 1, 6, 9, 3, 6, c, c, false);
+            this.a($$0, $$4, 13, 1, 6, 15, 3, 6, c, c, false);
+            this.a($$0, $$4, 8, 1, 7, 9, 1, 7, c, c, false);
+            this.a($$0, $$4, 13, 1, 7, 14, 1, 7, c, c, false);
+            this.a($$0, $$4, 9, 0, 5, 13, 0, 5, c, c, false);
+            this.a($$0, $$4, 10, 0, 7, 12, 0, 7, d, d, false);
+            this.a($$0, $$4, 8, 0, 10, 8, 0, 12, d, d, false);
+            this.a($$0, $$4, 14, 0, 10, 14, 0, 12, d, d, false);
+
+            for (int $$8 = 18; $$8 >= 7; $$8 -= 3) {
+               this.a($$0, i, 6, 3, $$8, $$4);
+               this.a($$0, i, 16, 3, $$8, $$4);
+            }
+
+            this.a($$0, i, 10, 0, 10, $$4);
+            this.a($$0, i, 12, 0, 10, $$4);
+            this.a($$0, i, 10, 0, 12, $$4);
+            this.a($$0, i, 12, 0, 12, $$4);
+            this.a($$0, i, 8, 3, 6, $$4);
+            this.a($$0, i, 14, 3, 6, $$4);
+            this.a($$0, c, 4, 2, 4, $$4);
+            this.a($$0, i, 4, 1, 4, $$4);
+            this.a($$0, c, 4, 0, 4, $$4);
+            this.a($$0, c, 18, 2, 4, $$4);
+            this.a($$0, i, 18, 1, 4, $$4);
+            this.a($$0, c, 18, 0, 4, $$4);
+            this.a($$0, c, 4, 2, 18, $$4);
+            this.a($$0, i, 4, 1, 18, $$4);
+            this.a($$0, c, 4, 0, 18, $$4);
+            this.a($$0, c, 18, 2, 18, $$4);
+            this.a($$0, i, 18, 1, 18, $$4);
+            this.a($$0, c, 18, 0, 18, $$4);
+            this.a($$0, c, 9, 7, 20, $$4);
+            this.a($$0, c, 13, 7, 20, $$4);
+            this.a($$0, $$4, 6, 0, 21, 7, 4, 21, c, c, false);
+            this.a($$0, $$4, 15, 0, 21, 16, 4, 21, c, c, false);
+            this.a($$0, $$4, 11, 2, 16);
+         } else if (this.a == 1) {
+            this.a($$0, $$4, 9, 3, 18, 13, 3, 20, c, c, false);
+            this.a($$0, $$4, 9, 0, 18, 9, 2, 18, c, c, false);
+            this.a($$0, $$4, 13, 0, 18, 13, 2, 18, c, c, false);
+            int $$9 = 9;
+            int $$10 = 20;
+            int $$11 = 5;
+
+            for (int $$12 = 0; $$12 < 2; $$12++) {
+               this.a($$0, c, $$9, 6, 20, $$4);
+               this.a($$0, i, $$9, 5, 20, $$4);
+               this.a($$0, c, $$9, 4, 20, $$4);
+               $$9 = 13;
+            }
+
+            this.a($$0, $$4, 7, 3, 7, 15, 3, 14, c, c, false);
+            int var14 = 10;
+
+            for (int $$13 = 0; $$13 < 2; $$13++) {
+               this.a($$0, $$4, var14, 0, 10, var14, 6, 10, c, c, false);
+               this.a($$0, $$4, var14, 0, 12, var14, 6, 12, c, c, false);
+               this.a($$0, i, var14, 0, 10, $$4);
+               this.a($$0, i, var14, 0, 12, $$4);
+               this.a($$0, i, var14, 4, 10, $$4);
+               this.a($$0, i, var14, 4, 12, $$4);
+               var14 = 12;
+            }
+
+            var14 = 8;
+
+            for (int $$14 = 0; $$14 < 2; $$14++) {
+               this.a($$0, $$4, var14, 0, 7, var14, 2, 7, c, c, false);
+               this.a($$0, $$4, var14, 0, 14, var14, 2, 14, c, c, false);
+               var14 = 14;
+            }
+
+            this.a($$0, $$4, 8, 3, 8, 8, 3, 13, d, d, false);
+            this.a($$0, $$4, 14, 3, 8, 14, 3, 13, d, d, false);
+            this.a($$0, $$4, 11, 5, 13);
+         }
+      }
+   }
+
+   static class v {
+      final int a;
+      final etl.v[] b = new etl.v[6];
+      final boolean[] c = new boolean[6];
+      boolean d;
+      boolean e;
+      private int f;
+
+      public v(int $$0) {
+         this.a = $$0;
+      }
+
+      public void a(ja $$0, etl.v $$1) {
+         this.b[$$0.d()] = $$1;
+         $$1.b[$$0.g().d()] = this;
+      }
+
+      public void a() {
+         for (int $$0 = 0; $$0 < 6; $$0++) {
+            this.c[$$0] = this.b[$$0] != null;
+         }
+      }
+
+      public boolean a(int $$0) {
+         if (this.e) {
+            return true;
+         } else {
+            this.f = $$0;
+
+            for (int $$1 = 0; $$1 < 6; $$1++) {
+               if (this.b[$$1] != null && this.c[$$1] && this.b[$$1].f != $$0 && this.b[$$1].a($$0)) {
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
+
+      public boolean b() {
+         return this.a >= 75;
+      }
+
+      public int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 6; $$1++) {
+            if (this.c[$$1]) {
+               $$0++;
+            }
+         }
+
+         return $$0;
       }
    }
 }

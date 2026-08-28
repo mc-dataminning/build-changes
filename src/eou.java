@@ -1,17 +1,44 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public record eou(je<cyu> c, eow d) {
-   public static final Codec<eou> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cyu.e.fieldOf("display").forGetter($$0x -> $$0x.c), eow.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, eou::new)
-   );
-   public static final Codec<je<eou>> b = alc.a(mg.aR, a);
+public class eou extends eox {
+   public static final MapCodec<eou> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eou::new));
 
-   public je<cyu> a() {
-      return this.c;
+   public eou(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public eow b() {
-      return this.d;
+   @Override
+   protected eoy<?> a() {
+      return eoy.c;
+   }
+
+   @Override
+   public List<enc.a> a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, int $$3, iu $$4, emm $$5) {
+      iu $$6 = $$4.e();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.i(), $$5);
+      a($$0, $$1, $$2, $$6.g(), $$5);
+      a($$0, $$1, $$2, $$6.g().i(), $$5);
+      iu.a $$7 = new iu.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new enc.a($$4.b($$3), 0, true));
+   }
+
+   private void a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, iu.a $$3, emm $$4, iu $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,27 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record djt(dij e, cuh f) {
-   public static final String a = "enabled_features";
-   public static final MapCodec<djt> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dij.b.lenientOptionalFieldOf("DataPacks", dij.a).forGetter(djt::a), cuj.f.lenientOptionalFieldOf("enabled_features", cuj.h).forGetter(djt::b)
-            )
-            .apply($$0, djt::new)
-   );
-   public static final Codec<djt> c = b.codec();
-   public static final djt d = new djt(dij.a, cuj.h);
+public class djt extends diu {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<ji<dmf>> d;
 
-   public djt a(cuh $$0) {
-      return new djt(this.e, this.f.c($$0));
+   public djt(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ji<dmf>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public dij a() {
-      return this.e;
+   @Override
+   public Optional<Float> a(dit $$0, dig $$1, iu $$2, eah $$3, ewo $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public cuh b() {
-      return this.f;
+   @Override
+   public boolean a(dit $$0, dig $$1, iu $$2, eah $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(dit $$0, bwf $$1) {
+      return this.b;
+   }
+
+   @Override
+   public float a(bwf $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof crc $$1 && $$1.gk().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

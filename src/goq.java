@@ -1,81 +1,62 @@
-import com.mojang.authlib.GameProfile;
-
-public class goq extends gom {
-   private fei h = fei.c;
-   private int i;
-
-   public goq(gjr $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public class goq extends goi {
+   protected goq(gjz $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
+   public gnm b() {
+      return gnm.b;
    }
 
    @Override
-   public boolean b(bus $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.r(false);
-   }
-
-   @Override
-   public void k_() {
-      if (this.bR()) {
-         this.N_().e();
-      }
-
-      if (this.bl > 0) {
-         this.a(this.bl, this.bk);
-         this.bl--;
-      }
-
-      if (this.i > 0) {
-         this.j(new fei((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.bU = this.bV;
-      this.eY();
-      float $$1;
-      if (this.aJ() && !this.eG()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         iu $$0 = iu.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).g(this.c, $$0).b(ja.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a(this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
+   }
+
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
+         this.a = $$0;
       }
 
-      this.bV = this.bV + ($$1 - this.bV) * 0.4F;
-
-      try (bqr $$2 = bql.a().d("push")) {
-         this.o();
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goq $$8 = new goq($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.h = new fei($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
-   }
-
-   @Override
-   protected void gb() {
-   }
-
-   @Override
-   public void a(abv $$0) {
-      super.a($$0);
-      this.by();
    }
 }

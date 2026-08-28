@@ -1,45 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eik extends eje<elb> {
-   public eik(Codec<elb> $$0) {
-      super($$0);
+public record eik<WC extends eif>(eim<WC> d, WC e) {
+   public static final Codec<eik<?>> a = mf.N.q().dispatch($$0 -> $$0.d, eim::c);
+   public static final Codec<je<eik<?>>> b = alc.a(mg.aK, a);
+   public static final Codec<ji<eik<?>>> c = jt.a(mg.aK, a);
+
+   public boolean a(azv $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(ejg<elb> $$0) {
-      iu $$1 = $$0.e();
-      dju $$2 = $$0.b();
-      azv $$3 = $$0.d();
+   public boolean a(eih $$0, ece $$1, Function<iu, je<dkd>> $$2, azv $$3, efs $$4, dih $$5, ecd $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      elb $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
-         if (!$$2.v($$1.e())) {
-            dzz $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   public eim<WC> a() {
+      return this.d;
+   }
 
-      if ($$1.v() <= $$2.G_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (iu $$11 : iu.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public WC b() {
+      return this.e;
    }
 }

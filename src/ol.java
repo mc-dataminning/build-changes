@@ -3,14 +3,14 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ol {
-   private final ddl a;
-   private final ddl b;
-   private final ddl c;
+   private final ddq a;
+   private final ddq b;
+   private final ddq c;
    private final oe d;
-   private final cyu e;
+   private final cyz e;
    private final Map<String, aq<?>> f = new LinkedHashMap<>();
 
-   public ol(ddl $$0, ddl $$1, ddl $$2, oe $$3, cyu $$4) {
+   public ol(ddq $$0, ddq $$1, ddq $$2, oe $$3, cyz $$4) {
       this.d = $$3;
       this.a = $$0;
       this.b = $$1;
@@ -18,7 +18,7 @@ public class ol {
       this.e = $$4;
    }
 
-   public static ol a(ddl $$0, ddl $$1, ddl $$2, oe $$3, cyu $$4) {
+   public static ol a(ddq $$0, ddq $$1, ddq $$2, oe $$3, cyz $$4) {
       return new ol($$0, $$1, $$2, $$3, $$4);
    }
 
@@ -28,18 +28,18 @@ public class ol {
    }
 
    public void a(of $$0, String $$1) {
-      this.a($$0, alf.a(mg.bt, alg.a($$1)));
+      this.a($$0, alf.a(mg.bu, alg.a($$1)));
    }
 
-   public void a(of $$0, alf<ddp<?>> $$1) {
+   public void a(of $$0, alf<ddu<?>> $$1) {
       this.a($$1);
       ah.a $$2 = $$0.a().a("has_the_recipe", dg.a($$1)).a(am.a.c($$1)).a(al.a.b);
       this.f.forEach($$2::a);
-      dem $$3 = new dem(Optional.of(this.a), this.b, Optional.of(this.c), new des(this.e));
+      der $$3 = new der(Optional.of(this.a), this.b, Optional.of(this.c), new dex(this.e));
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.d.a() + "/")));
    }
 
-   private void a(alf<ddp<?>> $$0) {
+   private void a(alf<ddu<?>> $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }

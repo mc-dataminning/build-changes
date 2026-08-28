@@ -3,7 +3,7 @@ import com.mojang.datafixers.schemas.Schema;
 import java.util.Map;
 import java.util.Objects;
 
-public class bet extends bjk {
+public class bet extends bjl {
    public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
 
    public bet(Schema $$0, boolean $$1) {

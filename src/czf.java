@@ -1,85 +1,37 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class czf {
-   public static final int a = 20;
-   private long b;
-   @Nullable
-   private je<cze> c;
-   private final iu d;
-   private final czf.a e;
+public enum czf implements bak {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush"),
+   k(10, "bundle");
 
-   public czf(czf.a $$0, iu $$1) {
-      this.e = $$0;
-      this.d = $$1;
+   private static final IntFunction<czf> n = ayc.a(czf::a, values(), ayc.a.a);
+   public static final Codec<czf> l = bak.a(czf::values);
+   public static final yw<ByteBuf, czf> m = yu.a(n, czf::a);
+   private final int o;
+   private final String p;
+
+   private czf(final int $$0, final String $$1) {
+      this.o = $$0;
+      this.p = $$1;
    }
 
-   public boolean a() {
-      return this.c != null;
+   public int a() {
+      return this.o;
    }
 
-   @Nullable
-   public cze b() {
-      return this.c == null ? null : this.c.a();
-   }
-
-   public long c() {
-      return this.b;
-   }
-
-   public void a(je<cze> $$0, long $$1) {
-      if (!$$0.a().a($$1)) {
-         this.c = $$0;
-         this.b = $$1;
-      }
-   }
-
-   public void a(diw $$0, je<cze> $$1) {
-      this.c = $$1;
-      this.b = 0L;
-      int $$2 = $$0.F_().f(mg.aU).a(this.c.a());
-      $$0.a(null, 1010, this.d, $$2);
-      this.e.notifyChange();
-   }
-
-   public void a(diw $$0, @Nullable dzz $$1) {
-      if (this.c != null) {
-         this.c = null;
-         this.b = 0L;
-         $$0.a(eez.F, this.d, eez.a.a($$1));
-         $$0.c(1011, this.d, 0);
-         this.e.notifyChange();
-      }
-   }
-
-   public void b(diw $$0, @Nullable dzz $$1) {
-      if (this.c != null) {
-         if (this.c.a().a(this.b)) {
-            this.a($$0, $$1);
-         } else {
-            if (this.d()) {
-               $$0.a(eez.E, this.d, eez.a.a($$1));
-               a($$0, this.d);
-            }
-
-            this.b++;
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.b % 20L == 0L;
-   }
-
-   private static void a(diw $$0, iu $$1) {
-      if ($$0 instanceof arq $$2) {
-         fei $$3 = fei.c($$1).b(0.0, 1.2F, 0.0);
-         float $$4 = (float)$$0.C_().a(4) / 24.0F;
-         $$2.a(lx.ad, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void notifyChange();
+   @Override
+   public String c() {
+      return this.p;
    }
 }

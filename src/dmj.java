@@ -1,44 +1,39 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmj extends dky {
-   public static final MapCodec<dmj> b = b(dmj::new);
-   public static final int c = 5;
-   private static final ja[] d = ja.values();
+public class dmj extends dmf implements dmi {
+   public static final MapCodec<dmj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a(mg.aL).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, dmj::new)
+   );
+   private final alf<eiy<?, ?>> b;
 
    @Override
    public MapCodec<dmj> a() {
-      return b;
+      return a;
    }
 
-   public dmj(dzy.d $$0) {
-      super($$0);
+   public dmj(alf<eiy<?, ?>> $$0, eag.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$3.a(5) == 0) {
-         ja $$4 = d[$$3.a(d.length)];
-         iu $$5 = $$2.a($$4);
-         dzz $$6 = $$1.a_($$5);
-         dma $$7 = null;
-         if (h($$6)) {
-            $$7 = dmc.rd;
-         } else if ($$6.a(dmc.rd) && $$6.c(dkz.d) == $$4) {
-            $$7 = dmc.rc;
-         } else if ($$6.a(dmc.rc) && $$6.c(dkz.d) == $$4) {
-            $$7 = dmc.rb;
-         } else if ($$6.a(dmc.rb) && $$6.c(dkz.d) == $$4) {
-            $$7 = dmc.ra;
-         }
-
-         if ($$7 != null) {
-            dzz $$8 = $$7.m().b(dkz.d, $$4).b(dkz.c, Boolean.valueOf($$6.y().a() == ewh.c));
-            $$1.b($$5, $$8);
-         }
-      }
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
-   public static boolean h(dzz $$0) {
-      return $$0.l() || $$0.a(dmc.J) && $$0.y().e() == 8;
+   @Override
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      $$0.F_().a(mg.aL).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((eiy)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
+   }
+
+   @Override
+   public dmi.a an_() {
+      return dmi.a.a;
    }
 }

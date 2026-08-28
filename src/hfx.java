@@ -1,17 +1,12 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hfx(ki<?> b, boolean c) implements hfs {
-   public static final MapCodec<hfx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mf.am.q().fieldOf("component").forGetter(hfx::b), Codec.BOOL.optionalFieldOf("ignore_default", false).forGetter(hfx::c))
-            .apply($$0, hfx::new)
-   );
+public record hfx() implements hga {
+   public static final MapCodec<hfx> a = MapCodec.unit(new hfx());
 
    @Override
-   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
-      return this.c ? $$0.d(this.b) : $$0.c(this.b);
+   public boolean get(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
+      return cxs.g($$0);
    }
 
    @Override

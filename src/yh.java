@@ -16,12 +16,12 @@ public record yh(ha c, Optional<wy> d) implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwd $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wy.i();
       } else {
          Optional<? extends wy> $$3 = xb.a($$0, this.d, $$1, $$2);
-         return xb.a(this.c.b().b($$0), $$3, bwd::m_);
+         return xb.a(this.c.b().b($$0), $$3, bwf::m_);
       }
    }
 

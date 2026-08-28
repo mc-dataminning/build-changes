@@ -1,40 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class eqf extends epz {
-   public static final MapCodec<eqf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               efy.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eqf::new)
+public record eqf(je<eiy<?, ?>> e, List<eqi> f) {
+   public static final Codec<eqf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eiy.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eqi.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, eqf::new)
    );
-   private final efy.a c;
-   private final int d;
-   private final int e;
+   public static final Codec<je<eqf>> b = alc.a(mg.bb, a);
+   public static final Codec<ji<eqf>> c = jt.a(mg.bb, a);
+   public static final Codec<List<ji<eqf>>> d = jt.a(mg.bb, a, true).listOf();
 
-   private eqf(efy.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public boolean a(djz $$0, ecf $$1, azv $$2, iu $$3) {
+      return this.a(new eqg($$0, $$1, Optional.empty()), $$2, $$3);
    }
 
-   public static eqf a(efy.a $$0, int $$1, int $$2) {
-      return new eqf($$0, $$1, $$2);
+   public boolean b(djz $$0, ecf $$1, azv $$2, iu $$3) {
+      return this.a(new eqg($$0, $$1, Optional.of(this)), $$2, $$3);
+   }
+
+   private boolean a(eqg $$0, azv $$1, iu $$2) {
+      Stream<iu> $$3 = Stream.of($$2);
+
+      for (eqi $$4 : this.f) {
+         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
+      }
+
+      eiy<?, ?> $$5 = this.e.a();
+      MutableBoolean $$6 = new MutableBoolean();
+      $$3.forEach($$4 -> {
+         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
+            $$6.setTrue();
+         }
+      });
+      return $$6.isTrue();
+   }
+
+   public Stream<eiy<?, ?>> a() {
+      return this.e.a().a();
    }
 
    @Override
-   protected boolean a(epy $$0, azv $$1, iu $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public String toString() {
+      return "Placed " + this.e;
    }
 
-   @Override
-   public eqb<?> b() {
-      return eqb.c;
+   public je<eiy<?, ?>> b() {
+      return this.e;
+   }
+
+   public List<eqi> c() {
+      return this.f;
    }
 }

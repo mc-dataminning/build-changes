@@ -1,18 +1,22 @@
-public class ghx extends ggm {
-   public static final alg a = alg.b("textures/entity/trident.png");
-
-   public ghx(giu $$0) {
-      super($$0, gqc::d);
+public class ghx extends gfy<hcn> {
+   public ghx(gjc $$0) {
+      super($$0);
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      gje $$2 = $$1.a("pole", giz.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), giw.a);
-      $$2.a("base", giz.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), giw.a);
-      $$2.a("left_spike", giz.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), giw.a);
-      $$2.a("middle_spike", giz.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), giw.a);
-      $$2.a("right_spike", giz.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), giw.a);
-      return gja.a($$0, 32, 32);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("cube", gjh.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
+      return gji.a($$0, 64, 32);
+   }
+
+   public static gji b() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("cube", gjh.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), gje.a);
+      $$1.a("right_eye", gjh.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gje.a);
+      $$1.a("left_eye", gjh.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gje.a);
+      $$1.a("mouth", gjh.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), gje.a);
+      return gji.a($$0, 64, 32);
    }
 }

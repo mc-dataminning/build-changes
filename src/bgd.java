@@ -12,7 +12,7 @@ public class bgd extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "BlockEntityLockToComponentFix", this.getInputSchema().getType(biw.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+         "BlockEntityLockToComponentFix", this.getInputSchema().getType(bix.s), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
                Optional<? extends Dynamic<?>> $$1 = $$0x.get("lock").result();
                if ($$1.isEmpty()) {
                   return $$0x;

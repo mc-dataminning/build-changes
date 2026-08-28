@@ -1,156 +1,66 @@
-import java.util.List;
-import java.util.Optional;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bpu<S> {
-   boolean a(bpq<S> var1, bps var2, bpm var3);
+public final class bpu {
+   private final Object2ObjectMap<bpn<?>, Object> a = new Object2ObjectArrayMap();
 
-   static <S> bpu<S> a(bpl<?> $$0) {
-      return new bpu.d<>($$0);
+   public <T> void a(bpn<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   static <S, T> bpu<S> a(bpl<T> $$0, T $$1) {
-      return new bpu.b<>($$0, $$1);
+   @Nullable
+   public <T> T a(bpn<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   public <T> T b(bpn<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   public <T> T b(bpn<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
+
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bpn<T>... $$0) {
+      for (bpn<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
    @SafeVarargs
-   static <S> bpu<S> a(bpu<S>... $$0) {
-      return new bpu.e<>(List.of($$0));
+   public final <T> T b(bpn<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
    }
 
-   @SafeVarargs
-   static <S> bpu<S> b(bpu<S>... $$0) {
-      return new bpu.a<>(List.of($$0));
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 
-   static <S> bpu<S> a(bpu<S> $$0) {
-      return new bpu.c<>($$0);
+   public void a(bpu $$0) {
+      this.a.putAll($$0.a);
    }
 
-   static <S> bpu<S> a() {
-      return new bpu<S>() {
-         @Override
-         public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-            $$2.cut();
-            return true;
-         }
-
-         @Override
-         public String toString() {
-            return "↑";
-         }
-      };
-   }
-
-   static <S> bpu<S> b() {
-      return new bpu<S>() {
-         @Override
-         public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-            return true;
-         }
-
-         @Override
-         public String toString() {
-            return "ε";
-         }
-      };
-   }
-
-   public static record a<S>(List<bpu<S>> a) implements bpu<S> {
-      @Override
-      public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-         MutableBoolean $$3 = new MutableBoolean();
-         bpm $$4 = $$3::setTrue;
-         int $$5 = $$0.c();
-
-         for (bpu<S> $$6 : this.a) {
-            if ($$3.isTrue()) {
-               break;
-            }
-
-            bps $$7 = new bps();
-            if ($$6.a($$0, $$7, $$4)) {
-               $$1.a($$7);
-               return true;
-            }
-
-            $$0.a($$5);
-         }
-
-         return false;
-      }
-
-      public List<bpu<S>> c() {
-         return this.a;
-      }
-   }
-
-   public static record b<S, T>(bpl<T> a, T b) implements bpu<S> {
-      @Override
-      public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-         $$1.a(this.a, this.b);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      }
-
-      public bpl<T> c() {
-         return this.a;
-      }
-
-      public T d() {
-         return this.b;
+      } else {
+         return $$0 instanceof bpu $$1 ? this.a.equals($$1.a) : false;
       }
    }
 
-   public static record c<S>(bpu<S> a) implements bpu<S> {
-      @Override
-      public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-         int $$3 = $$0.c();
-         if (!this.a.a($$0, $$1, $$2)) {
-            $$0.a($$3);
-         }
-
-         return true;
-      }
-
-      public bpu<S> c() {
-         return this.a;
-      }
-   }
-
-   public static record d<S, T>(bpl<T> a) implements bpu<S> {
-      @Override
-      public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-         Optional<T> $$3 = $$0.b(this.a);
-         if ($$3.isEmpty()) {
-            return false;
-         } else {
-            $$1.a(this.a, $$3.get());
-            return true;
-         }
-      }
-
-      public bpl<T> c() {
-         return this.a;
-      }
-   }
-
-   public static record e<S>(List<bpu<S>> a) implements bpu<S> {
-      @Override
-      public boolean a(bpq<S> $$0, bps $$1, bpm $$2) {
-         int $$3 = $$0.c();
-
-         for (bpu<S> $$4 : this.a) {
-            if (!$$4.a($$0, $$1, $$2)) {
-               $$0.a($$3);
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      public List<bpu<S>> c() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

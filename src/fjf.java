@@ -1,220 +1,261 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
+import org.lwjgl.system.MemoryUtil;
 
-public class fjf implements AutoCloseable {
-   private final fgw a;
-   private final fgx b;
-   @Nullable
-   private fgx c = null;
-   private int d;
-   @Nullable
-   private fjh e;
-   @Nullable
-   private RenderSystem.a f;
-   private fjh.b g;
-   private int h;
-   private fjh.c i;
+public class fjf implements fjn {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fjg d;
+   private long e = -1L;
+   private int f;
+   private final fjo g;
+   private final fjo.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public fjf(fgw $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = new fgx(fgv.a, $$0, 0);
-      this.d = GlStateManager._glGenVertexArrays();
-   }
-
-   public static fjf a(fjh.c $$0, fjh $$1, Consumer<fjg> $$2) {
-      fix $$3 = fje.b().a($$0, $$1);
-      $$2.accept($$3);
-      fjf $$4 = new fjf(fgw.b);
-      $$4.a();
-      $$4.a($$3.b());
-      b();
-      return $$4;
-   }
-
-   public void a(fjb $$0) {
-      fjb var2 = $$0;
-
-      label40: {
-         try {
-            if (this.e()) {
-               break label40;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            fjb.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.c();
-            this.g = $$1.e();
-            this.i = $$1.d();
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
+   public fjf(fjg $$0, fjo.c $$1, fjo $$2) {
+      if (!$$2.b(fjp.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
+      } else {
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fjp.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fjh.c;
+         boolean $$4 = $$2 == fjh.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   public void a(fiz.a $$0) {
-      fiz.a var2 = $$0;
-
-      label46: {
-         try {
-            if (this.e()) {
-               break label46;
-            }
-
-            RenderSystem.assertOnRenderThread();
-            if (this.c != null) {
-               this.c.close();
-            }
-
-            this.c = new fgx(fgv.b, this.a, $$0.a());
-            this.f = null;
-         } catch (Throwable var6) {
-            if ($$0 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var5) {
-                  var6.addSuppressed(var5);
-               }
-            }
-
-            throw var6;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-   }
-
-   private fjh a(fjb.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.a().equals(this.e)) {
-         if (this.e != null) {
-            this.e.h();
-         }
-
-         this.b.b();
-         $$0.a().g();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            this.b.b();
-         }
-
-         this.b.a($$1.remaining());
-         this.b.a($$1, 0);
-      }
-
-      return $$0.a();
    }
 
    @Nullable
-   private RenderSystem.a b(fjb.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         if (this.c != null) {
-            this.c.close();
-         }
+   public fji a() {
+      this.c();
+      this.f();
+      fji $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
+      return $$0;
+   }
 
-         this.c = new fgx(fgv.b, this.a, $$1);
+   public fji b() {
+      fji $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
+      }
+   }
+
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
+      }
+   }
+
+   @Nullable
+   private fji d() {
+      if (this.f == 0) {
          return null;
       } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
-         if ($$2 != this.f || !$$2.a($$0.c())) {
-            $$2.b($$0.c());
+         fjg.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fjo.b $$2 = fjo.b.a(this.f);
+            return new fji($$0, new fji.a(this.g, this.f, $$1, this.h, $$2));
          }
-
-         return $$2;
       }
    }
 
-   public void a() {
-      fiy.b();
-      GlStateManager._glBindVertexArray(this.d);
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
    }
 
-   public static void b() {
-      fiy.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private fjh.b f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gpb $$2) {
-      if ($$2 != null) {
-         RenderSystem.assertOnRenderThread();
-         $$2.a(this.i, $$0, $$1, fos.Q().aO());
-         $$2.b();
-         this.c();
-         $$2.a();
+   private long a(fjp $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
       }
    }
 
-   public void a(gqc $$0) {
-      $$0.a();
-      this.a();
-      this.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-      b();
-      $$0.b();
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fjp.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fjo.c.a || this.h == fjo.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axw.m($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
    }
 
    @Override
-   public void close() {
-      this.b.close();
-      if (this.c != null) {
-         this.c.close();
-         this.c = null;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
+   public fjn a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fjp.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
    }
 
-   public fjh d() {
-      return this.e;
+   @Override
+   public fjn a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fjp.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
+      }
+
+      return this;
    }
 
-   public boolean e() {
-      return this.d == -1;
+   @Override
+   public fjn a(int $$0) {
+      long $$1 = this.a(fjp.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fjn a(float $$0, float $$1) {
+      long $$2 = this.a(fjp.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fjn a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fjp.f);
+   }
+
+   @Override
+   public fjn b(int $$0) {
+      long $$1 = this.a(fjp.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fjn b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fjp.g);
+   }
+
+   @Override
+   public fjn c(int $$0) {
+      long $$1 = this.a(fjp.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fjn a(short $$0, short $$1, fjp $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fjn b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fjp.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azm.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fjn.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
    }
 }

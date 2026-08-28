@@ -1,101 +1,65 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+public class fxi extends fyb {
+   private static final wy a = wy.c("gui.toMenu");
+   private static final wy b = wy.c("gui.toTitle");
+   private static final wy c = wy.c("gui.report_to_server");
+   private static final wy d = wy.c("gui.open_report_dir");
+   private final fyb s;
+   private final vt u;
+   private final wy v;
+   private final fwb w = fwb.d();
 
-public class fxi extends fxu {
-   private static final long a = 2000L;
-   private final ase b;
-   private long c = -1L;
-   private boolean d;
-   private static final Object2IntMap<ecx> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(ecx.c, 5526612);
-      $$0.put(ecx.d, 10066329);
-      $$0.put(ecx.e, 6250897);
-      $$0.put(ecx.f, 8434258);
-      $$0.put(ecx.g, 13750737);
-      $$0.put(ecx.h, 7497737);
-      $$0.put(ecx.i, 3159410);
-      $$0.put(ecx.j, 2213376);
-      $$0.put(ecx.k, 13421772);
-      $$0.put(ecx.l, 16769184);
-      $$0.put(ecx.m, 15884384);
-      $$0.put(ecx.n, 16777215);
-   });
+   public fxi(fyb $$0, wy $$1, wy $$2) {
+      this($$0, $$1, new vt($$2));
+   }
 
-   public fxi(ase $$0) {
-      super(foi.a);
-      this.b = $$0;
+   public fxi(fyb $$0, wy $$1, wy $$2, wy $$3) {
+      this($$0, $$1, new vt($$2), $$3);
+   }
+
+   public fxi(fyb $$0, wy $$1, vt $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fxi(fyb $$0, wy $$1, vt $$2, wy $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
-   public boolean aC_() {
-      return false;
-   }
-
-   @Override
-   protected boolean aM_() {
-      return false;
-   }
-
-   @Override
-   public void aE_() {
-      this.d = true;
-      this.d(true);
-   }
-
-   @Override
-   protected void b(fvz $$0) {
-      if (this.d) {
-         $$0.a(fvy.a, wy.c("narrator.loading.done"));
+   protected void aO_() {
+      this.w.c().b().a(10);
+      this.w.a(new ftq(this.l, this.p));
+      this.w.a(new ftd(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fsj.a(c, fwy.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fsj.a(d, $$1x -> af.n().a($$0.getParent())).a(200).a()));
+      fsj $$0;
+      if (this.m.F()) {
+         $$0 = fsj.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
       } else {
-         $$0.a(fvy.a, this.m());
+         $$0 = fsj.a(b, $$0x -> this.m.a(new fyd())).a(200).a();
       }
-   }
 
-   private wy m() {
-      return wy.a("loading.progress", azm.a(this.b.f(), 0, 100));
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = af.c();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.n / 2;
-      int $$6 = this.o / 2;
-      a($$0, this.b, $$5, $$6, 2, 0);
-      int $$7 = this.b.e() + 9 + 2;
-      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+   protected void c() {
+      fvv.a(this.w, this.J());
    }
 
-   public static void a(fro $$0, ase $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.d();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.e();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      if ($$5 != 0) {
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-      }
+   @Override
+   public wy i() {
+      return wx.a(this.l, this.u.a());
+   }
 
-      for (int $$15 = 0; $$15 < $$9; $$15++) {
-         for (int $$16 = 0; $$16 < $$9; $$16++) {
-            ecx $$17 = $$1.a($$15, $$16);
-            int $$18 = $$11 + $$15 * $$6;
-            int $$19 = $$12 + $$16 * $$6;
-            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axw.f(s.getInt($$17)));
-         }
-      }
+   @Override
+   public boolean aD_() {
+      return false;
    }
 }

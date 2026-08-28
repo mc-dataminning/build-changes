@@ -1,49 +1,31 @@
 import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 
-public class eds implements AutoCloseable {
-   private final edi a;
-   private final DataFixer b;
-   private final bbb c;
+public class eds extends eea {
+   private final edq a;
+   private final Path b;
 
-   public eds(edp $$0, Path $$1, DataFixer $$2, boolean $$3, bbb $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new edi($$0, $$1, $$3);
+   public eds(edx $$0, Path $$1, edx $$2, Path $$3, DataFixer $$4, boolean $$5, bbb $$6) {
+      super($$0, $$1, $$4, $$5, $$6);
+      this.b = $$3;
+      this.a = new edq($$2, $$3, $$5);
    }
 
-   public CompletableFuture<Optional<tz>> a(dic $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dic $$0, @Nullable tz $$1) {
+   @Override
+   public CompletableFuture<Void> a(dih $$0, @Nullable tz $$1) {
       return this.a.a($$0, $$1);
-   }
-
-   public tz a(tz $$0, int $$1) {
-      int $$2 = uo.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
-
-   public Dynamic<uw> a(Dynamic<uw> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
    }
 
    @Override
    public void close() throws IOException {
+      super.close();
       this.a.close();
-   }
-
-   public edp a() {
-      return this.a.a();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

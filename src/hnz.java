@@ -1,3 +1,3 @@
 public interface hnz {
-   void log(hnx var1);
+   void a(hmu var1, hob var2, float var3);
 }

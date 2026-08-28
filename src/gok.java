@@ -1,22 +1,42 @@
-public class gok extends glr {
-   private static final int a = 12235202;
+public class gok extends gng {
+   private final bwf a;
+   private int b;
+   private final int D;
+   private final lv E;
 
-   protected gok(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gnv $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   public gok(gjz $$0, bwf $$1, lv $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public static class a implements gnd<mb> {
-      private final gnv a;
+   public gok(gjz $$0, bwf $$1, lv $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dy());
+   }
 
-      public a(gnv $$0) {
-         this.a = $$0;
+   private gok(gjz $$0, bwf $$1, lv $$2, int $$3, feq $$4) {
+      super($$0, $$1.dA(), $$1.e(0.5), $$1.dG(), $$4.d, $$4.e, $$4.f);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
+   }
+
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
       }
 
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gok($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

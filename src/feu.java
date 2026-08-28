@@ -1,13 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface feu {
+   feu a = ($$0, $$1) -> false;
+   feu b = ($$0, $$1) -> !$$0 && !$$1;
+   feu c = ($$0, $$1) -> $$1 && !$$0;
+   feu d = ($$0, $$1) -> !$$0;
+   feu e = ($$0, $$1) -> $$0 && !$$1;
+   feu f = ($$0, $$1) -> !$$1;
+   feu g = ($$0, $$1) -> $$0 != $$1;
+   feu h = ($$0, $$1) -> !$$0 || !$$1;
+   feu i = ($$0, $$1) -> $$0 && $$1;
+   feu j = ($$0, $$1) -> $$0 == $$1;
+   feu k = ($$0, $$1) -> $$1;
+   feu l = ($$0, $$1) -> !$$0 || $$1;
+   feu m = ($$0, $$1) -> $$0;
+   feu n = ($$0, $$1) -> $$0 || !$$1;
+   feu o = ($$0, $$1) -> $$0 || $$1;
+   feu p = ($$0, $$1) -> true;
 
-interface feu {
-   DoubleList a();
-
-   boolean a(feu.a var1);
-
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
-   }
+   boolean apply(boolean var1, boolean var2);
 }

@@ -1,48 +1,62 @@
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fug {
-   private final Consumer<fsa> a;
-   private final Consumer<fsa> b;
-   @Nullable
-   private fuf c;
-   @Nullable
-   private fwj d;
+public interface fug extends ftt {
+   long t = 250L;
 
-   public fug(Consumer<fsa> $$0, Consumer<fsa> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   default void f(double $$0, double $$1) {
    }
 
-   public void a(fwj $$0) {
-      this.d = $$0;
-      fuf $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   public void a(fuf $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
+   }
 
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
 
-         if ($$1) {
-            fos.Q().ak().a(hmh.a(awn.Bs, 1.0F));
-         }
-      }
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
+
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
    }
 
    @Nullable
-   public fuf a() {
-      return this.c;
+   default frs a(fwm $$0) {
+      return null;
+   }
+
+   default boolean a_(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aJ_();
+
+   @Nullable
+   default frs aK_() {
+      return this.aJ_() ? frs.a(this) : null;
+   }
+
+   default fwq J() {
+      return fwq.a();
+   }
+
+   default fwq b(fwo $$0) {
+      return this.J().c($$0);
    }
 }

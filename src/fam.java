@@ -1,80 +1,95 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class fam implements fan {
-   protected final List<fci> g;
-   private final Predicate<eyz> a;
+public class fam extends fau {
+   public static final int a = 0;
+   public static final MapCodec<fam> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  dfq.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  fdn.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, fam::new)
+   );
+   private final je<dfq> c;
+   private final fdm d;
+   private final int e;
 
-   protected fam(List<fci> $$0) {
-      this.g = $$0;
-      this.a = af.a($$0);
+   fam(List<fcq> $$0, je<dfq> $$1, fdm $$2, int $$3) {
+      super($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public abstract fao<? extends fam> b();
-
-   protected static <T extends fam> P1<Mu<T>, List<fci>> a(Instance<T> $$0) {
-      return $$0.group(fci.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public faw<fam> b() {
+      return fax.m;
    }
-
-   public final cyy b(cyy $$0, eyz $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cyy a(cyy var1, eyz var2);
 
    @Override
-   public void a(ezf $$0) {
-      fan.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public Set<bax<?>> a() {
+      return Sets.union(ImmutableSet.of(fcb.d), this.d.a());
    }
 
-   protected static fam.a<?> a(Function<List<fci>, fan> $$0) {
-      return new fam.b($$0);
+   private boolean c() {
+      return this.e > 0;
    }
 
-   public abstract static class a<T extends fam.a<T>> implements fan.a, fca<T> {
-      private final Builder<fci> a = ImmutableList.builder();
+   @Override
+   public czd a(czd $$0, ezh $$1) {
+      bwf $$2 = $$1.c(fcb.d);
+      if ($$2 instanceof bxe $$3) {
+         int $$4 = dfs.a(this.c, $$3);
+         if ($$4 == 0) {
+            return $$0;
+         }
 
-      public T a(fci.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
 
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<fci> g() {
-         return this.a.build();
-      }
+      return $$0;
    }
 
-   static final class b extends fam.a<fam.b> {
-      private final Function<List<fci>, fan> a;
+   public static fam.a a(jg.a $$0, fdm $$1) {
+      jg.b<dfq> $$2 = $$0.e(mg.aR);
+      return new fam.a($$2.b(dfv.s), $$1);
+   }
 
-      public b(Function<List<fci>, fan> $$0) {
+   public static class a extends fau.a<fam.a> {
+      private final je<dfq> a;
+      private final fdm b;
+      private int c = 0;
+
+      public a(je<dfq> $$0, fdm $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      protected fam.b a() {
+      protected fam.a a() {
+         return this;
+      }
+
+      public fam.a a(int $$0) {
+         this.c = $$0;
          return this;
       }
 
       @Override
-      public fan b() {
-         return this.a.apply(this.g());
+      public fav b() {
+         return new fam(this.g(), this.a, this.b, this.c);
       }
    }
 }

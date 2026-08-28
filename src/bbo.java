@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bbo extends bhr {
    public bbo(Schema $$0) {
-      super($$0, false, "AreaEffectCloudDurationScaleFix", biw.D, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudDurationScaleFix", bix.D, "minecraft:area_effect_cloud");
    }
 
    @Override

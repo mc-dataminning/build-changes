@@ -1,41 +1,52 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.List;
-import org.joml.Vector3f;
 
-public class guf implements gtu.a {
-   public static final int a = 200;
-   private final fos b;
-   private final List<aaw> c = Lists.newArrayList();
+public class guf implements guc.a {
+   private static final int a = 160;
+   private final foz b;
+   private final Int2ObjectMap<guf.a> c = new Int2ObjectOpenHashMap();
 
-   guf(fos $$0) {
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, iu $$1, List<aao.a> $$2) {
+      this.c.put($$0, new guf.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public guf(foz $$0) {
       this.b = $$0;
    }
 
-   public void a(aaw $$0) {
-      this.c.add($$0);
-   }
-
    @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      fjg $$5 = $$1.getBuffer(gqc.y());
-      long $$6 = this.b.s.ae();
-      Iterator<aaw> $$7 = this.c.iterator();
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      fog $$5 = this.b.j.k();
+      iu $$6 = iu.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      while ($$7.hasNext()) {
-         aaw $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (aaw.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               exo $$12 = $$10.b();
-               gqm.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gqm.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gqm.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+      while (var11.hasNext()) {
+         guf.a $$7 = (guf.a)var11.next();
+         iu $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aao.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               guc.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
             }
          }
       }
+   }
+
+   static record a(iu a, List<aao.a> b) {
    }
 }

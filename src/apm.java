@@ -11,8 +11,8 @@ public class apm {
    public static void a(CommandDispatcher<ei> $$0) {
       LiteralCommandNode<ei> $$1 = $$0.register((LiteralArgumentBuilder)ej.a("teammsg").then(ej.a("message", ez.a()).executes($$0x -> {
          ei $$1x = (ei)$$0x.getSource();
-         bwd $$2 = $$1x.g();
-         ffi $$3 = $$2.cr();
+         bwf $$2 = $$1x.g();
+         ffq $$3 = $$2.cr();
          if ($$3 == null) {
             throw b.create();
          } else {
@@ -27,7 +27,7 @@ public class apm {
       $$0.register((LiteralArgumentBuilder)ej.a("tm").redirect($$1));
    }
 
-   private static void a(ei $$0, bwd $$1, ffi $$2, List<arr> $$3, xo $$4) {
+   private static void a(ei $$0, bwf $$1, ffq $$2, List<arr> $$3, xo $$4) {
       wy $$5 = $$2.e().c(a);
       wu.a $$6 = wu.a(wu.i, $$0).c($$5);
       wu.a $$7 = wu.a(wu.j, $$0).c($$5);

@@ -1,7 +1,11 @@
-public interface hnu<T> {
-   int e();
+import javax.annotation.Nullable;
 
-   T b(azv var1);
+public record hnu(@Nullable awk a, float b) {
+   public hnu(awk $$0) {
+      this($$0, 1.0F);
+   }
 
-   void a(hnp var1);
+   public boolean a(hmu $$0) {
+      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
+   }
 }

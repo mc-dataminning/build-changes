@@ -1,67 +1,58 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class eiv extends eje<ele> {
-   private static final ImmutableList<dma> a = ImmutableList.of(dmc.I, dmc.fJ, dmc.fK, dmc.fL, dmc.fM, dmc.cE, dmc.cB);
-   private static final ja[] b = ja.values();
-   private static final double c = 0.9;
-
-   public eiv(Codec<ele> $$0) {
+public class eiv extends ejm<elx> {
+   public eiv(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<ele> $$0) {
-      boolean $$1 = false;
-      azv $$2 = $$0.d();
-      dju $$3 = $$0.b();
-      ele $$4 = $$0.f();
-      iu $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (iu $$13 : iu.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            iu $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(diw $$0, iu $$1, ele $$2) {
-      dzz $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
+   public boolean a(ejo<elx> $$0) {
+      iu $$1 = $$0.e();
+      djz $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      if ($$1.v() > $$2.P() - 1) {
          return false;
-      } else if (a.contains($$3.b())) {
+      } else if (!$$2.a_($$1).a(dmh.J) && !$$2.a_($$1.e()).a(dmh.J)) {
          return false;
       } else {
-         for (ja $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != ja.b || !$$5 && $$4 == ja.b) {
-               return false;
+         boolean $$4 = false;
+
+         for (ja $$5 : ja.values()) {
+            if ($$5 != ja.a && $$2.a_($$1.a($$5)).a(dmh.je)) {
+               $$4 = true;
+               break;
             }
          }
 
-         return true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dmh.nC.m(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  iu $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  eah $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(dmh.J) || $$10.a(dmh.je) || $$10.a(dmh.ee)) {
+                     for (ja $$11 : ja.values()) {
+                        eah $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dmh.nC)) {
+                           $$2.a($$9, dmh.nC.m(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

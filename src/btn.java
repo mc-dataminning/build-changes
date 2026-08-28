@@ -1,47 +1,56 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class btn extends btg {
    public static final MapCodec<btn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsm.b(btg.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, btn::new)
-   );
-   private final bsm<btg> b;
-   private final int f;
-   private final int g;
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, btn::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   public btn(bsm<btg> $$0) {
+   private btn(float $$0, float $$1) {
       this.b = $$0;
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = Integer.MIN_VALUE;
+      this.d = $$1;
+   }
 
-      for (bsl<btg> $$3 : $$0.d()) {
-         int $$4 = $$3.a().a();
-         int $$5 = $$3.a().b();
-         $$1 = Math.min($$1, $$4);
-         $$2 = Math.max($$2, $$5);
+   public static btn b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
+      } else {
+         return new btn($$0, $$1);
       }
-
-      this.f = $$1;
-      this.g = $$2;
    }
 
    @Override
-   public int a(azv $$0) {
-      return this.b.b($$0).a($$0);
+   public float a(azv $$0) {
+      return azm.b($$0, this.b, this.d);
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a() {
+      return this.b;
    }
 
    @Override
-   public int b() {
-      return this.g;
+   public float b() {
+      return this.d;
    }
 
    @Override
    public bth<?> c() {
-      return bth.e;
+      return bth.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

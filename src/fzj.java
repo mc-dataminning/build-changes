@@ -1,48 +1,109 @@
-public class fzj extends fyj<cvs> {
-   private static final alg G = alg.b("container/slot");
-   private static final alg H = alg.b("container/horse/chest_slots");
-   private static final alg I = alg.b("textures/gui/container/horse.png");
-   private final cld J;
-   private final int K;
-   private float L;
-   private float M;
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-   public fzj(cvs $$0, cqx $$1, cld $$2, int $$3) {
-      super($$0, $$1, $$2.m_());
-      this.J = $$2;
-      this.K = $$3;
+public class fzj {
+   private static final alg a = alg.b("container/inventory/effect_background_large");
+   private static final alg b = alg.b("container/inventory/effect_background_small");
+   private final fyq<?> c;
+   private final foz d;
+
+   public fzj(fyq<?> $$0) {
+      this.c = $$0;
+      this.d = foz.Q();
    }
 
-   @Override
-   protected void a(fro $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqc::H, I, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.K > 0) {
-         $$0.a(gqc::H, H, 90, 54, 0, 0, $$4 + 79, $$5 + 17, this.K * 18, 54);
-      }
-
-      if (this.J.e(bwn.h) && this.J.aq().a(axf.J)) {
-         this.c($$0, $$4 + 7, $$5 + 35 - 18);
-      }
-
-      boolean $$6 = this.J instanceof clg;
-      if (this.J.e(bwn.g) && (this.J.aq().a(axf.K) || $$6)) {
-         this.c($$0, $$4 + 7, $$5 + 35);
-      }
-
-      fzk.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.L, this.M, this.J);
-   }
-
-   private void c(fro $$0, int $$1, int $$2) {
-      $$0.a(gqc::H, G, $$1, $$2, 18, 18);
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      this.L = (float)$$1;
-      this.M = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       this.a($$0, $$1, $$2);
+   }
+
+   public boolean a() {
+      int $$0 = this.c.C + this.c.s + 2;
+      int $$1 = this.c.n - $$0;
+      return $$1 >= 32;
+   }
+
+   private void a(frv $$0, int $$1, int $$2) {
+      int $$3 = this.c.C + this.c.s + 2;
+      int $$4 = this.c.n - $$3;
+      Collection<bvj> $$5 = this.d.t.eD();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
+
+         Iterable<bvj> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.c.D;
+            bvj $$10 = null;
+
+            for (bvj $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<wy> $$12 = List.of(this.a($$10), bvk.a($$10, 1.0F, this.d.s.u().f()));
+               $$0.a(this.c.B(), $$12, Optional.empty(), $$1, $$2);
+            }
+         }
+      }
+   }
+
+   private void a(frv $$0, int $$1, int $$2, Iterable<bvj> $$3, boolean $$4) {
+      int $$5 = this.c.D;
+
+      for (bvj $$6 : $$3) {
+         if ($$4) {
+            $$0.a(gqk::H, a, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(gqk::H, b, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(frv $$0, int $$1, int $$2, Iterable<bvj> $$3, boolean $$4) {
+      hjw $$5 = this.d.aG();
+      int $$6 = this.c.D;
+
+      for (bvj $$7 : $$3) {
+         je<bvh> $$8 = $$7.c();
+         hix $$9 = $$5.a($$8);
+         $$0.a(gqk::H, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(frv $$0, int $$1, int $$2, Iterable<bvj> $$3) {
+      int $$4 = this.c.D;
+
+      for (bvj $$5 : $$3) {
+         wy $$6 = this.a($$5);
+         $$0.b(this.c.B(), $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         wy $$7 = bvk.a($$5, 1.0F, this.d.s.u().f());
+         $$0.b(this.c.B(), $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private wy a(bvj $$0) {
+      xm $$1 = $$0.c().a().g().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(wx.v).b(wy.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

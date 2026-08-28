@@ -1,68 +1,98 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dro extends dma implements dmd {
-   public static final MapCodec<dro> a = b(dro::new);
+public class dro extends dvr implements dmi {
+   public static final MapCodec<dro> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alf.a(mg.aL).fieldOf("feature").forGetter($$0x -> $$0x.c), t()).apply($$0, dro::new)
+   );
+   private static final ffk b = dmf.b(6.0, 0.0, 6.0);
+   private final alf<eiy<?, ?>> c;
 
    @Override
    public MapCodec<dro> a() {
       return a;
    }
 
-   public dro(dzy.d $$0) {
-      super($$0);
+   public dro(alf<eiy<?, ?>> $$0, eag.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      if (!$$0.a_($$1.d()).f()) {
-         return false;
-      } else {
-         for (iu $$3 : iu.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
-            if ($$0.a_($$3).a(axc.aO)) {
-               return true;
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return b;
+   }
+
+   @Override
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
+
+         for (iu $$6 : iu.c($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
             }
          }
 
-         return false;
+         iu $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.v($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.v($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
+   protected boolean b(eah $$0, dig $$1, iu $$2) {
+      return $$0.s();
+   }
+
+   @Override
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      iu $$3 = $$2.e();
+      eah $$4 = $$1.a_($$3);
+      return $$4.a(axc.bc) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
+   }
+
+   public boolean a(arq $$0, iu $$1, eah $$2, azv $$3) {
+      Optional<? extends je<eiy<?, ?>>> $$4 = $$0.F_().f(mg.aL).a(this.c);
+      if ($$4.isEmpty()) {
+         return false;
+      } else {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.m().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
+            return false;
+         }
+      }
+   }
+
+   @Override
+   public boolean a(djd $$0, iu $$1, eah $$2) {
       return true;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      boolean $$4 = false;
-      boolean $$5 = false;
-
-      for (iu $$6 : iu.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
-         dzz $$7 = $$0.a_($$6);
-         if ($$7.a(dmc.oQ)) {
-            $$5 = true;
-         }
-
-         if ($$7.a(dmc.oZ)) {
-            $$4 = true;
-         }
-
-         if ($$5 && $$4) {
-            break;
-         }
-      }
-
-      if ($$5 && $$4) {
-         $$0.a($$2, $$1.h() ? dmc.oQ.m() : dmc.oZ.m(), 3);
-      } else if ($$5) {
-         $$0.a($$2, dmc.oQ.m(), 3);
-      } else if ($$4) {
-         $$0.a($$2, dmc.oZ.m(), 3);
-      }
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public dmd.a am_() {
-      return dmd.a.a;
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

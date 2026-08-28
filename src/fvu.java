@@ -1,111 +1,163 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class fvu implements fvr {
-   private final fvp a;
-   private final fvu.a b;
-   private int c = 0;
+public class fvu extends fvs {
+   private final fvu.b c;
+   private final List<fvu.a> d = new ArrayList<>();
+   private final fwa e = fwa.i();
 
-   private fvu(fvu.a $$0) {
-      this(0, 0, $$0);
+   public fvu(int $$0, int $$1, fvu.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
    }
 
-   public fvu(int $$0, int $$1, fvu.a $$2) {
-      this.a = new fvp($$0, $$1);
-      this.b = $$2;
-   }
-
-   public fvu a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fvt b() {
-      return this.a.b();
-   }
-
-   public fvt c() {
-      return this.a.c();
-   }
-
-   public <T extends fvs> T a(T $$0, fvt $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends fvs> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fvs> T a(T $$0, Consumer<fvt> $$1) {
-      return this.b.a(this.a, $$0, this.c++, af.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fvs> $$0) {
-      this.a.b($$0);
+   public fvu(int $$0, int $$1, int $$2, int $$3, fvu.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
    public void a() {
-      this.a.a();
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fvu.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fvu.a> $$5 = this.d.iterator();
+         fvu.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fvu.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fvu.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
    @Override
-   public int A() {
-      return this.a.A();
+   public void b(Consumer<fvz> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   public int y() {
-      return this.a.y();
+   public fwa b() {
+      return this.e.g();
    }
 
-   @Override
-   public void j(int $$0) {
-      this.a.j($$0);
+   public fwa c() {
+      return this.e;
    }
 
-   @Override
-   public void k(int $$0) {
-      this.a.k($$0);
+   public <T extends fvz> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   @Override
-   public int F() {
-      return this.a.F();
+   public <T extends fvz> T a(T $$0, fwa $$1) {
+      this.d.add(new fvu.a($$0, $$1));
+      return $$0;
    }
 
-   @Override
-   public int G() {
-      return this.a.G();
+   public <T extends fvz> T a(T $$0, Consumer<fwa> $$1) {
+      return this.a($$0, af.a(this.b(), $$1));
    }
 
-   public static fvu d() {
-      return new fvu(fvu.a.b);
+   static class a extends fvs.a {
+      protected a(fvz $$0, fwa $$1) {
+         super($$0, $$1);
+      }
    }
 
-   public static fvu e() {
-      return new fvu(fvu.a.a);
-   }
-
-   public static enum a {
+   public static enum b {
       a,
       b;
 
-      void a(fvp $$0, int $$1) {
+      int a(fvz $$0) {
+         return switch (this) {
+            case a -> $$0.A();
+            case b -> $$0.y();
+         };
+      }
+
+      int a(fvu.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fvz $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.A();
+         };
+      }
+
+      int b(fvu.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fvu.a $$0, int $$1) {
          switch (this) {
             case a:
-               $$0.a($$1);
+               $$0.a($$1, $$0.b());
                break;
             case b:
-               $$0.b($$1);
+               $$0.b($$1, $$0.a());
          }
       }
 
-      public <T extends fvs> T a(fvp $$0, T $$1, int $$2, fvt $$3) {
-         return (T)(switch (this) {
-            case a -> (fvs)$$0.a($$1, 0, $$2, $$3);
-            case b -> (fvs)$$0.a($$1, $$2, 0, $$3);
-         });
+      void a(fvu.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fvz $$0) {
+         return switch (this) {
+            case a -> $$0.F();
+            case b -> $$0.G();
+         };
+      }
+
+      int d(fvz $$0) {
+         return switch (this) {
+            case a -> $$0.G();
+            case b -> $$0.F();
+         };
       }
    }
 }

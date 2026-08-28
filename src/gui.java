@@ -1,62 +1,107 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gui implements gtu.a {
-   private final fos a;
-   private double b = Double.MIN_VALUE;
-   private List<bwd> c = Collections.emptyList();
+public class gui implements guc.a {
+   private static final Duration a = Duration.ofMillis(500L);
+   private static final int b = 10;
+   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
+   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
+   private final foz e;
+   private final djj f;
+   private Instant g = Instant.now();
+   @Nullable
+   private gui.a h;
 
-   public gui(fos $$0) {
-      this.a = $$0;
+   public gui(foz $$0, djj $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwd $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      Instant $$5 = Instant.now();
+      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
+         this.g = $$5;
+         this.h = new gui.a(this.e.s.x_(), jx.a(this.e.t.dv()), 10, this.f);
       }
 
-      cqy $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
-
-      for (bwd $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
-      }
+      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
+      fjn $$6 = $$1.getBuffer(gqk.F());
+      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
+      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
    }
 
-   private void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4, bwd $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         iu $$12 = $$5.aR();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         iu $$13 = $$5.aP();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
+   private static void a(fjj $$0, fez $$1, jx $$2, fjn $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10) -> {
+         int $$11 = $$8 + $$2.u();
+         int $$12 = $$9 + $$2.v();
+         int $$13 = $$10 + $$2.w();
+         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
       });
    }
 
-   private double a(bwd $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
+   private static void a(fjj $$0, fez $$1, jx $$2, gqa $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
+      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
+         int $$13 = $$7x + $$2.u();
+         int $$14 = $$8 + $$2.v();
+         int $$15 = $$9 + $$2.w();
+         int $$16 = $$10 + $$2.u();
+         int $$17 = $$11 + $$2.v();
+         int $$18 = $$12 + $$2.w();
+         fjn $$19 = $$3.getBuffer(gqk.a(1.0));
+         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
+      }, true);
    }
 
-   private void a(iu $$0, fjc $$1, double $$2, double $$3, double $$4, gps $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gqm.a($$1, $$5.getBuffer(gqc.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      gtu.a($$1, $$5.getBuffer(gqc.y()), this.a.s.a_($$0).b(this.a.s, $$0, fen.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+   private static void a(fjj $$0, fjn $$1, ja $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
+      float $$10 = (float)((double)jx.c($$6) - $$3);
+      float $$11 = (float)((double)jx.c($$7) - $$4);
+      float $$12 = (float)((double)jx.c($$8) - $$5);
+      gqu.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   }
+
+   private static void a(fjj $$0, fjn $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
+      float $$12 = (float)((double)jx.c($$5) - $$2);
+      float $$13 = (float)((double)jx.c($$6) - $$3);
+      float $$14 = (float)((double)jx.c($$7) - $$4);
+      float $$15 = (float)((double)jx.c($$8) - $$2);
+      float $$16 = (float)((double)jx.c($$9) - $$3);
+      float $$17 = (float)((double)jx.c($$10) - $$4);
+      Matrix4f $$18 = $$0.c().a();
+      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   }
+
+   static final class a {
+      final fez a;
+      final fez b;
+      final jx c;
+
+      a(ewd $$0, jx $$1, int $$2, djj $$3) {
+         int $$4 = $$2 * 2 + 1;
+         this.a = new fet($$4, $$4, $$4);
+         this.b = new fet($$4, $$4, $$4);
+
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               for (int $$7 = 0; $$7 < $$4; $$7++) {
+                  jx $$8 = jx.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
+                  ewc.b $$9 = $$0.b($$3, $$8);
+                  if ($$9 == ewc.b.c) {
+                     this.a.c($$7, $$6, $$5);
+                     this.b.c($$7, $$6, $$5);
+                  } else if ($$9 == ewc.b.b) {
+                     this.b.c($$7, $$6, $$5);
+                  }
+               }
+            }
+         }
+
+         this.c = jx.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+      }
    }
 }

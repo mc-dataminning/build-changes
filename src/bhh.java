@@ -11,13 +11,13 @@ public class bhh extends bbj {
    private static final Logger b = LogUtils.getLogger();
 
    public bhh(Schema $$0) {
-      super($$0, biw.a);
+      super($$0, bix.a);
    }
 
    protected TypeRewriteRule makeRule() {
       Type<?> $$0 = this.getInputSchema().getType(this.a);
       OpticFinder<?> $$1 = $$0.findField("CustomBossEvents");
-      OpticFinder<?> $$2 = DSL.typeFinder(DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(biw.z))), DSL.remainderType()));
+      OpticFinder<?> $$2 = DSL.typeFinder(DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(bix.z))), DSL.remainderType()));
       return this.fixTypeEverywhereTyped("LevelUUIDFix", $$0, $$2x -> $$2x.update(DSL.remainderFinder(), $$0xx -> {
             $$0xx = this.c($$0xx);
             return this.b($$0xx);

@@ -92,7 +92,7 @@ public class amp {
                                                                            fh.a($$0x, "attribute"),
                                                                            fj.a($$0x, "id"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           byg.a.a
+                                                                           byi.a.a
                                                                         )
                                                                   )
                                                             ))
@@ -105,7 +105,7 @@ public class amp {
                                                                         fh.a($$0x, "attribute"),
                                                                         fj.a($$0x, "id"),
                                                                         DoubleArgumentType.getDouble($$0x, "value"),
-                                                                        byg.a.b
+                                                                        byi.a.b
                                                                      )
                                                                )
                                                          ))
@@ -118,7 +118,7 @@ public class amp {
                                                                      fh.a($$0x, "attribute"),
                                                                      fj.a($$0x, "id"),
                                                                      DoubleArgumentType.getDouble($$0x, "value"),
-                                                                     byg.a.c
+                                                                     byi.a.c
                                                                   )
                                                             )
                                                       )
@@ -164,8 +164,8 @@ public class amp {
       );
    }
 
-   private static bye a(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
-      bye $$2 = a($$0).eZ().a($$1);
+   private static byg a(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
+      byg $$2 = a($$0).fa().a($$1);
       if ($$2 == null) {
          throw b.create($$0.al(), a($$1));
       } else {
@@ -173,40 +173,40 @@ public class amp {
       }
    }
 
-   private static bxc a(bwd $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bxc)) {
+   private static bxe a(bwf $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bxe)) {
          throw a.create($$0.al());
       } else {
-         return (bxc)$$0;
+         return (bxe)$$0;
       }
    }
 
-   private static bxc b(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
-      bxc $$2 = a($$0);
-      if (!$$2.eZ().b($$1)) {
+   private static bxe b(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
+      bxe $$2 = a($$0);
+      if (!$$2.fa().b($$1)) {
          throw b.create($$0.al(), a($$1));
       } else {
          return $$2;
       }
    }
 
-   private static int a(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
-      bxc $$4 = b($$1, $$2);
+   private static int a(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
+      bxe $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
       $$0.a(() -> wy.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
-      bxc $$4 = b($$1, $$2);
+   private static int b(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
+      bxe $$4 = b($$1, $$2);
       double $$5 = $$4.i($$2);
       $$0.a(() -> wy.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3, double $$4) throws CommandSyntaxException {
-      bxc $$5 = b($$1, $$2);
-      byf $$6 = $$5.eZ();
+   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3, double $$4) throws CommandSyntaxException {
+      bxe $$5 = b($$1, $$2);
+      byh $$6 = $$5.fa();
       if (!$$6.a($$2, $$3)) {
          throw c.create($$1.al(), a($$2), $$3);
       } else {
@@ -216,20 +216,20 @@ public class amp {
       }
    }
 
-   private static Stream<alg> c(bwd $$0, je<byd> $$1) throws CommandSyntaxException {
-      bye $$2 = a($$0, $$1);
-      return $$2.c().stream().map(byg::a);
+   private static Stream<alg> c(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
+      byg $$2 = a($$0, $$1);
+      return $$2.c().stream().map(byi::a);
    }
 
-   private static int c(ei $$0, bwd $$1, je<byd> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
       $$0.a(() -> wy.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
       return 1;
    }
 
-   private static int a(ei $$0, bwd $$1, je<byd> $$2) throws CommandSyntaxException {
-      bxc $$3 = a($$1);
-      if (!$$3.eZ().e($$2)) {
+   private static int a(ei $$0, bwf $$1, je<byf> $$2) throws CommandSyntaxException {
+      bxe $$3 = a($$1);
+      if (!$$3.fa().e($$2)) {
          throw b.create($$1.al(), a($$2));
       } else {
          double $$4 = $$3.i($$2);
@@ -238,9 +238,9 @@ public class amp {
       }
    }
 
-   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3, double $$4, byg.a $$5) throws CommandSyntaxException {
-      bye $$6 = a($$1, $$2);
-      byg $$7 = new byg($$3, $$4, $$5);
+   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3, double $$4, byi.a $$5) throws CommandSyntaxException {
+      byg $$6 = a($$1, $$2);
+      byi $$7 = new byi($$3, $$4, $$5);
       if ($$6.b($$3)) {
          throw d.create($$1.al(), a($$2), $$3);
       } else {
@@ -250,8 +250,8 @@ public class amp {
       }
    }
 
-   private static int a(ei $$0, bwd $$1, je<byd> $$2, alg $$3) throws CommandSyntaxException {
-      bye $$4 = a($$1, $$2);
+   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3) throws CommandSyntaxException {
+      byg $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
          $$0.a(() -> wy.a("commands.attribute.modifier.remove.success", wy.a($$3), a($$2), $$1.al()), false);
          return 1;
@@ -260,7 +260,7 @@ public class amp {
       }
    }
 
-   private static wy a(je<byd> $$0) {
+   private static wy a(je<byf> $$0) {
       return wy.c($$0.a().c());
    }
 }

@@ -1,61 +1,16 @@
-public class cwk extends cuq {
-   private static final int m = 27;
-   private final btu n;
-
-   public cwk(int $$0, cqx $$1) {
-      this($$0, $$1, new bui(27));
+public abstract class cwk extends cuv {
+   public cwk(cwe<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public cwk(int $$0, cqx $$1, btu $$2) {
-      super(cvz.u, $$0);
-      a($$2, 27);
-      this.n = $$2;
-      $$2.c_($$1.k);
-      int $$3 = 3;
-      int $$4 = 9;
+   public abstract cwk.a a(boolean var1, boolean var2, ddz<?> var3, arq var4, crb var5);
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cwl($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
+   public abstract void a(cri var1);
 
-      this.c($$1, 8, 84);
-   }
+   public abstract cwl aj_();
 
-   @Override
-   public boolean b(cqy $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public cyy b(cqy $$0, int $$1) {
-      cyy $$2 = cyy.k;
-      cwn $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cyy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return cyy.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return cyy.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cyy.k);
-         } else {
-            $$3.d();
-         }
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cqy $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public static enum a {
+      a,
+      b;
    }
 }

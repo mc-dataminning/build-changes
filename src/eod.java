@@ -1,71 +1,63 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public abstract class eod {
-   public static final Codec<eod> h = mf.X.q().dispatch(eod::a, eoe::a);
+public class eod extends eol {
+   public static final MapCodec<eod> a = enr.a.fieldOf("provider").xmap(eod::new, $$0 -> $$0.b);
+   private final enr b;
 
-   protected abstract eoe<?> a();
+   public eod(enr $$0) {
+      this.b = $$0;
+   }
 
-   public abstract void a(eod.a var1);
+   @Override
+   protected eom<?> a() {
+      return eom.g;
+   }
 
-   public static final class a {
-      private final djb a;
-      private final BiConsumer<iu, dzz> b;
-      private final azv c;
-      private final ObjectArrayList<iu> d;
-      private final ObjectArrayList<iu> e;
-      private final ObjectArrayList<iu> f;
+   @Override
+   public void a(eol.a $$0) {
+      List<iu> $$1 = eky.a($$0);
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-      public a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, Set<iu> $$3, Set<iu> $$4, Set<iu> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(jz::v));
-         this.e.sort(Comparator.comparingInt(jz::v));
-         this.f.sort(Comparator.comparingInt(jz::v));
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3 = $$0.b().a(64);
+               int $$4 = $$3 % 8;
+               int $$5 = $$3 / 8;
+               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
+               }
+            }
+         });
       }
+   }
 
-      public void a(iu $$0, eaq $$1) {
-         this.a($$0, dmc.fu.m().b($$1, Boolean.valueOf(true)));
+   private void a(eol.a $$0, iu $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
+         }
       }
+   }
 
-      public void a(iu $$0, dzz $$1) {
-         this.b.accept($$0, $$1);
-      }
+   private void b(eol.a $$0, iu $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         iu $$3 = $$1.b($$2);
+         if (ejm.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
 
-      public boolean a(iu $$0) {
-         return this.a.a($$0, dzy.a::l);
-      }
-
-      public boolean a(iu $$0, Predicate<dzz> $$1) {
-         return this.a.a($$0, $$1);
-      }
-
-      public djb a() {
-         return this.a;
-      }
-
-      public azv b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<iu> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<iu> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<iu> e() {
-         return this.f;
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

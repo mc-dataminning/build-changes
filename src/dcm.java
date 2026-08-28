@@ -1,31 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public interface dcm {
-   Codec<dcm> d = mf.aw.q().dispatch(dcm::a, dcm.a::a);
-   yw<wj, dcm> e = yu.a(mg.n).b(dcm::a, dcm.a::b);
+public record dcm(List<asi<String>> g) implements dbf<String, dcm> {
+   public static final dcm a = new dcm(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asi<String>> h = asi.a(Codec.string(0, 1024));
+   public static final Codec<List<asi<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<dcm> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dcm::a)).apply($$0, dcm::new));
+   public static final yw<ByteBuf, dcm> f = asi.a(yu.b(1024)).a(yu.c(100)).a(dcm::new, dcm::a);
 
-   dcm.a<? extends dcm> a();
-
-   boolean a(div var1, cyy var2, bxc var3);
-
-   public static record a<T extends dcm>(MapCodec<T> f, yw<wj, T> g) {
-      public static final dcm.a<dck> a = a("apply_effects", dck.a, dck.b);
-      public static final dcm.a<dco> b = a("remove_effects", dco.a, dco.b);
-      public static final dcm.a<dcl> c = a("clear_all_effects", dcl.b, dcl.c);
-      public static final dcm.a<dcp> d = a("teleport_randomly", dcp.a, dcp.b);
-      public static final dcm.a<dcn> e = a("play_sound", dcn.a, dcn.b);
-
-      private static <T extends dcm> dcm.a<T> a(String $$0, MapCodec<T> $$1, yw<wj, T> $$2) {
-         return jr.a(mf.aw, $$0, new dcm.a<>($$1, $$2));
+   public dcm(List<asi<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
       }
+   }
 
-      public MapCodec<T> a() {
-         return this.f;
-      }
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
 
-      public yw<wj, T> b() {
-         return this.g;
-      }
+   public dcm b(List<asi<String>> $$0) {
+      return new dcm($$0);
+   }
+
+   @Override
+   public List<asi<String>> a() {
+      return this.g;
    }
 }

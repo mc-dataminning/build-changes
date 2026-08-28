@@ -1,47 +1,23 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ftn {
+   public static final ftn a = new ftn("Merry X-mas!");
+   public static final ftn b = new ftn("Happy new year!");
+   public static final ftn c = new ftn("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class ftn implements fwa {
-   private static final int a = 170;
-   private final wy b;
-   @Nullable
-   private List<ayy> c;
-   @Nullable
-   private tu d;
-   @Nullable
-   private final wy e;
-
-   private ftn(wy $$0, @Nullable wy $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   public ftn(String $$0) {
+      this.f = $$0;
    }
 
-   public static ftn a(wy $$0, @Nullable wy $$1) {
-      return new ftn($$0, $$1);
-   }
-
-   public static ftn a(wy $$0) {
-      return new ftn($$0, $$0);
-   }
-
-   @Override
-   public void b(fvz $$0) {
-      if (this.e != null) {
-         $$0.a(fvy.c, this.e);
-      }
-   }
-
-   public List<ayy> a(fos $$0) {
-      tu $$1 = tu.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
-   }
-
-   public static List<ayy> a(fos $$0, wy $$1) {
-      return $$0.h.c($$1, 170);
+   public void a(frv $$0, int $$1, frt $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - azm.e(azm.a((float)(af.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

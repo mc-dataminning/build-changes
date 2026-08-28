@@ -1,3 +1,4 @@
-public class hdw extends hdf {
-   public cjr.a a = cjr.a.b;
+public class hdw extends hdn {
+   public float a;
+   public int b;
 }

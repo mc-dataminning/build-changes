@@ -1,44 +1,13 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import java.util.List;
 
-public class gad implements gag {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
+public class gad extends fyr<cww> {
+   private static final alg G = alg.b("container/smoker/lit_progress");
+   private static final alg H = alg.b("container/smoker/burn_progress");
+   private static final alg I = alg.b("textures/gui/container/smoker.png");
+   private static final wy J = wy.c("gui.recipebook.toggleRecipes.smokable");
+   private static final List<gca.a> K = List.of(new gca.a(gcg.d), new gca.a(czh.qL, ddw.j));
 
-   public gad(gad.a $$0) {
-      this.c = $$0.a();
-   }
-
-   @Override
-   public int a(frm $$0) {
-      return this.c.size() * 12 + 2;
-   }
-
-   @Override
-   public int b(frm $$0) {
-      int $$1 = 0;
-
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(frm $$0, int $$1, int $$2, int $$3, int $$4, fro $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         ftb.a($$5, fos.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cwx {
+   public gad(cww $$0, crb $$1, wy $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

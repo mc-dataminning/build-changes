@@ -1,67 +1,80 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class ccf {
-   public static byu<cqk> a(float $$0) {
-      return ccg.a(
-         (Function<ccg.b<cqk>, ? extends App<ccg.c<cqk>, ccj<cqk>>>)($$1 -> $$1.group($$1.b(cge.d), $$1.c(cge.c), $$1.b(cge.g), $$1.a(cge.n), $$1.a(cge.o))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.n_()) {
-                           return false;
-                        } else if (!$$7.gy().b().a(cqn.b)) {
-                           return false;
-                        } else {
-                           iu $$9 = $$1.<jd>b($$2).b();
-                           Optional<je<cih>> $$10 = $$6x.A().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bxc>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cqk && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cqk)$$0xxxx)
-                                 .filter(bxc::bK)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.eb().c(cge.c).isEmpty()) {
-                                       byv.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.eb().a(cge.d, jd.a($$6x.aj(), $$9));
-                                       agm.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
-   }
+public class ccf extends ccg {
+   private static final List<cyz> c = ImmutableList.of(czh.qj, czh.ww);
 
-   private static boolean a(je<cih> $$0, cqk $$1, iu $$2) {
-      boolean $$3 = $$1.eb().c(cge.d).isPresent();
-      if ($$3) {
-         return false;
-      } else {
-         Optional<jd> $$4 = $$1.eb().c(cge.c);
-         je<cqn> $$5 = $$1.gy().b();
-         if ($$5.a().b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
+   @Override
+   protected void a(arq $$0, cqo $$1) {
+      Optional<jd> $$2 = $$1.ec().c(cgg.c);
+      if (!$$2.isEmpty()) {
+         jd $$3 = $$2.get();
+         eah $$4 = $$0.a_($$3.b());
+         if ($$4.a(dmh.pK)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
          }
       }
    }
 
-   private static boolean a(bxk $$0, iu $$1, cih $$2) {
-      ewu $$3 = $$0.O().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   private void a(arq $$0, cqo $$1, jd $$2, eah $$3) {
+      iu $$4 = $$2.b();
+      if ($$3.c(dnr.e) == 8) {
+         $$3 = dnr.a($$1, $$3, (dja)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      buk $$8 = $$1.n();
+      int $$9 = $$8.b();
+      eah $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         czd $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dnr.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dnr.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
+   }
+
+   private void a(arq $$0, eah $$1, iu $$2, eah $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void c(arq $$0, cqo $$1) {
+      buk $$2 = $$1.n();
+      if ($$2.a_(czh.ql) <= 36) {
+         int $$3 = $$2.a_(czh.qk);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(czh.qk, $$7);
+            czd $$8 = $$2.b(new czd(czh.ql, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
+      }
    }
 }

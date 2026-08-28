@@ -13,7 +13,7 @@ public class bia extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(biw.e),
+         this.getInputSchema().getType(bix.e),
          $$0 -> $$0.update(
                DSL.remainderFinder(),
                $$0x -> (Dynamic)DataFixUtils.orElse(

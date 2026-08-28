@@ -17,14 +17,14 @@ public class aqc implements apz {
             return $$0.then(ej.a("storage").then($$1.apply(ej.a($$0, fj.a()).suggests(aqc.b))));
          }
       };
-   private final eye c;
+   private final eym c;
    private final alg d;
 
-   static eye a(CommandContext<ei> $$0) {
+   static eym a(CommandContext<ei> $$0) {
       return ((ei)$$0.getSource()).l().aK();
    }
 
-   aqc(eye $$0, alg $$1) {
+   aqc(eym $$0, alg $$1) {
       this.c = $$0;
       this.d = $$1;
    }

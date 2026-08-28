@@ -339,14 +339,14 @@ public class bgh extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(biw.F.typeName(), bkr.a()));
-      Type<Pair<String, String>> $$1 = DSL.named(biw.F.typeName(), bkr.a());
+      Type<Either<Integer, Pair<String, String>>> $$0 = DSL.or(DSL.intType(), DSL.named(bix.F.typeName(), bks.a()));
+      Type<Pair<String, String>> $$1 = DSL.named(bix.F.typeName(), bks.a());
       OpticFinder<Either<Integer, Pair<String, String>>> $$2 = DSL.fieldFinder("id", $$0);
       return this.fixTypeEverywhereTyped(
          "ItemIdFix",
-         this.getInputSchema().getType(biw.t),
-         this.getOutputSchema().getType(biw.t),
-         $$2x -> $$2x.update($$2, $$1, $$0xx -> (Pair)$$0xx.map($$0xxx -> Pair.of(biw.F.typeName(), a($$0xxx.intValue())), $$0xxx -> $$0xxx))
+         this.getInputSchema().getType(bix.t),
+         this.getOutputSchema().getType(bix.t),
+         $$2x -> $$2x.update($$2, $$1, $$0xx -> (Pair)$$0xx.map($$0xxx -> Pair.of(bix.F.typeName(), a($$0xxx.intValue())), $$0xxx -> $$0xxx))
       );
    }
 }

@@ -17,13 +17,13 @@ public class aog {
                ((RequiredArgumentBuilder)ej.a("name", ff.a($$1))
                      .executes(
                         $$0x -> a(
-                              (ei)$$0x.getSource(), ff.a($$0x, "name"), ((ei)$$0x.getSource()).d(), fei.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t()
+                              (ei)$$0x.getSource(), ff.a($$0x, "name"), ((ei)$$0x.getSource()).d(), feq.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)ej.a("pos", gm.a())
                            .executes(
-                              $$0x -> a((ei)$$0x.getSource(), ff.a($$0x, "name"), gm.a($$0x, "pos"), fei.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t())
+                              $$0x -> a((ei)$$0x.getSource(), ff.a($$0x, "name"), gm.a($$0x, "pos"), feq.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t())
                            ))
                         .then(
                            ej.a("delta", gm.a(false))
@@ -111,7 +111,7 @@ public class aog {
       );
    }
 
-   private static int a(ei $$0, lv $$1, fei $$2, fei $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
+   private static int a(ei $$0, lv $$1, feq $$2, feq $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (arr $$9 : $$7) {

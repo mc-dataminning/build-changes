@@ -1,47 +1,29 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ckx {
-   private static final float a = 2.0F;
-   private static final float b = 0.5F;
-   private static final float c = 1.25F;
+public record ckx(iv e, ctj f) implements ctf<cti, ctg> {
+   public static final Codec<ckx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iv.b.forGetter(ckx::b), ctj.b.fieldOf("spawn_conditions").forGetter(ckx::c)).apply($$0, ckx::new)
+   );
+   public static final Codec<ckx> b = RecordCodecBuilder.create($$0 -> $$0.group(iv.b.forGetter(ckx::b)).apply($$0, ckx::new));
+   public static final Codec<je<ckx>> c = ald.a(mg.aT);
+   public static final yw<wj, je<ckx>> d = yu.b(mg.aT);
 
-   protected static byc<?> a(byc<ckw> $$0) {
-      b($$0);
-      c($$0);
-      $$0.a(ImmutableSet.of(csr.a));
-      $$0.b(csr.b);
-      $$0.f();
-      return $$0;
+   private ckx(iv $$0) {
+      this($$0, ctj.a);
    }
 
-   private static void b(byc<ckw> $$0) {
-      $$0.a(csr.a, 0, ImmutableList.of(new byo(2.0F), new bzz(45, 90), new cad(), new byz(cge.Q)));
+   @Override
+   public List<ctf.a<cti, ctg>> a() {
+      return this.f.a();
    }
 
-   private static void c(byc<ckw> $$0) {
-      $$0.a(
-         csr.b,
-         ImmutableList.of(
-            Pair.of(0, cat.a(bwm.bS, 6.0F, btm.a(30, 60))),
-            Pair.of(1, new bzg($$0x -> 1.25F)),
-            Pair.of(
-               2,
-               new bzh(
-                  ImmutableMap.of(cge.n, cgf.b),
-                  ImmutableSet.of(),
-                  bzh.a.a,
-                  bzh.b.b,
-                  ImmutableList.of(Pair.of(cal.c(0.5F), 2), Pair.of(cba.a(0.5F, 3), 3), Pair.of(ccg.a(bwd::bj), 5))
-               )
-            )
-         )
-      );
+   public iv b() {
+      return this.e;
    }
 
-   public static void a(ckw $$0) {
-      $$0.eb().a(ImmutableList.of(csr.b));
+   public ctj c() {
+      return this.f;
    }
 }

@@ -1,21 +1,19 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
+public class drs {
+   private static final double b = 0.826;
+   public static final double a = 0.1;
 
-public class drs extends dvp {
-   public static final MapCodec<drs> b = b(drs::new);
-   private static final Map<ja, ffc> e = fez.c(dma.b(10.0, 8.0, 8.0, 16.0));
-
-   @Override
-   public MapCodec<drs> a() {
-      return b;
+   public static boolean a(eah $$0) {
+      return $$0.l();
    }
 
-   public drs(dzy.d $$0) {
-      super(dtk.b.h, $$0);
-   }
+   public static int a(azv $$0) {
+      double $$1 = 1.0;
 
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return e.get($$0.c(d));
+      int $$2;
+      for ($$2 = 0; $$0.j() < $$1; $$2++) {
+         $$1 *= 0.826;
+      }
+
+      return $$2;
    }
 }

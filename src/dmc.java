@@ -1,1241 +1,220 @@
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.Map;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dmc {
-   private static final dzy.f uj = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dyk $$4 ? $$4.t() : true;
-   private static final dzy.f uk = ($$0x, $$1x, $$2) -> !$$0x.c(dzr.c);
-   public static final dma a = a("air", dkx::new, dzy.d.a().p().b().g().m());
-   public static final dma b = a("stone", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma c = a("granite", dzy.d.a().a(ewk.k).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma d = a("polished_granite", dzy.d.a().a(ewk.k).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma e = a("diorite", dzy.d.a().a(ewk.o).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma f = a("polished_diorite", dzy.d.a().a(ewk.o).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma g = a("andesite", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma h = a("polished_andesite", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma i = a("grass_block", dpo::new, dzy.d.a().a(ewk.b).e().d(0.6F).a(dtv.d));
-   public static final dma j = a("dirt", dzy.d.a().a(ewk.k).d(0.5F).a(dtv.c));
-   public static final dma k = a("coarse_dirt", dzy.d.a().a(ewk.k).d(0.5F).a(dtv.c));
-   public static final dma l = a("podzol", dts::new, dzy.d.a().a(ewk.I).d(0.5F).a(dtv.c));
-   public static final dma m = a("cobblestone", dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma n = a("oak_planks", dzy.d.a().a(ewk.n).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma o = a("spruce_planks", dzy.d.a().a(ewk.I).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma p = a("birch_planks", dzy.d.a().a(ewk.c).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma q = a("jungle_planks", dzy.d.a().a(ewk.k).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma r = a("acacia_planks", dzy.d.a().a(ewk.p).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma s = a("cherry_planks", dzy.d.a().a(ewk.K).a(eba.e).a(2.0F, 3.0F).a(dtv.aV).i());
-   public static final dma t = a("dark_oak_planks", dzy.d.a().a(ewk.A).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma u = a("pale_oak_wood", dss::new, dzy.d.a().a(ewk.l).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma v = a("pale_oak_planks", dzy.d.a().a(ewk.o).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma w = a("mangrove_planks", dzy.d.a().a(ewk.C).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma x = a("bamboo_planks", dzy.d.a().a(ewk.s).a(eba.e).a(2.0F, 3.0F).a(dtv.aT).i());
-   public static final dma y = a("bamboo_mosaic", dzy.d.a().a(ewk.s).a(eba.e).a(2.0F, 3.0F).a(dtv.aT).i());
-   public static final dma z = a("oak_sapling", $$0x -> new dsv(dzn.b, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma A = a("spruce_sapling", $$0x -> new dsv(dzn.c, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma B = a("birch_sapling", $$0x -> new dsv(dzn.f, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma C = a("jungle_sapling", $$0x -> new dsv(dzn.g, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma D = a("acacia_sapling", $$0x -> new dsv(dzn.h, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma E = a("cherry_sapling", $$0x -> new dsv(dzn.i, $$0x), dzy.d.a().a(ewk.u).b().e().d().a(dtv.aW).a(ewl.b));
-   public static final dma F = a("dark_oak_sapling", $$0x -> new dsv(dzn.j, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma G = a("pale_oak_sapling", $$0x -> new dsv(dzn.k, $$0x), dzy.d.a().a(ewk.g).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma H = a("mangrove_propagule", $$0x -> new dra(dzn.d, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma I = a("bedrock", dzy.d.a().a(ewk.l).a(eba.b).a(-1.0F, 3600000.0F).g().a(dmc::a));
-   public static final dma J = a("water", $$0x -> new dqv(ewh.c, $$0x), dzy.d.a().a(ewk.m).p().b().d(100.0F).a(ewl.b).g().j().a(dtv.a));
-   public static final dma K = a("lava", $$0x -> new dqv(ewh.e, $$0x), dzy.d.a().a(ewk.e).p().b().e().d(100.0F).a($$0x -> 15).a(ewl.b).g().j().a(dtv.a));
-   public static final dma L = a("sand", $$0x -> new dsu(new ayf(14406560), $$0x), dzy.d.a().a(ewk.c).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma M = a("suspicious_sand", $$0x -> new dmg(L, awn.cT, awn.cT, $$0x), dzy.d.a().a(ewk.c).a(eba.c).d(0.25F).a(dtv.ba).a(ewl.b));
-   public static final dma N = a("red_sand", $$0x -> new dsu(new ayf(11098145), $$0x), dzy.d.a().a(ewk.p).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma O = a("gravel", $$0x -> new dni(new ayf(-8356741), $$0x), dzy.d.a().a(ewk.l).a(eba.c).d(0.6F).a(dtv.c));
-   public static final dma P = a("suspicious_gravel", $$0x -> new dmg(O, awn.cU, awn.cU, $$0x), dzy.d.a().a(ewk.l).a(eba.c).d(0.25F).a(dtv.bb).a(ewl.b));
-   public static final dma Q = a("gold_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma R = a("deepslate_gold_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.b(Q).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma S = a("iron_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma T = a("deepslate_iron_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.b(S).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma U = a("coal_ore", $$0x -> new dol(btm.a(0, 2), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma V = a("deepslate_coal_ore", $$0x -> new dol(btm.a(0, 2), $$0x), dzy.d.b(U).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma W = a("nether_gold_ore", $$0x -> new dol(btm.a(0, 1), $$0x), dzy.d.a().a(ewk.J).a(eba.b).n().a(3.0F, 3.0F).a(dtv.V));
-   public static final dma X = a("oak_log", dss::new, a(ewk.n, ewk.I, dtv.b));
-   public static final dma Y = a("spruce_log", dss::new, a(ewk.I, ewk.A, dtv.b));
-   public static final dma Z = a("birch_log", dss::new, a(ewk.c, ewk.o, dtv.b));
-   public static final dma aa = a("jungle_log", dss::new, a(ewk.k, ewk.I, dtv.b));
-   public static final dma ab = a("acacia_log", dss::new, a(ewk.p, ewk.l, dtv.b));
-   public static final dma ac = a("cherry_log", dss::new, a(ewk.K, ewk.R, dtv.aV));
-   public static final dma ad = a("dark_oak_log", dss::new, a(ewk.A, ewk.A, dtv.b));
-   public static final dma ae = a("pale_oak_log", dss::new, a(v.w(), u.w(), dtv.b));
-   public static final dma af = a("mangrove_log", dss::new, a(ewk.C, ewk.I, dtv.b));
-   public static final dma ag = a("mangrove_roots", drb::new, dzy.d.a().a(ewk.I).a(eba.e).d(0.7F).a(dtv.aL).c().b(dmc::b).c(dmc::b).c().i());
-   public static final dma ah = a("muddy_mangrove_roots", dss::new, dzy.d.a().a(ewk.I).d(0.7F).a(dtv.aM));
-   public static final dma ai = a("bamboo_block", dss::new, a(ewk.s, ewk.h, dtv.aT));
-   public static final dma aj = a("stripped_spruce_log", dss::new, a(ewk.I, ewk.I, dtv.b));
-   public static final dma ak = a("stripped_birch_log", dss::new, a(ewk.c, ewk.c, dtv.b));
-   public static final dma al = a("stripped_jungle_log", dss::new, a(ewk.k, ewk.k, dtv.b));
-   public static final dma am = a("stripped_acacia_log", dss::new, a(ewk.p, ewk.p, dtv.b));
-   public static final dma an = a("stripped_cherry_log", dss::new, a(ewk.K, ewk.Q, dtv.aV));
-   public static final dma ao = a("stripped_dark_oak_log", dss::new, a(ewk.A, ewk.A, dtv.b));
-   public static final dma ap = a("stripped_pale_oak_log", dss::new, a(v.w(), v.w(), dtv.b));
-   public static final dma aq = a("stripped_oak_log", dss::new, a(ewk.n, ewk.n, dtv.b));
-   public static final dma ar = a("stripped_mangrove_log", dss::new, a(ewk.C, ewk.C, dtv.b));
-   public static final dma as = a("stripped_bamboo_block", dss::new, a(ewk.s, ewk.s, dtv.aT));
-   public static final dma at = a("oak_wood", dss::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma au = a("spruce_wood", dss::new, dzy.d.a().a(ewk.I).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma av = a("birch_wood", dss::new, dzy.d.a().a(ewk.c).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aw = a("jungle_wood", dss::new, dzy.d.a().a(ewk.k).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma ax = a("acacia_wood", dss::new, dzy.d.a().a(ewk.v).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma ay = a("cherry_wood", dss::new, dzy.d.a().a(ewk.R).a(eba.e).d(2.0F).a(dtv.aV).i());
-   public static final dma az = a("dark_oak_wood", dss::new, dzy.d.a().a(ewk.A).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aA = a("mangrove_wood", dss::new, dzy.d.a().a(ewk.C).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aB = a("stripped_oak_wood", dss::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aC = a("stripped_spruce_wood", dss::new, dzy.d.a().a(ewk.I).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aD = a("stripped_birch_wood", dss::new, dzy.d.a().a(ewk.c).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aE = a("stripped_jungle_wood", dss::new, dzy.d.a().a(ewk.k).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aF = a("stripped_acacia_wood", dss::new, dzy.d.a().a(ewk.p).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aG = a("stripped_cherry_wood", dss::new, dzy.d.a().a(ewk.Q).a(eba.e).d(2.0F).a(dtv.aV).i());
-   public static final dma aH = a("stripped_dark_oak_wood", dss::new, dzy.d.a().a(ewk.A).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aI = a("stripped_pale_oak_wood", dss::new, dzy.d.a().a(v.w()).a(eba.e).d(2.0F).a(dtv.b).i());
-   public static final dma aJ = a("stripped_mangrove_wood", dss::new, a(ewk.C, ewk.C, dtv.b));
-   public static final dma aK = a("oak_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aL = a("spruce_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aM = a("birch_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aN = a("jungle_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aO = a("acacia_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aP = a(
-      "cherry_leaves", $$0x -> new dvh(0.1F, lx.H, $$0x), dzy.d.a().a(ewk.u).d(0.2F).e().a(dtv.aX).c().a(dmc::c).b(dmc::b).c(dmc::b).i().a(ewl.b).a(dmc::b)
+public class dmc extends dqg implements dmi, dtq {
+   public static final MapCodec<dmc> a = b(dmc::new);
+   private static final eay b = eax.I;
+   private static final ebf<ebt> c = eax.bo;
+   private static final int d = -1;
+   private static final Object2IntMap<ebt> f = af.a(new Object2IntArrayMap(), $$0 -> {
+      $$0.defaultReturnValue(-1);
+      $$0.put(ebt.b, 10);
+      $$0.put(ebt.c, 10);
+      $$0.put(ebt.d, 100);
+   });
+   private static final int g = 5;
+   private static final int h = 11;
+   private static final int i = 13;
+   private static final Map<ebt, ffk> D = Maps.newEnumMap(
+      Map.of(ebt.a, dmf.b(16.0, 11.0, 15.0), ebt.b, dmf.b(16.0, 11.0, 15.0), ebt.c, dmf.b(16.0, 11.0, 13.0), ebt.d, ffh.a())
    );
-   public static final dma aQ = a("dark_oak_leaves", $$0x -> new duu(0.01F, $$0x), a(dtv.d));
-   public static final dma aR = a(
-      "pale_oak_leaves", $$0x -> new dvh(0.02F, lx.I, $$0x), dzy.d.a().a(ewk.g).d(0.2F).e().a(dtv.d).c().a(dmc::c).b(dmc::b).c(dmc::b).i().a(ewl.b).a(dmc::b)
-   );
-   public static final dma aS = a("mangrove_leaves", $$0x -> new dqz(0.01F, $$0x), a(dtv.d));
-   public static final dma aT = a("azalea_leaves", $$0x -> new dvh(0.01F, lq.a(lx.J, -9399763), $$0x), a(dtv.ay));
-   public static final dma aU = a("flowering_azalea_leaves", $$0x -> new dvh(0.01F, lq.a(lx.J, -9399763), $$0x), a(dtv.ay));
-   public static final dma aV = a("sponge", dtx::new, dzy.d.a().a(ewk.s).d(0.6F).a(dtv.bf));
-   public static final dma aW = a("wet_sponge", dwf::new, dzy.d.a().a(ewk.s).d(0.6F).a(dtv.bg));
-   public static final dma aX = a("glass", duy::new, dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c().a(dmc::a).a(dmc::b).b(dmc::b).c(dmc::b));
-   public static final dma aY = a("lapis_ore", $$0x -> new dol(btm.a(2, 5), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma aZ = a("deepslate_lapis_ore", $$0x -> new dol(btm.a(2, 5), $$0x), dzy.d.b(aY).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma ba = a("lapis_block", dzy.d.a().a(ewk.G).n().a(3.0F, 3.0F));
-   public static final dma bb = a("dispenser", dog::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F));
-   public static final dma bc = a("sandstone", dzy.d.a().a(ewk.c).a(eba.b).n().d(0.8F));
-   public static final dma bd = a("chiseled_sandstone", dzy.d.a().a(ewk.c).a(eba.b).n().d(0.8F));
-   public static final dma be = a("cut_sandstone", dzy.d.a().a(ewk.c).a(eba.b).n().d(0.8F));
-   public static final dma bf = a("note_block", drp::new, dzy.d.a().a(ewk.n).a(eba.e).a(dtv.b).d(0.8F).i());
-   public static final dma bg = a("white_bed", cxw.a);
-   public static final dma bh = a("orange_bed", cxw.b);
-   public static final dma bi = a("magenta_bed", cxw.c);
-   public static final dma bj = a("light_blue_bed", cxw.d);
-   public static final dma bk = a("yellow_bed", cxw.e);
-   public static final dma bl = a("lime_bed", cxw.f);
-   public static final dma bm = a("pink_bed", cxw.g);
-   public static final dma bn = a("gray_bed", cxw.h);
-   public static final dma bo = a("light_gray_bed", cxw.i);
-   public static final dma bp = a("cyan_bed", cxw.j);
-   public static final dma bq = a("purple_bed", cxw.k);
-   public static final dma br = a("blue_bed", cxw.l);
-   public static final dma bs = a("brown_bed", cxw.m);
-   public static final dma bt = a("green_bed", cxw.n);
-   public static final dma bu = a("red_bed", cxw.o);
-   public static final dma bv = a("black_bed", cxw.p);
-   public static final dma bw = a("powered_rail", dsc::new, dzy.d.a().b().d(0.7F).a(dtv.g));
-   public static final dma bx = a("detector_rail", doc::new, dzy.d.a().b().d(0.7F).a(dtv.g));
-   public static final dma by = a("sticky_piston", $$0x -> new dzr(true, $$0x), a());
-   public static final dma bz = a("cobweb", dwb::new, dzy.d.a().a(ewk.d).a(dtv.bk).k().b().n().d(4.0F).a(ewl.b));
-   public static final dma bA = a("short_grass", dun::new, dzy.d.a().a(ewk.h).p().b().d().a(dtv.d).a(dzy.c.c).i().a(ewl.b));
-   public static final dma bB = a("fern", dun::new, dzy.d.a().a(ewk.h).p().b().d().a(dtv.d).a(dzy.c.c).i().a(ewl.b));
-   public static final dma bC = a("dead_bush", doa::new, dzy.d.a().a(ewk.n).p().b().d().a(dtv.d).i().a(ewl.b));
-   public static final dma bD = a("bush", dmk::new, dzy.d.a().a(ewk.h).b().d().a(dtv.d).i().a(ewl.b));
-   public static final dma bE = a("seagrass", dtf::new, dzy.d.a().a(ewk.m).p().b().d().a(dtv.q).a(ewl.b));
-   public static final dma bF = a("tall_seagrass", duo::new, dzy.d.a().a(ewk.m).p().b().d().a(dtv.q).a(dzy.c.b).a(ewl.b));
-   public static final dma bG = a("piston", $$0x -> new dzr(false, $$0x), a());
-   public static final dma bH = a("piston_head", dzs::new, dzy.d.a().a(ewk.l).d(1.5F).g().a(ewl.c));
-   public static final dma bI = a("white_wool", dzy.d.a().a(ewk.i).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bJ = a("orange_wool", dzy.d.a().a(ewk.p).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bK = a("magenta_wool", dzy.d.a().a(ewk.q).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bL = a("light_blue_wool", dzy.d.a().a(ewk.r).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bM = a("yellow_wool", dzy.d.a().a(ewk.s).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bN = a("lime_wool", dzy.d.a().a(ewk.t).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bO = a("pink_wool", dzy.d.a().a(ewk.u).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bP = a("gray_wool", dzy.d.a().a(ewk.v).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bQ = a("light_gray_wool", dzy.d.a().a(ewk.w).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bR = a("cyan_wool", dzy.d.a().a(ewk.x).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bS = a("purple_wool", dzy.d.a().a(ewk.y).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bT = a("blue_wool", dzy.d.a().a(ewk.z).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bU = a("brown_wool", dzy.d.a().a(ewk.A).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bV = a("green_wool", dzy.d.a().a(ewk.B).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bW = a("red_wool", dzy.d.a().a(ewk.C).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bX = a("black_wool", dzy.d.a().a(ewk.D).a(eba.h).d(0.8F).a(dtv.i).i());
-   public static final dma bY = a("moving_piston", dzq::new, dzy.d.a().a(ewk.l).k().d(-1.0F).f().g().c().a(dmc::b).b(dmc::b).c(dmc::b).a(ewl.c));
-   public static final dma bZ = a("dandelion", $$0x -> new dpf(bvj.w, 0.35F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma ca = a("torchflower", $$0x -> new dpf(bvj.p, 5.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cb = a("poppy", $$0x -> new dpf(bvj.p, 5.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cc = a("blue_orchid", $$0x -> new dpf(bvj.w, 0.35F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cd = a("allium", $$0x -> new dpf(bvj.l, 3.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma ce = a("azure_bluet", $$0x -> new dpf(bvj.o, 11.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cf = a("red_tulip", $$0x -> new dpf(bvj.r, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cg = a("orange_tulip", $$0x -> new dpf(bvj.r, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma ch = a("white_tulip", $$0x -> new dpf(bvj.r, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma ci = a("pink_tulip", $$0x -> new dpf(bvj.r, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cj = a("oxeye_daisy", $$0x -> new dpf(bvj.j, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma ck = a("cornflower", $$0x -> new dpf(bvj.h, 5.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cl = a("wither_rose", $$0x -> new dwg(bvj.t, 7.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cm = a("lily_of_the_valley", $$0x -> new dpf(bvj.s, 11.0F, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b));
-   public static final dma cn = a("brown_mushroom", $$0x -> new dri(rn.e, $$0x), dzy.d.a().a(ewk.A).b().e().d().a(dtv.d).a($$0x -> 1).d(dmc::a).a(ewl.b));
-   public static final dma co = a("red_mushroom", $$0x -> new dri(rn.f, $$0x), dzy.d.a().a(ewk.C).b().e().d().a(dtv.d).d(dmc::a).a(ewl.b));
-   public static final dma cp = a("gold_block", dzy.d.a().a(ewk.E).a(eba.g).n().a(3.0F, 6.0F).a(dtv.g));
-   public static final dma cq = a("iron_block", dzy.d.a().a(ewk.g).a(eba.k).n().a(5.0F, 6.0F).a(dtv.bo));
-   public static final dma cr = a("bricks", dzy.d.a().a(ewk.C).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma cs = a("tnt", duv::new, dzy.d.a().a(ewk.e).d().a(dtv.d).i().a(dmc::b));
-   public static final dma ct = a("bookshelf", dzy.d.a().a(ewk.n).a(eba.e).d(1.5F).a(dtv.b).i());
-   public static final dma cu = a("chiseled_bookshelf", dne::new, dzy.d.a().a(ewk.n).a(eba.e).d(1.5F).a(dtv.aZ).i());
-   public static final dma cv = a("mossy_cobblestone", dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma cw = a("obsidian", dzy.d.a().a(ewk.D).a(eba.b).n().a(50.0F, 1200.0F));
-   public static final dma cx = a("torch", $$0x -> new duw(lx.F, $$0x), dzy.d.a().b().d().a($$0x -> 14).a(dtv.b).a(ewl.b));
-   public static final dma cy = a("wall_torch", $$0x -> new dvq(lx.F, $$0x), a(cx, true).b().d().a($$0x -> 14).a(dtv.b).a(ewl.b));
-   public static final dma cz = a("fire", dpb::new, dzy.d.a().a(ewk.e).p().b().d().a($$0x -> 15).a(dtv.i).a(ewl.b));
-   public static final dma cA = a("soul_fire", dtt::new, dzy.d.a().a(ewk.r).p().b().d().a($$0x -> 10).a(dtv.i).a(ewl.b));
-   public static final dma cB = a("spawner", dtw::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(5.0F).a(dtv.bl).c());
-   public static final dma cC = a("creaking_heart", dnv::new, dzy.d.a().a(ewk.p).a(eba.b).d(10.0F).a(dtv.bi));
-   public static final dma cD = a("oak_stairs", n);
-   public static final dma cE = a("chest", $$0x -> new dnd(() -> dwz.b, $$0x), dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma cF = a("redstone_wire", dsi::new, dzy.d.a().b().d().a(ewl.b));
-   public static final dma cG = a("diamond_ore", $$0x -> new dol(btm.a(3, 7), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma cH = a("deepslate_diamond_ore", $$0x -> new dol(btm.a(3, 7), $$0x), dzy.d.b(cG).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma cI = a("diamond_block", dzy.d.a().a(ewk.F).n().a(5.0F, 6.0F).a(dtv.g));
-   public static final dma cJ = a("crafting_table", dnu::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma cK = a("wheat", dnw::new, dzy.d.a().a($$0x -> $$0x.c(dnw.f) >= 6 ? ewk.s : ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma cL = a("farmland", doy::new, dzy.d.a().a(ewk.k).e().d(0.6F).a(dtv.c).c(dmc::a).b(dmc::a));
-   public static final dma cM = a("furnace", dpk::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F).a(a(13)));
-   public static final dma cN = a("oak_sign", $$0x -> new dud(ebn.b, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cO = a("spruce_sign", $$0x -> new dud(ebn.c, $$0x), dzy.d.a().a(Y.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cP = a("birch_sign", $$0x -> new dud(ebn.d, $$0x), dzy.d.a().a(ewk.c).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cQ = a("acacia_sign", $$0x -> new dud(ebn.e, $$0x), dzy.d.a().a(ewk.p).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cR = a("cherry_sign", $$0x -> new dud(ebn.f, $$0x), dzy.d.a().a(s.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cS = a("jungle_sign", $$0x -> new dud(ebn.g, $$0x), dzy.d.a().a(aa.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cT = a("dark_oak_sign", $$0x -> new dud(ebn.h, $$0x), dzy.d.a().a(ad.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cU = a("pale_oak_sign", $$0x -> new dud(ebn.i, $$0x), dzy.d.a().a(v.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cV = a("mangrove_sign", $$0x -> new dud(ebn.l, $$0x), dzy.d.a().a(af.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cW = a("bamboo_sign", $$0x -> new dud(ebn.m, $$0x), dzy.d.a().a(x.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma cX = a("oak_door", $$0x -> new doh(eao.g, $$0x), dzy.d.a().a(n.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma cY = a("ladder", dqk::new, dzy.d.a().l().d(0.4F).a(dtv.m).c().a(ewl.b));
-   public static final dma cZ = a("rail", dsf::new, dzy.d.a().b().d(0.7F).a(dtv.g));
-   public static final dma da = a("cobblestone_stairs", m);
-   public static final dma db = a("oak_wall_sign", $$0x -> new dvo(ebn.b, $$0x), a(cN, true).a(ewk.n).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dc = a("spruce_wall_sign", $$0x -> new dvo(ebn.c, $$0x), a(cO, true).a(Y.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dd = a("birch_wall_sign", $$0x -> new dvo(ebn.d, $$0x), a(cP, true).a(ewk.c).k().a(eba.e).b().d(1.0F).i());
-   public static final dma de = a("acacia_wall_sign", $$0x -> new dvo(ebn.e, $$0x), a(cQ, true).a(ewk.p).k().a(eba.e).b().d(1.0F).i());
-   public static final dma df = a("cherry_wall_sign", $$0x -> new dvo(ebn.f, $$0x), a(cR, true).a(ac.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dg = a("jungle_wall_sign", $$0x -> new dvo(ebn.g, $$0x), a(cS, true).a(aa.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dh = a("dark_oak_wall_sign", $$0x -> new dvo(ebn.h, $$0x), a(cT, true).a(ad.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma di = a("pale_oak_wall_sign", $$0x -> new dvo(ebn.i, $$0x), a(cU, true).a(v.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dj = a("mangrove_wall_sign", $$0x -> new dvo(ebn.l, $$0x), a(cV, true).a(af.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dk = a("bamboo_wall_sign", $$0x -> new dvo(ebn.m, $$0x), a(cW, true).a(x.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dl = a("oak_hanging_sign", $$0x -> new dna(ebn.b, $$0x), dzy.d.a().a(X.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dm = a("spruce_hanging_sign", $$0x -> new dna(ebn.c, $$0x), dzy.d.a().a(Y.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dn = a("birch_hanging_sign", $$0x -> new dna(ebn.d, $$0x), dzy.d.a().a(ewk.c).k().a(eba.e).b().d(1.0F).i());
-   public static final dma do = a("acacia_hanging_sign", $$0x -> new dna(ebn.e, $$0x), dzy.d.a().a(ewk.p).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dp = a("cherry_hanging_sign", $$0x -> new dna(ebn.f, $$0x), dzy.d.a().a(ewk.Q).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dq = a("jungle_hanging_sign", $$0x -> new dna(ebn.g, $$0x), dzy.d.a().a(aa.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dr = a("dark_oak_hanging_sign", $$0x -> new dna(ebn.h, $$0x), dzy.d.a().a(ad.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma ds = a("pale_oak_hanging_sign", $$0x -> new dna(ebn.i, $$0x), dzy.d.a().a(v.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dt = a("crimson_hanging_sign", $$0x -> new dna(ebn.j, $$0x), dzy.d.a().a(ewk.ab).k().a(eba.e).b().d(1.0F));
-   public static final dma du = a("warped_hanging_sign", $$0x -> new dna(ebn.k, $$0x), dzy.d.a().a(ewk.ae).k().a(eba.e).b().d(1.0F));
-   public static final dma dv = a("mangrove_hanging_sign", $$0x -> new dna(ebn.l, $$0x), dzy.d.a().a(af.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dw = a("bamboo_hanging_sign", $$0x -> new dna(ebn.m, $$0x), dzy.d.a().a(ewk.s).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dx = a("oak_wall_hanging_sign", $$0x -> new dvn(ebn.b, $$0x), a(dl, true).a(X.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dy = a("spruce_wall_hanging_sign", $$0x -> new dvn(ebn.c, $$0x), a(dm, true).a(ewk.n).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dz = a("birch_wall_hanging_sign", $$0x -> new dvn(ebn.d, $$0x), a(dn, true).a(ewk.c).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dA = a("acacia_wall_hanging_sign", $$0x -> new dvn(ebn.e, $$0x), a(do, true).a(ewk.p).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dB = a("cherry_wall_hanging_sign", $$0x -> new dvn(ebn.f, $$0x), a(dp, true).a(ewk.Q).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dC = a("jungle_wall_hanging_sign", $$0x -> new dvn(ebn.g, $$0x), a(dq, true).a(aa.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dD = a("dark_oak_wall_hanging_sign", $$0x -> new dvn(ebn.h, $$0x), a(dr, true).a(ad.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dE = a("pale_oak_wall_hanging_sign", $$0x -> new dvn(ebn.i, $$0x), a(ds, true).a(v.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dF = a("mangrove_wall_hanging_sign", $$0x -> new dvn(ebn.l, $$0x), a(dv, true).a(af.w()).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dG = a("crimson_wall_hanging_sign", $$0x -> new dvn(ebn.j, $$0x), a(dt, true).a(ewk.ab).k().a(eba.e).b().d(1.0F));
-   public static final dma dH = a("warped_wall_hanging_sign", $$0x -> new dvn(ebn.k, $$0x), a(du, true).a(ewk.ae).k().a(eba.e).b().d(1.0F));
-   public static final dma dI = a("bamboo_wall_hanging_sign", $$0x -> new dvn(ebn.m, $$0x), a(dw, true).a(ewk.s).k().a(eba.e).b().d(1.0F).i());
-   public static final dma dJ = a("lever", dqs::new, dzy.d.a().b().d(0.5F).a(dtv.f).a(ewl.b));
-   public static final dma dK = a("stone_pressure_plate", $$0x -> new dsd(eao.e, $$0x), dzy.d.a().a(ewk.l).k().a(eba.b).b().d(0.5F).a(ewl.b));
-   public static final dma dL = a("iron_door", $$0x -> new doh(eao.b, $$0x), dzy.d.a().a(ewk.g).d(5.0F).c().a(ewl.b));
-   public static final dma dM = a("oak_pressure_plate", $$0x -> new dsd(eao.g, $$0x), dzy.d.a().a(n.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dN = a("spruce_pressure_plate", $$0x -> new dsd(eao.h, $$0x), dzy.d.a().a(o.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dO = a("birch_pressure_plate", $$0x -> new dsd(eao.i, $$0x), dzy.d.a().a(p.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dP = a("jungle_pressure_plate", $$0x -> new dsd(eao.l, $$0x), dzy.d.a().a(q.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dQ = a("acacia_pressure_plate", $$0x -> new dsd(eao.j, $$0x), dzy.d.a().a(r.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dR = a("cherry_pressure_plate", $$0x -> new dsd(eao.k, $$0x), dzy.d.a().a(s.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dS = a("dark_oak_pressure_plate", $$0x -> new dsd(eao.m, $$0x), dzy.d.a().a(t.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dT = a("pale_oak_pressure_plate", $$0x -> new dsd(eao.n, $$0x), dzy.d.a().a(v.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dU = a("mangrove_pressure_plate", $$0x -> new dsd(eao.q, $$0x), dzy.d.a().a(w.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dV = a("bamboo_pressure_plate", $$0x -> new dsd(eao.r, $$0x), dzy.d.a().a(x.w()).k().a(eba.e).b().d(0.5F).i().a(ewl.b));
-   public static final dma dW = a("redstone_ore", dsh::new, dzy.d.a().a(ewk.l).a(eba.b).n().e().a(a(9)).a(3.0F, 3.0F));
-   public static final dma dX = a("deepslate_redstone_ore", dsh::new, dzy.d.b(dW).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma dY = a("redstone_torch", dsk::new, dzy.d.a().b().d().a(a(7)).a(dtv.b).a(ewl.b));
-   public static final dma dZ = a("redstone_wall_torch", dsl::new, a(dY, true).b().d().a(a(7)).a(dtv.b).a(ewl.b));
-   public static final dma ea = a("stone_button", $$0x -> new dml(eao.e, 20, $$0x), b());
-   public static final dma eb = a("snow", dtr::new, dzy.d.a().a(ewk.i).p().l().e().d(0.1F).n().a(dtv.k).c(($$0x, $$1x, $$2) -> $$0x.c(dtr.c) >= 8).a(ewl.b));
-   public static final dma ec = a("ice", dqc::new, dzy.d.a().a(ewk.f).a(0.98F).e().d(0.5F).a(dtv.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwm.aU).a(dmc::b));
-   public static final dma ed = a("snow_block", dzy.d.a().a(ewk.i).n().d(0.2F).a(dtv.k));
-   public static final dma ee = a("cactus", dmm::new, dzy.d.a().a(ewk.h).e().d(0.4F).a(dtv.i).a(ewl.b));
-   public static final dma ef = a("clay", dzy.d.a().a(ewk.j).a(eba.f).d(0.6F).a(dtv.c));
-   public static final dma eg = a("sugar_cane", dui::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.d).a(ewl.b));
-   public static final dma eh = a("jukebox", dqh::new, dzy.d.a().a(ewk.k).a(eba.e).a(2.0F, 6.0F).a(dtv.b).i());
-   public static final dma ei = a("oak_fence", doz::new, dzy.d.a().a(n.w()).k().a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma ej = a("netherrack", dro::new, dzy.d.a().a(ewk.J).a(eba.b).n().d(0.4F).a(dtv.M));
-   public static final dma ek = a("soul_sand", dtu::new, dzy.d.a().a(ewk.A).a(eba.l).d(0.5F).b(0.4F).a(dtv.I).a(dmc::b).a(dmc::a).c(dmc::a).b(dmc::a));
-   public static final dma el = a("soul_soil", dzy.d.a().a(ewk.A).d(0.5F).a(dtv.J));
-   public static final dma em = a("basalt", dss::new, dzy.d.a().a(ewk.D).a(eba.b).n().a(1.25F, 4.2F).a(dtv.K));
-   public static final dma en = a("polished_basalt", dss::new, dzy.d.a().a(ewk.D).a(eba.b).n().a(1.25F, 4.2F).a(dtv.K));
-   public static final dma eo = a("soul_torch", $$0x -> new duw(lx.N, $$0x), dzy.d.a().b().d().a($$0x -> 10).a(dtv.b).a(ewl.b));
-   public static final dma ep = a("soul_wall_torch", $$0x -> new dvq(lx.N, $$0x), a(eo, true).b().d().a($$0x -> 10).a(dtv.b).a(ewl.b));
-   public static final dma eq = a("glowstone", dzy.d.a().a(ewk.c).a(eba.p).d(0.3F).a(dtv.h).a($$0x -> 15).a(dmc::b));
-   public static final dma er = a("nether_portal", drk::new, dzy.d.a().b().e().d(-1.0F).a(dtv.h).a($$0x -> 11).a(ewl.c));
-   public static final dma es = a("carved_pumpkin", dmv::new, dzy.d.a().a(ewk.p).d(1.0F).a(dtv.b).a(dmc::b).a(ewl.b));
-   public static final dma et = a("jack_o_lantern", dmv::new, dzy.d.a().a(ewk.p).d(1.0F).a(dtv.b).a($$0x -> 15).a(dmc::b).a(ewl.b));
-   public static final dma eu = a("cake", dmn::new, dzy.d.a().k().d(0.5F).a(dtv.i).a(ewl.b));
-   public static final dma ev = a("repeater", dsn::new, dzy.d.a().d().a(dtv.f).a(ewl.b));
-   public static final dma ew = b("white_stained_glass", cxw.a);
-   public static final dma ex = b("orange_stained_glass", cxw.b);
-   public static final dma ey = b("magenta_stained_glass", cxw.c);
-   public static final dma ez = b("light_blue_stained_glass", cxw.d);
-   public static final dma eA = b("yellow_stained_glass", cxw.e);
-   public static final dma eB = b("lime_stained_glass", cxw.f);
-   public static final dma eC = b("pink_stained_glass", cxw.g);
-   public static final dma eD = b("gray_stained_glass", cxw.h);
-   public static final dma eE = b("light_gray_stained_glass", cxw.i);
-   public static final dma eF = b("cyan_stained_glass", cxw.j);
-   public static final dma eG = b("purple_stained_glass", cxw.k);
-   public static final dma eH = b("blue_stained_glass", cxw.l);
-   public static final dma eI = b("brown_stained_glass", cxw.m);
-   public static final dma eJ = b("green_stained_glass", cxw.n);
-   public static final dma eK = b("red_stained_glass", cxw.o);
-   public static final dma eL = b("black_stained_glass", cxw.p);
-   public static final dma eM = a("oak_trapdoor", $$0x -> new duz(eao.g, $$0x), dzy.d.a().a(ewk.n).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eN = a("spruce_trapdoor", $$0x -> new duz(eao.h, $$0x), dzy.d.a().a(ewk.I).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eO = a("birch_trapdoor", $$0x -> new duz(eao.i, $$0x), dzy.d.a().a(ewk.c).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eP = a("jungle_trapdoor", $$0x -> new duz(eao.l, $$0x), dzy.d.a().a(ewk.k).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eQ = a("acacia_trapdoor", $$0x -> new duz(eao.j, $$0x), dzy.d.a().a(ewk.p).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eR = a("cherry_trapdoor", $$0x -> new duz(eao.k, $$0x), dzy.d.a().a(ewk.K).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eS = a("dark_oak_trapdoor", $$0x -> new duz(eao.m, $$0x), dzy.d.a().a(ewk.A).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eT = a("pale_oak_trapdoor", $$0x -> new duz(eao.n, $$0x), dzy.d.a().a(v.w()).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eU = a("mangrove_trapdoor", $$0x -> new duz(eao.q, $$0x), dzy.d.a().a(ewk.C).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eV = a("bamboo_trapdoor", $$0x -> new duz(eao.r, $$0x), dzy.d.a().a(ewk.s).a(eba.e).d(3.0F).c().a(dmc::a).i());
-   public static final dma eW = a("stone_bricks", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma eX = a("mossy_stone_bricks", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma eY = a("cracked_stone_bricks", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma eZ = a("chiseled_stone_bricks", dzy.d.a().a(ewk.l).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma fa = a("packed_mud", dzy.d.b(j).a(1.0F, 3.0F).a(dtv.aP));
-   public static final dma fb = a("mud_bricks", dzy.d.a().a(ewk.S).a(eba.b).n().a(1.5F, 3.0F).a(dtv.aO));
-   public static final dma fc = a("infested_stone", $$0x -> new dqd(b, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma fd = a("infested_cobblestone", $$0x -> new dqd(m, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma fe = a("infested_stone_bricks", $$0x -> new dqd(eW, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma ff = a("infested_mossy_stone_bricks", $$0x -> new dqd(eX, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma fg = a("infested_cracked_stone_bricks", $$0x -> new dqd(eY, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma fh = a("infested_chiseled_stone_bricks", $$0x -> new dqd(eZ, $$0x), dzy.d.a().a(ewk.j));
-   public static final dma fi = a("brown_mushroom_block", dqb::new, dzy.d.a().a(ewk.k).a(eba.e).d(0.2F).a(dtv.b).i());
-   public static final dma fj = a("red_mushroom_block", dqb::new, dzy.d.a().a(ewk.C).a(eba.e).d(0.2F).a(dtv.b).i());
-   public static final dma fk = a("mushroom_stem", dqb::new, dzy.d.a().a(ewk.d).a(eba.e).d(0.2F).a(dtv.b).i());
-   public static final dma fl = a("iron_bars", dqf::new, dzy.d.a().n().a(5.0F, 6.0F).a(dtv.bo).c());
-   public static final dma fm = a("chain", dnb::new, dzy.d.a().k().n().a(5.0F, 6.0F).a(dtv.U).c());
-   public static final dma fn = a("glass_pane", dqf::new, dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma fo = a(aku.a, dse::new, dzy.d.a().a(ewk.p).a(eba.m).d(1.0F).a(dtv.b).a(ewl.b));
-   public static final dma fp = a(aku.d, dzy.d.a().a(ewk.t).d(1.0F).a(dtv.b).a(ewl.b));
-   public static final dma fq = a(aku.c, $$0x -> new dlb(aku.b, aku.a, akv.a, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.b).a(ewl.b));
-   public static final dma fr = a(aku.f, $$0x -> new dlb(aku.e, aku.d, akv.b, $$0x), dzy.d.a().a(ewk.h).b().d().a(dtv.b).a(ewl.b));
-   public static final dma fs = a(aku.b, $$0x -> new due(aku.a, aku.c, akv.a, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.x).a(ewl.b));
-   public static final dma ft = a(aku.e, $$0x -> new due(aku.d, aku.f, akv.b, $$0x), dzy.d.a().a(ewk.h).b().e().d().a(dtv.x).a(ewl.b));
-   public static final dma fu = a("vine", dvk::new, dzy.d.a().a(ewk.h).p().b().e().d(0.2F).a(dtv.y).i().a(ewl.b));
-   public static final dma fv = a("glow_lichen", dpn::new, dzy.d.a().a(ewk.aj).p().b().d(0.2F).a(dtv.aE).a(dpn.b(7)).i().a(ewl.b));
-   public static final dma fw = a("resin_clump", drf::new, dzy.d.a().a(ewk.L).p().b().a(dtv.bm).i().a(ewl.b));
-   public static final dma fx = a("oak_fence_gate", $$0x -> new dpa(ebn.b, $$0x), dzy.d.a().a(n.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma fy = a("brick_stairs", cr);
-   public static final dma fz = a("stone_brick_stairs", eW);
-   public static final dma fA = a("mud_brick_stairs", fb);
-   public static final dma fB = a("mycelium", drj::new, dzy.d.a().a(ewk.y).e().d(0.6F).a(dtv.d));
-   public static final dma fC = a("lily_pad", dvr::new, dzy.d.a().a(ewk.h).d().a(dtv.e).c().a(ewl.b));
-   public static final dma fD = a("resin_block", dzy.d.a().a(ewk.L).a(eba.b).a(dtv.bm));
-   public static final dma fE = a("resin_bricks", dzy.d.a().a(ewk.L).a(eba.b).n().a(dtv.bn).a(1.5F, 6.0F));
-   public static final dma fF = a("resin_brick_stairs", fE);
-   public static final dma fG = a("resin_brick_slab", $$0x -> new dtl($$0x), dzy.d.a().a(ewk.L).a(eba.b).n().a(dtv.bn).a(1.5F, 6.0F));
-   public static final dma fH = a("resin_brick_wall", $$0x -> new dvm($$0x), dzy.d.a().a(ewk.L).a(eba.b).n().a(dtv.bn).a(1.5F, 6.0F));
-   public static final dma fI = a("chiseled_resin_bricks", dzy.d.a().a(ewk.L).a(eba.b).n().a(dtv.bn).a(1.5F, 6.0F));
-   public static final dma fJ = a("nether_bricks", dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma fK = a("nether_brick_fence", doz::new, dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma fL = a("nether_brick_stairs", fJ);
-   public static final dma fM = a("nether_wart", drn::new, dzy.d.a().a(ewk.C).b().e().a(dtv.z).a(ewl.b));
-   public static final dma fN = a("enchanting_table", don::new, dzy.d.a().a(ewk.C).a(eba.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
-   public static final dma fO = a("brewing_stand", dmf::new, dzy.d.a().a(ewk.g).d(0.5F).a($$0x -> 1).c());
-   public static final dma fP = a("cauldron", dmw::new, dzy.d.a().a(ewk.l).n().d(2.0F).c());
-   public static final dma fQ = a("water_cauldron", $$0x -> new dqn(djy.c.b, kb.d, $$0x), dzy.d.b(fP));
-   public static final dma fR = a("lava_cauldron", dqm::new, dzy.d.b(fP).a($$0x -> 15));
-   public static final dma fS = a("powder_snow_cauldron", $$0x -> new dqn(djy.c.c, kb.f, $$0x), dzy.d.b(fP));
-   public static final dma fT = a("end_portal", dop::new, dzy.d.a().a(ewk.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ewl.c));
-   public static final dma fU = a("end_portal_frame", doq::new, dzy.d.a().a(ewk.B).a(eba.b).a(dtv.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
-   public static final dma fV = a("end_stone", dzy.d.a().a(ewk.c).a(eba.b).n().a(3.0F, 9.0F));
-   public static final dma fW = a("dragon_egg", dok::new, dzy.d.a().a(ewk.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(ewl.b));
-   public static final dma fX = a("redstone_lamp", dsj::new, dzy.d.a().a(ewk.L).a(a(15)).d(0.3F).a(dtv.h).a(dmc::b));
-   public static final dma fY = a("cocoa", dnh::new, dzy.d.a().a(ewk.h).e().a(0.2F, 3.0F).a(dtv.b).c().a(ewl.b));
-   public static final dma fZ = a("sandstone_stairs", bc);
-   public static final dma ga = a("emerald_ore", $$0x -> new dol(btm.a(3, 7), $$0x), dzy.d.a().a(ewk.l).a(eba.b).n().a(3.0F, 3.0F));
-   public static final dma gb = a("deepslate_emerald_ore", $$0x -> new dol(btm.a(3, 7), $$0x), dzy.d.b(ga).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma gc = a("ender_chest", dos::new, dzy.d.a().a(ewk.l).a(eba.b).a(22.5F, 600.0F).a($$0x -> 7));
-   public static final dma gd = a("tripwire_hook", dvd::new, dzy.d.a().b().a(dtv.b).a(ewl.b));
-   public static final dma ge = a("tripwire", $$0x -> new dvc(gd, $$0x), dzy.d.a().b().a(ewl.b));
-   public static final dma gf = a("emerald_block", dzy.d.a().a(ewk.H).a(eba.n).n().a(5.0F, 6.0F).a(dtv.g));
-   public static final dma gg = a("spruce_stairs", o);
-   public static final dma gh = a("birch_stairs", p);
-   public static final dma gi = a("jungle_stairs", q);
-   public static final dma gj = a("command_block", $$0x -> new dnj(false, $$0x), dzy.d.a().a(ewk.A).n().a(-1.0F, 3600000.0F).g());
-   public static final dma gk = a("beacon", dls::new, dzy.d.a().a(ewk.F).a(eba.d).d(3.0F).a($$0x -> 15).c().a(dmc::b));
-   public static final dma gl = a("cobblestone_wall", dvm::new, dzy.d.b(m).k());
-   public static final dma gm = a("mossy_cobblestone_wall", dvm::new, dzy.d.b(m).k());
-   public static final dma gn = a("flower_pot", $$0x -> new dpg(a, $$0x), c());
-   public static final dma go = a("potted_torchflower", $$0x -> new dpg(ca, $$0x), c());
-   public static final dma gp = a("potted_oak_sapling", $$0x -> new dpg(z, $$0x), c());
-   public static final dma gq = a("potted_spruce_sapling", $$0x -> new dpg(A, $$0x), c());
-   public static final dma gr = a("potted_birch_sapling", $$0x -> new dpg(B, $$0x), c());
-   public static final dma gs = a("potted_jungle_sapling", $$0x -> new dpg(C, $$0x), c());
-   public static final dma gt = a("potted_acacia_sapling", $$0x -> new dpg(D, $$0x), c());
-   public static final dma gu = a("potted_cherry_sapling", $$0x -> new dpg(E, $$0x), c());
-   public static final dma gv = a("potted_dark_oak_sapling", $$0x -> new dpg(F, $$0x), c());
-   public static final dma gw = a("potted_pale_oak_sapling", $$0x -> new dpg(G, $$0x), c());
-   public static final dma gx = a("potted_mangrove_propagule", $$0x -> new dpg(H, $$0x), c());
-   public static final dma gy = a("potted_fern", $$0x -> new dpg(bB, $$0x), c());
-   public static final dma gz = a("potted_dandelion", $$0x -> new dpg(bZ, $$0x), c());
-   public static final dma gA = a("potted_poppy", $$0x -> new dpg(cb, $$0x), c());
-   public static final dma gB = a("potted_blue_orchid", $$0x -> new dpg(cc, $$0x), c());
-   public static final dma gC = a("potted_allium", $$0x -> new dpg(cd, $$0x), c());
-   public static final dma gD = a("potted_azure_bluet", $$0x -> new dpg(ce, $$0x), c());
-   public static final dma gE = a("potted_red_tulip", $$0x -> new dpg(cf, $$0x), c());
-   public static final dma gF = a("potted_orange_tulip", $$0x -> new dpg(cg, $$0x), c());
-   public static final dma gG = a("potted_white_tulip", $$0x -> new dpg(ch, $$0x), c());
-   public static final dma gH = a("potted_pink_tulip", $$0x -> new dpg(ci, $$0x), c());
-   public static final dma gI = a("potted_oxeye_daisy", $$0x -> new dpg(cj, $$0x), c());
-   public static final dma gJ = a("potted_cornflower", $$0x -> new dpg(ck, $$0x), c());
-   public static final dma gK = a("potted_lily_of_the_valley", $$0x -> new dpg(cm, $$0x), c());
-   public static final dma gL = a("potted_wither_rose", $$0x -> new dpg(cl, $$0x), c());
-   public static final dma gM = a("potted_red_mushroom", $$0x -> new dpg(co, $$0x), c());
-   public static final dma gN = a("potted_brown_mushroom", $$0x -> new dpg(cn, $$0x), c());
-   public static final dma gO = a("potted_dead_bush", $$0x -> new dpg(bC, $$0x), c());
-   public static final dma gP = a("potted_cactus", $$0x -> new dpg(ee, $$0x), c());
-   public static final dma gQ = a("carrots", dmt::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma gR = a("potatoes", drz::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma gS = a("oak_button", $$0x -> new dml(eao.g, 30, $$0x), b());
-   public static final dma gT = a("spruce_button", $$0x -> new dml(eao.h, 30, $$0x), b());
-   public static final dma gU = a("birch_button", $$0x -> new dml(eao.i, 30, $$0x), b());
-   public static final dma gV = a("jungle_button", $$0x -> new dml(eao.l, 30, $$0x), b());
-   public static final dma gW = a("acacia_button", $$0x -> new dml(eao.j, 30, $$0x), b());
-   public static final dma gX = a("cherry_button", $$0x -> new dml(eao.k, 30, $$0x), b());
-   public static final dma gY = a("dark_oak_button", $$0x -> new dml(eao.m, 30, $$0x), b());
-   public static final dma gZ = a("pale_oak_button", $$0x -> new dml(eao.n, 30, $$0x), b());
-   public static final dma ha = a("mangrove_button", $$0x -> new dml(eao.q, 30, $$0x), b());
-   public static final dma hb = a("bamboo_button", $$0x -> new dml(eao.r, 30, $$0x), b());
-   public static final dma hc = a("skeleton_skull", $$0x -> new dtk(dtk.b.c, $$0x), dzy.d.a().a(eba.r).d(1.0F).a(ewl.b));
-   public static final dma hd = a("skeleton_wall_skull", $$0x -> new dvp(dtk.b.c, $$0x), a(hc, true).d(1.0F).a(ewl.b));
-   public static final dma he = a("wither_skeleton_skull", dwh::new, dzy.d.a().a(eba.u).d(1.0F).a(ewl.b));
-   public static final dma hf = a("wither_skeleton_wall_skull", dwi::new, a(he, true).d(1.0F).a(ewl.b));
-   public static final dma hg = a("zombie_head", $$0x -> new dtk(dtk.b.f, $$0x), dzy.d.a().a(eba.q).d(1.0F).a(ewl.b));
-   public static final dma hh = a("zombie_wall_head", $$0x -> new dvp(dtk.b.f, $$0x), a(hg, true).d(1.0F).a(ewl.b));
-   public static final dma hi = a("player_head", drv::new, dzy.d.a().a(eba.w).d(1.0F).a(ewl.b));
-   public static final dma hj = a("player_wall_head", drw::new, a(hi, true).d(1.0F).a(ewl.b));
-   public static final dma hk = a("creeper_head", $$0x -> new dtk(dtk.b.g, $$0x), dzy.d.a().a(eba.s).d(1.0F).a(ewl.b));
-   public static final dma hl = a("creeper_wall_head", $$0x -> new dvp(dtk.b.g, $$0x), a(hk, true).d(1.0F).a(ewl.b));
-   public static final dma hm = a("dragon_head", $$0x -> new dtk(dtk.b.i, $$0x), dzy.d.a().a(eba.t).d(1.0F).a(ewl.b));
-   public static final dma hn = a("dragon_wall_head", $$0x -> new dvp(dtk.b.i, $$0x), a(hm, true).d(1.0F).a(ewl.b));
-   public static final dma ho = a("piglin_head", $$0x -> new dtk(dtk.b.h, $$0x), dzy.d.a().a(eba.v).d(1.0F).a(ewl.b));
-   public static final dma hp = a("piglin_wall_head", drs::new, a(ho, true).d(1.0F).a(ewl.b));
-   public static final dma hq = a("anvil", dla::new, dzy.d.a().a(ewk.g).n().a(5.0F, 1200.0F).a(dtv.n).a(ewl.c));
-   public static final dma hr = a("chipped_anvil", dla::new, dzy.d.a().a(ewk.g).n().a(5.0F, 1200.0F).a(dtv.n).a(ewl.c));
-   public static final dma hs = a("damaged_anvil", dla::new, dzy.d.a().a(ewk.g).n().a(5.0F, 1200.0F).a(dtv.n).a(ewl.c));
-   public static final dma ht = a("trapped_chest", dva::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma hu = a("light_weighted_pressure_plate", $$0x -> new dwe(15, eao.d, $$0x), dzy.d.a().a(ewk.E).k().b().d(0.5F).a(ewl.b));
-   public static final dma hv = a("heavy_weighted_pressure_plate", $$0x -> new dwe(150, eao.b, $$0x), dzy.d.a().a(ewk.g).k().b().d(0.5F).a(ewl.b));
-   public static final dma hw = a("comparator", dnk::new, dzy.d.a().d().a(dtv.f).a(ewl.b));
-   public static final dma hx = a("daylight_detector", dnz::new, dzy.d.a().a(ewk.n).a(eba.e).d(0.2F).a(dtv.b).i());
-   public static final dma hy = a("redstone_block", dsb::new, dzy.d.a().a(ewk.e).n().a(5.0F, 6.0F).a(dtv.g).a(dmc::b));
-   public static final dma hz = a("nether_quartz_ore", $$0x -> new dol(btm.a(2, 5), $$0x), dzy.d.a().a(ewk.J).a(eba.b).n().a(3.0F, 3.0F).a(dtv.P));
-   public static final dma hA = a("hopper", dpz::new, dzy.d.a().a(ewk.l).n().a(3.0F, 4.8F).a(dtv.g).c());
-   public static final dma hB = a("quartz_block", dzy.d.a().a(ewk.o).a(eba.b).n().d(0.8F));
-   public static final dma hC = a("chiseled_quartz_block", dzy.d.a().a(ewk.o).a(eba.b).n().d(0.8F));
-   public static final dma hD = a("quartz_pillar", dss::new, dzy.d.a().a(ewk.o).a(eba.b).n().d(0.8F));
-   public static final dma hE = a("quartz_stairs", hB);
-   public static final dma hF = a("activator_rail", dsc::new, dzy.d.a().b().d(0.7F).a(dtv.g));
-   public static final dma hG = a("dropper", dom::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F));
-   public static final dma hH = a("white_terracotta", duq::new, dzy.d.a().a(ewk.K).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hI = a("orange_terracotta", duq::new, dzy.d.a().a(ewk.L).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hJ = a("magenta_terracotta", duq::new, dzy.d.a().a(ewk.M).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hK = a("light_blue_terracotta", duq::new, dzy.d.a().a(ewk.N).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hL = a("yellow_terracotta", duq::new, dzy.d.a().a(ewk.O).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hM = a("lime_terracotta", duq::new, dzy.d.a().a(ewk.P).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hN = a("pink_terracotta", duq::new, dzy.d.a().a(ewk.Q).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hO = a("gray_terracotta", duq::new, dzy.d.a().a(ewk.R).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hP = a("light_gray_terracotta", duq::new, dzy.d.a().a(ewk.S).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hQ = a("cyan_terracotta", duq::new, dzy.d.a().a(ewk.T).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hR = a("purple_terracotta", duq::new, dzy.d.a().a(ewk.U).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hS = a("blue_terracotta", duq::new, dzy.d.a().a(ewk.V).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hT = a("brown_terracotta", duq::new, dzy.d.a().a(ewk.W).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hU = a("green_terracotta", duq::new, dzy.d.a().a(ewk.X).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hV = a("red_terracotta", duq::new, dzy.d.a().a(ewk.Y).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hW = a("black_terracotta", duq::new, dzy.d.a().a(ewk.Z).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma hX = a("white_stained_glass_pane", $$0x -> new dub(cxw.a, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma hY = a("orange_stained_glass_pane", $$0x -> new dub(cxw.b, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma hZ = a("magenta_stained_glass_pane", $$0x -> new dub(cxw.c, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ia = a("light_blue_stained_glass_pane", $$0x -> new dub(cxw.d, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ib = a("yellow_stained_glass_pane", $$0x -> new dub(cxw.e, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ic = a("lime_stained_glass_pane", $$0x -> new dub(cxw.f, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma id = a("pink_stained_glass_pane", $$0x -> new dub(cxw.g, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ie = a("gray_stained_glass_pane", $$0x -> new dub(cxw.h, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma if = a("light_gray_stained_glass_pane", $$0x -> new dub(cxw.i, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ig = a("cyan_stained_glass_pane", $$0x -> new dub(cxw.j, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ih = a("purple_stained_glass_pane", $$0x -> new dub(cxw.k, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ii = a("blue_stained_glass_pane", $$0x -> new dub(cxw.l, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ij = a("brown_stained_glass_pane", $$0x -> new dub(cxw.m, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma ik = a("green_stained_glass_pane", $$0x -> new dub(cxw.n, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma il = a("red_stained_glass_pane", $$0x -> new dub(cxw.o, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma im = a("black_stained_glass_pane", $$0x -> new dub(cxw.p, $$0x), dzy.d.a().a(eba.d).d(0.3F).a(dtv.h).c());
-   public static final dma in = a("acacia_stairs", r);
-   public static final dma io = a("cherry_stairs", s);
-   public static final dma ip = a("dark_oak_stairs", t);
-   public static final dma iq = a("pale_oak_stairs", v);
-   public static final dma ir = a("mangrove_stairs", w);
-   public static final dma is = a("bamboo_stairs", x);
-   public static final dma it = a("bamboo_mosaic_stairs", y);
-   public static final dma iu = a("slime_block", dtm::new, dzy.d.a().a(ewk.b).a(0.8F).a(dtv.o).c());
-   public static final dma iv = a("barrier", dlh::new, dzy.d.a().a(-1.0F, 3600000.8F).a(a(ewk.a)).g().c().a(dmc::a).o().a(ewl.c));
-   public static final dma iw = a("light", dqt::new, dzy.d.a().p().a(-1.0F, 3600000.8F).a(a(ewk.a)).g().c().a(dqt.e));
-   public static final dma ix = a("iron_trapdoor", $$0x -> new duz(eao.b, $$0x), dzy.d.a().a(ewk.g).n().d(5.0F).c().a(dmc::a));
-   public static final dma iy = a("prismarine", dzy.d.a().a(ewk.x).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iz = a("prismarine_bricks", dzy.d.a().a(ewk.F).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iA = a("dark_prismarine", dzy.d.a().a(ewk.F).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iB = a("prismarine_stairs", iy);
-   public static final dma iC = a("prismarine_brick_stairs", iz);
-   public static final dma iD = a("dark_prismarine_stairs", iA);
-   public static final dma iE = a("prismarine_slab", dtl::new, dzy.d.a().a(ewk.x).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iF = a("prismarine_brick_slab", dtl::new, dzy.d.a().a(ewk.F).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iG = a("dark_prismarine_slab", dtl::new, dzy.d.a().a(ewk.F).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma iH = a("sea_lantern", dzy.d.a().a(ewk.o).a(eba.d).d(0.3F).a(dtv.h).a($$0x -> 15).a(dmc::b));
-   public static final dma iI = a("hay_block", dpw::new, dzy.d.a().a(ewk.s).a(eba.o).d(0.5F).a(dtv.d));
-   public static final dma iJ = a("white_carpet", $$0x -> new dwj(cxw.a, $$0x), dzy.d.a().a(ewk.i).d(0.1F).a(dtv.i).i());
-   public static final dma iK = a("orange_carpet", $$0x -> new dwj(cxw.b, $$0x), dzy.d.a().a(ewk.p).d(0.1F).a(dtv.i).i());
-   public static final dma iL = a("magenta_carpet", $$0x -> new dwj(cxw.c, $$0x), dzy.d.a().a(ewk.q).d(0.1F).a(dtv.i).i());
-   public static final dma iM = a("light_blue_carpet", $$0x -> new dwj(cxw.d, $$0x), dzy.d.a().a(ewk.r).d(0.1F).a(dtv.i).i());
-   public static final dma iN = a("yellow_carpet", $$0x -> new dwj(cxw.e, $$0x), dzy.d.a().a(ewk.s).d(0.1F).a(dtv.i).i());
-   public static final dma iO = a("lime_carpet", $$0x -> new dwj(cxw.f, $$0x), dzy.d.a().a(ewk.t).d(0.1F).a(dtv.i).i());
-   public static final dma iP = a("pink_carpet", $$0x -> new dwj(cxw.g, $$0x), dzy.d.a().a(ewk.u).d(0.1F).a(dtv.i).i());
-   public static final dma iQ = a("gray_carpet", $$0x -> new dwj(cxw.h, $$0x), dzy.d.a().a(ewk.v).d(0.1F).a(dtv.i).i());
-   public static final dma iR = a("light_gray_carpet", $$0x -> new dwj(cxw.i, $$0x), dzy.d.a().a(ewk.w).d(0.1F).a(dtv.i).i());
-   public static final dma iS = a("cyan_carpet", $$0x -> new dwj(cxw.j, $$0x), dzy.d.a().a(ewk.x).d(0.1F).a(dtv.i).i());
-   public static final dma iT = a("purple_carpet", $$0x -> new dwj(cxw.k, $$0x), dzy.d.a().a(ewk.y).d(0.1F).a(dtv.i).i());
-   public static final dma iU = a("blue_carpet", $$0x -> new dwj(cxw.l, $$0x), dzy.d.a().a(ewk.z).d(0.1F).a(dtv.i).i());
-   public static final dma iV = a("brown_carpet", $$0x -> new dwj(cxw.m, $$0x), dzy.d.a().a(ewk.A).d(0.1F).a(dtv.i).i());
-   public static final dma iW = a("green_carpet", $$0x -> new dwj(cxw.n, $$0x), dzy.d.a().a(ewk.B).d(0.1F).a(dtv.i).i());
-   public static final dma iX = a("red_carpet", $$0x -> new dwj(cxw.o, $$0x), dzy.d.a().a(ewk.C).d(0.1F).a(dtv.i).i());
-   public static final dma iY = a("black_carpet", $$0x -> new dwj(cxw.p, $$0x), dzy.d.a().a(ewk.D).d(0.1F).a(dtv.i).i());
-   public static final dma iZ = a("terracotta", duq::new, dzy.d.a().a(ewk.p).a(eba.b).n().a(1.25F, 4.2F));
-   public static final dma ja = a("coal_block", dzy.d.a().a(ewk.D).a(eba.b).n().a(5.0F, 6.0F));
-   public static final dma jb = a("packed_ice", dzy.d.a().a(ewk.f).a(eba.i).a(0.98F).d(0.5F).a(dtv.h));
-   public static final dma jc = a("sunflower", dum::new, dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma jd = a("lilac", dum::new, dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma je = a("rose_bush", dum::new, dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma jf = a("peony", dum::new, dzy.d.a().a(ewk.h).b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma jg = a("tall_grass", doj::new, dzy.d.a().a(ewk.h).p().b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma jh = a("large_fern", doj::new, dzy.d.a().a(ewk.h).p().b().d().a(dtv.d).a(dzy.c.b).i().a(ewl.b));
-   public static final dma ji = a("white_banner", $$0x -> new dlf(cxw.a, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jj = a("orange_banner", $$0x -> new dlf(cxw.b, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jk = a("magenta_banner", $$0x -> new dlf(cxw.c, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jl = a("light_blue_banner", $$0x -> new dlf(cxw.d, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jm = a("yellow_banner", $$0x -> new dlf(cxw.e, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jn = a("lime_banner", $$0x -> new dlf(cxw.f, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jo = a("pink_banner", $$0x -> new dlf(cxw.g, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jp = a("gray_banner", $$0x -> new dlf(cxw.h, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jq = a("light_gray_banner", $$0x -> new dlf(cxw.i, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jr = a("cyan_banner", $$0x -> new dlf(cxw.j, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma js = a("purple_banner", $$0x -> new dlf(cxw.k, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jt = a("blue_banner", $$0x -> new dlf(cxw.l, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma ju = a("brown_banner", $$0x -> new dlf(cxw.m, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jv = a("green_banner", $$0x -> new dlf(cxw.n, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jw = a("red_banner", $$0x -> new dlf(cxw.o, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jx = a("black_banner", $$0x -> new dlf(cxw.p, $$0x), dzy.d.a().a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jy = a("white_wall_banner", $$0x -> new dvl(cxw.a, $$0x), a(ji, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jz = a("orange_wall_banner", $$0x -> new dvl(cxw.b, $$0x), a(jj, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jA = a("magenta_wall_banner", $$0x -> new dvl(cxw.c, $$0x), a(jk, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jB = a("light_blue_wall_banner", $$0x -> new dvl(cxw.d, $$0x), a(jl, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jC = a("yellow_wall_banner", $$0x -> new dvl(cxw.e, $$0x), a(jm, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jD = a("lime_wall_banner", $$0x -> new dvl(cxw.f, $$0x), a(jn, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jE = a("pink_wall_banner", $$0x -> new dvl(cxw.g, $$0x), a(jo, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jF = a("gray_wall_banner", $$0x -> new dvl(cxw.h, $$0x), a(jp, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jG = a("light_gray_wall_banner", $$0x -> new dvl(cxw.i, $$0x), a(jq, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jH = a("cyan_wall_banner", $$0x -> new dvl(cxw.j, $$0x), a(jr, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jI = a("purple_wall_banner", $$0x -> new dvl(cxw.k, $$0x), a(js, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jJ = a("blue_wall_banner", $$0x -> new dvl(cxw.l, $$0x), a(jt, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jK = a("brown_wall_banner", $$0x -> new dvl(cxw.m, $$0x), a(ju, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jL = a("green_wall_banner", $$0x -> new dvl(cxw.n, $$0x), a(jv, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jM = a("red_wall_banner", $$0x -> new dvl(cxw.o, $$0x), a(jw, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jN = a("black_wall_banner", $$0x -> new dvl(cxw.p, $$0x), a(jx, true).a(ewk.n).k().a(eba.e).b().d(1.0F).a(dtv.b).i());
-   public static final dma jO = a("red_sandstone", dzy.d.a().a(ewk.p).a(eba.b).n().d(0.8F));
-   public static final dma jP = a("chiseled_red_sandstone", dzy.d.a().a(ewk.p).a(eba.b).n().d(0.8F));
-   public static final dma jQ = a("cut_red_sandstone", dzy.d.a().a(ewk.p).a(eba.b).n().d(0.8F));
-   public static final dma jR = a("red_sandstone_stairs", jO);
-   public static final dma jS = a("oak_slab", dtl::new, dzy.d.a().a(ewk.n).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jT = a("spruce_slab", dtl::new, dzy.d.a().a(ewk.I).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jU = a("birch_slab", dtl::new, dzy.d.a().a(ewk.c).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jV = a("jungle_slab", dtl::new, dzy.d.a().a(ewk.k).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jW = a("acacia_slab", dtl::new, dzy.d.a().a(ewk.p).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jX = a("cherry_slab", dtl::new, dzy.d.a().a(ewk.K).a(eba.e).a(2.0F, 3.0F).a(dtv.aV).i());
-   public static final dma jY = a("dark_oak_slab", dtl::new, dzy.d.a().a(ewk.A).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma jZ = a("pale_oak_slab", dtl::new, dzy.d.a().a(v.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma ka = a("mangrove_slab", dtl::new, dzy.d.a().a(ewk.C).a(eba.e).a(2.0F, 3.0F).a(dtv.b).i());
-   public static final dma kb = a("bamboo_slab", dtl::new, dzy.d.a().a(ewk.s).a(eba.e).a(2.0F, 3.0F).a(dtv.aT).i());
-   public static final dma kc = a("bamboo_mosaic_slab", dtl::new, dzy.d.a().a(ewk.s).a(eba.e).a(2.0F, 3.0F).a(dtv.aT).i());
-   public static final dma kd = a("stone_slab", dtl::new, dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma ke = a("smooth_stone_slab", dtl::new, dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kf = a("sandstone_slab", dtl::new, dzy.d.a().a(ewk.c).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kg = a("cut_sandstone_slab", dtl::new, dzy.d.a().a(ewk.c).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kh = a("petrified_oak_slab", dtl::new, dzy.d.a().a(ewk.n).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma ki = a("cobblestone_slab", dtl::new, dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kj = a("brick_slab", dtl::new, dzy.d.a().a(ewk.C).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kk = a("stone_brick_slab", dtl::new, dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kl = a("mud_brick_slab", dtl::new, dzy.d.a().a(ewk.S).a(eba.b).n().a(1.5F, 3.0F).a(dtv.aO));
-   public static final dma km = a("nether_brick_slab", dtl::new, dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma kn = a("quartz_slab", dtl::new, dzy.d.a().a(ewk.o).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma ko = a("red_sandstone_slab", dtl::new, dzy.d.a().a(ewk.p).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kp = a("cut_red_sandstone_slab", dtl::new, dzy.d.a().a(ewk.p).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kq = a("purpur_slab", dtl::new, dzy.d.a().a(ewk.q).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kr = a("smooth_stone", dzy.d.a().a(ewk.l).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma ks = a("smooth_sandstone", dzy.d.a().a(ewk.c).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kt = a("smooth_quartz", dzy.d.a().a(ewk.o).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma ku = a("smooth_red_sandstone", dzy.d.a().a(ewk.p).a(eba.b).n().a(2.0F, 6.0F));
-   public static final dma kv = a("spruce_fence_gate", $$0x -> new dpa(ebn.c, $$0x), dzy.d.a().a(o.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kw = a("birch_fence_gate", $$0x -> new dpa(ebn.d, $$0x), dzy.d.a().a(p.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kx = a("jungle_fence_gate", $$0x -> new dpa(ebn.g, $$0x), dzy.d.a().a(q.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma ky = a("acacia_fence_gate", $$0x -> new dpa(ebn.e, $$0x), dzy.d.a().a(r.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kz = a("cherry_fence_gate", $$0x -> new dpa(ebn.f, $$0x), dzy.d.a().a(s.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kA = a("dark_oak_fence_gate", $$0x -> new dpa(ebn.h, $$0x), dzy.d.a().a(t.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kB = a("pale_oak_fence_gate", $$0x -> new dpa(ebn.i, $$0x), dzy.d.a().a(v.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kC = a("mangrove_fence_gate", $$0x -> new dpa(ebn.l, $$0x), dzy.d.a().a(w.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kD = a("bamboo_fence_gate", $$0x -> new dpa(ebn.m, $$0x), dzy.d.a().a(x.w()).k().a(eba.e).a(2.0F, 3.0F).i());
-   public static final dma kE = a("spruce_fence", doz::new, dzy.d.a().a(o.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kF = a("birch_fence", doz::new, dzy.d.a().a(p.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kG = a("jungle_fence", doz::new, dzy.d.a().a(q.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kH = a("acacia_fence", doz::new, dzy.d.a().a(r.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kI = a("cherry_fence", doz::new, dzy.d.a().a(s.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.aV));
-   public static final dma kJ = a("dark_oak_fence", doz::new, dzy.d.a().a(t.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kK = a("pale_oak_fence", doz::new, dzy.d.a().a(v.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kL = a("mangrove_fence", doz::new, dzy.d.a().a(w.w()).a(eba.e).a(2.0F, 3.0F).i().a(dtv.b));
-   public static final dma kM = a("bamboo_fence", doz::new, dzy.d.a().a(x.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.aT).i());
-   public static final dma kN = a("spruce_door", $$0x -> new doh(eao.h, $$0x), dzy.d.a().a(o.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kO = a("birch_door", $$0x -> new doh(eao.i, $$0x), dzy.d.a().a(p.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kP = a("jungle_door", $$0x -> new doh(eao.l, $$0x), dzy.d.a().a(q.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kQ = a("acacia_door", $$0x -> new doh(eao.j, $$0x), dzy.d.a().a(r.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kR = a("cherry_door", $$0x -> new doh(eao.k, $$0x), dzy.d.a().a(s.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kS = a("dark_oak_door", $$0x -> new doh(eao.m, $$0x), dzy.d.a().a(t.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kT = a("pale_oak_door", $$0x -> new doh(eao.n, $$0x), dzy.d.a().a(v.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kU = a("mangrove_door", $$0x -> new doh(eao.q, $$0x), dzy.d.a().a(w.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kV = a("bamboo_door", $$0x -> new doh(eao.r, $$0x), dzy.d.a().a(x.w()).a(eba.e).d(3.0F).c().i().a(ewl.b));
-   public static final dma kW = a("end_rod", dor::new, dzy.d.a().l().d().a($$0x -> 14).a(dtv.b).c());
-   public static final dma kX = a("chorus_plant", dng::new, dzy.d.a().a(ewk.y).l().d(0.4F).a(dtv.b).c().a(ewl.b));
-   public static final dma kY = a("chorus_flower", $$0x -> new dnf(kX, $$0x), dzy.d.a().a(ewk.y).l().e().d(0.4F).a(dtv.b).c().a(dmc::a).a(ewl.b).a(dmc::b));
-   public static final dma kZ = a("purpur_block", dzy.d.a().a(ewk.q).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma la = a("purpur_pillar", dss::new, dzy.d.a().a(ewk.q).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma lb = a("purpur_stairs", kZ);
-   public static final dma lc = a("end_stone_bricks", dzy.d.a().a(ewk.c).a(eba.b).n().a(3.0F, 9.0F));
-   public static final dma ld = a("torchflower_crop", dux::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma le = a("pitcher_crop", dru::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma lf = a("pitcher_plant", doj::new, dzy.d.a().a(ewk.h).b().d().a(dtv.w).a(dzy.c.b).i().a(ewl.b));
-   public static final dma lg = a("beetroots", dlv::new, dzy.d.a().a(ewk.h).b().e().d().a(dtv.w).a(ewl.b));
-   public static final dma lh = a("dirt_path", dof::new, dzy.d.a().a(ewk.k).d(0.65F).a(dtv.d).c(dmc::a).b(dmc::a));
-   public static final dma li = a("end_gateway", doo::new, dzy.d.a().a(ewk.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ewl.c));
-   public static final dma lj = a("repeating_command_block", $$0x -> new dnj(false, $$0x), dzy.d.a().a(ewk.y).n().a(-1.0F, 3600000.0F).g());
-   public static final dma lk = a("chain_command_block", $$0x -> new dnj(true, $$0x), dzy.d.a().a(ewk.B).n().a(-1.0F, 3600000.0F).g());
-   public static final dma ll = a(
-      "frosted_ice", dpi::new, dzy.d.a().a(ewk.f).a(0.98F).d(0.5F).a(dtv.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bwm.aU).a(dmc::b)
-   );
-   public static final dma lm = a(
-      "magma_block", dqy::new, dzy.d.a().a(ewk.J).a(eba.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(dmc::a).e(dmc::a)
-   );
-   public static final dma ln = a("nether_wart_block", dzy.d.a().a(ewk.C).d(1.0F).a(dtv.L));
-   public static final dma lo = a("red_nether_bricks", dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma lp = a("bone_block", dss::new, dzy.d.a().a(ewk.c).a(eba.j).n().d(2.0F).a(dtv.Q));
-   public static final dma lq = a("structure_void", duh::new, dzy.d.a().p().b().g().o().a(ewl.b));
-   public static final dma lr = a("observer", drr::new, dzy.d.a().a(ewk.l).a(eba.b).d(3.0F).n().a(dmc::b));
-   public static final dma ls = a("shulker_box", $$0x -> new dth(null, $$0x), c(ewk.y));
-   public static final dma lt = a("white_shulker_box", $$0x -> new dth(cxw.a, $$0x), c(ewk.i));
-   public static final dma lu = a("orange_shulker_box", $$0x -> new dth(cxw.b, $$0x), c(ewk.p));
-   public static final dma lv = a("magenta_shulker_box", $$0x -> new dth(cxw.c, $$0x), c(ewk.q));
-   public static final dma lw = a("light_blue_shulker_box", $$0x -> new dth(cxw.d, $$0x), c(ewk.r));
-   public static final dma lx = a("yellow_shulker_box", $$0x -> new dth(cxw.e, $$0x), c(ewk.s));
-   public static final dma ly = a("lime_shulker_box", $$0x -> new dth(cxw.f, $$0x), c(ewk.t));
-   public static final dma lz = a("pink_shulker_box", $$0x -> new dth(cxw.g, $$0x), c(ewk.u));
-   public static final dma lA = a("gray_shulker_box", $$0x -> new dth(cxw.h, $$0x), c(ewk.v));
-   public static final dma lB = a("light_gray_shulker_box", $$0x -> new dth(cxw.i, $$0x), c(ewk.w));
-   public static final dma lC = a("cyan_shulker_box", $$0x -> new dth(cxw.j, $$0x), c(ewk.x));
-   public static final dma lD = a("purple_shulker_box", $$0x -> new dth(cxw.k, $$0x), c(ewk.U));
-   public static final dma lE = a("blue_shulker_box", $$0x -> new dth(cxw.l, $$0x), c(ewk.z));
-   public static final dma lF = a("brown_shulker_box", $$0x -> new dth(cxw.m, $$0x), c(ewk.A));
-   public static final dma lG = a("green_shulker_box", $$0x -> new dth(cxw.n, $$0x), c(ewk.B));
-   public static final dma lH = a("red_shulker_box", $$0x -> new dth(cxw.o, $$0x), c(ewk.C));
-   public static final dma lI = a("black_shulker_box", $$0x -> new dth(cxw.p, $$0x), c(ewk.D));
-   public static final dma lJ = a("white_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.a).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lK = a("orange_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.b).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lL = a("magenta_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.c).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lM = a("light_blue_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.d).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lN = a("yellow_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.e).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lO = a("lime_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.f).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lP = a("pink_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.g).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lQ = a("gray_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.h).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lR = a("light_gray_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.i).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lS = a("cyan_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.j).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lT = a("purple_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.k).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lU = a("blue_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.l).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lV = a("brown_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.m).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lW = a("green_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.n).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lX = a("red_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.o).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lY = a("black_glazed_terracotta", dpm::new, dzy.d.a().a(cxw.p).a(eba.b).n().d(1.4F).a(ewl.e));
-   public static final dma lZ = a("white_concrete", dzy.d.a().a(cxw.a).a(eba.b).n().d(1.8F));
-   public static final dma ma = a("orange_concrete", dzy.d.a().a(cxw.b).a(eba.b).n().d(1.8F));
-   public static final dma mb = a("magenta_concrete", dzy.d.a().a(cxw.c).a(eba.b).n().d(1.8F));
-   public static final dma mc = a("light_blue_concrete", dzy.d.a().a(cxw.d).a(eba.b).n().d(1.8F));
-   public static final dma md = a("yellow_concrete", dzy.d.a().a(cxw.e).a(eba.b).n().d(1.8F));
-   public static final dma me = a("lime_concrete", dzy.d.a().a(cxw.f).a(eba.b).n().d(1.8F));
-   public static final dma mf = a("pink_concrete", dzy.d.a().a(cxw.g).a(eba.b).n().d(1.8F));
-   public static final dma mg = a("gray_concrete", dzy.d.a().a(cxw.h).a(eba.b).n().d(1.8F));
-   public static final dma mh = a("light_gray_concrete", dzy.d.a().a(cxw.i).a(eba.b).n().d(1.8F));
-   public static final dma mi = a("cyan_concrete", dzy.d.a().a(cxw.j).a(eba.b).n().d(1.8F));
-   public static final dma mj = a("purple_concrete", dzy.d.a().a(cxw.k).a(eba.b).n().d(1.8F));
-   public static final dma mk = a("blue_concrete", dzy.d.a().a(cxw.l).a(eba.b).n().d(1.8F));
-   public static final dma ml = a("brown_concrete", dzy.d.a().a(cxw.m).a(eba.b).n().d(1.8F));
-   public static final dma mm = a("green_concrete", dzy.d.a().a(cxw.n).a(eba.b).n().d(1.8F));
-   public static final dma mn = a("red_concrete", dzy.d.a().a(cxw.o).a(eba.b).n().d(1.8F));
-   public static final dma mo = a("black_concrete", dzy.d.a().a(cxw.p).a(eba.b).n().d(1.8F));
-   public static final dma mp = a("white_concrete_powder", $$0x -> new dnm(lZ, $$0x), dzy.d.a().a(cxw.a).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mq = a("orange_concrete_powder", $$0x -> new dnm(ma, $$0x), dzy.d.a().a(cxw.b).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mr = a("magenta_concrete_powder", $$0x -> new dnm(mb, $$0x), dzy.d.a().a(cxw.c).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma ms = a("light_blue_concrete_powder", $$0x -> new dnm(mc, $$0x), dzy.d.a().a(cxw.d).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mt = a("yellow_concrete_powder", $$0x -> new dnm(md, $$0x), dzy.d.a().a(cxw.e).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mu = a("lime_concrete_powder", $$0x -> new dnm(me, $$0x), dzy.d.a().a(cxw.f).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mv = a("pink_concrete_powder", $$0x -> new dnm(mf, $$0x), dzy.d.a().a(cxw.g).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mw = a("gray_concrete_powder", $$0x -> new dnm(mg, $$0x), dzy.d.a().a(cxw.h).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mx = a("light_gray_concrete_powder", $$0x -> new dnm(mh, $$0x), dzy.d.a().a(cxw.i).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma my = a("cyan_concrete_powder", $$0x -> new dnm(mi, $$0x), dzy.d.a().a(cxw.j).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mz = a("purple_concrete_powder", $$0x -> new dnm(mj, $$0x), dzy.d.a().a(cxw.k).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mA = a("blue_concrete_powder", $$0x -> new dnm(mk, $$0x), dzy.d.a().a(cxw.l).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mB = a("brown_concrete_powder", $$0x -> new dnm(ml, $$0x), dzy.d.a().a(cxw.m).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mC = a("green_concrete_powder", $$0x -> new dnm(mm, $$0x), dzy.d.a().a(cxw.n).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mD = a("red_concrete_powder", $$0x -> new dnm(mn, $$0x), dzy.d.a().a(cxw.o).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mE = a("black_concrete_powder", $$0x -> new dnm(mo, $$0x), dzy.d.a().a(cxw.p).a(eba.c).d(0.5F).a(dtv.j));
-   public static final dma mF = a("kelp", dqi::new, dzy.d.a().a(ewk.m).b().e().d().a(dtv.q).a(ewl.b));
-   public static final dma mG = a("kelp_plant", dqj::new, dzy.d.a().a(ewk.m).b().d().a(dtv.q).a(ewl.b));
-   public static final dma mH = a("dried_kelp_block", dzy.d.a().a(ewk.B).a(0.5F, 2.5F).a(dtv.d));
-   public static final dma mI = a("turtle_egg", dve::new, dzy.d.a().a(ewk.c).k().d(0.5F).a(dtv.g).e().c().a(ewl.b));
-   public static final dma mJ = a("sniffer_egg", dtq::new, dzy.d.a().a(ewk.C).d(0.5F).a(dtv.g).c());
-   public static final dma mK = a("dead_tube_coral_block", dzy.d.a().a(ewk.v).k().a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma mL = a("dead_brain_coral_block", dzy.d.a().a(ewk.v).k().a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma mM = a("dead_bubble_coral_block", dzy.d.a().a(ewk.v).k().a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma mN = a("dead_fire_coral_block", dzy.d.a().a(ewk.v).k().a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma mO = a("dead_horn_coral_block", dzy.d.a().a(ewk.v).k().a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma mP = a("tube_coral_block", $$0x -> new dnp(mK, $$0x), dzy.d.a().a(ewk.z).a(eba.b).n().a(1.5F, 6.0F).a(dtv.r));
-   public static final dma mQ = a("brain_coral_block", $$0x -> new dnp(mL, $$0x), dzy.d.a().a(ewk.u).a(eba.b).n().a(1.5F, 6.0F).a(dtv.r));
-   public static final dma mR = a("bubble_coral_block", $$0x -> new dnp(mM, $$0x), dzy.d.a().a(ewk.y).a(eba.b).n().a(1.5F, 6.0F).a(dtv.r));
-   public static final dma mS = a("fire_coral_block", $$0x -> new dnp(mN, $$0x), dzy.d.a().a(ewk.C).a(eba.b).n().a(1.5F, 6.0F).a(dtv.r));
-   public static final dma mT = a("horn_coral_block", $$0x -> new dnp(mO, $$0x), dzy.d.a().a(ewk.s).a(eba.b).n().a(1.5F, 6.0F).a(dtv.r));
-   public static final dma mU = a("dead_tube_coral", dlj::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma mV = a("dead_brain_coral", dlj::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma mW = a("dead_bubble_coral", dlj::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma mX = a("dead_fire_coral", dlj::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma mY = a("dead_horn_coral", dlj::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma mZ = a("tube_coral", $$0x -> new dnr(mU, $$0x), dzy.d.a().a(ewk.z).b().d().a(dtv.q).a(ewl.b));
-   public static final dma na = a("brain_coral", $$0x -> new dnr(mV, $$0x), dzy.d.a().a(ewk.u).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nb = a("bubble_coral", $$0x -> new dnr(mW, $$0x), dzy.d.a().a(ewk.y).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nc = a("fire_coral", $$0x -> new dnr(mX, $$0x), dzy.d.a().a(ewk.C).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nd = a("horn_coral", $$0x -> new dnr(mY, $$0x), dzy.d.a().a(ewk.s).b().d().a(dtv.q).a(ewl.b));
-   public static final dma ne = a("dead_tube_coral_fan", dli::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nf = a("dead_brain_coral_fan", dli::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma ng = a("dead_bubble_coral_fan", dli::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nh = a("dead_fire_coral_fan", dli::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma ni = a("dead_horn_coral_fan", dli::new, dzy.d.a().a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nj = a("tube_coral_fan", $$0x -> new dnq(ne, $$0x), dzy.d.a().a(ewk.z).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nk = a("brain_coral_fan", $$0x -> new dnq(nf, $$0x), dzy.d.a().a(ewk.u).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nl = a("bubble_coral_fan", $$0x -> new dnq(ng, $$0x), dzy.d.a().a(ewk.y).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nm = a("fire_coral_fan", $$0x -> new dnq(nh, $$0x), dzy.d.a().a(ewk.C).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nn = a("horn_coral_fan", $$0x -> new dnq(ni, $$0x), dzy.d.a().a(ewk.s).b().d().a(dtv.q).a(ewl.b));
-   public static final dma no = a("dead_tube_coral_wall_fan", dll::new, a(ne, false).a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma np = a("dead_brain_coral_wall_fan", dll::new, a(nf, false).a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nq = a("dead_bubble_coral_wall_fan", dll::new, a(ng, false).a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nr = a("dead_fire_coral_wall_fan", dll::new, a(nh, false).a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma ns = a("dead_horn_coral_wall_fan", dll::new, a(ni, false).a(ewk.v).k().a(eba.b).n().b().d());
-   public static final dma nt = a("tube_coral_wall_fan", $$0x -> new dns(no, $$0x), a(nj, false).a(ewk.z).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nu = a("brain_coral_wall_fan", $$0x -> new dns(np, $$0x), a(nk, false).a(ewk.u).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nv = a("bubble_coral_wall_fan", $$0x -> new dns(nq, $$0x), a(nl, false).a(ewk.y).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nw = a("fire_coral_wall_fan", $$0x -> new dns(nr, $$0x), a(nm, false).a(ewk.C).b().d().a(dtv.q).a(ewl.b));
-   public static final dma nx = a("horn_coral_wall_fan", $$0x -> new dns(ns, $$0x), a(nn, false).a(ewk.s).b().d().a(dtv.q).a(ewl.b));
-   public static final dma ny = a("sea_pickle", dte::new, dzy.d.a().a(ewk.B).a($$0x -> dte.o($$0x) ? 0 : 3 + 3 * $$0x.c(dte.c)).a(dtv.o).c().a(ewl.b));
-   public static final dma nz = a("blue_ice", dpt::new, dzy.d.a().a(ewk.f).d(2.8F).a(0.989F).a(dtv.h));
-   public static final dma nA = a("conduit", dnn::new, dzy.d.a().a(ewk.F).k().a(eba.d).d(3.0F).a($$0x -> 15).c());
-   public static final dma nB = a("bamboo_sapling", dld::new, dzy.d.a().a(ewk.n).k().e().d().b().d(1.0F).a(dtv.t).a(dzy.c.b).i().a(ewl.b));
-   public static final dma nC = a("bamboo", dle::new, dzy.d.a().a(ewk.h).k().e().d().d(1.0F).a(dtv.s).c().f().a(dzy.c.b).i().a(ewl.b).a(dmc::b));
-   public static final dma nD = a("potted_bamboo", $$0x -> new dpg(nC, $$0x), c());
-   public static final dma nE = a("void_air", dkx::new, dzy.d.a().p().b().g().m());
-   public static final dma nF = a("cave_air", dkx::new, dzy.d.a().p().b().g().m());
-   public static final dma nG = a("bubble_column", dmh::new, dzy.d.a().a(ewk.m).p().b().g().a(ewl.b).j().a(dtv.a));
-   public static final dma nH = a("polished_granite_stairs", d);
-   public static final dma nI = a("smooth_red_sandstone_stairs", ku);
-   public static final dma nJ = a("mossy_stone_brick_stairs", eX);
-   public static final dma nK = a("polished_diorite_stairs", f);
-   public static final dma nL = a("mossy_cobblestone_stairs", cv);
-   public static final dma nM = a("end_stone_brick_stairs", lc);
-   public static final dma nN = a("stone_stairs", b);
-   public static final dma nO = a("smooth_sandstone_stairs", ks);
-   public static final dma nP = a("smooth_quartz_stairs", kt);
-   public static final dma nQ = a("granite_stairs", c);
-   public static final dma nR = a("andesite_stairs", g);
-   public static final dma nS = a("red_nether_brick_stairs", lo);
-   public static final dma nT = a("polished_andesite_stairs", h);
-   public static final dma nU = a("diorite_stairs", e);
-   public static final dma nV = a("polished_granite_slab", dtl::new, dzy.d.b(d));
-   public static final dma nW = a("smooth_red_sandstone_slab", dtl::new, dzy.d.b(ku));
-   public static final dma nX = a("mossy_stone_brick_slab", dtl::new, dzy.d.b(eX));
-   public static final dma nY = a("polished_diorite_slab", dtl::new, dzy.d.b(f));
-   public static final dma nZ = a("mossy_cobblestone_slab", dtl::new, dzy.d.b(cv));
-   public static final dma oa = a("end_stone_brick_slab", dtl::new, dzy.d.b(lc));
-   public static final dma ob = a("smooth_sandstone_slab", dtl::new, dzy.d.b(ks));
-   public static final dma oc = a("smooth_quartz_slab", dtl::new, dzy.d.b(kt));
-   public static final dma od = a("granite_slab", dtl::new, dzy.d.b(c));
-   public static final dma oe = a("andesite_slab", dtl::new, dzy.d.b(g));
-   public static final dma of = a("red_nether_brick_slab", dtl::new, dzy.d.b(lo));
-   public static final dma og = a("polished_andesite_slab", dtl::new, dzy.d.b(h));
-   public static final dma oh = a("diorite_slab", dtl::new, dzy.d.b(e));
-   public static final dma oi = a("brick_wall", dvm::new, dzy.d.b(cr).k());
-   public static final dma oj = a("prismarine_wall", dvm::new, dzy.d.b(iy).k());
-   public static final dma ok = a("red_sandstone_wall", dvm::new, dzy.d.b(jO).k());
-   public static final dma ol = a("mossy_stone_brick_wall", dvm::new, dzy.d.b(eX).k());
-   public static final dma om = a("granite_wall", dvm::new, dzy.d.b(c).k());
-   public static final dma on = a("stone_brick_wall", dvm::new, dzy.d.b(eW).k());
-   public static final dma oo = a("mud_brick_wall", dvm::new, dzy.d.b(fb).k());
-   public static final dma op = a("nether_brick_wall", dvm::new, dzy.d.b(fJ).k());
-   public static final dma oq = a("andesite_wall", dvm::new, dzy.d.b(g).k());
-   public static final dma or = a("red_nether_brick_wall", dvm::new, dzy.d.b(lo).k());
-   public static final dma os = a("sandstone_wall", dvm::new, dzy.d.b(bc).k());
-   public static final dma ot = a("end_stone_brick_wall", dvm::new, dzy.d.b(lc).k());
-   public static final dma ou = a("diorite_wall", dvm::new, dzy.d.b(e).k());
-   public static final dma ov = a("scaffolding", dsw::new, dzy.d.a().a(ewk.c).b().a(dtv.u).f().a(dmc::a).a(ewl.b).a(dmc::b));
-   public static final dma ow = a("loom", dqx::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma ox = a("barrel", dlg::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma oy = a("smoker", dtp::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F).a(a(13)));
-   public static final dma oz = a("blast_furnace", dlz::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F).a(a(13)));
-   public static final dma oA = a("cartography_table", dmu::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma oB = a("fletching_table", dpd::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma oC = a("grindstone", dpp::new, dzy.d.a().a(ewk.g).n().a(2.0F, 6.0F).a(dtv.f).a(ewl.c));
-   public static final dma oD = a("lectern", dqq::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma oE = a("smithing_table", dto::new, dzy.d.a().a(ewk.n).a(eba.e).d(2.5F).a(dtv.b).i());
-   public static final dma oF = a("stonecutter", duf::new, dzy.d.a().a(ewk.l).a(eba.b).n().d(3.5F));
-   public static final dma oG = a("bell", dlw::new, dzy.d.a().a(ewk.E).k().d(5.0F).a(dtv.n).a(ewl.b));
-   public static final dma oH = a("lantern", dql::new, dzy.d.a().a(ewk.g).k().d(3.5F).a(dtv.A).a($$0x -> 15).c().a(ewl.b));
-   public static final dma oI = a("soul_lantern", dql::new, dzy.d.a().a(ewk.g).k().d(3.5F).a(dtv.A).a($$0x -> 10).c().a(ewl.b));
-   public static final dma oJ = a("campfire", $$0x -> new dmp(true, 1, $$0x), dzy.d.a().a(ewk.I).a(eba.e).d(2.0F).a(dtv.b).a(a(15)).c().i());
-   public static final dma oK = a("soul_campfire", $$0x -> new dmp(false, 2, $$0x), dzy.d.a().a(ewk.I).a(eba.e).d(2.0F).a(dtv.b).a(a(10)).c().i());
-   public static final dma oL = a("sweet_berry_bush", dul::new, dzy.d.a().a(ewk.h).e().b().a(dtv.v).a(ewl.b));
-   public static final dma oM = a("warped_stem", dss::new, b(ewk.ae));
-   public static final dma oN = a("stripped_warped_stem", dss::new, b(ewk.ae));
-   public static final dma oO = a("warped_hyphae", dss::new, dzy.d.a().a(ewk.af).a(eba.e).d(2.0F).a(dtv.B));
-   public static final dma oP = a("stripped_warped_hyphae", dss::new, dzy.d.a().a(ewk.af).a(eba.e).d(2.0F).a(dtv.B));
-   public static final dma oQ = a("warped_nylium", drq::new, dzy.d.a().a(ewk.ad).a(eba.b).n().d(0.4F).a(dtv.C).e());
-   public static final dma oR = a("warped_fungus", $$0x -> new dpj(rn.d, oQ, $$0x), dzy.d.a().a(ewk.x).d().b().a(dtv.D).a(ewl.b));
-   public static final dma oS = a("warped_wart_block", dzy.d.a().a(ewk.ag).d(1.0F).a(dtv.L));
-   public static final dma oT = a("warped_roots", dsr::new, dzy.d.a().a(ewk.x).p().b().d().a(dtv.E).a(dzy.c.b).a(ewl.b));
-   public static final dma oU = a("nether_sprouts", drl::new, dzy.d.a().a(ewk.x).p().b().d().a(dtv.O).a(dzy.c.b).a(ewl.b));
-   public static final dma oV = a("crimson_stem", dss::new, b(ewk.ab));
-   public static final dma oW = a("stripped_crimson_stem", dss::new, b(ewk.ab));
-   public static final dma oX = a("crimson_hyphae", dss::new, dzy.d.a().a(ewk.ac).a(eba.e).d(2.0F).a(dtv.B));
-   public static final dma oY = a("stripped_crimson_hyphae", dss::new, dzy.d.a().a(ewk.ac).a(eba.e).d(2.0F).a(dtv.B));
-   public static final dma oZ = a("crimson_nylium", drq::new, dzy.d.a().a(ewk.aa).a(eba.b).n().d(0.4F).a(dtv.C).e());
-   public static final dma pa = a("crimson_fungus", $$0x -> new dpj(rn.b, oZ, $$0x), dzy.d.a().a(ewk.J).d().b().a(dtv.D).a(ewl.b));
-   public static final dma pb = a("shroomlight", dzy.d.a().a(ewk.C).d(1.0F).a(dtv.F).a($$0x -> 15));
-   public static final dma pc = a("weeping_vines", dwc::new, dzy.d.a().a(ewk.J).e().b().d().a(dtv.G).a(ewl.b));
-   public static final dma pd = a("weeping_vines_plant", dwd::new, dzy.d.a().a(ewk.J).b().d().a(dtv.G).a(ewl.b));
-   public static final dma pe = a("twisting_vines", dvf::new, dzy.d.a().a(ewk.x).e().b().d().a(dtv.G).a(ewl.b));
-   public static final dma pf = a("twisting_vines_plant", dvg::new, dzy.d.a().a(ewk.x).b().d().a(dtv.G).a(ewl.b));
-   public static final dma pg = a("crimson_roots", dsr::new, dzy.d.a().a(ewk.J).p().b().d().a(dtv.E).a(dzy.c.b).a(ewl.b));
-   public static final dma ph = a("crimson_planks", dzy.d.a().a(ewk.ab).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma pi = a("warped_planks", dzy.d.a().a(ewk.ae).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma pj = a("crimson_slab", dtl::new, dzy.d.a().a(ph.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma pk = a("warped_slab", dtl::new, dzy.d.a().a(pi.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma pl = a("crimson_pressure_plate", $$0x -> new dsd(eao.o, $$0x), dzy.d.a().a(ph.w()).k().a(eba.e).b().d(0.5F).a(ewl.b));
-   public static final dma pm = a("warped_pressure_plate", $$0x -> new dsd(eao.p, $$0x), dzy.d.a().a(pi.w()).k().a(eba.e).b().d(0.5F).a(ewl.b));
-   public static final dma pn = a("crimson_fence", doz::new, dzy.d.a().a(ph.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma po = a("warped_fence", doz::new, dzy.d.a().a(pi.w()).a(eba.e).a(2.0F, 3.0F).a(dtv.aU));
-   public static final dma pp = a("crimson_trapdoor", $$0x -> new duz(eao.o, $$0x), dzy.d.a().a(ph.w()).a(eba.e).d(3.0F).c().a(dmc::a));
-   public static final dma pq = a("warped_trapdoor", $$0x -> new duz(eao.p, $$0x), dzy.d.a().a(pi.w()).a(eba.e).d(3.0F).c().a(dmc::a));
-   public static final dma pr = a("crimson_fence_gate", $$0x -> new dpa(ebn.j, $$0x), dzy.d.a().a(ph.w()).k().a(eba.e).a(2.0F, 3.0F));
-   public static final dma ps = a("warped_fence_gate", $$0x -> new dpa(ebn.k, $$0x), dzy.d.a().a(pi.w()).k().a(eba.e).a(2.0F, 3.0F));
-   public static final dma pt = a("crimson_stairs", ph);
-   public static final dma pu = a("warped_stairs", pi);
-   public static final dma pv = a("crimson_button", $$0x -> new dml(eao.o, 30, $$0x), b());
-   public static final dma pw = a("warped_button", $$0x -> new dml(eao.p, 30, $$0x), b());
-   public static final dma px = a("crimson_door", $$0x -> new doh(eao.o, $$0x), dzy.d.a().a(ph.w()).a(eba.e).d(3.0F).c().a(ewl.b));
-   public static final dma py = a("warped_door", $$0x -> new doh(eao.p, $$0x), dzy.d.a().a(pi.w()).a(eba.e).d(3.0F).c().a(ewl.b));
-   public static final dma pz = a("crimson_sign", $$0x -> new dud(ebn.j, $$0x), dzy.d.a().a(ph.w()).a(eba.e).k().b().d(1.0F));
-   public static final dma pA = a("warped_sign", $$0x -> new dud(ebn.k, $$0x), dzy.d.a().a(pi.w()).a(eba.e).k().b().d(1.0F));
-   public static final dma pB = a("crimson_wall_sign", $$0x -> new dvo(ebn.j, $$0x), a(pz, true).a(ph.w()).a(eba.e).k().b().d(1.0F));
-   public static final dma pC = a("warped_wall_sign", $$0x -> new dvo(ebn.k, $$0x), a(pA, true).a(pi.w()).a(eba.e).k().b().d(1.0F));
-   public static final dma pD = a("structure_block", dug::new, dzy.d.a().a(ewk.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dma pE = a("jigsaw", dqg::new, dzy.d.a().a(ewk.w).n().a(-1.0F, 3600000.0F).g());
-   public static final dma pF = a("test_block", dur::new, dzy.d.a().a(ewk.w).a(-1.0F, 3600000.0F).g());
-   public static final dma pG = a("test_instance_block", dus::new, dzy.d.a().c().a(-1.0F, 3600000.0F).g().c(dmc::b));
-   public static final dma pH = a("composter", dnl::new, dzy.d.a().a(ewk.n).a(eba.e).d(0.6F).a(dtv.b).i());
-   public static final dma pI = a("target", dup::new, dzy.d.a().a(ewk.o).d(0.5F).a(dtv.d));
-   public static final dma pJ = a("bee_nest", dlu::new, dzy.d.a().a(ewk.s).a(eba.e).d(0.3F).a(dtv.b).i());
-   public static final dma pK = a("beehive", dlu::new, dzy.d.a().a(ewk.n).a(eba.e).d(0.6F).a(dtv.b).i());
-   public static final dma pL = a("honey_block", dpy::new, dzy.d.a().a(ewk.p).b(0.4F).c(0.5F).c().a(dtv.p));
-   public static final dma pM = a("honeycomb_block", dzy.d.a().a(ewk.p).d(0.6F).a(dtv.r));
-   public static final dma pN = a("netherite_block", dzy.d.a().a(ewk.D).n().a(50.0F, 1200.0F).a(dtv.R));
-   public static final dma pO = a("ancient_debris", dzy.d.a().a(ewk.D).n().a(30.0F, 1200.0F).a(dtv.S));
-   public static final dma pP = a("crying_obsidian", dny::new, dzy.d.a().a(ewk.D).a(eba.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
-   public static final dma pQ = a("respawn_anchor", dso::new, dzy.d.a().a(ewk.D).a(eba.b).n().a(50.0F, 1200.0F).a($$0x -> dso.a($$0x, 15)));
-   public static final dma pR = a("potted_crimson_fungus", $$0x -> new dpg(pa, $$0x), c());
-   public static final dma pS = a("potted_warped_fungus", $$0x -> new dpg(oR, $$0x), c());
-   public static final dma pT = a("potted_crimson_roots", $$0x -> new dpg(pg, $$0x), c());
-   public static final dma pU = a("potted_warped_roots", $$0x -> new dpg(oT, $$0x), c());
-   public static final dma pV = a("lodestone", dzy.d.a().a(ewk.g).n().d(3.5F).a(dtv.T).a(ewl.c));
-   public static final dma pW = a("blackstone", dzy.d.a().a(ewk.D).a(eba.b).n().a(1.5F, 6.0F));
-   public static final dma pX = a("blackstone_stairs", pW);
-   public static final dma pY = a("blackstone_wall", dvm::new, dzy.d.b(pW).k());
-   public static final dma pZ = a("blackstone_slab", dtl::new, dzy.d.b(pW).a(2.0F, 6.0F));
-   public static final dma qa = a("polished_blackstone", dzy.d.b(pW).a(2.0F, 6.0F));
-   public static final dma qb = a("polished_blackstone_bricks", dzy.d.b(qa).a(1.5F, 6.0F));
-   public static final dma qc = a("cracked_polished_blackstone_bricks", dzy.d.b(qb));
-   public static final dma qd = a("chiseled_polished_blackstone", dzy.d.b(qa).a(1.5F, 6.0F));
-   public static final dma qe = a("polished_blackstone_brick_slab", dtl::new, dzy.d.b(qb).a(2.0F, 6.0F));
-   public static final dma qf = a("polished_blackstone_brick_stairs", qb);
-   public static final dma qg = a("polished_blackstone_brick_wall", dvm::new, dzy.d.b(qb).k());
-   public static final dma qh = a("gilded_blackstone", dzy.d.b(pW).a(dtv.W));
-   public static final dma qi = a("polished_blackstone_stairs", qa);
-   public static final dma qj = a("polished_blackstone_slab", dtl::new, dzy.d.b(qa));
-   public static final dma qk = a("polished_blackstone_pressure_plate", $$0x -> new dsd(eao.f, $$0x), dzy.d.a().a(ewk.D).k().a(eba.b).b().d(0.5F).a(ewl.b));
-   public static final dma ql = a("polished_blackstone_button", $$0x -> new dml(eao.e, 20, $$0x), b());
-   public static final dma qm = a("polished_blackstone_wall", dvm::new, dzy.d.b(qa).k());
-   public static final dma qn = a("chiseled_nether_bricks", dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma qo = a("cracked_nether_bricks", dzy.d.a().a(ewk.J).a(eba.b).n().a(2.0F, 6.0F).a(dtv.N));
-   public static final dma qp = a("quartz_bricks", dzy.d.b(hB));
-   public static final dma qq = a("candle", dmq::new, d(ewk.c));
-   public static final dma qr = a("white_candle", dmq::new, d(ewk.d));
-   public static final dma qs = a("orange_candle", dmq::new, d(ewk.p));
-   public static final dma qt = a("magenta_candle", dmq::new, d(ewk.q));
-   public static final dma qu = a("light_blue_candle", dmq::new, d(ewk.r));
-   public static final dma qv = a("yellow_candle", dmq::new, d(ewk.s));
-   public static final dma qw = a("lime_candle", dmq::new, d(ewk.t));
-   public static final dma qx = a("pink_candle", dmq::new, d(ewk.u));
-   public static final dma qy = a("gray_candle", dmq::new, d(ewk.v));
-   public static final dma qz = a("light_gray_candle", dmq::new, d(ewk.w));
-   public static final dma qA = a("cyan_candle", dmq::new, d(ewk.x));
-   public static final dma qB = a("purple_candle", dmq::new, d(ewk.y));
-   public static final dma qC = a("blue_candle", dmq::new, d(ewk.z));
-   public static final dma qD = a("brown_candle", dmq::new, d(ewk.A));
-   public static final dma qE = a("green_candle", dmq::new, d(ewk.B));
-   public static final dma qF = a("red_candle", dmq::new, d(ewk.C));
-   public static final dma qG = a("black_candle", dmq::new, d(ewk.D));
-   public static final dma qH = a("candle_cake", $$0x -> new dmr(qq, $$0x), dzy.d.b(eu).a(a(3)));
-   public static final dma qI = a("white_candle_cake", $$0x -> new dmr(qr, $$0x), dzy.d.b(qH));
-   public static final dma qJ = a("orange_candle_cake", $$0x -> new dmr(qs, $$0x), dzy.d.b(qH));
-   public static final dma qK = a("magenta_candle_cake", $$0x -> new dmr(qt, $$0x), dzy.d.b(qH));
-   public static final dma qL = a("light_blue_candle_cake", $$0x -> new dmr(qu, $$0x), dzy.d.b(qH));
-   public static final dma qM = a("yellow_candle_cake", $$0x -> new dmr(qv, $$0x), dzy.d.b(qH));
-   public static final dma qN = a("lime_candle_cake", $$0x -> new dmr(qw, $$0x), dzy.d.b(qH));
-   public static final dma qO = a("pink_candle_cake", $$0x -> new dmr(qx, $$0x), dzy.d.b(qH));
-   public static final dma qP = a("gray_candle_cake", $$0x -> new dmr(qy, $$0x), dzy.d.b(qH));
-   public static final dma qQ = a("light_gray_candle_cake", $$0x -> new dmr(qz, $$0x), dzy.d.b(qH));
-   public static final dma qR = a("cyan_candle_cake", $$0x -> new dmr(qA, $$0x), dzy.d.b(qH));
-   public static final dma qS = a("purple_candle_cake", $$0x -> new dmr(qB, $$0x), dzy.d.b(qH));
-   public static final dma qT = a("blue_candle_cake", $$0x -> new dmr(qC, $$0x), dzy.d.b(qH));
-   public static final dma qU = a("brown_candle_cake", $$0x -> new dmr(qD, $$0x), dzy.d.b(qH));
-   public static final dma qV = a("green_candle_cake", $$0x -> new dmr(qE, $$0x), dzy.d.b(qH));
-   public static final dma qW = a("red_candle_cake", $$0x -> new dmr(qF, $$0x), dzy.d.b(qH));
-   public static final dma qX = a("black_candle_cake", $$0x -> new dmr(qG, $$0x), dzy.d.b(qH));
-   public static final dma qY = a("amethyst_block", dky::new, dzy.d.a().a(ewk.y).d(1.5F).a(dtv.Y).n());
-   public static final dma qZ = a("budding_amethyst", dmj::new, dzy.d.a().a(ewk.y).e().d(1.5F).a(dtv.Y).n().a(ewl.b));
-   public static final dma ra = a("amethyst_cluster", $$0x -> new dkz(7.0F, 10.0F, $$0x), dzy.d.a().a(ewk.y).k().c().a(dtv.Z).d(1.5F).a($$0x -> 5).a(ewl.b));
-   public static final dma rb = a("large_amethyst_bud", $$0x -> new dkz(5.0F, 10.0F, $$0x), dzy.d.b(ra).a(dtv.ab).a($$0x -> 4));
-   public static final dma rc = a("medium_amethyst_bud", $$0x -> new dkz(4.0F, 10.0F, $$0x), dzy.d.b(ra).a(dtv.ac).a($$0x -> 2));
-   public static final dma rd = a("small_amethyst_bud", $$0x -> new dkz(3.0F, 8.0F, $$0x), dzy.d.b(ra).a(dtv.aa).a($$0x -> 1));
-   public static final dma re = a("tuff", dzy.d.a().a(ewk.R).a(eba.b).a(dtv.ad).n().a(1.5F, 6.0F));
-   public static final dma rf = a("tuff_slab", dtl::new, dzy.d.b(re));
-   public static final dma rg = a("tuff_stairs", $$0x -> new duc(re.m(), $$0x), dzy.d.b(re));
-   public static final dma rh = a("tuff_wall", dvm::new, dzy.d.b(re).k());
-   public static final dma ri = a("polished_tuff", dzy.d.b(re).a(dtv.af));
-   public static final dma rj = a("polished_tuff_slab", dtl::new, dzy.d.b(ri));
-   public static final dma rk = a("polished_tuff_stairs", $$0x -> new duc(ri.m(), $$0x), dzy.d.b(ri));
-   public static final dma rl = a("polished_tuff_wall", dvm::new, dzy.d.b(ri).k());
-   public static final dma rm = a("chiseled_tuff", dzy.d.b(re));
-   public static final dma rn = a("tuff_bricks", dzy.d.b(re).a(dtv.ae));
-   public static final dma ro = a("tuff_brick_slab", dtl::new, dzy.d.b(rn));
-   public static final dma rp = a("tuff_brick_stairs", $$0x -> new duc(rn.m(), $$0x), dzy.d.b(rn));
-   public static final dma rq = a("tuff_brick_wall", dvm::new, dzy.d.b(rn).k());
-   public static final dma rr = a("chiseled_tuff_bricks", dzy.d.b(rn));
-   public static final dma rs = a("calcite", dzy.d.a().a(ewk.K).a(eba.b).a(dtv.ag).n().d(0.75F));
-   public static final dma rt = a("tinted_glass", dut::new, dzy.d.b(aX).a(ewk.v).c().a(dmc::a).a(dmc::b).b(dmc::b).c(dmc::b));
-   public static final dma ru = a("powder_snow", dsa::new, dzy.d.a().a(ewk.i).d(0.25F).a(dtv.l).f().c().a(dmc::b));
-   public static final dma rv = a("sculk_sensor", dta::new, dzy.d.a().a(ewk.x).d(1.5F).a(dtv.az).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dta.o($$0x) == ebg.b));
-   public static final dma rw = a("calibrated_sculk_sensor", dmo::new, dzy.d.b(rv));
-   public static final dma rx = a("sculk", dsy::new, dzy.d.a().a(ewk.D).d(0.2F).a(dtv.aB));
-   public static final dma ry = a("sculk_vein", dtd::new, dzy.d.a().a(ewk.D).k().b().d(0.2F).a(dtv.aC).a(ewl.b));
-   public static final dma rz = a("sculk_catalyst", dsz::new, dzy.d.a().a(ewk.D).a(3.0F, 3.0F).a(dtv.aA).a($$0x -> 6));
-   public static final dma rA = a("sculk_shrieker", dtb::new, dzy.d.a().a(ewk.D).a(3.0F, 3.0F).a(dtv.aD));
-   public static final dma rB = a("copper_block", $$0x -> new dvw(dvt.a.a, $$0x), dzy.d.a().a(ewk.p).n().a(3.0F, 6.0F).a(dtv.aj));
-   public static final dma rC = a("exposed_copper", $$0x -> new dvw(dvt.a.b, $$0x), dzy.d.a(rB).a(ewk.S));
-   public static final dma rD = a("weathered_copper", $$0x -> new dvw(dvt.a.c, $$0x), dzy.d.a(rB).a(ewk.ae));
-   public static final dma rE = a("oxidized_copper", $$0x -> new dvw(dvt.a.d, $$0x), dzy.d.a(rB).a(ewk.ad));
-   public static final dma rF = a("copper_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.b(S));
-   public static final dma rG = a("deepslate_copper_ore", $$0x -> new dol(btd.a(0), $$0x), dzy.d.b(rF).a(ewk.ah).a(4.5F, 3.0F).a(dtv.aF));
-   public static final dma rH = a("oxidized_cut_copper", $$0x -> new dvw(dvt.a.d, $$0x), dzy.d.a(rE));
-   public static final dma rI = a("weathered_cut_copper", $$0x -> new dvw(dvt.a.c, $$0x), dzy.d.a(rD));
-   public static final dma rJ = a("exposed_cut_copper", $$0x -> new dvw(dvt.a.b, $$0x), dzy.d.a(rC));
-   public static final dma rK = a("cut_copper", $$0x -> new dvw(dvt.a.a, $$0x), dzy.d.a(rB));
-   public static final dma rL = a("oxidized_chiseled_copper", $$0x -> new dvw(dvt.a.d, $$0x), dzy.d.a(rE));
-   public static final dma rM = a("weathered_chiseled_copper", $$0x -> new dvw(dvt.a.c, $$0x), dzy.d.a(rD));
-   public static final dma rN = a("exposed_chiseled_copper", $$0x -> new dvw(dvt.a.b, $$0x), dzy.d.a(rC));
-   public static final dma rO = a("chiseled_copper", $$0x -> new dvw(dvt.a.a, $$0x), dzy.d.a(rB));
-   public static final dma rP = a("waxed_oxidized_chiseled_copper", dzy.d.a(rL));
-   public static final dma rQ = a("waxed_weathered_chiseled_copper", dzy.d.a(rM));
-   public static final dma rR = a("waxed_exposed_chiseled_copper", dzy.d.a(rN));
-   public static final dma rS = a("waxed_chiseled_copper", dzy.d.a(rO));
-   public static final dma rT = a("oxidized_cut_copper_stairs", $$0x -> new dvz(dvt.a.d, rH.m(), $$0x), dzy.d.a(rH));
-   public static final dma rU = a("weathered_cut_copper_stairs", $$0x -> new dvz(dvt.a.c, rI.m(), $$0x), dzy.d.a(rD));
-   public static final dma rV = a("exposed_cut_copper_stairs", $$0x -> new dvz(dvt.a.b, rJ.m(), $$0x), dzy.d.a(rC));
-   public static final dma rW = a("cut_copper_stairs", $$0x -> new dvz(dvt.a.a, rK.m(), $$0x), dzy.d.a(rB));
-   public static final dma rX = a("oxidized_cut_copper_slab", $$0x -> new dvy(dvt.a.d, $$0x), dzy.d.a(rH));
-   public static final dma rY = a("weathered_cut_copper_slab", $$0x -> new dvy(dvt.a.c, $$0x), dzy.d.a(rI));
-   public static final dma rZ = a("exposed_cut_copper_slab", $$0x -> new dvy(dvt.a.b, $$0x), dzy.d.a(rJ));
-   public static final dma sa = a("cut_copper_slab", $$0x -> new dvy(dvt.a.a, $$0x), dzy.d.a(rK));
-   public static final dma sb = a("waxed_copper_block", dzy.d.a(rB));
-   public static final dma sc = a("waxed_weathered_copper", dzy.d.a(rD));
-   public static final dma sd = a("waxed_exposed_copper", dzy.d.a(rC));
-   public static final dma se = a("waxed_oxidized_copper", dzy.d.a(rE));
-   public static final dma sf = a("waxed_oxidized_cut_copper", dzy.d.a(rE));
-   public static final dma sg = a("waxed_weathered_cut_copper", dzy.d.a(rD));
-   public static final dma sh = a("waxed_exposed_cut_copper", dzy.d.a(rC));
-   public static final dma si = a("waxed_cut_copper", dzy.d.a(rB));
-   public static final dma sj = b("waxed_oxidized_cut_copper_stairs", sf);
-   public static final dma sk = b("waxed_weathered_cut_copper_stairs", sg);
-   public static final dma sl = b("waxed_exposed_cut_copper_stairs", sh);
-   public static final dma sm = b("waxed_cut_copper_stairs", si);
-   public static final dma sn = a("waxed_oxidized_cut_copper_slab", dtl::new, dzy.d.a(sf).n());
-   public static final dma so = a("waxed_weathered_cut_copper_slab", dtl::new, dzy.d.a(sg).n());
-   public static final dma sp = a("waxed_exposed_cut_copper_slab", dtl::new, dzy.d.a(sh).n());
-   public static final dma sq = a("waxed_cut_copper_slab", dtl::new, dzy.d.a(si).n());
-   public static final dma sr = a("copper_door", $$0x -> new dvv(eao.c, dvt.a.a, $$0x), dzy.d.a().a(rB.w()).a(3.0F, 6.0F).c().a(ewl.b));
-   public static final dma ss = a("exposed_copper_door", $$0x -> new dvv(eao.c, dvt.a.b, $$0x), dzy.d.a(sr).a(rC.w()));
-   public static final dma st = a("oxidized_copper_door", $$0x -> new dvv(eao.c, dvt.a.d, $$0x), dzy.d.a(sr).a(rE.w()));
-   public static final dma su = a("weathered_copper_door", $$0x -> new dvv(eao.c, dvt.a.c, $$0x), dzy.d.a(sr).a(rD.w()));
-   public static final dma sv = a("waxed_copper_door", $$0x -> new doh(eao.c, $$0x), dzy.d.a(sr));
-   public static final dma sw = a("waxed_exposed_copper_door", $$0x -> new doh(eao.c, $$0x), dzy.d.a(ss));
-   public static final dma sx = a("waxed_oxidized_copper_door", $$0x -> new doh(eao.c, $$0x), dzy.d.a(st));
-   public static final dma sy = a("waxed_weathered_copper_door", $$0x -> new doh(eao.c, $$0x), dzy.d.a(su));
-   public static final dma sz = a("copper_trapdoor", $$0x -> new dwa(eao.c, dvt.a.a, $$0x), dzy.d.a().a(rB.w()).a(3.0F, 6.0F).n().c().a(dmc::a));
-   public static final dma sA = a("exposed_copper_trapdoor", $$0x -> new dwa(eao.c, dvt.a.b, $$0x), dzy.d.a(sz).a(rC.w()));
-   public static final dma sB = a("oxidized_copper_trapdoor", $$0x -> new dwa(eao.c, dvt.a.d, $$0x), dzy.d.a(sz).a(rE.w()));
-   public static final dma sC = a("weathered_copper_trapdoor", $$0x -> new dwa(eao.c, dvt.a.c, $$0x), dzy.d.a(sz).a(rD.w()));
-   public static final dma sD = a("waxed_copper_trapdoor", $$0x -> new duz(eao.c, $$0x), dzy.d.a(sz));
-   public static final dma sE = a("waxed_exposed_copper_trapdoor", $$0x -> new duz(eao.c, $$0x), dzy.d.a(sA));
-   public static final dma sF = a("waxed_oxidized_copper_trapdoor", $$0x -> new duz(eao.c, $$0x), dzy.d.a(sB));
-   public static final dma sG = a("waxed_weathered_copper_trapdoor", $$0x -> new duz(eao.c, $$0x), dzy.d.a(sC));
-   public static final dma sH = a(
-      "copper_grate", $$0x -> new dvx(dvt.a.a, $$0x), dzy.d.a().a(3.0F, 6.0F).a(dtv.al).a(ewk.p).c().n().a(dmc::a).a(dmc::b).b(dmc::b).c(dmc::b)
-   );
-   public static final dma sI = a("exposed_copper_grate", $$0x -> new dvx(dvt.a.b, $$0x), dzy.d.a(sH).a(ewk.S));
-   public static final dma sJ = a("weathered_copper_grate", $$0x -> new dvx(dvt.a.c, $$0x), dzy.d.a(sH).a(ewk.ae));
-   public static final dma sK = a("oxidized_copper_grate", $$0x -> new dvx(dvt.a.d, $$0x), dzy.d.a(sH).a(ewk.ad));
-   public static final dma sL = a("waxed_copper_grate", dvs::new, dzy.d.a(sH));
-   public static final dma sM = a("waxed_exposed_copper_grate", dvs::new, dzy.d.a(sI));
-   public static final dma sN = a("waxed_weathered_copper_grate", dvs::new, dzy.d.a(sJ));
-   public static final dma sO = a("waxed_oxidized_copper_grate", dvs::new, dzy.d.a(sK));
-   public static final dma sP = a("copper_bulb", $$0x -> new dvu(dvt.a.a, $$0x), dzy.d.a().a(rB.w()).a(3.0F, 6.0F).a(dtv.ak).n().a(dmc::b).a(a(15)));
-   public static final dma sQ = a("exposed_copper_bulb", $$0x -> new dvu(dvt.a.b, $$0x), dzy.d.a(sP).a(ewk.S).a(a(12)));
-   public static final dma sR = a("weathered_copper_bulb", $$0x -> new dvu(dvt.a.c, $$0x), dzy.d.a(sP).a(ewk.ae).a(a(8)));
-   public static final dma sS = a("oxidized_copper_bulb", $$0x -> new dvu(dvt.a.d, $$0x), dzy.d.a(sP).a(ewk.ad).a(a(4)));
-   public static final dma sT = a("waxed_copper_bulb", dno::new, dzy.d.a(sP));
-   public static final dma sU = a("waxed_exposed_copper_bulb", dno::new, dzy.d.a(sQ));
-   public static final dma sV = a("waxed_weathered_copper_bulb", dno::new, dzy.d.a(sR));
-   public static final dma sW = a("waxed_oxidized_copper_bulb", dno::new, dzy.d.a(sS));
-   public static final dma sX = a("lightning_rod", dqu::new, dzy.d.a().a(ewk.p).k().n().a(3.0F, 6.0F).a(dtv.aj).c());
-   public static final dma sY = a(
-      "pointed_dripstone", drx::new, dzy.d.a().a(ewk.W).k().a(eba.b).c().a(dtv.ai).e().a(1.5F, 3.0F).f().a(dzy.c.b).a(ewl.b).a(dmc::b)
-   );
-   public static final dma sZ = a("dripstone_block", dzy.d.a().a(ewk.W).a(eba.b).a(dtv.ah).n().a(1.5F, 1.0F));
-   public static final dma ta = a("cave_vines", dmy::new, dzy.d.a().a(ewk.h).e().b().a(dmx.i_(14)).d().a(dtv.am).a(ewl.b));
-   public static final dma tb = a("cave_vines_plant", dmz::new, dzy.d.a().a(ewk.h).b().a(dmx.i_(14)).d().a(dtv.am).a(ewl.b));
-   public static final dma tc = a("spore_blossom", dty::new, dzy.d.a().a(ewk.h).d().b().a(dtv.an).a(ewl.b));
-   public static final dma td = a("azalea", dlc::new, dzy.d.a().a(ewk.h).l().d().a(dtv.ao).c().a(ewl.b));
-   public static final dma te = a("flowering_azalea", dlc::new, dzy.d.a().a(ewk.h).l().d().a(dtv.ap).c().a(ewl.b));
-   public static final dma tf = a("moss_carpet", dms::new, dzy.d.a().a(ewk.B).d(0.1F).a(dtv.aq).a(ewl.b));
-   public static final dma tg = a("pink_petals", dpe::new, dzy.d.a().a(ewk.h).b().a(dtv.ar).a(ewl.b));
-   public static final dma th = a("wildflowers", dpe::new, dzy.d.a().a(ewk.h).b().a(dtv.ar).a(ewl.b));
-   public static final dma ti = a("leaf_litter", dqo::new, dzy.d.a().a(ewk.h).b().a(dtv.as).a(ewl.b));
-   public static final dma tj = a("moss_block", $$0x -> new dme(rg.n, $$0x), dzy.d.a().a(ewk.B).d(0.1F).a(dtv.at).a(ewl.b));
-   public static final dma tk = a("big_dripleaf", dlx::new, dzy.d.a().a(ewk.h).l().d(0.1F).a(dtv.au).a(ewl.b));
-   public static final dma tl = a("big_dripleaf_stem", dly::new, dzy.d.a().a(ewk.h).b().d(0.1F).a(dtv.au).a(ewl.b));
-   public static final dma tm = a("small_dripleaf", dtn::new, dzy.d.a().a(ewk.h).b().d().a(dtv.av).a(dzy.c.c).a(ewl.b));
-   public static final dma tn = a("hanging_roots", dpv::new, dzy.d.a().a(ewk.k).p().b().d().a(dtv.ax).a(dzy.c.b).i().a(ewl.b));
-   public static final dma to = a("rooted_dirt", dsq::new, dzy.d.a().a(ewk.k).d(0.5F).a(dtv.aw));
-   public static final dma tp = a("mud", dre::new, dzy.d.b(j).a(ewk.T).a(dmc::b).a(dmc::a).c(dmc::a).b(dmc::a).a(dtv.aN));
-   public static final dma tq = a("deepslate", dss::new, dzy.d.a().a(ewk.ah).a(eba.b).n().a(3.0F, 6.0F).a(dtv.aF));
-   public static final dma tr = a("cobbled_deepslate", dzy.d.b(tq).a(3.5F, 6.0F));
-   public static final dma ts = a("cobbled_deepslate_stairs", tr);
-   public static final dma tt = a("cobbled_deepslate_slab", dtl::new, dzy.d.b(tr));
-   public static final dma tu = a("cobbled_deepslate_wall", dvm::new, dzy.d.b(tr).k());
-   public static final dma tv = a("polished_deepslate", dzy.d.b(tr).a(dtv.aI));
-   public static final dma tw = a("polished_deepslate_stairs", tv);
-   public static final dma tx = a("polished_deepslate_slab", dtl::new, dzy.d.b(tv));
-   public static final dma ty = a("polished_deepslate_wall", dvm::new, dzy.d.b(tv).k());
-   public static final dma tz = a("deepslate_tiles", dzy.d.b(tr).a(dtv.aH));
-   public static final dma tA = a("deepslate_tile_stairs", tz);
-   public static final dma tB = a("deepslate_tile_slab", dtl::new, dzy.d.b(tz));
-   public static final dma tC = a("deepslate_tile_wall", dvm::new, dzy.d.b(tz).k());
-   public static final dma tD = a("deepslate_bricks", dzy.d.b(tr).a(dtv.aG));
-   public static final dma tE = a("deepslate_brick_stairs", tD);
-   public static final dma tF = a("deepslate_brick_slab", dtl::new, dzy.d.b(tD));
-   public static final dma tG = a("deepslate_brick_wall", dvm::new, dzy.d.b(tD).k());
-   public static final dma tH = a("chiseled_deepslate", dzy.d.b(tr).a(dtv.aG));
-   public static final dma tI = a("cracked_deepslate_bricks", dzy.d.b(tD));
-   public static final dma tJ = a("cracked_deepslate_tiles", dzy.d.b(tz));
-   public static final dma tK = a("infested_deepslate", $$0x -> new dqe(tq, $$0x), dzy.d.a().a(ewk.ah).a(dtv.aF));
-   public static final dma tL = a("smooth_basalt", dzy.d.b(em));
-   public static final dma tM = a("raw_iron_block", dzy.d.a().a(ewk.ai).a(eba.b).n().a(5.0F, 6.0F));
-   public static final dma tN = a("raw_copper_block", dzy.d.a().a(ewk.p).a(eba.b).n().a(5.0F, 6.0F));
-   public static final dma tO = a("raw_gold_block", dzy.d.a().a(ewk.E).a(eba.b).n().a(5.0F, 6.0F));
-   public static final dma tP = a("potted_azalea_bush", $$0x -> new dpg(td, $$0x), c());
-   public static final dma tQ = a("potted_flowering_azalea_bush", $$0x -> new dpg(te, $$0x), c());
-   public static final dma tR = a("ochre_froglight", dss::new, dzy.d.a().a(ewk.c).d(0.3F).a($$0x -> 15).a(dtv.aJ));
-   public static final dma tS = a("verdant_froglight", dss::new, dzy.d.a().a(ewk.aj).d(0.3F).a($$0x -> 15).a(dtv.aJ));
-   public static final dma tT = a("pearlescent_froglight", dss::new, dzy.d.a().a(ewk.u).d(0.3F).a($$0x -> 15).a(dtv.aJ));
-   public static final dma tU = a("frogspawn", dph::new, dzy.d.a().a(ewk.m).d().c().b().a(dtv.aK).a(ewl.b));
-   public static final dma tV = a("reinforced_deepslate", dzy.d.a().a(ewk.ah).a(eba.b).a(dtv.aF).a(55.0F, 1200.0F));
-   public static final dma tW = a("decorated_pot", dob::new, dzy.d.a().a(ewk.Y).a(0.0F, 0.0F).a(ewl.b).c());
-   public static final dma tX = a("crafter", dnt::new, dzy.d.a().a(ewk.l).a(1.5F, 3.5F));
-   public static final dma tY = a("trial_spawner", dvb::new, dzy.d.a().a(ewk.l).a(eba.b).a($$0x -> $$0x.c(dvb.b).a()).d(50.0F).a(dtv.be).c(dmc::b).c());
-   public static final dma tZ = a("vault", dvi::new, dzy.d.a().a(ewk.l).a(eba.b).c().a(dtv.bh).a($$0x -> $$0x.c(dvi.b).a()).d(50.0F).c(dmc::b));
-   public static final dma ua = a("heavy_core", dpx::new, dzy.d.a().a(ewk.g).a(eba.c).a(dtv.bj).d(10.0F).a(ewl.a).f(1200.0F));
-   public static final dma ub = a("pale_moss_block", $$0x -> new dme(ro.O, $$0x), dzy.d.a().i().a(ewk.w).d(0.1F).a(dtv.at).a(ewl.b));
-   public static final dma uc = a("pale_moss_carpet", drd::new, dzy.d.a().i().a(ub.w()).d(0.1F).a(dtv.aq).a(ewl.b));
-   public static final dma ud = a("pale_hanging_moss", dpu::new, dzy.d.a().i().a(ub.w()).b().a(dtv.aq).a(ewl.b));
-   public static final dma ue = a("open_eyeblossom", $$0x -> new dou(dou.a.a, $$0x), dzy.d.a().a(cC.w()).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b).e());
-   public static final dma uf = a("closed_eyeblossom", $$0x -> new dou(dou.a.b, $$0x), dzy.d.a().a(aR.w()).b().d().a(dtv.d).a(dzy.c.b).a(ewl.b).e());
-   public static final dma ug = a("potted_open_eyeblossom", $$0x -> new dpg(ue, $$0x), c().e());
-   public static final dma uh = a("potted_closed_eyeblossom", $$0x -> new dpg(uf, $$0x), c().e());
-   public static final dma ui = a("firefly_bush", dpc::new, dzy.d.a().a(ewk.h).i().a($$0x -> 2).b().d().a(dtv.v).a(ewl.b));
+   private final Function<eah, ffk> R;
 
-   private static ToIntFunction<dzz> a(int $$0) {
-      return $$1 -> $$1.c(eap.u) ? $$0 : 0;
+   @Override
+   public MapCodec<dmc> a() {
+      return a;
    }
 
-   private static Function<dzz, ewk> a(ewk $$0) {
-      return $$1 -> $$1.c(eap.I) ? ewk.m : $$0;
+   protected dmc(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(e, ja.c).b(c, ebt.a));
+      this.R = this.q();
    }
 
-   private static Boolean a(dzz $$0, dib $$1, iu $$2, bwm<?> $$3) {
-      return false;
+   private Function<eah, ffk> q() {
+      Map<ja, ffk> $$0 = ffh.c(dmf.b(6.0, 0.0, 13.0).a(0.0, 0.0, 0.25).d());
+      return this.a($$1 -> ffh.a(D.get($$1.c(c)), $$0.get($$1.c(e))), new ebk[]{b});
    }
 
-   private static Boolean b(dzz $$0, dib $$1, iu $$2, bwm<?> $$3) {
-      return true;
-   }
+   public static void a(djb $$0, azv $$1, iu $$2, ja $$3) {
+      int $$4 = azm.a($$1, 2, 5);
+      iu.a $$5 = $$2.k();
+      int $$6 = 0;
 
-   private static Boolean c(dzz $$0, dib $$1, iu $$2, bwm<?> $$3) {
-      return $$3 == bwm.aI || $$3 == bwm.aO;
-   }
-
-   private static dma a(String $$0, cxw $$1) {
-      return a($$0, $$1x -> new dlt($$1, $$1x), dzy.d.a().a($$1x -> $$1x.c(dlt.b) == eam.b ? $$1.e() : ewk.d).a(dtv.b).d(0.2F).c().i().a(ewl.b));
-   }
-
-   private static dzy.d a(ewk $$0, ewk $$1, dtv $$2) {
-      return dzy.d.a().a($$2x -> $$2x.c(dss.d) == ja.a.b ? $$0 : $$1).a(eba.e).d(2.0F).a($$2).i();
-   }
-
-   private static dzy.d b(ewk $$0) {
-      return dzy.d.a().a($$1 -> $$0).a(eba.e).d(2.0F).a(dtv.B);
-   }
-
-   private static boolean a(dzz $$0, dib $$1, iu $$2) {
-      return true;
-   }
-
-   private static boolean b(dzz $$0, dib $$1, iu $$2) {
-      return false;
-   }
-
-   private static dma b(String $$0, cxw $$1) {
-      return a($$0, $$1x -> new dua($$1, $$1x), dzy.d.a().a($$1).a(eba.d).d(0.3F).a(dtv.h).c().a(dmc::a).a(dmc::b).b(dmc::b).c(dmc::b));
-   }
-
-   private static dzy.d a(dtv $$0) {
-      return dzy.d.a().a(ewk.h).d(0.2F).e().a($$0).c().a(dmc::c).b(dmc::b).c(dmc::b).i().a(ewl.b).a(dmc::b);
-   }
-
-   private static dzy.d c(ewk $$0) {
-      return dzy.d.a().a($$0).k().d(2.0F).f().c().b(uj).c(uj).a(ewl.b);
-   }
-
-   private static dzy.d a() {
-      return dzy.d.a().a(ewk.l).d(1.5F).a(dmc::b).b(uk).c(uk).a(ewl.c);
-   }
-
-   private static dzy.d b() {
-      return dzy.d.a().b().d(0.5F).a(ewl.b);
-   }
-
-   private static dzy.d c() {
-      return dzy.d.a().d().c().a(ewl.b);
-   }
-
-   private static dzy.d d(ewk $$0) {
-      return dzy.d.a().a($$0).c().d(0.1F).a(dtv.X).a(dmq.i).a(ewl.b);
-   }
-
-   @Deprecated
-   private static dma a(String $$0, dma $$1) {
-      return a($$0, $$1x -> new duc($$1.m(), $$1x), dzy.d.b($$1));
-   }
-
-   private static dma b(String $$0, dma $$1) {
-      return a($$0, $$1x -> new duc($$1.m(), $$1x), dzy.d.a($$1));
-   }
-
-   private static dzy.d a(dma $$0, boolean $$1) {
-      dzy.d $$2 = $$0.s();
-      dzy.d $$3 = dzy.d.a().a($$0.u());
-      if ($$1) {
-         $$3 = $$3.a($$0.v());
+      while ($$6 < $$4 && a((djc)$$0, $$5, $$0.a_($$5))) {
+         $$6++;
+         $$5.c(ja.b);
       }
 
-      return $$3;
+      int $$7 = $$2.v() + $$6 - 1;
+      $$5.q($$2.v());
+
+      while ($$5.v() < $$7) {
+         dmd.a($$0, $$5, $$0.b_($$5), $$3);
+         $$5.c(ja.b);
+      }
+
+      a($$0, $$5, $$0.b_($$5), $$3);
    }
 
-   private static dma a(alf<dma> $$0, Function<dzy.d, dma> $$1, dzy.d $$2) {
-      dma $$3 = $$1.apply($$2.a($$0));
-      return jr.a(mf.e, $$0, $$3);
+   private static boolean o(eah $$0) {
+      return $$0.l() || $$0.a(dmh.J) || $$0.a(dmh.tp);
    }
 
-   private static dma a(alf<dma> $$0, dzy.d $$1) {
-      return a($$0, dma::new, $$1);
+   protected static boolean a(djc $$0, iu $$1, eah $$2) {
+      return !$$0.t($$1) && o($$2);
    }
 
-   private static alf<dma> a(String $$0) {
-      return alf.a(mg.i, alg.b($$0));
+   protected static boolean a(djb $$0, iu $$1, ewo $$2, ja $$3) {
+      eah $$4 = dmh.tn.m().b(b, Boolean.valueOf($$2.a(ewp.c))).b(e, $$3);
+      return $$0.a($$1, $$4, 3);
    }
 
-   private static dma a(String $$0, Function<dzy.d, dma> $$1, dzy.d $$2) {
-      return a(a($$0), $$1, $$2);
+   @Override
+   protected void a(dja $$0, eah $$1, fem $$2, crx $$3) {
+      this.a($$1, $$0, $$2.b(), ebt.d, awn.hZ);
    }
 
-   private static dma a(String $$0, dzy.d $$1) {
-      return a($$0, dma::new, $$1);
+   @Override
+   protected ewo b_(eah $$0) {
+      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
    }
 
-   static {
-      for (dma $$0 : mf.e) {
-         UnmodifiableIterator var2 = $$0.l().a().iterator();
+   @Override
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      iu $$3 = $$2.e();
+      eah $$4 = $$1.a_($$3);
+      return $$4.a(this) || $$4.a(dmh.to) || $$4.a(axc.bB);
+   }
 
-         while (var2.hasNext()) {
-            dzz $$1 = (dzz)var2.next();
-            dma.k.b($$1);
-            $$1.a();
+   @Override
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if ($$4 == ja.a && !$$0.a($$1, $$3)) {
+         return dmh.a.m();
+      } else {
+         if ($$0.c(b)) {
+            $$2.a($$3, ewp.c, ewp.c.a($$1));
+         }
+
+         return $$4 == ja.b && $$6.a(this) ? dmh.to.m($$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      eah $$3 = $$0.a_($$1.d());
+      return o($$3);
+   }
+
+   @Override
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      iu $$4 = $$2.d();
+      eah $$5 = $$0.a_($$4);
+      if (a((djc)$$0, $$4, $$5)) {
+         ja $$6 = $$3.c(e);
+         dmd.a($$0, $$2, $$3.y(), $$6);
+         a($$0, $$4, $$5.y(), $$6);
+      }
+   }
+
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, bwf $$3) {
+      if (!$$1.C) {
+         if ($$0.c(c) == ebt.a && a($$2, $$3) && !$$1.D($$2)) {
+            this.a($$0, $$1, $$2, ebt.b, null);
          }
       }
+   }
+
+   @Override
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$1.D($$2)) {
+         d($$0, $$1, $$2);
+      } else {
+         ebt $$4 = $$0.c(c);
+         if ($$4 == ebt.b) {
+            this.a($$0, $$1, $$2, ebt.c, awn.hZ);
+         } else if ($$4 == ebt.c) {
+            this.a($$0, $$1, $$2, ebt.d, awn.hZ);
+         } else if ($$4 == ebt.d) {
+            d($$0, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
+      if ($$1.D($$2)) {
+         d($$0, $$1, $$2);
+      }
+   }
+
+   private static void a(dja $$0, iu $$1, awm $$2) {
+      float $$3 = azm.b($$0.A, 0.8F, 1.2F);
+      $$0.a(null, $$1, $$2, awo.e, 1.0F, $$3);
+   }
+
+   private static boolean a(iu $$0, bwf $$1) {
+      return $$1.aJ() && $$1.dt().e > (double)((float)$$0.v() + 0.6875F);
+   }
+
+   private void a(eah $$0, dja $$1, iu $$2, ebt $$3, @Nullable awm $$4) {
+      a($$0, $$1, $$2, $$3);
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
+      }
+
+      int $$5 = f.getInt($$3);
+      if ($$5 != -1) {
+         $$1.a($$2, this, $$5);
+      }
+   }
+
+   private static void d(eah $$0, dja $$1, iu $$2) {
+      a($$0, $$1, $$2, ebt.a);
+      if ($$0.c(c) != ebt.a) {
+         a($$1, $$2, awn.ia);
+      }
+   }
+
+   private static void a(eah $$0, dja $$1, iu $$2, ebt $$3) {
+      ebt $$4 = $$0.c(c);
+      $$1.a($$2, $$0.b(c, $$3), 2);
+      if ($$3.a() && $$3 != $$4) {
+         $$1.a(null, efh.c, $$2);
+      }
+   }
+
+   @Override
+   protected ffk b(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return D.get($$0.c(c));
+   }
+
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return this.R.apply($$0);
+   }
+
+   @Override
+   public eah a(dcw $$0) {
+      eah $$1 = $$0.q().a_($$0.a().e());
+      ewo $$2 = $$0.q().b_($$0.a());
+      boolean $$3 = $$1.a(dmh.tn) || $$1.a(dmh.to);
+      return this.m().b(b, Boolean.valueOf($$2.a(ewp.c))).b(e, $$3 ? $$1.c(e) : $$0.g().g());
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b, e, c);
    }
 }

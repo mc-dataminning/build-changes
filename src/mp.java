@@ -12,7 +12,7 @@ public class mp implements mm {
    private final CompletableFuture<jg.a> f;
 
    public mp(mo $$0, CompletableFuture<jg.a> $$1, List<mq> $$2) {
-      this.d = $$0.a(mg.bs);
+      this.d = $$0.a(mg.bt);
       this.e = $$2;
       this.f = $$1;
    }

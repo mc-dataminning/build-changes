@@ -1,172 +1,108 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
-public class fop implements Comparable<fop> {
-   private static final Map<String, fop> h = Maps.newHashMap();
-   private static final Map<fhx.a, fop> i = Maps.newHashMap();
-   private static final Set<String> j = Sets.newHashSet();
-   public static final String a = "key.categories.movement";
-   public static final String b = "key.categories.misc";
-   public static final String c = "key.categories.multiplayer";
-   public static final String d = "key.categories.gameplay";
-   public static final String e = "key.categories.inventory";
-   public static final String f = "key.categories.ui";
-   public static final String g = "key.categories.creative";
-   private static final Map<String, Integer> k = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put("key.categories.movement", 1);
-      $$0.put("key.categories.gameplay", 2);
-      $$0.put("key.categories.inventory", 3);
-      $$0.put("key.categories.creative", 4);
-      $$0.put("key.categories.multiplayer", 5);
-      $$0.put("key.categories.ui", 6);
-      $$0.put("key.categories.misc", 7);
-   });
-   private final String l;
-   private final fhx.a m;
-   private final String n;
-   private fhx.a o;
-   private boolean p;
-   private int q;
+public class fop {
+   public static final wy a = wx.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final foz c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public static void a(fhx.a $$0) {
-      fop $$1 = i.get($$0);
-      if ($$1 != null) {
-         $$1.q++;
+   public fop(foz $$0) {
+      this.c = $$0;
+   }
+
+   public void a(wy $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.a($$1, false);
       }
    }
 
-   public static void a(fhx.a $$0, boolean $$1) {
-      fop $$2 = i.get($$0);
-      if ($$2 != null) {
-         $$2.a($$1);
+   public void b(wy $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.a($$1, false);
       }
    }
 
-   public static void a() {
-      for (fop $$0 : h.values()) {
-         if ($$0.o.a() == fhx.b.a && $$0.o.b() != fhx.bv.b()) {
-            $$0.a(fhx.a(fos.Q().aO().h(), $$0.o.b()));
+   public void c(wy $$0) {
+      this.a($$0.getString());
+   }
+
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.a($$0, true);
          }
       }
    }
 
-   public static void b() {
-      for (fop $$0 : h.values()) {
-         $$0.n();
+   private void a(String $$0, boolean $$1) {
+      this.d.say($$0, $$1, this.c.n.a(awo.j) * this.c.n.a(awo.a));
+   }
+
+   private fpb d() {
+      return this.c.n.av().c();
+   }
+
+   private void b(String $$0) {
+      if (ab.aU) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
       }
    }
 
-   public static void c() {
-      for (fop $$0 : h.values()) {
-         if ($$0 instanceof fpd $$1) {
-            $$1.n();
+   public void a(fpb $$0) {
+      this.b();
+      this.a(wy.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fuu $$1 = foz.Q().aA();
+      if (this.d.active()) {
+         if ($$0 == fpb.a) {
+            fus.b($$1, fus.a.a, wy.c("narrator.toast.disabled"), null);
+         } else {
+            fus.b($$1, fus.a.a, wy.c("narrator.toast.enabled"), $$0.b());
          }
-      }
-   }
-
-   public static void d() {
-      i.clear();
-
-      for (fop $$0 : h.values()) {
-         i.put($$0.o, $$0);
-      }
-   }
-
-   public fop(String $$0, int $$1, String $$2) {
-      this($$0, fhx.b.a, $$1, $$2);
-   }
-
-   public fop(String $$0, fhx.b $$1, int $$2, String $$3) {
-      this.l = $$0;
-      this.o = $$1.a($$2);
-      this.m = this.o;
-      this.n = $$3;
-      h.put($$0, this);
-      i.put(this.o, this);
-      j.add($$3);
-   }
-
-   public boolean e() {
-      return this.p;
-   }
-
-   public String f() {
-      return this.n;
-   }
-
-   public boolean g() {
-      if (this.q == 0) {
-         return false;
       } else {
-         this.q--;
-         return true;
+         fus.b($$1, fus.a.a, wy.c("narrator.toast.disabled"), wy.c("options.narrator.notavailable"));
       }
    }
 
-   private void n() {
-      this.q = 0;
-      this.a(false);
+   public boolean a() {
+      return this.d.active();
    }
 
-   public String h() {
-      return this.l;
+   public void b() {
+      if (this.d() != fpb.a && this.d.active()) {
+         this.d.clear();
+      }
    }
 
-   public fhx.a i() {
-      return this.m;
-   }
-
-   public void b(fhx.a $$0) {
-      this.o = $$0;
-   }
-
-   public int a(fop $$0) {
-      return this.n.equals($$0.n) ? hjw.a(this.l).compareTo(hjw.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
-   }
-
-   public static Supplier<wy> a(String $$0) {
-      fop $$1 = h.get($$0);
-      return $$1 == null ? () -> wy.c($$0) : $$1::k;
-   }
-
-   public boolean b(fop $$0) {
-      return this.o.equals($$0.o);
-   }
-
-   public boolean j() {
-      return this.o.equals(fhx.bv);
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return $$0 == fhx.bv.b() ? this.o.a() == fhx.b.b && this.o.b() == $$1 : this.o.a() == fhx.b.a && this.o.b() == $$0;
-   }
-
-   public boolean a(int $$0) {
-      return this.o.a() == fhx.b.c && this.o.b() == $$0;
-   }
-
-   public wy k() {
-      return this.o.d();
-   }
-
-   public boolean l() {
-      return this.o.equals(this.m);
-   }
-
-   public String m() {
-      return this.o.c();
+   public void c() {
+      this.d.destroy();
    }
 
    public void a(boolean $$0) {
-      this.p = $$0;
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new fop.a("Narrator library is not active");
+      }
    }
 
-   @Nullable
-   public static fop b(String $$0) {
-      return h.get($$0);
+   public static class a extends gee {
+      public a(String $$0) {
+         super($$0);
+      }
    }
 }

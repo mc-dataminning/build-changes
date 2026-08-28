@@ -1,34 +1,20 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public record ffg(String a, int b, @Nullable wy c, @Nullable yo d) {
-   public boolean a() {
-      return this.a.startsWith("#");
+public class ffg extends AbstractDoubleList {
+   private final DoubleList a;
+   private final double b;
+
+   public ffg(DoubleList $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public wy b() {
-      return (wy)(this.c != null ? this.c : wy.b(this.c()));
+   public double getDouble(int $$0) {
+      return this.a.getDouble($$0) + this.b;
    }
 
-   public xm a(yo $$0) {
-      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   @Nullable
-   public wy e() {
-      return this.c;
-   }
-
-   @Nullable
-   public yo f() {
-      return this.d;
+   public int size() {
+      return this.a.size();
    }
 }

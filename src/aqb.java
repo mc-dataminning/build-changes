@@ -19,15 +19,15 @@ public class aqb implements apz {
             return $$0.then(ej.a("entity").then($$1.apply(ej.a($$0, ev.a()))));
          }
       };
-   private final bwd c;
+   private final bwf c;
 
-   public aqb(bwd $$0) {
+   public aqb(bwf $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(tz $$0) throws CommandSyntaxException {
-      if (this.c instanceof cqy) {
+      if (this.c instanceof crc) {
          throw b.create();
       } else {
          UUID $$1 = this.c.cG();

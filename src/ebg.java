@@ -1,21 +1,20 @@
 public enum ebg implements bak {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+   a("top"),
+   b("bottom");
 
-   private final String d;
+   private final String c;
 
    private ebg(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

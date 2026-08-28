@@ -1,31 +1,26 @@
-import java.util.List;
+import java.util.Optional;
 
-public class dep extends deh {
-   public dep(String $$0, ddl $$1, cyy $$2) {
-      super($$0, $$1, $$2);
+public interface dep extends ddu<deq> {
+   @Override
+   default def<dep> b() {
+      return def.g;
    }
 
    @Override
-   public dea<dep> b() {
-      return dea.f;
+   dee<? extends dep> a();
+
+   default boolean a(deq $$0, dja $$1) {
+      return ddq.a(this.c(), $$0.c()) && this.f().a($$0.d()) && ddq.a(this.k(), $$0.e());
    }
+
+   Optional<ddq> c();
+
+   ddq f();
+
+   Optional<ddq> k();
 
    @Override
-   public ddz<dep> a() {
-      return ddz.s;
-   }
-
-   @Override
-   public List<dev> g() {
-      return List.of(new dff(this.k().c(), this.c(), new dfb.d(czc.xx)));
-   }
-
-   public dfb c() {
-      return new dfb.f(this.l());
-   }
-
-   @Override
-   public dds h() {
-      return ddr.k;
+   default ddx h() {
+      return ddw.l;
    }
 }

@@ -1,40 +1,54 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class flf extends flh {
-   private static final Logger d = LogUtils.getLogger();
-   public long a;
-   public int b;
-   public flf.a c = flf.a.a;
+public class flf {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final String[] d;
 
-   public static flf a(String $$0) {
-      flf $$1 = new flf();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fnd.a("startDate", $$3, 0L);
-         $$1.b = fnd.a("daysLeft", $$3, 0);
-         $$1.c = b(fnd.b("subscriptionType", $$3, flf.a.a.name()));
-      } catch (Exception var4) {
-         d.error("Could not parse Subscription: {}", var4.getMessage());
-      }
-
-      return $$1;
+   private flf(String $$0, @Nullable String[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static flf.a b(String $$0) {
-      try {
-         return flf.a.valueOf($$0);
-      } catch (Exception var2) {
-         return flf.a.a;
+   public wy a(wy $$0) {
+      return Objects.requireNonNullElse(this.a(), $$0);
+   }
+
+   @Nullable
+   public wy a() {
+      if (!hke.a(this.c)) {
+         return null;
+      } else {
+         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
       }
    }
 
-   public static enum a {
-      a,
-      b;
+   public static flf a(JsonObject $$0) {
+      String $$1 = fnk.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
+
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
+      }
+
+      return new flf($$1, $$5);
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 }

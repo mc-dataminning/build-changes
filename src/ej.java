@@ -98,7 +98,7 @@ public class ej {
       apt.a(this.h);
       apv.a(this.h);
       apx.a(this.h);
-      if (bqu.f.d()) {
+      if (bqw.f.d()) {
          anv.a(this.h);
       }
 
@@ -152,7 +152,7 @@ public class ej {
 
    public void a(ParseResults<ei> $$0, String $$1) {
       ei $$2 = (ei)$$0.getContext().getSource();
-      bql.a().a(() -> "/" + $$1);
+      bqn.a().a(() -> "/" + $$1);
       ContextChain<ei> $$3 = a($$0, $$1, $$2);
 
       try {
@@ -176,7 +176,7 @@ public class ej {
             g.error("'/{}' threw an exception", $$1, var12);
          }
       } finally {
-         bql.a().c();
+         bqn.a().c();
       }
    }
 
@@ -214,10 +214,10 @@ public class ej {
       hj<ei> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aL().d(dir.y));
-         int $$6 = $$2.aL().d(dir.z);
+         int $$5 = Math.max(1, $$2.aL().d(diw.z));
+         int $$6 = $$2.aL().d(diw.A);
 
-         try (hj<ei> $$7 = new hj<>($$5, $$6, bql.a())) {
+         try (hj<ei> $$7 = new hj<>($$5, $$6, bqn.a())) {
             f.set($$7);
             $$1.accept($$7);
             $$7.a();
@@ -313,8 +313,8 @@ public class ej {
    public static ee a(final jg.a $$0) {
       return new ee() {
          @Override
-         public cuh a() {
-            return cuj.e.a();
+         public cum a() {
+            return cuo.e.a();
          }
 
          @Override

@@ -5,12 +5,12 @@ public class agi implements zf<abu> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final je<bvf> g;
+   private final je<bvh> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public agi(int $$0, bvh $$1, boolean $$2) {
+   public agi(int $$0, bvj $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class agi implements zf<abu> {
 
    private agi(wj $$0) {
       this.f = $$0.l();
-      this.g = bvf.b.decode($$0);
+      this.g = bvh.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class agi implements zf<abu> {
 
    private void a(wj $$0) {
       $$0.c(this.f);
-      bvf.b.encode($$0, this.g);
+      bvh.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.l(this.j);
@@ -64,7 +64,7 @@ public class agi implements zf<abu> {
       return this.f;
    }
 
-   public je<bvf> e() {
+   public je<bvh> e() {
       return this.g;
    }
 

@@ -1,39 +1,29 @@
-public class gym<T extends bwd & crp> extends gvy<T, heh> {
-   private final hfg a;
-   private final float g;
-   private final boolean h;
+public class gym extends gvb<clu, hek, ghy> {
+   private static final alg a = alg.b("textures/entity/sniffer/sniffer.png");
 
-   public gym(gvz.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gym(gwh.a $$0) {
+      super($$0, new ghy($$0.a(gjb.dg)), new ghy($$0.a(gjb.dh)), 1.1F);
    }
 
-   public gym(gvz.a $$0) {
-      this($$0, 1.0F, false);
+   public alg a(hek $$0) {
+      return a;
    }
 
-   @Override
-   protected int a(T $$0, iu $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public hek b() {
+      return new hek();
    }
 
-   public void a(heh $$0, fjc $$1, gps $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.g, this.g, this.g);
-      $$1.a(this.d.b());
-      $$0.a.a($$1, $$2, $$3, hif.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public heh a() {
-      return new heh();
-   }
-
-   public void a(T $$0, heh $$1, float $$2) {
+   public void a(clu $$0, hek $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      this.a.a($$1.a, $$0.f(), cyw.h, $$0);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.bK);
+      $$1.c.a($$0.bI);
+      $$1.d.a($$0.bL);
+      $$1.e.a($$0.bG);
+      $$1.f.a($$0.bH);
+   }
+
+   protected fel a(clu $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

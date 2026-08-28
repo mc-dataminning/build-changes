@@ -1,530 +1,326 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
+import com.google.common.collect.Maps;
+import com.google.common.hash.Hashing;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
+import org.slf4j.Logger;
 
-public abstract class gbt<T extends cwf> implements ftf, ftz, fvx {
-   public static final ftp a = new ftp(alg.b("recipe_book/button"), alg.b("recipe_book/button_highlighted"));
-   protected static final alg b = alg.b("textures/gui/recipe_book.png");
-   private static final int h = 256;
-   private static final int i = 256;
-   private static final wy j = wy.c("gui.recipebook.search_hint").a(n.u).a(n.h);
-   public static final int c = 147;
-   public static final int d = 166;
-   private static final int k = 86;
-   private static final int l = 8;
-   private static final wy m = wy.c("gui.recipebook.toggleRecipes.all");
-   private static final int n = 30;
-   private int o;
-   private int p;
-   private int q;
-   private float r;
+public class gbt extends fyb {
+   static final Logger a = LogUtils.getLogger();
+   private static final wy b = wy.c("pack.available.title");
+   private static final wy c = wy.c("pack.selected.title");
+   private static final wy d = wy.c("pack.openFolder");
+   private static final int s = 200;
+   private static final wy u = wy.c("pack.dropInfo").a(n.h);
+   private static final wy v = wy.c("pack.folderInfo");
+   private static final int w = 20;
+   private static final alg x = alg.b("textures/misc/unknown_pack.png");
+   private final fvx y = new fvx(this);
+   private final gbs z;
    @Nullable
-   private dex s;
-   private final gbr u;
-   private final List<gbv> v = Lists.newArrayList();
-   @Nullable
-   private gbv w;
-   protected fti e;
-   protected final T f;
-   protected fos g;
-   @Nullable
-   private fsl x;
-   private String y = "";
-   private final List<gbt.a> z;
-   private foc A;
-   private final gbu B;
-   @Nullable
-   private dex C;
-   @Nullable
-   private gbx D;
-   private final crd E = new crd();
-   private int F;
-   private boolean G;
-   private boolean H;
-   private boolean I;
-   @Nullable
-   private fwj J;
+   private gbt.a A;
+   private long B;
+   private gbu C;
+   private gbu D;
+   private final Path E;
+   private fsj F;
+   private final Map<String, alg> G = Maps.newHashMap();
 
-   public gbt(T $$0, List<gbt.a> $$1) {
-      this.f = $$0;
-      this.z = $$1;
-      gca $$2 = () -> azm.d(this.r / 30.0F);
-      this.u = new gbr($$2);
-      this.B = new gbu(this, $$2, $$0 instanceof cus);
+   public gbt(aun $$0, Consumer<aun> $$1, Path $$2, wy $$3) {
+      super($$3);
+      this.z = new gbs(this::F, this::a, $$0, $$1);
+      this.E = $$2;
+      this.A = gbt.a.a($$2);
    }
 
-   public void a(int $$0, int $$1, fos $$2, boolean $$3) {
-      this.g = $$2;
-      this.p = $$0;
-      this.q = $$1;
-      this.I = $$3;
-      this.A = $$2.t.m();
-      this.F = $$2.t.gi().l();
-      this.H = this.n();
-      if (this.H) {
-         this.i();
-      }
+   @Override
+   public void aL_() {
+      this.z.c();
+      this.E();
    }
 
-   private void i() {
-      boolean $$0 = this.q();
-      this.o = this.I ? 0 : 86;
-      int $$1 = this.l();
-      int $$2 = this.k();
-      this.E.a();
-      this.g.t.gi().a(this.E);
-      this.f.a(this.E);
-      String $$3 = this.x != null ? this.x.a() : "";
-      this.x = new fsl(this.g.h, $$1 + 25, $$2 + 13, 81, 9 + 5, wy.c("itemGroup.search"));
-      this.x.f(50);
-      this.x.g(true);
-      this.x.m(16777215);
-      this.x.a($$3);
-      this.x.c(j);
-      this.J = fwj.a(fwg.a, $$1 + 8, this.x.G(), this.x.F() - this.l(), this.x.y());
-      this.B.a(this.g, $$1, $$2);
-      this.e = new fti($$1 + 110, $$2 + 12, 26, 16, $$0);
-      this.m();
-      this.a();
-      this.v.clear();
-
-      for (gbt.a $$4 : this.z) {
-         this.v.add(new gbv($$4));
-      }
-
-      if (this.w != null) {
-         this.w = this.v.stream().filter($$0x -> $$0x.b().equals(this.w.b())).findFirst().orElse(null);
-      }
-
-      if (this.w == null) {
-         this.w = this.v.get(0);
-      }
-
-      this.w.b(true);
-      this.o();
-      this.c($$0);
-      this.a(false, $$0);
-   }
-
-   private int k() {
-      return (this.q - 166) / 2;
-   }
-
-   private int l() {
-      return (this.p - 147) / 2 - this.o;
-   }
-
-   private void m() {
-      this.e.a(this.e.a() ? ftn.a(this.b()) : ftn.a(m));
-   }
-
-   protected abstract void a();
-
-   public int a(int $$0, int $$1) {
-      int $$2;
-      if (this.d() && !this.I) {
-         $$2 = 177 + ($$0 - $$1 - 200) / 2;
-      } else {
-         $$2 = ($$0 - $$1) / 2;
-      }
-
-      return $$2;
-   }
-
-   public void c() {
-      this.b(!this.d());
-   }
-
-   public boolean d() {
-      return this.H;
-   }
-
-   private boolean n() {
-      return this.A.a(this.f.ai_());
-   }
-
-   protected void b(boolean $$0) {
-      if ($$0) {
-         this.i();
-      }
-
-      this.H = $$0;
-      this.A.a(this.f.ai_(), $$0);
-      if (!$$0) {
-         this.B.c();
-      }
-
-      this.h();
-   }
-
-   protected abstract boolean a(cwn var1);
-
-   public void b(@Nullable cwn $$0) {
-      if ($$0 != null && this.a($$0)) {
-         this.s = null;
-         this.u.a();
-         if (this.d()) {
-            this.p();
+   private void E() {
+      if (this.A != null) {
+         try {
+            this.A.close();
+            this.A = null;
+         } catch (Exception var2) {
          }
       }
    }
 
-   private void o() {
-      for (gbt.a $$0 : this.z) {
-         for (gbx $$1 : this.A.a($$0.c())) {
-            this.a($$1, this.E);
-         }
-      }
+   @Override
+   protected void aO_() {
+      fwb $$0 = this.y.a(fwb.d().a(5));
+      $$0.c().b();
+      $$0.a(new ftq(this.n(), this.p));
+      $$0.a(new ftq(u, this.p));
+      this.C = this.c(new gbu(this.m, this, 200, this.o - 66, b));
+      this.D = this.c(new gbu(this.m, this, 200, this.o - 66, c));
+      fwb $$1 = this.y.b(fwb.e().a(8));
+      $$1.a(fsj.a(d, $$0x -> af.n().a(this.E)).a(ftu.a(v)).a());
+      this.F = $$1.a(fsj.a(wx.d, $$0x -> this.aL_()).a());
+      this.G();
+      this.y.a($$1x -> {
+         fsh var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   protected abstract void a(gbx var1, crd var2);
-
-   private void a(boolean $$0, boolean $$1) {
-      List<gbx> $$2 = this.A.a(this.w.b());
-      List<gbx> $$3 = Lists.newArrayList($$2);
-      $$3.removeIf($$0x -> !$$0x.b());
-      String $$4 = this.x.a();
-      if (!$$4.isEmpty()) {
-         gjs $$5 = this.g.L();
-         if ($$5 != null) {
-            ObjectSet<gbx> $$6 = new ObjectLinkedOpenHashSet($$5.D().b().search($$4.toLowerCase(Locale.ROOT)));
-            $$3.removeIf($$1x -> !$$6.contains($$1x));
-         }
-      }
-
-      if ($$1) {
-         $$3.removeIf($$0x -> !$$0x.a());
-      }
-
-      this.B.a($$3, $$0, $$1);
+   @Override
+   protected void c() {
+      this.y.a();
+      this.C.a(200, this.y);
+      this.C.j(this.n / 2 - 15 - 200);
+      this.D.a(200, this.y);
+      this.D.j(this.n / 2 + 15);
    }
 
-   private void c(boolean $$0) {
-      int $$1 = (this.p - 147) / 2 - this.o - 30;
-      int $$2 = (this.q - 166) / 2 + 3;
-      int $$3 = 27;
-      int $$4 = 0;
-
-      for (gbv $$5 : this.v) {
-         ddh $$6 = $$5.b();
-         if ($$6 instanceof gbz) {
-            $$5.k = true;
-            $$5.c($$1, $$2 + 27 * $$4++);
-         } else if ($$5.a(this.A)) {
-            $$5.c($$1, $$2 + 27 * $$4++);
-            $$5.a(this.A, $$0);
-         }
-      }
-   }
-
+   @Override
    public void e() {
-      boolean $$0 = this.n();
-      if (this.d() != $$0) {
-         this.b($$0);
-      }
-
-      if (this.d()) {
-         if (this.F != this.g.t.gi().l()) {
-            this.p();
-            this.F = this.g.t.gi().l();
-         }
-      }
-   }
-
-   private void p() {
-      this.E.a();
-      this.g.t.gi().a(this.E);
-      this.f.a(this.E);
-      this.o();
-      this.a(false, this.q());
-   }
-
-   private boolean q() {
-      return this.A.b(this.f.ai_());
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      if (this.d()) {
-         if (!fxu.s()) {
-            this.r += $$3;
-         }
-
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 100.0F);
-         int $$4 = this.l();
-         int $$5 = this.k();
-         $$0.a(gqc::H, b, $$4, $$5, 1.0F, 1.0F, 147, 166, 256, 256);
-         this.x.a($$0, $$1, $$2, $$3);
-
-         for (gbv $$6 : this.v) {
-            $$6.a($$0, $$1, $$2, $$3);
-         }
-
-         this.e.a($$0, $$1, $$2, $$3);
-         this.B.a($$0, $$4, $$5, $$1, $$2, $$3);
-         $$0.c().b();
-      }
-   }
-
-   public void a(fro $$0, int $$1, int $$2, @Nullable cwn $$3) {
-      if (this.d()) {
-         this.B.a($$0, $$1, $$2);
-         this.u.a($$0, this.g, $$1, $$2, $$3);
-      }
-   }
-
-   protected abstract wy b();
-
-   public void a(fro $$0, boolean $$1) {
-      this.u.a($$0, this.g, $$1);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.d() && !this.g.t.U_()) {
-         if (this.B.a($$0, $$1, $$2, this.l(), this.k(), 147, 166)) {
-            dex $$3 = this.B.a();
-            gbx $$4 = this.B.b();
-            if ($$3 != null && $$4 != null) {
-               if (!this.a($$4, $$3)) {
-                  return false;
-               }
-
-               this.D = $$4;
-               this.C = $$3;
-               if (!this.t()) {
-                  this.b(false);
-               }
+      if (this.A != null) {
+         try {
+            if (this.A.a()) {
+               this.B = 20L;
             }
-
-            return true;
-         } else {
-            if (this.x != null) {
-               boolean $$5 = this.J != null && this.J.a(azm.a($$0), azm.a($$1));
-               if ($$5 || this.x.a($$0, $$1, $$2)) {
-                  this.x.a(true);
-                  return true;
-               }
-
-               this.x.a(false);
-            }
-
-            if (this.e.a($$0, $$1, $$2)) {
-               boolean $$6 = this.r();
-               this.e.b($$6);
-               this.m();
-               this.h();
-               this.a(false, $$6);
-               return true;
-            } else {
-               for (gbv $$7 : this.v) {
-                  if ($$7.a($$0, $$1, $$2)) {
-                     if (this.w != $$7) {
-                        if (this.w != null) {
-                           this.w.b(false);
-                        }
-
-                        this.w = $$7;
-                        this.w.b(true);
-                        this.a(true, this.q());
-                     }
-
-                     return true;
-                  }
-               }
-
-               return false;
-            }
+         } catch (IOException var2) {
+            a.warn("Failed to poll for directory {} changes, stopping", this.E);
+            this.E();
          }
-      } else {
-         return false;
+      }
+
+      if (this.B > 0L && --this.B == 0L) {
+         this.G();
       }
    }
 
-   private boolean a(gbx $$0, dex $$1) {
-      if (!$$0.a($$1) && $$1.equals(this.s)) {
-         return false;
-      } else {
-         this.s = $$1;
-         this.u.a();
-         this.g.r.a(this.g.t.bQ.l, $$1, fxu.t());
-         return true;
-      }
+   private void F() {
+      this.a(this.D, this.z.b());
+      this.a(this.C, this.z.a());
+      this.F.j = !this.D.aE_().isEmpty();
    }
 
-   private boolean r() {
-      cwg $$0 = this.f.ai_();
-      boolean $$1 = !this.A.b($$0);
-      this.A.b($$0, $$1);
-      return $$1;
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      if (!this.d()) {
-         return true;
-      } else {
-         boolean $$7 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + $$4) || $$1 >= (double)($$3 + $$5);
-         boolean $$8 = (double)($$2 - 147) < $$0 && $$0 < (double)$$2 && (double)$$3 < $$1 && $$1 < (double)($$3 + $$5);
-         return $$7 && !$$8 && !this.w.D();
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      this.G = false;
-      if (!this.d() || this.g.t.U_()) {
-         return false;
-      } else if ($$0 == 256 && !this.t()) {
-         this.b(false);
-         return true;
-      } else if (this.x.a($$0, $$1, $$2)) {
-         this.s();
-         return true;
-      } else if (this.x.aI_() && this.x.i() && $$0 != 256) {
-         return true;
-      } else if (this.g.n.I.a($$0, $$1) && !this.x.aI_()) {
-         this.G = true;
-         this.x.a(true);
-         return true;
-      } else if (fwe.a($$0) && this.D != null && this.C != null) {
-         fsa.b(fos.Q().ak());
-         return this.a(this.D, this.C);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      this.G = false;
-      return ftz.super.c($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.G) {
-         return false;
-      } else if (!this.d() || this.g.t.U_()) {
-         return false;
-      } else if (this.x.a($$0, $$1)) {
-         this.s();
-         return true;
-      } else {
-         return ftz.super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aI_() {
-      return false;
-   }
-
-   private void s() {
-      String $$0 = this.x.a().toLowerCase(Locale.ROOT);
-      this.a($$0);
-      if (!$$0.equals(this.y)) {
-         this.a(false, this.q());
-         this.y = $$0;
-      }
-   }
-
-   private void a(String $$0) {
-      if ("excitedze".equals($$0)) {
-         hjy $$1 = this.g.ah();
-         String $$2 = "en_pt";
-         hjx $$3 = $$1.b("en_pt");
-         if ($$3 == null || $$1.a().equals("en_pt")) {
-            return;
-         }
-
-         $$1.a("en_pt");
-         this.g.n.ab = "en_pt";
-         this.g.l();
-         this.g.n.az();
-      }
-   }
-
-   private boolean t() {
-      return this.o == 86;
-   }
-
-   public void g() {
-      this.o();
-      this.c(this.q());
-      if (this.d()) {
-         this.a(false, this.q());
-      }
-   }
-
-   public void a(dex $$0) {
-      this.g.t.a($$0);
-   }
-
-   public void a(dev $$0) {
-      this.u.a();
-      baz $$1 = dfc.a(Objects.requireNonNull(this.g.s));
-      this.a(this.u, $$0, $$1);
-   }
-
-   protected abstract void a(gbr var1, dev var2, baz var3);
-
-   protected void h() {
-      if (this.g.L() != null) {
-         cwg $$0 = this.f.ai_();
-         boolean $$1 = this.A.a().a($$0);
-         boolean $$2 = this.A.a().b($$0);
-         this.g.L().b(new ahz($$0, $$1, $$2));
-      }
-   }
-
-   @Override
-   public fvx.a w() {
-      return this.H ? fvx.a.b : fvx.a.a;
-   }
-
-   @Override
-   public void b(fvz $$0) {
-      List<fvx> $$1 = Lists.newArrayList();
-      this.B.a($$1x -> {
-         if ($$1x.E()) {
-            $$1.add($$1x);
+   private void a(gbu $$0, Stream<gbs.a> $$1) {
+      $$0.aE_().clear();
+      gbu.a $$2 = $$0.p();
+      String $$3 = $$2 == null ? "" : $$2.b();
+      $$0.a(null);
+      $$1.forEach($$2x -> {
+         gbu.a $$3x = new gbu.a(this.m, $$0, $$2x);
+         $$0.aE_().add($$3x);
+         if ($$2x.c().equals($$3)) {
+            $$0.a($$3x);
          }
       });
-      $$1.add(this.x);
-      $$1.add(this.e);
-      $$1.addAll(this.v);
-      fxu.b $$2 = fxu.a($$1, null);
-      if ($$2 != null) {
-         $$2.a.b($$0.a());
+   }
+
+   public void a(gbu $$0) {
+      gbu $$1 = this.D == $$0 ? this.C : this.D;
+      this.a(frs.a($$1.q(), $$1, this));
+   }
+
+   public void m() {
+      this.D.a(null);
+      this.C.a(null);
+   }
+
+   private void G() {
+      this.z.d();
+      this.F();
+      this.B = 0L;
+      this.G.clear();
+   }
+
+   protected static void a(foz $$0, List<Path> $$1, Path $$2) {
+      MutableBoolean $$3 = new MutableBoolean();
+      $$1.forEach($$2x -> {
+         try (Stream<Path> $$3x = Files.walk($$2x)) {
+            $$3x.forEach($$3xx -> {
+               try {
+                  af.b($$2x.getParent(), $$2, $$3xx);
+               } catch (IOException var5) {
+                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
+                  $$3.setTrue();
+               }
+            });
+         } catch (IOException var8) {
+            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
+            $$3.setTrue();
+         }
+      });
+      if ($$3.isTrue()) {
+         fus.c($$0, $$2.toString());
       }
    }
 
-   public static record a(cyy a, Optional<cyy> b, ddh c) {
-      public a(gbz $$0) {
-         this(new cyy(czc.rF), Optional.empty(), $$0);
+   @Override
+   public void a(List<Path> $$0) {
+      String $$1 = a($$0).collect(Collectors.joining(", "));
+      this.m.a(new fwz($$1x -> {
+         if ($$1x) {
+            List<Path> $$2 = new ArrayList<>($$0.size());
+            Set<Path> $$3 = new HashSet<>($$0);
+            aum<Path> $$4 = new aum<Path>(this.m.be()) {
+               protected Path a(Path $$0) {
+                  return $$0;
+               }
+
+               protected Path b(Path $$0) {
+                  return $$0;
+               }
+            };
+            List<feh> $$5 = new ArrayList<>();
+
+            for (Path $$6 : $$0) {
+               try {
+                  Path $$7 = $$4.a($$6, $$5);
+                  if ($$7 == null) {
+                     a.warn("Path {} does not seem like pack", $$6);
+                  } else {
+                     $$2.add($$7);
+                     $$3.remove($$7);
+                  }
+               } catch (IOException var10) {
+                  a.warn("Failed to check {} for packs", $$6, var10);
+               }
+            }
+
+            if (!$$5.isEmpty()) {
+               this.m.a(fxt.b(() -> this.m.a(this)));
+               return;
+            }
+
+            if (!$$2.isEmpty()) {
+               a(this.m, $$2, this.E);
+               this.G();
+            }
+
+            if (!$$3.isEmpty()) {
+               String $$9 = a($$3).collect(Collectors.joining(", "));
+               this.m.a(new fwu(() -> this.m.a(this), wy.c("pack.dropRejected.title"), wy.a("pack.dropRejected.message", $$9)));
+               return;
+            }
+         }
+
+         this.m.a(this);
+      }, wy.c("pack.dropConfirm"), wy.b($$1)));
+   }
+
+   private static Stream<String> a(Collection<Path> $$0) {
+      return $$0.stream().map(Path::getFileName).map(Path::toString);
+   }
+
+   private alg a(hiz $$0, auk $$1) {
+      try {
+         alg var9;
+         try (atp $$2 = $$1.f()) {
+            auu<InputStream> $$3 = $$2.a("pack.png");
+            if ($$3 == null) {
+               return x;
+            }
+
+            String $$4 = $$1.g();
+            alg $$5 = alg.b("pack/" + af.a($$4, alg::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
+
+            try (InputStream $$6 = $$3.get()) {
+               fik $$7 = fik.a($$6);
+               $$0.a($$5, new hik($$7));
+               var9 = $$5;
+            }
+         }
+
+         return var9;
+      } catch (Exception var14) {
+         a.warn("Failed to load icon from pack {}", $$1.g(), var14);
+         return x;
+      }
+   }
+
+   private alg a(auk $$0) {
+      return this.G.computeIfAbsent($$0.g(), $$1 -> this.a(this.m.aa(), $$0));
+   }
+
+   static class a implements AutoCloseable {
+      private final WatchService a;
+      private final Path b;
+
+      public a(Path $$0) throws IOException {
+         this.b = $$0;
+         this.a = $$0.getFileSystem().newWatchService();
+
+         try {
+            this.b($$0);
+
+            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
+               for (Path $$2 : $$1) {
+                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$2);
+                  }
+               }
+            }
+         } catch (Exception var7) {
+            this.a.close();
+            throw var7;
+         }
       }
 
-      public a(cyu $$0, dds $$1) {
-         this(new cyy($$0), Optional.empty(), $$1);
+      @Nullable
+      public static gbt.a a(Path $$0) {
+         try {
+            return new gbt.a($$0);
+         } catch (IOException var2) {
+            gbt.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
+            return null;
+         }
       }
 
-      public a(cyu $$0, cyu $$1, dds $$2) {
-         this(new cyy($$0), Optional.of(new cyy($$1)), $$2);
+      private void b(Path $$0) throws IOException {
+         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
+      }
+
+      public boolean a() throws IOException {
+         boolean $$0 = false;
+
+         WatchKey $$1;
+         while (($$1 = this.a.poll()) != null) {
+            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
+               $$0 = true;
+               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
+                  Path $$4 = this.b.resolve((Path)$$3.context());
+                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
+                     this.b($$4);
+                  }
+               }
+            }
+
+            $$1.reset();
+         }
+
+         return $$0;
+      }
+
+      @Override
+      public void close() throws IOException {
+         this.a.close();
       }
    }
 }

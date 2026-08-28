@@ -1,88 +1,58 @@
-import java.util.Arrays;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class get extends gfq<hdf> {
-   private final giu[] a;
-   private final giu b;
-
-   public get(giu $$0) {
-      super($$0);
-      this.b = $$0.b("head");
-      this.a = new giu[12];
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+public record get(boolean b, float c, float d, float e, float f, float g, Set<String> h) implements gjl {
+   public get(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   private static String a(int $$0) {
-      return "part" + $$0;
+   public get(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("head", giz.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), giw.a);
-      float $$2 = 0.0F;
-      giz $$3 = giz.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+   @Override
+   public gjk apply(gjk $$0) {
+      float $$1 = this.b ? 1.5F / this.e : 1.0F;
+      float $$2 = 1.0F / this.f;
+      UnaryOperator<gje> $$3 = $$1x -> $$1x.c(0.0F, this.c, this.d).b($$1);
+      UnaryOperator<gje> $$4 = $$1x -> $$1x.c(0.0F, this.g, 0.0F).b($$2);
+      gjk $$5 = new gjk();
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = azm.b($$2) * 9.0F;
-         float $$6 = -2.0F + azm.b((float)($$4 * 2) * 0.25F);
-         float $$7 = azm.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, giw.a($$5, $$6, $$7));
-         $$2++;
+      for (Entry<String, gjm> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         gjm $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.h.contains($$7) ? $$3 : $$4));
       }
 
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = azm.b($$2) * 7.0F;
-         float $$10 = 2.0F + azm.b((float)($$8 * 2) * 0.25F);
-         float $$11 = azm.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, giw.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = azm.b($$2) * 5.0F;
-         float $$14 = 11.0F + azm.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = azm.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, giw.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return gja.a($$0, 64, 32);
+      return $$5;
    }
 
-   public void a(hdf $$0) {
-      super.a($$0);
-      float $$1 = $$0.u * (float) Math.PI * -0.1F;
+   public boolean a() {
+      return this.b;
+   }
 
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.a[$$2].c = -2.0F + azm.b(((float)($$2 * 2) + $$0.u) * 0.25F);
-         this.a[$$2].b = azm.b($$1) * 9.0F;
-         this.a[$$2].d = azm.a($$1) * 9.0F;
-         $$1++;
-      }
+   public float b() {
+      return this.c;
+   }
 
-      $$1 = (float) (Math.PI / 4) + $$0.u * (float) Math.PI * 0.03F;
+   public float c() {
+      return this.d;
+   }
 
-      for (int $$3 = 4; $$3 < 8; $$3++) {
-         this.a[$$3].c = 2.0F + azm.b(((float)($$3 * 2) + $$0.u) * 0.25F);
-         this.a[$$3].b = azm.b($$1) * 7.0F;
-         this.a[$$3].d = azm.a($$1) * 7.0F;
-         $$1++;
-      }
+   public float d() {
+      return this.e;
+   }
 
-      $$1 = 0.47123894F + $$0.u * (float) Math.PI * -0.05F;
+   public float e() {
+      return this.f;
+   }
 
-      for (int $$4 = 8; $$4 < 12; $$4++) {
-         this.a[$$4].c = 11.0F + azm.b(((float)$$4 * 1.5F + $$0.u) * 0.5F);
-         this.a[$$4].b = azm.b($$1) * 5.0F;
-         this.a[$$4].d = azm.a($$1) * 5.0F;
-         $$1++;
-      }
+   public float f() {
+      return this.g;
+   }
 
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+   public Set<String> g() {
+      return this.h;
    }
 }

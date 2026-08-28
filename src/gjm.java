@@ -1,103 +1,68 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class gjm {
-   private static final Logger a = LogUtils.getLogger();
-   private final fos b;
-   private final hof c;
-   private final an d = new an();
-   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private gjm.a f;
-   @Nullable
-   private ai g;
+   private final List<gjf> a;
+   private final gje b;
+   private final Map<String, gjm> c = Maps.newHashMap();
 
-   public gjm(fos $$0, hof $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   gjm(List<gjf> $$0, gje $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(agg $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
+   public gjm a(String $$0, gjh $$1, gje $$2) {
+      gjm $$3 = new gjm($$1.b(), $$2);
+      return this.a($$0, $$3);
+   }
+
+   public gjm a(String $$0, gjm $$1) {
+      gjm $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
       }
 
-      this.d.a($$0.e());
-      this.d.a($$0.b());
+      return $$1;
+   }
 
-      for (Entry<alg, ak> $$1 : $$0.f().entrySet()) {
-         aj $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ak $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
-            }
-
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.s != null) {
-                  this.c.a(this.b.s, $$2.b());
-               }
-
-               Optional<au> $$4 = $$2.a().c();
-               if ($$0.h() && $$4.isPresent() && $$4.get().h()) {
-                  this.b.aA().a(new fuj($$2.b()));
-               }
-            }
-         } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
+   public gjm a(String $$0) {
+      gjm $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No child with name: " + $$0);
+      } else {
+         return this.a($$0, gjh.c(), $$1.b);
       }
    }
 
-   public an a() {
-      return this.d;
+   public gjc a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gjc> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gjm)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gjc.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).toList();
+      gjc $$4 = new gjc($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   public void a(@Nullable ai $$0, boolean $$1) {
-      gjs $$2 = this.b.L();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(aic.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
+   public gjm b(String $$0) {
+      return this.c.get($$0);
    }
 
-   public void a(@Nullable gjm.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            aj $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
-            }
-         });
-         $$0.a(this.g);
-      }
+   public Set<Entry<String, gjm>> a() {
+      return this.c.entrySet();
    }
 
-   @Nullable
-   public ai a(alg $$0) {
-      aj $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
-   }
-
-   public interface a extends an.a {
-      void a(aj var1, ak var2);
-
-      void a(@Nullable ai var1);
+   public gjm a(UnaryOperator<gje> $$0) {
+      gjm $$1 = new gjm(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

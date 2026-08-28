@@ -1,38 +1,55 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public interface efv extends azv {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class efv {
-   public final enj a;
-   public final enj b;
-   public final enj c;
-   public final enj d;
-   public final enj e;
-   public final List<dzz> f;
-   public final axr<dma> g;
-   public final axr<dma> h;
-   public static final Codec<efv> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enj.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               enj.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               enj.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               enj.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               enj.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayu.b(dzz.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axr.b(mg.i).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axr.b(mg.i).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, efv::new)
-   );
+   int c(int var1);
 
-   public efv(enj $$0, enj $$1, enj $$2, enj $$3, enj $$4, List<dzz> $$5, axr<dma> $$6, axr<dma> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   @Override
+   default int f() {
+      return this.c(32);
+   }
+
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
+
+         return $$2;
+      }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

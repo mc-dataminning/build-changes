@@ -1,15 +1,20 @@
-public class hly extends hlz {
-   public hly(cit $$0) {
-      super($$0, awn.bR, awo.g);
+import java.util.UUID;
+
+public interface hly {
+   void a(UUID var1, hly.b var2);
+
+   void a(UUID var1, hly.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   protected hlv o() {
-      return new hlx(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.W_();
+   public static enum b {
+      a,
+      b;
    }
 }

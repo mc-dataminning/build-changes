@@ -1,17 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class evb implements evd {
-   private static final evb b = new evb();
-   public static final MapCodec<evb> a = MapCodec.unit(b);
+public class evb {
+   private final List<eva> a;
 
-   @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      return new tz();
+   public evb(List<eva> $$0) {
+      this.a = $$0;
+   }
+
+   public List<eva> a() {
+      return this.a;
    }
 
    @Override
-   public eve<?> a() {
-      return eve.a;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

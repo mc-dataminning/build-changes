@@ -1,59 +1,97 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-public class gqa {
-   private final gqf a = new gqf();
-   private final gqg b;
-   private final gps.a c;
-   private final gps.a d;
-   private final gpu e;
-
-   public gqa(int $$0) {
-      this.b = gqg.a($$0);
-      SequencedMap<gqc, fiz> $$1 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(gqn.h(), this.a.a(gqc.c()));
-         $$0x.put(gqn.i(), this.a.a(gqc.e()));
-         $$0x.put(gqn.a(), this.a.a(gqc.d()));
-         $$0x.put(gqn.j(), this.a.a(gqc.f()));
-         a($$0x, gqn.b());
-         a($$0x, gqn.c());
-         a($$0x, gqn.d());
-         a($$0x, gqn.e());
-         a($$0x, gqn.f());
-         $$0x.put(gqn.g(), new fiz(786432));
-         a($$0x, gqc.j());
-         a($$0x, gqc.l());
-         a($$0x, gqc.k());
-         a($$0x, gqc.m());
-         a($$0x, gqc.i());
-      });
-      this.c = gps.a($$1, new fiz(786432));
-      this.e = new gpu(this.c);
-      SequencedMap<gqc, fiz> $$2 = af.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> hkz.l.forEach($$1x -> a($$0x, $$1x)));
-      this.d = gps.a($$2, new fiz(0));
+public interface gqa {
+   static gqa.a a(fjg $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<gqc, fiz> $$0, gqc $$1) {
-      $$0.put($$1, new fiz($$1.R()));
+   static gqa.a a(SequencedMap<gqk, fjg> $$0, fjg $$1) {
+      return new gqa.a($$1, $$0);
    }
 
-   public gqf a() {
-      return this.a;
-   }
+   fjn getBuffer(gqk var1);
 
-   public gqg b() {
-      return this.b;
-   }
+   public static class a implements gqa {
+      protected final fjg a;
+      protected final SequencedMap<gqk, fjg> b;
+      protected final Map<gqk, fjf> c = new HashMap<>();
+      @Nullable
+      protected gqk d;
 
-   public gps.a c() {
-      return this.c;
-   }
+      protected a(fjg $$0, SequencedMap<gqk, fjg> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public gps.a d() {
-      return this.d;
-   }
+      @Override
+      public fjn getBuffer(gqk $$0) {
+         fjf $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.Y()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
 
-   public gpu e() {
-      return this.e;
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fjg $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fjf($$2, $$0.U(), $$0.T());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
+
+               $$1 = new fjf(this.a, $$0.U(), $$0.T());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
+         }
+      }
+
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
+      }
+
+      public void b() {
+         this.a();
+
+         for (gqk $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(gqk $$0) {
+         fjf $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
+      }
+
+      private void a(gqk $$0, fjf $$1) {
+         fji $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.Z()) {
+               fjg $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getProjectionType().a());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
+      }
    }
 }

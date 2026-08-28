@@ -1,24 +1,37 @@
-public class ghg extends ghb<hdx> {
-   public ghg(giu $$0) {
+public class ghg extends gfy<hcn> {
+   private final gjc a;
+   private final gjc b;
+
+   public ghg(gjc $$0) {
       super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      $$1.a("head", giz.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new giy(0.6F)), giw.a(0.0F, 6.0F, -8.0F));
-      $$1.a("body", giz.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new giy(1.75F)), giw.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      giz $$2 = giz.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new giy(0.5F));
-      $$1.a("right_hind_leg", $$2, giw.a(-3.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, giw.a(3.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$2, giw.a(-3.0F, 12.0F, -5.0F));
-      $$1.a("left_front_leg", $$2, giw.a(3.0F, 12.0F, -5.0F));
-      return gja.a($$0, 64, 32);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gjh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gjh.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gje.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gjh.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gje.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gjh.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gje.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gjh.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gje.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gjh.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gje.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gjh.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gje.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gjh.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gje.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gjh.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gje.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gjh.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gje.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gjh.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gje.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gjh.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gje.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gjh.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gje.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gji.a($$0, 32, 32);
    }
 
-   public void a(hdx $$0) {
+   @Override
+   public void a(hcn $$0) {
       super.a($$0);
-      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
-      this.b.e = $$0.b;
+      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
    }
 }

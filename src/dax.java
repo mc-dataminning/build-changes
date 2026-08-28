@@ -1,19 +1,43 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.function.Consumer;
 
-public record dax(List<dwu.c> d) implements dcd {
-   public static final Codec<dax> a = dwu.c.b.xmap(dax::new, dax::a);
-   public static final yw<ByteBuf, dax> b = dwu.c.c.a(yu.a()).a(dax::new, dax::a);
-   public static final dax c = new dax(List.of());
+public class dax implements cuj {
+   public static final Codec<je<dax>> a = mf.h.r();
+   public static final yw<wj, je<dax>> b = yu.b(mg.ae);
+   private final String c;
+   private final List<bvj> d;
+   private cum e = cuo.g;
 
-   @Override
-   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
-      $$1.accept(wy.a("container.beehive.bees", this.d.size(), 3).a(n.h));
+   public dax(String $$0, bvj... $$1) {
+      this.c = $$0;
+      this.d = List.of($$1);
    }
 
-   public List<dwu.c> a() {
+   public dax a(cuk... $$0) {
+      this.e = cuo.e.a($$0);
+      return this;
+   }
+
+   @Override
+   public cum k() {
+      return this.e;
+   }
+
+   public List<bvj> a() {
       return this.d;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      for (bvj $$0 : this.d) {
+         if ($$0.c().a().a()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

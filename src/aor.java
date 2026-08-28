@@ -37,14 +37,14 @@ public class aor {
       );
    }
 
-   private static int a(ei $$0, bwd $$1, gh $$2) {
-      feh $$3 = $$2.b($$0);
+   private static int a(ei $$0, bwf $$1, gh $$2) {
+      fep $$3 = $$2.b($$0);
       $$1.a($$3.j, $$3.i);
       $$0.a(() -> wy.a("commands.rotate.success", $$1.m_()), true);
       return 1;
    }
 
-   private static int a(ei $$0, bwd $$1, aoa $$2) {
+   private static int a(ei $$0, bwf $$1, aoa $$2) {
       $$2.perform($$0, $$1);
       $$0.a(() -> wy.a("commands.rotate.success", $$1.m_()), true);
       return 1;

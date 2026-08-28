@@ -1,40 +1,54 @@
-public abstract class frs extends fsa {
-   protected static final int e = 2;
-   private static final ftp a = new ftp(alg.b("widget/button"), alg.b("widget/button_disabled"), alg.b("widget/button_highlighted"));
+import javax.annotation.Nullable;
 
-   public frs(int $$0, int $$1, int $$2, int $$3, wy $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public interface frs {
+   static frs a(fug $$0) {
+      return new frs.a($$0);
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(fro $$0, int $$1, int $$2, float $$3) {
-      fos $$4 = fos.Q();
-      $$0.a(gqc::H, a.a(this.j, this.D()), this.F(), this.G(), this.A(), this.y(), axw.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | azm.f(this.l * 255.0F) << 24);
+   @Nullable
+   static frs a(fuf $$0, @Nullable frs $$1) {
+      return $$1 == null ? null : new frs.b($$0, $$1);
    }
 
-   public void a(fro $$0, frm $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   static frs a(fug $$0, fuf... $$1) {
+      frs $$2 = a($$0);
+
+      for (fuf $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   fug a();
+
+   void a(boolean var1);
+
+   public static record a(fug a) implements frs {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fwe.a($$0)) {
-         this.a(fos.Q().ak());
-         this.b();
-         return true;
-      } else {
-         return false;
+   public static record b(fuf a, frs b) implements frs {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fuf b() {
+         return this.a;
+      }
+
+      public frs c() {
+         return this.b;
       }
    }
 }

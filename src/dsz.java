@@ -1,50 +1,115 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class dsz extends dlm {
-   public static final MapCodec<dsz> a = b(dsz::new);
-   public static final eaq b = eap.c;
-   private final btg c = btd.a(5);
+public enum dsz implements bak {
+   a(0, "none", h.a),
+   b(1, "clockwise_90", h.u),
+   c(2, "180", h.c),
+   d(3, "counterclockwise_90", h.v);
 
-   @Override
-   public MapCodec<dsz> a() {
-      return a;
+   public static final IntFunction<dsz> e = ayc.a(dsz::b, values(), ayc.a.b);
+   public static final Codec<dsz> f = bak.a(dsz::values);
+   public static final yw<ByteBuf, dsz> g = yu.a(e, dsz::b);
+   private final int h;
+   private final String i;
+   private final h j;
+
+   private dsz(final int $$0, final String $$1, final h $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public dsz(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)));
+   public dsz a(dsz $$0) {
+      return switch ($$0) {
+         case b -> {
+            switch (this) {
+               case a:
+                  yield b;
+               case b:
+                  yield c;
+               case c:
+                  yield d;
+               case d:
+                  yield a;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case c -> {
+            switch (this) {
+               case a:
+                  yield c;
+               case b:
+                  yield d;
+               case c:
+                  yield a;
+               case d:
+                  yield b;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case d -> {
+            switch (this) {
+               case a:
+                  yield d;
+               case b:
+                  yield a;
+               case c:
+                  yield b;
+               case d:
+                  yield c;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> this;
+      };
    }
 
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
+   public h a() {
+      return this.j;
    }
 
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+   public ja a(ja $$0) {
+      if ($$0.o() == ja.a.b) {
+         return $$0;
+      } else {
+         return switch (this) {
+            case b -> $$0.h();
+            case c -> $$0.g();
+            case d -> $$0.i();
+            default -> $$0;
+         };
       }
    }
 
-   @Nullable
-   @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return new dyh($$0, $$1);
+   public int a(int $$0, int $$1) {
+      return switch (this) {
+         case b -> ($$0 + $$1 / 4) % $$1;
+         case c -> ($$0 + $$1 / 2) % $$1;
+         case d -> ($$0 + $$1 * 3 / 4) % $$1;
+         default -> $$0;
+      };
    }
 
-   @Nullable
-   @Override
-   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
-      return $$0.C ? null : a($$2, dwz.L, dyh::a);
+   public static dsz a(azv $$0) {
+      return af.a(values(), $$0);
+   }
+
+   public static List<dsz> b(azv $$0) {
+      return af.b(values(), $$0);
    }
 
    @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, cyy $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   public String c() {
+      return this.i;
+   }
+
+   private int b() {
+      return this.h;
    }
 }

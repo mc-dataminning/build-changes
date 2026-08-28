@@ -1,31 +1,72 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class duw extends dlq {
-   protected static final MapCodec<mb> a = mf.i
-      .q()
-      .comapFlatMap($$0 -> $$0 instanceof mb $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
-      .fieldOf("particle_options");
-   public static final MapCodec<duw> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, duw::new));
-   protected final mb c;
+public class duw extends doo implements drc {
+   public static final MapCodec<duw> c = b(duw::new);
+   public static final ebf<ebd> d = doo.b;
+   private static final ffk e = dmf.b(12.0, 0.0, 16.0);
 
    @Override
-   public MapCodec<? extends duw> a() {
-      return b;
+   public MapCodec<duw> a() {
+      return c;
    }
 
-   protected duw(mb $$0, dzy.d $$1) {
-      super($$1);
-      this.c = $$0;
+   public duw(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(lx.ah, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.c, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return e;
+   }
+
+   @Override
+   protected boolean b(eah $$0, dig $$1, iu $$2) {
+      return $$0.c($$1, $$2, ja.b) && !$$0.a(dmh.lp);
+   }
+
+   @Override
+   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
+      return new czd(dmh.bG);
+   }
+
+   @Nullable
+   @Override
+   public eah a(dcw $$0) {
+      eah $$1 = super.a($$0);
+      if ($$1 != null) {
+         ewo $$2 = $$0.q().b_($$0.a().d());
+         if ($$2.a(axh.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      if ($$0.c(d) == ebd.a) {
+         eah $$3 = $$1.a_($$2.e());
+         return $$3.a(this) && $$3.c(d) == ebd.b;
+      } else {
+         ewo $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(axh.a) && $$4.e() == 8;
+      }
+   }
+
+   @Override
+   protected ewo b_(eah $$0) {
+      return ewp.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable bxe $$0, dig $$1, iu $$2, eah $$3, ewn $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(djb $$0, iu $$1, eah $$2, ewo $$3) {
+      return false;
    }
 }

@@ -1,11 +1,21 @@
 import com.mojang.brigadier.StringReader;
-import java.util.stream.Stream;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public interface bpy extends bpt<StringReader> {
-   Stream<alg> a();
+public class bpy implements bpt<StringReader, alg> {
+   public static final bpt<StringReader, alg> a = new bpy();
+
+   private bpy() {
+   }
 
    @Override
-   default Stream<String> possibleValues(bpq<StringReader> $$0) {
-      return this.a().map(alg::toString);
+   public Optional<alg> a(bps<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+
+      try {
+         return Optional.of(alg.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

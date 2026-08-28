@@ -1,90 +1,61 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class grd {
-   public float[] a;
-   public final int b;
+   private Map<eah, hkx> a = Map.of();
+   private final hll b;
 
-   public grd(@Nullable float[] $$0, int $$1) {
+   public grd(hll $$0) {
+      this.b = $$0;
+   }
+
+   public hix a(eah $$0) {
+      return this.b($$0).d();
+   }
+
+   public hkx b(eah $$0) {
+      hkx $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         $$1 = this.b.a();
+      }
+
+      return $$1;
+   }
+
+   public hll a() {
+      return this.b;
+   }
+
+   public void a(Map<eah, hkx> $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
+   public static hlm c(eah $$0) {
+      return a(mf.e.b($$0.b()), $$0);
    }
 
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
+   public static hlm a(alg $$0, eah $$1) {
+      return new hlm($$0, b($$1.G()));
    }
 
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
+   public static String b(Map<ebk<?>, Comparable<?>> $$0) {
+      StringBuilder $$1 = new StringBuilder();
 
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<grd> {
-      private static final int a = 0;
-
-      public grd a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new grd($$4, $$5);
-      }
-
-      protected int a(JsonObject $$0) {
-         int $$1 = azc.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
+      for (Entry<ebk<?>, Comparable<?>> $$2 : $$0.entrySet()) {
+         if ($$1.length() != 0) {
+            $$1.append(',');
          }
+
+         ebk<?> $$3 = $$2.getKey();
+         $$1.append($$3.f());
+         $$1.append('=');
+         $$1.append(a($$3, $$2.getValue()));
       }
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = azc.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+      return $$1.toString();
+   }
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = azc.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
-      }
+   private static <T extends Comparable<T>> String a(ebk<T> $$0, Comparable<?> $$1) {
+      return $$0.b((T)$$1);
    }
 }

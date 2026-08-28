@@ -1,278 +1,225 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.mojang.logging.LogUtils;
+import com.jcraft.jogg.Packet;
+import com.jcraft.jogg.Page;
+import com.jcraft.jogg.StreamState;
+import com.jcraft.jogg.SyncState;
+import com.jcraft.jorbis.Block;
+import com.jcraft.jorbis.Comment;
+import com.jcraft.jorbis.DspState;
+import com.jcraft.jorbis.Info;
+import it.unimi.dsi.fastutil.floats.FloatConsumer;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.io.InputStream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import javax.sound.sampled.AudioFormat;
 
-public class hns extends avi<hns.a> {
-   public static final alg a = alg.b("empty");
-   public static final hmj b = new hmj(a, btc.a(1.0F), btc.a(1.0F), 1, hmj.a.a, false, false, 16);
-   public static final alg c = alg.b("intentionally_empty");
-   public static final hnt d = new hnt(c, null);
-   public static final hmj e = new hmj(c, btc.a(1.0F), btc.a(1.0F), 1, hmj.a.a, false, false, 16);
-   static final Logger f = LogUtils.getLogger();
-   private static final String g = "sounds.json";
-   private static final Gson h = new GsonBuilder().registerTypeHierarchyAdapter(wy.class, new wy.b(js.b)).registerTypeAdapter(hmk.class, new hml()).create();
-   private static final TypeToken<Map<String, hmk>> i = new TypeToken<Map<String, hmk>>() {
-   };
-   private final Map<alg, hnt> j = Maps.newHashMap();
-   private final hnp k;
-   private final Map<alg, avb> l = new HashMap<>();
+public class hns implements hnr {
+   private static final int b = 8192;
+   private static final int c = -1;
+   private static final int d = 0;
+   private static final int e = 1;
+   private static final int f = -1;
+   private static final int g = 0;
+   private static final int h = 1;
+   private final SyncState i = new SyncState();
+   private final Page j = new Page();
+   private final StreamState k = new StreamState();
+   private final Packet l = new Packet();
+   private final Info m = new Info();
+   private final DspState n = new DspState();
+   private final Block o = new Block(this.n);
+   private final AudioFormat p;
+   private final InputStream q;
+   private long r;
+   private long s = Long.MAX_VALUE;
 
-   public hns(fow $$0) {
-      this.k = new hnp(this, $$0, avg.fromMap(this.l));
-   }
-
-   protected hns.a a(avd $$0, bqm $$1) {
-      hns.a $$2 = new hns.a();
-
-      try (bqr $$3 = $$1.d("list")) {
-         $$2.a($$0);
-      }
-
-      for (String $$4 : $$0.a()) {
-         try (bqr $$5 = $$1.d($$4)) {
-            for (avb $$7 : $$0.a(alg.a($$4, "sounds.json"))) {
-               $$1.a($$7.b());
-
-               try (Reader $$8 = $$7.e()) {
-                  $$1.a("parse");
-                  Map<String, hmk> $$9 = azc.a(h, $$8, i);
-                  $$1.b("register");
-
-                  for (Entry<String, hmk> $$10 : $$9.entrySet()) {
-                     $$2.a(alg.a($$4, $$10.getKey()), $$10.getValue());
-                  }
-
-                  $$1.c();
-               } catch (RuntimeException var19) {
-                  f.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$7.b(), var19});
+   public hns(InputStream $$0) throws IOException {
+      this.q = $$0;
+      Comment $$1 = new Comment();
+      Page $$2 = this.d();
+      if ($$2 == null) {
+         throw new IOException("Invalid Ogg file - can't find first page");
+      } else {
+         Packet $$3 = this.a($$2);
+         if (b(this.m.synthesis_headerin($$1, $$3))) {
+            throw new IOException("Invalid Ogg identification packet");
+         } else {
+            for (int $$4 = 0; $$4 < 2; $$4++) {
+               $$3 = this.e();
+               if ($$3 == null) {
+                  throw new IOException("Unexpected end of Ogg stream");
                }
 
-               $$1.c();
+               if (b(this.m.synthesis_headerin($$1, $$3))) {
+                  throw new IOException("Invalid Ogg header packet " + $$4);
+               }
             }
-         } catch (IOException var21) {
+
+            this.n.synthesis_init(this.m);
+            this.o.init(this.n);
+            this.p = new AudioFormat((float)this.m.rate, 16, this.m.channels, true, false);
          }
       }
-
-      return $$2;
    }
 
-   protected void a(hns.a $$0, avd $$1, bqm $$2) {
-      $$0.a(this.j, this.l, this.k);
-      if (ab.aU) {
-         for (alg $$3 : this.j.keySet()) {
-            hnt $$4 = this.j.get($$3);
-            if (!xb.b($$4.a()) && mf.b.d($$3)) {
-               f.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
-            }
-         }
-      }
-
-      if (f.isDebugEnabled()) {
-         for (alg $$5 : this.j.keySet()) {
-            if (!mf.b.d($$5)) {
-               f.debug("Not having sound event for: {}", $$5);
-            }
-         }
-      }
-
-      this.k.a();
+   private static boolean b(int $$0) {
+      return $$0 < 0;
    }
 
-   public List<String> a() {
-      return this.k.h();
+   @Override
+   public AudioFormat a() {
+      return this.p;
    }
 
-   public fgr b() {
-      return this.k.i();
-   }
-
-   static boolean a(hmj $$0, alg $$1, avg $$2) {
-      alg $$3 = $$0.b();
-      if ($$2.getResource($$3).isEmpty()) {
-         f.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+   private boolean c() throws IOException {
+      int $$0 = this.i.buffer(8192);
+      byte[] $$1 = this.i.data;
+      int $$2 = this.q.read($$1, $$0, 8192);
+      if ($$2 == -1) {
          return false;
       } else {
+         this.i.wrote($$2);
          return true;
       }
    }
 
    @Nullable
-   public hnt a(alg $$0) {
-      return this.j.get($$0);
-   }
-
-   public Collection<alg> d() {
-      return this.j.keySet();
-   }
-
-   public void a(hmn $$0) {
-      this.k.a($$0);
-   }
-
-   public void a(hmm $$0) {
-      this.k.c($$0);
-   }
-
-   public void a(hmm $$0, int $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public void a(fnz $$0) {
-      this.k.a($$0);
-   }
-
-   public void e() {
-      this.k.e();
-   }
-
-   public void f() {
-      this.k.d();
-   }
-
-   public void g() {
-      this.k.b();
-   }
-
-   public void h() {
-      this.k.c();
-   }
-
-   public void a(boolean $$0) {
-      this.k.a($$0);
-   }
-
-   public void i() {
-      this.k.f();
-   }
-
-   public void a(awo $$0, float $$1) {
-      if ($$0 == awo.a && $$1 <= 0.0F) {
-         this.f();
-      }
-
-      this.k.a($$0, $$1);
-   }
-
-   public void b(hmm $$0) {
-      this.k.a($$0);
-   }
-
-   public void a(hmm $$0, float $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public boolean c(hmm $$0) {
-      return this.k.b($$0);
-   }
-
-   public void a(hnr $$0) {
-      this.k.a($$0);
-   }
-
-   public void b(hnr $$0) {
-      this.k.b($$0);
-   }
-
-   public void a(@Nullable alg $$0, @Nullable awo $$1) {
-      this.k.a($$0, $$1);
-   }
-
-   public String j() {
-      return this.k.g();
-   }
-
-   public void k() {
-      this.k.a();
-   }
-
-   protected static class a {
-      final Map<alg, hnt> a = Maps.newHashMap();
-      private Map<alg, avb> b = Map.of();
-
-      void a(avd $$0) {
-         this.b = hmj.a.a($$0);
-      }
-
-      void a(alg $$0, hmk $$1) {
-         hnt $$2 = this.a.get($$0);
-         boolean $$3 = $$2 == null;
-         if ($$3 || $$1.b()) {
-            if (!$$3) {
-               hns.f.debug("Replaced sound event location {}", $$0);
-            }
-
-            $$2 = new hnt($$0, $$1.c());
-            this.a.put($$0, $$2);
-         }
-
-         avg $$4 = avg.fromMap(this.b);
-
-         for (final hmj $$5 : $$1.a()) {
-            final alg $$6 = $$5.a();
-            hnu<hmj> $$8;
-            switch ($$5.f()) {
-               case a:
-                  if (!hns.a($$5, $$0, $$4)) {
-                     continue;
-                  }
-
-                  $$8 = $$5;
+   private Page d() throws IOException {
+      while (true) {
+         int $$0 = this.i.pageout(this.j);
+         switch ($$0) {
+            case -1:
+               throw new IllegalStateException("Corrupt or missing data in bitstream");
+            case 0:
+               if (this.c()) {
                   break;
-               case b:
-                  $$8 = new hnu<hmj>() {
-                     @Override
-                     public int e() {
-                        hnt $$0 = a.this.a.get($$6);
-                        return $$0 == null ? 0 : $$0.e();
-                     }
+               }
 
-                     public hmj a(azv $$0) {
-                        hnt $$1 = a.this.a.get($$6);
-                        if ($$1 == null) {
-                           return hns.b;
-                        } else {
-                           hmj $$2 = $$1.a($$0);
-                           return new hmj($$2.a(), new bti($$2.c(), $$5.c()), new bti($$2.d(), $$5.d()), $$5.e(), hmj.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i());
-                        }
-                     }
+               return null;
+            case 1:
+               if (this.j.eos() != 0) {
+                  this.s = this.j.granulepos();
+               }
 
-                     @Override
-                     public void a(hnp $$0) {
-                        hnt $$1 = a.this.a.get($$6);
-                        if ($$1 != null) {
-                           $$1.a($$0);
-                        }
-                     }
-                  };
+               return this.j;
+            default:
+               throw new IllegalStateException("Unknown page decode result: " + $$0);
+         }
+      }
+   }
+
+   private Packet a(Page $$0) throws IOException {
+      this.k.init($$0.serialno());
+      if (b(this.k.pagein($$0))) {
+         throw new IOException("Failed to parse page");
+      } else {
+         int $$1 = this.k.packetout(this.l);
+         if ($$1 != 1) {
+            throw new IOException("Failed to read identification packet: " + $$1);
+         } else {
+            return this.l;
+         }
+      }
+   }
+
+   @Nullable
+   private Packet e() throws IOException {
+      while (true) {
+         int $$0 = this.k.packetout(this.l);
+         switch ($$0) {
+            case -1:
+               throw new IOException("Failed to parse packet");
+            case 0:
+               Page $$1 = this.d();
+               if ($$1 == null) {
+                  return null;
+               }
+
+               if (!b(this.k.pagein($$1))) {
+                  break;
+               }
+
+               throw new IOException("Failed to parse page");
+            case 1:
+               return this.l;
+            default:
+               throw new IllegalStateException("Unknown packet decode result: " + $$0);
+         }
+      }
+   }
+
+   private long c(int $$0) {
+      long $$1 = this.r + (long)$$0;
+      long $$2;
+      if ($$1 > this.s) {
+         $$2 = this.s - this.r;
+         this.r = this.s;
+      } else {
+         this.r = $$1;
+         $$2 = (long)$$0;
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public boolean a(FloatConsumer $$0) throws IOException {
+      float[][][] $$1 = new float[1][][];
+      int[] $$2 = new int[this.m.channels];
+      Packet $$3 = this.e();
+      if ($$3 == null) {
+         return false;
+      } else if (b(this.o.synthesis($$3))) {
+         throw new IOException("Can't decode audio packet");
+      } else {
+         this.n.synthesis_blockin(this.o);
+
+         int $$4;
+         while (($$4 = this.n.synthesis_pcmout($$1, $$2)) > 0) {
+            float[][] $$5 = $$1[0];
+            long $$6 = this.c($$4);
+            switch (this.m.channels) {
+               case 1:
+                  a($$5[0], $$2[0], $$6, $$0);
+                  break;
+               case 2:
+                  a($$5[0], $$2[0], $$5[1], $$2[1], $$6, $$0);
                   break;
                default:
-                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+                  a($$5, this.m.channels, $$2, $$6, $$0);
             }
 
-            $$2.a($$8);
+            this.n.synthesis_read($$4);
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(float[][] $$0, int $$1, int[] $$2, long $$3, FloatConsumer $$4) {
+      for (int $$5 = 0; (long)$$5 < $$3; $$5++) {
+         for (int $$6 = 0; $$6 < $$1; $$6++) {
+            int $$7 = $$2[$$6];
+            float $$8 = $$0[$$6][$$7 + $$5];
+            $$4.accept($$8);
          }
       }
+   }
 
-      public void a(Map<alg, hnt> $$0, Map<alg, avb> $$1, hnp $$2) {
-         $$0.clear();
-         $$1.clear();
-         $$1.putAll(this.b);
-
-         for (Entry<alg, hnt> $$3 : this.a.entrySet()) {
-            $$0.put($$3.getKey(), $$3.getValue());
-            $$3.getValue().a($$2);
-         }
+   private static void a(float[] $$0, int $$1, long $$2, FloatConsumer $$3) {
+      for (int $$4 = $$1; (long)$$4 < (long)$$1 + $$2; $$4++) {
+         $$3.accept($$0[$$4]);
       }
+   }
+
+   private static void a(float[] $$0, int $$1, float[] $$2, int $$3, long $$4, FloatConsumer $$5) {
+      for (int $$6 = 0; (long)$$6 < $$4; $$6++) {
+         $$5.accept($$0[$$1 + $$6]);
+         $$5.accept($$2[$$3 + $$6]);
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.q.close();
    }
 }

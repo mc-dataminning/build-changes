@@ -1,122 +1,113 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpy extends dpt {
-   public static final MapCodec<dpy> a = b(dpy::new);
-   private static final double b = 0.13;
-   private static final double c = 0.08;
-   private static final double e = 0.05;
-   private static final int f = 20;
-   private static final ffc g = dma.b(14.0, 0.0, 15.0);
+public abstract class dpy extends dpw implements dmi {
+   public static final ebh e = eax.aA;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dpy> a() {
-      return a;
-   }
-
-   public dpy(dzy.d $$0) {
-      super($$0);
-   }
-
-   private static boolean c(bwd $$0) {
-      return $$0 instanceof bxc || $$0 instanceof ctk || $$0 instanceof cne || $$0 instanceof cti;
+   protected dpy(eag.d $$0, ja $$1, ffk $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.C.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return g;
+   protected abstract MapCodec<? extends dpy> a();
+
+   @Override
+   public eah b(azv $$0) {
+      return this.m().b(e, Integer.valueOf($$0.a(25)));
    }
 
    @Override
-   public void a(div $$0, dzz $$1, iu $$2, bwd $$3, double $$4) {
-      $$3.a(awn.mZ, 1.0F, 1.0F);
-      if (!$$0.C) {
-         $$0.a($$3, (byte)54);
-      }
+   protected boolean f(eah $$0) {
+      return $$0.c(e) < 25;
+   }
 
-      if ($$3.a($$4, 0.2F, $$0.al().l())) {
-         $$3.a(this.H.g(), this.H.a() * 0.5F, this.H.b() * 0.75F);
+   @Override
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         iu $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.A));
+         }
       }
    }
 
+   protected eah a(eah $$0, azv $$1) {
+      return $$0.a(e);
+   }
+
+   public eah p(eah $$0) {
+      return $$0.b(e, Integer.valueOf(25));
+   }
+
+   public boolean q(eah $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected eah a(eah $$0, eah $$1) {
+      return $$1;
+   }
+
    @Override
-   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
-      if (this.a($$2, $$3)) {
-         this.a($$3, $$2);
-         this.d($$3);
-         this.a($$1, $$3);
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if ($$4 == this.a.g()) {
+         if (!$$0.a($$1, $$3)) {
+            $$2.a($$3, this, 1);
+         } else {
+            eah $$8 = $$1.a_($$3.a(this.a));
+            if ($$8.a(this) || $$8.a(this.b())) {
+               return this.a($$0, this.b().m());
+            }
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
+      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
+         if (this.b) {
+            $$2.a($$3, ewp.c, ewp.c.a($$1));
+         }
 
-   private static double b(double $$0) {
-      return $$0 / 0.98F + 0.08;
-   }
-
-   private static double c(double $$0) {
-      return ($$0 - 0.08) * 0.98F;
-   }
-
-   private boolean a(iu $$0, bwd $$1) {
-      if ($$1.aJ()) {
-         return false;
-      } else if ($$1.dC() > (double)$$0.v() + 0.9375 - 1.0E-7) {
-         return false;
-      } else if (b($$1.dy().e) >= -0.08) {
-         return false;
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       } else {
-         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dA());
-         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dG());
-         double $$4 = 0.4375 + (double)($$1.dq() / 2.0F);
-         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+         return this.a($$0, this.b().m());
       }
    }
 
-   private void a(bwd $$0, iu $$1) {
-      if ($$0 instanceof arr && $$0.dV().ae() % 20L == 0L) {
-         ap.K.a((arr)$$0, $$0.dV().a_($$1));
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      iu $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
    }
 
-   private void d(bwd $$0) {
-      fei $$1 = $$0.dy();
-      if (b($$0.dy().e) < -0.13) {
-         double $$2 = -0.05 / b($$0.dy().e);
-         $$0.i(new fei($$1.d * $$2, c(-0.05), $$1.f * $$2));
-      } else {
-         $$0.i(new fei($$1.d, c(-0.05), $$1.f));
-      }
+   protected abstract int a(azv var1);
 
-      $$0.k();
-   }
+   protected abstract boolean h(eah var1);
 
-   private void a(div $$0, bwd $$1) {
-      if (c($$1)) {
-         if ($$0.A.a(5) == 0) {
-            $$1.a(awn.mZ, 1.0F, 1.0F);
-         }
-
-         if (!$$0.C && $$0.A.a(5) == 0) {
-            $$0.a($$1, (byte)53);
-         }
-      }
-   }
-
-   public static void a(bwd $$0) {
-      a($$0, 5);
-   }
-
-   public static void b(bwd $$0) {
-      a($$0, 10);
-   }
-
-   private static void a(bwd $$0, int $$1) {
-      if ($$0.dV().C) {
-         dzz $$2 = dmc.pL.m();
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$0.dV().a(new lp(lx.b, $$2), $$0.dA(), $$0.dC(), $$0.dG(), 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected dpy c() {
+      return this;
    }
 }

@@ -1,37 +1,26 @@
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public abstract class exs {
-   private boolean a;
+public class exs {
+   @Nullable
+   public static exw a(dja $$0, @Nullable ja $$1, @Nullable ja $$2) {
+      if ($$0.K().b(cuo.c)) {
+         exw $$3 = exw.a($$0.A).a(exw.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public void f() {
-      this.a(true);
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean g() {
-      return this.a;
-   }
-
-   public static record a(@Nullable arq a, long b) {
-      public a(arq $$0) {
-         this($$0, $$0.E());
-      }
-
-      public arq a() {
-         return Objects.requireNonNull(this.a);
-      }
-
-      @Nullable
-      public arq b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+   @Nullable
+   public static exw a(@Nullable exw $$0, ja $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

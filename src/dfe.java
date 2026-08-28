@@ -1,44 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record dfe(dfb f, dfb g, dfb h, dfb i, dfb j) implements dev {
+public record dfe(int f, int g, List<dfg> h, dfg i, dfg j) implements dfa {
    public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dfb.a.fieldOf("template").forGetter(dfe::b),
-               dfb.a.fieldOf("base").forGetter(dfe::c),
-               dfb.a.fieldOf("addition").forGetter(dfe::f),
-               dfb.a.fieldOf("result").forGetter(dfe::d),
-               dfb.a.fieldOf("crafting_station").forGetter(dfe::e)
+               Codec.INT.fieldOf("width").forGetter(dfe::b),
+               Codec.INT.fieldOf("height").forGetter(dfe::c),
+               dfg.a.listOf().fieldOf("ingredients").forGetter(dfe::f),
+               dfg.a.fieldOf("result").forGetter(dfe::d),
+               dfg.a.fieldOf("crafting_station").forGetter(dfe::e)
             )
             .apply($$0, dfe::new)
    );
-   public static final yw<wj, dfe> b = yw.a(dfb.b, dfe::b, dfb.b, dfe::c, dfb.b, dfe::f, dfb.b, dfe::d, dfb.b, dfe::e, dfe::new);
-   public static final dev.a<dfe> c = new dev.a<>(a, b);
+   public static final yw<wj, dfe> b = yw.a(yu.h, dfe::b, yu.h, dfe::c, dfg.b.a(yu.a()), dfe::f, dfg.b, dfe::d, dfg.b, dfe::e, dfe::new);
+   public static final dfa.a<dfe> c = new dfa.a<>(a, b);
+
+   public dfe(int f, int g, List<dfg> h, dfg i, dfg j) {
+      if (h.size() != f * g) {
+         throw new IllegalArgumentException("Invalid shaped recipe display contents");
+      } else {
+         this.f = f;
+         this.g = g;
+         this.h = h;
+         this.i = i;
+         this.j = j;
+      }
+   }
 
    @Override
-   public dev.a<dfe> a() {
+   public dfa.a<dfe> a() {
       return c;
    }
 
-   public dfb b() {
+   @Override
+   public boolean a(cum $$0) {
+      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dfa.super.a($$0);
+   }
+
+   public int b() {
       return this.f;
    }
 
-   public dfb c() {
+   public int c() {
       return this.g;
    }
 
-   public dfb f() {
+   public List<dfg> f() {
       return this.h;
    }
 
    @Override
-   public dfb d() {
+   public dfg d() {
       return this.i;
    }
 
    @Override
-   public dfb e() {
+   public dfg e() {
       return this.j;
    }
 }

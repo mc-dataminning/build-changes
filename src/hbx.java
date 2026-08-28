@@ -1,7 +1,11 @@
-public class hbx extends hdf {
-   public final bvu a = new bvu();
-   public final bvu b = new bvu();
-   public final bvu c = new bvu();
-   public boolean d;
-   public boolean e;
+import javax.annotation.Nullable;
+
+public class hbx extends hch {
+   @Nullable
+   public bwc.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

@@ -1,18 +1,5 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
-
 public interface hlr {
-   void scheduleReload(hlr.a var1);
+   hix a(hle var1);
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<hlr.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+   hix a(String var1);
 }

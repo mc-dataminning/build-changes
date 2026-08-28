@@ -9,19 +9,19 @@ import java.util.Optional;
 
 public class bel extends bhr {
    public bel(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityHorseSaddleFix", biw.D, "EntityHorse");
+      super($$0, $$1, "EntityHorseSaddleFix", bix.D, "EntityHorse");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
-      Type<?> $$2 = this.getInputSchema().getTypeRaw(biw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
+      Type<?> $$2 = this.getInputSchema().getTypeRaw(bix.t);
       OpticFinder<?> $$3 = DSL.fieldFinder("SaddleItem", $$2);
       Optional<? extends Typed<?>> $$4 = $$0.getOptionalTyped($$3);
       Dynamic<?> $$5 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
       if ($$4.isEmpty() && $$5.get("Saddle").asBoolean(false)) {
          Typed<?> $$6 = (Typed<?>)$$2.pointTyped($$0.getOps()).orElseThrow(IllegalStateException::new);
-         $$6 = $$6.set($$1, Pair.of(biw.F.typeName(), "minecraft:saddle"));
+         $$6 = $$6.set($$1, Pair.of(bix.F.typeName(), "minecraft:saddle"));
          Dynamic<?> $$7 = $$5.emptyMap();
          $$7 = $$7.set("Count", $$7.createByte((byte)1));
          $$7 = $$7.set("Damage", $$7.createShort((short)0));

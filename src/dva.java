@@ -1,39 +1,38 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dva extends dnd {
-   public static final MapCodec<dva> g = b(dva::new);
+public class dva extends dlr implements dpr {
+   public static final MapCodec<dva> a = b(dva::new);
 
-   @Override
-   public MapCodec<dva> a() {
-      return g;
+   public dva(eag.d $$0) {
+      super($$0);
    }
 
-   public dva(dzy.d $$0) {
-      super(() -> dwz.c, $$0);
-   }
-
+   @Nullable
    @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return new dyw($$0, $$1);
+   public dxf a(iu $$0, eah $$1) {
+      return new dza($$0, $$1);
    }
 
    @Override
-   protected awu<alg> c() {
-      return awx.i.b(awx.ai);
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
+      if ($$1.c_($$2) instanceof dza $$6) {
+         if (!$$3.gG()) {
+            return bud.e;
+         } else {
+            if ($$3.cU().C) {
+               $$3.a($$6);
+            }
+
+            return bud.a;
+         }
+      } else {
+         return bud.e;
+      }
    }
 
    @Override
-   protected boolean f_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return azm.a(dxf.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      return $$3 == ja.b ? $$0.a($$1, $$2, $$3) : 0;
+   protected MapCodec<dva> a() {
+      return a;
    }
 }

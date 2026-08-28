@@ -7,7 +7,7 @@ public class baq {
    public static final long d = TimeUnit.HOURS.toSeconds(1L);
    public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public static btm a(int $$0, int $$1) {
-      return btm.a($$0 * 20, $$1 * 20);
+   public static bto a(int $$0, int $$1) {
+      return bto.a($$0 * 20, $$1 * 20);
    }
 }

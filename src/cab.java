@@ -1,27 +1,19 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cab {
-   private static final int a = 1;
+public class cab extends byv<bxg> {
+   public cab(int $$0, int $$1) {
+      super(ImmutableMap.of(cgg.o, cgh.a), $$0, $$1);
+   }
 
-   public static byu<bxc> a(float $$0) {
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$1 -> $$1.group($$1.a(cge.o), $$1.c(cge.n), $$1.b(cge.t))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bZ()) {
-                        return false;
-                     } else {
-                        bwd $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new bze($$8, true));
-                           $$3.a(new cgh(new bze($$8, false), $$0, 1));
-                        }
+   protected boolean a(arq $$0, bxg $$1, long $$2) {
+      return $$1.ec().c(cgg.o).filter($$1x -> $$1x.a($$1)).isPresent();
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   protected void b(arq $$0, bxg $$1, long $$2) {
+      $$1.ec().b(cgg.o);
+   }
+
+   protected void c(arq $$0, bxg $$1, long $$2) {
+      $$1.ec().c(cgg.o).ifPresent($$1x -> $$1.J().a($$1x.a()));
    }
 }

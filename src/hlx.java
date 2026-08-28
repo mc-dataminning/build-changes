@@ -1,16 +1,7 @@
-public class hlx extends hlz {
-   public hlx(cit $$0) {
-      super($$0, awn.bQ, awo.g);
-      this.j = 0;
-   }
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-   @Override
-   protected hlv o() {
-      return new hly(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.W_();
-   }
+public interface hlx {
+   void a(Map<UUID, atk.c> var1, Consumer<atk.b> var2);
 }

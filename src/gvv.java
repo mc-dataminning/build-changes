@@ -1,35 +1,227 @@
-public class gvv extends gxf<cnp, hce, gfo<hce>> {
-   private static final alg a = alg.b("textures/entity/enderman/enderman.png");
-   private final azv j = azv.a();
+import java.util.ArrayList;
+import java.util.List;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-   public gvv(gvz.a $$0) {
-      super($$0, new gfo<>($$0.a(git.aP)), 0.5F);
-      this.a(new gzw(this));
-      this.a(new gzo(this, $$0.d()));
+public abstract class gvv<T extends bwc, S, ST extends hch> extends gwg<T, ST> {
+   private final gwf a;
+
+   protected gvv(gwh.a $$0) {
+      super($$0);
+      this.a = $$0.a();
    }
 
-   public fei a(hce $$0) {
-      fei $$1 = super.a($$0);
-      if ($$0.a) {
-         double $$2 = 0.02 * (double)$$0.af;
-         return $$1.b(this.j.k() * $$2, 0.0, this.j.k() * $$2);
-      } else {
-         return $$1;
+   protected fel a(T $$0) {
+      return $$0.f();
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.g();
+   }
+
+   private static int c(bwc $$0) {
+      bwc.j $$1 = $$0.j();
+      return $$1 != null ? $$1.c() : -1;
+   }
+
+   protected int a(T $$0, iu $$1) {
+      int $$2 = c($$0);
+      return $$2 != -1 ? gpx.b($$2) : super.b($$0, $$1);
+   }
+
+   protected int b(T $$0, iu $$1) {
+      int $$2 = c($$0);
+      return $$2 != -1 ? gpx.a($$2) : super.a($$0, $$1);
+   }
+
+   protected float a(ST $$0) {
+      bwc.j $$1 = $$0.b;
+      return $$1 == null ? 0.0F : $$1.d().get($$0.c);
+   }
+
+   protected float b(ST $$0) {
+      bwc.j $$1 = $$0.b;
+      return $$1 == null ? 0.0F : $$1.e().get($$0.c);
+   }
+
+   public void a(ST $$0, fjj $$1, gqa $$2, int $$3) {
+      bwc.j $$4 = $$0.b;
+      if ($$4 != null && $$0.a()) {
+         float $$5 = $$0.c;
+         super.a($$0, $$1, $$2, $$3);
+         $$1.a();
+         $$1.a(this.a($$4, $$0, new Quaternionf()));
+         j $$6 = $$4.a().get($$5);
+         $$1.a($$6.c());
+         this.a($$0, $$1, $$2, $$3, $$5);
+         $$1.b();
       }
    }
 
-   public alg b(hce $$0) {
-      return a;
+   private Quaternionf a(bwc.j $$0, ST $$1, Quaternionf $$2) {
+      fog $$3 = this.a.b;
+
+      return switch ($$0.b()) {
+         case a -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * $$1.e, 0.0F);
+         case c -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * $$1.d, (float) (Math.PI / 180.0) * b($$3), 0.0F);
+         case b -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * $$1.e, 0.0F);
+         case d -> $$2.rotationYXZ((float) (-Math.PI / 180.0) * a($$3), (float) (Math.PI / 180.0) * b($$3), 0.0F);
+      };
    }
 
-   public hce a() {
-      return new hce();
+   private static float a(fog $$0) {
+      return $$0.e() - 180.0F;
    }
 
-   public void a(cnp $$0, hce $$1, float $$2) {
+   private static float b(fog $$0) {
+      return -$$0.d();
+   }
+
+   private static <T extends bwc> float a(T $$0, float $$1) {
+      return $$0.l($$1);
+   }
+
+   private static <T extends bwc> float b(T $$0, float $$1) {
+      return $$0.k($$1);
+   }
+
+   protected abstract void a(ST var1, fjj var2, gqa var3, int var4, float var5);
+
+   public void a(T $$0, ST $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gwq.a($$0, $$1, $$2, this.h);
-      $$1.a = $$0.t();
-      $$1.b = $$0.q();
+      $$1.b = $$0.j();
+      $$1.c = $$0.a($$2);
+      $$1.d = a($$0, $$2);
+      $$1.e = b($$0, $$2);
+   }
+
+   public static class a extends gvv<bwc.b, bwc.b.a, hbx> {
+      private final gre a;
+
+      protected a(gwh.a $$0) {
+         super($$0);
+         this.a = $$0.d();
+      }
+
+      public hbx a() {
+         return new hbx();
+      }
+
+      public void a(bwc.b $$0, hbx $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         $$1.a = $$0.m();
+      }
+
+      public void a(hbx $$0, fjj $$1, gqa $$2, int $$3, float $$4) {
+         this.a.a($$0.a.a(), $$1, $$2, $$3, hin.d);
+      }
+   }
+
+   public static class b extends gvv<bwc.g, bwc.g.a, hdj> {
+      private final hfo a;
+
+      protected b(gwh.a $$0) {
+         super($$0);
+         this.a = $$0.b();
+      }
+
+      public hdj a() {
+         return new hdj();
+      }
+
+      public void a(bwc.g $$0, hdj $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         bwc.g.a $$3 = $$0.m();
+         if ($$3 != null) {
+            this.a.a($$1.a, $$3.a(), $$3.b(), $$0);
+         } else {
+            $$1.a.b();
+         }
+      }
+
+      public void a(hdj $$0, fjj $$1, gqa $$2, int $$3, float $$4) {
+         if (!$$0.a.c()) {
+            $$1.a(a.d.rotation((float) Math.PI));
+            $$0.a.a($$1, $$2, $$3, hin.d);
+         }
+      }
+   }
+
+   public static class c extends gvv<bwc.k, bwc.k.e, heo> {
+      private final frt a;
+
+      protected c(gwh.a $$0) {
+         super($$0);
+         this.a = $$0.j();
+      }
+
+      public heo a() {
+         return new heo();
+      }
+
+      public void a(bwc.k $$0, heo $$1, float $$2) {
+         super.a($$0, $$1, $$2);
+         $$1.a = $$0.m();
+         $$1.f = $$0.a(this::a);
+      }
+
+      private bwc.k.b a(wy $$0, int $$1) {
+         List<ayy> $$2 = this.a.c($$0, $$1);
+         List<bwc.k.c> $$3 = new ArrayList<>($$2.size());
+         int $$4 = 0;
+
+         for (ayy $$5 : $$2) {
+            int $$6 = this.a.a($$5);
+            $$4 = Math.max($$4, $$6);
+            $$3.add(new bwc.k.c($$5, $$6));
+         }
+
+         return new bwc.k.b($$3, $$4);
+      }
+
+      public void a(heo $$0, fjj $$1, gqa $$2, int $$3, float $$4) {
+         bwc.k.e $$5 = $$0.a;
+         byte $$6 = $$5.e();
+         boolean $$7 = ($$6 & 2) != 0;
+         boolean $$8 = ($$6 & 4) != 0;
+         boolean $$9 = ($$6 & 1) != 0;
+         bwc.k.a $$10 = bwc.k.a($$6);
+         byte $$11 = (byte)$$5.c().get($$4);
+         int $$13;
+         if ($$8) {
+            float $$12 = foz.Q().n.a(0.25F);
+            $$13 = (int)($$12 * 255.0F) << 24;
+         } else {
+            $$13 = $$5.d().get($$4);
+         }
+
+         float $$15 = 0.0F;
+         Matrix4f $$16 = $$1.c().a();
+         $$16.rotate((float) Math.PI, 0.0F, 1.0F, 0.0F);
+         $$16.scale(-0.025F, -0.025F, -0.025F);
+         bwc.k.b $$17 = $$0.f;
+         int $$18 = 1;
+         int $$19 = 9 + 1;
+         int $$20 = $$17.b();
+         int $$21 = $$17.a().size() * $$19 - 1;
+         $$16.translate(1.0F - (float)$$20 / 2.0F, (float)(-$$21), 0.0F);
+         if ($$13 != 0) {
+            fjn $$22 = $$2.getBuffer($$7 ? gqk.o() : gqk.n());
+            $$22.a($$16, -1.0F, -1.0F, 0.0F).a($$13).c($$3);
+            $$22.a($$16, -1.0F, (float)$$21, 0.0F).a($$13).c($$3);
+            $$22.a($$16, (float)$$20, (float)$$21, 0.0F).a($$13).c($$3);
+            $$22.a($$16, (float)$$20, -1.0F, 0.0F).a($$13).c($$3);
+         }
+
+         for (bwc.k.c $$23 : $$17.a()) {
+            float $$24 = switch ($$10) {
+               case b -> 0.0F;
+               case c -> (float)($$20 - $$23.b());
+               case a -> (float)$$20 / 2.0F - (float)$$23.b() / 2.0F;
+            };
+            this.a.a($$23.a(), $$24, $$15, $$11 << 24 | 16777215, $$9, $$16, $$2, $$7 ? frt.a.b : frt.a.c, 0, $$3);
+            $$15 += (float)$$19;
+         }
+      }
    }
 }

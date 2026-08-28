@@ -1,4 +1,3 @@
-public class heb extends hdf {
-   public float a;
-   public int b = 1;
+public class heb extends hdn {
+   public int a;
 }

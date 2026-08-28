@@ -1,19 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hhe {
-   private static final ayu.b<alg, hhf.a<?, ?>> b = new ayu.b<>();
-   public static final Codec<hhf.a<?, ?>> a = b.a(alg.a);
+public record hhe<T>(ki<T> a) implements hhn<T> {
+   private static final hhn.a<? extends hhe<?>, ?> b = e();
 
-   public static void a() {
-      b.a(alg.b("custom_model_data"), hgz.b);
-      b.a(alg.b("main_hand"), hhd.b);
-      b.a(alg.b("charge_type"), hgv.b);
-      b.a(alg.b("trim_material"), hhg.b);
-      b.a(alg.b("block_state"), hhb.b);
-      b.a(alg.b("display_context"), hha.b);
-      b.a(alg.b("local_time"), hhc.c);
-      b.a(alg.b("context_entity_type"), hgy.b);
-      b.a(alg.b("context_dimension"), hgx.b);
-      b.a(alg.b("component"), hgw.c());
+   private static <T> hhn.a<hhe<T>, T> e() {
+      Codec<? extends ki<?>> $$0 = mf.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
+      MapCodec<hft.d<hhe<T>, T>> $$2 = $$0.dispatchMap(
+         "component", $$0x -> ((hhe)$$0x.a()).a, $$0x -> hhn.a.a($$0x.c()).xmap($$1 -> new hft.d<>(new hhe($$0x), $$1), hft.d::b)
+      );
+      return new hhn.a<>($$2);
+   }
+
+   public static <T> hhn.a<hhe<T>, T> c() {
+      return (hhn.a<hhe<T>, T>)b;
+   }
+
+   @Nullable
+   @Override
+   public T b(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public hhn.a<hhe<T>, T> a() {
+      return c();
+   }
+
+   @Override
+   public Codec<T> b() {
+      return this.a.c();
+   }
+
+   public ki<T> d() {
+      return this.a;
    }
 }

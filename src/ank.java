@@ -115,18 +115,18 @@ public class ank {
    }
 
    static enum a {
-      a("points", cqy::d, ($$0, $$1) -> {
-         if ($$1 >= $$0.gs()) {
+      a("points", crc::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.gt()) {
             return false;
          } else {
             $$0.a($$1);
             return true;
          }
-      }, $$0 -> azm.d($$0.cg * (float)$$0.gs())),
+      }, $$0 -> azm.d($$0.ch * (float)$$0.gt())),
       b("levels", arr::c, ($$0, $$1) -> {
          $$0.b($$1);
          return true;
-      }, $$0 -> $$0.ce);
+      }, $$0 -> $$0.cf);
 
       public final BiConsumer<arr, Integer> c;
       public final BiPredicate<arr, Integer> d;

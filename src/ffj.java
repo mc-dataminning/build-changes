@@ -1,19 +1,46 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public final class ffj extends fez {
+   private final fez d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public interface ffj {
-   int a();
-
-   boolean b();
-
-   @Nullable
-   yo c();
-
-   default xm a(yo $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   protected ffj(fez $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   static xm a(@Nullable ffj $$0, yo $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   }
+
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   }
+
+   @Override
+   public int a(ja.a $$0) {
+      return this.a($$0, this.d.a($$0));
+   }
+
+   @Override
+   public int b(ja.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(ja.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azm.a($$1, $$2, $$3) - $$2;
    }
 }

@@ -1,47 +1,34 @@
-import javax.annotation.Nullable;
+public class hmm extends hmd {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cnz r;
 
-public interface hmm {
-   alg a();
-
-   @Nullable
-   hnt a(hns var1);
-
-   hmj b();
-
-   awo c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hmm.a k();
-
-   default boolean r() {
-      return false;
+   public hmm(cnz $$0) {
+      super(awn.lU, awo.f, hmu.t());
+      this.r = $$0;
+      this.k = hmu.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   public boolean s() {
+      return !this.r.bb();
    }
 
-   static azv t() {
-      return azv.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   @Override
+   public void q() {
+      if (!this.r.dQ() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dA());
+         this.g = (double)((float)this.r.dC());
+         this.h = (double)((float)this.r.dG());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

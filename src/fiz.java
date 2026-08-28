@@ -1,157 +1,86 @@
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
 public class fiz implements AutoCloseable {
-   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
-   private static final Logger b = LogUtils.getLogger();
-   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
-   private static final int d = 2097152;
-   private static final int e = -1;
-   long f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
-   private int k;
+   private static final int a = -1;
+   private final alg b;
+   private int c;
 
-   public fiz(int $$0) {
-      this.g = $$0;
-      this.f = c.malloc((long)$$0);
-      a.malloc(this.f, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      }
+   private fiz(int $$0, alg $$1) {
+      this.b = $$1;
+      this.c = $$0;
    }
 
-   public long a(int $$0) {
-      int $$1 = this.h;
-      int $$2 = $$1 + $$0;
-      this.b($$2);
-      this.h = $$2;
-      return this.f + (long)$$1;
-   }
-
-   private void b(int $$0) {
-      if ($$0 > this.g) {
-         int $$1 = Math.min(this.g, 2097152);
-         int $$2 = Math.max(this.g + $$1, $$0);
-         this.c($$2);
-      }
-   }
-
-   private void c(int $$0) {
-      a.free(this.f);
-      this.f = c.realloc(this.f, (long)$$0);
-      a.malloc(this.f, $$0);
-      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
+   public static fiz a(alg $$0, fiz.a $$1, String $$2) throws gqr.b {
+      RenderSystem.assertOnRenderThread();
+      int $$3 = GlStateManager.glCreateShader($$1.b());
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new gqr.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
       } else {
-         this.g = $$0;
+         return new fiz($$3, $$0);
       }
-   }
-
-   @Nullable
-   public fiz.a a() {
-      this.f();
-      int $$0 = this.i;
-      int $$1 = this.h - $$0;
-      if ($$1 == 0) {
-         return null;
-      } else {
-         this.i = this.h;
-         this.j++;
-         return new fiz.a($$0, $$1, this.k);
-      }
-   }
-
-   public void b() {
-      if (this.j > 0) {
-         b.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.c();
-   }
-
-   public void c() {
-      this.f();
-      if (this.j > 0) {
-         this.e();
-         this.j = 0;
-      }
-   }
-
-   boolean d(int $$0) {
-      return $$0 == this.k;
-   }
-
-   void d() {
-      if (--this.j <= 0) {
-         this.e();
-      }
-   }
-
-   private void e() {
-      int $$0 = this.h - this.i;
-      if ($$0 > 0) {
-         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
-      }
-
-      this.h = $$0;
-      this.i = 0;
-      this.k++;
    }
 
    @Override
    public void close() {
-      if (this.f != 0L) {
-         a.free(this.f);
-         c.free(this.f);
-         this.f = 0L;
-         this.k = -1;
+      if (this.c == -1) {
+         throw new IllegalStateException("Already closed");
+      } else {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.c);
+         this.c = -1;
       }
    }
 
-   private void f() {
-      if (this.f == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
+   public alg a() {
+      return this.b;
    }
 
-   public class a implements AutoCloseable {
-      private final int b;
-      private final int c;
-      private final int d;
-      private boolean e;
+   public int b() {
+      return this.c;
+   }
 
-      a(final int $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private static final fiz.a[] c = values();
+      private final String d;
+      private final String e;
+      private final int f;
+
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      public ByteBuffer a() {
-         if (!fiz.this.d(this.d)) {
-            throw new IllegalStateException("Buffer is no longer valid");
-         } else {
-            return MemoryUtil.memByteBuffer(fiz.this.f + (long)this.b, this.c);
-         }
-      }
-
-      @Override
-      public void close() {
-         if (!this.e) {
-            this.e = true;
-            if (fiz.this.d(this.d)) {
-               fiz.this.d();
+      @Nullable
+      public static fiz.a a(alg $$0) {
+         for (fiz.a $$1 : c) {
+            if ($$0.a().endsWith($$1.e)) {
+               return $$1;
             }
          }
+
+         return null;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public akz c() {
+         return new akz("shaders", this.e);
       }
    }
 }

@@ -1,82 +1,51 @@
-import javax.annotation.Nullable;
+public class fxg extends fyb {
+   private static final alg a = alg.b("textures/gui/demo_background.png");
+   private static final int b = 256;
+   private static final int c = 256;
+   private ftc d = ftc.a;
+   private ftc s = ftc.a;
 
-public class fxg extends fxu {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final wy d;
-   private final wy s;
-   private final Runnable u;
-   @Nullable
-   private fsv v;
-   private fsc w;
-   private int x;
-
-   public static fxg a(wy $$0, wy $$1, Runnable $$2) {
-      return new fxg($$0, null, $$1, $$2, 0);
-   }
-
-   public static fxg a(wy $$0, wy $$1, wy $$2, Runnable $$3) {
-      return new fxg($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fxg(wy $$0, @Nullable wy $$1, wy $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public fxg() {
+      super(wy.c("demo.help.title"));
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      if (this.d != null) {
-         this.v = fsv.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fsc.a(this.s, $$0x -> this.aK_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   protected void aO_() {
+      int $$0 = -16;
+      this.c(fsj.a(wy.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         af.n().a(ayh.f);
+      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
+      this.c(fsj.a(wy.c("demo.help.later"), $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
+      fpd $$1 = this.m.n;
+      this.d = ftc.a(
+         this.p,
+         wy.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
+         wy.c("demo.help.movementMouse"),
+         wy.a("demo.help.jump", $$1.z.k()),
+         wy.a("demo.help.inventory", $$1.C.k())
+      );
+      this.s = ftc.a(this.p, wy.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
+   public void b(frv $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.n - 248) / 2;
+      int $$5 = (this.o - 166) / 2;
+      $$0.a(gqk::H, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = fxj.a(af.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.v.a($$0, this.n / 2, 120);
-      }
-   }
-
-   @Override
-   public boolean aC_() {
-      return this.v != null && this.w.j;
-   }
-
-   @Override
-   public void aK_() {
-      this.u.run();
-   }
-
-   @Override
-   public wy i() {
-      return wx.a(this.l, this.d != null ? this.d : wx.a);
+      int $$4 = (this.n - 248) / 2 + 10;
+      int $$5 = (this.o - 166) / 2 + 8;
+      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
+      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

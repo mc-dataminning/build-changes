@@ -1,54 +1,17 @@
-public class gnw extends gnm {
-   gnw(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gnv $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axw.b($$7), (float)axw.c($$7), (float)axw.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gnw extends glz {
+   protected gnw(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, god $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
+   public static class a implements gnl<mb> {
+      private final god a;
 
-         if (this.c.a_(iu.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
-      }
-   }
-
-   public static class a implements gnd<mb> {
-      private final gnv a;
-
-      public a(gnv $$0) {
+      public a(god $$0) {
          this.a = $$0;
       }
 
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnw($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gnd<mb> {
-      private final gnv a;
-
-      public b(gnv $$0) {
-         this.a = $$0;
-      }
-
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnw($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 255, 255, 255), this.a);
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnw($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

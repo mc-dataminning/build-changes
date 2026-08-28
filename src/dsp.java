@@ -1,33 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public abstract class dsp extends doe {
-   private static final Map<ja.a, ffc> b = fez.b(dma.a(4.0, 4.0, 16.0));
+public class dsp extends dmf {
+   public static final MapCodec<dsp> a = b(dsp::new);
+   public static final eay b = dsq.b;
 
-   protected dsp(dzy.d $$0) {
+   @Override
+   public MapCodec<dsp> a() {
+      return a;
+   }
+
+   public dsp(eag.d $$0) {
       super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public eah a(dcw $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().D($$0.a())));
    }
 
    @Override
-   protected abstract MapCodec<? extends dsp> a();
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return b.get($$0.c(a).o());
+   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.D($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
+      }
    }
 
    @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if ($$0.c(b) && !$$1.D($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   protected dzz a(dzz $$0, drc $$1) {
-      return $$0.b(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
    }
 }

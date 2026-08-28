@@ -1,25 +1,87 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalLong;
+import org.apache.commons.lang3.StringUtils;
 
-class ehe extends ehh {
-   public static final MapCodec<ehe> a = a(ehe::new);
+public class ehe {
+   public static final MapCodec<ehe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.LONG.fieldOf("seed").stable().forGetter(ehe::c),
+               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(ehe::d),
+               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(ehe::e),
+               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, $$0.stable(ehe::new))
+   );
+   public static final ehe b = new ehe((long)"North Carolina".hashCode(), true, true);
+   private final long c;
+   private final boolean d;
+   private final boolean e;
+   private final Optional<String> f;
 
-   public ehe(List<ehf> $$0) {
-      super($$0);
+   public ehe(long $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, Optional.empty());
    }
 
-   public boolean a(dju $$0, iu $$1) {
-      for (ehf $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
+   public static ehe a() {
+      return new ehe(g(), true, false);
+   }
+
+   public static ehe b() {
+      return new ehe(g(), false, false);
+   }
+
+   private ehe(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public long c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f.isPresent();
+   }
+
+   public ehe a(boolean $$0) {
+      return new ehe(this.c, this.d, $$0, this.f);
+   }
+
+   public ehe b(boolean $$0) {
+      return new ehe(this.c, $$0, this.e, this.f);
+   }
+
+   public ehe a(OptionalLong $$0) {
+      return new ehe($$0.orElse(g()), this.d, this.e, this.f);
+   }
+
+   public static OptionalLong a(String $$0) {
+      $$0 = $$0.trim();
+      if (StringUtils.isEmpty($$0)) {
+         return OptionalLong.empty();
+      } else {
+         try {
+            return OptionalLong.of(Long.parseLong($$0));
+         } catch (NumberFormatException var2) {
+            return OptionalLong.of((long)$$0.hashCode());
          }
       }
-
-      return false;
    }
 
-   @Override
-   public ehg<?> a() {
-      return ehg.i;
+   public static long g() {
+      return azv.a().g();
    }
 }

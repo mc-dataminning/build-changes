@@ -4,13 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bnw extends bkr {
+public class bnw extends bks {
    public bnw(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, biw.t, () -> DSL.optionalFields("id", biw.F.in($$0), "components", biw.w.in($$0)));
+      $$0.registerType(true, bix.y, () -> DSL.optionalFields("item", bix.t.in($$0), "block_state", bix.u.in($$0)));
    }
 }

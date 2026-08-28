@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cuk {
+   final cun a;
+   final long b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cuk {
+   cuk(cun $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

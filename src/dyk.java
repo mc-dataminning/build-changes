@@ -1,232 +1,145 @@
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class dyk extends dyg implements bul {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private jn<cyy> q = jn.a(27, cyy.k);
-   private int r;
-   private dyk.a s = dyk.a.a;
-   private float t;
-   private float u;
-   @Nullable
-   private final cxw v;
+public class dyk extends dxf implements fgc.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private czd d = czd.k;
+   private final czk e = new czk(this::k, this.ax_());
 
-   public dyk(@Nullable cxw $$0, iu $$1, dzz $$2) {
-      super(dwz.y, $$1, $$2);
-      this.v = $$0;
+   public dyk(iu $$0, eah $$1) {
+      super(dxh.e, $$0, $$1);
    }
 
-   public dyk(iu $$0, dzz $$1) {
-      super(dwz.y, $$0, $$1);
-      this.v = $$1.b() instanceof dth $$2 ? $$2.b() : null;
+   public czk j() {
+      return this.e;
    }
 
-   public static void a(div $$0, iu $$1, dzz $$2, dyk $$3) {
-      $$3.b($$0, $$1, $$2);
+   public void k() {
+      this.n.a(this.ax_(), this.m().b());
+      this.e();
    }
 
-   private void b(div $$0, iu $$1, dzz $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t >= 1.0F) {
-               this.s = dyk.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t <= 0.0F) {
-               this.s = dyk.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
+   private void a(boolean $$0) {
+      if (this.n != null && this.n.a_(this.ax_()) == this.m()) {
+         this.n.a(this.ax_(), this.m().b(dqn.b, Boolean.valueOf($$0)), 2);
+         this.n.a(efh.c, this.ax_(), efh.a.a(this.m()));
       }
    }
 
-   public dyk.a k() {
-      return this.s;
-   }
-
-   public fed a(dzz $$0) {
-      fei $$1 = new fei(0.5, 0.0, 0.5);
-      return cof.a(1.0F, $$0.c(dth.c), 0.5F * this.a(1.0F), $$1);
-   }
-
-   private void c(div $$0, iu $$1, dzz $$2) {
-      if ($$2.b() instanceof dth) {
-         ja $$3 = $$2.c(dth.c);
-         fed $$4 = cof.a(1.0F, $$3, this.u, this.t, $$1.c());
-         List<bwd> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bwd $$6 : $$5) {
-               if ($$6.j_() != ewl.d) {
-                  $$6.a(bxg.d, new fei(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
+   public void s() {
+      if (this.n != null && !this.n.C) {
+         iu $$0 = this.ax_();
+         czd $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            feq $$2 = feq.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
+            czd $$3 = $$1.v();
+            cnh $$4 = new cnh(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.j();
+            this.n.b($$4);
          }
       }
    }
 
-   @Override
-   public int b() {
-      return this.q.size();
+   public static void a(dja $$0, iu $$1, eah $$2, dyk $$3) {
+      $$3.e.b($$0, $$2);
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = dyk.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = dyk.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(div $$0, iu $$1, dzz $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void a(iu $$0, dzz $$1) {
-   }
-
-   @Override
-   public void c_(cqy $$0) {
-      if (!this.p && !$$0.U_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.n.a(this.o, this.m().b(), 1, this.r);
-         if (this.r == 1) {
-            this.n.a($$0, eez.k, this.o);
-            this.n.a(null, this.o, awn.xA, awo.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cqy $$0) {
-      if (!this.p && !$$0.U_()) {
-         this.r--;
-         this.n.a(this.o, this.m().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.n.a($$0, eez.j, this.o);
-            this.n.a(null, this.o, awn.xz, awo.e, 0.5F, this.n.A.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected wy j() {
-      return wy.c("container.shulkerBox");
+   public int u() {
+      return czj.a(this.n.F_(), this.d).map(je::a).map(czj::e).orElse(0);
    }
 
    @Override
    protected void a(tz $$0, jg.a $$1) {
       super.a($$0, $$1);
-      this.e($$0, $$1);
+      if ($$0.b("RecordItem", 10)) {
+         this.d = czd.a($$1, (uw)$$0.p("RecordItem")).orElse(czd.k);
+      } else {
+         if (!this.d.f()) {
+            this.e.a(this.n, this.m());
+         }
+
+         this.d = czd.k;
+      }
+
+      if ($$0.b("ticks_since_song_started", 4)) {
+         czj.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.i("ticks_since_song_started")));
+      }
    }
 
    @Override
    protected void b(tz $$0, jg.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btv.a($$0, this.q, false, $$1);
+      if (!this.f().f()) {
+         $$0.a("RecordItem", this.f().a($$1));
+      }
+
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
       }
    }
 
-   public void e(tz $$0, jg.a $$1) {
-      this.q = jn.a(this.b(), cyy.k);
-      if (!this.b_($$0) && $$0.b("Items", 9)) {
-         btv.b($$0, this.q, $$1);
+   @Override
+   public czd f() {
+      return this.d;
+   }
+
+   @Override
+   public czd c(int $$0) {
+      czd $$1 = this.d;
+      this.b(czd.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(czd $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<je<czj>> $$2 = czj.a(this.n.F_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.n, $$2.get());
+      } else {
+         this.e.a(this.n, this.m());
       }
    }
 
    @Override
-   protected jn<cyy> f() {
-      return this.q;
+   public int ak_() {
+      return 1;
    }
 
    @Override
-   protected void a(jn<cyy> $$0) {
-      this.q = $$0;
+   public dxf t() {
+      return this;
    }
 
    @Override
-   public int[] a(ja $$0) {
-      return k;
+   public boolean b(int $$0, czd $$1) {
+      return $$1.c(kj.ae) && this.a($$0).f();
    }
 
    @Override
-   public boolean a(int $$0, cyy $$1, @Nullable ja $$2) {
-      return !(dma.a($$1.h()) instanceof dth);
+   public boolean a(btw $$0, int $$1, czd $$2) {
+      return $$0.a_(czd::f);
    }
 
    @Override
-   public boolean b(int $$0, cyy $$1, ja $$2) {
-      return true;
+   public void a(iu $$0, eah $$1) {
+      this.s();
    }
 
-   public float a(float $$0) {
-      return azm.h($$0, this.u, this.t);
+   @VisibleForTesting
+   public void c(czd $$0) {
+      this.d = $$0;
+      czj.a(this.n.F_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.n.a(this.ax_(), this.m().b());
+      this.e();
    }
 
-   @Nullable
-   public cxw s() {
-      return this.v;
-   }
-
-   @Override
-   protected cuq a(int $$0, cqx $$1) {
-      return new cwk($$0, $$1, this);
-   }
-
-   public boolean t() {
-      return this.s == dyk.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @VisibleForTesting
+   public void v() {
+      czj.a(this.n.F_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (je<czj>)$$0));
    }
 }

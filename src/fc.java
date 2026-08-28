@@ -18,10 +18,10 @@ public class fc implements ArgumentType<String> {
       return new fc();
    }
 
-   public static fff a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static ffn a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ffn $$3 = ((ei)$$0.getSource()).l().aJ();
-      fff $$4 = $$3.a($$2);
+      ffv $$3 = ((ei)$$0.getSource()).l().aJ();
+      ffn $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fc implements ArgumentType<String> {
       }
    }
 
-   public static fff b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      fff $$2 = a($$0, $$1);
+   public static ffn b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      ffn $$2 = a($$0, $$1);
       if ($$2.d().e()) {
          throw c.create($$2.c());
       } else {

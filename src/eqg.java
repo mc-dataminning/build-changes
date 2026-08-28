@@ -1,30 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eqg extends epz {
-   public static final MapCodec<eqg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, eqg::new)
-   );
-   private final int c;
+public class eqg extends ehd {
+   private final djz a;
+   private final ecf b;
+   private final Optional<eqf> c;
 
-   private eqg(int $$0) {
-      this.c = $$0;
+   public eqg(djz $$0, ecf $$1, Optional<eqf> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static eqg a(int $$0) {
-      return new eqg($$0);
+   public int a(egg.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(epy $$0, azv $$1, iu $$2) {
-      int $$3 = $$0.a(efy.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(efy.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public ecd a(dih $$0) {
+      return ((ecy)this.a.a($$0.h, $$0.i)).F();
    }
 
-   @Override
-   public eqb<?> b() {
-      return eqb.d;
+   public eah a(iu $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.G_();
+   }
+
+   public djz d() {
+      return this.a;
+   }
+
+   public Optional<eqf> e() {
+      return this.c;
+   }
+
+   public ecf f() {
+      return this.b;
    }
 }

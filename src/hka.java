@@ -1,28 +1,56 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record hka(int c, Optional<Integer> d) {
-   public static final Codec<hka> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(hka::a), ayu.m.optionalFieldOf("time").forGetter(hka::b)).apply($$0, hka::new)
-   );
-   public static final Codec<hka> b = Codec.either(ayu.l, a)
-      .xmap($$0 -> (hka)$$0.map(hka::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+public class hka extends avi<List<String>> {
+   private static final alg a = alg.b("texts/splashes.txt");
+   private static final azv b = azv.a();
+   private final List<String> c = Lists.newArrayList();
+   private final fpl d;
 
-   public hka(int $$0) {
-      this($$0, Optional.empty());
+   public hka(fpl $$0) {
+      this.d = $$0;
    }
 
-   public int a(int $$0) {
-      return this.d.orElse($$0);
+   protected List<String> a(avd $$0, bqo $$1) {
+      try {
+         List var4;
+         try (BufferedReader $$2 = foz.Q().ac().openAsReader(a)) {
+            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
+         }
+
+         return var4;
+      } catch (IOException var8) {
+         return Collections.emptyList();
+      }
    }
 
-   public int a() {
-      return this.c;
+   protected void a(List<String> $$0, avd $$1, bqo $$2) {
+      this.c.clear();
+      this.c.addAll($$0);
    }
 
-   public Optional<Integer> b() {
-      return this.d;
+   @Nullable
+   public ftn a() {
+      Calendar $$0 = Calendar.getInstance();
+      $$0.setTime(new Date());
+      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
+         return ftn.a;
+      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
+         return ftn.b;
+      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
+         return ftn.c;
+      } else if (this.c.isEmpty()) {
+         return null;
+      } else {
+         return this.d != null && b.a(this.c.size()) == 42 ? new ftn(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new ftn(this.c.get(b.a(this.c.size())));
+      }
    }
 }

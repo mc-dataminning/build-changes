@@ -1,59 +1,29 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-public class gub implements gtu.a {
-   private final fos a;
-   private final Map<Long, Map<iu, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class gub implements guc.a {
+   private final foz a;
+   private double b = Double.MIN_VALUE;
+   private List<ffk> c = Collections.emptyList();
 
-   gub(fos $$0) {
+   public gub(foz $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, iu $$1) {
-      Map<iu, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ae();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iu> $$8 = Sets.newHashSet();
-      Map<iu, Integer> $$9 = Maps.newHashMap();
-      fjg $$10 = $$1.getBuffer(gqc.y());
-      Iterator<Entry<Long, Map<iu, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iu, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iu, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iu, Integer> $$16 : $$14.entrySet()) {
-               iu $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fed $$19 = new fed(iu.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gqm.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwf $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dV().d($$6, $$6.cR().g(6.0)));
       }
 
-      for (Entry<iu, Integer> $$20 : $$9.entrySet()) {
-         iu $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         gtu.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      fjn $$7 = $$1.getBuffer(gqk.y());
+
+      for (ffk $$8 : this.c) {
+         guc.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
    }
 }

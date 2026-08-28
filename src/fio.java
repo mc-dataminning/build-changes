@@ -1,11 +1,7 @@
-public interface fio<T> {
-   fio<?> a = () -> {
-      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
-   };
+public interface fio {
+   void a(boolean var1);
 
-   static <T> fio<T> a() {
-      return (fio<T>)a;
-   }
+   void a();
 
-   T get();
+   void b();
 }

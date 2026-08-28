@@ -1,37 +1,47 @@
-public class ggy extends gfq<hcf> {
-   private final giu a;
-   private final giu b;
+public class ggy extends gfy<hdw> {
+   private static final String a = "tail_base";
+   private static final String b = "tail_tip";
+   private final gjc c;
+   private final gjc d;
+   private final gjc e;
+   private final gjc f;
+   private final gjc g;
+   private final gjc i;
 
-   public ggy(giu $$0) {
+   public ggy(gjc $$0) {
       super($$0);
-      this.a = $$0.b("left_blue_fin");
-      this.b = $$0.b("right_blue_fin");
+      gjc $$1 = $$0.b("body");
+      this.g = $$1.b("tail_base");
+      this.i = this.g.b("tail_tip");
+      this.c = $$1.b("left_wing_base");
+      this.d = this.c.b("left_wing_tip");
+      this.e = $$1.b("right_wing_base");
+      this.f = this.e.b("right_wing_tip");
    }
 
-   public static gja a() {
-      gjc $$0 = new gjc();
-      gje $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", giz.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), giw.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", giz.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), giw.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", giz.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), giw.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", giz.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), giw.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", giz.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), giw.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", giz.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), giw.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", giz.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), giw.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", giz.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), giw.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", giz.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), giw.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", giz.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), giw.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", giz.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), giw.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", giz.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), giw.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", giz.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), giw.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return gja.a($$0, 32, 32);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      gjm $$2 = $$1.a("body", gjh.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), gje.b(-0.1F, 0.0F, 0.0F));
+      gjm $$3 = $$2.a("tail_base", gjh.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), gje.a(0.0F, -2.0F, 1.0F));
+      $$3.a("tail_tip", gjh.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), gje.a(0.0F, 0.5F, 6.0F));
+      gjm $$4 = $$2.a("left_wing_base", gjh.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gje.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
+      $$4.a("left_wing_tip", gjh.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gje.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
+      gjm $$5 = $$2.a("right_wing_base", gjh.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), gje.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
+      $$5.a("right_wing_tip", gjh.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), gje.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
+      $$2.a("head", gjh.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), gje.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
+      return gji.a($$0, 64, 64);
    }
 
-   @Override
-   public void a(hcf $$0) {
+   public void a(hdw $$0) {
       super.a($$0);
-      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
-      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
+      float $$1 = $$0.a * 7.448451F * (float) (Math.PI / 180.0);
+      float $$2 = 16.0F;
+      this.c.g = azm.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.d.g = azm.b($$1) * 16.0F * (float) (Math.PI / 180.0);
+      this.e.g = -this.c.g;
+      this.f.g = -this.d.g;
+      this.g.e = -(5.0F + azm.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      this.i.e = -(5.0F + azm.b($$1 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
    }
 }

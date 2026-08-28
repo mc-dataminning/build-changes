@@ -43,26 +43,26 @@ public class fi<T> implements ArgumentType<alf<T>> {
       return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static je.c<eiq<?, ?>> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mg.aK, b);
+   public static je.c<eiy<?, ?>> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mg.aL, b);
    }
 
-   public static je.c<eqt> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mg.bd, c);
+   public static je.c<erb> b(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mg.be, c);
    }
 
-   public static je.c<esd> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mg.be, d);
+   public static je.c<esl> c(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, mg.bf, d);
    }
 
-   public static ddu<?> d(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      ddw $$2 = ((ei)$$0.getSource()).l().aI();
-      alf<ddp<?>> $$3 = a($$0, $$1, mg.bt, e);
+   public static ddz<?> d(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+      deb $$2 = ((ei)$$0.getSource()).l().aI();
+      alf<ddu<?>> $$3 = a($$0, $$1, mg.bu, e);
       return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
    }
 
    public static ai e(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
-      alf<ah> $$2 = a($$0, $$1, mg.bs, f);
+      alf<ah> $$2 = a($$0, $$1, mg.bt, f);
       ai $$3 = ((ei)$$0.getSource()).l().aD().a($$2.a());
       if ($$3 == null) {
          throw f.create($$2.a());

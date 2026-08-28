@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ccl {
+public interface ccl<E extends bxe> {
+   boolean trigger(arq var1, E var2, long var3);
 }

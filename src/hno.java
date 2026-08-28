@@ -1,56 +1,87 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class hno {
-   private final avg a;
-   private final Map<alg, CompletableFuture<fgt>> b = Maps.newHashMap();
+   private final Set<hno.a> a = Sets.newIdentityHashSet();
+   final fgx b;
+   final Executor c;
 
-   public hno(avg $$0) {
-      this.a = $$0;
+   public hno(fgx $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public CompletableFuture<fgt> a(alg $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               fgt var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hni $$2 = new hnk($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fgt($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, af.j()));
-   }
-
-   public CompletableFuture<hnf> a(alg $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hnf)($$1 ? new hnl(hnk::new, $$2) : new hnk($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
+   public CompletableFuture<hno.a> a(fgx.c $$0) {
+      CompletableFuture<hno.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         fgw $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            hno.a $$3 = new hno.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
          }
-      }, af.j());
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<fgw>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
    }
 
    public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fgt::b));
-      this.b.clear();
+      this.c.execute(() -> {
+         Iterator<hno.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            hno.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
    }
 
-   public CompletableFuture<?> a(Collection<hmj> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   public void b() {
+      this.a.forEach(hno.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      fgw b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
+      }
+
+      public a(final fgw $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<fgw> $$0) {
+         hno.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         hno.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

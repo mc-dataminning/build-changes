@@ -1,41 +1,40 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cfj<T extends bxe> extends cdy {
-   private final T a;
-   private final cyy b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final awm d;
+public class cfj extends cea {
+   private final cqj a;
 
-   public cfj(T $$0, cyy $$1, @Nullable awm $$2, Predicate<? super T> $$3) {
+   public cfj(cqj $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(cea.a.c, cea.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.fy();
+      if (!this.a.bK()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         crc $$0 = this.a.x();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.bR != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      this.a.a(bwn.a, this.b.v());
-      this.a.c(bua.a);
+      this.a.O().m();
    }
 
    @Override
    public void e() {
-      this.a.a(bwn.a, cyy.k);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dY().i() * 0.2F + 0.9F);
-      }
+      this.a.a(null);
    }
 }

@@ -1,23 +1,66 @@
-public class ddr {
-   public static final dds a = a("crafting_building_blocks");
-   public static final dds b = a("crafting_redstone");
-   public static final dds c = a("crafting_equipment");
-   public static final dds d = a("crafting_misc");
-   public static final dds e = a("furnace_food");
-   public static final dds f = a("furnace_blocks");
-   public static final dds g = a("furnace_misc");
-   public static final dds h = a("blast_furnace_blocks");
-   public static final dds i = a("blast_furnace_misc");
-   public static final dds j = a("smoker_food");
-   public static final dds k = a("stonecutter");
-   public static final dds l = a("smithing");
-   public static final dds m = a("campfire");
-
-   private static dds a(String $$0) {
-      return jr.a(mf.az, $$0, new dds());
+public class ddr extends ddk {
+   public ddr(ddh $$0) {
+      super($$0);
    }
 
-   public static dds a(jr<dds> $$0) {
-      return m;
+   public boolean a(ddi $$0, dja $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czd $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kj.M)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(czh.vt)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
+   }
+
+   public czd a(ddi $$0, jg.a $$1) {
+      int $$2 = 0;
+      czd $$3 = czd.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czd $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kj.M)) {
+               if (!$$3.f()) {
+                  return czd.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(czh.vt)) {
+                  return czd.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : czd.k;
+   }
+
+   @Override
+   public dee<ddr> a() {
+      return dee.e;
    }
 }

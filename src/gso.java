@@ -1,36 +1,52 @@
-public class gso implements gse<dxu> {
-   public static final hkw a = new hkw(hio.d, alg.b("entity/enchanting_table_book"));
-   private final gew b;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public gso(gsf.a $$0) {
-      this.b = new gew($$0.a(git.J));
+public class gso {
+   private static final Map<dxh<?>, gsn<?>> a = Maps.newHashMap();
+
+   private static <T extends dxf> void a(dxh<? extends T> $$0, gsn<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dxu $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$7 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + azm.a($$7 * 0.1F) * 0.01F, 0.0F);
-      float $$8 = $$0.h - $$0.i;
+   public static Map<dxh<?>, gsm<?>> a(gsn.a $$0) {
+      Builder<dxh<?>, gsm<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + mf.j.b((dxh<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
+   }
 
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      float $$9 = $$0.i + $$8 * $$1;
-      $$2.a(a.d.rotation(-$$9));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$10 = azm.h($$1, $$0.c, $$0.b);
-      float $$11 = azm.i($$10 + 0.25F) * 1.6F - 0.3F;
-      float $$12 = azm.i($$10 + 0.75F) * 1.6F - 0.3F;
-      float $$13 = azm.h($$1, $$0.g, $$0.f);
-      this.b.a($$7, azm.a($$11, 0.0F, 1.0F), azm.a($$12, 0.0F, 1.0F), $$13);
-      fjg $$14 = a.a($$3, gqc::d);
-      this.b.a($$2, $$14, $$4, $$5);
-      $$2.b();
+   static {
+      a(dxh.h, gtb::new);
+      a(dxh.i, gsx::new);
+      a(dxh.j, gtd::new);
+      a(dxh.l, gsz::new);
+      a(dxh.b, gst::new);
+      a(dxh.d, gst::new);
+      a(dxh.c, gst::new);
+      a(dxh.n, gsw::new);
+      a(dxh.E, gsy::new);
+      a(dxh.o, gtg::new);
+      a(dxh.w, gtf::new);
+      a(dxh.p, gsi::new);
+      a(dxh.q, gtc::new);
+      a(dxh.u, gsh::new);
+      a(dxh.v, gsp::new);
+      a(dxh.U, gte::new);
+      a(dxh.y, gta::new);
+      a(dxh.z, gsj::new);
+      a(dxh.A, gsu::new);
+      a(dxh.F, gsk::new);
+      a(dxh.H, gss::new);
+      a(dxh.O, gsr::new);
+      a(dxh.P, gsv::new);
+      a(dxh.R, gth::new);
+      a(dxh.S, gti::new);
    }
 }

@@ -1,13 +1,18 @@
-public class daq extends cyu {
-   public daq(cyu.a $$0) {
+public class daq extends cxh {
+   public daq(cyz.a $$0) {
       super($$0);
    }
 
    @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      cyy $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awx.c.b(this));
-      return bub.a;
+   public czd m() {
+      czd $$0 = super.m();
+      $$0.b(kj.R, new daz(dba.C));
+      return $$0;
+   }
+
+   @Override
+   public wy a(czd $$0) {
+      daz $$1 = $$0.a(kj.R);
+      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
    }
 }

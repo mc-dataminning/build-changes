@@ -102,8 +102,8 @@ public class aun {
       return this.c.stream().map(auk::g).collect(ImmutableSet.toImmutableSet());
    }
 
-   public cuh f() {
-      return this.g().stream().map(auk::e).reduce(cuh::c).orElse(cuh.a());
+   public cum f() {
+      return this.g().stream().map(auk::e).reduce(cum::c).orElse(cum.a());
    }
 
    public Collection<auk> g() {

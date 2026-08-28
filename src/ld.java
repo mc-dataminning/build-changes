@@ -1,5 +1,5 @@
-public record ld(arq a, iu b, dzz c, dxs d) {
-   public fei a() {
+public record ld(arq a, iu b, eah c, dya d) {
+   public feq a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record ld(arq a, iu b, dzz c, dxs d) {
       return this.b;
    }
 
-   public dzz d() {
+   public eah d() {
       return this.c;
    }
 
-   public dxs e() {
+   public dya e() {
       return this.d;
    }
 }

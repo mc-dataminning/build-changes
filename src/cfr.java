@@ -1,68 +1,51 @@
 import java.util.EnumSet;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cfr<T extends bxc> extends cfy {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
+public class cfr extends cga {
+   private final cjk a;
    @Nullable
-   protected bxc c;
-   protected chr d;
+   private bxe b;
+   private final cht c = cht.a().a(64.0);
 
-   public cfr(bxe $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cfr(bxe $$0, Class<T> $$1, boolean $$2, chr.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cfr(bxe $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cfr(bxe $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable chr.a $$5) {
-      super($$0, $$3, $$4);
-      this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cdy.a.d));
-      this.d = chr.a().a(this.l()).a($$5);
+   public cfr(cjk $$0) {
+      super($$0, false, true);
+      this.a = $$0;
+      this.a(EnumSet.of(cea.a.d));
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
+      fel $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      arq $$1 = a(this.a);
+      List<? extends bxe> $$2 = $$1.a(cqo.class, this.c, this.a, $$0);
+      List<crc> $$3 = $$1.a(this.c, this.a, $$0);
+
+      for (bxe $$4 : $$2) {
+         cqo $$5 = (cqo)$$4;
+
+         for (crc $$6 : $$3) {
+            int $$7 = $$5.f($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
+            }
+         }
+      }
+
+      if (this.b == null) {
          return false;
       } else {
-         this.h();
-         return this.c != null;
-      }
-   }
+         if (this.b instanceof crc $$8 && ($$8.V_() || $$8.b())) {
+            return false;
+         }
 
-   protected fed a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
-   }
-
-   protected void h() {
-      arq $$0 = a(this.e);
-      if (this.a != cqy.class && this.a != arr.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
+         return true;
       }
    }
 
    @Override
    public void d() {
-      this.e.g(this.c);
+      this.a.g(this.b);
       super.d();
-   }
-
-   public void a(@Nullable bxc $$0) {
-      this.c = $$0;
-   }
-
-   private chr i() {
-      return this.d.a(this.l());
    }
 }

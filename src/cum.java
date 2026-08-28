@@ -1,101 +1,112 @@
-public class cum {
-   private int a = 20;
-   private float b = 5.0F;
-   private float c;
-   private int d;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   private void b(int $$0, float $$1) {
-      this.a = azm.a($$0 + this.a, 0, 20);
-      this.b = azm.a($$1 + this.b, 0.0F, (float)this.a);
+public final class cum {
+   private static final cum b = new cum(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cun c;
+   private final long d;
+
+   private cum(@Nullable cun $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void a(int $$0, float $$1) {
-      this.b($$0, cul.a($$0, $$1));
-   }
-
-   public void a(cun $$0) {
-      this.b($$0.a(), $$0.b());
-   }
-
-   public void a(arr $$0) {
-      arq $$1 = $$0.y();
-      bty $$2 = $$1.an();
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$2 != bty.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$3 = $$1.O().c(dir.k);
-      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$4 = Math.min(this.b, 6.0F);
-            $$0.c($$4 / 6.0F);
-            this.a($$4);
-            this.d = 0;
-         }
-      } else if ($$3 && this.a >= 18 && $$0.gu()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.eF() > 10.0F || $$2 == bty.d || $$0.eF() > 1.0F && $$2 == bty.c) {
-               $$0.a($$1, $$0.dW().j(), 1.0F);
-            }
-
-            this.d = 0;
-         }
+   static cum a(cun $$0, Collection<cuk> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         this.d = 0;
+         long $$2 = a($$0, 0L, $$1);
+         return new cum($$0, $$2);
       }
    }
 
-   public void a(tz $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   public static cum a() {
+      return b;
+   }
+
+   public static cum a(cuk $$0) {
+      return new cum($$0.a, $$0.b);
+   }
+
+   public static cum a(cuk $$0, cuk... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cum($$0.a, $$2);
+   }
+
+   private static long a(cun $$0, long $$1, Iterable<cuk> $$2) {
+      for (cuk $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
       }
+
+      return $$1;
    }
 
-   public void b(tz $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
+   public boolean b(cuk $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
    public boolean b() {
-      return this.a < 20;
+      return this.equals(b);
    }
 
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
+   public boolean a(cum $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
    }
 
-   public float c() {
-      return this.b;
+   public boolean b(cum $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   public cum c(cum $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cum(this.c, this.d | $$0.d);
+      }
    }
 
-   public void b(float $$0) {
-      this.b = $$0;
+   public cum d(cum $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new cum(this.c, $$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cum $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

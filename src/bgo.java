@@ -102,7 +102,7 @@ public class bgo extends DataFix {
       $$0.a("BlockStateTag").result().ifPresent($$1x -> $$0.a("minecraft:block_state", b($$1x)));
       $$0.a("EntityTag", "minecraft:entity_data");
       $$0.a("BlockEntityTag", false, $$1x -> {
-         String $$2x = bkr.a($$1x.get("id").asString(""));
+         String $$2x = bks.a($$1x.get("id").asString(""));
          $$1x = a($$0, $$1x, $$2x);
          Dynamic<?> $$3 = $$1x.remove("id");
          return $$3.equals($$1x.emptyMap()) ? $$3 : $$1x;
@@ -640,7 +640,7 @@ public class bgo extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead("ItemStack componentization", this.getInputSchema().getType(biw.t), this.getOutputSchema().getType(biw.t), $$0 -> {
+      return this.writeFixAndRead("ItemStack componentization", this.getInputSchema().getType(bix.t), this.getOutputSchema().getType(bix.t), $$0 -> {
          Optional<? extends Dynamic<?>> $$1 = bgo.a.a($$0).map($$0x -> {
             a($$0x, $$0x.e);
             return $$0x.a();
@@ -657,7 +657,7 @@ public class bgo extends DataFix {
       Dynamic<?> e;
 
       private a(String $$0, int $$1, Dynamic<?> $$2) {
-         this.a = bkr.a($$0);
+         this.a = bks.a($$0);
          this.b = $$1;
          this.c = $$2.emptyMap();
          this.e = $$2.get("tag").orElseEmptyMap();

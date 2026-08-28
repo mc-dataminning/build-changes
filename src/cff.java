@@ -1,48 +1,45 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cff extends cdy {
-   private final cnl a;
-   @Nullable
-   private bxc b;
+public class cff extends cea {
+   private final bya a;
 
-   public cff(cnl $$0) {
+   public cff(bya $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cdy.a.a));
+      this.a(EnumSet.of(cea.a.c, cea.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gr();
    }
 
    @Override
    public boolean b() {
-      bxc $$0 = this.a.f();
-      return this.a.n() > 0 || $$0 != null && this.a.g($$0) < 9.0;
+      boolean $$0 = this.a.gr();
+      if (!$$0 && !this.a.q()) {
+         return false;
+      } else if (this.a.bj()) {
+         return false;
+      } else if (!this.a.aJ()) {
+         return false;
+      } else {
+         bxe $$1 = this.a.e();
+         if ($$1 == null) {
+            return true;
+         } else {
+            return this.a.g((bwf)$$1) < 144.0 && $$1.er() != null ? false : $$0;
+         }
+      }
    }
 
    @Override
    public void d() {
       this.a.O().m();
-      this.b = this.a.f();
+      this.a.x(true);
    }
 
    @Override
    public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.b == null) {
-         this.a.b(-1);
-      } else if (this.a.g(this.b) > 49.0) {
-         this.a.b(-1);
-      } else if (!this.a.P().a(this.b)) {
-         this.a.b(-1);
-      } else {
-         this.a.b(1);
-      }
+      this.a.x(false);
    }
 }

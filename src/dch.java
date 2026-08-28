@@ -1,36 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.ReferenceLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ReferenceSortedSets;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.SequencedSet;
 
-public record dch(List<asi<String>> g) implements dba<String, dch> {
-   public static final dch a = new dch(List.of());
-   public static final int b = 1024;
-   public static final int c = 100;
-   private static final Codec<asi<String>> h = asi.a(Codec.string(0, 1024));
-   public static final Codec<List<asi<String>>> d = h.sizeLimitedListOf(100);
-   public static final Codec<dch> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(dch::a)).apply($$0, dch::new));
-   public static final yw<ByteBuf, dch> f = asi.a(yu.b(1024)).a(yu.c(100)).a(dch::new, dch::a);
+public record dch(boolean d, SequencedSet<ki<?>> e) {
+   private static final Codec<SequencedSet<ki<?>>> f = ki.a.listOf().xmap(ReferenceLinkedOpenHashSet::new, List::copyOf);
+   public static final Codec<dch> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("hide_tooltip", false).forGetter(dch::a),
+               f.optionalFieldOf("hidden_components", ReferenceSortedSets.emptySet()).forGetter(dch::b)
+            )
+            .apply($$0, dch::new)
+   );
+   public static final yw<wj, dch> b = yw.a(yu.b, dch::a, ki.b.a(yu.a(ReferenceLinkedOpenHashSet::new)), dch::b, dch::new);
+   public static final dch c = new dch(false, ReferenceSortedSets.emptySet());
 
-   public dch(List<asi<String>> g) {
-      if (g.size() > 100) {
-         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+   public dch a(ki<?> $$0, boolean $$1) {
+      if (this.e.contains($$0) == $$1) {
+         return this;
       } else {
-         this.g = g;
+         SequencedSet<ki<?>> $$2 = new ReferenceLinkedOpenHashSet(this.e);
+         if ($$1) {
+            $$2.add($$0);
+         } else {
+            $$2.remove($$0);
+         }
+
+         return new dch(this.d, $$2);
       }
    }
 
-   public Stream<String> a(boolean $$0) {
-      return this.g.stream().map($$1 -> $$1.a($$0));
+   public boolean a(ki<?> $$0) {
+      return !this.d && !this.e.contains($$0);
    }
 
-   public dch b(List<asi<String>> $$0) {
-      return new dch($$0);
+   public boolean a() {
+      return this.d;
    }
 
-   @Override
-   public List<asi<String>> a() {
-      return this.g;
+   public SequencedSet<ki<?>> b() {
+      return this.e;
    }
 }

@@ -1,221 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
 public class dht {
-   public static final Codec<dht> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dhr.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
-               dhr.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
-               cyy.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
-               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
-               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
-               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
-               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
-               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dht::new)
-   );
-   public static final yw<wj, dht> b = yw.a(dht::a, dht::a);
-   private final dhr c;
-   private final Optional<dhr> d;
-   private final cyy e;
-   private int f;
-   private final int g;
-   private final boolean h;
-   private int i;
-   private int j;
-   private final float k;
-   private final int l;
+   public static final alf<dhs> a = a("sentry");
+   public static final alf<dhs> b = a("dune");
+   public static final alf<dhs> c = a("coast");
+   public static final alf<dhs> d = a("wild");
+   public static final alf<dhs> e = a("ward");
+   public static final alf<dhs> f = a("eye");
+   public static final alf<dhs> g = a("vex");
+   public static final alf<dhs> h = a("tide");
+   public static final alf<dhs> i = a("snout");
+   public static final alf<dhs> j = a("rib");
+   public static final alf<dhs> k = a("spire");
+   public static final alf<dhs> l = a("wayfinder");
+   public static final alf<dhs> m = a("shaper");
+   public static final alf<dhs> n = a("silence");
+   public static final alf<dhs> o = a("raiser");
+   public static final alf<dhs> p = a("host");
+   public static final alf<dhs> q = a("flow");
+   public static final alf<dhs> r = a("bolt");
 
-   private dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+   public static void a(qh<dhs> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
    }
 
-   public dht(dhr $$0, cyy $$1, int $$2, int $$3, float $$4) {
-      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
+   public static void a(qh<dhs> $$0, alf<dhs> $$1) {
+      dhs $$2 = new dhs(a($$1), wy.c(af.a("trim_pattern", $$1.a())), false);
+      $$0.a($$1, $$2);
    }
 
-   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, float $$5) {
-      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   private static alf<dhs> a(String $$0) {
+      return alf.a(mg.bl, alg.b($$0));
    }
 
-   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, int $$5, float $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
-   }
-
-   public dht(dhr $$0, Optional<dhr> $$1, cyy $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
-      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
-   }
-
-   private dht(dht $$0) {
-      this($$0.c, $$0.d, $$0.e.v(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
-   }
-
-   public cyy a() {
-      return this.c.d();
-   }
-
-   public cyy b() {
-      return this.c.d().c(this.a(this.c));
-   }
-
-   private int a(dhr $$0) {
-      int $$1 = $$0.b();
-      int $$2 = Math.max(0, azm.d((float)($$1 * this.j) * this.k));
-      return azm.a($$1 + $$2 + this.i, 1, $$0.d().k());
-   }
-
-   public cyy c() {
-      return this.d.map(dhr::d).orElse(cyy.k);
-   }
-
-   public dhr d() {
-      return this.c;
-   }
-
-   public Optional<dhr> e() {
-      return this.d;
-   }
-
-   public cyy f() {
-      return this.e;
-   }
-
-   public void g() {
-      this.j = this.j + this.f - (this.g - this.f);
-   }
-
-   public cyy h() {
-      return this.e.v();
-   }
-
-   public int i() {
-      return this.f;
-   }
-
-   public void j() {
-      this.f = 0;
-   }
-
-   public int k() {
-      return this.g;
-   }
-
-   public void l() {
-      this.f++;
-   }
-
-   public int m() {
-      return this.j;
-   }
-
-   public void a(int $$0) {
-      this.i += $$0;
-   }
-
-   public void n() {
-      this.i = 0;
-   }
-
-   public int o() {
-      return this.i;
-   }
-
-   public void b(int $$0) {
-      this.i = $$0;
-   }
-
-   public float p() {
-      return this.k;
-   }
-
-   public int q() {
-      return this.l;
-   }
-
-   public boolean r() {
-      return this.f >= this.g;
-   }
-
-   public void s() {
-      this.f = this.g;
-   }
-
-   public boolean t() {
-      return this.f > 0;
-   }
-
-   public boolean u() {
-      return this.h;
-   }
-
-   public boolean a(cyy $$0, cyy $$1) {
-      if (!this.c.a($$0) || $$0.M() < this.a(this.c)) {
-         return false;
-      } else {
-         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.M() >= this.d.get().b();
-      }
-   }
-
-   public boolean b(cyy $$0, cyy $$1) {
-      if (!this.a($$0, $$1)) {
-         return false;
-      } else {
-         $$0.h(this.b().M());
-         if (!this.c().f()) {
-            $$1.h(this.c().M());
-         }
-
-         return true;
-      }
-   }
-
-   public dht v() {
-      return new dht(this);
-   }
-
-   private static void a(wj $$0, dht $$1) {
-      dhr.b.encode($$0, $$1.d());
-      cyy.i.encode($$0, $$1.f());
-      dhr.c.encode($$0, $$1.e());
-      $$0.a($$1.r());
-      $$0.q($$1.i());
-      $$0.q($$1.k());
-      $$0.q($$1.q());
-      $$0.q($$1.o());
-      $$0.a($$1.p());
-      $$0.q($$1.m());
-   }
-
-   public static dht a(wj $$0) {
-      dhr $$1 = dhr.b.decode($$0);
-      cyy $$2 = cyy.i.decode($$0);
-      Optional<dhr> $$3 = dhr.c.decode($$0);
-      boolean $$4 = $$0.readBoolean();
-      int $$5 = $$0.readInt();
-      int $$6 = $$0.readInt();
-      int $$7 = $$0.readInt();
-      int $$8 = $$0.readInt();
-      float $$9 = $$0.readFloat();
-      int $$10 = $$0.readInt();
-      dht $$11 = new dht($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-      if ($$4) {
-         $$11.s();
-      }
-
-      $$11.b($$8);
-      return $$11;
+   public static alg a(alf<dhs> $$0) {
+      return $$0.a();
    }
 }

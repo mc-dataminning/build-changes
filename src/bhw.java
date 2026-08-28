@@ -6,13 +6,13 @@ import com.mojang.datafixers.util.Pair;
 
 public class bhw extends bhr {
    public bhw(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", biw.s, "minecraft:banner");
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bix.s, "minecraft:banner");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
       OpticFinder<?> $$1 = $$0.getType().findField("CustomName");
-      OpticFinder<Pair<String, String>> $$2 = DSL.typeFinder(this.getInputSchema().getType(biw.z));
+      OpticFinder<Pair<String, String>> $$2 = DSL.typeFinder(this.getInputSchema().getType(bix.z));
       return $$0.updateTyped(
          $$1,
          $$1x -> $$1x.update(

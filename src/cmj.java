@@ -1,61 +1,69 @@
-public class cmj extends clz {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final chr f = chr.a().a(150.0);
-   private final chr g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cmj(clw $$0) {
+public class cmj extends cmc {
+   @Nullable
+   private feq b;
+
+   public cmj(cma $$0) {
       super($$0);
-      this.g = chr.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dC() - $$0.dC()) <= 10.0);
    }
 
    @Override
-   public void a(arq $$0) {
-      this.h++;
-      bxc $$1 = $$0.a(this.g, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 != null) {
-         if (this.h > 25) {
-            this.a.t().a(cmm.h);
-         } else {
-            fei $$2 = new fei($$1.dA() - this.a.dA(), 0.0, $$1.dG() - this.a.dG()).d();
-            fei $$3 = new fei((double)azm.a(this.a.dL() * (float) (Math.PI / 180.0)), 0.0, (double)(-azm.b(this.a.dL() * (float) (Math.PI / 180.0)))).d();
-            float $$4 = (float)$$3.b($$2);
-            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$5 < 0.0F || $$5 > 10.0F) {
-               double $$6 = $$1.dA() - this.a.c.dA();
-               double $$7 = $$1.dG() - this.a.c.dG();
-               double $$8 = azm.a(azm.d(180.0 - azm.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dL()), -100.0, 100.0);
-               this.a.bH *= 0.8F;
-               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
-               float $$10 = $$9;
-               if ($$9 > 40.0F) {
-                  $$9 = 40.0F;
-               }
+   public void b() {
+      feq $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.c.dA();
+      double $$2 = this.a.c.e(0.5);
+      double $$3 = this.a.c.dG();
 
-               this.a.bH += (float)$$8 * (0.7F / $$9 / $$10);
-               this.a.w(this.a.dL() + this.a.bH);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$1 = $$0.a(f, this.a, this.a.dA(), this.a.dC(), this.a.dG());
-         this.a.t().a(cmm.e);
-         if ($$1 != null) {
-            this.a.t().a(cmm.i);
-            this.a.t().b(cmm.i).a(new fei($$1.dA(), $$1.dC(), $$1.dG()));
-         }
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azv $$5 = this.a.dY();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         feq $$9 = this.a.dy();
+         this.a.dV().a(lx.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   public void c() {
-      this.h = 0;
+   public void a(arq $$0) {
+      if (this.b == null) {
+         this.b = feq.c($$0.a(egg.a.f, ejl.a(this.a.j())));
+      }
+
+      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
+         this.a.t().b(cmq.f).i();
+         this.a.t().a(cmq.g);
+      }
    }
 
    @Override
-   public cmm<cmj> h() {
-      return cmm.g;
+   public float e() {
+      return 1.5F;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dy().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void c() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public feq f() {
+      return this.b;
+   }
+
+   @Override
+   public cmq<cmj> h() {
+      return cmq.d;
    }
 }

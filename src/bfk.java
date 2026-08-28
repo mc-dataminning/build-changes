@@ -7,7 +7,7 @@ public class bfk extends bhr {
    private static final int c = 6;
 
    public bfk(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", biw.D, "Zombie");
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bix.D, "Zombie");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,77 +1,77 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cdk extends cdy {
-   private static final chr d = chr.b().a(8.0).d();
-   protected final cis a;
-   private final Class<? extends cis> e;
-   protected final arq b;
-   @Nullable
-   protected cis c;
-   private int f;
-   private final double g;
+public class cdk extends cdr {
+   private static final int g = 240;
+   private final Predicate<bua> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cdk(cis $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cis>)$$0.getClass());
+   public cdk(bxg $$0, Predicate<bua> $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
-   public cdk(cis $$0, double $$1, Class<? extends cis> $$2) {
-      this.a = $$0;
-      this.b = a($$0);
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cdy.a.a, cdy.a.b));
+   public cdk(bxg $$0, int $$1, Predicate<bua> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gA()) {
+      if (!super.b()) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         return !a(this.d).O().c(diw.d) ? false : this.a(this.d.dV().an()) && !this.h();
       }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
    }
 
    @Override
    public boolean c() {
-      return this.c.bK() && this.c.gA() && this.f < 60 && !this.c.gn();
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dt(), 2.0) && this.a(this.d.dV().an());
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
+      super.e();
+      this.d.dV().a(this.d.ar(), this.e, -1);
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.c, 10.0F, (float)this.a.ac());
-      this.a.O().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cis h() {
-      List<? extends cis> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cis $$2 = null;
-
-      for (cis $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gn() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
+      super.a();
+      if (this.d.dY().a(20) == 0) {
+         this.d.dV().c(1019, this.e, 0);
+         if (!this.d.aI) {
+            this.d.a(this.d.fA());
          }
       }
 
-      return $$2;
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dV().a(this.d.ar(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dV().an())) {
+         this.d.dV().a(this.e, false);
+         this.d.dV().c(1021, this.e, 0);
+         this.d.dV().c(2001, this.e, dmf.j(this.d.dV().a_(this.e)));
+      }
    }
 
-   protected void g() {
-      this.a.a(this.b, this.c);
+   private boolean a(bua $$0) {
+      return this.h.test($$0);
    }
 }

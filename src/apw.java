@@ -22,7 +22,7 @@ public class apw {
                      .then(ej.a("list").executes($$0x -> d((ei)$$0x.getSource()))))
                   .then(ej.a("add").then(ej.a("targets", ex.a()).suggests(($$0x, $$1) -> {
                      avq $$2 = ((ei)$$0x.getSource()).l().ag();
-                     return en.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
+                     return en.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gi())).map($$0xx -> $$0xx.gi().getName()), $$1);
                   }).executes($$0x -> a((ei)$$0x.getSource(), ex.a($$0x, "targets"))))))
                .then(
                   ej.a("remove")

@@ -1,20 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record hjc(azx c) implements hiu {
-   public static final MapCodec<hjc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azx.a.fieldOf("pattern").forGetter(hjc::b)).apply($$0, hjc::new));
+public interface hjc {
+   akz a = new akz("textures", ".png");
 
-   @Override
-   public void a(avd $$0, hiu.a $$1) {
-      $$1.a(this.c.c());
+   void a(avd var1, hjc.a var2);
+
+   MapCodec<? extends hjc> a();
+
+   public interface a {
+      default void a(alg $$0, avb $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(alg var1, hjc.b var2);
+
+      void a(Predicate<alg> var1);
    }
 
-   @Override
-   public MapCodec<hjc> a() {
-      return b;
-   }
-
-   public azx b() {
-      return this.c;
+   public interface b extends Function<hjb, hir> {
+      default void a() {
+      }
    }
 }

@@ -1,7 +1,5 @@
 import io.netty.buffer.ByteBuf;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.function.IntFunction;
 
 public enum bxq {
    a(0),
@@ -12,56 +10,26 @@ public enum bxq {
    f(5),
    g(6),
    h(7),
-   i(8);
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-   public static final Set<bxq> j = Set.of(values());
-   public static final Set<bxq> k = Set.of(e, d);
-   public static final Set<bxq> l = Set.of(f, g, h, i);
-   public static final yw<ByteBuf, Set<bxq>> m = yu.g.a(bxq::a, bxq::a);
-   private final int n;
-
-   @SafeVarargs
-   public static Set<bxq> a(Set<bxq>... $$0) {
-      HashSet<bxq> $$1 = new HashSet<>();
-
-      for (Set<bxq> $$2 : $$0) {
-         $$1.addAll($$2);
-      }
-
-      return $$1;
-   }
+   public static final IntFunction<bxq> s = ayc.a(bxq::a, values(), ayc.a.a);
+   public static final yw<ByteBuf, bxq> t = yu.a(s, bxq::a);
+   private final int u;
 
    private bxq(final int $$0) {
-      this.n = $$0;
+      this.u = $$0;
    }
 
-   private int a() {
-      return 1 << this.n;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bxq> a(int $$0) {
-      Set<bxq> $$1 = EnumSet.noneOf(bxq.class);
-
-      for (bxq $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static int a(Set<bxq> $$0) {
-      int $$1 = 0;
-
-      for (bxq $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
-
-      return $$1;
+   public int a() {
+      return this.u;
    }
 }

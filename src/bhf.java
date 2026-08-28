@@ -27,7 +27,7 @@ public class bhf extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(biw.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(bix.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {

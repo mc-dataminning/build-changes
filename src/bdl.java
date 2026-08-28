@@ -19,7 +19,7 @@ public class bdl extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(biw.c), this.getOutputSchema().getType(biw.c), $$0 -> $$0.update("Level", bdl::a)
+         "ChunkToProtoChunkFix", this.getInputSchema().getType(bix.c), this.getOutputSchema().getType(bix.c), $$0 -> $$0.update("Level", bdl::a)
       );
    }
 

@@ -1,42 +1,35 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbv extends fby {
-   public static final MapCodec<fbv> a = a(fbv::new);
-   public static final Codec<fbv> b = b(fbv::new);
+public class fbv extends fau {
+   public static final MapCodec<fbv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(dcn.h.fieldOf("pages").forGetter($$0x -> $$0x.b), fat.a.forGetter($$0x -> $$0x.c))).apply($$0, fbv::new)
+   );
+   private final List<asi<wy>> b;
+   private final fat c;
 
-   fbv(List<fci> $$0) {
-      super($$0, af.a($$0));
-   }
-
-   public static fbv a(List<fci> $$0) {
-      return new fbv(List.copyOf($$0));
+   protected fbv(List<fcq> $$0, List<asi<wy>> $$1, fat $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public fcj b() {
-      return fck.c;
+   protected czd a(czd $$0, ezh $$1) {
+      $$0.a(kj.V, dcn.a, this::a);
+      return $$0;
    }
 
-   public static fbv.a a(fci.a... $$0) {
-      return new fbv.a($$0);
+   @VisibleForTesting
+   public dcn a(dcn $$0) {
+      List<asi<wy>> $$1 = this.c.a($$0.a(), this.b);
+      return $$0.b($$1);
    }
 
-   public static class a extends fby.a {
-      public a(fci.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public fbv.a and(fci.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected fci a(List<fci> $$0) {
-         return new fbv($$0);
-      }
+   @Override
+   public faw<fbv> b() {
+      return fax.N;
    }
 }

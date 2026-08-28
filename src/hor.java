@@ -1,115 +1,60 @@
 import javax.annotation.Nullable;
 
-public class hor implements hov {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final wy f = wy.a("tutorial.move.title", hou.a("forward"), hou.a("left"), hou.a("back"), hou.a("right"));
-   private static final wy g = wy.a("tutorial.move.description", hou.a("jump"));
-   private static final wy h = wy.c("tutorial.look.title");
-   private static final wy i = wy.c("tutorial.look.description");
-   private final hou j;
+public class hor {
+   private boolean a;
    @Nullable
-   private fuo k;
+   private hol.b b;
    @Nullable
-   private fuo l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+   private String c;
+   @Nullable
+   private final String d;
 
-   public hor(hou $$0) {
-      this.j = $$0;
+   public hor(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
+   public void a(hom.a $$0) {
+      if (this.c != null) {
+         $$0.a(hol.j, !this.c.equals("vanilla"));
       }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+      $$0.a(hol.k, this.a());
+   }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.e();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.e();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(how.b);
-         } else {
-            this.j.a(how.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         fos $$0 = this.j.e();
-         if (this.r == -1 && this.k == null) {
-            this.k = new fuo($$0.h, fuo.a.a, f, g, true);
-            $$0.aA().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fuo($$0.h, fuo.a.b, h, i, true);
-            $$0.aA().a(this.l);
-         }
+   private hol.c a() {
+      gko $$0 = foz.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hol.c.a;
+      } else {
+         return foz.Q().U() ? hol.c.b : hol.c.c;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.e();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.e();
-         this.l = null;
-      }
-   }
-
-   @Override
-   public void a(gon $$0) {
-      if ($$0.a.a() || $$0.a.b() || $$0.a.c() || $$0.a.d() || $$0.a.e()) {
-         this.p = true;
+   public boolean a(hoi $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(hoj.b, $$0x -> {
+            $$0x.a(hol.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hol.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
-      }
+   public void a(dix $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hol.b.e : hol.b.a;
+         case b -> hol.b.b;
+         case c -> hol.b.c;
+         case d -> hol.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

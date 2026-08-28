@@ -1,34 +1,44 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class caa {
-   public static <T extends bxe> cae<T> a(int $$0) {
-      return a($$0x -> true, $$0);
+public class caa extends byv<cqo> {
+   private final float c;
+
+   public caa(float $$0) {
+      super(ImmutableMap.of(cgg.n, cgh.c, cgg.o, cgh.c), Integer.MAX_VALUE);
+      this.c = $$0;
    }
 
-   public static <T extends bxe> cae<T> a(Predicate<T> $$0, int $$1) {
-      return ccg.a(
-         (Function<ccg.b<T>, ? extends App<ccg.c<T>, ccj<T>>>)($$2 -> $$2.group($$2.a(cge.o), $$2.b(cge.p), $$2.c(cge.q), $$2.b(cge.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bxc $$10 = $$2.b($$4);
-                     if ($$0.test((T)$$8) && !a($$8) && $$8.h($$10) && $$2.<cgg>b($$6).a($$10)) {
-                        $$3.a(new bze($$10, true));
-                        $$8.a(bua.a);
-                        $$8.c($$7, $$10);
-                        $$5.a(true, (long)$$1);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(arq $$0, cqo $$1) {
+      crc $$2 = $$1.x();
+      return $$1.bK() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bR != null;
    }
 
-   private static boolean a(bxe $$0) {
-      return $$0.b($$1 -> {
-         cyu $$2 = $$1.h();
-         return $$2 instanceof czt && $$0.a((czt)$$2);
-      });
+   protected boolean a(arq $$0, cqo $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arq $$0, cqo $$1, long $$2) {
+      this.a($$1);
+   }
+
+   protected void c(arq $$0, cqo $$1, long $$2) {
+      bye<?> $$3 = $$1.ec();
+      $$3.b(cgg.n);
+      $$3.b(cgg.o);
+   }
+
+   protected void d(arq $$0, cqo $$1, long $$2) {
+      this.a($$1);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   private void a(cqo $$0) {
+      bye<?> $$1 = $$0.ec();
+      $$1.a(cgg.n, new cgj(new bzg($$0.x(), false), this.c, 2));
+      $$1.a(cgg.o, new bzg($$0.x(), true));
    }
 }

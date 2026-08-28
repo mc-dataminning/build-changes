@@ -1,80 +1,72 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
 public class ddt {
-   private final ddt.a[] a;
-   private WeakReference<ddw> b = new WeakReference<>(null);
+   public static final int a = -1;
+   public static final ddt b = new ddt(List.of(), IntList.of());
+   private final List<ddq> c;
+   private final IntList d;
 
-   public ddt(int $$0) {
-      this.a = new ddt.a[$$0];
+   private ddt(List<ddq> $$0, IntList $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public Optional<ddu<dde>> a(arq $$0, ddd $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
-      } else {
-         this.a($$0);
-
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            ddt.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
-
-         return this.a($$1, $$0);
-      }
+   public static ddt a(ddq $$0) {
+      return $$0.b() ? b : new ddt(List.of($$0), IntList.of(0));
    }
 
-   private void a(arq $$0) {
-      ddw $$1 = $$0.t();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
+   public static ddt a(List<Optional<ddq>> $$0) {
+      int $$1 = $$0.size();
+      List<ddq> $$2 = new ArrayList<>($$1);
+      IntList $$3 = new IntArrayList($$1);
+      int $$4 = 0;
 
-   private Optional<ddu<dde>> a(ddd $$0, arq $$1) {
-      Optional<ddu<dde>> $$2 = $$1.t().a(dea.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         ddt.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(ddd $$0, @Nullable ddu<dde> $$1) {
-      jn<cyy> $$2 = jn.a($$0.a(), cyy.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new ddt.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jn<cyy> a, int b, int c, @Nullable ddu<dde> d) {
-      public boolean a(ddd $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!cyy.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
-               }
+      for (Optional<ddq> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            ddq $$6 = $$5.get();
+            if ($$6.b()) {
+               return b;
             }
 
-            return true;
+            $$2.add($$6);
+            $$3.add($$4++);
          } else {
-            return false;
+            $$3.add(-1);
          }
       }
+
+      return new ddt($$2, $$3);
+   }
+
+   public static ddt b(List<ddq> $$0) {
+      int $$1 = $$0.size();
+      IntList $$2 = new IntArrayList($$1);
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         ddq $$4 = $$0.get($$3);
+         if ($$4.b()) {
+            return b;
+         }
+
+         $$2.add($$3);
+      }
+
+      return new ddt($$0, $$2);
+   }
+
+   public IntList a() {
+      return this.d;
+   }
+
+   public List<ddq> b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
    }
 }

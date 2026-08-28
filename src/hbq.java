@@ -1,10 +1,6 @@
-public class hbq extends hcf {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+public class hbq extends hdn {
+   public boolean a;
+   public final bvw b = new bvw();
+   public final bvw c = new bvw();
+   public final bvw d = new bvw();
 }

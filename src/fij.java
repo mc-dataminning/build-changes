@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@fgk
-@fgj
-interface fij {
+public interface fij {
+   fii createMonitor(long var1);
 }

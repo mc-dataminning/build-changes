@@ -30,7 +30,7 @@ public class anu {
    );
    private static final SuggestionProvider<ei> g = ($$0, $$1) -> {
       alq.a $$2 = ((ei)$$0.getSource()).l().bc();
-      return en.a($$2.a(mg.bq), $$1);
+      return en.a($$2.a(mg.br), $$1);
    };
 
    public static void a(CommandDispatcher<ei> $$0, ee $$1) {
@@ -275,10 +275,10 @@ public class anu {
       );
    }
 
-   private static int a(ei $$0, iu $$1, int $$2, je<fan> $$3) throws CommandSyntaxException {
-      btu $$4 = a($$0, $$1, a);
+   private static int a(ei $$0, iu $$1, int $$2, je<fav> $$3) throws CommandSyntaxException {
+      btw $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
-         cyy $$5 = a($$0, $$3, $$4.a($$2));
+         czd $$5 = a($$0, $$3, $$4.a($$2));
          $$4.a($$2, $$5);
          $$0.a(() -> wy.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$5.K()), true);
          return 1;
@@ -287,17 +287,17 @@ public class anu {
       }
    }
 
-   private static int a(ei $$0, Collection<? extends bwd> $$1, int $$2, je<fan> $$3) throws CommandSyntaxException {
-      Map<bwd, cyy> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
+   private static int a(ei $$0, Collection<? extends bwf> $$1, int $$2, je<fav> $$3) throws CommandSyntaxException {
+      Map<bwf, czd> $$4 = Maps.newHashMapWithExpectedSize($$1.size());
 
-      for (bwd $$5 : $$1) {
-         bxt $$6 = $$5.a_($$2);
-         if ($$6 != bxt.a) {
-            cyy $$7 = a($$0, $$3, $$6.a().v());
+      for (bwf $$5 : $$1) {
+         bxv $$6 = $$5.a_($$2);
+         if ($$6 != bxv.a) {
+            czd $$7 = a($$0, $$3, $$6.a().v());
             if ($$6.a($$7)) {
                $$4.put($$5, $$7);
                if ($$5 instanceof arr) {
-                  ((arr)$$5).bQ.d();
+                  ((arr)$$5).bR.d();
                }
             }
          }
@@ -307,7 +307,7 @@ public class anu {
          throw e.create($$2);
       } else {
          if ($$4.size() == 1) {
-            Entry<bwd, cyy> $$8 = $$4.entrySet().iterator().next();
+            Entry<bwf, czd> $$8 = $$4.entrySet().iterator().next();
             $$0.a(() -> wy.a("commands.item.entity.set.success.single", $$8.getKey().m_(), $$8.getValue().K()), true);
          } else {
             $$0.a(() -> wy.a("commands.item.entity.set.success.multiple", $$4.size()), true);
@@ -317,8 +317,8 @@ public class anu {
       }
    }
 
-   private static int a(ei $$0, iu $$1, int $$2, cyy $$3) throws CommandSyntaxException {
-      btu $$4 = a($$0, $$1, a);
+   private static int a(ei $$0, iu $$1, int $$2, czd $$3) throws CommandSyntaxException {
+      btw $$4 = a($$0, $$1, a);
       if ($$2 >= 0 && $$2 < $$4.b()) {
          $$4.a($$2, $$3);
          $$0.a(() -> wy.a("commands.item.block.set.success", $$1.u(), $$1.v(), $$1.w(), $$3.K()), true);
@@ -328,24 +328,24 @@ public class anu {
       }
    }
 
-   static btu a(ei $$0, iu $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
-      dwx $$3 = $$0.e().c_($$1);
-      if (!($$3 instanceof btu)) {
+   static btw a(ei $$0, iu $$1, Dynamic3CommandExceptionType $$2) throws CommandSyntaxException {
+      dxf $$3 = $$0.e().c_($$1);
+      if (!($$3 instanceof btw)) {
          throw $$2.create($$1.u(), $$1.v(), $$1.w());
       } else {
-         return (btu)$$3;
+         return (btw)$$3;
       }
    }
 
-   private static int a(ei $$0, Collection<? extends bwd> $$1, int $$2, cyy $$3) throws CommandSyntaxException {
-      List<bwd> $$4 = Lists.newArrayListWithCapacity($$1.size());
+   private static int a(ei $$0, Collection<? extends bwf> $$1, int $$2, czd $$3) throws CommandSyntaxException {
+      List<bwf> $$4 = Lists.newArrayListWithCapacity($$1.size());
 
-      for (bwd $$5 : $$1) {
-         bxt $$6 = $$5.a_($$2);
-         if ($$6 != bxt.a && $$6.a($$3.v())) {
+      for (bwf $$5 : $$1) {
+         bxv $$6 = $$5.a_($$2);
+         if ($$6 != bxv.a && $$6.a($$3.v())) {
             $$4.add($$5);
             if ($$5 instanceof arr) {
-               ((arr)$$5).bQ.d();
+               ((arr)$$5).bR.d();
             }
          }
       }
@@ -363,11 +363,11 @@ public class anu {
       }
    }
 
-   private static int a(ei $$0, iu $$1, int $$2, Collection<? extends bwd> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, int $$2, Collection<? extends bwf> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ei $$0, iu $$1, int $$2, Collection<? extends bwd> $$3, int $$4, je<fan> $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, int $$2, Collection<? extends bwf> $$3, int $$4, je<fav> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
@@ -375,47 +375,47 @@ public class anu {
       return a($$0, $$3, $$4, a($$0, $$1, $$2));
    }
 
-   private static int a(ei $$0, iu $$1, int $$2, iu $$3, int $$4, je<fan> $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, iu $$1, int $$2, iu $$3, int $$4, je<fav> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$0, $$1, $$2)));
    }
 
-   private static int a(ei $$0, bwd $$1, int $$2, iu $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ei $$0, bwf $$1, int $$2, iu $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ei $$0, bwd $$1, int $$2, iu $$3, int $$4, je<fan> $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, bwf $$1, int $$2, iu $$3, int $$4, je<fav> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static int a(ei $$0, bwd $$1, int $$2, Collection<? extends bwd> $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ei $$0, bwf $$1, int $$2, Collection<? extends bwf> $$3, int $$4) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$1, $$2));
    }
 
-   private static int a(ei $$0, bwd $$1, int $$2, Collection<? extends bwd> $$3, int $$4, je<fan> $$5) throws CommandSyntaxException {
+   private static int a(ei $$0, bwf $$1, int $$2, Collection<? extends bwf> $$3, int $$4, je<fav> $$5) throws CommandSyntaxException {
       return a($$0, $$3, $$4, a($$0, $$5, a($$1, $$2)));
    }
 
-   private static cyy a(ei $$0, je<fan> $$1, cyy $$2) {
+   private static czd a(ei $$0, je<fav> $$1, czd $$2) {
       arq $$3 = $$0.e();
-      ezc $$4 = new ezc.a($$3).a(fbt.f, $$0.d()).b(fbt.a, $$0.f()).a(fbs.d);
-      eyz $$5 = new eyz.a($$4).a(Optional.empty());
-      $$5.b(eyz.a($$1.a()));
-      cyy $$6 = $$1.a().apply($$2, $$5);
+      ezk $$4 = new ezk.a($$3).a(fcb.f, $$0.d()).b(fcb.a, $$0.f()).a(fca.d);
+      ezh $$5 = new ezh.a($$4).a(Optional.empty());
+      $$5.b(ezh.a($$1.a()));
+      czd $$6 = $$1.a().apply($$2, $$5);
       $$6.f($$6.k());
       return $$6;
    }
 
-   private static cyy a(bwd $$0, int $$1) throws CommandSyntaxException {
-      bxt $$2 = $$0.a_($$1);
-      if ($$2 == bxt.a) {
+   private static czd a(bwf $$0, int $$1) throws CommandSyntaxException {
+      bxv $$2 = $$0.a_($$1);
+      if ($$2 == bxv.a) {
          throw d.create($$1);
       } else {
          return $$2.a().v();
       }
    }
 
-   private static cyy a(ei $$0, iu $$1, int $$2) throws CommandSyntaxException {
-      btu $$3 = a($$0, $$1, b);
+   private static czd a(ei $$0, iu $$1, int $$2) throws CommandSyntaxException {
+      btw $$3 = a($$0, $$1, b);
       if ($$2 >= 0 && $$2 < $$3.b()) {
          return $$3.a($$2).v();
       } else {

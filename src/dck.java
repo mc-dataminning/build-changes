@@ -1,54 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dck(List<bvh> c, float f) implements dcm {
-   public static final MapCodec<dck> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bvh.d.listOf().fieldOf("effects").forGetter(dck::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(dck::c))
-            .apply($$0, dck::new)
-   );
-   public static final yw<wj, dck> b = yw.a(bvh.e.a(yu.a()), dck::b, yu.l, dck::c, dck::new);
+public record dck(czd c) {
+   public static final Codec<dck> a = czd.b.xmap(dck::new, dck::a);
+   public static final yw<wj, dck> b = yw.a(czd.i, dck::a, dck::new);
 
-   public dck(bvh $$0, float $$1) {
-      this(List.of($$0), $$1);
-   }
-
-   public dck(List<bvh> $$0) {
-      this($$0, 1.0F);
-   }
-
-   public dck(bvh $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public dcm.a<dck> a() {
-      return dcm.a.a;
-   }
-
-   @Override
-   public boolean a(div $$0, cyy $$1, bxc $$2) {
-      if ($$2.dY().i() >= this.f) {
-         return false;
+   public czd a(czd $$0, int $$1, boolean $$2, dck.a $$3) {
+      if ($$2) {
+         return $$0;
+      } else if ($$0.M() >= $$1) {
+         return $$0;
       } else {
-         boolean $$3 = false;
-
-         for (bvh $$4 : this.c) {
-            if ($$2.a(new bvh($$4))) {
-               $$3 = true;
-            }
+         czd $$4 = this.c.v();
+         if ($$0.f()) {
+            return $$4;
+         } else {
+            $$3.apply($$4);
+            return $$0;
          }
-
-         return $$3;
       }
    }
 
-   public List<bvh> b() {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         dck $$1 = (dck)$$0;
+         return czd.a(this.c, $$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return czd.b(this.c);
+   }
+
+   public czd a() {
       return this.c;
    }
 
-   public float c() {
-      return this.f;
+   @FunctionalInterface
+   public interface a {
+      void apply(czd var1);
    }
 }

@@ -1,37 +1,28 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hmz extends avq {
-   @Nullable
-   private tz h;
+public class hmz<T> extends hna<T> {
+   private final hne<T> c;
 
-   public hmz(hna $$0, jl<alp> $$1, eyq $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hmz(Function<T, Stream<String>> $$0, Function<T, Stream<alg>> $$1, List<T> $$2) {
+      super($$1, $$2);
+      this.c = hne.plainText($$2, $$0);
    }
 
    @Override
-   protected void b(arr $$0) {
-      if (this.b().a($$0.gh())) {
-         this.h = $$0.f(new tz());
-      }
-
-      super.b($$0);
+   protected List<T> a(String $$0) {
+      return this.c.search($$0);
    }
 
    @Override
-   public wy a(SocketAddress $$0, GameProfile $$1) {
-      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hna b() {
-      return (hna)super.c();
-   }
-
-   @Nullable
-   @Override
-   public tz r() {
-      return this.h;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      List<T> $$4 = this.c.search($$1);
+      Iterator<T> $$5 = new hnc<T>($$3.iterator(), $$4.iterator(), this.a);
+      return ImmutableList.copyOf(new hnb<T>($$2.iterator(), $$5, this.a));
    }
 }

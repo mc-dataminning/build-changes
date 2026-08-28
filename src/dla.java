@@ -1,103 +1,66 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dla extends dox {
-   public static final MapCodec<dla> a = b(dla::new);
-   public static final eax<ja> b = dqa.e;
-   private static final Map<ja.a, ffc> c = fez.a(
-      fez.a(dma.b(12.0, 0.0, 4.0), dma.a(8.0, 10.0, 4.0, 5.0), dma.a(4.0, 8.0, 5.0, 10.0), dma.a(10.0, 16.0, 10.0, 16.0))
-   );
-   private static final wy d = wy.c("container.repair");
-   private static final float e = 2.0F;
-   private static final int f = 40;
+public abstract class dla extends dlr {
+   public static final ebf<ja> a = dqg.e;
+   public static final eay b = eax.u;
 
-   @Override
-   public MapCodec<dla> a() {
-      return a;
-   }
-
-   public dla(dzy.d $$0) {
+   protected dla(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, ja.c));
+      this.l(this.C.b().b(a, ja.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dzz a(dcr $$0) {
-      return this.m().b(b, $$0.g().h());
-   }
+   protected abstract MapCodec<? extends dla> a();
 
    @Override
-   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
       if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.aC);
+         this.a($$1, $$2, $$3);
       }
 
-      return bub.a;
+      return bud.a;
+   }
+
+   protected abstract void a(dja var1, iu var2, crc var3);
+
+   @Override
+   public eah a(dcw $$0) {
+      return this.m().b(a, $$0.g().g());
+   }
+
+   @Override
+   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
+      btz.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean c_(eah $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eah $$0, dja $$1, iu $$2) {
+      return cuv.a($$1.c_($$2));
+   }
+
+   @Override
+   protected eah a(eah $$0, dsz $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected eah a(eah $$0, dri $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(a, b);
    }
 
    @Nullable
-   @Override
-   protected bud b(dzz $$0, div $$1, iu $$2) {
-      return new buj(($$2x, $$3, $$4) -> new cut($$2x, $$3, cvd.a($$1, $$2)), d);
-   }
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return c.get($$0.c(b).o());
-   }
-
-   @Override
-   protected void a(cnc $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(div $$0, iu $$1, dzz $$2, dzz $$3, cnc $$4) {
-      if (!$$4.bb()) {
-         $$0.c(1031, $$1, 0);
-      }
-   }
-
-   @Override
-   public void a(div $$0, iu $$1, cnc $$2) {
-      if (!$$2.bb()) {
-         $$0.c(1029, $$1, 0);
-      }
-   }
-
-   @Override
-   public bus a(bwd $$0) {
-      return $$0.dW().b($$0);
-   }
-
-   @Nullable
-   public static dzz e(dzz $$0) {
-      if ($$0.a(dmc.hq)) {
-         return dmc.hr.m().b(b, $$0.c(b));
-      } else {
-         return $$0.a(dmc.hr) ? dmc.hs.m().b(b, $$0.c(b)) : null;
-      }
-   }
-
-   @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dzz $$0, dib $$1, iu $$2) {
-      return $$0.a($$1, $$2).ak;
+   protected static <T extends dxf> dxg<T> a(dja $$0, dxh<T> $$1, dxh<? extends dws> $$2) {
+      return $$0 instanceof arq $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dws.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

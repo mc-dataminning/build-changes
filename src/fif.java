@@ -1,517 +1,468 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
+import java.lang.invoke.MethodHandles.Lookup;
 import java.util.Locale;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.Map;
+import java.util.Objects;
+import java.util.OptionalInt;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWImage;
-import org.lwjgl.glfw.GLFWWindowCloseCallback;
-import org.lwjgl.glfw.GLFWImage.Buffer;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
-
-public final class fif implements AutoCloseable {
-   private static final Logger c = LogUtils.getLogger();
-   public static final int a = 320;
-   public static final int b = 240;
-   private final GLFWErrorCallback d = GLFWErrorCallback.create(this::a);
-   private final fig e;
-   private final fid f;
-   private final long g;
-   private int h;
-   private int i;
-   private int j;
-   private int k;
-   private Optional<fie> l;
-   private boolean m;
-   private boolean n;
-   private int o;
-   private int p;
-   private int q;
-   private int r;
-   private int s;
-   private int t;
-   private int u;
-   private int v;
-   private double w;
-   private String x = "";
-   private boolean y;
-   private boolean z;
-   private boolean A;
-   private boolean B;
-
-   public fif(fig $$0, fid $$1, fhs $$2, @Nullable String $$3, String $$4) {
-      this.f = $$1;
-      this.v();
-      this.a("Pre startup");
-      this.e = $$0;
-      Optional<fie> $$5 = fie.a($$3);
-      if ($$5.isPresent()) {
-         this.l = $$5;
-      } else if ($$2.c().isPresent() && $$2.d().isPresent()) {
-         this.l = Optional.of(new fie($$2.c().getAsInt(), $$2.d().getAsInt(), 8, 8, 8, 60));
-      } else {
-         this.l = Optional.empty();
-      }
-
-      this.n = this.m = $$2.e();
-      fia $$6 = $$1.a(GLFW.glfwGetPrimaryMonitor());
-      this.j = this.q = Math.max($$2.a(), 1);
-      this.k = this.r = Math.max($$2.b(), 1);
-      GLFW.glfwDefaultWindowHints();
-      GLFW.glfwWindowHint(139265, 196609);
-      GLFW.glfwWindowHint(139275, 221185);
-      GLFW.glfwWindowHint(139266, 3);
-      GLFW.glfwWindowHint(139267, 2);
-      GLFW.glfwWindowHint(139272, 204801);
-      GLFW.glfwWindowHint(139270, 1);
-      this.g = GLFW.glfwCreateWindow(this.q, this.r, $$4, this.m && $$6 != null ? $$6.f() : 0L, 0L);
-      if ($$6 != null) {
-         fie $$7 = $$6.a(this.m ? this.l : Optional.empty());
-         this.h = this.o = $$6.c() + $$7.a() / 2 - this.q / 2;
-         this.i = this.p = $$6.d() + $$7.b() / 2 - this.r / 2;
-      } else {
-         int[] $$8 = new int[1];
-         int[] $$9 = new int[1];
-         GLFW.glfwGetWindowPos(this.g, $$8, $$9);
-         this.h = this.o = $$8[0];
-         this.i = this.p = $$9[0];
-      }
-
-      GLFW.glfwMakeContextCurrent(this.g);
-      GL.createCapabilities();
-      int $$10 = RenderSystem.maxSupportedTextureSize();
-      GLFW.glfwSetWindowSizeLimits(this.g, -1, -1, $$10, $$10);
-      this.x();
-      this.w();
-      GLFW.glfwSetFramebufferSizeCallback(this.g, this::b);
-      GLFW.glfwSetWindowPosCallback(this.g, this::a);
-      GLFW.glfwSetWindowSizeCallback(this.g, this::c);
-      GLFW.glfwSetWindowFocusCallback(this.g, this::a);
-      GLFW.glfwSetCursorEnterCallback(this.g, this::b);
-      GLFW.glfwSetWindowIconifyCallback(this.g, this::c);
-   }
-
-   public static String a() {
-      int $$0 = GLFW.glfwGetPlatform();
-
-      return switch ($$0) {
-         case 0 -> "<error>";
-         case 393217 -> "win32";
-         case 393218 -> "cocoa";
-         case 393219 -> "wayland";
-         case 393220 -> "x11";
-         case 393221 -> "null";
-         default -> String.format(Locale.ROOT, "unknown (%08X)", $$0);
-      };
-   }
-
-   public int b() {
-      RenderSystem.assertOnRenderThread();
-      return GLX._getRefreshRate(this);
-   }
-
-   public boolean c() {
-      return GLX._shouldClose(this);
-   }
-
-   public static void a(BiConsumer<Integer, String> $$0) {
-      MemoryStack $$1 = MemoryStack.stackPush();
-
-      try {
-         PointerBuffer $$2 = $$1.mallocPointer(1);
-         int $$3 = GLFW.glfwGetError($$2);
-         if ($$3 != 0) {
-            long $$4 = $$2.get();
-            String $$5 = $$4 == 0L ? "" : MemoryUtil.memUTF8($$4);
-            $$0.accept($$3, $$5);
-         }
-      } catch (Throwable var8) {
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (Throwable var7) {
-               var8.addSuppressed(var7);
-            }
-         }
-
-         throw var8;
-      }
-
-      if ($$1 != null) {
-         $$1.close();
-      }
-   }
-
-   public void a(atp $$0, fhw $$1) throws IOException {
-      int $$2 = GLFW.glfwGetPlatform();
-      switch ($$2) {
-         case 393217:
-         case 393220:
-            List<auu<InputStream>> $$3 = $$1.a($$0);
-            List<ByteBuffer> $$4 = new ArrayList<>($$3.size());
-
-            try {
-               MemoryStack $$5 = MemoryStack.stackPush();
-
-               try {
-                  Buffer $$6 = GLFWImage.malloc($$3.size(), $$5);
-
-                  for (int $$7 = 0; $$7 < $$3.size(); $$7++) {
-                     try (fic $$8 = fic.a($$3.get($$7).get())) {
-                        ByteBuffer $$9 = MemoryUtil.memAlloc($$8.a() * $$8.b() * 4);
-                        $$4.add($$9);
-                        $$9.asIntBuffer().put($$8.d());
-                        $$6.position($$7);
-                        $$6.width($$8.a());
-                        $$6.height($$8.b());
-                        $$6.pixels($$9);
-                     }
-                  }
-
-                  GLFW.glfwSetWindowIcon(this.g, (Buffer)$$6.position(0));
-               } catch (Throwable var21) {
-                  if ($$5 != null) {
-                     try {
-                        $$5.close();
-                     } catch (Throwable var18) {
-                        var21.addSuppressed(var18);
-                     }
-                  }
-
-                  throw var21;
-               }
-
-               if ($$5 != null) {
-                  $$5.close();
-               }
-               break;
-            } finally {
-               $$4.forEach(MemoryUtil::memFree);
-            }
-         case 393218:
-            fhz.a($$1.b($$0));
-         case 393219:
-         case 393221:
-            break;
-         default:
-            c.warn("Not setting icon for unrecognized platform: {}", $$2);
-      }
-   }
-
-   public void a(String $$0) {
-      this.x = $$0;
-   }
-
-   private void v() {
-      GLFW.glfwSetErrorCallback(fif::b);
-   }
-
-   private static void b(int $$0, long $$1) {
-      String $$2 = "GLFW error " + $$0 + ": " + MemoryUtil.memUTF8($$1);
-      TinyFileDialogs.tinyfd_messageBox(
-         "Minecraft", $$2 + ".\n\nPlease make sure you have up-to-date drivers (see aka.ms/mcdriver for instructions).", "ok", "error", false
-      );
-      throw new fif.a($$2);
-   }
-
-   public void a(int $$0, long $$1) {
-      RenderSystem.assertOnRenderThread();
-      String $$2 = MemoryUtil.memUTF8($$1);
-      c.error("########## GL ERROR ##########");
-      c.error("@ {}", this.x);
-      c.error("{}: {}", $$0, $$2);
-   }
-
-   public void d() {
-      GLFWErrorCallback $$0 = GLFW.glfwSetErrorCallback(this.d);
-      if ($$0 != null) {
-         $$0.free();
-      }
-   }
-
-   public void a(boolean $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.z = $$0;
-      GLFW.glfwSwapInterval($$0 ? 1 : 0);
-   }
-
-   @Override
-   public void close() {
-      RenderSystem.assertOnRenderThread();
-      Callbacks.glfwFreeCallbacks(this.g);
-      this.d.close();
-      GLFW.glfwDestroyWindow(this.g);
-      GLFW.glfwTerminate();
-   }
-
-   private void a(long $$0, int $$1, int $$2) {
-      this.o = $$1;
-      this.p = $$2;
-   }
-
-   private void b(long $$0, int $$1, int $$2) {
-      if ($$0 == this.g) {
-         int $$3 = this.k();
-         int $$4 = this.l();
-         if ($$1 != 0 && $$2 != 0) {
-            this.B = false;
-            this.s = $$1;
-            this.t = $$2;
-            if (this.k() != $$3 || this.l() != $$4) {
-               try {
-                  this.e.a();
-               } catch (Exception var10) {
-                  o $$6 = o.a(var10, "Window resize");
-                  p $$7 = $$6.a("Window Dimensions");
-                  $$7.a("Old", $$3 + "x" + $$4);
-                  $$7.a("New", $$1 + "x" + $$2);
-                  throw new z($$6);
-               }
-            }
-         } else {
-            this.B = true;
-         }
-      }
-   }
-
-   private void w() {
-      int[] $$0 = new int[1];
-      int[] $$1 = new int[1];
-      GLFW.glfwGetFramebufferSize(this.g, $$0, $$1);
-      this.s = $$0[0] > 0 ? $$0[0] : 1;
-      this.t = $$1[0] > 0 ? $$1[0] : 1;
-   }
-
-   private void c(long $$0, int $$1, int $$2) {
-      this.q = $$1;
-      this.r = $$2;
-   }
-
-   private void a(long $$0, boolean $$1) {
-      if ($$0 == this.g) {
-         this.e.a($$1);
-      }
-   }
-
-   private void b(long $$0, boolean $$1) {
-      if ($$1) {
-         this.e.b();
-      }
-   }
-
-   private void c(long $$0, boolean $$1) {
-      this.A = $$1;
-   }
-
-   public void a(@Nullable fgn $$0) {
-      RenderSystem.flipFrame(this.g, $$0);
-      if (this.m != this.n) {
-         this.n = this.m;
-         this.a(this.z, $$0);
-      }
-   }
-
-   public Optional<fie> e() {
-      return this.l;
-   }
-
-   public void a(Optional<fie> $$0) {
-      boolean $$1 = !$$0.equals(this.l);
-      this.l = $$0;
-      if ($$1) {
-         this.y = true;
-      }
-   }
-
-   public void f() {
-      if (this.m && this.y) {
-         this.y = false;
-         this.x();
-         this.e.a();
-      }
-   }
-
-   private void x() {
-      boolean $$0 = GLFW.glfwGetWindowMonitor(this.g) != 0L;
-      if (this.m) {
-         fia $$1 = this.f.a(this);
-         if ($$1 == null) {
-            c.warn("Failed to find suitable monitor for fullscreen mode");
-            this.m = false;
-         } else {
-            if (fhz.a) {
-               fhz.a(this.g);
-            }
-
-            fie $$2 = $$1.a(this.l);
-            if (!$$0) {
-               this.h = this.o;
-               this.i = this.p;
-               this.j = this.q;
-               this.k = this.r;
-            }
-
-            this.o = 0;
-            this.p = 0;
-            this.q = $$2.a();
-            this.r = $$2.b();
-            GLFW.glfwSetWindowMonitor(this.g, $$1.f(), this.o, this.p, this.q, this.r, $$2.f());
-            if (fhz.a) {
-               fhz.b(this.g);
-            }
-         }
-      } else {
-         this.o = this.h;
-         this.p = this.i;
-         this.q = this.j;
-         this.r = this.k;
-         GLFW.glfwSetWindowMonitor(this.g, 0L, this.o, this.p, this.q, this.r, -1);
-      }
-   }
-
-   public void g() {
-      this.m = !this.m;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.j = $$0;
-      this.k = $$1;
-      this.m = false;
-      this.x();
-   }
-
-   private void a(boolean $$0, @Nullable fgn $$1) {
-      RenderSystem.assertOnRenderThread();
-
-      try {
-         this.x();
-         this.e.a();
-         this.a($$0);
-         this.a($$1);
-      } catch (Exception var4) {
-         c.error("Couldn't toggle fullscreen", var4);
-      }
-   }
-
-   public int a(int $$0, boolean $$1) {
-      int $$2 = 1;
-
-      while ($$2 != $$0 && $$2 < this.s && $$2 < this.t && this.s / ($$2 + 1) >= 320 && this.t / ($$2 + 1) >= 240) {
-         $$2++;
-      }
-
-      if ($$1 && $$2 % 2 != 0) {
-         $$2++;
-      }
-
-      return $$2;
-   }
-
-   public void a(double $$0) {
-      this.w = $$0;
-      int $$1 = (int)((double)this.s / $$0);
-      this.u = (double)this.s / $$0 > (double)$$1 ? $$1 + 1 : $$1;
-      int $$2 = (int)((double)this.t / $$0);
-      this.v = (double)this.t / $$0 > (double)$$2 ? $$2 + 1 : $$2;
-   }
-
-   public void b(String $$0) {
-      GLFW.glfwSetWindowTitle(this.g, $$0);
-   }
-
-   public long h() {
-      return this.g;
-   }
-
-   public boolean i() {
-      return this.m;
-   }
-
-   public boolean j() {
-      return this.A;
-   }
-
-   public int k() {
-      return this.s;
-   }
-
-   public int l() {
-      return this.t;
-   }
-
-   public void a(int $$0) {
-      this.s = $$0;
-   }
-
-   public void b(int $$0) {
-      this.t = $$0;
-   }
-
-   public int m() {
-      return this.q;
-   }
-
-   public int n() {
-      return this.r;
-   }
-
-   public int o() {
-      return this.u;
-   }
-
-   public int p() {
-      return this.v;
-   }
-
-   public int q() {
-      return this.o;
-   }
-
-   public int r() {
-      return this.p;
-   }
-
-   public double s() {
-      return this.w;
-   }
-
+import org.lwjgl.glfw.GLFWCharModsCallbackI;
+import org.lwjgl.glfw.GLFWCursorPosCallbackI;
+import org.lwjgl.glfw.GLFWDropCallbackI;
+import org.lwjgl.glfw.GLFWKeyCallbackI;
+import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
+import org.lwjgl.glfw.GLFWScrollCallbackI;
+
+public class fif {
    @Nullable
-   public fia t() {
-      return this.f.a(this);
+   private static final MethodHandle bw;
+   private static final int bx;
+   public static final int a = 48;
+   public static final int b = 49;
+   public static final int c = 50;
+   public static final int d = 51;
+   public static final int e = 52;
+   public static final int f = 53;
+   public static final int g = 54;
+   public static final int h = 55;
+   public static final int i = 56;
+   public static final int j = 57;
+   public static final int k = 65;
+   public static final int l = 66;
+   public static final int m = 67;
+   public static final int n = 68;
+   public static final int o = 69;
+   public static final int p = 70;
+   public static final int q = 71;
+   public static final int r = 72;
+   public static final int s = 73;
+   public static final int t = 74;
+   public static final int u = 75;
+   public static final int v = 76;
+   public static final int w = 77;
+   public static final int x = 78;
+   public static final int y = 79;
+   public static final int z = 80;
+   public static final int A = 81;
+   public static final int B = 82;
+   public static final int C = 83;
+   public static final int D = 84;
+   public static final int E = 85;
+   public static final int F = 86;
+   public static final int G = 87;
+   public static final int H = 88;
+   public static final int I = 89;
+   public static final int J = 90;
+   public static final int K = 290;
+   public static final int L = 291;
+   public static final int M = 292;
+   public static final int N = 293;
+   public static final int O = 294;
+   public static final int P = 295;
+   public static final int Q = 296;
+   public static final int R = 297;
+   public static final int S = 298;
+   public static final int T = 299;
+   public static final int U = 300;
+   public static final int V = 301;
+   public static final int W = 302;
+   public static final int X = 303;
+   public static final int Y = 304;
+   public static final int Z = 305;
+   public static final int aa = 306;
+   public static final int ab = 307;
+   public static final int ac = 308;
+   public static final int ad = 309;
+   public static final int ae = 310;
+   public static final int af = 311;
+   public static final int ag = 312;
+   public static final int ah = 313;
+   public static final int ai = 314;
+   public static final int aj = 282;
+   public static final int ak = 320;
+   public static final int al = 321;
+   public static final int am = 322;
+   public static final int an = 323;
+   public static final int ao = 324;
+   public static final int ap = 325;
+   public static final int aq = 326;
+   public static final int ar = 327;
+   public static final int as = 328;
+   public static final int at = 329;
+   public static final int au = 330;
+   public static final int av = 335;
+   public static final int aw = 336;
+   public static final int ax = 264;
+   public static final int ay = 263;
+   public static final int az = 262;
+   public static final int aA = 265;
+   public static final int aB = 334;
+   public static final int aC = 39;
+   public static final int aD = 92;
+   public static final int aE = 44;
+   public static final int aF = 61;
+   public static final int aG = 96;
+   public static final int aH = 91;
+   public static final int aI = 45;
+   public static final int aJ = 332;
+   public static final int aK = 46;
+   public static final int aL = 93;
+   public static final int aM = 59;
+   public static final int aN = 47;
+   public static final int aO = 32;
+   public static final int aP = 258;
+   public static final int aQ = 342;
+   public static final int aR = 341;
+   public static final int aS = 340;
+   public static final int aT = 343;
+   public static final int aU = 346;
+   public static final int aV = 345;
+   public static final int aW = 344;
+   public static final int aX = 347;
+   public static final int aY = 257;
+   public static final int aZ = 256;
+   public static final int ba = 259;
+   public static final int bb = 261;
+   public static final int bc = 269;
+   public static final int bd = 268;
+   public static final int be = 260;
+   public static final int bf = 267;
+   public static final int bg = 266;
+   public static final int bh = 280;
+   public static final int bi = 284;
+   public static final int bj = 281;
+   public static final int bk = 283;
+   public static final int bl = 1;
+   public static final int bm = 0;
+   public static final int bn = 2;
+   public static final int bo = 0;
+   public static final int bp = 2;
+   public static final int bq = 1;
+   public static final int br = 2;
+   public static final int bs = 208897;
+   public static final int bt = 212995;
+   public static final int bu = 212993;
+   public static final fif.a bv;
+
+   public static fif.a a(int $$0, int $$1) {
+      return $$0 == -1 ? fif.b.b.a($$1) : fif.b.a.a($$0);
    }
 
-   public void b(boolean $$0) {
-      fhx.a(this.g, $$0);
-   }
+   public static fif.a a(String $$0) {
+      if (fif.a.e.containsKey($$0)) {
+         return fif.a.e.get($$0);
+      } else {
+         for (fif.b $$1 : fif.b.values()) {
+            if ($$0.startsWith($$1.f)) {
+               String $$2 = $$0.substring($$1.f.length() + 1);
+               int $$3 = Integer.parseInt($$2);
+               if ($$1 == fif.b.c) {
+                  $$3--;
+               }
 
-   public void a(Runnable $$0) {
-      GLFWWindowCloseCallback $$1 = GLFW.glfwSetWindowCloseCallback(this.g, $$1x -> $$0.run());
-      if ($$1 != null) {
-         $$1.free();
+               return $$1.a($$3);
+            }
+         }
+
+         throw new IllegalArgumentException("Unknown key name: " + $$0);
       }
    }
 
-   public boolean u() {
-      return this.B;
+   public static boolean a(long $$0, int $$1) {
+      return GLFW.glfwGetKey($$0, $$1) == 1;
    }
 
-   public static class a extends gdx {
-      a(String $$0) {
-         super($$0);
+   public static void a(long $$0, GLFWKeyCallbackI $$1, GLFWCharModsCallbackI $$2) {
+      GLFW.glfwSetKeyCallback($$0, $$1);
+      GLFW.glfwSetCharModsCallback($$0, $$2);
+   }
+
+   public static void a(long $$0, GLFWCursorPosCallbackI $$1, GLFWMouseButtonCallbackI $$2, GLFWScrollCallbackI $$3, GLFWDropCallbackI $$4) {
+      GLFW.glfwSetCursorPosCallback($$0, $$1);
+      GLFW.glfwSetMouseButtonCallback($$0, $$2);
+      GLFW.glfwSetScrollCallback($$0, $$3);
+      GLFW.glfwSetDropCallback($$0, $$4);
+   }
+
+   public static void a(long $$0, int $$1, double $$2, double $$3) {
+      GLFW.glfwSetCursorPos($$0, $$2, $$3);
+      GLFW.glfwSetInputMode($$0, 208897, $$1);
+   }
+
+   public static boolean a() {
+      try {
+         return bw != null && (boolean)bw.invokeExact();
+      } catch (Throwable var1) {
+         throw new RuntimeException(var1);
+      }
+   }
+
+   public static void a(long $$0, boolean $$1) {
+      if (a()) {
+         GLFW.glfwSetInputMode($$0, bx, $$1 ? 1 : 0);
+      }
+   }
+
+   static {
+      Lookup $$0 = MethodHandles.lookup();
+      MethodType $$1 = MethodType.methodType(boolean.class);
+      MethodHandle $$2 = null;
+      int $$3 = 0;
+
+      try {
+         $$2 = $$0.findStatic(GLFW.class, "glfwRawMouseMotionSupported", $$1);
+         MethodHandle $$4 = $$0.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", int.class);
+         $$3 = (int)$$4.invokeExact();
+      } catch (NoSuchFieldException | NoSuchMethodException var5) {
+      } catch (Throwable var6) {
+         throw new RuntimeException(var6);
+      }
+
+      bw = $$2;
+      bx = $$3;
+      bv = fif.b.a.a(-1);
+   }
+
+   public static final class a {
+      private final String a;
+      private final fif.b b;
+      private final int c;
+      private final azg<wy> d;
+      static final Map<String, fif.a> e = Maps.newHashMap();
+
+      a(String $$0, fif.b $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = new azg<>(() -> $$1.g.apply($$2, $$0));
+         e.put($$0, this);
+      }
+
+      public fif.b a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.a;
+      }
+
+      public wy d() {
+         return this.d.a();
+      }
+
+      public OptionalInt e() {
+         if (this.c >= 48 && this.c <= 57) {
+            return OptionalInt.of(this.c - 48);
+         } else {
+            return this.c >= 320 && this.c <= 329 ? OptionalInt.of(this.c - 320) : OptionalInt.empty();
+         }
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+            fif.a $$1 = (fif.a)$$0;
+            return this.c == $$1.c && this.b == $$1.b;
+         } else {
+            return false;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         return Objects.hash(this.b, this.c);
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+   }
+
+   public static enum b {
+      a("key.keyboard", ($$0, $$1) -> {
+         if ("key.keyboard.unknown".equals($$1)) {
+            return wy.c($$1);
+         } else {
+            String $$2 = GLFW.glfwGetKeyName($$0, -1);
+            return $$2 != null ? wy.b($$2.toUpperCase(Locale.ROOT)) : wy.c($$1);
+         }
+      }),
+      b("scancode", ($$0, $$1) -> {
+         String $$2 = GLFW.glfwGetKeyName(-1, $$0);
+         return $$2 != null ? wy.b($$2) : wy.c($$1);
+      }),
+      c("key.mouse", ($$0, $$1) -> tu.a().b($$1) ? wy.c($$1) : wy.a("key.mouse", $$0 + 1));
+
+      private static final String d = "key.keyboard.unknown";
+      private final Int2ObjectMap<fif.a> e = new Int2ObjectOpenHashMap();
+      final String f;
+      final BiFunction<Integer, String, wy> g;
+
+      private static void a(fif.b $$0, String $$1, int $$2) {
+         fif.a $$3 = new fif.a($$1, $$0, $$2);
+         $$0.e.put($$2, $$3);
+      }
+
+      private b(final String $$0, final BiFunction<Integer, String, wy> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public fif.a a(int $$0) {
+         return (fif.a)this.e.computeIfAbsent($$0, $$0x -> {
+            int $$1 = $$0x;
+            if (this == c) {
+               $$1 = $$0x + 1;
+            }
+
+            String $$2 = this.f + "." + $$1;
+            return new fif.a($$2, this, $$0x);
+         });
+      }
+
+      static {
+         a(a, "key.keyboard.unknown", -1);
+         a(c, "key.mouse.left", 0);
+         a(c, "key.mouse.right", 1);
+         a(c, "key.mouse.middle", 2);
+         a(c, "key.mouse.4", 3);
+         a(c, "key.mouse.5", 4);
+         a(c, "key.mouse.6", 5);
+         a(c, "key.mouse.7", 6);
+         a(c, "key.mouse.8", 7);
+         a(a, "key.keyboard.0", 48);
+         a(a, "key.keyboard.1", 49);
+         a(a, "key.keyboard.2", 50);
+         a(a, "key.keyboard.3", 51);
+         a(a, "key.keyboard.4", 52);
+         a(a, "key.keyboard.5", 53);
+         a(a, "key.keyboard.6", 54);
+         a(a, "key.keyboard.7", 55);
+         a(a, "key.keyboard.8", 56);
+         a(a, "key.keyboard.9", 57);
+         a(a, "key.keyboard.a", 65);
+         a(a, "key.keyboard.b", 66);
+         a(a, "key.keyboard.c", 67);
+         a(a, "key.keyboard.d", 68);
+         a(a, "key.keyboard.e", 69);
+         a(a, "key.keyboard.f", 70);
+         a(a, "key.keyboard.g", 71);
+         a(a, "key.keyboard.h", 72);
+         a(a, "key.keyboard.i", 73);
+         a(a, "key.keyboard.j", 74);
+         a(a, "key.keyboard.k", 75);
+         a(a, "key.keyboard.l", 76);
+         a(a, "key.keyboard.m", 77);
+         a(a, "key.keyboard.n", 78);
+         a(a, "key.keyboard.o", 79);
+         a(a, "key.keyboard.p", 80);
+         a(a, "key.keyboard.q", 81);
+         a(a, "key.keyboard.r", 82);
+         a(a, "key.keyboard.s", 83);
+         a(a, "key.keyboard.t", 84);
+         a(a, "key.keyboard.u", 85);
+         a(a, "key.keyboard.v", 86);
+         a(a, "key.keyboard.w", 87);
+         a(a, "key.keyboard.x", 88);
+         a(a, "key.keyboard.y", 89);
+         a(a, "key.keyboard.z", 90);
+         a(a, "key.keyboard.f1", 290);
+         a(a, "key.keyboard.f2", 291);
+         a(a, "key.keyboard.f3", 292);
+         a(a, "key.keyboard.f4", 293);
+         a(a, "key.keyboard.f5", 294);
+         a(a, "key.keyboard.f6", 295);
+         a(a, "key.keyboard.f7", 296);
+         a(a, "key.keyboard.f8", 297);
+         a(a, "key.keyboard.f9", 298);
+         a(a, "key.keyboard.f10", 299);
+         a(a, "key.keyboard.f11", 300);
+         a(a, "key.keyboard.f12", 301);
+         a(a, "key.keyboard.f13", 302);
+         a(a, "key.keyboard.f14", 303);
+         a(a, "key.keyboard.f15", 304);
+         a(a, "key.keyboard.f16", 305);
+         a(a, "key.keyboard.f17", 306);
+         a(a, "key.keyboard.f18", 307);
+         a(a, "key.keyboard.f19", 308);
+         a(a, "key.keyboard.f20", 309);
+         a(a, "key.keyboard.f21", 310);
+         a(a, "key.keyboard.f22", 311);
+         a(a, "key.keyboard.f23", 312);
+         a(a, "key.keyboard.f24", 313);
+         a(a, "key.keyboard.f25", 314);
+         a(a, "key.keyboard.num.lock", 282);
+         a(a, "key.keyboard.keypad.0", 320);
+         a(a, "key.keyboard.keypad.1", 321);
+         a(a, "key.keyboard.keypad.2", 322);
+         a(a, "key.keyboard.keypad.3", 323);
+         a(a, "key.keyboard.keypad.4", 324);
+         a(a, "key.keyboard.keypad.5", 325);
+         a(a, "key.keyboard.keypad.6", 326);
+         a(a, "key.keyboard.keypad.7", 327);
+         a(a, "key.keyboard.keypad.8", 328);
+         a(a, "key.keyboard.keypad.9", 329);
+         a(a, "key.keyboard.keypad.add", 334);
+         a(a, "key.keyboard.keypad.decimal", 330);
+         a(a, "key.keyboard.keypad.enter", 335);
+         a(a, "key.keyboard.keypad.equal", 336);
+         a(a, "key.keyboard.keypad.multiply", 332);
+         a(a, "key.keyboard.keypad.divide", 331);
+         a(a, "key.keyboard.keypad.subtract", 333);
+         a(a, "key.keyboard.down", 264);
+         a(a, "key.keyboard.left", 263);
+         a(a, "key.keyboard.right", 262);
+         a(a, "key.keyboard.up", 265);
+         a(a, "key.keyboard.apostrophe", 39);
+         a(a, "key.keyboard.backslash", 92);
+         a(a, "key.keyboard.comma", 44);
+         a(a, "key.keyboard.equal", 61);
+         a(a, "key.keyboard.grave.accent", 96);
+         a(a, "key.keyboard.left.bracket", 91);
+         a(a, "key.keyboard.minus", 45);
+         a(a, "key.keyboard.period", 46);
+         a(a, "key.keyboard.right.bracket", 93);
+         a(a, "key.keyboard.semicolon", 59);
+         a(a, "key.keyboard.slash", 47);
+         a(a, "key.keyboard.space", 32);
+         a(a, "key.keyboard.tab", 258);
+         a(a, "key.keyboard.left.alt", 342);
+         a(a, "key.keyboard.left.control", 341);
+         a(a, "key.keyboard.left.shift", 340);
+         a(a, "key.keyboard.left.win", 343);
+         a(a, "key.keyboard.right.alt", 346);
+         a(a, "key.keyboard.right.control", 345);
+         a(a, "key.keyboard.right.shift", 344);
+         a(a, "key.keyboard.right.win", 347);
+         a(a, "key.keyboard.enter", 257);
+         a(a, "key.keyboard.escape", 256);
+         a(a, "key.keyboard.backspace", 259);
+         a(a, "key.keyboard.delete", 261);
+         a(a, "key.keyboard.end", 269);
+         a(a, "key.keyboard.home", 268);
+         a(a, "key.keyboard.insert", 260);
+         a(a, "key.keyboard.page.down", 267);
+         a(a, "key.keyboard.page.up", 266);
+         a(a, "key.keyboard.caps.lock", 280);
+         a(a, "key.keyboard.pause", 284);
+         a(a, "key.keyboard.scroll.lock", 281);
+         a(a, "key.keyboard.menu", 348);
+         a(a, "key.keyboard.print.screen", 283);
+         a(a, "key.keyboard.world.1", 161);
+         a(a, "key.keyboard.world.2", 162);
       }
    }
 }

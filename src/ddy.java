@@ -1,35 +1,80 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public class ddy {
-   public static final alf<? extends jr<ddy>> a = alf.a(alg.b("recipe_property_set"));
-   public static final alf<ddy> b = a("smithing_base");
-   public static final alf<ddy> c = a("smithing_template");
-   public static final alf<ddy> d = a("smithing_addition");
-   public static final alf<ddy> e = a("furnace_input");
-   public static final alf<ddy> f = a("blast_furnace_input");
-   public static final alf<ddy> g = a("smoker_input");
-   public static final alf<ddy> h = a("campfire_input");
-   public static final yw<wj, ddy> i = cyu.f.a(yu.a()).a($$0 -> new ddy(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final ddy j = new ddy(Set.of());
-   private final Set<je<cyu>> k;
+   private final ddy.a[] a;
+   private WeakReference<deb> b = new WeakReference<>(null);
 
-   private ddy(Set<je<cyu>> $$0) {
-      this.k = $$0;
+   public ddy(int $$0) {
+      this.a = new ddy.a[$$0];
    }
 
-   private static alf<ddy> a(String $$0) {
-      return alf.a(a, alg.b($$0));
+   public Optional<ddz<ddj>> a(arq $$0, ddi $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            ddy.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   public boolean a(cyy $$0) {
-      return this.k.contains($$0.i());
+   private void a(arq $$0) {
+      deb $$1 = $$0.t();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   static ddy a(Collection<ddl> $$0) {
-      Set<je<cyu>> $$1 = $$0.stream().flatMap(ddl::a).collect(Collectors.toUnmodifiableSet());
-      return new ddy($$1);
+   private Optional<ddz<ddj>> a(ddi $$0, arq $$1) {
+      Optional<ddz<ddj>> $$2 = $$1.t().a(def.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         ddy.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(ddi $$0, @Nullable ddz<ddj> $$1) {
+      jn<czd> $$2 = jn.a($$0.a(), czd.k);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new ddy.a($$2, $$0.f(), $$0.g(), $$1);
+   }
+
+   static record a(jn<czd> a, int b, int c, @Nullable ddz<ddj> d) {
+      public boolean a(ddi $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!czd.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

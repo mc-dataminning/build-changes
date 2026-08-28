@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class arm extends btr {
+public class arm extends btt {
    private final Set<arr> h = Sets.newHashSet();
    private final Set<arr> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public arm(wy $$0, btr.a $$1, btr.b $$2) {
+   public arm(wy $$0, btt.a $$1, btt.b $$2) {
       super(azm.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class arm extends btr {
    }
 
    @Override
-   public void a(btr.a $$0) {
+   public void a(btt.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(acd::d);
@@ -32,7 +32,7 @@ public class arm extends btr {
    }
 
    @Override
-   public void a(btr.b $$0) {
+   public void a(btt.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(acd::d);
@@ -40,7 +40,7 @@ public class arm extends btr {
    }
 
    @Override
-   public btr a(boolean $$0) {
+   public btt a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(acd::e);
@@ -50,7 +50,7 @@ public class arm extends btr {
    }
 
    @Override
-   public btr b(boolean $$0) {
+   public btt b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(acd::e);
@@ -60,7 +60,7 @@ public class arm extends btr {
    }
 
    @Override
-   public btr c(boolean $$0) {
+   public btt c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(acd::e);
@@ -77,7 +77,7 @@ public class arm extends btr {
       }
    }
 
-   private void a(Function<btr, acd> $$0) {
+   private void a(Function<btt, acd> $$0) {
       if (this.j) {
          acd $$1 = $$0.apply(this);
 

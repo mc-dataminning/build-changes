@@ -1,98 +1,40 @@
-import java.util.Set;
+import it.unimi.dsi.fastutil.HashCommon;
+import javax.annotation.Nullable;
 
-public record exg(arq d, fei e, fei f, float g, float h, boolean i, boolean j, Set<bxq> k, exg.a l) {
-   public static final exg.a a = $$0 -> {
-   };
-   public static final exg.a b = exg::a;
-   public static final exg.a c = exg::b;
+public class exg {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final exf[] d = new exf[4096];
 
-   public exg(arq $$0, fei $$1, fei $$2, float $$3, float $$4, exg.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   public exf a(dig $$0, iu $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      exf $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   public exg(arq $$0, fei $$1, fei $$2, float $$3, float $$4, Set<bxq> $$5, exg.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   @Nullable
+   private exf a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   public exg(arq $$0, bwd $$1, exg.a $$2) {
-      this($$0, a($$0, $$1), fei.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
+   private exf a(dig $$0, iu $$1, int $$2, long $$3) {
+      exf $$4 = exk.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   private static void a(bwd $$0) {
-      if ($$0 instanceof arr $$1) {
-         $$1.f.b(new adh(1032, iu.c, 0, false));
+   public void a(iu $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
       }
    }
 
-   private static void b(bwd $$0) {
-      $$0.f(iu.a((jo)$$0.dt()));
-   }
-
-   public static exg a(arq $$0, bwd $$1, exg.a $$2) {
-      return new exg($$0, a($$0, $$1), fei.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
-   }
-
-   private static fei a(arq $$0, bwd $$1) {
-      return $$1.a($$0, $$0.aa()).c();
-   }
-
-   public exg a(float $$0, float $$1) {
-      return new exg(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
-   }
-
-   public exg a(fei $$0) {
-      return new exg(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
-   }
-
-   public exg a() {
-      return new exg(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
-   }
-
-   public arq b() {
-      return this.d;
-   }
-
-   public fei c() {
-      return this.e;
-   }
-
-   public fei d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<bxq> i() {
-      return this.k;
-   }
-
-   public exg.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bwd var1);
-
-      default exg.a then(exg.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
-      }
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

@@ -1,25 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class ehd {
+   private final int a;
+   private final int b;
 
-class ehd extends ehh {
-   public static final MapCodec<ehd> a = a(ehd::new);
-
-   public ehd(List<ehf> $$0) {
-      super($$0);
+   public ehd(ecf $$0, djc $$1) {
+      this.a = Math.max($$1.G_(), $$0.g());
+      this.b = Math.min($$1.H_(), $$0.e());
    }
 
-   public boolean a(dju $$0, iu $$1) {
-      for (ehf $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
+   public int a() {
+      return this.a;
    }
 
-   @Override
-   public ehg<?> a() {
-      return ehg.j;
+   public int b() {
+      return this.b;
    }
 }

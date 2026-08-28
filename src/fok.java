@@ -1,29 +1,33 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public record fok(int a, wy b, @Nullable xk c, @Nullable fol d) {
-   @Nullable
-   public fol.a a() {
-      return this.d != null ? this.d.f() : null;
+public enum fok implements azp, bak {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<fok> d = bak.a(fok::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fok(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
+   @Override
+   public String c() {
+      return this.f;
+   }
+
+   @Override
    public int b() {
-      return this.a;
+      return this.e;
    }
 
-   public wy c() {
-      return this.b;
-   }
-
-   @Nullable
-   public xk d() {
-      return this.c;
-   }
-
-   @Nullable
-   public fol e() {
-      return this.d;
-   }
-
-   public static record a(int a, ayy b, @Nullable fol c, boolean d) {
+   @Override
+   public String a() {
+      return this.g;
    }
 }

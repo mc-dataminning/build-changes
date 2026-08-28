@@ -13,8 +13,8 @@ public class bfu extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.writeFixAndRead(
          "Food to consumable fix",
-         this.getInputSchema().getType(biw.w),
-         this.getOutputSchema().getType(biw.w),
+         this.getInputSchema().getType(bix.w),
+         this.getOutputSchema().getType(bix.w),
          $$0 -> {
             Optional<? extends Dynamic<?>> $$1 = $$0.get("minecraft:food").result();
             if ($$1.isPresent()) {

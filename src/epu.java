@@ -1,23 +1,27 @@
 import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class epu extends eqa {
-   private static final epu c = new epu();
-   public static final MapCodec<epu> a = MapCodec.unit(() -> c);
+public class epu extends eqh {
+   public static final MapCodec<epu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ehn.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, epu::new)
+   );
+   private final ehn c;
 
-   public static epu a() {
-      return c;
+   private epu(ehn $$0) {
+      this.c = $$0;
+   }
+
+   public static epu a(ehn $$0) {
+      return new epu($$0);
    }
 
    @Override
-   public Stream<iu> a_(epy $$0, azv $$1, iu $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new iu($$3, $$2.v(), $$4));
+   protected boolean a(eqg $$0, azv $$1, iu $$2) {
+      return this.c.test($$0.d(), $$2);
    }
 
    @Override
-   public eqb<?> b() {
-      return eqb.m;
+   public eqj<?> b() {
+      return eqj.a;
    }
 }

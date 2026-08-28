@@ -1,42 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public class eqc extends eqa {
-   public static final MapCodec<eqc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(btg.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), btg.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, eqc::new)
-   );
-   private final btg c;
-   private final btg d;
+public class eqc extends eqi {
+   private static final eqc c = new eqc();
+   public static final MapCodec<eqc> a = MapCodec.unit(() -> c);
 
-   public static eqc a(btg $$0, btg $$1) {
-      return new eqc($$0, $$1);
-   }
-
-   public static eqc a(btg $$0) {
-      return new eqc(btd.a(0), $$0);
-   }
-
-   public static eqc b(btg $$0) {
-      return new eqc($$0, btd.a(0));
-   }
-
-   private eqc(btg $$0, btg $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static eqc a() {
+      return c;
    }
 
    @Override
-   public Stream<iu> a_(epy $$0, azv $$1, iu $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new iu($$3, $$4, $$5));
+   public Stream<iu> a_(eqg $$0, azv $$1, iu $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new iu($$3, $$2.v(), $$4));
    }
 
    @Override
-   public eqb<?> b() {
-      return eqb.n;
+   public eqj<?> b() {
+      return eqj.m;
    }
 }

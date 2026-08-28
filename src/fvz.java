@@ -1,19 +1,26 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
 public interface fvz {
-   default void a(fvy $$0, wy $$1) {
-      this.a($$0, fwb.a($$1.getString()));
+   void j(int var1);
+
+   void k(int var1);
+
+   int F();
+
+   int G();
+
+   int A();
+
+   int y();
+
+   default fwq J() {
+      return new fwq(this.F(), this.G(), this.A(), this.y());
    }
 
-   default void a(fvy $$0, String $$1) {
-      this.a($$0, fwb.a($$1));
+   default void c(int $$0, int $$1) {
+      this.j($$0);
+      this.k($$1);
    }
 
-   default void a(fvy $$0, wy... $$1) {
-      this.a($$0, fwb.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fvy var1, fwb<?> var2);
-
-   fvz a();
+   void a(Consumer<fsh> var1);
 }

@@ -1,28 +1,32 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import org.lwjgl.openal.AL10;
 
-public class fgy implements AutoCloseable {
-   private long a = GlStateManager._glFenceSync(37143, 0);
+public class fgy {
+   private float a = 1.0F;
+   private fgz b = fgz.a;
 
-   @Override
-   public void close() {
-      if (this.a != 0L) {
-         GlStateManager._glDeleteSync(this.a);
-         this.a = 0L;
-      }
+   public void a(fgz $$0) {
+      this.b = $$0;
+      feq $$1 = $$0.b();
+      feq $$2 = $$0.c();
+      feq $$3 = $$0.d();
+      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
+      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
    }
 
-   public boolean a(long $$0) {
-      if (this.a == 0L) {
-         return true;
-      } else {
-         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
-         if ($$1 == 37147) {
-            return false;
-         } else if ($$1 == 37149) {
-            throw new IllegalStateException("Failed to complete gpu fence");
-         } else {
-            return true;
-         }
-      }
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float a() {
+      return this.a;
+   }
+
+   public void b() {
+      this.a(fgz.a);
+   }
+
+   public fgz c() {
+      return this.b;
    }
 }

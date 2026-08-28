@@ -28,15 +28,15 @@ public class ahl implements zf<agp> {
       this.d = $$1;
    }
 
-   public static ahl a(bwd $$0, boolean $$1) {
+   public static ahl a(bwf $$0, boolean $$1) {
       return new ahl($$0.ar(), $$1, e);
    }
 
-   public static ahl a(bwd $$0, boolean $$1, bua $$2) {
+   public static ahl a(bwf $$0, boolean $$1, buc $$2) {
       return new ahl($$0.ar(), $$1, new ahl.d($$2));
    }
 
-   public static ahl a(bwd $$0, boolean $$1, bua $$2, fei $$3) {
+   public static ahl a(bwf $$0, boolean $$1, buc $$2, feq $$3) {
       return new ahl($$0.ar(), $$1, new ahl.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahl implements zf<agp> {
    }
 
    @Nullable
-   public bwd a(arq $$0) {
+   public bwf a(arq $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahl implements zf<agp> {
    }
 
    public interface c {
-      void a(bua var1);
+      void a(buc var1);
 
-      void a(bua var1, fei var2);
+      void a(buc var1, feq var2);
 
       void a();
    }
 
    static class d implements ahl.a {
-      private final bua a;
+      private final buc a;
 
-      d(bua $$0) {
+      d(buc $$0) {
          this.a = $$0;
       }
 
       private d(vu $$0) {
-         this.a = $$0.b(bua.class);
+         this.a = $$0.b(buc.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahl implements zf<agp> {
    }
 
    static class e implements ahl.a {
-      private final bua a;
-      private final fei b;
+      private final buc a;
+      private final feq b;
 
-      e(bua $$0, fei $$1) {
+      e(buc $$0, feq $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vu $$0) {
-         this.b = new fei((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(bua.class);
+         this.b = new feq((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(buc.class);
       }
 
       @Override

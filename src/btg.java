@@ -2,35 +2,25 @@ import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 
-public abstract class btg {
-   private static final Codec<Either<Integer, btg>> a = Codec.either(Codec.INT, mf.K.q().dispatch(btg::c, bth::codec));
+public abstract class btg implements btl {
+   private static final Codec<Either<Float, btg>> a = Codec.either(Codec.FLOAT, mf.J.q().dispatch(btg::c, bth::codec));
    public static final Codec<btg> c = a.xmap(
-      $$0 -> (btg)$$0.map(btd::a, $$0x -> $$0x), $$0 -> $$0.c() == bth.a ? Either.left(((btd)$$0).d()) : Either.right($$0)
+      $$0 -> (btg)$$0.map(bte::a, $$0x -> $$0x), $$0 -> $$0.c() == bth.a ? Either.left(((bte)$$0).d()) : Either.right($$0)
    );
-   public static final Codec<btg> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<btg> e = b(1, Integer.MAX_VALUE);
 
-   public static Codec<btg> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public static Codec<btg> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
 
-   public static <T extends btg> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
-   }
+   public abstract float a();
 
-   private static <T extends btg> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
-   }
-
-   public abstract int a(azv var1);
-
-   public abstract int a();
-
-   public abstract int b();
+   public abstract float b();
 
    public abstract bth<?> c();
 }

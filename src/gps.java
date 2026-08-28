@@ -1,97 +1,392 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
-import java.util.HashMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.SequencedMap;
-import javax.annotation.Nullable;
 
-public interface gps {
-   static gps.a a(fiz $$0) {
-      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
+public class gps {
+   private static final Map<dmf, gqk> a = af.a(Maps.newHashMap(), $$0 -> {
+      gqk $$1 = gqk.s();
+      $$0.put(dmh.gh, $$1);
+      gqk $$2 = gqk.d();
+      $$0.put(dmh.i, $$2);
+      $$0.put(dmh.fo, $$2);
+      $$0.put(dmh.fq, $$2);
+      $$0.put(dmh.gg, $$2);
+      $$0.put(dmh.hD, $$2);
+      $$0.put(dmh.fp, $$2);
+      $$0.put(dmh.aN, $$2);
+      $$0.put(dmh.aK, $$2);
+      $$0.put(dmh.aL, $$2);
+      $$0.put(dmh.aO, $$2);
+      $$0.put(dmh.aP, $$2);
+      $$0.put(dmh.aM, $$2);
+      $$0.put(dmh.aQ, $$2);
+      $$0.put(dmh.aR, $$2);
+      $$0.put(dmh.aT, $$2);
+      $$0.put(dmh.aU, $$2);
+      $$0.put(dmh.ag, $$2);
+      $$0.put(dmh.aS, $$2);
+      gqk $$3 = gqk.e();
+      $$0.put(dmh.z, $$3);
+      $$0.put(dmh.A, $$3);
+      $$0.put(dmh.B, $$3);
+      $$0.put(dmh.C, $$3);
+      $$0.put(dmh.D, $$3);
+      $$0.put(dmh.E, $$3);
+      $$0.put(dmh.F, $$3);
+      $$0.put(dmh.G, $$3);
+      $$0.put(dmh.aX, $$3);
+      $$0.put(dmh.bg, $$3);
+      $$0.put(dmh.bh, $$3);
+      $$0.put(dmh.bi, $$3);
+      $$0.put(dmh.bj, $$3);
+      $$0.put(dmh.bk, $$3);
+      $$0.put(dmh.bl, $$3);
+      $$0.put(dmh.bm, $$3);
+      $$0.put(dmh.bn, $$3);
+      $$0.put(dmh.bo, $$3);
+      $$0.put(dmh.bp, $$3);
+      $$0.put(dmh.bq, $$3);
+      $$0.put(dmh.br, $$3);
+      $$0.put(dmh.bs, $$3);
+      $$0.put(dmh.bt, $$3);
+      $$0.put(dmh.bu, $$3);
+      $$0.put(dmh.bv, $$3);
+      $$0.put(dmh.bw, $$3);
+      $$0.put(dmh.bx, $$3);
+      $$0.put(dmh.bz, $$3);
+      $$0.put(dmh.bA, $$3);
+      $$0.put(dmh.bB, $$3);
+      $$0.put(dmh.bD, $$3);
+      $$0.put(dmh.bC, $$3);
+      $$0.put(dmh.bE, $$3);
+      $$0.put(dmh.bF, $$3);
+      $$0.put(dmh.bG, $$3);
+      $$0.put(dmh.bH, $$3);
+      $$0.put(dmh.cb, $$3);
+      $$0.put(dmh.uh, $$3);
+      $$0.put(dmh.ui, $$3);
+      $$0.put(dmh.cd, $$3);
+      $$0.put(dmh.ce, $$3);
+      $$0.put(dmh.cf, $$3);
+      $$0.put(dmh.cg, $$3);
+      $$0.put(dmh.ch, $$3);
+      $$0.put(dmh.ci, $$3);
+      $$0.put(dmh.cj, $$3);
+      $$0.put(dmh.ck, $$3);
+      $$0.put(dmh.cl, $$3);
+      $$0.put(dmh.cm, $$3);
+      $$0.put(dmh.cn, $$3);
+      $$0.put(dmh.co, $$3);
+      $$0.put(dmh.cp, $$3);
+      $$0.put(dmh.cq, $$3);
+      $$0.put(dmh.cz, $$3);
+      $$0.put(dmh.cA, $$3);
+      $$0.put(dmh.er, $$3);
+      $$0.put(dmh.es, $$3);
+      $$0.put(dmh.cB, $$3);
+      $$0.put(dmh.cC, $$3);
+      $$0.put(dmh.cD, $$3);
+      $$0.put(dmh.ub, $$3);
+      $$0.put(dmh.uc, $$3);
+      $$0.put(dmh.cH, $$3);
+      $$0.put(dmh.cM, $$3);
+      $$0.put(dmh.cZ, $$3);
+      $$0.put(dmh.da, $$3);
+      $$0.put(dmh.db, $$3);
+      $$0.put(dmh.dN, $$3);
+      $$0.put(dmh.ea, $$3);
+      $$0.put(dmh.eb, $$3);
+      $$0.put(dmh.eg, $$3);
+      $$0.put(dmh.ej, $$3);
+      $$0.put(dmh.ey, $$3);
+      $$0.put(dmh.eP, $$3);
+      $$0.put(dmh.eQ, $$3);
+      $$0.put(dmh.eR, $$3);
+      $$0.put(dmh.eS, $$3);
+      $$0.put(dmh.eT, $$3);
+      $$0.put(dmh.eU, $$3);
+      $$0.put(dmh.eV, $$3);
+      $$0.put(dmh.eW, $$3);
+      $$0.put(dmh.ps, $$3);
+      $$0.put(dmh.pt, $$3);
+      $$0.put(dmh.eX, $$3);
+      $$0.put(dmh.eY, $$3);
+      $$0.put(dmh.sC, $$3);
+      $$0.put(dmh.sD, $$3);
+      $$0.put(dmh.sF, $$3);
+      $$0.put(dmh.sE, $$3);
+      $$0.put(dmh.sG, $$3);
+      $$0.put(dmh.sH, $$3);
+      $$0.put(dmh.sJ, $$3);
+      $$0.put(dmh.sI, $$3);
+      $$0.put(dmh.ft, $$3);
+      $$0.put(dmh.fu, $$3);
+      $$0.put(dmh.fv, $$3);
+      $$0.put(dmh.fw, $$3);
+      $$0.put(dmh.fx, $$3);
+      $$0.put(dmh.uf, $$3);
+      $$0.put(dmh.ug, $$3);
+      $$0.put(dmh.fy, $$3);
+      $$0.put(dmh.fz, $$3);
+      $$0.put(dmh.fF, $$3);
+      $$0.put(dmh.fP, $$3);
+      $$0.put(dmh.fR, $$3);
+      $$0.put(dmh.gb, $$3);
+      $$0.put(dmh.gn, $$3);
+      $$0.put(dmh.gq, $$3);
+      $$0.put(dmh.gs, $$3);
+      $$0.put(dmh.gt, $$3);
+      $$0.put(dmh.gu, $$3);
+      $$0.put(dmh.gv, $$3);
+      $$0.put(dmh.gw, $$3);
+      $$0.put(dmh.gx, $$3);
+      $$0.put(dmh.gy, $$3);
+      $$0.put(dmh.gz, $$3);
+      $$0.put(dmh.gA, $$3);
+      $$0.put(dmh.gB, $$3);
+      $$0.put(dmh.gC, $$3);
+      $$0.put(dmh.gD, $$3);
+      $$0.put(dmh.uj, $$3);
+      $$0.put(dmh.uk, $$3);
+      $$0.put(dmh.gE, $$3);
+      $$0.put(dmh.gF, $$3);
+      $$0.put(dmh.gG, $$3);
+      $$0.put(dmh.gH, $$3);
+      $$0.put(dmh.gI, $$3);
+      $$0.put(dmh.gJ, $$3);
+      $$0.put(dmh.gK, $$3);
+      $$0.put(dmh.gL, $$3);
+      $$0.put(dmh.gM, $$3);
+      $$0.put(dmh.gN, $$3);
+      $$0.put(dmh.gO, $$3);
+      $$0.put(dmh.gP, $$3);
+      $$0.put(dmh.gQ, $$3);
+      $$0.put(dmh.gR, $$3);
+      $$0.put(dmh.gS, $$3);
+      $$0.put(dmh.tS, $$3);
+      $$0.put(dmh.tT, $$3);
+      $$0.put(dmh.gr, $$3);
+      $$0.put(dmh.gT, $$3);
+      $$0.put(dmh.gU, $$3);
+      $$0.put(dmh.hz, $$3);
+      $$0.put(dmh.hI, $$3);
+      $$0.put(dmh.iA, $$3);
+      $$0.put(dmh.jf, $$3);
+      $$0.put(dmh.jg, $$3);
+      $$0.put(dmh.jh, $$3);
+      $$0.put(dmh.ji, $$3);
+      $$0.put(dmh.jj, $$3);
+      $$0.put(dmh.jk, $$3);
+      $$0.put(dmh.kQ, $$3);
+      $$0.put(dmh.kR, $$3);
+      $$0.put(dmh.kS, $$3);
+      $$0.put(dmh.kT, $$3);
+      $$0.put(dmh.kU, $$3);
+      $$0.put(dmh.kV, $$3);
+      $$0.put(dmh.kW, $$3);
+      $$0.put(dmh.kX, $$3);
+      $$0.put(dmh.kY, $$3);
+      $$0.put(dmh.su, $$3);
+      $$0.put(dmh.sv, $$3);
+      $$0.put(dmh.sx, $$3);
+      $$0.put(dmh.sw, $$3);
+      $$0.put(dmh.sy, $$3);
+      $$0.put(dmh.sz, $$3);
+      $$0.put(dmh.sB, $$3);
+      $$0.put(dmh.sA, $$3);
+      $$0.put(dmh.kZ, $$3);
+      $$0.put(dmh.la, $$3);
+      $$0.put(dmh.lb, $$3);
+      $$0.put(dmh.cc, $$3);
+      $$0.put(dmh.lg, $$3);
+      $$0.put(dmh.li, $$3);
+      $$0.put(dmh.lh, $$3);
+      $$0.put(dmh.lj, $$3);
+      $$0.put(dmh.mI, $$3);
+      $$0.put(dmh.mJ, $$3);
+      $$0.put(dmh.mL, $$3);
+      $$0.put(dmh.mX, $$3);
+      $$0.put(dmh.mY, $$3);
+      $$0.put(dmh.mZ, $$3);
+      $$0.put(dmh.na, $$3);
+      $$0.put(dmh.nb, $$3);
+      $$0.put(dmh.nc, $$3);
+      $$0.put(dmh.nd, $$3);
+      $$0.put(dmh.ne, $$3);
+      $$0.put(dmh.nf, $$3);
+      $$0.put(dmh.ng, $$3);
+      $$0.put(dmh.nh, $$3);
+      $$0.put(dmh.ni, $$3);
+      $$0.put(dmh.nj, $$3);
+      $$0.put(dmh.nk, $$3);
+      $$0.put(dmh.nl, $$3);
+      $$0.put(dmh.nm, $$3);
+      $$0.put(dmh.nn, $$3);
+      $$0.put(dmh.no, $$3);
+      $$0.put(dmh.np, $$3);
+      $$0.put(dmh.nq, $$3);
+      $$0.put(dmh.nr, $$3);
+      $$0.put(dmh.ns, $$3);
+      $$0.put(dmh.nt, $$3);
+      $$0.put(dmh.nu, $$3);
+      $$0.put(dmh.nv, $$3);
+      $$0.put(dmh.nw, $$3);
+      $$0.put(dmh.nx, $$3);
+      $$0.put(dmh.ny, $$3);
+      $$0.put(dmh.nz, $$3);
+      $$0.put(dmh.nA, $$3);
+      $$0.put(dmh.nB, $$3);
+      $$0.put(dmh.nD, $$3);
+      $$0.put(dmh.nE, $$3);
+      $$0.put(dmh.nF, $$3);
+      $$0.put(dmh.nG, $$3);
+      $$0.put(dmh.oy, $$3);
+      $$0.put(dmh.oI, $$3);
+      $$0.put(dmh.oK, $$3);
+      $$0.put(dmh.oL, $$3);
+      $$0.put(dmh.oM, $$3);
+      $$0.put(dmh.oN, $$3);
+      $$0.put(dmh.oO, $$3);
+      $$0.put(dmh.pf, $$3);
+      $$0.put(dmh.pg, $$3);
+      $$0.put(dmh.ph, $$3);
+      $$0.put(dmh.pi, $$3);
+      $$0.put(dmh.oX, $$3);
+      $$0.put(dmh.pd, $$3);
+      $$0.put(dmh.oU, $$3);
+      $$0.put(dmh.pj, $$3);
+      $$0.put(dmh.oW, $$3);
+      $$0.put(dmh.pU, $$3);
+      $$0.put(dmh.pV, $$3);
+      $$0.put(dmh.pW, $$3);
+      $$0.put(dmh.pX, $$3);
+      $$0.put(dmh.pA, $$3);
+      $$0.put(dmh.pB, $$3);
+      $$0.put(dmh.tb, $$3);
+      $$0.put(dmh.rg, $$3);
+      $$0.put(dmh.rf, $$3);
+      $$0.put(dmh.re, $$3);
+      $$0.put(dmh.rd, $$3);
+      $$0.put(dmh.ta, $$3);
+      $$0.put(dmh.td, $$3);
+      $$0.put(dmh.te, $$3);
+      $$0.put(dmh.tf, $$3);
+      $$0.put(dmh.th, $$3);
+      $$0.put(dmh.tg, $$3);
+      $$0.put(dmh.tj, $$3);
+      $$0.put(dmh.tk, $$3);
+      $$0.put(dmh.tl, $$3);
+      $$0.put(dmh.tn, $$3);
+      $$0.put(dmh.to, $$3);
+      $$0.put(dmh.tp, $$3);
+      $$0.put(dmh.tq, $$3);
+      $$0.put(dmh.ry, $$3);
+      $$0.put(dmh.rz, $$3);
+      $$0.put(dmh.rB, $$3);
+      $$0.put(dmh.rD, $$3);
+      $$0.put(dmh.H, $$3);
+      $$0.put(dmh.tX, $$3);
+      $$0.put(dmh.sK, $$3);
+      $$0.put(dmh.sL, $$3);
+      $$0.put(dmh.sM, $$3);
+      $$0.put(dmh.sN, $$3);
+      $$0.put(dmh.sO, $$3);
+      $$0.put(dmh.sP, $$3);
+      $$0.put(dmh.sQ, $$3);
+      $$0.put(dmh.sR, $$3);
+      $$0.put(dmh.ul, $$3);
+      $$0.put(dmh.eh, $$3);
+      gqk $$4 = gqk.f();
+      $$0.put(dmh.ee, $$4);
+      $$0.put(dmh.eu, $$4);
+      $$0.put(dmh.ez, $$4);
+      $$0.put(dmh.eA, $$4);
+      $$0.put(dmh.eB, $$4);
+      $$0.put(dmh.eC, $$4);
+      $$0.put(dmh.eD, $$4);
+      $$0.put(dmh.eE, $$4);
+      $$0.put(dmh.eF, $$4);
+      $$0.put(dmh.eG, $$4);
+      $$0.put(dmh.eH, $$4);
+      $$0.put(dmh.eI, $$4);
+      $$0.put(dmh.eJ, $$4);
+      $$0.put(dmh.eK, $$4);
+      $$0.put(dmh.eL, $$4);
+      $$0.put(dmh.eM, $$4);
+      $$0.put(dmh.eN, $$4);
+      $$0.put(dmh.eO, $$4);
+      $$0.put(dmh.ia, $$4);
+      $$0.put(dmh.ib, $$4);
+      $$0.put(dmh.ic, $$4);
+      $$0.put(dmh.id, $$4);
+      $$0.put(dmh.ie, $$4);
+      $$0.put(dmh.if, $$4);
+      $$0.put(dmh.ig, $$4);
+      $$0.put(dmh.ih, $$4);
+      $$0.put(dmh.ii, $$4);
+      $$0.put(dmh.ij, $$4);
+      $$0.put(dmh.ik, $$4);
+      $$0.put(dmh.il, $$4);
+      $$0.put(dmh.im, $$4);
+      $$0.put(dmh.in, $$4);
+      $$0.put(dmh.io, $$4);
+      $$0.put(dmh.ip, $$4);
+      $$0.put(dmh.ix, $$4);
+      $$0.put(dmh.pO, $$4);
+      $$0.put(dmh.lo, $$4);
+      $$0.put(dmh.nJ, $$4);
+      $$0.put(dmh.rw, $$4);
+   });
+   private static final Map<ewn, gqk> b = af.a(Maps.newHashMap(), $$0 -> {
+      gqk $$1 = gqk.f();
+      $$0.put(ewp.b, $$1);
+      $$0.put(ewp.c, $$1);
+   });
+   private static boolean c;
+
+   public static gqk a(eah $$0) {
+      dmf $$1 = $$0.b();
+      if ($$1 instanceof dqv) {
+         return c ? gqk.d() : gqk.c();
+      } else {
+         gqk $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gqk.c();
+      }
    }
 
-   static gps.a a(SequencedMap<gqc, fiz> $$0, fiz $$1) {
-      return new gps.a($$1, $$0);
-   }
-
-   fjg getBuffer(gqc var1);
-
-   public static class a implements gps {
-      protected final fiz a;
-      protected final SequencedMap<gqc, fiz> b;
-      protected final Map<gqc, fix> c = new HashMap<>();
-      @Nullable
-      protected gqc d;
-
-      protected a(fiz $$0, SequencedMap<gqc, fiz> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public fjg getBuffer(gqc $$0) {
-         fix $$1 = this.c.get($$0);
-         if ($$1 != null && !$$0.X()) {
-            this.a($$0, $$1);
-            $$1 = null;
-         }
-
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            fiz $$2 = this.b.get($$0);
-            if ($$2 != null) {
-               $$1 = new fix($$2, $$0.T(), $$0.S());
-            } else {
-               if (this.d != null) {
-                  this.a(this.d);
-               }
-
-               $$1 = new fix(this.a, $$0.T(), $$0.S());
-               this.d = $$0;
-            }
-
-            this.c.put($$0, $$1);
-            return $$1;
-         }
-      }
-
-      public void a() {
-         if (this.d != null) {
-            this.a(this.d);
-            this.d = null;
-         }
-      }
-
-      public void b() {
-         this.a();
-
-         for (gqc $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(gqc $$0) {
-         fix $$1 = this.c.remove($$0);
-         if ($$1 != null) {
-            this.a($$0, $$1);
-         }
-      }
-
-      private void a(gqc $$0, fix $$1) {
-         fjb $$2 = $$1.a();
+   public static gqk b(eah $$0) {
+      dmf $$1 = $$0.b();
+      if ($$1 instanceof dqv) {
+         return c ? gqk.d() : gqk.c();
+      } else {
+         gqk $$2 = a.get($$1);
          if ($$2 != null) {
-            if ($$0.Y()) {
-               fiz $$3 = this.b.getOrDefault($$0, this.a);
-               $$2.a($$3, RenderSystem.getProjectionType().a());
-            }
-
-            $$0.a($$2);
-         }
-
-         if ($$0.equals(this.d)) {
-            this.d = null;
+            return $$2 == gqk.f() ? gqk.g() : $$2;
+         } else {
+            return gqk.c();
          }
       }
+   }
+
+   public static gqk c(eah $$0) {
+      gqk $$1 = a($$0);
+      return $$1 == gqk.f() ? gqv.j() : gqv.i();
+   }
+
+   public static gqk a(czd $$0) {
+      if ($$0.h() instanceof cxl $$2) {
+         dmf $$3 = $$2.c();
+         return c($$3.m());
+      } else {
+         return gqv.j();
+      }
+   }
+
+   public static gqk a(ewo $$0) {
+      gqk $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gqk.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

@@ -1,74 +1,54 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
-public record fol(int a, @Nullable fol.a b, @Nullable wy c, @Nullable String d) {
-   private static final wy e = wy.c("chat.tag.system");
-   private static final wy f = wy.c("chat.tag.system_single_player");
-   private static final wy g = wy.c("chat.tag.not_secure");
-   private static final wy h = wy.c("chat.tag.modified");
-   private static final wy i = wy.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fol l = new fol(13684944, null, e, "System");
-   private static final fol m = new fol(13684944, null, f, "System");
-   private static final fol n = new fol(13684944, null, g, "Not Secure");
-   private static final fol o = new fol(16733525, null, i, "Chat Error");
+public class fol {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final axy<String> e = new axy<>(50);
 
-   public static fol a() {
-      return l;
-   }
-
-   public static fol b() {
-      return m;
-   }
-
-   public static fol c() {
-      return n;
-   }
-
-   public static fol a(String $$0) {
-      wy $$1 = wy.b($$0).a(n.h);
-      wy $$2 = wy.i().b(h).b(wx.s).b($$1);
-      return new fol(6316128, fol.a.a, $$2, "Modified");
-   }
-
-   public static fol d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fol.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public wy g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(alg.b("icon/chat_modified"), 9, 9);
-
-      public final alg b;
-      public final int c;
-      public final int d;
-
-      private a(final alg $$0, final int $$1, final int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public fol(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
       }
+   }
 
-      public void a(fro $$0, int $$1, int $$2) {
-         $$0.a(gqc::H, this.b, $$1, $$2, this.c, this.d);
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
+
+         this.e.addLast($$0);
+         this.b();
       }
+   }
+
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
+      }
+   }
+
+   public Collection<String> a() {
+      return this.e;
    }
 }

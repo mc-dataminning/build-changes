@@ -1,30 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record dfi<T>(T a, Optional<fci> b) {
-   public static Codec<fci> a(bay $$0) {
-      return fci.e
-         .validate(
-            $$1 -> {
-               azt.a $$2 = new azt.a();
-               ezf $$3 = new ezf($$2, $$0);
-               $$1.a($$3);
-               return $$2.b()
-                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
-                  .orElseGet(() -> DataResult.success($$1));
-            }
-         );
-   }
-
-   public static <T> Codec<dfi<T>> a(Codec<T> $$0, bay $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(dfi::a), a($$1).optionalFieldOf("requirements").forGetter(dfi::b)).apply($$2, dfi::new)
-      );
-   }
-
-   public boolean a(eyz $$0) {
-      return this.b.isEmpty() ? true : this.b.get().test($$0);
+public class dfi {
+   public static dfg.i<?> a(jr<dfg.i<?>> $$0) {
+      jr.a($$0, "empty", dfg.c.f);
+      jr.a($$0, "any_fuel", dfg.a.f);
+      jr.a($$0, "item", dfg.d.e);
+      jr.a($$0, "item_stack", dfg.f.e);
+      jr.a($$0, "tag", dfg.h.e);
+      jr.a($$0, "smithing_trim", dfg.g.e);
+      jr.a($$0, "with_remainder", dfg.j.e);
+      return jr.a($$0, "composite", dfg.b.e);
    }
 }

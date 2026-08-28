@@ -1,43 +1,32 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhs {
-   void a(@Nullable cqy var1);
+public record dhs(alg e, wy f, boolean g) {
+   public static final Codec<dhs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alg.a.fieldOf("asset_id").forGetter(dhs::a),
+               xa.a.fieldOf("description").forGetter(dhs::b),
+               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dhs::c)
+            )
+            .apply($$0, dhs::new)
+   );
+   public static final yw<wj, dhs> b = yw.a(alg.b, dhs::a, xa.b, dhs::b, yu.b, dhs::c, dhs::new);
+   public static final Codec<je<dhs>> c = alc.a(mg.bl, a);
+   public static final yw<wj, je<dhs>> d = yu.a(mg.bl, b);
 
-   @Nullable
-   cqy x();
-
-   dhu gr();
-
-   void a(dhu var1);
-
-   void a(dht var1);
-
-   void j(cyy var1);
-
-   int t();
-
-   void s(int var1);
-
-   boolean gs();
-
-   awm gt();
-
-   default boolean gB() {
-      return false;
+   public wy a(je<dhq> $$0) {
+      return this.f.f().c($$0.a().b().a());
    }
 
-   default void a(cqy $$0, wy $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new buj(($$0x, $$1x, $$2x) -> new cwb($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dhu $$4 = this.gr();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gs(), this.gB());
-         }
-      }
+   public alg a() {
+      return this.e;
    }
 
-   boolean gx();
+   public wy b() {
+      return this.f;
+   }
 
-   boolean e(cqy var1);
+   public boolean c() {
+      return this.g;
+   }
 }

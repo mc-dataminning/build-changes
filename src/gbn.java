@@ -1,251 +1,181 @@
-public class gbn extends fsy<gbn.a> {
-   static final alg a = alg.b("transferable_list/select_highlighted");
-   static final alg m = alg.b("transferable_list/select");
-   static final alg n = alg.b("transferable_list/unselect_highlighted");
-   static final alg o = alg.b("transferable_list/unselect");
-   static final alg p = alg.b("transferable_list/move_up_highlighted");
-   static final alg q = alg.b("transferable_list/move_up");
-   static final alg r = alg.b("transferable_list/move_down_highlighted");
-   static final alg s = alg.b("transferable_list/move_down");
-   static final wy u = wy.c("pack.incompatible");
-   static final wy v = wy.c("pack.incompatible.confirm.title");
-   private final wy w;
-   final gbm x;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-   public gbn(fos $$0, gbm $$1, int $$2, int $$3, wy $$4) {
-      super($$0, $$2, $$3, 33, 36, (int)(9.0F * 1.5F));
-      this.x = $$1;
-      this.w = $$4;
-      this.e = false;
+public class gbn extends fsp<gbn.b> {
+   private static final int a = 20;
+   final gbo m;
+   private int n;
+
+   public gbn(gbo $$0, foz $$1) {
+      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
+      this.m = $$0;
+      fox[] $$2 = (fox[])ArrayUtils.clone($$1.n.V);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (fox $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new gbn.a(wy.c($$5)));
+         }
+
+         wy $$6 = wy.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new gbn.c($$4, $$6));
+      }
    }
 
-   @Override
-   protected void a(fro $$0, int $$1, int $$2) {
-      wy $$3 = wy.i().b(this.w).a(n.t, n.r);
-      $$0.b(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.G() + 3, $$2), -1);
+   public void b() {
+      fox.d();
+      this.c();
+   }
+
+   public void c() {
+      this.aE_().forEach(gbn.b::c);
    }
 
    @Override
    public int a() {
-      return this.g;
+      return 340;
    }
 
-   @Override
-   protected int l() {
-      return this.H() - 6;
-   }
+   public class a extends gbn.b {
+      final wy b;
+      private final int c;
 
-   @Override
-   protected void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      if (this.j()) {
-         int $$6 = 2;
-         int $$7 = this.u() - 2;
-         int $$8 = this.H() - 6 - 1;
-         int $$9 = $$1 - 2;
-         int $$10 = $$1 + $$3 + 2;
-         $$0.a($$7, $$9, $$8, $$10, $$4);
-         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      public a(final wy $$1) {
+         this.b = $$1;
+         this.c = gbn.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.b(gbn.this.c.h, this.b, gbn.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1);
+      }
+
+      @Nullable
+      @Override
+      public frs a(fwm $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fug> aE_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends fwe> b() {
+         return ImmutableList.of(new fwe() {
+            @Override
+            public fwe.a w() {
+               return fwe.a.b;
+            }
+
+            @Override
+            public void b(fwg $$0) {
+               $$0.a(fwf.a, a.this.b);
+            }
+         });
+      }
+
+      @Override
+      protected void c() {
       }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.p() != null) {
-         switch ($$0) {
-            case 32:
-            case 257:
-               this.p().c();
-               return true;
-            default:
-               if (fxu.t()) {
-                  switch ($$0) {
-                     case 264:
-                        this.p().g();
-                        return true;
-                     case 265:
-                        this.p().e();
-                        return true;
-                  }
-               }
+   public abstract static class b extends fsp.a<gbn.b> {
+      abstract void c();
+   }
+
+   public class c extends gbn.b {
+      private static final wy b = wy.c("controls.reset");
+      private static final int c = 10;
+      private final fox d;
+      private final wy e;
+      private final fsj f;
+      private final fsj g;
+      private boolean h = false;
+
+      c(final fox $$1, final wy $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fsj.a($$2, $$1x -> {
+            gbn.this.m.a = $$1;
+            gbn.this.b();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wy.a("narrator.controls.unbound", $$2) : wy.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fsj.a(b, $$1x -> {
+            $$1.b($$1.i());
+            gbn.this.b();
+         }).a(0, 0, 50, 20).a($$1x -> wy.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = gbn.this.l() - this.g.A() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.A();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(gbn.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.F() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
          }
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   public static class a extends fsy.a<gbn.a> {
-      private static final int b = 157;
-      private static final int c = 157;
-      private static final String d = "...";
-      private final gbn e;
-      protected final fos a;
-      private final gbl.a f;
-      private final ayy g;
-      private final fsv h;
-      private final ayy i;
-      private final fsv j;
-
-      public a(fos $$0, gbn $$1, gbl.a $$2) {
-         this.a = $$0;
-         this.f = $$2;
-         this.e = $$1;
-         this.g = a($$0, $$2.d());
-         this.h = b($$0, $$2.g());
-         this.i = a($$0, gbn.u);
-         this.j = b($$0, $$2.b().b());
+      @Override
+      public List<? extends fug> aE_() {
+         return ImmutableList.of(this.f, this.g);
       }
 
-      private static ayy a(fos $$0, wy $$1) {
-         int $$2 = $$0.h.a($$1);
-         if ($$2 > 157) {
-            xd $$3 = xd.a($$0.h.a($$1, 157 - $$0.h.b("...")), xd.e("..."));
-            return tu.a().a($$3);
+      @Override
+      public List<? extends fwe> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xm $$0 = wy.i();
+         if (!this.d.j()) {
+            for (fox $$1 : gbn.this.c.n.V) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(wy.c($$1.h()));
+               }
+            }
+         }
+
+         if (this.h) {
+            this.f.b(wy.b("[ ").b(this.f.B().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(ftu.a(wy.a("controls.keybinds.duplicateKeybinds", $$0)));
          } else {
-            return $$1.g();
-         }
-      }
-
-      private static fsv b(fos $$0, wy $$1) {
-         return fsv.a($$0.h, 157, 2, $$1);
-      }
-
-      @Override
-      public wy a() {
-         return wy.a("narrator.select", this.f.d());
-      }
-
-      @Override
-      public void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         aul $$10 = this.f.b();
-         if (!$$10.a()) {
-            int $$11 = $$3 + $$4 - 3 - (this.e.j() ? 7 : 0);
-            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
+            this.f.a(null);
          }
 
-         $$0.a(gqc::H, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         ayy $$12 = this.g;
-         fsv $$13 = this.h;
-         if (this.d() && (this.a.n.ac().c() || $$8 || this.e.p() == this && this.e.aI_())) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            int $$15 = $$7 - $$2;
-            if (!this.f.b().a()) {
-               $$12 = this.i;
-               $$13 = this.j;
-            }
-
-            if (this.f.o()) {
-               if ($$14 < 32) {
-                  $$0.a(gqc::H, gbn.a, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(gqc::H, gbn.m, $$3, $$2, 32, 32);
-               }
-            } else {
-               if (this.f.p()) {
-                  if ($$14 < 16) {
-                     $$0.a(gqc::H, gbn.n, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gqc::H, gbn.o, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.q()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
-                     $$0.a(gqc::H, gbn.p, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gqc::H, gbn.q, $$3, $$2, 32, 32);
-                  }
-               }
-
-               if (this.f.r()) {
-                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
-                     $$0.a(gqc::H, gbn.r, $$3, $$2, 32, 32);
-                  } else {
-                     $$0.a(gqc::H, gbn.s, $$3, $$2, 32, 32);
-                  }
-               }
-            }
+         if (gbn.this.m.a == this.d) {
+            this.f.b(wy.b("> ").b(this.f.B().f().a(n.p, n.t)).f(" <").a(n.o));
          }
-
-         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
-         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
-      }
-
-      public String b() {
-         return this.f.c();
-      }
-
-      private boolean d() {
-         return !this.f.h() || !this.f.i();
-      }
-
-      public void c() {
-         if (this.f.o() && this.h()) {
-            this.e.x.a(this.e);
-         } else if (this.f.p()) {
-            this.f.k();
-            this.e.x.a(this.e);
-         }
-      }
-
-      void e() {
-         if (this.f.q()) {
-            this.f.l();
-         }
-      }
-
-      void g() {
-         if (this.f.r()) {
-            this.f.m();
-         }
-      }
-
-      private boolean h() {
-         if (this.f.b().a()) {
-            this.f.j();
-            return true;
-         } else {
-            wy $$0 = this.f.b().c();
-            this.a.a(new fws($$0x -> {
-               this.a.a(this.e.x);
-               if ($$0x) {
-                  this.f.j();
-               }
-            }, gbn.v, $$0));
-            return false;
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)this.e.u();
-         double $$4 = $$1 - (double)this.e.d(this.e.aD_().indexOf(this));
-         if (this.d() && $$3 <= 32.0) {
-            this.e.x.m();
-            if (this.f.o()) {
-               this.h();
-               return true;
-            }
-
-            if ($$3 < 16.0 && this.f.p()) {
-               this.f.k();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
-               this.f.l();
-               return true;
-            }
-
-            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
-               this.f.m();
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
       }
    }
 }

@@ -1,4 +1,5 @@
-public class hbv extends hdf {
-   public float a;
-   public float b;
+public class hbv extends hdn {
+   public boolean a;
+   public final bvw b = new bvw();
+   public final bvw c = new bvw();
 }

@@ -1,48 +1,78 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class eio extends eje<elp> {
-   public eio(Codec<elp> $$0) {
+public abstract class eio extends ejm<els> {
+   public eio(Codec<els> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ejg<elp> $$0) {
-      azv $$1 = $$0.d();
-      dju $$2 = $$0.b();
-      dic $$3 = new dic($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      iu.a $$6 = new iu.a();
-      IntListIterator var8 = $$4.iterator();
+   protected void a(djb $$0, azv $$1, iu $$2, els $$3, int $$4, iu.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(ja.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
+      }
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+   protected void a(djb $$0, iu.a $$1, eah $$2) {
+      eah $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(axc.ct)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            iu $$9 = $$2.a(efy.a.f, $$6);
-            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dmc.cE.m(), 2);
-               buh.a($$2, $$1, $$9, eyv.a);
-               dzz $$10 = dmc.cx.m();
-
-               for (ja $$11 : ja.c.a) {
-                  iu $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
+   protected int a(azv $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
       }
 
-      return false;
+      return $$1;
    }
+
+   protected boolean a(djb $$0, iu $$1, int $$2, iu.a $$3, els $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         eah $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axc.bc)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     eah $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axc.Q)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(ejo<els> $$0) {
+      djz $$1 = $$0.b();
+      iu $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      els $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iu.a $$6 = new iu.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(djb var1, azv var2, iu var3, int var4, iu.a var5, els var6);
 }

@@ -1,21 +1,25 @@
-import java.util.Map;
+public class gjt {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = af.d();
 
-public class gjt implements ddq {
-   private final Map<alf<ddy>, ddy> a;
-   private final dec.b<dep> b;
-
-   public gjt(Map<alf<ddy>, ddy> $$0, dec.b<dep> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public void a() {
+      this.e = af.d();
    }
 
-   @Override
-   public ddy a(alf<ddy> $$0) {
-      return this.a.getOrDefault($$0, ddy.j);
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(af.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azm.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
    }
 
-   @Override
-   public dec.b<dep> a() {
-      return this.b;
+   public float b() {
+      return (float)(7000000.0 / this.c);
    }
 }

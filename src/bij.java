@@ -15,7 +15,7 @@ public class bij extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.c);
+      Type<?> $$0 = this.getInputSchema().getType(bix.c);
       OpticFinder<?> $$1 = $$0.findField("block_ticks");
       return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
          Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);

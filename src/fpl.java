@@ -1,263 +1,77 @@
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+
 public class fpl {
-   public static final fpg a = fpg.a.a(2.0F)
-      .a()
-      .a(
-         "wind_top",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.a(0.5F, 0.0F, -0.5F), fpf.b.a),
-            new fph(0.75F, fpi.a(-0.5F, 0.0F, -0.5F), fpf.b.a),
-            new fph(1.25F, fpi.a(-0.5F, 0.0F, 0.5F), fpf.b.a),
-            new fph(1.75F, fpi.a(0.5F, 0.0F, 0.5F), fpf.b.a),
-            new fph(2.0F, fpi.a(0.5F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.5F, 0.0F, -0.5F), fpf.b.a),
-            new fph(0.5F, fpi.a(-0.5F, 0.0F, -0.5F), fpf.b.a),
-            new fph(1.0F, fpi.a(-0.5F, 0.0F, 0.5F), fpf.b.a),
-            new fph(1.5F, fpi.a(0.5F, 0.0F, 0.5F), fpf.b.a),
-            new fph(2.0F, fpi.a(0.5F, 0.0F, -0.5F), fpf.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.b),
-            new fph(1.0F, fpi.a(0.0F, 1.0F, 0.0F), fpf.b.b),
-            new fph(2.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.b)
-         )
-      )
-      .a("rods", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(2.0F, fpi.b(0.0F, 1080.0F, 0.0F), fpf.b.a)))
-      .a(
-         "rods",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(1.0F, fpi.a(0.0F, -1.0F, 0.0F), fpf.b.a),
-            new fph(2.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .b();
-   public static final fpg b = fpg.a.a(1.125F)
-      .a(
-         "head",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.b(-12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.75F, fpi.b(-12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.9167F, fpi.b(5.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(1.125F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.a(0.0F, -2.0F, 0.0F), fpf.b.a),
-            new fph(0.7917F, fpi.a(0.0F, -1.0F, 2.0F), fpf.b.a),
-            new fph(0.9583F, fpi.a(0.0F, -1.0F, 0.0F), fpf.b.a),
-            new fph(1.125F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("wind_bottom", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_mid",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.b(12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.75F, fpi.b(12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.9167F, fpi.b(-10.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(1.125F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_mid",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.a(0.0F, 0.0F, 5.0F), fpf.b.a),
-            new fph(0.75F, fpi.a(0.0F, 0.0F, 6.0F), fpf.b.a),
-            new fph(0.9167F, fpi.a(0.0F, 0.0F, -2.0F), fpf.b.a),
-            new fph(1.125F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.b(15.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.75F, fpi.b(15.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.9167F, fpi.b(-10.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(1.125F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_top",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.a(0.0F, 0.0F, 3.0F), fpf.b.a),
-            new fph(0.8333F, fpi.a(0.0F, 0.0F, 4.0F), fpf.b.a),
-            new fph(0.9583F, fpi.a(0.0F, 0.0F, -2.0F), fpf.b.a),
-            new fph(1.125F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.b(12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.75F, fpi.b(12.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.9167F, fpi.b(-2.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(1.125F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.25F, fpi.a(0.0F, 3.0F, 5.0F), fpf.b.a),
-            new fph(0.8333F, fpi.a(0.0F, 3.0F, 6.0F), fpf.b.a),
-            new fph(0.9583F, fpi.a(0.0F, 3.0F, -1.0F), fpf.b.a),
-            new fph(1.125F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("rods", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(1.0F, fpi.b(0.0F, 360.0F, 0.0F), fpf.b.a)))
-      .b();
-   public static final fpg c = fpg.a.a(0.5F)
-      .a(
-         "body",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, -10.0F, 0.0F), fpf.b.a),
-            new fph(0.125F, fpi.a(0.0F, 11.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(22.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.2083F, fpi.b(-19.25F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fpf(
-            fpf.d.c,
-            new fph(0.0F, fpi.a(1.0, 1.0, 1.0), fpf.b.a),
-            new fph(0.125F, fpi.a(1.0, 1.3F, 1.0), fpf.b.a),
-            new fph(0.5F, fpi.a(1.0, 1.0, 1.0), fpf.b.a)
-         )
-      )
-      .a("wind_bottom", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 90.0F, 0.0F), fpf.b.a), new fph(0.5F, fpi.b(0.0F, 360.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_bottom",
-         new fpf(
-            fpf.d.c,
-            new fph(0.0F, fpi.a(1.0, 1.0, 1.0), fpf.b.a),
-            new fph(0.125F, fpi.a(1.0, 1.1F, 1.0), fpf.b.a),
-            new fph(0.5F, fpi.a(1.0, 1.0, 1.0), fpf.b.a)
-         )
-      )
-      .a("wind_mid", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.5F, fpi.b(0.0F, 180.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_mid",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, -6.0F, 0.0F), fpf.b.a),
-            new fph(0.125F, fpi.a(0.0F, 2.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("wind_top", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.5F, fpi.b(0.0F, 90.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_top",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, -5.0F, 0.0F), fpf.b.a),
-            new fph(0.125F, fpi.a(0.0F, 2.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("rods", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.5F, fpi.b(0.0F, 360.0F, 0.0F), fpf.b.a)))
-      .b();
-   public static final fpg d = fpg.a.a(2.0F)
-      .a(
-         "body",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, -10.0F, 0.0F), fpf.b.a),
-            new fph(0.625F, fpi.a(0.0F, -10.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fpf(
-            fpf.d.b,
-            new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.b(22.5F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.625F, fpi.b(22.5F, 0.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a(
-         "wind_body",
-         new fpf(
-            fpf.d.c, new fph(0.0F, fpi.a(1.0, 1.0, 1.0), fpf.b.a), new fph(0.5F, fpi.a(1.0, 1.0, 1.0), fpf.b.a), new fph(0.625F, fpi.a(1.0, 1.0, 1.0), fpf.b.a)
-         )
-      )
-      .a("wind_bottom", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.625F, fpi.b(0.0F, 90.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_bottom",
-         new fpf(
-            fpf.d.c, new fph(0.0F, fpi.a(1.0, 1.0, 1.0), fpf.b.a), new fph(0.5F, fpi.a(1.0, 1.0, 1.0), fpf.b.a), new fph(0.625F, fpi.a(1.0, 1.0, 1.0), fpf.b.a)
-         )
-      )
-      .a("wind_mid", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.625F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_mid",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, -6.0F, 0.0F), fpf.b.a),
-            new fph(0.625F, fpi.a(0.0F, -6.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("wind_top", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.625F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .a(
-         "wind_top",
-         new fpf(
-            fpf.d.a,
-            new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a),
-            new fph(0.5F, fpi.a(0.0F, -5.0F, 0.0F), fpf.b.a),
-            new fph(0.625F, fpi.a(0.0F, -5.0F, 0.0F), fpf.b.a)
-         )
-      )
-      .a("rods", new fpf(fpf.d.b, new fph(0.0F, fpi.b(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.625F, fpi.b(0.0F, 360.0F, 0.0F), fpf.b.a)))
-      .b();
-   public static final fpg e = fpg.a.a(0.2F)
-      .a("body", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.2F, fpi.a(0.0F, 0.0F, -6.0F), fpf.b.a)))
-      .a("wind_mid", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.2F, fpi.a(0.0F, 0.0F, -3.0F), fpf.b.a)))
-      .a("wind_top", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a), new fph(0.2F, fpi.a(0.0F, 0.0F, -2.0F), fpf.b.a)))
-      .b();
-   public static final fpg f = fpg.a.a(0.1F)
-      .a("body", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, -6.0F), fpf.b.a), new fph(0.1F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .a("wind_mid", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, -3.0F), fpf.b.a), new fph(0.1F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .a("wind_top", new fpf(fpf.d.a, new fph(0.0F, fpi.a(0.0F, 0.0F, -2.0F), fpf.b.a), new fph(0.1F, fpi.a(0.0F, 0.0F, 0.0F), fpf.b.a)))
-      .b();
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fpl.a f;
+
+   public fpl(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fpl.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
+
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fpl.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fpl.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static fpl.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
+   }
 }

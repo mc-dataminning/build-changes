@@ -1,19 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public interface dry {
-   default int a(arq $$0, bwd $$1) {
-      return 0;
+public class dry extends dvx {
+   public static final MapCodec<dry> b = b(dry::new);
+   private static final Map<ja, ffk> e = ffh.c(dmf.b(10.0, 8.0, 8.0, 16.0));
+
+   @Override
+   public MapCodec<dry> a() {
+      return b;
    }
 
-   @Nullable
-   exg a(arq var1, bwd var2, iu var3);
-
-   default dry.a b() {
-      return dry.a.b;
+   public dry(eag.d $$0) {
+      super(dtr.b.h, $$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return e.get($$0.c(d));
    }
 }

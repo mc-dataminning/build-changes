@@ -21,7 +21,7 @@ public class apc {
    }
 
    private static int a(ei $$0, Collection<arr> $$1, iu $$2, float $$3) {
-      alf<div> $$4 = $$0.e().aj();
+      alf<dja> $$4 = $$0.e().aj();
 
       for (arr $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

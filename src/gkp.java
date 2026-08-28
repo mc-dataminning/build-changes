@@ -1,119 +1,167 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gkp extends gko {
-   static gkp.a a(GameProfile $$0, xo $$1, gkn $$2) {
-      return new gkp.a($$0, $$1, $$2);
+public class gkp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bst b = new bst(af.h(), "server-list-io");
+   private static final int c = 16;
+   private final foz d;
+   private final List<gko> e = Lists.newArrayList();
+   private final List<gko> f = Lists.newArrayList();
+
+   public gkp(foz $$0) {
+      this.d = $$0;
    }
 
-   static gkp.b a(wy $$0, Instant $$1) {
-      return new gkp.b($$0, $$1);
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         tz $$0 = um.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         uf $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tz $$3 = $$1.a($$2);
+            gko $$4 = gko.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
    }
 
-   wy b();
+   public void b() {
+      try {
+         uf $$0 = new uf();
 
-   default wy c() {
-      return this.b();
+         for (gko $$1 : this.e) {
+            tz $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gko $$3 : this.f) {
+            tz $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tz $$5 = new tz();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         um.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   boolean a(UUID var1);
+   public gko a(int $$0) {
+      return this.e.get($$0);
+   }
 
-   public static record a(GameProfile c, xo d, gkn e) implements gkp {
-      public static final MapCodec<gkp.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  ayu.z.fieldOf("profile").forGetter(gkp.a::f), xo.a.forGetter(gkp.a::g), gkn.d.optionalFieldOf("trust_level", gkn.a).forGetter(gkp.a::h)
-               )
-               .apply($$0, gkp.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public wy b() {
-         if (!this.d.o().a()) {
-            wy $$0 = this.d.o().b(this.d.c());
-            return (wy)($$0 != null ? $$0 : wy.i());
-         } else {
-            return this.d.d();
+   @Nullable
+   public gko a(String $$0) {
+      for (gko $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
 
-      @Override
-      public wy c() {
-         wy $$0 = this.b();
-         wy $$1 = this.i();
-         return wy.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      for (gko $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
       }
 
-      public wy d() {
-         wy $$0 = this.i();
-         return wy.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      return null;
+   }
+
+   @Nullable
+   public gko b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gko $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
       }
 
-      private wy i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return wy.b($$0.format(f)).a(n.u, n.h);
-      }
+      return null;
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gko.a a() {
-         return gko.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xo g() {
-         return this.d;
-      }
-
-      public gkn h() {
-         return this.e;
+   public void a(gko $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
       }
    }
 
-   public static record b(wy c, Instant d) implements gkp {
-      public static final MapCodec<gkp.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xa.a.fieldOf("message").forGetter(gkp.b::d), ayu.q.fieldOf("time_stamp").forGetter(gkp.b::e)).apply($$0, gkp.b::new)
-      );
+   public void a(gko $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
 
-      @Override
-      public wy b() {
-         return this.c;
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gko $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gko $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gko $$0, List<gko> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gko $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+      return false;
+   }
 
-      @Override
-      public gko.a a() {
-         return gko.a.b;
-      }
+   public static void b(gko $$0) {
+      b.a_(() -> {
+         gkp $$1 = new gkp(foz.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
 
-      public wy d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+         $$1.b();
+      });
    }
 }

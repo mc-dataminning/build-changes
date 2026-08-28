@@ -1,144 +1,84 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class dwv extends dwx {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ja c;
-   private List<bxc> m;
-   private boolean q;
-   private int r;
+public record dwv(List<dwv.b> d) implements dci {
+   static final Logger e = LogUtils.getLogger();
+   public static final dwv a = new dwv(List.of());
+   public static final Codec<dwv> b = dwv.b.a.listOf().xmap(dwv::new, dwv::b);
+   public static final yw<wj, dwv> c = dwv.b.b.a(yu.a()).a(dwv::new, dwv::b);
 
-   public dwv(iu $$0, dzz $$1) {
-      super(dwz.F, $$0, $$1);
+   public dwv a() {
+      return new dwv(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a();
-         this.r = 0;
-         this.c = ja.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      for (int $$4 = 0; $$4 < Math.min(this.b().size(), 6); $$4++) {
+         $$1.accept(this.b().get($$4).a().a(n.h));
       }
    }
 
-   private static void a(div $$0, iu $$1, dzz $$2, dwv $$3, dwv.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
+   public List<dwv.b> b() {
+      return this.d;
+   }
 
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
+   public static class a {
+      private final Builder<dwv.b> a = ImmutableList.builder();
 
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.q = true;
-         $$0.a(null, $$1, awn.ca, awo.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.q) {
-         if ($$3.r < 40) {
-            $$3.r++;
+      @Deprecated
+      public dwv.a a(jf<dwu> $$0, alf<dwu> $$1, cyb $$2) {
+         Optional<je.c<dwu>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dwv.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
          } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.q = false;
-         }
-      }
-   }
-
-   public static void a(div $$0, iu $$1, dzz $$2, dwv $$3) {
-      a($$0, $$1, $$2, $$3, dwv::b);
-   }
-
-   public static void b(div $$0, iu $$1, dzz $$2, dwv $$3) {
-      a($$0, $$1, $$2, $$3, dwv::a);
-   }
-
-   public void a(ja $$0) {
-      iu $$1 = this.aw_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.n.a($$1, this.m().b(), 1, $$0.d());
-   }
-
-   private void a() {
-      iu $$0 = this.aw_();
-      if (this.n.ae() > this.l + 60L || this.m == null) {
-         this.l = this.n.ae();
-         fed $$1 = new fed($$0).g(48.0);
-         this.m = this.n.a(bxc.class, $$1);
-      }
-
-      if (!this.n.C) {
-         for (bxc $$2 : this.m) {
-            if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
-               $$2.eb().a(cge.E, this.n.ae());
-            }
-         }
-      }
-   }
-
-   private static boolean a(iu $$0, List<bxc> $$1) {
-      for (bxc $$2 : $$1) {
-         if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.aq().a(axf.c)) {
-            return true;
+            return this.a($$3.get(), $$2);
          }
       }
 
-      return false;
+      public dwv.a a(je<dwu> $$0, cyb $$1) {
+         return this.a(new dwv.b($$0, $$1));
+      }
+
+      public dwv.a a(dwv.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dwv.a a(dwv $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dwv a() {
+         return new dwv(this.a.build());
+      }
    }
 
-   private static void a(div $$0, iu $$1, List<bxc> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dwv::a);
-   }
+   public static record b(je<dwu> c, cyb d) {
+      public static final Codec<dwv.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dwu.c.fieldOf("pattern").forGetter(dwv.b::b), cyb.q.fieldOf("color").forGetter(dwv.b::c)).apply($$0, dwv.b::new)
+      );
+      public static final yw<wj, dwv.b> b = yw.a(dwu.d, dwv.b::b, cyb.r, dwv.b::c, dwv.b::new);
 
-   private static void b(div $$0, iu $$1, List<bxc> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
-         int $$9 = azm.a(($$4 - 21) / -2, 3, 15);
+      public xm a() {
+         String $$0 = this.c.a().b();
+         return wy.c($$0 + "." + this.d.b());
+      }
 
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(lq.a(lx.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
-   }
+      public je<dwu> b() {
+         return this.c;
+      }
 
-   private static boolean a(iu $$0, bxc $$1) {
-      return $$1.bK() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.aq().a(axf.c);
-   }
-
-   private static void a(bxc $$0) {
-      $$0.a(new bvh(bvj.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(div var1, iu var2, List<bxc> var3);
+      public cyb c() {
+         return this.d;
+      }
    }
 }

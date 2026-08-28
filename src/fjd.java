@@ -1,67 +1,90 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class fjd implements fjg {
-   private final fjg a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public class fjd {
+   private int a;
 
-   public fjd(fjg $$0, fjc.a $$1, float $$2) {
-      this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+   public static Optional<fjd> a() {
+      return fjd.b.a;
    }
 
-   @Override
-   public fjg a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
    }
 
-   @Override
-   public fjg a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
+   public fjd.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         fjd.a $$0 = new fjd.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
    }
 
-   @Override
-   public fjg a(float $$0, float $$1) {
-      return this;
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
    }
 
-   @Override
-   public fjg a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
-   }
+   static class b {
+      static final Optional<fjd> a = Optional.ofNullable(a());
 
-   @Override
-   public fjg b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
-   }
+      private b() {
+      }
 
-   @Override
-   public fjg b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      ja $$4 = ja.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+      @Nullable
+      private static fjd a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fjd();
+      }
    }
 }

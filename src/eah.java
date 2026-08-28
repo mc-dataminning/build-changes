@@ -1,18 +1,16 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-public class eah implements Predicate<dzz> {
-   private final dma a;
+public class eah extends eag.a {
+   public static final Codec<eah> a = a(mf.e.q(), dmf::m).stable();
 
-   public eah(dma $$0) {
-      this.a = $$0;
+   public eah(dmf $$0, Reference2ObjectArrayMap<ebk<?>, Comparable<?>> $$1, MapCodec<eah> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static eah a(dma $$0) {
-      return new eah($$0);
-   }
-
-   public boolean a(@Nullable dzz $$0) {
-      return $$0 != null && $$0.a(this.a);
+   @Override
+   protected eah B() {
+      return this;
    }
 }

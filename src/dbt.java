@@ -1,44 +1,38 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public record dbt(Map<String, dbt.a> c) {
-   public static final dbt a = new dbt(Map.of());
-   public static final Codec<dbt> b = Codec.unboundedMap(Codec.STRING, dbt.a.a).xmap(dbt::new, dbt::a);
+public record dbt(cye<cyw> c) implements dci {
+   public static final Codec<dbt> a = cye.a(mg.aU, cyw.c).xmap(dbt::new, dbt::a);
+   public static final yw<wj, dbt> b = cye.a(mg.aU, cyw.d).a(dbt::new, dbt::a);
 
-   public dbt a(String $$0, dbt.a $$1) {
-      return new dbt(af.a(this.c, $$0, $$1));
+   public dbt(je<cyw> $$0) {
+      this(new cye<>($$0));
    }
 
-   public Map<String, dbt.a> a() {
+   @Deprecated
+   public dbt(alf<cyw> $$0) {
+      this(new cye<>($$0));
+   }
+
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      if ($$4 != null) {
+         Optional<je<cyw>> $$5 = this.a($$4);
+         if ($$5.isPresent()) {
+            xm $$6 = $$5.get().a().d().f();
+            xb.a($$6, xv.a.a(n.h));
+            $$1.accept($$6);
+         }
+      }
+   }
+
+   public Optional<je<cyw>> a(jg.a $$0) {
+      return this.c.a($$0);
+   }
+
+   public cye<cyw> a() {
       return this.c;
-   }
-
-   public static record a(je<exw> b, double c, double d, float e) {
-      public static final Codec<dbt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  exw.b.fieldOf("type").forGetter(dbt.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(dbt.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(dbt.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(dbt.a::d)
-               )
-               .apply($$0, dbt.a::new)
-      );
-
-      public je<exw> a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
    }
 }

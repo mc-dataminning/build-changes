@@ -1,118 +1,95 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gsa<T extends dwx & dwr> implements gse<T> {
-   public static final alg a = alg.b("textures/entity/beacon_beam.png");
-   public static final int b = 2048;
-   private static final float e = 96.0F;
-   public static final float c = 0.2F;
-   public static final float d = 0.25F;
+public class gsa implements gru {
+   private final List<gsa.d> a;
 
-   public gsa(gsf.a $$0) {
+   gsa(List<gsa.d> $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(T $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      long $$7 = $$0.i().ae();
-      float $$8 = (float)$$6.d($$0.aw_().b()).i();
-      float $$9 = Math.max(1.0F, $$8 / 96.0F);
-      List<dwr.a> $$10 = $$0.a();
-      int $$11 = 0;
+   public Object a(eah $$0) {
+      IntList $$1 = new IntArrayList();
 
-      for (int $$12 = 0; $$12 < $$10.size(); $$12++) {
-         dwr.a $$13 = $$10.get($$12);
-         a($$2, $$3, $$1, $$9, $$7, $$11, $$12 == $$10.size() - 1 ? 2048 : $$13.c(), $$13.b());
-         $$11 += $$13.c();
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      record a(gsa a, IntList b) {
+         a(IntList b) {
+            this.b = b;
+         }
+      }
+
+      return new a($$1);
+   }
+
+   @Override
+   public void a(hlp.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
+   }
+
+   @Override
+   public hkx a(hlg $$0) {
+      List<hlo.a> $$1 = new ArrayList<>(this.a.size());
+
+      for (gsa.d $$2 : this.a) {
+         hkx $$3 = $$2.b.a($$0);
+         $$1.add(new hlo.a($$2.a, $$3));
+      }
+
+      return new hlo($$1);
+   }
+
+   public static record b(List<gsc> a) {
+      public gsa a(eai<dmf, eah> $$0) {
+         List<gsa.d> $$1 = this.a.stream().map($$1x -> new gsa.d($$1x.a($$0), $$1x.a())).toList();
+         return new gsa($$1);
+      }
+
+      public Set<grs> a() {
+         return this.a.stream().map(gsc::a).collect(Collectors.toSet());
+      }
+
+      public List<gsc> b() {
+         return this.a;
       }
    }
 
-   private static void a(fjc $$0, gps $$1, float $$2, float $$3, long $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, a, $$2, 1.0F, $$4, $$5, $$6, $$7, 0.2F * $$3, 0.25F * $$3);
+   public static class c implements JsonDeserializer<gsa.b> {
+      public gsa.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gsa.b(this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gsc> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gsc> $$2 = new ArrayList<>();
+         if ($$1.isEmpty()) {
+            throw new JsonSyntaxException("Empty selector array");
+         } else {
+            for (JsonElement $$3 : $$1) {
+               $$2.add((gsc)$$0.deserialize($$3, gsc.class));
+            }
+
+            return $$2;
+         }
+      }
    }
 
-   public static void a(fjc $$0, gps $$1, alg $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = azm.i($$13 * 0.2F - (float)azm.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gqc.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gqc.e($$2, true)), axw.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
-
-   private static void a(
-      fjc $$0,
-      fjg $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fjc.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
-
-   private static void a(
-      fjc.a $$0, fjg $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
-
-   private static void a(fjc.a $$0, fjg $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hif.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public boolean a(T $$0) {
-      return true;
-   }
-
-   @Override
-   public int aQ_() {
-      return Integer.MAX_VALUE;
-   }
-
-   @Override
-   public boolean a(T $$0, fei $$1) {
-      return fei.b($$0.aw_()).d(1.0, 0.0, 1.0).a((jo)$$1.d(1.0, 0.0, 1.0), (double)this.aQ_());
+   static record d(Predicate<eah> a, grs b) {
    }
 }

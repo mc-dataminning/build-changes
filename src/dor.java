@@ -1,39 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class dor extends dsp {
-   public static final MapCodec<dor> b = b(dor::new);
+public class dor extends dol {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<dor> e = b(dor::new);
+   private static final lg g = new lf();
 
    @Override
    public MapCodec<dor> a() {
-      return b;
+      return e;
    }
 
-   protected dor(dzy.d $$0) {
+   public dor(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(a, ja.b));
    }
 
    @Override
-   public dzz a(dcr $$0) {
-      ja $$1 = $$0.k();
-      dzz $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   protected lg a(dja $$0, czd $$1) {
+      return g;
    }
 
    @Override
-   public void a(dzz $$0, div $$1, iu $$2, azv $$3) {
-      ja $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(lx.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   public dxf a(iu $$0, eah $$1) {
+      return new dyb($$0, $$1);
+   }
+
+   @Override
+   protected void a(arq $$0, eah $$1, iu $$2) {
+      dya $$3 = $$0.a($$2, dxh.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
+      } else {
+         ld $$4 = new ld($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            czd $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               ja $$7 = $$0.a_($$2).c(b);
+               btw $$8 = dyi.a($$0, $$2.a($$7));
+               czd $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dyi.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
+
+               $$3.a($$5, $$9);
+            }
+         }
       }
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(a);
    }
 }

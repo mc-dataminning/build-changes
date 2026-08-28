@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
+public interface did extends dig {
+   float a(ja var1, boolean var2);
 
-public class did {
-   private final fei a;
-   private final fei b;
-   private final Predicate<dzz> c;
+   ewd x_();
 
-   public did(fei $$0, fei $$1, Predicate<dzz> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   int a(iu var1, dil var2);
+
+   default int a(djj $$0, iu $$1) {
+      return this.x_().a($$0).b($$1);
    }
 
-   public fei a() {
-      return this.b;
+   default int b(iu $$0, int $$1) {
+      return this.x_().a($$0, $$1);
    }
 
-   public fei b() {
-      return this.a;
-   }
-
-   public Predicate<dzz> c() {
-      return this.c;
+   default boolean h(iu $$0) {
+      return this.a(djj.a, $$0) >= 15;
    }
 }

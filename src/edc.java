@@ -1,4 +1,8 @@
-import java.util.concurrent.Executor;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record edc(arq a, ebx b, euw c, aru d, Executor e, ecg.e f) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface edc {
 }

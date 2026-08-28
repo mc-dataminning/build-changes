@@ -1,44 +1,38 @@
-public class guk implements gtu.a {
-   private final fos a;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-   public guk(fos $$0) {
+public class guk {
+   private final foz a;
+
+   public guk(foz $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      iu $$5 = this.a.t.dv();
-      diy $$6 = this.a.t.dV();
+   public void a(fjj $$0, gtt $$1, gqa $$2, double $$3, double $$4, double $$5) {
+      gqb $$6 = this.a.f.x().c();
+      MutableInt $$7 = new MutableInt(0);
+      $$6.a(($$6x, $$7x, $$8, $$9) -> this.a($$6x, $$0, $$2, $$3, $$4, $$5, $$8, $$7x, $$7, $$9), $$1, 32);
+   }
 
-      for (iu $$7 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ewg $$8 = $$6.b_($$7);
-         if ($$8.a(axh.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gtu.a(
-               $$0,
-               $$1,
-               new fed(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
+   private void a(gqb.d $$0, fjj $$1, gqa $$2, double $$3, double $$4, double $$5, int $$6, boolean $$7, MutableInt $$8, boolean $$9) {
+      fel $$10 = $$0.b();
+      double $$11 = $$10.b();
+      long $$12 = Math.round($$11 / 16.0);
+      if ($$12 == 1L) {
+         $$8.add(1);
+         double $$13 = $$10.f().d;
+         double $$14 = $$10.f().e;
+         double $$15 = $$10.f().f;
+         int $$16 = $$9 ? -16711936 : -1;
+         guc.a($$1, $$2, String.valueOf($$8.getValue()), $$13, $$14, $$15, $$16, 0.3F);
       }
 
-      for (iu $$10 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ewg $$11 = $$6.b_($$10);
-         if ($$11.a(axh.a)) {
-            gtu.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+      fjn $$17 = $$2.getBuffer(gqk.y());
+      long $$18 = $$12 + 5L;
+      gqu.a($$1, $$17, $$10.h(0.1 * (double)$$6).d(-$$3, -$$4, -$$5), a($$18, 0.3F), a($$18, 0.8F), a($$18, 0.5F), $$7 ? 0.4F : 1.0F);
+   }
+
+   private static float a(long $$0, float $$1) {
+      float $$2 = 0.1F;
+      return azm.i($$1 * (float)$$0) * 0.9F + 0.1F;
    }
 }

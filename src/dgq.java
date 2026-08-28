@@ -1,31 +1,32 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dgq(ji<bwm<?>> d, boolean e) implements dgc {
+public record dgq(dfx d, dfx e, jz f, Optional<ehn> g, enr h, Optional<je<efh>> i) implements dgh {
    public static final MapCodec<dgq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jt.a(mg.B).fieldOf("entity").forGetter(dgq::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dgq::c)).apply($$0, dgq::new)
+      $$0 -> $$0.group(
+               dfx.b.fieldOf("radius").forGetter(dgq::b),
+               dfx.b.fieldOf("height").forGetter(dgq::c),
+               jz.g.optionalFieldOf("offset", jz.i).forGetter(dgq::d),
+               ehn.b.optionalFieldOf("predicate").forGetter(dgq::e),
+               enr.a.fieldOf("block_state").forGetter(dgq::f),
+               efh.aj.optionalFieldOf("trigger_game_event").forGetter(dgq::g)
+            )
+            .apply($$0, dgq::new)
    );
 
    @Override
-   public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
-      iu $$5 = iu.a((jo)$$4);
-      if (div.l($$5)) {
-         Optional<je<bwm<?>>> $$6 = this.b().a($$0.C_());
-         if (!$$6.isEmpty()) {
-            bwd $$7 = $$6.get().a().a($$0, $$5, bwl.k);
-            if ($$7 != null) {
-               if ($$7 instanceof bxb $$8 && $$2.c() instanceof arr $$9) {
-                  $$8.b($$9);
-               }
+   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
+      iu $$5 = iu.a((jo)$$4).a(this.f);
+      azv $$6 = $$3.dY();
+      int $$7 = (int)this.d.a($$1);
+      int $$8 = (int)this.e.a($$1);
 
-               if (this.e && $$3.cr() != null) {
-                  $$0.g().a($$7.cI(), $$3.cr());
-               }
-
-               $$7.b($$4.d, $$4.e, $$4.f, $$7.dL(), $$7.dN());
-            }
+      for (iu $$9 : iu.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
+         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azm.h($$7)
+            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
+            && $$0.b($$9, this.h.a($$6, $$9))) {
+            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
          }
       }
    }
@@ -35,11 +36,27 @@ public record dgq(ji<bwm<?>> d, boolean e) implements dgc {
       return a;
    }
 
-   public ji<bwm<?>> b() {
+   public dfx b() {
       return this.d;
    }
 
-   public boolean c() {
+   public dfx c() {
       return this.e;
+   }
+
+   public jz d() {
+      return this.f;
+   }
+
+   public Optional<ehn> e() {
+      return this.g;
+   }
+
+   public enr f() {
+      return this.h;
+   }
+
+   public Optional<je<efh>> g() {
+      return this.i;
    }
 }

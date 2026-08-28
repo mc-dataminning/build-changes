@@ -9,7 +9,7 @@ public class bei extends bhr {
    private final Map<String, String> c;
 
    public bei(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
-      super($$0, false, $$1, biw.D, $$2);
+      super($$0, false, $$1, bix.D, $$2);
       this.c = $$3;
    }
 

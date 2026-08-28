@@ -32,8 +32,8 @@ public class aqh extends aqk<aqh> {
    public final String g = this.a("bug-report-link", "");
    public final boolean h = this.a("force-gamemode", false);
    public final boolean i = this.a("enforce-whitelist", false);
-   public final bty j = this.a("difficulty", a(bty::a, bty::a), bty::e, bty.b);
-   public final dis k = this.a("gamemode", a(dis::a, dis::a), dis::b, dis.a);
+   public final bua j = this.a("difficulty", a(bua::a, bua::a), bua::e, bua.b);
+   public final dix k = this.a("gamemode", a(dix::a, dix::a), dix::b, dix.a);
    public final String l = this.a("level-name", "world");
    public final int m = this.a("server-port", 25565);
    @Nullable
@@ -70,25 +70,25 @@ public class aqh extends aqk<aqh> {
    public final String R = this.a("text-filtering-config", "");
    public final int S = this.a("text-filtering-version", 0);
    public final Optional<MinecraftServer.b> T;
-   public final dij U;
+   public final dio U;
    public final aqk<aqh>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final aqk<aqh>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    public final int Z = this.a("pause-when-empty-seconds", 60);
    private final aqh.a ag;
-   public final egw aa;
+   public final ehe aa;
    public boolean ab = this.a("accepts-transfers", false);
 
    public aqh(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = egw.a($$1).orElse(egw.g());
-      this.aa = new egw($$3, $$2, false);
+      long $$3 = ehe.a($$1).orElse(ehe.g());
+      this.aa = new ehe($$3, $$2, false);
       this.ag = new aqh.a(
          this.a("generator-settings", $$0x -> azc.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), eqj.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), eqr.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -98,7 +98,7 @@ public class aqh extends aqk<aqh> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", djt.d.a().a())), this.a("initial-disabled-packs", String.join(",", djt.d.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", djy.d.a().a())), this.a("initial-disabled-packs", String.join(",", djy.d.a().b())));
    }
 
    public static aqh a(Path $$0) {
@@ -163,38 +163,38 @@ public class aqh extends aqk<aqh> {
       }
    }
 
-   private static dij b(String $$0, String $$1) {
+   private static dio b(String $$0, String $$1) {
       List<String> $$2 = af.splitToList($$0);
       List<String> $$3 = af.splitToList($$1);
-      return new dij($$2, $$3);
+      return new dio($$2, $$3);
    }
 
-   public egt a(jg.a $$0) {
+   public ehb a(jg.a $$0) {
       return this.ag.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, alf<eqi>> c = Map.of("default", eqj.a, "largebiomes", eqj.c);
+      private static final Map<String, alf<eqq>> c = Map.of("default", eqr.a, "largebiomes", eqr.c);
 
-      public egt a(jg.a $$0) {
-         jg<eqi> $$1 = $$0.e(mg.bm);
-         je.c<eqi> $$2 = $$1.a(eqj.a)
+      public ehb a(jg.a $$0) {
+         jg<eqq> $$1 = $$0.e(mg.bn);
+         je.c<eqq> $$2 = $$1.a(eqr.a)
             .or(() -> $$1.c().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         je<eqi> $$3 = Optional.ofNullable(alg.c(this.b))
-            .map($$0x -> alf.a(mg.bm, $$0x))
+         je<eqq> $$3 = Optional.ofNullable(alg.c(this.b))
+            .map($$0x -> alf.a(mg.bn, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::a)
             .orElseGet(() -> {
                aqh.ad.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         egt $$4 = $$3.a().a();
-         if ($$3.a(eqj.b)) {
+         ehb $$4 = $$3.a().a();
+         if ($$3.a(eqr.b)) {
             ale<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<eow> $$6 = eow.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqh.ad::error);
+            Optional<epe> $$6 = epe.a.parse(new Dynamic($$5, this.a())).resultOrPartial(aqh.ad::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new eft($$6.get()));
+               return $$4.a($$0, new egb($$6.get()));
             }
          }
 

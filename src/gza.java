@@ -1,25 +1,27 @@
-public class gza extends gxf<coq, her, gih> {
-   private static final alg a = alg.b("textures/entity/witch.png");
+public class gza extends gvb<ckc, heu, gii> {
+   private static final alg a = alg.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gza(gvz.a $$0) {
-      super($$0, new gih($$0.a(git.dP)), 0.5F);
-      this.a(new haz(this));
+   public gza(gwh.a $$0) {
+      super($$0, new gii($$0.a(gjb.dG)), new gii($$0.a(gjb.dH)), 0.7F);
    }
 
-   public alg a(her $$0) {
-      return a;
+   protected float a(heu $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.83F : $$1;
    }
 
-   public her b() {
-      return new her();
+   public heu b() {
+      return new heu();
    }
 
-   public void a(coq $$0, her $$1, float $$2) {
+   public void a(ckc $$0, heu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hcu.a($$0, $$1, this.h);
-      $$1.a = $$0.ar();
-      cyy $$3 = $$0.fa();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(czc.to);
+      $$1.a = !$$0.bj() && $$0.aJ();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.n_() && $$0.q();
+   }
+
+   public alg b(heu $$0) {
+      return a;
    }
 }

@@ -1,5 +1,8 @@
-public class hbl extends hcf {
-   public float a;
-   public float b;
-   public float c;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hbl {
 }

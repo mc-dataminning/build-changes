@@ -1,37 +1,49 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum clm implements bak {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
-
-   public static final Codec<clm> h = bak.a(clm::values);
-   private static final IntFunction<clm> j = ayc.a(clm::a, values(), ayc.a.b);
-   public static final yw<ByteBuf, clm> i = yu.a(j, clm::a);
-   private final int k;
-   private final String l;
-
-   private clm(final int $$0, final String $$1) {
-      this.k = $$0;
-      this.l = $$1;
-   }
-
-   public int a() {
-      return this.k;
-   }
-
-   public static clm a(int $$0) {
-      return j.apply($$0);
+public class clm extends clg {
+   public clm(bwo<? extends clm> $$0, dja $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String c() {
-      return this.l;
+   protected awm u() {
+      return awn.qj;
+   }
+
+   @Override
+   protected awm gR() {
+      return awn.qk;
+   }
+
+   @Override
+   protected awm l_() {
+      return awn.qm;
+   }
+
+   @Nullable
+   @Override
+   protected awm gt() {
+      return awn.qn;
+   }
+
+   @Override
+   protected awm e(buu $$0) {
+      return awn.qo;
+   }
+
+   @Override
+   protected void gY() {
+      this.a(awn.qp, 0.4F, 1.0F);
+   }
+
+   @Override
+   protected void x() {
+      this.a(awn.ql, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bvv a(arq $$0, bvv $$1) {
+      return bwo.aF.a($$0, bwn.e);
    }
 }

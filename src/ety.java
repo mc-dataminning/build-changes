@@ -1,42 +1,55 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class ety extends eus {
-   public static final MapCodec<ety> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jt.a(mg.i).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ety::new)
-   );
-   private final Optional<ji<dma>> b;
-   private final float c;
+public class ety extends erb {
+   public static final MapCodec<ety> d = a(ety::new);
 
-   public ety(ji<dma> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public ety(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private ety(Optional<ji<dma>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public euv.d a(diy $$0, iu $$1, iu $$2, euv.d $$3, euv.d $$4, eur $$5) {
-      azv $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public ety(erb.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected euu<?> a() {
-      return euu.f;
+   public Optional<erb.b> a(erb.a $$0) {
+      dsz $$1 = dsz.a($$0.f());
+      iu $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new erb.b($$2, (Consumer<ert>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(ert $$0, erb.a $$1, iu $$2, dsz $$3) {
+      List<etx.i> $$4 = Lists.newLinkedList();
+      etx.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, erq $$6) {
+      iu.a $$7 = new iu.a();
+      int $$8 = $$0.G_();
+      eqt $$9 = $$6.b();
+      int $$10 = $$9.i();
+
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.v($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.v($$7) && !$$0.a_($$7).n()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dmh.m.m(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public erk<?> e() {
+      return erk.p;
    }
 }

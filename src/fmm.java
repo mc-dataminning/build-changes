@@ -1,211 +1,261 @@
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fmm extends hpb {
-   static final alg a = alg.b("pending_invite/accept_highlighted");
-   static final alg b = alg.b("pending_invite/accept");
-   static final alg c = alg.b("pending_invite/reject_highlighted");
-   static final alg C = alg.b("pending_invite/reject");
-   private static final Logger D = LogUtils.getLogger();
-   private static final wy E = wy.c("mco.invites.nopending");
-   static final wy F = wy.c("mco.invites.button.accept");
-   static final wy G = wy.c("mco.invites.button.reject");
-   private final fxu H;
-   private final CompletableFuture<List<fkm>> I = CompletableFuture.supplyAsync(() -> {
-      try {
-         return fjs.a().i().a;
-      } catch (flo var1x) {
-         D.error("Couldn't list invites", var1x);
-         return List.of();
-      }
-   }, af.i());
+public class fmm extends hpj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int C = 80;
+   private static final int D = 95;
+   private static final int E = 1;
+   private final fyb F;
+   private final flp G;
+   private final wy H;
+   private final RateLimiter I;
+   private fsj J;
+   private final String K;
+   private final fmm.a L;
    @Nullable
-   wy J;
-   fmm.b K;
-   private fsc L;
-   private fsc M;
+   private volatile wy M;
+   private volatile wy N = wy.c("mco.download.preparing");
+   @Nullable
+   private volatile String O;
+   private volatile boolean P;
+   private volatile boolean Q = true;
+   private volatile boolean R;
+   private volatile boolean S;
+   @Nullable
+   private Long T;
+   @Nullable
+   private Long U;
+   private long V;
+   private int W;
+   private static final String[] X = new String[]{"", ".", ". .", ". . ."};
+   private int Y;
+   private boolean Z;
+   private final BooleanConsumer aa;
 
-   public fmm(fxu $$0, wy $$1) {
-      super($$1);
-      this.H = $$0;
+   public fmm(fyb $$0, flp $$1, String $$2, BooleanConsumer $$3) {
+      super(fop.a);
+      this.aa = $$3;
+      this.F = $$0;
+      this.K = $$2;
+      this.G = $$1;
+      this.L = new fmm.a();
+      this.H = wy.c("mco.download.title");
+      this.I = RateLimiter.create(0.1F);
    }
 
    @Override
-   public void aN_() {
-      fjn.f();
-      this.K = new fmm.b();
-      this.I.thenAcceptAsync($$0 -> {
-         List<fmm.a> $$1 = $$0.stream().map($$0x -> new fmm.a($$0x)).toList();
-         this.K.a($$1);
-         if ($$1.isEmpty()) {
-            this.m.aY().b(E);
-         }
-      }, this.r);
-      this.c(this.K);
-      this.L = this.c((fsc)fsc.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
-      this.c((fsc)fsc.a(wx.d, $$0 -> this.aK_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
-      this.M = this.c((fsc)fsc.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+   public void aO_() {
+      this.J = this.c(fsj.a(wx.e, $$0 -> this.aL_()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
       this.E();
    }
 
-   @Override
-   public void aK_() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   void c(boolean $$0) {
-      if (this.K.p() instanceof fmm.a $$1) {
-         String $$2 = $$1.c.a;
-         CompletableFuture.<Boolean>supplyAsync(() -> {
-            try {
-               fjs $$2x = fjs.a();
-               if ($$0) {
-                  $$2x.a($$2);
-               } else {
-                  $$2x.b($$2);
-               }
-
-               return true;
-            } catch (flo var3) {
-               D.error("Couldn't handle invite", var3);
-               return false;
-            }
-         }, af.i()).thenAcceptAsync($$2x -> {
-            if ($$2x) {
-               this.K.a($$1);
-               this.E();
-               flr $$3 = this.m.bb();
-               if ($$0) {
-                  $$3.c.a();
-               }
-
-               $$3.d.a();
-            }
-         }, this.r);
+   private void E() {
+      if (!this.R && !this.Z) {
+         this.Z = true;
+         if (this.a(this.G.a) >= 5368709120L) {
+            wy $$0 = wy.a("mco.download.confirmation.oversized", fjv.b(5368709120L));
+            this.m.a(fmv.c(this, $$0, $$0x -> {
+               this.m.a(this);
+               this.G();
+            }));
+         } else {
+            this.G();
+         }
       }
    }
 
+   private long a(String $$0) {
+      fjw $$1 = new fjw();
+      return $$1.a($$0);
+   }
+
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      this.J = null;
+   public void e() {
+      super.e();
+      this.W++;
+      if (this.N != null && this.I.tryAcquire(1)) {
+         wy $$0 = this.F();
+         this.m.aY().c($$0);
+      }
+   }
+
+   private wy F() {
+      List<wy> $$0 = Lists.newArrayList();
+      $$0.add(this.H);
+      $$0.add(this.N);
+      if (this.O != null) {
+         $$0.add(wy.a("mco.download.percent", this.O));
+         $$0.add(wy.a("mco.download.speed.narration", fjv.b(this.V)));
+      }
+
+      if (this.M != null) {
+         $$0.add(this.M);
+      }
+
+      return wx.a($$0);
+   }
+
+   @Override
+   public void aL_() {
+      this.P = true;
+      if (this.R && this.aa != null && this.M == null) {
+         this.aa.accept(true);
+      }
+
+      this.m.a(this.F);
+   }
+
+   @Override
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 12, -1);
-      if (this.J != null) {
-         $$0.a(this.p, this.J, $$1, $$2);
+      $$0.a(this.p, this.H, this.n / 2, 20, -1);
+      $$0.a(this.p, this.N, this.n / 2, 50, -1);
+      if (this.Q) {
+         this.c($$0);
       }
 
-      if (this.I.isDone() && this.K.b()) {
-         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+      if (this.L.a != 0L && !this.P) {
+         this.d($$0);
+         this.e($$0);
+      }
+
+      if (this.M != null) {
+         $$0.a(this.p, this.M, this.n / 2, 110, -65536);
       }
    }
 
-   void E() {
-      fmm.a $$0 = this.K.p();
-      this.L.k = $$0 != null;
-      this.M.k = $$0 != null;
+   private void c(frv $$0) {
+      int $$1 = this.p.a(this.N);
+      if (this.W != 0 && this.W % 10 == 0) {
+         this.Y++;
+      }
+
+      $$0.b(this.p, X[this.Y % X.length], this.n / 2 + $$1 / 2 + 5, 50, -1);
    }
 
-   class a extends fsy.a<fmm.a> {
-      private static final int b = 38;
-      final fkm c;
-      private final List<flv> d;
+   private void d(frv $$0) {
+      double $$1 = Math.min((double)this.L.a / (double)this.L.b, 1.0);
+      this.O = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.n - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.p, wy.a("mco.download.percent", this.O), this.n / 2, 84, -1);
+   }
 
-      a(final fkm $$0) {
-         this.c = $$0;
-         this.d = Arrays.asList(new fmm.a.a(), new fmm.a.b());
-      }
+   private void e(frv $$0) {
+      if (this.W % 20 == 0) {
+         if (this.T != null) {
+            long $$1 = af.c() - this.U;
+            if ($$1 == 0L) {
+               $$1 = 1L;
+            }
 
-      @Override
-      public void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         flv.a(fmm.this.K, this, this.d, $$2, $$0, $$1);
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(fro $$0, fkm $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.b(fmm.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
-         $$0.b(fmm.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
-         $$0.b(fmm.this.p, fnh.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
-         flv.a($$0, this.d, fmm.this.K, $$2, $$3, $$4, $$5);
-         fnh.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public wy a() {
-         wy $$0 = wx.b(wy.b(this.c.b), wy.b(this.c.c), fnh.a(this.c.e));
-         return wy.a("narrator.select", $$0);
-      }
-
-      class a extends flv {
-         a() {
-            super(15, 15, 215, 5);
+            this.V = 1000L * (this.L.a - this.T) / $$1;
+            this.a($$0, this.V);
          }
 
-         @Override
-         protected void a(fro $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(gqc::H, $$3 ? fmm.a : fmm.b, $$1, $$2, 18, 18);
-            if ($$3) {
-               fmm.this.J = fmm.F;
+         this.T = this.L.a;
+         this.U = af.c();
+      } else {
+         this.a($$0, this.V);
+      }
+   }
+
+   private void a(frv $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.p.b(this.O);
+         $$0.b(this.p, wy.a("mco.download.speed", fjv.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1);
+      }
+   }
+
+   private void G() {
+      new Thread(() -> {
+         try {
+            try {
+               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                  this.N = wy.c("mco.download.failed");
+                  return;
+               }
+
+               if (this.P) {
+                  this.H();
+                  return;
+               }
+
+               this.N = wy.a("mco.download.downloading", this.K);
+               fjw $$0 = new fjw();
+               $$0.a(this.G.a);
+               $$0.a(this.G, this.K, this.L, this.m.m());
+
+               while (!$$0.b()) {
+                  if ($$0.c()) {
+                     $$0.a();
+                     this.M = wy.c("mco.download.failed");
+                     this.J.b(wx.d);
+                     return;
+                  }
+
+                  if ($$0.d()) {
+                     if (!this.S) {
+                        this.N = wy.c("mco.download.extracting");
+                     }
+
+                     this.S = true;
+                  }
+
+                  if (this.P) {
+                     $$0.a();
+                     this.H();
+                     return;
+                  }
+
+                  try {
+                     Thread.sleep(500L);
+                  } catch (InterruptedException var8) {
+                     a.error("Failed to check Realms backup download status");
+                  }
+               }
+
+               this.R = true;
+               this.N = wy.c("mco.download.done");
+               this.J.b(wx.d);
+               return;
+            } catch (InterruptedException var9) {
+               a.error("Could not acquire upload lock");
+            } catch (Exception var10) {
+               this.M = wy.c("mco.download.failed");
+               a.info("Exception while downloading world", var10);
+            }
+         } finally {
+            if (!b.isHeldByCurrentThread()) {
+               return;
+            } else {
+               b.unlock();
+               this.Q = false;
+               this.R = true;
             }
          }
-
-         @Override
-         public void a(int $$0) {
-            fmm.this.c(true);
-         }
-      }
-
-      class b extends flv {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(fro $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(gqc::H, $$3 ? fmm.c : fmm.C, $$1, $$2, 18, 18);
-            if ($$3) {
-               fmm.this.J = fmm.G;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            fmm.this.c(false);
-         }
-      }
+      }).start();
    }
 
-   class b extends fsy<fmm.a> {
-      public b() {
-         super(fos.Q(), fmm.this.n, fmm.this.o - 72, 32, 36);
-      }
+   private void H() {
+      this.N = wy.c("mco.download.cancelled");
+   }
 
-      @Override
-      public int a() {
-         return 260;
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         fmm.this.E();
-      }
-
-      public boolean b() {
-         return this.t() == 0;
-      }
-
-      public void a(fmm.a $$0) {
-         this.g($$0);
-      }
+   public static class a {
+      public volatile long a;
+      public volatile long b;
    }
 }

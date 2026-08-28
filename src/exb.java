@@ -1,38 +1,91 @@
-public class exb extends ews {
-   private float m = Float.MAX_VALUE;
-   private ews n;
-   private boolean o;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-   public exb(ews $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public abstract class exb {
+   protected exh b;
+   protected bxg c;
+   protected final Int2ObjectMap<exa> d = new Int2ObjectOpenHashMap();
+   protected int e;
+   protected int f;
+   protected int g;
+   protected boolean h = true;
+   protected boolean i;
+   protected boolean j;
+   protected boolean k;
+
+   public void a(djn $$0, bxg $$1) {
+      this.b = new exh($$0, $$1);
+      this.c = $$1;
+      this.d.clear();
+      this.e = azm.d($$1.dq() + 1.0F);
+      this.f = azm.d($$1.dr() + 1.0F);
+      this.g = azm.d($$1.dq() + 1.0F);
    }
 
-   public exb(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public void b() {
+      this.b = null;
+      this.c = null;
    }
 
-   public void a(float $$0, ews $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   protected exa b(iu $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   public ews d() {
-      return this.n;
+   protected exa c(int $$0, int $$1, int $$2) {
+      return (exa)this.d.computeIfAbsent(exa.b($$0, $$1, $$2), $$3 -> new exa($$0, $$1, $$2));
    }
 
-   public void e() {
-      this.o = true;
+   public abstract exa a();
+
+   public abstract exj a(double var1, double var3, double var5);
+
+   protected exj b(double $$0, double $$1, double $$2) {
+      return new exj(this.c(azm.a($$0), azm.a($$1), azm.a($$2)));
+   }
+
+   public abstract int a(exa[] var1, exa var2);
+
+   public abstract exf a(exh var1, int var2, int var3, int var4, bxg var5);
+
+   public abstract exf a(exh var1, int var2, int var3, int var4);
+
+   public exf a(bxg $$0, iu $$1) {
+      return this.a(new exh($$0.dV(), $$0), $$1.u(), $$1.v(), $$1.w());
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.i = $$0;
+   }
+
+   public void c(boolean $$0) {
+      this.j = $$0;
+   }
+
+   public void d(boolean $$0) {
+      this.k = $$0;
+   }
+
+   public boolean d() {
+      return this.h;
+   }
+
+   public boolean e() {
+      return this.i;
    }
 
    public boolean f() {
-      return this.o;
+      return this.j;
    }
 
-   public static exb c(vu $$0) {
-      exb $$1 = new exb($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public boolean g() {
+      return this.k;
+   }
+
+   public static boolean a(eah $$0) {
+      return $$0.a(axc.aN) || $$0.a(dmh.K) || $$0.a(dmh.lp) || dmv.h($$0) || $$0.a(dmh.fU);
    }
 }

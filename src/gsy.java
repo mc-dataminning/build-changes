@@ -1,46 +1,23 @@
-import org.joml.Matrix4f;
+public class gsy implements gsm<dyl> {
+   private final gfd a;
 
-public class gsy<T extends dyu> implements gse<T> {
-   public static final alg a = alg.b("textures/environment/end_sky.png");
-   public static final alg b = alg.b("textures/entity/end_portal.png");
-
-   public gsy(gsf.a $$0) {
+   public gsy(gsn.a $$0) {
+      this.a = new gfd($$0.a(gjb.J));
    }
 
-   public void a(T $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      Matrix4f $$7 = $$2.c().a();
-      this.a($$0, $$7, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, fjg $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ja.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ja.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ja.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ja.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ja.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ja.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fjg $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ja $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7);
-         $$2.a($$1, $$4, $$5, $$8);
-         $$2.a($$1, $$4, $$6, $$9);
-         $$2.a($$1, $$3, $$6, $$10);
+   public void a(dyl $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      eah $$7 = $$0.m();
+      if ($$7.c(dqw.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$8 = $$7.c(dqw.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$8));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fjn $$9 = gsw.a.a($$3, gqk::d);
+         this.a.a($$2, $$9, $$4, $$5);
+         $$2.b();
       }
-   }
-
-   protected float b() {
-      return 0.75F;
-   }
-
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected gqc d() {
-      return gqc.t();
    }
 }

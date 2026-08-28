@@ -112,12 +112,12 @@ public class iu extends jz {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new iu(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public fei b() {
-      return fei.b(this);
+   public feq b() {
+      return feq.b(this);
    }
 
-   public fei c() {
-      return fei.c(this);
+   public feq c() {
+      return feq.c(this);
    }
 
    public iu a(jz $$0) {
@@ -203,7 +203,7 @@ public class iu extends jz {
       }
    }
 
-   public iu a(dst $$0) {
+   public iu a(dsz $$0) {
       switch ($$0) {
          case a:
          default:
@@ -233,8 +233,8 @@ public class iu extends jz {
       return new iu.a(this.u(), this.v(), this.w());
    }
 
-   public fei a(fei $$0) {
-      return new fei(
+   public feq a(feq $$0) {
+      return new feq(
          azm.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
          azm.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
          azm.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
@@ -337,7 +337,7 @@ public class iu extends jz {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<iu> a(fed $$0) {
+   public static Iterable<iu> a(fel $$0) {
       iu $$1 = a($$0.a, $$0.b, $$0.c);
       iu $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -358,7 +358,7 @@ public class iu extends jz {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<iu> a(eql $$0) {
+   public static Stream<iu> a(eqt $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -369,7 +369,7 @@ public class iu extends jz {
       );
    }
 
-   public static Stream<iu> b(fed $$0) {
+   public static Stream<iu> b(fel $$0) {
       return a(azm.a($$0.a), azm.a($$0.b), azm.a($$0.c), azm.a($$0.d), azm.a($$0.e), azm.a($$0.f));
    }
 
@@ -501,7 +501,7 @@ public class iu extends jz {
       }
 
       @Override
-      public iu a(dst $$0) {
+      public iu a(dsz $$0) {
          return super.a($$0).j();
       }
 

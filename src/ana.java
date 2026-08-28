@@ -49,7 +49,7 @@ public class ana {
       if (!$$1.bg()) {
          throw b.create();
       } else {
-         bqk $$2 = $$1.bi();
+         bqm $$2 = $$1.bi();
          double $$3 = (double)$$2.g() / (double)baq.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> wy.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);

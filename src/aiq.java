@@ -2,11 +2,11 @@ import io.netty.buffer.ByteBuf;
 import java.util.Optional;
 import java.util.function.IntFunction;
 
-public record aiq(iu b, aiq.a c, dys.a d) implements zf<agp> {
-   public static final yw<wj, aiq> a = yw.a(iu.b, aiq::b, aiq.a.h, aiq::e, dys.a.b, aiq::f, aiq::new);
+public record aiq(iu b, aiq.a c, dza.a d) implements zf<agp> {
+   public static final yw<wj, aiq> a = yw.a(iu.b, aiq::b, aiq.a.h, aiq::e, dza.a.b, aiq::f, aiq::new);
 
-   public aiq(iu $$0, aiq.a $$1, Optional<alf<sr>> $$2, jz $$3, dst $$4, boolean $$5) {
-      this($$0, $$1, new dys.a($$2, $$3, $$4, $$5, dys.b.a, Optional.empty()));
+   public aiq(iu $$0, aiq.a $$1, Optional<alf<sr>> $$2, jz $$3, dsz $$4, boolean $$5) {
+      this($$0, $$1, new dza.a($$2, $$3, $$4, $$5, dza.b.a, Optional.empty()));
    }
 
    @Override
@@ -22,7 +22,7 @@ public record aiq(iu b, aiq.a c, dys.a d) implements zf<agp> {
       return this.c;
    }
 
-   public dys.a f() {
+   public dza.a f() {
       return this.d;
    }
 

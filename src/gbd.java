@@ -1,72 +1,117 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class gbd extends gbh {
+   private static final wy a = wy.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private gbd.a v;
+   final hkg w;
 
-public class gbd extends fxu {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final wy d;
-   private final List<wy> s;
-   private final ImmutableList<gbd.a> u;
-   private fsv v = fsv.a;
-   private int w;
-   private int x;
-
-   protected gbd(wy $$0, List<wy> $$1, ImmutableList<gbd.a> $$2) {
-      super($$0);
-      this.s = $$1;
-      this.d = wx.a($$0, xb.a($$1, wx.a));
-      this.u = $$2;
+   public gbd(fyb $$0, fpd $$1, hkg $$2) {
+      super($$0, $$1, wy.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
    }
 
    @Override
-   public wy i() {
-      return this.d;
+   protected void F() {
+      this.v = this.s.c(new gbd.a(this.m));
    }
 
    @Override
-   public void aN_() {
-      UnmodifiableIterator $$1 = this.u.iterator();
+   protected void m() {
+   }
 
-      while ($$1.hasNext()) {
-         gbd.a $$0 = (gbd.a)$$1.next();
-         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
+   @Override
+   protected void E() {
+      fwb $$0 = this.s.b(fwb.d()).a(8);
+      $$0.c().b();
+      $$0.a(new ftq(a, this.p));
+      fwb $$1 = $$0.a(fwb.e().a(8));
+      $$1.a(fsj.a(wy.c("options.font"), $$0x -> this.m.a(new gbc(this, this.c))).a());
+      $$1.a(fsj.a(wx.d, $$0x -> this.H()).a());
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.v.a(this.n, this.s);
+   }
+
+   void H() {
+      gbd.a.a $$0 = this.v.p();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
 
-      int $$1x = 5 + this.x + 5;
-      int $$2 = $$1x * this.u.size();
-      this.v = fsv.a(this.p, $$2, this.s.toArray(new wy[0]));
-      int $$3 = this.v.a() * 9;
-      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.w + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
+      this.m.a(this.b);
+   }
 
-      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
-         gbd.a $$6 = (gbd.a)var6.next();
-         this.c(fsc.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
+   class a extends ftf<gbd.a.a> {
+      public a(final foz $$0) {
+         super($$0, gbd.this.n, gbd.this.o - 33 - 53, 33, 18);
+         String $$1 = gbd.this.w.a();
+         gbd.this.w.b().forEach(($$1x, $$2) -> {
+            gbd.a.a $$3 = new gbd.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.p() != null) {
+            this.e(this.p());
+         }
       }
-   }
 
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
-      this.v.a($$0, this.n / 2, this.w);
-   }
+      @Override
+      public int a() {
+         return super.a() + 50;
+      }
 
-   @Override
-   public boolean aC_() {
-      return false;
-   }
+      public class a extends ftf.a<gbd.a.a> {
+         final String b;
+         private final wy c;
+         private long d;
 
-   public static final class a {
-      final wy a;
-      final fsc.c b;
+         public a(final String $$1, final hkf $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
 
-      public a(wy $$0, fsc.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         @Override
+         public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(gbd.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fwl.a($$0)) {
+               this.b();
+               gbd.this.H();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
+            }
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (af.c() - this.d < 250L) {
+               gbd.this.H();
+            }
+
+            this.d = af.c();
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public wy a() {
+            return wy.a("narrator.select", this.c);
+         }
       }
    }
 }

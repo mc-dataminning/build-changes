@@ -1,9 +1,8 @@
-public class hjm extends hjt {
-   public hjm(hir $$0) {
-      super($$0, alg.b("textures/atlas/map_decorations.png"), hkn.h);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public hip a(exv $$0) {
-      return this.a($$0.a());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hjm {
 }

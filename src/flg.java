@@ -1,99 +1,154 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class flg extends flh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
+public class flg extends flo {
+   public final boolean a;
+   public final boolean b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final int f;
+   public final int g;
+   public final boolean h;
+   private final String n;
+   public final String i;
+   public final fla.a j;
+   public long k;
    @Nullable
-   private final String f;
-   private final URI g;
+   public String l;
+   public boolean m;
+   private static final boolean o = false;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final int r = 0;
+   private static final boolean s = false;
+   private static final int t = 2;
+   private static final int u = 0;
+   private static final boolean v = false;
+   private static final String w = "";
+   private static final String x = "";
+   private static final fla.a y = fla.a.a;
+   private static final long z = -1L;
+   private static final String A = null;
 
-   private flg(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public flg(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, boolean $$7, String $$8, String $$9, fla.a $$10) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$7;
+      this.n = $$8;
+      this.i = $$9;
+      this.j = $$10;
    }
 
-   @Nullable
-   public static flg a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = fnd.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = fnd.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = fnd.a("worldClosed", $$2, false);
-               String $$7 = fnd.b("token", $$2, null);
-               return new flg($$6, $$7, $$5);
-            }
-         }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
-      }
-
-      return null;
+   public static flg a() {
+      return new flg(true, true, 0, false, 2, 0, false, false, "", "", y);
    }
 
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
-      }
+   public static flg a(dix $$0, boolean $$1, bua $$2, boolean $$3, String $$4, String $$5) {
+      return new flg(true, true, 0, $$1, $$2.a(), $$0.a(), $$3, false, $$5, $$4, y);
    }
 
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
+   public static flg a(dje $$0, boolean $$1, String $$2) {
+      return a($$0.b(), $$1, $$0.d(), $$0.c(), $$2, $$0.a());
+   }
+
+   public static flg b() {
+      flg $$0 = a();
+      $$0.a(true);
+      return $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.m = $$0;
+   }
+
+   public static flg a(JsonObject $$0, fle $$1) {
+      flg $$2 = new flg(
+         fnk.a("pvp", $$0, true),
+         fnk.a("spawnMonsters", $$0, true),
+         fnk.a("spawnProtection", $$0, 0),
+         fnk.a("commandBlocks", $$0, false),
+         fnk.a("difficulty", $$0, 2),
+         fnk.a("gameMode", $$0, 0),
+         $$1.a(),
+         fnk.a("forceGameMode", $$0, false),
+         fnk.a("slotName", $$0, ""),
+         fnk.a("version", $$0, ""),
+         fla.d(fnk.a("compatibility", $$0, fla.a.a.name()))
+      );
+      $$2.k = fnk.a("worldTemplateId", $$0, -1L);
+      $$2.l = fnk.b("worldTemplateImage", $$0, A);
+      return $$2;
+   }
+
+   public String a(int $$0) {
+      if (bal.h(this.n)) {
+         return this.m ? hke.a("mco.configure.world.slot.empty") : this.b($$0);
       } else {
-         return $$1 != -1 ? $$1 : 8080;
+         return this.n;
       }
    }
 
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
+   public String b(int $$0) {
+      return hke.a("mco.configure.world.slot", $$0);
    }
 
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
 
-      return $$1.toString();
+      if (!this.b) {
+         $$0.addProperty("spawnMonsters", this.b);
+      }
+
+      if (this.c != 0) {
+         $$0.addProperty("spawnProtection", this.c);
+      }
+
+      if (this.d) {
+         $$0.addProperty("commandBlocks", this.d);
+      }
+
+      if (this.f != 2) {
+         $$0.addProperty("difficulty", this.f);
+      }
+
+      if (this.g != 0) {
+         $$0.addProperty("gameMode", this.g);
+      }
+
+      if (this.h) {
+         $$0.addProperty("hardcore", this.h);
+      }
+
+      if (this.e) {
+         $$0.addProperty("forceGameMode", this.e);
+      }
+
+      if (!Objects.equals(this.n, "")) {
+         $$0.addProperty("slotName", this.n);
+      }
+
+      if (!Objects.equals(this.i, "")) {
+         $$0.addProperty("version", this.i);
+      }
+
+      if (this.j != y) {
+         $$0.addProperty("compatibility", this.j.name());
+      }
+
+      return $$0.toString();
    }
 
-   @Nullable
-   public String a() {
-      return this.f;
-   }
-
-   public URI b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.e;
+   public flg d() {
+      return new flg(this.a, this.b, this.c, this.d, this.f, this.g, this.h, this.e, this.n, this.i, this.j);
    }
 }

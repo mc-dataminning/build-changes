@@ -12,10 +12,10 @@ public class adf {
    private final byte[] c;
    private final List<adf.a> d;
 
-   public adf(ecg $$0) {
+   public adf(eco $$0) {
       this.b = new tz();
 
-      for (Entry<efy.a, efy> $$1 : $$0.e()) {
+      for (Entry<egg.a, egg> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new ug($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class adf {
       a(new vu(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<iu, dwx> $$2 : $$0.I().entrySet()) {
+      for (Entry<iu, dxf> $$2 : $$0.I().entrySet()) {
          this.d.add(adf.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class adf {
       adf.a.b.encode($$0, this.d);
    }
 
-   private static int a(ecg $$0) {
+   private static int a(eco $$0) {
       int $$1 = 0;
 
-      for (ech $$2 : $$0.d()) {
+      for (ecp $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class adf {
       return $$0;
    }
 
-   public static void a(vu $$0, ecg $$1) {
-      for (ech $$2 : $$1.d()) {
+   public static void a(vu $$0, eco $$1) {
+      for (ecp $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class adf {
       public static final yw<wj, List<adf.a>> b = a.a(yu.a());
       final int c;
       final int d;
-      final dwz<?> e;
+      final dxh<?> e;
       @Nullable
       final tz f;
 
-      private a(int $$0, int $$1, dwz<?> $$2, @Nullable tz $$3) {
+      private a(int $$0, int $$1, dxh<?> $$2, @Nullable tz $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,9 +130,9 @@ public class adf {
          $$0.a(this.f);
       }
 
-      static adf.a a(dwx $$0) {
+      static adf.a a(dxf $$0) {
          tz $$1 = $$0.a($$0.i().F_());
-         iu $$2 = $$0.aw_();
+         iu $$2 = $$0.ax_();
          int $$3 = jx.b($$2.u()) << 4 | jx.b($$2.w());
          return new adf.a($$3, $$2.v(), $$0.p(), $$1.g() ? null : $$1);
       }
@@ -140,6 +140,6 @@ public class adf {
 
    @FunctionalInterface
    public interface b {
-      void accept(iu var1, dwz<?> var2, @Nullable tz var3);
+      void accept(iu var1, dxh<?> var2, @Nullable tz var3);
    }
 }

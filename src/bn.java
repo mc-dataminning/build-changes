@@ -10,9 +10,9 @@ public class bn extends dj<bn.a> {
 
    public void a(arr $$0, iu $$1) {
       arq $$2 = $$0.y();
-      dzz $$3 = $$2.a_($$1);
-      ezc $$4 = new ezc.a($$2).a(fbt.f, $$1.b()).a(fbt.a, $$0).a(fbt.g, $$3).a(fbs.p);
-      eyz $$5 = new eyz.a($$4).a(Optional.empty());
+      eah $$3 = $$2.a_($$1);
+      ezk $$4 = new ezk.a($$2).a(fcb.f, $$1.b()).a(fcb.a, $$0).a(fcb.g, $$3).a(fca.p);
+      ezh $$5 = new ezh.a($$4).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$5));
    }
 
@@ -21,14 +21,14 @@ public class bn extends dj<bn.a> {
          $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(bn.a::a), bi.a.optionalFieldOf("location").forGetter(bn.a::b)).apply($$0, bn.a::new)
       );
 
-      public boolean a(eyz $$0) {
+      public boolean a(ezh $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bj $$0) {
          dj.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, fbs.p, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, fca.p, ".location"));
       }
 
       @Override

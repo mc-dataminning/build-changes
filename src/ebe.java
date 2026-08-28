@@ -1,25 +1,23 @@
 public enum ebe implements bak {
-   a("up"),
-   b("side"),
-   c("none");
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String d;
+   private final String f;
 
    private ebe(final String $$0) {
-      this.d = $$0;
+      this.f = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
+      return this.f;
    }
 }

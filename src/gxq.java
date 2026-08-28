@@ -1,16 +1,21 @@
-public class gxq extends gws<coc, hcx> {
-   private static final alg a = alg.b("textures/entity/illager/pillager.png");
+public class gxq extends gvb<cjm, hct, ggv> {
+   private static final alg a = alg.b("textures/entity/cat/ocelot.png");
 
-   public gxq(gvz.a $$0) {
-      super($$0, new ggf<>($$0.a(git.cp)), 0.5F);
-      this.a(new haf<>(this));
+   public gxq(gwh.a $$0) {
+      super($$0, new ggv($$0.a(gjb.bV)), new ggv($$0.a(gjb.bW)), 0.4F);
    }
 
-   public alg a(hcx $$0) {
+   public alg a(hct $$0) {
       return a;
    }
 
-   public hcx b() {
-      return new hcx();
+   public hct b() {
+      return new hct();
+   }
+
+   public void a(cjm $$0, hct $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.ci();
+      $$1.e = $$0.cj();
    }
 }

@@ -1,58 +1,58 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class hnt implements hnu<hmj> {
-   private final List<hnu<hmj>> a = Lists.newArrayList();
-   @Nullable
-   private final wy b;
+public class hnt implements hnn {
+   private final hnt.a a;
+   private hnn b;
+   private final BufferedInputStream c;
 
-   public hnt(alg $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : wy.c($$1);
+   public hnt(hnt.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new hnt.b(this.c));
    }
 
    @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hnu<hmj> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public hmj a(azv $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (hnu<hmj> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
-
-         return hns.b;
-      } else {
-         return hns.b;
-      }
-   }
-
-   public void a(hnu<hmj> $$0) {
-      this.a.add($$0);
-   }
-
-   @Nullable
-   public wy a() {
-      return this.b;
+   public AudioFormat a() {
+      return this.b.a();
    }
 
    @Override
-   public void a(hnp $$0) {
-      for (hnu<hmj> $$1 : this.a) {
-         $$1.a($$0);
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new hnt.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
+   }
+
+   @FunctionalInterface
+   public interface a {
+      hnn create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
       }
    }
 }

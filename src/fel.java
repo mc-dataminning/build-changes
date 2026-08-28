@@ -1,219 +1,433 @@
-import java.util.BitSet;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public final class fel extends fer {
-   private final BitSet d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
+public class fel {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
 
-   public fel(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-      this.d = new BitSet($$0 * $$1 * $$2);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fel(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public static fel a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      fel $$9 = new fel($$0, $$1, $$2);
-      $$9.e = $$3;
-      $$9.f = $$4;
-      $$9.g = $$5;
-      $$9.h = $$6;
-      $$9.i = $$7;
-      $$9.j = $$8;
-
-      for (int $$10 = $$3; $$10 < $$6; $$10++) {
-         for (int $$11 = $$4; $$11 < $$7; $$11++) {
-            for (int $$12 = $$5; $$12 < $$8; $$12++) {
-               $$9.a($$10, $$11, $$12, false);
-            }
-         }
-      }
-
-      return $$9;
+   public fel(iu $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public fel(fer $$0) {
-      super($$0.a, $$0.b, $$0.c);
-      if ($$0 instanceof fel) {
-         this.d = (BitSet)((fel)$$0).d.clone();
-      } else {
-         this.d = new BitSet(this.a * this.b * this.c);
-
-         for (int $$1 = 0; $$1 < this.a; $$1++) {
-            for (int $$2 = 0; $$2 < this.b; $$2++) {
-               for (int $$3 = 0; $$3 < this.c; $$3++) {
-                  if ($$0.b($$1, $$2, $$3)) {
-                     this.d.set(this.a($$1, $$2, $$3));
-                  }
-               }
-            }
-         }
-      }
-
-      this.e = $$0.a(ja.a.a);
-      this.f = $$0.a(ja.a.b);
-      this.g = $$0.a(ja.a.c);
-      this.h = $$0.b(ja.a.a);
-      this.i = $$0.b(ja.a.b);
-      this.j = $$0.b(ja.a.c);
+   public fel(feq $$0, feq $$1) {
+      this($$0.d, $$0.e, $$0.f, $$1.d, $$1.e, $$1.f);
    }
 
-   protected int a(int $$0, int $$1, int $$2) {
-      return ($$0 * this.b + $$1) * this.c + $$2;
+   public static fel a(eqt $$0) {
+      return new fel((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
    }
 
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.get(this.a($$0, $$1, $$2));
+   public static fel a(feq $$0) {
+      return new fel($$0.d, $$0.e, $$0.f, $$0.d + 1.0, $$0.e + 1.0, $$0.f + 1.0);
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3) {
-      this.d.set(this.a($$0, $$1, $$2));
-      if ($$3) {
-         this.e = Math.min(this.e, $$0);
-         this.f = Math.min(this.f, $$1);
-         this.g = Math.min(this.g, $$2);
-         this.h = Math.max(this.h, $$0 + 1);
-         this.i = Math.max(this.i, $$1 + 1);
-         this.j = Math.max(this.j, $$2 + 1);
-      }
+   public static fel a(iu $$0, iu $$1) {
+      return new fel(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
+   }
+
+   public fel a(double $$0) {
+      return new fel($$0, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fel b(double $$0) {
+      return new fel(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public fel c(double $$0) {
+      return new fel(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public fel d(double $$0) {
+      return new fel(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public fel e(double $$0) {
+      return new fel(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public fel f(double $$0) {
+      return new fel(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(ja.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   public double b(ja.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
    }
 
    @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, $$2, true);
-   }
-
-   @Override
-   public boolean a() {
-      return this.d.isEmpty();
-   }
-
-   @Override
-   public int a(ja.a $$0) {
-      return $$0.a(this.e, this.f, this.g);
-   }
-
-   @Override
-   public int b(ja.a $$0) {
-      return $$0.a(this.h, this.i, this.j);
-   }
-
-   static fel a(fer $$0, fer $$1, feu $$2, feu $$3, feu $$4, fem $$5) {
-      fel $$6 = new fel($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
-      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
-      $$2.a(($$7x, $$8, $$9) -> {
-         boolean[] $$10 = new boolean[]{false};
-         $$3.a(($$10x, $$11, $$12) -> {
-            boolean[] $$13 = new boolean[]{false};
-            $$4.a(($$12x, $$13x, $$14) -> {
-               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
-                  $$6.d.set($$6.a($$9, $$12, $$14));
-                  $$7[2] = Math.min($$7[2], $$14);
-                  $$7[5] = Math.max($$7[5], $$14);
-                  $$13[0] = true;
-               }
-
-               return true;
-            });
-            if ($$13[0]) {
-               $$7[1] = Math.min($$7[1], $$12);
-               $$7[4] = Math.max($$7[4], $$12);
-               $$10[0] = true;
-            }
-
-            return true;
-         });
-         if ($$10[0]) {
-            $$7[0] = Math.min($$7[0], $$9);
-            $$7[3] = Math.max($$7[3], $$9);
-         }
-
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      });
-      $$6.e = $$7[0];
-      $$6.f = $$7[1];
-      $$6.g = $$7[2];
-      $$6.h = $$7[3] + 1;
-      $$6.i = $$7[4] + 1;
-      $$6.j = $$7[5] + 1;
-      return $$6;
-   }
-
-   protected static void a(fer $$0, fer.b $$1, boolean $$2) {
-      fel $$3 = new fel($$0);
-
-      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
-         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
-            int $$6 = -1;
-
-            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
-               if ($$3.e($$5, $$4, $$7)) {
-                  if ($$2) {
-                     if ($$6 == -1) {
-                        $$6 = $$7;
-                     }
-                  } else {
-                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
-                  }
-               } else if ($$6 != -1) {
-                  int $$8 = $$5;
-                  int $$9 = $$4;
-                  $$3.b($$6, $$7, $$5, $$4);
-
-                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
-                     $$3.b($$6, $$7, $$8 + 1, $$4);
-                     $$8++;
-                  }
-
-                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
-                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
-                        $$3.b($$6, $$7, $$10, $$9 + 1);
-                     }
-
-                     $$9++;
-                  }
-
-                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
-                  $$6 = -1;
-               }
-            }
-         }
+      } else if (!($$0 instanceof fel $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
+      } else {
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
    }
 
-   private boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
    }
 
-   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$0; $$5 < $$1; $$5++) {
-         if (!this.a($$2, $$3, $$5, $$4)) {
-            return false;
+   public fel a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new fel($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fel b(feq $$0) {
+      return this.b($$0.d, $$0.e, $$0.f);
+   }
+
+   public fel b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
+
+      return new fel($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fel c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new fel($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public fel g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public fel a(fel $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new fel($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fel b(fel $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new fel($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public fel d(double $$0, double $$1, double $$2) {
+      return new fel(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public fel a(iu $$0) {
+      return new fel(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public fel c(feq $$0) {
+      return this.d($$0.d, $$0.e, $$0.f);
+   }
+
+   public fel a(Vector3f $$0) {
+      return this.d((double)$$0.x, (double)$$0.y, (double)$$0.z);
+   }
+
+   public boolean c(fel $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(feq $$0, feq $$1) {
+      return this.a(
+         Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.min($$0.f, $$1.f), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e), Math.max($$0.f, $$1.f)
+      );
+   }
+
+   public boolean d(feq $$0) {
+      return this.e($$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public fel f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public fel h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<feq> b(feq $$0, feq $$1) {
+      return a(this.a, this.b, this.c, this.d, this.e, this.f, $$0, $$1);
+   }
+
+   public static Optional<feq> a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, feq $$6, feq $$7) {
+      double[] $$8 = new double[]{1.0};
+      double $$9 = $$7.d - $$6.d;
+      double $$10 = $$7.e - $$6.e;
+      double $$11 = $$7.f - $$6.f;
+      ja $$12 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, null, $$9, $$10, $$11);
+      if ($$12 == null) {
+         return Optional.empty();
+      } else {
+         double $$13 = $$8[0];
+         return Optional.of($$6.b($$13 * $$9, $$13 * $$10, $$13 * $$11));
+      }
+   }
+
+   @Nullable
+   public static fem a(Iterable<fel> $$0, feq $$1, feq $$2, iu $$3) {
+      double[] $$4 = new double[]{1.0};
+      ja $$5 = null;
+      double $$6 = $$2.d - $$1.d;
+      double $$7 = $$2.e - $$1.e;
+      double $$8 = $$2.f - $$1.f;
+
+      for (fel $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new fem($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+      }
+   }
+
+   @Nullable
+   private static ja a(fel $$0, feq $$1, double[] $$2, @Nullable ja $$3, double $$4, double $$5, double $$6) {
+      return a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Nullable
+   private static ja a(
+      double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, feq $$6, double[] $$7, @Nullable ja $$8, double $$9, double $$10, double $$11
+   ) {
+      if ($$9 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$0, $$1, $$4, $$2, $$5, ja.e, $$6.d, $$6.e, $$6.f);
+      } else if ($$9 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$3, $$1, $$4, $$2, $$5, ja.f, $$6.d, $$6.e, $$6.f);
+      }
+
+      if ($$10 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$1, $$2, $$5, $$0, $$3, ja.a, $$6.e, $$6.f, $$6.d);
+      } else if ($$10 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$4, $$2, $$5, $$0, $$3, ja.b, $$6.e, $$6.f, $$6.d);
+      }
+
+      if ($$11 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$2, $$0, $$3, $$1, $$4, ja.c, $$6.f, $$6.d, $$6.e);
+      } else if ($$11 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$5, $$0, $$3, $$1, $$4, ja.d, $$6.f, $$6.d, $$6.e);
+      }
+
+      return $$8;
+   }
+
+   @Nullable
+   private static ja a(
+      double[] $$0,
+      @Nullable ja $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      ja $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
+      }
+   }
+
+   public boolean a(feq $$0, List<fel> $$1) {
+      feq $$2 = this.f();
+      feq $$3 = $$2.e($$0);
+
+      for (fel $$4 : $$1) {
+         fel $$5 = $$4.c(this.b() * 0.5, this.c() * 0.5, this.d() * 0.5);
+         if ($$5.d($$3) || $$5.d($$2)) {
+            return true;
+         }
+
+         if ($$5.b($$2, $$3).isPresent()) {
+            return true;
          }
       }
 
-      return true;
+      return false;
    }
 
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
+   public double e(feq $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.d, $$0.d - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.e, $$0.e - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.f, $$0.f - this.f), 0.0);
+      return azm.f($$1, $$2, $$3);
    }
 
-   public boolean d(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
-      return $$3
-         && this.b($$0, $$1, $$2)
-         && this.b($$0 - 1, $$1, $$2)
-         && this.b($$0 + 1, $$1, $$2)
-         && this.b($$0, $$1 - 1, $$2)
-         && this.b($$0, $$1 + 1, $$2)
-         && this.b($$0, $$1, $$2 - 1)
-         && this.b($$0, $$1, $$2 + 1);
+   @Override
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
+   }
+
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   }
+
+   public feq f() {
+      return new feq(azm.d(0.5, this.a, this.d), azm.d(0.5, this.b, this.e), azm.d(0.5, this.c, this.f));
+   }
+
+   public feq g() {
+      return new feq(azm.d(0.5, this.a, this.d), this.b, azm.d(0.5, this.c, this.f));
+   }
+
+   public feq h() {
+      return new feq(this.a, this.b, this.c);
+   }
+
+   public feq i() {
+      return new feq(this.d, this.e, this.f);
+   }
+
+   public static fel a(feq $$0, double $$1, double $$2, double $$3) {
+      return new fel($$0.d - $$1 / 2.0, $$0.e - $$2 / 2.0, $$0.f - $$3 / 2.0, $$0.d + $$1 / 2.0, $$0.e + $$2 / 2.0, $$0.f + $$3 / 2.0);
    }
 }

@@ -34,7 +34,7 @@ public class acd implements zf<abu> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static acd a(btr $$0) {
+   public static acd a(btt $$0) {
       return new acd($$0.h(), new acd.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class acd implements zf<abu> {
       return new acd($$0, g);
    }
 
-   public static acd b(btr $$0) {
+   public static acd b(btt $$0) {
       return new acd($$0.h(), new acd.f($$0.j()));
    }
 
-   public static acd c(btr $$0) {
+   public static acd c(btt $$0) {
       return new acd($$0.h(), new acd.e($$0.i()));
    }
 
-   public static acd d(btr $$0) {
+   public static acd d(btt $$0) {
       return new acd($$0.h(), new acd.h($$0.k(), $$0.l()));
    }
 
-   public static acd e(btr $$0) {
+   public static acd e(btt $$0) {
       return new acd($$0.h(), new acd.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class acd implements zf<abu> {
    static class a implements acd.c {
       private final wy a;
       private final float b;
-      private final btr.a c;
-      private final btr.b d;
+      private final btt.a c;
+      private final btt.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(btr $$0) {
+      a(btt $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class acd implements zf<abu> {
       private a(wj $$0) {
          this.a = xa.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(btr.a.class);
-         this.d = $$0.b(btr.b.class);
+         this.c = $$0.b(btt.a.class);
+         this.d = $$0.b(btt.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class acd implements zf<abu> {
    }
 
    public interface b {
-      default void a(UUID $$0, wy $$1, float $$2, btr.a $$3, btr.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, wy $$1, float $$2, btt.a $$3, btt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class acd implements zf<abu> {
       default void a(UUID $$0, wy $$1) {
       }
 
-      default void a(UUID $$0, btr.a $$1, btr.b $$2) {
+      default void a(UUID $$0, btt.a $$1, btt.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class acd implements zf<abu> {
    }
 
    static class h implements acd.c {
-      private final btr.a a;
-      private final btr.b b;
+      private final btt.a a;
+      private final btt.b b;
 
-      h(btr.a $$0, btr.b $$1) {
+      h(btt.a $$0, btt.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wj $$0) {
-         this.a = $$0.b(btr.a.class);
-         this.b = $$0.b(btr.b.class);
+         this.a = $$0.b(btt.a.class);
+         this.b = $$0.b(btt.b.class);
       }
 
       @Override

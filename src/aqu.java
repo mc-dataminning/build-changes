@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class aqu extends edg implements aqs.b, arf {
-   private static final aqv<List<ebw>> f = aqv.a("Unloaded chunks found in range");
-   private static final CompletableFuture<aqv<List<ebw>>> g = CompletableFuture.completedFuture(f);
+public class aqu extends edo implements aqs.b, arf {
+   private static final aqv<List<ece>> f = aqv.a("Unloaded chunks found in range");
+   private static final CompletableFuture<aqv<List<ece>>> g = CompletableFuture.completedFuture(f);
    private static final byte h = -1;
    private static final byte i = 0;
    private static final byte j = 1;
@@ -69,18 +69,18 @@ public class aqu extends edg implements aqs.b, arf {
    private final List<aqr> s = new ArrayList<>();
    final arq t;
    private final aru u;
-   private final bsq<Runnable> v;
-   private final egm w;
-   private final eby x;
-   private final Supplier<eyh> y;
-   private final djs z;
-   private final cie A;
+   private final bss<Runnable> v;
+   private final egu w;
+   private final ecg x;
+   private final Supplier<eyp> y;
+   private final djx z;
+   private final cig A;
    final LongSet B = new LongOpenHashSet();
    private boolean C;
    private final aqw D;
    private final aqw E;
    private final asa F;
-   private final eed G;
+   private final eel G;
    private final aqu.a H;
    private final AtomicInteger I = new AtomicInteger();
    private final String J;
@@ -92,79 +92,71 @@ public class aqu extends edg implements aqs.b, arf {
    private final Queue<Runnable> P = Queues.newConcurrentLinkedQueue();
    private final AtomicInteger Q = new AtomicInteger();
    private int R;
-   private final edc S;
+   private final edk S;
 
    public aqu(
       arq $$0,
-      eyn.c $$1,
+      eyv.c $$1,
       DataFixer $$2,
-      euw $$3,
+      eve $$3,
       Executor $$4,
-      bsq<Runnable> $$5,
-      ecj $$6,
-      ebx $$7,
+      bss<Runnable> $$5,
+      ecr $$6,
+      ecf $$7,
       asa $$8,
-      eed $$9,
-      Supplier<eyh> $$10,
-      djs $$11,
+      eel $$9,
+      Supplier<eyp> $$10,
+      djx $$11,
       int $$12,
       boolean $$13
    ) {
-      super(new edp($$1.f(), $$0.aj(), "chunk"), $$1.a($$0.aj()).resolve("region"), $$2, $$13);
+      super(new edx($$1.f(), $$0.aj(), "chunk"), $$1.a($$0.aj()).resolve("region"), $$2, $$13);
       Path $$14 = $$1.a($$0.aj());
       this.J = $$14.getFileName().toString();
       this.t = $$0;
       js $$15 = $$0.F_();
       long $$16 = $$0.E();
-      if ($$7 instanceof egb $$17) {
-         this.w = egm.a($$17.h().a(), $$15.f(mg.aX), $$16);
+      if ($$7 instanceof egj $$17) {
+         this.w = egu.a($$17.h().a(), $$15.f(mg.aY), $$16);
       } else {
-         this.w = egm.a(egd.e(), $$15.f(mg.aX), $$16);
+         this.w = egu.a(egl.e(), $$15.f(mg.aY), $$16);
       }
 
-      this.x = $$7.a($$15.f(mg.bc), this.w, $$16);
+      this.x = $$7.a($$15.f(mg.bd), this.w, $$16);
       this.v = $$5;
-      bsr $$18 = new bsr($$4, "worldgen");
+      bst $$18 = new bst($$4, "worldgen");
       this.F = $$8;
       this.G = $$9;
-      bsr $$19 = new bsr($$4, "light");
+      bst $$19 = new bst($$4, "light");
       this.D = new aqw($$18, $$4);
       this.E = new aqw($$19, $$4);
       this.u = new aru($$6, this, this.t.B_().g(), $$19, this.E);
       this.H = new aqu.a($$11, $$4, $$5);
       this.y = $$10;
       this.z = $$11;
-      this.A = new cie(new edp($$1.f(), $$0.aj(), "poi"), $$14.resolve("poi"), $$2, $$13, $$15, $$0.p(), $$0);
+      this.A = new cig(new edx($$1.f(), $$0.aj(), "poi"), $$14.resolve("poi"), $$2, $$13, $$15, $$0.p(), $$0);
       this.a($$12);
-      this.S = new edc($$0, $$7, $$3, this.u, $$5, this::f);
+      this.S = new edk($$0, $$7, $$3, this.u, $$5, this::f);
    }
 
-   private void f(dic $$0) {
+   private void f(dih $$0) {
       this.O.add($$0.a());
    }
 
-   protected ebx a() {
+   protected ecf a() {
       return this.S.b();
    }
 
-   protected eby b() {
+   protected ecg b() {
       return this.x;
    }
 
-   protected egm c() {
+   protected egu c() {
       return this.w;
    }
 
-   private static double a(dic $$0, bwd $$1) {
-      double $$2 = (double)jx.a($$0.h, 8);
-      double $$3 = (double)jx.a($$0.i, 8);
-      double $$4 = $$2 - $$1.dA();
-      double $$5 = $$3 - $$1.dG();
-      return $$4 * $$4 + $$5 * $$5;
-   }
-
    boolean a(arr $$0, int $$1, int $$2) {
-      return $$0.Y().a($$1, $$2) && !$$0.f.g.a(dic.c($$1, $$2));
+      return $$0.Y().a($$1, $$2) && !$$0.f.g.a(dih.c($$1, $$2));
    }
 
    private boolean b(arr $$0, int $$1, int $$2) {
@@ -204,14 +196,14 @@ public class aqu extends edg implements aqs.b, arf {
       };
    }
 
-   public String a(dic $$0) {
+   public String a(dih $$0) {
       aqs $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.j() + "\n";
-         ecx $$3 = $$1.u();
-         ebw $$4 = $$1.p();
+         edf $$3 = $$1.u();
+         ece $$4 = $$1.p();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.b() + $$3 + "§r\n";
          }
@@ -226,38 +218,38 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private CompletableFuture<aqv<List<ebw>>> a(aqs $$0, int $$1, IntFunction<ecx> $$2) {
+   private CompletableFuture<aqv<List<ece>>> a(aqs $$0, int $$1, IntFunction<edf> $$2) {
       if ($$1 == 0) {
-         ecx $$3 = $$2.apply(0);
+         edf $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.a(List::of));
       } else {
          int $$4 = azm.h($$1 * 2 + 1);
-         List<CompletableFuture<aqv<ebw>>> $$5 = new ArrayList<>($$4);
-         dic $$6 = $$0.r();
+         List<CompletableFuture<aqv<ece>>> $$5 = new ArrayList<>($$4);
+         dih $$6 = $$0.r();
 
          for (int $$7 = -$$1; $$7 <= $$1; $$7++) {
             for (int $$8 = -$$1; $$8 <= $$1; $$8++) {
                int $$9 = Math.max(Math.abs($$8), Math.abs($$7));
-               long $$10 = dic.c($$6.h + $$8, $$6.i + $$7);
+               long $$10 = dih.c($$6.h + $$8, $$6.i + $$7);
                aqs $$11 = this.a($$10);
                if ($$11 == null) {
                   return g;
                }
 
-               ecx $$12 = $$2.apply($$9);
+               edf $$12 = $$2.apply($$9);
                $$5.add($$11.a($$12, this));
             }
          }
 
          return af.d($$5).thenApply($$0x -> {
-            List<ebw> $$1x = new ArrayList<>($$0x.size());
+            List<ece> $$1x = new ArrayList<>($$0x.size());
 
-            for (aqv<ebw> $$2x : $$0x) {
+            for (aqv<ece> $$2x : $$0x) {
                if ($$2x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               ebw $$3 = $$2x.b(null);
+               ece $$3 = $$2x.b(null);
                if ($$3 == null) {
                   return f;
                }
@@ -273,8 +265,8 @@ public class aqu extends edg implements aqs.b, arf {
    public z a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<aqs> $$3 = $$1x -> $$1x.t().forEach($$2x -> {
-            ecx $$3x = (ecx)$$2x.getFirst();
-            CompletableFuture<aqv<ebw>> $$4x = (CompletableFuture<aqv<ebw>>)$$2x.getSecond();
+            edf $$3x = (edf)$$2x.getFirst();
+            CompletableFuture<aqv<ece>> $$4x = (CompletableFuture<aqv<ece>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.r()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -290,8 +282,8 @@ public class aqu extends edg implements aqs.b, arf {
       return new z($$4);
    }
 
-   public CompletableFuture<aqv<ecg>> a(aqs $$0) {
-      return this.a($$0, 2, $$0x -> ecx.n).thenApply($$0x -> $$0x.a($$0xx -> (ecg)$$0xx.get($$0xx.size() / 2)));
+   public CompletableFuture<aqv<eco>> a(aqs $$0) {
+      return this.a($$0, 2, $$0x -> edf.n).thenApply($$0x -> $$0x.a($$0xx -> (eco)$$0xx.get($$0xx.size() / 2)));
    }
 
    @Nullable
@@ -316,7 +308,7 @@ public class aqu extends edg implements aqs.b, arf {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new aqs(new dic($$0), $$1, this.t, this.u, this::a, this);
+               $$2 = new aqs(new dih($$0), $$1, this.t, this.u, this::a, this);
             }
 
             this.p.put($$0, $$2);
@@ -327,7 +319,7 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private void a(dic $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+   private void a(dih $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
       this.D.onLevelChange($$0, $$1, $$2, $$3);
       this.E.onLevelChange($$0, $$1, $$2, $$3);
    }
@@ -353,7 +345,7 @@ public class aqu extends edg implements aqs.b, arf {
             $$1.stream().map($$0x -> {
                this.v.b($$0x::h);
                return $$0x.p();
-            }).filter($$0x -> $$0x instanceof ecf || $$0x instanceof ecg).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof ecn || $$0x instanceof eco).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.A.a();
@@ -372,7 +364,7 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bqm $$1 = bql.a();
+      bqo $$1 = bqn.a();
       $$1.a("poi");
       this.A.a($$0);
       $$1.b("chunk_unload");
@@ -426,7 +418,7 @@ public class aqu extends edg implements aqs.b, arf {
       while ($$2 < 20 && this.Q.get() < 128 && $$0.getAsBoolean() && $$3.hasNext()) {
          long $$4 = $$3.nextLong();
          aqs $$5 = (aqs)this.q.get($$4);
-         ebw $$6 = $$5 != null ? $$5.p() : null;
+         ece $$6 = $$5 != null ? $$5.p() : null;
          if ($$6 == null || !$$6.k()) {
             $$3.remove();
          } else if (this.a($$5, $$1)) {
@@ -443,15 +435,15 @@ public class aqu extends edg implements aqs.b, arf {
          if ($$3 != $$2) {
             this.a($$0, $$1);
          } else {
-            ebw $$4 = $$1.p();
+            ece $$4 = $$1.p();
             if (this.r.remove($$0, $$1) && $$4 != null) {
-               if ($$4 instanceof ecg $$5) {
+               if ($$4 instanceof eco $$5) {
                   $$5.b(false);
                }
 
                this.a($$4);
-               if ($$4 instanceof ecg $$6) {
-                  this.t.a($$6);
+               if ($$4 instanceof eco $$6) {
+                  this.t.b($$6);
                }
 
                this.u.a($$4.f());
@@ -477,9 +469,9 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private CompletableFuture<ebw> g(dic $$0) {
-      CompletableFuture<Optional<edr>> $$1 = this.k($$0).thenApplyAsync($$1x -> $$1x.map($$1xx -> {
-            edr $$2x = edr.a(this.t, this.t.F_(), $$1xx);
+   private CompletableFuture<ece> g(dih $$0) {
+      CompletableFuture<Optional<edz>> $$1 = this.k($$0).thenApplyAsync($$1x -> $$1x.map($$1xx -> {
+            edz $$2x = edz.a(this.t, this.t.F_(), $$1xx);
             if ($$2x == null) {
                k.error("Chunk file at {} is missing level data, skipping", $$0);
             }
@@ -488,9 +480,9 @@ public class aqu extends edg implements aqs.b, arf {
          }), af.h().a("parseChunk"));
       CompletableFuture<?> $$2 = this.A.a($$0);
       return $$1.<Object, Optional>thenCombine((CompletionStage<? extends Object>)$$2, ($$0x, $$1x) -> $$0x).thenApplyAsync($$1x -> {
-         bql.a().f("chunkLoad");
+         bqn.a().f("chunkLoad");
          if ($$1x.isPresent()) {
-            ebw $$2x = ((edr)$$1x.get()).a(this.t, this.A, this.q(), $$0);
+            ece $$2x = ((edz)$$1x.get()).a(this.t, this.A, this.q(), $$0);
             this.a($$0, $$2x.n().d());
             return $$2x;
          } else {
@@ -499,7 +491,7 @@ public class aqu extends edg implements aqs.b, arf {
       }, this.v).exceptionallyAsync($$1x -> this.a($$1x, $$0), this.v);
    }
 
-   private ebw a(Throwable $$0, dic $$1) {
+   private ece a(Throwable $$0, dih $$1) {
       Throwable $$3 = $$0 instanceof CompletionException $$2 ? $$2.getCause() : $$0;
       Throwable $$5 = $$3 instanceof z $$4 ? $$4.getCause() : $$3;
       boolean $$6 = $$5 instanceof Error;
@@ -516,17 +508,17 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private ebw h(dic $$0) {
+   private ece h(dih $$0) {
       this.i($$0);
-      return new ecq($$0, ect.a, this.t, this.t.F_().f(mg.aG), null);
+      return new ecy($$0, edb.a, this.t, this.t.F_().f(mg.aG), null);
    }
 
-   private void i(dic $$0) {
+   private void i(dih $$0) {
       this.M.put($$0.a(), (byte)-1);
    }
 
-   private byte a(dic $$0, edb $$1) {
-      return this.M.put($$0.a(), (byte)($$1 == edb.a ? -1 : 1));
+   private byte a(dih $$0, edj $$1) {
+      return this.M.put($$0.a(), (byte)($$1 == edj.a ? -1 : 1));
    }
 
    @Override
@@ -542,18 +534,18 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    @Override
-   public CompletableFuture<ebw> a(arg $$0, eda $$1, bai<arg> $$2) {
-      dic $$3 = $$0.r();
-      if ($$1.a() == ecx.c) {
+   public CompletableFuture<ece> a(arg $$0, edi $$1, bai<arg> $$2) {
+      dih $$3 = $$0.r();
+      if ($$1.a() == edf.c) {
          return this.g($$3);
       } else {
          try {
             arg $$4 = $$2.a($$3.h, $$3.i);
-            ebw $$5 = $$4.a($$1.a().c());
+            ece $$5 = $$4.a($$1.a().c());
             if ($$5 == null) {
                throw new IllegalStateException("Parent chunk missing");
             } else {
-               CompletableFuture<ebw> $$6 = $$1.a(this.S, $$2, $$5);
+               CompletableFuture<ece> $$6 = $$1.a(this.S, $$2, $$5);
                this.F.a($$3, $$1.a());
                return $$6;
             }
@@ -563,7 +555,7 @@ public class aqu extends edg implements aqs.b, arf {
             p $$9 = $$8.a("Chunk to be generated");
             $$9.a("Status being generated", () -> $$1.a().f());
             $$9.a("Location", String.format(Locale.ROOT, "%d,%d", $$3.h, $$3.i));
-            $$9.a("Position hash", dic.c($$3.h, $$3.i));
+            $$9.a("Position hash", dih.c($$3.h, $$3.i));
             $$9.a("Generator", this.a());
             this.v.execute(() -> {
                throw new z($$8);
@@ -574,7 +566,7 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    @Override
-   public aqr a(ecx $$0, dic $$1) {
+   public aqr a(edf $$0, dih $$1) {
       aqr $$2 = aqr.a(this, $$0, $$1);
       this.s.add($$2);
       return $$2;
@@ -596,12 +588,12 @@ public class aqu extends edg implements aqs.b, arf {
       this.s.clear();
    }
 
-   public CompletableFuture<aqv<ecg>> b(aqs $$0) {
-      CompletableFuture<aqv<List<ebw>>> $$1 = this.a($$0, 1, $$0x -> ecx.n);
-      CompletableFuture<aqv<ecg>> $$2 = $$1.thenApplyAsync($$1x -> $$1x.a($$1xx -> {
-            ecg $$2x = (ecg)$$1xx.get($$1xx.size() / 2);
+   public CompletableFuture<aqv<eco>> b(aqs $$0) {
+      CompletableFuture<aqv<List<ece>>> $$1 = this.a($$0, 1, $$0x -> edf.n);
+      CompletableFuture<aqv<eco>> $$2 = $$1.thenApplyAsync($$1x -> $$1x.a($$1xx -> {
+            eco $$2x = (eco)$$1xx.get($$1xx.size() / 2);
             $$2x.a(this.t);
-            this.t.b($$2x);
+            this.t.c($$2x);
             CompletableFuture<?> $$3 = $$0.f();
             if ($$3.isDone()) {
                this.a($$0, $$2x);
@@ -618,8 +610,8 @@ public class aqu extends edg implements aqs.b, arf {
       return $$2;
    }
 
-   private void a(aqs $$0, ecg $$1) {
-      dic $$2 = $$1.f();
+   private void a(aqs $$0, eco $$1) {
+      dih $$2 = $$1.f();
 
       for (arr $$3 : this.K.a()) {
          if ($$3.Y().a($$2)) {
@@ -630,8 +622,8 @@ public class aqu extends edg implements aqs.b, arf {
       this.t.m().a($$0);
    }
 
-   public CompletableFuture<aqv<ecg>> c(aqs $$0) {
-      return this.a($$0, 1, aqt::b).thenApply($$0x -> $$0x.a($$0xx -> (ecg)$$0xx.get($$0xx.size() / 2)));
+   public CompletableFuture<aqv<eco>> c(aqs $$0) {
+      return this.a($$0, 1, aqt::b).thenApply($$0x -> $$0x.a($$0xx -> (eco)$$0xx.get($$0xx.size() / 2)));
    }
 
    public int h() {
@@ -640,8 +632,8 @@ public class aqu extends edg implements aqs.b, arf {
 
    private boolean a(aqs $$0, long $$1) {
       if ($$0.l() && $$0.h()) {
-         ebw $$2 = $$0.p();
-         if (!($$2 instanceof ecf) && !($$2 instanceof ecg)) {
+         ece $$2 = $$0.p();
+         if (!($$2 instanceof ecn) && !($$2 instanceof eco)) {
             return false;
          } else if (!$$2.k()) {
             return false;
@@ -665,28 +657,28 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private boolean a(ebw $$0) {
+   private boolean a(ece $$0) {
       this.A.b($$0.f());
       if (!$$0.j()) {
          return false;
       } else {
-         dic $$1 = $$0.f();
+         dih $$1 = $$0.f();
 
          try {
-            ecx $$2 = $$0.n();
-            if ($$2.d() != edb.b) {
+            edf $$2 = $$0.n();
+            if ($$2.d() != edj.b) {
                if (this.j($$1)) {
                   return false;
                }
 
-               if ($$2 == ecx.c && $$0.g().values().stream().noneMatch(erb::b)) {
+               if ($$2 == edf.c && $$0.g().values().stream().noneMatch(erj::b)) {
                   return false;
                }
             }
 
-            bql.a().f("chunkSave");
+            bqn.a().f("chunkSave");
             this.Q.incrementAndGet();
-            edr $$3 = edr.a(this.t, $$0);
+            edz $$3 = edz.a(this.t, $$0);
             CompletableFuture<tz> $$4 = CompletableFuture.supplyAsync($$3::a, af.h());
             this.a($$1, $$4::join).handle(($$1x, $$2x) -> {
                if ($$2x != null) {
@@ -705,7 +697,7 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private boolean j(dic $$0) {
+   private boolean j(dih $$0) {
       byte $$1 = this.M.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -723,7 +715,7 @@ public class aqu extends edg implements aqs.b, arf {
             return false;
          }
 
-         edb $$5 = edr.a($$2);
+         edj $$5 = edz.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
@@ -744,23 +736,23 @@ public class aqu extends edg implements aqs.b, arf {
       return azm.a($$0.F(), 2, this.R);
    }
 
-   private void a(arr $$0, dic $$1) {
-      ecg $$2 = this.e($$1.a());
+   private void a(arr $$0, dih $$1) {
+      eco $$2 = this.e($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(arr $$0, ecg $$1) {
+   private static void a(arr $$0, eco $$1) {
       $$0.f.g.a($$1);
    }
 
-   private static void b(arr $$0, dic $$1) {
+   private static void b(arr $$0, dih $$1) {
       $$0.f.g.a($$0, $$1);
    }
 
    @Nullable
-   public ecg e(long $$0) {
+   public eco e(long $$0) {
       aqs $$1 = this.b($$0);
       return $$1 == null ? null : $$1.e();
    }
@@ -801,17 +793,17 @@ public class aqu extends edg implements aqs.b, arf {
       while (var3.hasNext()) {
          Entry<aqs> $$2 = (Entry<aqs>)var3.next();
          long $$3 = $$2.getLongKey();
-         dic $$4 = new dic($$3);
+         dih $$4 = new dih($$3);
          aqs $$5 = (aqs)$$2.getValue();
-         Optional<ebw> $$6 = Optional.ofNullable($$5.p());
-         Optional<ecg> $$7 = $$6.flatMap($$0x -> $$0x instanceof ecg ? Optional.of((ecg)$$0x) : Optional.empty());
+         Optional<ece> $$6 = Optional.ofNullable($$5.p());
+         Optional<eco> $$7 = $$6.flatMap($$0x -> $$0x instanceof eco ? Optional.of((eco)$$0x) : Optional.empty());
          $$1.a(
             $$4.h,
             $$4.i,
             $$5.j(),
             $$6.isPresent(),
-            $$6.map(ebw::n).orElse(null),
-            $$7.map(ecg::F).orElse(null),
+            $$6.map(ece::n).orElse(null),
+            $$7.map(eco::F).orElse(null),
             a($$5.c()),
             a($$5.a()),
             a($$5.b()),
@@ -826,9 +818,9 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private static String a(CompletableFuture<aqv<ecg>> $$0) {
+   private static String a(CompletableFuture<aqv<eco>> $$0) {
       try {
-         aqv<ecg> $$1 = $$0.getNow(null);
+         aqv<eco> $$1 = $$0.getNow(null);
          if ($$1 != null) {
             return $$1.a() ? "done" : "unloaded";
          } else {
@@ -841,7 +833,7 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private CompletableFuture<Optional<tz>> k(dic $$0) {
+   private CompletableFuture<Optional<tz>> k(dih $$0) {
       return this.d($$0).thenApplyAsync($$0x -> $$0x.map(this::b), af.h().a("upgradeChunk"));
    }
 
@@ -849,23 +841,38 @@ public class aqu extends edg implements aqs.b, arf {
       return this.a(this.t.aj(), this.y, $$0, this.a().c());
    }
 
-   void a(Consumer<aqs> $$0) {
+   void a(List<eco> $$0) {
       LongIterator $$1 = this.H.b();
 
       while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         aqs $$3 = (aqs)this.q.get($$2);
-         if ($$3 != null && this.l($$3.r())) {
-            $$0.accept($$3);
+         aqs $$2 = (aqs)this.q.get($$1.nextLong());
+         if ($$2 != null) {
+            eco $$3 = $$2.d();
+            if ($$3 != null && this.l($$2.r())) {
+               $$0.add($$3);
+            }
          }
       }
    }
 
-   boolean b(dic $$0) {
-      return !this.H.e($$0.a()) ? false : this.l($$0);
+   void a(Consumer<eco> $$0) {
+      this.H.a($$1 -> {
+         aqs $$2 = (aqs)this.q.get($$1);
+         if ($$2 != null) {
+            eco $$3 = $$2.d();
+            if ($$3 != null) {
+               $$0.accept($$3);
+            }
+         }
+      });
    }
 
-   private boolean l(dic $$0) {
+   boolean b(dih $$0) {
+      bas $$1 = this.H.e($$0.a());
+      return $$1 == bas.c ? this.l($$0) : $$1.a(true);
+   }
+
+   private boolean l(dih $$0) {
       for (arr $$1 : this.K.a()) {
          if (this.c($$1, $$0)) {
             return true;
@@ -875,9 +882,9 @@ public class aqu extends edg implements aqs.b, arf {
       return false;
    }
 
-   public List<arr> c(dic $$0) {
+   public List<arr> c(dih $$0) {
       long $$1 = $$0.a();
-      if (!this.H.e($$1)) {
+      if (!this.H.e($$1).a(true)) {
          return List.of();
       } else {
          Builder<arr> $$2 = ImmutableList.builder();
@@ -892,17 +899,25 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   private boolean c(arr $$0, dic $$1) {
-      if ($$0.U_()) {
+   private boolean c(arr $$0, dih $$1) {
+      if ($$0.V_()) {
          return false;
       } else {
-         double $$2 = a($$1, $$0);
+         double $$2 = a($$1, $$0.dt());
          return $$2 < 16384.0;
       }
    }
 
+   private static double a(dih $$0, feq $$1) {
+      double $$2 = (double)jx.a($$0.h, 8);
+      double $$3 = (double)jx.a($$0.i, 8);
+      double $$4 = $$2 - $$1.d;
+      double $$5 = $$3 - $$1.f;
+      return $$4 * $$4 + $$5 * $$5;
+   }
+
    private boolean c(arr $$0) {
-      return $$0.U_() && !this.t.O().c(dir.r);
+      return $$0.V_() && !this.t.O().c(diw.s);
    }
 
    void a(arr $$0, boolean $$1) {
@@ -973,7 +988,7 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    private void e(arr $$0) {
-      dic $$1 = $$0.dx();
+      dih $$1 = $$0.dx();
       int $$2 = this.b($$0);
       if ($$0.Y() instanceof aqz.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
@@ -995,7 +1010,7 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    @Override
-   public List<arr> a(dic $$0, boolean $$1) {
+   public List<arr> a(dih $$0, boolean $$1) {
       Set<arr> $$2 = this.K.a();
       Builder<arr> $$3 = ImmutableList.builder();
 
@@ -1008,9 +1023,9 @@ public class aqu extends edg implements aqs.b, arf {
       return $$3.build();
    }
 
-   protected void a(bwd $$0) {
-      if (!($$0 instanceof clt)) {
-         bwm<?> $$1 = $$0.aq();
+   protected void a(bwf $$0) {
+      if (!($$0 instanceof clx)) {
+         bwo<?> $$1 = $$0.aq();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
@@ -1036,7 +1051,7 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   protected void b(bwd $$0) {
+   protected void b(bwf $$0) {
       if ($$0 instanceof arr $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.L.values().iterator();
@@ -1069,7 +1084,7 @@ public class aqu extends edg implements aqs.b, arf {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            bwd $$7 = $$3.c;
+            bwf $$7 = $$3.c;
             if ($$7 instanceof arr) {
                $$1.add((arr)$$7);
             }
@@ -1092,27 +1107,27 @@ public class aqu extends edg implements aqs.b, arf {
       }
    }
 
-   public void a(bwd $$0, zf<?> $$1) {
+   public void a(bwf $$0, zf<?> $$1) {
       aqu.b $$2 = (aqu.b)this.L.get($$0.ar());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(bwd $$0, zf<?> $$1) {
+   protected void b(bwf $$0, zf<?> $$1) {
       aqu.b $$2 = (aqu.b)this.L.get($$0.ar());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<ebw> $$0) {
-      Map<arr, List<ecg>> $$1 = new HashMap<>();
+   public void b(List<ece> $$0) {
+      Map<arr, List<eco>> $$1 = new HashMap<>();
 
-      for (ebw $$2 : $$0) {
-         dic $$3 = $$2.f();
-         ecg $$5;
-         if ($$2 instanceof ecg $$4) {
+      for (ece $$2 : $$0) {
+         dih $$3 = $$2.f();
+         eco $$5;
+         if ($$2 instanceof eco $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.t.d($$3.h, $$3.i);
@@ -1126,7 +1141,7 @@ public class aqu extends edg implements aqs.b, arf {
       $$1.forEach(($$0x, $$1x) -> $$0x.f.b(acj.a($$1x)));
    }
 
-   protected cie m() {
+   protected cig m() {
       return this.A;
    }
 
@@ -1134,13 +1149,13 @@ public class aqu extends edg implements aqs.b, arf {
       return this.J;
    }
 
-   void a(dic $$0, are $$1) {
+   void a(dih $$0, are $$1) {
       this.G.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(dic $$0, int $$1) {
+   public void a(dih $$0, int $$1) {
       int $$2 = $$1 + 1;
-      dic.a($$0, $$2).forEach($$0x -> {
+      dih.a($$0, $$2).forEach($$0x -> {
          aqs $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.u.a($$0x.h, $$0x.i));
@@ -1149,7 +1164,7 @@ public class aqu extends edg implements aqs.b, arf {
    }
 
    class a extends ard {
-      protected a(final djs $$0, final Executor $$1, final Executor $$2) {
+      protected a(final djx $$0, final Executor $$1, final Executor $$2) {
          super($$0, $$1, $$2);
       }
 
@@ -1173,12 +1188,12 @@ public class aqu extends edg implements aqs.b, arf {
 
    class b {
       final aro b;
-      final bwd c;
+      final bwf c;
       private final int d;
       jx e;
       private final Set<asw> f = Sets.newIdentityHashSet();
 
-      public b(final bwd $$0, final int $$1, final int $$2, final boolean $$3) {
+      public b(final bwf $$0, final int $$1, final int $$2, final boolean $$3) {
          this.b = new aro(aqu.this.t, $$0, $$2, $$3, this::a, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1230,7 +1245,7 @@ public class aqu extends edg implements aqs.b, arf {
 
       public void b(arr $$0) {
          if ($$0 != this.c) {
-            fei $$1 = $$0.dt().d(this.c.dt());
+            feq $$1 = $$0.dt().d(this.c.dt());
             int $$2 = aqu.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.d * $$1.d + $$1.f * $$1.f;
@@ -1253,7 +1268,7 @@ public class aqu extends edg implements aqs.b, arf {
       private int b() {
          int $$0 = this.d;
 
-         for (bwd $$1 : this.c.dc()) {
+         for (bwf $$1 : this.c.dc()) {
             int $$2 = $$1.aq().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;

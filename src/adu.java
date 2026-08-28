@@ -1,5 +1,5 @@
-public record adu(int b, dev c) implements zf<abu> {
-   public static final yw<wj, adu> a = yw.a(yu.w, adu::b, dev.e, adu::e, adu::new);
+public record adu(int b, dfa c) implements zf<abu> {
+   public static final yw<wj, adu> a = yw.a(yu.w, adu::b, dfa.e, adu::e, adu::new);
 
    @Override
    public zh<adu> a() {
@@ -10,7 +10,7 @@ public record adu(int b, dev c) implements zf<abu> {
       $$0.a(this);
    }
 
-   public dev e() {
+   public dfa e() {
       return this.c;
    }
 }

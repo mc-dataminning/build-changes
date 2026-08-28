@@ -1,52 +1,81 @@
-public class crw extends crm {
-   public crw(bwm<? extends crw> $$0, div $$1) {
+public class crw extends crx {
+   public crw(bwo<? extends crw> $$0, dja $$1) {
       super($$0, $$1);
    }
 
-   public crw(div $$0, bxc $$1, fei $$2) {
-      super(bwm.bi, $$1, $$2, $$0);
-   }
-
-   public crw(div $$0, double $$1, double $$2, double $$3, fei $$4) {
-      super(bwm.bi, $$1, $$2, $$3, $$4, $$0);
+   public crw(dja $$0, clk $$1) {
+      this(bwo.ay, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.a($$1.aV * (float) (Math.PI / 180.0)),
+         $$1.dE() - 0.1F,
+         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.b($$1.aV * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
-   protected void a(fef $$0) {
+   protected double bd() {
+      return 0.06;
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      feq $$0 = this.dy();
+      feo $$1 = crz.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dA() + $$0.d;
+      double $$3 = this.dC() + $$0.e;
+      double $$4 = this.dG() + $$0.f;
+      this.A();
+      float $$5 = 0.99F;
+      if (this.dV().a(this.cR()).noneMatch(eag.a::l)) {
+         this.at();
+      } else if (this.bj()) {
+         this.at();
+      } else {
+         this.i($$0.c(0.99F));
+         this.bf();
+         this.a_($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(fen $$0) {
       super.a($$0);
-      if (this.dV() instanceof arq $$1) {
-         bwd var7 = $$0.a();
-         bwd $$4 = this.q();
-         int $$5 = var7.aG();
-         var7.e(5.0F);
-         bus $$6 = this.dW().a((crm)this, $$4);
-         if (!var7.a($$1, $$6, 5.0F)) {
-            var7.h($$5);
-         } else {
-            dfn.a($$1, var7, $$6);
+      if (this.q() instanceof bxe $$1) {
+         bwf $$2 = $$0.a();
+         buu $$3 = this.dW().b(this, $$1);
+         if (this.dV() instanceof arq $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dfs.a($$4, $$2, $$3);
          }
       }
    }
 
    @Override
-   protected void a(fee $$0) {
-      super.a($$0);
-      if (this.dV() instanceof arq $$1) {
-         bwd $$3 = this.q();
-         if (!($$3 instanceof bxe) || $$1.O().c(dir.c)) {
-            iu $$4 = $$0.b().a($$0.c());
-            if (this.dV().v($$4)) {
-               this.dV().b($$4, dln.a(this.dV(), $$4));
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(feg $$0) {
+   protected void a(fem $$0) {
       super.a($$0);
       if (!this.dV().C) {
          this.at();
       }
+   }
+
+   @Override
+   protected void a(akn.a $$0) {
+   }
+
+   @Override
+   public void a(abv $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dV().a(lx.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

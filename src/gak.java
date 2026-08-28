@@ -1,34 +1,44 @@
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public class gak {
-   private static final alg f = alg.b("tooltip/background");
-   private static final alg g = alg.b("tooltip/frame");
-   public static final int a = 12;
-   private static final int h = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int i = 9;
+public class gak implements gan {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
 
-   public static void a(fro $$0, int $$1, int $$2, int $$3, int $$4, int $$5, @Nullable alg $$6) {
-      int $$7 = $$1 - 3 - 9;
-      int $$8 = $$2 - 3 - 9;
-      int $$9 = $$3 + 3 + 3 + 18;
-      int $$10 = $$4 + 3 + 3 + 18;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, (float)$$5);
-      $$0.a(gqc::H, a($$6), $$7, $$8, $$9, $$10);
-      $$0.a(gqc::H, b($$6), $$7, $$8, $$9, $$10);
-      $$0.c().b();
+   public gak(gak.a $$0) {
+      this.c = $$0.a();
    }
 
-   private static alg a(@Nullable alg $$0) {
-      return $$0 == null ? f : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_background"));
+   @Override
+   public int a(frt $$0) {
+      return this.c.size() * 12 + 2;
    }
 
-   private static alg b(@Nullable alg $$0) {
-      return $$0 == null ? g : $$0.a((UnaryOperator<String>)($$0x -> "tooltip/" + $$0x + "_frame"));
+   @Override
+   public int b(frt $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(frt $$0, int $$1, int $$2, int $$3, int $$4, frv $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         fti.a($$5, foz.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+      }
+   }
+
+   public static record a(List<ProfileResult> a) implements cxc {
    }
 }

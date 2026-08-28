@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcv extends bhr {
    public bcv(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", biw.D, "minecraft:cat");
+      super($$0, $$1, "CatTypeFix", bix.D, "minecraft:cat");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

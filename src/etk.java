@@ -1,45 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class etk extends eqt {
+public class etk extends erb {
    public static final MapCodec<etk> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, etk::new)
+      $$0 -> $$0.group(a($$0), epi.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, etk::new)
    );
-   public final boolean e;
+   public final epi e;
 
-   public etk(eqt.c $$0, boolean $$1) {
+   public etk(erb.c $$0, epi $$1) {
       super($$0);
       this.e = $$1;
    }
 
    @Override
-   public Optional<eqt.b> a(eqt.a $$0) {
-      efy.a $$1 = this.e ? efy.a.a : efy.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
+   public Optional<erb.b> a(erb.a $$0) {
+      ehf $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      ehd $$5 = new ehd($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      djm $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      iu.a $$8 = new iu.a($$2, $$6, $$3);
 
-   private void a(erl $$0, eqt.a $$1) {
-      dst $$2 = dst.a($$1.f());
-      iu $$3 = new iu($$1.h().d(), 90, $$1.h().e());
-      etj.a $$4 = etj.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-      if ($$4.l()) {
-         eql $$5 = $$4.f();
-         int $$7;
-         if (this.e) {
-            int $$6 = eqt.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-            $$7 = $$4.a($$6, $$1.f());
-         } else {
-            $$7 = eqt.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+      while ($$6 > $$4) {
+         eah $$9 = $$7.a($$6);
+         eah $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dmh.en) || $$10.c(diq.a, $$8.q($$6), ja.b))) {
+            break;
          }
+      }
 
-         $$4.c($$7);
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         iu $$11 = new iu($$2, $$6, $$3);
+         return Optional.of(new erb.b($$11, (Consumer<ert>)($$3x -> etj.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public erc<?> e() {
-      return erc.m;
+   public erk<?> e() {
+      return erk.i;
    }
 }

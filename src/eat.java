@@ -1,7 +1,7 @@
 public enum eat implements bak {
-   a("uprooted"),
-   b("dormant"),
-   c("awake");
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 

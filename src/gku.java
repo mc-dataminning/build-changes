@@ -1,102 +1,67 @@
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
 public class gku {
-   final int a;
-   private final List<gku.a> b = new ArrayList<>();
+   private final gkw[] a;
+   private int b;
+
+   public static Codec<gku> a(int $$0) {
+      return Codec.list(gkw.a)
+         .comapFlatMap(
+            $$1 -> {
+               int $$2 = $$1.size();
+               return $$2 > $$0
+                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
+                  : DataResult.success(new gku($$0, $$1));
+            },
+            gku::c
+         );
+   }
 
    public gku(int $$0) {
-      this.a = $$0;
+      this.a = new gkw[$$0];
    }
 
-   public void a(gkm $$0, IntCollection $$1, gku.b $$2) {
-      IntSortedSet $$3 = new IntRBTreeSet($$1);
-
-      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
-         gko $$6 = $$0.b($$4);
-         if ($$6 instanceof gkp.a) {
-            gkp.a $$5 = (gkp.a)$$6;
-            boolean $$6x = this.b($$5.g());
-            if ($$3.remove($$4)) {
-               this.a($$5.g());
-               $$2.accept($$4, $$5);
-            } else if ($$6x) {
-               $$2.accept($$4, $$5);
-            }
-         }
-      }
+   private gku(int $$0, List<gkw> $$1) {
+      this.a = $$1.toArray(gkw[]::new);
+      this.b = $$1.size();
    }
 
-   public void a(xo $$0) {
-      this.b.add(new gku.a($$0));
-   }
+   private List<gkw> c() {
+      List<gkw> $$0 = new ArrayList<>(this.d());
 
-   public boolean b(xo $$0) {
-      boolean $$1 = false;
-      Iterator<gku.a> $$2 = this.b.iterator();
-
-      while ($$2.hasNext()) {
-         gku.a $$3 = $$2.next();
-         if ($$3.a($$0)) {
-            $$1 = true;
-            if ($$3.a()) {
-               $$2.remove();
-            }
-         }
+      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
+         $$0.add(this.b($$1));
       }
 
-      return $$1;
+      return $$0;
    }
 
-   public boolean a() {
-      return !this.b.isEmpty();
+   public void a(gkw $$0) {
+      this.a[this.c(this.b++)] = $$0;
    }
 
-   class a {
-      private final Set<xk> b;
-      private xo c;
-      private boolean d = true;
-      private int e;
-
-      a(final xo $$0) {
-         this.b = new ObjectOpenHashSet($$0.m().d().a());
-         this.c = $$0;
-      }
-
-      boolean a(xo $$0) {
-         if ($$0.equals(this.c)) {
-            return false;
-         } else {
-            boolean $$1 = this.b.remove($$0.l());
-            if (this.d && this.c.g().equals($$0.g())) {
-               if (this.c.k().a($$0.k())) {
-                  $$1 = true;
-                  this.c = $$0;
-               } else {
-                  this.d = false;
-               }
-            }
-
-            if ($$1) {
-               this.e++;
-            }
-
-            return $$1;
-         }
-      }
-
-      boolean a() {
-         return this.e >= gku.this.a || !this.d && this.b.isEmpty();
-      }
+   @Nullable
+   public gkw b(int $$0) {
+      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
    }
 
-   public interface b {
-      void accept(int var1, gkp.a var2);
+   private int c(int $$0) {
+      return $$0 % this.a.length;
+   }
+
+   public int a() {
+      return Math.max(this.b - this.a.length, 0);
+   }
+
+   public int b() {
+      return this.b - 1;
+   }
+
+   private int d() {
+      return this.b() - this.a() + 1;
    }
 }

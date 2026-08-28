@@ -1,218 +1,108 @@
-import java.util.ArrayList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fvp extends fvl {
-   private final List<fvs> c = new ArrayList<>();
-   private final List<fvp.a> d = new ArrayList<>();
-   private final fvt e = fvt.i();
-   private int f = 0;
-   private int g = 0;
+public record fvp(alg c, float d, float e, fvp.a f, String g) implements fvm {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fvp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alg.a.fieldOf("file").forGetter(fvp::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fvp::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fvp::e),
+               fvp.a.b.optionalFieldOf("shift", fvp.a.a).forGetter(fvp::f),
+               h.optionalFieldOf("skip", "").forGetter(fvp::g)
+            )
+            .apply($$0, fvp::new)
+   );
 
-   public fvp() {
-      this(0, 0);
-   }
-
-   public fvp(int $$0, int $$1) {
-      super($$0, $$1, 0, 0);
+   @Override
+   public fvn a() {
+      return fvn.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = 0;
-      int $$1 = 0;
+   public Either<fvm.b, fvm.c> b() {
+      return Either.left(this::a);
+   }
 
-      for (fvp.a $$2 : this.d) {
-         $$0 = Math.max($$2.c(), $$0);
-         $$1 = Math.max($$2.d(), $$1);
-      }
+   private fhj a(avd $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
 
-      int[] $$3 = new int[$$1 + 1];
-      int[] $$4 = new int[$$0 + 1];
+      try {
+         fhm var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fvl.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
 
-      for (fvp.a $$5 : this.d) {
-         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
-         c $$7 = new c($$6, $$5.e);
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fvl.a(FreeType.FT_New_Memory_Face(fvl.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
 
-         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
-            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fvl.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fhm($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
          }
 
-         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
-         c $$10 = new c($$9, $$5.f);
-
-         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
-            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
-         }
-      }
-
-      int[] $$12 = new int[$$1 + 1];
-      int[] $$13 = new int[$$0 + 1];
-      $$12[0] = 0;
-
-      for (int $$14 = 1; $$14 <= $$1; $$14++) {
-         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
-      }
-
-      $$13[0] = 0;
-
-      for (int $$15 = 1; $$15 <= $$0; $$15++) {
-         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
-      }
-
-      for (fvp.a $$16 : this.d) {
-         int $$17 = 0;
-
-         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
-            $$17 += $$3[$$18];
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fvl.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
          }
 
-         $$17 += this.g * ($$16.f - 1);
-         $$16.a(this.F() + $$12[$$16.d], $$17);
-         int $$19 = 0;
-
-         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
-            $$19 += $$4[$$20];
-         }
-
-         $$19 += this.f * ($$16.e - 1);
-         $$16.b(this.G() + $$13[$$16.c], $$19);
-      }
-
-      this.a = $$12[$$1] + $$3[$$1];
-      this.b = $$13[$$0] + $$4[$$0];
-   }
-
-   public <T extends fvs> T a(T $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2, this.b());
-   }
-
-   public <T extends fvs> T a(T $$0, int $$1, int $$2, fvt $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, $$3);
-   }
-
-   public <T extends fvs> T a(T $$0, int $$1, int $$2, Consumer<fvt> $$3) {
-      return this.a($$0, $$1, $$2, 1, 1, af.a(this.b(), $$3));
-   }
-
-   public <T extends fvs> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
-   }
-
-   public <T extends fvs> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fvt $$5) {
-      if ($$3 < 1) {
-         throw new IllegalArgumentException("Occupied rows must be at least 1");
-      } else if ($$4 < 1) {
-         throw new IllegalArgumentException("Occupied columns must be at least 1");
-      } else {
-         this.d.add(new fvp.a($$0, $$1, $$2, $$3, $$4, $$5));
-         this.c.add($$0);
-         return $$0;
+         MemoryUtil.memFree($$2);
+         throw var17;
       }
    }
 
-   public <T extends fvs> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fvt> $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, af.a(this.b(), $$5));
-   }
+   public static record a(float c, float d) {
+      public static final fvp.a a = new fvp.a(0.0F, 0.0F);
+      public static final Codec<fvp.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new fvp.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
 
-   public fvp a(int $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public fvp b(int $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public fvp c(int $$0) {
-      return this.a($$0).b($$0);
-   }
-
-   @Override
-   public void b(Consumer<fvs> $$0) {
-      this.c.forEach($$0);
-   }
-
-   public fvt b() {
-      return this.e.g();
-   }
-
-   public fvt c() {
-      return this.e;
-   }
-
-   public fvp.b d(int $$0) {
-      return new fvp.b($$0);
-   }
-
-   static class a extends fvl.a {
-      final int c;
-      final int d;
-      final int e;
-      final int f;
-
-      a(fvs $$0, int $$1, int $$2, int $$3, int $$4, fvt $$5) {
-         super($$0, $$5.h());
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+      public float a() {
+         return this.c;
       }
 
-      public int c() {
-         return this.c + this.e - 1;
-      }
-
-      public int d() {
-         return this.d + this.f - 1;
-      }
-   }
-
-   public final class b {
-      private final int b;
-      private int c;
-
-      b(final int $$1) {
-         this.b = $$1;
-      }
-
-      public <T extends fvs> T a(T $$0) {
-         return this.a($$0, 1);
-      }
-
-      public <T extends fvs> T a(T $$0, int $$1) {
-         return this.a($$0, $$1, this.c());
-      }
-
-      public <T extends fvs> T a(T $$0, fvt $$1) {
-         return this.a($$0, 1, $$1);
-      }
-
-      public <T extends fvs> T a(T $$0, int $$1, fvt $$2) {
-         int $$3 = this.c / this.b;
-         int $$4 = this.c % this.b;
-         if ($$4 + $$1 > this.b) {
-            $$3++;
-            $$4 = 0;
-            this.c = azm.d(this.c, this.b);
-         }
-
-         this.c += $$1;
-         return fvp.this.a($$0, $$3, $$4, 1, $$1, $$2);
-      }
-
-      public fvp a() {
-         return fvp.this;
-      }
-
-      public fvt b() {
-         return fvp.this.b();
-      }
-
-      public fvt c() {
-         return fvp.this.c();
+      public float b() {
+         return this.d;
       }
    }
 }

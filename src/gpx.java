@@ -1,211 +1,134 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.List;
-import java.util.Map;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import org.joml.Vector3f;
 
-public record gpx(Map<alg, gpx.d> b, List<gpx.e> c) {
-   public static final Codec<gpx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(alg.a, gpx.d.b).optionalFieldOf("targets", Map.of()).forGetter(gpx::a),
-               gpx.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gpx::b)
-            )
-            .apply($$0, gpx::new)
-   );
+public class gpx implements AutoCloseable {
+   public static final int a = 15728880;
+   public static final int b = 15728640;
+   public static final int c = 240;
+   private static final int d = 16;
+   private final fhv e;
+   private boolean f;
+   private float g;
+   private final gpq h;
+   private final foz i;
 
-   public Map<alg, gpx.d> a() {
-      return this.b;
+   public gpx(gpq $$0, foz $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.e = new fhv(16, 16, false);
+      this.e.a(9729);
+      this.e.a(1.0F, 1.0F, 1.0F, 1.0F);
+      this.e.f();
    }
 
-   public List<gpx.e> b() {
-      return this.c;
+   @Override
+   public void close() {
+      this.e.a();
    }
 
-   public static record a(int c, int d) implements gpx.d {
-      public static final Codec<gpx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ayu.m.fieldOf("width").forGetter(gpx.a::a), ayu.m.fieldOf("height").forGetter(gpx.a::b)).apply($$0, gpx.a::new)
-      );
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
+   public void a() {
+      this.g = this.g + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
+      this.g *= 0.9F;
+      this.f = true;
    }
 
-   public static record b() implements gpx.d {
-      public static final Codec<gpx.b> a = Codec.unit(gpx.b::new);
+   public void b() {
+      RenderSystem.setShaderTexture(2, 0);
    }
 
-   public sealed interface c permits gpx.g, gpx.f {
-      Codec<gpx.c> a = Codec.xor(gpx.g.b, gpx.f.b).xmap($$0 -> (gpx.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gpx.g $$3 -> Either.left($$3);
-            case gpx.f $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-
-      String a();
-
-      Set<alg> b();
+   public void c() {
+      RenderSystem.setShaderTexture(2, this.e.g());
    }
 
-   public sealed interface d permits gpx.b, gpx.a {
-      Codec<gpx.d> b = Codec.either(gpx.a.a, gpx.b.a).xmap($$0 -> (gpx.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case gpx.a $$3 -> Either.left($$3);
-            case gpx.b $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
+   private float a(bxe $$0, float $$1, float $$2) {
+      float $$3 = 0.45F * $$1;
+      return Math.max(0.0F, azm.b(((float)$$0.af - $$2) * (float) Math.PI * 0.025F) * $$3);
    }
 
-   public static record e(alg b, List<gpx.c> c, alg d, List<gpx.h> e) {
-      private static final Codec<List<gpx.c>> f = gpx.c.a.listOf().validate($$0 -> {
-         Set<String> $$1 = new ObjectArraySet($$0.size());
-
-         for (gpx.c $$2 : $$0) {
-            if (!$$1.add($$2.a())) {
-               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
+   public void a(float $$0) {
+      if (this.f) {
+         this.f = false;
+         bqo $$1 = bqn.a();
+         $$1.a("lightTex");
+         gjz $$2 = this.i.s;
+         if ($$2 != null) {
+            float $$3 = $$2.g(1.0F);
+            float $$4;
+            if ($$2.j() > 0) {
+               $$4 = 1.0F;
+            } else {
+               $$4 = $$3 * 0.95F + 0.05F;
             }
+
+            float $$6 = this.i.n.ao().c().floatValue();
+            float $$7 = this.i.t.a(bvl.G, $$0) * $$6;
+            float $$8 = this.a(this.i.t, $$7, $$0) * $$6;
+            float $$9 = this.i.t.D();
+            float $$10;
+            if (this.i.t.b(bvl.p)) {
+               $$10 = gpq.a(this.i.t, $$0);
+            } else if ($$9 > 0.0F && this.i.t.b(bvl.C)) {
+               $$10 = $$9;
+            } else {
+               $$10 = 0.0F;
+            }
+
+            Vector3f $$13 = new Vector3f($$3, $$3, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
+            float $$14 = this.g + 1.5F;
+            float $$15 = $$2.B_().s();
+            boolean $$16 = $$2.c().d();
+            float $$17 = this.i.n.as().c().floatValue();
+            gpj $$18 = Objects.requireNonNull(RenderSystem.setShader(gpk.b), "Lightmap shader not loaded");
+            $$18.c("AmbientLightFactor").a($$15);
+            $$18.c("SkyFactor").a($$4);
+            $$18.c("BlockFactor").a($$14);
+            $$18.c("UseBrightLightmap").a($$16 ? 1 : 0);
+            $$18.c("SkyLightColor").a($$13);
+            $$18.c("NightVisionFactor").a($$10);
+            $$18.c("DarknessScale").a($$8);
+            $$18.c("DarkenWorldFactor").a(this.h.c($$0));
+            $$18.c("BrightnessFactor").a(Math.max(0.0F, $$17 - $$7));
+            this.e.a(true);
+            fjm $$19 = RenderSystem.getQuadVertices();
+            $$19.a();
+            $$19.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+            fjm.b();
+            this.e.e();
+            $$1.c();
          }
-
-         return DataResult.success($$0);
-      });
-      public static final Codec<gpx.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alg.a.fieldOf("program").forGetter(gpx.e::c),
-                  f.optionalFieldOf("inputs", List.of()).forGetter(gpx.e::d),
-                  alg.a.fieldOf("output").forGetter(gpx.e::e),
-                  gpx.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gpx.e::f)
-               )
-               .apply($$0, gpx.e::new)
-      );
-
-      public gqk a() {
-         return new gqk(this.b, fja.e, gqi.a);
-      }
-
-      public Stream<alg> b() {
-         Stream<alg> $$0 = this.c.stream().flatMap($$0x -> $$0x.b().stream());
-         return Stream.concat($$0, Stream.of(this.d));
-      }
-
-      public alg c() {
-         return this.b;
-      }
-
-      public List<gpx.c> d() {
-         return this.c;
-      }
-
-      public alg e() {
-         return this.d;
-      }
-
-      public List<gpx.h> f() {
-         return this.e;
       }
    }
 
-   public static record f(String c, alg d, boolean e, boolean f) implements gpx.c {
-      public static final Codec<gpx.f> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gpx.f::a),
-                  alg.a.fieldOf("target").forGetter(gpx.f::c),
-                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gpx.f::d),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gpx.f::e)
-               )
-               .apply($$0, gpx.f::new)
-      );
-
-      @Override
-      public Set<alg> b() {
-         return Set.of(this.d);
-      }
-
-      @Override
-      public String a() {
-         return this.c;
-      }
-
-      public alg c() {
-         return this.d;
-      }
-
-      public boolean d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
+   public static float a(eee $$0, int $$1) {
+      return a($$0.s(), $$1);
    }
 
-   public static record g(String c, alg d, int e, int f, boolean g) implements gpx.c {
-      public static final Codec<gpx.g> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(gpx.g::a),
-                  alg.a.fieldOf("location").forGetter(gpx.g::c),
-                  ayu.m.fieldOf("width").forGetter(gpx.g::d),
-                  ayu.m.fieldOf("height").forGetter(gpx.g::e),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gpx.g::f)
-               )
-               .apply($$0, gpx.g::new)
-      );
-
-      @Override
-      public Set<alg> b() {
-         return Set.of();
-      }
-
-      @Override
-      public String a() {
-         return this.c;
-      }
-
-      public alg c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public boolean f() {
-         return this.g;
-      }
+   public static float a(float $$0, int $$1) {
+      float $$2 = (float)$$1 / 15.0F;
+      float $$3 = $$2 / (4.0F - 3.0F * $$2);
+      return azm.h($$0, $$3, 1.0F);
    }
 
-   public static record h(String b, List<Float> c) {
-      public static final Codec<gpx.h> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gpx.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(gpx.h::b))
-               .apply($$0, gpx.h::new)
-      );
+   public static int a(int $$0, int $$1) {
+      return $$0 << 4 | $$1 << 20;
+   }
 
-      public String a() {
-         return this.b;
-      }
+   public static int a(int $$0) {
+      return $$0 >>> 4 & 15;
+   }
 
-      public List<Float> b() {
-         return this.c;
+   public static int b(int $$0) {
+      return $$0 >>> 20 & 15;
+   }
+
+   public static int b(int $$0, int $$1) {
+      if ($$1 == 0) {
+         return $$0;
+      } else {
+         int $$2 = Math.max(b($$0), $$1);
+         int $$3 = Math.max(a($$0), $$1);
+         return a($$3, $$2);
       }
    }
 }

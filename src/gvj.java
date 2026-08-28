@@ -1,27 +1,20 @@
-public class gvj extends gxf<ciz, hdf, gfd> {
-   private static final alg a = alg.b("textures/entity/fish/cod.png");
+public class gvj extends gxn<cnm, hdn, gfa> {
+   private static final alg a = alg.b("textures/entity/blaze.png");
 
-   public gvj(gvz.a $$0) {
-      super($$0, new gfd($$0.a(git.ab)), 0.3F);
+   public gvj(gwh.a $$0) {
+      super($$0, new gfa($$0.a(gjb.D)), 0.5F);
+   }
+
+   protected int a(cnm $$0, iu $$1) {
+      return 15;
    }
 
    @Override
-   public alg b(hdf $$0) {
+   public alg b(hdn $$0) {
       return a;
    }
 
-   public hdf a() {
-      return new hdf();
-   }
-
-   @Override
-   protected void a(hdf $$0, fjc $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azm.a(0.6F * $$0.u);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.ak) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public hdn a() {
+      return new hdn();
    }
 }

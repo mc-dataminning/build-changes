@@ -5,16 +5,16 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 public class ahf implements zf<agp> {
    public static final yw<wj, ahf> a = zf.a(ahf::a, ahf::new);
    private static final int b = 128;
-   private static final yw<wj, Int2ObjectMap<cyy>> c = yu.a(Int2ObjectOpenHashMap::new, yu.e.a(Short::intValue, Integer::shortValue), cyy.h, 128);
+   private static final yw<wj, Int2ObjectMap<czd>> c = yu.a(Int2ObjectOpenHashMap::new, yu.e.a(Short::intValue, Integer::shortValue), czd.h, 128);
    private final int d;
    private final int e;
    private final int f;
    private final int g;
-   private final cvb h;
-   private final cyy i;
-   private final Int2ObjectMap<cyy> j;
+   private final cvg h;
+   private final czd i;
+   private final Int2ObjectMap<czd> j;
 
-   public ahf(int $$0, int $$1, int $$2, int $$3, cvb $$4, cyy $$5, Int2ObjectMap<cyy> $$6) {
+   public ahf(int $$0, int $$1, int $$2, int $$3, cvg $$4, czd $$5, Int2ObjectMap<czd> $$6) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -29,9 +29,9 @@ public class ahf implements zf<agp> {
       this.e = $$0.l();
       this.f = $$0.readShort();
       this.g = $$0.readByte();
-      this.h = $$0.b(cvb.class);
+      this.h = $$0.b(cvg.class);
       this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cyy.h.decode($$0);
+      this.i = czd.h.decode($$0);
    }
 
    private void a(wj $$0) {
@@ -41,7 +41,7 @@ public class ahf implements zf<agp> {
       $$0.l(this.g);
       $$0.a(this.h);
       c.encode($$0, this.j);
-      cyy.h.encode($$0, this.i);
+      czd.h.encode($$0, this.i);
    }
 
    @Override
@@ -65,15 +65,15 @@ public class ahf implements zf<agp> {
       return this.g;
    }
 
-   public cyy g() {
+   public czd g() {
       return this.i;
    }
 
-   public Int2ObjectMap<cyy> h() {
+   public Int2ObjectMap<czd> h() {
       return this.j;
    }
 
-   public cvb i() {
+   public cvg i() {
       return this.h;
    }
 

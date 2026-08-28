@@ -1,115 +1,81 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import com.mojang.serialization.MapCodec;
 
-public enum dst implements bak {
-   a(0, "none", h.a),
-   b(1, "clockwise_90", h.u),
-   c(2, "180", h.c),
-   d(3, "counterclockwise_90", h.v);
+public class dst extends doi {
+   public static final MapCodec<dst> a = b(dst::new);
+   public static final eay b = eax.v;
+   public static final ebh d = eax.aD;
 
-   public static final IntFunction<dst> e = ayc.a(dst::b, values(), ayc.a.b);
-   public static final Codec<dst> f = bak.a(dst::values);
-   public static final yw<ByteBuf, dst> g = yu.a(e, dst::b);
-   private final int h;
-   private final String i;
-   private final h j;
-
-   private dst(final int $$0, final String $$1, final h $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   @Override
+   public MapCodec<dst> a() {
+      return a;
    }
 
-   public dst a(dst $$0) {
-      return switch ($$0) {
-         case b -> {
-            switch (this) {
-               case a:
-                  yield b;
-               case b:
-                  yield c;
-               case c:
-                  yield d;
-               case d:
-                  yield a;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case c -> {
-            switch (this) {
-               case a:
-                  yield c;
-               case b:
-                  yield d;
-               case c:
-                  yield a;
-               case d:
-                  yield b;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         case d -> {
-            switch (this) {
-               case a:
-                  yield d;
-               case b:
-                  yield a;
-               case c:
-                  yield b;
-               case d:
-                  yield c;
-               default:
-                  throw new MatchException(null, null);
-            }
-         }
-         default -> this;
-      };
-   }
-
-   public h a() {
-      return this.j;
-   }
-
-   public ja a(ja $$0) {
-      if ($$0.o() == ja.a.b) {
-         return $$0;
-      } else {
-         return switch (this) {
-            case b -> $$0.h();
-            case c -> $$0.g();
-            case d -> $$0.i();
-            default -> $$0;
-         };
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return switch (this) {
-         case b -> ($$0 + $$1 / 4) % $$1;
-         case c -> ($$0 + $$1 / 2) % $$1;
-         case d -> ($$0 + $$1 * 3 / 4) % $$1;
-         default -> $$0;
-      };
-   }
-
-   public static dst a(azv $$0) {
-      return af.a(values(), $$0);
-   }
-
-   public static List<dst> b(azv $$0) {
-      return af.b(values(), $$0);
+   protected dst(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(e, ja.c).b(d, Integer.valueOf(1)).b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
+      if (!$$3.gk().e) {
+         return bud.e;
+      } else {
+         $$1.a($$2, $$0.a(d), 3);
+         return bud.a;
+      }
    }
 
-   private int b() {
-      return this.h;
+   @Override
+   protected int h(eah $$0) {
+      return $$0.c(d) * 2;
+   }
+
+   @Override
+   public eah a(dcw $$0) {
+      eah $$1 = super.a($$0);
+      return $$1.b(b, Boolean.valueOf(this.b($$0.q(), $$0.a(), $$1)));
+   }
+
+   @Override
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      if ($$4 == ja.a && !this.a($$1, $$5, $$6)) {
+         return dmh.a.m();
+      } else {
+         return !$$1.w_() && $$4.o() != $$0.c(e).o() ? $$0.b(b, Boolean.valueOf(this.b($$1, $$3, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   @Override
+   public boolean b(djd $$0, iu $$1, eah $$2) {
+      return this.a((djs)$$0, $$1, $$2) > 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if ($$0.c(c)) {
+         ja $$4 = $$0.c(e);
+         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
+         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         float $$8 = -5.0F;
+         if ($$3.h()) {
+            $$8 = (float)($$0.c(d) * 2 - 1);
+         }
+
+         $$8 /= 16.0F;
+         double $$9 = (double)($$8 * (float)$$4.j());
+         double $$10 = (double)($$8 * (float)$$4.l());
+         $$1.a(ls.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(e, d, b, c);
    }
 }

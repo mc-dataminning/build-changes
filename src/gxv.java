@@ -1,26 +1,33 @@
-public class gxv extends gxf<coe, hdv, ghe> {
-   private static final alg a = alg.b("textures/entity/illager/ravager.png");
+public class gxv extends gxn<cof, hdw, ggy> {
+   private static final alg a = alg.b("textures/entity/phantom.png");
 
-   public gxv(gvz.a $$0) {
-      super($$0, new ghe($$0.a(git.cH)), 1.1F);
+   public gxv(gwh.a $$0) {
+      super($$0, new ggy($$0.a(gjb.cc)), 0.75F);
+      this.a(new hat(this));
    }
 
-   public alg a(hdv $$0) {
+   public alg a(hdw $$0) {
       return a;
    }
 
-   public hdv b() {
-      return new hdv();
+   public hdw b() {
+      return new hdw();
    }
 
-   public void a(coe $$0, hdv $$1, float $$2) {
+   public void a(cof $$0, hdw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
-      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
-      if ($$0.gx() > 0) {
-         $$1.c = ((float)(20 - $$0.gx()) + $$2) / 20.0F;
-      } else {
-         $$1.c = 0.0F;
-      }
+      $$1.a = (float)$$0.m() + $$1.u;
+      $$1.b = $$0.j();
+   }
+
+   protected void a(hdw $$0, fjj $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(hdw $$0, fjj $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

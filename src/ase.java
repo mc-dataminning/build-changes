@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class ase implements asa {
    private final asc a;
-   private final Long2ObjectOpenHashMap<ecx> b = new Long2ObjectOpenHashMap();
-   private dic c = new dic(0, 0);
+   private final Long2ObjectOpenHashMap<edf> b = new Long2ObjectOpenHashMap();
+   private dih c = new dih(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -34,7 +34,7 @@ public class ase implements asa {
    }
 
    @Override
-   public void a(dic $$0) {
+   public void a(dih $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class ase implements asa {
    }
 
    @Override
-   public void a(dic $$0, @Nullable ecx $$1) {
+   public void a(dih $$0, @Nullable edf $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class ase implements asa {
    }
 
    @Nullable
-   public ecx a(int $$0, int $$1) {
-      return (ecx)this.b.get(dic.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
+   public edf a(int $$0, int $$1) {
+      return (edf)this.b.get(dih.c($$0 + this.c.h - this.e, $$1 + this.c.i - this.e));
    }
 }

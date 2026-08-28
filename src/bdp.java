@@ -12,7 +12,7 @@ public class bdp extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.w);
+      Type<?> $$0 = this.getInputSchema().getType(bix.w);
       return this.fixTypeEverywhereTyped(
          "Custom Model Data expansion", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("minecraft:custom_model_data", $$0xxx -> {
                   float $$1 = $$0xxx.asNumber(0.0F).floatValue();

@@ -1,11 +1,11 @@
 import java.util.List;
 
-public record aax(alf<div> c, eql d, List<aax.a> e) implements aai {
+public record aax(alf<dja> c, eqt d, List<aax.a> e) implements aai {
    public static final yw<vu, aax> a = aai.a(aax::a, aax::new);
    public static final aai.b<aax> b = aai.a("debug/structures");
 
    private aax(vu $$0) {
-      this($$0.a(mg.bn), b($$0), $$0.a(aax.a::new));
+      this($$0.a(mg.bo), b($$0), $$0.a(aax.a::new));
    }
 
    private void a(vu $$0) {
@@ -19,11 +19,11 @@ public record aax(alf<div> c, eql d, List<aax.a> e) implements aai {
       return b;
    }
 
-   static eql b(vu $$0) {
-      return new eql($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eqt b(vu $$0) {
+      return new eqt($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(vu $$0, eql $$1) {
+   static void a(vu $$0, eqt $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record aax(alf<div> c, eql d, List<aax.a> e) implements aai {
       $$0.q($$1.m());
    }
 
-   public alf<div> b() {
+   public alf<dja> b() {
       return this.c;
    }
 
-   public eql c() {
+   public eqt c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record aax(alf<div> c, eql d, List<aax.a> e) implements aai {
       return this.e;
    }
 
-   public static record a(eql a, boolean b) {
+   public static record a(eqt a, boolean b) {
       public a(vu $$0) {
          this(aax.b($$0), $$0.readBoolean());
       }

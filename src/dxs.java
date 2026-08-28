@@ -1,93 +1,256 @@
-public class dxs extends dyg {
-   public static final int d = 9;
-   private jn<cyy> e = jn.a(9, cyy.k);
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected dxs(dwz<?> $$0, iu $$1, dzz $$2) {
-      super($$0, $$1, $$2);
-   }
+public class dxs extends dxf {
+   private static final int b = 2;
+   private static final int c = 13;
+   private static final float d = -0.0375F;
+   private static final int e = 16;
+   private static final int f = 42;
+   private static final int g = 8;
+   private static final dmf[] h = new dmf[]{dmh.iB, dmh.iC, dmh.iK, dmh.iD};
+   public int a;
+   private float i;
+   private boolean j;
+   private boolean k;
+   private final List<iu> l = Lists.newArrayList();
+   @Nullable
+   private bxe m;
+   @Nullable
+   private UUID q;
+   private long r;
 
-   public dxs(iu $$0, dzz $$1) {
-      this(dwz.f, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   public int a(azv $$0) {
-      this.d_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
-   }
-
-   public cyy b(cyy $$0) {
-      int $$1 = this.f_($$0);
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         cyy $$3 = this.e.get($$2);
-         if ($$3.f() || cyy.c($$0, $$3)) {
-            int $$4 = Math.min($$0.M(), $$1 - $$3.M());
-            if ($$4 > 0) {
-               if ($$3.f()) {
-                  this.a($$2, $$0.a($$4));
-               } else {
-                  $$0.h($$4);
-                  $$3.g($$4);
-               }
-            }
-
-            if ($$0.f()) {
-               break;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   @Override
-   protected wy j() {
-      return wy.c("container.dispenser");
+   public dxs(iu $$0, eah $$1) {
+      super(dxh.A, $$0, $$1);
    }
 
    @Override
    protected void a(tz $$0, jg.a $$1) {
       super.a($$0, $$1);
-      this.e = jn.a(this.b(), cyy.k);
-      if (!this.b_($$0)) {
-         btv.b($$0, this.e, $$1);
+      if ($$0.b("Target")) {
+         this.q = $$0.a("Target");
+      } else {
+         this.q = null;
       }
    }
 
    @Override
    protected void b(tz $$0, jg.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         btv.a($$0, this.e, $$1);
+      if (this.m != null) {
+         $$0.a("Target", this.m.cG());
       }
    }
 
-   @Override
-   protected jn<cyy> f() {
-      return this.e;
+   public aca a() {
+      return aca.a(this);
    }
 
    @Override
-   protected void a(jn<cyy> $$0) {
-      this.e = $$0;
+   public tz a(jg.a $$0) {
+      return this.e($$0);
    }
 
-   @Override
-   protected cuq a(int $$0, cqx $$1) {
-      return new cvl($$0, $$1, this);
+   public static void a(dja $$0, iu $$1, eah $$2, dxs $$3) {
+      $$3.a++;
+      long $$4 = $$0.ae();
+      List<iu> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         $$3.j = a($$0, $$1, $$5);
+         a($$3, $$5);
+      }
+
+      a($$0, $$1, $$3);
+      a($$0, $$1, $$5, $$3.m, $$3.a);
+      if ($$3.c()) {
+         $$3.i++;
+      }
+   }
+
+   public static void b(dja $$0, iu $$1, eah $$2, dxs $$3) {
+      $$3.a++;
+      long $$4 = $$0.ae();
+      List<iu> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         boolean $$6 = a($$0, $$1, $$5);
+         if ($$6 != $$3.j) {
+            awm $$7 = $$6 ? awn.fA : awn.fE;
+            $$0.a(null, $$1, $$7, awo.e, 1.0F, 1.0F);
+         }
+
+         $$3.j = $$6;
+         a($$3, $$5);
+         if ($$6) {
+            b($$0, $$1, $$5);
+            a($$0, $$1, $$2, $$5, $$3);
+         }
+      }
+
+      if ($$3.c()) {
+         if ($$4 % 80L == 0L) {
+            $$0.a(null, $$1, awn.fB, awo.e, 1.0F, 1.0F);
+         }
+
+         if ($$4 > $$3.r) {
+            $$3.r = $$4 + 60L + (long)$$0.C_().a(40);
+            $$0.a(null, $$1, awn.fC, awo.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   private static void a(dxs $$0, List<iu> $$1) {
+      $$0.a($$1.size() >= 42);
+   }
+
+   private static boolean a(dja $$0, iu $$1, List<iu> $$2) {
+      $$2.clear();
+
+      for (int $$3 = -1; $$3 <= 1; $$3++) {
+         for (int $$4 = -1; $$4 <= 1; $$4++) {
+            for (int $$5 = -1; $$5 <= 1; $$5++) {
+               iu $$6 = $$1.b($$3, $$4, $$5);
+               if (!$$0.A($$6)) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      for (int $$7 = -2; $$7 <= 2; $$7++) {
+         for (int $$8 = -2; $$8 <= 2; $$8++) {
+            for (int $$9 = -2; $$9 <= 2; $$9++) {
+               int $$10 = Math.abs($$7);
+               int $$11 = Math.abs($$8);
+               int $$12 = Math.abs($$9);
+               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
+                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
+                  iu $$13 = $$1.b($$7, $$8, $$9);
+                  eah $$14 = $$0.a_($$13);
+
+                  for (dmf $$15 : h) {
+                     if ($$14.a($$15)) {
+                        $$2.add($$13);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$2.size() >= 16;
+   }
+
+   private static void b(dja $$0, iu $$1, List<iu> $$2) {
+      int $$3 = $$2.size();
+      int $$4 = $$3 / 7 * 16;
+      int $$5 = $$1.u();
+      int $$6 = $$1.v();
+      int $$7 = $$1.w();
+      fel $$8 = new fel((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
+         .g((double)$$4)
+         .b(0.0, (double)$$0.H_(), 0.0);
+      List<crc> $$9 = $$0.a(crc.class, $$8);
+      if (!$$9.isEmpty()) {
+         for (crc $$10 : $$9) {
+            if ($$1.a($$10.dv(), (double)$$4) && $$10.bl()) {
+               $$10.a(new bvj(bvl.C, 260, 0, true, true));
+            }
+         }
+      }
+   }
+
+   private static void a(dja $$0, iu $$1, eah $$2, List<iu> $$3, dxs $$4) {
+      bxe $$5 = $$4.m;
+      int $$6 = $$3.size();
+      if ($$6 < 42) {
+         $$4.m = null;
+      } else if ($$4.m == null && $$4.q != null) {
+         $$4.m = a($$0, $$1, $$4.q);
+         $$4.q = null;
+      } else if ($$4.m == null) {
+         List<bxe> $$7 = $$0.a(bxe.class, a($$1), $$0x -> $$0x instanceof cnv && $$0x.bl());
+         if (!$$7.isEmpty()) {
+            $$4.m = $$7.get($$0.A.a($$7.size()));
+         }
+      } else if (!$$4.m.bK() || !$$1.a($$4.m.dv(), 8.0)) {
+         $$4.m = null;
+      }
+
+      if ($$4.m != null) {
+         $$0.a(null, $$4.m.dA(), $$4.m.dC(), $$4.m.dG(), awn.fD, awo.e, 1.0F, 1.0F);
+         $$4.m.a($$0.al().q(), 4.0F);
+      }
+
+      if ($$5 != $$4.m) {
+         $$0.a($$1, $$2, $$2, 2);
+      }
+   }
+
+   private static void a(dja $$0, iu $$1, dxs $$2) {
+      if ($$2.q == null) {
+         $$2.m = null;
+      } else if ($$2.m == null || !$$2.m.cG().equals($$2.q)) {
+         $$2.m = a($$0, $$1, $$2.q);
+         if ($$2.m == null) {
+            $$2.q = null;
+         }
+      }
+   }
+
+   private static fel a(iu $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      return new fel((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
+   }
+
+   @Nullable
+   private static bxe a(dja $$0, iu $$1, UUID $$2) {
+      List<bxe> $$3 = $$0.a(bxe.class, a($$1), $$1x -> $$1x.cG().equals($$2));
+      return $$3.size() == 1 ? $$3.get(0) : null;
+   }
+
+   private static void a(dja $$0, iu $$1, List<iu> $$2, @Nullable bwf $$3, int $$4) {
+      azv $$5 = $$0.A;
+      double $$6 = (double)(azm.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
+      $$6 = ($$6 * $$6 + $$6) * 0.3F;
+      feq $$7 = new feq((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
+
+      for (iu $$8 : $$2) {
+         if ($$5.a(50) == 0) {
+            iu $$9 = $$8.b($$1);
+            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
+            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
+            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
+            $$0.a(lx.au, $$7.d, $$7.e, $$7.f, (double)$$10, (double)$$11, (double)$$12);
+         }
+      }
+
+      if ($$3 != null) {
+         feq $$13 = new feq($$3.dA(), $$3.dE(), $$3.dG());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dq());
+         float $$15 = -1.0F + $$5.i() * $$3.dr();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dq());
+         feq $$17 = new feq((double)$$14, (double)$$15, (double)$$16);
+         $$0.a(lx.au, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
+      }
+   }
+
+   public boolean c() {
+      return this.j;
+   }
+
+   public boolean d() {
+      return this.k;
+   }
+
+   private void a(boolean $$0) {
+      this.k = $$0;
+   }
+
+   public float a(float $$0) {
+      return (this.i + $$0) * -0.0375F;
    }
 }

@@ -1,22 +1,21 @@
-public class gyw extends gws<cop, hcx> {
-   private static final alg a = alg.b("textures/entity/illager/vindicator.png");
+public class gyw extends gvf<crn, her> {
+   public static final alg a = alg.b("textures/entity/projectiles/arrow.png");
+   public static final alg g = alg.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gyw(gvz.a $$0) {
-      super($$0, new ggf<>($$0.a(git.dJ)), 0.5F);
-      this.a(new haf<hcx, ggf<hcx>>(this) {
-         public void a(fjc $$0, gps $$1, int $$2, hcx $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gyw(gwh.a $$0) {
+      super($$0);
    }
 
-   public alg a(hcx $$0) {
-      return a;
+   protected alg a(her $$0) {
+      return $$0.d ? g : a;
    }
 
-   public hcx b() {
-      return new hcx();
+   public her a() {
+      return new her();
+   }
+
+   public void a(crn $$0, her $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.y() > 0;
    }
 }

@@ -1,193 +1,57 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public abstract class dhw implements eh {
-   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
-   private static final wy c = wy.b("@");
-   private long d = -1L;
-   private boolean e = true;
-   private int f;
-   private boolean g = true;
-   @Nullable
-   private wy h;
-   private String i = "";
-   @Nullable
-   private wy j;
+public record dhw(je<cyz> d, int e, kd f, czd g) {
+   public static final Codec<dhw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cyz.e.fieldOf("id").forGetter(dhw::a),
+               ayu.m.fieldOf("count").orElse(1).forGetter(dhw::b),
+               kd.a.optionalFieldOf("components", kd.c).forGetter(dhw::c)
+            )
+            .apply($$0, dhw::new)
+   );
+   public static final yw<wj, dhw> b = yw.a(cyz.f, dhw::a, yu.h, dhw::b, kd.b, dhw::c, dhw::new);
+   public static final yw<wj, Optional<dhw>> c = b.a(yu::a);
 
-   public int k() {
+   public dhw(diz $$0) {
+      this($$0, 1);
+   }
+
+   public dhw(diz $$0, int $$1) {
+      this($$0.h().e(), $$1, kd.c);
+   }
+
+   public dhw(je<cyz> $$0, int $$1, kd $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   }
+
+   public dhw a(UnaryOperator<kd.a> $$0) {
+      return new dhw(this.d, this.e, $$0.apply(kd.a()).a());
+   }
+
+   private static czd a(je<cyz> $$0, int $$1, kd $$2) {
+      return new czd($$0, $$1, $$2.c());
+   }
+
+   public boolean a(czd $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public je<cyz> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kd c() {
       return this.f;
    }
 
-   public void a(int $$0) {
-      this.f = $$0;
-   }
-
-   public wy l() {
-      return this.h == null ? wx.a : this.h;
-   }
-
-   public tz a(tz $$0, jg.a $$1) {
-      $$0.a("Command", this.i);
-      $$0.a("SuccessCount", this.f);
-      ale<uw> $$2 = $$1.a(un.a);
-      if (this.j != null) {
-         $$0.a("CustomName", xa.a, $$2, this.j);
-      }
-
-      $$0.a("TrackOutput", this.g);
-      if (this.h != null && this.g) {
-         $$0.a("LastOutput", xa.a, $$2, this.h);
-      }
-
-      $$0.a("UpdateLastExecution", this.e);
-      if (this.e && this.d > 0L) {
-         $$0.a("LastExecution", this.d);
-      }
-
-      return $$0;
-   }
-
-   public void b(tz $$0, jg.a $$1) {
-      this.i = $$0.l("Command");
-      this.f = $$0.h("SuccessCount");
-      this.b(dwx.a($$0.c("CustomName"), $$1));
-      if ($$0.b("TrackOutput", 1)) {
-         this.g = $$0.q("TrackOutput");
-      }
-
-      if ($$0.e("LastOutput") && this.g) {
-         this.h = dwx.a($$0.c("LastOutput"), $$1);
-      } else {
-         this.h = null;
-      }
-
-      if ($$0.e("UpdateLastExecution")) {
-         this.e = $$0.q("UpdateLastExecution");
-      }
-
-      if (this.e && $$0.e("LastExecution")) {
-         this.d = $$0.i("LastExecution");
-      } else {
-         this.d = -1L;
-      }
-   }
-
-   public void a(String $$0) {
-      this.i = $$0;
-      this.f = 0;
-   }
-
-   public String m() {
-      return this.i;
-   }
-
-   public boolean a(div $$0) {
-      if ($$0.C || $$0.ae() == this.d) {
-         return false;
-      } else if ("Searge".equalsIgnoreCase(this.i)) {
-         this.h = wy.b("#itzlipofutzli");
-         this.f = 1;
-         return true;
-      } else {
-         this.f = 0;
-         MinecraftServer $$1 = this.e().p();
-         if ($$1.q() && !bal.b(this.i)) {
-            try {
-               this.h = null;
-               ei $$2 = this.i().a((ef)(($$0x, $$1x) -> {
-                  if ($$0x) {
-                     this.f++;
-                  }
-               }));
-               $$1.aG().a($$2, this.i);
-            } catch (Throwable var6) {
-               o $$4 = o.a(var6, "Executing command block");
-               p $$5 = $$4.a("Command to be executed");
-               $$5.a("Command", this::m);
-               $$5.a("Name", () -> this.n().getString());
-               throw new z($$4);
-            }
-         }
-
-         if (this.e) {
-            this.d = $$0.ae();
-         } else {
-            this.d = -1L;
-         }
-
-         return true;
-      }
-   }
-
-   public wy n() {
-      return this.j != null ? this.j : c;
-   }
-
-   @Nullable
-   public wy o() {
-      return this.j;
-   }
-
-   public void b(@Nullable wy $$0) {
-      this.j = $$0;
-   }
-
-   @Override
-   public void a(wy $$0) {
-      if (this.g) {
-         this.h = wy.b("[" + b.format(new Date()) + "] ").b($$0);
-         this.f();
-      }
-   }
-
-   public abstract arq e();
-
-   public abstract void f();
-
-   public void c(@Nullable wy $$0) {
-      this.h = $$0;
-   }
-
-   public void a(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean p() {
+   public czd d() {
       return this.g;
    }
-
-   public bub a(cqy $$0) {
-      if (!$$0.gF()) {
-         return bub.e;
-      } else {
-         if ($$0.cU().C) {
-            $$0.a(this);
-         }
-
-         return bub.a;
-      }
-   }
-
-   public abstract fei g();
-
-   public abstract ei i();
-
-   @Override
-   public boolean t_() {
-      return this.e().O().c(dir.p) && this.g;
-   }
-
-   @Override
-   public boolean u_() {
-      return this.g;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e().O().c(dir.j);
-   }
-
-   public abstract boolean j();
 }

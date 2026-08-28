@@ -1,10 +1,10 @@
 public class axg {
-   public static final axr<eou> a = a("visible");
+   public static final axr<epc> a = a("visible");
 
    private axg() {
    }
 
-   private static axr<eou> a(String $$0) {
-      return axr.a(mg.aR, alg.b($$0));
+   private static axr<epc> a(String $$0) {
+      return axr.a(mg.aS, alg.b($$0));
    }
 }

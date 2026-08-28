@@ -9,7 +9,7 @@ import net.minecraft.obfuscate.DontObfuscate;
 @Name("minecraft.PacketReceived")
 @Label("Network Packet Received")
 @DontObfuscate
-public class PacketReceivedEvent extends bra {
+public class PacketReceivedEvent extends brc {
    public static final String NAME = "minecraft.PacketReceived";
    public static final EventType TYPE = EventType.getEventType(PacketReceivedEvent.class);
 

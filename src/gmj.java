@@ -1,63 +1,43 @@
-public class gmj extends goa {
-   private static final float a = 0.5F;
-   private static final float b = 0.3F;
-   private static final int F = 36;
-   private static final int G = 180;
+import org.joml.Vector3f;
 
-   gmj(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.C = true;
-      this.B = 0.96F;
-      this.D *= 0.75F;
-      this.k *= 0.8F;
-      this.j *= 0.8F;
-      this.l *= 0.8F;
+public class gmj extends gml<lr> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected gmj(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lr $$7, god $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.b(), $$9);
+      this.b = this.a($$7.c(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public gne b() {
-      return gne.c;
+   public void a(fjn $$0, fog $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public int a(float $$0) {
-      float $$1 = azm.a(((float)this.s + $$0) / (float)this.t, 0.0F, 1.0F);
-      if ($$1 > 0.5F) {
-         float $$2 = (1.0F - $$1) / 0.5F;
-         return (int)(255.0F * $$2);
-      } else if ($$1 < 0.3F) {
-         float $$3 = $$1 / 0.3F;
-         return (int)(255.0F * $$3);
-      } else {
-         return 255;
-      }
-   }
+   public static class a implements gnl<lr> {
+      private final god a;
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.c.a_(iu.a(this.g, this.h, this.i)).l()) {
-         this.k();
-      } else {
-         if (Math.random() > 0.95 || this.s == 1) {
-            this.b(-0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random(), -0.05F + 0.1F * Math.random());
-         }
-      }
-   }
-
-   public static class a implements gnd<mb> {
-      private final gnv a;
-
-      public a(gnv $$0) {
+      public a(god $$0) {
          this.a = $$0;
       }
 
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmj $$8 = new gmj($$1, $$2, $$3, $$4, 0.5 - $$1.A.j(), $$1.A.h() ? $$6 : -$$6, 0.5 - $$1.A.j());
-         $$8.a($$1.A.a(36, 180));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+      public gni a(lr $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

@@ -1,5 +1,5 @@
-public class het extends hcf {
-   public boolean a;
-   public float b;
-   public float c;
+public class het extends hdn {
+   public ckb.b a = ckb.b.g;
+   public int b = -1;
+   public int c = -1;
 }

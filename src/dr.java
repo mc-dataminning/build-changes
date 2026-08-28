@@ -8,8 +8,8 @@ public class dr extends dj<dr.a> {
       return dr.a.a;
    }
 
-   public void a(arr $$0, bwd $$1) {
-      eyz $$2 = bx.b($$0, $$1);
+   public void a(arr $$0, bwf $$1) {
+      ezh $$2 = bx.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class dr extends dj<dr.a> {
          return ap.o.a(new dr.a(Optional.empty(), Optional.of(bx.a($$0))));
       }
 
-      public boolean a(eyz $$0) {
+      public boolean a(ezh $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

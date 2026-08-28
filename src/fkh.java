@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fkh {
+public abstract class fkh extends RuntimeException {
+   @Nullable
+   public wy a() {
+      return null;
+   }
+
+   @Nullable
+   public wy[] b() {
+      return null;
+   }
 }

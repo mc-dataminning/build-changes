@@ -3,9 +3,9 @@ public class acb implements zf<abu> {
    private final iu b;
    private final int c;
    private final int d;
-   private final dma e;
+   private final dmf e;
 
-   public acb(iu $$0, dma $$1, int $$2, int $$3) {
+   public acb(iu $$0, dmf $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class acb implements zf<abu> {
       return this.d;
    }
 
-   public dma g() {
+   public dmf g() {
       return this.e;
    }
 }

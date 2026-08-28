@@ -1,29 +1,90 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record ciw(iv e, cte f) implements cta<ctd, ctb> {
-   public static final Codec<ciw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.b.forGetter(ciw::b), cte.b.fieldOf("spawn_conditions").forGetter(ciw::c)).apply($$0, ciw::new)
-   );
-   public static final Codec<ciw> b = RecordCodecBuilder.create($$0 -> $$0.group(iv.b.forGetter(ciw::b)).apply($$0, ciw::new));
-   public static final Codec<je<ciw>> c = ald.a(mg.aH);
-   public static final yw<wj, je<ciw>> d = yu.b(mg.aH);
+public interface ciw {
+   boolean m();
 
-   private ciw(iv $$0) {
-      this($$0, cte.a);
+   void w(boolean var1);
+
+   void a_(czd var1);
+
+   void h(tz var1);
+
+   czd S_();
+
+   awm n();
+
+   @Deprecated
+   static void a(bxg $$0, czd $$1) {
+      $$1.a(kj.g, $$0);
+      dbl.a(kj.Z, $$1, $$1x -> {
+         if ($$0.gg()) {
+            $$1x.a("NoAI", $$0.gg());
+         }
+
+         if ($$0.bb()) {
+            $$1x.a("Silent", $$0.bb());
+         }
+
+         if ($$0.bc()) {
+            $$1x.a("NoGravity", $$0.bc());
+         }
+
+         if ($$0.cn()) {
+            $$1x.a("Glowing", $$0.cn());
+         }
+
+         if ($$0.cC()) {
+            $$1x.a("Invulnerable", $$0.cC());
+         }
+
+         $$1x.a("Health", $$0.eG());
+      });
    }
 
-   @Override
-   public List<cta.a<ctd, ctb>> a() {
-      return this.f.a();
+   @Deprecated
+   static void a(bxg $$0, tz $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.d($$1.j("Health"));
+      }
    }
 
-   public iv b() {
-      return this.e;
-   }
+   static <T extends bxe & ciw> Optional<bud> a(crc $$0, buc $$1, T $$2) {
+      czd $$3 = $$0.b($$1);
+      if ($$3.h() == czh.rp && $$2.bK()) {
+         $$2.a($$2.n(), 1.0F, 1.0F);
+         czd $$4 = $$2.S_();
+         $$2.a_($$4);
+         czd $$5 = czg.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dja $$6 = $$2.dV();
+         if (!$$6.C) {
+            ap.k.a((arr)$$0, $$4);
+         }
 
-   public cte c() {
-      return this.f;
+         $$2.at();
+         return Optional.of(bud.a);
+      } else {
+         return Optional.empty();
+      }
    }
 }

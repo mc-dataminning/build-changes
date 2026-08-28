@@ -1,4 +1,3 @@
-public class hev extends hcw {
+public class hev extends hbr {
    public boolean a;
-   public boolean b;
 }

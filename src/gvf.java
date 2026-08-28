@@ -1,28 +1,28 @@
-public class gvf extends gut<cko, hbt, gey> {
-   private static final alg a = alg.b("textures/entity/camel/camel.png");
+public abstract class gvf<T extends crk, S extends hbt> extends gwg<T, S> {
+   private final ger a;
 
-   public gvf(gvz.a $$0) {
-      super($$0, new gey($$0.a(git.M)), new gey($$0.a(git.N)), 0.7F);
-      this.a(new hap<>(this, $$0.h(), hkv.d.i, $$0x -> $$0x.a, new gez($$0.a(git.O)), new gez($$0.a(git.P))));
+   public gvf(gwh.a $$0) {
+      super($$0);
+      this.a = new ger($$0.a(gjb.l));
    }
 
-   public alg a(hbt $$0) {
-      return a;
+   public void a(S $$0, fjj $$1, gqa $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      fjn $$4 = $$2.getBuffer(gqk.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hin.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hbt a() {
-      return new hbt();
-   }
+   protected abstract alg a(S var1);
 
-   public void a(cko $$0, hbt $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.a(bwn.h).v();
-      $$1.b = $$0.ca();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.bL);
-      $$1.e.a($$0.bM);
-      $$1.f.a($$0.bN);
-      $$1.g.a($$0.bO);
-      $$1.h.a($$0.bP);
+      $$1.a = $$0.k($$2);
+      $$1.b = $$0.l($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

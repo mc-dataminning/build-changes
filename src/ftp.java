@@ -1,17 +1,36 @@
-public record ftp(alg a, alg b, alg c, alg d) {
-   public ftp(alg $$0, alg $$1) {
-      this($$0, $$0, $$1, $$1);
+import javax.annotation.Nullable;
+
+public class ftp extends fsh {
+   @Nullable
+   protected ftw a;
+   protected boolean b;
+
+   public ftp(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wx.a);
+      this.b = $$4;
    }
 
-   public ftp(alg $$0, alg $$1, alg $$2) {
-      this($$0, $$1, $$2, $$1);
+   public void a(ftw $$0) {
+      this.a = $$0;
    }
 
-   public alg a(boolean $$0, boolean $$1) {
-      if ($$0) {
-         return $$1 ? this.c : this.a;
-      } else {
-         return $$1 ? this.d : this.b;
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(fwg $$0) {
+      this.c($$0);
+   }
+
+   @Override
+   public void b(frv $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gqk::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
       }
    }
 }

@@ -1,129 +1,87 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cqr implements dii {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final azv h = azv.a();
-   private final eys i;
-   private int j;
-   private int k;
-   private int l;
+public record cqr(wy q, Predicate<je<cij>> r, Predicate<je<cij>> s, ImmutableSet<cyz> t, ImmutableSet<dmf> u, @Nullable awm v) {
+   public static final Predicate<je<cij>> a = $$0 -> $$0.a(axm.a);
+   public static final alf<cqr> b = a("none");
+   public static final alf<cqr> c = a("armorer");
+   public static final alf<cqr> d = a("butcher");
+   public static final alf<cqr> e = a("cartographer");
+   public static final alf<cqr> f = a("cleric");
+   public static final alf<cqr> g = a("farmer");
+   public static final alf<cqr> h = a("fisherman");
+   public static final alf<cqr> i = a("fletcher");
+   public static final alf<cqr> j = a("leatherworker");
+   public static final alf<cqr> k = a("librarian");
+   public static final alf<cqr> l = a("mason");
+   public static final alf<cqr> m = a("nitwit");
+   public static final alf<cqr> n = a("shepherd");
+   public static final alf<cqr> o = a("toolsmith");
+   public static final alf<cqr> p = a("weaponsmith");
 
-   public cqr(eys $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.t();
-      this.l = $$0.u();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.d(this.k);
-         this.l = 25;
-         $$0.e(this.l);
-      }
+   private static alf<cqr> a(String $$0) {
+      return alf.a(mg.aD, alg.b($$0));
    }
 
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if ($$0.O().c(dir.M)) {
-         if (--this.j <= 0) {
-            this.j = 1200;
-            this.k -= 1200;
-            this.i.d(this.k);
-            if (this.k <= 0) {
-               this.k = 24000;
-               if ($$0.O().c(dir.e)) {
-                  int $$3 = this.l;
-                  this.l = azm.a(this.l + 25, 25, 75);
-                  this.i.e(this.l);
-                  if (this.h.a(100) <= $$3) {
-                     if (this.a($$0)) {
-                        this.l = 25;
-                     }
-                  }
-               }
-            }
-         }
-      }
+   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, alf<cij> $$2, @Nullable awm $$3) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
    }
 
-   private boolean a(arq $$0) {
-      cqy $$1 = $$0.k();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         iu $$2 = $$1.dv();
-         int $$3 = 48;
-         cie $$4 = $$0.A();
-         Optional<iu> $$5 = $$4.d($$0x -> $$0x.a(cii.o), $$0x -> true, $$2, 48, cie.b.c);
-         iu $$6 = $$5.orElse($$2);
-         iu $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.u($$7).a(axb.ah)) {
-               return false;
-            }
-
-            cqq $$8 = bwm.bF.a($$0, $$7, bwl.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cG());
-               $$8.t(48000);
-               $$8.h($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, Predicate<je<cij>> $$2, Predicate<je<cij>> $$3, @Nullable awm $$4) {
+      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
    }
 
-   private void a(arq $$0, cqq $$1, int $$2) {
-      iu $$3 = this.a($$0, $$1.dv(), $$2);
-      if ($$3 != null) {
-         cll $$4 = bwm.by.a($$0, $$3, bwl.h);
-         if ($$4 != null) {
-            $$4.a_($$1, true);
-         }
-      }
+   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, alf<cij> $$2, ImmutableSet<cyz> $$3, ImmutableSet<dmf> $$4, @Nullable awm $$5) {
+      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
+   }
+
+   private static cqr a(
+      jr<cqr> $$0, alf<cqr> $$1, Predicate<je<cij>> $$2, Predicate<je<cij>> $$3, ImmutableSet<cyz> $$4, ImmutableSet<dmf> $$5, @Nullable awm $$6
+   ) {
+      return jr.a($$0, $$1, new cqr(wy.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
+   }
+
+   public static cqr a(jr<cqr> $$0) {
+      a($$0, b, cij.a, a, null);
+      a($$0, c, cik.a, awn.Cd);
+      a($$0, d, cik.b, awn.Ce);
+      a($$0, e, cik.c, awn.Cf);
+      a($$0, f, cik.d, awn.Cg);
+      a($$0, g, cik.e, ImmutableSet.of(czh.qk, czh.qj, czh.ww, czh.sG), ImmutableSet.of(dmh.cN), awn.Ch);
+      a($$0, h, cik.f, awn.Ci);
+      a($$0, i, cik.g, awn.Cj);
+      a($$0, j, cik.h, awn.Ck);
+      a($$0, k, cik.i, awn.Cl);
+      a($$0, l, cik.j, awn.Cm);
+      a($$0, m, cij.a, cij.a, null);
+      a($$0, n, cik.k, awn.Cn);
+      a($$0, o, cik.l, awn.Co);
+      return a($$0, p, cik.m, awn.Cp);
+   }
+
+   public wy a() {
+      return this.q;
+   }
+
+   public Predicate<je<cij>> b() {
+      return this.r;
+   }
+
+   public Predicate<je<cij>> c() {
+      return this.s;
+   }
+
+   public ImmutableSet<cyz> d() {
+      return this.t;
+   }
+
+   public ImmutableSet<dmf> e() {
+      return this.u;
    }
 
    @Nullable
-   private iu a(diy $$0, iu $$1, int $$2) {
-      iu $$3 = null;
-      bxv $$4 = bxx.a(bwm.bF);
-
-      for (int $$5 = 0; $$5 < 10; $$5++) {
-         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$8 = $$0.a(efy.a.b, $$6, $$7);
-         iu $$9 = new iu($$6, $$8, $$7);
-         if ($$4.isSpawnPositionOk($$0, $$9, bwm.bF)) {
-            $$3 = $$9;
-            break;
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(dib $$0, iu $$1) {
-      for (iu $$2 : iu.c($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).g($$0, $$2).c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public awm f() {
+      return this.v;
    }
 }

@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class cfx<T extends bxe & bxh> extends cdy {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cfx extends cga {
+   private final bya a;
+   private bxe b;
+   private int c;
 
-   public cfx(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cfx(bya $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(cea.a.d));
    }
 
    @Override
    public boolean b() {
-      return a(this.b).O().c(dir.P) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.eq() != null && this.b.eq().aq() == bwm.bS && this.b.es() > this.d;
+      if (this.a.q() && !this.a.gr()) {
+         bxe $$0 = this.a.e();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.er();
+            int $$1 = $$0.et();
+            return $$1 != this.c && this.a(this.b, cht.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.es();
-      this.b.X_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bxh)$$0).forEach(bxh::X_);
+      this.e.g(this.b);
+      bxe $$0 = this.a.e();
+      if ($$0 != null) {
+         this.c = $$0.et();
       }
 
       super.d();
-   }
-
-   private List<? extends bxe> i() {
-      double $$0 = this.b.h(byi.m);
-      fed $$1 = fed.a(this.b.dt()).c($$0, 10.0, $$0);
-      return this.b.dV().a((Class<? extends bxe>)this.b.getClass(), $$1, bwk.f);
    }
 }

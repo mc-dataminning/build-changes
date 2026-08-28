@@ -1,22 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
+public class gbb extends gbh {
+   private static final wy a = wy.c("options.chat.title");
 
-public class gbb extends gba {
-   private static final wy a = wy.c("options.skinCustomisation.title");
+   private static fpc<?>[] a(fpd $$0) {
+      return new fpc[]{
+         $$0.n(),
+         $$0.N(),
+         $$0.O(),
+         $$0.P(),
+         $$0.o(),
+         $$0.s(),
+         $$0.y(),
+         $$0.p(),
+         $$0.C(),
+         $$0.z(),
+         $$0.B(),
+         $$0.A(),
+         $$0.av(),
+         $$0.M(),
+         $$0.ah(),
+         $$0.Y(),
+         $$0.aj()
+      };
+   }
 
-   public gbb(fxu $$0, fow $$1) {
+   public gbb(fyb $$0, fpd $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      List<fsa> $$0 = new ArrayList<>();
-
-      for (cqz $$1 : cqz.values()) {
-         $$0.add(fsj.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
-      }
-
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      this.d.a(a(this.c));
    }
 }

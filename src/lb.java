@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record lb(Optional<bf<asi<wy>, lb.a>> c, Optional<String> d, Optional<String> e, cv.d f, Optional<Boolean> g) implements dk<dci> {
+public record lb(Optional<bf<asi<wy>, lb.a>> c, Optional<String> d, Optional<String> e, cv.d f, Optional<Boolean> g) implements dk<dcn> {
    public static final Codec<lb> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bf.a(lb.a.a).optionalFieldOf("pages").forGetter(lb::b),
@@ -16,11 +16,11 @@ public record lb(Optional<bf<asi<wy>, lb.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public ki<dci> a() {
+   public ki<dcn> a() {
       return kj.V;
    }
 
-   public boolean a(dci $$0) {
+   public boolean a(dcn $$0) {
       if (this.d.isPresent() && !this.d.get().equals($$0.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$0.d().a())) {

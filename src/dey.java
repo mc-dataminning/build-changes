@@ -1,9 +1,19 @@
-public class dey {
-   public static dev.a<?> a(jr<dev.a<?>> $$0) {
-      jr.a($$0, "crafting_shapeless", dfa.c);
-      jr.a($$0, "crafting_shaped", dez.c);
-      jr.a($$0, "furnace", deu.c);
-      jr.a($$0, "stonecutter", dff.c);
-      return jr.a($$0, "smithing", dfe.c);
+import java.util.List;
+
+public interface dey<T> {
+   public interface a<T> extends dey<T> {
+      T a(T var1, List<T> var2);
+   }
+
+   public interface b<T> extends dey<T> {
+      default T a(je<cyz> $$0) {
+         return this.a(new czd($$0));
+      }
+
+      default T a(cyz $$0) {
+         return this.a(new czd($$0));
+      }
+
+      T a(czd var1);
    }
 }

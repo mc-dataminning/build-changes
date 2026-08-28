@@ -36,7 +36,7 @@ public enum ja implements bak {
    private final ja.a o;
    private final ja.b p;
    private final jz q;
-   private final fei r;
+   private final feq r;
    private static final ja[] s = values();
    private static final ja[] t = Arrays.stream(s).sorted(Comparator.comparingInt($$0 -> $$0.k)).toArray(ja[]::new);
    private static final ja[] u = Arrays.stream(s).filter($$0 -> $$0.o().d()).sorted(Comparator.comparingInt($$0 -> $$0.m)).toArray(ja[]::new);
@@ -49,10 +49,10 @@ public enum ja implements bak {
       this.o = $$5;
       this.p = $$4;
       this.q = $$6;
-      this.r = fei.a($$6);
+      this.r = feq.a($$6);
    }
 
-   public static ja[] a(bwd $$0) {
+   public static ja[] a(bwf $$0) {
       float $$1 = $$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.j(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = azm.a($$1);
@@ -134,7 +134,7 @@ public enum ja implements bak {
       return this.p;
    }
 
-   public static ja a(bwd $$0, ja.a $$1) {
+   public static ja a(bwf $$0, ja.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.j(1.0F)) ? f : e;
          case b -> $$0.i(1.0F) < 0.0F ? b : a;
@@ -298,7 +298,7 @@ public enum ja implements bak {
       return $$3;
    }
 
-   public static ja a(fei $$0) {
+   public static ja a(feq $$0) {
       return a($$0.d, $$0.e, $$0.f);
    }
 
@@ -353,7 +353,7 @@ public enum ja implements bak {
       return this.q;
    }
 
-   public fei r() {
+   public feq r() {
       return this.r;
    }
 

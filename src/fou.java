@@ -1,37 +1,66 @@
-import java.util.function.IntFunction;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum fou {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class fou {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final goz[] e = new goz[9];
+   private boolean f;
 
-   private static final IntFunction<fou> e = ayc.a(fou::a, values(), ayc.a.b);
-   private final int f;
-   private final wy g;
+   public fou(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   private fou(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = wy.c($$1);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new goz();
+      }
    }
 
-   public int a() {
-      return this.f;
+   private void b() {
+      try {
+         tz $$0 = um.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = uo.b($$0, 1343);
+         $$0 = bbb.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = goz.a.parse(un.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(goz::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   public wy b() {
-      return this.g;
+   public void a() {
+      try {
+         tz $$0 = uo.e(new tz());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            goz $$2 = this.a($$1);
+            DataResult<uw> $$3 = goz.a.encodeStart(un.a, $$2);
+            $$0.a(String.valueOf($$1), (uw)$$3.getOrThrow());
+         }
+
+         um.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
    }
 
-   public static fou a(int $$0) {
-      return e.apply($$0);
-   }
+   public goz a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
 
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+      return this.e[$$0];
    }
 }

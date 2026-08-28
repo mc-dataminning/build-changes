@@ -1,26 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class caw {
-   public static byu<bxc> a() {
-      return ccg.a((Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$0 -> $$0.a((ccj<bxc>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               byc<?> $$3 = $$1.eb();
-               csn $$4 = $$0x.d($$1.dv());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(csr.h);
-                     $$3.a(csr.h);
-                  } else {
-                     $$3.b(csr.i);
-                     $$3.a(csr.i);
-                  }
-               }
+   private static final int a = 300;
 
-               return true;
-            }
-         }))));
+   public static byw<bxe> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return cci.a(
+         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$3x -> $$3x.group($$3x.b(cgg.D), $$3x.b(cgg.E))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        iu $$11 = $$3x.<jd>b($$4).b();
+                        if ($$11.a($$7.dv(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.ec().a($$6.af(), $$6.ae());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

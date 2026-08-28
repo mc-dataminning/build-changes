@@ -1,30 +1,91 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public class ddc extends ddk {
+   public ddc(ddh $$0) {
+      super($$0);
+   }
 
-public enum ddc implements bak {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+   public boolean a(ddi $$0, dja $$1) {
+      if ($$0.e() != 2) {
+         return false;
+      } else {
+         cyb $$2 = null;
+         boolean $$3 = false;
+         boolean $$4 = false;
 
-   public static final Codec<ddc> e = bak.a(ddc::values);
-   public static final IntFunction<ddc> f = ayc.a(ddc::a, values(), ayc.a.a);
-   public static final yw<ByteBuf, ddc> g = yu.a(f, ddc::a);
-   private final String h;
-   private final int i;
+         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+            czd $$6 = $$0.a($$5);
+            if (!$$6.f()) {
+               cyz $$7 = $$6.h();
+               if (!($$7 instanceof cxj)) {
+                  return false;
+               }
 
-   private ddc(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+               cxj $$8 = (cxj)$$7;
+               if ($$2 == null) {
+                  $$2 = $$8.a();
+               } else if ($$2 != $$8.a()) {
+                  return false;
+               }
+
+               int $$10 = $$6.a(kj.am, dwv.a).b().size();
+               if ($$10 > 6) {
+                  return false;
+               }
+
+               if ($$10 > 0) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$4 && $$3;
+      }
+   }
+
+   public czd a(ddi $$0, jg.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         czd $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kj.am, dwv.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
+         }
+      }
+
+      return czd.k;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public jn<czd> a(ddi $$0) {
+      jn<czd> $$1 = jn.a($$0.a(), czd.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         czd $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            czd $$4 = $$3.h().i();
+            if (!$$4.f()) {
+               $$1.set($$2, $$4);
+            } else if (!$$3.a(kj.am, dwv.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public dee<ddc> a() {
+      return dee.k;
    }
 }

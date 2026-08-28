@@ -1,41 +1,66 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class ezx extends fam {
-   public static final MapCodec<ezx> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ezx::new));
+public abstract class ezx implements ezp {
+   protected final List<fcq> e;
+   private final Predicate<ezh> a;
 
-   private ezx(List<fci> $$0) {
-      super($$0);
+   protected ezx(List<fcq> $$0) {
+      this.e = $$0;
+      this.a = af.a($$0);
    }
 
-   @Override
-   public fao<ezx> b() {
-      return fap.z;
+   protected static <T extends ezx> P1<Mu<T>, List<fcq>> a(Instance<T> $$0) {
+      return $$0.group(fcq.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      Float $$2 = $$1.c(fbt.j);
-      if ($$2 != null) {
-         azv $$3 = $$1.b();
-         float $$4 = 1.0F / $$2;
-         int $$5 = $$0.M();
-         int $$6 = 0;
+   public void a(ezn $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
+   }
 
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            if ($$3.i() <= $$4) {
-               $$6++;
-            }
-         }
+   protected final boolean a(ezh $$0) {
+      return this.a.test($$0);
+   }
 
-         $$0.e($$6);
+   public abstract ezy a();
+
+   public abstract static class a<T extends ezx.a<T>> implements fci<T> {
+      private final Builder<fcq> a = ImmutableList.builder();
+
+      protected abstract T aB_();
+
+      public T a(fcq.a $$0) {
+         this.a.add($$0.build());
+         return this.aB_();
       }
 
-      return $$0;
-   }
+      public final T e() {
+         return this.aB_();
+      }
 
-   public static fam.a<?> c() {
-      return a(ezx::new);
+      protected List<fcq> f() {
+         return this.a.build();
+      }
+
+      public ezo.a a(ezx.a<?> $$0) {
+         return new ezo.a(this, $$0);
+      }
+
+      public ezt.a b(ezx.a<?> $$0) {
+         return new ezt.a(this, $$0);
+      }
+
+      public fab.a c(ezx.a<?> $$0) {
+         return new fab.a(this, $$0);
+      }
+
+      public abstract ezx b();
    }
 }

@@ -43,11 +43,11 @@ public interface en {
       return Collections.singleton(en.b.b);
    }
 
-   Set<alf<div>> t();
+   Set<alf<dja>> t();
 
    js u();
 
-   cuh v();
+   cum v();
 
    default void a(jr<?> $$0, en.a $$1, SuggestionsBuilder $$2) {
       if ($$1.a()) {

@@ -1,49 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record fco(float b, dfs c, je<dfl> g) implements fci {
-   public static final MapCodec<fco> a = RecordCodecBuilder.mapCodec(
+public record fco(Optional<ct> b, iu c) implements fcq {
+   private static final MapCodec<iu> g = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(fco::c),
-               dfs.b.fieldOf("enchanted_chance").forGetter(fco::d),
-               dfl.c.fieldOf("enchantment").forGetter(fco::e)
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(jz::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(jz::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(jz::w)
             )
-            .apply($$0, fco::new)
+            .apply($$0, iu::new)
+   );
+   public static final MapCodec<fco> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ct.a.optionalFieldOf("predicate").forGetter(fco::c), g.forGetter(fco::d)).apply($$0, fco::new)
    );
 
    @Override
-   public fcj b() {
-      return fck.e;
+   public fcr b() {
+      return fcs.n;
+   }
+
+   public boolean a(ezh $$0) {
+      feq $$1 = $$0.c(fcb.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Set.of(fbt.d);
+      return Set.of(fcb.f);
    }
 
-   public boolean a(eyz $$0) {
-      bwd $$1 = $$0.c(fbt.d);
-      int $$3 = $$1 instanceof bxc $$2 ? dfn.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
+   public static fcq.a a(ct.a $$0) {
+      return () -> new fco(Optional.of($$0.b()), iu.c);
    }
 
-   public static fci.a a(jg.a $$0, float $$1, float $$2) {
-      jg.b<dfl> $$3 = $$0.e(mg.aQ);
-      return () -> new fco($$1, new dfs.e($$1 + $$2, $$2), $$3.b(dfq.s));
+   public static fcq.a a(ct.a $$0, iu $$1) {
+      return () -> new fco(Optional.of($$0.b()), $$1);
    }
 
-   public float c() {
+   public Optional<ct> c() {
       return this.b;
    }
 
-   public dfs d() {
+   public iu d() {
       return this.c;
-   }
-
-   public je<dfl> e() {
-      return this.g;
    }
 }

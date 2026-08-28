@@ -1,66 +1,153 @@
-public class ftl extends fsa {
-   private static final ftp a = new ftp(
-      alg.b("widget/tab_selected"), alg.b("widget/tab"), alg.b("widget/tab_selected_highlighted"), alg.b("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fug m;
-   private final fuf n;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public ftl(fug $$0, fuf $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public class ftl extends fyb {
+   private static final alg a = alg.b("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int d = 6;
+   private static final int s = 130;
+   private static final int u = 64;
+   private static final int v = 250;
+   private final fyb w;
+   @Nullable
+   private final alg x;
+   private final wy y;
+   private final List<ftl.b> z;
+   @Nullable
+   private final Runnable A;
+   private final int B;
+   private final fwb C = fwb.d();
+
+   ftl(fyb $$0, int $$1, @Nullable alg $$2, wy $$3, wy $$4, List<ftl.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.w = $$0;
+      this.x = $$2;
+      this.y = $$4;
+      this.z = $$5;
+      this.A = $$6;
+      this.B = $$1 - 36;
    }
 
    @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      $$0.a(gqc::H, a.a(this.b(), this.D()), this.F(), this.G(), this.g, this.h);
-      frm $$4 = fos.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.F() + 2, this.G() + 2, this.H() - 2, this.I());
-         this.b($$0, $$4, $$5);
+   public void aG_() {
+      super.aG_();
+      this.w.o();
+   }
+
+   @Override
+   protected void aO_() {
+      this.w.b(this.m, this.n, this.o);
+      this.C.a(12).c().b();
+      this.C.a(new ftd(this.l.f().a(n.r), this.p).d(this.B).b(true));
+      if (this.x != null) {
+         this.C.a(fsw.a(130, 64, this.x, 130, 64));
+      }
+
+      this.C.a(new ftd(this.y, this.p).d(this.B).b(true));
+      this.C.a(this.m());
+      this.C.a($$1 -> {
+         fsh var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   private fwb m() {
+      int $$0 = 6 * (this.z.size() - 1);
+      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
+      fwb $$2 = fwb.e();
+      $$2.a(6);
+
+      for (ftl.b $$3 : this.z) {
+         $$2.a(fsj.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.w.a(this.m, this.n, this.o);
+      this.C.a();
+      fvv.a(this.C, this.J());
+   }
+
+   @Override
+   public void b(frv $$0, int $$1, int $$2, float $$3) {
+      this.w.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.b($$0);
+      $$0.a(gqk::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(this.l, this.y);
+   }
+
+   @Override
+   public void aL_() {
+      if (this.A != null) {
+         this.A.run();
+      }
+
+      this.m.a(this.w);
+   }
+
+   public static class a {
+      private final fyb a;
+      private final wy b;
+      private wy c = wx.a;
+      private int d = 250;
+      @Nullable
+      private alg e;
+      private final List<ftl.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
+
+      public a(fyb $$0, wy $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ftl.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ftl.a a(alg $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public ftl.a a(wy $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public ftl.a a(wy $$0, Consumer<ftl> $$1) {
+         this.f.add(new ftl.b($$0, $$1));
+         return this;
+      }
+
+      public ftl.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public ftl a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new ftl(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
       }
    }
 
-   protected void a(fro $$0, int $$1, int $$2, int $$3, int $$4) {
-      fxu.a($$0, fxu.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
-   }
-
-   public void a(fro $$0, frm $$1, int $$2) {
-      int $$3 = this.F() + 1;
-      int $$4 = this.G() + (this.b() ? 0 : 3);
-      int $$5 = this.F() + this.A() - 1;
-      int $$6 = this.G() + this.y();
-      a($$0, $$1, this.B(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(fro $$0, frm $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.B()), this.A() - 4);
-      int $$4 = this.F() + (this.A() - $$3) / 2;
-      int $$5 = this.G() + this.y() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fvz $$0) {
-      $$0.a(fvy.a, wy.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(hns $$0) {
-   }
-
-   public fuf a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   static record b(wy a, Consumer<ftl> b) {
    }
 }

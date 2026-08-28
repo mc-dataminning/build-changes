@@ -1,119 +1,37 @@
-import java.util.EnumSet;
-import java.util.List;
+public class cef extends cea {
+   private final cjx a;
+   private boolean b;
 
-public class cef extends cdy {
-   public final clg a;
-   private double b;
-   private static final int c = 8;
-   private int d;
-
-   public cef(clg $$0, double $$1) {
+   public cef(cjx $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cdy.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.a.O_() && !this.a.ha()) {
-         List<bwd> $$0 = this.a.dV().a(this.a, this.a.cR().c(9.0, 4.0, 9.0), $$0x -> {
-            bwm<?> $$1x = $$0x.aq();
-            return $$1x == bwm.ax || $$1x == bwm.by;
-         });
-         clg $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bwd $$3 : $$0) {
-            clg $$4 = (clg)$$3;
-            if ($$4.ha() && !$$4.gG()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (bwd $$6 : $$0) {
-               clg $$7 = (clg)$$6;
-               if ($$7.O_() && !$$7.gG()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.O_() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
+      if (!(this.a.e() instanceof arr $$0)) {
          return false;
+      } else {
+         boolean $$1 = !$$0.V_() && !$$0.gk().b && !$$0.bj() && !$$0.av;
+         return !this.a.gr() && $$1 && this.a.gH();
       }
    }
 
    @Override
-   public boolean c() {
-      if (this.a.ha() && this.a.hb().bK() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.hb());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   public boolean Q_() {
+      return !this.b;
    }
 
    @Override
-   public void e() {
-      this.a.gF();
-      this.b = 2.1;
+   public void d() {
+      this.b = false;
    }
 
    @Override
    public void a() {
-      if (this.a.ha()) {
-         if (!(this.a.C() instanceof cmx)) {
-            clg $$0 = this.a.hb();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            fei $$3 = new fei($$0.dA() - this.a.dA(), $$0.dC() - this.a.dC(), $$0.dG() - this.a.dG()).d().c(Math.max($$1 - 2.0, 0.0));
-            this.a.O().a(this.a.dA() + $$3.d, this.a.dC() + $$3.e, this.a.dG() + $$3.f, this.b);
+      if (!this.b && !this.a.x() && !this.a.O_()) {
+         if (this.a.e() instanceof arr $$0 && this.a.cR().c($$0.cR())) {
+            this.b = this.a.b($$0);
          }
-      }
-   }
-
-   private boolean a(clg $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.ha()) {
-         return $$0.hb().O_() ? true : this.a($$0.hb(), ++$$1);
-      } else {
-         return false;
       }
    }
 }

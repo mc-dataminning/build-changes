@@ -42,9 +42,9 @@ public class ann {
    }
 
    private static int a(ei $$0, arb $$1) throws CommandSyntaxException {
-      dic $$2 = $$1.a();
+      dih $$2 = $$1.a();
       arq $$3 = $$0.e();
-      alf<div> $$4 = $$3.aj();
+      alf<dja> $$4 = $$3.aj();
       boolean $$5 = $$3.y().contains($$2.a());
       if ($$5) {
          $$0.a(() -> wy.a("commands.forceload.query.success", wy.a($$2), wy.a($$4.a())), false);
@@ -56,11 +56,11 @@ public class ann {
 
    private static int a(ei $$0) {
       arq $$1 = $$0.e();
-      alf<div> $$2 = $$1.aj();
+      alf<dja> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dic::new).map(dic::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dih::new).map(dih::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> wy.a("commands.forceload.list.single", wy.a($$2.a()), $$5), false);
          } else {
@@ -75,9 +75,9 @@ public class ann {
 
    private static int b(ei $$0) {
       arq $$1 = $$0.e();
-      alf<div> $$2 = $$1.aj();
+      alf<dja> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
-      $$3.forEach($$1x -> $$1.a(dic.a($$1x), dic.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dih.a($$1x), dih.b($$1x), false));
       $$0.a(() -> wy.a("commands.forceload.removed.all", wy.a($$2.a())), true);
       return 0;
    }
@@ -97,8 +97,8 @@ public class ann {
             throw b.create(256, $$12);
          } else {
             arq $$13 = $$0.e();
-            alf<div> $$14 = $$13.aj();
-            dic $$15 = null;
+            alf<dja> $$14 = $$13.aj();
+            dih $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class ann {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dic($$17, $$18);
+                        $$15 = new dih($$17, $$18);
                      }
                   }
                }
             }
 
-            dic $$20 = $$15;
+            dih $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class ann {
                if ($$21 == 1) {
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wy.a($$20), wy.a($$14.a())), true);
                } else {
-                  dic $$22 = new dic($$8, $$9);
-                  dic $$23 = new dic($$10, $$11);
+                  dih $$22 = new dih($$8, $$9);
+                  dih $$23 = new dih($$10, $$11);
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wy.a($$14.a()), wy.a($$22), wy.a($$23)), true);
                }
 

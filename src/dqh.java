@@ -1,92 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dqh extends dlm {
+public class dqh extends dmf {
    public static final MapCodec<dqh> a = b(dqh::new);
-   public static final eaq b = eap.q;
+   public static final eay b = drz.b;
+   public static final eay c = drz.c;
+   public static final eay d = drz.d;
+   public static final eay e = drz.e;
+   public static final eay f = drz.f;
+   public static final eay g = drz.g;
+   private static final Map<ja, eay> h = drz.h;
 
    @Override
    public MapCodec<dqh> a() {
       return a;
    }
 
-   protected dqh(dzy.d $$0) {
+   public dqh(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, Boolean.valueOf(false)));
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(true))
+            .b(c, Boolean.valueOf(true))
+            .b(d, Boolean.valueOf(true))
+            .b(e, Boolean.valueOf(true))
+            .b(f, Boolean.valueOf(true))
+            .b(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   public void a(div $$0, iu $$1, dzz $$2, @Nullable bxc $$3, cyy $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      dbg $$5 = $$4.a(kj.aa, dbg.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
-      }
+   public eah a(dcw $$0) {
+      dig $$1 = $$0.q();
+      iu $$2 = $$0.a();
+      return this.m()
+         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
    }
 
    @Override
-   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dyc $$5) {
-         $$5.s();
-         return bub.a;
-      } else {
-         return bub.e;
-      }
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected bub a(cyy $$0, dzz $$1, div $$2, iu $$3, cqy $$4, bua $$5, fee $$6) {
-      if ($$1.c(b)) {
-         return bub.f;
-      } else {
-         cyy $$7 = $$4.b($$5);
-         bub $$8 = czd.a($$2, $$3, $$7, $$4);
-         return (bub)(!$$8.a() ? bub.f : $$8);
-      }
+   protected eah a(eah $$0, dsz $$1) {
+      return $$0.b(h.get($$1.a(ja.c)), $$0.c(b))
+         .b(h.get($$1.a(ja.d)), $$0.c(d))
+         .b(h.get($$1.a(ja.f)), $$0.c(c))
+         .b(h.get($$1.a(ja.e)), $$0.c(e))
+         .b(h.get($$1.a(ja.b)), $$0.c(f))
+         .b(h.get($$1.a(ja.a)), $$0.c(g));
    }
 
    @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, boolean $$3) {
-      btx.a($$0, $$1, $$2);
+   protected eah a(eah $$0, dri $$1) {
+      return $$0.b(h.get($$1.b(ja.c)), $$0.c(b))
+         .b(h.get($$1.b(ja.d)), $$0.c(d))
+         .b(h.get($$1.b(ja.f)), $$0.c(c))
+         .b(h.get($$1.b(ja.e)), $$0.c(e))
+         .b(h.get($$1.b(ja.b)), $$0.c(f))
+         .b(h.get($$1.b(ja.a)), $$0.c(g));
    }
 
    @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return new dyc($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dzz $$0, dib $$1, iu $$2, ja $$3) {
-      if ($$1.c_($$2) instanceof dyc $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dzz $$0, div $$1, iu $$2) {
-      return $$1.c_($$2) instanceof dyc $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
-      return $$1.c(b) ? a($$2, dwz.e, dyc::a) : null;
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

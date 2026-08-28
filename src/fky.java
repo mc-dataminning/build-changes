@@ -1,54 +1,24 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fky {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
+public class fky extends flo {
+   private static final Logger b = LogUtils.getLogger();
    @Nullable
-   private final String[] d;
+   public String a;
 
-   private fky(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public static fky a(String $$0) {
+      fky $$1 = new fky();
 
-   public wy a(wy $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public wy a() {
-      if (!hjw.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
-      }
-   }
-
-   public static fky a(JsonObject $$0) {
-      String $$1 = fnd.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
+      try {
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fnk.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
       }
 
-      return new fky($$1, $$5);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      return $$1;
    }
 }

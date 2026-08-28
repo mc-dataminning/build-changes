@@ -3,7 +3,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class bec extends bjj {
+public class bec extends bjk {
    public bec(Schema $$0, boolean $$1) {
       super("EntityCatSplitFix", $$0, $$1);
    }

@@ -1,28 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class epp extends eqe {
-   public static final MapCodec<epp> a = btg.b(0, 256).fieldOf("count").xmap(epp::new, $$0 -> $$0.c);
-   private final btg c;
-
-   private epp(btg $$0) {
-      this.c = $$0;
-   }
-
-   public static epp a(btg $$0) {
-      return new epp($$0);
-   }
-
-   public static epp a(int $$0) {
-      return a(btd.a($$0));
-   }
-
+public record epp(egk.c[] a) implements egk.c {
+   @Nullable
    @Override
-   protected int a(azv $$0, iu $$1) {
-      return this.c.a($$0);
-   }
+   public eah calculate(efz.b $$0) {
+      for (egk.c $$1 : this.a) {
+         eah $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public eqb<?> b() {
-      return eqb.f;
+      return null;
    }
 }

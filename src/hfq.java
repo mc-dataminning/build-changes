@@ -1,17 +1,159 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public record hfq(ks.a<?> b) implements hfs {
-   public static final MapCodec<hfq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ks.a("predicate").forGetter(hfq::b)).apply($$0, hfq::new));
+public class hfq {
+   czb a;
+   boolean b;
+   private int c;
+   private hfq.b[] d;
 
-   @Override
-   public boolean get(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3, cyw $$4) {
-      return this.b.b().a($$0);
+   public hfq() {
+      this.a = czb.a;
+      this.d = new hfq.b[]{new hfq.b()};
    }
 
-   @Override
-   public MapCodec<hfq> a() {
-      return a;
+   public void a(int $$0) {
+      int $$1 = this.d.length;
+      int $$2 = this.c + $$0;
+      if ($$2 > $$1) {
+         this.d = Arrays.copyOf(this.d, $$2);
+
+         for (int $$3 = $$1; $$3 < $$2; $$3++) {
+            this.d[$$3] = new hfq.b();
+         }
+      }
+   }
+
+   public hfq.b a() {
+      this.a(1);
+      return this.d[this.c++];
+   }
+
+   public void b() {
+      this.a = czb.a;
+      this.b = false;
+
+      for (int $$0 = 0; $$0 < this.c; $$0++) {
+         this.d[$$0].a();
+      }
+
+      this.c = 0;
+   }
+
+   private hfq.b g() {
+      return this.d[0];
+   }
+
+   public boolean c() {
+      return this.c == 0;
+   }
+
+   public boolean d() {
+      return this.g().c();
+   }
+
+   public boolean e() {
+      return this.g().d();
+   }
+
+   @Nullable
+   public hix a(azv $$0) {
+      if (this.c == 0) {
+         return null;
+      } else {
+         hkx $$1 = this.d[$$0.a(this.c)].b;
+         return $$1 == null ? null : $$1.d();
+      }
+   }
+
+   public grq f() {
+      return this.g().b();
+   }
+
+   public void a(fjj $$0, gqa $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < this.c; $$4++) {
+         this.d[$$4].a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public class b {
+      @Nullable
+      hkx b;
+      @Nullable
+      private gqk c;
+      private hfq.a d = hfq.a.a;
+      private int[] e = new int[0];
+      @Nullable
+      private hib<Object> f;
+      @Nullable
+      private Object g;
+
+      public void a() {
+         this.b = null;
+         this.c = null;
+         this.d = hfq.a.a;
+         this.f = null;
+         this.g = null;
+         Arrays.fill(this.e, -1);
+      }
+
+      public void a(hkx $$0, gqk $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public <T> void a(hib<T> $$0, @Nullable T $$1, hkx $$2) {
+         this.b = $$2;
+         this.f = a($$0);
+         this.g = $$1;
+      }
+
+      private static hib<Object> a(hib<?> $$0) {
+         return (hib<Object>)$$0;
+      }
+
+      public void a(hfq.a $$0) {
+         this.d = $$0;
+      }
+
+      public int[] a(int $$0) {
+         if ($$0 > this.e.length) {
+            this.e = new int[$$0];
+            Arrays.fill(this.e, -1);
+         }
+
+         return this.e;
+      }
+
+      grq b() {
+         return this.b != null ? this.b.e().a(hfq.this.a) : grq.a;
+      }
+
+      void a(fjj $$0, gqa $$1, int $$2, int $$3) {
+         $$0.a();
+         this.b().a(hfq.this.b, $$0);
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         if (this.f != null) {
+            this.f.a(this.g, hfq.this.a, $$0, $$1, $$2, $$3, this.d != hfq.a.a);
+         } else if (this.b != null) {
+            gxf.a(hfq.this.a, $$0, $$1, $$2, $$3, this.e, this.b, this.c, this.d);
+         }
+
+         $$0.b();
+      }
+
+      boolean c() {
+         return this.b != null && this.b.b();
+      }
+
+      boolean d() {
+         return this.b != null && this.b.c();
+      }
    }
 }

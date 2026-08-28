@@ -27,7 +27,7 @@ public class anw {
          int $$3 = 0;
 
          for (arr $$4 : $$1) {
-            if (!$$0.l().a($$4.gh())) {
+            if (!$$0.l().a($$4.gi())) {
                $$4.f.a($$2);
                $$0.a(() -> wy.a("commands.kick.success", $$4.m_(), $$2), true);
                $$3++;

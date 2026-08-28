@@ -51,7 +51,7 @@ public class bbv extends bhr {
    );
 
    public bbv(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", biw.s, "minecraft:banner");
+      super($$0, false, "BannerPatternFormatFix", bix.s, "minecraft:banner");
    }
 
    @Override

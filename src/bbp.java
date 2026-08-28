@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class bbp extends bhr {
    public bbp(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", biw.D, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudPotionFix", bix.D, "minecraft:area_effect_cloud");
    }
 
    @Override

@@ -1,72 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class enw extends eod {
-   public static final MapCodec<enw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               enj.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               ayu.b(ja.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+public class enw extends enu {
+   public static final MapCodec<enw> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  eah.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  ayu.b(eah.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  ayu.b(eah.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
             )
             .apply($$0, enw::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final enj e;
-   protected final int f;
-   protected final List<ja> g;
+   private final float g;
+   private final float h;
+   private final eah i;
+   private final List<eah> j;
+   private final List<eah> k;
 
-   public enw(float $$0, int $$1, int $$2, enj $$3, int $$4, List<ja> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public enw(long $$0, evr.a $$1, float $$2, float $$3, float $$4, eah $$5, List<eah> $$6, List<eah> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   public void a(eod.a $$0) {
-      Set<iu> $$1 = new HashSet<>();
-      azv $$2 = $$0.b();
-
-      for (iu $$3 : af.a($$0.d(), $$2)) {
-         ja $$4 = af.a(this.g, $$2);
-         iu $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            iu $$6 = $$5.b(-this.c, -this.d, -this.c);
-            iu $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (iu $$8 : iu.c($$6, $$7)) {
-               $$1.add($$8.j());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
-         }
-      }
-   }
-
-   private boolean a(eod.a $$0, iu $$1, ja $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         iu $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   protected ens<?> a() {
+      return ens.c;
    }
 
    @Override
-   protected eoe<?> a() {
-      return eoe.h;
+   public eah a(azv $$0, iu $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return af.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? af.a(this.k, $$0) : this.i;
+      }
    }
 }

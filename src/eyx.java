@@ -1,69 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public interface eyx {
-   eyw<dbq> a = new eyw<dbq>() {
-      @Override
-      public ki<dbq> a() {
-         return kj.ap;
-      }
+public class eyx {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final eyn d;
+   private final boolean e;
 
-      public Stream<cyy> a(dbq $$0) {
-         return $$0.b();
-      }
+   private eyx(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new eyn($$3, $$4);
+      this.e = $$5;
+   }
 
-      public dbq c() {
-         return dbq.a;
-      }
+   public static eyx a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new eyx(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(ab.b().c()),
+            $$3.get("Id").asInt(ab.b().d().c()),
+            $$3.get("Series").asString(eyn.a),
+            $$3.get("Snapshot").asBoolean(!ab.b().g())
+         )
+         : new eyx($$1, $$2, "", 0, eyn.a, false);
+   }
 
-      public dbq a(dbq $$0, Stream<cyy> $$1) {
-         return dbq.a($$1.toList());
-      }
-   };
-   eyw<dbb> b = new eyw<dbb>() {
-      @Override
-      public ki<dbb> a() {
-         return kj.Q;
-      }
+   public int a() {
+      return this.a;
+   }
 
-      public dbb c() {
-         return dbb.a;
-      }
+   public long b() {
+      return this.b;
+   }
 
-      public Stream<cyy> a(dbb $$0) {
-         return $$0.b();
-      }
+   public String c() {
+      return this.c;
+   }
 
-      public dbb a(dbb $$0, Stream<cyy> $$1) {
-         dbb.a $$2 = new dbb.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   eyw<dbc> c = new eyw<dbc>() {
-      @Override
-      public ki<dbc> a() {
-         return kj.P;
-      }
+   public eyn d() {
+      return this.d;
+   }
 
-      public dbc c() {
-         return dbc.a;
-      }
-
-      public Stream<cyy> a(dbc $$0) {
-         return $$0.a().stream();
-      }
-
-      public dbc a(dbc $$0, Stream<cyy> $$1) {
-         return dbc.a($$1.toList());
-      }
-   };
-   Map<ki<?>, eyw<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eyw::a, $$0 -> (eyw<?>)$$0));
-   Codec<eyw<?>> e = mf.am.q().comapFlatMap($$0 -> {
-      eyw<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, eyw::a);
+   public boolean e() {
+      return this.e;
+   }
 }

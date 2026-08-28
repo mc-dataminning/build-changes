@@ -1,54 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class eix extends eje<elf> {
-   public eix(Codec<elf> $$0) {
+public class eix extends ejm<elx> {
+   public eix(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elf> $$0) {
-      elf $$1 = $$0.f();
+   public boolean a(ejo<elx> $$0) {
+      djz $$1 = $$0.b();
       iu $$2 = $$0.e();
-      dju $$3 = $$0.b();
-      azv $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      iu.a $$10 = new iu.a();
-
-      for (iu $$11 : iu.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
+      azv $$3 = $$0.d();
+      if ($$1.v($$2) && $$1.a_($$2.e()).a(dmh.fY)) {
+         dnl.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
       }
-
-      return $$5;
-   }
-
-   protected boolean a(elf $$0, dju $$1, azv $$2, int $$3, int $$4, iu.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            dzz $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
-            }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
-         }
-      }
-
-      return $$6;
    }
 }

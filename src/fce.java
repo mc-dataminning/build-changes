@@ -1,35 +1,36 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import java.util.List;
 
-public class fce implements fci {
-   private static final fce b = new fce();
-   public static final MapCodec<fce> a = MapCodec.unit(b);
+public class fce extends fcg {
+   public static final MapCodec<fce> a = a(fce::new);
 
-   private fce() {
+   fce(List<fcq> $$0) {
+      super($$0, af.b($$0));
    }
 
    @Override
-   public fcj b() {
-      return fck.l;
+   public fcr b() {
+      return fcs.b;
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fbt.j);
+   public static fce.a a(fcq.a... $$0) {
+      return new fce.a($$0);
    }
 
-   public boolean a(eyz $$0) {
-      Float $$1 = $$0.c(fbt.j);
-      if ($$1 != null) {
-         azv $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
+   public static class a extends fcg.a {
+      public a(fcq.a... $$0) {
+         super($$0);
       }
-   }
 
-   public static fci.a c() {
-      return () -> b;
+      @Override
+      public fce.a or(fcq.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected fcq a(List<fcq> $$0) {
+         return new fce($$0);
+      }
    }
 }

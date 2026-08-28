@@ -1,48 +1,60 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-public record dcf(cyy c) {
-   public static final Codec<dcf> a = cyy.b.xmap(dcf::new, dcf::a);
-   public static final yw<wj, dcf> b = yw.a(cyy.i, dcf::a, dcf::new);
+public record dcf(List<dcf.a> e) implements dbj, dci {
+   public static final dcf a = new dcf(List.of());
+   public static final int b = 160;
+   public static final Codec<dcf> c = dcf.a.a.listOf().xmap(dcf::new, dcf::a);
+   public static final yw<wj, dcf> d = dcf.a.b.a(yu.a()).a(dcf::new, dcf::a);
 
-   public cyy a(cyy $$0, int $$1, boolean $$2, dcf.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
-      } else {
-         cyy $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
+   public dcf a(dcf.a $$0) {
+      return new dcf(af.a(this.e, $$0));
+   }
+
+   @Override
+   public void a(dja $$0, bxe $$1, czd $$2, dbi $$3) {
+      for (dcf.a $$4 : this.e) {
+         $$1.a($$4.a());
+      }
+   }
+
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      if ($$2.b()) {
+         List<bvj> $$4 = new ArrayList<>();
+
+         for (dcf.a $$5 : this.e) {
+            $$4.add($$5.a());
          }
+
+         daz.a($$4, $$1, 1.0F, $$0.b());
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dcf $$1 = (dcf)$$0;
-         return cyy.a(this.c, $$1.c);
-      } else {
-         return false;
+   public List<dcf.a> a() {
+      return this.e;
+   }
+
+   public static record a(je<bvh> c, int d) {
+      public static final Codec<dcf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bvh.a.fieldOf("id").forGetter(dcf.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(dcf.a::c))
+               .apply($$0, dcf.a::new)
+      );
+      public static final yw<wj, dcf.a> b = yw.a(bvh.b, dcf.a::b, yu.h, dcf.a::c, dcf.a::new);
+
+      public bvj a() {
+         return new bvj(this.c, this.d);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return cyy.b(this.c);
-   }
+      public je<bvh> b() {
+         return this.c;
+      }
 
-   public cyy a() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(cyy var1);
+      public int c() {
+         return this.d;
+      }
    }
 }

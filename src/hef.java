@@ -1,5 +1,7 @@
-public class hef extends hdf {
-   public cyy a = cyy.k;
-   public boolean b;
+public class hef extends hdn {
+   public float a;
+   public float b;
    public boolean c;
+   public cyb d = cyb.a;
+   public int e;
 }

@@ -1,8 +1,10 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class cim extends bxg {
+   protected cim(bwo<? extends cim> $$0, dja $$1) {
+      super($$0, $$1);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cim {
+   @Override
+   public boolean w() {
+      return false;
+   }
 }

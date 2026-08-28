@@ -5,16 +5,16 @@ public class lm extends lj {
    private static final Logger c = LogUtils.getLogger();
 
    @Override
-   protected cyy a(ld $$0, cyy $$1) {
+   protected czd a(ld $$0, czd $$1) {
       this.a(false);
-      cyu $$2 = $$1.h();
-      if ($$2 instanceof cxg) {
-         ja $$3 = $$0.d().c(dog.b);
+      cyz $$2 = $$1.h();
+      if ($$2 instanceof cxl) {
+         ja $$3 = $$0.d().c(dol.b);
          iu $$4 = $$0.c().a($$3);
          ja $$5 = $$0.b().v($$4.e()) ? $$3 : ja.b;
 
          try {
-            this.a(((cxg)$$2).a((dcr)(new dcs($$0.b(), $$4, $$3, $$1, $$5))).a());
+            this.a(((cxl)$$2).a((dcw)(new dcx($$0.b(), $$4, $$3, $$1, $$5))).a());
          } catch (Exception var8) {
             c.error("Error trying to place shulker box at {}", $$4, var8);
          }

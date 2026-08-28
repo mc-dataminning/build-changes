@@ -1,69 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cmf extends cly {
+public class cmf extends cmc {
    @Nullable
-   private fei b;
+   private feq b;
+   private int c;
 
-   public cmf(clw $$0) {
+   public cmf(cma $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      fei $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dA();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dG();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azv $$5 = this.a.dY();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         fei $$9 = this.a.dy();
-         this.a.dV().a(lx.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dY().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dY().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dY().i() - 0.5F) * 8.0F;
+         this.a.dV().a(lx.v, this.a.dA() + (double)$$0, this.a.dC() + 2.0 + (double)$$1, this.a.dG() + (double)$$2, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
    public void a(arq $$0) {
+      this.c++;
       if (this.b == null) {
-         this.b = fei.c($$0.a(efy.a.f, ejd.a(this.a.j())));
+         iu $$1 = $$0.a(egg.a.e, ejl.a(this.a.j()));
+         this.b = feq.c($$1);
       }
 
-      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
-         this.a.t().b(cmm.f).i();
-         this.a.t().a(cmm.g);
+      double $$2 = this.b.c(this.a.dA(), this.a.dC(), this.a.dG());
+      if (!($$2 < 100.0) && !($$2 > 22500.0) && !this.a.P && !this.a.Q) {
+         this.a.d(1.0F);
+      } else {
+         this.a.d(0.0F);
       }
-   }
-
-   @Override
-   public float e() {
-      return 1.5F;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void c() {
       this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float e() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public fei f() {
+   public feq f() {
       return this.b;
    }
 
    @Override
-   public cmm<cmf> h() {
-      return cmm.d;
+   public cmq<cmf> h() {
+      return cmq.j;
    }
 }

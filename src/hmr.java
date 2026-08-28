@@ -1,28 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class hmr<T> extends hms<T> {
-   private final hmw<T> c;
+public class hmr implements hoc<hmr> {
+   public static final akz a = new akz("sounds", ".ogg");
+   private final alg b;
+   private final btl c;
+   private final btl d;
+   private final int e;
+   private final hmr.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
 
-   public hmr(Function<T, Stream<String>> $$0, Function<T, Stream<alg>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hmw.plainText($$2, $$0);
+   public hmr(alg $$0, btl $$1, btl $$2, int $$3, hmr.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public alg a() {
+      return this.b;
+   }
+
+   public alg b() {
+      return a.a(this.b);
+   }
+
+   public btl c() {
+      return this.c;
+   }
+
+   public btl d() {
+      return this.d;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   public int e() {
+      return this.e;
+   }
+
+   public hmr a(azv $$0) {
+      return this;
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hmu<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hmt<T>($$2.iterator(), $$5, this.a));
+   public void a(hnx $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public hmr.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static hmr.a a(String $$0) {
+         for (hmr.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
    }
 }

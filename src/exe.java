@@ -1,154 +1,138 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class exe {
-   public static final int a = 3;
-   private static final int b = 16;
-   private static final int c = 128;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final arq n;
+   private static final float a = 1.5F;
+   private final exa[] b = new exa[32];
+   private int c;
+   private final exb d;
+   private static final boolean e = false;
+   private final ewy f = new ewy();
 
-   public exe(arq $$0) {
-      this.n = $$0;
+   public exe(exb $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public Optional<iu> a(iu $$0, boolean $$1, ebr $$2) {
-      cie $$3 = this.n.A();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      return $$3.b($$0x -> $$0x.a(cii.r), $$0, $$4, cie.b.c)
-         .map(cif::g)
-         .filter($$2::a)
-         .filter($$0x -> this.n.a_($$0x).b(eap.J))
-         .min(Comparator.<iu>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(jz::v));
+   public void a(int $$0) {
+      this.c = $$0;
    }
 
-   public Optional<l.a> a(iu $$0, ja.a $$1) {
-      ja $$2 = ja.a(ja.b.a, $$1);
-      double $$3 = -1.0;
-      iu $$4 = null;
-      double $$5 = -1.0;
-      iu $$6 = null;
-      ebr $$7 = this.n.A_();
-      int $$8 = Math.min(this.n.ao(), this.n.G_() + this.n.l() - 1);
-      int $$9 = 1;
-      iu.a $$10 = $$0.k();
+   @Nullable
+   public exc a(djn $$0, bxg $$1, Set<iu> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      exa $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<exj, iu> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         exc $$8 = this.a($$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
+   }
 
-      for (iu.a $$11 : iu.a($$0, 16, ja.f, ja.d)) {
-         int $$12 = Math.min($$8, this.n.a(efy.a.e, $$11.u(), $$11.w()));
-         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
-            $$11.c($$2.g(), 1);
+   @Nullable
+   private exc a(exa $$0, Map<exj, iu> $$1, float $$2, int $$3, float $$4) {
+      bqo $$5 = bqn.a();
+      $$5.a("find_path");
+      $$5.a(brx.a);
+      Set<exj> $$6 = $$1.keySet();
+      $$0.e = 0.0F;
+      $$0.f = this.a($$0, $$6);
+      $$0.g = $$0.f;
+      this.f.a();
+      this.f.a($$0);
+      Set<exa> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<exj> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$4);
 
-            for (int $$13 = $$12; $$13 >= this.n.G_(); $$13--) {
-               $$11.q($$13);
-               if (this.a($$11)) {
-                  int $$14 = $$13;
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
 
-                  while ($$13 > this.n.G_() && this.a($$11.c(ja.a))) {
-                     $$13--;
-                  }
+         exa $$11 = this.f.c();
+         $$11.i = true;
 
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$11.q($$13);
-                        if (this.a($$11, $$10, $$2, 0)) {
-                           double $$16 = $$0.j($$11);
-                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$11.j();
-                           }
+         for (exj $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$3) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
 
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$11.j();
-                           }
-                        }
-                     }
+         if (!$$9.isEmpty()) {
+            break;
+         }
+
+         if (!($$11.a($$0) >= $$2)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               exa $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$2 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
                   }
                }
             }
          }
       }
 
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.G_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new iu($$0.u() - $$2.j() * 1, azm.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
-         $$4 = $$7.b($$4);
-         ja $$19 = $$2.h();
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dzz $$23 = $$22 < 0 ? dmc.cw.m() : dmc.a.m();
-                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$10, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$10, dmc.cw.m(), 3);
-            }
-         }
-      }
-
-      dzz $$26 = dmc.er.m().b(drk.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$10, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.j(), 2, 3));
+      Optional<exc> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), true)).min(Comparator.comparingInt(exc::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$1.get($$1x), false)).min(Comparator.comparingDouble(exc::m).thenComparingInt(exc::e));
+      $$5.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   private boolean a(iu.a $$0) {
-      dzz $$1 = this.n.a_($$0);
-      return $$1.v() && $$1.y().c();
+   protected float a(exa $$0, exa $$1) {
+      return $$0.a($$1);
    }
 
-   private boolean a(iu $$0, iu.a $$1, ja $$2, int $$3) {
-      ja $$4 = $$2.h();
+   private float a(exa $$0, Set<exj> $$1) {
+      float $$2 = Float.MAX_VALUE;
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
-
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
-         }
+      for (exj $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
 
-      return true;
+      return $$2;
+   }
+
+   private exc a(exa $$0, iu $$1, boolean $$2) {
+      List<exa> $$3 = Lists.newArrayList();
+      exa $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new exc($$3, $$1, $$2);
    }
 }

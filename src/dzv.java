@@ -1,185 +1,151 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dzv {
-   public static final int a = 12;
-   private final div b;
-   private final iu c;
-   private final boolean d;
-   private final iu e;
-   private final ja f;
-   private final List<iu> g = Lists.newArrayList();
-   private final List<iu> h = Lists.newArrayList();
-   private final ja i;
+public final class dzv {
+   private static final Map<String, dzv> l = new Object2ObjectArrayMap();
+   public static final Codec<dzv> a = Codec.stringResolver($$0 -> $$0.m, l::get);
+   public static final dzv b = new dzv(
+      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rn.g), Optional.of(rn.q), Optional.of(rn.F), Optional.of(rn.M)
+   );
+   public static final dzv c = new dzv(
+      "spruce", 0.5F, Optional.of(rn.t), Optional.of(rn.u), Optional.of(rn.n), Optional.empty(), Optional.empty(), Optional.empty()
+   );
+   public static final dzv d = new dzv(
+      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rn.A), Optional.of(rn.B), Optional.empty(), Optional.empty()
+   );
+   public static final dzv e = new dzv("azalea", Optional.empty(), Optional.of(rn.z), Optional.empty());
+   public static final dzv f = new dzv("birch", Optional.empty(), Optional.of(rn.l), Optional.of(rn.J));
+   public static final dzv g = new dzv("jungle", Optional.of(rn.s), Optional.of(rn.r), Optional.empty());
+   public static final dzv h = new dzv("acacia", Optional.empty(), Optional.of(rn.m), Optional.empty());
+   public static final dzv i = new dzv("cherry", Optional.empty(), Optional.of(rn.C), Optional.of(rn.O));
+   public static final dzv j = new dzv("dark_oak", Optional.of(rn.h), Optional.empty(), Optional.empty());
+   public static final dzv k = new dzv("pale_oak", Optional.of(rn.j), Optional.empty(), Optional.empty());
+   private final String m;
+   private final float n;
+   private final Optional<alf<eiy<?, ?>>> o;
+   private final Optional<alf<eiy<?, ?>>> p;
+   private final Optional<alf<eiy<?, ?>>> q;
+   private final Optional<alf<eiy<?, ?>>> r;
+   private final Optional<alf<eiy<?, ?>>> s;
+   private final Optional<alf<eiy<?, ?>>> t;
 
-   public dzv(div $$0, iu $$1, ja $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
-      }
+   public dzv(String $$0, Optional<alf<eiy<?, ?>>> $$1, Optional<alf<eiy<?, ?>>> $$2, Optional<alf<eiy<?, ?>>> $$3) {
+      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dzz $$0 = this.b.a_(this.e);
-      if (!dzr.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.r() == ewl.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
+   public dzv(
+      String $$0,
+      float $$1,
+      Optional<alf<eiy<?, ?>>> $$2,
+      Optional<alf<eiy<?, ?>>> $$3,
+      Optional<alf<eiy<?, ?>>> $$4,
+      Optional<alf<eiy<?, ?>>> $$5,
+      Optional<alf<eiy<?, ?>>> $$6,
+      Optional<alf<eiy<?, ?>>> $$7
+   ) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
+      this.s = $$6;
+      this.t = $$7;
+      l.put($$0, this);
+   }
+
+   @Nullable
+   private alf<eiy<?, ?>> a(azv $$0, boolean $$1) {
+      if ($$0.i() < this.n) {
+         if ($$1 && this.t.isPresent()) {
+            return this.t.get();
          }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            iu $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
+
+         if (this.r.isPresent()) {
+            return this.r.get();
          }
-
-         return true;
       }
+
+      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
    }
 
-   private static boolean a(dzz $$0) {
-      return $$0.a(dmc.iu) || $$0.a(dmc.pL);
+   @Nullable
+   private alf<eiy<?, ?>> a(azv $$0) {
+      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
    }
 
-   private static boolean a(dzz $$0, dzz $$1) {
-      if ($$0.a(dmc.pL) && $$1.a(dmc.iu)) {
-         return false;
-      } else {
-         return $$0.a(dmc.iu) && $$1.a(dmc.pL) ? false : a($$0) || a($$1);
-      }
-   }
-
-   private boolean a(iu $$0, ja $$1) {
-      dzz $$2 = this.b.a_($$0);
-      if ($$2.l()) {
-         return true;
-      } else if (!dzr.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               iu $$4 = $$0.a(this.f.g(), $$3);
-               dzz $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.l() || !a($$5, $$2) || !dzr.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               iu $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     iu $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
+   public boolean a(arq $$0, ecf $$1, iu $$2, eah $$3, azv $$4) {
+      alf<eiy<?, ?>> $$5 = this.a($$4);
+      if ($$5 != null) {
+         je<eiy<?, ?>> $$6 = $$0.F_().f(mg.aL).a($$5).orElse(null);
+         if ($$6 != null) {
+            for (int $$7 = 0; $$7 >= -1; $$7--) {
+               for (int $$8 = 0; $$8 >= -1; $$8--) {
+                  if (a($$3, $$0, $$2, $$7, $$8)) {
+                     eiy<?, ?> $$9 = $$6.a();
+                     eah $$10 = dmh.a.m();
+                     $$0.a($$2.b($$7, 0, $$8), $$10, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 260);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 260);
+                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
+                        return true;
                      }
+
+                     $$0.a($$2.b($$7, 0, $$8), $$3, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 260);
+                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 260);
+                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 260);
+                     return false;
                   }
-
-                  return true;
                }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.l()) {
-                  return true;
-               }
-
-               if (!dzr.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.r() == ewl.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
             }
          }
       }
-   }
 
-   private void a(int $$0, int $$1) {
-      List<iu> $$2 = Lists.newArrayList();
-      List<iu> $$3 = Lists.newArrayList();
-      List<iu> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
+      alf<eiy<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
+      if ($$11 == null) {
+         return false;
+      } else {
+         je<eiy<?, ?>> $$12 = $$0.F_().f(mg.aL).a($$11).orElse(null);
+         if ($$12 == null) {
+            return false;
+         } else {
+            eiy<?, ?> $$13 = $$12.a();
+            eah $$14 = $$0.b_($$2).g();
+            $$0.a($$2, $$14, 260);
+            if ($$13.a($$0, $$1, $$4, $$2)) {
+               if ($$0.a_($$2) == $$14) {
+                  $$0.a($$2, $$3, $$14, 2);
+               }
 
-   private boolean a(iu $$0) {
-      dzz $$1 = this.b.a_($$0);
-
-      for (ja $$2 : ja.values()) {
-         if ($$2.o() != this.f.o()) {
-            iu $$3 = $$0.a($$2);
-            dzz $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
+               return true;
+            } else {
+               $$0.a($$2, $$3, 260);
                return false;
             }
          }
       }
-
-      return true;
    }
 
-   public ja b() {
-      return this.f;
+   private static boolean a(eah $$0, dig $$1, iu $$2, int $$3, int $$4) {
+      dmf $$5 = $$0.b();
+      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
+         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
+         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
    }
 
-   public List<iu> c() {
-      return this.g;
-   }
+   private boolean a(djb $$0, iu $$1) {
+      for (iu $$2 : iu.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
+         if ($$0.a_($$2).a(axc.V)) {
+            return true;
+         }
+      }
 
-   public List<iu> d() {
-      return this.h;
+      return false;
    }
 }

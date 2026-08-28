@@ -1,32 +1,18 @@
-public class gif extends gfg {
-   public gif(giu $$0) {
-      super($$0);
+public class gif extends ggu {
+   public static final alg a = alg.b("textures/entity/trident.png");
+
+   public gif(gjc $$0) {
+      super($$0, gqk::d);
    }
 
-   public static gja a() {
-      gjc $$0 = c();
-      $$0.a()
-         .a(
-            "head",
-            giz.c()
-               .a(0, 0)
-               .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-               .a(0, 32)
-               .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
-               .a(27, 0)
-               .a(-8.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(39, 0)
-               .a(-8.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(27, 0)
-               .a()
-               .a(4.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(false)
-               .a(39, 0)
-               .a()
-               .a(6.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(false),
-            giw.a(0.0F, 4.0F, -8.0F)
-         );
-      return gja.a($$0, 64, 64);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      gjm $$2 = $$1.a("pole", gjh.c().a(0, 6).a(-0.5F, 2.0F, -0.5F, 1.0F, 25.0F, 1.0F), gje.a);
+      $$2.a("base", gjh.c().a(4, 0).a(-1.5F, 0.0F, -0.5F, 3.0F, 2.0F, 1.0F), gje.a);
+      $$2.a("left_spike", gjh.c().a(4, 3).a(-2.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gje.a);
+      $$2.a("middle_spike", gjh.c().a(0, 0).a(-0.5F, -4.0F, -0.5F, 1.0F, 4.0F, 1.0F), gje.a);
+      $$2.a("right_spike", gjh.c().a(4, 3).a().a(1.5F, -3.0F, -0.5F, 1.0F, 4.0F, 1.0F), gje.a);
+      return gji.a($$0, 32, 32);
    }
 }

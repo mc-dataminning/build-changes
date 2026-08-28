@@ -1,20 +1,23 @@
-public class haz extends gzr<her, gih> {
-   public haz(gxw<her, gih> $$0) {
+public class haz extends hav<hej, ghx> {
+   private final ghx a;
+
+   public haz(gye<hej, ghx> $$0, giy $$1) {
       super($$0);
+      this.a = new ghx($$1.a(gjb.df));
    }
 
-   protected void a(her $$0, fjc $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
+   public void a(fjj $$0, gqa $$1, int $$2, hej $$3, float $$4, float $$5) {
+      boolean $$6 = $$3.ao && $$3.z;
+      if (!$$3.z || $$6) {
+         fjn $$7;
+         if ($$6) {
+            $$7 = $$1.getBuffer(gqk.s(gyl.a));
+         } else {
+            $$7 = $$1.getBuffer(gqk.j(gyl.a));
+         }
+
+         this.a.a($$3);
+         this.a.a($$0, $$7, $$2, gxi.a($$3, 0.0F));
       }
    }
 }

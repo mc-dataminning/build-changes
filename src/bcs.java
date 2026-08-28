@@ -10,7 +10,7 @@ public class bcs extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(biw.u), $$0 -> $$0.update(DSL.remainderFinder(), bcr::a)
+         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bix.u), $$0 -> $$0.update(DSL.remainderFinder(), bcr::a)
       );
    }
 }

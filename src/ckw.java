@@ -1,198 +1,139 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class ckw extends cio {
-   @VisibleForTesting
-   public static int a = Math.abs(-24000);
-   public static final float b = 0.4F;
-   public static final float c = 0.3F;
-   private int bH;
-   protected static final ImmutableList<chl<? extends chk<? super ckw>>> bF = ImmutableList.of(chl.c, chl.d, chl.f, chl.s);
-   protected static final ImmutableList<cge<?>> bG = ImmutableList.of(cge.o, cge.h, cge.n, cge.F, cge.u, cge.L, cge.Q, cge.S, cge.P, cge.s, cge.aa);
+public class ckw {
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.0F;
+   private static final float d = 0.75F;
+   private static final bto e = bto.a(100, 140);
+   private static final int f = 2;
+   private static final int g = 4;
+   private static final float h = 3.5714288F;
+   private static final float i = 1.25F;
 
-   public ckw(bwm<? extends cio> $$0, div $$1) {
-      super($$0, $$1);
-      this.bz = new cdd(this, 85, 10, 0.02F, 0.1F, true);
-      this.by = new cdc(this, 10);
+   protected static void a(ckv $$0, azv $$1) {
+      $$0.ec().a(cgg.T, e.a($$1));
    }
 
-   @Override
-   protected cgm b(div $$0) {
-      return new cgo(this, $$0);
+   protected static bye<?> a(bye<ckv> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      g($$0);
+      f($$0);
+      $$0.a(ImmutableSet.of(csw.a));
+      $$0.b(csw.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected byc.b<ckw> ec() {
-      return byc.a(bG, bF);
+   private static void b(bye<ckv> $$0) {
+      $$0.a(csw.a, 0, ImmutableList.of(new byq(2.0F), new cab(45, 90), new caf(), new bzb(cgg.Q), new bzb(cgg.T)));
    }
 
-   @Override
-   protected byc<?> a(Dynamic<?> $$0) {
-      return ckx.a(this.ec().a($$0));
+   private static void c(bye<ckv> $$0) {
+      $$0.a(
+         csw.b,
+         ImmutableList.of(
+            Pair.of(0, cav.a(bwo.bS, 6.0F, bto.a(30, 60))),
+            Pair.of(0, new byp(bwo.ab)),
+            Pair.of(1, new bzi($$0x -> 1.25F)),
+            Pair.of(2, cbh.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cgg.C))),
+            Pair.of(3, cbs.a(6, 1.0F)),
+            Pair.of(
+               4,
+               new cas(
+                  ImmutableMap.of(cgg.n, cgh.b),
+                  ImmutableList.of(Pair.of(can.a(1.0F), 1), Pair.of(cbc.a(1.0F, 3), 1), Pair.of(new bzc(), 3), Pair.of(cci.a(bwf::aJ), 2))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(cgg.U, cgh.b), Pair.of(cgg.Y, cgh.b))
+      );
    }
 
-   @Override
-   public byc<ckw> eb() {
-      return (byc<ckw>)super.eb();
+   private static void d(bye<ckv> $$0) {
+      $$0.a(
+         csw.t,
+         ImmutableList.of(
+            Pair.of(0, cav.a(bwo.bS, 6.0F, bto.a(30, 60))),
+            Pair.of(1, new bzi($$0x -> 1.25F)),
+            Pair.of(2, cbh.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cgg.C))),
+            Pair.of(3, cbs.a(8, 1.5F)),
+            Pair.of(
+               5,
+               new bzj(
+                  ImmutableMap.of(cgg.n, cgh.b),
+                  ImmutableSet.of(),
+                  bzj.a.a,
+                  bzj.b.b,
+                  ImmutableList.of(Pair.of(can.c(0.75F), 1), Pair.of(can.a(1.0F, true), 1), Pair.of(cbc.a(1.0F, 3), 1), Pair.of(cci.a(bwf::bj), 5))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(cgg.U, cgh.b), Pair.of(cgg.Y, cgh.a))
+      );
    }
 
-   @Override
-   protected awm t() {
-      return awn.Av;
+   private static void e(bye<ckv> $$0) {
+      $$0.a(
+         csw.u,
+         ImmutableList.of(
+            Pair.of(0, cav.a(bwo.bS, 6.0F, bto.a(30, 60))),
+            Pair.of(1, cbh.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cgg.C))),
+            Pair.of(2, cbt.a(8, 1.0F)),
+            Pair.of(3, cbv.a(dmh.tX)),
+            Pair.of(4, new cas(ImmutableList.of(Pair.of(can.a(1.0F), 2), Pair.of(cbc.a(1.0F, 3), 1), Pair.of(new bzc(), 2), Pair.of(cci.a(bwf::aJ), 1))))
+         ),
+         ImmutableSet.of(Pair.of(cgg.U, cgh.b), Pair.of(cgg.Z, cgh.a))
+      );
    }
 
-   @Override
-   protected void a(arq $$0) {
-      bqm $$1 = bql.a();
-      $$1.a("tadpoleBrain");
-      this.eb().a($$0, this);
-      $$1.c();
-      $$1.a("tadpoleActivityUpdate");
-      ckx.a(this);
-      $$1.c();
-      super.a($$0);
+   private static void f(bye<ckv> $$0) {
+      $$0.a(
+         csw.q,
+         ImmutableList.of(Pair.of(0, new bzw(e, awn.kv)), Pair.of(1, new bzx<>(e, 2, 4, 3.5714288F, $$0x -> awn.ku, axc.bV, 0.5F, ckw::a))),
+         ImmutableSet.of(Pair.of(cgg.P, cgh.b), Pair.of(cgg.s, cgh.b), Pair.of(cgg.T, cgh.b), Pair.of(cgg.Y, cgh.b))
+      );
    }
 
-   public static byh.a x() {
-      return cis.gv().a(byi.v, 1.0).a(byi.s, 6.0);
+   private static void g(bye<ckv> $$0) {
+      $$0.a(csw.s, 0, ImmutableList.of(cbk.a(), new ckz(awn.kw, awn.kr)), cgg.p);
    }
 
-   @Override
-   public void k_() {
-      super.k_();
-      if (!this.dV().C) {
-         this.c(this.bH + 1);
-      }
-   }
-
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Age", this.bH);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.c($$0.h("Age"));
-   }
-
-   @Nullable
-   @Override
-   protected awm u() {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected awm e(bus $$0) {
-      return awn.Ax;
-   }
-
-   @Nullable
-   @Override
-   protected awm l_() {
-      return awn.Au;
-   }
-
-   @Override
-   public bub b(cqy $$0, bua $$1) {
-      cyy $$2 = $$0.b($$1);
-      if (this.k($$2)) {
-         this.a($$0, $$2);
-         return bub.a;
+   private static <E extends bxg> boolean a(E $$0, iu $$1) {
+      dja $$2 = $$0.dV();
+      iu $$3 = $$1.e();
+      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
+         eah $$4 = $$2.a_($$1);
+         eah $$5 = $$2.a_($$3);
+         if (!$$4.a(axc.bV) && !$$5.a(axc.bV)) {
+            exh $$6 = new exh($$0.dV(), $$0);
+            exf $$7 = exk.a($$6, $$1.k());
+            exf $$8 = exk.a($$6, $$3.k());
+            return $$7 != exf.e && (!$$4.l() || $$8 != exf.e) ? bzy.a($$0, $$1) : true;
+         } else {
+            return true;
+         }
       } else {
-         return ciu.a($$0, $$1, this).orElse(super.b($$0, $$1));
+         return false;
       }
    }
 
-   @Override
-   protected void ab() {
-      super.ab();
-      agm.a(this);
+   private static boolean b(ckv $$0) {
+      return !byx.a($$0);
    }
 
-   @Override
-   public boolean m() {
-      return true;
+   public static void a(ckv $$0) {
+      $$0.ec().a(ImmutableList.of(csw.s, csw.u, csw.q, csw.t, csw.b));
    }
 
-   @Override
-   public void w(boolean $$0) {
-   }
-
-   @Override
-   public void a_(cyy $$0) {
-      ciu.a(this, $$0);
-      dbg.a(kj.Z, $$0, $$0x -> $$0x.a("Age", this.gq()));
-   }
-
-   @Override
-   public void h(tz $$0) {
-      ciu.a(this, $$0);
-      if ($$0.e("Age")) {
-         this.c($$0.h("Age"));
-      }
-   }
-
-   @Override
-   public cyy R_() {
-      return new cyy(czc.rx);
-   }
-
-   @Override
-   public awm n() {
-      return awn.do;
-   }
-
-   private boolean k(cyy $$0) {
-      return $$0.a(axk.ao);
-   }
-
-   private void a(cqy $$0, cyy $$1) {
-      this.b($$0, $$1);
-      this.b(bvt.d_(this.gs()));
-      this.dV().a(lx.Q, this.d(1.0), this.dD() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-   }
-
-   private void b(cqy $$0, cyy $$1) {
-      $$1.a(1, $$0);
-   }
-
-   private int gq() {
-      return this.bH;
-   }
-
-   private void b(int $$0) {
-      this.c(this.bH + $$0 * 20);
-   }
-
-   private void c(int $$0) {
-      this.bH = $$0;
-      if (this.bH >= a) {
-         this.gr();
-      }
-   }
-
-   private void gr() {
-      if (this.dV() instanceof arq $$0) {
-         this.a(bwm.ab, bvx.a(this, false, false), $$1 -> {
-            $$1.a($$0, this.dV().d_($$1.dv()), bwl.i, null);
-            $$1.fY();
-            $$1.a(this.a(this.aw()));
-            this.a(awn.Aw, 0.15F, 1.0F);
-         });
-      }
-   }
-
-   private int gs() {
-      return Math.max(0, a - this.bH);
-   }
-
-   @Override
-   public boolean en() {
-      return false;
+   public static Predicate<czd> a() {
+      return $$0 -> $$0.a(axk.ap);
    }
 }

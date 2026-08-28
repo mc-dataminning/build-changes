@@ -35,11 +35,11 @@ public class jx extends jz {
       return new jx(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static jx a(dic $$0, int $$1) {
+   public static jx a(dih $$0, int $$1) {
       return new jx($$0.h, $$1, $$0.i);
    }
 
-   public static jx a(eee $$0) {
+   public static jx a(eem $$0) {
       return a($$0.dv());
    }
 
@@ -51,7 +51,7 @@ public class jx extends jz {
       return new jx(b($$0), c($$0), d($$0));
    }
 
-   public static jx a(ebw $$0) {
+   public static jx a(ece $$0) {
       return a($$0.f(), $$0.aq());
    }
 
@@ -183,7 +183,7 @@ public class jx extends jz {
    }
 
    public static long g(long $$0) {
-      return dic.c(b($$0), d($$0));
+      return dih.c(b($$0), d($$0));
    }
 
    public iu j() {
@@ -195,8 +195,8 @@ public class jx extends jz {
       return this.j().b(8, 8, 8);
    }
 
-   public dic r() {
-      return new dic(this.a(), this.c());
+   public dih r() {
+      return new dih(this.a(), this.c());
    }
 
    public static long c(iu $$0) {
@@ -229,7 +229,7 @@ public class jx extends jz {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<jx> a(dic $$0, int $$1, int $$2, int $$3) {
+   public static Stream<jx> a(dih $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.h;
       int $$5 = $$0.i;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3, $$5 + $$1);

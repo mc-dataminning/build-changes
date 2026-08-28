@@ -1,41 +1,154 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
 
-public class gtz implements gtu.a {
-   private final fos a;
-   private static final int b = 10;
+public class gtz implements guc.a {
+   public static final ja[] a = ja.values();
+   private final foz b;
 
-   public gtz(fos $$0) {
-      this.a = $$0;
+   public gtz(foz $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      div $$5 = this.a.s;
-      iu $$6 = iu.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      gpv $$5 = this.b.f;
+      if (this.b.C || this.b.D) {
+         gqp $$6 = $$5.x();
+         ObjectListIterator $$27 = $$5.w().iterator();
 
-      for (iu $$8 : iu.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(dje.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = azm.g($$10, 0.9F, 0.9F);
-         long $$12 = jx.e($$8.a());
-         if ($$7.add($$12)) {
-            gtu.a(
-               $$0,
-               $$1,
-               $$5.S().q().a(dje.a, jx.a($$12)),
-               (double)jx.a(jx.b($$12), 8),
-               (double)jx.a(jx.c($$12), 8),
-               (double)jx.a(jx.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
+         while ($$27.hasNext()) {
+            gtp.b $$7 = (gtp.b)$$27.next();
+            gqp.d $$8 = $$6.b($$7);
+            if ($$8 != null) {
+               iu $$9 = $$7.f();
+               $$0.a();
+               $$0.a((double)$$9.u() - $$2, (double)$$9.v() - $$3, (double)$$9.w() - $$4);
+               Matrix4f $$10 = $$0.c().a();
+               if (this.b.C) {
+                  fjn $$11 = $$1.getBuffer(gqk.y());
+                  int $$12 = $$8.b == 0 ? 0 : azm.g((float)$$8.b / 50.0F, 0.9F, 0.9F);
+                  int $$13 = $$12 >> 16 & 0xFF;
+                  int $$14 = $$12 >> 8 & 0xFF;
+                  int $$15 = $$12 & 0xFF;
 
-         if ($$9 != 15) {
-            gtu.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+                  for (int $$16 = 0; $$16 < a.length; $$16++) {
+                     if ($$8.a($$16)) {
+                        ja $$17 = a[$$16];
+                        $$11.a($$10, 8.0F, 8.0F, 8.0F).a($$13, $$14, $$15, 255).b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                        $$11.a($$10, (float)(8 - 16 * $$17.j()), (float)(8 - 16 * $$17.k()), (float)(8 - 16 * $$17.l()))
+                           .a($$13, $$14, $$15, 255)
+                           .b((float)$$17.j(), (float)$$17.k(), (float)$$17.l());
+                     }
+                  }
+               }
+
+               if (this.b.D && $$7.d().a()) {
+                  fjn $$18 = $$1.getBuffer(gqk.y());
+                  int $$19 = 0;
+
+                  for (ja $$20 : a) {
+                     for (ja $$21 : a) {
+                        boolean $$22 = $$7.d().a($$20, $$21);
+                        if (!$$22) {
+                           $$19++;
+                           $$18.a($$10, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$20.j(), (float)$$20.k(), (float)$$20.l());
+                           $$18.a($$10, (float)(8 + 8 * $$21.j()), (float)(8 + 8 * $$21.k()), (float)(8 + 8 * $$21.l()))
+                              .a(255, 0, 0, 255)
+                              .b((float)$$21.j(), (float)$$21.k(), (float)$$21.l());
+                        }
+                     }
+                  }
+
+                  if ($$19 > 0) {
+                     fjn $$23 = $$1.getBuffer(gqk.C());
+                     float $$24 = 0.5F;
+                     float $$25 = 0.2F;
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                     $$23.a($$10, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F);
+                  }
+               }
+
+               $$0.b();
+            }
          }
       }
+
+      gtt $$26 = $$5.y();
+      if ($$26 != null) {
+         $$0.a();
+         $$0.a((float)($$26.b() - $$2), (float)($$26.c() - $$3), (float)($$26.d() - $$4));
+         Matrix4f $$27 = $$0.c().a();
+         Vector4f[] $$28 = $$26.a();
+         fjn $$29 = $$1.getBuffer(gqk.C());
+         this.a($$29, $$27, $$28, 0, 1, 2, 3, 0, 1, 1);
+         this.a($$29, $$27, $$28, 4, 5, 6, 7, 1, 0, 0);
+         this.a($$29, $$27, $$28, 0, 1, 5, 4, 1, 1, 0);
+         this.a($$29, $$27, $$28, 2, 3, 7, 6, 0, 0, 1);
+         this.a($$29, $$27, $$28, 0, 4, 7, 3, 0, 1, 0);
+         this.a($$29, $$27, $$28, 1, 5, 6, 2, 1, 0, 1);
+         fjn $$30 = $$1.getBuffer(gqk.y());
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[7]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[0]);
+         this.a($$30, $$27, $$28[4]);
+         this.a($$30, $$27, $$28[1]);
+         this.a($$30, $$27, $$28[5]);
+         this.a($$30, $$27, $$28[2]);
+         this.a($$30, $$27, $$28[6]);
+         this.a($$30, $$27, $$28[3]);
+         this.a($$30, $$27, $$28[7]);
+         $$0.b();
+      }
+   }
+
+   private void a(fjn $$0, Matrix4f $$1, Vector4f $$2) {
+      $$0.a($$1, $$2.x(), $$2.y(), $$2.z()).a(-16777216).b(0.0F, 0.0F, -1.0F);
+   }
+
+   private void a(fjn $$0, Matrix4f $$1, Vector4f[] $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
+      float $$10 = 0.25F;
+      $$0.a($$1, $$2[$$3].x(), $$2[$$3].y(), $$2[$$3].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$4].x(), $$2[$$4].y(), $$2[$$4].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$5].x(), $$2[$$5].y(), $$2[$$5].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
+      $$0.a($$1, $$2[$$6].x(), $$2[$$6].y(), $$2[$$6].z()).a((float)$$7, (float)$$8, (float)$$9, 0.25F);
    }
 }

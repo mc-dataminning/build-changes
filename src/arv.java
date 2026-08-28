@@ -10,7 +10,7 @@ public class arv extends aqw {
    private final int d;
    private final String e;
 
-   public arv(bsw<Runnable> $$0, Executor $$1, int $$2) {
+   public arv(bsy<Runnable> $$0, Executor $$1, int $$2) {
       super($$0, $$1);
       this.d = $$2;
       this.e = $$0.v_();
@@ -35,6 +35,6 @@ public class arv extends aqw {
 
    @VisibleForTesting
    public String d() {
-      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dic($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
+      return this.e + "=[" + this.c.longStream().mapToObj($$0 -> $$0 + ":" + new dih($$0)).collect(Collectors.joining(",")) + "], s=" + this.b;
    }
 }

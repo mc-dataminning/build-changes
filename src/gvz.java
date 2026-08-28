@@ -1,72 +1,32 @@
-@FunctionalInterface
-public interface gvz<T extends bwd> {
-   gvy<T, ?> create(gvz.a var1);
+public class gvz extends gva<cnr, hfd, gft> {
+   private static final alg a = alg.b("textures/entity/zombie/drowned.png");
 
-   public static class a {
-      private final gvx a;
-      private final hfg b;
-      private final gpq c;
-      private final gqw d;
-      private final avd e;
-      private final giq f;
-      private final hku g;
-      private final frm h;
-      private final gzy i;
+   public gvz(gwh.a $$0) {
+      super($$0, new gft($$0.a(gjb.aG)), new gft($$0.a(gjb.aH)), new gft($$0.a(gjb.aL)), new gft($$0.a(gjb.aM)), new gft($$0.a(gjb.aI)), new gft($$0.a(gjb.aJ)));
+      this.a(new had(this, $$0.f()));
+   }
 
-      public a(gvx $$0, hfg $$1, gpq $$2, gqw $$3, avd $$4, giq $$5, hku $$6, frm $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gzy($$6, this.i().c(gqn.g));
+   public hfd a() {
+      return new hfd();
+   }
+
+   @Override
+   public alg a(hfd $$0) {
+      return a;
+   }
+
+   protected void a(hfd $$0, fjj $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = $$0.G;
+      if ($$4 > 0.0F) {
+         float $$5 = -10.0F - $$0.ab;
+         float $$6 = azm.h($$4, 0.0F, $$5);
+         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.w / 2.0F / $$3, 0.0F);
       }
+   }
 
-      public gvx a() {
-         return this.a;
-      }
-
-      public hfg b() {
-         return this.b;
-      }
-
-      public gpq c() {
-         return this.c;
-      }
-
-      public gqw d() {
-         return this.d;
-      }
-
-      public avd e() {
-         return this.e;
-      }
-
-      public giq f() {
-         return this.f;
-      }
-
-      public hku g() {
-         return this.g;
-      }
-
-      public gzy h() {
-         return this.i;
-      }
-
-      public hld i() {
-         return this.d.a().a();
-      }
-
-      public giu a(gis $$0) {
-         return this.f.a($$0);
-      }
-
-      public frm j() {
-         return this.h;
-      }
+   protected ggm.a a(cnr $$0, bwx $$1) {
+      czd $$2 = $$0.a($$1);
+      return $$0.fy() == $$1 && $$0.gi() && $$2.a(czh.xd) ? ggm.a.e : ggm.a.a;
    }
 }

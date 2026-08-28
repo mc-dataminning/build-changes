@@ -1,9 +1,9 @@
 class arh extends aqy {
    private static final int a = aqt.b + 1;
    private final ard b;
-   private final djs c;
+   private final djx c;
 
-   public arh(ard $$0, djs $$1) {
+   public arh(ard $$0, djx $$1) {
       super(a + 1, 16, 256);
       this.b = $$0;
       this.c = $$1;

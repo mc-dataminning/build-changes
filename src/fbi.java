@@ -1,103 +1,83 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fbi extends fam {
-   private static final Logger b = LogUtils.getLogger();
+public class fbi extends fau {
    public static final MapCodec<fbi> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xa.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  eyz.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  fbi.a.c.optionalFieldOf("target", fbi.a.a).forGetter($$0x -> $$0x.e)
+                  Codec.unboundedMap(dfq.c, fdn.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, fbi::new)
    );
-   private final Optional<wy> c;
-   private final Optional<eyz.b> d;
-   private final fbi.a e;
+   private final Map<je<dfq>, fdm> b;
+   private final boolean c;
 
-   private fbi(List<fci> $$0, Optional<wy> $$1, Optional<eyz.b> $$2, fbi.a $$3) {
+   fbi(List<fcq> $$0, Map<je<dfq>, fdm> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public fao<fbi> b() {
-      return fap.p;
+   public faw<fbi> b() {
+      return fax.i;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return this.d.<Set<bax<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<wy> a(eyz $$0, @Nullable eyz.b $$1) {
-      if ($$1 != null) {
-         bwd $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ei $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return xb.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   public czd a(czd $$0, ezh $$1) {
+      if ($$0.a(czh.rF)) {
+         $$0 = $$0.a((diz)czh.vG);
+      }
+
+      dfs.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((je<dfq>)$$2, azm.a($$1x.a((je<dfq>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((je<dfq>)$$2, azm.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   public static fam.a<?> a(wy $$0, fbi.a $$1) {
-      return a($$2 -> new fbi($$2, Optional.of($$0), Optional.empty(), $$1));
-   }
+   public static class a extends fau.a<fbi.a> {
+      private final Builder<je<dfq>, fdm> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public static fam.a<?> a(wy $$0, fbi.a $$1, eyz.b $$2) {
-      return a($$3 -> new fbi($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
+      public a() {
+         this(false);
+      }
 
-   public static enum a implements bak {
-      a("custom_name"),
-      b("item_name");
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
 
-      public static final Codec<fbi.a> c = bak.a(fbi.a::values);
-      private final String d;
+      protected fbi.a a() {
+         return this;
+      }
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public fbi.a a(je<dfq> $$0, fdm $$1) {
+         this.a.put($$0, $$1);
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.d;
-      }
-
-      public ki<wy> a() {
-         return switch (this) {
-            case a -> kj.g;
-            case b -> kj.h;
-         };
+      public fav b() {
+         return new fbi(this.g(), this.a.build(), this.b);
       }
    }
 }

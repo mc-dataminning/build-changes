@@ -1,77 +1,377 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class fpu {
-   private static final int c = -1;
-   public static final int a = -14647248;
-   public static final int b = -9321636;
-   private final jk<fpt> d = new jk<>(32);
-   private final Map<dma, Set<ebc<?>>> e = Maps.newHashMap();
-
-   public static fpu a() {
-      fpu $$0 = new fpu();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? goz.a($$1, $$0x.c(doj.b) == eav.a ? $$2.e() : $$2) : dit.a(), dmc.jh, dmc.jg);
-      $$0.a(doj.b, dmc.jh, dmc.jg);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? goz.a($$1, $$2) : dit.a(), dmc.i, dmc.bB, dmc.bA, dmc.gy, dmc.bD);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? goz.a($$1, $$2) : dit.a();
-         } else {
-            return -1;
-         }
-      }, dmc.tg, dmc.th);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -10380959, dmc.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -8345771, dmc.aM);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? goz.b($$1, $$2) : -12012264, dmc.aK, dmc.aN, dmc.aO, dmc.aQ, dmc.fu, dmc.aS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? goz.c($$1, $$2) : -1, dmc.J, dmc.nG, dmc.fQ);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dsi.b($$0x.c(dsi.f)), dmc.cF);
-      $$0.a(dsi.f, dmc.cF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? goz.a($$1, $$2) : -1, dmc.eg);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dmc.fr, dmc.fq);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(due.c);
-         return axw.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dmc.ft, dmc.fs);
-      $$0.a(due.c, dmc.ft, dmc.fs);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dmc.fC);
-      return $$0;
-   }
-
-   public int a(dzz $$0, div $$1, iu $$2) {
-      fpt $$3 = this.d.a(mf.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         ewk $$4 = $$0.a((dib)$$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(dzz $$0, @Nullable dhy $$1, @Nullable iu $$2, int $$3) {
-      fpt $$4 = this.d.a(mf.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(fpt $$0, dma... $$1) {
-      for (dma $$2 : $$1) {
-         this.d.a($$0, mf.e.a($$2));
-      }
-   }
-
-   private void a(Set<ebc<?>> $$0, dma... $$1) {
-      for (dma $$2 : $$1) {
-         this.e.put($$2, $$0);
-      }
-   }
-
-   private void a(ebc<?> $$0, dma... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<ebc<?>> a(dma $$0) {
-      return this.e.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final fpn a = fpn.a.a(1.125F)
+      .a()
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(26.8802F, -23.399F, -9.0616F), fpm.b.a),
+            new fpo(0.125F, fpp.b(-2.2093F, 5.9119F, 0.0675F), fpm.b.a),
+            new fpo(0.5417F, fpp.b(23.0778F, 14.2906F, 4.6066F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.875F, fpp.b(7.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(26.8802F, -23.399F, -9.0616F), fpm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0417F, fpp.b(-17.5F, -62.5F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.4167F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.4583F, fpp.b(0.0F, 15.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0417F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0833F, fpp.b(-37.1532F, 81.1131F, -28.3621F), fpm.b.a),
+            new fpo(1.125F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(12.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(-32.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.875F, fpp.b(12.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(-15.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(-15.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.125F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5417F, fpp.b(-25.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.75F, fpp.b(-9.0923F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7917F, fpp.b(-15.137F, -66.7758F, 13.9603F), fpm.b.a),
+            new fpo(0.8333F, fpp.b(-9.0923F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(-15.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(30.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.375F, fpp.b(49.8924F, -3.8282F, 3.2187F), fpm.b.a),
+            new fpo(0.5F, fpp.b(17.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(-56.5613F, -12.2403F, -8.7374F), fpm.b.a),
+            new fpo(0.9167F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 2.0F), fpm.b.a),
+            new fpo(0.25F, fpp.a(0.0F, 0.1846F, 0.5979F), fpm.b.a),
+            new fpo(0.375F, fpp.a(0.0F, -0.0665F, -2.2177F), fpm.b.a),
+            new fpo(0.5F, fpp.a(0.0F, 1.3563F, -4.3474F), fpm.b.a),
+            new fpo(0.625F, fpp.a(0.0F, 0.1047F, -1.6556F), fpm.b.a),
+            new fpo(0.9167F, fpp.a(0.0F, 0.0F, -1.0F), fpm.b.a),
+            new fpo(1.125F, fpp.a(0.0F, 0.0F, 2.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(25.5305F, 11.3125F, 5.3525F), fpm.b.a),
+            new fpo(0.125F, fpp.b(-49.5628F, 7.3556F, 6.7933F), fpm.b.a),
+            new fpo(0.25F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.4583F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.9167F, fpp.b(30.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0417F, fpp.b(55.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(25.5305F, 11.3125F, 5.3525F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.9674F, -3.6578F), fpm.b.a),
+            new fpo(0.125F, fpp.a(0.0F, -0.2979F, -0.9411F), fpm.b.a),
+            new fpo(0.25F, fpp.a(0.0F, -0.3F, -0.94F), fpm.b.a),
+            new fpo(0.4583F, fpp.a(0.0F, -0.3F, 1.06F), fpm.b.a),
+            new fpo(1.125F, fpp.a(0.0F, 0.9674F, -3.6578F), fpm.b.a)
+         )
+      )
+      .b();
+   public static final fpn b = fpn.a.a(0.7083F)
+      .a()
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(0.0F, 45.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(-115.0F, 67.5F, -90.0F), fpm.b.a),
+            new fpo(0.375F, fpp.b(67.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5417F, fpp.b(0.0F, 45.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.a(0.0F, -2.7716F, -1.1481F), fpm.b.a),
+            new fpo(0.375F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5417F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("upper_body", new fpm(fpm.d.c, new fpo(0.0F, fpp.a(1.0, 1.0, 1.0), fpm.b.a), new fpo(0.7083F, fpp.a(1.0, 1.0, 1.0), fpm.b.a)))
+      .a(
+         "head",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(0.0F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(-11.25F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.b(-117.3939F, 76.6331F, -130.1483F), fpm.b.a),
+            new fpo(0.4167F, fpp.b(-45.0F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.b(60.0F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.5833F, fpp.b(60.0F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(0.0F, -45.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.4167F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.a(0.3827F, 0.5133F, -0.7682F), fpm.b.a),
+            new fpo(0.5833F, fpp.a(0.3827F, 0.5133F, -0.7682F), fpm.b.a),
+            new fpo(0.625F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fpm(
+            fpm.d.c,
+            new fpo(0.1667F, fpp.a(1.0, 1.0, 1.0), fpm.b.a),
+            new fpo(0.4167F, fpp.a(1.0, 1.0, 1.0), fpm.b.a),
+            new fpo(0.5F, fpp.a(1.0, 1.3F, 1.0), fpm.b.a),
+            new fpo(0.625F, fpp.a(1.0, 1.0, 1.0), fpm.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(7.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.4583F, fpp.b(55.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.a(0.0F, 0.0F, -2.0F), fpm.b.a),
+            new fpo(0.625F, fpp.a(0.0F, 0.0F, -2.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(0.0F, 45.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(0.0F, 45.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.a(0.7071F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.a(0.7071F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(10.3453F, 14.7669F, 2.664F), fpm.b.a),
+            new fpo(0.4583F, fpp.b(57.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.625F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.7083F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("left_arm", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.7083F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .b();
+   public static final fpn c = fpn.a.a(0.2917F)
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(-5.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(5.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(17.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(-15.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("right_arm", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.25F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .a(
+         "left_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(20.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(-15.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.25F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("left_arm", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.25F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .b();
+   public static final fpn d = fpn.a.a(2.25F)
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(-40.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.1667F, fpp.b(-5.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.b(7.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5833F, fpp.b(16.25F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.6667F, fpp.b(29.0814F, 62.5516F, 26.5771F), fpm.b.a),
+            new fpo(0.75F, fpp.b(12.2115F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0F, fpp.b(10.25F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0417F, fpp.b(-47.64F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.125F, fpp.b(21.96F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.25F, fpp.b(12.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(2.25F, fpp.b(17.3266F, 7.9022F, -0.1381F), fpm.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.a,
+            new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.a(0.0F, 0.557F, 1.2659F), fpm.b.a),
+            new fpo(0.1667F, fpp.a(0.0F, -2.0889F, -0.3493F), fpm.b.a),
+            new fpo(0.2917F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new fpm(
+            fpm.d.c,
+            new fpo(0.0F, fpp.a(1.0, 1.0, 1.0), fpm.b.a),
+            new fpo(0.0833F, fpp.a(1.0, 1.1F, 1.0), fpm.b.a),
+            new fpo(0.1667F, fpp.a(1.0, 0.9F, 1.0), fpm.b.a),
+            new fpo(0.2917F, fpp.a(1.0, 1.0, 1.0), fpm.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.25F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.5417F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.5833F, fpp.b(-12.1479F, -34.3927F, 6.9326F), fpm.b.a),
+            new fpo(1.6667F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("right_arm", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.2917F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .a(
+         "left_arm",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.8333F, fpp.b(-4.4444F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.875F, fpp.b(-26.7402F, -78.831F, 26.3025F), fpm.b.a),
+            new fpo(0.9583F, fpp.b(-5.5556F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.25F, fpp.b(-10.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("left_arm", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.2917F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .a(
+         "head",
+         new fpm(
+            fpm.d.b,
+            new fpo(0.0F, fpp.b(0.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.0833F, fpp.b(-5.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.2917F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5F, fpp.b(2.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5417F, fpp.b(5.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(0.5833F, fpp.b(-67.4168F, -12.9552F, -8.0231F), fpm.b.a),
+            new fpo(0.6667F, fpp.b(8.5F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.0F, fpp.b(10.773F, -29.5608F, -5.3627F), fpm.b.a),
+            new fpo(1.25F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.7917F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a),
+            new fpo(1.8333F, fpp.b(12.9625F, 39.2735F, 8.2901F), fpm.b.a),
+            new fpo(1.9167F, fpp.b(10.0F, 0.0F, 0.0F), fpm.b.a)
+         )
+      )
+      .a("head", new fpm(fpm.d.a, new fpo(0.0F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a), new fpo(0.2917F, fpp.a(0.0F, 0.0F, 0.0F), fpm.b.a)))
+      .b();
 }

@@ -36,12 +36,12 @@ public class aqg extends MinecraftServer implements alx {
    @Nullable
    private final asy u;
    @Nullable
-   private boy v;
+   private bpa v;
    @Nullable
-   private bov w;
+   private box w;
    private final aly x;
 
-   public aqg(Thread $$0, eyn.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
+   public aqg(Thread $$0, eyv.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
       this.q = new awd(this);
@@ -129,10 +129,10 @@ public class aqg extends MinecraftServer implements alx {
          return false;
       } else {
          this.a(new aqf(this, this.bb(), this.g));
-         this.w = new bov(this.bs());
-         this.v = new boy(bpb.values().length, this.w, box.a);
+         this.w = new box(this.bs());
+         this.v = new bpa(bpd.values().length, this.w, boz.a);
          long $$4 = af.d();
-         dyn.a(this.i, this);
+         dyv.a(this.i, this);
          avm.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.q_();
@@ -140,7 +140,7 @@ public class aqg extends MinecraftServer implements alx {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().b(dir.B).a($$1.n, this);
+            this.aL().b(diw.C).a($$1.n, this);
          }
 
          if ($$1.o) {
@@ -162,7 +162,7 @@ public class aqg extends MinecraftServer implements alx {
          }
 
          if ($$1.N) {
-            bph.a(this);
+            bpj.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -236,8 +236,8 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(div $$0) {
-      return $$0.aj() == div.j ? this.a().u : true;
+   public boolean a(dja $$0) {
+      return $$0.aj() == dja.j ? this.a().u : true;
    }
 
    public void a(String $$0, ei $$1) {
@@ -314,12 +314,12 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(arq $$0, iu $$1, cqy $$2) {
-      if ($$0.aj() != div.i) {
+   public boolean a(arq $$0, iu $$1, crc $$2) {
+      if ($$0.aj() != dja.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
-      } else if (this.bs().f($$2.gh())) {
+      } else if (this.bs().f($$2.gi())) {
          return false;
       } else if (this.al() <= 0) {
          return false;
@@ -485,7 +485,7 @@ public class aqg extends MinecraftServer implements alx {
    public void v() {
       super.v();
       af.k();
-      dyn.a();
+      dyv.a();
    }
 
    @Override
@@ -510,12 +510,12 @@ public class aqg extends MinecraftServer implements alx {
 
    @Override
    public asz a(arr $$0) {
-      return this.u != null ? this.u.a($$0.gh()) : asz.e;
+      return this.u != null ? this.u.a($$0.gi()) : asz.e;
    }
 
    @Nullable
    @Override
-   public dis bd() {
+   public dix bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 
@@ -531,17 +531,17 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boz f() {
+   public bpb f() {
       return this.v;
    }
 
    @Override
    public boolean g() {
-      return this.w.a(box.a);
+      return this.w.a(boz.a);
    }
 
    @Override
-   public void a(arr $$0, box $$1) {
+   public void a(arr $$0, boz $$1) {
       this.w.a($$0, $$1);
    }
 

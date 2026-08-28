@@ -1,36 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class fbd extends fam {
+public class fbd extends fau {
    public static final MapCodec<fbd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axr.b(mg.aT).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, fbd::new)
+      $$0 -> a($$0).and(kh.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, fbd::new)
    );
-   private final axr<cyr> b;
+   private final kh b;
 
-   private fbd(List<fci> $$0, axr<cyr> $$1) {
+   private fbd(List<fcq> $$0, kh $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public fao<fbd> b() {
-      return fap.G;
+   public faw<fbd> b() {
+      return fax.k;
    }
 
    @Override
-   public cyy a(cyy $$0, eyz $$1) {
-      jr<cyr> $$2 = $$1.d().F_().f(mg.aT);
-      Optional<je<cyr>> $$3 = $$2.a(this.b, $$1.b());
-      if ($$3.isPresent()) {
-         $$0.b(kj.ab, new dbo($$3.get()));
-      }
-
+   public czd a(czd $$0, ezh $$1) {
+      $$0.a(this.b);
       return $$0;
    }
 
-   public static fam.a<?> a(axr<cyr> $$0) {
-      return a($$1 -> new fbd($$1, $$0));
+   public static <T> fau.a<?> a(ki<T> $$0, T $$1) {
+      return a($$2 -> new fbd($$2, kh.a().a($$0, $$1).a()));
    }
 }

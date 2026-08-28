@@ -1,4 +1,3 @@
-public class hcy extends hcx {
-   public fei[] a = new fei[0];
-   public boolean n;
+public class hcy extends hdn {
+   public boolean a;
 }

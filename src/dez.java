@@ -1,63 +1,55 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dez(int f, int g, List<dfb> h, dfb i, dfb j) implements dev {
+public record dez(dfg f, dfg g, dfg h, dfg i, int j, float k) implements dfa {
    public static final MapCodec<dez> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("width").forGetter(dez::b),
-               Codec.INT.fieldOf("height").forGetter(dez::c),
-               dfb.a.listOf().fieldOf("ingredients").forGetter(dez::f),
-               dfb.a.fieldOf("result").forGetter(dez::d),
-               dfb.a.fieldOf("crafting_station").forGetter(dez::e)
+               dfg.a.fieldOf("ingredient").forGetter(dez::b),
+               dfg.a.fieldOf("fuel").forGetter(dez::c),
+               dfg.a.fieldOf("result").forGetter(dez::d),
+               dfg.a.fieldOf("crafting_station").forGetter(dez::e),
+               Codec.INT.fieldOf("duration").forGetter(dez::f),
+               Codec.FLOAT.fieldOf("experience").forGetter(dez::g)
             )
             .apply($$0, dez::new)
    );
-   public static final yw<wj, dez> b = yw.a(yu.h, dez::b, yu.h, dez::c, dfb.b.a(yu.a()), dez::f, dfb.b, dez::d, dfb.b, dez::e, dez::new);
-   public static final dev.a<dez> c = new dev.a<>(a, b);
-
-   public dez(int f, int g, List<dfb> h, dfb i, dfb j) {
-      if (h.size() != f * g) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.f = f;
-         this.g = g;
-         this.h = h;
-         this.i = i;
-         this.j = j;
-      }
-   }
+   public static final yw<wj, dez> b = yw.a(dfg.b, dez::b, dfg.b, dez::c, dfg.b, dez::d, dfg.b, dez::e, yu.h, dez::f, yu.l, dez::g, dez::new);
+   public static final dfa.a<dez> c = new dfa.a<>(a, b);
 
    @Override
-   public dev.a<dez> a() {
+   public dfa.a<dez> a() {
       return c;
    }
 
    @Override
-   public boolean a(cuh $$0) {
-      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dev.super.a($$0);
+   public boolean a(cum $$0) {
+      return this.f.a($$0) && this.c().a($$0) && dfa.super.a($$0);
    }
 
-   public int b() {
+   public dfg b() {
       return this.f;
    }
 
-   public int c() {
+   public dfg c() {
       return this.g;
    }
 
-   public List<dfb> f() {
+   @Override
+   public dfg d() {
       return this.h;
    }
 
    @Override
-   public dfb d() {
+   public dfg e() {
       return this.i;
    }
 
-   @Override
-   public dfb e() {
+   public int f() {
       return this.j;
+   }
+
+   public float g() {
+      return this.k;
    }
 }

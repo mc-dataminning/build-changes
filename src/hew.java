@@ -1,12 +1,6 @@
 import javax.annotation.Nullable;
 
-public class hew extends hev implements heo {
+public interface hew {
    @Nullable
-   public cql c;
-
-   @Nullable
-   @Override
-   public cql a() {
-      return this.c;
-   }
+   cqp a();
 }

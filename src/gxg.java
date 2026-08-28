@@ -1,27 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gxg extends gwg<cnb, hcn> {
+   private static final alg a = alg.b("textures/entity/lead_knot.png");
+   private final ggq g;
 
-public class gxg extends gut<cjh, hdk, gfg> {
-   private static final Map<cjh.a, alg> a = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cjh.a.b, alg.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cjh.a.a, alg.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public gxg(gvz.a $$0) {
-      super($$0, new gfg($$0.a(git.bL)), new gfg($$0.a(git.bM)), 0.7F);
-      this.a(new hai(this, $$0.d()));
+   public gxg(gwh.a $$0) {
+      super($$0);
+      this.g = new ggq($$0.a(gjb.bD));
    }
 
-   public alg a(hdk $$0) {
-      return a.get($$0.a);
+   @Override
+   public void a(hcn $$0, fjj $$1, gqa $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.g.a($$0);
+      fjn $$4 = $$2.getBuffer(this.g.a(a));
+      this.g.a($$1, $$4, $$3, hin.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hdk b() {
-      return new hdk();
-   }
-
-   public void a(cjh $$0, hdk $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+   @Override
+   public hcn d() {
+      return new hcn();
    }
 }

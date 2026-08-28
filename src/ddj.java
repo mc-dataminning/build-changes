@@ -1,66 +1,36 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class ddj extends ddf {
-   private static final ddl c = ddl.a(czc.vA);
-
-   public ddj(ddc $$0) {
-      super($$0);
-   }
-
-   public boolean a(ddd $$0, div $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cyy $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cxx) {
-                  $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
-                     return false;
-                  }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public cyy a(ddd $$0, jg.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cyy $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cyy $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cxx $$7) {
-            $$2.add($$7.a().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kj.ai, dbm.a, $$2, dbm::a);
-         return $$3;
-      } else {
-         return cyy.k;
-      }
+public interface ddj extends ddu<ddi> {
+   @Override
+   default def<ddj> b() {
+      return def.a;
    }
 
    @Override
-   public ddz<ddj> a() {
-      return ddz.i;
+   dee<? extends ddj> a();
+
+   ddh c();
+
+   default jn<czd> a(ddi $$0) {
+      return b($$0);
+   }
+
+   static jn<czd> b(ddi $$0) {
+      jn<czd> $$1 = jn.a($$0.a(), czd.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cyz $$3 = $$0.a($$2).h();
+         $$1.set($$2, $$3.i());
+      }
+
+      return $$1;
+   }
+
+   @Override
+   default ddx h() {
+      return switch (this.c()) {
+         case a -> ddw.a;
+         case c -> ddw.c;
+         case b -> ddw.b;
+         case d -> ddw.d;
+      };
    }
 }

@@ -1,5 +1,5 @@
-public record ahx(cqw b) implements zf<agp> {
-   public static final yw<vu, ahx> a = yw.a(cqw.a, ahx::b, ahx::new);
+public record ahx(cra b) implements zf<agp> {
+   public static final yw<vu, ahx> a = yw.a(cra.a, ahx::b, ahx::new);
 
    @Override
    public zh<ahx> a() {

@@ -35,7 +35,7 @@ public class anb {
    }
 
    private static int a(ei $$0, arr $$1) {
-      GameProfile $$2 = $$1.gh();
+      GameProfile $$2 = $$1.gi();
       $$1.f.n();
       $$0.a(() -> wy.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;

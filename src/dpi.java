@@ -1,88 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dpi extends dqc {
+public class dpi extends dvr implements dmi {
+   private static final double b = 0.7;
+   private static final double c = 10.0;
+   private static final double d = 5.0;
+   private static final int e = 13;
+   private static final int f = 30;
    public static final MapCodec<dpi> a = b(dpi::new);
-   public static final int b = 3;
-   public static final eaz c = eap.av;
-   private static final int f = 4;
-   private static final int g = 2;
+
+   public dpi(eag.d $$0) {
+      super($$0);
+   }
 
    @Override
-   public MapCodec<dpi> a() {
+   protected MapCodec<? extends dpi> a() {
       return a;
    }
 
-   public dpi(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(0)));
-   }
-
    @Override
-   public void a(dzz $$0, div $$1, iu $$2, dzz $$3, boolean $$4) {
-      $$1.a($$2, this, azm.a($$1.C_(), 60, 120));
-   }
-
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.B($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
-         iu.a $$4 = new iu.a();
-
-         for (ja $$5 : ja.values()) {
-            $$4.a($$2, $$5);
-            dzz $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, azm.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, azm.a($$3, 20, 40));
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if ($$3.a(30) == 0 && $$1.X() && $$1.b(egg.a.f, $$2) <= $$2.v()) {
+         $$1.a($$2, awn.jo, awo.e, 1.0F, 1.0F, false);
       }
-   }
 
-   private boolean e(dzz $$0, div $$1, iu $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
+      if ($$1.B($$2) <= 13 && $$3.j() <= 0.7) {
+         double $$4 = (double)$$2.u() + $$3.j() * 10.0 - 5.0;
+         double $$5 = (double)$$2.v() + $$3.j() * 5.0;
+         double $$6 = (double)$$2.w() + $$3.j() * 10.0 - 5.0;
+         $$1.a(lx.bj, $$4, $$5, $$6, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(dib $$0, iu $$1, int $$2) {
-      int $$3 = 0;
-      iu.a $$4 = new iu.a();
-
-      for (ja $$5 : ja.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
+   public boolean a(djd $$0, iu $$1, eah $$2) {
       return true;
    }
 
    @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(c);
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
    }
 
    @Override
-   protected cyy a(diy $$0, iu $$1, dzz $$2, boolean $$3) {
-      return cyy.k;
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      a($$0, $$2, new czd(this));
    }
 }

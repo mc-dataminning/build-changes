@@ -9,7 +9,7 @@ public class avt {
    }
 
    public boolean a(int $$0, List<arr> $$1) {
-      int $$2 = (int)$$1.stream().filter(cqy::gn).count();
+      int $$2 = (int)$$1.stream().filter(crc::go).count();
       return $$2 >= this.b($$0);
    }
 
@@ -32,9 +32,9 @@ public class avt {
       this.b = 0;
 
       for (arr $$3 : $$0) {
-         if (!$$3.U_()) {
+         if (!$$3.V_()) {
             this.a++;
-            if ($$3.fQ()) {
+            if ($$3.fR()) {
                this.b++;
             }
          }

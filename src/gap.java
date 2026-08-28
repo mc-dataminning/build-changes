@@ -1,50 +1,27 @@
-public class gap extends fxu {
-   private static final int a = 600;
-   private final vr b;
-   private fsc c;
-   private int d;
-   private final fvu s = fvu.d();
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public gap(wy $$0, vr $$1) {
-      super($$0);
-      this.b = $$1;
+public class gap implements gao {
+   public static final gao a = new gap();
+
+   private gap() {
    }
 
    @Override
-   public boolean aC_() {
-      return false;
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
    }
 
-   @Override
-   protected void aN_() {
-      this.s.c().b().a(10);
-      this.s.a(new ftj(this.l, this.p));
-      this.c = this.s.a(fsc.a(wx.p, $$0 -> this.b.a(fwt.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fsa var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      fvo.a(this.s, this.J());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
       }
    }
 }

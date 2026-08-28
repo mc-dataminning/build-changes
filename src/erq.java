@@ -1,151 +1,78 @@
-import com.mojang.datafixers.Products.P5;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public abstract class erq {
-   public static final Codec<erq> b = mf.P.q().dispatch(erq::e, err::codec);
-   private static final int a = 10387320;
-   private final jz c;
-   private final erq.c d;
-   private final float e;
-   private final int f;
-   private final Optional<erq.a> g;
+public record erq(List<erf> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final alg c = alg.b("jigsaw");
+   private static final Map<alg, alg> d = ImmutableMap.builder()
+      .put(alg.b("nvi"), c)
+      .put(alg.b("pcp"), c)
+      .put(alg.b("bastionremnant"), c)
+      .put(alg.b("runtime"), c)
+      .build();
 
-   protected static <S extends erq> P5<Mu<S>, jz, erq.c, Float, Integer, Optional<erq.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         jz.v(16).optionalFieldOf("locate_offset", jz.i).forGetter(erq::f),
-         erq.c.e.optionalFieldOf("frequency_reduction_method", erq.c.a).forGetter(erq::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(erq::h),
-         ayu.l.fieldOf("salt").forGetter(erq::i),
-         erq.a.a.optionalFieldOf("exclusion_zone").forGetter(erq::j)
-      );
+   public erq(final List<erf> a) {
+      this.a = List.copyOf(a);
    }
 
-   protected erq(jz $$0, erq.c $$1, float $$2, int $$3, Optional<erq.a> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   protected jz f() {
-      return this.c;
-   }
-
-   protected erq.c g() {
-      return this.d;
-   }
-
-   protected float h() {
-      return this.e;
-   }
-
-   protected int i() {
-      return this.f;
-   }
-
-   protected Optional<erq.a> j() {
-      return this.g;
-   }
-
-   public boolean b(eby $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
-   }
-
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
-   }
-
-   public boolean c(eby $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
-   }
-
-   protected abstract boolean a(eby var1, int var2, int var3);
-
-   public iu a(dic $$0) {
-      return new iu($$0.d(), 0, $$0.e()).a(this.f());
-   }
-
-   public abstract err<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      egx $$5 = new egx(new efz(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      egx $$5 = new egx(new efz(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
-   }
-
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      egx $$5 = new egx(new efz(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
-   }
-
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      egx $$7 = new egx(new efz(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
-   }
-
-   @Deprecated
-   public static record a(je<eqz> b, int c) {
-      public static final Codec<erq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(alc.a(mg.bc, eqz.a, false).fieldOf("other_set").forGetter(erq.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(erq.a::b))
-               .apply($$0, erq.a::new)
-      );
-
-      boolean a(eby $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
+   public boolean a(iu $$0) {
+      for (erf $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
       }
 
-      public je<eqz> a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+      return false;
    }
 
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   public uw a(err $$0) {
+      uf $$1 = new uf();
+
+      for (erf $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public static enum c implements bak {
-      a("default", erq::a),
-      b("legacy_type_1", erq::d),
-      c("legacy_type_2", erq::c),
-      d("legacy_type_3", erq::b);
+   public static erq a(uf $$0, err $$1) {
+      List<erf> $$2 = Lists.newArrayList();
 
-      public static final Codec<erq.c> e = bak.a(erq.c::values);
-      private final String f;
-      private final erq.b g;
-
-      private c(final String $$0, final erq.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tz $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         alg $$6 = alg.a($$5);
+         alg $$7 = d.getOrDefault($$6, $$6);
+         ers $$8 = mf.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               erf $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
       }
 
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
-      }
+      return new erq($$2);
+   }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public eqt b() {
+      return erf.a(this.a.stream());
+   }
+
+   public List<erf> c() {
+      return this.a;
    }
 }

@@ -1,43 +1,67 @@
-public interface cpj {
-   int m_ = 10;
-   float n_ = 0.2F;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Optional;
 
-   int q();
+public class cpj {
+   protected static final ImmutableList<? extends chn<? extends chm<? super cpi>>> a = ImmutableList.of(chn.c, chn.d);
+   protected static final ImmutableList<? extends cgg<?>> b = ImmutableList.of(cgg.g, cgg.h, cgg.k, cgg.l, cgg.m, cgg.o, cgg.n, cgg.F, cgg.u, cgg.p, cgg.q);
 
-   static boolean a(arq $$0, bxc $$1, bxc $$2) {
-      float $$3 = (float)$$1.h(byi.c);
-      float $$4;
-      if (!$$1.n_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      bus $$6 = $$1.dW().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dfn.a($$0, (bwd)$$2, $$6);
-         if (!$$1.n_()) {
-            a($$1, $$2);
+   static void a(bye<cpi> $$0) {
+      $$0.a(csw.a, 0, ImmutableList.of(new cbp<cpi>(0.8F) {
+         protected boolean a(arq $$0, cpi $$1) {
+            return $$1.n() && super.a($$0, (bxe)$$1);
          }
-      }
-
-      return $$7;
+      }, new cab(45, 90), new caf()));
    }
 
-   static void a(bxc $$0, bxc $$1) {
-      double $$2 = $$0.h(byi.d);
-      double $$3 = $$1.h(byi.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dA() - $$0.dA();
-         double $$6 = $$1.dG() - $$0.dG();
-         float $$7 = (float)($$0.dV().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
-         fei $$9 = new fei($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
-         $$1.j($$9.d, $$10, $$9.f);
-         $$1.T = true;
+   static void b(bye<cpi> $$0) {
+      $$0.a(
+         csw.b,
+         10,
+         ImmutableList.of(
+            cbh.a(($$0x, $$1) -> $$1.gz(), ($$0x, $$1) -> $$1.ec().c(cgg.l)),
+            cav.a(8.0F, bto.a(30, 60)),
+            new cas(ImmutableList.of(Pair.of(can.a(0.3F), 2), Pair.of(cbc.a(0.3F, 3), 2), Pair.of(new bzf(30, 60), 1)))
+         )
+      );
+   }
+
+   static void a(cpi $$0, bye<cpi> $$1) {
+      $$1.a(csw.k, 10, ImmutableList.of(cba.a(1.0F), cac.a(cpi::n, 40), cbk.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(cgg.p, cgh.a)));
+   }
+
+   private static boolean a(cpi $$0, bxe $$1) {
+      Optional<List<crc>> $$2 = $$0.ec().c(cgg.m);
+      return $$2.<Boolean>map($$1x -> {
+         if ($$1 instanceof crc $$2x && $$1x.contains($$2x)) {
+            return true;
+         }
+
+         return false;
+      }).orElse(false);
+   }
+
+   public static bye.b<cpi> a() {
+      return bye.a(b, a);
+   }
+
+   public static bye<cpi> b(cpi $$0, bye<cpi> $$1) {
+      a($$1);
+      b($$1);
+      a($$0, $$1);
+      $$1.a(ImmutableSet.of(csw.a));
+      $$1.b(csw.b);
+      $$1.f();
+      return $$1;
+   }
+
+   public static void a(cpi $$0) {
+      if (!$$0.n()) {
+         $$0.ec().f();
+      } else {
+         $$0.ec().a(ImmutableList.of(csw.k, csw.b));
       }
    }
 }

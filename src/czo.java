@@ -1,24 +1,21 @@
-public class czo extends cyu {
-   public czo(cyu.a $$0) {
+public class czo extends dap {
+   public czo(cyz.a $$0) {
       super($$0);
    }
 
    @Override
-   public bub a(cyy $$0, cqy $$1, bxc $$2, bua $$3) {
-      wy $$4 = $$0.a(kj.g);
-      if ($$4 != null && $$2.aq().b()) {
-         if (!$$1.dV().C && $$2.bK()) {
-            $$2.b($$4);
-            if ($$2 instanceof bxe $$5) {
-               $$5.fY();
-            }
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.oJ, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
+   }
 
-            $$0.h(1);
-         }
+   @Override
+   protected crm a(arq $$0, bxe $$1, czd $$2) {
+      return new csj($$0, $$1, $$2);
+   }
 
-         return bub.a;
-      } else {
-         return bub.e;
-      }
+   @Override
+   protected crm a(dja $$0, jo $$1, czd $$2) {
+      return new csj($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

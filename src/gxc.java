@@ -1,31 +1,34 @@
-public class gxc extends gvy<crr, hdh> {
-   private static final alg a = alg.b("textures/entity/llama/spit.png");
-   private final ggk g;
+public class gxc extends gxn<cjk, hdh, ggo> {
+   private static final alg a = alg.b("textures/entity/iron_golem/iron_golem.png");
 
-   public gxc(gvz.a $$0) {
-      super($$0);
-      this.g = new ggk($$0.a(git.bG));
+   public gxc(gwh.a $$0) {
+      super($$0, new ggo($$0.a(gjb.bA)), 0.7F);
+      this.a(new hal(this));
+      this.a(new ham(this, $$0.d()));
    }
 
-   public void a(hdh $$0, fjc $$1, gps $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.b));
-      this.g.a($$0);
-      fjg $$4 = $$2.getBuffer(this.g.a(a));
-      this.g.a($$1, $$4, $$3, hif.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alg a(hdh $$0) {
+      return a;
    }
 
-   public hdh a() {
+   public hdh b() {
       return new hdh();
    }
 
-   public void a(crr $$0, hdh $$1, float $$2) {
+   public void a(cjk $$0, hdh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.k($$2);
-      $$1.a = $$0.l($$2);
+      $$1.a = (float)$$0.n() > 0.0F ? (float)$$0.n() - $$2 : 0.0F;
+      $$1.b = $$0.q();
+      $$1.c = $$0.m();
+   }
+
+   protected void a(hdh $$0, fjj $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!((double)$$0.ae < 0.01)) {
+         float $$4 = 13.0F;
+         float $$5 = $$0.ad + 6.0F;
+         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$6));
+      }
    }
 }

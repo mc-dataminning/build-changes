@@ -5,7 +5,7 @@ public record agf(int b) implements zf<abu> {
       this($$0.l());
    }
 
-   public static agf a(buk $$0) {
+   public static agf a(bum $$0) {
       return new agf($$0.k());
    }
 

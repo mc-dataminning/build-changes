@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bha extends bhr {
    public bha(Schema $$0) {
-      super($$0, false, "JukeboxTicksSinceSongStartedFix", biw.s, "minecraft:jukebox");
+      super($$0, false, "JukeboxTicksSinceSongStartedFix", bix.s, "minecraft:jukebox");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

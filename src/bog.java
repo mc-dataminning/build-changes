@@ -1,37 +1,27 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bog extends bkr {
+public class bog extends bks {
    public bog(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         biw.A,
-         () -> DSL.optional(
-               DSL.field(
-                  "equipment",
-                  DSL.optionalFields(
-                     new Pair[]{
-                        Pair.of("mainhand", biw.t.in($$0)),
-                        Pair.of("offhand", biw.t.in($$0)),
-                        Pair.of("feet", biw.t.in($$0)),
-                        Pair.of("legs", biw.t.in($$0)),
-                        Pair.of("chest", biw.t.in($$0)),
-                        Pair.of("head", biw.t.in($$0)),
-                        Pair.of("body", biw.t.in($$0)),
-                        Pair.of("saddle", biw.t.in($$0))
-                     }
-                  )
-               )
-            )
-      );
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:trader_llama", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:donkey", $$1x -> a($$0));
+      $$0.register($$1, "minecraft:mule", $$1x -> a($$0));
+      $$0.registerSimple($$1, "minecraft:horse");
+      $$0.registerSimple($$1, "minecraft:skeleton_horse");
+      $$0.registerSimple($$1, "minecraft:zombie_horse");
+      return $$1;
+   }
+
+   private static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("Items", DSL.list(bix.t.in($$0)));
    }
 }

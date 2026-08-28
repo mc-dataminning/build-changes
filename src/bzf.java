@@ -1,16 +1,41 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+public class bzf implements byw<bxe> {
+   private final int a;
+   private final int b;
+   private byv.a c = byv.a.a;
+   private long d;
 
-public class bzf {
-   public static <E extends bxc> byu<E> a(Predicate<E> $$0, cge<?> $$1) {
-      return ccg.a((Function<ccg.b<E>, ? extends App<ccg.c<E>, ccj<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public bzf(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public byv.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(arq $$0, bxe $$1, long $$2) {
+      this.c = byv.a.b;
+      int $$3 = this.a + $$0.C_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
+   }
+
+   @Override
+   public final void f(arq $$0, bxe $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public final void g(arq $$0, bxe $$1, long $$2) {
+      this.c = byv.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

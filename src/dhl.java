@@ -1,19 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record dhl(dhk e, wy f) {
-   public static final Codec<dhl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhk.b.forGetter(dhl::a), xa.a.fieldOf("description").forGetter(dhl::b)).apply($$0, dhl::new)
-   );
-   public static final yw<wj, dhl> b = yw.a(dhk.c, dhl::a, xa.b, dhl::b, dhl::new);
-   public static final Codec<je<dhl>> c = alc.a(mg.bj, a);
-   public static final yw<wj, je<dhl>> d = yu.a(mg.bj, b);
+public interface dhl {
+   alf<? extends jr<dhk>> a = alf.a(alg.b("equipment_asset"));
+   alf<dhk> b = a("leather");
+   alf<dhk> c = a("chainmail");
+   alf<dhk> d = a("iron");
+   alf<dhk> e = a("gold");
+   alf<dhk> f = a("diamond");
+   alf<dhk> g = a("turtle_scute");
+   alf<dhk> h = a("netherite");
+   alf<dhk> i = a("armadillo_scute");
+   alf<dhk> j = a("elytra");
+   alf<dhk> k = a("saddle");
+   Map<cyb, alf<dhk>> l = af.a(cyb.class, $$0 -> a($$0.c() + "_carpet"));
+   alf<dhk> m = a("trader_llama");
 
-   public dhk a() {
-      return this.e;
-   }
-
-   public wy b() {
-      return this.f;
+   static alf<dhk> a(String $$0) {
+      return alf.a(a, alg.b($$0));
    }
 }

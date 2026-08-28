@@ -1,10 +1,8 @@
-public class cxa extends cyu {
-   public cxa(dma $$0, cyu.a $$1) {
-      super($$1);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public wy a(cyy $$0) {
-      return this.l();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cxa {
 }

@@ -25,23 +25,23 @@ public class apj {
       );
    }
 
-   public static bwd a(ei $$0, je.c<bwm<?>> $$1, fei $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
+   public static bwf a(ei $$0, je.c<bwo<?>> $$1, feq $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
       iu $$5 = iu.a((jo)$$2);
-      if (!div.l($$5)) {
+      if (!dja.l($$5)) {
          throw c.create();
       } else {
          tz $$6 = $$3.i();
          $$6.a("id", $$1.h().a().toString());
          arq $$7 = $$0.e();
-         bwd $$8 = bwm.a($$6, $$7, bwl.n, $$1x -> {
+         bwf $$8 = bwo.a($$6, $$7, bwn.n, $$1x -> {
             $$1x.b($$2.d, $$2.e, $$2.f, $$1x.dL(), $$1x.dN());
             return $$1x;
          });
          if ($$8 == null) {
             throw a.create();
          } else {
-            if ($$4 && $$8 instanceof bxe) {
-               ((bxe)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bwl.n, null);
+            if ($$4 && $$8 instanceof bxg) {
+               ((bxg)$$8).a($$0.e(), $$0.e().d_($$8.dv()), bwn.n, null);
             }
 
             if (!$$7.e($$8)) {
@@ -53,8 +53,8 @@ public class apj {
       }
    }
 
-   private static int b(ei $$0, je.c<bwm<?>> $$1, fei $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
-      bwd $$5 = a($$0, $$1, $$2, $$3, $$4);
+   private static int b(ei $$0, je.c<bwo<?>> $$1, feq $$2, tz $$3, boolean $$4) throws CommandSyntaxException {
+      bwf $$5 = a($$0, $$1, $$2, $$3, $$4);
       $$0.a(() -> wy.a("commands.summon.success", $$5.m_()), true);
       return 1;
    }

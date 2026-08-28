@@ -1,124 +1,89 @@
-public class ctv extends ctk {
-   private static final akj<Boolean> c = akn.a(ctv.class, akl.k);
-   private static final int d = 3600;
-   private static final int h = 32000;
-   private int i;
-   public fei b = fei.c;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public ctv(bwm<? extends ctv> $$0, div $$1) {
-      super($$0, $$1);
+public class ctv {
+   public static int[][] a(ja $$0) {
+      ja $$1 = $$0.h();
+      ja $$2 = $$1.g();
+      ja $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   @Override
-   public boolean A() {
-      return true;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (!this.dV().w_()) {
-         if (this.i > 0) {
-            this.i--;
+   public static boolean a(dik $$0, bxe $$1, fel $$2) {
+      for (ffk $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-
-         if (this.i <= 0) {
-            this.b = fei.c;
-         }
-
-         this.r(this.i > 0);
       }
 
-      if (this.q() && this.ae.a(4) == 0) {
-         this.dV().a(lx.aa, this.dA(), this.dC() + 0.8, this.dG(), 0.0, 0.0, 0.0);
-      }
+      return $$0.A_().a($$2);
    }
 
-   @Override
-   protected double a(arq $$0) {
-      return this.bj() ? super.a($$0) * 0.75 : super.a($$0) * 0.5;
+   public static boolean a(dik $$0, feq $$1, bxe $$2, bxq $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   @Override
-   protected cyu o() {
-      return czc.ou;
+   public static ffk a(dig $$0, iu $$1) {
+      eah $$2 = $$0.a_($$1);
+      return !$$2.a(axc.aS) && (!($$2.b() instanceof dvh) || !$$2.c(dvh.b)) ? $$2.g($$0, $$1) : ffh.a();
    }
 
-   @Override
-   public cyy dI() {
-      return new cyy(czc.ou);
-   }
+   public static double a(iu $$0, int $$1, Function<iu, ffk> $$2) {
+      iu.a $$3 = $$0.k();
+      int $$4 = 0;
 
-   @Override
-   protected fei a(fei $$0) {
-      fei $$1;
-      if (this.b.h() > 1.0E-7) {
-         this.b = this.k($$0);
-         $$1 = $$0.d(0.8, 0.0, 0.8).e(this.b);
-         if (this.bj()) {
-            $$1 = $$1.c(0.1);
+      while ($$4 < $$1) {
+         ffk $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ja.a.b);
          }
+
+         $$4++;
+         $$3.c(ja.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
+   }
+
+   @Nullable
+   public static feq a(bwo<?> $$0, dik $$1, iu $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
       } else {
-         $$1 = $$0.d(0.98, 0.0, 0.98);
+         double $$4 = $$1.a(a((dig)$$1, $$2), () -> a((dig)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            feq $$5 = feq.a($$2, $$4);
+            fel $$6 = $$0.n().a($$5);
+
+            for (ffk $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
+
+            if ($$0 != bwo.bS || !$$1.a_($$2).a(axc.cw) && !$$1.a_($$2.d()).a(axc.cw)) {
+               return !$$1.A_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
-
-      return super.a($$1);
-   }
-
-   private fei k(fei $$0) {
-      double $$1 = 1.0E-4;
-      double $$2 = 0.001;
-      return this.b.j() > 1.0E-4 && $$0.j() > 0.001 ? this.b.i($$0).d().c(this.b.g()) : this.b;
-   }
-
-   @Override
-   public bub a(cqy $$0, bua $$1) {
-      cyy $$2 = $$0.b($$1);
-      if ($$2.a(axk.bP) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.b = this.dt().d($$0.dt()).f();
-      }
-
-      return bub.a;
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.b.d);
-      $$0.a("PushZ", this.b.f);
-      $$0.a("Fuel", (short)this.i);
-   }
-
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      double $$1 = $$0.k("PushX");
-      double $$2 = $$0.k("PushZ");
-      this.b = new fei($$1, 0.0, $$2);
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean q() {
-      return this.al.a(c);
-   }
-
-   protected void r(boolean $$0) {
-      this.al.a(c, $$0);
-   }
-
-   @Override
-   public dzz v() {
-      return dmc.cM.m().b(dpk.a, ja.c).b(dpk.b, Boolean.valueOf(this.q()));
    }
 }

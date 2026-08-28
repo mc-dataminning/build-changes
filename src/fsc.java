@@ -1,100 +1,97 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public abstract class fsc extends fsh {
+   public static final int b = 6;
+   private double a;
+   private static final alg c = alg.b("widget/scroller");
+   private static final alg d = alg.b("widget/scroller_background");
+   private boolean e;
 
-public class fsc extends frs {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fsc.b q = $$0 -> $$0.get();
-   protected final fsc.c r;
-   protected final fsc.b s;
-
-   public static fsc.a a(wy $$0, fsc.c $$1) {
-      return new fsc.a($$0, $$1);
-   }
-
-   protected fsc(int $$0, int $$1, int $$2, int $$3, wy $$4, fsc.c $$5, fsc.b $$6) {
+   public fsc(int $$0, int $$1, int $$2, int $$3, wy $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
    }
 
    @Override
-   public void b() {
-      this.r.onPress(this);
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (!this.k) {
+         return false;
+      } else {
+         this.a(this.g() - $$3 * this.o());
+         return true;
+      }
    }
 
    @Override
-   protected xm d() {
-      return this.s.createNarrationMessage(() -> super.d());
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (this.e) {
+         if ($$1 < (double)this.G()) {
+            this.a(0.0);
+         } else if ($$1 > (double)this.I()) {
+            this.a((double)this.i());
+         } else {
+            double $$5 = (double)Math.max(1, this.i());
+            int $$6 = this.k();
+            double $$7 = Math.max(1.0, $$5 / (double)(this.h - $$6));
+            this.a(this.g() + $$4 * $$7);
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public void a(fvz $$0) {
-      this.c($$0);
+   public void b(double $$0, double $$1) {
+      this.e = false;
    }
 
-   public static class a {
-      private final wy a;
-      private final fsc.c b;
-      @Nullable
-      private ftn c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fsc.b h = fsc.q;
+   public double g() {
+      return this.a;
+   }
 
-      public a(wy $$0, fsc.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void a(double $$0) {
+      this.a = azm.a($$0, 0.0, (double)this.i());
+   }
 
-      public fsc.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
+   public boolean c(double $$0, double $$1, int $$2) {
+      this.e = this.j() && this.g($$2) && $$0 >= (double)this.l() && $$0 <= (double)(this.l() + 6) && $$1 >= (double)this.G() && $$1 < (double)this.I();
+      return this.e;
+   }
 
-      public fsc.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
+   public void h() {
+      this.a(this.a);
+   }
 
-      public fsc.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
+   public int i() {
+      return Math.max(0, this.n() - this.h);
+   }
 
-      public fsc.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
+   protected boolean j() {
+      return this.i() > 0;
+   }
 
-      public fsc.a a(@Nullable ftn $$0) {
-         this.c = $$0;
-         return this;
-      }
+   protected int k() {
+      return azm.a((int)((float)(this.h * this.h) / (float)this.n()), 32, this.h - 8);
+   }
 
-      public fsc.a a(fsc.b $$0) {
-         this.h = $$0;
-         return this;
-      }
+   protected int l() {
+      return this.H() - 6;
+   }
 
-      public fsc a() {
-         fsc $$0 = new fsc(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   protected int m() {
+      return Math.max(this.G(), (int)this.a * (this.h - this.k()) / this.i() + this.G());
+   }
+
+   protected void a(frv $$0) {
+      if (this.j()) {
+         int $$1 = this.l();
+         int $$2 = this.k();
+         int $$3 = this.m();
+         $$0.a(gqk::H, d, $$1, this.G(), 6, this.y());
+         $$0.a(gqk::H, c, $$1, $$3, 6, $$2);
       }
    }
 
-   public interface b {
-      xm createNarrationMessage(Supplier<xm> var1);
-   }
+   protected abstract int n();
 
-   public interface c {
-      void onPress(fsc var1);
-   }
+   protected abstract double o();
 }

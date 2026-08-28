@@ -1,30 +1,70 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record ert(int c, int d) {
-   private static final Codec<ert> e = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayu.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
-            .apply($$0, ert::new)
-   );
-   public static final Codec<ert> a = Codec.either(ayu.l, e)
-      .xmap($$0 -> (ert)$$0.map(ert::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
-   public static final ert b = new ert(0);
+public class ert implements erg {
+   private final List<erf> a = Lists.newArrayList();
 
-   public ert(int $$0) {
-      this($$0, $$0);
+   @Override
+   public void a(erf $$0) {
+      this.a.add($$0);
    }
 
-   public boolean a() {
-      return this.d == this.c;
+   @Nullable
+   @Override
+   public erf a(eqt $$0) {
+      return erf.a(this.a, $$0);
    }
 
-   public int b() {
-      return this.c;
+   @Deprecated
+   public void a(int $$0) {
+      for (erf $$1 : this.a) {
+         $$1.a(0, $$0, 0);
+      }
    }
 
-   public int c() {
-      return this.d;
+   @Deprecated
+   public int a(int $$0, int $$1, azv $$2, int $$3) {
+      int $$4 = $$0 - $$3;
+      eqt $$5 = this.d();
+      int $$6 = $$5.e() + $$1 + 1;
+      if ($$6 < $$4) {
+         $$6 += $$2.a($$4 - $$6);
+      }
+
+      int $$7 = $$6 - $$5.l();
+      this.a($$7);
+      return $$7;
+   }
+
+   /** @deprecated */
+   public void a(azv $$0, int $$1, int $$2) {
+      eqt $$3 = this.d();
+      int $$4 = $$2 - $$1 + 1 - $$3.e();
+      int $$5;
+      if ($$4 > 1) {
+         $$5 = $$1 + $$0.a($$4);
+      } else {
+         $$5 = $$1;
+      }
+
+      int $$7 = $$5 - $$3.i();
+      this.a($$7);
+   }
+
+   public erq a() {
+      return new erq(this.a);
+   }
+
+   public void b() {
+      this.a.clear();
+   }
+
+   public boolean c() {
+      return this.a.isEmpty();
+   }
+
+   public eqt d() {
+      return erf.a(this.a.stream());
    }
 }

@@ -1,57 +1,62 @@
-import com.mojang.serialization.Codec;
+public class bxf extends bwf {
+   private static final String a = "data";
+   private tz b = new tz();
 
-public enum bxf implements bak {
-   a("monster", 70, false, false, 128),
-   b("creature", 10, true, true, 128),
-   c("ambient", 15, true, false, 128),
-   d("axolotls", 5, true, false, 128),
-   e("underground_water_creature", 5, true, false, 128),
-   f("water_creature", 5, true, false, 128),
-   g("water_ambient", 20, true, false, 64),
-   h("misc", -1, true, true, 128);
-
-   public static final Codec<bxf> i = bak.a(bxf::values);
-   private final int j;
-   private final boolean k;
-   private final boolean l;
-   private final String m;
-   private final int n = 32;
-   private final int o;
-
-   private bxf(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
-      this.m = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.o = $$4;
-   }
-
-   public String a() {
-      return this.m;
+   public bxf(bwo<?> $$0, dja $$1) {
+      super($$0, $$1);
+      this.ad = true;
    }
 
    @Override
-   public String c() {
-      return this.m;
+   public void h() {
    }
 
-   public int b() {
-      return this.j;
+   @Override
+   protected void a(akn.a $$0) {
    }
 
-   public boolean d() {
-      return this.k;
+   @Override
+   protected void a(tz $$0) {
+      this.b = $$0.p("data");
    }
 
-   public boolean e() {
-      return this.l;
+   @Override
+   protected void b(tz $$0) {
+      $$0.a("data", this.b.i());
    }
 
-   public int f() {
-      return this.o;
+   @Override
+   public zf<abu> a(aro $$0) {
+      throw new IllegalStateException("Markers should never be sent");
    }
 
-   public int g() {
-      return 32;
+   @Override
+   protected boolean r(bwf $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bQ() {
+      return false;
+   }
+
+   @Override
+   protected void p(bwf $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public ewt j_() {
+      return ewt.d;
+   }
+
+   @Override
+   public boolean g_() {
+      return true;
+   }
+
+   @Override
+   public final boolean a(arq $$0, buu $$1, float $$2) {
+      return false;
    }
 }

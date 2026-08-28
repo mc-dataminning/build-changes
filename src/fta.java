@@ -1,18 +1,35 @@
-public class fta extends fsc {
-   private final frm a;
-   private final wy b;
-   private final wy c;
+public class fta {
+   public static final alg a = alg.b("textures/gui/title/minecraft.png");
+   public static final alg b = alg.b("textures/gui/title/minceraft.png");
+   public static final alg c = alg.b("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)azv.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public fta(int $$0, int $$1, int $$2, int $$3, wy $$4, fsc.c $$5, frm $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xb.a($$4.f(), xv.a.c(true));
+   public fta(boolean $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      wy $$4 = this.D() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.F(), this.G(), 16777215 | azm.f(this.l * 255.0F) << 24);
+   public void a(frv $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
+   }
+
+   public void a(frv $$0, int $$1, float $$2, int $$3) {
+      int $$4 = $$1 / 2 - 128;
+      float $$5 = this.o ? 1.0F : $$2;
+      int $$6 = axw.a($$5);
+      $$0.a(gqk::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
+      int $$7 = $$1 / 2 - 64;
+      int $$8 = $$3 + 44 - 7;
+      $$0.a(gqk::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
    }
 }

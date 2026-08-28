@@ -1,61 +1,54 @@
-public class goe extends goa {
-   private final gnv a;
-   private static final int b = 8;
-
-   protected goe(gjr $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gnv $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / azm.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
+public class goe extends gnu {
+   goe(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, god $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axw.b($$7), (float)axw.c($$7), (float)axw.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
       this.b($$8);
-      this.n = true;
-   }
-
-   @Override
-   public gne b() {
-      return gne.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gnn.a p() {
-      return gnn.a.b;
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.a);
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(iu.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
+         }
+      }
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gnl<mb> {
+      private final god a;
 
-   public static class a implements gnd<mb> {
-      private final gnv a;
-
-      public a(gnv $$0) {
+      public a(god $$0) {
          this.a = $$0;
       }
 
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 204, 31, 102), this.a);
+      }
+   }
+
+   public static class b implements gnl<mb> {
+      private final god a;
+
+      public b(god $$0) {
+         this.a = $$0;
+      }
+
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 255, 255, 255), this.a);
       }
    }
 }

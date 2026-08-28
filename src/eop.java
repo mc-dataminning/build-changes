@@ -1,76 +1,69 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class eop {
-   public static final Codec<eop> c = mf.V.q().dispatch(eop::a, eoq::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class eop extends eox {
+   public static final MapCodec<eop> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ayu.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bti.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, eop::new)
+   );
+   private final int b;
+   private final bti h;
 
-   protected static <P extends eop> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public eop(int $$0, int $$1, int $$2, int $$3, bti $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
-   public eop(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected eoy<?> a() {
+      return eoy.g;
    }
 
-   protected abstract eoq<?> a();
+   @Override
+   public List<enc.a> a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, int $$3, iu $$4, emm $$5) {
+      ja $$6 = ja.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      iu.a $$8 = $$4.k();
+      iu $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<enc.a> $$10 = Lists.newArrayList();
 
-   public abstract List<emu.a> a(djb var1, BiConsumer<iu, dzz> var2, azv var3, int var4, iu var5, eme var6);
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
+         }
 
-   public int a(azv $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
+         if (eky.d($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
 
-   private static boolean c(djb $$0, iu $$1) {
-      return $$0.a($$1, $$0x -> eje.b($$0x) && !$$0x.a(dmc.i) && !$$0x.a(dmc.fB));
-   }
+         if ($$11 >= this.b) {
+            $$10.add(new enc.a($$8.j(), 0, false));
+         }
 
-   protected static void a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu $$3, eme $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+         $$8.c(ja.b);
       }
-   }
 
-   protected boolean b(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu $$3, eme $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
+      int $$12 = this.h.a($$2);
 
-   protected boolean a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu $$3, eme $$4, Function<dzz, dzz> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (eky.d($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new enc.a($$8.j(), 0, false));
+         $$8.c($$6);
       }
-   }
 
-   protected void a(djb $$0, BiConsumer<iu, dzz> $$1, azv $$2, iu.a $$3, eme $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(djb $$0, iu $$1) {
-      return ekq.d($$0, $$1);
-   }
-
-   public boolean b(djb $$0, iu $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(axc.u));
+      return $$10;
    }
 }

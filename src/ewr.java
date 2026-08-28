@@ -1,276 +1,215 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ewr extends exc {
-   private final Long2ObjectMap<ewx> a = new Long2ObjectOpenHashMap();
-   private static final float m = 1.0F;
-   private static final float n = 1.1F;
-   private static final int o = 10;
+public abstract class ewr extends ewm {
+   public static final float e = 0.44444445F;
 
    @Override
-   public void a(dji $$0, bxe $$1) {
-      super.a($$0, $$1);
-      this.a.clear();
-      $$1.G();
+   public ewn d() {
+      return ewp.d;
    }
 
    @Override
-   public void b() {
-      this.c.H();
-      this.a.clear();
-      super.b();
+   public ewn e() {
+      return ewp.e;
    }
 
    @Override
-   public ews a() {
-      int $$0;
-      if (this.f() && this.c.bj()) {
-         $$0 = this.c.dB();
-         iu.a $$1 = new iu.a(this.c.dA(), (double)$$0, this.c.dG());
+   public cyz a() {
+      return czh.rq;
+   }
 
-         for (dzz $$2 = this.b.a($$1); $$2.a(dmc.J); $$2 = this.b.a($$1)) {
-            $$1.b(this.c.dA(), (double)(++$$0), this.c.dG());
+   @Override
+   public void a(dja $$0, iu $$1, ewo $$2, azv $$3) {
+      iu $$4 = $$1.d();
+      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(lx.ab, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, awn.oy, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
          }
-      } else {
-         $$0 = azm.a(this.c.dC() + 0.5);
-      }
 
-      iu $$4 = iu.a(this.c.dA(), (double)$$0, this.c.dG());
-      if (!this.a($$4)) {
-         for (iu $$5 : this.a(this.c)) {
-            if (this.a($$5)) {
-               return super.c($$5);
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awn.ow, awo.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+      }
+   }
+
+   @Override
+   public void a(arq $$0, iu $$1, ewo $$2, azv $$3) {
+      if ($$0.O().c(diw.b)) {
+         if ($$0.O().c(diw.c) || $$0.g($$1)) {
+            int $$4 = $$3.a(3);
+            if ($$4 > 0) {
+               iu $$5 = $$1;
+
+               for (int $$6 = 0; $$6 < $$4; $$6++) {
+                  $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+                  if (!$$0.p($$5)) {
+                     return;
+                  }
+
+                  eah $$7 = $$0.a_($$5);
+                  if ($$7.l()) {
+                     if (this.a((djd)$$0, $$5)) {
+                        $$0.b($$5, dls.a($$0, $$5));
+                        return;
+                     }
+                  } else if ($$7.d()) {
+                     return;
+                  }
+               }
+            } else {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  iu $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+                  if (!$$0.p($$9)) {
+                     return;
+                  }
+
+                  if ($$0.v($$9.d()) && this.b($$0, $$9)) {
+                     $$0.b($$9.d(), dls.a($$0, $$9));
+                  }
+               }
             }
          }
       }
-
-      return super.c($$4);
    }
 
-   @Override
-   protected boolean a(iu $$0) {
-      ewx $$1 = this.b($$0.u(), $$0.v(), $$0.w());
-      return this.c.a($$1) >= 0.0F;
+   private boolean a(djd $$0, iu $$1) {
+      for (ja $$2 : ja.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public exb a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(ews[] $$0, ews $$1) {
-      int $$2 = 0;
-      ews $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
-      if (this.c($$3)) {
-         $$0[$$2++] = $$3;
-      }
-
-      ews $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
-      if (this.c($$4)) {
-         $$0[$$2++] = $$4;
-      }
-
-      ews $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
-      if (this.c($$5)) {
-         $$0[$$2++] = $$5;
-      }
-
-      ews $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
-      if (this.c($$6)) {
-         $$0[$$2++] = $$6;
-      }
-
-      ews $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
-      if (this.c($$7)) {
-         $$0[$$2++] = $$7;
-      }
-
-      ews $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
-      if (this.c($$8)) {
-         $$0[$$2++] = $$8;
-      }
-
-      ews $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
-      if (this.c($$9) && this.b($$3) && this.b($$7)) {
-         $$0[$$2++] = $$9;
-      }
-
-      ews $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
-      if (this.c($$10) && this.b($$4) && this.b($$7)) {
-         $$0[$$2++] = $$10;
-      }
-
-      ews $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
-      if (this.c($$11) && this.b($$5) && this.b($$7)) {
-         $$0[$$2++] = $$11;
-      }
-
-      ews $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
-      if (this.c($$12) && this.b($$6) && this.b($$7)) {
-         $$0[$$2++] = $$12;
-      }
-
-      ews $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
-      if (this.c($$13) && this.b($$3) && this.b($$8)) {
-         $$0[$$2++] = $$13;
-      }
-
-      ews $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
-      if (this.c($$14) && this.b($$4) && this.b($$8)) {
-         $$0[$$2++] = $$14;
-      }
-
-      ews $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
-      if (this.c($$15) && this.b($$5) && this.b($$8)) {
-         $$0[$$2++] = $$15;
-      }
-
-      ews $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
-      if (this.c($$16) && this.b($$6) && this.b($$8)) {
-         $$0[$$2++] = $$16;
-      }
-
-      ews $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
-      if (this.c($$17) && this.b($$6) && this.b($$5)) {
-         $$0[$$2++] = $$17;
-      }
-
-      ews $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
-      if (this.c($$18) && this.b($$3) && this.b($$5)) {
-         $$0[$$2++] = $$18;
-      }
-
-      ews $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
-      if (this.c($$19) && this.b($$6) && this.b($$4)) {
-         $$0[$$2++] = $$19;
-      }
-
-      ews $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
-      if (this.c($$20) && this.b($$3) && this.b($$4)) {
-         $$0[$$2++] = $$20;
-      }
-
-      ews $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
-         $$0[$$2++] = $$21;
-      }
-
-      ews $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
-         $$0[$$2++] = $$22;
-      }
-
-      ews $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
-      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
-         $$0[$$2++] = $$23;
-      }
-
-      ews $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
-      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
-         $$0[$$2++] = $$24;
-      }
-
-      ews $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
-         $$0[$$2++] = $$25;
-      }
-
-      ews $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
-         $$0[$$2++] = $$26;
-      }
-
-      ews $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
-      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
-         $$0[$$2++] = $$27;
-      }
-
-      ews $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
-      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
-         $$0[$$2++] = $$28;
-      }
-
-      return $$2;
-   }
-
-   private boolean b(@Nullable ews $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
-   }
-
-   private boolean c(@Nullable ews $$0) {
-      return $$0 != null && !$$0.i;
+   private boolean b(djd $$0, iu $$1) {
+      return $$0.d($$1.v()) && !$$0.C($$1) ? false : $$0.a_($$1).m();
    }
 
    @Nullable
    @Override
-   protected ews a(int $$0, int $$1, int $$2) {
-      ews $$3 = null;
-      ewx $$4 = this.b($$0, $$1, $$2);
-      float $$5 = this.c.a($$4);
-      if ($$5 >= 0.0F) {
-         $$3 = this.c($$0, $$1, $$2);
-         $$3.l = $$4;
-         $$3.k = Math.max($$3.k, $$5);
-         if ($$4 == ewx.c) {
-            $$3.k++;
-         }
-      }
-
-      return $$3;
+   public lv h() {
+      return lx.i;
    }
 
    @Override
-   protected ewx b(int $$0, int $$1, int $$2) {
-      return (ewx)this.a.computeIfAbsent(iu.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2, this.c));
+   protected void a(djb $$0, iu $$1, eah $$2) {
+      this.a($$0, $$1);
    }
 
    @Override
-   public ewx a(ewz $$0, int $$1, int $$2, int $$3) {
-      ewx $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == ewx.b && $$2 >= $$0.a().G_() + 1) {
-         iu $$5 = new iu($$1, $$2 - 1, $$3);
-         ewx $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
-         if ($$6 == ewx.o || $$6 == ewx.i) {
-            $$4 = ewx.o;
-         } else if ($$6 == ewx.q) {
-            $$4 = ewx.q;
-         } else if ($$6 == ewx.x) {
-            $$4 = ewx.x;
-         } else if ($$6 == ewx.h) {
-            if (!$$5.equals($$0.b())) {
-               $$4 = ewx.h;
-            }
-         } else {
-            $$4 = $$6 != ewx.c && $$6 != ewx.b && $$6 != ewx.j ? ewx.c : ewx.b;
-         }
-      }
+   public int b(djd $$0) {
+      return $$0.B_().i() ? 4 : 2;
+   }
 
-      if ($$4 == ewx.c || $$4 == ewx.b) {
-         $$4 = a($$0, $$1, $$2, $$3, $$4);
+   @Override
+   public eah b(ewo $$0) {
+      return dmh.K.m().b(drb.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(ewn $$0) {
+      return $$0 == ewp.e || $$0 == ewp.d;
+   }
+
+   @Override
+   public int c(djd $$0) {
+      return $$0.B_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(ewo $$0, dig $$1, iu $$2, ewn $$3, ja $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(axh.a);
+   }
+
+   @Override
+   public int a(djd $$0) {
+      return $$0.B_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(dja $$0, iu $$1, ewo $$2, ewo $$3) {
+      int $$4 = this.a($$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.C_().a(4) != 0) {
+         $$4 *= 4;
       }
 
       return $$4;
    }
 
-   private Iterable<iu> a(bxe $$0) {
-      fed $$1 = $$0.cR();
-      boolean $$2 = $$1.a() < 1.0;
-      if (!$$2) {
-         return List.of(
-            iu.a($$1.a, (double)$$0.dB(), $$1.c),
-            iu.a($$1.a, (double)$$0.dB(), $$1.f),
-            iu.a($$1.d, (double)$$0.dB(), $$1.c),
-            iu.a($$1.d, (double)$$0.dB(), $$1.f)
-         );
-      } else {
-         double $$3 = Math.max(0.0, 1.1F - $$1.d());
-         double $$4 = Math.max(0.0, 1.1F - $$1.b());
-         double $$5 = Math.max(0.0, 1.1F - $$1.c());
-         fed $$6 = $$1.c($$4, $$5, $$3);
-         return iu.a($$0.dY(), 10, azm.a($$6.a), azm.a($$6.b), azm.a($$6.c), azm.a($$6.d), azm.a($$6.e), azm.a($$6.f));
+   private void a(djb $$0, iu $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(arq $$0) {
+      return $$0.O().c(diw.X);
+   }
+
+   @Override
+   protected void a(djb $$0, iu $$1, eah $$2, ja $$3, ewo $$4) {
+      if ($$3 == ja.a) {
+         ewo $$5 = $$0.b_($$1);
+         if (this.a(axh.b) && $$5.a(axh.a)) {
+            if ($$2.b() instanceof drb) {
+               $$0.a($$1, dmh.b.m(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awm> j() {
+      return Optional.of(awn.dm);
+   }
+
+   public static class a extends ewr {
+      @Override
+      protected void a(eai.a<ewn, ewo> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(ewo $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(ewo $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends ewr {
+      @Override
+      public int d(ewo $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(ewo $$0) {
+         return true;
       }
    }
 }

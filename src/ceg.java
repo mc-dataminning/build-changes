@@ -1,89 +1,48 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class ceg extends cdy {
-   public static final float a = 0.02F;
-   protected final bxe b;
-   @Nullable
-   protected bwd c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bxc> f;
-   protected final chr g;
+public class ceg extends cea {
+   private final bxg a;
+   private bxe b;
+   private final float c;
 
-   public ceg(bxe $$0, Class<? extends bxc> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public ceg(bxe $$0, Class<? extends bxc> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public ceg(bxe $$0, Class<? extends bxc> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(cdy.a.b));
-      if ($$1 == cqy.class) {
-         Predicate<bwd> $$5 = bwk.b($$0);
-         this.g = chr.b().a((double)$$2).a(($$1x, $$2x) -> $$5.test($$1x));
-      } else {
-         this.g = chr.b().a((double)$$2);
-      }
+   public ceg(bxg $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(cea.a.c, cea.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.b.dY().i() >= this.e) {
+      if (this.a.cX()) {
          return false;
       } else {
-         if (this.b.f() != null) {
-            this.c = this.b.f();
-         }
-
-         arq $$0 = a(this.b);
-         if (this.f == cqy.class) {
-            this.c = $$0.a(this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG());
+         this.b = this.a.f();
+         if (this.b == null) {
+            return false;
          } else {
-            this.c = $$0.a(
-               this.b.dV().a(this.f, this.b.cR().c((double)this.d, 3.0, (double)this.d), $$0x -> true), this.g, this.b, this.b.dA(), this.b.dE(), this.b.dG()
-            );
+            double $$0 = this.a.g((bwf)this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aJ() ? false : this.a.dY().a(b(5)) == 0;
+            }
          }
-
-         return this.c != null;
       }
    }
 
    @Override
    public boolean c() {
-      if (!this.c.bK()) {
-         return false;
-      } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
-      }
+      return !this.a.aJ();
    }
 
    @Override
    public void d() {
-      this.h = this.a(40 + this.b.dY().a(40));
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-   }
-
-   @Override
-   public void a() {
-      if (this.c.bK()) {
-         double $$0 = this.i ? this.b.dE() : this.c.dE();
-         this.b.J().a(this.c.dA(), $$0, this.c.dG());
-         this.h--;
+      feq $$0 = this.a.dy();
+      feq $$1 = new feq(this.b.dA() - this.a.dA(), 0.0, this.b.dG() - this.a.dG());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
       }
+
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

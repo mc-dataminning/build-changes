@@ -1,104 +1,48 @@
-public class cuz extends cuq {
-   private final btu m;
-   private final int n;
+import javax.annotation.Nullable;
 
-   private cuz(cvz<?> $$0, int $$1, cqx $$2, int $$3) {
-      this($$0, $$1, $$2, new bui(9 * $$3), $$3);
-   }
+class cuz extends cws {
+   private final bxe a;
+   private final bwp b;
+   @Nullable
+   private final alg g;
 
-   public static cuz a(int $$0, cqx $$1) {
-      return new cuz(cvz.a, $$0, $$1, 1);
-   }
-
-   public static cuz b(int $$0, cqx $$1) {
-      return new cuz(cvz.b, $$0, $$1, 2);
-   }
-
-   public static cuz c(int $$0, cqx $$1) {
-      return new cuz(cvz.c, $$0, $$1, 3);
-   }
-
-   public static cuz d(int $$0, cqx $$1) {
-      return new cuz(cvz.d, $$0, $$1, 4);
-   }
-
-   public static cuz e(int $$0, cqx $$1) {
-      return new cuz(cvz.e, $$0, $$1, 5);
-   }
-
-   public static cuz f(int $$0, cqx $$1) {
-      return new cuz(cvz.f, $$0, $$1, 6);
-   }
-
-   public static cuz a(int $$0, cqx $$1, btu $$2) {
-      return new cuz(cvz.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cuz b(int $$0, cqx $$1, btu $$2) {
-      return new cuz(cvz.f, $$0, $$1, $$2, 6);
-   }
-
-   public cuz(cvz<?> $$0, int $$1, cqx $$2, btu $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.k);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(btu $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cwn($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
+   public cuz(btw $$0, bxe $$1, bwp $$2, int $$3, int $$4, int $$5, @Nullable alg $$6) {
+      super($$0, $$3, $$4, $$5);
+      this.a = $$1;
+      this.b = $$2;
+      this.g = $$6;
    }
 
    @Override
-   public boolean b(cqy $$0) {
-      return this.m.a($$0);
+   public void a(czd $$0, czd $$1) {
+      this.a.a(this.b, $$1, $$0);
+      super.a($$0, $$1);
    }
 
    @Override
-   public cyy b(cqy $$0, int $$1) {
-      cyy $$2 = cyy.k;
-      cwn $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cyy $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return cyy.k;
-            }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return cyy.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cyy.k);
-         } else {
-            $$3.d();
-         }
-      }
-
-      return $$2;
+   public int a() {
+      return 1;
    }
 
    @Override
-   public void a(cqy $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public boolean a(czd $$0) {
+      return this.a.a($$0, this.b);
    }
 
-   public btu l() {
-      return this.m;
+   @Override
+   public boolean b() {
+      return this.a.e(this.b);
    }
 
-   public int m() {
-      return this.n;
+   @Override
+   public boolean a(crc $$0) {
+      czd $$1 = this.g();
+      return !$$1.f() && !$$0.b() && dfs.a($$1, dfr.E) ? false : super.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public alg c() {
+      return this.g;
    }
 }

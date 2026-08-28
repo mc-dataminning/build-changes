@@ -1,47 +1,29 @@
-public class fwn extends fxu {
-   private static final int a = 90;
-   private final wy b;
-   private fsv c = fsv.a;
-   private final Runnable d;
-   private final wy s;
-   private final boolean u;
+public enum fwn {
+   a,
+   b;
 
-   public fwn(Runnable $$0, wy $$1, wy $$2) {
-      this($$0, $$1, $$2, wx.k, true);
+   public fwn a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
    }
 
-   public fwn(Runnable $$0, wy $$1, wy $$2, wy $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.s = $$3;
-      this.u = $$4;
+   public fwo b() {
+      return switch (this) {
+         case a -> fwo.d;
+         case b -> fwo.b;
+      };
    }
 
-   @Override
-   public wy i() {
-      return wx.a(super.i(), this.b);
+   public fwo c() {
+      return switch (this) {
+         case a -> fwo.c;
+         case b -> fwo.a;
+      };
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.c = fsv.a(this.p, this.b, this.n - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = azm.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
-      int $$2 = 150;
-      this.c(fsc.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
-      this.c.a($$0, this.n / 2, 90);
-   }
-
-   @Override
-   public boolean aC_() {
-      return this.u;
+   public fwo a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

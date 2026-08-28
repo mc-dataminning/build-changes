@@ -1,71 +1,18 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cxh extends cyu {
-   private final bwm<? extends cti> a;
+public class cxh extends cyz implements czx {
+   public cxh(cyz.a $$0) {
+      super($$0);
+   }
 
-   public cxh(bwm<? extends cti> $$0, cyu.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public crk a(dja $$0, czd $$1, bxe $$2, @Nullable czd $$3) {
+      return new crn($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public bub a(div $$0, cqy $$1, bua $$2) {
-      cyy $$3 = $$1.b($$2);
-      feg $$4 = a($$0, $$1, die.b.c);
-      if ($$4.d() == feg.a.a) {
-         return bub.e;
-      } else {
-         fei $$5 = $$1.h(1.0F);
-         double $$6 = 5.0;
-         List<bwd> $$7 = $$0.a($$1, $$1.cR().b($$5.c(5.0)).g(1.0), bwk.h);
-         if (!$$7.isEmpty()) {
-            fei $$8 = $$1.bE();
-
-            for (bwd $$9 : $$7) {
-               fed $$10 = $$9.cR().g((double)$$9.bS());
-               if ($$10.d($$8)) {
-                  return bub.e;
-               }
-            }
-         }
-
-         if ($$4.d() == feg.a.b) {
-            cti $$11 = this.a($$0, $$4, $$3, $$1);
-            if ($$11 == null) {
-               return bub.d;
-            } else {
-               $$11.w($$1.dL());
-               if (!$$0.a($$11, $$11.cR())) {
-                  return bub.d;
-               } else {
-                  if (!$$0.C) {
-                     $$0.b($$11);
-                     $$0.a($$1, eez.t, $$4.g());
-                     $$3.a(1, $$1);
-                  }
-
-                  $$1.b(awx.c.b(this));
-                  return bub.a;
-               }
-            }
-         } else {
-            return bub.e;
-         }
-      }
-   }
-
-   @Nullable
-   private cti a(div $$0, feg $$1, cyy $$2, cqy $$3) {
-      cti $$4 = this.a.a($$0, bwl.m);
-      if ($$4 != null) {
-         fei $$5 = $$1.g();
-         $$4.p($$5.d, $$5.e, $$5.f);
-         if ($$0 instanceof arq $$6) {
-            bwm.<cti>a($$6, $$2, $$3).accept($$4);
-         }
-      }
-
+   public crx a(dja $$0, jo $$1, czd $$2, ja $$3) {
+      crn $$4 = new crn($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = crk.a.b;
       return $$4;
    }
 }

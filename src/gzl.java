@@ -1,13 +1,46 @@
-public class gzl extends han<hbs, gex> {
-   private static final gqc a = gqc.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
+public class gzl extends gwg<csm, hfb> {
+   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alg g = alg.b("textures/entity/wither/wither.png");
+   private final ghv h;
 
-   public gzl(gxw<hbs, gex> $$0) {
+   public gzl(gwh.a $$0) {
       super($$0);
+      this.h = new ghv($$0.a(gjb.dY));
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, hbs $$3, float $$4, float $$5) {
-      fjg $$6 = $$1.getBuffer(a);
-      gex $$7 = this.d();
-      gve.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hif.d);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("head", gjh.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
+      return gji.a($$0, 64, 64);
+   }
+
+   protected int a(csm $$0, iu $$1) {
+      return 15;
+   }
+
+   public void a(hfb $$0, fjj $$1, gqa $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fjn $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, hin.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private alg a(hfb $$0) {
+      return $$0.a ? a : g;
+   }
+
+   public hfb b() {
+      return new hfb();
+   }
+
+   public void a(csm $$0, hfb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.o();
+      $$1.c = $$0.l($$2);
+      $$1.b = $$0.k($$2);
    }
 }

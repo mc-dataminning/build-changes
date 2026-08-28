@@ -1,36 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class ekl extends eje<ema> {
-   public ekl(Codec<ema> $$0) {
+public class ekl extends ejm<emc> {
+   public ekl(Codec<emc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<ema> $$0) {
-      ema $$1 = $$0.f();
-      dju $$2 = $$0.b();
-      iu $$3 = $$0.e();
-      dzz $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof doj) {
-            if (!$$2.v($$3.d())) {
-               return false;
-            }
+   public boolean a(ejo<emc> $$0) {
+      emc $$1 = $$0.f();
+      azv $$2 = $$0.d();
+      djz $$3 = $$0.b();
+      ecf $$4 = $$0.c();
+      iu $$5 = $$0.e();
 
-            doj.a($$2, $$4, $$3, 2);
-         } else if ($$4.b() instanceof drd) {
-            drd.a($$2, $$3, $$2.C_(), 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (elg $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
-
-         if ($$1.b()) {
-            $$2.a($$3, $$2.a_($$3).b(), 1);
-         }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

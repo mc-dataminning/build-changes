@@ -1,29 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class hhv implements hhp {
-   private final ggm a;
-   private final hkw b;
+public class hhv implements hib<dyn> {
+   private final gsv a;
 
-   public hhv(ggm $$0, hkw $$1) {
+   public hhv(gsv $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public void a(cyw $$0, fjc $$1, gps $$2, int $$3, int $$4, boolean $$5) {
-      gst.a($$1, $$2, $$3, $$4, this.a, this.b);
+   @Nullable
+   public dyn a(czd $$0) {
+      return $$0.a(kj.ao);
    }
 
-   public static record a(ebn b, Optional<alg> c) implements hht.a {
-      public static final MapCodec<hhv.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ebn.a.fieldOf("wood_type").forGetter(hhv.a::b), alg.a.optionalFieldOf("texture").forGetter(hhv.a::c)).apply($$0, hhv.a::new)
-      );
+   public void a(@Nullable dyn $$0, czb $$1, fjj $$2, gqa $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dyn.a));
+   }
 
-      public a(ebn $$0) {
-         this($$0, Optional.empty());
-      }
+   public static record a() implements hib.a {
+      public static final MapCodec<hhv.a> a = MapCodec.unit(new hhv.a());
 
       @Override
       public MapCodec<hhv.a> a() {
@@ -31,10 +27,8 @@ public class hhv implements hhp {
       }
 
       @Override
-      public hht<?> a(giq $$0) {
-         ggm $$1 = gst.a($$0, this.b, true);
-         hkw $$2 = this.c.<hkw>map(gqn.q::a).orElseGet(() -> gqn.a(this.b));
-         return new hhv($$1, $$2);
+      public hib<?> a(giy $$0) {
+         return new hhv(new gsv($$0));
       }
    }
 }

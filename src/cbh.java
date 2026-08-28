@@ -1,28 +1,43 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cbh {
-   public static byu<bxc> a(Function<bxc, Optional<cah>> $$0, Predicate<bxc> $$1, int $$2, int $$3, float $$4) {
-      return ccg.a(
-         (Function<ccg.b<bxc>, ? extends App<ccg.c<bxc>, ccj<bxc>>>)($$5 -> $$5.group($$5.a(cge.o), $$5.a(cge.n))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<cah> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        cah $$11 = $$10.get();
-                        if ($$8.dt().a((jo)$$11.a(), (double)$$3)) {
+   public static <E extends bxg> byw<E> a(cbh.b<E> $$0) {
+      return a(($$0x, $$1) -> true, $$0);
+   }
+
+   public static <E extends bxg> byw<E> a(cbh.a<E> $$0, cbh.b<E> $$1) {
+      return cci.a(
+         (Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$2 -> $$2.group($$2.c(cgg.p), $$2.a(cgg.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
+                  if (!$$0.test($$4, (E)$$5)) {
+                     return false;
+                  } else {
+                     Optional<? extends bxe> $$7 = $$1.get($$4, (E)$$5);
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        bxe $$8 = $$7.get();
+                        if (!$$5.c($$8)) {
                            return false;
                         } else {
-                           cah $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cgh($$12, $$4, $$2));
+                           $$2x.a($$8);
+                           $$3.b();
                            return true;
                         }
-                     } else {
-                        return false;
                      }
-                  }))
+                  }
+               }))
       );
+   }
+
+   @FunctionalInterface
+   public interface a<E> {
+      boolean test(arq var1, E var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      Optional<? extends bxe> get(arq var1, E var2);
    }
 }

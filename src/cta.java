@@ -1,94 +1,59 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
-public interface cta<Context, Condition extends cta.b<Context>> {
-   List<cta.a<Context, Condition>> a();
+public class cta {
+   private final List<csx> a = Lists.newArrayList();
+   private int b;
 
-   static <C, T> Stream<T> a(Stream<T> $$0, Function<T, cta<C, ?>> $$1, C $$2) {
-      List<cta.c<C, T>> $$3 = new ArrayList<>();
-      $$0.forEach($$2x -> {
-         cta<C, ?> $$3x = $$1.apply((T)$$2x);
+   public ImmutableList<csx> a() {
+      return ImmutableList.copyOf(this.a);
+   }
 
-         for (cta.a<C, ?> $$4x : $$3x.a()) {
-            $$3.add(new cta.c<>((T)$$2x, $$4x.b(), (cta.b<C>)DataFixUtils.orElseGet($$4x.a(), cta.b::alwaysTrue)));
+   public cta a(int $$0, float $$1) {
+      this.a.add(new csx($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cta a(Collection<csx> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<csx> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         csx $$1 = this.a.get(this.b);
+         csx $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            csx $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
-      });
-      $$3.sort(cta.c.a);
-      Iterator<cta.c<C, T>> $$4 = $$3.iterator();
-      int $$5 = Integer.MIN_VALUE;
 
-      while ($$4.hasNext()) {
-         cta.c<C, T> $$6 = $$4.next();
-         if ($$6.c < $$5) {
-            $$4.remove();
-         } else if ($$6.d.test($$2)) {
-            $$5 = $$6.c;
-         } else {
-            $$4.remove();
-         }
-      }
-
-      return $$3.stream().map(cta.c::a);
-   }
-
-   static <C, T> Optional<T> a(Stream<T> $$0, Function<T, cta<C, ?>> $$1, azv $$2, C $$3) {
-      List<T> $$4 = a($$0, $$1, $$3).toList();
-      return af.b($$4, $$2);
-   }
-
-   static <Context, Condition extends cta.b<Context>> List<cta.a<Context, Condition>> a(Condition $$0, int $$1) {
-      return List.of(new cta.a<>($$0, $$1));
-   }
-
-   static <Context, Condition extends cta.b<Context>> List<cta.a<Context, Condition>> a(int $$0) {
-      return List.of(new cta.a<>(Optional.empty(), $$0));
-   }
-
-   public static record a<Context, Condition extends cta.b<Context>>(Optional<Condition> a, int b) {
-      public a(Condition $$0, int $$1) {
-         this(Optional.of($$0), $$1);
-      }
-
-      public a(int $$0) {
-         this(Optional.empty(), $$0);
-      }
-
-      public static <Context, Condition extends cta.b<Context>> Codec<cta.a<Context, Condition>> a(Codec<Condition> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.optionalFieldOf("condition").forGetter(cta.a::a), Codec.INT.fieldOf("priority").forGetter(cta.a::b)).apply($$1, cta.a::new)
-         );
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<C> extends Predicate<C> {
-      static <C> cta.b<C> alwaysTrue() {
-         return $$0 -> true;
-      }
-   }
-
-   public static record c<C, T>(T b, int c, cta.b<C> d) {
-      public static final Comparator<cta.c<?, ?>> a = Comparator.comparingInt(cta.c::b).reversed();
-
-      public T a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public cta.b<C> c() {
-         return this.d;
+         return $$5;
       }
    }
 }

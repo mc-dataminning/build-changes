@@ -1,20 +1,8 @@
-public interface fkg {
-   fjw b();
+public class fkg extends fkh {
+   private static final wy a = wy.c("mco.upload.cancelled");
 
-   void d();
-
-   static fkg f() {
-      return new fkg() {
-         private final fjw a = new fjw();
-
-         @Override
-         public fjw b() {
-            return this.a;
-         }
-
-         @Override
-         public void d() {
-         }
-      };
+   @Override
+   public wy a() {
+      return a;
    }
 }

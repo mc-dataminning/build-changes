@@ -1,26 +1,59 @@
-public enum foa {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final foa[] d = values();
-   private final boolean e;
-   private final boolean f;
+public abstract class foa extends fnw {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final wy d;
+   private final Runnable e;
 
-   private foa(final boolean $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public foa(long $$0, wy $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a() {
-      return this.e;
+   protected abstract void a(fjz var1, long var2) throws flv;
+
+   @Override
+   public void run() {
+      fjz $$0 = fjz.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (flw var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public foa c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   public wy a() {
+      return this.d;
    }
 }

@@ -1,19 +1,45 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class dpt extends dma {
-   public static final MapCodec<dpt> d = b(dpt::new);
+public class dpt extends drm implements dmi {
+   public static final MapCodec<dpt> a = b(dpt::new);
+   private final drn e = new drn(this);
 
    @Override
-   protected MapCodec<? extends dpt> a() {
-      return d;
+   public MapCodec<dpt> a() {
+      return a;
    }
 
-   protected dpt(dzy.d $$0) {
+   public dpt(eag.d $$0) {
       super($$0);
    }
 
+   public static ToIntFunction<eah> b(int $$0) {
+      return $$1 -> drl.q($$1) ? $$0 : 0;
+   }
+
    @Override
-   protected boolean b(dzz $$0, dzz $$1, ja $$2) {
-      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      return ja.a().anyMatch($$3 -> this.e.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      this.e.a($$3, $$0, $$2, $$1);
+   }
+
+   @Override
+   protected boolean e_(eah $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   public drn c() {
+      return this.e;
    }
 }

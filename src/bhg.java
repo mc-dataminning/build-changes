@@ -18,7 +18,7 @@ public class bhg extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(biw.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bix.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
                Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
 
                for (String $$2 : b) {

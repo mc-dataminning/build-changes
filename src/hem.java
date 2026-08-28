@@ -1,5 +1,5 @@
-public class hem extends hdf {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class hem extends hdn {
+   public float a;
+   public float b;
+   public float c;
 }

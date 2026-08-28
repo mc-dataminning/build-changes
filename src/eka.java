@@ -1,57 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public class eka extends eje<elr> {
-   public eka(Codec<elr> $$0) {
+public class eka extends ejm<elx> {
+   public eka(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elr> $$0) {
-      diw $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      azv $$3 = $$0.d();
-      elr $$4 = $$0.f();
-      Optional<ja> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         iu $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && eiz.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         eiz.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+   public boolean a(ejo<elx> $$0) {
+      int $$1 = 0;
+      djz $$2 = $$0.b();
+      iu $$3 = $$0.e();
+      azv $$4 = $$0.d();
+      int $$5 = $$2.a(egg.a.d, $$3.u(), $$3.w());
+      iu $$6 = new iu($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(dmh.J)) {
+         eah $$7 = dmh.mI.m();
+         eah $$8 = dmh.mJ.m();
+         int $$9 = 1 + $$4.a(10);
 
-   private static Optional<ja> a(diw $$0, iu $$1, azv $$2) {
-      boolean $$3 = eiz.b($$0.a_($$1.d()));
-      boolean $$4 = eiz.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ja.a : ja.b);
-      } else if ($$3) {
-         return Optional.of(ja.a);
-      } else {
-         return $$4 ? Optional.of(ja.b) : Optional.empty();
-      }
-   }
-
-   private static void a(diw $$0, azv $$1, iu $$2, elr $$3) {
-      eiz.c($$0, $$2);
-
-      for (ja $$4 : ja.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            iu $$5 = $$2.a($$4);
-            eiz.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               iu $$6 = $$5.a(ja.b($$1));
-               eiz.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  iu $$7 = $$6.a(ja.b($$1));
-                  eiz.c($$0, $$7);
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(dmh.J) && $$2.a_($$6.d()).a(dmh.J) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(dqo.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
                }
+            } else if ($$10 > 0) {
+               iu $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dmh.mI)) {
+                  $$2.a($$11, $$7.b(dqo.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
+
+            $$6 = $$6.d();
          }
       }
+
+      return $$1 > 0;
    }
 }

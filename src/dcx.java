@@ -1,91 +1,62 @@
-public class dcx extends ddf {
-   public dcx(ddc $$0) {
-      super($$0);
-   }
+public class dcx extends dcw {
+   private final ja b;
 
-   public boolean a(ddd $$0, div $$1) {
-      if ($$0.e() != 2) {
-         return false;
-      } else {
-         cxw $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
-
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cyy $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cyu $$7 = $$6.h();
-               if (!($$7 instanceof cxe)) {
-                  return false;
-               }
-
-               cxe $$8 = (cxe)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.a();
-               } else if ($$2 != $$8.a()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(kj.am, dwn.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$4 && $$3;
-      }
-   }
-
-   public cyy a(ddd $$0, jg.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cyy $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(kj.am, dwn.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
-            }
-         }
-      }
-
-      return cyy.k;
+   public dcx(dja $$0, iu $$1, ja $$2, czd $$3, ja $$4) {
+      super($$0, null, buc.a, $$3, new fem(feq.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public jn<cyy> a(ddd $$0) {
-      jn<cyy> $$1 = jn.a($$0.a(), cyy.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cyy $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cyy $$4 = $$3.h().i();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(kj.am, dwn.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
-         }
-      }
-
-      return $$1;
+   public iu a() {
+      return this.j().b();
    }
 
    @Override
-   public ddz<dcx> a() {
-      return ddz.k;
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public ja d() {
+      return ja.a;
+   }
+
+   @Override
+   public ja[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new ja[]{ja.a, ja.c, ja.f, ja.d, ja.e, ja.b};
+         case b:
+            return new ja[]{ja.a, ja.b, ja.c, ja.f, ja.d, ja.e};
+         case c:
+            return new ja[]{ja.a, ja.c, ja.f, ja.e, ja.b, ja.d};
+         case d:
+            return new ja[]{ja.a, ja.d, ja.f, ja.e, ja.b, ja.c};
+         case e:
+            return new ja[]{ja.a, ja.e, ja.d, ja.b, ja.c, ja.f};
+         case f:
+            return new ja[]{ja.a, ja.f, ja.d, ja.b, ja.c, ja.e};
+      }
+   }
+
+   @Override
+   public ja g() {
+      return this.b.o() == ja.a.b ? ja.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

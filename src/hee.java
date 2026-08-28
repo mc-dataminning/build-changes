@@ -1,5 +1,3 @@
-public class hee extends hdf {
-   public float a;
-   public float b;
-   public float c;
+public class hee extends hdn {
+   public cjv.a a = cjv.a.b;
 }

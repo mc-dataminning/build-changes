@@ -14,14 +14,14 @@ public class bhx extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.s);
-      Type<?> $$1 = this.getInputSchema().getType(biw.t);
-      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(biw.s);
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bix.s);
+      Type<?> $$1 = this.getInputSchema().getType(bix.t);
+      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bix.s);
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<?> $$4 = $$0.findField("components");
       OpticFinder<?> $$5 = $$1.findField("components");
       OpticFinder<?> $$6 = $$4.type().findField("minecraft:item_name");
-      OpticFinder<Pair<String, String>> $$7 = DSL.typeFinder(this.getInputSchema().getType(biw.z));
+      OpticFinder<Pair<String, String>> $$7 = DSL.typeFinder(this.getInputSchema().getType(bix.z));
       return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$4x -> {
          Object $$5x = ((Pair)$$4x.get($$2.finder())).getFirst();
          return $$5x.equals("minecraft:banner") ? this.a($$4x, $$4, $$6, $$7) : $$4x;
@@ -42,7 +42,7 @@ public class bhx extends DataFix {
                .filter($$0xx -> $$0xx.equals("block.minecraft.ominous_banner"))
                .isPresent();
             return $$3x
-               ? $$2x.updateTyped($$2, $$1xx -> $$1xx.set($$3, Pair.of(biw.z.typeName(), bbe.b("block.minecraft.ominous_banner"))))
+               ? $$2x.updateTyped($$2, $$1xx -> $$1xx.set($$3, Pair.of(bix.z.typeName(), bbe.b("block.minecraft.ominous_banner"))))
                   .update(DSL.remainderFinder(), $$0xx -> $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon")))
                : $$2x;
          }

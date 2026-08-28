@@ -1,50 +1,16 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+public class fki extends fkh {
+   private final wy a;
 
-public class fki extends flh {
-   private static final Logger f = LogUtils.getLogger();
-   public String a;
-   public Date b;
-   public long c;
-   private boolean g;
-   public Map<String, String> d = Maps.newHashMap();
-   public Map<String, String> e = Maps.newHashMap();
-
-   public static fki a(JsonElement $$0) {
-      JsonObject $$1 = $$0.getAsJsonObject();
-      fki $$2 = new fki();
-
-      try {
-         $$2.a = fnd.b("backupId", $$1, "");
-         $$2.b = fnd.b("lastModifiedDate", $$1);
-         $$2.c = fnd.a("size", $$1, 0L);
-         if ($$1.has("metadata")) {
-            JsonObject $$3 = $$1.getAsJsonObject("metadata");
-
-            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
-               if (!$$5.getValue().isJsonNull()) {
-                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
-               }
-            }
-         }
-      } catch (Exception var7) {
-         f.error("Could not parse Backup: {}", var7.getMessage());
-      }
-
-      return $$2;
+   public fki(wy $$0) {
+      this.a = $$0;
    }
 
-   public boolean a() {
-      return this.g;
+   public fki(String $$0) {
+      this(wy.b($$0));
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   @Override
+   public wy a() {
+      return wy.a("mco.upload.failed", this.a);
    }
 }

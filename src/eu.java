@@ -47,7 +47,7 @@ public class eu implements ArgumentType<eu.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new fei($$0.d, $$0.e + (double)$$1.cS(), $$0.f));
+      b("eyes", ($$0, $$1) -> new feq($$0.d, $$0.e + (double)$$1.cS(), $$0.f));
 
       static final Map<String, eu.a> c = af.a(Maps.newHashMap(), $$0 -> {
          for (eu.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class eu implements ArgumentType<eu.a> {
          }
       });
       private final String d;
-      private final BiFunction<fei, bwd, fei> e;
+      private final BiFunction<feq, bwf, feq> e;
 
-      private a(final String $$0, final BiFunction<fei, bwd, fei> $$1) {
+      private a(final String $$0, final BiFunction<feq, bwf, feq> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class eu implements ArgumentType<eu.a> {
          return c.get($$0);
       }
 
-      public fei a(bwd $$0) {
+      public feq a(bwf $$0) {
          return this.e.apply($$0.dt(), $$0);
       }
 
-      public fei a(ei $$0) {
-         bwd $$1 = $$0.f();
+      public feq a(ei $$0) {
+         bwf $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

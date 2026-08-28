@@ -1,127 +1,97 @@
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cxi extends cyu {
-   public static final int a = 3;
-   public static final int b = 1;
-   public static final int c = 3;
+public class cxi extends cyz {
+   protected static final Map<dmf, dmf> a = new Builder()
+      .put(dmh.at, dmh.aB)
+      .put(dmh.X, dmh.aq)
+      .put(dmh.az, dmh.aH)
+      .put(dmh.ad, dmh.ao)
+      .put(dmh.u, dmh.aI)
+      .put(dmh.ae, dmh.ap)
+      .put(dmh.ax, dmh.aF)
+      .put(dmh.ab, dmh.am)
+      .put(dmh.ay, dmh.aG)
+      .put(dmh.ac, dmh.an)
+      .put(dmh.av, dmh.aD)
+      .put(dmh.Z, dmh.ak)
+      .put(dmh.aw, dmh.aE)
+      .put(dmh.aa, dmh.al)
+      .put(dmh.au, dmh.aC)
+      .put(dmh.Y, dmh.aj)
+      .put(dmh.oP, dmh.oQ)
+      .put(dmh.oR, dmh.oS)
+      .put(dmh.oY, dmh.oZ)
+      .put(dmh.pa, dmh.pb)
+      .put(dmh.aA, dmh.aJ)
+      .put(dmh.af, dmh.ar)
+      .put(dmh.ai, dmh.as)
+      .build();
 
-   public cxi(cyu.a $$0) {
-      super($$0);
+   public cxi(dar $$0, float $$1, float $$2, cyz.a $$3) {
+      super($$3.b($$0, $$1, $$2));
    }
 
    @Override
-   public bub a(dct $$0) {
-      div $$1 = $$0.q();
+   public bud a(dcy $$0) {
+      dja $$1 = $$0.q();
       iu $$2 = $$0.a();
-      iu $$3 = $$2.a($$0.k());
-      if (a($$0.n(), $$1, $$2)) {
-         if (!$$1.C) {
-            $$0.o().a(eez.C);
-            $$1.c(1505, $$2, 15);
-         }
-
-         return bub.a;
+      crc $$3 = $$0.o();
+      if (b($$0)) {
+         return bud.e;
       } else {
-         dzz $$4 = $$1.a_($$2);
-         boolean $$5 = $$4.c($$1, $$2, $$0.k());
-         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
-            if (!$$1.C) {
-               $$0.o().a(eez.C);
-               $$1.c(1505, $$3, 15);
+         Optional<eah> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
+         if ($$4.isEmpty()) {
+            return bud.e;
+         } else {
+            czd $$5 = $$0.n();
+            if ($$3 instanceof arr) {
+               ap.N.a((arr)$$3, $$2, $$5);
             }
 
-            return bub.a;
-         } else {
-            return bub.e;
+            $$1.a($$2, $$4.get(), 11);
+            $$1.a(efh.c, $$2, efh.a.a($$3, $$4.get()));
+            if ($$3 != null) {
+               $$5.a(1, $$3, bxe.d($$0.p()));
+            }
+
+            return bud.a;
          }
       }
    }
 
-   public static boolean a(cyy $$0, div $$1, iu $$2) {
-      dzz $$3 = $$1.a_($$2);
-      if ($$3.b() instanceof dmd $$4 && $$4.a($$1, $$2, $$3)) {
-         if ($$1 instanceof arq) {
-            if ($$4.a($$1, $$1.A, $$2, $$3)) {
-               $$4.a((arq)$$1, $$1.A, $$2, $$3);
-            }
-
-            $$0.h(1);
-         }
-
-         return true;
-      }
-
-      return false;
+   private static boolean b(dcy $$0) {
+      crc $$1 = $$0.o();
+      return $$0.p().equals(buc.a) && $$1.fc().c(kj.I) && !$$1.fY();
    }
 
-   public static boolean a(cyy $$0, div $$1, iu $$2, @Nullable ja $$3) {
-      if ($$1.a_($$2).a(dmc.J) && $$1.b_($$2).e() == 8) {
-         if (!($$1 instanceof arq)) {
-            return true;
-         } else {
-            azv $$4 = $$1.C_();
-
-            label80:
-            for (int $$5 = 0; $$5 < 128; $$5++) {
-               iu $$6 = $$2;
-               dzz $$7 = dmc.bE.m();
-
-               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
-                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
-                  if ($$1.a_($$6).m($$1, $$6)) {
-                     continue label80;
-                  }
-               }
-
-               je<djy> $$9 = $$1.u($$6);
-               if ($$9.a(axb.ac)) {
-                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
-                     $$7 = mf.e.a(axc.au, $$1.A).map($$0x -> ((dma)$$0x.a()).m()).orElse($$7);
-                     if ($$7.b(dll.d)) {
-                        $$7 = $$7.b(dll.d, $$3);
-                     }
-                  } else if ($$4.a(4) == 0) {
-                     $$7 = mf.e.a(axc.as, $$1.A).map($$0x -> ((dma)$$0x.a()).m()).orElse($$7);
-                  }
-               }
-
-               if ($$7.a(axc.au, $$0x -> $$0x.b(dll.d))) {
-                  for (int $$10 = 0; !$$7.a((diy)$$1, $$6) && $$10 < 4; $$10++) {
-                     $$7 = $$7.b(dll.d, ja.c.a.a($$4));
-                  }
-               }
-
-               if ($$7.a((diy)$$1, $$6)) {
-                  dzz $$11 = $$1.a_($$6);
-                  if ($$11.a(dmc.J) && $$1.b_($$6).e() == 8) {
-                     $$1.a($$6, $$7, 3);
-                  } else if ($$11.a(dmc.bE) && ((dmd)dmc.bE).a($$1, $$6, $$11) && $$4.a(10) == 0) {
-                     ((dmd)dmc.bE).a((arq)$$1, $$4, $$6, $$11);
-                  }
-               }
-            }
-
-            $$0.h(1);
-            return true;
-         }
+   private Optional<eah> a(dja $$0, iu $$1, @Nullable crc $$2, eah $$3) {
+      Optional<eah> $$4 = this.a($$3);
+      if ($$4.isPresent()) {
+         $$0.a($$2, $$1, awn.aH, awo.e, 1.0F, 1.0F);
+         return $$4;
       } else {
-         return false;
+         Optional<eah> $$5 = dwb.b($$3);
+         if ($$5.isPresent()) {
+            $$0.a($$2, $$1, awn.aI, awo.e, 1.0F, 1.0F);
+            $$0.a($$2, 3005, $$1, 0);
+            return $$5;
+         } else {
+            Optional<eah> $$6 = Optional.ofNullable((dmf)cyu.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
+            if ($$6.isPresent()) {
+               $$0.a($$2, $$1, awn.aJ, awo.e, 1.0F, 1.0F);
+               $$0.a($$2, 3004, $$1, 0);
+               return $$6;
+            } else {
+               return Optional.empty();
+            }
+         }
       }
    }
 
-   public static void a(diw $$0, iu $$1, int $$2) {
-      dzz $$3 = $$0.a_($$1);
-      if ($$3.b() instanceof dmd $$4) {
-         iu $$5 = $$4.a($$1);
-         switch ($$4.am_()) {
-            case a:
-               azq.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lx.Q);
-               break;
-            case b:
-               azq.a($$0, $$5, $$2, lx.Q);
-         }
-      } else if ($$3.a(dmc.J)) {
-         azq.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, lx.Q);
-      }
+   private Optional<eah> a(eah $$0) {
+      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.m().b(dsy.d, $$0.c(dsy.d)));
    }
 }

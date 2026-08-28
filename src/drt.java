@@ -1,51 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
 
-public abstract class drt extends dma {
-   public static final eaq b = eap.N;
-   public static final eaq c = eap.O;
-   public static final eaq d = eap.P;
-   public static final eaq e = eap.Q;
-   public static final eaq f = eap.L;
-   public static final eaq g = eap.M;
-   public static final Map<ja, eaq> h = ImmutableMap.copyOf(Maps.newEnumMap(Map.of(ja.c, b, ja.f, c, ja.d, d, ja.e, e, ja.b, f, ja.a, g)));
-   private final Function<dzz, ffc> a;
+public class drt extends dvr {
+   public static final MapCodec<drt> a = b(drt::new);
+   public static final int b = 3;
+   public static final ebh c = eax.av;
+   private static final ffk[] d = dmf.a(3, $$0 -> dmf.b(16.0, 0.0, (double)(5 + $$0 * 3)));
 
-   protected drt(float $$0, dzy.d $$1) {
-      super($$1);
-      this.a = this.a($$0);
+   @Override
+   public MapCodec<drt> a() {
+      return a;
+   }
+
+   protected drt(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected abstract MapCodec<? extends drt> a();
-
-   private Function<dzz, ffc> a(float $$0) {
-      ffc $$1 = dma.a((double)$$0);
-      Map<ja, ffc> $$2 = fez.d(dma.c((double)$$0, 0.0, 8.0));
-      return this.a($$2x -> {
-         ffc $$3 = $$1;
-
-         for (Entry<ja, eaq> $$4 : h.entrySet()) {
-            if ($$2x.c($$4.getValue())) {
-               $$3 = fez.a($$2.get($$4.getKey()), $$3);
-            }
-         }
-
-         return $$3;
-      });
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   protected boolean e_(dzz $$0) {
-      return false;
+   protected boolean b(eah $$0, dig $$1, iu $$2) {
+      return $$0.a(dmh.en);
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.a.apply($$0);
+   protected boolean f(eah $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
+      }
+   }
+
+   @Override
+   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
+      return new czd(czh.tr);
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(c);
    }
 }

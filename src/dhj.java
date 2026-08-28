@@ -1,32 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
-public record dhj(je<dhl> c, je<dhn> d) implements dcd {
-   public static final Codec<dhj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhl.c.fieldOf("material").forGetter(dhj::a), dhn.c.fieldOf("pattern").forGetter(dhj::b)).apply($$0, dhj::new)
-   );
-   public static final yw<wj, dhj> b = yw.a(dhl.d, dhj::a, dhn.d, dhj::b, dhj::new);
-   private static final wy e = wy.c(af.a("item", alg.b("smithing_template.upgrade"))).a(n.h);
+public enum dhj implements bak {
+   a(bwp.f, 11, "helmet"),
+   b(bwp.e, 16, "chestplate"),
+   c(bwp.d, 15, "leggings"),
+   d(bwp.c, 13, "boots"),
+   e(bwp.g, 16, "body");
+
+   public static final Codec<dhj> f = bak.b(dhj::values);
+   private final bwp g;
+   private final String h;
+   private final int i;
+
+   private dhj(final bwp $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
+   }
+
+   public int a(int $$0) {
+      return this.i * $$0;
+   }
+
+   public bwp a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.h;
+   }
 
    @Override
-   public void a(cyu.b $$0, Consumer<wy> $$1, dan $$2, ke $$3) {
-      $$1.accept(e);
-      $$1.accept(wx.a().b(this.d.a().a(this.c)));
-      $$1.accept(wx.a().b(this.c.a().b()));
-   }
-
-   public alg a(String $$0, alf<dhf> $$1) {
-      dhk.a $$2 = this.a().a().a().a($$1);
-      return this.b().a().a().a((UnaryOperator<String>)($$2x -> $$0 + "/" + $$2x + "_" + $$2.a()));
-   }
-
-   public je<dhl> a() {
-      return this.c;
-   }
-
-   public je<dhn> b() {
-      return this.d;
+   public String c() {
+      return this.h;
    }
 }

@@ -1,15 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class caq<E extends bxc> extends bzh<E> {
-   public caq(List<Pair<? extends byu<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
+public class caq {
+   public static byw<bxe> a() {
+      return cci.a((Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$0 -> $$0.a((ccl<bxe>)(($$0x, $$1, $$2) -> {
+            if ($$0x.A.a(20) != 0) {
+               return false;
+            } else {
+               bye<?> $$3 = $$1.ec();
+               css $$4 = $$0x.d($$1.dv());
+               if ($$4 == null || $$4.d() || $$4.f()) {
+                  $$3.b(csw.b);
+                  $$3.a($$0x.af(), $$0x.ae());
+               }
 
-   public caq(Map<cge<?>, cgf> $$0, List<Pair<? extends byu<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bzh.a.b, bzh.b.a, $$1);
+               return true;
+            }
+         }))));
    }
 }

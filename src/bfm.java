@@ -19,15 +19,15 @@ public class bfm extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getTypeRaw(biw.t);
-      Type<?> $$1 = this.getOutputSchema().getTypeRaw(biw.t);
+      Type<?> $$0 = this.getInputSchema().getTypeRaw(bix.t);
+      Type<?> $$1 = this.getOutputSchema().getTypeRaw(bix.t);
       OpticFinder<?> $$2 = $$0.findField("id");
       return this.a($$0, $$1, $$2);
    }
 
    private <ItemStackOld, ItemStackNew> TypeRewriteRule a(Type<ItemStackOld> $$0, Type<ItemStackNew> $$1, OpticFinder<?> $$2) {
       Type<Pair<String, Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<List<ItemStackOld>, Unit>, Pair<Either<ItemStackOld, Unit>, Either<ItemStackOld, Unit>>>>>> $$3 = DSL.named(
-         biw.A.typeName(),
+         bix.A.typeName(),
          DSL.and(
             DSL.optional(DSL.field("ArmorItems", DSL.list($$0))),
             DSL.optional(DSL.field("HandItems", DSL.list($$0))),
@@ -36,7 +36,7 @@ public class bfm extends DataFix {
          )
       );
       Type<Pair<String, Either<Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Pair<Either<ItemStackNew, Unit>, Dynamic<?>>>>>>>>>, Unit>>> $$4 = DSL.named(
-         biw.A.typeName(),
+         bix.A.typeName(),
          DSL.optional(
             DSL.field(
                "equipment",
@@ -54,9 +54,9 @@ public class bfm extends DataFix {
             )
          )
       );
-      if (!$$3.equals(this.getInputSchema().getType(biw.A))) {
+      if (!$$3.equals(this.getInputSchema().getType(bix.A))) {
          throw new IllegalStateException("Input entity_equipment type does not match expected");
-      } else if (!$$4.equals(this.getOutputSchema().getType(biw.A))) {
+      } else if (!$$4.equals(this.getOutputSchema().getType(bix.A))) {
          throw new IllegalStateException("Output entity_equipment type does not match expected");
       } else {
          return this.fixTypeEverywhere(

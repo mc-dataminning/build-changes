@@ -1,24 +1,20 @@
-public abstract class gzx<S extends hcf, M extends gfq<S>> extends han<S, M> {
-   public gzx(gxw<S, M> $$0) {
+public class gzx extends hav<hcc, gfh> {
+   private static final alg a = alg.b("textures/entity/cat/cat_collar.png");
+   private final gfh b;
+   private final gfh c;
+
+   public gzx(gye<hcc, gfh> $$0, giy $$1) {
       super($$0);
+      this.b = new gfh($$1.a(gjb.T));
+      this.c = new gfh($$1.a(gjb.S));
    }
 
-   @Override
-   public void a(fjc $$0, gps $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fjg $$8 = $$1.getBuffer(gqc.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hif.d, -8355712);
+   public void a(fjj $$0, gqa $$1, int $$2, hcc $$3, float $$4, float $$5) {
+      cyb $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gfh $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
-
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract alg a();
-
-   protected abstract M c();
 }

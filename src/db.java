@@ -8,8 +8,8 @@ public class db extends dj<db.a> {
       return db.a.a;
    }
 
-   public void a(arr $$0, cyy $$1, bwd $$2) {
-      eyz $$3 = bx.b($$0, $$2);
+   public void a(arr $$0, czd $$1, bwf $$2) {
+      ezh $$3 = bx.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class db extends dj<db.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cyy $$0, eyz $$1) {
+      public boolean a(czd $$0, ezh $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

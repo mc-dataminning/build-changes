@@ -1,31 +1,31 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record hkd(hkd.a c) {
-   public static final Codec<hkd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hkd.a.d.optionalFieldOf("hat", hkd.a.a).forGetter(hkd::a)).apply($$0, hkd::new)
-   );
-   public static final auc<hkd> b = new auc<>("villager", a);
+public class hkd {
+   public static ayy a(xd $$0, boolean $$1) {
+      xw $$2 = xw.a($$0, UCharacter::getMirror, hkd::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayy> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public hkd.a a() {
-      return this.c;
-   }
-
-   public static enum a implements bak {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      public static final Codec<hkd.a> d = bak.a(hkd.a::values);
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      return ayy.composite($$4);
+   }
+
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
       }
    }
 }

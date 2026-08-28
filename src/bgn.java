@@ -86,13 +86,13 @@ public class bgn extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = $$0.getType(biw.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$1 = $$0.getType(bix.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<String> $$3 = DSL.fieldFinder("id", DSL.string());
       OpticFinder<?> $$4 = $$1.findField("tag");
       OpticFinder<?> $$5 = $$4.type().findField("EntityTag");
-      OpticFinder<?> $$6 = DSL.typeFinder($$0.getTypeRaw(biw.D));
-      Type<?> $$7 = this.getOutputSchema().getTypeRaw(biw.D);
+      OpticFinder<?> $$6 = DSL.typeFinder($$0.getTypeRaw(bix.D));
+      Type<?> $$7 = this.getOutputSchema().getTypeRaw(bix.D);
       return this.fixTypeEverywhereTyped("ItemSpawnEggFix", $$1, $$6x -> {
          Optional<Pair<String, String>> $$7x = $$6x.getOptional($$2);
          if ($$7x.isPresent() && Objects.equals($$7x.get().getSecond(), "minecraft:spawn_egg")) {

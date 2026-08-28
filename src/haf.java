@@ -1,23 +1,24 @@
-public class haf<S extends hbj, M extends gfq<S> & geh> extends han<S, M> {
-   public haf(gxw<S, M> $$0) {
+public abstract class haf<S extends hcn, M extends gfy<S>> extends hav<S, M> {
+   public haf(gye<S, M> $$0) {
       super($$0);
    }
 
-   public void a(fjc $$0, gps $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$3, $$3.g, bwv.b, $$0, $$1, $$2);
-      this.a($$3, $$3.i, bwv.a, $$0, $$1, $$2);
-   }
-
-   protected void a(S $$0, hfi $$1, bwv $$2, fjc $$3, gps $$4, int $$5) {
-      if (!$$1.c()) {
-         $$3.a();
-         this.d().a($$2, $$3);
-         $$3.a(a.b.rotationDegrees(-90.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         boolean $$6 = $$2 == bwv.a;
-         $$3.a((float)($$6 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         $$1.a($$3, $$4, $$5, hif.d);
-         $$3.b();
+   @Override
+   public void a(fjj $$0, gqa $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.u;
+         M $$7 = this.c();
+         fjn $$8 = $$1.getBuffer(gqk.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hin.d, -8355712);
       }
    }
+
+   protected abstract boolean a(S var1);
+
+   protected abstract float a(float var1);
+
+   protected abstract alg a();
+
+   protected abstract M c();
 }

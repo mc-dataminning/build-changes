@@ -14,9 +14,9 @@ public class bee extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.D);
-      Type<?> $$1 = this.getOutputSchema().getType(biw.D);
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bkr.a());
+      Type<?> $$0 = this.getInputSchema().getType(bix.D);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.D);
+      OpticFinder<String> $$2 = DSL.fieldFinder("id", bks.a());
       OpticFinder<String> $$3 = $$0.findField("CustomName");
       Type<?> $$4 = $$1.findFieldType("CustomName");
       return this.fixTypeEverywhereTyped("EntityCustomNameToComponentFix", $$0, $$1, $$3x -> a($$3x, $$2, $$3, $$4));

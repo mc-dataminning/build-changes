@@ -16,14 +16,14 @@ public class ber extends bhr {
    });
 
    public ber(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", biw.D, "minecraft:painting");
+      super($$0, $$1, "EntityPaintingMotiveFix", bix.D, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
       Optional<String> $$1 = $$0.get("Motive").asString().result();
       if ($$1.isPresent()) {
          String $$2 = $$1.get().toLowerCase(Locale.ROOT);
-         return $$0.set("Motive", $$0.createString(bkr.a(c.getOrDefault($$2, $$2))));
+         return $$0.set("Motive", $$0.createString(bks.a(c.getOrDefault($$2, $$2))));
       } else {
          return $$0;
       }

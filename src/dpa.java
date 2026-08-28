@@ -1,155 +1,143 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class dpa extends dqa {
+public class dpa extends dpl {
    public static final MapCodec<dpa> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebn.a.fieldOf("wood_type").forGetter($$0x -> $$0x.R), t()).apply($$0, dpa::new)
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("open").forGetter($$0x -> $$0x.f.c), t()).apply($$0, dpa::new)
    );
-   public static final eaq b = eap.y;
-   public static final eaq c = eap.A;
-   public static final eaq d = eap.t;
-   private static final Map<ja.a, ffc> f = fez.a(dma.a(16.0, 16.0, 4.0));
-   private static final Map<ja.a, ffc> g = Maps.newEnumMap(af.a(f, (Function<? super ffc, ffc>)($$0 -> fez.a($$0, dma.b(16.0, 13.0, 16.0), fem.e))));
-   private static final Map<ja.a, ffc> h = fez.a(dma.a(16.0, 4.0, 0.0, 24.0));
-   private static final Map<ja.a, ffc> i = fez.a(dma.a(16.0, 4.0, 5.0, 24.0));
-   private static final Map<ja.a, ffc> C = fez.a(fez.a(dma.a(0.0, 5.0, 7.0, 2.0, 16.0, 9.0), dma.a(14.0, 5.0, 7.0, 16.0, 16.0, 9.0)));
-   private static final Map<ja.a, ffc> Q = Maps.newEnumMap(af.a(C, (Function<? super ffc, ffc>)($$0 -> $$0.a(0.0, -0.1875, 0.0).d())));
-   private final ebn R;
+   private static final int d = 3;
+   private static final int e = 2;
+   private final dpa.a f;
 
    @Override
-   public MapCodec<dpa> a() {
+   public MapCodec<? extends dpa> a() {
       return a;
    }
 
-   public dpa(ebn $$0, dzy.d $$1) {
-      super($$1.a($$0.d()));
-      this.R = $$0;
-      this.l(this.B.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public dpa(dpa.a $$0, eag.d $$1) {
+      super($$0.d, $$0.e, $$1);
+      this.f = $$0;
+   }
+
+   public dpa(boolean $$0, eag.d $$1) {
+      super(dpa.a.a($$0).d, dpa.a.a($$0).e, $$1);
+      this.f = dpa.a.a($$0);
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      ja.a $$4 = $$0.c(e).o();
-      return ($$0.c(d) ? g : f).get($$4);
-   }
-
-   @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      ja.a $$8 = $$4.o();
-      if ($$0.c(e).h().o() != $$8) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$9 = this.o($$6) || this.o($$1.a_($$3.a($$4.g())));
-         return $$0.b(d, Boolean.valueOf($$9));
-      }
-   }
-
-   @Override
-   protected ffc b_(dzz $$0, dib $$1, iu $$2) {
-      ja.a $$3 = $$0.c(e).o();
-      return $$0.c(b) ? fez.a() : i.get($$3);
-   }
-
-   @Override
-   protected ffc b(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      ja.a $$4 = $$0.c(e).o();
-      return $$0.c(b) ? fez.a() : h.get($$4);
-   }
-
-   @Override
-   protected ffc d_(dzz $$0) {
-      ja.a $$1 = $$0.c(e).o();
-      return ($$0.c(d) ? Q : C).get($$1);
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(b);
-         case b:
-            return false;
-         case c:
-            return $$0.c(b);
-         default:
-            return false;
-      }
-   }
-
-   @Override
-   public dzz a(dcr $$0) {
-      div $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      boolean $$3 = $$1.D($$2);
-      ja $$4 = $$0.g();
-      ja.a $$5 = $$4.o();
-      boolean $$6 = $$5 == ja.a.c && (this.o($$1.a_($$2.h())) || this.o($$1.a_($$2.i())))
-         || $$5 == ja.a.a && (this.o($$1.a_($$2.f())) || this.o($$1.a_($$2.g())));
-      return this.m().b(e, $$4).b(b, Boolean.valueOf($$3)).b(c, Boolean.valueOf($$3)).b(d, Boolean.valueOf($$6));
-   }
-
-   private boolean o(dzz $$0) {
-      return $$0.a(axc.N);
-   }
-
-   @Override
-   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
-      if ($$0.c(b)) {
-         $$0 = $$0.b(b, Boolean.valueOf(false));
-         $$1.a($$2, $$0, 10);
-      } else {
-         ja $$5 = $$3.cO();
-         if ($$0.c(e) == $$5.g()) {
-            $$0 = $$0.b(e, $$5);
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if (this.f.d() && $$3.a(700) == 0) {
+         eah $$4 = $$1.a_($$2.e());
+         if ($$4.a(dmh.ue)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awn.jk, awo.e, 1.0F, 1.0F, false);
          }
-
-         $$0 = $$0.b(b, Boolean.valueOf(true));
-         $$1.a($$2, $$0, 10);
       }
-
-      boolean $$6 = $$0.c(b);
-      $$1.a($$3, $$2, $$6 ? this.R.g() : this.R.f(), awo.e, 1.0F, $$1.C_().i() * 0.1F + 0.9F);
-      $$1.a($$3, $$6 ? eez.h : eez.d, $$2);
-      return bub.a;
    }
 
    @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, dio $$3, BiConsumer<cyy, iu> $$4) {
-      if ($$3.g() && !$$0.c(c)) {
-         boolean $$5 = $$0.c(b);
-         $$1.b($$2, $$0.b(b, Boolean.valueOf(!$$5)));
-         $$1.a(null, $$2, $$5 ? this.R.f() : this.R.g(), awo.e, 1.0F, $$1.C_().i() * 0.1F + 0.9F);
-         $$1.a($$5 ? eez.d : eez.h, $$2, eez.a.a($$0));
+   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.f.c().f, awo.e, 1.0F, 1.0F);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.D($$2);
-         if ($$0.c(c) != $$6) {
-            $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)).b(b, Boolean.valueOf($$6)), 2);
-            if ($$0.c(b) != $$6) {
-               $$1.a(null, $$2, $$6 ? this.R.g() : this.R.f(), awo.e, 1.0F, $$1.C_().i() * 0.1F + 0.9F);
-               $$1.a(null, $$6 ? eez.h : eez.d, $$2);
+   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.f.c().g, awo.e, 1.0F, 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean c(eah $$0, arq $$1, iu $$2, azv $$3) {
+      if (!$$1.B_().j()) {
+         return false;
+      } else if (dob.a($$1) == this.f.c) {
+         return false;
+      } else {
+         dpa.a $$4 = this.f.c();
+         $$1.a($$2, $$4.b(), 3);
+         $$1.a(efh.c, $$2, efh.a.a($$0));
+         $$4.a($$1, $$2, $$3);
+         iu.c($$2.b(-3, -2, -3), $$2.b(3, 2, 3)).forEach($$4x -> {
+            eah $$5 = $$1.a_($$4x);
+            if ($$5 == $$0) {
+               double $$6 = Math.sqrt($$2.j($$4x));
+               int $$7 = $$3.a((int)($$6 * 5.0), (int)($$6 * 10.0));
+               $$1.a($$4x, $$0.b(), $$7);
             }
-         }
+         });
+         return true;
       }
    }
 
    @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(e, b, c, d);
+   protected void a(eah $$0, dja $$1, iu $$2, bwf $$3) {
+      if (!$$1.w_() && $$1.an() != bua.a && $$3 instanceof civ $$4 && civ.c($$0) && !$$4.b(bvl.s)) {
+         $$4.a(this.b());
+      }
    }
 
-   public static boolean a(dzz $$0, ja $$1) {
-      return $$0.c(e).o() == $$1.h().o();
+   @Override
+   public bvj b() {
+      return new bvj(bvl.s, 25);
+   }
+
+   public static enum a {
+      a(true, bvl.o, 11.0F, awn.jg, awn.jh, 16545810),
+      b(false, bvl.i, 7.0F, awn.ji, awn.jj, 6250335);
+
+      final boolean c;
+      final je<bvh> d;
+      final float e;
+      final awm f;
+      final awm g;
+      private final int h;
+
+      private a(final boolean $$0, final je<bvh> $$1, final float $$2, final awm $$3, final awm $$4, final int $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
+
+      public dmf a() {
+         return this.c ? dmh.uh : dmh.ui;
+      }
+
+      public eah b() {
+         return this.a().m();
+      }
+
+      public dpa.a c() {
+         return a(!this.c);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public static dpa.a a(boolean $$0) {
+         return $$0 ? a : b;
+      }
+
+      public void a(arq $$0, iu $$1, azv $$2) {
+         feq $$3 = $$1.b();
+         double $$4 = 0.5 + $$2.j();
+         feq $$5 = new feq($$2.j() - 0.5, $$2.j() + 1.0, $$2.j() - 0.5);
+         feq $$6 = $$3.e($$5.c($$4));
+         mc $$7 = new mc($$6, this.h, (int)(20.0 * $$4));
+         $$0.a($$7, $$3.d, $$3.e, $$3.f, 1, 0.0, 0.0, 0.0, 0.0);
+      }
+
+      public awm e() {
+         return this.f;
+      }
    }
 }

@@ -1,27 +1,48 @@
-public class ghz extends gfq<hel> {
-   private final giu a;
+public class ghz extends gfy<hdn> {
+   private static final String a = "upper_body";
+   private final gjc b;
+   private final gjc c;
+   private final gjc d;
+   private final gjc e;
 
-   public ghz(giu $$0) {
+   public ghz(gjc $$0) {
       super($$0);
-      this.a = $$0.b("tail");
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   public static gja a(giy $$0) {
-      gjc $$1 = new gjc();
-      gje $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", giz.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), giw.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", giz.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), giw.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", giz.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), giw.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", giz.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), giw.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", giz.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), giw.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", giz.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), giw.a(0.0F, 22.0F, -3.0F));
-      return gja.a($$1, 32, 32);
+   public static gji a() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gjg $$3 = new gjg(-0.5F);
+      $$1.a("head", gjh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gje.a(0.0F, 4.0F, 0.0F));
+      gjh $$4 = gjh.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gje.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gje.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gjh.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gje.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gjh.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gje.a(0.0F, 24.0F, 0.0F));
+      return gji.a($$0, 64, 64);
    }
 
-   public void a(hel $$0) {
+   public void a(hdn $$0) {
       super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azm.a(0.6F * $$0.u);
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = azm.a(this.b.f);
+      float $$2 = azm.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
+   }
+
+   public gjc b() {
+      return this.c;
    }
 }

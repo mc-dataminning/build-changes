@@ -1,37 +1,51 @@
 import com.mojang.serialization.Codec;
 
-public class ejx extends eje<elo> {
-   public ejx(Codec<elo> $$0) {
+public class ejx extends eio {
+   public ejx(Codec<els> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elo> $$0) {
-      dju $$1 = $$0.b();
-      iu $$2 = $$0.e();
-      dzz $$3 = $$1.a_($$2.e());
-      elo $$4 = $$0.f();
-      azv $$5 = $$0.d();
-      if (!$$3.a(axc.aO)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.ao()) {
-            int $$7 = 0;
+   protected void a(djb $$0, azv $$1, iu $$2, int $$3, iu.a $$4, els $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               iu $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dzz $$10 = $$4.b.a($$5, $$9);
-               if ($$1.v($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  eah $$17 = $$5.b.a($$1, $$2);
+                  if ($$17.b(dqh.e) && $$17.b(dqh.c) && $$17.b(dqh.b) && $$17.b(dqh.d) && $$17.b(dqh.f)) {
+                     $$17 = $$17.b(dqh.f, Boolean.valueOf($$6 >= $$3 - 1))
+                        .b(dqh.e, Boolean.valueOf($$9 < -$$8))
+                        .b(dqh.c, Boolean.valueOf($$9 > $$8))
+                        .b(dqh.b, Boolean.valueOf($$10 < -$$8))
+                        .b(dqh.d, Boolean.valueOf($$10 > $$8));
+                  }
+
+                  this.a($$0, $$4, $$17);
                }
             }
-
-            return $$7 > 0;
-         } else {
-            return false;
          }
       }
+   }
+
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

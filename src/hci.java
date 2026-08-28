@@ -1,3 +1,3 @@
-public class hci extends hcx {
+public class hci extends hdc {
    public boolean a;
 }

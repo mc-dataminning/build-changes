@@ -1,88 +1,61 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.function.Consumer;
 
-public class fwc {
-   int a;
-   final Map<fwc.a, fwc.b> b = Maps.newTreeMap(Comparator.<fwc.a, fvy>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+public class fwc implements fvz {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   public void a(Consumer<fvz> $$0) {
-      this.a++;
-      $$0.accept(new fwc.c(0));
+   public fwc(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
-         }
-      });
-      return $$1.toString();
+   public fwc(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   static class a {
-      final fvy a;
-      final int b;
-
-      a(fvy $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public static fwc a(int $$0) {
+      return new fwc($$0, 0);
    }
 
-   static class b {
-      fwb<?> a;
-      int b;
-      boolean c;
-
-      b() {
-         this.a = fwb.a;
-         this.b = -1;
-      }
-
-      public fwc.b a(int $$0, fwb<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
-         }
-
-         this.b = $$0;
-         return this;
-      }
+   public static fwc b(int $$0) {
+      return new fwc(0, $$0);
    }
 
-   class c implements fvz {
-      private final int b;
+   @Override
+   public void j(int $$0) {
+      this.a = $$0;
+   }
 
-      c(final int $$0) {
-         this.b = $$0;
-      }
+   @Override
+   public void k(int $$0) {
+      this.b = $$0;
+   }
 
-      @Override
-      public void a(fvy $$0, fwb<?> $$1) {
-         fwc.this.b.computeIfAbsent(new fwc.a($$0, this.b), $$0x -> new fwc.b()).a(fwc.this.a, $$1);
-      }
+   @Override
+   public int F() {
+      return this.a;
+   }
 
-      @Override
-      public fvz a() {
-         return fwc.this.new c(this.b + 1);
-      }
+   @Override
+   public int G() {
+      return this.b;
+   }
+
+   @Override
+   public int A() {
+      return this.c;
+   }
+
+   @Override
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fsh> $$0) {
    }
 }

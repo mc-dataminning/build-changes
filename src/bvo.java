@@ -1,12 +1,22 @@
-class bvo extends bve {
-   protected bvo(bvg $$0, int $$1) {
-      super($$0, $$1);
+class bvo extends bvh {
+   protected bvo(bvi $$0, int $$1, lv $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(arq $$0, bxc $$1, int $$2) {
-      if ($$1 instanceof cqy $$3) {
-         $$3.gt().a($$2 + 1, 1.0F);
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(arq $$0, bxe $$1, int $$2) {
+      if ($$1 instanceof arr $$3 && !$$1.V_()) {
+         iu $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.B().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
       }
 
       return true;

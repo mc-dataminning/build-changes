@@ -1,118 +1,128 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
 
 public class bjy extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final short c = 12;
+   private static final List<String> a = List.of(
+      "minecraft:banner_patterns",
+      "minecraft:bees",
+      "minecraft:block_entity_data",
+      "minecraft:block_state",
+      "minecraft:bundle_contents",
+      "minecraft:charged_projectiles",
+      "minecraft:container",
+      "minecraft:container_loot",
+      "minecraft:firework_explosion",
+      "minecraft:fireworks",
+      "minecraft:instrument",
+      "minecraft:map_id",
+      "minecraft:painting/variant",
+      "minecraft:pot_decorations",
+      "minecraft:potion_contents",
+      "minecraft:tropical_fish/pattern",
+      "minecraft:written_book_content"
+   );
 
-   public bjy(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bjy(Schema $$0) {
+      super($$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(biw.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         OpticFinder<? extends List<?>> $$4 = DSL.fieldFinder("TileEntities", $$3);
-         Type<?> $$5 = this.getInputSchema().getType(biw.c);
-         OpticFinder<?> $$6 = $$5.findField("Level");
-         OpticFinder<?> $$7 = $$6.type().findField("Sections");
-         Type<?> $$8 = $$7.type();
-         if (!($$8 instanceof ListType)) {
-            throw new IllegalStateException("Expecting sections to be a list.");
-         } else {
-            Type<?> $$9 = ((ListType)$$8).getElement();
-            OpticFinder<?> $$10 = DSL.typeFinder($$9);
-            return TypeRewriteRule.seq(
-               new bbl(this.getOutputSchema(), "AddTrappedChestFix", biw.s).makeRule(),
-               this.fixTypeEverywhereTyped("Trapped Chest fix", $$5, $$4x -> $$4x.updateTyped($$6, $$3xx -> {
-                     Optional<? extends Typed<?>> $$4xx = $$3xx.getOptionalTyped($$7);
-                     if ($$4xx.isEmpty()) {
-                        return $$3xx;
-                     } else {
-                        List<? extends Typed<?>> $$5x = $$4xx.get().getAllTyped($$10);
-                        IntSet $$6x = new IntOpenHashSet();
-
-                        for (Typed<?> $$7x : $$5x) {
-                           bjy.a $$8x = new bjy.a($$7x, this.getInputSchema());
-                           if (!$$8x.b()) {
-                              for (int $$9x = 0; $$9x < 4096; $$9x++) {
-                                 int $$10x = $$8x.c($$9x);
-                                 if ($$8x.a($$10x)) {
-                                    $$6x.add($$8x.c() << 12 | $$9x);
-                                 }
-                              }
-                           }
-                        }
-
-                        Dynamic<?> $$11 = (Dynamic<?>)$$3xx.get(DSL.remainderFinder());
-                        int $$12 = $$11.get("xPos").asInt(0);
-                        int $$13 = $$11.get("zPos").asInt(0);
-                        TaggedChoiceType<String> $$14 = this.getInputSchema().findChoiceType(biw.s);
-                        return $$3xx.updateTyped($$4, $$4xxx -> $$4xxx.updateTyped($$14.finder(), $$4xxxx -> {
-                              Dynamic<?> $$5xx = (Dynamic<?>)$$4xxxx.getOrCreate(DSL.remainderFinder());
-                              int $$6xx = $$5xx.get("x").asInt(0) - ($$12 << 4);
-                              int $$7xx = $$5xx.get("y").asInt(0);
-                              int $$8xx = $$5xx.get("z").asInt(0) - ($$13 << 4);
-                              return $$6x.contains(bhb.a($$6xx, $$7xx, $$8xx)) ? $$4xxxx.update($$14.finder(), $$0xxxxx -> $$0xxxxx.mapFirst($$0xxxxxx -> {
-                                    if (!Objects.equals($$0xxxxxx, "minecraft:chest")) {
-                                       a.warn("Block Entity was expected to be a chest");
-                                    }
-
-                                    return "minecraft:trapped_chest";
-                                 })) : $$4xxxx;
-                           }));
-                     }
-                  }))
-            );
-         }
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bix.w);
+      Type<?> $$1 = this.getOutputSchema().getType(bix.w);
+      OpticFinder<?> $$2 = $$0.findField("minecraft:can_place_on");
+      OpticFinder<?> $$3 = $$0.findField("minecraft:can_break");
+      Type<?> $$4 = $$1.findFieldType("minecraft:can_place_on");
+      Type<?> $$5 = $$1.findFieldType("minecraft:can_break");
+      return this.fixTypeEverywhereTyped("TooltipDisplayComponentFix", $$0, $$1, $$4x -> a($$4x, $$2, $$3, $$4, $$5));
    }
 
-   public static final class a extends bhb.b {
-      @Nullable
-      private IntSet h;
-
-      public a(Typed<?> $$0, Schema $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      protected boolean a() {
-         this.h = new IntOpenHashSet();
-
-         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
-            Dynamic<?> $$1 = this.e.get($$0);
-            String $$2 = $$1.get("Name").asString("");
-            if (Objects.equals($$2, "minecraft:trapped_chest")) {
-               this.h.add($$0);
+   private static Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1, OpticFinder<?> $$2, Type<?> $$3, Type<?> $$4) {
+      Set<String> $$5 = new HashSet<>();
+      $$0 = a($$0, $$1, $$3, "minecraft:can_place_on", $$5);
+      $$0 = a($$0, $$2, $$4, "minecraft:can_break", $$5);
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$1x -> {
+            $$1x = a($$1x, "minecraft:trim", $$5);
+            $$1x = a($$1x, "minecraft:unbreakable", $$5);
+            $$1x = a($$1x, "minecraft:dyed_color", "rgb", $$5);
+            $$1x = a($$1x, "minecraft:attribute_modifiers", "modifiers", $$5);
+            $$1x = a($$1x, "minecraft:enchantments", "levels", $$5);
+            $$1x = a($$1x, "minecraft:stored_enchantments", "levels", $$5);
+            boolean $$2x = $$1x.get("minecraft:hide_tooltip").result().isPresent();
+            $$1x = $$1x.remove("minecraft:hide_tooltip");
+            boolean $$3x = $$1x.get("minecraft:hide_additional_tooltip").result().isPresent();
+            $$1x = $$1x.remove("minecraft:hide_additional_tooltip");
+            if ($$3x) {
+               for (String $$4x : a) {
+                  if ($$1x.get($$4x).result().isPresent()) {
+                     $$5.add($$4x);
+                  }
+               }
             }
+
+            return $$5.isEmpty() && !$$2x
+               ? $$1x
+               : $$1x.set(
+                  "minecraft:tooltip_display",
+                  $$1x.createMap(
+                     Map.of(
+                        $$1x.createString("hide_tooltip"),
+                        $$1x.createBoolean($$2x),
+                        $$1x.createString("hidden_components"),
+                        $$1x.createList($$5.stream().map($$1x::createString))
+                     )
+                  )
+               );
+         }
+      );
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, Set<String> $$2) {
+      return a($$0, $$1, $$2, UnaryOperator.identity());
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2, Set<String> $$3) {
+      return a($$0, $$1, $$3, $$1x -> (Dynamic)DataFixUtils.orElse($$1x.get($$2).result(), $$1x));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, Set<String> $$2, UnaryOperator<Dynamic<?>> $$3) {
+      return $$0.update($$1, $$3x -> {
+         boolean $$4 = $$3x.get("show_in_tooltip").asBoolean(true);
+         if (!$$4) {
+            $$2.add($$1);
          }
 
-         return this.h.isEmpty();
-      }
+         return $$3.apply($$3x.remove("show_in_tooltip"));
+      });
+   }
 
-      public boolean a(int $$0) {
-         return this.h.contains($$0);
-      }
+   private static Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1, Type<?> $$2, String $$3, Set<String> $$4) {
+      return $$0.updateTyped($$1, $$2, $$3x -> af.a($$3x, $$2, $$2xx -> {
+            OptionalDynamic<?> $$3xx = $$2xx.get("predicates");
+            if ($$3xx.result().isEmpty()) {
+               return $$2xx;
+            } else {
+               boolean $$4x = $$2xx.get("show_in_tooltip").asBoolean(true);
+               if (!$$4x) {
+                  $$4.add($$3);
+               }
+
+               return (Dynamic)$$3xx.result().get();
+            }
+         }));
    }
 }

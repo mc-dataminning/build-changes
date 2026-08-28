@@ -1,9 +1,9 @@
 public interface axj {
-   axr<cyr> a = a("regular_goat_horns");
-   axr<cyr> b = a("screaming_goat_horns");
-   axr<cyr> c = a("goat_horns");
+   axr<cyw> a = a("regular_goat_horns");
+   axr<cyw> b = a("screaming_goat_horns");
+   axr<cyw> c = a("goat_horns");
 
-   private static axr<cyr> a(String $$0) {
-      return axr.a(mg.aT, alg.b($$0));
+   private static axr<cyw> a(String $$0) {
+      return axr.a(mg.aU, alg.b($$0));
    }
 }

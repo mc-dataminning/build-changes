@@ -1,12 +1,12 @@
-public class hat<M extends ghs> extends gzz<hdf, M> {
-   private static final gqc a = gqc.q(alg.b("textures/entity/spider_eyes.png"));
+public class hat extends hah<hdw, ggy> {
+   private static final gqk a = gqk.q(alg.b("textures/entity/phantom_eyes.png"));
 
-   public hat(gxw<hdf, M> $$0) {
+   public hat(gye<hdw, ggy> $$0) {
       super($$0);
    }
 
    @Override
-   public gqc a() {
+   public gqk a() {
       return a;
    }
 }

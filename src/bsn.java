@@ -1,48 +1,30 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.function.ToIntFunction;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class bsn {
-   private bsn() {
-   }
+public record bsn<T>(T a, int b) {
+   private static final Logger c = LogUtils.getLogger();
 
-   public static <T> int a(List<T> $$0, ToIntFunction<T> $$1) {
-      long $$2 = 0L;
-
-      for (T $$3 : $$0) {
-         $$2 += (long)$$1.applyAsInt($$3);
-      }
-
-      if ($$2 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
+   public bsn(T a, int b) {
+      if (b < 0) {
+         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Weight should be >= 0"));
       } else {
-         return (int)$$2;
-      }
-   }
-
-   public static <T> Optional<T> a(azv $$0, List<T> $$1, int $$2, ToIntFunction<T> $$3) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)af.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$4 = $$0.a($$2);
-         return a($$1, $$4, $$3);
-      }
-   }
-
-   public static <T> Optional<T> a(List<T> $$0, int $$1, ToIntFunction<T> $$2) {
-      for (T $$3 : $$0) {
-         $$1 -= $$2.applyAsInt($$3);
-         if ($$1 < 0) {
-            return Optional.of($$3);
+         if (b == 0 && ab.aU) {
+            c.warn("Found 0 weight, make sure this is intentional!");
          }
-      }
 
-      return Optional.empty();
+         this.a = a;
+         this.b = b;
+      }
    }
 
-   public static <T> Optional<T> a(azv $$0, List<T> $$1, ToIntFunction<T> $$2) {
-      return a($$0, $$1, a($$1, $$2), $$2);
+   public static <E> Codec<bsn<E>> a(Codec<E> $$0) {
+      return a($$0.fieldOf("data"));
+   }
+
+   public static <E> Codec<bsn<E>> a(MapCodec<E> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group($$0.forGetter(bsn::a), ayu.l.fieldOf("weight").forGetter(bsn::b)).apply($$1, bsn::new));
    }
 }

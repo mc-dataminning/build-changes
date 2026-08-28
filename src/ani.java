@@ -21,7 +21,7 @@ public class ani {
             .then(
                ej.a("targets", ev.b())
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("enchantment", fh.a($$1, mg.aQ))
+                     ((RequiredArgumentBuilder)ej.a("enchantment", fh.a($$1, mg.aR))
                            .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.g($$0x, "enchantment"), 1)))
                         .then(
                            ej.a("level", IntegerArgumentType.integer(0))
@@ -36,19 +36,19 @@ public class ani {
       );
    }
 
-   private static int a(ei $$0, Collection<? extends bwd> $$1, je<dfl> $$2, int $$3) throws CommandSyntaxException {
-      dfl $$4 = $$2.a();
+   private static int a(ei $$0, Collection<? extends bwf> $$1, je<dfq> $$2, int $$3) throws CommandSyntaxException {
+      dfq $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bwd $$6 : $$1) {
-            if ($$6 instanceof bxc) {
-               bxc $$7 = (bxc)$$6;
-               cyy $$8 = $$7.fa();
+         for (bwf $$6 : $$1) {
+            if ($$6 instanceof bxe) {
+               bxe $$7 = (bxe)$$6;
+               czd $$8 = $$7.fb();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && dfn.a(dfn.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && dfs.a(dfs.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
@@ -66,9 +66,9 @@ public class ani {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wy.a("commands.enchant.success.single", dfl.a($$2, $$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.single", dfq.a($$2, $$3), $$1.iterator().next().m_()), true);
             } else {
-               $$0.a(() -> wy.a("commands.enchant.success.multiple", dfl.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.multiple", dfq.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

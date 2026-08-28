@@ -1,35 +1,59 @@
-public class fst {
-   public static final alg a = alg.b("textures/gui/title/minecraft.png");
-   public static final alg b = alg.b("textures/gui/title/minceraft.png");
-   public static final alg c = alg.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azv.a().i() < 1.0E-4;
-   private final boolean o;
+public class fst extends fsg {
+   private final frt a;
+   private final ftd c;
 
-   public fst(boolean $$0) {
-      this.o = $$0;
+   public fst(int $$0, int $$1, int $$2, int $$3, wy $$4, frt $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.c = new ftd($$4, $$5).d(this.A() - this.b());
    }
 
-   public void a(fro $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public fst a(int $$0) {
+      this.c.c($$0);
+      return this;
    }
 
-   public void a(fro $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = axw.a($$5);
-      $$0.a(gqc::H, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(gqc::H, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   @Override
+   public void h(int $$0) {
+      super.h($$0);
+      this.c.d(this.A() - this.b());
+   }
+
+   @Override
+   protected int c() {
+      return this.c.y();
+   }
+
+   @Override
+   protected double o() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(frv $$0) {
+      super.c($$0);
+   }
+
+   public boolean q() {
+      return super.j();
+   }
+
+   @Override
+   protected void c(frv $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.e(), (float)this.p(), 0.0F);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fwg $$0) {
+      $$0.a(fwf.a, this.B());
+   }
+
+   @Override
+   public void b(wy $$0) {
+      super.b($$0);
+      this.c.b($$0);
    }
 }

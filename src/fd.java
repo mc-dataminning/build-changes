@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fd implements ArgumentType<ffq> {
+public class fd implements ArgumentType<ffy> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.criteria.invalid", $$0));
 
@@ -22,11 +22,11 @@ public class fd implements ArgumentType<ffq> {
       return new fd();
    }
 
-   public static ffq a(CommandContext<ei> $$0, String $$1) {
-      return (ffq)$$0.getArgument($$1, ffq.class);
+   public static ffy a(CommandContext<ei> $$0, String $$1) {
+      return (ffy)$$0.getArgument($$1, ffy.class);
    }
 
-   public ffq a(StringReader $$0) throws CommandSyntaxException {
+   public ffy a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,14 +34,14 @@ public class fd implements ArgumentType<ffq> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return ffq.a($$2).orElseThrow(() -> {
+      return ffy.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.createWithContext($$0, $$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(ffq.c());
+      List<String> $$2 = Lists.newArrayList(ffy.c());
 
       for (aww<?> $$3 : mf.v) {
          for (Object $$4 : $$3.b()) {

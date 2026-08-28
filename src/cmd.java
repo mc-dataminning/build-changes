@@ -1,18 +1,6 @@
-import javax.annotation.Nullable;
-
-public class cmd extends cly {
-   @Nullable
-   private fei b;
-
-   public cmd(clw $$0) {
+public abstract class cmd extends cmc {
+   public cmd(cma $$0) {
       super($$0);
-   }
-
-   @Override
-   public void a(arq $$0) {
-      if (this.b == null) {
-         this.b = this.a.dt();
-      }
    }
 
    @Override
@@ -21,23 +9,12 @@ public class cmd extends cly {
    }
 
    @Override
-   public void c() {
-      this.b = null;
-   }
-
-   @Override
-   public float e() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public fei f() {
-      return this.b;
-   }
-
-   @Override
-   public cmm<cmd> h() {
-      return cmm.k;
+   public float a(buu $$0, float $$1) {
+      if (!($$0.c() instanceof crk) && !($$0.c() instanceof csq)) {
+         return super.a($$0, $$1);
+      } else {
+         $$0.c().e(1.0F);
+         return 0.0F;
+      }
    }
 }

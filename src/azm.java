@@ -317,7 +317,7 @@ public class azm {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(fei $$0, fei $$1, fed $$2) {
+   public static boolean a(feq $$0, feq $$1, fel $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class azm {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static fei a(double $$0, fei $$1, fei $$2) {
-      return new fei(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static feq a(double $$0, feq $$1, feq $$2) {
+      return new feq(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {

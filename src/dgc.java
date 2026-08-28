@@ -1,33 +1,54 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface dgc extends dgd {
-   Codec<dgc> b = mf.as.q().dispatch(dgc::a, Function.identity());
-
-   static MapCodec<? extends dgc> a(jr<MapCodec<? extends dgc>> $$0) {
-      jr.a($$0, "all_of", dfw.a.a);
-      jr.a($$0, "apply_mob_effect", dfx.a);
-      jr.a($$0, "change_item_damage", dfy.a);
-      jr.a($$0, "damage_entity", dfz.a);
-      jr.a($$0, "explode", dgf.a);
-      jr.a($$0, "ignite", dgg.a);
-      jr.a($$0, "play_sound", dgi.a);
-      jr.a($$0, "replace_block", dgk.a);
-      jr.a($$0, "replace_disk", dgl.a);
-      jr.a($$0, "run_function", dgm.a);
-      jr.a($$0, "set_block_properties", dgn.a);
-      jr.a($$0, "spawn_particles", dgp.a);
-      return jr.a($$0, "summon_entity", dgq.a);
-   }
-
-   void a(arq var1, int var2, dfk var3, bwd var4, fei var5);
+public record dgc(ji<bvh> d, dfx e, dfx f, dfx g, dfx h) implements dgh {
+   public static final MapCodec<dgc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jt.a(mg.W).fieldOf("to_apply").forGetter(dgc::b),
+               dfx.b.fieldOf("min_duration").forGetter(dgc::c),
+               dfx.b.fieldOf("max_duration").forGetter(dgc::d),
+               dfx.b.fieldOf("min_amplifier").forGetter(dgc::e),
+               dfx.b.fieldOf("max_amplifier").forGetter(dgc::f)
+            )
+            .apply($$0, dgc::new)
+   );
 
    @Override
-   default void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
+      if ($$3 instanceof bxe $$5) {
+         azv $$6 = $$5.dY();
+         Optional<je<bvh>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(azm.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(azm.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new bvj($$7.get(), $$8, $$9));
+         }
+      }
    }
 
    @Override
-   MapCodec<? extends dgc> a();
+   public MapCodec<dgc> a() {
+      return a;
+   }
+
+   public ji<bvh> b() {
+      return this.d;
+   }
+
+   public dfx c() {
+      return this.e;
+   }
+
+   public dfx d() {
+      return this.f;
+   }
+
+   public dfx e() {
+      return this.g;
+   }
+
+   public dfx f() {
+      return this.h;
+   }
 }

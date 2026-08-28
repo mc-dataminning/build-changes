@@ -24,13 +24,13 @@ public class atk implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bpe<atk.e> d;
-   private final bsr e = new bsr(af.j(), "download-queue");
+   private final bpg<atk.e> d;
+   private final bst e = new bst(af.j(), "download-queue");
 
    public atk(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bpe.a(atk.e.a, $$0.resolve("log.json"));
+      this.d = bpg.a(atk.e.a, $$0.resolve("log.json"));
       atj.a($$0, 20);
    }
 

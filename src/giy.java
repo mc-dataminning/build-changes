@@ -1,24 +1,24 @@
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+
 public class giy {
-   public static final giy a = new giy(0.0F);
-   final float b;
-   final float c;
-   final float d;
+   public static final giy a = new giy(Map.of());
+   private final Map<gja, gji> b;
 
-   public giy(float $$0, float $$1, float $$2) {
+   public giy(Map<gja, gji> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   public giy(float $$0) {
-      this($$0, $$0, $$0);
+   public gjc a(gja $$0) {
+      gji $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public giy a(float $$0) {
-      return new giy(this.b + $$0, this.c + $$0, this.d + $$0);
-   }
-
-   public giy a(float $$0, float $$1, float $$2) {
-      return new giy(this.b + $$0, this.c + $$1, this.d + $$2);
+   public static giy a() {
+      return new giy(ImmutableMap.copyOf(giz.a()));
    }
 }

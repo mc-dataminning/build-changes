@@ -17,10 +17,10 @@ public class fv implements ArgumentType<String> {
       return new fv();
    }
 
-   public static ffi a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static ffq a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      ffn $$3 = ((ei)$$0.getSource()).l().aJ();
-      ffi $$4 = $$3.b($$2);
+      ffv $$3 = ((ei)$$0.getSource()).l().aJ();
+      ffq $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

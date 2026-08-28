@@ -1,49 +1,95 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
 public class fiy {
-   @Nullable
-   private static fjf a;
-
-   public static void a() {
-      if (a != null) {
-         b();
-         fjf.b();
-      }
+   public void a(float $$0) {
    }
 
-   public static void b() {
-      a = null;
+   public void a(float $$0, float $$1) {
    }
 
-   public static void a(fjb $$0) {
-      RenderSystem.assertOnRenderThread();
-      fjf $$1 = c($$0);
-      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   public void a(float $$0, float $$1, float $$2) {
    }
 
-   public static void b(fjb $$0) {
-      RenderSystem.assertOnRenderThread();
-      fjf $$1 = c($$0);
-      $$1.c();
+   public void a(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   private static fjf c(fjb $$0) {
-      fjf $$1 = a($$0.c().a());
-      $$1.a($$0);
-      return $$1;
+   public void b(float $$0, float $$1, float $$2, float $$3) {
    }
 
-   private static fjf a(fjh $$0) {
-      fjf $$1 = $$0.i();
-      a($$1);
-      return $$1;
+   public void a(int $$0, int $$1, int $$2, int $$3) {
    }
 
-   private static void a(fjf $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
+   public void a(int $$0) {
+   }
+
+   public void a(int $$0, int $$1) {
+   }
+
+   public void a(int $$0, int $$1, int $$2) {
+   }
+
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+   }
+
+   public void a(float[] $$0) {
+   }
+
+   public void a(Vector3f $$0) {
+   }
+
+   public void a(Vector4f $$0) {
+   }
+
+   public void c(float $$0, float $$1, float $$2, float $$3) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+   }
+
+   public void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
+   }
+
+   public void a(
+      float $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+   }
+
+   public void a(Matrix4f $$0) {
+   }
+
+   public void a(Matrix3f $$0) {
    }
 }

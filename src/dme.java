@@ -1,39 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dme extends dma implements dmd {
-   public static final MapCodec<dme> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mg.aK).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, dme::new)
-   );
-   private final alf<eiq<?, ?>> b;
+public class dme extends dla {
+   public static final MapCodec<dme> c = b(dme::new);
 
    @Override
    public MapCodec<dme> a() {
-      return a;
+      return c;
    }
 
-   public dme(alf<eiq<?, ?>> $$0, dzy.d $$1) {
-      super($$1);
-      this.b = $$0;
-   }
-
-   @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return $$0.a_($$1.d()).l();
+   protected dme(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return true;
+   public dxf a(iu $$0, eah $$1) {
+      return new dxe($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return a($$0, $$2, dxh.D);
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      $$0.F_().a(mg.aK).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((eiq)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
+   protected void a(dja $$0, iu $$1, crc $$2) {
+      dxf $$3 = $$0.c_($$1);
+      if ($$3 instanceof dxe) {
+         $$2.a((buf)$$3);
+         $$2.a(awx.as);
+      }
    }
 
    @Override
-   public dmd.a am_() {
-      return dmd.a.a;
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.cA, awo.e, 1.0F, 1.0F, false);
+         }
+
+         ja $$7 = $$0.c(a);
+         ja.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

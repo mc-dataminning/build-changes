@@ -27,9 +27,9 @@ public class gl implements ArgumentType<gh> {
       return new gl($$0);
    }
 
-   public static feh a(CommandContext<ei> $$0, String $$1) {
-      fei $$2 = ((gh)$$0.getArgument($$1, gh.class)).a((ei)$$0.getSource());
-      return new feh((float)$$2.d, (float)$$2.f);
+   public static fep a(CommandContext<ei> $$0, String $$1) {
+      feq $$2 = ((gh)$$0.getArgument($$1, gh.class)).a((ei)$$0.getSource());
+      return new fep((float)$$2.d, (float)$$2.f);
    }
 
    public gh a(StringReader $$0) throws CommandSyntaxException {

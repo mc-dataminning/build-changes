@@ -1,58 +1,59 @@
-public class gsj implements gse<dxc> {
-   private final gwx a;
+public class gsj implements gsm<dxb> {
+   private final ggu a;
+   private final ggu b;
 
-   public gsj(gsf.a $$0) {
-      this.a = $$0.e();
+   public gsj(gsn.a $$0) {
+      this($$0.f());
    }
 
-   public void a(dxc $$0, float $$1, fjc $$2, gps $$3, int $$4, int $$5, fei $$6) {
-      if ($$0.i() != null) {
-         int $$7 = $$0.m().c(eap.by);
-         if ($$7 > 0) {
-            ja $$8 = $$0.c();
-            if ($$8 != null) {
-               cyy $$9 = $$0.d();
-               if (!$$9.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$10 = this.a($$8, $$7);
-                  $$2.a($$10[0], $$10[1], $$10[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$11 = $$8 == ja.f || $$8 == ja.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$11 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$12 = gpn.a($$0.i(), $$0.m(), $$0.aw_().a($$8));
-                  this.a.a($$9, cyw.i, $$12, hif.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
-         }
+   public gsj(giy $$0) {
+      this.a = new ggu.a($$0.a(gjb.w), gqk::d);
+      this.b = new ggu.a($$0.a(gjb.v), gqk::d);
+   }
+
+   public static gji b() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("main", gjh.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gje.a);
+      $$1.a("left_leg", gjh.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gje.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gjh.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gje.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gji.a($$0, 64, 64);
+   }
+
+   public static gji c() {
+      gjk $$0 = new gjk();
+      gjm $$1 = $$0.a();
+      $$1.a("main", gjh.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gje.a);
+      $$1.a("left_leg", gjh.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gje.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gjh.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gje.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gji.a($$0, 64, 64);
+   }
+
+   public void a(dxb $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      dja $$7 = $$0.i();
+      if ($$7 != null) {
+         hle $$8 = gqv.a($$0.c());
+         eah $$9 = $$0.m();
+         don.c<? extends dxb> $$10 = don.a(dxh.z, dly::i, dly::h, dnj.c, $$9, $$7, $$0.ax_(), ($$0x, $$1x) -> false);
+         int $$11 = $$10.apply(new gsq<>()).get($$4);
+         this.a($$2, $$3, $$9.c(dly.b) == eau.a ? this.a : this.b, $$9.c(dly.e), $$8, $$11, $$5, false);
       }
    }
 
-   private float[] a(ja $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
+   public void a(fjj $$0, gqa $$1, int $$2, int $$3, hle $$4) {
+      this.a($$0, $$1, this.a, ja.d, $$4, $$2, $$3, false);
+      this.a($$0, $$1, this.b, ja.d, $$4, $$2, $$3, true);
+   }
 
-      return $$2;
+   private void a(fjj $$0, gqa $$1, ggu $$2, ja $$3, hle $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fjn $$8 = $$4.a($$1, gqk::d);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

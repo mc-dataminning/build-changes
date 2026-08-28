@@ -1,188 +1,107 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.mojang.text2speech.Narrator;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fwt extends fxu {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger d = LogUtils.getLogger();
-   private static final long s = 2000L;
-   public static final wy a = wy.c("connect.aborted");
-   public static final wy b = wy.a("disconnect.genericReason", wy.c("disconnect.unknownHost"));
+public class fwt extends fyb {
+   private static final wy a = wy.c("accessibility.onboarding.screen.title");
+   private static final wy b = wy.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fta s;
+   private final fpd u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
    @Nullable
-   volatile vr u;
-   @Nullable
-   ChannelFuture v;
-   volatile boolean w;
-   final fxu x;
-   private wy y = wy.c("connect.connecting");
-   private long z = -1L;
-   final wy A;
+   private fsu z;
+   private final fvx A = new fvx(this, this.m(), 33);
 
-   private fwt(fxu $$0, wy $$1) {
-      super(foi.a);
-      this.x = $$0;
-      this.A = $$1;
+   public fwt(fpd $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fta(true);
+      this.v = foz.Q().aY().a();
    }
 
-   public static void a(fxu $$0, fos $$1, glj $$2, gkg $$3, boolean $$4, @Nullable gkk $$5) {
-      if ($$1.z instanceof fwt) {
-         d.error("Attempt to connect while already connecting");
+   @Override
+   public void aO_() {
+      fwb $$0 = this.A.c(fwb.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fsu(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.av().a(this.u) instanceof fsq $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
+      }
+
+      $$0.a(fsn.b(150, $$0x -> this.a(new gba(this, this.m.n)), false));
+      $$0.a(fsn.a(150, $$0x -> this.a(new gbd(this, this.m.n, this.m.ah())), false));
+      this.A.b(fsj.a(wx.j, $$0x -> this.aL_()).a());
+      this.A.a(this::c);
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aC_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
       } else {
-         wy $$6;
-         if ($$5 != null) {
-            $$6 = wx.q;
-         } else if ($$4) {
-            $$6 = gow.a;
-         } else {
-            $$6 = wx.r;
-         }
-
-         fwt $$9 = new fwt($$0, $$6);
-         if ($$5 != null) {
-            $$9.a(wy.c("connect.transferring"));
-         }
-
-         $$1.y();
-         $$1.aU();
-         $$1.a(gkx.a($$3.b));
-         $$1.bc().a(gox.c.b, $$3.b, $$3.a);
-         $$1.a($$9);
-         $$9.a($$1, $$2, $$3, $$5);
+         super.aC_();
       }
    }
 
-   private void a(final fos $$0, final glj $$1, final gkg $$2, @Nullable final gkk $$3) {
-      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (fwt.this.w) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = gll.a.a($$1).map(gli::d);
-               if (fwt.this.w) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new fxb(fwt.this.x, fwt.this.A, fwt.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               vr $$2;
-               synchronized (fwt.this) {
-                  if (fwt.this.w) {
-                     return;
-                  }
-
-                  $$2 = new vr(zg.b);
-                  $$2.a($$0.aQ().n());
-                  fwt.this.v = vr.a($$0, $$0.n.aD(), $$2);
-               }
-
-               fwt.this.v.syncUninterruptibly();
-               synchronized (fwt.this) {
-                  if (fwt.this.w) {
-                     $$2.a(fwt.a);
-                     return;
-                  }
-
-                  fwt.this.u = $$2;
-                  $$0.af().a($$2, a($$2.b()));
-               }
-
-               fwt.this.u
-                  .a($$0.getHostName(), $$0.getPort(), aji.b, aji.d, new gjq(fwt.this.u, $$0, $$2, fwt.this.x, false, null, fwt.this::a, $$3), $$3 != null);
-               fwt.this.u.a(new ajl($$0.X().c(), $$0.X().b()));
-            } catch (Exception var9) {
-               if (fwt.this.w) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               fwt.d.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new fxb(fwt.this.x, fwt.this.A, wy.a("disconnect.genericReason", $$8))));
-            }
-         }
-
-         private static hls.c a(gkg.a $$0x) {
-            return switch ($$0) {
-               case a -> hls.c.b;
-               case b -> hls.c.c;
-               case c -> hls.c.a;
-            };
-         }
-      };
-      $$4.setUncaughtExceptionHandler(new r(d));
-      $$4.start();
-   }
-
-   private void a(wy $$0) {
-      this.y = $$0;
+   private int m() {
+      return 90;
    }
 
    @Override
-   public void e() {
-      if (this.u != null) {
-         if (this.u.i()) {
-            this.u.b();
-         } else {
-            this.u.n();
-         }
+   public void aL_() {
+      this.a(true, this.y);
+   }
+
+   private void a(fyb $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.ax();
       }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
    }
 
    @Override
-   public boolean aC_() {
-      return false;
-   }
-
-   @Override
-   protected void aN_() {
-      this.c(fsc.a(wx.e, $$0 -> {
-         synchronized (this) {
-            this.w = true;
-            if (this.v != null) {
-               this.v.cancel(true);
-               this.v = null;
-            }
-
-            if (this.u != null) {
-               this.u.a(a);
-            }
-         }
-
-         this.m.a(this.x);
-      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
+   public void a(frv $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = af.c();
-      if ($$4 - this.z > 2000L) {
-         this.z = $$4;
-         this.m.aY().c(wy.c("narrator.joining"));
-      }
+      this.E();
+      this.s.a($$0, this.n, 1.0F);
+   }
 
-      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
+   @Override
+   protected void a(frv $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void E() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true, 1.0F);
+            this.w = true;
+         }
+      }
    }
 }

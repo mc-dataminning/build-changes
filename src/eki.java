@@ -1,60 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class eki extends eje<elz> {
+public class eki extends ejm<elz> {
    public eki(Codec<elz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elz> $$0) {
-      dju $$1 = $$0.b();
+   public boolean a(ejo<elz> $$0) {
+      djb $$1 = $$0.b();
       iu $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+      azv $$3 = $$0.d();
+      elz $$4 = $$0.f();
+      Optional<ja> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         elz $$3 = $$0.f();
-         azv $$4 = $$0.d();
-         dtc $$5 = dtc.b();
-         int $$6 = $$3.f() + $$3.d();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
-
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         iu $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dmc.rz.m(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            iu $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), ja.b)) {
-               $$1.a($$14, dmc.rA.m().b(dtb.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
+         iu $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && ejh.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         ejh.a($$1, $$2, $$5.get(), $$7, false);
          return true;
       }
    }
 
-   private boolean a(diw $$0, iu $$1) {
-      dzz $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dsx) {
-         return true;
+   private static Optional<ja> a(djb $$0, iu $$1, azv $$2) {
+      boolean $$3 = ejh.b($$0.a_($$1.d()));
+      boolean $$4 = ejh.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ja.a : ja.b);
+      } else if ($$3) {
+         return Optional.of(ja.a);
       } else {
-         return !$$2.l() && (!$$2.a(dmc.J) || !$$2.y().b()) ? false : ja.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+         return $$4 ? Optional.of(ja.b) : Optional.empty();
+      }
+   }
+
+   private static void a(djb $$0, azv $$1, iu $$2, elz $$3) {
+      ejh.c($$0, $$2);
+
+      for (ja $$4 : ja.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            iu $$5 = $$2.a($$4);
+            ejh.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               iu $$6 = $$5.a(ja.b($$1));
+               ejh.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  iu $$7 = $$6.a(ja.b($$1));
+                  ejh.c($$0, $$7);
+               }
+            }
+         }
       }
    }
 }

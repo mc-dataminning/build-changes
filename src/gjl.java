@@ -1,25 +1,11 @@
-public class gjl {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = af.d();
+@FunctionalInterface
+public interface gjl {
+   gjl a = $$0 -> $$0;
 
-   public void a() {
-      this.e = af.d();
+   static gjl scaling(float $$0) {
+      float $$1 = 24.016F * (1.0F - $$0);
+      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(af.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azm.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
-   }
-
-   public float b() {
-      return (float)(7000000.0 / this.c);
-   }
+   gjk apply(gjk var1);
 }

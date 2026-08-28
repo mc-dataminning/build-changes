@@ -1,71 +1,95 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.function.ToDoubleFunction;
 
-public class cal {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class cal extends byv<cld> {
+   public static final int c = 200;
+   public static final float d = 1.65F;
+   private final Function<cld, bto> e;
+   private final cht f;
+   private final float g;
+   private final ToDoubleFunction<cld> h;
+   private feq i;
+   private final Function<cld, awm> j;
+   private final Function<cld, awm> k;
 
-   public static cae<bxk> a(float $$0) {
-      return a($$0, true);
+   public cal(Function<cld, bto> $$0, cht $$1, float $$2, ToDoubleFunction<cld> $$3, Function<cld, awm> $$4, Function<cld, awm> $$5) {
+      super(ImmutableMap.of(cgg.W, cgh.b, cgg.X, cgh.a), 200);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.j = $$4;
+      this.k = $$5;
+      this.i = feq.c;
    }
 
-   public static cae<bxk> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> chy.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bj());
+   protected boolean a(arq $$0, cld $$1) {
+      return $$1.ec().a(cgg.X);
    }
 
-   public static byu<bxk> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> chy.a($$2x, $$1, $$2), $$0x -> true);
+   protected boolean a(arq $$0, cld $$1, long $$2) {
+      return $$1.ec().a(cgg.X);
    }
 
-   public static byu<bxk> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   protected void b(arq $$0, cld $$1, long $$2) {
+      iu $$3 = $$1.dv();
+      bye<?> $$4 = $$1.ec();
+      feq $$5 = $$4.c(cgg.X).get();
+      this.i = new feq((double)$$3.u() - $$5.a(), 0.0, (double)$$3.w() - $$5.c()).d();
+      $$4.a(cgg.n, new cgj($$5, this.g, 0));
    }
 
-   public static byu<bxk> c(float $$0) {
-      return a($$0, cal::a, bwd::bj);
-   }
-
-   private static cae<bxk> a(float $$0, Function<bxk, fei> $$1, Predicate<bxk> $$2) {
-      return ccg.a((Function<ccg.b<bxk>, ? extends App<ccg.c<bxk>, ccj<bxk>>>)($$3 -> $$3.group($$3.c(cge.n)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<fei> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new cgh($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
-   }
-
-   @Nullable
-   private static fei a(bxk $$0) {
-      fei $$1 = null;
-      fei $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = byv.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dt().e($$0.dt().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+   protected void c(arq $$0, cld $$1, long $$2) {
+      List<bxe> $$3 = $$0.a(bxe.class, this.f, $$1, $$1.cR());
+      bye<?> $$4 = $$1.ec();
+      if (!$$3.isEmpty()) {
+         bxe $$5 = $$3.get(0);
+         buu $$6 = $$0.al().c((bxe)$$1);
+         float $$7 = (float)$$1.h(byk.c);
+         if ($$5.a($$0, $$6, $$7)) {
+            dfs.a($$0, (bwf)$$5, $$6);
          }
 
-         if ($$2 == null || $$0.dV().b_(iu.a((jo)$$2)).c()) {
-            return $$1;
+         int $$8 = $$1.b(bvl.a) ? $$1.c(bvl.a).e() + 1 : 0;
+         int $$9 = $$1.b(bvl.b) ? $$1.c(bvl.b).e() + 1 : 0;
+         float $$10 = 0.25F * (float)($$8 - $$9);
+         float $$11 = azm.a($$1.fo() * 1.65F, 0.2F, 3.0F) + $$10;
+         buu $$12 = $$0.al().b((bxe)$$1);
+         float $$13 = $$5.b($$0, $$12, $$7);
+         float $$14 = $$13 > 0.0F ? 0.5F : 1.0F;
+         $$5.p((double)($$14 * $$11) * this.h.applyAsDouble($$1), this.i.a(), this.i.c());
+         this.b($$0, $$1);
+         $$0.a(null, $$1, this.j.apply($$1), awo.g, 1.0F, 1.0F);
+      } else if (this.c($$0, $$1)) {
+         $$0.a(null, $$1, this.j.apply($$1), awo.g, 1.0F, 1.0F);
+         boolean $$15 = $$1.gt();
+         if ($$15) {
+            $$0.a(null, $$1, this.k.apply($$1), awo.g, 1.0F, 1.0F);
          }
 
-         $$1 = $$2;
+         this.b($$0, $$1);
+      } else {
+         Optional<cgj> $$16 = $$4.c(cgg.n);
+         Optional<feq> $$17 = $$4.c(cgg.X);
+         boolean $$18 = $$16.isEmpty() || $$17.isEmpty() || $$16.get().a().a().a($$17.get(), 0.25);
+         if ($$18) {
+            this.b($$0, $$1);
+         }
       }
-
-      return $$2;
    }
 
-   @Nullable
-   private static fei a(bxk $$0, int $$1, int $$2) {
-      fei $$3 = $$0.h(0.0F);
-      return cht.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
+   private boolean c(arq $$0, cld $$1) {
+      feq $$2 = $$1.dy().d(1.0, 0.0, 1.0).d();
+      iu $$3 = iu.a((jo)$$1.dt().e($$2));
+      return $$0.a_($$3).a(axc.cr) || $$0.a_($$3.d()).a(axc.cr);
+   }
+
+   protected void b(arq $$0, cld $$1) {
+      $$0.a($$1, (byte)59);
+      $$1.ec().a(cgg.W, this.e.apply($$1).a($$0.A));
+      $$1.ec().b(cgg.X);
    }
 }

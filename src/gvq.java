@@ -1,36 +1,39 @@
-public class gvq extends gvy<crj, hcf> {
-   private static final alg a = alg.b("textures/entity/enderdragon/dragon_fireball.png");
-   private static final gqc g = gqc.g(a);
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gvq(gvz.a $$0) {
-      super($$0);
+public class gvq extends gxn<cja, hcd, gfj> {
+   private final Map<cjb.a, gek<gfj>> a;
+
+   public gvq(gwh.a $$0) {
+      super($$0, new gfj($$0.a(gjb.Z)), 0.3F);
+      this.a = a($$0);
    }
 
-   protected int a(crj $$0, iu $$1) {
-      return 15;
+   private static Map<cjb.a, gek<gfj>> a(gwh.a $$0) {
+      return Maps.newEnumMap(
+         Map.of(cjb.a.a, new gek<>(new gfj($$0.a(gjb.Z)), new gfj($$0.a(gjb.aa))), cjb.a.b, new gek<>(new gfl($$0.a(gjb.ac)), new gfl($$0.a(gjb.ad))))
+      );
    }
 
-   @Override
-   public void a(hcf $$0, fjc $$1, gps $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(this.d.b());
-      fjc.a $$4 = $$1.c();
-      fjg $$5 = $$2.getBuffer(g);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public void a(hcd $$0, fjj $$1, gqa $$2, int $$3) {
+      if ($$0.c != null) {
+         this.g = this.a.get($$0.c.b().a()).a($$0.aj);
+         super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   private static void a(fjg $$0, fjc.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hif.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   public alg a(hcd $$0) {
+      return $$0.c == null ? him.c() : $$0.c.b().b().b();
    }
 
-   @Override
-   public hcf d() {
-      return new hcf();
+   public hcd a() {
+      return new hcd();
+   }
+
+   public void a(cja $$0, hcd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azm.h($$2, $$0.bK, $$0.bG);
+      $$1.b = azm.h($$2, $$0.bI, $$0.bH);
+      $$1.c = $$0.t().a();
    }
 }

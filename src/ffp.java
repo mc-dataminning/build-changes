@@ -1,83 +1,46 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Collection;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public abstract class ffp {
-   public boolean a(@Nullable ffp $$0) {
-      return $$0 == null ? false : this == $$0;
+class ffp {
+   private final Reference2ObjectOpenHashMap<ffn, ffs> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+
+   @Nullable
+   public ffs a(ffn $$0) {
+      return (ffs)this.a.get($$0);
    }
 
-   public abstract String c();
-
-   public abstract xm d(wy var1);
-
-   public abstract boolean j();
-
-   public abstract boolean i();
-
-   public abstract ffp.b k();
-
-   public abstract n o();
-
-   public abstract Collection<String> h();
-
-   public abstract ffp.b l();
-
-   public abstract ffp.a m();
-
-   public static enum a implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      public static final Codec<ffp.a> e = bak.a(ffp.a::values);
-      private static final IntFunction<ffp.a> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, ffp.a> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
-
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public wy a() {
-         return wy.c("team.collision." + this.g);
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   public ffs a(ffn $$0, Consumer<ffs> $$1) {
+      return (ffs)this.a.computeIfAbsent($$0, $$1x -> {
+         ffs $$2 = new ffs();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   public static enum b implements bak {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public boolean b(ffn $$0) {
+      return this.a.remove($$0) != null;
+   }
 
-      public static final Codec<ffp.b> e = bak.a(ffp.b::values);
-      private static final IntFunction<ffp.b> i = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-      public static final yw<ByteBuf, ffp.b> f = yu.a(i, $$0 -> $$0.h);
-      public final String g;
-      public final int h;
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
 
-      private b(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   public Object2IntMap<ffn> b() {
+      Object2IntMap<ffn> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
 
-      public wy a() {
-         return wy.c("team.visibility." + this.g);
-      }
+   void a(ffn $$0, ffs $$1) {
+      this.a.put($$0, $$1);
+   }
 
-      @Override
-      public String c() {
-         return this.g;
-      }
+   Map<ffn, ffs> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

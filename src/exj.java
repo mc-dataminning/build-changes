@@ -1,35 +1,38 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class exj extends exa {
+   private float m = Float.MAX_VALUE;
+   private exa n;
+   private boolean o;
 
-public class exj extends exq {
-   public exj(dsi $$0) {
-      super($$0);
+   public exj(exa $$0) {
+      super($$0.a, $$0.b, $$0.c);
    }
 
-   @Override
-   public void a(div $$0, iu $$1, dzz $$2, @Nullable exo $$3, boolean $$4) {
-      int $$5 = this.c($$0, $$1);
-      if ($$2.c(dsi.f) != $$5) {
-         if ($$0.a_($$1) == $$2) {
-            $$0.a($$1, $$2.b(dsi.f, Integer.valueOf($$5)), 2);
-         }
+   public exj(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-         Set<iu> $$6 = Sets.newHashSet();
-         $$6.add($$1);
-
-         for (ja $$7 : ja.values()) {
-            $$6.add($$1.a($$7));
-         }
-
-         for (iu $$8 : $$6) {
-            $$0.a($$8, this.a);
-         }
+   public void a(float $$0, exa $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
       }
    }
 
-   private int c(div $$0, iu $$1) {
-      int $$2 = this.a($$0, $$1);
-      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
+   public exa d() {
+      return this.n;
+   }
+
+   public void e() {
+      this.o = true;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public static exj c(vu $$0) {
+      exj $$1 = new exj($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
    }
 }

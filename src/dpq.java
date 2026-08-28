@@ -1,56 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dpq extends dma {
-   protected final ja a;
-   protected final boolean b;
-   protected final ffc d;
+public class dpq extends dla {
+   public static final MapCodec<dpq> c = b(dpq::new);
 
-   protected dpq(dzy.d $$0, ja $$1, ffc $$2, boolean $$3) {
+   @Override
+   public MapCodec<dpq> a() {
+      return c;
+   }
+
+   protected dpq(eag.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
    }
 
    @Override
-   protected abstract MapCodec<? extends dpq> a();
+   public dxf a(iu $$0, eah $$1) {
+      return new dyf($$0, $$1);
+   }
 
    @Nullable
    @Override
-   public dzz a(dcr $$0) {
-      dzz $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dzz b(azv $$0) {
-      return this.m();
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return a($$0, $$2, dxh.a);
    }
 
    @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      iu $$3 = $$2.a(this.a.g());
-      dzz $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(dja $$0, iu $$1, crc $$2) {
+      dxf $$3 = $$0.c_($$1);
+      if ($$3 instanceof dyf) {
+         $$2.a((buf)$$3);
+         $$2.a(awx.am);
       }
    }
 
-   protected boolean o(dzz $$0) {
-      return true;
-   }
-
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return this.d;
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awn.kC, awo.e, 1.0F, 1.0F, false);
+         }
+
+         ja $$7 = $$0.c(a);
+         ja.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lx.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
-
-   protected abstract dps c();
-
-   protected abstract dma b();
 }

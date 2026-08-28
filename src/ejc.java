@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ejc extends eje<elp> {
-   public ejc(Codec<elp> $$0) {
+public class ejc extends eja {
+   public ejc(Codec<elx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elp> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   protected boolean a(djb $$0, azv $$1, iu $$2, eah $$3) {
+      iu.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
 
-   public static void a(djm $$0, iu $$1, boolean $$2) {
-      iu.a $$3 = $$1.k();
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
 
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               iu $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dma $$8 = $$6 == -1 ? dmc.cw : dmc.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
+         $$4.c(ja.b);
+      }
 
-                  $$0.a($$7, $$8.m(), 3);
-               }
+      iu $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<ja> $$9 = ja.c.a.c($$1);
+
+      for (ja $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ja.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
       }
+
+      return true;
    }
 }

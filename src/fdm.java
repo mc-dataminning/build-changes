@@ -1,4 +1,9 @@
-import com.mojang.serialization.MapCodec;
+public interface fdm extends ezi {
+   float b(ezh var1);
 
-public record fdm(MapCodec<? extends fdn> a) {
+   default int a(ezh $$0) {
+      return Math.round(this.b($$0));
+   }
+
+   fdl b();
 }

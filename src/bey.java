@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bey extends bhr {
    public bey(Schema $$0) {
-      super($$0, false, "EntitySalmonSizeFix", biw.D, "minecraft:salmon");
+      super($$0, false, "EntitySalmonSizeFix", bix.D, "minecraft:salmon");
    }
 
    @Override

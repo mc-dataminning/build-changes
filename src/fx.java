@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fx extends ft<dst> {
+public class fx extends ft<dsz> {
    private fx() {
-      super(dst.f, dst::values);
+      super(dsz.f, dsz::values);
    }
 
    public static fx a() {
       return new fx();
    }
 
-   public static dst a(CommandContext<ei> $$0, String $$1) {
-      return (dst)$$0.getArgument($$1, dst.class);
+   public static dsz a(CommandContext<ei> $$0, String $$1) {
+      return (dsz)$$0.getArgument($$1, dsz.class);
    }
 }

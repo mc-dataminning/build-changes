@@ -1,24 +1,111 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public interface ecm<T> {
-   int a(T var1);
+public class ecm<T> implements ecu<T> {
+   private final jj<T> a;
+   private final ayi<T> b;
+   private final ecv<T> c;
+   private final int d;
 
-   boolean a(Predicate<T> var1);
+   public ecm(jj<T> $$0, int $$1, ecv<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
+   }
 
-   T a(int var1);
+   public ecm(jj<T> $$0, int $$1, ecv<T> $$2) {
+      this($$0, $$1, $$2, ayi.c(1 << $$1));
+   }
 
-   void a(vu var1);
+   private ecm(jj<T> $$0, int $$1, ecv<T> $$2, ayi<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
+   }
 
-   void b(vu var1);
+   public static <A> ecu<A> a(int $$0, jj<A> $$1, ecv<A> $$2, List<A> $$3) {
+      return new ecm<>($$1, $$0, $$2, $$3);
+   }
 
-   int a();
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
 
-   int b();
+      return $$1;
+   }
 
-   ecm<T> a(ecn<T> var1);
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
 
-   public interface a {
-      <A> ecm<A> create(int var1, jj<A> var2, ecn<A> var3, List<A> var4);
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new ect($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(vu $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
+   }
+
+   @Override
+   public void b(vu $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wp.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wp.a(this.a.a(this.b.a($$1)));
+      }
+
+      return $$0;
+   }
+
+   public List<T> c() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
+   }
+
+   @Override
+   public int b() {
+      return this.b.d();
+   }
+
+   @Override
+   public ecu<T> a(ecv<T> $$0) {
+      return new ecm<>(this.a, this.d, $$0, this.b.b());
    }
 }

@@ -1,12 +1,15 @@
-public class gzk<M extends ggw> extends hav<M> {
-   private static final alg a = alg.b("textures/entity/bee/bee_stinger.png");
+public class gzk extends guz<cov, hei> {
+   private static final alg a = alg.b("textures/entity/skeleton/wither_skeleton.png");
 
-   public gzk(gxa<?, hdr, M> $$0, gvz.a $$1) {
-      super($$0, new ger($$1.a(git.z)), a, hav.a.b);
+   public gzk(gwh.a $$0) {
+      super($$0, gjb.dU, gjb.dV, gjb.dW);
    }
 
-   @Override
-   protected int a(hdr $$0) {
-      return $$0.k;
+   public alg b(hei $$0) {
+      return a;
+   }
+
+   public hei b() {
+      return new hei();
    }
 }

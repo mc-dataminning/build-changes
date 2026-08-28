@@ -1,61 +1,28 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.EnumSet;
 
-public class cdu extends cdy {
-   private static final int a = 200;
-   private final ciq b;
-   private int c;
-   private int d;
+public class cdu extends cea {
+   private final bxg a;
 
-   public cdu(ciq $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
-   }
-
-   protected int a(ciq $$0) {
-      return b(200 + $$0.dY().a(200) % 20);
+   public cdu(bxg $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cea.a.c));
+      $$0.O().a(true);
    }
 
    @Override
    public boolean b() {
-      if (this.b.gt()) {
-         return false;
-      } else if (this.b.gq()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
-         return false;
-      } else {
-         this.d = this.a(this.b);
-         Predicate<ciq> $$0 = $$0x -> $$0x.gs() || !$$0x.gq();
-         List<? extends ciq> $$1 = this.b.dV().a((Class<? extends ciq>)this.b.getClass(), this.b.cR().c(8.0, 8.0, 8.0), $$0);
-         ciq $$2 = (ciq)DataFixUtils.orElse($$1.stream().filter(ciq::gs).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gq()));
-         return this.b.gq();
-      }
+      return this.a.bj() && this.a.b(axh.a) > this.a.dp() || this.a.bw();
    }
 
    @Override
-   public boolean c() {
-      return this.b.gq() && this.b.gu();
-   }
-
-   @Override
-   public void d() {
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      this.b.gr();
+   public boolean R_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gv();
+      if (this.a.dY().i() < 0.8F) {
+         this.a.N().a();
       }
    }
 }

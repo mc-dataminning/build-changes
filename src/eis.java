@@ -1,52 +1,45 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public abstract class eis extends eje<elp> {
-   public eis(Codec<elp> $$0) {
+public class eis extends ejm<elj> {
+   public eis(Codec<elj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elp> $$0) {
-      azv $$1 = $$0.d();
-      dju $$2 = $$0.b();
-      iu $$3 = $$0.e();
-      Optional<dma> $$4 = mf.e.a(axc.at, $$1).map(je::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
+   public boolean a(ejo<elj> $$0) {
+      iu $$1 = $$0.e();
+      djz $$2 = $$0.b();
+      azv $$3 = $$0.d();
 
-   protected abstract boolean a(diw var1, azv var2, iu var3, dzz var4);
-
-   protected boolean b(diw $$0, azv $$1, iu $$2, dzz $$3) {
-      iu $$4 = $$2.d();
-      dzz $$5 = $$0.a_($$2);
-      if (($$5.a(dmc.J) || $$5.a(axc.aw)) && $$0.a_($$4).a(dmc.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            mf.e.a(axc.aw, $$1).map(je::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dmc.ny.m().b(dte.c, Integer.valueOf($$1.a(4) + 1)), 2);
+      elj $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
+         if (!$$2.v($$1.e())) {
+            eah $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
+            }
          }
+      }
 
-         for (ja $$6 : ja.c.a) {
-            if ($$1.i() < 0.2F) {
-               iu $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dmc.J)) {
-                  mf.e.a(axc.au, $$1).map(je::a).ifPresent($$3x -> {
-                     dzz $$4x = $$3x.m();
-                     if ($$4x.b(dll.d)) {
-                        $$4x = $$4x.b(dll.d, $$6);
-                     }
+      if ($$1.v() <= $$2.G_() + 3) {
+         return false;
+      } else {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
 
-                     $$0.a($$7, $$4x, 2);
-                  });
+            for (iu $$11 : iu.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
                }
             }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
          }
 
          return true;
-      } else {
-         return false;
       }
    }
 }

@@ -5,7 +5,7 @@ public class acx implements zf<abu> {
    private final int b;
    private final byte c;
 
-   public acx(bwd $$0, byte $$1) {
+   public acx(bwf $$0, byte $$1) {
       this.b = $$0.ar();
       this.c = $$1;
    }
@@ -30,7 +30,7 @@ public class acx implements zf<abu> {
    }
 
    @Nullable
-   public bwd a(div $$0) {
+   public bwf a(dja $$0) {
       return $$0.a(this.b);
    }
 

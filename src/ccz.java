@@ -1,17 +1,7 @@
-public class ccz implements ccx {
-   private final bxe b;
-   protected boolean a;
-
-   public ccz(bxe $$0) {
-      this.b = $$0;
-   }
-
-   public void a() {
-      this.a = true;
-   }
-
-   public void b() {
-      this.b.s(this.a);
-      this.a = false;
+public interface ccz {
+   default float a(float $$0, float $$1, float $$2) {
+      float $$3 = azm.c($$0, $$1);
+      float $$4 = azm.a($$3, -$$2, $$2);
+      return $$0 + $$4;
    }
 }

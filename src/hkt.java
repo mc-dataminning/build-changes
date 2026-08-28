@@ -1,40 +1,20 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class hkt implements hkp {
-   protected final hkp a;
+public record hkt(boolean e, boolean f) {
+   public static final boolean a = false;
+   public static final boolean b = false;
+   public static final Codec<hkt> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("blur", false).forGetter(hkt::a), Codec.BOOL.optionalFieldOf("clamp", false).forGetter(hkt::b))
+            .apply($$0, hkt::new)
+   );
+   public static final auc<hkt> d = new auc<>("texture", c);
 
-   public hkt(hkp $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public List<gqz> a(@Nullable dzz $$0, @Nullable ja $$1, azv $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
    public boolean a() {
-      return this.a.a();
+      return this.e;
    }
 
-   @Override
    public boolean b() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public hip d() {
-      return this.a.d();
-   }
-
-   @Override
-   public grj e() {
-      return this.a.e();
+      return this.f;
    }
 }

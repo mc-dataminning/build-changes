@@ -1,4 +1,5 @@
-public class hdh extends hcf {
+public class hdh extends hdn {
    public float a;
-   public float b;
+   public int b;
+   public bwb.a c = bwb.a.a;
 }

@@ -1,60 +1,98 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public record dbh(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
-   public static final dbh a = new dbh(List.of(), List.of(), List.of(), List.of());
-   public static final Codec<dbh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(dbh::a),
-               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(dbh::b),
-               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(dbh::c),
-               ayu.i.listOf().optionalFieldOf("colors", List.of()).forGetter(dbh::d)
-            )
-            .apply($$0, dbh::new)
-   );
-   public static final yw<ByteBuf, dbh> c = yw.a(yu.l.a(yu.a()), dbh::a, yu.b.a(yu.a()), dbh::b, yu.o.a(yu.a()), dbh::c, yu.g.a(yu.a()), dbh::d, dbh::new);
+public final class dbh implements dci {
+   public static final dbh a = new dbh(List.of());
+   public static final Codec<dbh> b = czd.b.listOf().xmap(dbh::new, $$0 -> $$0.d);
+   public static final yw<wj, dbh> c = czd.i.a(yu.a()).a(dbh::new, $$0 -> $$0.d);
+   private final List<czd> d;
 
-   @Nullable
-   private static <T> T a(List<T> $$0, int $$1) {
-      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
+   private dbh(List<czd> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   public Float a(int $$0) {
-      return a(this.d, $$0);
+   public static dbh a(czd $$0) {
+      return new dbh(List.of($$0.v()));
    }
 
-   @Nullable
-   public Boolean b(int $$0) {
-      return a(this.e, $$0);
+   public static dbh a(List<czd> $$0) {
+      return new dbh(List.copyOf(Lists.transform($$0, czd::v)));
    }
 
-   @Nullable
-   public String c(int $$0) {
-      return a(this.f, $$0);
+   public boolean a(cyz $$0) {
+      for (czd $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Nullable
-   public Integer d(int $$0) {
-      return a(this.g, $$0);
+   public List<czd> a() {
+      return Lists.transform(this.d, czd::v);
    }
 
-   public List<Float> a() {
-      return this.d;
+   public boolean b() {
+      return this.d.isEmpty();
    }
 
-   public List<Boolean> b() {
-      return this.e;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dbh $$1 && czd.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public List<String> c() {
-      return this.f;
+   @Override
+   public int hashCode() {
+      return czd.a(this.d);
    }
 
-   public List<Integer> d() {
-      return this.g;
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
+   }
+
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      czd $$4 = null;
+      int $$5 = 0;
+
+      for (czd $$6 : this.d) {
+         if ($$4 == null) {
+            $$4 = $$6;
+            $$5 = 1;
+         } else if (czd.a($$4, $$6)) {
+            $$5++;
+         } else {
+            a($$0, $$1, $$4, $$5);
+            $$4 = $$6;
+            $$5 = 1;
+         }
+      }
+
+      if ($$4 != null) {
+         a($$0, $$1, $$4, $$5);
+      }
+   }
+
+   private static void a(cyz.b $$0, Consumer<wy> $$1, czd $$2, int $$3) {
+      if ($$3 == 1) {
+         $$1.accept(wy.a("item.minecraft.crossbow.projectile.single", $$2.K()));
+      } else {
+         $$1.accept(wy.a("item.minecraft.crossbow.projectile.multiple", $$3, $$2.K()));
+      }
+
+      dch $$4 = $$2.a(kj.q, dch.c);
+      $$2.a($$0, $$4, null, das.a, $$1x -> $$1.accept(wy.b("  ").b($$1x).a(n.h)));
    }
 }

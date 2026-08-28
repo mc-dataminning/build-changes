@@ -1,7 +1,7 @@
-public class hdx extends hdf {
-   public float a;
-   public float b;
-   public boolean c;
-   public cxw d = cxw.a;
-   public int e;
+import javax.annotation.Nullable;
+
+public class hdx extends hdn {
+   public czd a = czd.k;
+   @Nullable
+   public cjq b;
 }

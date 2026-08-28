@@ -1,79 +1,137 @@
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class byo<E extends bxk> extends byt<E> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private final float g;
-   private final Function<bxk, axr<buu>> h;
+public class byo {
+   public static final int a = 48;
 
-   public byo(float $$0) {
-      this($$0, $$0x -> axd.F);
+   public static byw<bxm> a(Predicate<je<cij>> $$0, cgg<jd> $$1, boolean $$2, Optional<Byte> $$3, BiPredicate<arq, iu> $$4) {
+      return a($$0, $$1, $$1, $$2, $$3, $$4);
    }
 
-   public byo(float $$0, Function<bxk, axr<buu>> $$1) {
-      super(Map.of(cge.aa, cgf.c, cge.y, cgf.c), 100, 120);
-      this.g = $$0;
-      this.h = $$1;
+   public static byw<bxm> a(Predicate<je<cij>> $$0, cgg<jd> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3, ($$0x, $$1x) -> true);
    }
 
-   protected boolean a(arq $$0, E $$1) {
-      return $$1.eb().c(cge.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cge.aa);
-   }
+   public static byw<bxm> a(Predicate<je<cij>> $$0, cgg<jd> $$1, cgg<jd> $$2, boolean $$3, Optional<Byte> $$4, BiPredicate<arq, iu> $$5) {
+      int $$6 = 5;
+      int $$7 = 20;
+      MutableLong $$8 = new MutableLong(0L);
+      Long2ObjectMap<byo.a> $$9 = new Long2ObjectOpenHashMap();
+      cag<bxm> $$10 = cci.a(
+         (Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$7x -> $$7x.group($$7x.c($$2))
+               .apply(
+                  $$7x,
+                  $$6xx -> ($$7xx, $$8x, $$9x) -> {
+                        if ($$3 && $$8x.n_()) {
+                           return false;
+                        } else if ($$8.getValue() == 0L) {
+                           $$8.setValue($$7xx.ae() + (long)$$7xx.A.a(20));
+                           return false;
+                        } else if ($$7xx.ae() < $$8.getValue()) {
+                           return false;
+                        } else {
+                           $$8.setValue($$9x + 20L + (long)$$7xx.C_().a(20));
+                           cig $$10x = $$7xx.A();
+                           $$9.long2ObjectEntrySet().removeIf($$1xxxx -> !((byo.a)$$1xxxx.getValue()).b($$9x));
+                           Predicate<iu> $$11 = $$2xxxx -> {
+                              byo.a $$3xxxx = (byo.a)$$9.get($$2xxxx.a());
+                              if ($$3xxxx == null) {
+                                 return true;
+                              } else if (!$$3xxxx.c($$9x)) {
+                                 return false;
+                              } else {
+                                 $$3xxxx.a($$9x);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<je<cij>, iu>> $$12 = $$10x.c($$0, $$11, $$8x.dv(), 48, cig.b.a)
+                              .limit(5L)
+                              .filter($$2xxxx -> $$5.test($$7xx, (iu)$$2xxxx.getSecond()))
+                              .collect(Collectors.toSet());
+                           exc $$13 = a($$8x, $$12);
+                           if ($$13 != null && $$13.j()) {
+                              iu $$14 = $$13.l();
+                              $$10x.c($$14).ifPresent($$8xx -> {
+                                 $$10x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$14), $$14, 1);
+                                 $$6xx.a(jd.a($$7xx.aj(), $$14));
+                                 $$4.ifPresent($$2xxxxx -> $$7xx.a($$8x, $$2xxxxx));
+                                 $$9.clear();
+                                 agm.c($$7xx, $$14);
+                              });
+                           } else {
+                              for (Pair<je<cij>, iu> $$15 : $$12) {
+                                 $$9.computeIfAbsent(((iu)$$15.getSecond()).a(), $$2xxxx -> new byo.a($$7xx.A, $$9x));
+                              }
+                           }
 
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arq $$0, E $$1, long $$2) {
-      $$1.eb().a(cge.aa, true);
-      $$1.eb().b(cge.n);
-   }
-
-   protected void c(arq $$0, E $$1, long $$2) {
-      byc<?> $$3 = $$1.eb();
-      $$3.b(cge.aa);
-   }
-
-   protected void d(arq $$0, E $$1, long $$2) {
-      if ($$1.O().k()) {
-         fei $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.eb().a(cge.n, new cgh($$3, this.g, 0));
-         }
-      }
+                           return true;
+                        }
+                     }
+               ))
+      );
+      return $$2 == $$1 ? $$10 : cci.a((Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$10)));
    }
 
    @Nullable
-   private fei a(E $$0, arq $$1) {
-      if ($$0.bY()) {
-         Optional<fei> $$2 = this.a((dib)$$1, $$0).map(fei::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
+   public static exc a(bxg $$0, Set<Pair<je<cij>, iu>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         Set<iu> $$2 = new HashSet<>();
+         int $$3 = 1;
 
-      return chy.a($$0, 5, 4);
+         for (Pair<je<cij>, iu> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cij)((je)$$4.getFirst()).a()).c());
+            $$2.add((iu)$$4.getSecond());
+         }
+
+         return $$0.O().a($$2, $$3);
+      }
    }
 
-   private Optional<iu> a(dib $$0, bwd $$1) {
-      iu $$2 = $$1.dv();
-      if (!$$0.a_($$2).g($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<iu> $$3;
-         if (azm.f($$1.dq()) == 2) {
-            $$3 = $$1x -> iu.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axh.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(axh.a);
-         }
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final azv d;
+      private long e;
+      private long f;
+      private int g;
 
-         return iu.a($$2, 5, 1, $$3);
+      a(azv $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
+      }
+
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
+
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
+
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
+
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
       }
    }
 }

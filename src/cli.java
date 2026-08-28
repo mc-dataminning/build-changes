@@ -1,49 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cli extends clc {
-   public cli(bwm<? extends cli> $$0, div $$1) {
+public class cli extends clg {
+   public cli(bwo<? extends cli> $$0, dja $$1) {
       super($$0, $$1);
    }
 
    @Override
    protected awm u() {
-      return awn.qg;
+      return awn.hD;
    }
 
    @Override
-   protected awm gQ() {
-      return awn.qh;
+   protected awm gR() {
+      return awn.hE;
    }
 
    @Override
    protected awm l_() {
-      return awn.qj;
+      return awn.hG;
    }
 
    @Nullable
    @Override
-   protected awm gs() {
-      return awn.qk;
+   protected awm gt() {
+      return awn.hH;
    }
 
    @Override
-   protected awm e(bus $$0) {
-      return awn.ql;
+   protected awm e(buu $$0) {
+      return awn.hI;
    }
 
    @Override
-   protected void gX() {
-      this.a(awn.qm, 0.4F, 1.0F);
+   public boolean a(ciu $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cli) && !($$0 instanceof clj) ? false : this.gZ() && ((clh)$$0).gZ();
+      }
    }
 
    @Override
-   protected void x() {
-      this.a(awn.qi, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+   protected void gY() {
+      this.a(awn.hJ, 0.4F, 1.0F);
    }
 
    @Nullable
    @Override
-   public bvt a(arq $$0, bvt $$1) {
-      return bwm.aF.a($$0, bwl.e);
+   public bvv a(arq $$0, bvv $$1) {
+      bwo<? extends clh> $$2 = $$1 instanceof clj ? bwo.aF : bwo.I;
+      clh $$3 = $$2.a($$0, bwn.e);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
+
+      return $$3;
    }
 }

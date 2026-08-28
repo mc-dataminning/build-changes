@@ -1,33 +1,13 @@
+import javax.annotation.Nullable;
+
 public class chw {
-   public static boolean a(bxe $$0) {
-      return $$0.O() instanceof cgl;
-   }
-
-   public static boolean a(bxk $$0, int $$1) {
-      return $$0.ge() && $$0.gb().a($$0.dt(), (double)($$0.gc() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(iu $$0, bxk $$1) {
-      return $$1.dV().e($$0.v());
-   }
-
-   public static boolean a(boolean $$0, bxk $$1, iu $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(cgm $$0, iu $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bxk $$0, iu $$1) {
-      return $$0.dV().b_($$1).a(axh.a);
-   }
-
-   public static boolean b(bxk $$0, iu $$1) {
-      return $$0.a(exc.b($$0, $$1)) != 0.0F;
-   }
-
-   public static boolean c(bxk $$0, iu $$1) {
-      return $$0.dV().a_($$1).e();
+   @Nullable
+   public static feq a(bxm $$0, int $$1, int $$2, int $$3, feq $$4, double $$5) {
+      feq $$6 = $$4.a($$0.dA(), $$0.dC(), $$0.dG());
+      boolean $$7 = chy.a($$0, $$1);
+      return cib.a($$0, () -> {
+         iu $$7x = chv.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
+         return $$7x != null && !chy.a($$0, $$7x) ? $$7x : null;
+      });
    }
 }

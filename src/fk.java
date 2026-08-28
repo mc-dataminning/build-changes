@@ -31,7 +31,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.c($$0);
    }
 
-   public static je<eze> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
+   public static je<ezm> a(CommandContext<ei> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -39,7 +39,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.a($$0);
    }
 
-   public static je<fan> b(CommandContext<ei> $$0, String $$1) {
+   public static je<fav> b(CommandContext<ei> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -47,7 +47,7 @@ public class fk<T> implements ArgumentType<je<T>> {
       return new fk.b($$0);
    }
 
-   public static je<fci> c(CommandContext<ei> $$0, String $$1) {
+   public static je<fcq> c(CommandContext<ei> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -88,21 +88,21 @@ public class fk<T> implements ArgumentType<je<T>> {
       return b;
    }
 
-   public static class a extends fk<fan> {
+   public static class a extends fk<fav> {
       protected a(ee $$0) {
-         super($$0, mg.bq, fap.d);
+         super($$0, mg.br, fax.d);
       }
    }
 
-   public static class b extends fk<fci> {
+   public static class b extends fk<fcq> {
       protected b(ee $$0) {
-         super($$0, mg.br, fci.f);
+         super($$0, mg.bs, fcq.f);
       }
    }
 
-   public static class c extends fk<eze> {
+   public static class c extends fk<ezm> {
       protected c(ee $$0) {
-         super($$0, mg.bp, eze.e);
+         super($$0, mg.bq, ezm.e);
       }
    }
 }

@@ -1,70 +1,173 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record egg(int g, int h, int i, int j) {
-   public static final Codec<egg> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(edw.e, edw.d).fieldOf("min_y").forGetter(egg::c),
-                  Codec.intRange(0, edw.c).fieldOf("height").forGetter(egg::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(egg::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(egg::f)
-               )
-               .apply($$0, egg::new)
-      )
-      .comapFlatMap(egg::a, Function.identity());
-   protected static final egg b = a(-64, 384, 1, 2);
-   protected static final egg c = a(0, 128, 1, 2);
-   protected static final egg d = a(0, 128, 2, 1);
-   protected static final egg e = a(-64, 192, 1, 2);
-   protected static final egg f = a(0, 256, 2, 1);
+public class egg {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<eah> b = $$0 -> !$$0.l();
+   static final Predicate<eah> c = eag.a::d;
+   private final aya d;
+   private final Predicate<eah> e;
+   private final ece f;
 
-   private static DataResult<egg> a(egg $$0) {
-      if ($$0.c() + $$0.d() > edw.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (edw.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   public egg(ece $$0, egg.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = azm.e($$0.H_() + 1);
+      this.d = new bad($$2, 256);
+   }
+
+   public static void a(ece $$0, Set<egg.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<egg> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<egg> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         iu.a $$6 = new iu.a();
+
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (egg.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
+               }
+
+               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  eah $$11 = $$0.a_($$6);
+                  if (!$$11.a(dmh.a)) {
+                     while ($$4.hasNext()) {
+                        egg $$12 = (egg)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
+                        }
+                     }
+
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
+
+                     $$4.back($$2);
+                  }
+               }
+            }
+         }
       }
    }
 
-   public static egg a(int $$0, int $$1, int $$2, int $$3) {
-      egg $$4 = new egg($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public boolean a(int $$0, int $$1, int $$2, eah $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            iu.a $$5 = new iu.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.G_());
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public int a() {
-      return jp.c(this.f());
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   public int b() {
-      return jp.c(this.e());
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   public egg a(dix $$0) {
-      int $$1 = Math.max(this.g, $$0.G_());
-      int $$2 = Math.min(this.g + this.h, $$0.ao() + 1) - $$1;
-      return new egg($$1, $$2, this.i, this.j);
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.G_();
    }
 
-   public int c() {
-      return this.g;
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.G_());
    }
 
-   public int d() {
-      return this.h;
+   public void a(ece $$0, egg.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
    }
 
-   public int e() {
-      return this.i;
+   public long[] a() {
+      return this.d.a();
    }
 
-   public int f() {
-      return this.j;
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements bak {
+      a("WORLD_SURFACE_WG", egg.b.a, egg.b),
+      b("WORLD_SURFACE", egg.b.c, egg.b),
+      c("OCEAN_FLOOR_WG", egg.b.a, egg.c),
+      d("OCEAN_FLOOR", egg.b.b, egg.c),
+      e("MOTION_BLOCKING", egg.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", egg.b.c, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dqv));
+
+      public static final Codec<egg.a> g = bak.a(egg.a::values);
+      private final String h;
+      private final egg.b i;
+      private final Predicate<eah> j;
+
+      private a(final String $$0, final egg.b $$1, final Predicate<eah> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == egg.b.c;
+      }
+
+      public boolean d() {
+         return this.i != egg.b.a;
+      }
+
+      public Predicate<eah> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

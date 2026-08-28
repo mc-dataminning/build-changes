@@ -1,7 +1,7 @@
-public record aij(short b, cyy c) implements zf<agp> {
-   public static final yw<wj, aij> a = yw.a(yu.e, aij::b, cyy.a(cyy.h), aij::e, aij::new);
+public record aij(short b, czd c) implements zf<agp> {
+   public static final yw<wj, aij> a = yw.a(yu.e, aij::b, czd.a(czd.h), aij::e, aij::new);
 
-   public aij(int $$0, cyy $$1) {
+   public aij(int $$0, czd $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record aij(short b, cyy c) implements zf<agp> {
       $$0.a(this);
    }
 
-   public cyy e() {
+   public czd e() {
       return this.c;
    }
 }

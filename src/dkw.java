@@ -1,63 +1,32 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dkw extends dlm {
-   public static final eaq a = eap.A;
-   private final dtk.a b;
+public abstract class dkw extends dlr {
+   private final cyb a;
 
-   public dkw(dtk.a $$0, dzy.d $$1) {
+   protected dkw(cyb $$0, eag.d $$1) {
       super($$1);
-      this.b = $$0;
-      this.l(this.B.b().b(a, Boolean.valueOf(false)));
+      this.a = $$0;
    }
 
    @Override
    protected abstract MapCodec<? extends dkw> a();
 
    @Override
-   public dwx a(iu $$0, dzz $$1) {
-      return new dyn($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dwx> dwy<T> a(div $$0, dzz $$1, dwz<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(dmc.hm) || $$1.a(dmc.hn) || $$1.a(dmc.ho) || $$1.a(dmc.hp);
-         if ($$3) {
-            return a($$2, dwz.q, dyn::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dtk.a b() {
-      return this.b;
+   public boolean a(eah $$0) {
+      return true;
    }
 
    @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
+   public dxf a(iu $$0, eah $$1) {
+      return new dwt($$0, $$1, this.a);
    }
 
    @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(a);
+   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
+      return $$0.c_($$1) instanceof dwt $$4 ? $$4.c() : super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public dzz a(dcr $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().D($$0.a())));
-   }
-
-   @Override
-   protected void a(dzz $$0, div $$1, iu $$2, dma $$3, @Nullable exo $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.D($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
-         }
-      }
+   public cyb b() {
+      return this.a;
    }
 }

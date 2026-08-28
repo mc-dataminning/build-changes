@@ -1,61 +1,160 @@
-public class ewd extends ewf {
-   @Override
-   public cyu a() {
-      return czc.a;
+import javax.annotation.Nullable;
+
+public class ewd implements ewg {
+   public static final int b = 1;
+   public static final ewd c = new ewd();
+   protected final djc d;
+   @Nullable
+   private final ewf<?, ?> a;
+   @Nullable
+   private final ewf<?, ?> e;
+
+   public ewd(ecr $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.r();
+      this.a = $$1 ? new evw($$0) : null;
+      this.e = $$2 ? new ewh($$0) : null;
+   }
+
+   private ewd() {
+      this.d = djc.e(0, 0);
+      this.a = null;
+      this.e = null;
    }
 
    @Override
-   public boolean a(ewg $$0, dib $$1, iu $$2, ewf $$3, ja $$4) {
-      return true;
+   public void a(iu $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
    }
 
    @Override
-   public fei a(dib $$0, iu $$1, ewg $$2) {
-      return fei.c;
+   public boolean I_() {
+      return this.e != null && this.e.I_() ? true : this.a != null && this.a.I_();
    }
 
    @Override
-   public int a(diy $$0) {
-      return 0;
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
    }
 
    @Override
-   protected boolean b() {
-      return true;
+   public void a(jx $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
    @Override
-   protected float c() {
-      return 0.0F;
+   public void a(dih $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
    @Override
-   public float a(ewg $$0, dib $$1, iu $$2) {
-      return 0.0F;
+   public void b(dih $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
    }
 
-   @Override
-   public float a(ewg $$0) {
-      return 0.0F;
+   public ewb a(djj $$0) {
+      if ($$0 == djj.b) {
+         return (ewb)(this.a == null ? ewb.a.a : this.a);
+      } else {
+         return (ewb)(this.e == null ? ewb.a.a : this.e);
+      }
    }
 
-   @Override
-   protected dzz b(ewg $$0) {
-      return dmc.a.m();
+   public String a(djj $$0, jx $$1) {
+      if ($$0 == djj.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
+      }
+
+      return "n/a";
    }
 
-   @Override
-   public boolean c(ewg $$0) {
-      return false;
+   public ewc.b b(djj $$0, jx $$1) {
+      if ($$0 == djj.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return ewc.b.a;
    }
 
-   @Override
-   public int d(ewg $$0) {
-      return 0;
+   public void a(djj $$0, jx $$1, @Nullable ecj $$2) {
+      if ($$0 == djj.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
    }
 
-   @Override
-   public ffc b(ewg $$0, dib $$1, iu $$2) {
-      return fez.a();
+   public void b(dih $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(iu $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(long $$0) {
+      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
+   }
+
+   public int c() {
+      return this.d.ap() + 2;
+   }
+
+   public int d() {
+      return this.d.aq() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

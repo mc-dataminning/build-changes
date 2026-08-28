@@ -8,9 +8,9 @@ public class aih implements zf<agp> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dxi.a j;
+   private final dxq.a j;
 
-   public aih(iu $$0, String $$1, dxi.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public aih(iu $$0, String $$1, dxq.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class aih implements zf<agp> {
    private aih(vu $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dxi.a.class);
+      this.j = $$0.b(dxq.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class aih implements zf<agp> {
       return this.i;
    }
 
-   public dxi.a i() {
+   public dxq.a i() {
       return this.j;
    }
 }

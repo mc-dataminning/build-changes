@@ -1,61 +1,48 @@
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record dec<T extends ddp<?>>(dfb a, Optional<ddu<T>> b) {
-   public static <T extends ddp<?>> yw<wj, dec<T>> a() {
-      return yw.a(dfb.b, dec::b, $$0 -> new dec<>($$0, Optional.empty()));
+public class dec {
+   public static final dec a = new dec(ImmutableMultimap.of(), Map.of());
+   private final Multimap<def<?>, ddz<?>> b;
+   private final Map<alf<ddu<?>>, ddz<?>> c;
+
+   private dec(Multimap<def<?>, ddz<?>> $$0, Map<alf<ddu<?>>, ddz<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public dfb b() {
-      return this.a;
+   public static dec a(Iterable<ddz<?>> $$0) {
+      Builder<def<?>, ddz<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<alf<ddu<?>>, ddz<?>> $$2 = ImmutableMap.builder();
+
+      for (ddz<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      return new dec($$1.build(), $$2.build());
    }
 
-   public Optional<ddu<T>> c() {
-      return this.b;
+   public <I extends dea, T extends ddu<I>> Collection<ddz<T>> a(def<T> $$0) {
+      return this.b.get($$0);
    }
 
-   public static record a<T extends ddp<?>>(ddl a, dec<T> b) {
-
-      public static <T extends ddp<?>> yw<wj, dec.a<T>> a() {
-         return yw.a(ddl.a, dec.a::b, dec.a(), dec.a::c, dec.a::new);
-      }
-
-      public ddl b() {
-         return this.a;
-      }
-
-      public dec<T> c() {
-         return this.b;
-      }
+   public Collection<ddz<?>> a() {
+      return this.c.values();
    }
 
-   public static record b<T extends ddp<?>>(List<dec.a<T>> a) {
-      public static <T extends ddp<?>> dec.b<T> a() {
-         return new dec.b<>(List.of());
-      }
+   @Nullable
+   public ddz<?> a(alf<ddu<?>> $$0) {
+      return this.c.get($$0);
+   }
 
-      public static <T extends ddp<?>> yw<wj, dec.b<T>> b() {
-         return yw.a(dec.a.<T>a().a(yu.a()), dec.b::e, dec.b::new);
-      }
-
-      public boolean a(cyy $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
-
-      public dec.b<T> b(cyy $$0) {
-         return new dec.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dec.a<T>> e() {
-         return this.a;
-      }
+   public <I extends dea, T extends ddu<I>> Stream<ddz<T>> a(def<T> $$0, I $$1, dja $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

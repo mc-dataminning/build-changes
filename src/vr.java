@@ -413,7 +413,7 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
       return this.k.a();
    }
 
-   public static vr a(InetSocketAddress $$0, boolean $$1, @Nullable bow $$2) {
+   public static vr a(InetSocketAddress $$0, boolean $$1, @Nullable boy $$2) {
       vr $$3 = new vr(zg.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
       return this.x;
    }
 
-   public void a(bow $$0) {
+   public void a(boy $$0) {
       this.B = new vk($$0);
    }
 }

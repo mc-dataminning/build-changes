@@ -1,19 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ekm extends eje<emb> {
-   public ekm(Codec<emb> $$0) {
+public class ekm extends ejm<emf> {
+   public ekm(Codec<emf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<emb> $$0) {
-      azv $$1 = $$0.d();
-      emb $$2 = $$0.f();
-      dju $$3 = $$0.b();
-      iu $$4 = $$0.e();
-      ebx $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      epx $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(ejo<emf> $$0) {
+      emf $$1 = $$0.f();
+      djz $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      dmf $$4 = $$1.b.b();
+      iu $$5 = a($$2, $$0.e().k().a(ja.a.b, $$2.G_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (iu $$11 : iu.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            eah $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static iu a(djb $$0, iu.a $$1, dmf $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         eah $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ja.a);
+      }
+
+      return null;
    }
 }

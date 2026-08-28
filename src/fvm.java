@@ -1,20 +1,34 @@
-import java.util.function.Consumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
 
-public class fvm {
-   private static final int a = 4;
+public interface fvm {
+   MapCodec<fvm> b = fvn.f.dispatchMap(fvm::a, fvn::a);
 
-   private fvm() {
+   fvn a();
+
+   Either<fvm.b, fvm.c> b();
+
+   public static record a(fvm b, fva.a c) {
+      public static final Codec<fvm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fvm.b.forGetter(fvm.a::a), fva.a.a.optionalFieldOf("filter", fva.a.b).forGetter(fvm.a::b)).apply($$0, fvm.a::new)
+      );
+
+      public fvm a() {
+         return this.b;
+      }
+
+      public fva.a b() {
+         return this.c;
+      }
    }
 
-   public static fvr a(frm $$0, fvs $$1, wy $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   public interface b {
+      fhj load(avd var1) throws IOException;
    }
 
-   public static fvr a(frm $$0, fvs $$1, wy $$2, Consumer<fvt> $$3) {
-      fvu $$4 = fvu.d().a(4);
-      $$4.a(new ftj($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public static record c(alg a) {
    }
 }

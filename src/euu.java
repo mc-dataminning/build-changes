@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface euu<P extends eus> {
-   Codec<eus> a = mf.af.q().dispatch("processor_type", eus::a, euu::codec);
-   Codec<eut> b = a.listOf().xmap(eut::new, eut::a);
-   Codec<eut> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
-   Codec<je<eut>> d = alc.a(mg.bb, c);
-   euu<etw> e = a("block_ignore", etw.a);
-   euu<ety> f = a("block_rot", ety.a);
-   euu<eub> g = a("gravity", eub.a);
-   euu<euc> h = a("jigsaw_replacement", euc.a);
-   euu<euo> i = a("rule", euo.a);
-   euu<eug> j = a("nop", eug.a);
-   euu<etv> k = a("block_age", etv.a);
-   euu<etu> l = a("blackstone_replace", etu.a);
-   euu<eud> m = a("lava_submerged_block", eud.a);
-   euu<eul> n = a("protected_blocks", eul.b);
-   euu<eua> o = a("capped", eua.a);
+public class euu extends eux {
+   public static final MapCodec<euu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mf.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, euu::new)
+   );
+   private final dmf b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public euu(dmf $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends eus> euu<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.af, $$0, () -> $$1);
+   @Override
+   public boolean a(eah $$0, azv $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected euy<?> a() {
+      return euy.e;
    }
 }

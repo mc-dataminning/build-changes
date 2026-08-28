@@ -1,6 +1,5 @@
-public record gis(alg a, String b) {
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+public class gis<S extends hfd> extends gej<S> {
+   public gis(gjc $$0) {
+      super($$0);
    }
 }

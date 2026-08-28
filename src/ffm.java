@@ -1,53 +1,66 @@
-import com.mojang.authlib.GameProfile;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public interface ffm {
-   String cn = "*";
-   ffm co = new ffm() {
-      @Override
-      public String cI() {
-         return "*";
-      }
-   };
+public enum ffm implements bak {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   String cI();
+   public static final bak.a<ffm> t = bak.a(ffm::values);
+   public static final IntFunction<ffm> u = ayc.a(ffm::a, values(), ayc.a.a);
+   private final int v;
+   private final String w;
+
+   private ffm(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
+   }
+
+   public int a() {
+      return this.v;
+   }
+
+   @Override
+   public String c() {
+      return this.w;
+   }
 
    @Nullable
-   default wy m_() {
-      return null;
-   }
-
-   default wy hc() {
-      wy $$0 = this.m_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xe.e(wy.b(this.cI())))) : wy.b(this.cI());
-   }
-
-   static ffm c(final String $$0) {
-      if ($$0.equals("*")) {
-         return co;
-      } else {
-         final wy $$1 = wy.b($$0);
-         return new ffm() {
-            @Override
-            public String cI() {
-               return $$0;
-            }
-
-            @Override
-            public wy hc() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static ffm a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new ffm() {
-         @Override
-         public String cI() {
-            return $$1;
-         }
+   public static ffm a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
       };
    }
 }

@@ -1,60 +1,91 @@
-public class ctx extends ctk {
-   private final dhx b = new dhx() {
-      @Override
-      public void a(div $$0, iu $$1, int $$2) {
-         $$0.a(ctx.this, (byte)$$2);
-      }
-   };
-   private final Runnable c;
+public abstract class ctx {
+   protected final ctp a;
 
-   public ctx(bwm<? extends ctx> $$0, div $$1) {
-      super($$0, $$1);
-      this.c = this.c($$1);
+   protected ctx(ctp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected cyu o() {
-      return czc.os;
+   public bwz a() {
+      return null;
    }
 
-   @Override
-   public cyy dI() {
-      return new cyy(czc.os);
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   private Runnable c(div $$0) {
-      return $$0 instanceof arq ? () -> this.b.a((arq)$$0, this.dv()) : () -> this.b.a($$0, this.dv());
+   public abstract void b();
+
+   public dja c() {
+      return this.a.dV();
    }
 
-   @Override
-   public dzz v() {
-      return dmc.cB.m();
+   public abstract void a(arq var1);
+
+   public abstract double a(iu var1, ebl var2, double var3);
+
+   public abstract boolean d();
+
+   public feq e() {
+      return this.a.dy();
    }
 
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.b.a(this.dV(), this.dv(), $$0);
+   public void a(feq $$0) {
+      this.a.i($$0);
    }
 
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      this.b.a($$0);
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   @Override
-   public void b(byte $$0) {
-      this.b.a(this.dV(), $$0);
+   public feq f() {
+      return this.a.dt();
    }
 
-   @Override
-   public void h() {
-      super.h();
-      this.c.run();
+   public double g() {
+      return this.a.dA();
    }
 
-   public dhx q() {
-      return this.b;
+   public double h() {
+      return this.a.dC();
    }
+
+   public double i() {
+      return this.a.dG();
+   }
+
+   public void b(feq $$0) {
+      this.a.b($$0);
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float j() {
+      return this.a.dN();
+   }
+
+   public void a(float $$0) {
+      this.a.x($$0);
+   }
+
+   public float k() {
+      return this.a.dL();
+   }
+
+   public void b(float $$0) {
+      this.a.w($$0);
+   }
+
+   public ja l() {
+      return this.a.cO();
+   }
+
+   public feq c(feq $$0) {
+      return $$0;
+   }
+
+   public abstract double b(arq var1);
+
+   public abstract double m();
 }

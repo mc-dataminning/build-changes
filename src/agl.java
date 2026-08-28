@@ -69,8 +69,8 @@ public class agl {
       "Fist"
    };
 
-   public static String a(bwd $$0) {
-      if ($$0 instanceof cqy) {
+   public static String a(bwf $$0) {
+      if ($$0 instanceof crc) {
          return $$0.al().getString();
       } else {
          wy $$1 = $$0.an();

@@ -1,12 +1,28 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record hki(Map<String, hjx> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<hki> b = Codec.unboundedMap(a, hjx.a).xmap(hki::new, hki::a);
-   public static final auc<hki> c = new auc<>("language", b);
+public record hki(int c, Optional<Integer> d) {
+   public static final Codec<hki> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(hki::a), ayu.m.optionalFieldOf("time").forGetter(hki::b)).apply($$0, hki::new)
+   );
+   public static final Codec<hki> b = Codec.either(ayu.l, a)
+      .xmap($$0 -> (hki)$$0.map(hki::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
 
-   public Map<String, hjx> a() {
+   public hki(int $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a(int $$0) {
+      return this.d.orElse($$0);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public Optional<Integer> b() {
       return this.d;
    }
 }

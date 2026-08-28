@@ -1,38 +1,46 @@
-public class gvm extends gxf<cnl, hby, gfi> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper.png");
+public class gvm extends gxn<cpa, hca, gfe> {
+   private static final alg a = alg.b("textures/entity/breeze/breeze.png");
 
-   public gvm(gvz.a $$0) {
-      super($$0, new gfi($$0.a(git.ao)), 0.5F);
-      this.a(new gzq(this, $$0.f()));
+   public gvm(gwh.a $$0) {
+      super($$0, new gfe($$0.a(gjb.K)), 0.5F);
+      this.a(new gzu($$0, this));
+      this.a(new gzt(this));
    }
 
-   protected void a(hby $$0, fjc $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azm.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azm.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public void a(hca $$0, fjj $$1, gqa $$2, int $$3) {
+      gfe $$4 = this.c();
+      a($$4, $$4.a(), $$4.c());
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected float a(hby $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azm.a($$1, 0.5F, 1.0F);
-   }
-
-   public alg b(hby $$0) {
+   public alg a(hca $$0) {
       return a;
    }
 
-   public hby a() {
-      return new hby();
+   public hca a() {
+      return new hca();
    }
 
-   public void a(cnl $$0, hby $$1, float $$2) {
+   public void a(cpa $$0, hca $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+      $$1.a.a($$0.a);
+      $$1.b.a($$0.bG);
+      $$1.c.a($$0.b);
+      $$1.d.a($$0.c);
+      $$1.e.a($$0.bH);
+      $$1.f.a($$0.d);
+   }
+
+   public static gfe a(gfe $$0, gjc... $$1) {
+      $$0.a().k = false;
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+
+      for (gjc $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

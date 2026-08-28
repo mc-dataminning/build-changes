@@ -1,48 +1,77 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-@FunctionalInterface
-public interface glm {
-   Logger a = LogUtils.getLogger();
-   glm b = $$0 -> Optional.empty();
+public class glm implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<glm.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   Optional<glj> lookupRedirect(glj var1);
+   public void a(iu $$0, eah $$1, gox $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new glm.a(this.b, $$1, $$2.dt()));
+   }
 
-   static glm createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   public boolean a(iu $$0, eah $$1) {
+      glm.a $$2 = (glm.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, gjz $$1) {
+      ObjectIterator<Entry<glm.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<glm.a> $$3 = (Entry<glm.a>)$$2.next();
+         glm.a $$4 = (glm.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            iu $$5 = iu.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public glm a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final feq a;
+      int b;
+      eah c;
+
+      a(int $$0, eah $$1, feq $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new glj($$4x[3], glj.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      glm.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-         return Optional.empty();
-      };
+      void a(eah $$0) {
+         this.c = $$0;
+      }
    }
 }

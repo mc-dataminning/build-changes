@@ -15,41 +15,41 @@ public class aws extends awq {
    private static final Logger e = LogUtils.getLogger();
    private final aws.a f;
    @VisibleForTesting
-   protected final Set<alf<ddp<?>>> c = Sets.newIdentityHashSet();
+   protected final Set<alf<ddu<?>>> c = Sets.newIdentityHashSet();
    @VisibleForTesting
-   protected final Set<alf<ddp<?>>> d = Sets.newIdentityHashSet();
+   protected final Set<alf<ddu<?>>> d = Sets.newIdentityHashSet();
 
    public aws(aws.a $$0) {
       this.f = $$0;
    }
 
-   public void a(alf<ddp<?>> $$0) {
+   public void a(alf<ddu<?>> $$0) {
       this.c.add($$0);
    }
 
-   public boolean b(alf<ddp<?>> $$0) {
+   public boolean b(alf<ddu<?>> $$0) {
       return this.c.contains($$0);
    }
 
-   public void c(alf<ddp<?>> $$0) {
+   public void c(alf<ddu<?>> $$0) {
       this.c.remove($$0);
       this.d.remove($$0);
    }
 
-   public void d(alf<ddp<?>> $$0) {
+   public void d(alf<ddu<?>> $$0) {
       this.d.remove($$0);
    }
 
-   private void e(alf<ddp<?>> $$0) {
+   private void e(alf<ddu<?>> $$0) {
       this.d.add($$0);
    }
 
-   public int a(Collection<ddu<?>> $$0, arr $$1) {
+   public int a(Collection<ddz<?>> $$0, arr $$1) {
       List<aeg.a> $$2 = new ArrayList<>();
 
-      for (ddu<?> $$3 : $$0) {
-         alf<ddp<?>> $$4 = $$3.a();
-         if (!this.c.contains($$4) && !$$3.b().al_()) {
+      for (ddz<?> $$3 : $$0) {
+         alf<ddu<?>> $$4 = $$3.a();
+         if (!this.c.contains($$4) && !$$3.b().am_()) {
             this.a($$4);
             this.e($$4);
             this.f.displaysForRecipe($$4, $$2x -> $$2.add(new aeg.a($$2x, $$3.b().i(), true)));
@@ -64,11 +64,11 @@ public class aws extends awq {
       return $$2.size();
    }
 
-   public int b(Collection<ddu<?>> $$0, arr $$1) {
-      List<dex> $$2 = Lists.newArrayList();
+   public int b(Collection<ddz<?>> $$0, arr $$1) {
+      List<dfc> $$2 = Lists.newArrayList();
 
-      for (ddu<?> $$3 : $$0) {
-         alf<ddp<?>> $$4 = $$3.a();
+      for (ddz<?> $$3 : $$0) {
+         alf<ddu<?>> $$4 = $$3.a();
          if (this.c.contains($$4)) {
             this.c($$4);
             this.f.displaysForRecipe($$4, $$1x -> $$2.add($$1x.a()));
@@ -87,14 +87,14 @@ public class aws extends awq {
       this.a().b($$0);
       uf $$1 = new uf();
 
-      for (alf<ddp<?>> $$2 : this.c) {
+      for (alf<ddu<?>> $$2 : this.c) {
          $$1.add(uu.a($$2.a().toString()));
       }
 
       $$0.a("recipes", $$1);
       uf $$3 = new uf();
 
-      for (alf<ddp<?>> $$4 : this.d) {
+      for (alf<ddu<?>> $$4 : this.d) {
          $$3.add(uu.a($$4.a().toString()));
       }
 
@@ -102,7 +102,7 @@ public class aws extends awq {
       return $$0;
    }
 
-   public void a(tz $$0, Predicate<alf<ddp<?>>> $$1) {
+   public void a(tz $$0, Predicate<alf<ddu<?>>> $$1) {
       this.a(awr.a($$0));
       uf $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -110,12 +110,12 @@ public class aws extends awq {
       this.a($$3, this::e, $$1);
    }
 
-   private void a(uf $$0, Consumer<alf<ddp<?>>> $$1, Predicate<alf<ddp<?>>> $$2) {
+   private void a(uf $$0, Consumer<alf<ddu<?>>> $$1, Predicate<alf<ddu<?>>> $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
-            alf<ddp<?>> $$5 = alf.a(mg.bt, alg.a($$4));
+            alf<ddu<?>> $$5 = alf.a(mg.bu, alg.a($$4));
             if (!$$2.test($$5)) {
                e.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {
@@ -131,7 +131,7 @@ public class aws extends awq {
       $$0.f.b(new aei(this.a()));
       List<aeg.a> $$1 = new ArrayList<>(this.c.size());
 
-      for (alf<ddp<?>> $$2 : this.c) {
+      for (alf<ddu<?>> $$2 : this.c) {
          this.f.displaysForRecipe($$2, $$2x -> $$1.add(new aeg.a($$2x, false, this.d.contains($$2))));
       }
 
@@ -148,6 +148,6 @@ public class aws extends awq {
 
    @FunctionalInterface
    public interface a {
-      void displaysForRecipe(alf<ddp<?>> var1, Consumer<dew> var2);
+      void displaysForRecipe(alf<ddu<?>> var1, Consumer<dfb> var2);
    }
 }

@@ -1,37 +1,21 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class few extends fes {
-   @Nullable
-   private iu b;
-   @Nullable
-   private iu c;
+public class few extends AbstractDoubleList {
+   private final int a;
 
-   protected few(ctk $$0, boolean $$1) {
-      super($$0, $$1);
-      this.a($$0);
-   }
-
-   private void a(ctk $$0) {
-      iu $$1 = $$0.j();
-      dzz $$2 = $$0.dV().a_($$1);
-      boolean $$3 = dlp.h($$2);
-      if ($$3) {
-         this.b = $$1.e();
-         ebd $$4 = $$2.c(((dlp)$$2.b()).c());
-         if ($$4.b()) {
-            this.c = switch ($$4) {
-               case c -> $$1.i();
-               case d -> $$1.h();
-               case e -> $$1.f();
-               case f -> $$1.g();
-               default -> null;
-            };
-         }
+   public few(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
       }
    }
 
-   @Override
-   public ffc a(dzz $$0, dif $$1, iu $$2) {
-      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : fez.a();
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
+
+   public int size() {
+      return this.a + 1;
    }
 }

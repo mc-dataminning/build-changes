@@ -1,154 +1,179 @@
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkz extends flh {
-   public final boolean a;
-   public final boolean b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final int f;
-   public final int g;
-   public final boolean h;
-   private final String n;
-   public final String i;
-   public final fkt.a j;
-   public long k;
-   @Nullable
-   public String l;
-   public boolean m;
-   private static final boolean o = false;
-   private static final boolean p = true;
-   private static final boolean q = true;
-   private static final int r = 0;
-   private static final boolean s = false;
-   private static final int t = 2;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final String w = "";
-   private static final String x = "";
-   private static final fkt.a y = fkt.a.a;
-   private static final long z = -1L;
-   private static final String A = null;
+public class fkz {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final wy h = wy.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public fkz(boolean $$0, boolean $$1, int $$2, boolean $$3, int $$4, int $$5, boolean $$6, boolean $$7, String $$8, String $$9, fkt.a $$10) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.e = $$7;
-      this.n = $$8;
-      this.i = $$9;
-      this.j = $$10;
+   fkz(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   public static fkz a() {
-      return new fkz(true, true, 0, false, 2, 0, false, false, "", "", y);
+   public boolean a() {
+      return this.k;
    }
 
-   public static fkz a(dis $$0, boolean $$1, bty $$2, boolean $$3, String $$4, String $$5) {
-      return new fkz(true, true, 0, $$1, $$2.a(), $$0.a(), $$3, false, $$5, $$4, y);
+   public boolean b() {
+      return this.j;
    }
 
-   public static fkz a(diz $$0, boolean $$1, String $$2) {
-      return a($$0.b(), $$1, $$0.d(), $$0.c(), $$2, $$0.a());
+   public UUID c() {
+      return this.i;
    }
 
-   public static fkz b() {
-      fkz $$0 = a();
-      $$0.a(true);
-      return $$0;
+   public static List<fkz> a(String $$0) {
+      List<fkz> $$1 = new ArrayList<>();
+
+      try {
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
+         }
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
+      }
+
+      return $$1;
    }
 
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   public static fkz a(JsonObject $$0, fkx $$1) {
-      fkz $$2 = new fkz(
-         fnd.a("pvp", $$0, true),
-         fnd.a("spawnMonsters", $$0, true),
-         fnd.a("spawnProtection", $$0, 0),
-         fnd.a("commandBlocks", $$0, false),
-         fnd.a("difficulty", $$0, 2),
-         fnd.a("gameMode", $$0, 0),
-         $$1.a(),
-         fnd.a("forceGameMode", $$0, false),
-         fnd.a("slotName", $$0, ""),
-         fnd.a("version", $$0, ""),
-         fkt.d(fnd.a("compatibility", $$0, fkt.a.a.name()))
-      );
-      $$2.k = fnd.a("worldTemplateId", $$0, -1L);
-      $$2.l = fnd.b("worldTemplateImage", $$0, A);
-      return $$2;
-   }
-
-   public String a(int $$0) {
-      if (bal.h(this.n)) {
-         return this.m ? hjw.a("mco.configure.world.slot.empty") : this.b($$0);
+   private static fkz a(JsonObject $$0) {
+      UUID $$1 = fnk.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         return this.n;
+         boolean $$2 = fnk.a("dismissable", $$0, true);
+         boolean $$3 = fnk.a("seen", $$0, false);
+         String $$4 = fnk.a("type", $$0);
+         fkz $$5 = new fkz($$1, $$2, $$3, $$4);
+
+         return (fkz)(switch ($$4) {
+            case "visitUrl" -> fkz.c.a($$5, $$0);
+            case "infoPopup" -> fkz.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   public String b(int $$0) {
-      return hjw.a("mco.configure.world.slot", $$0);
+   public static class a extends fkz {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final flf e;
+      private final flf f;
+      private final alg g;
+      @Nullable
+      private final fkz.b h;
+
+      private a(fkz $$0, flf $$1, flf $$2, alg $$3, @Nullable fkz.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
+      }
+
+      public static fkz.a a(fkz $$0, JsonObject $$1) {
+         flf $$2 = fnk.a("title", $$1, flf::a);
+         flf $$3 = fnk.a("message", $$1, flf::a);
+         alg $$4 = alg.a(fnk.a("image", $$1));
+         fkz.b $$5 = fnk.b("urlButton", $$1, fkz.b::a);
+         return new fkz.a($$0, $$2, $$3, $$4, $$5);
+      }
+
+      @Nullable
+      public ftl a(fyb $$0, Consumer<UUID> $$1) {
+         wy $$2 = this.e.a();
+         if ($$2 == null) {
+            fkz.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            ftl.a $$3 = new ftl.a($$0, $$2).a(this.g).a(this.f.a(wx.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fkz.h), $$2x -> {
+                  foz $$3x = foz.Q();
+                  $$3x.a(new fwy($$3xx -> {
+                     if ($$3xx) {
+                        af.n().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
+
+            $$3.a(wx.h, $$1x -> {
+               $$1x.aL_();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
+      }
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
+   static record b(String a, flf b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
 
-      if (!this.b) {
-         $$0.addProperty("spawnMonsters", this.b);
+      public static fkz.b a(JsonObject $$0) {
+         String $$1 = fnk.a("url", $$0);
+         flf $$2 = fnk.a("urlText", $$0, flf::a);
+         return new fkz.b($$1, $$2);
       }
-
-      if (this.c != 0) {
-         $$0.addProperty("spawnProtection", this.c);
-      }
-
-      if (this.d) {
-         $$0.addProperty("commandBlocks", this.d);
-      }
-
-      if (this.f != 2) {
-         $$0.addProperty("difficulty", this.f);
-      }
-
-      if (this.g != 0) {
-         $$0.addProperty("gameMode", this.g);
-      }
-
-      if (this.h) {
-         $$0.addProperty("hardcore", this.h);
-      }
-
-      if (this.e) {
-         $$0.addProperty("forceGameMode", this.e);
-      }
-
-      if (!Objects.equals(this.n, "")) {
-         $$0.addProperty("slotName", this.n);
-      }
-
-      if (!Objects.equals(this.i, "")) {
-         $$0.addProperty("version", this.i);
-      }
-
-      if (this.j != y) {
-         $$0.addProperty("compatibility", this.j.name());
-      }
-
-      return $$0.toString();
    }
 
-   public fkz d() {
-      return new fkz(this.a, this.b, this.c, this.d, this.f, this.g, this.h, this.e, this.n, this.i, this.j);
+   public static class c extends fkz {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final flf e;
+      private final flf f;
+
+      private c(fkz $$0, String $$1, flf $$2, flf $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static fkz.c a(fkz $$0, JsonObject $$1) {
+         String $$2 = fnk.a("url", $$1);
+         flf $$3 = fnk.a("buttonText", $$1, flf::a);
+         flf $$4 = fnk.a("message", $$1, flf::a);
+         return new fkz.c($$0, $$2, $$3, $$4);
+      }
+
+      public wy d() {
+         return this.f.a(wy.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public fsj a(fyb $$0) {
+         wy $$1 = this.e.a(fkz.h);
+         return fsj.a($$1, fwy.b($$0, this.d)).a();
+      }
    }
 }

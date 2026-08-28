@@ -8,8 +8,8 @@ public class bp extends dj<bp.a> {
       return bp.a.a;
    }
 
-   public void a(arr $$0, fei $$1) {
-      fei $$2 = $$0.dt();
+   public void a(arr $$0, feq $$1) {
+      feq $$2 = $$0.dt();
       this.a($$0, $$3 -> $$3.a($$0.y(), $$1, $$2));
    }
 
@@ -35,7 +35,7 @@ public class bp extends dj<bp.a> {
          return ap.D.a(new bp.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(arq $$0, fei $$1, fei $$2) {
+      public boolean a(arq $$0, feq $$1, feq $$2) {
          return this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)
             ? false
             : !this.d.isPresent() || this.d.get().a($$1.d, $$1.e, $$1.f, $$2.d, $$2.e, $$2.f);

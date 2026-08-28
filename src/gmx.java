@@ -1,42 +1,57 @@
-public class gmx extends gna {
-   private final ggm a;
-   private final gqc b = gqc.j(gvs.a);
+public class gmx extends goi {
+   private final god a;
 
-   gmx(gjr $$0, double $$1, double $$2, double $$3) {
+   protected gmx(gjz $$0, double $$1, double $$2, double $$3, god $$4) {
       super($$0, $$1, $$2, $$3);
-      this.a = new gfz(fos.Q().aS().a(git.aM));
-      this.u = 0.0F;
-      this.t = 30;
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public gne b() {
-      return gne.d;
+   public gnm b() {
+      return gnm.b;
    }
 
    @Override
-   public void a(fjc $$0, gps $$1, fnz $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * azm.a($$4 * (float) Math.PI);
-      int $$6 = axw.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      fjg $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hif.d, $$6);
-      $$0.b();
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public void a(fjg $$0, fnz $$1, float $$2) {
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements gnd<mb> {
-      public gna a(mb $$0, gjr $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmx($$1, $$2, $$3, $$4);
+   public static class a implements gnl<mb> {
+      private final god a;
+
+      public a(god $$0) {
+         this.a = $$0;
+      }
+
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmx($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gnl<mb> {
+      private final god a;
+
+      public b(god $$0) {
+         this.a = $$0;
+      }
+
+      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gni $$8 = new gmx($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
       }
    }
 }

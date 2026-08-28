@@ -1,67 +1,70 @@
-import javax.annotation.Nullable;
+public class gba extends gbh {
+   public static final wy a = wy.c("options.accessibility.title");
 
-public abstract class gba extends fxu {
-   protected final fxu b;
-   protected final fow c;
-   @Nullable
-   protected fsz d;
-   public final fvq s = new fvq(this);
+   private static fpc<?>[] a(fpd $$0) {
+      return new fpc[]{
+         $$0.av(),
+         $$0.Z(),
+         $$0.u(),
+         $$0.J(),
+         $$0.q(),
+         $$0.s(),
+         $$0.ab(),
+         $$0.o(),
+         $$0.p(),
+         $$0.C(),
+         $$0.D(),
+         $$0.ae(),
+         $$0.af(),
+         $$0.ag(),
+         $$0.am(),
+         $$0.an(),
+         $$0.ao(),
+         $$0.ar(),
+         $$0.ap(),
+         $$0.aq(),
+         $$0.b(),
+         $$0.a(),
+         $$0.t(),
+         $$0.c(),
+         $$0.w(),
+         $$0.K(),
+         $$0.v()
+      };
+   }
 
-   public gba(fxu $$0, fow $$1, wy $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public gba(fyb $$0, fpd $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected void aN_() {
-      this.G();
-      this.F();
-      this.E();
-      this.s.a($$1 -> {
-         fsa var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   protected void aO_() {
+      super.aO_();
+      fsh $$0 = this.d.b(this.c.u());
+      if ($$0 != null && !this.m.ad().c().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(ftu.a(wy.c("options.accessibility.high_contrast.error.tooltip")));
+      }
 
-   protected void G() {
-      this.s.a(this.l, this.p);
-   }
-
-   protected void F() {
-      this.d = this.s.c(new fsz(this.m, this.n, this));
-      this.m();
-      if (this.d.b(this.c.av()) instanceof fsj $$0) {
-         this.q = $$0;
-         this.q.j = this.m.aY().a();
+      fsh $$1 = this.d.b(this.c.K());
+      if ($$1 != null) {
+         $$1.j = this.H();
       }
    }
 
-   protected abstract void m();
+   @Override
+   protected void m() {
+      this.d.a(a(this.c));
+   }
 
+   @Override
    protected void E() {
-      this.s.b(fsc.a(wx.d, $$0 -> this.aK_()).a(200).a());
+      fwb $$0 = this.s.b(fwb.e().a(8));
+      $$0.a(fsj.a(wy.c("options.accessibility.link"), fwy.b(this, ayh.l)).a());
+      $$0.a(fsj.a(wx.d, $$0x -> this.m.a(this.b)).a());
    }
 
-   @Override
-   protected void c() {
-      this.s.a();
-      if (this.d != null) {
-         this.d.a(this.n, this.s);
-      }
-   }
-
-   @Override
-   public void aE_() {
-      this.m.n.az();
-   }
-
-   @Override
-   public void aK_() {
-      if (this.d != null) {
-         this.d.b();
-      }
-
-      this.m.a(this.b);
+   private boolean H() {
+      return this.m.s != null && this.m.s.K().b(cuo.d);
    }
 }

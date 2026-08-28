@@ -1,24 +1,61 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
-public interface fhb extends AutoCloseable {
-   float a = 7.0F;
-
-   @Override
-   default void close() {
-   }
-
+public class fhb {
    @Nullable
-   default fha a(int $$0) {
-      return null;
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
+
+   public fhb(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   IntSet a();
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
 
-   public static record a(fhb a, fut.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
+         int $$0 = fha.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (fha.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (fha.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
       }
+
+      return OptionalInt.of(this.d);
+   }
+
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (fha.a("Deleting stream buffers")) {
+            return;
+         }
+      }
+
+      this.c = false;
+   }
+
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

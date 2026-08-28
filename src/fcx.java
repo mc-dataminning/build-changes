@@ -1,16 +1,31 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class fcx {
-   private static final Codec<fcw> d = mf.H.q().dispatch(fcw::a, fcv::a);
-   public static final Codec<fcw> a = Codec.lazyInitialized(
-      () -> Codec.either(fcu.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fcu $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final fcv b = a("storage", fcy.a);
-   public static final fcv c = a("context", fcu.b);
+public record fcx(Optional<cl> b) implements fcq {
+   public static final MapCodec<fcx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cl.a.optionalFieldOf("predicate").forGetter(fcx::c)).apply($$0, fcx::new));
 
-   private static fcv a(String $$0, MapCodec<? extends fcw> $$1) {
-      return jr.a(mf.H, alg.b($$0), new fcv($$1));
+   @Override
+   public fcr b() {
+      return fcs.j;
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return Set.of(fcb.i);
+   }
+
+   public boolean a(ezh $$0) {
+      czd $$1 = $$0.c(fcb.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   }
+
+   public static fcq.a a(cl.a $$0) {
+      return () -> new fcx(Optional.of($$0.b()));
+   }
+
+   public Optional<cl> c() {
+      return this.b;
    }
 }

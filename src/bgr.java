@@ -16,8 +16,8 @@ public class bgr extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped("ItemInstanceMapIdFix", $$0, $$2x -> {
          Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);

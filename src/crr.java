@@ -1,81 +1,68 @@
-public class crr extends crs {
-   public crr(bwm<? extends crr> $$0, div $$1) {
+public abstract class crr extends crl implements cru {
+   private static final float d = 12.25F;
+   private static final akj<czd> e = akn.a(crr.class, akl.h);
+
+   public crr(bwo<? extends crr> $$0, dja $$1) {
       super($$0, $$1);
    }
 
-   public crr(div $$0, clg $$1) {
-      this(bwm.ay, $$0);
-      this.c($$1);
-      this.a_(
-         $$1.dA() - (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.a($$1.aV * (float) (Math.PI / 180.0)),
-         $$1.dE() - 0.1F,
-         $$1.dG() + (double)($$1.dq() + 1.0F) * 0.5 * (double)azm.b($$1.aV * (float) (Math.PI / 180.0))
-      );
+   public crr(bwo<? extends crr> $$0, double $$1, double $$2, double $$3, feq $$4, dja $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected double bd() {
-      return 0.06;
+   public crr(bwo<? extends crr> $$0, bxe $$1, feq $$2, dja $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public void h() {
-      super.h();
-      fei $$0 = this.dy();
-      feg $$1 = cru.a(this, this::b);
-      this.b($$1);
-      double $$2 = this.dA() + $$0.d;
-      double $$3 = this.dC() + $$0.e;
-      double $$4 = this.dG() + $$0.f;
-      this.A();
-      float $$5 = 0.99F;
-      if (this.dV().a(this.cR()).noneMatch(dzy.a::l)) {
-         this.at();
-      } else if (this.bj()) {
-         this.at();
+   public void a(czd $$0) {
+      if ($$0.f()) {
+         this.au().a(e, this.o());
       } else {
-         this.i($$0.c(0.99F));
-         this.bf();
-         this.a_($$2, $$3, $$4);
+         this.au().a(e, $$0.c(1));
       }
    }
 
    @Override
-   protected void a(fef $$0) {
-      super.a($$0);
-      if (this.q() instanceof bxc $$1) {
-         bwd $$2 = $$0.a();
-         bus $$3 = this.dW().b(this, $$1);
-         if (this.dV() instanceof arq $$4 && $$2.a($$4, $$3, 1.0F)) {
-            dfn.a($$4, $$2, $$3);
-         }
-      }
+   protected void aM() {
    }
 
    @Override
-   protected void a(fee $$0) {
-      super.a($$0);
-      if (!this.dV().C) {
-         this.at();
-      }
+   public czd f() {
+      return this.au().a(e);
    }
 
    @Override
    protected void a(akn.a $$0) {
+      $$0.a(e, this.o());
    }
 
    @Override
-   public void a(abv $$0) {
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Item", this.f().a(this.dX()));
+   }
+
+   @Override
+   public void a(tz $$0) {
       super.a($$0);
-      double $$1 = $$0.j();
-      double $$2 = $$0.k();
-      double $$3 = $$0.l();
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dV().a(lx.ak, this.dA(), this.dC(), this.dG(), $$1 * $$5, $$2, $$3 * $$5);
+      if ($$0.b("Item", 10)) {
+         this.a(czd.a(this.dX(), (uw)$$0.p("Item")).orElse(this.o()));
+      } else {
+         this.a(this.o());
       }
+   }
 
-      this.n($$1, $$2, $$3);
+   private czd o() {
+      return new czd(czh.vg);
+   }
+
+   @Override
+   public bxv a_(int $$0) {
+      return $$0 == 0 ? bxv.a(this::f, this::a) : super.a_($$0);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
    }
 }

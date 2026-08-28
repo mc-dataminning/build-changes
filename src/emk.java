@@ -1,19 +1,43 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class emk<P extends emj> {
-   public static final emk<emm> a = a("two_layers_feature_size", emm.d);
-   public static final emk<eml> b = a("three_layers_feature_size", eml.d);
-   private final MapCodec<P> c;
+public class emk implements elq {
+   public static final Codec<emk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ekw.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               iu.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, emk::new)
+   );
+   private final boolean b;
+   private final List<ekw.a> c;
+   @Nullable
+   private final iu d;
 
-   private static <P extends emj> emk<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.Y, $$0, new emk<>($$1));
+   public emk(boolean $$0, List<ekw.a> $$1, @Nullable iu $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   private emk(MapCodec<P> $$0) {
-      this.c = $$0;
+   private emk(boolean $$0, List<ekw.a> $$1, Optional<iu> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   public MapCodec<P> a() {
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<ekw.a> b() {
       return this.c;
+   }
+
+   @Nullable
+   public iu c() {
+      return this.d;
    }
 }

@@ -5,11 +5,11 @@ public class aff implements zf<abu> {
    private final int d;
    private final int e;
 
-   public aff(bwd $$0) {
+   public aff(bwf $$0) {
       this($$0.ar(), $$0.dy());
    }
 
-   public aff(int $$0, fei $$1) {
+   public aff(int $$0, feq $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = azm.a($$1.d, -3.9, 3.9);

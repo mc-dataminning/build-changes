@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bci extends bhr {
    public bci(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", biw.s, "DUMMY");
+      super($$0, $$1, "BlockEntityKeepPacked", bix.s, "DUMMY");
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {

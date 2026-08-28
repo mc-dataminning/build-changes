@@ -1,54 +1,27 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlv extends dnw {
-   public static final MapCodec<dlv> a = b(dlv::new);
-   public static final int b = 3;
-   public static final eaz c = eap.av;
-   private static final ffc[] g = dma.a(3, $$0 -> dma.b(16.0, 0.0, (double)(2 + $$0 * 2)));
+public abstract class dlv extends dmf {
+   private static final ffk a = dmf.b(4.0, 0.0, 10.0);
 
-   @Override
-   public MapCodec<dlv> a() {
-      return a;
-   }
-
-   public dlv(dzy.d $$0) {
+   protected dlv(eag.d $$0) {
       super($$0);
    }
 
    @Override
-   protected eaz b() {
-      return c;
+   protected abstract MapCodec<? extends dlv> a();
+
+   @Override
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return a;
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      return $$4 == ja.a && !this.a($$0, $$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected diu d() {
-      return czc.wr;
-   }
-
-   @Override
-   protected void b(dzz $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected int a(div $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return g[this.h($$0)];
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      return a($$1, $$2.e(), ja.b);
    }
 }

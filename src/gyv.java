@@ -1,31 +1,30 @@
-public class gyv extends gut<cqk, hep, gid> {
-   private static final alg j = alg.b("textures/entity/villager/villager.png");
-   public static final gzs.a a = new gzs.a(-0.1171875F, -0.07421875F, 1.0F);
+public class gyv extends gwg<csl, heq> {
+   public static final alg a = alg.b("textures/entity/trident.png");
+   private final gif g;
 
-   public gyv(gvz.a $$0) {
-      super($$0, new gid($$0.a(git.dH)), new gid($$0.a(git.dI)), 0.5F);
-      this.a(new gzs<>(this, $$0.f(), a));
-      this.a(new hax<>(this, $$0.e(), "villager"));
-      this.a(new gzr<>(this));
+   public gyv(gwh.a $$0) {
+      super($$0);
+      this.g = new gif($$0.a(gjb.dB));
    }
 
-   public alg a(hep $$0) {
-      return j;
+   public void a(heq $$0, fjj $$1, gqa $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      fjn $$4 = gxf.a($$2, this.g.a(a), false, $$0.c);
+      this.g.a($$1, $$4, $$3, hin.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected float b(hep $$0) {
-      float $$1 = super.g($$0);
-      return $$0.aj ? $$1 * 0.5F : $$1;
+   public heq a() {
+      return new heq();
    }
 
-   public hep b() {
-      return new hep();
-   }
-
-   public void a(cqk $$0, hep $$1, float $$2) {
+   public void a(csl $$0, heq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hcu.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gy();
+      $$1.b = $$0.l($$2);
+      $$1.a = $$0.k($$2);
+      $$1.c = $$0.y();
    }
 }

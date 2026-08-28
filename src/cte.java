@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cte(List<cta.a<ctd, ctb>> c) {
-   public static final cte a = new cte(List.of());
-   public static final Codec<cte> b = cta.a.a(ctb.b).listOf().xmap(cte::new, cte::a);
+public record cte(cv.c c) implements ctg {
+   public static final MapCodec<cte> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.c.d.fieldOf("range").forGetter(cte::b)).apply($$0, cte::new));
 
-   public static cte a(ctb $$0, int $$1) {
-      return new cte(cta.a($$0, $$1));
+   public boolean a(cti $$0) {
+      return this.c.d((double)$$0.b().a().as());
    }
 
-   public static cte a(int $$0) {
-      return new cte(cta.a($$0));
+   @Override
+   public MapCodec<cte> a() {
+      return a;
    }
 
-   public List<cta.a<ctd, ctb>> a() {
+   public cv.c b() {
       return this.c;
    }
 }

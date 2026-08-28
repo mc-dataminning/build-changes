@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@fgi
+@fgq
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -31,7 +31,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(fif $$0) {
+   public static int _getRefreshRate(fin $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
       if ($$1 == 0L) {
@@ -47,7 +47,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fif.a(($$0x, $$1x) -> {
+      fin.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,7 +76,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fif $$0) {
+   public static boolean _shouldClose(fin $$0) {
       return GLFW.glfwWindowShouldClose($$0.h());
    }
 
@@ -87,60 +87,11 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      fhu.a($$0, $$1);
+      fic.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
       return cpuInfo == null ? "<unknown>" : cpuInfo;
-   }
-
-   public static void _renderCrosshair(int $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if ($$1 || $$2 || $$3) {
-         RenderSystem.assertOnRenderThread();
-         GlStateManager._depthMask(false);
-         GlStateManager._disableCull();
-         RenderSystem.setShader(gpc.X);
-         fje $$4 = RenderSystem.renderThreadTesselator();
-         fix $$5 = $$4.a(fjh.c.a, fja.g);
-         RenderSystem.lineWidth(4.0F);
-         if ($$1) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
-            $$5.a((float)$$0, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
-         }
-
-         if ($$2) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(0.0F, 1.0F, 0.0F);
-            $$5.a(0.0F, (float)$$0, 0.0F).a(-16777216).b(0.0F, 1.0F, 0.0F);
-         }
-
-         if ($$3) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(0.0F, 0.0F, 1.0F);
-            $$5.a(0.0F, 0.0F, (float)$$0).a(-16777216).b(0.0F, 0.0F, 1.0F);
-         }
-
-         fiy.a($$5.b());
-         RenderSystem.lineWidth(2.0F);
-         $$5 = $$4.a(fjh.c.a, fja.g);
-         if ($$1) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
-            $$5.a((float)$$0, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
-         }
-
-         if ($$2) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
-            $$5.a(0.0F, (float)$$0, 0.0F).a(-16711936).b(0.0F, 1.0F, 0.0F);
-         }
-
-         if ($$3) {
-            $$5.a(0.0F, 0.0F, 0.0F).a(-8421377).b(0.0F, 0.0F, 1.0F);
-            $$5.a(0.0F, 0.0F, (float)$$0).a(-8421377).b(0.0F, 0.0F, 1.0F);
-         }
-
-         fiy.a($$5.b());
-         RenderSystem.lineWidth(1.0F);
-         GlStateManager._enableCull();
-         GlStateManager._depthMask(true);
-      }
    }
 
    public static <T> T make(Supplier<T> $$0) {

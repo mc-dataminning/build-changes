@@ -1,90 +1,71 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
 
-public class bwj<StoredEntityType extends ees> {
-   private Either<UUID, StoredEntityType> a;
+public class bwj {
+   public static final Codec<bwj> a = Codec.unboundedMap(bwp.l, czd.b).xmap($$0 -> {
+      EnumMap<bwp, czd> $$1 = new EnumMap<>(bwp.class);
+      $$1.putAll($$0);
+      return new bwj($$1);
+   }, $$0 -> {
+      Map<bwp, czd> $$1 = new EnumMap<>($$0.b);
+      $$1.values().removeIf(czd::f);
+      return $$1;
+   });
+   private final EnumMap<bwp, czd> b;
 
-   public static <Type extends ees> Codec<bwj<Type>> a() {
-      return jy.a.xmap(bwj::new, bwj::c);
+   private bwj(EnumMap<bwp, czd> $$0) {
+      this.b = $$0;
    }
 
-   public static <Type extends ees> yw<ByteBuf, bwj<Type>> b() {
-      return jy.g.a(bwj::new, bwj::c);
+   public bwj() {
+      this(new EnumMap<>(bwp.class));
    }
 
-   public bwj(StoredEntityType $$0) {
-      this.a = Either.right($$0);
+   public czd a(bwp $$0, czd $$1) {
+      $$1.h().l($$1);
+      return Objects.requireNonNullElse(this.b.put($$0, $$1), czd.k);
    }
 
-   public bwj(UUID $$0) {
-      this.a = Either.left($$0);
+   public czd a(bwp $$0) {
+      return this.b.getOrDefault($$0, czd.k);
    }
 
-   public UUID c() {
-      return (UUID)this.a.map($$0 -> $$0, ees::cG);
-   }
-
-   @Nullable
-   public StoredEntityType a(eer<? super StoredEntityType> $$0, Class<StoredEntityType> $$1) {
-      Optional<StoredEntityType> $$2 = this.a.right();
-      if ($$2.isPresent()) {
-         StoredEntityType $$3 = $$2.get();
-         if (!$$3.dQ()) {
-            return $$3;
-         }
-
-         this.a = Either.left($$3.cG());
-      }
-
-      Optional<UUID> $$4 = this.a.left();
-      if ($$4.isPresent()) {
-         StoredEntityType $$5 = this.a($$0.c($$4.get()), $$1);
-         if ($$5 != null && !$$5.dQ()) {
-            this.a = Either.right($$5);
-            return $$5;
+   public boolean a() {
+      for (czd $$0 : this.b.values()) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      return null;
+      return true;
    }
 
-   @Nullable
-   private StoredEntityType a(@Nullable ees $$0, Class<StoredEntityType> $$1) {
-      return $$0 != null && $$1.isAssignableFrom($$0.getClass()) ? $$1.cast($$0) : null;
-   }
-
-   public boolean a(StoredEntityType $$0) {
-      return this.c().equals($$0.cG());
-   }
-
-   public void a(tz $$0, String $$1) {
-      $$0.a($$1, this.c());
-   }
-
-   @Nullable
-   public static <StoredEntityType extends ees> StoredEntityType a(
-      @Nullable bwj<StoredEntityType> $$0, eer<? super StoredEntityType> $$1, Class<StoredEntityType> $$2
-   ) {
-      return $$0 != null ? $$0.a($$1, $$2) : null;
-   }
-
-   @Nullable
-   public static <StoredEntityType extends ees> bwj<StoredEntityType> b(tz $$0, String $$1) {
-      return $$0.b($$1) ? new bwj<>($$0.a($$1)) : null;
-   }
-
-   @Nullable
-   public static <StoredEntityType extends ees> bwj<StoredEntityType> a(tz $$0, String $$1, div $$2) {
-      if ($$0.b($$1)) {
-         return b($$0, $$1);
-      } else {
-         String $$3 = $$0.l($$1);
-         UUID $$4 = avp.a($$2.p(), $$3);
-         return $$4 != null ? new bwj<>($$4) : null;
+   public void a(bwf $$0) {
+      for (Entry<bwp, czd> $$1 : this.b.entrySet()) {
+         czd $$2 = $$1.getValue();
+         if (!$$2.f()) {
+            $$2.a($$0.dV(), $$0, $$1.getKey());
+         }
       }
+   }
+
+   public void a(bwj $$0) {
+      this.b.clear();
+      this.b.putAll($$0.b);
+   }
+
+   public void a(bxe $$0) {
+      for (czd $$1 : this.b.values()) {
+         $$0.a($$1, true, false);
+      }
+
+      this.b();
+   }
+
+   public void b() {
+      this.b.replaceAll(($$0, $$1) -> czd.k);
    }
 }

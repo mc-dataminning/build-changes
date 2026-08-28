@@ -1,17 +1,45 @@
-@Deprecated
-public abstract class gut<T extends bxe, S extends hdf, M extends gfq<? super S>> extends gxf<T, S, M> {
-   private final M a;
-   private final M j;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gut(gvz.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$3);
-      this.a = $$1;
-      this.j = $$2;
+public class gut implements guc.a {
+   private final List<iu> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(iu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   public void a(S $$0, fjc $$1, gps $$2, int $$3) {
-      this.g = $$0.aj ? this.j : this.a;
-      super.a($$0, $$1, $$2, $$3);
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      fjn $$5 = $$1.getBuffer(gqk.B());
+
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         iu $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gqu.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

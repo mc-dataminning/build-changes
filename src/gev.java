@@ -1,37 +1,22 @@
-public class gev extends ghm<hbr> {
-   private final giu a;
+public class gev extends ggu {
+   public static final int a = 20;
+   public static final int b = 40;
+   public static final String c = "flag";
+   private static final String d = "pole";
+   private static final String e = "bar";
 
-   public gev(giu $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+   public gev(gjc $$0) {
+      super($$0, gqk::d);
    }
 
-   public static gja a() {
-      gjc $$0 = gge.a(giy.a, 0.0F);
-      gje $$1 = $$0.a();
-      ghm.a($$1);
-      gje $$2 = $$1.b("head").a("mushrooms", giz.c(), giw.a);
-      $$2.a("red_mushroom_1", giz.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), giw.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", giz.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), giw.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", giz.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), giw.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", giz.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), giw.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         giz.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         giw.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         giz.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         giw.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return gja.a($$0, 64, 32);
-   }
+   public static gji a(boolean $$0) {
+      gjk $$1 = new gjk();
+      gjm $$2 = $$1.a();
+      if ($$0) {
+         $$2.a("pole", gjh.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gje.a);
+      }
 
-   public void a(hbr $$0) {
-      super.a($$0);
-      this.a.k = !$$0.a;
+      $$2.a("bar", gjh.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gje.a);
+      return gji.a($$1, 64, 64);
    }
 }

@@ -1,112 +1,109 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
+public abstract class cuh extends bwf {
+   protected static final akj<Integer> e = akn.a(cuh.class, akl.b);
+   protected static final akj<Integer> f = akn.a(cuh.class, akl.b);
+   protected static final akj<Float> g = akn.a(cuh.class, akl.d);
 
-public final class cuh {
-   private static final cuh b = new cuh(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final cui c;
-   private final long d;
-
-   private cuh(@Nullable cui $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static cuh a(cui $$0, Collection<cuf> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cuh($$0, $$2);
-      }
-   }
-
-   public static cuh a() {
-      return b;
-   }
-
-   public static cuh a(cuf $$0) {
-      return new cuh($$0.a, $$0.b);
-   }
-
-   public static cuh a(cuf $$0, cuf... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cuh($$0.a, $$2);
-   }
-
-   private static long a(cui $$0, long $$1, Iterable<cuf> $$2) {
-      for (cuf $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cuf $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean b() {
-      return this.equals(b);
-   }
-
-   public boolean a(cuh $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public boolean b(cuh $$0) {
-      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
-   }
-
-   public cuh c(cuh $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cuh(this.c, this.d | $$0.d);
-      }
-   }
-
-   public cuh d(cuh $$0) {
-      if (this.c == null || $$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         long $$1 = this.d & ~$$0.d;
-         return $$1 == 0L ? b : new cuh(this.c, $$1);
-      }
+   public cuh(bwo<?> $$0, dja $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cuh $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
+   public boolean b(buu $$0) {
+      return true;
+   }
 
+   @Override
+   public boolean a(arq $$0, buu $$1, float $$2) {
+      if (this.dQ()) {
+         return true;
+      } else if (this.d($$1)) {
          return false;
+      } else {
+         boolean var10000;
+         label32: {
+            this.l(-this.J());
+            this.d(10);
+            this.bC();
+            this.b(this.H() + $$2 * 10.0F);
+            this.a(efh.o, $$1.d());
+            if ($$1.d() instanceof crc $$3 && $$3.gk().d) {
+               var10000 = true;
+               break label32;
+            }
+
+            var10000 = false;
+         }
+
+         boolean $$4 = var10000;
+         if (($$4 || !(this.H() > 40.0F)) && !this.e($$1)) {
+            if ($$4) {
+               this.at();
+            }
+         } else {
+            this.a($$0, $$1);
+         }
+
+         return true;
+      }
+   }
+
+   boolean e(buu $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(dit $$0) {
+      return $$0.c() instanceof bxg && !$$0.a().O().c(diw.d);
+   }
+
+   public void a(arq $$0, cyz $$1) {
+      this.c($$0);
+      if ($$0.O().c(diw.j)) {
+         czd $$2 = new czd($$1);
+         $$2.b(kj.g, this.an());
+         this.a($$0, $$2);
       }
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   protected void a(akn.a $$0) {
+      $$0.a(e, 0);
+      $$0.a(f, 1);
+      $$0.a(g, 0.0F);
    }
+
+   public void d(int $$0) {
+      this.al.a(e, $$0);
+   }
+
+   public void l(int $$0) {
+      this.al.a(f, $$0);
+   }
+
+   public void b(float $$0) {
+      this.al.a(g, $$0);
+   }
+
+   public float H() {
+      return this.al.a(g);
+   }
+
+   public int I() {
+      return this.al.a(e);
+   }
+
+   public int J() {
+      return this.al.a(f);
+   }
+
+   protected void a(arq $$0, buu $$1) {
+      this.a($$0, this.o());
+   }
+
+   @Override
+   public int bX() {
+      return 10;
+   }
+
+   protected abstract cyz o();
 }

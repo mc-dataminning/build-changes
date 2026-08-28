@@ -62,8 +62,8 @@ public interface jg<T> extends jf<T> {
 
       Lifecycle h();
 
-      default jg.b<T> a(cuh $$0) {
-         return cue.bU.contains(this.g()) ? this.a($$1 -> ((cue)$$1).a($$0)) : this;
+      default jg.b<T> a(cum $$0) {
+         return cuj.bU.contains(this.g()) ? this.a($$1 -> ((cuj)$$1).a($$0)) : this;
       }
 
       default jg.b<T> a(final Predicate<T> $$0) {

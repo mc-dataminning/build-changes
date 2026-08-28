@@ -1,31 +1,22 @@
-public class gva extends gut<cit, hbo, geq> {
-   private static final alg a = alg.b("textures/entity/bee/bee_angry.png");
-   private static final alg j = alg.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final alg k = alg.b("textures/entity/bee/bee.png");
-   private static final alg l = alg.b("textures/entity/bee/bee_nectar.png");
+public abstract class gva<T extends cox, S extends hfd, M extends gis<S>> extends gwy<T, S, M> {
+   private static final alg a = alg.b("textures/entity/zombie/zombie.png");
 
-   public gva(gvz.a $$0) {
-      super($$0, new geq($$0.a(git.x)), new geq($$0.a(git.y)), 0.4F);
+   protected gva(gwh.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new hak<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public alg a(hbo $$0) {
-      if ($$0.d) {
-         return $$0.e ? j : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   public alg a(S $$0) {
+      return a;
    }
 
-   public hbo a() {
-      return new hbo();
-   }
-
-   public void a(cit $$0, hbo $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gD();
-      $$1.c = $$0.aJ() && $$0.dy().h() < 1.0E-7;
-      $$1.d = $$0.W_();
-      $$1.e = $$0.gC();
+      $$1.a = $$0.gi();
+      $$1.b = $$0.gv();
+   }
+
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

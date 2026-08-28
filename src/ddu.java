@@ -1,34 +1,35 @@
-public record ddu<T extends ddp<?>>(alf<ddp<?>> b, T c) {
-   public static final yw<wj, ddu<?>> a = yw.a(alf.b(mg.bt), ddu::a, ddp.b, ddu::b, ddu::new);
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ddu<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
+public interface ddu<T extends dea> {
+   Codec<ddu<?>> a = mf.r.q().dispatch(ddu::a, dee::a);
+   yw<wj, ddu<?>> b = yu.a(mg.ah).b(ddu::a, dee::b);
 
-         return false;
-      }
+   boolean a(T var1, dja var2);
+
+   czd a(T var1, jg.a var2);
+
+   default boolean am_() {
+      return false;
    }
 
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   default boolean i() {
+      return true;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
+   default String j() {
+      return "";
    }
 
-   public alf<ddp<?>> a() {
-      return this.b;
+   dee<? extends ddu<T>> a();
+
+   def<? extends ddu<T>> b();
+
+   ddt al_();
+
+   default List<dfa> g() {
+      return List.of();
    }
 
-   public T b() {
-      return this.c;
-   }
+   ddx h();
 }

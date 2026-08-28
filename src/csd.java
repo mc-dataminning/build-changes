@@ -1,34 +1,51 @@
-public class csd extends crz {
-   public csd(bwm<? extends csd> $$0, div $$1) {
+import javax.annotation.Nullable;
+
+public class csd extends crk {
+   private int d = 200;
+
+   public csd(bwo<? extends csd> $$0, dja $$1) {
       super($$0, $$1);
    }
 
-   public csd(div $$0, bxc $$1, cyy $$2) {
-      super(bwm.U, $$1, $$0, $$2);
+   public csd(dja $$0, bxe $$1, czd $$2, @Nullable czd $$3) {
+      super(bwo.bn, $$1, $$0, $$2, $$3);
    }
 
-   public csd(div $$0, double $$1, double $$2, double $$3, cyy $$4) {
-      super(bwm.U, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   protected cyu g() {
-      return czc.va;
+   public csd(dja $$0, double $$1, double $$2, double $$3, czd $$4, @Nullable czd $$5) {
+      super(bwo.bn, $$1, $$2, $$3, $$0, $$4, $$5);
    }
 
    @Override
-   protected double bd() {
-      return 0.07;
-   }
-
-   @Override
-   protected void a(feg $$0) {
-      super.a($$0);
-      if (this.dV() instanceof arq) {
-         this.dV().c(2002, this.dv(), -13083194);
-         int $$1 = 3 + this.dV().A.a(5) + this.dV().A.a(5);
-         bwr.a((arq)this.dV(), $$0.g(), $$1);
-         this.at();
+   public void h() {
+      super.h();
+      if (this.dV().C && !this.f()) {
+         this.dV().a(lx.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
       }
+   }
+
+   @Override
+   protected void a(bxe $$0) {
+      super.a($$0);
+      bvj $$1 = new bvj(bvl.x, this.d, 0);
+      $$0.b($$1, this.z());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.d = $$0.h("Duration");
+      }
+   }
+
+   @Override
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.d);
+   }
+
+   @Override
+   protected czd o() {
+      return new czd(czh.wA);
    }
 }

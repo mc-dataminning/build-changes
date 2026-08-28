@@ -1,51 +1,58 @@
-import java.util.BitSet;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
-public class ebv {
-   private final int a;
-   private final BitSet b;
-   private ebv.a c = ($$0x, $$1x, $$2) -> false;
+public record ebv(String n, eaw o, duc p, duc q, awm r, awm s) {
+   private static final Map<String, ebv> t = new Object2ObjectArrayMap();
+   public static final Codec<ebv> a = Codec.stringResolver(ebv::b, t::get);
+   public static final ebv b = a(new ebv("oak", eaw.g));
+   public static final ebv c = a(new ebv("spruce", eaw.h));
+   public static final ebv d = a(new ebv("birch", eaw.i));
+   public static final ebv e = a(new ebv("acacia", eaw.j));
+   public static final ebv f = a(new ebv("cherry", eaw.k, duc.aW, duc.aZ, awn.eQ, awn.eR));
+   public static final ebv g = a(new ebv("jungle", eaw.l));
+   public static final ebv h = a(new ebv("dark_oak", eaw.m));
+   public static final ebv i = a(new ebv("pale_oak", eaw.n));
+   public static final ebv j = a(new ebv("crimson", eaw.o, duc.aV, duc.aS, awn.rI, awn.rJ));
+   public static final ebv k = a(new ebv("warped", eaw.p, duc.aV, duc.aS, awn.rI, awn.rJ));
+   public static final ebv l = a(new ebv("mangrove", eaw.q));
+   public static final ebv m = a(new ebv("bamboo", eaw.r, duc.aU, duc.aT, awn.bw, awn.bx));
 
-   public ebv(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
+   public ebv(String $$0, eaw $$1) {
+      this($$0, $$1, duc.b, duc.aR, awn.jl, awn.jm);
    }
 
-   public void a(ebv.a $$0) {
-      this.c = $$0;
+   private static ebv a(ebv $$0) {
+      t.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public ebv(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
+   public static Stream<ebv> a() {
+      return t.values().stream();
    }
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
+   public String b() {
+      return this.n;
    }
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
+   public eaw c() {
+      return this.o;
    }
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
+   public duc d() {
+      return this.p;
    }
 
-   public Stream<iu> a(dic $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
+   public duc e() {
+      return this.q;
    }
 
-   public long[] a() {
-      return this.b.toLongArray();
+   public awm f() {
+      return this.r;
    }
 
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+   public awm g() {
+      return this.s;
    }
 }

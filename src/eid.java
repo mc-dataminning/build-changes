@@ -1,42 +1,52 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eid extends eib {
-   public eid(Codec<eia> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(ewh.e, ewh.c);
+public class eid extends eif {
+   public static final Codec<eid> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eif.d.forGetter($$0x -> $$0x), btg.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eid.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eid::new)
+   );
+   public final btg b;
+   public final eid.a c;
+
+   public eid(float $$0, epi $$1, btg $$2, eha $$3, eig $$4, ji<dmf> $$5, btg $$6, eid.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public eid(eif $$0, btg $$1, eid.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   @Override
-   protected float a(azv $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
-   }
+   public static class a {
+      public static final Codec<eid.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  btg.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  btg.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayu.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  btg.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, eid.a::new)
+      );
+      public final btg b;
+      public final btg c;
+      public final int d;
+      public final btg e;
+      public final float f;
+      public final float g;
 
-   @Override
-   protected double b() {
-      return 5.0;
-   }
-
-   protected boolean a(ehz $$0, eia $$1, ebw $$2, Function<iu, je<djy>> $$3, ebv $$4, iu.a $$5, iu.a $$6, efk $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dzz $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
-
-         $$2.a($$5, $$9);
-         return true;
-      } else {
-         return false;
+      public a(btg $$0, btg $$1, int $$2, btg $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
       }
    }
 }

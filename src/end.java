@@ -1,20 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record end(enj b, float c) {
-   public static final Codec<end> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enj.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, end::new)
-   );
+public class end<P extends enc> {
+   public static final end<emx> a = a("blob_foliage_placer", emx.a);
+   public static final end<eni> b = a("spruce_foliage_placer", eni.a);
+   public static final end<eng> c = a("pine_foliage_placer", eng.a);
+   public static final end<emw> d = a("acacia_foliage_placer", emw.a);
+   public static final end<emy> e = a("bush_foliage_placer", emy.c);
+   public static final end<enb> f = a("fancy_foliage_placer", enb.c);
+   public static final end<ene> g = a("jungle_foliage_placer", ene.a);
+   public static final end<enf> h = a("mega_pine_foliage_placer", enf.a);
+   public static final end<ena> i = a("dark_oak_foliage_placer", ena.a);
+   public static final end<enh> j = a("random_spread_foliage_placer", enh.a);
+   public static final end<emz> k = a("cherry_foliage_placer", emz.a);
+   private final MapCodec<P> l;
 
-   public enj a() {
-      return this.b;
+   private static <P extends enc> end<P> a(String $$0, MapCodec<P> $$1) {
+      return jr.a(mf.U, $$0, new end<>($$1));
    }
 
-   public float b() {
-      return this.c;
+   private end(MapCodec<P> $$0) {
+      this.l = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

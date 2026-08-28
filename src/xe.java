@@ -59,17 +59,17 @@ public interface xe {
                )
                .apply($$0, xe.b::new)
       );
-      public final bwm<?> b;
+      public final bwo<?> b;
       public final UUID c;
       public final Optional<wy> d;
       @Nullable
       private List<wy> e;
 
-      public b(bwm<?> $$0, UUID $$1, @Nullable wy $$2) {
+      public b(bwo<?> $$0, UUID $$1, @Nullable wy $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bwm<?> $$0, UUID $$1, Optional<wy> $$2) {
+      public b(bwo<?> $$0, UUID $$1, Optional<wy> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -119,10 +119,10 @@ public interface xe {
       }
    }
 
-   public static record d(cyy c) implements xe {
-      public static final MapCodec<xe.d> b = cyy.a.xmap(xe.d::new, xe.d::b);
+   public static record d(czd c) implements xe {
+      public static final MapCodec<xe.d> b = czd.a.xmap(xe.d::new, xe.d::b);
 
-      public d(cyy c) {
+      public d(czd c) {
          c = c.v();
          this.c = c;
       }
@@ -134,7 +134,7 @@ public interface xe {
 
       @Override
       public boolean equals(Object $$0) {
-         if ($$0 instanceof xe.d $$1 && cyy.a(this.c, $$1.c)) {
+         if ($$0 instanceof xe.d $$1 && czd.a(this.c, $$1.c)) {
             return true;
          }
 
@@ -143,10 +143,10 @@ public interface xe {
 
       @Override
       public int hashCode() {
-         return cyy.b(this.c);
+         return czd.b(this.c);
       }
 
-      public cyy b() {
+      public czd b() {
          return this.c;
       }
    }

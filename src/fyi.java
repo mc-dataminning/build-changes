@@ -1,140 +1,125 @@
-public abstract class fyi extends fxu {
-   private static final wy u = wy.c("advMode.setCommand");
-   private static final wy v = wy.c("advMode.command");
-   private static final wy w = wy.c("advMode.previousOutput");
-   protected fsl a;
-   protected fsl b;
-   protected fsc c;
-   protected fsc d;
-   protected fsj<Boolean> s;
-   fsf x;
+enum fyi {
+   a(
+      new fyi.a(alg.b("advancements/tab_above_left_selected"), alg.b("advancements/tab_above_middle_selected"), alg.b("advancements/tab_above_right_selected")),
+      new fyi.a(alg.b("advancements/tab_above_left"), alg.b("advancements/tab_above_middle"), alg.b("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fyi.a(alg.b("advancements/tab_below_left_selected"), alg.b("advancements/tab_below_middle_selected"), alg.b("advancements/tab_below_right_selected")),
+      new fyi.a(alg.b("advancements/tab_below_left"), alg.b("advancements/tab_below_middle"), alg.b("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fyi.a(alg.b("advancements/tab_left_top_selected"), alg.b("advancements/tab_left_middle_selected"), alg.b("advancements/tab_left_bottom_selected")),
+      new fyi.a(alg.b("advancements/tab_left_top"), alg.b("advancements/tab_left_middle"), alg.b("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fyi.a(alg.b("advancements/tab_right_top_selected"), alg.b("advancements/tab_right_middle_selected"), alg.b("advancements/tab_right_bottom_selected")),
+      new fyi.a(alg.b("advancements/tab_right_top"), alg.b("advancements/tab_right_middle"), alg.b("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fyi() {
-      super(foi.a);
+   private final fyi.a e;
+   private final fyi.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fyi(final fyi.a $$0, final fyi.a $$1, final int $$2, final int $$3, final int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   public void e() {
-      if (!this.m().j()) {
-         this.aK_();
-      }
+   public int a() {
+      return this.i;
    }
 
-   abstract dhw m();
-
-   abstract int E();
-
-   @Override
-   protected void aN_() {
-      this.c = this.c(fsc.a(wx.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
-      this.d = this.c(fsc.a(wx.e, $$0x -> this.aK_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.m().p();
-      this.s = this.c(fsj.a(wy.b("O"), wy.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, wy.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         dhw $$2 = this.m();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new fsl(this.p, this.n / 2 - 150, 50, 300, 20, wy.c("advMode.command")) {
-         @Override
-         protected xm d() {
-            return super.d().b(fyi.this.x.e());
-         }
-      };
-      this.a.f(32500);
-      this.a.b(this::a);
-      this.d(this.a);
-      this.b = new fsl(this.p, this.n / 2 - 150, this.E(), 276, 20, wy.c("advMode.previousOutput"));
-      this.b.f(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.d(this.b);
-      this.x = new fsf(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.x.a(true);
-      this.x.d();
-      this.c($$0);
-   }
-
-   @Override
-   protected void aB_() {
-      this.b(this.a);
-   }
-
-   @Override
-   protected wy z() {
-      return this.x.a() ? this.x.b() : super.z();
-   }
-
-   @Override
-   public void a(fos $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.x.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.m().l().getString() : "-");
-   }
-
-   protected void F() {
-      dhw $$0 = this.m();
-      this.a($$0);
-      if (!$$0.p()) {
-         $$0.c(null);
-      }
-
-      this.m.a(null);
-   }
-
-   protected abstract void a(dhw var1);
-
-   private void a(String $$0) {
-      this.x.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
+   public void a(frv $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fyi.a $$5 = $$3 ? this.e : this.f;
+      alg $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
       } else {
-         this.F();
-         return true;
+         $$6 = $$5.b();
+      }
+
+      $$0.a(gqk::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+   }
+
+   public void a(frv $$0, int $$1, int $$2, int $$3, czd $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
+      }
+
+      $$0.b($$4, $$5, $$6);
+   }
+
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, u, this.n / 2, 20, 16777215);
-      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.E() - 135;
-         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
-
-      this.x.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void b(fro $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(alg a, alg b, alg c) {
    }
 }

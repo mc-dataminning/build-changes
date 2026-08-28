@@ -8,25 +8,25 @@ import com.mojang.serialization.DynamicOps;
 import java.util.Set;
 
 public enum bbb {
-   a(biw.a),
-   b(biw.b),
-   c(biw.c),
-   d(biw.d),
-   e(biw.e),
-   f(biw.f),
-   g(biw.g),
-   h(biw.h),
-   i(biw.i),
-   j(biw.j),
-   k(biw.k),
-   l(biw.l),
-   m(biw.m),
-   n(biw.o),
-   o(biw.n),
-   p(biw.p),
-   q(biw.q),
-   r(biw.O),
-   s(biw.r);
+   a(bix.a),
+   b(bix.b),
+   c(bix.c),
+   d(bix.d),
+   e(bix.e),
+   f(bix.f),
+   g(bix.g),
+   h(bix.h),
+   i(bix.i),
+   j(bix.j),
+   k(bix.k),
+   l(bix.l),
+   m(bix.m),
+   n(bix.o),
+   o(bix.n),
+   p(bix.p),
+   q(bix.q),
+   r(bix.O),
+   s(bix.r);
 
    public static final Set<TypeReference> t;
    private final TypeReference u;

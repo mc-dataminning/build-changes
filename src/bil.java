@@ -1,28 +1,33 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
-public class bil extends bhr {
+public class bil extends DataFix {
+   private static final Map<Integer, String> a = Map.of(100, "feet", 101, "legs", 102, "chest", 103, "head", -106, "offhand");
+
    public bil(Schema $$0) {
-      super($$0, false, "PlayerHeadBlockProfileFix", biw.s, "minecraft:skull");
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
-   }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getTypeRaw(bix.b);
+      Type<?> $$1 = this.getOutputSchema().getTypeRaw(bix.b);
+      return this.writeFixAndRead("Player Equipment Fix", $$0, $$1, $$0x -> {
+         Map<Dynamic<?>, Dynamic<?>> $$1x = new HashMap<>();
+         $$0x = $$0x.update("Inventory", $$1xx -> $$1xx.createList($$1xx.asStream().filter($$2 -> {
+               int $$3 = $$2.get("Slot").asInt(-1);
+               String $$4 = a.get($$3);
+               if ($$4 != null) {
+                  $$1x.put($$1xx.createString($$4), $$2.remove("Slot"));
+               }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
-      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
-      if ($$3.isEmpty()) {
-         return $$0;
-      } else {
-         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
-         return $$0.set("profile", bgo.a($$3.get()));
-      }
+               return $$4 == null;
+            })));
+         return $$0x.set("equipment", $$0x.createMap($$1x));
+      });
    }
 }

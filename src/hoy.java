@@ -1,37 +1,77 @@
-public class hoy extends hpb {
-   private final wy a;
-   private fsv b = fsv.a;
-   private final fxu c;
-   private int C;
+import javax.annotation.Nullable;
 
-   public hoy(fxu $$0, wy $$1, wy $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class hoy implements hpd {
+   private static final int a = 6000;
+   private static final wy b = wy.c("tutorial.find_tree.title");
+   private static final wy c = wy.c("tutorial.find_tree.description");
+   private final hpc d;
+   @Nullable
+   private fuv e;
+   private int f;
+
+   public hoy(hpc $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aN_() {
-      this.m.af().i();
-      this.b = fsv.a(this.p, this.a, this.n - 50);
-      this.C = this.b.a() * 9;
-      this.c(fsc.a(wx.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hpe.f);
+      } else {
+         foz $$0 = this.d.e();
+         if (this.f == 1) {
+            gox $$1 = $$0.t;
+            if ($$1 != null && (b($$1) || a($$1))) {
+               this.d.a(hpe.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new fuv($$0.h, fuv.a.c, b, c, false);
+            $$0.aA().a(this.e);
+         }
+      }
    }
 
    @Override
-   public wy i() {
-      return wy.i().b(this.l).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
+      }
    }
 
    @Override
-   public void aK_() {
-      fos.Q().a(this.c);
+   public void a(gjz $$0, feo $$1) {
+      if ($$1.d() == feo.a.b) {
+         eah $$2 = $$0.a_(((fem)$$1).b());
+         if ($$2.a(axc.al)) {
+            this.d.a(hpe.c);
+         }
+      }
    }
 
    @Override
-   public void a(fro $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
+   public void a(czd $$0) {
+      if ($$0.a(axk.aR)) {
+         this.d.a(hpe.e);
+      }
+   }
+
+   private static boolean b(gox $$0) {
+      return $$0.gj().a_($$0x -> $$0x.a(axk.aR));
+   }
+
+   public static boolean a(gox $$0) {
+      for (je<dmf> $$1 : mf.e.c(axc.al)) {
+         dmf $$2 = $$1.a();
+         if ($$0.l().a(awx.a.b($$2)) > 0) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

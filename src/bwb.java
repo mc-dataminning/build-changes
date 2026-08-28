@@ -1,45 +1,38 @@
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
+public class bwb {
+   public static final bwb a = new bwb(0.75F, 0.5F, 0.25F);
+   public static final bwb b = new bwb(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public record bwb(Map<bwn, Float> f) {
-   public static final float a = 0.085F;
-   public static final float b = 1.0F;
-   public static final int c = 2;
-   public static final bwb d = new bwb(af.a(bwn.class, $$0 -> 0.085F));
-   public static final Codec<bwb> e = Codec.unboundedMap(bwn.l, ayu.n).xmap(bwb::b, bwb::a).xmap(bwb::new, bwb::a);
-
-   private static Map<bwn, Float> a(Map<bwn, Float> $$0) {
-      Map<bwn, Float> $$1 = new HashMap<>($$0);
-      $$1.values().removeIf($$0x -> $$0x == 0.085F);
-      return $$1;
+   private bwb(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static Map<bwn, Float> b(Map<bwn, Float> $$0) {
-      return af.a(bwn.class, $$1 -> $$0.getOrDefault($$1, 0.085F));
-   }
-
-   public bwb a(bwn $$0) {
-      return this.a($$0, 2.0F);
-   }
-
-   public bwb a(bwn $$0, float $$1) {
-      if ($$1 < 0.0F) {
-         throw new IllegalArgumentException("Tried to set invalid equipment chance " + $$1 + " for " + $$0);
+   public bwb.a a(float $$0) {
+      if ($$0 < this.e) {
+         return bwb.a.d;
+      } else if ($$0 < this.d) {
+         return bwb.a.c;
       } else {
-         return this.b($$0) == $$1 ? this : new bwb(af.a(bwn.class, $$2 -> $$2 == $$0 ? $$1 : this.b($$2)));
+         return $$0 < this.c ? bwb.a.b : bwb.a.a;
       }
    }
 
-   public float b(bwn $$0) {
-      return this.f.getOrDefault($$0, 0.085F);
+   public bwb.a a(czd $$0) {
+      return !$$0.m() ? bwb.a.a : this.a($$0.o(), $$0.p());
    }
 
-   public boolean c(bwn $$0) {
-      return this.b($$0) > 1.0F;
+   public bwb.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   public Map<bwn, Float> a() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

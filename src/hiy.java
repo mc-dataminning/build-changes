@@ -1,31 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public record hiy(String c, String d) implements hiu {
-   public static final MapCodec<hiy> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter(hiy::b), Codec.STRING.fieldOf("prefix").forGetter(hiy::c)).apply($$0, hiy::new)
-   );
+public record hiy(fik a, @Nullable hkt b) implements Closeable {
+   public static hiy a(avd $$0, alg $$1) throws IOException {
+      avb $$2 = $$0.getResourceOrThrow($$1);
 
-   @Override
-   public void a(avd $$0, hiu.a $$1) {
-      akz $$2 = new akz("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         alg $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
+      fik $$4;
+      try (InputStream $$3 = $$2.d()) {
+         $$4 = fik.a($$3);
+      }
+
+      hkt $$6 = $$2.f().a(hkt.d).orElse(null);
+      return new hiy($$4, $$6);
+   }
+
+   public static hiy a() {
+      return new hiy(him.a(), null);
+   }
+
+   public boolean b() {
+      return this.b != null ? this.b.a() : false;
+   }
+
+   public boolean c() {
+      return this.b != null ? this.b.b() : false;
    }
 
    @Override
-   public MapCodec<hiy> a() {
-      return b;
+   public void close() {
+      this.a.close();
    }
 
-   public String b() {
-      return this.c;
+   public fik d() {
+      return this.a;
    }
 
-   public String c() {
-      return this.d;
+   @Nullable
+   public hkt e() {
+      return this.b;
    }
 }

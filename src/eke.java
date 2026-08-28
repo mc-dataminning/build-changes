@@ -1,54 +1,73 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class eke extends eje<elx> {
-   public eke(Codec<elx> $$0) {
+public class eke extends ejm<elv> {
+   public eke(Codec<elv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejg<elx> $$0) {
-      elx $$1 = $$0.f();
-      dju $$2 = $$0.b();
+   public boolean a(ejo<elv> $$0) {
+      djz $$1 = $$0.b();
+      iu $$2 = $$0.e();
       azv $$3 = $$0.d();
-      dma $$4 = $$1.b.b();
-      iu $$5 = a($$2, $$0.e().k().a(ja.a.b, $$2.G_() + 1, $$2.ao()), $$4);
-      if ($$5 == null) {
+      elv $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         List<ja> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            iu.a $$6 = $$2.k();
 
-         for (iu $$11 : iu.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
+            for (ja $$7 : $$5) {
+               $$6.g($$2);
+               List<ja> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  eah $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
 
-            dzz $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+            return false;
          }
-
-         return $$10;
       }
    }
 
-   @Nullable
-   private static iu a(diw $$0, iu.a $$1, dma $$2) {
-      while ($$1.v() > $$0.G_() + 1) {
-         dzz $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
+   public static boolean a(djz $$0, iu $$1, eah $$2, elv $$3, azv $$4, List<ja> $$5) {
+      iu.a $$6 = $$1.k();
 
-         $$1.c(ja.a);
+      for (ja $$7 : $$5) {
+         eah $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            eah $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.z($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
       }
 
-      return null;
+      return false;
+   }
+
+   private static boolean c(eah $$0) {
+      return $$0.l() || $$0.a(dmh.J);
    }
 }

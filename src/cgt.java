@@ -1,24 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cgt extends chd<cow> {
+public class cgt extends chm<bvv> {
    @Override
-   public Set<cge<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cge.C)));
+   public Set<cgg<?>> a() {
+      return ImmutableSet.of(cgg.L, cgg.h);
    }
 
-   protected void a(arq $$0, cow $$1) {
-      super.a($$0, $$1);
-      $$1.eb()
-         .c(cge.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bwk.e)
-         .filter($$2 -> chk.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.eb().a(cge.C, $$1x), () -> $$1.eb().b(cge.C));
+   protected void a(arq $$0, bvv $$1) {
+      $$1.ec().c(cgg.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(bvv $$0, cgi $$1) {
+      Optional<bvv> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.n_()).map(bvv.class::cast);
+      $$0.ec().a(cgg.L, $$2);
    }
 }

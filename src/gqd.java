@@ -1,35 +1,25 @@
 public class gqd {
-   private final long[] a;
-   private int b;
-   private int c;
+   public static final alg a = alg.b("textures/gui/title/background/panorama_overlay.png");
+   private final foz b;
+   private final gpl c;
+   private float d;
 
-   public gqd(int $$0) {
-      this.a = new long[$$0];
+   public gqd(gpl $$0) {
+      this.c = $$0;
+      this.b = foz.Q();
    }
 
-   public long a(long $$0) {
-      if (this.b < this.a.length) {
-         this.b++;
-      }
+   public void a(frv $$0, int $$1, int $$2, float $$3, float $$4) {
+      float $$5 = this.b.av().b();
+      float $$6 = (float)((double)$$5 * this.b.n.t().c());
+      this.d = a(this.d + $$6 * 0.1F, 360.0F);
+      $$0.d();
+      this.c.a(this.b, 10.0F, -this.d, $$3);
+      $$0.d();
+      $$0.a(gqk::H, a, 0, 0, 0.0F, 0.0F, $$1, $$2, 16, 128, 16, 128, axw.a($$3));
+   }
 
-      this.a[this.c] = $$0;
-      this.c = (this.c + 1) % this.a.length;
-      long $$1 = Long.MAX_VALUE;
-      long $$2 = Long.MIN_VALUE;
-      long $$3 = 0L;
-
-      for (int $$4 = 0; $$4 < this.b; $$4++) {
-         long $$5 = this.a[$$4];
-         $$3 += $$5;
-         $$1 = Math.min($$1, $$5);
-         $$2 = Math.max($$2, $$5);
-      }
-
-      if (this.b > 2) {
-         $$3 -= $$1 + $$2;
-         return $$3 / (long)(this.b - 2);
-      } else {
-         return $$3 > 0L ? (long)this.b / $$3 : 0L;
-      }
+   private static float a(float $$0, float $$1) {
+      return $$0 > $$1 ? $$0 - $$1 : $$0;
    }
 }

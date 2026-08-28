@@ -1,21 +1,27 @@
-import javax.annotation.Nullable;
+public class hdi extends hcn {
+   public final hfq a = new hfq();
+   public int b;
+   public int c;
 
-public class hdi extends hcf {
-   public float a;
-   public float b;
-   public long c;
-   public int d;
-   public float e;
-   public float f;
-   public int g;
-   public dzz h = dmc.a.m();
-   public boolean i;
-   @Nullable
-   public fei j;
-   @Nullable
-   public fei k;
-   @Nullable
-   public fei l;
-   @Nullable
-   public fei m;
+   public void a(bwf $$0, czd $$1, hfo $$2) {
+      $$2.a(this.a, $$1, czb.h, $$0);
+      this.b = a($$1.M());
+      this.c = a($$1);
+   }
+
+   public static int a(czd $$0) {
+      return $$0.f() ? 187 : cyz.a($$0.h()) + $$0.o();
+   }
+
+   public static int a(int $$0) {
+      if ($$0 <= 1) {
+         return 1;
+      } else if ($$0 <= 16) {
+         return 2;
+      } else if ($$0 <= 32) {
+         return 3;
+      } else {
+         return $$0 <= 48 ? 4 : 5;
+      }
+   }
 }

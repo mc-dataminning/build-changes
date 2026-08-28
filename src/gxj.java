@@ -1,36 +1,32 @@
-public class gxj extends gvy<bxi, hda> {
-   private static final float a = 40.0F;
-   private static final int g = 50;
-   private final hfg h;
-   private final azv i = azv.a();
+public class gxj extends gvb<clk, hdo, ggr> {
+   private static final alg a = alg.b("textures/entity/llama/creamy.png");
+   private static final alg j = alg.b("textures/entity/llama/white.png");
+   private static final alg k = alg.b("textures/entity/llama/brown.png");
+   private static final alg l = alg.b("textures/entity/llama/gray.png");
 
-   protected gxj(gvz.a $$0) {
-      super($$0);
-      this.h = $$0.b();
+   public gxj(gwh.a $$0, gja $$1, gja $$2) {
+      super($$0, new ggr($$0.a($$1)), new ggr($$0.a($$2)), 0.7F);
+      this.a(new hap(this, $$0.f(), $$0.h()));
    }
 
-   public hda a() {
-      return new hda();
+   public alg a(hdo $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> j;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public void a(bxi $$0, hda $$1, float $$2) {
+   public hdo b() {
+      return new hdo();
+   }
+
+   public void a(clk $$0, hdo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      cyy $$3 = $$0.g();
-      $$1.a($$0, $$3, this.h);
-   }
-
-   public void a(hda $$0, fjc $$1, gps $$2, int $$3) {
-      if (!$$0.a.c()) {
-         $$1.a();
-         if ($$0.u <= 50.0F) {
-            float $$4 = Math.min($$0.u, 50.0F) / 50.0F;
-            $$1.b($$4, $$4, $$4);
-         }
-
-         float $$5 = azm.h($$0.u * 40.0F);
-         $$1.a(a.d.rotationDegrees($$5));
-         gwv.a($$1, $$2, 15728880, $$0, this.i);
-         $$1.b();
-      }
+      $$1.a = $$0.gE();
+      $$1.b = !$$0.n_() && $$0.t();
+      $$1.c = $$0.aj();
+      $$1.d = $$0.gu();
    }
 }

@@ -1,44 +1,107 @@
-public class hmc extends hlv {
-   public static final int n = 20;
-   private final gop o;
-   private int p;
+public abstract class hmc implements hmu {
+   protected hmr a;
+   protected final awo b;
+   protected final alg c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hmu.a k = hmu.a.b;
+   protected boolean l;
+   protected azv m;
 
-   public hmc(gop $$0) {
-      super(awn.is, awo.h, hmm.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+   protected hmc(awm $$0, awo $$1, azv $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected hmc(alg $$0, awo $$1, azv $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dQ() && (this.p <= 20 || this.o.fI())) {
-         this.f = (double)((float)this.o.dA());
-         this.g = (double)((float)this.o.dC());
-         this.h = (double)((float)this.o.dG());
-         float $$0 = (float)this.o.dy().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azm.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
-         }
+   public alg a() {
+      return this.c;
+   }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
-
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
-         }
+   @Override
+   public hob a(hoa $$0) {
+      if (this.c.equals(hoa.c)) {
+         this.a = hoa.e;
+         return hoa.d;
       } else {
-         this.n();
+         hob $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hoa.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
       }
+   }
+
+   @Override
+   public hmr b() {
+      return this.a;
+   }
+
+   @Override
+   public awo c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hmu.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

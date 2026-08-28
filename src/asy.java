@@ -233,7 +233,7 @@ public abstract class asy implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         bsr $$2 = new bsr(asy.this.g, "chat stream for " + $$1.getName());
+         bst $$2 = new bst(asy.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 

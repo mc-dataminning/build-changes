@@ -150,8 +150,8 @@ public class bgj extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(biw.F.typeName(), bkr.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bix.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped("ItemPotionFix", $$0, $$2x -> {
          Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
@@ -168,7 +168,7 @@ public class bgj extends DataFix {
                   Typed<?> $$11 = $$5.get().set(DSL.remainderFinder(), $$8.set("Potion", $$8.createString($$10 == null ? "minecraft:water" : $$10)));
                   $$7 = $$2x.set($$2, $$11);
                   if (($$6 & 16384) == 16384) {
-                     $$7 = $$7.set($$1, Pair.of(biw.F.typeName(), "minecraft:splash_potion"));
+                     $$7 = $$7.set($$1, Pair.of(bix.F.typeName(), "minecraft:splash_potion"));
                   }
                }
 

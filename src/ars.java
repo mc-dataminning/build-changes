@@ -7,9 +7,9 @@ public class ars {
    private static final Logger a = LogUtils.getLogger();
    protected arq c;
    protected final arr d;
-   private dis b;
+   private dix b;
    @Nullable
-   private dis e;
+   private dix e;
    private boolean f;
    private int g;
    private iu h;
@@ -20,7 +20,7 @@ public class ars {
    private int m;
 
    public ars(arr $$0) {
-      this.b = dis.e;
+      this.b = dix.e;
       this.h = iu.c;
       this.k = iu.c;
       this.m = -1;
@@ -28,7 +28,7 @@ public class ars {
       this.c = $$0.y();
    }
 
-   public boolean a(dis $$0) {
+   public boolean a(dix $$0) {
       if ($$0 == this.b) {
          return false;
       } else {
@@ -36,26 +36,26 @@ public class ars {
          this.d.x();
          this.d.g.ag().a(new aeb(aeb.a.c, this.d));
          this.c.f();
-         if ($$0 == dis.b) {
-            this.d.gO();
+         if ($$0 == dix.b) {
+            this.d.gP();
          }
 
          return true;
       }
    }
 
-   protected void a(dis $$0, @Nullable dis $$1) {
+   protected void a(dix $$0, @Nullable dix $$1) {
       this.e = $$1;
       this.b = $$0;
-      $$0.a(this.d.gj());
+      $$0.a(this.d.gk());
    }
 
-   public dis b() {
+   public dix b() {
       return this.b;
    }
 
    @Nullable
-   public dis c() {
+   public dix c() {
       return this.e;
    }
 
@@ -70,7 +70,7 @@ public class ars {
    public void a() {
       this.i++;
       if (this.j) {
-         dzz $$0 = this.c.a_(this.k);
+         eah $$0 = this.c.a_(this.k);
          if ($$0.l()) {
             this.j = false;
          } else {
@@ -81,7 +81,7 @@ public class ars {
             }
          }
       } else if (this.f) {
-         dzz $$2 = this.c.a_(this.h);
+         eah $$2 = this.c.a_(this.h);
          if ($$2.l()) {
             this.c.a(this.d.ar(), this.h, -1);
             this.m = -1;
@@ -92,7 +92,7 @@ public class ars {
       }
    }
 
-   private float a(dzz $$0, iu $$1, int $$2) {
+   private float a(eah $$0, iu $$1, int $$2) {
       int $$3 = this.i - $$2;
       float $$4 = $$0.a(this.d, this.d.dV(), $$1) * (float)($$3 + 1);
       int $$5 = (int)($$4 * 10.0F);
@@ -121,7 +121,7 @@ public class ars {
                return;
             }
 
-            if (this.d.gj().d) {
+            if (this.d.gk().d) {
                this.a($$0, $$4, "creative destroy");
                return;
             }
@@ -134,9 +134,9 @@ public class ars {
 
             this.g = this.i;
             float $$5 = 1.0F;
-            dzz $$6 = this.c.a_($$0);
+            eah $$6 = this.c.a_($$0);
             if (!$$6.l()) {
-               dfn.a(this.c, this.d.fa(), this.d, this.d, bwn.a, fei.b($$0), $$6, $$0x -> this.d.a($$0x, bwn.a));
+               dfs.a(this.c, this.d.fb(), this.d, this.d, bwp.a, feq.b($$0), $$6, $$0x -> this.d.a($$0x, bwp.a));
                $$6.a(this.c, $$0, this.d);
                $$5 = $$6.a(this.d, this.d.dV(), $$0);
             }
@@ -159,7 +159,7 @@ public class ars {
          } else if ($$1 == ahv.a.c) {
             if ($$0.equals(this.h)) {
                int $$8 = this.i - this.g;
-               dzz $$9 = this.c.a_($$0);
+               eah $$9 = this.c.a_($$0);
                if (!$$9.l()) {
                   float $$10 = $$9.a(this.d, this.d.dV(), $$0) * (float)($$8 + 1);
                   if ($$10 >= 0.7F) {
@@ -203,29 +203,29 @@ public class ars {
    }
 
    public boolean a(iu $$0) {
-      dzz $$1 = this.c.a_($$0);
-      if (!this.d.fa().a($$1, this.c, $$0, this.d)) {
+      eah $$1 = this.c.a_($$0);
+      if (!this.d.fb().a($$1, this.c, $$0, this.d)) {
          return false;
       } else {
-         dwx $$2 = this.c.c_($$0);
-         dma $$3 = $$1.b();
-         if ($$3 instanceof dpl && !this.d.gF()) {
+         dxf $$2 = this.c.c_($$0);
+         dmf $$3 = $$1.b();
+         if ($$3 instanceof dpr && !this.d.gG()) {
             this.c.a($$0, $$1, $$1, 3);
             return false;
          } else if (this.d.a(this.c, $$0, this.b)) {
             return false;
          } else {
-            dzz $$4 = $$3.a(this.c, $$0, $$1, (cqy)this.d);
+            eah $$4 = $$3.a(this.c, $$0, $$1, (crc)this.d);
             boolean $$5 = this.c.a($$0, false);
             if ($$5) {
                $$3.a(this.c, $$0, $$4);
             }
 
-            if (this.d.gk()) {
+            if (this.d.gl()) {
                return true;
             } else {
-               cyy $$6 = this.d.fa();
-               cyy $$7 = $$6.v();
+               czd $$6 = this.d.fb();
+               czd $$7 = $$6.v();
                boolean $$8 = this.d.d($$4);
                $$6.a(this.c, $$4, $$0, this.d);
                if ($$5 && $$8) {
@@ -238,25 +238,25 @@ public class ars {
       }
    }
 
-   public bub a(arr $$0, div $$1, cyy $$2, bua $$3) {
-      if (this.b == dis.d) {
-         return bub.e;
-      } else if ($$0.gE().a($$2)) {
-         return bub.e;
+   public bud a(arr $$0, dja $$1, czd $$2, buc $$3) {
+      if (this.b == dix.d) {
+         return bud.e;
+      } else if ($$0.gF().a($$2)) {
+         return bud.e;
       } else {
          int $$4 = $$2.M();
          int $$5 = $$2.o();
-         bub $$6 = $$2.a($$1, $$0, $$3);
-         cyy $$8;
-         if ($$6 instanceof bub.d $$7) {
+         bud $$6 = $$2.a($$1, $$0, $$3);
+         czd $$8;
+         if ($$6 instanceof bud.d $$7) {
             $$8 = Objects.requireNonNullElse($$7.d(), $$0.b($$3));
          } else {
             $$8 = $$0.b($$3);
          }
 
-         if ($$8 == $$2 && $$8.M() == $$4 && $$8.a((bxc)$$0) <= 0 && $$8.o() == $$5) {
+         if ($$8 == $$2 && $$8.M() == $$4 && $$8.a((bxe)$$0) <= 0 && $$8.o() == $$5) {
             return $$6;
-         } else if ($$6 instanceof bub.a && $$8.a((bxc)$$0) > 0 && !$$0.fy()) {
+         } else if ($$6 instanceof bud.a && $$8.a((bxe)$$0) > 0 && !$$0.fz()) {
             return $$6;
          } else {
             if ($$2 != $$8) {
@@ -264,11 +264,11 @@ public class ars {
             }
 
             if ($$8.f()) {
-               $$0.a($$3, cyy.k);
+               $$0.a($$3, czd.k);
             }
 
-            if (!$$0.fy()) {
-               $$0.bP.b();
+            if (!$$0.fz()) {
+               $$0.bQ.b();
             }
 
             return $$6;
@@ -276,32 +276,32 @@ public class ars {
       }
    }
 
-   public bub a(arr $$0, div $$1, cyy $$2, bua $$3, fee $$4) {
+   public bud a(arr $$0, dja $$1, czd $$2, buc $$3, fem $$4) {
       iu $$5 = $$4.b();
-      dzz $$6 = $$1.a_($$5);
+      eah $$6 = $$1.a_($$5);
       if (!$$6.b().a($$1.K())) {
-         return bub.d;
-      } else if (this.b == dis.d) {
-         bud $$7 = $$6.b($$1, $$5);
+         return bud.d;
+      } else if (this.b == dix.d) {
+         buf $$7 = $$6.b($$1, $$5);
          if ($$7 != null) {
             $$0.a($$7);
-            return bub.c;
+            return bud.c;
          } else {
-            return bub.e;
+            return bud.e;
          }
       } else {
-         boolean $$8 = !$$0.fa().f() || !$$0.fb().f();
-         boolean $$9 = $$0.fX() && $$8;
-         cyy $$10 = $$2.v();
+         boolean $$8 = !$$0.fb().f() || !$$0.fc().f();
+         boolean $$9 = $$0.fY() && $$8;
+         czd $$10 = $$2.v();
          if (!$$9) {
-            bub $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
+            bud $$11 = $$6.a($$0.b($$3), $$1, $$0, $$3, $$4);
             if ($$11.a()) {
                ap.N.a($$0, $$5, $$10);
                return $$11;
             }
 
-            if ($$11 instanceof bub.f && $$3 == bua.a) {
-               bub $$12 = $$6.a($$1, $$0, $$4);
+            if ($$11 instanceof bud.f && $$3 == buc.a) {
+               bud $$12 = $$6.a($$1, $$0, $$4);
                if ($$12.a()) {
                   ap.O.a($$0, $$5);
                   return $$12;
@@ -309,10 +309,10 @@ public class ars {
             }
          }
 
-         if (!$$2.f() && !$$0.gE().a($$2)) {
-            dct $$13 = new dct($$0, $$3, $$4);
-            bub $$15;
-            if ($$0.fU()) {
+         if (!$$2.f() && !$$0.gF().a($$2)) {
+            dcy $$13 = new dcy($$0, $$3, $$4);
+            bud $$15;
+            if ($$0.fV()) {
                int $$14 = $$2.M();
                $$15 = $$2.a($$13);
                $$2.e($$14);
@@ -326,7 +326,7 @@ public class ars {
 
             return $$15;
          } else {
-            return bub.e;
+            return bud.e;
          }
       }
    }

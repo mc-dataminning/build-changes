@@ -1,27 +1,21 @@
-public class gzq extends gzx<hby, gfi> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper_armor.png");
-   private final gfi b;
+public class gzq extends gwy<coz, hff, giu> {
+   private static final alg a = alg.b("textures/entity/piglin/zombified_piglin.png");
 
-   public gzq(gxw<hby, gfi> $$0, giq $$1) {
-      super($$0);
-      this.b = new gfi($$1.a(git.ap));
+   public gzq(gwh.a $$0, gja $$1, gja $$2, gja $$3, gja $$4, gja $$5, gja $$6) {
+      super($$0, new giu($$0.a($$1)), new giu($$0.a($$2)), 0.5F, gxx.a);
+      this.a(new hak<>(this, new ggl($$0.a($$3)), new ggl($$0.a($$4)), new ggl($$0.a($$5)), new ggl($$0.a($$6)), $$0.h()));
    }
 
-   protected boolean a(hby $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alg a() {
+   public alg a(hff $$0) {
       return a;
    }
 
-   protected gfi b() {
-      return this.b;
+   public hff b() {
+      return new hff();
+   }
+
+   public void a(coz $$0, hff $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gi();
    }
 }

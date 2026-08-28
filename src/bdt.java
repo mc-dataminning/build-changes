@@ -45,8 +45,8 @@ public class bdt extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(biw.s);
-      Type<?> $$1 = this.getInputSchema().getChoiceType(biw.s, this.a);
+      Type<?> $$0 = this.getInputSchema().getType(bix.s);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bix.s, this.a);
       OpticFinder<?> $$2 = DSL.namedChoice(this.a, $$1);
       return this.fixTypeEverywhereTyped("DropInvalidSignDataFix for " + this.a, $$0, $$2x -> $$2x.updateTyped($$2, $$1, $$1xx -> {
             boolean $$2xx = ((Dynamic)$$1xx.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);

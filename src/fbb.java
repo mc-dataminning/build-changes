@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class fbb extends fam {
+public class fbb extends fau {
    public static final MapCodec<fbb> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  dbm.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  dbm.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  dbm.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
+            .and($$0.group(dwv.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, fbb::new)
    );
-   public static final dbm b = new dbm(dbm.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<dbm.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final dwv b;
+   private final boolean c;
 
-   public fbb(List<fci> $$0, Optional<dbm.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   fbb(List<fcq> $$0, dwv $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected cyy a(cyy $$0, eyz $$1) {
-      $$0.a(kj.ai, b, this::a);
+   protected czd a(czd $$0, ezh $$1) {
+      if (this.c) {
+         $$0.a(kj.am, dwv.a, this.b, ($$0x, $$1x) -> new dwv.a().a($$0x).a($$1x).a());
+      } else {
+         $$0.b(kj.am, this.b);
+      }
+
       return $$0;
    }
 
-   private dbm a(dbm $$0) {
-      return new dbm(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   @Override
+   public faw<fbb> b() {
+      return fax.E;
    }
 
-   @Override
-   public fao<fbb> b() {
-      return fap.L;
+   public static fbb.a a(boolean $$0) {
+      return new fbb.a($$0);
+   }
+
+   public static class a extends fau.a<fbb.a> {
+      private final dwv.a a = new dwv.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected fbb.a a() {
+         return this;
+      }
+
+      @Override
+      public fav b() {
+         return new fbb(this.g(), this.a.a(), this.b);
+      }
+
+      public fbb.a a(je<dwu> $$0, cyb $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

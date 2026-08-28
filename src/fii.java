@@ -1,129 +1,89 @@
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public abstract class fii {
-   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
-   private static final String b = "//[^\\v]*";
-   private static final Pattern c = Pattern.compile(
-      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
-   );
-   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
-   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
+public final class fii {
+   private final long a;
+   private final List<fim> b;
+   private fim c;
+   private int d;
+   private int e;
 
-   public List<String> a(String $$0) {
-      fii.a $$1 = new fii.a();
-      List<String> $$2 = this.a($$0, $$1, "");
-      $$2.set(0, this.a($$2.get(0), $$1.a));
-      return $$2;
+   public fii(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
-   private List<String> a(String $$0, fii.a $$1, String $$2) {
-      int $$3 = $$1.b;
-      int $$4 = 0;
-      String $$5 = "";
-      List<String> $$6 = Lists.newArrayList();
-      Matcher $$7 = c.matcher($$0);
+   public void a() {
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-      while ($$7.find()) {
-         if (!a($$0, $$7, $$4)) {
-            String $$8 = $$7.group(2);
-            boolean $$9 = $$8 != null;
-            if (!$$9) {
-               $$8 = $$7.group(3);
-            }
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         fim $$2 = new fim($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
+         }
+      }
 
-            if ($$8 != null) {
-               String $$10 = $$0.substring($$4, $$7.start(1));
-               String $$11 = $$2 + $$8;
-               String $$12 = this.a($$9, $$11);
-               if (!Strings.isNullOrEmpty($$12)) {
-                  if (!bal.d($$12)) {
-                     $$12 = $$12 + System.lineSeparator();
-                  }
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new fim($$5);
+   }
 
-                  $$1.b++;
-                  int $$13 = $$1.b;
-                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.b($$11) : "");
-                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
-                  if (!bal.h($$10)) {
-                     $$6.add($$10);
-                  }
+   public fim a(Optional<fim> $$0) {
+      if ($$0.isPresent()) {
+         fim $$1 = $$0.get();
 
-                  $$6.addAll($$14);
-               } else {
-                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
-                  $$6.add($$5 + $$10 + $$15);
-               }
-
-               int $$16 = bal.c($$0.substring(0, $$7.end(1)));
-               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
-               $$4 = $$7.end(1);
+         for (fim $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
             }
          }
       }
 
-      String $$17 = $$0.substring($$4);
-      if (!bal.h($$17)) {
-         $$6.add($$5 + $$17);
-      }
-
-      return $$6;
+      return this.b();
    }
 
-   private String a(String $$0, fii.a $$1) {
-      Matcher $$2 = d.matcher($$0);
-      if ($$2.find() && a($$0, $$2)) {
-         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
-         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
-      } else {
-         return $$0;
-      }
+   public int a(fim $$0) {
+      return this.b.indexOf($$0);
    }
 
-   private String a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   public fim b() {
+      return this.c;
    }
 
-   private static boolean a(String $$0, Matcher $$1) {
-      return !a($$0, $$1, 0);
+   public int c() {
+      return this.d;
    }
 
-   private static boolean a(String $$0, Matcher $$1, int $$2) {
-      int $$3 = $$1.start() - $$2;
-      if ($$3 == 0) {
-         return false;
-      } else {
-         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
-         if (!$$4.find()) {
-            return true;
-         } else {
-            int $$5 = $$4.end(1);
-            return $$5 == $$1.start();
-         }
-      }
+   public int d() {
+      return this.e;
    }
 
-   @Nullable
-   public abstract String a(boolean var1, String var2);
-
-   public static String a(String $$0, gqi $$1) {
-      if ($$1.c()) {
-         return $$0;
-      } else {
-         int $$2 = $$0.indexOf(10);
-         int $$3 = $$2 + 1;
-         return $$0.substring(0, $$3) + $$1.b() + "#line 1 0\n" + $$0.substring($$3);
-      }
+   public fim a(int $$0) {
+      return this.b.get($$0);
    }
 
-   static final class a {
-      int a;
-      int b;
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

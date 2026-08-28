@@ -1,23 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duu extends dqp {
-   public static final MapCodec<duu> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, duu::new)
-   );
+public class duu extends doo implements dmi {
+   public static final MapCodec<duu> c = b(duu::new);
 
-   public duu(float $$0, dzy.d $$1) {
-      super($$0, $$1);
+   @Override
+   public MapCodec<duu> a() {
+      return c;
+   }
+
+   public duu(eag.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(div $$0, iu $$1, azv $$2) {
-      lq $$3 = lq.a(lx.J, $$0.s($$1));
-      azq.a($$0, $$1, $$2, $$3);
+   public boolean a(djd $$0, iu $$1, eah $$2) {
+      return true;
    }
 
    @Override
-   public MapCodec<? extends duu> a() {
-      return g;
+   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
+      a($$0, $$2, new czd(this));
    }
 }

@@ -1,228 +1,35 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.chars.CharArraySet;
-import it.unimi.dsi.fastutil.chars.CharSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
 
-public final class dee {
-   private static final int d = 3;
-   public static final char a = ' ';
-   public static final MapCodec<dee> b = dee.a.a
-      .flatXmap(dee::a, $$0 -> $$0.h.<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Cannot encode unpacked recipe")));
-   public static final yw<wj, dee> c = yw.a(yu.h, $$0 -> $$0.e, yu.h, $$0 -> $$0.f, ddl.b.a(yu.a()), $$0 -> $$0.g, dee::a);
-   private final int e;
-   private final int f;
-   private final List<Optional<ddl>> g;
-   private final Optional<dee.a> h;
-   private final int i;
-   private final boolean j;
+public interface dee<T extends ddu<?>> {
+   dee<dei> a = a("crafting_shaped", new dei.a());
+   dee<dek> b = a("crafting_shapeless", new dek.a());
+   dee<ddb> c = a("crafting_special_armordye", new ddk.a<>(ddb::new));
+   dee<dde> d = a("crafting_special_bookcloning", new ddk.a<>(dde::new));
+   dee<ddr> e = a("crafting_special_mapcloning", new ddk.a<>(ddr::new));
+   dee<dds> f = a("crafting_special_mapextending", new ddk.a<>(dds::new));
+   dee<ddn> g = a("crafting_special_firework_rocket", new ddk.a<>(ddn::new));
+   dee<ddp> h = a("crafting_special_firework_star", new ddk.a<>(ddp::new));
+   dee<ddo> i = a("crafting_special_firework_star_fade", new ddk.a<>(ddo::new));
+   dee<dev> j = a("crafting_special_tippedarrow", new ddk.a<>(dev::new));
+   dee<ddc> k = a("crafting_special_bannerduplicate", new ddk.a<>(ddc::new));
+   dee<del> l = a("crafting_special_shielddecoration", new ddk.a<>(del::new));
+   dee<dew> m = a("crafting_transmute", new dew.a());
+   dee<deg> n = a("crafting_special_repairitem", new ddk.a<>(deg::new));
+   dee<deo> o = a("smelting", new dda.b<>(deo::new, 200));
+   dee<ddd> p = a("blasting", new dda.b<>(ddd::new, 100));
+   dee<det> q = a("smoking", new dda.b<>(det::new, 100));
+   dee<ddf> r = a("campfire_cooking", new dda.b<>(ddf::new, 100));
+   dee<deu> s = a("stonecutting", new dem.b<>(deu::new));
+   dee<der> t = a("smithing_transform", new der.a());
+   dee<des> u = a("smithing_trim", new des.a());
+   dee<ddl> v = a("crafting_decorated_pot", new ddk.a<>(ddl::new));
 
-   public dee(int $$0, int $$1, List<Optional<ddl>> $$2, Optional<dee.a> $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = (int)$$2.stream().flatMap(Optional::stream).count();
-      this.j = af.a($$0, $$1, $$2);
-   }
+   MapCodec<T> a();
 
-   private static dee a(Integer $$0, Integer $$1, List<Optional<ddl>> $$2) {
-      return new dee($$0, $$1, $$2, Optional.empty());
-   }
+   @Deprecated
+   yw<wj, T> b();
 
-   public static dee a(Map<Character, ddl> $$0, String... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   public static dee a(Map<Character, ddl> $$0, List<String> $$1) {
-      dee.a $$2 = new dee.a($$0, $$1);
-      return (dee)a($$2).getOrThrow();
-   }
-
-   private static DataResult<dee> a(dee.a $$0) {
-      String[] $$1 = a($$0.c);
-      int $$2 = $$1[0].length();
-      int $$3 = $$1.length;
-      List<Optional<ddl>> $$4 = new ArrayList<>($$2 * $$3);
-      CharSet $$5 = new CharArraySet($$0.b.keySet());
-
-      for (String $$6 : $$1) {
-         for (int $$7 = 0; $$7 < $$6.length(); $$7++) {
-            char $$8 = $$6.charAt($$7);
-            Optional<ddl> $$9;
-            if ($$8 == ' ') {
-               $$9 = Optional.empty();
-            } else {
-               ddl $$10 = $$0.b.get($$8);
-               if ($$10 == null) {
-                  return DataResult.error(() -> "Pattern references symbol '" + $$8 + "' but it's not defined in the key");
-               }
-
-               $$9 = Optional.of($$10);
-            }
-
-            $$5.remove($$8);
-            $$4.add($$9);
-         }
-      }
-
-      return !$$5.isEmpty()
-         ? DataResult.error(() -> "Key defines symbols that aren't used in pattern: " + $$5)
-         : DataResult.success(new dee($$2, $$3, $$4, Optional.of($$0)));
-   }
-
-   @VisibleForTesting
-   static String[] a(List<String> $$0) {
-      int $$1 = Integer.MAX_VALUE;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
-         String $$6 = $$0.get($$5);
-         $$1 = Math.min($$1, a($$6));
-         int $$7 = b($$6);
-         $$2 = Math.max($$2, $$7);
-         if ($$7 < 0) {
-            if ($$3 == $$5) {
-               $$3++;
-            }
-
-            $$4++;
-         } else {
-            $$4 = 0;
-         }
-      }
-
-      if ($$0.size() == $$4) {
-         return new String[0];
-      } else {
-         String[] $$8 = new String[$$0.size() - $$4 - $$3];
-
-         for (int $$9 = 0; $$9 < $$8.length; $$9++) {
-            $$8[$$9] = $$0.get($$9 + $$3).substring($$1, $$2 + 1);
-         }
-
-         return $$8;
-      }
-   }
-
-   private static int a(String $$0) {
-      int $$1 = 0;
-
-      while ($$1 < $$0.length() && $$0.charAt($$1) == ' ') {
-         $$1++;
-      }
-
-      return $$1;
-   }
-
-   private static int b(String $$0) {
-      int $$1 = $$0.length() - 1;
-
-      while ($$1 >= 0 && $$0.charAt($$1) == ' ') {
-         $$1--;
-      }
-
-      return $$1;
-   }
-
-   public boolean a(ddd $$0) {
-      if ($$0.e() != this.i) {
-         return false;
-      } else {
-         if ($$0.f() == this.e && $$0.g() == this.f) {
-            if (!this.j && this.a($$0, true)) {
-               return true;
-            }
-
-            if (this.a($$0, false)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   private boolean a(ddd $$0, boolean $$1) {
-      for (int $$2 = 0; $$2 < this.f; $$2++) {
-         for (int $$3 = 0; $$3 < this.e; $$3++) {
-            Optional<ddl> $$4;
-            if ($$1) {
-               $$4 = this.g.get(this.e - $$3 - 1 + $$2 * this.e);
-            } else {
-               $$4 = this.g.get($$3 + $$2 * this.e);
-            }
-
-            cyy $$6 = $$0.a($$3, $$2);
-            if (!ddl.a($$4, $$6)) {
-               return false;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public List<Optional<ddl>> c() {
-      return this.g;
-   }
-
-   public static record a(Map<Character, ddl> b, List<String> c) {
-      private static final Codec<List<String>> d = Codec.STRING.listOf().comapFlatMap($$0 -> {
-         if ($$0.size() > 3) {
-            return DataResult.error(() -> "Invalid pattern: too many rows, 3 is maximum");
-         } else if ($$0.isEmpty()) {
-            return DataResult.error(() -> "Invalid pattern: empty pattern not allowed");
-         } else {
-            int $$1 = ((String)$$0.getFirst()).length();
-
-            for (String $$2 : $$0) {
-               if ($$2.length() > 3) {
-                  return DataResult.error(() -> "Invalid pattern: too many columns, 3 is maximum");
-               }
-
-               if ($$1 != $$2.length()) {
-                  return DataResult.error(() -> "Invalid pattern: each row must be the same width");
-               }
-            }
-
-            return DataResult.success($$0);
-         }
-      }, Function.identity());
-      private static final Codec<Character> e = Codec.STRING.comapFlatMap($$0 -> {
-         if ($$0.length() != 1) {
-            return DataResult.error(() -> "Invalid key entry: '" + $$0 + "' is an invalid symbol (must be 1 character only).");
-         } else {
-            return " ".equals($$0) ? DataResult.error(() -> "Invalid key entry: ' ' is a reserved symbol.") : DataResult.success($$0.charAt(0));
-         }
-      }, String::valueOf);
-      public static final MapCodec<dee.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayu.b(e, ddl.d).fieldOf("key").forGetter($$0x -> $$0x.b), d.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, dee.a::new)
-      );
-
-      public Map<Character, ddl> a() {
-         return this.b;
-      }
-
-      public List<String> b() {
-         return this.c;
-      }
+   static <S extends dee<T>, T extends ddu<?>> S a(String $$0, S $$1) {
+      return jr.a(mf.r, $$0, $$1);
    }
 }

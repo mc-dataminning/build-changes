@@ -1,85 +1,92 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.stream.Stream;
 
-public interface gkr {
-   static gkr a(gkx $$0, UserApiService $$1) {
-      return new gkr.b($$0, $$1);
+public class gkr {
+   private static final gkr.a a = new gkr.a();
+   private static final gkr.a b = new gkr.a();
+   private static final gkr.a c = new gkr.a();
+   private CompletableFuture<hne<czd>> d = CompletableFuture.completedFuture(hne.empty());
+   private CompletableFuture<hne<czd>> e = CompletableFuture.completedFuture(hne.empty());
+   private CompletableFuture<hne<gce>> f = CompletableFuture.completedFuture(hne.empty());
+   private final Map<gkr.a, Runnable> g = new IdentityHashMap<>();
+
+   private void a(gkr.a $$0, Runnable $$1) {
+      $$1.run();
+      this.g.put($$0, $$1);
    }
 
-   CompletableFuture<Unit> a(UUID var1, gkz var2, AbuseReport var3);
-
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   public static class a extends xy {
-      public a(wy $$0, Throwable $$1) {
-         super($$0, $$1);
+   public void a() {
+      for (Runnable $$0 : this.g.values()) {
+         $$0.run();
       }
    }
 
-   public static record b(gkx a, UserApiService b) implements gkr {
-      private static final wy c = wy.c("gui.abuseReport.send.service_unavailable");
-      private static final wy d = wy.c("gui.abuseReport.send.http_error");
-      private static final wy e = wy.c("gui.abuseReport.send.json_error");
+   private static Stream<String> a(Stream<czd> $$0, cyz.b $$1, das $$2) {
+      return $$0.<wy>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   }
 
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gkz $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+   public void a(foj $$0, dja $$1) {
+      this.a(
+         a,
+         () -> {
+            List<gce> $$2 = $$0.d();
+            js $$3 = $$1.F_();
+            jr<cyz> $$4 = $$3.f(mg.K);
+            cyz.b $$5 = cyz.b.a($$3);
+            baz $$6 = dfh.a($$1);
+            das $$7 = das.a.a;
+            CompletableFuture<?> $$8 = this.f;
+            this.f = CompletableFuture.supplyAsync(
+               () -> new hmz<>(
+                     $$3xx -> a($$3xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()), $$5, $$7),
+                     $$2xx -> $$2xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()).map($$1xxxx -> $$4.b($$1xxxx.h())),
+                     $$2
+                  ),
+               af.h()
+            );
+            $$8.cancel(true);
+         }
+      );
+   }
 
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               wy $$5 = this.a(var7);
-               throw new CompletionException(new gkr.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               wy $$7 = this.a(var8);
-               throw new CompletionException(new gkr.a($$7, var8));
-            }
-         }, af.i());
-      }
+   public hne<gce> b() {
+      return this.f.join();
+   }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
+   public void a(List<czd> $$0) {
+      this.a(c, () -> {
+         CompletableFuture<?> $$1 = this.e;
+         this.e = CompletableFuture.supplyAsync(() -> new hna<>($$0xxx -> $$0xxx.j().map(axr::b), $$0), af.h());
+         $$1.cancel(true);
+      });
+   }
 
-      private wy a(MinecraftClientHttpException $$0) {
-         return wy.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
+   public hne<czd> c() {
+      return this.e.join();
+   }
 
-      private wy a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
-      }
+   public void a(jg.a $$0, List<czd> $$1) {
+      this.a(
+         b,
+         () -> {
+            cyz.b $$2 = cyz.b.a($$0);
+            das $$3 = das.a.a.c();
+            CompletableFuture<?> $$4 = this.d;
+            this.d = CompletableFuture.supplyAsync(
+               () -> new hmz<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(alf::a).stream(), $$1), af.h()
+            );
+            $$4.cancel(true);
+         }
+      );
+   }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+   public hne<czd> d() {
+      return this.d.join();
+   }
 
-      public gkx c() {
-         return this.a;
-      }
-
-      public UserApiService d() {
-         return this.b;
-      }
+   static class a {
    }
 }

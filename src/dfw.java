@@ -1,88 +1,142 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface dfw {
-   static <T, A extends T> MapCodec<A> a(Codec<T> $$0, Function<List<T>, A> $$1, Function<A, List<T>> $$2) {
-      return RecordCodecBuilder.mapCodec($$3 -> $$3.group($$0.listOf().fieldOf("effects").forGetter($$2)).apply($$3, $$1));
+public class dfw implements dci {
+   public static final dfw a = new dfw(new Object2IntOpenHashMap());
+   private static final Codec<Integer> d = Codec.intRange(1, 255);
+   public static final Codec<dfw> b = Codec.unboundedMap(dfq.c, d).xmap($$0 -> new dfw(new Object2IntOpenHashMap($$0)), $$0 -> $$0.e);
+   public static final yw<wj, dfw> c = yw.a(yu.a(Object2IntOpenHashMap::new, dfq.d, yu.h), $$0 -> $$0.e, dfw::new);
+   final Object2IntOpenHashMap<je<dfq>> e;
+
+   dfw(Object2IntOpenHashMap<je<dfq>> $$0) {
+      this.e = $$0;
+      ObjectIterator var2 = $$0.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<je<dfq>> $$1 = (Entry<je<dfq>>)var2.next();
+         int $$2 = $$1.getIntValue();
+         if ($$2 < 0 || $$2 > 255) {
+            throw new IllegalArgumentException("Enchantment " + $$1.getKey() + " has invalid level " + $$2);
+         }
+      }
    }
 
-   static dfw.a a(dgc... $$0) {
-      return new dfw.a(List.of($$0));
+   public int a(je<dfq> $$0) {
+      return this.e.getInt($$0);
    }
 
-   static dfw.b a(dgd... $$0) {
-      return new dfw.b(List.of($$0));
-   }
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      jg.a $$4 = $$0.a();
+      ji<dfq> $$5 = a($$4, mg.aR, axe.a);
 
-   static dfw.c a(dge... $$0) {
-      return new dfw.c(List.of($$0));
-   }
-
-   public static record a(List<dgc> d) implements dgc {
-      public static final MapCodec<dfw.a> a = dfw.a(dgc.b, dfw.a::new, dfw.a::b);
-
-      @Override
-      public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4) {
-         for (dgc $$5 : this.d) {
-            $$5.a($$0, $$1, $$2, $$3, $$4);
+      for (je<dfq> $$6 : $$5) {
+         int $$7 = this.e.getInt($$6);
+         if ($$7 > 0) {
+            $$1.accept(dfq.a($$6, $$7));
          }
       }
 
-      @Override
-      public MapCodec<dfw.a> a() {
-         return a;
-      }
+      ObjectIterator var10 = this.e.object2IntEntrySet().iterator();
 
-      public List<dgc> b() {
-         return this.d;
+      while (var10.hasNext()) {
+         Entry<je<dfq>> $$8 = (Entry<je<dfq>>)var10.next();
+         je<dfq> $$9 = (je<dfq>)$$8.getKey();
+         if (!$$5.a($$9)) {
+            $$1.accept(dfq.a((je<dfq>)$$8.getKey(), $$8.getIntValue()));
+         }
       }
    }
 
-   public static record b(List<dgd> b) implements dgd {
-      public static final MapCodec<dfw.b> a = dfw.a(dgd.c, dfw.b::new, dfw.b::b);
-
-      @Override
-      public void a(arq $$0, int $$1, dfk $$2, bwd $$3, fei $$4, boolean $$5) {
-         for (dgd $$6 : this.b) {
-            $$6.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static <T> ji<T> a(@Nullable jg.a $$0, alf<jr<T>> $$1, axr<T> $$2) {
+      if ($$0 != null) {
+         Optional<ji.c<T>> $$3 = $$0.e($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
          }
       }
 
-      @Override
-      public void a(dfk $$0, bwd $$1, fei $$2, int $$3) {
-         for (dgd $$4 : this.b) {
-            $$4.a($$0, $$1, $$2, $$3);
-         }
-      }
+      return ji.a();
+   }
 
-      @Override
-      public MapCodec<dfw.b> a() {
-         return a;
+   public Set<je<dfq>> a() {
+      return Collections.unmodifiableSet(this.e.keySet());
+   }
+
+   public Set<Entry<je<dfq>>> b() {
+      return Collections.unmodifiableSet(this.e.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public boolean d() {
+      return this.e.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof dfw $$1 ? this.e.equals($$1.e) : false;
       }
    }
 
-   public static record c(List<dge> c) implements dge {
-      public static final MapCodec<dfw.c> a = dfw.a(dge.b, dfw.c::new, dfw.c::b);
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
+   }
 
-      @Override
-      public float a(int $$0, azv $$1, float $$2) {
-         for (dge $$3 : this.c) {
-            $$2 = $$3.a($$0, $$1, $$2);
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.e + "}";
+   }
+
+   public static class a {
+      private final Object2IntOpenHashMap<je<dfq>> a = new Object2IntOpenHashMap();
+
+      public a(dfw $$0) {
+         this.a.putAll($$0.e);
+      }
+
+      public void a(je<dfq> $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0);
+         } else {
+            this.a.put($$0, Math.min($$1, 255));
          }
-
-         return $$2;
       }
 
-      @Override
-      public MapCodec<dfw.c> a() {
-         return a;
+      public void b(je<dfq> $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+         }
       }
 
-      public List<dge> b() {
-         return this.c;
+      public void a(Predicate<je<dfq>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(je<dfq> $$0) {
+         return this.a.getOrDefault($$0, 0);
+      }
+
+      public Set<je<dfq>> a() {
+         return this.a.keySet();
+      }
+
+      public dfw b() {
+         return new dfw(this.a);
       }
    }
 }

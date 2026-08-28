@@ -1,245 +1,174 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dxm extends dyg implements cvi {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jn<cyy> q = jn.a(9, cyy.k);
-   private int r = 0;
-   protected final cvc k = new cvc() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public class dxm extends dxf implements btu {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final jn<czd> c = jn.a(4, czd.k);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public dxm(iu $$0, dzz $$1) {
-      super(dwz.Q, $$0, $$1);
+   public dxm(iu $$0, eah $$1) {
+      super(dxh.H, $$0, $$1);
    }
 
-   @Override
-   protected wy j() {
-      return wy.c("container.crafter");
-   }
+   public static void a(arq $$0, iu $$1, eah $$2, dxm $$3, deb.a<den, ddf> $$4) {
+      boolean $$5 = false;
 
-   @Override
-   protected cuq a(int $$0, cqx $$1) {
-      return new cvg($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, cyy $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cyy $$2 = this.q.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
-   }
-
-   private boolean a(int $$0, cyy $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cyy $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && cyy.c($$4, $$1)) {
-               return true;
+      for (int $$6 = 0; $$6 < $$3.c.size(); $$6++) {
+         czd $$7 = $$3.c.get($$6);
+         if (!$$7.f()) {
+            $$5 = true;
+            $$3.d[$$6]++;
+            if ($$3.d[$$6] >= $$3.e[$$6]) {
+               den $$8 = new den($$7);
+               czd $$9 = $$4.a($$8, $$0).map($$2x -> ((ddf)$$2x.b()).a($$8, $$0.F_())).orElse($$7);
+               if ($$9.a($$0.K())) {
+                  btz.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$9);
+                  $$3.c.set($$6, czd.k);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(efh.c, $$1, efh.a.a($$2));
+               }
             }
+         }
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(dja $$0, iu $$1, eah $$2, dxm $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = azm.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(dja $$0, iu $$1, eah $$2, dxm $$3) {
+      azv $$4 = $$0.A;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dmv.a($$0, $$1, $$2.c(dmv.c), false);
+         }
+      }
+
+      int $$6 = $$2.c(dmv.e).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).f() && $$4.i() < 0.2F) {
+            ja $$8 = ja.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(lx.ah, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public jn<czd> c() {
+      return this.c;
+   }
+
+   @Override
+   protected void a(tz $$0, jg.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      btx.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
+   }
+
+   @Override
+   protected void b(tz $$0, jg.a $$1) {
+      super.b($$0, $$1);
+      btx.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public aca d() {
+      return aca.a(this);
+   }
+
+   @Override
+   public tz a(jg.a $$0) {
+      tz $$1 = new tz();
+      btx.a($$1, this.c, true, $$0);
+      return $$1;
+   }
+
+   public boolean a(arq $$0, @Nullable bxe $$1, czd $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         czd $$4 = this.c.get($$3);
+         if ($$4.f()) {
+            Optional<ddz<ddf>> $$5 = $$0.t().a(def.e, new den($$2), $$0);
+            if ($$5.isEmpty()) {
+               return false;
+            }
+
+            this.e[$$3] = $$5.get().b().d();
+            this.d[$$3] = 0;
+            this.c.set($$3, $$2.b(1, $$1));
+            $$0.a(efh.c, this.ax_(), efh.a.a($$1, this.m()));
+            this.f();
+            return true;
          }
       }
 
       return false;
    }
 
-   @Override
-   protected void a(tz $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jn.a(this.b(), cyy.k);
-      if (!this.b_($$0)) {
-         btv.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
+   private void f() {
+      this.e();
+      this.i().a(this.ax_(), this.m(), this.m(), 3);
    }
 
    @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         btv.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
+   public void a() {
+      this.c.clear();
    }
 
    @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean c() {
-      for (cyy $$0 : this.q) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cyy a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cyy $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(cqy $$0) {
-      return btu.a(this, $$0);
-   }
-
-   @Override
-   public jn<cyy> f() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jn<cyy> $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public int au_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(crd $$0) {
-      for (cyy $$1 : this.q) {
-         $$0.a($$1);
+   public void a(iu $$0, eah $$1) {
+      if (this.n != null) {
+         btz.a(this.n, $$0, this.c());
       }
    }
 
-   private void c(tz $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
+   @Override
+   protected void a(ke $$0) {
+      super.a($$0);
+      $$0.a(kj.ap, dbv.a).a(this.c());
    }
 
-   private void d(tz $$0) {
-      $$0.a("triggered", this.k.a(9));
+   @Override
+   protected void a(kg.a $$0) {
+      super.a($$0);
+      $$0.a(kj.ap, dbv.a(this.c()));
    }
 
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(div $$0, iu $$1, dzz $$2, dxm $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dnt.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cyy $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).f();
+   @Override
+   public void a(tz $$0) {
+      $$0.r("Items");
    }
 }

@@ -1,80 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import java.util.Calendar;
 
-public class gst extends gry {
-   private static final float a = 0.6666667F;
-   private static final fei b = new fei(0.0, 0.33333334F, 0.046666667F);
-   private final Map<ebn, gst.a> c;
+public class gst<T extends dxf & dym> implements gsm<T> {
+   private final gfi a;
+   private final gfi b;
+   private final gfi c;
+   private final boolean d = b();
 
-   public gst(gsf.a $$0) {
-      super($$0);
-      this.c = ebn.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gst.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   public gst(gsn.a $$0) {
+      this.a = new gfi($$0.a(gjb.X));
+      this.b = new gfi($$0.a(gjb.aD));
+      this.c = new gfi($$0.a(gjb.aE));
+   }
+
+   public static boolean b() {
+      Calendar $$0 = Calendar.getInstance();
+      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
    }
 
    @Override
-   protected ggm a(dzz $$0, ebn $$1) {
-      gst.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof dud ? $$2.a() : $$2.b();
-   }
+   public void a(T $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
+      dja $$7 = $$0.i();
+      boolean $$8 = $$7 != null;
+      eah $$9 = $$8 ? $$0.m() : dmh.cG.m().b(dnj.c, ja.d);
+      eaz $$10 = $$9.b(dnj.d) ? $$9.c(dnj.d) : eaz.a;
+      if ($$9.b() instanceof dkz<?> $$12) {
+         boolean $$13 = $$10 != eaz.a;
+         $$2.a();
+         float $$14 = $$9.c(dnj.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$14));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         don.c<? extends dxn> $$15;
+         if ($$8) {
+            $$15 = $$12.a($$9, $$7, $$0.ax_(), true);
+         } else {
+            $$15 = don.b::b;
+         }
 
-   @Override
-   protected hkw a(ebn $$0) {
-      return gqn.a($$0);
-   }
+         float $$17 = $$15.apply(dnj.a($$0)).get($$1);
+         $$17 = 1.0F - $$17;
+         $$17 = 1.0F - $$17 * $$17 * $$17;
+         int $$18 = $$15.apply(new gsq<>()).applyAsInt($$4);
+         hle $$19 = gqv.a($$0, $$10, this.d);
+         fjn $$20 = $$19.a($$3, gqk::f);
+         if ($$13) {
+            if ($$10 == eaz.b) {
+               this.a($$2, $$20, this.b, $$17, $$18, $$5);
+            } else {
+               this.a($$2, $$20, this.c, $$17, $$18, $$5);
+            }
+         } else {
+            this.a($$2, $$20, this.a, $$17, $$18, $$5);
+         }
 
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
-
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
-
-   private static void a(fjc $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(fjc $$0, float $$1, dzz $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof dud)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+         $$2.b();
       }
    }
 
-   @Override
-   protected fei c() {
-      return b;
-   }
-
-   public static void a(fjc $$0, gps $$1, int $$2, int $$3, ggm $$4, hkw $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fjg $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static ggm a(giq $$0, ebn $$1, boolean $$2) {
-      gis $$3 = $$2 ? git.a($$1) : git.b($$1);
-      return new ggm.a($$0.a($$3), gqc::g);
-   }
-
-   public static gja a(boolean $$0) {
-      gjc $$1 = new gjc();
-      gje $$2 = $$1.a();
-      $$2.a("sign", giz.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), giw.a);
-      if ($$0) {
-         $$2.a("stick", giz.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), giw.a);
-      }
-
-      return gja.a($$1, 64, 32);
-   }
-
-   static record a(ggm a, ggm b) {
+   private void a(fjj $$0, fjn $$1, gfi $$2, float $$3, int $$4, int $$5) {
+      $$2.a($$3);
+      $$2.a($$0, $$1, $$4, $$5);
    }
 }

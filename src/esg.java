@@ -1,15 +1,30 @@
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class esg {
-   public static MapCodec<? extends esf> a(jr<MapCodec<? extends esf>> $$0) {
-      jr.a($$0, "random", esi.a);
-      jr.a($$0, "random_group", esj.a);
-      return jr.a($$0, "direct", ese.a);
+public class esg extends esi {
+   public static final MapCodec<esg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, esg::new));
+
+   protected esg(Either<alg, evd> $$0, je<evb> $$1, esl.a $$2, Optional<eun> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public static void a(qh<esd> $$0, je<esd> $$1, List<esf> $$2) {
-      $$2.stream().flatMap(esf::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qo.a($$0, $$2x, new esd($$1, List.of(Pair.of(esb.b($$2x), 1)), esd.a.b)));
+   @Override
+   protected euz a(dsz $$0, eqt $$1, eun $$2, boolean $$3) {
+      euz $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(eue.b);
+      $$4.a(eue.d);
+      return $$4;
+   }
+
+   @Override
+   public esk<?> a() {
+      return esk.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

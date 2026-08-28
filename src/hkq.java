@@ -1,53 +1,12 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
 
-public enum hkq implements hlf {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public record hkq(Map<String, hkf> d) {
+   public static final Codec<String> a = Codec.string(1, 16);
+   public static final Codec<hkq> b = Codec.unboundedMap(a, hkf.a).xmap(hkq::new, hkq::a);
+   public static final auc<hkq> c = new auc<>("language", b);
 
-   private static final int q = 360;
-   private static final Map<Integer, hkq> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hkq)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
-   }
-
-   private hkq(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      this.s = new j(null, $$2, null, null);
-      this.t = h.a($$0, $$1);
-   }
-
-   @Override
-   public j a() {
-      return this.s;
-   }
-
-   public static hkq a(int $$0, int $$1) {
-      return r.get(b(azm.b($$0, 360), azm.b($$1, 360)));
-   }
-
-   public h c() {
-      return this.t;
+   public Map<String, hkf> a() {
+      return this.d;
    }
 }

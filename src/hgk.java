@@ -1,19 +1,14 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class hgk implements hgp {
+public record hgk() implements hga {
    public static final MapCodec<hgk> a = MapCodec.unit(new hgk());
 
    @Override
-   public float a(cyy $$0, @Nullable gjr $$1, @Nullable bxc $$2, int $$3) {
-      if ($$2 == null) {
-         return 0.0F;
-      } else if (cxr.g($$0)) {
-         return 0.0F;
-      } else {
-         int $$4 = cxr.b($$0, $$2);
-         return (float)hgs.a($$0, $$2) / (float)$$4;
-      }
+   public boolean get(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
+      foz $$5 = foz.Q();
+      bwf $$6 = $$5.ao();
+      return $$6 != null ? $$2 == $$6 : $$2 == $$5.t;
    }
 
    @Override

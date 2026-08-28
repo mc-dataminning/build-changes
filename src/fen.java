@@ -1,30 +1,21 @@
-import java.util.Objects;
+public class fen extends feo {
+   private final bwf b;
 
-public interface fen {
-   static fen a() {
-      return fes.a;
+   public fen(bwf $$0) {
+      this($$0, $$0.dt());
    }
 
-   static fen a(bwd $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fen)(switch ($$0) {
-         case ctk $$1 -> ctk.b($$1.dV()) ? new few($$1, false) : new fes($$0, false);
-         default -> new fes($$0, false);
-      });
+   public fen(bwf $$0, feq $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   static fen a(bwd $$0, boolean $$1) {
-      return new fes($$0, $$1);
+   public bwf a() {
+      return this.b;
    }
 
-   boolean b();
-
-   boolean a(ffc var1, iu var2, boolean var3);
-
-   boolean a(cyu var1);
-
-   boolean a(ewg var1, ewg var2);
-
-   ffc a(dzz var1, dif var2, iu var3);
+   @Override
+   public feo.a d() {
+      return feo.a.c;
+   }
 }

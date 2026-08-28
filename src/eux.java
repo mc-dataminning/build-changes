@@ -1,20 +1,9 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eux extends eup {
-   public static final MapCodec<eux> a = axr.a(mg.i).fieldOf("tag").xmap(eux::new, $$0 -> $$0.b);
-   private final axr<dma> b;
+public abstract class eux {
+   public static final Codec<eux> c = mf.m.q().dispatch("predicate_type", eux::a, euy::codec);
 
-   public eux(axr<dma> $$0) {
-      this.b = $$0;
-   }
+   public abstract boolean a(eah var1, azv var2);
 
-   @Override
-   public boolean a(dzz $$0, azv $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected euq<?> a() {
-      return euq.d;
-   }
+   protected abstract euy<?> a();
 }

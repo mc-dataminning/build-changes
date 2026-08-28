@@ -1,34 +1,78 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public abstract class hpb extends fxu {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   protected static final int B = 8;
-   private final List<hpa> a = Lists.newArrayList();
+public class hpb implements hpd {
+   private static final int a = 600;
+   private static final wy b = wy.c("tutorial.punch_tree.title");
+   private static final wy c = wy.a("tutorial.punch_tree.description", hpc.a("attack"));
+   private final hpc d;
+   @Nullable
+   private fuv e;
+   private int f;
+   private int g;
 
-   public hpb(wy $$0) {
-      super($$0);
+   public hpb(hpc $$0) {
+      this.d = $$0;
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hpe.f);
+      } else {
+         foz $$0 = this.d.e();
+         if (this.f == 1) {
+            gox $$1 = $$0.t;
+            if ($$1 != null) {
+               if ($$1.gj().a(axk.r)) {
+                  this.d.a(hpe.e);
+                  return;
+               }
+
+               if (hoy.a($$1)) {
+                  this.d.a(hpe.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fuv($$0.h, fuv.a.c, b, c, true);
+            $$0.aA().a(this.e);
+         }
+      }
    }
 
-   protected hpa a(hpa $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.e();
+         this.e = null;
+      }
    }
 
-   public wy m() {
-      return wx.a(this.a.stream().map(hpa::a).collect(Collectors.toList()));
+   @Override
+   public void a(gjz $$0, iu $$1, eah $$2, float $$3) {
+      boolean $$4 = $$2.a(axc.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hpe.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
+   }
+
+   @Override
+   public void a(czd $$0) {
+      if ($$0.a(axk.r)) {
+         this.d.a(hpe.e);
+      }
    }
 }

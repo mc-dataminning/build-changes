@@ -1,11 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dgt {
-   Codec<dgt> a = mf.av.q().dispatch(dgt::a, Function.identity());
+public record dgt(dfx c) implements dgj {
+   public static final MapCodec<dgt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dfx.b.fieldOf("value").forGetter(dgt::b)).apply($$0, dgt::new));
 
-   void a(cyy var1, dfr.a var2, azv var3, btz var4);
+   @Override
+   public float a(int $$0, azv $$1, float $$2) {
+      return this.c.a($$0);
+   }
 
-   MapCodec<? extends dgt> a();
+   @Override
+   public MapCodec<dgt> a() {
+      return a;
+   }
+
+   public dfx b() {
+      return this.c;
+   }
 }

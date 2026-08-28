@@ -1,29 +1,51 @@
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ent extends enj {
-   public static final MapCodec<ent> b = bsm.b(dzz.a).comapFlatMap(ent::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bsm<dzz> c;
+public class ent extends env {
+   public static final MapCodec<ent> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aze.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               evr.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayu.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, ent::new)
+   );
+   private final aze<Integer> i;
+   private final evr.a j;
+   private final float k;
+   private final evr l;
 
-   private static DataResult<ent> a(bsm<dzz> $$0) {
-      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ent($$0));
-   }
-
-   public ent(bsm<dzz> $$0) {
-      this.c = $$0;
-   }
-
-   public ent(bsm.a<dzz> $$0) {
-      this($$0.a());
+   public ent(aze<Integer> $$0, evr.a $$1, float $$2, long $$3, evr.a $$4, float $$5, List<eah> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = evr.b(new ehf(new egh($$3)), $$1);
    }
 
    @Override
-   protected enk<?> a() {
-      return enk.b;
+   protected ens<?> a() {
+      return ens.e;
    }
 
    @Override
-   public dzz a(azv $$0, iu $$1) {
-      return this.c.b($$0);
+   public eah a(azv $$0, iu $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azm.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<eah> $$4 = Lists.newArrayListWithCapacity($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      }
+
+      return this.a($$4, $$1, (double)this.e);
+   }
+
+   protected double a(iu $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

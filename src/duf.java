@@ -1,70 +1,53 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class duf extends dma {
+public class duf extends dmf {
    public static final MapCodec<duf> a = b(duf::new);
-   private static final wy c = wy.c("container.stonecutter");
-   public static final eax<ja> b = dqa.e;
-   private static final ffc d = dma.b(16.0, 0.0, 9.0);
+   private static final ffk b = dmf.b(12.0, 13.0, 16.0);
+   private static final int c = 14;
+   private static final int d = 10;
+   private static final int e = 10;
 
    @Override
    public MapCodec<duf> a() {
       return a;
    }
 
-   public duf(dzy.d $$0) {
+   public duf(eag.d $$0) {
       super($$0);
-      this.l(this.B.b().b(b, ja.c));
    }
 
    @Override
-   public dzz a(dcr $$0) {
-      return this.m().b(b, $$0.g().g());
+   protected boolean a(eah $$0, djd $$1, iu $$2) {
+      return dmf.a($$1, $$2.d(), ja.a) && !$$1.A($$2);
    }
 
    @Override
-   protected bub a(dzz $$0, div $$1, iu $$2, cqy $$3, fee $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.ay);
+   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
+      return $$4 == ja.b && !this.a($$0, $$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
+      int $$4 = $$2.u();
+      int $$5 = $$2.v();
+      int $$6 = $$2.w();
+      double $$7 = (double)$$4 + $$3.j();
+      double $$8 = (double)$$5 + 0.7;
+      double $$9 = (double)$$6 + $$3.j();
+      $$1.a(lx.aC, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+      iu.a $$10 = new iu.a();
+
+      for (int $$11 = 0; $$11 < 14; $$11++) {
+         $$10.d($$4 + azm.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azm.a($$3, -10, 10));
+         eah $$12 = $$1.a_($$10);
+         if (!$$12.m($$1, $$10)) {
+            $$1.a(lx.aG, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
+         }
       }
-
-      return bub.a;
-   }
-
-   @Nullable
-   @Override
-   protected bud b(dzz $$0, div $$1, iu $$2) {
-      return new buj(($$2x, $$3, $$4) -> new cwt($$2x, $$3, cvd.a($$1, $$2)), c);
    }
 
    @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean g_(dzz $$0) {
-      return true;
-   }
-
-   @Override
-   protected dzz a(dzz $$0, dst $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dzz a(dzz $$0, drc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dzz $$0, ewv $$1) {
-      return false;
+   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+      return b;
    }
 }

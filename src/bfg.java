@@ -19,7 +19,7 @@ public class bfg extends bbj {
    private static final Set<String> h = Sets.newHashSet();
 
    public bfg(Schema $$0) {
-      super($$0, biw.D);
+      super($$0, bix.D);
    }
 
    protected TypeRewriteRule makeRule() {

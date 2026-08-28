@@ -1,137 +1,89 @@
-import java.util.EnumSet;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class ecz {
-   private static boolean a(ebw $$0) {
-      return $$0.n().a(ecx.l) && $$0.x();
-   }
+public class ecz<T> implements ecu<T> {
+   private final jj<T> a;
+   @Nullable
+   private T b;
+   private final ecv<T> c;
 
-   static CompletableFuture<ebw> a(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<ebw> b(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      if ($$4.p().aZ().y().d()) {
-         $$0.b().a($$4.F_(), $$4.m().h(), $$4.b(), $$3, $$0.c(), $$4.aj());
+   public ecz(jj<T> $$0, ecv<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
-
-      $$4.a($$3);
-      return CompletableFuture.completedFuture($$3);
    }
 
-   static CompletableFuture<ebw> c(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
+   public static <A> ecu<A> a(int $$0, jj<A> $$1, ecv<A> $$2, List<A> $$3) {
+      return new ecz<>($$1, $$2, $$3);
    }
 
-   static CompletableFuture<ebw> d(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.b().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<ebw> e(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      return $$0.b().a($$4.m().i(), eha.a($$5), $$4.b().a($$5), $$3);
-   }
-
-   static CompletableFuture<ebw> f(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      return $$0.b().a(eha.a($$5), $$4.m().i(), $$4.b().a($$5), $$3).thenApply($$0x -> {
-         if ($$0x instanceof ecq $$1x) {
-            efm $$2x = $$1x.z();
-            if ($$2x != null) {
-               efm.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
-         }
-
-         return $$0x;
-      });
-   }
-
-   static CompletableFuture<ebw> g(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.b().a($$5), $$4.m().i(), $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<ebw> h(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      if ($$3 instanceof ecq $$6) {
-         eha.a($$5, $$6);
+   @Override
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
       }
-
-      $$0.b().a($$5, $$4.E(), $$4.m().i(), $$4.D_(), $$4.b().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
    }
 
-   static CompletableFuture<ebw> i(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      arq $$4 = $$0.a();
-      efy.a($$3, EnumSet.of(efy.a.e, efy.a.f, efy.a.d, efy.a.b));
-      ary $$5 = new ary($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$3, $$4.b().a($$5));
-      eha.a($$5, $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<ebw> j(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      aru $$4 = $$0.d();
-      $$3.C();
-      ((ecq)$$3).a($$4);
-      boolean $$5 = a($$3);
-      return $$4.a($$3, $$5);
-   }
-
-   static CompletableFuture<ebw> k(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      boolean $$4 = a($$3);
-      return $$0.d().b($$3, $$4);
-   }
-
-   static CompletableFuture<ebw> l(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      if (!$$3.A()) {
-         $$0.b().a(new ary($$0.a(), $$2, $$1, $$3));
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
       }
-
-      return CompletableFuture.completedFuture($$3);
    }
 
-   static CompletableFuture<ebw> m(edc $$0, eda $$1, bai<arg> $$2, ebw $$3) {
-      dic $$4 = $$3.f();
-      arg $$5 = $$2.a($$4.h, $$4.i);
-      return CompletableFuture.supplyAsync(() -> {
-         ecq $$3x = (ecq)$$3;
-         arq $$4x = $$0.a();
-         ecg $$6;
-         if ($$3x instanceof ecf $$5x) {
-            $$6 = $$5x.G();
-         } else {
-            $$6 = new ecg($$4x, $$3x, $$2xx -> a($$4x, $$3x.I()));
-            $$5.a(new ecf($$6, false));
-         }
-
-         $$6.b($$5::s);
-         $$6.G();
-         $$6.b(true);
-         $$6.K();
-         $$6.b($$4x);
-         $$6.a($$0.f());
-         return $$6;
-      }, $$0.e());
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
    }
 
-   private static void a(arq $$0, List<tz> $$1) {
-      if (!$$1.isEmpty()) {
-         $$0.b(bwm.a($$1, $$0, bwl.r));
+   @Override
+   public void a(vu $$0) {
+      this.b = this.a.b($$0.l());
+   }
+
+   @Override
+   public void b(vu $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return wp.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public ecu<T> a(ecv<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
       }
    }
 }

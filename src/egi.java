@@ -1,68 +1,34 @@
-public final class egi {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+public class egi {
+   public final azv a;
+   private double b;
+   private boolean c;
 
-   private egi() {
+   public egi(azv $$0) {
+      this.a = $$0;
    }
 
-   protected static egc.c a(efr $$0, efr $$1, efr $$2, egl $$3) {
-      dzz $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         egi.a $$8 = $$6 > 0.0 ? egi.a.a : egi.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azm.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azv $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azm.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public void a() {
+      this.c = false;
    }
 
-   protected static enum a {
-      a(dmc.rF.m(), dmc.tN.m(), dmc.c.m(), 0, 50),
-      b(dmc.T.m(), dmc.tM.m(), dmc.re.m(), -60, -8);
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = azm.k($$0) + azm.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-      final dzz e;
-      final dzz f;
-      final dzz g;
-      protected final int c;
-      protected final int d;
-
-      private a(final dzz $$0, final dzz $$1, final dzz $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
       }
    }
 }

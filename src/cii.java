@@ -1,97 +1,150 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import java.util.Locale;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
 public class cii {
-   public static final alf<cih> a = a("armorer");
-   public static final alf<cih> b = a("butcher");
-   public static final alf<cih> c = a("cartographer");
-   public static final alf<cih> d = a("cleric");
-   public static final alf<cih> e = a("farmer");
-   public static final alf<cih> f = a("fisherman");
-   public static final alf<cih> g = a("fletcher");
-   public static final alf<cih> h = a("leatherworker");
-   public static final alf<cih> i = a("librarian");
-   public static final alf<cih> j = a("mason");
-   public static final alf<cih> k = a("shepherd");
-   public static final alf<cih> l = a("toolsmith");
-   public static final alf<cih> m = a("weaponsmith");
-   public static final alf<cih> n = a("home");
-   public static final alf<cih> o = a("meeting");
-   public static final alf<cih> p = a("beehive");
-   public static final alf<cih> q = a("bee_nest");
-   public static final alf<cih> r = a("nether_portal");
-   public static final alf<cih> s = a("lodestone");
-   public static final alf<cih> t = a("lightning_rod");
-   private static final Set<dzz> u = ImmutableList.of(
-         dmc.bu, dmc.bv, dmc.br, dmc.bs, dmc.bp, dmc.bn, dmc.bt, dmc.bj, dmc.bo, dmc.bl, dmc.bi, dmc.bh, new dma[]{dmc.bm, dmc.bq, dmc.bg, dmc.bk}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(dlt.b) == eam.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dzz> v = ImmutableList.of(dmc.fP, dmc.fR, dmc.fQ, dmc.fS)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dzz, je<cih>> w = Maps.newHashMap();
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<cih> b = new Short2ObjectOpenHashMap();
+   private final Map<je<cij>, Set<cih>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   private static Set<dzz> a(dma $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public cii(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
    }
 
-   private static alf<cih> a(String $$0) {
-      return alf.a(mg.aa, alg.b($$0));
+   cii(Runnable $$0, boolean $$1, List<cih> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
    }
 
-   private static cih a(jr<cih> $$0, alf<cih> $$1, Set<dzz> $$2, int $$3, int $$4) {
-      cih $$5 = new cih($$2, $$3, $$4);
-      jr.a($$0, $$1, $$5);
-      a($$0.b($$1), $$2);
-      return $$5;
+   public cii.a a() {
+      return new cii.a(this.e, this.b.values().stream().map(cih::a).toList());
    }
 
-   private static void a(je<cih> $$0, Set<dzz> $$1) {
-      $$1.forEach($$1x -> {
-         je<cih> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)af.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+   public Stream<cih> a(Predicate<je<cij>> $$0, cig.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((je<cij>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(iu $$0, je<cij> $$1) {
+      if (this.a(new cih($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
+      }
+   }
+
+   private boolean a(cih $$0) {
+      iu $$1 = $$0.g();
+      je<cij> $$2 = $$0.h();
+      short $$3 = jx.b($$1);
+      cih $$4 = (cih)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.h())) {
+            return false;
          }
-      });
+
+         af.b("POI data mismatch: already registered at " + $$1);
+      }
+
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
+      return true;
    }
 
-   public static Optional<je<cih>> a(dzz $$0) {
-      return Optional.ofNullable(w.get($$0));
+   public void a(iu $$0) {
+      cih $$1 = (cih)this.b.remove(jx.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
+      } else {
+         this.c.get($$1.h()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
+         this.d.run();
+      }
    }
 
-   public static boolean b(dzz $$0) {
-      return w.containsKey($$0);
+   @Deprecated
+   @bav
+   public int b(iu $$0) {
+      return this.e($$0).map(cih::b).orElse(0);
    }
 
-   public static cih a(jr<cih> $$0) {
-      a($$0, a, a(dmc.oz), 1, 1);
-      a($$0, b, a(dmc.oy), 1, 1);
-      a($$0, c, a(dmc.oA), 1, 1);
-      a($$0, d, a(dmc.fO), 1, 1);
-      a($$0, e, a(dmc.pH), 1, 1);
-      a($$0, f, a(dmc.ox), 1, 1);
-      a($$0, g, a(dmc.oB), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(dmc.oD), 1, 1);
-      a($$0, j, a(dmc.oF), 1, 1);
-      a($$0, k, a(dmc.ow), 1, 1);
-      a($$0, l, a(dmc.oE), 1, 1);
-      a($$0, m, a(dmc.oC), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(dmc.oG), 32, 6);
-      a($$0, p, a(dmc.pK), 0, 1);
-      a($$0, q, a(dmc.pJ), 0, 1);
-      a($$0, r, a(dmc.er), 0, 1);
-      a($$0, s, a(dmc.pV), 0, 1);
-      return a($$0, t, a(dmc.sX), 0, 1);
+   public boolean c(iu $$0) {
+      cih $$1 = (cih)this.b.get(jx.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)af.b(new IllegalStateException("POI never registered at " + $$0));
+      } else {
+         boolean $$2 = $$1.d();
+         this.d.run();
+         return $$2;
+      }
+   }
+
+   public boolean a(iu $$0, Predicate<je<cij>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
+   }
+
+   public Optional<je<cij>> d(iu $$0) {
+      return this.e($$0).map(cih::h);
+   }
+
+   private Optional<cih> e(iu $$0) {
+      return Optional.ofNullable((cih)this.b.get(jx.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<iu, je<cij>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<cih> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.c();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = jx.b($$1x);
+            cih $$4 = (cih)$$1.computeIfAbsent($$3, $$2x -> new cih($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void c() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean b() {
+      return this.e;
+   }
+
+   public static record a(boolean b, List<cih.a> c) {
+      public static final Codec<cii.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(cii.a::a), cih.a.a.listOf().fieldOf("Records").forGetter(cii.a::b))
+               .apply($$0, cii.a::new)
+      );
+
+      public cii a(Runnable $$0) {
+         return new cii($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public List<cih.a> b() {
+         return this.c;
+      }
    }
 }

@@ -1,89 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public record dcb(List<dcb.a> c, float d, int e, boolean f) {
-   public static final Codec<dcb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dcb.a.a.listOf().fieldOf("rules").forGetter(dcb::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dcb::b),
-               ayu.l.optionalFieldOf("damage_per_block", 1).forGetter(dcb::c),
-               Codec.BOOL.optionalFieldOf("can_destroy_blocks_in_creative", true).forGetter(dcb::d)
-            )
-            .apply($$0, dcb::new)
-   );
-   public static final yw<wj, dcb> b = yw.a(dcb.a.b.a(yu.a()), dcb::a, yu.l, dcb::b, yu.h, dcb::c, yu.b, dcb::d, dcb::new);
+public record dcb(int f) implements dbj, dci {
+   public static final int a = 120000;
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final Codec<dcb> d = ayu.a(0, 4).xmap(dcb::new, dcb::a);
+   public static final yw<wj, dcb> e = yw.a(yu.h, dcb::a, dcb::new);
 
-   public float a(dzz $$0) {
-      for (dcb.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
-         }
-      }
-
-      return this.d;
+   @Override
+   public void a(dja $$0, bxe $$1, czd $$2, dbi $$3) {
+      $$1.a(new bvj(bvl.E, 120000, this.f, false, false, true));
    }
 
-   public boolean b(dzz $$0) {
-      for (dcb.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
-         }
-      }
-
-      return false;
+   @Override
+   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
+      List<bvj> $$4 = List.of(new bvj(bvl.E, 120000, this.f, false, false, true));
+      daz.a($$4, $$1, 1.0F, $$0.b());
    }
 
-   public List<dcb.a> a() {
-      return this.c;
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public boolean d() {
+   public int a() {
       return this.f;
-   }
-
-   public static record a(ji<dma> c, Optional<Float> d, Optional<Boolean> e) {
-      public static final Codec<dcb.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jt.a(mg.i).fieldOf("blocks").forGetter(dcb.a::a),
-                  ayu.o.optionalFieldOf("speed").forGetter(dcb.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dcb.a::c)
-               )
-               .apply($$0, dcb.a::new)
-      );
-      public static final yw<wj, dcb.a> b = yw.a(yu.c(mg.i), dcb.a::a, yu.l.a(yu::a), dcb.a::b, yu.b.a(yu::a), dcb.a::c, dcb.a::new);
-
-      public static dcb.a a(ji<dma> $$0, float $$1) {
-         return new dcb.a($$0, Optional.of($$1), Optional.of(true));
-      }
-
-      public static dcb.a a(ji<dma> $$0) {
-         return new dcb.a($$0, Optional.empty(), Optional.of(false));
-      }
-
-      public static dcb.a b(ji<dma> $$0, float $$1) {
-         return new dcb.a($$0, Optional.of($$1), Optional.empty());
-      }
-
-      public ji<dma> a() {
-         return this.c;
-      }
-
-      public Optional<Float> b() {
-         return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
-      }
    }
 }

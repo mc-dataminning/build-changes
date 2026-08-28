@@ -1,13 +1,8 @@
-import java.time.Instant;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public final class bsi {
-   public final Instant a;
-   public final int b;
-   public final bqk c;
-
-   public bsi(Instant $$0, int $$1, bqk $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bsi {
 }

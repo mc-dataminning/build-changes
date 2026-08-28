@@ -1,44 +1,41 @@
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class daj extends cxg {
-   protected final dma a;
-   private final ja b;
+public class daj extends cxl implements cxz {
+   private final awm a;
 
-   public daj(dma $$0, dma $$1, ja $$2, cyu.a $$3) {
-      super($$0, $$3);
+   public daj(dmf $$0, awm $$1, cyz.a $$2) {
+      super($$0, $$2);
       this.a = $$1;
-      this.b = $$2;
    }
 
-   protected boolean a(diy $$0, dzz $$1, iu $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dzz c(dcr $$0) {
-      dzz $$1 = this.a.a($$0);
-      dzz $$2 = null;
-      diy $$3 = $$0.q();
-      iu $$4 = $$0.a();
-
-      for (ja $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dzz $$6 = $$5 == this.b ? this.c().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bud a(dcy $$0) {
+      bud $$1 = super.a($$0);
+      crc $$2 = $$0.o();
+      if ($$1.a() && $$2 != null) {
+         $$2.a($$0.p(), cxr.b($$0.n(), $$2));
       }
 
-      return $$2 != null && $$3.a($$2, $$4, fen.a()) ? $$2 : null;
+      return $$1;
    }
 
    @Override
-   public void a(Map<dma, cyu> $$0, cyu $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   protected awm a(eah $$0) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(@Nullable bxe $$0, dja $$1, iu $$2, @Nullable fem $$3) {
+      if ($$1.k($$2) && $$1.v($$2)) {
+         if (!$$1.C) {
+            $$1.a($$2, this.c().m(), 3);
+         }
+
+         $$1.a($$0, efh.z, $$2);
+         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

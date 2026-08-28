@@ -1,142 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dte extends dvj implements dmd, dtj {
-   public static final MapCodec<dte> a = b(dte::new);
-   public static final int b = 4;
-   public static final eaz c = eap.aV;
-   public static final eaq d = eap.I;
-   private static final ffc e = dma.b(4.0, 0.0, 6.0);
-   private static final ffc f = dma.b(10.0, 0.0, 6.0);
-   private static final ffc g = dma.b(12.0, 0.0, 6.0);
-   private static final ffc h = dma.b(12.0, 0.0, 7.0);
+public class dte extends doq implements dtd {
+   public static final MapCodec<dte> b = b(dte::new);
 
    @Override
    public MapCodec<dte> a() {
-      return a;
+      return b;
    }
 
-   protected dte(dzy.d $$0) {
-      super($$0);
-      this.l(this.B.b().b(c, Integer.valueOf(1)).b(d, Boolean.valueOf(true)));
-   }
-
-   @Nullable
-   @Override
-   public dzz a(dcr $$0) {
-      dzz $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.b(c, Integer.valueOf(Math.min(4, $$1.c(c) + 1)));
-      } else {
-         ewg $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == ewh.c;
-         return super.a($$0).b(d, Boolean.valueOf($$3));
-      }
-   }
-
-   public static boolean o(dzz $$0) {
-      return !$$0.c(d);
+   public dte(eag.d $$0) {
+      super(btf.a(1), $$0);
    }
 
    @Override
-   protected boolean b(dzz $$0, dib $$1, iu $$2) {
-      return !$$0.g($$1, $$2).a(ja.b).c() || $$0.c($$1, $$2, ja.b);
-   }
+   public int a(dti.a $$0, djb $$1, iu $$2, azv $$3, dti $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         iu $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               iu $$10 = $$7.d();
+               eah $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awo.e, 1.0F, 1.0F);
+            }
 
-   @Override
-   protected boolean a(dzz $$0, diy $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
-   }
-
-   @Override
-   protected dzz a(dzz $$0, diy $$1, djk $$2, iu $$3, ja $$4, iu $$5, dzz $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dmc.a.m();
-      } else {
-         if ($$0.c(d)) {
-            $$2.a($$3, ewh.c, ewh.c.a($$1));
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         return $$6;
       }
    }
 
-   @Override
-   protected boolean a(dzz $$0, dcr $$1) {
-      return !$$1.h() && $$1.n().a(this.h()) && $$0.c(c) < 4 ? true : super.a($$0, $$1);
+   private static int a(dti $$0, iu $$1, iu $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azm.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azm.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   protected ffc a(dzz $$0, dib $$1, iu $$2, fen $$3) {
-      return switch ($$0.c(c)) {
-         case 2 -> f;
-         case 3 -> g;
-         case 4 -> h;
-         default -> e;
-      };
+   private eah a(djb $$0, iu $$1, azv $$2, boolean $$3) {
+      eah $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dmh.rD.m().b(dth.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dmh.ry.m();
+      }
+
+      return $$4.b(eax.I) && !$$0.b_($$1).c() ? $$4.b(eax.I, Boolean.valueOf(true)) : $$4;
    }
 
-   @Override
-   protected ewg b_(dzz $$0) {
-      return $$0.c(d) ? ewh.c.a(false) : super.b_($$0);
-   }
+   private static boolean a(djb $$0, iu $$1) {
+      eah $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dmh.J) && $$2.y().b(ewp.c)) {
+         int $$3 = 0;
 
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(c, d);
-   }
+         for (iu $$4 : iu.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            eah $$5 = $$0.a_($$4);
+            if ($$5.a(dmh.ry) || $$5.a(dmh.rD)) {
+               $$3++;
+            }
 
-   @Override
-   public boolean a(diy $$0, iu $$1, dzz $$2) {
-      return !o($$2) && $$0.a_($$1.e()).a(axc.at);
-   }
-
-   @Override
-   public boolean a(div $$0, azv $$1, iu $$2, dzz $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, dzz $$3) {
-      int $$4 = 5;
-      int $$5 = 1;
-      int $$6 = 2;
-      int $$7 = 0;
-      int $$8 = $$2.u() - 2;
-      int $$9 = 0;
-
-      for (int $$10 = 0; $$10 < 5; $$10++) {
-         for (int $$11 = 0; $$11 < $$5; $$11++) {
-            int $$12 = 2 + $$2.v() - 1;
-
-            for (int $$13 = $$12 - 2; $$13 < $$12; $$13++) {
-               iu $$14 = new iu($$8 + $$10, $$13, $$2.w() - $$9 + $$11);
-               if ($$14 != $$2 && $$1.a(6) == 0 && $$0.a_($$14).a(dmc.J)) {
-                  dzz $$15 = $$0.a_($$14.e());
-                  if ($$15.a(axc.at)) {
-                     $$0.a($$14, dmc.ny.m().b(c, Integer.valueOf($$1.a(4) + 1)), 3);
-                  }
-               }
+            if ($$3 > 2) {
+               return false;
             }
          }
 
-         if ($$7 < 2) {
-            $$5 += 2;
-            $$9++;
-         } else {
-            $$5 -= 2;
-            $$9--;
-         }
-
-         $$7++;
+         return true;
+      } else {
+         return false;
       }
-
-      $$0.a($$2, $$3.b(c, Integer.valueOf(4)), 2);
    }
 
    @Override
-   protected boolean a(dzz $$0, ewv $$1) {
+   public boolean d() {
       return false;
    }
 }

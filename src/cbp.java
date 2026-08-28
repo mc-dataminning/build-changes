@@ -1,28 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cbp {
-   public static <E extends bxc> cae<E> a(List<Pair<? extends ccj<? super E>, Integer>> $$0) {
-      return a($$0, bzh.a.b, bzh.b.a);
+public class cbp<T extends bxg> extends byv<T> {
+   private final float c;
+
+   public cbp(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
    }
 
-   public static <E extends bxc> cae<E> a(List<Pair<? extends ccj<? super E>, Integer>> $$0, bzh.a $$1, bzh.b $$2) {
-      cbc<ccj<? super E>> $$3 = new cbc<>();
-      $$0.forEach($$1x -> $$3.a((ccj<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return ccg.a((Function<ccg.b<E>, ? extends App<ccg.c<E>, ccj<E>>>)($$3x -> $$3x.a((ccj<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bzh.a.b) {
-               $$3.a();
-            }
+   public static <T extends bxg> boolean a(T $$0) {
+      return $$0.bj() && $$0.b(axh.a) > $$0.dp() || $$0.bw();
+   }
 
-            for (ccj<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bzh.b.a) {
-                  break;
-               }
-            }
+   protected boolean a(arq $$0, bxg $$1) {
+      return a($$1);
+   }
 
-            return true;
-         }))));
+   protected boolean a(arq $$0, bxg $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arq $$0, bxg $$1, long $$2) {
+      if ($$1.dY().i() < this.c) {
+         $$1.N().a();
+      }
    }
 }

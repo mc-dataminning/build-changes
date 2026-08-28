@@ -1,54 +1,70 @@
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ddn extends ded {
-   public ddn(ddc $$0) {
-      super("", $$0, dee.a(Map.of('#', ddl.a(czc.rB), 'x', ddl.a(czc.sX)), "###", "#x#", "###"), new cyy(czc.vo));
+public class ddn extends ddk {
+   private static final ddq c = ddq.a(czh.rE);
+   private static final ddq d = ddq.a(czh.qi);
+   private static final ddq e = ddq.a(czh.vF);
+
+   public ddn(ddh $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(ddd $$0, div $$1) {
-      if (!super.a($$0, $$1)) {
+   public boolean a(ddi $$0, dja $$1) {
+      if ($$0.e() < 2) {
          return false;
       } else {
-         cyy $$2 = c($$0);
-         if ($$2.f()) {
-            return false;
-         } else {
-            eyb $$3 = czl.b($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.d() ? false : $$3.g < 4;
+         boolean $$2 = false;
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czd $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
+                  return false;
+               }
+            }
+         }
+
+         return $$2 && $$3 >= 1;
+      }
+   }
+
+   public czd a(ddi $$0, jg.a $$1) {
+      List<dbr> $$2 = new ArrayList<>();
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czd $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               dbr $$6 = $$5.a(kj.ai);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
             }
          }
       }
+
+      czd $$7 = new czd(czh.vE, 3);
+      $$7.b(kj.aj, new dbs($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public cyy a(ddd $$0, jg.a $$1) {
-      cyy $$2 = c($$0).c(1);
-      $$2.b(kj.O, dbv.b);
-      return $$2;
-   }
-
-   private static cyy c(ddd $$0) {
-      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-         cyy $$2 = $$0.a($$1);
-         if ($$2.c(kj.M)) {
-            return $$2;
-         }
-      }
-
-      return cyy.k;
-   }
-
-   @Override
-   public boolean al_() {
-      return true;
-   }
-
-   @Override
-   public ddz<ddn> a() {
-      return ddz.f;
+   public dee<ddn> a() {
+      return dee.g;
    }
 }

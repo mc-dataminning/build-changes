@@ -28,7 +28,7 @@ public class gm implements ArgumentType<gh> {
       return new gm($$0);
    }
 
-   public static fei a(CommandContext<ei> $$0, String $$1) {
+   public static feq a(CommandContext<ei> $$0, String $$1) {
       return ((gh)$$0.getArgument($$1, gh.class)).a((ei)$$0.getSource());
    }
 

@@ -1,43 +1,43 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class emp extends emu {
-   public static final MapCodec<emp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, emp::new));
-   protected final int b;
+public class emp implements elq {
+   public static final Codec<emp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axr.b(mg.i).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               enr.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               eqf.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               epv.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bti.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bti.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, emp::new)
+   );
+   public final axr<dmf> b;
+   public final enr c;
+   public final je<eqf> d;
+   public final epv e;
+   public final bti f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bti j;
+   public final float k;
 
-   protected static <P extends emp> P3<Mu<P>, btg, btg, Integer> a(Instance<P> $$0) {
-      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
-   }
-
-   public emp(btg $$0, btg $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected emv<?> a() {
-      return emv.a;
-   }
-
-   @Override
-   protected void a(djb $$0, emu.b $$1, azv $$2, eme $$3, int $$4, emu.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(azv $$0, int $$1, eme $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
+   public emp(axr<dmf> $$0, enr $$1, je<eqf> $$2, epv $$3, bti $$4, float $$5, int $$6, float $$7, bti $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

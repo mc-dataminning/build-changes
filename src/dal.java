@@ -1,18 +1,19 @@
-public class dal extends cxc {
-   public dal(cyu.a $$0) {
+import javax.annotation.Nullable;
+
+public class dal extends cxh {
+   public dal(cyz.a $$0) {
       super($$0);
    }
 
    @Override
-   public cyy m() {
-      cyy $$0 = super.m();
-      $$0.b(kj.R, new dau(dav.C));
-      return $$0;
+   public crk a(dja $$0, czd $$1, bxe $$2, @Nullable czd $$3) {
+      return new csd($$0, $$2, $$1.c(1), $$3);
    }
 
    @Override
-   public wy a(cyy $$0) {
-      dau $$1 = $$0.a(kj.R);
-      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
+   public crx a(dja $$0, jo $$1, czd $$2, ja $$3) {
+      csd $$4 = new csd($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = crk.a.b;
+      return $$4;
    }
 }

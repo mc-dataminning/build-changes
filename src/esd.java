@@ -1,112 +1,58 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class esd {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<je<esd>>> d = new MutableObject();
-   public static final Codec<esd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(esd::a),
-               Codec.mapPair(esb.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, esd::new)
+public class esd extends esj {
+   public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eqf.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, esd::new)
    );
-   public static final Codec<je<esd>> b = af.a(alc.a(mg.be, a), d::setValue);
-   private final List<Pair<esb, Integer>> e;
-   private final ObjectArrayList<esb> f;
-   private final je<esd> g;
-   private int h = Integer.MIN_VALUE;
+   private final je<eqf> b;
+   private final tz c;
 
-   public esd(je<esd> $$0, List<Pair<esb, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<esb, Integer> $$2 : $$1) {
-         esb $$3 = (esb)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   protected esd(je<eqf> $$0, esl.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   public esd(je<esd> $$0, List<Pair<Function<esd.a, ? extends esb>, Integer>> $$1, esd.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<esd.a, ? extends esb>, Integer> $$3 : $$1) {
-         esb $$4 = (esb)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   private tz b() {
+      tz $$0 = new tz();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dyj.a.a.c());
+      return $$0;
    }
 
-   public int a(euw $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != eru.b).mapToInt($$1 -> $$1.a($$0, iu.c, dst.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   @Override
+   public jz a(eve $$0, dsz $$1) {
+      return jz.i;
    }
 
-   public je<esd> a() {
-      return this.g;
+   @Override
+   public List<evd.a> a(eve $$0, iu $$1, dsz $$2, azv $$3) {
+      return List.of(evd.a.a(new evd.d($$1, dmh.pH.m().b(dqm.b, jc.a(ja.a, ja.d)), this.c)));
    }
 
-   public esb a(azv $$0) {
-      return (esb)(this.f.isEmpty() ? eru.b : (esb)this.f.get($$0.a(this.f.size())));
+   @Override
+   public eqt a(eve $$0, iu $$1, dsz $$2) {
+      jz $$3 = this.a($$0, $$2);
+      return new eqt($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
-   public List<esb> b(azv $$0) {
-      return af.a(this.f, $$0);
+   @Override
+   public boolean a(eve $$0, djz $$1, djw $$2, ecf $$3, iu $$4, iu $$5, dsz $$6, eqt $$7, azv $$8, eun $$9, boolean $$10) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
-   public int b() {
-      return this.f.size();
+   @Override
+   public esk<?> a() {
+      return esk.c;
    }
 
-   public static enum a implements bak {
-      a("terrain_matching", ImmutableList.of(new eub(efy.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final bak.a<esd.a> c = bak.a(esd.a::values);
-      private final String d;
-      private final ImmutableList<eus> e;
-
-      private a(final String $$0, final ImmutableList<eus> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static esd.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<eus> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

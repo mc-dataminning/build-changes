@@ -1,40 +1,145 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
 public class ewy {
-   private static final int a = 4096;
-   private static final int b = 4095;
-   private final long[] c = new long[4096];
-   private final ewx[] d = new ewx[4096];
+   private exa[] a = new exa[128];
+   private int b;
 
-   public ewx a(dib $$0, iu $$1) {
-      long $$2 = $$1.a();
-      int $$3 = a($$2);
-      ewx $$4 = this.a($$3, $$2);
-      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
-   }
+   public exa a(exa $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            exa[] $$1 = new exa[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
 
-   @Nullable
-   private ewx a(int $$0, long $$1) {
-      return this.c[$$0] == $$1 ? this.d[$$0] : null;
-   }
-
-   private ewx a(dib $$0, iu $$1, int $$2, long $$3) {
-      ewx $$4 = exc.b($$0, $$1);
-      this.c[$$2] = $$3;
-      this.d[$$2] = $$4;
-      return $$4;
-   }
-
-   public void a(iu $$0) {
-      long $$1 = $$0.a();
-      int $$2 = a($$1);
-      if (this.c[$$2] == $$1) {
-         this.d[$$2] = null;
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   private static int a(long $$0) {
-      return (int)HashCommon.mix($$0) & 4095;
+   public void a() {
+      this.b = 0;
+   }
+
+   public exa b() {
+      return this.a[0];
+   }
+
+   public exa c() {
+      exa $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(exa $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(exa $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      exa $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         exa $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      exa $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         exa $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         exa $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public exa[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

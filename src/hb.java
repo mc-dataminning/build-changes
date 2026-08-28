@@ -136,7 +136,7 @@ public class hb {
                   }
                }
 
-               for (dis $$6 : dis.values()) {
+               for (dix $$6 : dix.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class hb {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               dis $$4 = dis.a($$3, null);
+               dix $$4 = dix.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class hb {
                      if (!($$2x instanceof arr)) {
                         return false;
                      } else {
-                        dis $$3x = ((arr)$$2x).h.b();
+                        dix $$3x = ((arr)$$2x).h.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,7 +183,7 @@ public class hb {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               ffp $$3 = $$2x.cr();
+               ffx $$3 = $$2x.cr();
                String $$4 = $$3 == null ? "" : $$3.c();
                return $$4.equals($$2) != $$1;
             });
@@ -215,15 +215,15 @@ public class hb {
                }
 
                if ($$0.f()) {
-                  axr<bwm<?>> $$3 = axr.a(mg.B, alg.a($$0.g()));
+                  axr<bwo<?>> $$3 = axr.a(mg.B, alg.a($$0.g()));
                   $$0.a($$2x -> $$2x.aq().a($$3) != $$2);
                } else {
                   alg $$4 = alg.a($$0.g());
-                  bwm<?> $$5 = mf.f.b($$4).orElseThrow(() -> {
+                  bwo<?> $$5 = mf.f.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bwm.bS, $$5) && !$$2) {
+                  if (Objects.equals(bwo.bS, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
@@ -245,7 +245,7 @@ public class hb {
             $$0.a($$2x -> {
                tz $$3 = $$2x.f(new tz());
                if ($$2x instanceof arr $$4) {
-                  cyy $$5 = $$4.gi().f();
+                  czd $$5 = $$4.gj().g();
                   if (!$$5.f()) {
                      $$3.a("SelectedItem", $$5.a($$4.dX()));
                   }
@@ -277,15 +277,15 @@ public class hb {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  ffn $$2x = $$1x.cV().aJ();
+                  ffv $$2x = $$1x.cV().aJ();
 
                   for (Entry<String, cv.d> $$3x : $$2.entrySet()) {
-                     fff $$4x = $$2x.a($$3x.getKey());
+                     ffn $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     ffj $$5 = $$2x.d($$1x, $$4x);
+                     ffr $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -383,19 +383,19 @@ public class hb {
          }, $$0 -> !$$0.H(), wy.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            alf<fci> $$2 = alf.a(mg.br, alg.a($$0.g()));
+            alf<fcq> $$2 = alf.a(mg.bs, alg.a($$0.g()));
             $$0.a($$2x -> {
                if (!($$2x.dV() instanceof arq)) {
                   return false;
                } else {
                   arq $$3 = (arq)$$2x.dV();
-                  Optional<fci> $$4 = $$3.p().bc().a().c($$2).map(je::a);
+                  Optional<fcq> $$4 = $$3.p().bc().a().c($$2).map(je::a);
                   if ($$4.isEmpty()) {
                      return false;
                   } else {
-                     ezc $$5 = new ezc.a($$3).a(fbt.a, $$2x).a(fbt.f, $$2x.dt()).a(fbs.e);
-                     eyz $$6 = new eyz.a($$5).a(Optional.empty());
-                     $$6.b(eyz.a($$4.get()));
+                     ezk $$5 = new ezk.a($$3).a(fcb.a, $$2x).a(fcb.f, $$2x.dt()).a(fca.e);
+                     ezh $$6 = new ezh.a($$5).a(Optional.empty());
+                     $$6.b(ezh.a($$4.get()));
                      return $$1 ^ $$4.get().test($$6);
                   }
                }

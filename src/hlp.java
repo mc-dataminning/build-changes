@@ -1,7 +1,7 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
-
 public interface hlp {
-   void a(Map<UUID, atk.c> var1, Consumer<atk.b> var2);
+   void a(hlp.a var1);
+
+   public interface a {
+      hls a(alg var1);
+   }
 }

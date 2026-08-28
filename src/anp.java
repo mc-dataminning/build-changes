@@ -19,12 +19,12 @@ public class anp {
       );
    }
 
-   private static void a(ei $$0, arr $$1, dis $$2) {
+   private static void a(ei $$0, arr $$1, dix $$2) {
       wy $$3 = wy.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> wy.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().O().c(dir.p)) {
+         if ($$0.e().O().c(diw.q)) {
             $$1.a(wy.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class anp {
       }
    }
 
-   private static int a(CommandContext<ei> $$0, Collection<arr> $$1, dis $$2) {
+   private static int a(CommandContext<ei> $$0, Collection<arr> $$1, dix $$2) {
       int $$3 = 0;
 
       for (arr $$4 : $$1) {

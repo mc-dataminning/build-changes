@@ -1,107 +1,41 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class guh implements gtu.a {
-   private final fos a;
-   private final Map<alf<div>, Map<String, eql>> b = Maps.newIdentityHashMap();
-   private final Map<alf<div>, Map<String, aax.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class guh implements guc.a {
+   private final foz a;
+   private static final int b = 10;
 
-   public guh(fos $$0) {
+   public guh(foz $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fjc $$0, gps $$1, double $$2, double $$3, double $$4) {
-      fnz $$5 = this.a.j.k();
-      alf<div> $$6 = this.a.s.aj();
-      iu $$7 = iu.a($$5.b().d, 0.0, $$5.b().f);
-      fjg $$8 = $$1.getBuffer(gqc.y());
-      if (this.b.containsKey($$6)) {
-         for (eql $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               gqm.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
+   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
+      dja $$5 = this.a.s;
+      iu $$6 = iu.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
+
+      for (iu $$8 : iu.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(djj.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azm.g($$10, 0.9F, 0.9F);
+         long $$12 = jx.e($$8.a());
+         if ($$7.add($$12)) {
+            guc.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(djj.a, jx.a($$12)),
+               (double)jx.a(jx.b($$12), 8),
+               (double)jx.a(jx.c($$12), 8),
+               (double)jx.a(jx.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            guc.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-
-      Map<String, aax.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (aax.a $$11 : $$10.values()) {
-            eql $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  gqm.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  gqm.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   public void a(eql $$0, List<aax.a> $$1, alf<div> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, aax.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (aax.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

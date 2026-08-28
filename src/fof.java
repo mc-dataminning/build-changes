@@ -1,29 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class fof {
-   private final List<xd> a = Lists.newArrayList();
+public enum fof implements azp {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public void a(xd $$0) {
-      this.a.add($$0);
+   private static final IntFunction<fof> d = ayc.a(fof::b, values(), ayc.a.b);
+   private final int e;
+   private final String f;
+
+   private fof(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   public xd a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xd.a(this.a);
-      }
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public xd b() {
-      xd $$0 = this.a();
-      return $$0 != null ? $$0 : xd.b;
+   @Override
+   public String a() {
+      return this.f;
    }
 
-   public void c() {
-      this.a.clear();
+   public static fof a(int $$0) {
+      return d.apply($$0);
    }
 }

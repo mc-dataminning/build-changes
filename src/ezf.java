@@ -1,67 +1,69 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ezf {
-   private final azt a;
-   private final bay b;
-   private final Optional<jf.a> c;
-   private final Set<alf<?>> d;
-
-   public ezf(azt $$0, bay $$1, jf.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
-   }
-
-   public ezf(azt $$0, bay $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
-   }
-
-   private ezf(azt $$0, bay $$1, Optional<jf.a> $$2, Set<alf<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public ezf a(String $$0) {
-      return new ezf(this.a.a($$0), this.b, this.c, this.d);
-   }
-
-   public ezf a(String $$0, alf<?> $$1) {
-      Set<alf<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new ezf(this.a.a($$0), this.b, this.c, $$2);
-   }
-
-   public boolean a(alf<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
-
-   public void a(eza $$0) {
-      Set<bax<?>> $$1 = $$0.a();
-      Set<bax<?>> $$2 = Sets.difference($$1, this.b.b());
-      if (!$$2.isEmpty()) {
-         this.a.b("Parameters " + $$2 + " are not provided in this context");
+public interface ezf {
+   eze<dbv> a = new eze<dbv>() {
+      @Override
+      public ki<dbv> a() {
+         return kj.ap;
       }
-   }
 
-   public jf.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
+      public Stream<czd> a(dbv $$0) {
+         return $$0.b();
+      }
 
-   public boolean b() {
-      return this.c.isPresent();
-   }
+      public dbv c() {
+         return dbv.a;
+      }
 
-   public ezf a(bay $$0) {
-      return new ezf(this.a, $$0, this.c, this.d);
-   }
+      public dbv a(dbv $$0, Stream<czd> $$1) {
+         return dbv.a($$1.toList());
+      }
+   };
+   eze<dbg> b = new eze<dbg>() {
+      @Override
+      public ki<dbg> a() {
+         return kj.Q;
+      }
 
-   public azt c() {
-      return this.a;
-   }
+      public dbg c() {
+         return dbg.a;
+      }
+
+      public Stream<czd> a(dbg $$0) {
+         return $$0.b();
+      }
+
+      public dbg a(dbg $$0, Stream<czd> $$1) {
+         dbg.a $$2 = new dbg.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eze<dbh> c = new eze<dbh>() {
+      @Override
+      public ki<dbh> a() {
+         return kj.P;
+      }
+
+      public dbh c() {
+         return dbh.a;
+      }
+
+      public Stream<czd> a(dbh $$0) {
+         return $$0.a().stream();
+      }
+
+      public dbh a(dbh $$0, Stream<czd> $$1) {
+         return dbh.a($$1.toList());
+      }
+   };
+   Map<ki<?>, eze<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eze::a, $$0 -> (eze<?>)$$0));
+   Codec<eze<?>> e = mf.am.q().comapFlatMap($$0 -> {
+      eze<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eze::a);
 }

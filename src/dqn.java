@@ -1,95 +1,92 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dqn extends dkt {
-   public static final MapCodec<dqn> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(djy.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.i), kb.b.fieldOf("interactions").forGetter($$0x -> $$0x.b), t())
-            .apply($$0, dqn::new)
-   );
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final eaz f = eap.aN;
-   private static final int g = 6;
-   private static final double h = 3.0;
-   private final djy.c i;
+public class dqn extends dlr {
+   public static final MapCodec<dqn> a = b(dqn::new);
+   public static final eay b = eax.q;
 
    @Override
    public MapCodec<dqn> a() {
-      return c;
+      return a;
    }
 
-   public dqn(djy.c $$0, kb.a $$1, dzy.d $$2) {
-      super($$2, $$1);
-      this.i = $$0;
-      this.l(this.B.b().b(f, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dzz $$0) {
-      return $$0.c(f) == 3;
+   protected dqn(eag.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(ewf $$0) {
-      return $$0 == ewh.c && this.i == djy.c.b;
-   }
-
-   @Override
-   protected double b(dzz $$0) {
-      return (6.0 + (double)$$0.c(f).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   protected void a(dzz $$0, div $$1, iu $$2, bwd $$3) {
-      if ($$1 instanceof arq $$4 && $$3.bY() && this.a($$0, $$2, $$3)) {
-         $$3.aH();
-         if ($$3.c($$4, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
+   public void a(dja $$0, iu $$1, eah $$2, @Nullable bxe $$3, czd $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dbl $$5 = $$4.a(kj.aa, dbl.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   private void e(dzz $$0, div $$1, iu $$2) {
-      if (this.i == djy.c.c) {
-         d(dmc.fQ.m().b(f, $$0.c(f)), $$1, $$2);
+   @Override
+   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dyk $$5) {
+         $$5.s();
+         return bud.a;
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dzz $$0, div $$1, iu $$2) {
-      int $$3 = $$0.c(f) - 1;
-      dzz $$4 = $$3 == 0 ? dmc.fP.m() : $$0.b(f, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(eez.c, $$2, eez.a.a($$4));
-   }
-
-   @Override
-   public void a(dzz $$0, div $$1, iu $$2, djy.c $$3) {
-      if (dmw.a($$1, $$3) && $$0.c(f) != 3 && $$3 == this.i) {
-         dzz $$4 = $$0.a(f);
-         $$1.b($$2, $$4);
-         $$1.a(eez.c, $$2, eez.a.a($$4));
+         return bud.e;
       }
    }
 
    @Override
-   protected int a(dzz $$0, div $$1, iu $$2) {
-      return $$0.c(f);
-   }
-
-   @Override
-   protected void a(eaa.a<dma, dzz> $$0) {
-      $$0.a(f);
-   }
-
-   @Override
-   protected void a(dzz $$0, div $$1, iu $$2, ewf $$3) {
-      if (!this.d($$0)) {
-         dzz $$4 = $$0.b(f, Integer.valueOf($$0.c(f) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(eez.c, $$2, eez.a.a($$4));
-         $$1.c(1047, $$2, 0);
+   protected bud a(czd $$0, eah $$1, dja $$2, iu $$3, crc $$4, buc $$5, fem $$6) {
+      if ($$1.c(b)) {
+         return bud.f;
+      } else {
+         czd $$7 = $$4.b($$5);
+         bud $$8 = czi.a($$2, $$3, $$7, $$4);
+         return (bud)(!$$8.a() ? bud.f : $$8);
       }
+   }
+
+   @Override
+   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
+      btz.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public dxf a(iu $$0, eah $$1) {
+      return new dyk($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(eah $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(eah $$0, dig $$1, iu $$2, ja $$3) {
+      if ($$1.c_($$2) instanceof dyk $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   protected boolean c_(eah $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eah $$0, dja $$1, iu $$2) {
+      return $$1.c_($$2) instanceof dyk $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected void a(eai.a<dmf, eah> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
+      return $$1.c(b) ? a($$2, dxh.e, dyk::a) : null;
    }
 }

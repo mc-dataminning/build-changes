@@ -8,51 +8,53 @@ public interface lg {
    Logger a = LogUtils.getLogger();
    lg b = ($$0, $$1) -> $$1;
 
-   cyy dispense(ld var1, cyy var2);
+   czd dispense(ld var1, czd var2);
 
    static void a() {
-      dog.a(czc.ph);
-      dog.a(czc.ww);
-      dog.a(czc.wv);
-      dog.a(czc.rE);
-      dog.a(czc.rp);
-      dog.a(czc.va);
-      dog.a(czc.wu);
-      dog.a(czc.wx);
-      dog.a(czc.vz);
-      dog.a(czc.vb);
-      dog.a(czc.vc);
+      dol.a(czh.pk);
+      dol.a(czh.wB);
+      dol.a(czh.wA);
+      dol.a(czh.rH);
+      dol.a(czh.rI);
+      dol.a(czh.rJ);
+      dol.a(czh.rs);
+      dol.a(czh.vf);
+      dol.a(czh.wz);
+      dol.a(czh.wC);
+      dol.a(czh.vE);
+      dol.a(czh.vg);
+      dol.a(czh.vh);
       lf $$0 = new lf() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            ja $$2 = $$0.d().c(dog.b);
-            bwm<?> $$3 = ((daf)$$1.h()).a($$0.b().F_(), $$1);
+         public czd a(ld $$0, czd $$1) {
+            ja $$2 = $$0.d().c(dol.b);
+            bwo<?> $$3 = ((dak)$$1.h()).a($$0.b().F_(), $$1);
 
             try {
-               $$3.a($$0.b(), $$1, null, $$0.c().a($$2), bwl.o, $$2 != ja.b, false);
+               $$3.a($$0.b(), $$1, null, $$0.c().a($$2), bwn.o, $$2 != ja.b, false);
             } catch (Exception var6) {
                a.error("Error while dispensing spawn egg from dispenser at {}", $$0.c(), var6);
-               return cyy.k;
+               return czd.k;
             }
 
             $$1.h(1);
-            $$0.b().a(null, eez.t, $$0.c());
+            $$0.b().a(null, efh.t, $$0.c());
             return $$1;
          }
       };
 
-      for (daf $$1 : daf.a()) {
-         dog.a($$1, $$0);
+      for (dak $$1 : dak.a()) {
+         dol.a($$1, $$0);
       }
 
-      dog.a(czc.vL, new lf() {
+      dol.a(czh.vQ, new lf() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            ja $$2 = $$0.d().c(dog.b);
+         public czd a(ld $$0, czd $$1) {
+            ja $$2 = $$0.d().c(dol.b);
             iu $$3 = $$0.c().a($$2);
             arq $$4 = $$0.b();
-            Consumer<cms> $$5 = bwm.a($$1x -> $$1x.w($$2.p()), $$4, $$1, null);
-            cms $$6 = bwm.f.a($$4, $$5, $$3, bwl.o, false, false);
+            Consumer<cmw> $$5 = bwo.a($$1x -> $$1x.w($$2.p()), $$4, $$1, null);
+            cmw $$6 = bwo.f.a($$4, $$5, $$3, bwn.o, false, false);
             if ($$6 != null) {
                $$1.h(1);
             }
@@ -60,13 +62,13 @@ public interface lg {
             return $$1;
          }
       });
-      dog.a(czc.ff, new lj() {
+      dol.a(czh.fh, new lj() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            iu $$2 = $$0.c().a($$0.d().c(dog.b));
+         public czd a(ld $$0, czd $$1) {
+            iu $$2 = $$0.c().a($$0.d().c(dol.b));
 
-            for (clc $$4 : $$0.b().a(clc.class, new fed($$2), $$0x -> $$0x.bK() && !$$0x.t())) {
-               if ($$4.gH() && $$4.a_(499).a($$1)) {
+            for (clg $$4 : $$0.b().a(clg.class, new fel($$2), $$0x -> $$0x.bK() && !$$0x.t())) {
+               if ($$4.gI() && $$4.a_(499).a($$1)) {
                   $$1.h(1);
                   this.a(true);
                   return $$1;
@@ -76,87 +78,87 @@ public interface lg {
             return super.a($$0, $$1);
          }
       });
-      dog.a(czc.oB, new le(bwm.aG));
-      dog.a(czc.oD, new le(bwm.bp));
-      dog.a(czc.oF, new le(bwm.m));
-      dog.a(czc.oH, new le(bwm.at));
-      dog.a(czc.oN, new le(bwm.F));
-      dog.a(czc.oJ, new le(bwm.a));
-      dog.a(czc.oL, new le(bwm.w));
-      dog.a(czc.oR, new le(bwm.aA));
-      dog.a(czc.oP, new le(bwm.aL));
-      dog.a(czc.oT, new le(bwm.j));
-      dog.a(czc.oC, new le(bwm.aH));
-      dog.a(czc.oE, new le(bwm.bq));
-      dog.a(czc.oG, new le(bwm.n));
-      dog.a(czc.oI, new le(bwm.au));
-      dog.a(czc.oO, new le(bwm.G));
-      dog.a(czc.oK, new le(bwm.b));
-      dog.a(czc.oM, new le(bwm.x));
-      dog.a(czc.oS, new le(bwm.aB));
-      dog.a(czc.oQ, new le(bwm.aM));
-      dog.a(czc.oU, new le(bwm.i));
+      dol.a(czh.oE, new le(bwo.aG));
+      dol.a(czh.oG, new le(bwo.bp));
+      dol.a(czh.oI, new le(bwo.m));
+      dol.a(czh.oK, new le(bwo.at));
+      dol.a(czh.oQ, new le(bwo.F));
+      dol.a(czh.oM, new le(bwo.a));
+      dol.a(czh.oO, new le(bwo.w));
+      dol.a(czh.oU, new le(bwo.aA));
+      dol.a(czh.oS, new le(bwo.aL));
+      dol.a(czh.oW, new le(bwo.j));
+      dol.a(czh.oF, new le(bwo.aH));
+      dol.a(czh.oH, new le(bwo.bq));
+      dol.a(czh.oJ, new le(bwo.n));
+      dol.a(czh.oL, new le(bwo.au));
+      dol.a(czh.oR, new le(bwo.G));
+      dol.a(czh.oN, new le(bwo.b));
+      dol.a(czh.oP, new le(bwo.x));
+      dol.a(czh.oV, new le(bwo.aB));
+      dol.a(czh.oT, new le(bwo.aM));
+      dol.a(czh.oX, new le(bwo.i));
       lg $$2 = new lf() {
          private final lf c = new lf();
 
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            cxu $$2 = (cxu)$$1.h();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            div $$4 = $$0.b();
+         public czd a(ld $$0, czd $$1) {
+            cxz $$2 = (cxz)$$1.h();
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            dja $$4 = $$0.b();
             if ($$2.a(null, $$4, $$3, null)) {
                $$2.a(null, $$4, $$1, $$3);
-               return this.a($$0, $$1, new cyy(czc.rl));
+               return this.a($$0, $$1, new czd(czh.ro));
             } else {
                return this.c.dispense($$0, $$1);
             }
          }
       };
-      dog.a(czc.rn, $$2);
-      dog.a(czc.rm, $$2);
-      dog.a(czc.ro, $$2);
-      dog.a(czc.rt, $$2);
-      dog.a(czc.ru, $$2);
-      dog.a(czc.rs, $$2);
-      dog.a(czc.rv, $$2);
-      dog.a(czc.rw, $$2);
-      dog.a(czc.rx, $$2);
-      dog.a(czc.rl, new lf() {
+      dol.a(czh.rq, $$2);
+      dol.a(czh.rp, $$2);
+      dol.a(czh.rr, $$2);
+      dol.a(czh.rw, $$2);
+      dol.a(czh.rx, $$2);
+      dol.a(czh.rv, $$2);
+      dol.a(czh.ry, $$2);
+      dol.a(czh.rz, $$2);
+      dol.a(czh.rA, $$2);
+      dol.a(czh.ro, new lf() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            diw $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            dzz $$4 = $$2.a_($$3);
-            if ($$4.b() instanceof dmi $$6) {
-               cyy $$7 = $$6.a(null, $$2, $$3, $$4);
+         public czd a(ld $$0, czd $$1) {
+            djb $$2 = $$0.b();
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            eah $$4 = $$2.a_($$3);
+            if ($$4.b() instanceof dmn $$6) {
+               czd $$7 = $$6.a(null, $$2, $$3, $$4);
                if ($$7.f()) {
                   return super.a($$0, $$1);
                } else {
-                  $$2.a(null, eez.y, $$3);
-                  cyu $$8 = $$7.h();
-                  return this.a($$0, $$1, new cyy($$8));
+                  $$2.a(null, efh.y, $$3);
+                  cyz $$8 = $$7.h();
+                  return this.a($$0, $$1, new czd($$8));
                }
             } else {
                return super.a($$0, $$1);
             }
          }
       });
-      dog.a(czc.pd, new lj() {
+      dol.a(czh.pg, new lj() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
+         protected czd a(ld $$0, czd $$1) {
             arq $$2 = $$0.b();
             this.a(true);
-            ja $$3 = $$0.d().c(dog.b);
+            ja $$3 = $$0.d().c(dol.b);
             iu $$4 = $$0.c().a($$3);
-            dzz $$5 = $$2.a_($$4);
-            if (dln.a($$2, $$4, $$3)) {
-               $$2.b($$4, dln.a($$2, $$4));
-               $$2.a(null, eez.i, $$4);
-            } else if (dmp.i($$5) || dmq.h($$5) || dmr.h($$5)) {
-               $$2.b($$4, $$5.b(eap.u, Boolean.valueOf(true)));
-               $$2.a(null, eez.c, $$4);
-            } else if ($$5.b() instanceof duv) {
-               duv.a($$2, $$4);
+            eah $$5 = $$2.a_($$4);
+            if (dls.a($$2, $$4, $$3)) {
+               $$2.b($$4, dls.a($$2, $$4));
+               $$2.a(null, efh.i, $$4);
+            } else if (dmv.i($$5) || dmw.h($$5) || dmx.h($$5)) {
+               $$2.b($$4, $$5.b(eax.u, Boolean.valueOf(true)));
+               $$2.a(null, efh.c, $$4);
+            } else if ($$5.b() instanceof dvd) {
+               dvd.a($$2, $$4);
                $$2.a($$4, false);
             } else {
                this.a(false);
@@ -170,13 +172,13 @@ public interface lg {
             return $$1;
          }
       });
-      dog.a(czc.sB, new lj() {
+      dol.a(czh.sG, new lj() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
+         protected czd a(ld $$0, czd $$1) {
             this.a(true);
-            div $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            if (!cxi.a($$1, $$2, $$3) && !cxi.a($$1, $$2, $$3, null)) {
+            dja $$2 = $$0.b();
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            if (!cxn.a($$1, $$2, $$3) && !cxn.a($$1, $$2, $$3, null)) {
                this.a(false);
             } else if (!$$2.C) {
                $$2.c(1505, $$3, 15);
@@ -185,31 +187,31 @@ public interface lg {
             return $$1;
          }
       });
-      dog.a(dmc.cs, new lf() {
+      dol.a(dmh.cu, new lf() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
-            div $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            cne $$4 = new cne($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
+         protected czd a(ld $$0, czd $$1) {
+            dja $$2 = $$0.b();
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            cni $$4 = new cni($$2, (double)$$3.u() + 0.5, (double)$$3.v(), (double)$$3.w() + 0.5, null);
             $$2.b($$4);
-            $$2.a(null, $$4.dA(), $$4.dC(), $$4.dG(), awn.Az, awo.e, 1.0F, 1.0F);
-            $$2.a(null, eez.t, $$3);
+            $$2.a(null, $$4.dA(), $$4.dC(), $$4.dG(), awn.AC, awo.e, 1.0F, 1.0F);
+            $$2.a(null, efh.t, $$3);
             $$1.h(1);
             return $$1;
          }
       });
-      dog.a(czc.vr, new lj() {
+      dol.a(czh.vw, new lj() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
-            div $$2 = $$0.b();
-            ja $$3 = $$0.d().c(dog.b);
+         protected czd a(ld $$0, czd $$1) {
+            dja $$2 = $$0.b();
+            ja $$3 = $$0.d().c(dol.b);
             iu $$4 = $$0.c().a($$3);
-            if ($$2.v($$4) && dwh.b($$2, $$4, $$1)) {
-               $$2.a($$4, dmc.he.m().b(dtk.e, Integer.valueOf(ebf.a($$3))), 3);
-               $$2.a(null, eez.i, $$4);
-               dwx $$5 = $$2.c_($$4);
-               if ($$5 instanceof dyn) {
-                  dwh.a($$2, $$4, (dyn)$$5);
+            if ($$2.v($$4) && dwp.b($$2, $$4, $$1)) {
+               $$2.a($$4, dmh.hh.m().b(dtr.e, Integer.valueOf(ebn.a($$3))), 3);
+               $$2.a(null, efh.i, $$4);
+               dxf $$5 = $$2.c_($$4);
+               if ($$5 instanceof dyv) {
+                  dwp.a($$2, $$4, (dyv)$$5);
                }
 
                $$1.h(1);
@@ -221,16 +223,16 @@ public interface lg {
             return $$1;
          }
       });
-      dog.a(dmc.es, new lj() {
+      dol.a(dmh.ev, new lj() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
-            div $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            dmv $$4 = (dmv)dmc.es;
+         protected czd a(ld $$0, czd $$1) {
+            dja $$2 = $$0.b();
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            dnb $$4 = (dnb)dmh.ev;
             if ($$2.v($$3) && $$4.a($$2, $$3)) {
                if (!$$2.C) {
                   $$2.a($$3, $$4.m(), 3);
-                  $$2.a(null, eez.i, $$3);
+                  $$2.a(null, efh.i, $$3);
                }
 
                $$1.h(1);
@@ -242,47 +244,47 @@ public interface lg {
             return $$1;
          }
       });
-      dog.a(dmc.ls.h(), new lm());
+      dol.a(dmh.lv.h(), new lm());
 
-      for (cxw $$3 : cxw.values()) {
-         dog.a(dth.a($$3).h(), new lm());
+      for (cyb $$3 : cyb.values()) {
+         dol.a(dto.a($$3).h(), new lm());
       }
 
-      dog.a(czc.tn.h(), new lj() {
-         private cyy b(ld $$0, cyy $$1, cyy $$2) {
-            $$0.b().a(null, eez.y, $$0.c());
+      dol.a(czh.ts.h(), new lj() {
+         private czd b(ld $$0, czd $$1, czd $$2) {
+            $$0.b().a(null, efh.y, $$0.c());
             return this.a($$0, $$1, $$2);
          }
 
          @Override
-         public cyy a(ld $$0, cyy $$1) {
+         public czd a(ld $$0, czd $$1) {
             this.a(false);
             arq $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            dzz $$4 = $$2.a_($$3);
-            if ($$4.a(axc.aJ, $$0x -> $$0x.b(dlu.c) && $$0x.b() instanceof dlu) && $$4.c(dlu.c) >= 5) {
-               ((dlu)$$4.b()).a($$2, $$4, $$3, null, dwu.b.b);
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            eah $$4 = $$2.a_($$3);
+            if ($$4.a(axc.aJ, $$0x -> $$0x.b(dlz.c) && $$0x.b() instanceof dlz) && $$4.c(dlz.c) >= 5) {
+               ((dlz)$$4.b()).a($$2, $$4, $$3, null, dxc.b.b);
                this.a(true);
-               return this.b($$0, $$1, new cyy(czc.xJ));
+               return this.b($$0, $$1, new czd(czh.xO));
             } else if ($$2.b_($$3).a(axh.a)) {
                this.a(true);
-               return this.b($$0, $$1, dau.a(czc.to, dav.a));
+               return this.b($$0, $$1, daz.a(czh.tt, dba.a));
             } else {
                return super.a($$0, $$1);
             }
          }
       });
-      dog.a(czc.fN, new lj() {
+      dol.a(czh.fQ, new lj() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            ja $$2 = $$0.d().c(dog.b);
+         public czd a(ld $$0, czd $$1) {
+            ja $$2 = $$0.d().c(dol.b);
             iu $$3 = $$0.c().a($$2);
-            div $$4 = $$0.b();
-            dzz $$5 = $$4.a_($$3);
+            dja $$4 = $$0.b();
+            eah $$5 = $$4.a_($$3);
             this.a(true);
-            if ($$5.a(dmc.pQ)) {
-               if ($$5.c(dso.d) != 4) {
-                  dso.a(null, $$4, $$3, $$5);
+            if ($$5.a(dmh.pT)) {
+               if ($$5.c(dsu.d) != 4) {
+                  dsu.a(null, $$4, $$3, $$5);
                   $$1.h(1);
                } else {
                   this.a(false);
@@ -294,19 +296,19 @@ public interface lg {
             }
          }
       });
-      dog.a(czc.sY.h(), new ll());
-      dog.a(czc.yB.h(), new lj() {
+      dol.a(czh.td.h(), new ll());
+      dol.a(czh.yG.h(), new lj() {
          @Override
-         protected cyy a(ld $$0, cyy $$1) {
+         protected czd a(ld $$0, czd $$1) {
             arq $$2 = $$0.b();
-            iu $$3 = $$0.c().a($$0.d().c(dog.b));
-            List<ckg> $$4 = $$2.a(ckg.class, new fed($$3), bwk.f);
+            iu $$3 = $$0.c().a($$0.d().c(dol.b));
+            List<ckk> $$4 = $$2.a(ckk.class, new fel($$3), bwm.f);
             if ($$4.isEmpty()) {
                this.a(false);
                return $$1;
             } else {
-               for (ckg $$5 : $$4) {
-                  if ($$5.gu()) {
+               for (ckk $$5 : $$4) {
+                  if ($$5.gv()) {
                      $$1.a(16, $$2, null, $$0x -> {
                      });
                      return $$1;
@@ -318,13 +320,13 @@ public interface lg {
             }
          }
       });
-      dog.a(czc.xG, new lj() {
+      dol.a(czh.xL, new lj() {
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            iu $$2 = $$0.c().a($$0.d().c(dog.b));
-            div $$3 = $$0.b();
-            dzz $$4 = $$3.a_($$2);
-            Optional<dzz> $$5 = cyp.a($$4);
+         public czd a(ld $$0, czd $$1) {
+            iu $$2 = $$0.c().a($$0.d().c(dol.b));
+            dja $$3 = $$0.b();
+            eah $$4 = $$3.a_($$2);
+            Optional<eah> $$5 = cyu.a($$4);
             if ($$5.isPresent()) {
                $$3.b($$2, $$5.get());
                $$3.c(3003, $$2, 0);
@@ -336,19 +338,19 @@ public interface lg {
             }
          }
       });
-      dog.a(czc.to, new lf() {
+      dol.a(czh.tt, new lf() {
          private final lf c = new lf();
 
          @Override
-         public cyy a(ld $$0, cyy $$1) {
-            dau $$2 = $$1.a(kj.R, dau.a);
-            if (!$$2.a(dav.a)) {
+         public czd a(ld $$0, czd $$1) {
+            daz $$2 = $$1.a(kj.R, daz.a);
+            if (!$$2.a(dba.a)) {
                return this.c.dispense($$0, $$1);
             } else {
                arq $$3 = $$0.b();
                iu $$4 = $$0.c();
-               iu $$5 = $$0.c().a($$0.d().c(dog.b));
-               if (!$$3.a_($$5).a(axc.cm)) {
+               iu $$5 = $$0.c().a($$0.d().c(dol.b));
+               if (!$$3.a_($$5).a(axc.cn)) {
                   return this.c.dispense($$0, $$1);
                } else {
                   if (!$$3.C) {
@@ -358,18 +360,18 @@ public interface lg {
                   }
 
                   $$3.a(null, $$4, awn.cB, awo.e, 1.0F, 1.0F);
-                  $$3.a(null, eez.z, $$4);
-                  $$3.b($$5, dmc.tp.m());
-                  return this.a($$0, $$1, new cyy(czc.tn));
+                  $$3.a(null, efh.z, $$4);
+                  $$3.b($$5, dmh.ts.m());
+                  return this.a($$0, $$1, new czd(czh.ts));
                }
             }
          }
       });
-      dog.a(czc.os, new li(bwm.aD));
-      dog.a(czc.ot, new li(bwm.y));
-      dog.a(czc.ou, new li(bwm.ac));
-      dog.a(czc.ov, new li(bwm.bx));
-      dog.a(czc.ow, new li(bwm.ak));
-      dog.a(czc.vS, new li(bwm.B));
+      dol.a(czh.ov, new li(bwo.aD));
+      dol.a(czh.ow, new li(bwo.y));
+      dol.a(czh.ox, new li(bwo.ac));
+      dol.a(czh.oy, new li(bwo.bx));
+      dol.a(czh.oz, new li(bwo.ak));
+      dol.a(czh.vX, new li(bwo.B));
    }
 }

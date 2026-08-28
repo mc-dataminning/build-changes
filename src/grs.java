@@ -1,95 +1,65 @@
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class grs implements grm {
-   private final List<grs.d> a;
-
-   grs(List<grs.d> $$0) {
-      this.a = $$0;
+public record grs(List<grv> a) implements gru {
+   public grs(List<grv> a) {
+      if (a.isEmpty()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
    @Override
-   public Object a(dzz $$0) {
-      IntList $$1 = new IntArrayList();
+   public Object a(eah $$0) {
+      return this;
+   }
 
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
+   @Override
+   public void a(hlp.a $$0) {
+      this.a.forEach($$1 -> $$0.a($$1.c()));
+   }
+
+   @Override
+   public hkx a(hlg $$0) {
+      if (this.a.size() == 1) {
+         grv $$1 = this.a.getFirst();
+         return $$0.a($$1.c(), $$1);
+      } else {
+         bso.a<hkx> $$2 = bso.b();
+
+         for (grv $$3 : this.a) {
+            hkx $$4 = $$0.a($$3.c(), $$3);
+            $$2.a($$4, $$3.f());
          }
-      }
 
-      record a(grs a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
-   }
-
-   @Override
-   public void a(hlh.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
-   }
-
-   @Override
-   public hkp a(hky $$0) {
-      List<hlg.a> $$1 = new ArrayList<>(this.a.size());
-
-      for (grs.d $$2 : this.a) {
-         hkp $$3 = $$2.b.a($$0);
-         $$1.add(new hlg.a($$2.a, $$3));
-      }
-
-      return new hlg($$1);
-   }
-
-   public static record b(List<gru> a) {
-      public grs a(eaa<dma, dzz> $$0) {
-         List<grs.d> $$1 = this.a.stream().map($$1x -> new grs.d($$1x.a($$0), $$1x.a())).toList();
-         return new grs($$1);
-      }
-
-      public Set<grk> a() {
-         return this.a.stream().map(gru::a).collect(Collectors.toSet());
-      }
-
-      public List<gru> b() {
-         return this.a;
+         return new hlt($$2.a());
       }
    }
 
-   public static class c implements JsonDeserializer<grs.b> {
-      public grs.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new grs.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<gru> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gru> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
-         } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((gru)$$0.deserialize($$3, gru.class));
+   public static class a implements JsonDeserializer<grs> {
+      public grs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<grv> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.isEmpty()) {
+               throw new JsonParseException("Empty variant array");
             }
 
-            return $$2;
+            for (JsonElement $$5 : $$4) {
+               $$3.add((grv)$$2.deserialize($$5, grv.class));
+            }
+         } else {
+            $$3.add((grv)$$2.deserialize($$0, grv.class));
          }
-      }
-   }
 
-   static record d(Predicate<dzz> a, grk b) {
+         return new grs($$3);
+      }
    }
 }

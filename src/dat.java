@@ -1,233 +1,108 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public class dat {
-   public static final int a = 20;
-   public static final dat b = new dat(List.of(), List.of(), List.of());
-   private final List<ddl> c;
-   private final List<dat.b<das>> d;
-   private final List<dat.b<cyu>> e;
+public class dat extends cyz implements czx {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
 
-   dat(List<ddl> $$0, List<dat.b<das>> $$1, List<dat.b<cyu>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public dat(cyz.a $$0) {
+      super($$0);
    }
 
-   public boolean a(cyy $$0) {
-      return this.b($$0) || this.c($$0);
+   public static dbu b() {
+      return dbu.a().a(byk.c, new byi(h, 8.0, byi.a.a), bwq.b).a(byk.e, new byi(i, -2.9F, byi.a.a), bwq.b).a();
    }
 
-   private boolean d(cyy $$0) {
-      for (ddl $$1 : this.c) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static dcg c() {
+      return new dcg(List.of(), 1.0F, 2, false);
    }
 
-   public boolean b(cyy $$0) {
-      for (dat.b<cyu> $$1 : this.e) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public czf b(czd $$0) {
+      return czf.f;
    }
 
-   public boolean c(cyy $$0) {
-      for (dat.b<das> $$1 : this.d) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int a(czd $$0, bxe $$1) {
+      return 72000;
    }
 
-   public boolean a(je<das> $$0) {
-      for (dat.b<das> $$1 : this.d) {
-         if ($$1.c.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean a(cyy $$0, cyy $$1) {
-      return !this.d($$0) ? false : this.b($$0, $$1) || this.c($$0, $$1);
-   }
-
-   public boolean b(cyy $$0, cyy $$1) {
-      for (dat.b<cyu> $$2 : this.e) {
-         if ($$0.a($$2.a) && $$2.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public boolean c(cyy $$0, cyy $$1) {
-      Optional<je<das>> $$2 = $$0.a(kj.R, dau.a).e();
-      if ($$2.isEmpty()) {
-         return false;
-      } else {
-         for (dat.b<das> $$3 : this.d) {
-            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   public cyy d(cyy $$0, cyy $$1) {
-      if ($$1.f()) {
-         return $$1;
-      } else {
-         Optional<je<das>> $$2 = $$1.a(kj.R, dau.a).e();
-         if ($$2.isEmpty()) {
-            return $$1;
+   @Override
+   public boolean a(czd $$0, dja $$1, bxe $$2, int $$3) {
+      if ($$2 instanceof crc $$4) {
+         int $$6 = this.a($$0, $$2) - $$3;
+         if ($$6 < 10) {
+            return false;
          } else {
-            for (dat.b<cyu> $$3 : this.e) {
-               if ($$1.a($$3.a) && $$3.b.a($$0)) {
-                  return dau.a($$3.c.a(), $$2.get());
+            float $$7 = dfs.a($$0, $$4);
+            if ($$7 > 0.0F && !$$4.bl()) {
+               return false;
+            } else if ($$0.r()) {
+               return false;
+            } else {
+               je<awm> $$8 = dfs.b($$0, dfr.C).orElse(awn.AK);
+               $$4.b(awx.c.b(this));
+               if ($$1 instanceof arq $$9) {
+                  $$0.a(1, $$4);
+                  if ($$7 == 0.0F) {
+                     csl $$10 = crx.a(csl::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
+                     if ($$4.fV()) {
+                        $$10.b = crk.a.c;
+                     } else {
+                        $$4.gj().i($$0);
+                     }
+
+                     $$1.a(null, $$10, $$8.a(), awo.h, 1.0F, 1.0F);
+                     return true;
+                  }
+               }
+
+               if ($$7 > 0.0F) {
+                  float $$11 = $$4.dL();
+                  float $$12 = $$4.dN();
+                  float $$13 = -azm.a($$11 * (float) (Math.PI / 180.0)) * azm.b($$12 * (float) (Math.PI / 180.0));
+                  float $$14 = -azm.a($$12 * (float) (Math.PI / 180.0));
+                  float $$15 = azm.b($$11 * (float) (Math.PI / 180.0)) * azm.b($$12 * (float) (Math.PI / 180.0));
+                  float $$16 = azm.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
+                  $$13 *= $$7 / $$16;
+                  $$14 *= $$7 / $$16;
+                  $$15 *= $$7 / $$16;
+                  $$4.i((double)$$13, (double)$$14, (double)$$15);
+                  $$4.a(20, 8.0F, $$0);
+                  if ($$4.aJ()) {
+                     float $$17 = 1.1999999F;
+                     $$4.a(bxi.a, new feq(0.0, 1.1999999F, 0.0));
+                  }
+
+                  $$1.a(null, $$4, $$8.a(), awo.h, 1.0F, 1.0F);
+                  return true;
+               } else {
+                  return false;
                }
             }
-
-            for (dat.b<das> $$4 : this.d) {
-               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
-                  return dau.a($$1.h(), $$4.c);
-               }
-            }
-
-            return $$1;
          }
+      } else {
+         return false;
       }
    }
 
-   public static dat a(cuh $$0) {
-      dat.a $$1 = new dat.a($$0);
-      a($$1);
-      return $$1.a();
-   }
-
-   public static void a(dat.a $$0) {
-      $$0.a(czc.to);
-      $$0.a(czc.wu);
-      $$0.a(czc.wx);
-      $$0.a(czc.to, czc.qf, czc.wu);
-      $$0.a(czc.wu, czc.wt, czc.wx);
-      $$0.a(dav.a, czc.sb, dav.c);
-      $$0.a(dav.a, czc.mi, dav.b);
-      $$0.a(dav.a, czc.tm, dav.d);
-      $$0.a(czc.vf, dav.Q);
-      $$0.a(czc.mp, dav.S);
-      $$0.a(czc.b, dav.T);
-      $$0.a(czc.cT, dav.R);
-      $$0.a(dav.d, czc.vp, dav.e);
-      $$0.a(dav.e, czc.mi, dav.f);
-      $$0.a(dav.e, czc.tq, dav.g);
-      $$0.a(dav.f, czc.tq, dav.h);
-      $$0.a(dav.g, czc.mi, dav.h);
-      $$0.a(czc.ts, dav.l);
-      $$0.a(dav.l, czc.mi, dav.m);
-      $$0.a(czc.vJ, dav.i);
-      $$0.a(dav.i, czc.mi, dav.j);
-      $$0.a(dav.i, czc.sb, dav.k);
-      $$0.a(dav.i, czc.tq, dav.q);
-      $$0.a(dav.j, czc.tq, dav.r);
-      $$0.a(dav.q, czc.mi, dav.r);
-      $$0.a(dav.q, czc.sb, dav.s);
-      $$0.a(dav.d, czc.oZ, dav.t);
-      $$0.a(dav.t, czc.mi, dav.u);
-      $$0.a(dav.t, czc.sb, dav.v);
-      $$0.a(dav.n, czc.tq, dav.q);
-      $$0.a(dav.o, czc.tq, dav.r);
-      $$0.a(czc.sD, dav.n);
-      $$0.a(dav.n, czc.mi, dav.o);
-      $$0.a(dav.n, czc.sb, dav.p);
-      $$0.a(dav.d, czc.sf, dav.w);
-      $$0.a(dav.w, czc.mi, dav.x);
-      $$0.a(czc.tw, dav.y);
-      $$0.a(dav.y, czc.sb, dav.z);
-      $$0.a(dav.y, czc.tq, dav.A);
-      $$0.a(dav.z, czc.tq, dav.B);
-      $$0.a(dav.A, czc.sb, dav.B);
-      $$0.a(dav.C, czc.tq, dav.A);
-      $$0.a(dav.D, czc.tq, dav.A);
-      $$0.a(dav.E, czc.tq, dav.B);
-      $$0.a(czc.tp, dav.C);
-      $$0.a(dav.C, czc.mi, dav.D);
-      $$0.a(dav.C, czc.sb, dav.E);
-      $$0.a(czc.tk, dav.F);
-      $$0.a(dav.F, czc.mi, dav.G);
-      $$0.a(dav.F, czc.sb, dav.H);
-      $$0.a(czc.tr, dav.I);
-      $$0.a(dav.I, czc.mi, dav.J);
-      $$0.a(dav.I, czc.sb, dav.K);
-      $$0.a(dav.a, czc.tq, dav.L);
-      $$0.a(dav.L, czc.mi, dav.M);
-      $$0.a(dav.d, czc.oz, dav.O);
-      $$0.a(dav.O, czc.mi, dav.P);
-   }
-
-   public static class a {
-      private final List<ddl> a = new ArrayList<>();
-      private final List<dat.b<das>> b = new ArrayList<>();
-      private final List<dat.b<cyu>> c = new ArrayList<>();
-      private final cuh d;
-
-      public a(cuh $$0) {
-         this.d = $$0;
-      }
-
-      private static void b(cyu $$0) {
-         if (!($$0 instanceof czr)) {
-            throw new IllegalArgumentException("Expected a potion, got: " + mf.g.b($$0));
-         }
-      }
-
-      public void a(cyu $$0, cyu $$1, cyu $$2) {
-         if ($$0.a(this.d) && $$1.a(this.d) && $$2.a(this.d)) {
-            b($$0);
-            b($$2);
-            this.c.add(new dat.b<>($$0.e(), ddl.a($$1), $$2.e()));
-         }
-      }
-
-      public void a(cyu $$0) {
-         if ($$0.a(this.d)) {
-            b($$0);
-            this.a.add(ddl.a($$0));
-         }
-      }
-
-      public void a(je<das> $$0, cyu $$1, je<das> $$2) {
-         if ($$0.a().a(this.d) && $$1.a(this.d) && $$2.a().a(this.d)) {
-            this.b.add(new dat.b<>($$0, ddl.a($$1), $$2));
-         }
-      }
-
-      public void a(cyu $$0, je<das> $$1) {
-         if ($$1.a().a(this.d)) {
-            this.a(dav.a, $$0, dav.b);
-            this.a(dav.d, $$0, $$1);
-         }
-      }
-
-      public dat a() {
-         return new dat(List.copyOf(this.a), List.copyOf(this.b), List.copyOf(this.c));
+   @Override
+   public bud a(dja $$0, crc $$1, buc $$2) {
+      czd $$3 = $$1.b($$2);
+      if ($$3.r()) {
+         return bud.d;
+      } else if (dfs.a($$3, $$1) > 0.0F && !$$1.bl()) {
+         return bud.d;
+      } else {
+         $$1.c($$2);
+         return bud.c;
       }
    }
 
-   static record b<T>(je<T> a, ddl b, je<T> c) {
+   @Override
+   public crx a(dja $$0, jo $$1, czd $$2, ja $$3) {
+      csl $$4 = new csl($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
+      $$4.b = crk.a.b;
+      return $$4;
    }
 }

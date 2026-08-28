@@ -1,18 +1,22 @@
-public abstract class gws<T extends cng, S extends hcx> extends gxf<T, S, ggf<S>> {
-   protected gws(gvz.a $$0, ggf<S> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gzs<>(this, $$0.f()));
+public class gws extends gxn<cny, hfd, ggm<hfd>> {
+   private static final alg a = alg.b("textures/entity/zombie/zombie.png");
+
+   public gws(gwh.a $$0, float $$1) {
+      super($$0, new ggf($$0.a(gjb.bc)), 0.5F * $$1);
+      this.a(new han<>(this));
+      this.a(new hak<>(this, new ggf($$0.a(gjb.bd)), new ggf($$0.a(gjb.be)), $$0.h()));
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public alg a(hfd $$0) {
+      return a;
+   }
+
+   public hfd b() {
+      return new hfd();
+   }
+
+   public void a(cny $$0, hfd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hbj.a($$0, $$1, this.h);
-      $$1.b = $$0.bZ();
-      $$1.d = $$0.fx();
-      $$1.j = $$0.j();
-      $$1.k = $$1.j == cng.a.f ? cxr.b($$0.fA(), $$0) : 0;
-      $$1.l = $$0.fC();
-      $$1.m = $$0.D($$2);
-      $$1.c = $$0.gh();
+      gwy.a($$0, $$1, $$2, this.h);
    }
 }

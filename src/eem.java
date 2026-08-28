@@ -1,15 +1,21 @@
-public interface eem<T> {
-   void g(T var1);
+import java.util.stream.Stream;
 
-   void f(T var1);
+public interface eem extends efa {
+   int ar();
 
-   void e(T var1);
+   iu dv();
 
-   void d(T var1);
+   fel cR();
 
-   void c(T var1);
+   void a(een var1);
 
-   void b(T var1);
+   Stream<? extends eem> da();
 
-   void a(T var1);
+   Stream<? extends eem> db();
+
+   void c(bwf.e var1);
+
+   boolean dT();
+
+   boolean dU();
 }

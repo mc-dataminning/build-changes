@@ -104,7 +104,7 @@ public class apx {
    }
 
    private static int a(ei $$0, float $$1) throws CommandSyntaxException {
-      ebr $$2 = $$0.l().J().A_();
+      ebz $$2 = $$0.l().J().A_();
       if ($$2.n() == (double)$$1) {
          throw h.create();
       } else {
@@ -115,7 +115,7 @@ public class apx {
    }
 
    private static int b(ei $$0, float $$1) throws CommandSyntaxException {
-      ebr $$2 = $$0.l().J().A_();
+      ebz $$2 = $$0.l().J().A_();
       if ($$2.o() == (double)$$1) {
          throw i.create();
       } else {
@@ -126,7 +126,7 @@ public class apx {
    }
 
    private static int a(ei $$0, int $$1) throws CommandSyntaxException {
-      ebr $$2 = $$0.l().J().A_();
+      ebz $$2 = $$0.l().J().A_();
       if ($$2.q() == $$1) {
          throw f.create();
       } else {
@@ -137,7 +137,7 @@ public class apx {
    }
 
    private static int b(ei $$0, int $$1) throws CommandSyntaxException {
-      ebr $$2 = $$0.l().J().A_();
+      ebz $$2 = $$0.l().J().A_();
       if ($$2.r() == $$1) {
          throw g.create();
       } else {
@@ -153,12 +153,12 @@ public class apx {
       return azm.a($$1 + 0.5);
    }
 
-   private static int a(ei $$0, feh $$1) throws CommandSyntaxException {
-      ebr $$2 = $$0.l().J().A_();
+   private static int a(ei $$0, fep $$1) throws CommandSyntaxException {
+      ebz $$2 = $$0.l().J().A_();
       if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
          throw a.create();
       } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
-         $$2.c((double)$$1.i, (double)$$1.j);
+         $$2.d((double)$$1.i, (double)$$1.j);
          $$0.a(() -> wy.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
          return 0;
       } else {
@@ -167,7 +167,7 @@ public class apx {
    }
 
    private static int a(ei $$0, double $$1, long $$2) throws CommandSyntaxException {
-      ebr $$3 = $$0.l().J().A_();
+      ebz $$3 = $$0.l().J().A_();
       double $$4 = $$3.i();
       if ($$4 == $$1) {
          throw b.create();

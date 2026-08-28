@@ -20,13 +20,13 @@ public class beg extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.a(this.getInputSchema().getTypeRaw(biw.t), this.getOutputSchema().getTypeRaw(biw.t));
+      return this.a(this.getInputSchema().getTypeRaw(bix.t), this.getOutputSchema().getTypeRaw(bix.t));
    }
 
    private <ItemStackOld, ItemStackNew> TypeRewriteRule a(Type<ItemStackOld> $$0, Type<ItemStackNew> $$1) {
-      Type<Pair<String, Either<List<ItemStackOld>, Unit>>> $$2 = DSL.named(biw.A.typeName(), DSL.optional(DSL.field("Equipment", DSL.list($$0))));
+      Type<Pair<String, Either<List<ItemStackOld>, Unit>>> $$2 = DSL.named(bix.A.typeName(), DSL.optional(DSL.field("Equipment", DSL.list($$0))));
       Type<Pair<String, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<List<ItemStackNew>, Unit>, Pair<Either<ItemStackNew, Unit>, Either<ItemStackNew, Unit>>>>>> $$3 = DSL.named(
-         biw.A.typeName(),
+         bix.A.typeName(),
          DSL.and(
             DSL.optional(DSL.field("ArmorItems", DSL.list($$1))),
             DSL.optional(DSL.field("HandItems", DSL.list($$1))),
@@ -34,14 +34,14 @@ public class beg extends DataFix {
             DSL.optional(DSL.field("saddle", $$1))
          )
       );
-      if (!$$2.equals(this.getInputSchema().getType(biw.A))) {
+      if (!$$2.equals(this.getInputSchema().getType(bix.A))) {
          throw new IllegalStateException("Input entity_equipment type does not match expected");
-      } else if (!$$3.equals(this.getOutputSchema().getType(biw.A))) {
+      } else if (!$$3.equals(this.getOutputSchema().getType(bix.A))) {
          throw new IllegalStateException("Output entity_equipment type does not match expected");
       } else {
          return TypeRewriteRule.seq(
             this.fixTypeEverywhereTyped(
-               "EntityEquipmentToArmorAndHandFix - drop chances", this.getInputSchema().getType(biw.D), $$0x -> $$0x.update(DSL.remainderFinder(), beg::a)
+               "EntityEquipmentToArmorAndHandFix - drop chances", this.getInputSchema().getType(bix.D), $$0x -> $$0x.update(DSL.remainderFinder(), beg::a)
             ),
             this.fixTypeEverywhere(
                "EntityEquipmentToArmorAndHandFix - equipment",

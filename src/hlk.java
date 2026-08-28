@@ -1,130 +1,63 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public interface hlk extends hlh {
-   boolean c = true;
-   hlk.a d = hlk.a.b;
+public class hlk {
+   static final int a = -1;
+   private static final int b = 0;
 
-   hkp a(grl var1, hky var2, hlf var3, boolean var4, boolean var5, grj var6);
+   public static Object2IntMap<eah> a(fqb $$0, hkz.c $$1) {
+      Map<dmf, List<ebk<?>>> $$2 = new HashMap<>();
+      Map<hlk.a, Set<eah>> $$3 = new HashMap<>();
+      $$1.c().forEach(($$3x, $$4x) -> {
+         List<ebk<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hlk.a $$6x = hlk.a.a($$4x.a(), $$4x.b(), $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
+      });
+      int $$4 = 1;
+      Object2IntMap<eah> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-   @Nullable
-   default Boolean a() {
-      return null;
-   }
+      for (Set<eah> $$6 : $$3.values()) {
+         Iterator<eah> $$7 = $$6.iterator();
 
-   @Nullable
-   default hlk.a b() {
-      return null;
-   }
-
-   @Nullable
-   default grj e() {
-      return null;
-   }
-
-   default grl.a d() {
-      return grl.a.a;
-   }
-
-   @Nullable
-   default hlk c() {
-      return null;
-   }
-
-   static hkp a(hlk $$0, hky $$1, hlf $$2) {
-      grl $$3 = a($$0, $$1.b());
-      boolean $$4 = a($$0);
-      boolean $$5 = b($$0).a();
-      grj $$6 = c($$0);
-      return $$0.a($$3, $$1, $$2, $$4, $$5, $$6);
-   }
-
-   static grl a(hlk $$0, hla $$1) {
-      grl.c $$2 = new grl.c();
-
-      while ($$0 != null) {
-         $$2.a($$0.d());
-         $$0 = $$0.c();
-      }
-
-      return $$2.a($$1);
-   }
-
-   static boolean a(hlk $$0) {
-      while ($$0 != null) {
-         Boolean $$1 = $$0.a();
-         if ($$1 != null) {
-            return $$1;
-         }
-
-         $$0 = $$0.c();
-      }
-
-      return true;
-   }
-
-   static hlk.a b(hlk $$0) {
-      while ($$0 != null) {
-         hlk.a $$1 = $$0.b();
-         if ($$1 != null) {
-            return $$1;
-         }
-
-         $$0 = $$0.c();
-      }
-
-      return d;
-   }
-
-   static gri a(hlk $$0, cyw $$1) {
-      while ($$0 != null) {
-         grj $$2 = $$0.e();
-         if ($$2 != null) {
-            gri $$3 = $$2.a($$1);
-            if ($$3 != gri.a) {
-               return $$3;
+         while ($$7.hasNext()) {
+            eah $$8 = $$7.next();
+            if ($$8.o() != dss.b) {
+               $$7.remove();
+               $$5.put($$8, 0);
             }
          }
 
-         $$0 = $$0.c();
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
+         }
       }
 
-      return gri.a;
+      return $$5;
    }
 
-   static grj c(hlk $$0) {
-      gri $$1 = a($$0, cyw.b);
-      gri $$2 = a($$0, cyw.c);
-      gri $$3 = a($$0, cyw.d);
-      gri $$4 = a($$0, cyw.e);
-      gri $$5 = a($$0, cyw.f);
-      gri $$6 = a($$0, cyw.g);
-      gri $$7 = a($$0, cyw.h);
-      gri $$8 = a($$0, cyw.i);
-      return new grj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-   }
-
-   public static enum a {
-      a("front"),
-      b("side");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+   static record a(Object a, List<Object> b) {
+      public static hlk.a a(eah $$0, gru $$1, List<ebk<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hlk.a($$4, $$3);
       }
 
-      public static hlk.a a(String $$0) {
-         for (hlk.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
+      private static List<Object> a(eah $$0, List<ebk<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
+
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
          }
 
-         throw new IllegalArgumentException("Invalid gui light: " + $$0);
-      }
-
-      public boolean a() {
-         return this == b;
+         return List.of($$2);
       }
    }
 }

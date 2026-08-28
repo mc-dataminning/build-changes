@@ -25,11 +25,11 @@ public class aoq {
       );
    }
 
-   private static int a(ei $$0, bwd $$1, bwd $$2) throws CommandSyntaxException {
-      bwd $$3 = $$1.dk();
+   private static int a(ei $$0, bwf $$1, bwf $$2) throws CommandSyntaxException {
+      bwf $$3 = $$1.dk();
       if ($$3 != null) {
          throw b.create($$1.m_(), $$3.m_());
-      } else if ($$2.aq() == bwm.bS) {
+      } else if ($$2.aq() == bwo.bS) {
          throw d.create();
       } else if ($$1.da().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
@@ -43,8 +43,8 @@ public class aoq {
       }
    }
 
-   private static int a(ei $$0, bwd $$1) throws CommandSyntaxException {
-      bwd $$2 = $$1.dk();
+   private static int a(ei $$0, bwf $$1) throws CommandSyntaxException {
+      bwf $$2 = $$1.dk();
       if ($$2 == null) {
          throw a.create($$1.m_());
       } else {

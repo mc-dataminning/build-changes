@@ -1,17 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class hjx extends hkb {
+   private static final alg a = alg.b("back");
 
-public record hjx(String b, String c, boolean d) {
-   public static final Codec<hjx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.A.fieldOf("region").forGetter(hjx::b),
-               ayu.A.fieldOf("name").forGetter(hjx::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hjx::d)
-            )
-            .apply($$0, hjx::new)
-   );
+   public hjx(hiz $$0) {
+      super($$0, alg.b("textures/atlas/paintings.png"), hkv.j);
+   }
 
-   public wy a() {
-      return wy.b(this.c + " (" + this.b + ")");
+   public hix a(cnd $$0) {
+      return this.a($$0.d());
+   }
+
+   public hix a() {
+      return this.a(a);
    }
 }

@@ -1,58 +1,33 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
-
 public class chy {
-   @Nullable
-   public static fei a(bxk $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
+   public static boolean a(bxg $$0) {
+      return $$0.O() instanceof cgn;
    }
 
-   @Nullable
-   public static fei a(bxk $$0, int $$1, int $$2, ToDoubleFunction<iu> $$3) {
-      boolean $$4 = chw.a($$0, $$1);
-      return chz.a(() -> {
-         iu $$4x = chz.a($$0.dY(), $$1, $$2);
-         iu $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   public static boolean a(bxm $$0, int $$1) {
+      return $$0.gf() && $$0.gc().a($$0.dt(), (double)($$0.gd() + (float)$$1) + 1.0);
    }
 
-   @Nullable
-   public static fei a(bxk $$0, int $$1, int $$2, fei $$3) {
-      fei $$4 = $$3.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$5 = chw.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public static boolean a(iu $$0, bxm $$1) {
+      return $$1.dV().e($$0.v());
    }
 
-   @Nullable
-   public static fei b(bxk $$0, int $$1, int $$2, fei $$3) {
-      fei $$4 = $$0.dt().d($$3);
-      boolean $$5 = chw.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public static boolean a(boolean $$0, bxm $$1, iu $$2) {
+      return $$0 && !$$1.a($$2);
    }
 
-   @Nullable
-   private static fei a(bxk $$0, int $$1, int $$2, fei $$3, boolean $$4) {
-      return chz.a($$0, () -> {
-         iu $$5 = chz.a($$0.dY(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            iu $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
-         }
-      });
+   public static boolean a(cgo $$0, iu $$1) {
+      return !$$0.a($$1);
    }
 
-   @Nullable
-   public static iu a(bxk $$0, iu $$1) {
-      $$1 = chz.a($$1, $$0.dV().ao(), $$1x -> chw.c($$0, $$1x));
-      return !chw.a($$0, $$1) && !chw.b($$0, $$1) ? $$1 : null;
+   public static boolean a(bxm $$0, iu $$1) {
+      return $$0.dV().b_($$1).a(axh.a);
    }
 
-   @Nullable
-   public static iu a(bxk $$0, int $$1, boolean $$2, iu $$3) {
-      iu $$4 = chz.a($$0, $$1, $$0.dY(), $$3);
-      return !chw.a($$4, $$0) && !chw.a($$2, $$0, $$4) && !chw.a($$0.O(), $$4) ? $$4 : null;
+   public static boolean b(bxm $$0, iu $$1) {
+      return $$0.a(exk.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bxm $$0, iu $$1) {
+      return $$0.dV().a_($$1).e();
    }
 }
