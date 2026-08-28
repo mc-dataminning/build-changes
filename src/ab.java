@@ -6,13 +6,13 @@ import javax.annotation.Nullable;
 
 public class ab {
    @Deprecated
-   public static final boolean a = true;
+   public static final boolean a = false;
    @Deprecated
-   public static final int b = 3952;
+   public static final int b = 3953;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21-rc1";
+   public static final String d = "1.21";
    @Deprecated
    public static final int e = 767;
    @Deprecated
@@ -157,7 +157,7 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742027;
+      return 767;
    }
 
    public static boolean a(dcd $$0) {
