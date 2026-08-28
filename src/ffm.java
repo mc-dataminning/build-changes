@@ -1,59 +1,35 @@
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public abstract class ffm {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class ffm {
+   public final fgv a = new fgv(ad.h(), TimeUnit.MILLISECONDS, ad.c);
+   private final List<fgv.e<?>> i;
+   public final fgv.e<List<feo>> b;
+   public final fgv.e<ffm.a> c;
+   public final fgv.e<Integer> d;
+   public final fgv.e<Boolean> e;
+   public final fgv.e<fen> f;
+   public final fgv.e<fes> g;
+   public final ffn h = new ffn(new fhb());
 
-   public ffm(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public ffm(fdy $$0) {
+      this.c = this.a.a("server list", () -> {
+         fer $$1 = $$0.b();
+         return fdt.b() ? new ffm.a($$1.a, $$0.c()) : new ffm.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fgw.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fgw.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fgw.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fgw.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fgw.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fgw.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
+   public List<fgv.e<?>> a() {
+      return this.i;
    }
 
-   protected abstract void a(fjx var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(fjx $$0, List<ffm> $$1, hdj<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (ffm $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(hdj<?> $$0, flg.a<?> $$1, List<ffm> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aI_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (ffm $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+   public static record a(List<fep> a, List<fep> b) {
    }
 }

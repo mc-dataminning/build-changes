@@ -1,5 +1,36 @@
-public interface flu {
-   default int I() {
-      return 0;
+import javax.annotation.Nullable;
+
+public class flu extends fkm {
+   @Nullable
+   protected fmb a;
+   protected boolean b;
+
+   public flu(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, xd.a);
+      this.b = $$4;
+   }
+
+   public void a(fmb $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(fol $$0) {
+      this.c($$0);
+   }
+
+   @Override
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(ghv::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
+      }
    }
 }

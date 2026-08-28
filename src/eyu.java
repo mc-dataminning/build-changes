@@ -1,46 +1,26 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+public abstract class eyu {
+   protected final eyw a;
 
-public class eyu extends ezm {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
-
-   protected eyu(ezb $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   protected eyu(eyw $$0) {
+      this.a = $$0;
    }
 
-   eyu(ezb $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public double a(btr $$0) {
+      double $$1 = this.a.d - $$0.dx();
+      double $$2 = this.a.e - $$0.dz();
+      double $$3 = this.a.f - $$0.dD();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   @Override
-   public DoubleList a(jj.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public abstract eyu.a d();
+
+   public eyw g() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,66 +1,72 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-import java.util.function.BiConsumer;
 
-public abstract class eim {
-   public static final Codec<eim> h = lu.X.q().dispatch(eim::a, ein::a);
+public class eim extends eiq {
+   public static final MapCodec<eim> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
+               ehz.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
+               ayo.a(jk.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eim::new)
+   );
+   protected final float b;
+   protected final int c;
+   protected final int d;
+   protected final ehz e;
+   protected final int f;
+   protected final List<jk> g;
 
-   protected abstract ein<?> a();
+   public eim(float $$0, int $$1, int $$2, ehz $$3, int $$4, List<jk> $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+   }
 
-   public abstract void a(eim.a var1);
+   @Override
+   public void a(eiq.a $$0) {
+      Set<jf> $$1 = new HashSet<>();
+      azn $$2 = $$0.b();
 
-   public static final class a {
-      private final dem a;
-      private final BiConsumer<je, duo> b;
-      private final azl c;
-      private final ObjectArrayList<je> d;
-      private final ObjectArrayList<je> e;
-      private final ObjectArrayList<je> f;
+      for (jf $$3 : ad.a($$0.d(), $$2)) {
+         jk $$4 = ad.a(this.g, $$2);
+         jf $$5 = $$3.a($$4);
+         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
+            jf $$6 = $$5.b(-this.c, -this.d, -this.c);
+            jf $$7 = $$5.b(this.c, this.d, this.c);
 
-      public a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, Set<je> $$3, Set<je> $$4, Set<je> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(ki::v));
-         this.e.sort(Comparator.comparingInt(ki::v));
-         this.f.sort(Comparator.comparingInt(ki::v));
+            for (jf $$8 : jf.c($$6, $$7)) {
+               $$1.add($$8.j());
+            }
+
+            $$0.a($$5, this.e.a($$2, $$5));
+         }
+      }
+   }
+
+   private boolean a(eiq.a $$0, jf $$1, jk $$2) {
+      for (int $$3 = 1; $$3 <= this.f; $$3++) {
+         jf $$4 = $$1.a($$2, $$3);
+         if (!$$0.a($$4)) {
+            return false;
+         }
       }
 
-      public void a(je $$0, dvf $$1) {
-         this.a($$0, dhl.ff.o().b($$1, Boolean.valueOf(true)));
-      }
+      return true;
+   }
 
-      public void a(je $$0, duo $$1) {
-         this.b.accept($$0, $$1);
-      }
-
-      public boolean a(je $$0) {
-         return this.a.a($$0, dun.a::l);
-      }
-
-      public dem a() {
-         return this.a;
-      }
-
-      public azl b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<je> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<je> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<je> e() {
-         return this.f;
-      }
+   @Override
+   protected eir<?> a() {
+      return eir.f;
    }
 }

@@ -5,135 +5,103 @@ import com.mojang.datafixers.util.Pair;
 import java.util.function.Predicate;
 
 public class chv {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final bra e = bra.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
+   private static final float a = 4.0F;
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   private static final float d = 2.5F;
+   private static final float e = 1.0F;
+   private static final brd f = brd.a(5, 16);
+   private static final ImmutableList<cex<? extends cew<? super chu>>> g = ImmutableList.of(cex.c, cex.f, cex.t, cex.o);
+   private static final ImmutableList<cdq<?>> h = ImmutableList.of(
+      cdq.Z, cdq.x, cdq.y, cdq.m, cdq.n, cdq.E, cdq.t, cdq.h, cdq.O, cdq.P, cdq.Q, cdq.R, new cdq[]{cdq.r, cdq.K}
+   );
 
-   protected static void a(chu $$0, azl $$1) {
-      $$0.dX().a(cdn.S, e.a($$1));
+   protected static void a(chu $$0, azn $$1) {
    }
 
-   protected static bvl<?> a(bvl<chu> $$0) {
+   public static bvo.b<chu> a() {
+      return bvo.a(h, g);
+   }
+
+   protected static bvo<?> a(bvo<chu> $$0) {
       b($$0);
       c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(cpm.a));
-      $$0.b(cpm.b);
+      $$0.a(ImmutableSet.of(cpp.a));
+      $$0.b(cpp.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bvl<chu> $$0) {
-      $$0.a(cpm.a, 0, ImmutableList.of(new bvx(2.0F), new bxi(45, 90), new bxm(), new bwi(cdn.P), new bwi(cdn.S)));
+   private static void b(bvo<chu> $$0) {
+      $$0.a(cpp.a, 0, ImmutableList.of(new byz(0.8F), new chv.a(4.0F), new bxl(45, 90), new bxp(), new bwl(cdq.P), new bwl(cdq.Q)));
    }
 
-   private static void c(bvl<chu> $$0) {
+   private static void c(bvo<chu> $$0) {
       $$0.a(
-         cpm.b,
+         cpp.b,
          ImmutableList.of(
-            Pair.of(0, byc.a(btv.by, 6.0F, bra.a(30, 60))),
-            Pair.of(0, new bvw(btv.R)),
-            Pair.of(1, new bwp($$0x -> 1.25F)),
-            Pair.of(2, byo.a(chv::b, $$0x -> $$0x.dX().c(cdn.B))),
-            Pair.of(3, byz.a(6, 1.0F)),
+            Pair.of(0, byf.a(bty.by, 6.0F, brd.a(30, 60))),
+            Pair.of(1, new bvz(bty.o)),
+            Pair.of(
+               2,
+               new byc(
+                  ImmutableList.of(Pair.of(new bws($$0x -> 2.5F, $$0x -> $$0x.p_() ? 2.5 : 3.5), 1), Pair.of(bzs.a(Predicate.not(chu::t), bwc.a(f, 2.5F)), 1))
+               )
+            ),
+            Pair.of(3, new bxw(brd.a(150, 250), 30.0F, 0.0F, 0.0F)),
             Pair.of(
                4,
-               new bxz(
-                  ImmutableMap.of(cdn.m, cdo.b),
-                  ImmutableList.of(Pair.of(bxu.a(1.0F), 1), Pair.of(byj.a(1.0F, 3), 1), Pair.of(new bwj(), 3), Pair.of(bzp.a(bto::aH), 2))
+               new byc(
+                  ImmutableMap.of(cdq.m, cdr.b),
+                  ImmutableList.of(
+                     Pair.of(bzs.a(Predicate.not(chu::t), bxx.a(2.0F)), 1),
+                     Pair.of(bzs.a(Predicate.not(chu::t), bym.a(2.0F, 3)), 1),
+                     Pair.of(new chv.b(20), 1),
+                     Pair.of(new bwp(30, 60), 1)
+                  )
                )
             )
-         ),
-         ImmutableSet.of(Pair.of(cdn.T, cdo.b), Pair.of(cdn.X, cdo.b))
+         )
       );
-   }
-
-   private static void d(bvl<chu> $$0) {
-      $$0.a(
-         cpm.t,
-         ImmutableList.of(
-            Pair.of(0, byc.a(btv.by, 6.0F, bra.a(30, 60))),
-            Pair.of(1, new bwp($$0x -> 1.25F)),
-            Pair.of(2, byo.a(chv::b, $$0x -> $$0x.dX().c(cdn.B))),
-            Pair.of(3, byz.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bwq(
-                  ImmutableMap.of(cdn.m, cdo.b),
-                  ImmutableSet.of(),
-                  bwq.a.a,
-                  bwq.b.b,
-                  ImmutableList.of(Pair.of(bxu.c(0.75F), 1), Pair.of(bxu.a(1.0F, true), 1), Pair.of(byj.a(1.0F, 3), 1), Pair.of(bzp.a(bto::bl), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(cdn.T, cdo.b), Pair.of(cdn.X, cdo.a))
-      );
-   }
-
-   private static void e(bvl<chu> $$0) {
-      $$0.a(
-         cpm.u,
-         ImmutableList.of(
-            Pair.of(0, byc.a(btv.by, 6.0F, bra.a(30, 60))),
-            Pair.of(1, byo.a(chv::b, $$0x -> $$0x.dX().c(cdn.B))),
-            Pair.of(2, bza.a(8, 1.0F)),
-            Pair.of(3, bzc.a(dhl.tn)),
-            Pair.of(4, new bxz(ImmutableList.of(Pair.of(bxu.a(1.0F), 2), Pair.of(byj.a(1.0F, 3), 1), Pair.of(new bwj(), 2), Pair.of(bzp.a(bto::aH), 1))))
-         ),
-         ImmutableSet.of(Pair.of(cdn.T, cdo.b), Pair.of(cdn.Y, cdo.a))
-      );
-   }
-
-   private static void f(bvl<chu> $$0) {
-      $$0.a(
-         cpm.q,
-         ImmutableList.of(Pair.of(0, new bxd(e, awe.jS)), Pair.of(1, new bxe<>(e, 2, 4, 3.5714288F, $$0x -> awe.jR, awt.bS, 0.5F, chv::a))),
-         ImmutableSet.of(Pair.of(cdn.O, cdo.b), Pair.of(cdn.r, cdo.b), Pair.of(cdn.S, cdo.b), Pair.of(cdn.X, cdo.b))
-      );
-   }
-
-   private static void g(bvl<chu> $$0) {
-      $$0.a(cpm.s, 0, ImmutableList.of(byr.a(), new chw(awe.jT, awe.jO)), cdn.o);
-   }
-
-   private static <E extends bum> boolean a(E $$0, je $$1) {
-      deg $$2 = $$0.dS();
-      je $$3 = $$1.e();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
-         duo $$4 = $$2.a_($$1);
-         duo $$5 = $$2.a_($$3);
-         if (!$$4.a(awt.bS) && !$$5.a(awt.bS)) {
-            eri $$6 = new eri($$0.dS(), $$0);
-            erg $$7 = erl.a($$6, $$1.k());
-            erg $$8 = erl.a($$6, $$3.k());
-            return $$7 != erg.e && (!$$4.l() || $$8 != erg.e) ? bxf.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   private static boolean b(chu $$0) {
-      return !bwe.a($$0);
    }
 
    public static void a(chu $$0) {
-      $$0.dX().a(ImmutableList.of(cpm.s, cpm.u, cpm.q, cpm.t, cpm.b));
+      $$0.dY().a(ImmutableList.of(cpp.b));
    }
 
-   public static Predicate<cvp> a() {
-      return $$0 -> $$0.a(axc.al);
+   public static Predicate<cvs> b() {
+      return $$0 -> $$0.a(axe.ah);
+   }
+
+   public static class a extends bwa<chu> {
+      public a(float $$0) {
+         super($$0);
+      }
+
+      protected void a(arj $$0, chu $$1, long $$2) {
+         $$1.gD();
+         super.b($$0, $$1, $$2);
+      }
+   }
+
+   public static class b extends bwf<chu> {
+      private final int c;
+
+      public b(int $$0) {
+         super(ImmutableMap.of());
+         this.c = $$0 * 20;
+      }
+
+      protected boolean a(arj $$0, chu $$1) {
+         return !$$1.bi() && $$1.gE() >= (long)this.c && !$$1.L_() && $$1.aH() && !$$1.cV() && $$1.go();
+      }
+
+      protected void a(arj $$0, chu $$1, long $$2) {
+         if ($$1.gr()) {
+            $$1.gC();
+         } else if (!$$1.gl()) {
+            $$1.gB();
+         }
+      }
    }
 }

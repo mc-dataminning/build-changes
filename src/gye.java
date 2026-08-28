@@ -1,56 +1,94 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public class gye extends auz<List<String>> {
-   private static final alc a = alc.b("texts/splashes.txt");
-   private static final azl b = azl.a();
-   private final List<String> c = Lists.newArrayList();
-   private final fiy d;
+public class gye implements AutoCloseable {
+   private final Int2ObjectMap<gye.a> a = new Int2ObjectOpenHashMap();
+   final gxh b;
 
-   public gye(fiy $$0) {
-      this.d = $$0;
+   public gye(gxh $$0) {
+      this.b = $$0;
    }
 
-   protected List<String> a(aut $$0, bod $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = fil.Q().ac().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
+   public void a(esl $$0, esn $$1) {
+      this.c($$0, $$1).a();
+   }
 
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
+   public ale b(esl $$0, esn $$1) {
+      gye.a $$2 = this.c($$0, $$1);
+      $$2.b();
+      return $$2.d;
+   }
+
+   public void a() {
+      ObjectIterator var1 = this.a.values().iterator();
+
+      while (var1.hasNext()) {
+         gye.a $$0 = (gye.a)var1.next();
+         $$0.close();
       }
+
+      this.a.clear();
    }
 
-   protected void a(List<String> $$0, aut $$1, bod $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   private gye.a c(esl $$0, esn $$1) {
+      return (gye.a)this.a.compute($$0.b(), ($$1x, $$2) -> {
+         if ($$2 == null) {
+            return new gye.a($$1x, $$1);
+         } else {
+            $$2.a($$1);
+            return $$2;
+         }
+      });
    }
 
-   @Nullable
-   public flo a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return flo.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return flo.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return flo.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new flo(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new flo(this.c.get(b.a(this.c.size())));
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   class a implements AutoCloseable {
+      private esn a;
+      private final gwt b;
+      private boolean c = true;
+      final ale d;
+
+      a(final int $$0, final esn $$1) {
+         this.a = $$1;
+         this.b = new gwt(128, 128, true);
+         this.d = gye.this.b.a("map/" + $$0, this.b);
+      }
+
+      void a(esn $$0) {
+         boolean $$1 = this.a != $$0;
+         this.a = $$0;
+         this.c |= $$1;
+      }
+
+      public void a() {
+         this.c = true;
+      }
+
+      void b() {
+         if (this.c) {
+            fci $$0 = this.b.f();
+            if ($$0 != null) {
+               for (int $$1 = 0; $$1 < 128; $$1++) {
+                  for (int $$2 = 0; $$2 < 128; $$2++) {
+                     int $$3 = $$2 + $$1 * 128;
+                     $$0.a($$2, $$1, eqx.b(this.a.g[$$3]));
+                  }
+               }
+            }
+
+            this.b.e();
+            this.c = false;
+         }
+      }
+
+      @Override
+      public void close() {
+         this.b.close();
       }
    }
 }

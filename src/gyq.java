@@ -1,38 +1,8 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gyq {
-   public static final gyr a = new gyr();
-   public static final String b = "villager";
-   private final gyq.a c;
-
-   public gyq(gyq.a $$0) {
-      this.c = $$0;
-   }
-
-   public gyq.a a() {
-      return this.c;
-   }
-
-   public static enum a {
-      a("none"),
-      b("partial"),
-      c("full");
-
-      private static final Map<String, gyq.a> d = Arrays.stream(values()).collect(Collectors.toMap(gyq.a::a, $$0 -> (gyq.a)$$0));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
-      }
-
-      public String a() {
-         return this.e;
-      }
-
-      public static gyq.a a(String $$0) {
-         return d.getOrDefault($$0, a);
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gyq {
 }

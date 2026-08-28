@@ -1,20 +1,30 @@
-public record afr(int b) implements zk<abz> {
-   public static final zb<wa, afr> a = zk.a(afr::a, afr::new);
+import java.util.Optional;
 
-   private afr(wa $$0) {
-      this($$0.l());
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-   }
+public record afr(String b, String c, int d, Optional<xe> e, Optional<yu> f) implements zl<aca> {
+   public static final zc<wp, afr> a = zc.a(za.m, afr::b, za.m, afr::e, za.h, afr::f, xg.e, afr::g, yw.d, afr::h, afr::new);
 
    @Override
-   public zm<afr> a() {
-      return ago.aN;
+   public zn<afr> a() {
+      return agp.aM;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<xe> g() {
+      return this.e;
+   }
+
+   public Optional<yu> h() {
+      return this.f;
    }
 }

@@ -1,39 +1,76 @@
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gwt extends gwu {
+public class gwt extends gwr implements gws {
+   private static final Logger d = LogUtils.getLogger();
    @Nullable
-   private CompletableFuture<gwu.a> e;
+   private fci e;
 
-   public gwt(aut $$0, alc $$1, Executor $$2) {
-      super($$1);
-      this.e = CompletableFuture.supplyAsync(() -> gwu.a.a($$0, $$1), $$2);
-   }
-
-   @Override
-   protected gwu.a b(aut $$0) {
-      if (this.e != null) {
-         gwu.a $$1 = this.e.join();
-         this.e = null;
-         return $$1;
+   public gwt(fci $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
       } else {
-         return gwu.a.a($$0, this.d);
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
       }
    }
 
-   public CompletableFuture<Void> e() {
-      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
+   public gwt(int $$0, int $$1, boolean $$2) {
+      this.e = new fci($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
    }
 
    @Override
-   public void a(gxc $$0, aut $$1, alc $$2, Executor $$3) {
-      this.e = CompletableFuture.supplyAsync(() -> gwu.a.a($$1, this.d), ad.g());
-      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
+   public void a(auv $$0) {
    }
 
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   @Override
+   public void e() {
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public fci f() {
+      return this.e;
+   }
+
+   public void a(fci $$0) {
+      if (this.e != null) {
+         this.e.close();
+      }
+
+      this.e = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(ale $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
+      }
    }
 }

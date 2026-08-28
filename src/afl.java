@@ -1,29 +1,45 @@
-public class afl implements zk<abz> {
-   public static final zb<wa, afl> a = zk.a(afl::a, afl::new);
-   private final int b;
+public class afl implements zl<aca> {
+   public static final zc<wb, afl> a = zl.a(afl::a, afl::new);
+   private final float b;
+   private final int c;
+   private final float d;
 
-   public afl(int $$0) {
+   public afl(float $$0, int $$1, float $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afl(wa $$0) {
-      this.b = $$0.readByte();
+   private afl(wb $$0) {
+      this.b = $$0.readFloat();
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
    }
 
-   private void a(wa $$0) {
-      $$0.l(this.b);
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zm<afl> a() {
-      return ago.aI;
+   public zn<afl> a() {
+      return agp.aH;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public float b() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

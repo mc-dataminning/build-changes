@@ -1,104 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class bze extends bwc<cnh> {
-   private static final int c = 80;
-   private long d;
-   private long e;
-   private int f;
-   private Optional<je> g = Optional.empty();
+public class bze {
+   public static bwg<buv> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bzs.a(
+         (Function<bzs.b<buv>, ? extends App<bzs.c<buv>, bzv<buv>>>)($$3 -> $$3.group($$3.c(cdq.o), $$3.c(cdq.m), $$3.a(cdq.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.ds()).a(axb.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        jf $$8 = null;
+                        jf $$9 = null;
+                        jf $$10 = $$6.ds();
 
-   public bze() {
-      super(ImmutableMap.of(cdn.n, cdo.b, cdn.m, cdo.b));
-   }
+                        for (jf $$12 : jf.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dus $$13 = $$6.dS().a_($$12.d());
+                              dus $$14 = $$6.dS().a_($$12);
+                              if ($$14.a(dho.G)) {
+                                 if ($$13.l()) {
+                                    $$8 = $$12.j();
+                                    break;
+                                 }
 
-   protected boolean a(arh $$0, cnh $$1) {
-      if ($$1.ag % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ag)) {
-         if ($$1.y().a_(cvt.rz) <= 0) {
-            return false;
-         } else {
-            this.g = this.b($$0, $$1);
-            return this.g.isPresent();
-         }
-      } else {
-         return false;
-      }
-   }
+                                 if ($$9 == null && !$$12.a($$6.dq(), 1.5)) {
+                                    $$9 = $$12.j();
+                                 }
+                              }
+                           }
+                        }
 
-   protected boolean a(arh $$0, cnh $$1, long $$2) {
-      return this.f < 80 && this.g.isPresent();
-   }
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
 
-   private Optional<je> b(arh $$0, cnh $$1) {
-      je.a $$2 = new je.a();
-      Optional<je> $$3 = Optional.empty();
-      int $$4 = 0;
+                        if ($$8 != null) {
+                           $$5.a(new bwi($$8));
+                           $$4.a(new cdt(new bwi($$8), $$1, 0));
+                        }
 
-      for (int $$5 = -1; $$5 <= 1; $$5++) {
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               $$2.a($$1.ds(), $$5, $$6, $$7);
-               if (this.a($$2, $$0)) {
-                  if ($$0.z.a(++$$4) == 0) {
-                     $$3 = Optional.of($$2.j());
-                  }
-               }
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   private boolean a(je $$0, arh $$1) {
-      duo $$2 = $$1.a_($$0);
-      dhj $$3 = $$2.b();
-      return $$3 instanceof dje && !((dje)$$3).i($$2);
-   }
-
-   protected void b(arh $$0, cnh $$1, long $$2) {
-      this.a($$1);
-      $$1.a(btw.a, new cvp(cvt.rz));
-      this.d = $$2;
-      this.f = 0;
-   }
-
-   private void a(cnh $$0) {
-      this.g.ifPresent($$1 -> {
-         bwf $$2 = new bwf($$1);
-         $$0.dX().a(cdn.n, $$2);
-         $$0.dX().a(cdn.m, new cdq($$2, 0.5F, 1));
-      });
-   }
-
-   protected void c(arh $$0, cnh $$1, long $$2) {
-      $$1.a(btw.a, cvp.k);
-      this.e = (long)$$1.ag;
-   }
-
-   protected void d(arh $$0, cnh $$1, long $$2) {
-      je $$3 = this.g.get();
-      if ($$2 >= this.d && $$3.a($$1.dq(), 1.0)) {
-         cvp $$4 = cvp.k;
-         brw $$5 = $$1.y();
-         int $$6 = $$5.b();
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            cvp $$8 = $$5.a($$7);
-            if ($$8.a(cvt.rz)) {
-               $$4 = $$8;
-               break;
-            }
-         }
-
-         if (!$$4.f() && ctt.a($$4, $$0, $$3)) {
-            $$0.c(1505, $$3, 15);
-            this.g = this.b($$0, $$1);
-            this.a($$1);
-            this.d = $$2 + 40L;
-         }
-
-         this.f++;
-      }
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

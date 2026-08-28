@@ -1,46 +1,42 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eol extends epb {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eol> a = MapCodec.unit(() -> eol.b);
-   public static final eol b = new eol();
+public class eol extends epf {
+   public static final MapCodec<eol> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kd.a(lw.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eol::new)
+   );
+   private final Optional<js<dhm>> b;
+   private final float c;
 
-   private eol() {
+   public eol(js<dhm> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public eol(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private eol(Optional<js<dhm>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
    }
 
    @Nullable
    @Override
-   public epe.c a(dej $$0, je $$1, je $$2, epe.c $$3, epe.c $$4, epa $$5) {
-      duo $$6 = $$4.b();
-      if ($$6.a(dhl.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            duo $$9;
-            try {
-               gn.a $$8 = gn.a($$0.a(lv.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dhl.kN) ? null : new epe.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
-      }
+   public epi.c a(dem $$0, jf $$1, jf $$2, epi.c $$3, epi.c $$4, epe $$5) {
+      azn $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected epd<?> a() {
-      return epd.h;
+   protected eph<?> a() {
+      return eph.f;
    }
 }

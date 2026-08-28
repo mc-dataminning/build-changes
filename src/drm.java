@@ -1,147 +1,76 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public abstract class drm extends drs implements bri, brr, brs {
-   private brq d = brq.a;
-   @Nullable
-   private xd e;
+public record drm(List<drm.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final drm a = new drm(List.of());
+   public static final Codec<drm> b = drm.b.a.listOf().xmap(drm::new, drm::b);
+   public static final zc<wp, drm> c = drm.b.b.a(za.a()).a(drm::new, drm::b);
 
-   protected drm(dru<?> $$0, je $$1, duo $$2) {
-      super($$0, $$1, $$2);
+   public drm a() {
+      return new drm(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.d = brq.b($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = a($$0.l("CustomName"), $$1);
-      }
+   public List<drm.b> b() {
+      return this.d;
    }
 
-   @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0);
-      if (this.e != null) {
-         $$0.a("CustomName", xd.a.a(this.e, $$1));
-      }
-   }
+   public static class a {
+      private final Builder<drm.b> a = ImmutableList.builder();
 
-   @Override
-   public xd aj() {
-      return this.e != null ? this.e : this.j();
-   }
-
-   @Override
-   public xd Q_() {
-      return this.aj();
-   }
-
-   @Nullable
-   @Override
-   public xd al() {
-      return this.e;
-   }
-
-   protected abstract xd j();
-
-   public boolean d(cnu $$0) {
-      return a($$0, this.d, this.Q_());
-   }
-
-   public static boolean a(cnu $$0, brq $$1, xd $$2) {
-      if (!$$0.P_() && !$$1.a($$0.eW())) {
-         $$0.a(xd.a("container.isLocked", $$2), true);
-         $$0.a(awe.eQ, awf.e, 1.0F, 1.0F);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   protected abstract jw<cvp> f();
-
-   protected abstract void a(jw<cvp> var1);
-
-   @Override
-   public boolean c() {
-      for (cvp $$0 : this.f()) {
-         if (!$$0.f()) {
-            return false;
+      @Deprecated
+      public drm.a a(jp<drl> $$0, ald<drl> $$1, cum $$2) {
+         Optional<jo.c<drl>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            drm.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public cvp a(int $$0) {
-      return this.f().get($$0);
-   }
-
-   @Override
-   public cvp a(int $$0, int $$1) {
-      cvp $$2 = brj.a(this.f(), $$0, $$1);
-      if (!$$2.f()) {
-         this.e();
+      public drm.a a(jo<drl> $$0, cum $$1) {
+         return this.a(new drm.b($$0, $$1));
       }
 
-      return $$2;
-   }
-
-   @Override
-   public cvp b(int $$0) {
-      return brj.a(this.f(), $$0);
-   }
-
-   @Override
-   public void a(int $$0, cvp $$1) {
-      this.f().set($$0, $$1);
-      $$1.f(this.f_($$1));
-      this.e();
-   }
-
-   @Override
-   public boolean a(cnu $$0) {
-      return bri.a(this, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.f().clear();
-   }
-
-   @Nullable
-   @Override
-   public cqw createMenu(int $$0, cnt $$1, cnu $$2) {
-      return this.d($$2) ? this.a($$0, $$1) : null;
-   }
-
-   protected abstract cqw a(int var1, cnt var2);
-
-   @Override
-   protected void a(drs.b $$0) {
-      super.a($$0);
-      this.e = $$0.a(kr.g);
-      this.d = $$0.a(kr.aj, brq.a);
-      $$0.a(kr.ag, cyl.a).a(this.f());
-   }
-
-   @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      $$0.a(kr.g, this.e);
-      if (!this.d.equals(brq.a)) {
-         $$0.a(kr.aj, this.d);
+      public drm.a a(drm.b $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      $$0.a(kr.ag, cyl.a(this.f()));
+      public drm.a a(drm $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public drm a() {
+         return new drm(this.a.build());
+      }
    }
 
-   @Override
-   public void a(uf $$0) {
-      $$0.r("CustomName");
-      $$0.r("Lock");
-      $$0.r("Items");
+   public static record b(jo<drl> c, cum d) {
+      public static final Codec<drm.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(drl.c.fieldOf("pattern").forGetter(drm.b::b), cum.q.fieldOf("color").forGetter(drm.b::c)).apply($$0, drm.b::new)
+      );
+      public static final zc<wp, drm.b> b = zc.a(drl.d, drm.b::b, cum.r, drm.b::c, drm.b::new);
+
+      public xs a() {
+         String $$0 = this.c.a().b();
+         return xe.c($$0 + "." + this.d.b());
+      }
+
+      public jo<drl> b() {
+         return this.c;
+      }
+
+      public cum c() {
+         return this.d;
+      }
    }
 }

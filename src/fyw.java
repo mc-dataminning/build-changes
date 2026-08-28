@@ -1,68 +1,35 @@
-public class fyw extends fxk<gsy> {
-   private final gal a;
-   private final gal b;
-   private final gal c;
+public class fyw extends fxo<gtq> {
+   private final gaq a;
+   private final gaq b;
 
-   public fyw(gal $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_paddle");
-      this.c = $$0.b("right_paddle");
+   public fyw(gaq $$0) {
+      super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   public static void a(gav $$0) {
-      $$0.a(
-         "bottom",
-         gaq.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gan.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gaq.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gan.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gaq.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gan.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
-   }
-
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      a($$1);
-      return gar.a($$0, 128, 64);
-   }
-
-   public static gar c() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gaq.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gan.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gaq.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gan.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gaq.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gan.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gar.a($$0, 128, 128);
-   }
-
-   public void a(gsy $$0) {
-      a($$0.h, 0, this.b);
-      a($$0.i, 1, this.c);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gav.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gas.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gav.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gas.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", gav.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gas.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", gav.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gas.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", gav.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gas.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gav.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gas.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", gav.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gas.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gav.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gas.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gav.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gas.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", gav.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gas.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", gav.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gas.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return gaw.a($$0, 32, 32);
    }
 
    @Override
-   public gal a() {
-      return this.a;
-   }
-
-   private static void a(float $$0, int $$1, gal $$2) {
-      $$2.e = azd.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azd.a(-$$0) + 1.0F) / 2.0F);
-      $$2.f = azd.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azd.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   public void a(gtq $$0) {
+      super.a($$0);
+      this.b.g = -0.2F + 0.4F * azf.a($$0.p * 0.2F);
+      this.a.g = 0.2F - 0.4F * azf.a($$0.p * 0.2F);
    }
 }

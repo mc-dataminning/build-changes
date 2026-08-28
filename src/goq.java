@@ -1,27 +1,32 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class goq extends gmj<cik, gup, fyg> {
+   private static final ale a = ale.b("textures/entity/llama/creamy.png");
+   private static final ale b = ale.b("textures/entity/llama/white.png");
+   private static final ale k = ale.b("textures/entity/llama/brown.png");
+   private static final ale l = ale.b("textures/entity/llama/gray.png");
 
-public class goq extends gme<cgn, guo, fxb> {
-   private static final Map<cgn.a, alc> a = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cgn.a.b, alc.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cgn.a.a, alc.b("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public goq(gnj.a $$0) {
-      super($$0, new fxb($$0.a(gak.bj)), new fxb($$0.a(gak.bk)), 0.7F);
-      this.a(new grr(this, $$0.d()));
+   public goq(gno.a $$0, gao $$1, gao $$2) {
+      super($$0, new fyg($$0.a($$1)), new fyg($$0.a($$2)), 0.7F);
+      this.a(new grv(this, $$0.f()));
    }
 
-   public alc a(guo $$0) {
-      return a.get($$0.a);
+   public ale a(gup $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   public guo c() {
-      return new guo();
+   public gup c() {
+      return new gup();
    }
 
-   public void a(cgn $$0, guo $$1, float $$2) {
+   public void a(cik $$0, gup $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gB();
+      $$1.b = !$$0.p_() && $$0.t();
+      $$1.c = $$0.gC();
+      $$1.d = $$0.gr();
    }
 }

@@ -1,3 +1,8 @@
-public interface arr {
-   arq create(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface arr {
 }

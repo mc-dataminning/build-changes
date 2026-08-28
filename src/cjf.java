@@ -1,80 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cjf extends ciz {
-   private static final cfa b = cfa.a().d();
+public class cjf extends cjc {
    @Nullable
-   private erd c;
-   @Nullable
-   private eys d;
+   private eyw b;
+   private int c;
 
-   public cjf(cix $$0) {
+   public cjf(cja $$0) {
       super($$0);
    }
 
    @Override
-   public cjn<cjf> i() {
-      return cjn.c;
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   public void b() {
+      if (this.c++ % 10 == 0) {
+         float $$0 = (this.a.dV().i() - 0.5F) * 8.0F;
+         float $$1 = (this.a.dV().i() - 0.5F) * 4.0F;
+         float $$2 = (this.a.dV().i() - 0.5F) * 8.0F;
+         this.a.dS().a(lo.v, this.a.dx() + (double)$$0, this.a.dz() + 2.0 + (double)$$1, this.a.dD() + (double)$$2, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dx(), this.a.dz(), this.a.dD());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
+      this.c++;
+      if (this.b == null) {
+         jf $$0 = this.a.dS().a(eao.a.e, edt.a(this.a.q()));
+         this.b = eyw.c($$0);
       }
+
+      double $$1 = this.b.c(this.a.dx(), this.a.dz(), this.a.dD());
+      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
+         this.a.x(1.0F);
+      } else {
+         this.a.x(0.0F);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+      this.c = 0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public eys g() {
-      return this.d;
+   public eyw g() {
+      return this.b;
    }
 
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         je $$1 = this.a.dS().a(eak.a.f, edp.a(this.a.q()));
-         cnu $$2 = this.a.dS().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            eys $$3 = new eys($$2.dx(), 0.0, $$2.dD()).d();
-            $$4 = this.a.q(-$$3.d * 40.0, 105.0, -$$3.f * 40.0);
-         } else {
-            $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
-         }
-
-         erb $$6 = new erb($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.gm().a(cjn.d);
-      }
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         ki $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dV().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new eys($$1, $$3, $$2);
-      }
+   @Override
+   public cjq<cjf> i() {
+      return cjq.j;
    }
 }

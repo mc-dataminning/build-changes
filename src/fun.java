@@ -1,59 +1,64 @@
-public class fun extends fqd {
-   private static final xd a = xd.c("gui.abuseReport.title");
-   private static final xd b = xd.c("gui.abuseReport.message");
-   private static final xd c = xd.c("gui.abuseReport.type.chat");
-   private static final xd d = xd.c("gui.abuseReport.type.skin");
-   private static final xd s = xd.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fqd v;
-   private final gcp w;
-   private final fur x;
-   private final foc y = foc.d().a(6);
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.UUID;
 
-   public fun(fqd $$0, gcp $$1, fur $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+public class fun extends fum<gcn.a> {
+   private static final xe C = xe.c("gui.chatReport.title");
+   private static final xe D = xe.c("gui.chatReport.select_chat");
+   private flg E;
+   private fko F;
+   private fko G;
+
+   private fun(fqh $$0, gcu $$1, gcn.a $$2) {
+      super(C, $$0, $$1, $$2);
+   }
+
+   public fun(fqh $$0, gcu $$1, UUID $$2) {
+      this($$0, $$1, new gcn.a($$2, $$1.a().b()));
+   }
+
+   public fun(fqh $$0, gcu $$1, gcn $$2) {
+      this($$0, $$1, new gcn.a($$2, $$1.a().b()));
    }
 
    @Override
-   public xd i() {
-      return xc.a(super.i(), b);
+   protected void D() {
+      this.F = this.z.a(fko.a(D, $$0 -> this.m.a(new fup(this, this.y, this.A, $$0x -> {
+            this.A = $$0x;
+            this.F();
+         }))).a(280).a());
+      this.G = fko.a(c, $$0 -> this.m.a(new fus(this, this.A.i(), gct.a, $$0x -> {
+            this.A.a($$0x);
+            this.F();
+         }))).a(280).a();
+      this.z.a(fny.a(this.p, this.G, b));
+      this.E = this.a(280, 9 * 8, $$0 -> {
+         this.A.a($$0);
+         this.F();
+      });
+      this.z.a(fny.a(this.p, this.E, d, $$0 -> $$0.e(12)));
    }
 
    @Override
-   protected void aR_() {
-      this.y.c().b();
-      this.y.a(new flr(this.l, this.p), this.y.b().e(6));
-      this.y.a(new fle(b, this.p).b(true), this.y.b().e(6));
-      fkk $$0 = this.y.a(fkk.a(c, $$0x -> this.m.a(new fuj(this.v, this.w, this.x.d()))).a());
-      if (!this.x.k()) {
-         $$0.j = false;
-         $$0.a(flv.a(xd.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.j()) {
-         $$0.j = false;
-         $$0.a(flv.a(xd.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+   protected void F() {
+      IntSet $$0 = this.A.a();
+      if ($$0.isEmpty()) {
+         this.F.b(D);
+      } else {
+         this.F.b(xe.a("gui.chatReport.selected_chat", $$0.size()));
       }
 
-      this.y.a(fkk.a(d, $$0x -> this.m.a(new fup(this.v, this.w, this.x.d(), this.x.h()))).a());
-      this.y.a(fkk.a(s, $$0x -> this.m.a(new fum(this.v, this.w, this.x.d(), this.x.c()))).a());
-      this.y.a(fod.b(20));
-      this.y.a(fkk.a(xc.e, $$0x -> this.d()).a());
-      this.y.a($$1 -> {
-         fki var10000 = this.c($$1);
-      });
-      this.c();
+      gcs $$1 = this.A.i();
+      if ($$1 != null) {
+         this.G.b($$1.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.F();
    }
 
    @Override
-   protected void c() {
-      this.y.a();
-      fnw.a(this.y, this.H());
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.v);
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
    }
 }

@@ -1,36 +1,19 @@
-public class grf<S extends gub, M extends fxk<S>> extends grw<S, M> {
-   private static final alc a = alc.b("textures/entity/elytra.png");
-   private final fxg b;
-   private final fxg c;
+public class grf<S extends guo, M extends fxo<S>> extends gsb<S, M> {
+   private final gom a;
 
-   public grf(gpf<S, M> $$0, gah $$1) {
+   public grf(gpk<S, M> $$0, gom $$1) {
       super($$0);
-      this.b = new fxg($$1.a(gak.ar));
-      this.c = new fxg($$1.a(gak.as));
+      this.a = $$1;
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.Q.a(cvt.nU)) {
-         alc $$8;
-         if ($$3 instanceof guw $$6) {
-            gyc $$7 = $$6.a;
-            if ($$7.d() != null) {
-               $$8 = $$7.d();
-            } else if ($$7.c() != null && $$6.aw) {
-               $$8 = $$7.c();
-            } else {
-               $$8 = a;
-            }
-         } else {
-            $$8 = a;
-         }
-
-         fxg $$12 = $$3.ae ? this.c : this.b;
+   public void a(fdi $$0, ghl $$1, int $$2, S $$3, float $$4, float $$5) {
+      gzi $$6 = $$3.b();
+      if ($$6 != null) {
          $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$12.a($$3);
-         fdi $$13 = goh.a($$1, ghq.a($$8), $$3.Q.z());
-         $$12.a($$0, $$13, $$2, gws.d);
+         $$0.a(0.0F, 0.4F, -0.4F);
+         $$0.a(a.b.rotationDegrees(180.0F));
+         cvs $$7 = $$3.aX_();
+         this.a.a($$7, cvp.h, false, $$0, $$1, $$2, gwx.d, $$6);
          $$0.b();
       }
    }

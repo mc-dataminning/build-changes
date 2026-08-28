@@ -1,56 +1,71 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class diy extends dhj {
-   public static final MapCodec<dhj> a = lu.e.q().fieldOf("dead");
-   public static final MapCodec<diy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, diy::new));
-   private final dhj c;
-
-   public diy(dhj $$0, dun.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+public class diy extends dki {
+   public static final MapCodec<diy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lv.e.q().fieldOf("concrete").forGetter($$0x -> $$0x.b), t()).apply($$0, diy::new)
+   );
+   private final dhm b;
 
    @Override
    public MapCodec<diy> a() {
-      return b;
+      return a;
+   }
+
+   public diy(dhm $$0, dur.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
+   public void a(dej $$0, jf $$1, dus $$2, dus $$3, ckg $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.n(), 3);
       }
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.C_().a(40));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dus a(czn $$0) {
+      ddo $$1 = $$0.q();
+      jf $$2 = $$0.a();
+      dus $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.n() : super.a($$0);
    }
 
-   protected boolean a(ddl $$0, je $$1) {
-      for (jj $$2 : jj.values()) {
-         eqp $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awz.a)) {
-            return true;
+   private static boolean a(ddo $$0, jf $$1, dus $$2) {
+      return o($$2) || a($$0, $$1);
+   }
+
+   private static boolean a(ddo $$0, jf $$1) {
+      boolean $$2 = false;
+      jf.a $$3 = $$1.k();
+
+      for (jk $$4 : jk.values()) {
+         dus $$5 = $$0.a_($$3);
+         if ($$4 != jk.a || o($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (o($$5) && !$$5.c($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().C_().a(40));
-      }
+   private static boolean o(dus $$0) {
+      return $$0.y().a(axb.a);
+   }
 
-      return this.o();
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return a($$3, $$4) ? this.b.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public int b(dus $$0, ddo $$1, jf $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

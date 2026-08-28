@@ -1,7 +1,13 @@
-import com.mojang.serialization.Codec;
-
 public enum bai {
-   a;
+   a,
+   b,
+   c;
 
-   public static final Codec<bai> b = Codec.unit(a);
+   public boolean a(boolean $$0) {
+      return switch (this) {
+         case a -> true;
+         case b -> false;
+         default -> $$0;
+      };
+   }
 }

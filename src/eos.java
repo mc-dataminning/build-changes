@@ -1,13 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface eos<P extends eor> {
-   eos<eoq> a = a("always_true", eoq.a);
-   eos<eon> b = a("linear_pos", eon.a);
-   eos<eoc> c = a("axis_aligned_linear_pos", eoc.a);
+public enum eos implements bab {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   MapCodec<P> codec();
+   public static Codec<eos> c = bab.b(eos::values);
+   private final String d;
 
-   static <P extends eor> eos<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.o, $$0, () -> $$1);
+   private eos(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
    }
 }

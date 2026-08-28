@@ -1,12 +1,11 @@
-public class gqt<M extends fyp> extends gse<M> {
-   private static final alc a = alc.b("textures/entity/bee/bee_stinger.png");
+public class gqt extends gme<clv> {
+   private static final ale a = ale.b("textures/entity/hoglin/zoglin.png");
 
-   public gqt(gok<?, guw, M> $$0, gnj.a $$1) {
-      super($$0, new fwp($$1.a(gak.s)), a, gse.a.b);
+   public gqt(gno.a $$0) {
+      super($$0, gap.dk, gap.dl, 0.7F);
    }
 
-   @Override
-   protected int a(guw $$0) {
-      return $$0.f;
+   public ale a(gue $$0) {
+      return a;
    }
 }

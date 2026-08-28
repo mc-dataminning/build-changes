@@ -1,32 +1,379 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ResultConsumer;
-import com.mojang.brigadier.exceptions.CommandExceptionType;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.tree.CommandNode;
+import com.mojang.brigadier.tree.RootCommandNode;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface ev<T extends ev<T>> {
-   boolean c(int var1);
+public class ev {
+   private static final ThreadLocal<hu<eu>> f = new ThreadLocal<>();
+   private static final Logger g = LogUtils.getLogger();
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   public static final int e = 4;
+   private final CommandDispatcher<eu> h = new CommandDispatcher();
 
-   T b(eq var1);
+   public ev(ev.a $$0, eq $$1) {
+      amm.a(this.h);
+      amn.a(this.h, $$1);
+      anh.a(this.h, $$1);
+      amr.a(this.h, $$1);
+      amt.a(this.h, $$1);
+      amu.a(this.h, $$1);
+      amv.a(this.h, $$1);
+      apv.a(this.h);
+      amw.a(this.h);
+      amy.a(this.h);
+      anc.a(this.h);
+      and.a(this.h);
+      ane.a(this.h, $$1);
+      anf.a(this.h);
+      ang.a(this.h, $$1);
+      ani.a(this.h);
+      ank.a(this.h, $$1);
+      anj.a(this.h, $$1);
+      anl.a(this.h);
+      anm.a(this.h);
+      ann.a(this.h);
+      ano.a(this.h);
+      anp.a(this.h, $$1);
+      anq.a(this.h);
+      anr.a(this.h, $$1);
+      ant.a(this.h);
+      anu.a(this.h);
+      anv.a(this.h);
+      anw.a(this.h, $$1);
+      anx.a(this.h, $$1);
+      any.a(this.h);
+      aoc.a(this.h, $$1);
+      aoe.a(this.h);
+      aof.a(this.h);
+      aoi.a(this.h);
+      aok.a(this.h);
+      aoj.a(this.h);
+      aol.a(this.h);
+      aom.a(this.h);
+      aoq.a(this.h);
+      aor.a(this.h);
+      aos.a(this.h, $$1);
+      aot.a(this.h, $$0 != ev.a.c);
+      aov.a(this.h, $$1);
+      aox.a(this.h);
+      aoy.a(this.h);
+      apa.a(this.h);
+      apb.a(this.h);
+      apd.a(this.h);
+      ape.a(this.h, $$1);
+      apf.a(this.h);
+      apg.a(this.h, $$1);
+      aph.a(this.h);
+      api.a(this.h);
+      apj.a(this.h, $$1);
+      apk.a(this.h);
+      apl.a(this.h);
+      apm.a(this.h, $$1);
+      apo.a(this.h);
+      apq.a(this.h);
+      aps.a(this.h);
+      if (bom.f.d()) {
+         ans.a(this.h);
+      }
 
-   eq p();
+      if (ab.aW) {
+         tt.a(this.h);
+         aoh.a(this.h, $$1);
+         anb.a(this.h);
+         ana.a(this.h);
+         app.a(this.h);
+         aoz.a(this.h);
+         aou.a(this.h);
+         if ($$0.e) {
+            amz.a(this.h);
+         }
+      }
 
-   default T a_() {
-      return this.b(eq.a);
+      if ($$0.e) {
+         amo.a(this.h);
+         amp.a(this.h);
+         amq.a(this.h);
+         amx.a(this.h);
+         anz.a(this.h);
+         aoa.a(this.h);
+         aob.a(this.h);
+         aod.a(this.h);
+         aon.a(this.h);
+         aoo.a(this.h);
+         aop.a(this.h);
+         aow.a(this.h);
+         apc.a(this.h);
+         apn.a(this.h);
+         apr.a(this.h);
+      }
+
+      if ($$0.d) {
+         aog.a(this.h);
+      }
+
+      this.h.setConsumer(ew.b_());
    }
 
-   CommandDispatcher<T> x();
-
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hw var4);
-
-   boolean y();
-
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hw $$2) {
-      this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
+   public static <S> ParseResults<S> a(ParseResults<S> $$0, UnaryOperator<S> $$1) {
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2.withSource($$1.apply((S)$$2.getSource()));
+      return new ParseResults($$3, $$0.getReader(), $$0.getExceptions());
    }
 
-   static <T extends ev<T>> ResultConsumer<T> b_() {
-      return ($$0, $$1, $$2) -> ((ev)$$0.getSource()).p().onResult($$1, $$2);
+   public void a(eu $$0, String $$1) {
+      $$1 = $$1.startsWith("/") ? $$1.substring(1) : $$1;
+      this.a(this.h.parse($$1, $$0), $$1);
+   }
+
+   public void a(ParseResults<eu> $$0, String $$1) {
+      eu $$2 = (eu)$$0.getContext().getSource();
+      $$2.l().aS().a(() -> "/" + $$1);
+      ContextChain<eu> $$3 = a($$0, $$1, $$2);
+
+      try {
+         if ($$3 != null) {
+            a($$2, $$3x -> hu.a($$3x, $$1, $$3, $$2, er.a));
+         }
+      } catch (Exception var12) {
+         xs $$5 = xe.b(var12.getMessage() == null ? var12.getClass().getName() : var12.getMessage());
+         if (g.isDebugEnabled()) {
+            g.error("Command exception: /{}", $$1, var12);
+            StackTraceElement[] $$6 = var12.getStackTrace();
+
+            for (int $$7 = 0; $$7 < Math.min($$6.length, 3); $$7++) {
+               $$5.f("\n\n").f($$6[$$7].getMethodName()).f("\n ").f($$6[$$7].getFileName()).f(":").f(String.valueOf($$6[$$7].getLineNumber()));
+            }
+         }
+
+         $$2.b(xe.c("command.failed").a($$1x -> $$1x.a(new xk(xk.a.a, $$5))));
+         if (ab.aW) {
+            $$2.b(xe.b(ad.c(var12)));
+            g.error("'/{}' threw an exception", $$1, var12);
+         }
+      } finally {
+         $$2.l().aS().c();
+      }
+   }
+
+   @Nullable
+   private static ContextChain<eu> a(ParseResults<eu> $$0, String $$1, eu $$2) {
+      try {
+         a($$0);
+         return (ContextChain<eu>)ContextChain.tryFlatten($$0.getContext().build($$1))
+            .orElseThrow(() -> CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader()));
+      } catch (CommandSyntaxException var7) {
+         $$2.b(xh.a(var7.getRawMessage()));
+         if (var7.getInput() != null && var7.getCursor() >= 0) {
+            int $$4 = Math.min(var7.getInput().length(), var7.getCursor());
+            xs $$5 = xe.i().a(n.h).a($$1x -> $$1x.a(new xc(xc.a.d, "/" + $$1)));
+            if ($$4 > 10) {
+               $$5.b(xd.u);
+            }
+
+            $$5.f(var7.getInput().substring(Math.max(0, $$4 - 10), $$4));
+            if ($$4 < var7.getInput().length()) {
+               xe $$6 = xe.b(var7.getInput().substring($$4)).a(n.m, n.t);
+               $$5.b($$6);
+            }
+
+            $$5.b(xe.c("command.context.here").a(n.m, n.u));
+            $$2.b($$5);
+         }
+
+         return null;
+      }
+   }
+
+   public static void a(eu $$0, Consumer<hu<eu>> $$1) {
+      MinecraftServer $$2 = $$0.l();
+      hu<eu> $$3 = f.get();
+      boolean $$4 = $$3 == null;
+      if ($$4) {
+         int $$5 = Math.max(1, $$2.aL().c(def.x));
+         int $$6 = $$2.aL().c(def.y);
+
+         try (hu<eu> $$7 = new hu<>($$5, $$6, $$2.aS())) {
+            f.set($$7);
+            $$1.accept($$7);
+            $$7.a();
+         } finally {
+            f.set(null);
+         }
+      } else {
+         $$1.accept($$3);
+      }
+   }
+
+   public void a(ark $$0) {
+      Map<CommandNode<eu>, CommandNode<ez>> $$1 = Maps.newHashMap();
+      RootCommandNode<ez> $$2 = new RootCommandNode();
+      $$1.put(this.h.getRoot(), $$2);
+      this.a(this.h.getRoot(), $$2, $$0.dk(), $$1);
+      $$0.c.b(new act($$2));
+   }
+
+   private void a(CommandNode<eu> $$0, CommandNode<ez> $$1, eu $$2, Map<CommandNode<eu>, CommandNode<ez>> $$3) {
+      for (CommandNode<eu> $$4 : $$0.getChildren()) {
+         if ($$4.canUse($$2)) {
+            ArgumentBuilder<ez, ?> $$5 = $$4.createBuilder();
+            $$5.requires($$0x -> true);
+            if ($$5.getCommand() != null) {
+               $$5.executes($$0x -> 0);
+            }
+
+            if ($$5 instanceof RequiredArgumentBuilder) {
+               RequiredArgumentBuilder<ez, ?> $$6 = (RequiredArgumentBuilder<ez, ?>)$$5;
+               if ($$6.getSuggestionsProvider() != null) {
+                  $$6.suggests(iu.b($$6.getSuggestionsProvider()));
+               }
+            }
+
+            if ($$5.getRedirect() != null) {
+               $$5.redirect($$3.get($$5.getRedirect()));
+            }
+
+            CommandNode<ez> $$7 = $$5.build();
+            $$3.put($$4, $$7);
+            $$1.addChild($$7);
+            if (!$$4.getChildren().isEmpty()) {
+               this.a($$4, $$7, $$2, $$3);
+            }
+         }
+      }
+   }
+
+   public static LiteralArgumentBuilder<eu> a(String $$0) {
+      return LiteralArgumentBuilder.literal($$0);
+   }
+
+   public static <T> RequiredArgumentBuilder<eu, T> a(String $$0, ArgumentType<T> $$1) {
+      return RequiredArgumentBuilder.argument($$0, $$1);
+   }
+
+   public static Predicate<String> a(ev.b $$0) {
+      return $$1 -> {
+         try {
+            $$0.parse(new StringReader($$1));
+            return true;
+         } catch (CommandSyntaxException var3) {
+            return false;
+         }
+      };
+   }
+
+   public CommandDispatcher<eu> a() {
+      return this.h;
+   }
+
+   public static <S> void a(ParseResults<S> $$0) throws CommandSyntaxException {
+      CommandSyntaxException $$1 = b($$0);
+      if ($$1 != null) {
+         throw $$1;
+      }
+   }
+
+   @Nullable
+   public static <S> CommandSyntaxException b(ParseResults<S> $$0) {
+      if (!$$0.getReader().canRead()) {
+         return null;
+      } else if ($$0.getExceptions().size() == 1) {
+         return (CommandSyntaxException)$$0.getExceptions().values().iterator().next();
+      } else {
+         return $$0.getContext().getRange().isEmpty()
+            ? CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().createWithContext($$0.getReader())
+            : CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownArgument().createWithContext($$0.getReader());
+      }
+   }
+
+   public static eq a(final jq.a $$0) {
+      return new eq() {
+         @Override
+         public Stream<ald<? extends kb<?>>> a() {
+            return $$0.a();
+         }
+
+         @Override
+         public <T> Optional<jq.b<T>> a(ald<? extends kb<? extends T>> $$0x) {
+            return $$0.a($$0).map(this::a);
+         }
+
+         private <T> jq.b.a<T> a(final jq.b<T> $$0x) {
+            return new jq.b.a<T>() {
+               @Override
+               public jq.b<T> a() {
+                  return $$0;
+               }
+
+               @Override
+               public Optional<js.c<T>> a(axl<T> $$0xx) {
+                  return Optional.of(this.b($$0));
+               }
+
+               @Override
+               public js.c<T> b(axl<T> $$0xx) {
+                  Optional<js.c<T>> $$1 = this.a().a($$0);
+                  return $$1.orElseGet(() -> js.a(this.a(), $$0));
+               }
+            };
+         }
+      };
+   }
+
+   public static void b() {
+      eq $$0 = a(ph.a());
+      CommandDispatcher<eu> $$1 = new ev(ev.a.a, $$0).a();
+      RootCommandNode<eu> $$2 = $$1.getRoot();
+      $$1.findAmbiguities(
+         ($$1x, $$2x, $$3x, $$4x) -> g.warn("Ambiguity between arguments {} and {} with inputs: {}", new Object[]{$$1.getPath($$2x), $$1.getPath($$3x), $$4x})
+      );
+      Set<ArgumentType<?>> $$3 = is.a($$2);
+      Set<ArgumentType<?>> $$4 = $$3.stream().filter($$0x -> !ir.a($$0x.getClass())).collect(Collectors.toSet());
+      if (!$$4.isEmpty()) {
+         g.warn("Missing type registration for following arguments:\n {}", $$4.stream().map($$0x -> "\t" + $$0x).collect(Collectors.joining(",\n")));
+         throw new IllegalStateException("Unregistered argument types");
+      }
+   }
+
+   public static enum a {
+      a(true, true),
+      b(false, true),
+      c(true, false);
+
+      final boolean d;
+      final boolean e;
+
+      private a(final boolean $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void parse(StringReader var1) throws CommandSyntaxException;
    }
 }

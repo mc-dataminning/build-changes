@@ -1,9 +1,21 @@
-import javax.annotation.Nullable;
+public enum oq {
+   a("building_blocks"),
+   b("decorations"),
+   c("redstone"),
+   d("transportation"),
+   e("tools"),
+   f("combat"),
+   g("food"),
+   h("brewing"),
+   i("misc");
 
-public interface oq {
-   void a(alc var1, dah<?> var2, @Nullable ag var3);
+   private final String j;
 
-   af.a a();
+   private oq(final String $$0) {
+      this.j = $$0;
+   }
 
-   void b();
+   public String a() {
+      return this.j;
+   }
 }

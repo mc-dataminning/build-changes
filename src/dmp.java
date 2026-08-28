@@ -1,19 +1,22 @@
-public class dmp {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(duo $$0) {
-      return $$0.l();
+public class dmp extends dpe {
+   public static final MapCodec<dmp> a = b(dmp::new);
+
+   @Override
+   public MapCodec<dmp> a() {
+      return a;
    }
 
-   public static int a(azl $$0) {
-      double $$1 = 1.0;
+   public dmp(dur.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(lo.Z, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-
-      return $$2;
    }
 }

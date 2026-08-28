@@ -1,143 +1,218 @@
-public interface fob {
-   fob a(int var1);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   fob a(int var1, int var2);
+public class fob extends fnx {
+   private final List<foe> c = new ArrayList<>();
+   private final List<fob.a> d = new ArrayList<>();
+   private final fof e = fof.i();
+   private int f = 0;
+   private int g = 0;
 
-   fob a(int var1, int var2, int var3, int var4);
-
-   fob b(int var1);
-
-   fob c(int var1);
-
-   fob d(int var1);
-
-   fob e(int var1);
-
-   fob f(int var1);
-
-   fob g(int var1);
-
-   fob a(float var1, float var2);
-
-   fob a(float var1);
-
-   fob b(float var1);
-
-   default fob a() {
-      return this.a(0.0F);
+   public fob() {
+      this(0, 0);
    }
 
-   default fob b() {
-      return this.a(0.5F);
+   public fob(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
-   default fob c() {
-      return this.a(1.0F);
+   @Override
+   public void a() {
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
+
+      for (fob.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
+
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
+
+      for (fob.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
+
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
+
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
+
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
+         }
+      }
+
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (fob.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.D() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.E() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
    }
 
-   default fob d() {
-      return this.b(0.0F);
+   public <T extends foe> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
    }
 
-   default fob e() {
-      return this.b(0.5F);
+   public <T extends foe> T a(T $$0, int $$1, int $$2, fof $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
    }
 
-   default fob f() {
-      return this.b(1.0F);
+   public <T extends foe> T a(T $$0, int $$1, int $$2, Consumer<fof> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ad.a(this.b(), $$3));
    }
 
-   fob g();
-
-   fob.a h();
-
-   static fob i() {
-      return new fob.a();
+   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
    }
 
-   public static class a implements fob {
-      public int a;
-      public int b;
-      public int c;
-      public int d;
-      public float e;
-      public float f;
+   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      } else {
+         this.d.add(new fob.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
+      }
+   }
 
-      public a() {
+   public <T extends foe> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<fof> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ad.a(this.b(), $$5));
+   }
+
+   public fob a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public fob b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public fob c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
+   @Override
+   public void b(Consumer<foe> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public fof b() {
+      return this.e.g();
+   }
+
+   public fof c() {
+      return this.e;
+   }
+
+   public fob.b d(int $$0) {
+      return new fob.b($$0);
+   }
+
+   static class a extends fnx.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(foe $$0, int $$1, int $$2, int $$3, int $$4, fof $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
 
-      public a(fob.a $$0) {
-         this.a = $$0.a;
-         this.b = $$0.b;
-         this.c = $$0.c;
-         this.d = $$0.d;
-         this.e = $$0.e;
-         this.f = $$0.f;
+      public int c() {
+         return this.c + this.e - 1;
       }
 
-      public fob.a h(int $$0) {
-         return this.b($$0, $$0);
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(final int $$1) {
+         this.b = $$1;
       }
 
-      public fob.a b(int $$0, int $$1) {
-         return this.m($$0).n($$1);
+      public <T extends foe> T a(T $$0) {
+         return this.a($$0, 1);
       }
 
-      public fob.a b(int $$0, int $$1, int $$2, int $$3) {
-         return this.i($$0).k($$2).j($$1).l($$3);
+      public <T extends foe> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
       }
 
-      public fob.a i(int $$0) {
-         this.a = $$0;
-         return this;
+      public <T extends foe> T a(T $$0, fof $$1) {
+         return this.a($$0, 1, $$1);
       }
 
-      public fob.a j(int $$0) {
-         this.b = $$0;
-         return this;
+      public <T extends foe> T a(T $$0, int $$1, fof $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = azf.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return fob.this.a($$0, $$3, $$4, 1, $$1, $$2);
       }
 
-      public fob.a k(int $$0) {
-         this.c = $$0;
-         return this;
+      public fob a() {
+         return fob.this;
       }
 
-      public fob.a l(int $$0) {
-         this.d = $$0;
-         return this;
+      public fof b() {
+         return fob.this.b();
       }
 
-      public fob.a m(int $$0) {
-         return this.i($$0).k($$0);
-      }
-
-      public fob.a n(int $$0) {
-         return this.j($$0).l($$0);
-      }
-
-      public fob.a b(float $$0, float $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fob.a c(float $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fob.a d(float $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fob.a j() {
-         return new fob.a(this);
-      }
-
-      @Override
-      public fob.a h() {
-         return this;
+      public fof c() {
+         return fob.this.c();
       }
    }
 }

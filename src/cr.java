@@ -1,24 +1,24 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
 
-public record cr(jr<cxm> c) implements dw<cxo> {
-   public static final Codec<cr> a = kc.a(lv.ad).xmap(cr::new, cr::b);
+public record cr(js<cxp> c) implements dx<cxr> {
+   public static final Codec<cr> a = kd.a(lw.ad).xmap(cr::new, cr::b);
 
    @Override
-   public kq<cxo> a() {
-      return kr.L;
+   public kr<cxr> a() {
+      return ks.L;
    }
 
-   public boolean a(cvp $$0, cxo $$1) {
-      Optional<jn<cxm>> $$2 = $$1.e();
+   public boolean a(cvs $$0, cxr $$1) {
+      Optional<jo<cxp>> $$2 = $$1.e();
       return !$$2.isEmpty() && this.c.a($$2.get());
    }
 
-   public static ct a(jr<cxm> $$0) {
+   public static ct a(js<cxp> $$0) {
       return new cr($$0);
    }
 
-   public jr<cxm> b() {
+   public js<cxp> b() {
       return this.c;
    }
 }

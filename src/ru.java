@@ -1,54 +1,19 @@
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 public class ru {
-   public static void a(qt<edc<?, ?>> $$0) {
-      rr.a($$0);
-      rs.a($$0);
-      rt.a($$0);
-      rv.a($$0);
-      rw.a($$0);
-      rx.a($$0);
-      ry.a($$0);
-      rz.a($$0);
-      sa.a($$0);
-   }
+   public static final ald<edg<?, ?>> a = rv.a("end_platform");
+   public static final ald<edg<?, ?>> b = rv.a("end_spike");
+   public static final ald<edg<?, ?>> c = rv.a("end_gateway_return");
+   public static final ald<edg<?, ?>> d = rv.a("end_gateway_delayed");
+   public static final ald<edg<?, ?>> e = rv.a("chorus_plant");
+   public static final ald<edg<?, ?>> f = rv.a("end_island");
 
-   private static ebr a(List<dhj> $$0) {
-      ebr $$1;
-      if (!$$0.isEmpty()) {
-         $$1 = ebr.a(ebr.c, ebr.a(jj.a.q(), $$0));
-      } else {
-         $$1 = ebr.c;
-      }
-
-      return $$1;
-   }
-
-   public static egh a(int $$0, jn<ekg> $$1) {
-      return new egh($$0, 7, 3, $$1);
-   }
-
-   public static <FC extends efu, F extends edq<FC>> egh a(F $$0, FC $$1, List<dhj> $$2, int $$3) {
-      return a($$3, sj.a($$0, $$1, a($$2)));
-   }
-
-   public static <FC extends efu, F extends edq<FC>> egh a(F $$0, FC $$1, List<dhj> $$2) {
-      return a($$0, $$1, $$2, 96);
-   }
-
-   public static <FC extends efu, F extends edq<FC>> egh a(F $$0, FC $$1) {
-      return a($$0, $$1, List.of(), 96);
-   }
-
-   public static alb<edc<?, ?>> a(String $$0) {
-      return alb.a(lv.aJ, alc.b($$0));
-   }
-
-   public static void a(qt<edc<?, ?>> $$0, alb<edc<?, ?>> $$1, edq<egb> $$2) {
-      a($$0, $$1, $$2, efu.m);
-   }
-
-   public static <FC extends efu, F extends edq<FC>> void a(qt<edc<?, ?>> $$0, alb<edc<?, ?>> $$1, F $$2, FC $$3) {
-      $$0.a($$1, new edc($$2, $$3));
+   public static void a(qu<edg<?, ?>> $$0) {
+      rv.a($$0, a, edu.J);
+      rv.a($$0, b, edu.K, new egs(false, ImmutableList.of(), null));
+      rv.a($$0, c, edu.M, efx.a(arj.a, true));
+      rv.a($$0, d, edu.M, efx.a());
+      rv.a($$0, e, edu.l);
+      rv.a($$0, f, edu.L);
    }
 }

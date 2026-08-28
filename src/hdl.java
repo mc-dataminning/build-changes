@@ -1,29 +1,37 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class hdl extends hdp {
+   private final xe a;
+   private flh b = flh.a;
+   private final fqh c;
+   private int B;
 
-public class hdl {
-   private final float a;
-   private final AtomicReference<hdl.a> b = new AtomicReference<>();
-
-   public hdl(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public hdl(fqh $$0, xe $$1, xe $$2) {
+      super($$1);
+      this.c = $$0;
+      this.a = $$2;
    }
 
-   public void a(fic $$0, xd $$1) {
-      hdl.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hdl.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   public void aS_() {
+      this.m.af().i();
+      this.b = flh.a(this.p, this.a, this.n - 50);
+      this.B = this.b.a() * 9;
+      this.c(fko.a(xd.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
    }
 
-   static class a {
-      final xd a;
-      final RateLimiter b;
+   @Override
+   public xe i() {
+      return xe.i().b(this.l).f(": ").b(this.a);
+   }
 
-      a(xd $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public void d() {
+      fip.Q().a(this.c);
+   }
+
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
+      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
    }
 }

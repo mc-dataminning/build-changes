@@ -1,44 +1,45 @@
-import java.util.function.BiFunction;
+public class acg implements zl<aca> {
+   public static final zc<wb, acg> a = zl.a(acg::a, acg::new);
+   private final int b;
+   private final jf c;
+   private final int d;
 
-public class acg implements zk<abz> {
-   public static final zb<wo, acg> a = zb.a(je.b, acg::b, yz.a(lv.h), acg::e, yz.p, acg::f, acg::new);
-   private final je b;
-   private final dru<?> c;
-   private final uf d;
-
-   public static acg a(drs $$0, BiFunction<drs, kb, uf> $$1) {
-      kb $$2 = $$0.i().F_();
-      return new acg($$0.aB_(), $$0.q(), $$1.apply($$0, $$2));
-   }
-
-   public static acg a(drs $$0) {
-      return a($$0, drs::a);
-   }
-
-   private acg(je $$0, dru<?> $$1, uf $$2) {
+   public acg(int $$0, jf $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
-   @Override
-   public zm<acg> a() {
-      return ago.i;
+   private acg(wb $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
    }
 
-   public void a(abz $$0) {
+   private void a(wb $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
+   }
+
+   @Override
+   public zn<acg> a() {
+      return agp.h;
+   }
+
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public je b() {
+   public int b() {
       return this.b;
    }
 
-   public dru<?> e() {
+   public jf e() {
       return this.c;
    }
 
-   public uf f() {
+   public int f() {
       return this.d;
    }
 }

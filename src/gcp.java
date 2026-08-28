@@ -1,73 +1,66 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public final class gcp {
-   private static final int a = 1024;
-   private final gcg b;
-   private final gcm c;
-   private final gcb d;
-   @Nullable
-   private gcl e;
+public class gcp extends gcq {
+   private final String g;
 
-   public gcp(gcg $$0, gcm $$1, gcb $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   gcp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   public static gcp a(gcm $$0, UserApiService $$1) {
-      gcb $$2 = new gcb(1024);
-      gcg $$3 = gcg.a($$0, $$1);
-      return new gcp($$3, $$0, $$2);
+   public String a() {
+      return this.g;
    }
 
-   public void a(fil $$0, fqd $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         gcl $$4 = this.e.b();
-         $$0.a(
-            new fpb(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xd.c("gui.abuseReport.draft.edit"),
-               xd.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   public gcp c() {
+      gcp $$0 = new gcp(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
+   }
+
+   @Override
+   public fqh a(fqh $$0, gcu $$1) {
+      return new fuq($$0, $$1, this);
+   }
+
+   public static class a extends gcq.a<gcp> {
+      public a(gcp $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
-   }
 
-   public gcg a() {
-      return this.b;
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gcp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public gcb b() {
-      return this.d;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   public boolean a(gcm $$0) {
-      return Objects.equals(this.c, $$0);
-   }
+      @Nullable
+      @Override
+      public gcq.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gcq.b.d : super.c();
+      }
 
-   public void a(@Nullable gcl $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      @Override
+      public Either<gcq.c, gcq.b> a(gcu $$0) {
+         gcq.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gcq.c(this.a.a, gct.c, $$3));
+         }
+      }
    }
 }

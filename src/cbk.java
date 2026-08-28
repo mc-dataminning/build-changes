@@ -1,13 +1,57 @@
 import java.util.EnumSet;
 
-public class cbk extends cbp {
-   public cbk(bum $$0, Class<? extends buk> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(cbh.a.b, cbh.a.a));
+public abstract class cbk {
+   private final EnumSet<cbk.a> a = EnumSet.noneOf(cbk.a.class);
+
+   public abstract boolean b();
+
+   public boolean c() {
+      return this.b();
    }
 
-   public cbk(bum $$0, Class<? extends buk> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(cbh.a.b, cbh.a.a));
+   public boolean T_() {
+      return true;
+   }
+
+   public void d() {
+   }
+
+   public void e() {
+   }
+
+   public boolean U_() {
+      return false;
+   }
+
+   public void a() {
+   }
+
+   public void a(EnumSet<cbk.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<cbk.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.U_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return azf.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

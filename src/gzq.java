@@ -1,110 +1,138 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public class gzq implements gzd {
-   private final List<Pair<Predicate<duo>, gzd>> g;
-   protected final boolean a;
-   protected final boolean b;
-   protected final boolean c;
-   protected final gxb d;
-   protected final giy e;
-   protected final giw f;
-   private final Map<duo, BitSet> h = new Reference2ObjectOpenHashMap();
+public class gzq {
+   static final Logger a = LogUtils.getLogger();
+   private final Map<ale, gzy> b;
+   final gzy c;
+   private final Map<gzt, gzy> d = new HashMap<>();
+   private final Map<ale, gzy> e = new HashMap<>();
 
-   public gzq(List<Pair<Predicate<duo>, gzd>> $$0) {
-      this.g = $$0;
-      gzd $$1 = (gzd)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   public gzq(Map<ale, gzy> $$0, gzy $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a(gzn.c, $$1);
+      this.e.put(gzn.b, $$1);
    }
 
-   @Override
-   public List<gim> a(@Nullable duo $$0, @Nullable jj $$1, azl $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
+   private void a(ale $$0) {
+      gzt $$1 = gzt.a($$0);
+      ale $$2 = $$0.f("item/");
+      gzy $$3 = this.b($$2);
+      this.a($$1, $$3);
+   }
 
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<duo>, gzd> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
+   private void a(gzt $$0) {
+      ale $$1 = $$0.b().f("item/");
+      gzy $$2 = this.b($$1);
+      this.a($$0, $$2);
+   }
 
-            this.h.put($$0, $$3);
-         }
+   private void a(gzt $$0, gzy $$1) {
+      this.d.put($$0, $$1);
+   }
 
-         List<gim> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
+   public void a(gzk.c $$0) {
+      this.e.put(gzx.a, gzx.c);
+      this.e.put(gzx.b, gzx.d);
+      $$0.a().forEach(($$0x, $$1x) -> this.a($$0x, $$1x.b()));
 
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((gzd)this.g.get($$8).getRight()).a($$0, $$1, azl.a($$7)));
-            }
-         }
-
-         return $$6;
+      for (ale $$1 : lv.g.i()) {
+         this.a($$1);
       }
+
+      this.a(gom.i);
+      this.a(gom.j);
+      this.a(gom.a((cub)cvw.qV));
+      this.a(gom.b((cub)cvw.qV));
    }
 
-   @Override
-   public boolean a() {
-      return this.a;
+   public void a() {
+      this.d.values().forEach($$0 -> $$0.a(new gzq.a(), gzy.a.a));
    }
 
-   @Override
-   public boolean b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      return this.c;
-   }
-
-   @Override
-   public boolean d() {
-      return false;
-   }
-
-   @Override
-   public gxb e() {
+   public Map<gzt, gzy> b() {
       return this.d;
    }
 
-   @Override
-   public giy f() {
+   public Map<ale, gzy> c() {
       return this.e;
    }
 
-   @Override
-   public giw g() {
-      return this.f;
+   gzy b(ale $$0) {
+      return this.e.computeIfAbsent($$0, this::c);
    }
 
-   public static class a {
-      private final List<Pair<Predicate<duo>, gzd>> a = Lists.newArrayList();
+   private gzy c(ale $$0) {
+      gzy $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         a.warn("Missing block model: '{}'", $$0);
+         return this.c;
+      } else {
+         return $$1;
+      }
+   }
 
-      public void a(Predicate<duo> $$0, gzd $$1) {
-         this.a.add(Pair.of($$0, $$1));
+   class a implements gzy.b {
+      private final List<ale> b = new ArrayList<>();
+      private final Set<ale> c = new HashSet<>();
+      private gzy.a d = gzy.a.a;
+
+      @Override
+      public gzy a(ale $$0) {
+         return this.b($$0, false);
       }
 
-      public gzd a() {
-         return new gzq(this.a);
+      @Override
+      public gzy b(ale $$0) {
+         if (this.d == gzy.a.b) {
+            gzq.a.warn("Re-entrant override in {}->{}", this.a(), $$0);
+         }
+
+         this.d = gzy.a.b;
+         gzy $$1 = this.b($$0, true);
+         this.d = gzy.a.a;
+         return $$1;
+      }
+
+      private boolean a(ale $$0, boolean $$1) {
+         if (this.b.isEmpty()) {
+            return false;
+         } else if (!this.b.contains($$0)) {
+            return false;
+         } else if ($$1) {
+            ale $$2 = this.b.getLast();
+            return !$$2.equals($$0);
+         } else {
+            return true;
+         }
+      }
+
+      private gzy b(ale $$0, boolean $$1) {
+         if (this.a($$0, $$1)) {
+            gzq.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
+            return gzq.this.c;
+         } else {
+            gzy $$2 = gzq.this.b($$0);
+            if (this.c.add($$0)) {
+               this.b.add($$0);
+               $$2.a(this, this.d);
+               this.b.remove($$0);
+            }
+
+            return $$2;
+         }
+      }
+
+      private String a() {
+         return this.b.stream().map(ale::toString).collect(Collectors.joining("->"));
       }
    }
 }

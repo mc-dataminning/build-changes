@@ -1,50 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dja extends dgt {
-   public static final MapCodec<dja> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(diy.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dja::new));
-   private final dhj e;
-   protected static final float b = 6.0F;
-   protected static final ezm c = dhj.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class dja extends dhm {
+   public static final MapCodec<dja> a = b(dja::new);
+   public static final dvj b = dvi.w;
+   public static final dvj c = dvi.r;
 
    @Override
-   public MapCodec<dja> a() {
+   protected MapCodec<? extends dja> a() {
       return a;
    }
 
-   protected dja(dhj $$0, dun.d $$1) {
-      super($$1);
-      this.e = $$0;
+   public dja(dur.d $$0) {
+      super($$0);
+      this.l(this.n().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      this.a($$0, (deh)$$1, $$2);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.o().b(d, Boolean.valueOf(false)), 2);
+   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof arj $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$1 == jj.a && !$$0.a($$3, $$4)) {
-         return dhl.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, eqq.c, eqq.c.a($$3));
+   protected void a(dus $$0, dej $$1, jf $$2, dhm $$3, @Nullable esb $$4, boolean $$5) {
+      if ($$1 instanceof arj $$6) {
+         this.a($$0, $$6, $$2);
+      }
+   }
+
+   public void a(dus $$0, arj $$1, jf $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dus $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awg.fH : awg.fI, awh.e);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
       }
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return c;
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(dus $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dus $$0, dej $$1, jf $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

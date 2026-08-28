@@ -1,4 +1,3 @@
-public class gvg extends gub {
-   public boolean b;
-   public boolean c;
+public interface gvg {
+   boolean c();
 }

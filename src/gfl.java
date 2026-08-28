@@ -1,99 +1,108 @@
-import java.util.Optional;
+public class gfl extends gft {
+   private static final azn a = azn.a();
+   private final gfo b;
+   private float F = 1.0F;
 
-public class gfl extends gfo {
-   gfl(gbh $$0, gfj $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
+   gfl(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfo $$7) {
+      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.b = $$7;
+      this.k *= 0.2F;
+      if ($$4 == 0.0 && $$6 == 0.0) {
+         this.j *= 0.1F;
+         this.l *= 0.1F;
+      }
 
-   gfl(gbh $$0, gfj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.D *= 0.75F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
       this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+      this.b($$7);
+      if (this.g()) {
+         this.e(0.0F);
+      }
    }
 
    @Override
-   public ges b() {
-      return ges.b;
+   public gex b() {
+      return gex.c;
    }
 
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
-         this.a = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azl $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gfl $$12 = new gfl($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+      if (this.g()) {
+         this.y = 0.0F;
+      } else {
+         this.y = azf.h(0.05F, this.y, this.F);
       }
    }
 
-   public static class b implements ger<lr> {
-      private final gfj a;
+   @Override
+   protected void e(float $$0) {
+      super.e($$0);
+      this.F = $$0;
+   }
 
-      public b(gfj $$0) {
+   private boolean g() {
+      fip $$0 = fip.Q();
+      ggh $$1 = $$0.t;
+      return $$1 != null && $$1.bC().c(this.g, this.h, this.i) <= 9.0 && $$0.n.aD().a() && $$1.gB();
+   }
+
+   public static class a implements gew<ls> {
+      private final gfo a;
+
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfl $$8 = new gfl($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<lk> o() {
-               return Optional.of(lk.a);
-            }
-         };
-         $$8.t = azd.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gew<lh> {
+      private final gfo a;
+
+      public b(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(lh $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         get $$8 = new gfl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a($$0.b(), $$0.c(), $$0.d());
+         $$8.e($$0.e());
          return $$8;
       }
    }
 
-   public static class c implements ger<lr> {
-      private final gfj a;
+   public static class c implements gew<ls> {
+      private final gfo a;
 
-      public c(gfj $$0) {
+      public c(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfl $$8 = new gfl($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 
-   public static class d implements ger<lr> {
-      private final gfj a;
+   public static class d implements gew<ls> {
+      private final gfo a;
 
-      public d(gfj $$0) {
+      public d(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         gfl $$9 = new gfl($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfl $$8 = new gfl($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         float $$9 = $$1.z.i() * 0.5F + 0.35F;
+         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
+         return $$8;
       }
    }
 }

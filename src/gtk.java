@@ -1,7 +1,11 @@
 import javax.annotation.Nullable;
 
-public class gtk extends gub {
-   public boolean a;
+public abstract class gtk extends gtq {
    @Nullable
-   public duo b;
+   public btp.k b;
+   public float c;
+   public float d;
+   public float e;
+
+   public abstract boolean a();
 }

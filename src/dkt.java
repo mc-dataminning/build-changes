@@ -1,72 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dkt extends dmj implements dhm, dol {
-   public static final MapCodec<dkt> a = b(dkt::new);
-   private static final dvf c = dve.C;
-   private final dmk d = new dmk(this);
+public class dkt extends dgh {
+   public static final MapCodec<dkt> c = b(dkt::new);
 
    @Override
    public MapCodec<dkt> a() {
-      return a;
+      return c;
    }
 
-   public dkt(dun.d $$0) {
+   protected dkt(dur.d $$0) {
       super($$0);
-      this.l(this.o().b(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<duo> b(int $$0) {
-      return $$1 -> dmj.q($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   public drv a(jf $$0, dus $$1) {
+      return new dst($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return a($$0, $$2, drx.a);
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
+   protected void a(dej $$0, jf $$1, cnx $$2) {
+      drv $$3 = $$0.c_($$1);
+      if ($$3 instanceof dst) {
+         $$2.a((bru)$$3);
+         $$2.a(awq.am);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(duo $$0, czk $$1) {
-      return !$$1.n().a(cvt.fW) || super.a($$0, $$1);
-   }
+   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awg.jZ, awh.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return jj.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(c) ? eqq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean e_(duo $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   public dmk c() {
-      return this.d;
+         jk $$7 = $$0.c(a);
+         jk.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jk.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jk.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lo.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lo.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

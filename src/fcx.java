@@ -1,90 +1,86 @@
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.apache.commons.lang3.StringUtils;
 
-public class fcx {
-   private int a;
+public class fcx implements AutoCloseable {
+   private static final int a = -1;
+   private final ale b;
+   private int c;
 
-   public static Optional<fcx> a() {
-      return fcx.b.a;
+   private fcx(int $$0, ale $$1) {
+      this.b = $$1;
+      this.c = $$0;
    }
 
-   public void b() {
+   public static fcx a(ale $$0, fcx.a $$1, String $$2) throws gic.b {
       RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
+      int $$3 = GlStateManager.glCreateShader($$1.b());
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new gic.b("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
       } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+         return new fcx($$3, $$0);
       }
    }
 
-   public fcx.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
+   @Override
+   public void close() {
+      if (this.c == -1) {
+         throw new IllegalStateException("Already closed");
       } else {
-         GL32C.glEndQuery(35007);
-         fcx.a $$0 = new fcx.a(this.a);
-         this.a = 0;
-         return $$0;
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.c);
+         this.c = -1;
       }
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+   public ale a() {
+      return this.b;
    }
 
-   static class b {
-      static final Optional<fcx> a = Optional.ofNullable(a());
+   public int b() {
+      return this.c;
+   }
 
-      private b() {
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private static final fcx.a[] c = values();
+      private final String d;
+      private final String e;
+      private final int f;
+
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
       @Nullable
-      private static fcx a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fcx();
+      public static fcx.a a(ale $$0) {
+         for (fcx.a $$1 : c) {
+            if ($$0.a().endsWith($$1.e)) {
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public akx c() {
+         return new akx("shaders", this.e);
       }
    }
 }

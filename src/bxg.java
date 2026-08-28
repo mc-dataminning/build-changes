@@ -1,72 +1,34 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public final class bxg {
-   public static Optional<eys> a(bum $$0, eys $$1, float $$2, int $$3, boolean $$4) {
-      eys $$5 = $$0.dq();
-      eys $$6 = new eys($$1.d - $$5.d, 0.0, $$1.f - $$5.f).d().c(0.5);
-      eys $$7 = $$1.d($$6);
-      eys $$8 = $$7.d($$5);
-      float $$9 = (float)$$3 * (float) Math.PI / 180.0F;
-      double $$10 = Math.atan2($$8.f, $$8.d);
-      double $$11 = $$8.a(0.0, $$8.e, 0.0).h();
-      double $$12 = Math.sqrt($$11);
-      double $$13 = $$8.e;
-      double $$14 = $$0.bd();
-      double $$15 = Math.sin((double)(2.0F * $$9));
-      double $$16 = Math.pow(Math.cos((double)$$9), 2.0);
-      double $$17 = Math.sin((double)$$9);
-      double $$18 = Math.cos((double)$$9);
-      double $$19 = Math.sin($$10);
-      double $$20 = Math.cos($$10);
-      double $$21 = $$11 * $$14 / ($$12 * $$15 - 2.0 * $$13 * $$16);
-      if ($$21 < 0.0) {
-         return Optional.empty();
-      } else {
-         double $$22 = Math.sqrt($$21);
-         if ($$22 > (double)$$2) {
-            return Optional.empty();
-         } else {
-            double $$23 = $$22 * $$18;
-            double $$24 = $$22 * $$17;
-            if ($$4) {
-               int $$25 = azd.c($$12 / $$23) * 2;
-               double $$26 = 0.0;
-               eys $$27 = null;
-               btr $$28 = $$0.a(buw.g);
+public class bxg extends bwf<bup> {
+   public static final int c = 100;
+   private final brd d;
+   private final awf e;
 
-               for (int $$29 = 0; $$29 < $$25 - 1; $$29++) {
-                  $$26 += $$12 / (double)$$25;
-                  double $$30 = $$17 / $$18 * $$26 - Math.pow($$26, 2.0) * $$14 / (2.0 * $$21 * Math.pow($$18, 2.0));
-                  double $$31 = $$26 * $$20;
-                  double $$32 = $$26 * $$19;
-                  eys $$33 = new eys($$5.d + $$31, $$5.e + $$30, $$5.f + $$32);
-                  if ($$27 != null && !a($$0, $$28, $$27, $$33)) {
-                     return Optional.empty();
-                  }
-
-                  $$27 = $$33;
-               }
-            }
-
-            return Optional.of(new eys($$23 * $$20, $$24, $$23 * $$19).c(0.95F));
-         }
-      }
+   public bxg(brd $$0, awf $$1) {
+      super(ImmutableMap.of(cdq.n, cdr.c, cdq.T, cdr.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private static boolean a(bum $$0, btr $$1, eys $$2, eys $$3) {
-      eys $$4 = $$3.d($$2);
-      double $$5 = (double)Math.min($$1.a(), $$1.b());
-      int $$6 = azd.c($$4.g() / $$5);
-      eys $$7 = $$4.d();
-      eys $$8 = $$2;
+   protected boolean a(arj $$0, bup $$1, long $$2) {
+      return !$$1.aH();
+   }
 
-      for (int $$9 = 0; $$9 < $$6; $$9++) {
-         $$8 = $$9 == $$6 - 1 ? $$3 : $$8.e($$7.c($$5 * 0.9F));
-         if (!$$0.dS().a($$0, $$1.a($$8))) {
-            return false;
-         }
+   protected void b(arj $$0, bup $$1, long $$2) {
+      $$1.r(true);
+      $$1.b(buz.g);
+   }
+
+   protected void c(arj $$0, bup $$1, long $$2) {
+      if ($$1.aH()) {
+         $$1.h($$1.dv().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, awh.g, 2.0F, 1.0F);
       }
 
-      return true;
+      $$1.r(false);
+      $$1.b(buz.a);
+      $$1.dY().b(cdq.T);
+      $$1.dY().a(cdq.S, this.d.a($$0.z));
    }
 }

@@ -1,26 +1,44 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eiz<P extends eiy> {
-   public static final eiz<eix> a = a("straight_trunk_placer", eix.a);
-   public static final eiz<eiu> b = a("forking_trunk_placer", eiu.a);
-   public static final eiz<eiv> c = a("giant_trunk_placer", eiv.a);
-   public static final eiz<eiw> d = a("mega_jungle_trunk_placer", eiw.b);
-   public static final eiz<eis> e = a("dark_oak_trunk_placer", eis.a);
-   public static final eiz<eit> f = a("fancy_trunk_placer", eit.a);
-   public static final eiz<eiq> g = a("bending_trunk_placer", eiq.a);
-   public static final eiz<eja> h = a("upwards_branching_trunk_placer", eja.a);
-   public static final eiz<eir> i = a("cherry_trunk_placer", eir.a);
-   private final MapCodec<P> j;
+public class eiz extends ejc {
+   public static final MapCodec<eiz> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiz::new));
 
-   private static <P extends eiy> eiz<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.V, $$0, new eiz<>($$1));
+   public eiz(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private eiz(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected ejd<?> a() {
+      return ejd.c;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
+      jf $$6 = $$4.e();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.i(), $$5);
+      a($$0, $$1, $$2, $$6.g(), $$5);
+      a($$0, $$1, $$2, $$6.g().i(), $$5);
+      jf.a $$7 = new jf.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new ehk.a($$4.b($$3), 0, true));
+   }
+
+   private void a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, jf.a $$3, egu $$4, jf $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,45 +1,63 @@
-import java.util.UUID;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class dzc<T extends dys> implements dzb<T> {
-   private final dyu<T> a;
-   private final dyx<T> b;
-
-   public dzc(dyu<T> $$0, dyx<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
+public class dzc {
+   private Int2ObjectMap<btr> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<btr> b = new Int2ObjectLinkedOpenHashMap();
    @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   private Int2ObjectMap<btr> c;
+
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+
+         while ($$1.hasNext()) {
+            Entry<btr> $$0 = (Entry<btr>)$$1.next();
+            this.b.put($$0.getIntKey(), (btr)$$0.getValue());
+         }
+
+         Int2ObjectMap<btr> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
+      }
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
+   public void a(btr $$0) {
+      this.a();
+      this.a.put($$0.ap(), $$0);
    }
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
+   public void b(btr $$0) {
+      this.a();
+      this.a.remove($$0.ap());
    }
 
-   @Override
-   public <U extends T> void a(dyz<T, U> $$0, axp<U> $$1) {
-      this.a.a($$0, $$1);
+   public boolean c(btr $$0) {
+      return this.a.containsKey($$0.ap());
    }
 
-   @Override
-   public void a(eyn $$0, Consumer<T> $$1) {
-      this.b.b($$0, axp.forConsumer($$1));
-   }
+   public void a(Consumer<btr> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
 
-   @Override
-   public <U extends T> void a(dyz<T, U> $$0, eyn $$1, axp<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               btr $$1 = (btr)var2.next();
+               $$0.accept($$1);
+            }
+         } finally {
+            this.c = null;
+         }
+      }
    }
 }

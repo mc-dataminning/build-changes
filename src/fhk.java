@@ -1,66 +1,69 @@
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fhk extends fhj {
+public class fhk extends fhn {
    private static final Logger b = LogUtils.getLogger();
-   private static final xd c = xd.c("mco.configure.world.opening");
-   private final fel d;
-   private final fqd e;
-   private final boolean f;
-   private final fil g;
+   private static final xe c = xe.c("mco.snapshot.creating");
+   private final long d;
+   private final fhg e;
+   private final String f;
+   private final String g;
+   private final fdt h;
+   @Nullable
+   private fhp i;
+   @Nullable
+   private fhq j;
 
-   public fhk(fel $$0, fqd $$1, boolean $$2, fil $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public fhk(fdt $$0, long $$1, fhg $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
    @Override
    public void run() {
-      fdu $$0 = fdu.a();
+      fdy $$0 = fdy.a();
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
+      try {
+         fep $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fhp($$1.a, this.f, this.g);
+         this.j = new fhq(this.e, $$1.a, fgl.a, () -> fip.Q().execute(() -> fdt.a($$1, this.h, true)));
          if (this.d()) {
             return;
          }
 
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fft) {
-                     ((fft)this.e).f();
-                  }
-
-                  this.d.e = fel.c.b;
-                  if (this.f) {
-                     fdp.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (ffg var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to open server", var5);
-            this.a(var5);
+         this.i.run();
+         if (this.d()) {
+            return;
          }
+
+         this.j.run();
+      } catch (ffj var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
       }
    }
 
    @Override
-   public xd a() {
+   public xe a() {
       return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

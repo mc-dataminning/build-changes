@@ -1,105 +1,55 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+public interface ead extends azn {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public interface ead {
-   Codec<ead> b = eae.b;
-   Codec<jn<ead>> c = aky.a(lv.aK, b);
-   Codec<ead> d = c.xmap(eae.j::new, $$0 -> (jn)($$0 instanceof eae.j $$1 ? $$1.j() : new jn.a<>($$0)));
+   int c(int var1);
 
-   double a(ead.b var1);
-
-   void a(double[] var1, ead.a var2);
-
-   ead a(ead.f var1);
-
-   double a();
-
-   double b();
-
-   ayw<? extends ead> c();
-
-   default ead a(double $$0, double $$1) {
-      return new eae.g(this, $$0, $$1);
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   default ead d() {
-      return eae.a(this, eae.k.a.a);
-   }
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-   default ead e() {
-      return eae.a(this, eae.k.a.b);
-   }
-
-   default ead f() {
-      return eae.a(this, eae.k.a.c);
-   }
-
-   default ead g() {
-      return eae.a(this, eae.k.a.d);
-   }
-
-   default ead h() {
-      return eae.a(this, eae.k.a.e);
-   }
-
-   default ead i() {
-      return eae.a(this, eae.k.a.f);
-   }
-
-   public interface a {
-      ead.b a(int var1);
-
-      void a(double[] var1, ead var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default ebm d() {
-         return ebm.a();
+         return $$2;
       }
    }
 
-   public static record c(jn<eps.a> b, @Nullable eps c) {
-      public static final Codec<ead.c> a = eps.a.b.xmap($$0 -> new ead.c($$0, null), ead.c::b);
-
-      public c(jn<eps.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
    }
 
-   public interface d extends ead {
-      @Override
-      default void a(double[] $$0, ead.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default ead a(ead.f $$0) {
-         return $$0.apply(this);
-      }
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
    }
 
-   public static record e(int a, int b, int c) implements ead.b {
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   public interface f {
-      ead apply(ead var1);
-
-      default ead.c a(ead.c $$0) {
-         return $$0;
-      }
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

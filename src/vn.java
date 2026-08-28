@@ -1,89 +1,36 @@
-public interface vn extends uz {
-   vn a = new vn() {
-   };
+import java.util.HashMap;
+import java.util.Map;
 
-   @Override
-   default uz.b a() {
-      return uz.b.a;
+public record vn(int a, Map<String, vf<?>> b, Map<String, vn> c) {
+   private vn(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   default uz.b a(String $$0) {
-      return uz.b.a;
+   public static vn a() {
+      return new vn(1);
    }
 
-   @Override
-   default uz.b a(byte $$0) {
-      return uz.b.a;
+   public void a(vm $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new vn(this.a + 1)).a($$0);
+      } else {
+         this.b.put($$0.c(), $$0.b());
+      }
    }
 
-   @Override
-   default uz.b a(short $$0) {
-      return uz.b.a;
+   public boolean a(vf<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
    }
 
-   @Override
-   default uz.b a(int $$0) {
-      return uz.b.a;
+   public int b() {
+      return this.a;
    }
 
-   @Override
-   default uz.b a(long $$0) {
-      return uz.b.a;
+   public Map<String, vf<?>> c() {
+      return this.b;
    }
 
-   @Override
-   default uz.b a(float $$0) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b a(double $$0) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b a(byte[] $$0) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b a(int[] $$0) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b a(long[] $$0) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b a(ve<?> $$0, int $$1) {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.a b(ve<?> $$0, int $$1) {
-      return uz.a.b;
-   }
-
-   @Override
-   default uz.a a(ve<?> $$0) {
-      return uz.a.b;
-   }
-
-   @Override
-   default uz.a a(ve<?> $$0, String $$1) {
-      return uz.a.b;
-   }
-
-   @Override
-   default uz.b b() {
-      return uz.b.a;
-   }
-
-   @Override
-   default uz.b b(ve<?> $$0) {
-      return uz.b.a;
+   public Map<String, vn> d() {
+      return this.c;
    }
 }

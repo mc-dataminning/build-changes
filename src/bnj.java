@@ -1,31 +1,45 @@
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public interface bnj<S, T> {
-   Optional<T> a(bni<S> var1);
+public interface bnj<S> {
+   void a(int var1, bno<S> var2, Object var3);
 
-   static <S, T> bnj<S, T> a(bnm<S> $$0, bnj.a<S, T> $$1) {
-      return new bnj.c<>($$1, $$0);
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bno.b(), $$1);
    }
 
-   static <S, T> bnj<S, T> a(bnm<S> $$0, bnj.b<T> $$1) {
-      return new bnj.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
-   }
+   void a(int var1);
 
-   @FunctionalInterface
-   public interface a<S, T> {
-      Optional<T> run(bni<S> var1, bnk var2);
-   }
+   public static class a<S> implements bnj<S> {
+      private final List<bnk<S>> a = new ArrayList<>();
+      private int b = -1;
 
-   @FunctionalInterface
-   public interface b<T> {
-      T run(bnk var1);
-   }
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
+         }
+      }
 
-   public static record c<S, T>(bnj.a<S, T> a, bnm<S> b) implements bnj<S, T> {
       @Override
-      public Optional<T> a(bni<S> $$0) {
-         bnk $$1 = new bnk();
-         return this.b.a($$0, $$1, bne.a) ? this.a.run($$0, $$1) : Optional.empty();
+      public void a(int $$0) {
+         this.b($$0);
+      }
+
+      @Override
+      public void a(int $$0, bno<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bnk<>($$0, $$1, $$2));
+         }
+      }
+
+      public List<bnk<S>> a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
       }
    }
 }

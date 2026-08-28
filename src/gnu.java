@@ -1,22 +1,34 @@
-public class gnu extends gop<ckv, gwa, fxx<gwa>> {
-   private static final alc a = alc.b("textures/entity/zombie/zombie.png");
+public class gnu extends gnn<col, gtx> {
+   private final gom a;
 
-   public gnu(gnj.a $$0, float $$1) {
-      super($$0, new fxq($$0.a(gak.aE)), 0.5F * $$1);
-      this.a(new grp<>(this, $$0.b()));
-      this.a(new grm<>(this, new fxq($$0.a(gak.aF)), new fxq($$0.a(gak.aG)), $$0.g()));
+   public gnu(gno.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public alc a(gwa $$0) {
-      return a;
+   public void a(gtx $$0, fdi $$1, ghl $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.e.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.c, cvp.h, false, $$1, $$2, $$3, gwx.d, $$0.b);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gwa c() {
-      return new gwa();
+   public gtx a() {
+      return new gtx();
    }
 
-   public void a(ckv $$0, gwa $$1, float $$2) {
+   public void a(col $$0, gtx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      goa.a($$0, $$1, $$2);
+      $$1.a = $$0.o();
+      cvs $$3 = $$0.m();
+      $$1.c = $$3.u();
+      $$1.b = !$$3.f() ? this.a.a($$3, $$0.dS(), null, $$0.ap()) : null;
    }
 }

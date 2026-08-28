@@ -1,37 +1,30 @@
-public class ahl implements zk<agq> {
-   public static final zb<wa, ahl> a = zk.a(ahl::a, ahl::new);
-   private final int b;
-   private final int c;
+import java.util.List;
+import java.util.Optional;
 
-   public ahl(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+public record ahl(int b, List<String> c, Optional<String> d) implements zl<agr> {
+   public static final zc<wb, ahl> a = zc.a(za.h, ahl::b, za.b(1024).a(za.c(100)), ahl::e, za.b(32).a(za::a), ahl::f, ahl::new);
 
-   private ahl(wa $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public ahl(int b, List<String> c, Optional<String> d) {
+      c = List.copyOf(c);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
    @Override
-   public zm<ahl> a() {
-      return ago.bA;
+   public zn<ahl> a() {
+      return agp.bz;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public List<String> e() {
+      return this.c;
    }
 
-   public int e() {
-      return this.c;
+   public Optional<String> f() {
+      return this.d;
    }
 }

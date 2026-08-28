@@ -1,108 +1,167 @@
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class fux extends fqd {
-   private static final xd a = xd.c("telemetry_info.screen.title");
-   private static final xd b = xd.c("telemetry_info.screen.description").b(-4539718);
-   private static final xd c = xd.c("telemetry_info.button.privacy_statement");
-   private static final xd d = xd.c("telemetry_info.button.give_feedback");
-   private static final xd s = xd.c("telemetry_info.button.show_data");
-   private static final xd u = xd.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fil.Q().D();
-   private final fqd x;
-   private final fip y;
-   private final fny z = new fny(this, 16 + 9 * 5 + 20, w ? 33 + fkm.a(fil.Q().h) : 33);
+public class fux extends fku<fuv> {
+   private final fuy a;
+   private final List<fuv> m = Lists.newArrayList();
    @Nullable
-   private fuw A;
-   @Nullable
-   private fle B;
-   private double C;
+   private String n;
 
-   public fux(fqd $$0, fip $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   public fux(fuy $$0, fip $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
    }
 
    @Override
-   public xd i() {
-      return xc.a(super.i(), b);
+   protected void b(fkb $$0) {
    }
 
    @Override
-   protected void aR_() {
-      foc $$0 = this.z.a(foc.d().a(4));
-      $$0.c().b();
-      $$0.a(new flr(a, this.p));
-      this.B = $$0.a(new fle(b, this.p).b(true));
-      foc $$1 = $$0.a(foc.e().a(8));
-      $$1.a(fkk.a(c, this::a).a());
-      $$1.a(fkk.a(d, this::b).a());
-      foc $$2 = this.z.b(foc.d().a(4));
-      if (w) {
-         $$2.a(this.m());
-      }
-
-      foc $$3 = $$2.a(foc.e().a(8));
-      $$3.a(fkk.a(s, this::c).a());
-      $$3.a(fkk.a(xc.d, $$0x -> this.d()).a());
-      foc $$4 = this.z.c(foc.d().a(8));
-      this.A = $$4.a(new fuw(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fki var10000 = this.c($$1x);
-      });
-      this.c();
+   protected void a(fkb $$0) {
    }
 
    @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
+   protected void c(fkb $$0) {
+      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
    }
 
-   @Override
-   protected void aG_() {
-      if (this.A != null) {
-         this.b(this.A);
-      }
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fuv> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   private fki m() {
-      fio<Boolean> $$0 = this.y.ak();
-      return fkm.a(u, this.p).a($$0).a(this::a).a();
-   }
+   private void a(Collection<UUID> $$0, Map<UUID, fuv> $$1) {
+      gbn $$2 = this.c.t.cw;
 
-   private void a(fki $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
+      for (UUID $$3 : $$0) {
+         gbx $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fuv(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
       }
    }
 
-   private void a(fkk $$0) {
-      fpa.a(this, axz.c);
+   private void a(Map<UUID, fuv> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.bb().b())) {
+         fuv $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fuv $$2 = new fuv(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
+            }
+         }
+
+         $$4.d(true);
+      }
    }
 
-   private void b(fkk $$0) {
-      fpa.a(this, axz.i);
+   private static Collection<GameProfile> a(gcg $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         gci $$3 = $$0.b($$2);
+         if ($$3 instanceof gcj.a) {
+            gcj.a $$4 = (gcj.a)$$3;
+            if ($$4.g().i()) {
+               $$1.add($$4.f());
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   private void c(fkk $$0) {
-      ad.m().a(this.m.u().b());
+   private void J() {
+      this.m.sort(Comparator.<fuv, Integer>comparing($$0 -> {
+         if (this.c.b($$0.d())) {
+            return 0;
+         } else if (this.c.bb().a($$0.d())) {
+            return 1;
+         } else if ($$0.d().version() == 2) {
+            return 4;
+         } else {
+            return $$0.j() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.c().isBlank()) {
+            int $$1 = $$0.c().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
+         }
+
+         return 1;
+      }).thenComparing(fuv::c, String::compareToIgnoreCase));
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.x);
+   private void a(Collection<fuv> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.J();
+      this.K();
+      this.a(this.m);
+      this.b($$1);
+   }
+
+   private void K() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean c() {
+      return this.m.isEmpty();
+   }
+
+   public void a(gbx $$0, fuy.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fuv $$3 : this.m) {
+         if ($$3.d().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fuy.a.a || this.c.aO().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fuv $$5 = new fuv(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b((fuv)$$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fuv $$1 : this.m) {
+         if ($$1.d().equals($$0)) {
+            $$1.c(true);
+            return;
+         }
+      }
    }
 }

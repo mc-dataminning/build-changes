@@ -1,138 +1,49 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import javax.annotation.Nullable;
 
-public class gww {
-   public static final Set<ats<?>> a = Set.of(gyn.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final alc c;
-   private final int d;
-   private final int e;
-   private final int f;
+public final class gww {
+   private static final int a = 16;
+   private static final int b = 16;
+   private static final String c = "missingno";
+   private static final ale d = ale.b("missingno");
+   private static final auy e = new auy.a().a(gys.a, new gys(ImmutableList.of(new gyr(0, -1)), 16, 16, 1, false)).a();
+   @Nullable
+   private static gwt f;
 
-   public gww(alc $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+   private static fci a(int $$0, int $$1) {
+      fci $$2 = new fci($$0, $$1, false);
+      int $$3 = -524040;
 
-   public static gww a(gxa $$0) {
-      return new gww($$0.h(), $$0.i(), $$0.j(), $$0.k());
-   }
-
-   public gww.a a(List<gwv> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gwy<gwv> $$4 = new gwy<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
-
-      for (gwv $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), azd.f($$6), azd.f($$8)});
-            $$6 = $$8;
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            if ($$4 < $$1 / 2 ^ $$5 < $$0 / 2) {
+               $$2.a($$5, $$4, -524040);
+            } else {
+               $$2.a($$5, $$4, -16777216);
+            }
          }
-
-         $$4.a($$7);
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = azd.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
-      } else {
-         $$11 = $$1;
-      }
-
-      try {
-         $$4.c();
-      } catch (gwz var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new z($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<alc, gxb> $$18 = this.a($$4, $$16, $$17);
-      gxb $$19 = $$18.get(gwr.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new gww.a($$16, $$17, $$11, $$19, $$18, $$20);
+      return $$2;
    }
 
-   public static CompletableFuture<List<gwv>> a(gxe $$0, List<Function<gxe, gwv>> $$1, Executor $$2) {
-      List<CompletableFuture<gwv>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gwv)$$2x.apply($$0), $$2)).toList();
-      return ad.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   public static gxa a() {
+      fci $$0 = a(16, 16);
+      return new gxa(d, new gyu(16, 16), $$0, e);
    }
 
-   public CompletableFuture<gww.a> a(aut $$0, alc $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
+   public static ale b() {
+      return d;
    }
 
-   public CompletableFuture<gww.a> a(aut $$0, alc $$1, int $$2, Executor $$3, Collection<ats<?>> $$4) {
-      gxe $$5 = gxe.create($$4);
-      return CompletableFuture.<List<Function<gxe, gwv>>>supplyAsync(() -> gxg.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
-   }
-
-   private Map<alc, gxb> a(gwy<gwv> $$0, int $$1, int $$2) {
-      Map<alc, gxb> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gxb(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
-   }
-
-   public static record a(int a, int b, int c, gxb d, Map<alc, gxb> e, CompletableFuture<Void> f) {
-      public CompletableFuture<gww.a> a() {
-         return this.f.thenApply($$0 -> this);
+   public static gwt c() {
+      if (f == null) {
+         fci $$0 = a(16, 16);
+         $$0.i();
+         f = new gwt($$0);
+         fip.Q().aa().a(d, f);
       }
 
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public gxb e() {
-         return this.d;
-      }
-
-      public Map<alc, gxb> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
-      }
+      return f;
    }
 }

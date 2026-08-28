@@ -1,53 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class eeb extends ecs {
-   public eeb(Codec<efw> $$0) {
+public class eeb extends edu<egf> {
+   public eeb(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(deh $$0, azl $$1, je $$2, int $$3, je.a $$4, efw $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   public boolean a(edw<egf> $$0) {
+      dfg $$1 = $$0.b();
+      jf $$2 = $$0.e();
+      azn $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dus $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dho.dV) && !$$4.a(dho.dY) && !$$4.a(dho.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, dho.ec.n(), 2);
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).s()) {
-                     duo $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dlg.e) && $$17.b(dlg.c) && $$17.b(dlg.b) && $$17.b(dlg.d) && $$17.b(dlg.f)) {
-                        $$17 = $$17.b(dlg.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .b(dlg.e, Boolean.valueOf($$9 < -$$8))
-                           .b(dlg.c, Boolean.valueOf($$9 > $$8))
-                           .b(dlg.b, Boolean.valueOf($$10 < -$$8))
-                           .b(dlg.d, Boolean.valueOf($$10 > $$8));
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               jf $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jk $$8 : jk.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dho.ec)) {
+                        $$7++;
                      }
 
-                     this.a($$0, $$4, $$17);
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dho.ec.n(), 2);
                   }
                }
             }
+
+            return true;
          }
       }
-   }
-
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
-      }
-
-      return $$4;
    }
 }

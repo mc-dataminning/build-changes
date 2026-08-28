@@ -1,15 +1,14 @@
-public class cvg extends cvk implements cwt {
-   public cvg(cvk.a $$0) {
-      super($$0);
+public class cvg extends cwx {
+   public cvg(dhm $$0, dhm $$1, cvn.a $$2) {
+      super($$2, $$0, $$1, jk.b);
    }
 
    @Override
-   public boolean a(deg $$0, dte $$1, boolean $$2, cnu $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.aB_(), awe.nm, awf.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   protected boolean a(dem $$0, dus $$1, jf $$2) {
+      if ($$1.b() instanceof dqm $$3 && !$$3.b($$1, $$0, $$2)) {
          return false;
       }
+
+      return super.a($$0, $$1, $$2);
    }
 }

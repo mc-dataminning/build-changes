@@ -1,96 +1,110 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public class gjg implements gja {
-   private final List<gjg.d> a;
+public class gjg implements gzu {
+   private final ale a;
+   private final j b;
+   private final boolean c;
+   private final int d;
 
-   gjg(List<gjg.d> $$0) {
+   public gjg(ale $$0, j $$1, boolean $$2, int $$3) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public ale a() {
+      return this.a;
    }
 
    @Override
-   public Object a(duo $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      record a(gjg a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
+   public j b() {
+      return this.b;
    }
 
    @Override
-   public void a(gzt.b $$0, gzt.a $$1) {
-      this.a.forEach($$2 -> $$2.b.a($$0, $$1));
+   public boolean c() {
+      return this.c;
    }
 
-   @Nullable
+   public int d() {
+      return this.d;
+   }
+
    @Override
-   public gzd a(gzj $$0, Function<gzh, gxb> $$1, gzp $$2) {
-      gzq.a $$3 = new gzq.a();
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
 
-      for (gjg.d $$4 : this.a) {
-         gzd $$5 = $$4.b.a($$0, $$1, $$2);
-         if ($$5 != null) {
-            $$3.a($$4.a, $$5);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gjg $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<gjg> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gjg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         ale $$4 = this.b($$3);
+         gzj $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gjg($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return ayv.a($$0, "uvlock", false);
+      }
+
+      protected gzj a(JsonObject $$0) {
+         int $$1 = ayv.a($$0, "x", 0);
+         int $$2 = ayv.a($$0, "y", 0);
+         gzj $$3 = gzj.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
          }
       }
 
-      return $$3.a();
-   }
-
-   public static record b(List<gji> a) {
-      public gjg a(dup<dhj, duo> $$0) {
-         List<gjg.d> $$1 = this.a.stream().map($$1x -> new gjg.d($$1x.a($$0), $$1x.a())).toList();
-         return new gjg($$1);
+      protected ale b(JsonObject $$0) {
+         return ale.a(ayv.i($$0, "model"));
       }
 
-      public Set<giz> a() {
-         return this.a.stream().map(gji::a).collect(Collectors.toSet());
-      }
-
-      public List<gji> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gjg.b> {
-      public gjg.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gjg.b(this.a($$2, $$0.getAsJsonArray()));
-      }
-
-      private List<gji> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gji> $$2 = Lists.newArrayList();
-
-         for (JsonElement $$3 : $$1) {
-            $$2.add((gji)$$0.deserialize($$3, gji.class));
+      protected int c(JsonObject $$0) {
+         int $$1 = ayv.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
          }
-
-         return $$2;
       }
-   }
-
-   static record d(Predicate<duo> a, giz b) {
    }
 }

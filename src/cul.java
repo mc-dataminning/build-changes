@@ -1,23 +1,14 @@
-public class cul extends cvk implements cwk {
-   public cul(cvk.a $$0) {
-      super($$0);
+public class cul extends ctu {
+   public cul(dhm $$0, cvn.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awe.hO, awf.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arh $$4) {
-         coo.a(cox::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
-      }
-
-      $$1.b(awo.c.b(this));
-      $$3.a(1, $$1);
-      return brp.a;
-   }
-
-   @Override
-   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
-      return new cox($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   protected boolean a(czn $$0, dus $$1) {
+      dej $$2 = $$0.q();
+      jf $$3 = $$0.a().d();
+      dus $$4 = $$2.z($$3) ? dho.G.n() : dho.a.n();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

@@ -1,31 +1,114 @@
 import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.MapCodec;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
 
-public class dxy extends dyg {
-   private final dxw a;
-   private final Path b;
+public class dxy implements AutoCloseable {
+   public static final int d = 1493;
+   private final dya a;
+   protected final DataFixer e;
+   @Nullable
+   private volatile elb b;
 
-   public dxy(dyd $$0, Path $$1, dyd $$2, Path $$3, DataFixer $$4, boolean $$5, bam $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dxw($$2, $$3, $$5);
+   public dxy(dyh $$0, Path $$1, DataFixer $$2, boolean $$3) {
+      this.e = $$2;
+      this.a = new dya($$0, $$1, $$3);
    }
 
-   @Override
-   public CompletableFuture<Void> a(ddm $$0, @Nullable uf $$1) {
+   public boolean b(ddp $$0, int $$1) {
       return this.a.a($$0, $$1);
+   }
+
+   public ug a(ald<dej> $$0, Supplier<est> $$1, ug $$2, Optional<ald<MapCodec<? extends dwp>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 == ab.b().d().c()) {
+         return $$2;
+      } else {
+         try {
+            if ($$4 < 1493) {
+               $$2 = bao.c.a(this.e, $$2, $$4, 1493);
+               if ($$2.p("Level").q("hasLegacyStructureData")) {
+                  elb $$5 = this.a($$0, $$1);
+                  $$2 = $$5.a($$2);
+               }
+            }
+
+            a($$2, $$0, $$3);
+            $$2 = bao.c.a(this.e, $$2, Math.max(1493, $$4));
+            b($$2);
+            uv.e($$2);
+            return $$2;
+         } catch (Exception var9) {
+            o $$7 = o.a(var9, "Updated chunk");
+            p $$8 = $$7.a("Updated chunk details");
+            $$8.a("Data version", $$4);
+            throw new z($$7);
+         }
+      }
+   }
+
+   private elb a(ald<dej> $$0, Supplier<est> $$1) {
+      elb $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = elb.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(ug $$0, ald<dej> $$1, Optional<ald<MapCodec<? extends dwp>>> $$2) {
+      ug $$3 = new ug();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   private static void b(ug $$0) {
+      $$0.r("__context");
+   }
+
+   public static int a(ug $$0) {
+      return uv.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<ug>> d(ddp $$0) {
+      return this.a.a($$0);
+   }
+
+   public CompletableFuture<Void> a(ddp $$0, Supplier<ug> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   protected void e(ddp $$0) {
+      if (this.b != null) {
+         this.b.a($$0.a());
+      }
+   }
+
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      super.close();
       this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   }
+
+   public dxx p() {
+      return this.a;
+   }
+
+   protected dyh q() {
+      return this.a.a();
    }
 }

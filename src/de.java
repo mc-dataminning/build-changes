@@ -4,19 +4,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class de extends dv<de.a> {
+public class de extends dw<de.a> {
    @Override
    public Codec<de.a> a() {
       return de.a.a;
    }
 
-   public void a(ari $$0, buj $$1, List<bto> $$2) {
-      List<eth> $$3 = $$2.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
-      eth $$4 = bv.b($$0, $$1);
+   public void a(ark $$0, bum $$1, List<btr> $$2) {
+      List<etl> $$3 = $$2.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
+      etl $$4 = bv.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d) implements dv.a {
+   public static record a(Optional<bg> b, Optional<bg> c, Optional<bg> d) implements dw.a {
       public static final Codec<de.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(de.a::a),
@@ -30,13 +30,13 @@ public class de extends dv<de.a> {
          return an.V.a(new de.a(Optional.empty(), bv.a($$0), bv.a($$1)));
       }
 
-      public boolean a(eth $$0, List<eth> $$1) {
+      public boolean a(etl $$0, List<etl> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
+         dw.a.super.a($$0);
          $$0.a(this.c, ".lightning");
          $$0.a(this.d, ".bystander");
       }

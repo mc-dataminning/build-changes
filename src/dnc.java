@@ -1,19 +1,14 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dnc {
-   default int a(arh $$0, bto $$1) {
-      return 0;
+public class dnc extends dop {
+   public static final MapCodec<dnc> b = b(dnc::new);
+
+   @Override
+   public MapCodec<dnc> a() {
+      return b;
    }
 
-   @Nullable
-   ern a(arh var1, bto var2, je var3);
-
-   default dnc.a b() {
-      return dnc.a.b;
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected dnc(dur.d $$0) {
+      super(dop.b.e, $$0);
    }
 }

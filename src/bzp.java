@@ -1,358 +1,80 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import com.mojang.datafixers.util.Function3;
-import com.mojang.datafixers.util.Function4;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class bzp<E extends buk, M> implements App<bzp.c<E>, M> {
-   private final bzp.e<E, M> a;
+public class bzp extends bzq {
+   private static final List<cvn> c = ImmutableList.of(cvw.pw, cvw.vn);
 
-   public static <E extends buk, M> bzp<E, M> a(App<bzp.c<E>, M> $$0) {
-      return (bzp<E, M>)$$0;
-   }
-
-   public static <E extends buk> bzp.b<E> a() {
-      return new bzp.b<>();
-   }
-
-   public static <E extends buk> bxn<E> a(Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>> $$0) {
-      final bzp.e<E, bzs<E>> $$1 = b((App<bzp.c<E>, bzs<E>>)$$0.apply(a()));
-      return new bxn<E>() {
-         @Override
-         public boolean trigger(arh $$0, E $$1x, long $$2) {
-            bzs<E> $$3 = $$1.a($$0, $$1, $$2);
-            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
-         }
-
-         @Override
-         public String b() {
-            return "OneShot[" + $$1.a() + "]";
-         }
-
-         @Override
-         public String toString() {
-            return this.b();
-         }
-      };
-   }
-
-   public static <E extends buk> bxn<E> a(bzs<? super E> $$0, bzs<? super E> $$1) {
-      return a((Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
-   }
-
-   public static <E extends buk> bxn<E> a(Predicate<E> $$0, bxn<? super E> $$1) {
-      return a(a($$0), $$1);
-   }
-
-   public static <E extends buk> bxn<E> a(Predicate<E> $$0) {
-      return a((Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$1 -> $$1.a((bzs<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
-   }
-
-   public static <E extends buk> bxn<E> a(BiPredicate<arh, E> $$0) {
-      return a((Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$1 -> $$1.a((bzs<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
-   }
-
-   static <E extends buk, M> bzp.e<E, M> b(App<bzp.c<E>, M> $$0) {
-      return a($$0).a;
-   }
-
-   bzp(bzp.e<E, M> $$0) {
-      this.a = $$0;
-   }
-
-   static <E extends buk, M> bzp<E, M> a(bzp.e<E, M> $$0) {
-      return new bzp<>($$0);
-   }
-
-   static final class a<E extends buk, A> extends bzp<E, A> {
-      a(A $$0) {
-         this($$0, () -> "C[" + $$0 + "]");
-      }
-
-      a(final A $$0, final Supplier<String> $$1) {
-         super(new bzp.e<E, A>() {
-            @Override
-            public A a(arh $$0x, E $$1x, long $$2) {
-               return $$0;
-            }
-
-            @Override
-            public String a() {
-               return $$1.get();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-   }
-
-   public static final class b<E extends buk> implements Applicative<bzp.c<E>, bzp.b.a<E>> {
-      public <Value> Optional<Value> a(bzq<Mu, Value> $$0) {
-         return OptionalBox.unbox($$0.a());
-      }
-
-      public <Value> Value b(bzq<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
-         return (Value)IdF.get($$0.a());
-      }
-
-      public <Value> bzp<E, bzq<Mu, Value>> a(cdn<Value> $$0) {
-         return new bzp.d<>(new bzr.c<>($$0));
-      }
-
-      public <Value> bzp<E, bzq<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(cdn<Value> $$0) {
-         return new bzp.d<>(new bzr.b<>($$0));
-      }
-
-      public <Value> bzp<E, bzq<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(cdn<Value> $$0) {
-         return new bzp.d<>(new bzr.a<>($$0));
-      }
-
-      public bzp<E, Unit> a(bzs<? super E> $$0) {
-         return new bzp.f<>($$0);
-      }
-
-      public <A> bzp<E, A> a(A $$0) {
-         return new bzp.a<>($$0);
-      }
-
-      public <A> bzp<E, A> a(Supplier<String> $$0, A $$1) {
-         return new bzp.a<>($$1, $$0);
-      }
-
-      public <A, R> Function<App<bzp.c<E>, A>, App<bzp.c<E>, R>> lift1(App<bzp.c<E>, Function<A, R>> $$0) {
-         return $$1 -> {
-            final bzp.e<E, A> $$2 = (bzp.e<E, A>)bzp.b((App<bzp.c<E>, M>)$$1);
-            final bzp.e<E, Function<A, R>> $$3 = bzp.b($$0);
-            return bzp.a(new bzp.e<E, R>() {
-               @Override
-               public R a(arh $$0, E $$1, long $$2x) {
-                  A $$3 = (A)$$2.a($$0, $$1, $$2);
-                  if ($$3 == null) {
-                     return null;
-                  } else {
-                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
-                     return (R)($$4 == null ? null : $$4.apply($$3));
-                  }
-               }
-
-               @Override
-               public String a() {
-                  return $$3.a() + " * " + $$2.a();
-               }
-
-               @Override
-               public String toString() {
-                  return this.a();
-               }
-            });
-         };
-      }
-
-      public <T, R> bzp<E, R> a(final Function<? super T, ? extends R> $$0, App<bzp.c<E>, T> $$1) {
-         final bzp.e<E, T> $$2 = (bzp.e<E, T>)bzp.b((App<bzp.c<E>, M>)$$1);
-         return bzp.a(new bzp.e<E, R>() {
-            @Override
-            public R a(arh $$0x, E $$1, long $$2x) {
-               T $$3 = $$2.a($$0, $$1, $$2);
-               return (R)($$3 == null ? null : $$0.apply($$3));
-            }
-
-            @Override
-            public String a() {
-               return $$2.a() + ".map[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <A, B, R> bzp<E, R> a(App<bzp.c<E>, BiFunction<A, B, R>> $$0, App<bzp.c<E>, A> $$1, App<bzp.c<E>, B> $$2) {
-         final bzp.e<E, A> $$3 = (bzp.e<E, A>)bzp.b((App<bzp.c<E>, M>)$$1);
-         final bzp.e<E, B> $$4 = (bzp.e<E, B>)bzp.b((App<bzp.c<E>, M>)$$2);
-         final bzp.e<E, BiFunction<A, B, R>> $$5 = bzp.b($$0);
-         return bzp.a(new bzp.e<E, R>() {
-            @Override
-            public R a(arh $$0, E $$1, long $$2) {
-               A $$3 = $$3.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  B $$4 = $$4.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
-                     return $$5 == null ? null : $$5.apply($$3, $$4);
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, R> bzp<E, R> a(App<bzp.c<E>, Function3<T1, T2, T3, R>> $$0, App<bzp.c<E>, T1> $$1, App<bzp.c<E>, T2> $$2, App<bzp.c<E>, T3> $$3) {
-         final bzp.e<E, T1> $$4 = (bzp.e<E, T1>)bzp.b((App<bzp.c<E>, M>)$$1);
-         final bzp.e<E, T2> $$5 = (bzp.e<E, T2>)bzp.b((App<bzp.c<E>, M>)$$2);
-         final bzp.e<E, T3> $$6 = (bzp.e<E, T3>)bzp.b((App<bzp.c<E>, M>)$$3);
-         final bzp.e<E, Function3<T1, T2, T3, R>> $$7 = bzp.b($$0);
-         return bzp.a(new bzp.e<E, R>() {
-            @Override
-            public R a(arh $$0, E $$1, long $$2) {
-               T1 $$3 = $$4.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$5.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$6.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
-                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, T4, R> bzp<E, R> a(
-         App<bzp.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<bzp.c<E>, T1> $$1, App<bzp.c<E>, T2> $$2, App<bzp.c<E>, T3> $$3, App<bzp.c<E>, T4> $$4
-      ) {
-         final bzp.e<E, T1> $$5 = (bzp.e<E, T1>)bzp.b((App<bzp.c<E>, M>)$$1);
-         final bzp.e<E, T2> $$6 = (bzp.e<E, T2>)bzp.b((App<bzp.c<E>, M>)$$2);
-         final bzp.e<E, T3> $$7 = (bzp.e<E, T3>)bzp.b((App<bzp.c<E>, M>)$$3);
-         final bzp.e<E, T4> $$8 = (bzp.e<E, T4>)bzp.b((App<bzp.c<E>, M>)$$4);
-         final bzp.e<E, Function4<T1, T2, T3, T4, R>> $$9 = bzp.b($$0);
-         return bzp.a(new bzp.e<E, R>() {
-            @Override
-            public R a(arh $$0, E $$1, long $$2) {
-               T1 $$3 = $$5.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$6.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$7.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        T4 $$6 = $$8.a($$0, $$1, $$2);
-                        if ($$6 == null) {
-                           return null;
-                        } else {
-                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
-                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
-                        }
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      static final class a<E extends buk> implements com.mojang.datafixers.kinds.Applicative.Mu {
-         private a() {
+   @Override
+   protected void a(arj $$0, cnk $$1) {
+      Optional<jn> $$2 = $$1.dY().c(cdq.c);
+      if (!$$2.isEmpty()) {
+         jn $$3 = $$2.get();
+         dus $$4 = $$0.a_($$3.b());
+         if ($$4.a(dho.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
          }
       }
    }
 
-   public static final class c<E extends buk> implements K1 {
-   }
-
-   static final class d<E extends buk, F extends K1, Value> extends bzp<E, bzq<F, Value>> {
-      d(final bzr<F, Value> $$0) {
-         super(new bzp.e<E, bzq<F, Value>>() {
-            public bzq<F, Value> b(arh $$0x, E $$1, long $$2) {
-               bvl<?> $$3 = $$1.dX();
-               Optional<Value> $$4 = $$3.d($$0.a());
-               return $$4 == null ? null : $$0.a($$3, $$4);
-            }
-
-            @Override
-            public String a() {
-               return "M[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
+   private void a(arj $$0, cnk $$1, jn $$2, dus $$3) {
+      jf $$4 = $$2.b();
+      if ($$3.c(dix.e) == 8) {
+         $$3 = dix.a($$1, $$3, (dej)$$0, $$4);
       }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      brz $$8 = $$1.y();
+      int $$9 = $$8.b();
+      dus $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cvs $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.K();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dix.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dix.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   interface e<E extends buk, R> {
-      @Nullable
-      R a(arh var1, E var2, long var3);
-
-      String a();
+   private void a(arj $$0, dus $$1, jf $$2, dus $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
    }
 
-   static final class f<E extends buk> extends bzp<E, Unit> {
-      f(final bzs<? super E> $$0) {
-         super(new bzp.e<E, Unit>() {
-            @Nullable
-            public Unit b(arh $$0x, E $$1, long $$2) {
-               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
+   private void a(cnk $$0) {
+      brz $$1 = $$0.y();
+      if ($$1.a_(cvw.py) <= 36) {
+         int $$2 = $$1.a_(cvw.px);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cvw.px, $$6);
+            cvs $$7 = $$1.b(new cvs(cvw.py, $$5));
+            if (!$$7.f()) {
+               $$0.a($$7, 0.5F);
             }
-
-            @Override
-            public String a() {
-               return "T[" + $$0 + "]";
-            }
-         });
+         }
       }
    }
 }

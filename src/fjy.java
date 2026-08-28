@@ -1,22 +1,54 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fjy extends gyf {
-   private static final Set<ats<?>> a = Set.of(gyn.a, gyt.c);
-
-   public fjy(gxc $$0) {
-      super($$0, alc.b("textures/atlas/gui.png"), alc.b("gui"), a);
+public interface fjy {
+   static fjy a(fml $$0) {
+      return new fjy.a($$0);
    }
 
-   @Override
-   public gxb a(alc $$0) {
-      return super.a($$0);
+   @Nullable
+   static fjy a(fmk $$0, @Nullable fjy $$1) {
+      return $$1 == null ? null : new fjy.b($$0, $$1);
    }
 
-   public gyu a(gxb $$0) {
-      return this.b($$0).a();
+   static fjy a(fml $$0, fmk... $$1) {
+      fjy $$2 = a($$0);
+
+      for (fmk $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   private gyt b(gxb $$0) {
-      return $$0.e().f().a(gyt.c).orElse(gyt.a);
+   fml a();
+
+   void a(boolean var1);
+
+   public static record a(fml a) implements fjy {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(fmk a, fjy b) implements fjy {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public fmk b() {
+         return this.a;
+      }
+
+      public fjy c() {
+         return this.b;
+      }
    }
 }

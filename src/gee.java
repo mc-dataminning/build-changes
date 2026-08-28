@@ -1,43 +1,66 @@
-public class gee extends gem {
-   private final double a;
-   private final int b;
-
-   gee(gbh $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+public class gee extends gfb {
+   gee(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(ln.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
+   public gex b() {
+      return gex.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azf.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
 
-      if (this.s++ == this.t) {
-         this.k();
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements gew<ls> {
+      private final gfo a;
+
+      public a(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gee $$8 = new gee($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class a implements ger<lr> {
-      private final double a;
-      private final int b;
-      private final int c;
+   public static class b implements gew<ls> {
+      private final gfo a;
 
-      public a(double $$0, int $$1, int $$2) {
+      public b(gfo $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gee($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gee $$8 = new gee($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

@@ -1,15 +1,15 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 
-public class emp {
-   public static MapCodec<? extends emo> a(ka<MapCodec<? extends emo>> $$0) {
-      ka.a($$0, "random", emr.a);
-      ka.a($$0, "random_group", ems.a);
-      return ka.a($$0, "direct", emn.a);
-   }
+public interface emp<P extends emo> {
+   emp<emn> a = a("single_pool_element", emn.b);
+   emp<emm> b = a("list_pool_element", emm.a);
+   emp<emi> c = a("feature_pool_element", emi.a);
+   emp<emh> d = a("empty_pool_element", emh.a);
+   emp<eml> e = a("legacy_single_pool_element", eml.a);
 
-   public static void a(qt<emm> $$0, jn<emm> $$1, List<emo> $$2) {
-      $$2.stream().flatMap(emo::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ra.a($$0, $$2x, new emm($$1, List.of(Pair.of(emk.b($$2x), 1)), emm.a.b)));
+   MapCodec<P> codec();
+
+   static <P extends emo> emp<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.ag, $$0, () -> $$1);
    }
 }

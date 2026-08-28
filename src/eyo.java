@@ -1,61 +1,103 @@
-public class eyo extends eyq {
-   private final jj b;
-   private final je c;
-   private final boolean d;
-   private final boolean e;
-   private final boolean f;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.nio.file.FileSystem;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import org.slf4j.Logger;
 
-   public static eyo a(eys $$0, jj $$1, je $$2) {
-      return new eyo(true, $$0, $$1, $$2, false, false);
+public class eyo implements PathMatcher {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "#";
+   private final List<eyo.a> c;
+   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+
+   public eyo(List<eyo.a> $$0) {
+      this.c = $$0;
    }
 
-   public eyo(eys $$0, jj $$1, je $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3, false);
-   }
+   public PathMatcher a(FileSystem $$0) {
+      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
+         List<PathMatcher> $$2;
+         try {
+            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
+         } catch (Exception var5) {
+            a.error("Failed to compile file pattern list", var5);
+            return $$0xx -> false;
+         }
+         return switch ($$2.size()) {
+            case 0 -> $$0xx -> false;
+            case 1 -> (PathMatcher)$$2.get(0);
+            default -> $$1x -> {
+            for (PathMatcher $$2 : $$2) {
+               if ($$2.matches($$1x)) {
+                  return true;
+               }
+            }
 
-   public eyo(eys $$0, jj $$1, je $$2, boolean $$3, boolean $$4) {
-      this(false, $$0, $$1, $$2, $$3, $$4);
-   }
-
-   private eyo(boolean $$0, eys $$1, jj $$2, je $$3, boolean $$4, boolean $$5) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-      this.f = $$5;
-   }
-
-   public eyo a(jj $$0) {
-      return new eyo(this.d, this.a, $$0, this.c, this.e, this.f);
-   }
-
-   public eyo a(je $$0) {
-      return new eyo(this.d, this.a, this.b, $$0, this.e, this.f);
-   }
-
-   public eyo a() {
-      return new eyo(this.d, this.a, this.b, this.c, this.e, true);
-   }
-
-   public je b() {
-      return this.c;
-   }
-
-   public jj c() {
-      return this.b;
+            return false;
+         };
+         };
+      });
    }
 
    @Override
-   public eyq.a d() {
-      return this.d ? eyq.a.a : eyq.a.b;
+   public boolean matches(Path $$0) {
+      return this.a($$0.getFileSystem()).matches($$0);
    }
 
-   public boolean e() {
-      return this.e;
+   public static eyo a(BufferedReader $$0) {
+      return new eyo($$0.lines().flatMap($$0x -> eyo.a.a($$0x).stream()).toList());
    }
 
-   public boolean f() {
-      return this.f;
+   public static record a(eyo.b a, String b) {
+      public PathMatcher a(FileSystem $$0) {
+         return this.a().compile($$0, this.b);
+      }
+
+      static Optional<eyo.a> a(String $$0) {
+         if ($$0.isBlank() || $$0.startsWith("#")) {
+            return Optional.empty();
+         } else if (!$$0.startsWith("[")) {
+            return Optional.of(new eyo.a(eyo.b.b, $$0));
+         } else {
+            int $$1 = $$0.indexOf(93, 1);
+            if ($$1 == -1) {
+               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
+            } else {
+               String $$2 = $$0.substring(1, $$1);
+               String $$3 = $$0.substring($$1 + 1);
+
+               return switch ($$2) {
+                  case "glob", "regex" -> Optional.of(new eyo.a(eyo.b.a, $$2 + ":" + $$3));
+                  case "prefix" -> Optional.of(new eyo.a(eyo.b.b, $$3));
+                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
+               };
+            }
+         }
+      }
+
+      static eyo.a b(String $$0) {
+         return new eyo.a(eyo.b.a, "glob:" + $$0);
+      }
+
+      static eyo.a c(String $$0) {
+         return new eyo.a(eyo.b.a, "regex:" + $$0);
+      }
+
+      static eyo.a d(String $$0) {
+         return new eyo.a(eyo.b.b, $$0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      eyo.b a = FileSystem::getPathMatcher;
+      eyo.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+
+      PathMatcher compile(FileSystem var1, String var2);
    }
 }

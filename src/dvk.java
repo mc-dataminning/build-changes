@@ -1,28 +1,24 @@
-public enum dvk implements azz {
-   a(jj.a),
-   b(jj.b);
+public enum dvk implements bab {
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final jj c;
+   private final String d;
 
-   private dvk(final jj $$0) {
-      this.c = $$0;
-   }
-
-   public jj a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
+   private dvk(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "upper" : "lower";
+      return this.d;
    }
 
-   public dvk b() {
-      return this == a ? b : a;
+   public dvk a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

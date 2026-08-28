@@ -1,24 +1,21 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public class bnr extends bni<StringReader> {
-   private final StringReader a;
+public class bnr implements bnm<StringReader, ale> {
+   public static final bnm<StringReader, ale> a = new bnr();
 
-   public bnr(bnf<StringReader> $$0, bng<StringReader> $$1, StringReader $$2) {
-      super($$0, $$1);
-      this.a = $$2;
-   }
-
-   public StringReader d() {
-      return this.a;
+   private bnr() {
    }
 
    @Override
-   public int c() {
-      return this.a.getCursor();
-   }
+   public Optional<ale> a(bnl<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   @Override
-   public void a(int $$0) {
-      this.a.setCursor($$0);
+      try {
+         return Optional.of(ale.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

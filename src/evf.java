@@ -3,61 +3,61 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class evf extends euu {
+public class evf extends euy {
    public static final MapCodec<evf> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  alb.a(lv.bd).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  lu.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(drm.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
             .apply($$0, evf::new)
    );
-   private final alb<etm> b;
-   private final long c;
-   private final jn<dru<?>> d;
+   private final drm b;
+   private final boolean c;
 
-   private evf(List<ews> $$0, alb<etm> $$1, long $$2, jn<dru<?>> $$3) {
+   evf(List<eww> $$0, drm $$1, boolean $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public euw<evf> b() {
-      return eux.y;
-   }
-
-   @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.f()) {
-         return $$0;
+   protected cvs a(cvs $$0, etl $$1) {
+      if (this.c) {
+         $$0.a(ks.ad, drm.a, this.b, ($$0x, $$1x) -> new drm.a().a($$0x).a($$1x).a());
       } else {
-         $$0.b(kr.ak, new cyt(this.b, this.c));
-         return $$0;
+         $$0.b(ks.ad, this.b);
       }
+
+      return $$0;
    }
 
    @Override
-   public void a(etn $$0) {
-      super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().a(lv.bd, this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
+   public eva<evf> b() {
+      return evb.E;
+   }
+
+   public static evf.a a(boolean $$0) {
+      return new evf.a($$0);
+   }
+
+   public static class a extends euy.a<evf.a> {
+      private final drm.a a = new drm.a();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
       }
-   }
 
-   public static euu.a<?> a(dru<?> $$0, alb<etm> $$1) {
-      return a($$2 -> new evf($$2, $$1, 0L, $$0.a()));
-   }
+      protected evf.a a() {
+         return this;
+      }
 
-   public static euu.a<?> a(dru<?> $$0, alb<etm> $$1, long $$2) {
-      return a($$3 -> new evf($$3, $$1, $$2, $$0.a()));
+      @Override
+      public euz b() {
+         return new evf(this.g(), this.a.a(), this.b);
+      }
+
+      public evf.a a(jo<drl> $$0, cum $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 }

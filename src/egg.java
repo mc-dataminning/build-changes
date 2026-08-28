@@ -1,22 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
 
-public class egg implements efu {
+public class egg implements efy {
    public static final Codec<egg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(egg::new, efk.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), ekg.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               Codec.list(egg.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, egg::new)
    );
-   public final List<efk> b;
-   public final jn<ekg> c;
+   public final List<egg.a> b;
+   public final int c;
+   public final float d;
 
-   public egg(List<efk> $$0, jn<ekg> $$1) {
-      this.b = $$0;
+   public egg(List<egg.a> $$0, int $$1, float $$2) {
       this.c = $$1;
+      this.b = $$0;
+      this.d = $$2;
    }
 
-   @Override
-   public Stream<edc<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public egg(List<egg.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public egg(epc $$0, dus $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new egg.a($$0, $$1)), $$2, $$3);
+   }
+
+   public egg(epc $$0, dus $$1, int $$2) {
+      this(ImmutableList.of(new egg.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static egg.a a(epc $$0, dus $$1) {
+      return new egg.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<egg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(epc.c.fieldOf("target").forGetter($$0x -> $$0x.b), dus.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, egg.a::new)
+      );
+      public final epc b;
+      public final dus c;
+
+      a(epc $$0, dus $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

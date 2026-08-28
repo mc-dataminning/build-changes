@@ -1,33 +1,48 @@
 import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public record ewl(Optional<bk> b) implements ews {
-   public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bk.a.optionalFieldOf("predicate").forGetter(ewl::c)).apply($$0, ewl::new));
+public record ewl(jo<dbn> b, List<Float> c) implements eww {
+   public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dbn.c.fieldOf("enchantment").forGetter(ewl::c), ayo.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ewl::d)).apply($$0, ewl::new)
+   );
 
    @Override
-   public ewt b() {
-      return ewu.m;
+   public ewx b() {
+      return ewy.k;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return ImmutableSet.of(ewd.f, ewd.c);
+   public Set<ewe<?>> a() {
+      return ImmutableSet.of(ewh.i);
    }
 
-   public boolean a(eth $$0) {
-      bsg $$1 = $$0.c(ewd.c);
-      eys $$2 = $$0.c(ewd.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public boolean a(etl $$0) {
+      cvs $$1 = $$0.c(ewh.i);
+      int $$2 = $$1 != null ? dbp.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public static ews.a a(bk.a $$0) {
-      return () -> new ewl(Optional.of($$0.b()));
+   public static eww.a a(jo<dbn> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new ewl($$0, $$2);
    }
 
-   public Optional<bk> c() {
+   public jo<dbn> c() {
       return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

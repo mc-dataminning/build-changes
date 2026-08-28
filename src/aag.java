@@ -1,29 +1,16 @@
-public class aag implements zk<aad> {
-   public static final zb<wa, aag> a = zk.a(aag::a, aag::new);
-   private final long b;
+import com.google.common.collect.Lists;
 
-   public aag(long $$0) {
-      this.b = $$0;
-   }
-
-   private aag(wa $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wa $$0) {
-      $$0.b(this.b);
-   }
+public record aag(aao b) implements zl<aae> {
+   private static final int c = 32767;
+   public static final zc<wb, aag> a = aao.<wb>a($$0 -> aap.a($$0, 32767), ad.a(Lists.newArrayList(new aao.c[]{new aao.c<>(aam.b, aam.a)}), $$0 -> {
+   })).a(aag::new, aag::b);
 
    @Override
-   public zm<aag> a() {
-      return aac.n;
+   public zn<aag> a() {
+      return aad.m;
    }
 
-   public void a(aad $$0) {
+   public void a(aae $$0) {
       $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
    }
 }

@@ -1,13 +1,13 @@
 import javax.annotation.Nullable;
 
-public class guk extends guj {
-   public cih.d a;
-   public boolean b;
+public class guk extends gtk {
    @Nullable
-   public cuj c;
-   public boolean d;
+   public btp.g.a a;
+   @Nullable
+   public gzi f;
 
-   public guk() {
-      this.a = cih.d.a;
+   @Override
+   public boolean a() {
+      return this.a != null && this.f != null;
    }
 }

@@ -1,20 +1,28 @@
-public class awr {
-   public static final axj<dri> a = a("no_item_required");
-   public static final axj<dri> b = a("pattern_item/flower");
-   public static final axj<dri> c = a("pattern_item/creeper");
-   public static final axj<dri> d = a("pattern_item/skull");
-   public static final axj<dri> e = a("pattern_item/mojang");
-   public static final axj<dri> f = a("pattern_item/globe");
-   public static final axj<dri> g = a("pattern_item/piglin");
-   public static final axj<dri> h = a("pattern_item/flow");
-   public static final axj<dri> i = a("pattern_item/guster");
-   public static final axj<dri> j = a("pattern_item/field_masoned");
-   public static final axj<dri> k = a("pattern_item/bordure_indented");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private awr() {
+public class awr {
+   protected final Object2IntMap<awn<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public awr() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static axj<dri> a(String $$0) {
-      return axj.a(lv.d, alc.b($$0));
+   public void b(cnx $$0, awn<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cnx $$0, awn<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(awp<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(awn<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

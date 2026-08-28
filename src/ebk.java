@@ -1,32 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebk {
-   private long b;
-   private long c;
-   public static final Codec<ebk> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new ebk($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+public record ebk(ebm b, ebj c) {
+   public static final Codec<ebk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ebm.a.forGetter(ebk::a), ebj.a.forGetter(ebk::b)).apply($$0, $$0.stable(ebk::new))
+   );
 
-   public ebk(eaz.a $$0) {
-      this($$0.b(), $$0.c());
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, ebm $$1, ebj $$2) {
+      return a.encodeStart($$0, new ebk($$1, $$2));
    }
 
-   public ebk(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
-      }
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, ebm $$1, kc $$2) {
+      return a($$0, $$1, new ebj($$2.e(lw.bd)));
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   public ebm a() {
+      return this.b;
+   }
+
+   public ebj b() {
+      return this.c;
    }
 }

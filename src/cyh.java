@@ -1,92 +1,150 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapDecoder;
+import com.mojang.serialization.MapEncoder;
+import com.mojang.serialization.MapLike;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Locale;
+import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record cyh(int d, boolean e) implements cyw {
-   private static final Codec<cyh> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cyh::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cyh::b)).apply($$0, cyh::new)
+public final class cyh {
+   private static final Logger e = LogUtils.getLogger();
+   public static final cyh a = new cyh(new ug());
+   public static final Codec<cyh> b = Codec.withAlternative(ug.a, ve.i).xmap(cyh::new, $$0 -> $$0.f);
+   public static final Codec<cyh> c = b.validate(
+      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
    );
-   public static final Codec<cyh> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cyh($$0, true));
-   public static final zb<ByteBuf, cyh> b = zb.a(yz.f, cyh::a, yz.b, cyh::b, cyh::new);
-   public static final int c = -6265536;
+   @Deprecated
+   public static final zc<ByteBuf, cyh> d = za.p.a(cyh::new, $$0 -> $$0.f);
+   private final ug f;
 
-   public static int a(cvp $$0, int $$1) {
-      cyh $$2 = $$0.a(kr.E);
-      return $$2 != null ? axo.f($$2.a()) : $$1;
+   private cyh(ug $$0) {
+      this.f = $$0;
    }
 
-   public static cvp a(cvp $$0, List<cuk> $$1) {
-      if (!$$0.a(axc.bD)) {
-         return cvp.k;
+   public static cyh a(ug $$0) {
+      return new cyh($$0.i());
+   }
+
+   public static Predicate<cvs> a(kr<cyh> $$0, ug $$1) {
+      return $$2 -> {
+         cyh $$3 = $$2.a($$0, a);
+         return $$3.b($$1);
+      };
+   }
+
+   public boolean b(ug $$0) {
+      return uv.a($$0, this.f, true);
+   }
+
+   public static void a(kr<cyh> $$0, cvs $$1, Consumer<ug> $$2) {
+      cyh $$3 = $$1.a($$0, a).a($$2);
+      if ($$3.f.g()) {
+         $$1.c($$0);
       } else {
-         cvp $$2 = $$0.c(1);
-         int $$3 = 0;
-         int $$4 = 0;
-         int $$5 = 0;
-         int $$6 = 0;
-         int $$7 = 0;
-         cyh $$8 = $$2.a(kr.E);
-         if ($$8 != null) {
-            int $$9 = axo.b($$8.a());
-            int $$10 = axo.c($$8.a());
-            int $$11 = axo.d($$8.a());
-            $$6 += Math.max($$9, Math.max($$10, $$11));
-            $$3 += $$9;
-            $$4 += $$10;
-            $$5 += $$11;
-            $$7++;
-         }
+         $$1.b($$0, $$3);
+      }
+   }
 
-         for (cuk $$12 : $$1) {
-            int $$13 = $$12.c().d();
-            int $$14 = axo.b($$13);
-            int $$15 = axo.c($$13);
-            int $$16 = axo.d($$13);
-            $$6 += Math.max($$14, Math.max($$15, $$16));
-            $$3 += $$14;
-            $$4 += $$15;
-            $$5 += $$16;
-            $$7++;
-         }
+   public static void a(kr<cyh> $$0, cvs $$1, ug $$2) {
+      if (!$$2.g()) {
+         $$1.b($$0, a($$2));
+      } else {
+         $$1.c($$0);
+      }
+   }
 
-         int $$17 = $$3 / $$7;
-         int $$18 = $$4 / $$7;
-         int $$19 = $$5 / $$7;
-         float $$20 = (float)$$6 / (float)$$7;
-         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
-         $$17 = (int)((float)$$17 * $$20 / $$21);
-         $$18 = (int)((float)$$18 * $$20 / $$21);
-         $$19 = (int)((float)$$19 * $$20 / $$21);
-         int $$22 = axo.a(0, $$17, $$18, $$19);
-         boolean $$23 = $$8 == null || $$8.b();
-         $$2.b(kr.E, new cyh($$22, $$23));
-         return $$2;
+   public cyh a(Consumer<ug> $$0) {
+      ug $$1 = this.f.i();
+      $$0.accept($$1);
+      return new cyh($$1);
+   }
+
+   public void a(btr $$0) {
+      ug $$1 = $$0.f(new ug());
+      UUID $$2 = $$0.cD();
+      $$1.a(this.f);
+      $$0.g($$1);
+      $$0.a_($$2);
+   }
+
+   public boolean a(drv $$0, jq.a $$1) {
+      ug $$2 = $$0.e($$1);
+      ug $$3 = $$2.i();
+      $$2.a(this.f);
+      if (!$$2.equals($$3)) {
+         try {
+            $$0.d($$2, $$1);
+            $$0.e();
+            return true;
+         } catch (Exception var8) {
+            e.warn("Failed to apply custom data to block entity at {}", $$0.aC_(), var8);
+
+            try {
+               $$0.d($$3, $$1);
+            } catch (Exception var7) {
+               e.warn("Failed to rollback block entity at {} after failure", $$0.aC_(), var7);
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public <T> DataResult<cyh> a(DynamicOps<vd> $$0, MapEncoder<T> $$1, T $$2) {
+      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new cyh((ug)$$0x));
+   }
+
+   public <T> DataResult<T> a(MapDecoder<T> $$0) {
+      return this.a(uu.a, $$0);
+   }
+
+   public <T> DataResult<T> a(DynamicOps<vd> $$0, MapDecoder<T> $$1) {
+      MapLike<vd> $$2 = (MapLike<vd>)$$0.getMap(this.f).getOrThrow();
+      return $$1.decode($$0, $$2);
+   }
+
+   public int a() {
+      return this.f.f();
+   }
+
+   public boolean b() {
+      return this.f.g();
+   }
+
+   public ug c() {
+      return this.f.i();
+   }
+
+   public boolean a(String $$0) {
+      return this.f.e($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return $$0 instanceof cyh $$1 ? this.f.equals($$1.f) : false;
       }
    }
 
    @Override
-   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
-      if (this.e) {
-         if ($$2.a()) {
-            $$1.accept(xd.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
-         } else {
-            $$1.accept(xd.c("item.dyed").a(n.h, n.u));
-         }
-      }
+   public int hashCode() {
+      return this.f.hashCode();
    }
 
-   public cyh a(boolean $$0) {
-      return new cyh(this.d, $$0);
+   @Override
+   public String toString() {
+      return this.f.toString();
    }
 
-   public int a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   @Deprecated
+   public ug d() {
+      return this.f;
    }
 }

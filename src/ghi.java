@@ -1,81 +1,81 @@
-import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ghi implements ghg {
-   private final ghg.a a;
-   private final ghg.a b = ghg.a(new fdb(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public ghi(ghg.a $$0) {
-      this.a = $$0;
-   }
+public class ghi implements ghp.a {
+   public static final ale a = ghp.a;
+   public static final ale b = ale.b("translucent");
+   public static final ale c = ale.b("item_entity");
+   public static final ale d = ale.b("particles");
+   public static final ale e = ale.b("weather");
+   public static final ale f = ale.b("clouds");
+   public static final ale g = ale.b("entity_outline");
+   public static final Set<ale> h = Set.of(a);
+   public static final Set<ale> i = Set.of(a, g);
+   public static final Set<ale> j = Set.of(a, b, c, d, e, f);
+   public fcu<fbs> k = fcu.a();
+   @Nullable
+   public fcu<fbs> l;
+   @Nullable
+   public fcu<fbs> m;
+   @Nullable
+   public fcu<fbs> n;
+   @Nullable
+   public fcu<fbs> o;
+   @Nullable
+   public fcu<fbs> p;
+   @Nullable
+   public fcu<fbs> q;
 
    @Override
-   public fdi getBuffer(ghq $$0) {
-      if ($$0.Q()) {
-         fdi $$1 = this.b.getBuffer($$0);
-         return new ghi.a($$1, this.c, this.d, this.e, this.f);
+   public void a(ale $$0, fcu<fbs> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
       } else {
-         fdi $$2 = this.a.getBuffer($$0);
-         Optional<ghq> $$3 = $$0.P();
-         if ($$3.isPresent()) {
-            fdi $$4 = this.b.getBuffer($$3.get());
-            ghi.a $$5 = new ghi.a($$4, this.c, this.d, this.e, this.f);
-            return fdl.a($$5, $$2);
-         } else {
-            return $$2;
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
          }
+
+         this.q = $$1;
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   @Nullable
+   @Override
+   public fcu<fbs> a(ale $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
+      } else {
+         return $$0.equals(g) ? this.q : null;
+      }
    }
 
    public void a() {
-      this.b.b();
-   }
-
-   static record a(fdi a, int b) implements fdi {
-      public a(fdi $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axo.a($$4, $$1, $$2, $$3));
-      }
-
-      @Override
-      public fdi a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fdi a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fdi a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdi a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fdi b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fdi b(float $$0, float $$1, float $$2) {
-         return this;
-      }
+      this.k = fcu.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

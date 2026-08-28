@@ -1,52 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aoj {
-   public static <T extends ev<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.recipe.take.failed"));
+
+   public static void a(CommandDispatcher<eu> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aoj.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aoj.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aoj.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ev.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ev.a("targets", fh.d())
+                              .then(
+                                 ev.a("recipe", fv.a())
+                                    .suggests(iu.b)
+                                    .executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), Collections.singleton(fv.b($$0x, "recipe"))))
+                              ))
+                           .then(ev.a("*").executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), ((eu)$$0x.getSource()).l().aI().f())))
+                     )
+               ))
+            .then(
+               ev.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)ev.a("targets", fh.d())
+                           .then(
+                              ev.a("recipe", fv.a())
+                                 .suggests(iu.b)
+                                 .executes($$0x -> b((eu)$$0x.getSource(), fh.f($$0x, "targets"), Collections.singleton(fv.b($$0x, "recipe"))))
+                           ))
+                        .then(ev.a("*").executes($$0x -> b((eu)$$0x.getSource(), fh.f($$0x, "targets"), ((eu)$$0x.getSource()).l().aI().f())))
+                  )
+            )
       );
    }
 
-   static class a<T extends ev<T>> implements hq.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, ho $$2, hu<T> $$3) {
-         $$0.p().onFailure();
-         hv $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
+   private static int a(eu $$0, Collection<ark> $$1, Collection<dam<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   static class b<T extends ev<T>> implements hr.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, ho $$3, hu<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(id.a());
-            }
+      for (ark $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xe.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().R_()), true);
          } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hz.a<>($$6, $$5, $$3.d(), $$0, $$1));
+            $$0.a(() -> xe.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
+
+         return $$3;
       }
    }
 
-   static class c<T extends ev<T>> implements hq.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, ho $$2, hu<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hv $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int b(eu $$0, Collection<ark> $$1, Collection<dam<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (ark $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xe.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().R_()), true);
+         } else {
+            $$0.a(() -> xe.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 }

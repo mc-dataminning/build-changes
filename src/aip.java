@@ -1,53 +1,45 @@
-public class aip implements zk<agq> {
-   public static final zb<wa, aip> a = zk.a(aip::a, aip::new);
-   private final bro b;
-   private final int c;
-   private final float d;
-   private final float e;
+public class aip implements zl<agr> {
+   public static final zc<wb, aip> a = zl.a(aip::a, aip::new);
+   private final eys b;
+   private final brr c;
+   private final int d;
 
-   public aip(bro $$0, int $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.c = $$1;
+   public aip(brr $$0, eys $$1, int $$2) {
+      this.c = $$0;
+      this.b = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 
-   private aip(wa $$0) {
-      this.b = $$0.b(bro.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private aip(wb $$0) {
+      this.c = $$0.b(brr.class);
+      this.b = $$0.v();
+      this.d = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
+      $$0.a(this.c);
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+      $$0.c(this.d);
    }
 
    @Override
-   public zm<aip> a() {
-      return ago.cg;
+   public zn<aip> a() {
+      return agp.cf;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public bro b() {
-      return this.b;
-   }
-
-   public int e() {
+   public brr b() {
       return this.c;
    }
 
-   public float f() {
-      return this.d;
+   public eys e() {
+      return this.b;
    }
 
-   public float g() {
-      return this.e;
+   public int f() {
+      return this.d;
    }
 }

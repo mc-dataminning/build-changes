@@ -1,173 +1,115 @@
-import com.google.common.base.MoreObjects;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-class tm implements tb {
-   private int a = 0;
-   private int b = 0;
+public class tm {
+   private static final char a = ' ';
+   private static final char b = '_';
+   private static final char c = '+';
+   private static final char d = 'x';
+   private static final char e = 'X';
+   private final Collection<tb> f = Lists.newArrayList();
+   private final Collection<tc> g = Lists.newArrayList();
 
    public tm() {
    }
 
-   @Override
-   public void a(ta $$0) {
-      a($$0, dhl.eq);
-      this.a++;
+   public tm(Collection<tb> $$0) {
+      this.f.addAll($$0);
    }
 
-   private void a(ta $$0, td $$1, boolean $$2) {
-      tn $$3 = $$0.z();
-      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
-      if (!$$3.b()) {
-         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
-      }
-
-      $$4 = $$4 + "]";
-      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.k() + "ms";
-      String $$6 = String.format("%-53s%s", $$4, $$5);
-      if ($$2) {
-         a($$0, $$6);
-      } else {
-         a($$0.f(), n.m, $$6);
-      }
-
-      if ($$3.a(this.a, this.b)) {
-         $$1.a($$0);
-      }
+   public void a(tb $$0) {
+      this.f.add($$0);
+      this.g.forEach($$0::a);
    }
 
-   @Override
-   public void a(ta $$0, td $$1) {
-      this.b++;
-      if ($$0.z().c()) {
-         this.a($$0, $$1, true);
-      } else if (!$$0.w()) {
-         a($$0, $$0.b() + " passed! (" + $$0.k() + "ms)");
-      } else {
-         if (this.b >= $$0.y()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
+   public void a(tc $$0) {
+      this.g.add($$0);
+      this.f.forEach($$1 -> $$1.a($$0));
+   }
+
+   public void a(final Consumer<tb> $$0) {
+      this.a(new tc() {
+         @Override
+         public void a(tb $$0x) {
+         }
+
+         @Override
+         public void a(tb $$0x, te $$1) {
+         }
+
+         @Override
+         public void b(tb $$0x, te $$1) {
+            $$0.accept($$0);
+         }
+
+         @Override
+         public void a(tb $$0x, tb $$1, te $$2) {
+         }
+      });
+   }
+
+   public int a() {
+      return (int)this.f.stream().filter(tb::h).filter(tb::q).count();
+   }
+
+   public int b() {
+      return (int)this.f.stream().filter(tb::h).filter(tb::r).count();
+   }
+
+   public int c() {
+      return (int)this.f.stream().filter(tb::j).count();
+   }
+
+   public boolean d() {
+      return this.a() > 0;
+   }
+
+   public boolean e() {
+      return this.b() > 0;
+   }
+
+   public Collection<tb> f() {
+      return this.f.stream().filter(tb::h).filter(tb::q).collect(Collectors.toList());
+   }
+
+   public Collection<tb> g() {
+      return this.f.stream().filter(tb::h).filter(tb::r).collect(Collectors.toList());
+   }
+
+   public int h() {
+      return this.f.size();
+   }
+
+   public boolean i() {
+      return this.c() == this.h();
+   }
+
+   public String j() {
+      StringBuffer $$0 = new StringBuffer();
+      $$0.append('[');
+      this.f.forEach($$1 -> {
+         if (!$$1.i()) {
+            $$0.append(' ');
+         } else if ($$1.g()) {
+            $$0.append('+');
+         } else if ($$1.h()) {
+            $$0.append((char)($$1.q() ? 'X' : 'x'));
          } else {
-            a($$0.f(), n.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            $$1.a($$0);
+            $$0.append('_');
          }
-      }
+      });
+      $$0.append(']');
+      return $$0.toString();
    }
 
    @Override
-   public void b(ta $$0, td $$1) {
-      if (!$$0.w()) {
-         a($$0, $$0.m());
-         if ($$0.z().c()) {
-            this.a($$0, $$1, false);
-         }
-      } else {
-         tu $$2 = $$0.u();
-         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
-         if ($$2.k() > 1) {
-            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
-         }
-
-         a($$0.f(), n.o, $$3);
-         if ($$0.x() - this.a + this.b >= $$0.y()) {
-            $$1.a($$0);
-         } else {
-            a($$0, new sq(this.a, this.b, $$0));
-         }
-      }
+   public String toString() {
+      return this.j();
    }
 
-   @Override
-   public void a(ta $$0, ta $$1, td $$2) {
-      $$1.a(this);
-   }
-
-   public static void a(ta $$0, String $$1) {
-      b($$0, dhl.en);
-      b($$0, $$1);
-   }
-
-   private static void b(ta $$0, String $$1) {
-      a($$0.f(), n.k, $$1);
-      ti.b($$0);
-   }
-
-   protected static void a(ta $$0, Throwable $$1) {
-      b($$0, $$0.q() ? dhl.ew : dhl.ej);
-      c($$0, ad.c($$1));
-      b($$0, $$1);
-   }
-
-   protected static void b(ta $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ad.c($$1.getCause()));
-      String $$3 = ($$0.q() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
-      a($$0.f(), $$0.q() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof st $$5) {
-         a($$0.f(), $$5.c(), $$5.a());
-      }
-
-      ti.a($$0);
-   }
-
-   protected static void a(ta $$0, dhj $$1) {
-      arh $$2 = $$0.f();
-      je $$3 = b($$0);
-      $$2.b($$3, dhl.fO.o().a($$0.t()));
-      b($$0, $$1);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            je $$6 = $$3.b($$4, -1, $$5);
-            $$2.b($$6, dhl.ci.o());
-         }
-      }
-   }
-
-   private static je b(ta $$0) {
-      je $$1 = $$0.c();
-      je $$2 = new je(-1, -2, -1);
-      return epe.a($$1.a((ki)$$2), dmg.a, $$0.t(), $$1);
-   }
-
-   private static void b(ta $$0, dhj $$1) {
-      arh $$2 = $$0.f();
-      je $$3 = b($$0);
-      if ($$2.a_($$3).a(dhl.fO)) {
-         je $$4 = $$3.b(0, 1, 0);
-         $$2.b($$4, $$1.o());
-      }
-   }
-
-   private static void c(ta $$0, String $$1) {
-      arh $$2 = $$0.f();
-      je $$3 = $$0.c();
-      je $$4 = new je(-1, 0, -1);
-      je $$5 = epe.a($$3.a((ki)$$4), dmg.a, $$0.t(), $$3);
-      $$2.b($$5, dhl.oa.o().a($$0.t()));
-      duo $$6 = $$2.a_($$5);
-      cvp $$7 = a($$0.b(), $$0.q(), $$1);
-      dlu.a(null, $$2, $$5, $$6, $$7);
-   }
-
-   private static cvp a(String $$0, boolean $$1, String $$2) {
-      StringBuffer $$3 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$3.append($$1x).append('\n'));
-      if (!$$1) {
-         $$3.append("(optional)\n");
-      }
-
-      $$3.append("-------------------\n");
-      cvp $$4 = new cvp(cvt.ua);
-      $$4.b(kr.N, new cza(List.of(ary.a($$3 + $$2))));
-      return $$4;
-   }
-
-   protected static void a(arh $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(xd.b($$2).a($$1)));
-   }
-
-   private static void a(arh $$0, je $$1, String $$2) {
-      agn.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public void b(tb $$0) {
+      this.f.remove($$0);
    }
 }

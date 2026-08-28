@@ -1,50 +1,33 @@
-public class age implements zk<abz> {
-   public static final zb<wa, age> a = zk.a(age::a, age::new);
+public class age implements zl<aca> {
+   public static final zc<wb, age> a = zl.a(age::a, age::new);
    private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
-   private final boolean h;
+   private final int c;
+   private final int d;
 
-   public age(bto $$0) {
-      this.b = $$0.ap();
-      eys $$1 = $$0.dr();
-      this.c = $$1.d;
-      this.d = $$1.e;
-      this.e = $$1.f;
-      this.f = (byte)((int)($$0.dI() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dK() * 256.0F / 360.0F));
-      this.h = $$0.aH();
+   public age(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private age(wa $$0) {
+   private age(wb $$0) {
       this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
-      this.h = $$0.readBoolean();
+      this.c = $$0.l();
+      this.d = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
-      $$0.l(this.g);
-      $$0.a(this.h);
+      $$0.c(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zm<age> a() {
-      return ago.ba;
+   public zn<age> a() {
+      return agp.aZ;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
@@ -52,27 +35,11 @@ public class age implements zk<abz> {
       return this.b;
    }
 
-   public double e() {
+   public int e() {
       return this.c;
    }
 
-   public double f() {
+   public int f() {
       return this.d;
-   }
-
-   public double g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public byte i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
    }
 }

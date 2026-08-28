@@ -1,51 +1,43 @@
 import javax.annotation.Nullable;
 
-public class gtq extends gtl implements ddi {
-   public je a = je.c;
-   public je b = je.c;
-   public duo c = dhl.I.o();
+public class gtq {
+   public double m;
+   public double n;
+   public double o;
+   public float p;
+   public float q;
+   public float r;
+   public float s;
+   public double t;
+   public boolean u;
+   public boolean v;
+   public boolean w;
    @Nullable
-   public jn<dfh> d;
-   public ddi e = ddu.a;
-
-   @Override
-   public float a(jj $$0, boolean $$1) {
-      return this.e.a($$0, $$1);
-   }
-
-   @Override
-   public eqe x_() {
-      return this.e.x_();
-   }
-
-   @Override
-   public int a(je $$0, ddq $$1) {
-      return this.d == null ? -1 : $$1.getColor(this.d.a(), (double)$$0.u(), (double)$$0.w());
-   }
-
+   public eyw x;
    @Nullable
-   @Override
-   public drs c_(je $$0) {
-      return null;
-   }
+   public xe y;
+   @Nullable
+   public eyw z;
+   @Nullable
+   public gtq.a A;
 
-   @Override
-   public duo a_(je $$0) {
-      return $$0.equals(this.b) ? this.c : dhl.a.o();
-   }
+   public static class a {
+      public eyw a;
+      public eyw b;
+      public eyw c;
+      public int d;
+      public int e;
+      public int f;
+      public int g;
 
-   @Override
-   public eqp b_(je $$0) {
-      return this.a_($$0).y();
-   }
-
-   @Override
-   public int H_() {
-      return 1;
-   }
-
-   @Override
-   public int G_() {
-      return this.b.v();
+      public a() {
+         this.a = eyw.c;
+         this.b = eyw.c;
+         this.c = eyw.c;
+         this.d = 0;
+         this.e = 0;
+         this.f = 15;
+         this.g = 15;
+      }
    }
 }

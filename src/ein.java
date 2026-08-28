@@ -1,23 +1,48 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ein<P extends eim> {
-   public static final ein<eio> a = a("trunk_vine", eio.a);
-   public static final ein<eil> b = a("leave_vine", eil.a);
-   public static final ein<eik> c = a("cocoa", eik.a);
-   public static final ein<eij> d = a("beehive", eij.a);
-   public static final ein<eih> e = a("alter_ground", eih.a);
-   public static final ein<eii> f = a("attached_to_leaves", eii.a);
-   private final MapCodec<P> g;
+public class ein extends eiq {
+   public static final MapCodec<ein> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ein::new, $$0 -> $$0.d);
+   private static final jk b = jk.d;
+   private static final jk[] c = jk.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jk[]::new);
+   private final float d;
 
-   private static <P extends eim> ein<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.X, $$0, new ein<>($$1));
+   public ein(float $$0) {
+      this.d = $$0;
    }
 
-   private ein(MapCodec<P> $$0) {
-      this.g = $$0;
+   @Override
+   protected eir<?> a() {
+      return eir.d;
    }
 
-   public MapCodec<P> a() {
-      return this.g;
+   @Override
+   public void a(eiq.a $$0) {
+      azn $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<jf> $$2 = $$0.d();
+         List<jf> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<jf> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<jf> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dho.pe.n().b(dhg.b, b));
+               $$0.a().a($$6.get(), drx.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(drs.c.a($$1.a(599)));
+                  }
+               });
+            }
+         }
+      }
    }
 }

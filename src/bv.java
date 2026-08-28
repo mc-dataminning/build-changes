@@ -21,7 +21,7 @@ public record bv(
    Optional<bv> n,
    Optional<bv> o,
    Optional<String> p,
-   Optional<dz> q
+   Optional<ea> q
 ) {
    public static final Codec<bv> a = Codec.recursive(
       "EntityPredicate",
@@ -36,12 +36,12 @@ public record bv(
                      bt.a.optionalFieldOf("flags").forGetter(bv::g),
                      bs.a.optionalFieldOf("equipment").forGetter(bv::h),
                      bw.a.optionalFieldOf("type_specific").forGetter(bv::i),
-                     aym.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
+                     ayo.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
                      $$0.optionalFieldOf("vehicle").forGetter(bv::k),
                      $$0.optionalFieldOf("passenger").forGetter(bv::l),
                      $$0.optionalFieldOf("targeted_entity").forGetter(bv::m),
                      Codec.STRING.optionalFieldOf("team").forGetter(bv::n),
-                     dz.a.optionalFieldOf("slots").forGetter(bv::o)
+                     ea.a.optionalFieldOf("slots").forGetter(bv::o)
                   )
                   .apply($$1, bv::new)
          )
@@ -61,15 +61,15 @@ public record bv(
    }
 
    public static bg a(bv $$0) {
-      ews $$1 = ewv.a(eth.b.a, $$0).build();
+      eww $$1 = ewz.a(etl.b.a, $$0).build();
       return new bg(List.of($$1));
    }
 
-   public boolean a(ari $$0, @Nullable bto $$1) {
+   public boolean a(ark $$0, @Nullable btr $$1) {
       return this.a($$0.B(), $$0.dq(), $$1);
    }
 
-   public boolean a(arh $$0, @Nullable eys $$1, @Nullable bto $$2) {
+   public boolean a(arj $$0, @Nullable eyw $$1, @Nullable btr $$2) {
       if ($$2 == null) {
          return false;
       } else if (this.c.isPresent() && !this.c.get().a($$2.ao())) {
@@ -84,8 +84,8 @@ public record bv(
          }
 
          if (this.e.isPresent()) {
-            eys $$3 = $$2.ai();
-            eys $$4 = $$3.c(20.0);
+            eyw $$3 = $$2.ai();
+            eyw $$4 = $$3.c(20.0);
             if (!this.e.get().a($$4.d, $$4.e, $$4.f, (double)$$2.aa)) {
                return false;
             }
@@ -95,14 +95,14 @@ public record bv(
             return false;
          } else {
             if (this.f.c.isPresent()) {
-               eys $$5 = eys.b($$2.aP());
+               eyw $$5 = eyw.b($$2.aP());
                if (!this.f.c.get().a($$0, $$5.a(), $$5.b(), $$5.c())) {
                   return false;
                }
             }
 
             if (this.f.d.isPresent()) {
-               eys $$6 = eys.b($$2.aO());
+               eyw $$6 = eyw.b($$2.aO());
                if (!this.f.d.get().a($$0, $$6.a(), $$6.b(), $$6.c())) {
                   return false;
                }
@@ -120,13 +120,13 @@ public record bv(
                return false;
             } else if (this.n.isPresent() && $$2.cW().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof bum ? ((bum)$$2).m() : null)) {
+            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof bup ? ((bup)$$2).m() : null)) {
                return false;
             } else if (this.l.isPresent() && $$2.ag % this.l.get() != 0) {
                return false;
             } else {
                if (this.p.isPresent()) {
-                  ezz $$7 = $$2.co();
+                  fad $$7 = $$2.co();
                   if ($$7 == null || !this.p.get().equals($$7.b())) {
                      return false;
                   }
@@ -138,9 +138,9 @@ public record bv(
       }
    }
 
-   public static eth b(ari $$0, bto $$1) {
-      etk $$2 = new etk.a($$0.B()).a(ewd.a, $$1).a(ewd.f, $$0.dq()).a(ewc.n);
-      return new eth.a($$2).a(Optional.empty());
+   public static etl b(ark $$0, btr $$1) {
+      eto $$2 = new eto.a($$0.B()).a(ewh.a, $$1).a(ewh.f, $$0.dq()).a(ewg.n);
+      return new etl.a($$2).a(Optional.empty());
    }
 
    public Optional<by> a() {
@@ -199,7 +199,7 @@ public record bv(
       return this.p;
    }
 
-   public Optional<dz> o() {
+   public Optional<ea> o() {
       return this.q;
    }
 
@@ -220,18 +220,18 @@ public record bv(
       private Optional<bv> n = Optional.empty();
       private Optional<bv> o = Optional.empty();
       private Optional<String> p = Optional.empty();
-      private Optional<dz> q = Optional.empty();
+      private Optional<ea> q = Optional.empty();
 
       public static bv.a a() {
          return new bv.a();
       }
 
-      public bv.a a(jo<btv<?>> $$0, btv<?> $$1) {
+      public bv.a a(jp<bty<?>> $$0, bty<?> $$1) {
          this.a = Optional.of(by.a($$0, $$1));
          return this;
       }
 
-      public bv.a a(jo<btv<?>> $$0, axj<btv<?>> $$1) {
+      public bv.a a(jp<bty<?>> $$0, axl<bty<?>> $$1) {
          this.a = Optional.of(by.a($$0, $$1));
          return this;
       }
@@ -321,7 +321,7 @@ public record bv(
          return this;
       }
 
-      public bv.a a(dz $$0) {
+      public bv.a a(ea $$0) {
          this.q = Optional.of($$0);
          return this;
       }

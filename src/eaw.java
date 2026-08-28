@@ -1,60 +1,70 @@
-public class eaw implements dds {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   @Override
-   public int a(arh $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ac().b(dec.C)) {
-         return 0;
+public record eaw(int g, int h, int i, int j) {
+   public static final Codec<eaw> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dyo.e, dyo.d).fieldOf("min_y").forGetter(eaw::c),
+                  Codec.intRange(0, dyo.c).fieldOf("height").forGetter(eaw::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(eaw::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(eaw::f)
+               )
+               .apply($$0, eaw::new)
+      )
+      .comapFlatMap(eaw::a, Function.identity());
+   protected static final eaw b = a(-64, 384, 1, 2);
+   protected static final eaw c = a(0, 128, 1, 2);
+   protected static final eaw d = a(0, 128, 2, 1);
+   protected static final eaw e = a(-64, 192, 1, 2);
+   protected static final eaw f = a(0, 256, 2, 1);
+
+   private static DataResult<eaw> a(eaw $$0) {
+      if ($$0.c() + $$0.d() > dyo.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dyo.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
       } else {
-         azl $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.z_() < 5 && $$0.B_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
-
-               for (ari $$5 : $$0.x()) {
-                  if (!$$5.P_()) {
-                     je $$6 = $$5.ds();
-                     if (!$$0.B_().g() || $$6.v() >= $$0.N() && $$0.h($$6)) {
-                        brn $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           awk $$8 = $$5.J();
-                           int $$9 = azd.a($$8.a(awo.i.b(awo.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              je $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              duo $$12 = $$0.a_($$11);
-                              eqp $$13 = $$0.b_($$11);
-                              if (der.a($$0, $$11, $$12, $$13, btv.ay)) {
-                                 bvc $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
-
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    clc $$17 = btv.ay.a($$0, btu.a);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, btu.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-
-               return $$4;
-            }
-         }
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
+
+   public static eaw a(int $$0, int $$1, int $$2, int $$3) {
+      eaw $$4 = new eaw($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return jz.c(this.f());
+   }
+
+   public int b() {
+      return jz.c(this.e());
+   }
+
+   public eaw a(del $$0) {
+      int $$1 = Math.max(this.g, $$0.H_());
+      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
+      return new eaw($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

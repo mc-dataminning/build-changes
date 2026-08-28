@@ -1,3 +1,3 @@
-public class gun extends gum {
-   public float C = -1.0F;
+public class gun extends gtq {
+   public long a;
 }

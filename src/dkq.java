@@ -1,57 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dkq extends dge {
-   public static final MapCodec<dkq> c = b(dkq::new);
+public class dkq extends dhm {
+   public static final MapCodec<dkq> a = b(dkq::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final ezq b = dhm.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
    public MapCodec<dkq> a() {
-      return c;
+      return a;
    }
 
-   protected dkq(dun.d $$0) {
+   public dkq(dur.d $$0) {
       super($$0);
    }
 
    @Override
-   public drs a(je $$0, duo $$1) {
-      return new dsq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
-      return a($$0, $$2, dru.a);
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return b;
    }
 
    @Override
-   protected void a(deg $$0, je $$1, cnu $$2) {
-      drs $$3 = $$0.c_($$1);
-      if ($$3 instanceof dsq) {
-         $$2.a((brr)$$3);
-         $$2.a(awo.am);
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      return a($$1, $$2.e());
+   }
+
+   @Override
+   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.D_()));
+   }
+
+   private static int a(azn $$0) {
+      return $$0.b(g, h);
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return !this.a($$0, $$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dej)$$1, $$2);
+      } else {
+         this.a($$1, $$2, $$3);
       }
    }
 
    @Override
-   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awe.jZ, awf.e, 1.0F, 1.0F, false);
+   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
+      if ($$3.ao().equals(bty.O)) {
+         this.a($$1, $$2);
+      }
+   }
+
+   private static boolean a(ddo $$0, jf $$1) {
+      eqt $$2 = $$0.b_($$1);
+      eqt $$3 = $$0.b_($$1.d());
+      return $$2.a() == equ.c && $$3.a() == equ.a;
+   }
+
+   private void a(arj $$0, jf $$1, azn $$2) {
+      this.a((dej)$$0, $$1);
+      $$0.a(null, $$1, awg.jJ, awh.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
+
+   private void a(dej $$0, jf $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(arj $$0, jf $$1, azn $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         cia $$5 = bty.ba.a($$0, btx.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.fW();
+            $$0.b($$5);
          }
-
-         jj $$7 = $$0.c(a);
-         jj.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jj.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jj.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ln.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ln.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+   }
+
+   private double b(azn $$0) {
+      double $$1 = 0.2F;
+      return azf.a($$0.j(), 0.2F, 0.7999999970197678);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

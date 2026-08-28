@@ -1,19 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import java.util.List;
 
-public record cyg(Map<jn<dhj>, dvr<?>> c) {
-   public static final cyg a = new cyg(Map.of());
-   public static final Codec<cyg> b = Codec.dispatchedMap(lu.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dvr<?> $$2 = ((dhj)$$0.a()).n().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dvr::f)).xmap(cyg::new, cyg::a);
+public class cyg {
+   public static final cye a = a().a();
+   public static final cye b = b().a();
+   public static final cye c = b().a(2.0F).a(awg.mE).a(new czk(bta.s)).a();
+   public static final cye d = b().b(awg.ss).a();
+   public static final cye e = a().a(0.8F).a();
+   public static final cye f = a().a(new czg(new bsy(bta.q, 600, 0), 0.3F)).a();
+   public static final cye g = a().a(new czg(List.of(new bsy(bta.j, 400, 1), new bsy(bta.k, 6000, 0), new bsy(bta.l, 6000, 0), new bsy(bta.v, 2400, 3)))).a();
+   public static final cye h = a().a(new czg(List.of(new bsy(bta.j, 100, 1), new bsy(bta.v, 2400, 0)))).a();
+   public static final cye i = a().a(new czg(new bsy(bta.s, 100, 0), 0.6F)).a();
+   public static final cye j = a().a(new czg(List.of(new bsy(bta.s, 1200, 1), new bsy(bta.q, 300, 2), new bsy(bta.i, 300, 0)))).a();
+   public static final cye k = a().a(new czg(new bsy(bta.q, 600, 0), 0.8F)).a();
+   public static final cye l = a().a(new czg(new bsy(bta.s, 100, 0))).a();
+   public static final cye m = b().a(czh.a).a();
+   public static final cye n = a().a(new czl()).a();
 
-   public cyg a(jn<dhj> $$0, dvr<?> $$1) {
-      return new cyg(ad.a(this.c, $$0, $$1));
+   public static cye.a a() {
+      return cye.b().a(1.6F).a(cvu.b).a(awg.ke).a(true);
    }
 
-   public Map<jn<dhj>, dvr<?>> a() {
-      return this.c;
+   public static cye.a b() {
+      return cye.b().a(1.6F).a(cvu.c).a(awg.kd).a(false);
    }
 }

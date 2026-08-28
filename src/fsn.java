@@ -1,5 +1,44 @@
-import org.joml.Vector2ic;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-public interface fsn {
-   Vector2ic a(int var1, int var2, int var3, int var4, int var5, int var6);
+public class fsn implements fsq {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
+
+   public fsn(fsn.a $$0) {
+      this.c = $$0.a();
+   }
+
+   @Override
+   public int a(fjz $$0) {
+      return this.c.size() * 12 + 2;
+   }
+
+   @Override
+   public int b(fjz $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fjz $$0, int $$1, int $$2, int $$3, int $$4, fkb $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         fln.a($$5, fip.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+      }
+   }
+
+   public static record a(List<ProfileResult> a) implements ctg {
+   }
 }

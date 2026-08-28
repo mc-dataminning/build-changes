@@ -1,20 +1,19 @@
-public class gra<S extends guj, M extends fxk<S>> extends grw<S, M> {
-   private final goh a;
+public class gra extends gsb<gtf, fwz> {
+   private static final ale a = ale.b("textures/entity/breeze/breeze_wind.png");
+   private final fwz b;
 
-   public gra(gpf<S, M> $$0, goh $$1) {
-      super($$0);
-      this.a = $$1;
+   public gra(gno.a $$0, gpk<gtf, fwz> $$1) {
+      super($$1);
+      this.b = new fwz($$0.a(gap.C));
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
-      gzd $$6 = $$3.b();
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.4F, -0.4F);
-         $$0.a(a.b.rotationDegrees(180.0F));
-         cvp $$7 = $$3.aW_();
-         this.a.a($$7, cvm.h, false, $$0, $$1, $$2, gws.d, $$6);
-         $$0.b();
-      }
+   public void a(fdi $$0, ghl $$1, int $$2, gtf $$3, float $$4, float $$5) {
+      fdm $$6 = $$1.getBuffer(ghv.a(a, this.a($$3.p) % 1.0F, 0.0F));
+      this.b.a($$3);
+      gmu.a(this.b, this.b.d()).a($$0, $$6, $$2, gwx.d);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

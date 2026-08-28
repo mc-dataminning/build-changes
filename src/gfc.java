@@ -1,17 +1,40 @@
-public class gfc extends gdg {
-   protected gfc(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfj $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+public class gfc extends gft {
+   private final gfo a;
+
+   gfc(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfo $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public static class a implements ger<lr> {
-      private final gfj a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public a(gfj $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public gex b() {
+      return gex.c;
+   }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfc($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gfo a) implements gew<lq> {
+      public get a(lq $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfc $$8 = new gfc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
    }
 }

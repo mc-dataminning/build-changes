@@ -1,13 +1,15 @@
-public interface buu extends but {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface buu {
+   @Nullable
+   UUID aa_();
 
-   void c(int var1);
+   dea e();
 
-   void b();
-
-   default int c() {
-      return 0;
+   @Nullable
+   default bun S_() {
+      UUID $$0 = this.aa_();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

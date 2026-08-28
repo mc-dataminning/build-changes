@@ -1,286 +1,399 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BiFunction;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dye<R, P> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dyg d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Codec<P> g;
-   private final Function<R, P> h;
-   private final BiFunction<P, Runnable, R> i;
-   private final Function<Runnable, R> j;
-   private final kb k;
-   private final dxs l;
-   protected final dei c;
-   private final LongSet m = new LongOpenHashSet();
-   private final Long2ObjectMap<CompletableFuture<Optional<dye.a<P>>>> n = new Long2ObjectOpenHashMap();
-   private final Object o = new Object();
+public class dye implements AutoCloseable {
+   private static final Logger c = LogUtils.getLogger();
+   private static final int d = 4096;
+   @VisibleForTesting
+   protected static final int a = 1024;
+   private static final int e = 5;
+   private static final int f = 0;
+   private static final ByteBuffer g = ByteBuffer.allocateDirect(1);
+   private static final String h = ".mcc";
+   private static final int i = 128;
+   private static final int j = 256;
+   private static final int k = 0;
+   final dyh l;
+   private final Path m;
+   private final FileChannel n;
+   private final Path o;
+   final dyg p;
+   private final ByteBuffer q = ByteBuffer.allocateDirect(8192);
+   private final IntBuffer r;
+   private final IntBuffer s;
+   @VisibleForTesting
+   protected final dyd b = new dyd();
 
-   public dye(dyg $$0, Codec<P> $$1, Function<R, P> $$2, BiFunction<P, Runnable, R> $$3, Function<Runnable, R> $$4, kb $$5, dxs $$6, dei $$7) {
-      this.d = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.c = $$7;
+   public dye(dyh $$0, Path $$1, Path $$2, boolean $$3) throws IOException {
+      this($$0, $$1, $$2, dyg.a(), $$3);
    }
 
-   protected void a(BooleanSupplier $$0) {
-      LongIterator $$1 = this.f.iterator();
+   public dye(dyh $$0, Path $$1, Path $$2, dyg $$3, boolean $$4) throws IOException {
+      this.l = $$0;
+      this.m = $$1;
+      this.p = $$3;
+      if (!Files.isDirectory($$2)) {
+         throw new IllegalArgumentException("Expected directory, got " + $$2.toAbsolutePath());
+      } else {
+         this.o = $$2;
+         this.r = this.q.asIntBuffer();
+         this.r.limit(1024);
+         this.q.position(4096);
+         this.s = this.q.asIntBuffer();
+         if ($$4) {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.DSYNC);
+         } else {
+            this.n = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE);
+         }
 
-      while ($$1.hasNext() && $$0.getAsBoolean()) {
-         ddm $$2 = new ddm($$1.nextLong());
-         $$1.remove();
-         this.e($$2);
-      }
+         this.b.a(0, 2);
+         this.q.position(0);
+         int $$5 = this.n.read(this.q, 0L);
+         if ($$5 != -1) {
+            if ($$5 != 8192) {
+               c.warn("Region file {} has truncated header: {}", $$1, $$5);
+            }
 
-      this.c();
-   }
+            long $$6 = Files.size($$1);
 
-   private void c() {
-      synchronized (this.o) {
-         Iterator<Entry<CompletableFuture<Optional<dye.a<P>>>>> $$0 = Long2ObjectMaps.fastIterator(this.n);
-
-         while ($$0.hasNext()) {
-            Entry<CompletableFuture<Optional<dye.a<P>>>> $$1 = $$0.next();
-            Optional<dye.a<P>> $$2 = (Optional<dye.a<P>>)((CompletableFuture)$$1.getValue()).getNow(null);
-            if ($$2 != null) {
-               long $$3 = $$1.getLongKey();
-               this.a(new ddm($$3), $$2.orElse(null));
-               $$0.remove();
-               this.m.add($$3);
+            for (int $$7 = 0; $$7 < 1024; $$7++) {
+               int $$8 = this.r.get($$7);
+               if ($$8 != 0) {
+                  int $$9 = b($$8);
+                  int $$10 = a($$8);
+                  if ($$9 < 2) {
+                     c.warn("Region file {} has invalid sector at index: {}; sector {} overlaps with header", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else if ($$10 == 0) {
+                     c.warn("Region file {} has an invalid sector at index: {}; size has to be > 0", $$1, $$7);
+                     this.r.put($$7, 0);
+                  } else if ((long)$$9 * 4096L > $$6) {
+                     c.warn("Region file {} has an invalid sector at index: {}; sector {} is out of bounds", new Object[]{$$1, $$7, $$9});
+                     this.r.put($$7, 0);
+                  } else {
+                     this.b.a($$9, $$10);
+                  }
+               }
             }
          }
       }
    }
 
-   public void a() {
-      if (!this.f.isEmpty()) {
-         this.f.forEach($$0 -> this.e(new ddm($$0)));
-         this.f.clear();
-      }
+   public Path a() {
+      return this.m;
    }
 
-   public boolean b() {
-      return !this.f.isEmpty();
+   private Path f(ddp $$0) {
+      String $$1 = "c." + $$0.e + "." + $$0.f + ".mcc";
+      return this.o.resolve($$1);
    }
 
    @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
-   }
-
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
+   public synchronized DataInputStream a(ddp $$0) throws IOException {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return null;
       } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         int $$4 = $$3 * 4096;
+         ByteBuffer $$5 = ByteBuffer.allocate($$4);
+         this.n.read($$5, (long)($$2 * 4096));
+         $$5.flip();
+         if ($$5.remaining() < 5) {
+            c.error("Chunk {} header is truncated: expected {} but read {}", new Object[]{$$0, $$4, $$5.remaining()});
+            return null;
          } else {
-            this.c(kg.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ad.b(new IllegalStateException());
+            int $$6 = $$5.getInt();
+            byte $$7 = $$5.get();
+            if ($$6 == 0) {
+               c.warn("Chunk {} is allocated, but stream is missing", $$0);
+               return null;
             } else {
-               return $$1;
+               int $$8 = $$6 - 1;
+               if (a($$7)) {
+                  if ($$8 != 0) {
+                     c.warn("Chunk has both internal and external streams");
+                  }
+
+                  return this.a($$0, b($$7));
+               } else if ($$8 > $$5.remaining()) {
+                  c.error("Chunk {} stream is truncated: expected {} but read {}", new Object[]{$$0, $$8, $$5.remaining()});
+                  return null;
+               } else if ($$8 < 0) {
+                  c.error("Declared size {} of chunk {} is negative", $$6, $$0);
+                  return null;
+               } else {
+                  bom.f.a(this.l, $$0, this.p, $$8);
+                  return this.a($$0, $$7, a($$5, $$8));
+               }
             }
          }
       }
    }
 
-   protected boolean e(long $$0) {
-      int $$1 = kg.c(kg.c($$0));
-      return this.c.e($$1);
+   private static int c() {
+      return (int)(ad.e() / 1000L);
    }
 
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.j.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
+   private static boolean a(byte $$0) {
+      return ($$0 & 128) != 0;
    }
 
-   public CompletableFuture<?> a(ddm $$0) {
-      synchronized (this.o) {
-         long $$1 = $$0.a();
-         return this.m.contains($$1) ? CompletableFuture.completedFuture(null) : (CompletableFuture)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
-      }
+   private static byte b(byte $$0) {
+      return (byte)($$0 & -129);
    }
 
-   private void c(ddm $$0) {
-      long $$1 = $$0.a();
-      CompletableFuture<Optional<dye.a<P>>> $$2;
-      synchronized (this.o) {
-         if (!this.m.add($$1)) {
-            return;
-         }
-
-         $$2 = (CompletableFuture<Optional<dye.a<P>>>)this.n.computeIfAbsent($$1, $$1x -> this.d($$0));
-      }
-
-      this.a($$0, $$2.join().orElse(null));
-      synchronized (this.o) {
-         this.n.remove($$1);
-      }
-   }
-
-   private CompletableFuture<Optional<dye.a<P>>> d(ddm $$0) {
-      ala<vc> $$1 = this.k.a(ut.a);
-      return this.d.a($$0).thenApplyAsync($$1x -> $$1x.map($$1xx -> dye.a.a(this.g, $$1, $$1xx, this.d, this.c)), ad.g()).exceptionally($$1x -> {
-         if ($$1x instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            this.l.a($$2, this.d.a(), $$0);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1x);
-         }
-      });
-   }
-
-   private void a(ddm $$0, @Nullable dye.a<P> $$1) {
-      if ($$1 == null) {
-         for (int $$2 = this.c.ap(); $$2 <= this.c.aq(); $$2++) {
-            this.e.put(a($$0, $$2), Optional.empty());
-         }
-      } else {
-         boolean $$3 = $$1.b();
-
-         for (int $$4 = this.c.ap(); $$4 <= this.c.aq(); $$4++) {
-            long $$5 = a($$0, $$4);
-            Optional<R> $$6 = Optional.ofNullable($$1.a.get($$4)).map($$1x -> this.i.apply((P)$$1x, () -> this.a($$5)));
-            this.e.put($$5, $$6);
-            $$6.ifPresent($$2 -> {
-               this.b($$5);
-               if ($$3) {
-                  this.a($$5);
-               }
-            });
-         }
-      }
-   }
-
-   private void e(ddm $$0) {
-      ala<vc> $$1 = this.k.a(ut.a);
-      Dynamic<vc> $$2 = this.a($$0, $$1);
-      vc $$3 = (vc)$$2.getValue();
-      if ($$3 instanceof uf) {
-         this.d.a($$0, (uf)$$3).exceptionally($$1x -> {
-            this.l.b($$1x, this.d.a(), $$0);
+   @Nullable
+   private DataInputStream a(ddp $$0, byte $$1, InputStream $$2) throws IOException {
+      dyg $$3 = dyg.a($$1);
+      if ($$3 == dyg.e) {
+         String $$4 = new DataInputStream($$2).readUTF();
+         ale $$5 = ale.c($$4);
+         if ($$5 != null) {
+            c.error("Unrecognized custom compression {}", $$5);
             return null;
-         });
+         } else {
+            c.error("Invalid custom compression id {}", $$4);
+            return null;
+         }
+      } else if ($$3 == null) {
+         c.error("Chunk {} has invalid chunk stream version {}", $$0, $$1);
+         return null;
       } else {
-         a.error("Expected compound tag, got {}", $$3);
+         return new DataInputStream($$3.a($$2));
       }
    }
 
-   private <T> Dynamic<T> a(ddm $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
+   @Nullable
+   private DataInputStream a(ddp $$0, byte $$1) throws IOException {
+      Path $$2 = this.f($$0);
+      if (!Files.isRegularFile($$2)) {
+         c.error("External chunk path {} is not file", $$2);
+         return null;
+      } else {
+         return this.a($$0, $$1, Files.newInputStream($$2));
+      }
+   }
 
-      for (int $$3 = this.c.ap(); $$3 <= this.c.aq(); $$3++) {
-         long $$4 = a($$0, $$3);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.encodeStart($$1, this.h.apply($$5.get()));
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
+   private static ByteArrayInputStream a(ByteBuffer $$0, int $$1) {
+      return new ByteArrayInputStream($$0.array(), $$0.position(), $$1);
+   }
+
+   private int a(int $$0, int $$1) {
+      return $$0 << 8 | $$1;
+   }
+
+   private static int a(int $$0) {
+      return $$0 & 0xFF;
+   }
+
+   private static int b(int $$0) {
+      return $$0 >> 8 & 16777215;
+   }
+
+   private static int c(int $$0) {
+      return ($$0 + 4096 - 1) / 4096;
+   }
+
+   public boolean b(ddp $$0) {
+      int $$1 = this.g($$0);
+      if ($$1 == 0) {
+         return false;
+      } else {
+         int $$2 = b($$1);
+         int $$3 = a($$1);
+         ByteBuffer $$4 = ByteBuffer.allocate(5);
+
+         try {
+            this.n.read($$4, (long)($$2 * 4096));
+            $$4.flip();
+            if ($$4.remaining() != 5) {
+               return false;
+            } else {
+               int $$5 = $$4.getInt();
+               byte $$6 = $$4.get();
+               if (a($$6)) {
+                  if (!dyg.b(b($$6))) {
+                     return false;
+                  }
+
+                  if (!Files.isRegularFile(this.f($$0))) {
+                     return false;
+                  }
+               } else {
+                  if (!dyg.b($$6)) {
+                     return false;
+                  }
+
+                  if ($$5 == 0) {
+                     return false;
+                  }
+
+                  int $$7 = $$5 - 1;
+                  if ($$7 < 0 || $$7 > 4096 * $$3) {
+                     return false;
+                  }
+               }
+
+               return true;
+            }
+         } catch (IOException var9) {
+            return false;
          }
       }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(ab.b().d().c())))
-      );
    }
 
-   private static long a(ddm $$0, int $$1) {
-      return kg.b($$0.e, $$1, $$0.f);
+   public DataOutputStream c(ddp $$0) throws IOException {
+      return new DataOutputStream(this.p.a(new dye.a($$0)));
    }
 
-   protected void b(long $$0) {
+   public void b() throws IOException {
+      this.n.force(true);
    }
 
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add(ddm.c(kg.b($$0), kg.d($$0)));
+   public void d(ddp $$0) throws IOException {
+      int $$1 = h($$0);
+      int $$2 = this.r.get($$1);
+      if ($$2 != 0) {
+         this.r.put($$1, 0);
+         this.s.put($$1, c());
+         this.e();
+         Files.deleteIfExists(this.f($$0));
+         this.b.b(b($$2), a($$2));
+      }
+   }
+
+   protected synchronized void a(ddp $$0, ByteBuffer $$1) throws IOException {
+      int $$2 = h($$0);
+      int $$3 = this.r.get($$2);
+      int $$4 = b($$3);
+      int $$5 = a($$3);
+      int $$6 = $$1.remaining();
+      int $$7 = c($$6);
+      int $$9;
+      dye.b $$10;
+      if ($$7 >= 256) {
+         Path $$8 = this.f($$0);
+         c.warn("Saving oversized chunk {} ({} bytes} to external file {}", new Object[]{$$0, $$6, $$8});
+         $$7 = 1;
+         $$9 = this.b.a($$7);
+         $$10 = this.a($$8, $$1);
+         ByteBuffer $$11 = this.d();
+         this.n.write($$11, (long)($$9 * 4096));
       } else {
-         a.warn("No data for position: {}", kg.a($$0));
+         $$9 = this.b.a($$7);
+         $$10 = () -> Files.deleteIfExists(this.f($$0));
+         this.n.write($$1, (long)($$9 * 4096));
+      }
+
+      this.r.put($$2, this.a($$9, $$7));
+      this.s.put($$2, c());
+      this.e();
+      $$10.run();
+      if ($$4 != 0) {
+         this.b.b($$4, $$5);
       }
    }
 
-   static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
+   private ByteBuffer d() {
+      ByteBuffer $$0 = ByteBuffer.allocate(5);
+      $$0.putInt(1);
+      $$0.put((byte)(this.p.b() | 128));
+      $$0.flip();
+      return $$0;
    }
 
-   public void b(ddm $$0) {
-      if (this.f.remove($$0.a())) {
-         this.e($$0);
+   private dye.b a(Path $$0, ByteBuffer $$1) throws IOException {
+      Path $$2 = Files.createTempFile(this.o, "tmp", null);
+
+      try (FileChannel $$3 = FileChannel.open($$2, StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+         $$1.position(5);
+         $$3.write($$1);
       }
+
+      return () -> Files.move($$2, $$0, StandardCopyOption.REPLACE_EXISTING);
+   }
+
+   private void e() throws IOException {
+      this.q.position(0);
+      this.n.write(this.q, 0L);
+   }
+
+   private int g(ddp $$0) {
+      return this.r.get(h($$0));
+   }
+
+   public boolean e(ddp $$0) {
+      return this.g($$0) != 0;
+   }
+
+   private static int h(ddp $$0) {
+      return $$0.j() + $$0.k() * 32;
    }
 
    @Override
    public void close() throws IOException {
-      this.d.close();
+      try {
+         this.f();
+      } finally {
+         try {
+            this.n.force(true);
+         } finally {
+            this.n.close();
+         }
+      }
    }
 
-   static record a<T>(Int2ObjectMap<T> a, boolean b) {
-
-      public static <T> dye.a<T> a(Codec<T> $$0, DynamicOps<vc> $$1, vc $$2, dyg $$3, dei $$4) {
-         Dynamic<vc> $$5 = new Dynamic($$1, $$2);
-         int $$6 = dye.a($$5);
-         int $$7 = ab.b().d().c();
-         boolean $$8 = $$6 != $$7;
-         Dynamic<vc> $$9 = $$3.a($$5, $$6);
-         OptionalDynamic<vc> $$10 = $$9.get("Sections");
-         Int2ObjectMap<T> $$11 = new Int2ObjectOpenHashMap();
-
-         for (int $$12 = $$4.ap(); $$12 <= $$4.aq(); $$12++) {
-            Optional<T> $$13 = $$10.get(Integer.toString($$12)).result().flatMap($$1x -> $$0.parse($$1x).resultOrPartial(dye.a::error));
-            if ($$13.isPresent()) {
-               $$11.put($$12, $$13.get());
-            }
-         }
-
-         return new dye.a<>($$11, $$8);
+   private void f() throws IOException {
+      int $$0 = (int)this.n.size();
+      int $$1 = c($$0) * 4096;
+      if ($$0 != $$1) {
+         ByteBuffer $$2 = g.duplicate();
+         $$2.position(0);
+         this.n.write($$2, (long)($$1 - 1));
       }
+   }
+
+   class a extends ByteArrayOutputStream {
+      private final ddp b;
+
+      public a(final ddp $$0) {
+         super(8096);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(0);
+         super.write(dye.this.p.b());
+         this.b = $$0;
+      }
+
+      @Override
+      public void close() throws IOException {
+         ByteBuffer $$0 = ByteBuffer.wrap(this.buf, 0, this.count);
+         int $$1 = this.count - 5 + 1;
+         bom.f.b(dye.this.l, this.b, dye.this.p, $$1);
+         $$0.putInt(0, $$1);
+         dye.this.a(this.b, $$0);
+      }
+   }
+
+   interface b {
+      void run() throws IOException;
    }
 }

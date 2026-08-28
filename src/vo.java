@@ -1,42 +1,89 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public interface vo extends va {
+   vo a = new vo() {
+   };
 
-public class vo extends vk {
-   private final Deque<vm> a = new ArrayDeque<>();
-
-   public vo(vl... $$0) {
-      vm $$1 = vm.a();
-
-      for (vl $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+   @Override
+   default va.b a() {
+      return va.b.a;
    }
 
    @Override
-   public uz.a a(ve<?> $$0, String $$1) {
-      vm $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return uz.a.b;
-      } else {
-         if ($$0 == uf.b) {
-            vm $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
-      }
+   default va.b a(String $$0) {
+      return va.b.a;
    }
 
    @Override
-   public uz.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   default va.b a(byte $$0) {
+      return va.b.a;
+   }
 
-      return super.b();
+   @Override
+   default va.b a(short $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(int $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(long $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(float $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(double $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(byte[] $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(int[] $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(long[] $$0) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b a(vf<?> $$0, int $$1) {
+      return va.b.a;
+   }
+
+   @Override
+   default va.a b(vf<?> $$0, int $$1) {
+      return va.a.b;
+   }
+
+   @Override
+   default va.a a(vf<?> $$0) {
+      return va.a.b;
+   }
+
+   @Override
+   default va.a a(vf<?> $$0, String $$1) {
+      return va.a.b;
+   }
+
+   @Override
+   default va.b b() {
+      return va.b.a;
+   }
+
+   @Override
+   default va.b b(vf<?> $$0) {
+      return va.b.a;
    }
 }

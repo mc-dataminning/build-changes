@@ -1,7 +1,7 @@
-public enum dwa implements azz {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dwa implements bab {
+   a("top"),
+   b("bottom"),
+   c("double");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum dwa implements azz {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

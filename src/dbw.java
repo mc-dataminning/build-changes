@@ -1,54 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dbw(jr<bst> d, dbr e, dbr f, dbr g, dbr h) implements dcb {
-   public static final MapCodec<dbw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kc.a(lv.W).fieldOf("to_apply").forGetter(dbw::b),
-               dbr.b.fieldOf("min_duration").forGetter(dbw::c),
-               dbr.b.fieldOf("max_duration").forGetter(dbw::d),
-               dbr.b.fieldOf("min_amplifier").forGetter(dbw::e),
-               dbr.b.fieldOf("max_amplifier").forGetter(dbw::f)
-            )
-            .apply($$0, dbw::new)
-   );
-
-   @Override
-   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
-      if ($$3 instanceof buk $$5) {
-         azl $$6 = $$5.dV();
-         Optional<jn<bst>> $$7 = this.d.a($$6);
-         if ($$7.isPresent()) {
-            int $$8 = Math.round(azd.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
-            int $$9 = Math.max(0, Math.round(azd.b($$6, this.g.a($$1), this.h.a($$1))));
-            $$5.a(new bsv($$7.get(), $$8, $$9));
-         }
-      }
+public record dbw<T>(dbr a, dbr b, T c, Optional<eww> d) {
+   public static <S> Codec<dbw<S>> a(Codec<S> $$0, ewf $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dbr.d.fieldOf("enchanted").forGetter(dbw::a),
+                  dbr.d.fieldOf("affected").forGetter(dbw::b),
+                  $$0.fieldOf("effect").forGetter(dbw::c),
+                  dbk.a($$1).optionalFieldOf("requirements").forGetter(dbw::d)
+               )
+               .apply($$2, dbw::new)
+      );
    }
 
-   @Override
-   public MapCodec<dbw> a() {
-      return a;
+   public static <S> Codec<dbw<S>> b(Codec<S> $$0, ewf $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dbr.d
+                     .validate($$0xx -> $$0xx != dbr.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dbw::a),
+                  $$0.fieldOf("effect").forGetter(dbw::c),
+                  dbk.a($$1).optionalFieldOf("requirements").forGetter(dbw::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dbw<>($$0xx, dbr.c, $$1xx, $$2x))
+      );
    }
 
-   public jr<bst> b() {
-      return this.d;
-   }
-
-   public dbr c() {
-      return this.e;
-   }
-
-   public dbr d() {
-      return this.f;
-   }
-
-   public dbr e() {
-      return this.g;
-   }
-
-   public dbr f() {
-      return this.h;
+   public boolean a(etl $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

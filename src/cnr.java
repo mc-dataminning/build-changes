@@ -1,55 +1,138 @@
-public class cnr {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public void a(uf $$0) {
-      uf $$1 = new uf();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
+public class cnr implements ddv {
+   private static final int b = 1200;
+   public static final int a = 24000;
+   private static final int c = 25;
+   private static final int d = 75;
+   private static final int e = 25;
+   private static final int f = 10;
+   private static final int g = 10;
+   private final azn h = azn.a();
+   private final ete i;
+   private int j;
+   private int k;
+   private int l;
+
+   public cnr(ete $$0) {
+      this.i = $$0;
+      this.j = 1200;
+      this.k = $$0.t();
+      this.l = $$0.u();
+      if (this.k == 0 && this.l == 0) {
+         this.k = 24000;
+         $$0.d(this.k);
+         this.l = 25;
+         $$0.e(this.l);
+      }
    }
 
-   public void b(uf $$0) {
-      if ($$0.b("abilities", 10)) {
-         uf $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
+   @Override
+   public int a(arj $$0, boolean $$1, boolean $$2) {
+      if (!$$0.ac().b(def.L)) {
+         return 0;
+      } else if (--this.j > 0) {
+         return 0;
+      } else {
+         this.j = 1200;
+         this.k -= 1200;
+         this.i.d(this.k);
+         if (this.k > 0) {
+            return 0;
+         } else {
+            this.k = 24000;
+            if (!$$0.ac().b(def.e)) {
+               return 0;
+            } else {
+               int $$3 = this.l;
+               this.l = azf.a(this.l + 25, 25, 75);
+               this.i.e(this.l);
+               if (this.h.a(100) > $$3) {
+                  return 0;
+               } else if (this.a($$0)) {
+                  this.l = 25;
+                  return 1;
+               } else {
+                  return 0;
+               }
+            }
          }
       }
    }
 
-   public float a() {
-      return this.f;
+   private boolean a(arj $$0) {
+      cnx $$1 = $$0.j();
+      if ($$1 == null) {
+         return true;
+      } else if (this.h.a(10) != 0) {
+         return false;
+      } else {
+         jf $$2 = $$1.ds();
+         int $$3 = 48;
+         cfq $$4 = $$0.y();
+         Optional<jf> $$5 = $$4.d($$0x -> $$0x.a(cfu.o), $$0x -> true, $$2, 48, cfq.b.c);
+         jf $$6 = $$5.orElse($$2);
+         jf $$7 = this.a($$0, $$6, 48);
+         if ($$7 != null && this.a($$0, $$7)) {
+            if ($$0.t($$7).a(awu.ah)) {
+               return false;
+            }
+
+            cnq $$8 = bty.bl.a($$0, $$7, btx.h);
+            if ($$8 != null) {
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  this.a($$0, $$8, 4);
+               }
+
+               this.i.a($$8.cD());
+               $$8.u(48000);
+               $$8.h($$6);
+               $$8.a($$6, 16);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
+   private void a(arj $$0, cnq $$1, int $$2) {
+      jf $$3 = this.a($$0, $$1.ds(), $$2);
+      if ($$3 != null) {
+         cip $$4 = bty.be.a($$0, $$3, btx.h);
+         if ($$4 != null) {
+            $$4.b($$1, true);
+         }
+      }
    }
 
-   public float b() {
-      return this.g;
+   @Nullable
+   private jf a(dem $$0, jf $$1, int $$2) {
+      jf $$3 = null;
+      bvg $$4 = bvi.a(bty.bl);
+
+      for (int $$5 = 0; $$5 < 10; $$5++) {
+         int $$6 = $$1.u() + this.h.a($$2 * 2) - $$2;
+         int $$7 = $$1.w() + this.h.a($$2 * 2) - $$2;
+         int $$8 = $$0.a(eao.a.b, $$6, $$7);
+         jf $$9 = new jf($$6, $$8, $$7);
+         if ($$4.isSpawnPositionOk($$0, $$9, bty.bl)) {
+            $$3 = $$9;
+            break;
+         }
+      }
+
+      return $$3;
    }
 
-   public void b(float $$0) {
-      this.g = $$0;
+   private boolean a(ddo $$0, jf $$1) {
+      for (jf $$2 : jf.c($$1, $$1.b(1, 2, 1))) {
+         if (!$$0.a_($$2).g($$0, $$2).c()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

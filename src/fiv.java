@@ -1,44 +1,30 @@
-import org.joml.Vector2i;
+import java.util.function.IntFunction;
 
-public class fiv {
-   private double a;
-   private double b;
+public enum fiv implements azi {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public Vector2i a(double $$0, double $$1) {
-      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
-         this.a = 0.0;
-      }
+   private static final IntFunction<fiv> d = axw.a(fiv::b, values(), axw.a.b);
+   private final int e;
+   private final String f;
 
-      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
-         this.b = 0.0;
-      }
-
-      this.a += $$0;
-      this.b += $$1;
-      int $$2 = (int)this.a;
-      int $$3 = (int)this.b;
-      if ($$2 == 0 && $$3 == 0) {
-         return new Vector2i(0, 0);
-      } else {
-         this.a -= (double)$$2;
-         this.b -= (double)$$3;
-         return new Vector2i($$2, $$3);
-      }
+   private fiv(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static int a(double $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.signum($$0);
-      $$1 -= $$3;
-      $$1 = Math.max(-1, $$1);
+   @Override
+   public int b() {
+      return this.e;
+   }
 
-      while ($$1 < 0) {
-         $$1 += $$2;
-      }
+   @Override
+   public String a() {
+      return this.f;
+   }
 
-      while ($$1 >= $$2) {
-         $$1 -= $$2;
-      }
-
-      return $$1;
+   public static fiv a(int $$0) {
+      return d.apply($$0);
    }
 }

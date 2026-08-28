@@ -1,62 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record czi(float c) implements czf {
-   private static final float f = 16.0F;
-   public static final MapCodec<czi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aym.n.optionalFieldOf("diameter", 16.0F).forGetter(czi::b)).apply($$0, czi::new)
-   );
-   public static final zb<wo, czi> b = zb.a(yz.i, czi::b, czi::new);
+public interface czi {
+   Codec<czi> d = lv.az.q().dispatch(czi::a, czi.a::a);
+   zc<wp, czi> e = za.a(lw.aF).b(czi::a, czi.a::b);
 
-   public czi() {
-      this(16.0F);
-   }
+   czi.a<? extends czi> a();
 
-   @Override
-   public czf.a<czi> a() {
-      return czf.a.d;
-   }
+   boolean a(dej var1, cvs var2, bun var3);
 
-   @Override
-   public boolean a(deg $$0, cvp $$1, buk $$2) {
-      boolean $$3 = false;
+   public static record a<T extends czi>(MapCodec<T> f, zc<wp, T> g) {
+      public static final czi.a<czg> a = a("apply_effects", czg.a, czg.b);
+      public static final czi.a<czk> b = a("remove_effects", czk.a, czk.b);
+      public static final czi.a<czh> c = a("clear_all_effects", czh.b, czh.c);
+      public static final czi.a<czl> d = a("teleport_randomly", czl.a, czl.b);
+      public static final czi.a<czj> e = a("play_sound", czj.a, czj.b);
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dx() + ($$2.dV().j() - 0.5) * 16.0;
-         double $$6 = azd.a($$2.dz() + (double)($$2.dV().a(16) - 8), (double)$$0.G_(), (double)($$0.G_() + ((arh)$$0).k() - 1));
-         double $$7 = $$2.dD() + ($$2.dV().j() - 0.5) * 16.0;
-         if ($$2.bW()) {
-            $$2.af();
-         }
-
-         eys $$8 = $$2.dq();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(dzl.R, $$8, dzl.a.a($$2));
-            awf $$10;
-            awd $$9;
-            if ($$2 instanceof cgk) {
-               $$9 = awe.jq;
-               $$10 = awf.g;
-            } else {
-               $$9 = awe.fi;
-               $$10 = awf.h;
-            }
-
-            $$0.a(null, $$2.dx(), $$2.dz(), $$2.dD(), $$9, $$10);
-            $$2.n();
-            $$3 = true;
-            break;
-         }
+      private static <T extends czi> czi.a<T> a(String $$0, MapCodec<T> $$1, zc<wp, T> $$2) {
+         return kb.a(lv.az, $$0, new czi.a<>($$1, $$2));
       }
 
-      if ($$3 && $$2 instanceof cnu $$13) {
-         $$13.gG();
+      public MapCodec<T> a() {
+         return this.f;
       }
 
-      return $$3;
-   }
-
-   public float b() {
-      return this.c;
+      public zc<wp, T> b() {
+         return this.g;
+      }
    }
 }

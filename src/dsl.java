@@ -1,93 +1,174 @@
-public class dsl extends dsz {
-   public static final int d = 9;
-   private jw<cvp> e = jw.a(9, cvp.k);
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected dsl(dru<?> $$0, je $$1, duo $$2) {
-      super($$0, $$1, $$2);
-   }
+public class dsl extends drv implements bry, fai.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dsl.a h;
+   private dtb k;
+   private cvs l = cvs.k;
+   @Nullable
+   protected ald<etq> i;
+   protected long j;
 
-   public dsl(je $$0, duo $$1) {
-      this(dru.f, $$0, $$1);
+   public dsl(jf $$0, dus $$1) {
+      super(drx.O, $$0, $$1);
+      this.k = dtb.a;
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected void b(ug $$0, jq.a $$1) {
+      super.b($$0, $$1);
+      this.k.a($$0);
+      if (!this.c_($$0) && !this.l.f()) {
+         $$0.a("item", this.l.a($$1));
+      }
    }
 
-   public int a(azl $$0) {
-      this.e_(null);
-      int $$1 = -1;
-      int $$2 = 1;
-
-      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
-         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
-            $$1 = $$3;
+   @Override
+   protected void a(ug $$0, jq.a $$1) {
+      super.a($$0, $$1);
+      this.k = dtb.b($$0);
+      if (!this.b_($$0)) {
+         if ($$0.b("item", 10)) {
+            this.l = cvs.a($$1, (vd)$$0.p("item")).orElse(cvs.k);
+         } else {
+            this.l = cvs.k;
          }
+      }
+   }
+
+   public ach j() {
+      return ach.a(this);
+   }
+
+   @Override
+   public ug a(jq.a $$0) {
+      return this.e($$0);
+   }
+
+   public jk k() {
+      return this.m().c(dvi.R);
+   }
+
+   public dtb t() {
+      return this.k;
+   }
+
+   public void c(cvs $$0) {
+      this.a($$0);
+   }
+
+   public cvs u() {
+      cvs $$0 = cvw.eC.v();
+      $$0.b(this.r());
+      return $$0;
+   }
+
+   public static cvs a(dtb $$0) {
+      cvs $$1 = cvw.eC.v();
+      $$1.b(ks.af, $$0);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public ald<etq> ay_() {
+      return this.i;
+   }
+
+   @Override
+   public void a(@Nullable ald<etq> $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public long aB_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(ko.a $$0) {
+      super.a($$0);
+      $$0.a(ks.af, this.k);
+      $$0.a(ks.ag, cyo.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(drv.b $$0) {
+      super.a($$0);
+      this.k = $$0.a(ks.af, dtb.a);
+      this.l = $$0.a(ks.ag, cyo.a).a();
+   }
+
+   @Override
+   public void a(ug $$0) {
+      super.a($$0);
+      $$0.r("sherds");
+      $$0.r("item");
+   }
+
+   @Override
+   public cvs f() {
+      this.e_(null);
+      return this.l;
+   }
+
+   @Override
+   public cvs c(int $$0) {
+      this.e_(null);
+      cvs $$1 = this.l.a($$0);
+      if (this.l.f()) {
+         this.l = cvs.k;
       }
 
       return $$1;
    }
 
-   public cvp b(cvp $$0) {
-      int $$1 = this.f_($$0);
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         cvp $$3 = this.e.get($$2);
-         if ($$3.f() || cvp.c($$0, $$3)) {
-            int $$4 = Math.min($$0.J(), $$1 - $$3.J());
-            if ($$4 > 0) {
-               if ($$3.f()) {
-                  this.a($$2, $$0.a($$4));
-               } else {
-                  $$0.h($$4);
-                  $$3.g($$4);
-               }
-            }
-
-            if ($$0.f()) {
-               break;
-            }
-         }
-      }
-
-      return $$0;
+   @Override
+   public void b(cvs $$0) {
+      this.e_(null);
+      this.l = $$0;
    }
 
    @Override
-   protected xd j() {
-      return xd.c("container.dispenser");
+   public drv v() {
+      return this;
    }
 
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.e = jw.a(this.b(), cvp.k);
-      if (!this.b_($$0)) {
-         brj.b($$0, this.e, $$1);
+   public void a(dsl.a $$0) {
+      if (this.o != null && !this.o.x_()) {
+         this.o.a(this.aC_(), this.m().b(), 1, $$0.ordinal());
       }
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         brj.a($$0, this.e, $$1);
+   public boolean a_(int $$0, int $$1) {
+      if (this.o != null && $$0 == 1 && $$1 >= 0 && $$1 < dsl.a.values().length) {
+         this.g = this.o.aa();
+         this.h = dsl.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   @Override
-   protected jw<cvp> f() {
-      return this.e;
-   }
+   public static enum a {
+      a(7),
+      b(10);
 
-   @Override
-   protected void a(jw<cvp> $$0) {
-      this.e = $$0;
-   }
+      public final int c;
 
-   @Override
-   protected cqw a(int $$0, cnt $$1) {
-      return new crr($$0, $$1, this);
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

@@ -6,24 +6,24 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class cg extends dv<cg.a> {
+public class cg extends dw<cg.a> {
    @Override
    public Codec<cg.a> a() {
       return cg.a.a;
    }
 
-   public void a(ari $$0, cnt $$1, cvp $$2) {
+   public void a(ark $$0, cnw $$1, cvs $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cvp $$7 = $$1.a($$6);
+         cvs $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
             $$5++;
-            if ($$7.J() >= $$7.k()) {
+            if ($$7.K() >= $$7.k()) {
                $$3++;
             }
          }
@@ -32,11 +32,11 @@ public class cg extends dv<cg.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(ari $$0, cnt $$1, cvp $$2, int $$3, int $$4, int $$5) {
+   private void a(ark $$0, cnw $$1, cvs $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
-   public static record a(Optional<bg> b, cg.a.a c, List<cs> d) implements dv.a {
+   public static record a(Optional<bg> b, cg.a.a c, List<cs> d) implements dw.a {
       public static final Codec<cg.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(cg.a::a),
@@ -54,17 +54,17 @@ public class cg extends dv<cg.a> {
          return an.f.a(new cg.a(Optional.empty(), cg.a.a.b, List.of($$0)));
       }
 
-      public static ao<cg.a> a(def... $$0) {
+      public static ao<cg.a> a(dei... $$0) {
          cs[] $$1 = new cs[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cs(Optional.of(jr.a($$0[$$2].q().n())), dh.d.c, kp.c, Map.of());
+            $$1[$$2] = new cs(Optional.of(js.a($$0[$$2].q().n())), dh.d.c, kq.c, Map.of());
          }
 
          return a($$1);
       }
 
-      public boolean a(cnt $$0, cvp $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cnw $$0, cvs $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class cg extends dv<cg.a> {
                   return true;
                }
 
-               cvp $$8 = $$0.a($$7);
+               cvs $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

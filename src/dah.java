@@ -1,49 +1,67 @@
-import com.mojang.serialization.Codec;
+public class dah extends dab {
+   public dah(czy $$0) {
+      super($$0);
+   }
 
-public interface dah<T extends dak> {
-   Codec<dah<?>> h = lu.r.q().dispatch(dah::aq_, dam::a);
-   zb<wo, dah<?>> i = yz.a(lv.ae).b(dah::aq_, dam::b);
+   public boolean a(czz $$0, dej $$1) {
+      int $$2 = 0;
+      cvs $$3 = cvs.k;
 
-   boolean a(T var1, deg var2);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cvw.rV)) {
+               if (!$$3.f()) {
+                  return false;
+               }
 
-   cvp a(T var1, jp.a var2);
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cvw.ul)) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
-
-   cvp a(jp.a var1);
-
-   default jw<cvp> a(T $$0) {
-      jw<cvp> $$1 = jw.a($$0.a(), cvp.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cvk $$3 = $$0.a($$2).h();
-         if ($$3.u()) {
-            $$1.set($$2, new cvp($$3.t()));
+               $$2++;
+            }
          }
       }
 
-      return $$1;
+      return !$$3.f() && $$2 > 0;
    }
 
-   default boolean ap_() {
-      return false;
+   public cvs a(czz $$0, jq.a $$1) {
+      int $$2 = 0;
+      cvs $$3 = cvs.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(cvw.rV)) {
+               if (!$$3.f()) {
+                  return cvs.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cvw.ul)) {
+                  return cvs.k;
+               }
+
+               $$2++;
+            }
+         }
+      }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cvs.k;
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 3;
    }
 
-   default String c() {
-      return "";
+   @Override
+   public dap<?> ar_() {
+      return dap.e;
    }
-
-   default cvp g() {
-      return new cvp(dhl.cA);
-   }
-
-   dam<?> aq_();
-
-   dan<?> e();
-
-   dag a();
 }

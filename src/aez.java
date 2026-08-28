@@ -1,32 +1,29 @@
-import javax.annotation.Nullable;
-
-public class aez implements zk<abz> {
-   public static final zb<wa, aez> a = zk.a(aez::a, aez::new);
+public class aez implements zl<aca> {
+   public static final zc<wb, aez> a = zl.a(aez::a, aez::new);
    private final int b;
 
-   public aez(bto $$0) {
-      this.b = $$0.ap();
+   public aez(dwj $$0) {
+      this.b = $$0.r();
    }
 
-   private aez(wa $$0) {
+   private aez(wb $$0) {
       this.b = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zm<aez> a() {
-      return ago.ax;
+   public zn<aez> a() {
+      return agp.aw;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bto a(deg $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

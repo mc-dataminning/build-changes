@@ -1,29 +1,54 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public record jm(alb<deg> d, je e) {
-   public static final MapCodec<jm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(deg.g.fieldOf("dimension").forGetter(jm::a), je.a.fieldOf("pos").forGetter(jm::b)).apply($$0, jm::a)
-   );
-   public static final Codec<jm> b = a.codec();
-   public static final zb<ByteBuf, jm> c = zb.a(alb.b(lv.bb), jm::a, je.b, jm::b, jm::a);
+public enum jm implements bab {
+   a("down_east", jk.a, jk.f),
+   b("down_north", jk.a, jk.c),
+   c("down_south", jk.a, jk.d),
+   d("down_west", jk.a, jk.e),
+   e("up_east", jk.b, jk.f),
+   f("up_north", jk.b, jk.c),
+   g("up_south", jk.b, jk.d),
+   h("up_west", jk.b, jk.e),
+   i("west_up", jk.e, jk.b),
+   j("east_up", jk.f, jk.b),
+   k("north_up", jk.c, jk.b),
+   l("south_up", jk.d, jk.b);
 
-   public static jm a(alb<deg> $$0, je $$1) {
-      return new jm($$0, $$1);
+   private static final Int2ObjectMap<jm> m = ad.a(new Int2ObjectOpenHashMap(values().length), $$0 -> {
+      for (jm $$1 : values()) {
+         $$0.put(b($$1.p, $$1.o), $$1);
+      }
+   });
+   private final String n;
+   private final jk o;
+   private final jk p;
+
+   private static int b(jk $$0, jk $$1) {
+      return $$1.ordinal() << 3 | $$0.ordinal();
+   }
+
+   private jm(final String $$0, final jk $$1, final jk $$2) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.e;
+   public String c() {
+      return this.n;
    }
 
-   public alb<deg> a() {
-      return this.d;
+   public static jm a(jk $$0, jk $$1) {
+      int $$2 = b($$0, $$1);
+      return (jm)m.get($$2);
    }
 
-   public je b() {
-      return this.e;
+   public jk a() {
+      return this.p;
+   }
+
+   public jk b() {
+      return this.o;
    }
 }

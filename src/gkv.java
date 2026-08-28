@@ -1,57 +1,66 @@
-import java.util.BitSet;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gkv {
-   private static final int a = jj.values().length;
-   private final BitSet b = new BitSet(a * a);
+public class gkv implements ddl {
+   public static final int a = 1;
+   public static final int b = 3;
+   private final int e;
+   private final int f;
+   protected final gku[] c;
+   protected final dej d;
 
-   public void a(Set<jj> $$0) {
-      for (jj $$1 : $$0) {
-         for (jj $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
-   }
-
-   public void a(jj $$0, jj $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(jj $$0, jj $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+   gkv(dej $$0, int $$1, int $$2, gku[] $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.c = $$3;
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
+   public dus a_(jf $$0) {
+      return this.a(kh.a($$0.u()), kh.a($$0.w())).b($$0);
+   }
 
-      for (jj $$1 : jj.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
+   @Override
+   public eqt b_(jf $$0) {
+      return this.a(kh.a($$0.u()), kh.a($$0.w())).b($$0).y();
+   }
 
-      $$0.append('\n');
+   @Override
+   public float a(jk $$0, boolean $$1) {
+      return this.d.a($$0, $$1);
+   }
 
-      for (jj $$2 : jj.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
+   @Override
+   public eqi y_() {
+      return this.d.y_();
+   }
 
-         for (jj $$3 : jj.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
+   @Nullable
+   @Override
+   public drv c_(jf $$0) {
+      return this.a(kh.a($$0.u()), kh.a($$0.w())).a($$0);
+   }
 
-         $$0.append('\n');
-      }
+   private gku a(int $$0, int $$1) {
+      return this.c[a(this.e, this.f, $$0, $$1)];
+   }
 
-      return $$0.toString();
+   @Override
+   public int a(jf $$0, ddt $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   @Override
+   public int H_() {
+      return this.d.H_();
+   }
+
+   @Override
+   public int I_() {
+      return this.d.I_();
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 - $$0 + ($$3 - $$1) * 3;
    }
 }

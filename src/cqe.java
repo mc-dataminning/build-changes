@@ -1,70 +1,118 @@
-public class cqe extends cps {
-   private final ddh c = new ddh() {
-      @Override
-      public void a(deg $$0, je $$1, int $$2) {
-         $$0.a(cqe.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class cqe extends cpv {
+   static final akh<String> c = akl.a(cqe.class, akj.e);
+   static final akh<xe> d = akl.a(cqe.class, akj.f);
+   private final ddj e = new cqe.a();
+   private static final int i = 4;
+   private int j;
 
-   public cqe(btv<? extends cqe> $$0, deg $$1) {
+   public cqe(bty<? extends cqe> $$0, dej $$1) {
       super($$0, $$1);
-      this.d = this.c($$1);
    }
 
-   public cqe(deg $$0, double $$1, double $$2, double $$3) {
-      super(btv.aU, $$0, $$1, $$2, $$3);
-      this.d = this.c($$0);
-   }
-
-   @Override
-   protected cvk aj_() {
-      return cvt.nM;
-   }
-
-   private Runnable c(deg $$0) {
-      return $$0 instanceof arh ? () -> this.c.a((arh)$$0, this.ds()) : () -> this.c.a($$0, this.ds());
+   public cqe(dej $$0, double $$1, double $$2, double $$3) {
+      super(bty.v, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cps.a y() {
-      return cps.a.e;
+   protected cvn ak_() {
+      return cvw.nM;
    }
 
    @Override
-   public duo A() {
-      return dhl.ct.o();
-   }
-
-   @Override
-   protected void a(uf $$0) {
+   protected void a(akl.a $$0) {
       super.a($$0);
-      this.c.a(this.dS(), this.ds(), $$0);
+      $$0.a(c, "");
+      $$0.a(d, xd.a);
    }
 
    @Override
-   protected void b(uf $$0) {
+   protected void a(ug $$0) {
+      super.a($$0);
+      this.e.b($$0, this.dU());
+      this.at().a(c, this.F().m());
+      this.at().a(d, this.F().l());
+   }
+
+   @Override
+   protected void b(ug $$0) {
       super.b($$0);
-      this.c.a($$0);
+      this.e.a($$0, this.dU());
    }
 
    @Override
-   public void b(byte $$0) {
-      this.c.a(this.dS(), $$0);
+   public cpv.a y() {
+      return cpv.a.g;
    }
 
    @Override
-   public void l() {
-      super.l();
-      this.d.run();
+   public dus A() {
+      return dho.fN.n();
    }
 
-   public ddh F() {
-      return this.c;
+   public ddj F() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ag - this.j >= 4) {
+         this.F().a(this.dS());
+         this.j = this.ag;
+      }
+   }
+
+   @Override
+   public brs a(cnx $$0, brr $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(akh<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.at().a(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.at().a(c));
+      }
    }
 
    @Override
    public boolean cT() {
       return true;
+   }
+
+   public class a extends ddj {
+      @Override
+      public arj e() {
+         return (arj)cqe.this.dS();
+      }
+
+      @Override
+      public void f() {
+         cqe.this.at().a(cqe.c, this.m());
+         cqe.this.at().a(cqe.d, this.l());
+      }
+
+      @Override
+      public eyw g() {
+         return cqe.this.dq();
+      }
+
+      public cqe h() {
+         return cqe.this;
+      }
+
+      @Override
+      public eu i() {
+         return new eu(this, cqe.this.dq(), cqe.this.bR(), this.e(), 2, this.n().getString(), cqe.this.R_(), this.e().o(), cqe.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cqe.this.dN();
+      }
    }
 }

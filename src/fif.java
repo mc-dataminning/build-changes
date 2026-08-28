@@ -1,74 +1,120 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public record fif(int a, @Nullable fif.a b, @Nullable xd c, @Nullable String d) {
-   private static final xd e = xd.c("chat.tag.system");
-   private static final xd f = xd.c("chat.tag.system_single_player");
-   private static final xd g = xd.c("chat.tag.not_secure");
-   private static final xd h = xd.c("chat.tag.modified");
-   private static final xd i = xd.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final fif l = new fif(13684944, null, e, "System");
-   private static final fif m = new fif(13684944, null, f, "System");
-   private static final fif n = new fif(13684944, null, g, "Not Secure");
-   private static final fif o = new fif(16733525, null, i, "Chat Error");
+public interface fif {
+   fif a = new fif.a(0.0F);
+   fif b = new fif.a(1.0F);
 
-   public static fif a() {
-      return l;
-   }
+   float a();
 
-   public static fif b() {
-      return m;
-   }
+   float a(boolean var1);
 
-   public static fif c() {
-      return n;
-   }
+   float b();
 
-   public static fif a(String $$0) {
-      xd $$1 = xd.b($$0).a(n.h);
-      xd $$2 = xd.i().b(h).b(xc.s).b($$1);
-      return new fif(6316128, fif.a.a, $$2, "Modified");
-   }
+   public static class a implements fif {
+      private final float c;
 
-   public static fif d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public fif.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public xd g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(alc.b("icon/chat_modified"), 9, 9);
-
-      public final alc b;
-      public final int c;
-      public final int d;
-
-      private a(final alc $$0, final int $$1, final int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+      a(float $$0) {
+         this.c = $$0;
       }
 
-      public void a(fjx $$0, int $$1, int $$2) {
-         $$0.a(ghq::B, this.b, $$1, $$2, this.c, this.d);
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
+      }
+   }
+
+   public static class b implements fif {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
+
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
+
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
+         }
+      }
+
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
       }
    }
 }

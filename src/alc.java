@@ -1,270 +1,128 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
-public final class alc implements Comparable<alc> {
-   public static final Codec<alc> a = Codec.STRING.comapFlatMap(alc::d, alc::toString).stable();
-   public static final zb<ByteBuf, alc> b = yz.l.a(alc::a, alc::toString);
-   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xd.c("argument.id.invalid"));
-   public static final char d = ':';
-   public static final String e = "minecraft";
-   public static final String f = "realms";
-   private final String h;
-   private final String i;
+public class alc<T> extends akv<T> {
+   private final alc.c b;
 
-   private alc(String $$0, String $$1) {
-      assert j($$0);
-
-      assert i($$1);
-
-      this.h = $$0;
-      this.i = $$1;
+   public static <T> alc<T> a(DynamicOps<T> $$0, jq.a $$1) {
+      return a($$0, new alc.a($$1));
    }
 
-   private static alc d(String $$0, String $$1) {
-      return new alc(e($$0, $$1), f($$0, $$1));
+   public static <T> alc<T> a(DynamicOps<T> $$0, alc.c $$1) {
+      return new alc<>($$0, $$1);
    }
 
-   public static alc a(String $$0, String $$1) {
-      return d($$0, $$1);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0, jq.a $$1) {
+      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
    }
 
-   public static alc a(String $$0) {
-      return a($$0, ':');
+   private alc(DynamicOps<T> $$0, alc.c $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   public static alc b(String $$0) {
-      return new alc("minecraft", f("minecraft", $$0));
+   public <U> alc<U> a(DynamicOps<U> $$0) {
+      return (alc<U>)($$0 == this.a ? this : new alc((DynamicOps<T>)$$0, this.b));
    }
 
-   @Nullable
-   public static alc c(String $$0) {
-      return b($$0, ':');
+   public <E> Optional<jr<E>> a(ald<? extends kb<? extends E>> $$0) {
+      return this.b.a($$0).map(alc.b::a);
    }
 
-   @Nullable
-   public static alc b(String $$0, String $$1) {
-      return j($$0) && i($$1) ? new alc($$0, $$1) : null;
-   }
-
-   public static alc a(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return d($$4, $$3);
-         } else {
-            return b($$3);
-         }
-      } else {
-         return b($$0);
-      }
-   }
-
-   @Nullable
-   public static alc b(String $$0, char $$1) {
-      int $$2 = $$0.indexOf($$1);
-      if ($$2 >= 0) {
-         String $$3 = $$0.substring($$2 + 1);
-         if (!i($$3)) {
-            return null;
-         } else if ($$2 != 0) {
-            String $$4 = $$0.substring(0, $$2);
-            return j($$4) ? new alc($$4, $$3) : null;
-         } else {
-            return new alc("minecraft", $$3);
-         }
-      } else {
-         return i($$0) ? new alc("minecraft", $$0) : null;
-      }
-   }
-
-   public static DataResult<alc> d(String $$0) {
-      try {
-         return DataResult.success(a($$0));
-      } catch (aa var2) {
-         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
-      }
-   }
-
-   public String a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.h;
-   }
-
-   public alc e(String $$0) {
-      return new alc(this.h, f(this.h, $$0));
-   }
-
-   public alc a(UnaryOperator<String> $$0) {
-      return this.e($$0.apply(this.i));
-   }
-
-   public alc f(String $$0) {
-      return this.e($$0 + this.i);
-   }
-
-   public alc g(String $$0) {
-      return this.e(this.i + $$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.h + ":" + this.i;
+   public <E> Optional<jp<E>> b(ald<? extends kb<? extends E>> $$0) {
+      return this.b.a($$0).map(alc.b::b);
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         alc<?> $$1 = (alc<?>)$$0;
+         return this.a.equals($$1.a) && this.b.equals($$1.b);
       } else {
-         return !($$0 instanceof alc $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return 31 * this.h.hashCode() + this.i.hashCode();
+      return this.a.hashCode() * 31 + this.b.hashCode();
    }
 
-   public int a(alc $$0) {
-      int $$1 = this.i.compareTo($$0.i);
-      if ($$1 == 0) {
-         $$1 = this.h.compareTo($$0.h);
+   public static <E, O> RecordCodecBuilder<O, jp<E>> c(ald<? extends kb<? extends E>> $$0) {
+      return ayo.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof alc<?> $$2
+                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   public static <E, O> RecordCodecBuilder<O, jo.c<E>> d(ald<E> $$0) {
+      ald<? extends kb<E>> $$1 = ald.a($$0.b());
+      return ayo.a(
+            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof alc<?> $$3
+                  ? $$3.b
+                     .a($$1)
+                     .flatMap($$1xx -> $$1xx.b().a($$0))
+                     .<DataResult<E>>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
+                  : DataResult.error(() -> "Not a registry ops"))
+         )
+         .forGetter($$0x -> null);
+   }
+
+   static final class a implements alc.c {
+      private final jq.a a;
+      private final Map<ald<? extends kb<?>>, Optional<? extends alc.b<?>>> b = new ConcurrentHashMap<>();
+
+      public a(jq.a $$0) {
+         this.a = $$0;
       }
 
-      return $$1;
-   }
-
-   public String c() {
-      return this.toString().replace('/', '_').replace(':', '_');
-   }
-
-   public String d() {
-      return this.h + "." + this.i;
-   }
-
-   public String e() {
-      return this.h.equals("minecraft") ? this.i : this.d();
-   }
-
-   public String h(String $$0) {
-      return $$0 + "." + this.d();
-   }
-
-   public String c(String $$0, String $$1) {
-      return $$0 + "." + this.d() + "." + $$1;
-   }
-
-   private static String c(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
+      @Override
+      public <E> Optional<alc.b<E>> a(ald<? extends kb<? extends E>> $$0) {
+         return (Optional<alc.b<E>>)this.b.computeIfAbsent($$0, this::b);
       }
 
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   public static alc a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-
-      try {
-         return a($$2);
-      } catch (aa var4) {
-         $$0.setCursor($$1);
-         throw c.createWithContext($$0);
+      private Optional<alc.b<Object>> b(ald<? extends kb<?>> $$0) {
+         return this.a.a($$0).map(alc.b::a);
       }
-   }
 
-   public static alc b(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      String $$2 = c($$0);
-      if ($$2.isEmpty()) {
-         throw c.createWithContext($$0);
-      } else {
-         try {
-            return a($$2);
-         } catch (aa var4) {
-            $$0.setCursor($$1);
-            throw c.createWithContext($$0);
-         }
-      }
-   }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            if ($$0 instanceof alc.a $$1 && this.a.equals($$1.a)) {
+               return true;
+            }
 
-   public static boolean a(char $$0) {
-      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
-   }
-
-   public static boolean i(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!b($$0.charAt($$1))) {
             return false;
          }
       }
 
-      return true;
-   }
-
-   public static boolean j(String $$0) {
-      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
-         if (!c($$0.charAt($$1))) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static String e(String $$0, String $$1) {
-      if (!j($$0)) {
-         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$0;
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
       }
    }
 
-   public static boolean b(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
-   }
-
-   private static boolean c(char $$0) {
-      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
-   }
-
-   private static String f(String $$0, String $$1) {
-      if (!i($$1)) {
-         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
-      } else {
-         return $$1;
+   public static record b<T>(jr<T> a, jp<T> b, Lifecycle c) {
+      public static <T> alc.b<T> a(jq.b<T> $$0) {
+         return new alc.b<>($$0, $$0, $$0.h());
       }
    }
 
-   public static class a implements JsonDeserializer<alc>, JsonSerializer<alc> {
-      public alc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return alc.a(ayt.a($$0, "location"));
-      }
-
-      public JsonElement a(alc $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
-      }
+   public interface c {
+      <T> Optional<alc.b<T>> a(ald<? extends kb<? extends T>> var1);
    }
 }

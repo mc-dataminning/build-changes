@@ -1,209 +1,160 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dmn extends dhj implements dnc {
-   public static final MapCodec<dmn> a = b(dmn::new);
-   public static final dvm<jj.a> b = dve.H;
-   private static final Logger f = LogUtils.getLogger();
-   protected static final int c = 2;
-   protected static final ezm d = dhj.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final ezm e = dhj.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class dmn {
+   public static final dmn.e[] a = new dmn.e[]{dmn.e.a, dmn.e.b, dmn.e.c};
+   private final dmn.b b;
 
-   @Override
-   public MapCodec<dmn> a() {
-      return a;
+   public dmn(dmm $$0) {
+      this(new dmn.a($$0));
    }
 
-   public dmn(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jj.a.a));
+   public dmn(dmn.b $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      switch ((jj.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
-      }
+   public boolean a(dus $$0, ddo $$1, jf $$2, jk $$3) {
+      return jk.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
-      if ($$1.B_().j() && $$1.ac().b(dec.e) && $$3.a(2000) < $$1.am().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.e();
-         }
+   public Optional<dmn.c> a(dus $$0, dek $$1, jf $$2, azn $$3) {
+      return jk.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
+   }
 
-         if ($$1.a_($$2).a($$1, $$2, btv.bx)) {
-            bto $$4 = btv.bx.a($$1, $$2.d(), btu.d);
-            if ($$4 != null) {
-               $$4.aA();
-               bto $$5 = $$4.dg();
-               if ($$5 != null) {
-                  $$5.aA();
-               }
+   public long a(dus $$0, dek $$1, jf $$2, boolean $$3) {
+      return jk.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<dmn.c> a(dus $$0, dek $$1, jf $$2, jk $$3, azn $$4, boolean $$5) {
+      return jk.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(dus $$0, dek $$1, jf $$2, jk $$3, boolean $$4) {
+      return jk.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dmn.c> a(dus $$0, dek $$1, jf $$2, jk $$3, jk $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dmn.c> a(dus $$0, ddo $$1, jf $$2, jk $$3, jk $$4, dmn.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dmn.e $$6 : this.b.a()) {
+            dmn.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
             }
          }
-      }
-   }
 
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      jj.a $$6 = $$1.o();
-      jj.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new erp($$3, $$4, $$7).c() ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(duo $$0, deg $$1, je $$2, bto $$3) {
-      if ($$3.o(false)) {
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public int a(arh $$0, bto $$1) {
-      return $$1 instanceof cnu $$2 ? Math.max(0, $$0.ac().c($$2.gd().a ? dec.F : dec.E)) : 0;
-   }
-
-   @Nullable
-   @Override
-   public ern a(arh $$0, bto $$1, je $$2) {
-      alb<deg> $$3 = $$0.ag() == deg.i ? deg.h : deg.i;
-      arh $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
+         return Optional.empty();
       } else {
-         boolean $$5 = $$4.ag() == deg.i;
-         dwf $$6 = $$4.A_();
-         double $$7 = dyk.a($$0.B_(), $$4.B_());
-         je $$8 = $$6.b($$1.dx() * $$7, $$1.dz(), $$1.dD() * $$7);
-         return this.a($$4, $$1, $$2, $$8, $$5, $$6);
+         return Optional.empty();
       }
    }
 
-   @Nullable
-   private ern a(arh $$0, bto $$1, je $$2, je $$3, boolean $$4, dwf $$5) {
-      Optional<je> $$6 = $$0.p().a($$3, $$4, $$5);
-      l.a $$9;
-      ern.a $$10;
-      if ($$6.isPresent()) {
-         je $$7 = $$6.get();
-         duo $$8 = $$0.a_($$7);
-         $$9 = l.a($$7, $$8.c(dve.H), 21, jj.a.b, 21, $$2x -> $$0.a_($$2x) == $$8);
-         $$10 = ern.b.then($$1x -> $$1x.f($$7));
-      } else {
-         jj.a $$11 = $$1.dS().a_($$2).d(b).orElse(jj.a.a);
-         Optional<l.a> $$12 = $$0.p().a($$3, $$11);
-         if ($$12.isEmpty()) {
-            f.error("Unable to create a portal, likely target out of worldborder");
-            return null;
-         }
+   public Optional<dmn.c> a(dek $$0, dmn.c $$1, boolean $$2) {
+      dus $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
 
-         $$9 = $$12.get();
-         $$10 = ern.b.then(ern.c);
+   public static class a implements dmn.b {
+      protected dmm a;
+
+      public a(dmm $$0) {
+         this.a = $$0;
       }
 
-      return a($$1, $$2, $$9, $$0, $$10);
-   }
-
-   private static ern a(bto $$0, je $$1, l.a $$2, arh $$3, ern.a $$4) {
-      duo $$5 = $$0.dS().a_($$1);
-      jj.a $$6;
-      eys $$8;
-      if ($$5.b(dve.H)) {
-         $$6 = $$5.c(dve.H);
-         l.a $$7 = l.a($$1, $$6, 21, jj.a.b, 21, $$2x -> $$0.dS().a_($$2x) == $$5);
-         $$8 = $$0.a($$6, $$7);
-      } else {
-         $$6 = jj.a.a;
-         $$8 = new eys(0.5, 0.0, 0.0);
+      @Nullable
+      @Override
+      public dus a(dus $$0, ddo $$1, jf $$2, jk $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
       }
 
-      return a($$3, $$2, $$6, $$8, $$0, $$0.dv(), $$0.dI(), $$0.dK(), $$4);
-   }
-
-   private static ern a(arh $$0, l.a $$1, jj.a $$2, eys $$3, bto $$4, eys $$5, float $$6, float $$7, ern.a $$8) {
-      je $$9 = $$1.a;
-      duo $$10 = $$0.a_($$9);
-      jj.a $$11 = $$10.d(dve.H).orElse(jj.a.a);
-      double $$12 = (double)$$1.b;
-      double $$13 = (double)$$1.c;
-      btr $$14 = $$4.a($$4.av());
-      int $$15 = $$2 == $$11 ? 0 : 90;
-      eys $$16 = $$2 == $$11 ? $$5 : new eys($$5.f, $$5.e, -$$5.d);
-      double $$17 = (double)$$14.a() / 2.0 + ($$12 - (double)$$14.a()) * $$3.a();
-      double $$18 = ($$13 - (double)$$14.b()) * $$3.b();
-      double $$19 = 0.5 + $$3.c();
-      boolean $$20 = $$11 == jj.a.a;
-      eys $$21 = new eys((double)$$9.u() + ($$20 ? $$17 : $$19), (double)$$9.v() + $$18, (double)$$9.w() + ($$20 ? $$19 : $$17));
-      eys $$22 = erp.a($$21, $$0, $$4, $$14);
-      return new ern($$0, $$22, $$16, $$6 + (float)$$15, $$7, $$8);
-   }
-
-   @Override
-   public dnc.a b() {
-      return dnc.a.a;
-   }
-
-   @Override
-   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awe.uI, awf.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
+      protected boolean a(ddo $$0, jf $$1, jf $$2, jk $$3, dus $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(dho.G) && $$4.y().b();
       }
 
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.h()).a(this) && !$$1.a_($$2.i()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
+      @Override
+      public boolean a(ddo $$0, jf $$1, dmn.c $$2) {
+         dus $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
+      }
+   }
+
+   public interface b {
+      @Nullable
+      dus a(dus var1, ddo var2, jf var3, jk var4);
+
+      boolean a(ddo var1, jf var2, dmn.c var3);
+
+      default dmn.e[] a() {
+         return dmn.a;
+      }
+
+      default boolean a(dus $$0, jk $$1) {
+         return dmm.a($$0, $$1);
+      }
+
+      default boolean a(dus $$0) {
+         return false;
+      }
+
+      default boolean b(dus $$0, jk $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(dek $$0, dmn.c $$1, dus $$2, boolean $$3) {
+         dus $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
          } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
+            return false;
          }
-
-         $$1.a(ln.ac, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 
-   @Override
-   public cvp a(dej $$0, je $$1, duo $$2) {
-      return cvp.k;
+   public static record c(jf a, jk b) {
    }
 
-   @Override
-   protected duo a(duo $$0, dnx $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jj.a)$$0.c(b)) {
-               case c:
-                  return $$0.b(b, jj.a.a);
-               case a:
-                  return $$0.b(b, jj.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   @FunctionalInterface
+   public interface d {
+      boolean test(ddo var1, jf var2, dmn.c var3);
    }
 
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b);
+   public static enum e {
+      a {
+         @Override
+         public dmn.c a(jf $$0, jk $$1, jk $$2) {
+            return new dmn.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dmn.c a(jf $$0, jk $$1, jk $$2) {
+            return new dmn.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dmn.c a(jf $$0, jk $$1, jk $$2) {
+            return new dmn.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
+
+      public abstract dmn.c a(jf var1, jk var2, jk var3);
    }
 }

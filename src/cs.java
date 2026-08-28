@@ -6,21 +6,21 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implements Predicate<cvp> {
+public record cs(Optional<js<cvn>> b, dh.d c, kq d, Map<ct.a<?>, ct> e) implements Predicate<cvs> {
    public static final Codec<cs> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               kc.a(lv.K).optionalFieldOf("items").forGetter(cs::a),
+               kd.a(lw.K).optionalFieldOf("items").forGetter(cs::a),
                dh.d.d.optionalFieldOf("count", dh.d.c).forGetter(cs::b),
-               kp.a.optionalFieldOf("components", kp.c).forGetter(cs::c),
+               kq.a.optionalFieldOf("components", kq.c).forGetter(cs::c),
                ct.b.optionalFieldOf("predicates", Map.of()).forGetter(cs::d)
             )
             .apply($$0, cs::new)
    );
 
-   public boolean a(cvp $$0) {
+   public boolean a(cvs $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
-      } else if (!this.c.d($$0.J())) {
+      } else if (!this.c.d($$0.K())) {
          return false;
       } else if (!this.d.a($$0)) {
          return false;
@@ -35,7 +35,7 @@ public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implemen
       }
    }
 
-   public Optional<jr<cvk>> a() {
+   public Optional<js<cvn>> a() {
       return this.b;
    }
 
@@ -43,7 +43,7 @@ public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implemen
       return this.c;
    }
 
-   public kp c() {
+   public kq c() {
       return this.d;
    }
 
@@ -52,13 +52,13 @@ public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implemen
    }
 
    public static class a {
-      private Optional<jr<cvk>> a = Optional.empty();
+      private Optional<js<cvn>> a = Optional.empty();
       private dh.d b = dh.d.c;
-      private kp c;
+      private kq c;
       private final Builder<ct.a<?>, ct> d;
 
       private a() {
-         this.c = kp.c;
+         this.c = kq.c;
          this.d = ImmutableMap.builder();
       }
 
@@ -66,12 +66,12 @@ public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implemen
          return new cs.a();
       }
 
-      public cs.a a(jo<cvk> $$0, def... $$1) {
-         this.a = Optional.of(jr.a($$0x -> $$0x.q().n(), $$1));
+      public cs.a a(jp<cvn> $$0, dei... $$1) {
+         this.a = Optional.of(js.a($$0x -> $$0x.q().n(), $$1));
          return this;
       }
 
-      public cs.a a(jo<cvk> $$0, axj<cvk> $$1) {
+      public cs.a a(jp<cvn> $$0, axl<cvn> $$1) {
          this.a = Optional.of($$0.b($$1));
          return this;
       }
@@ -86,7 +86,7 @@ public record cs(Optional<jr<cvk>> b, dh.d c, kp d, Map<ct.a<?>, ct> e) implemen
          return this;
       }
 
-      public cs.a a(kp $$0) {
+      public cs.a a(kq $$0) {
          this.c = $$0;
          return this;
       }

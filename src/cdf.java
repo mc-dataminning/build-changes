@@ -1,40 +1,37 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdf extends cdh {
-   private final bvg a;
-   private buk b;
-   private int c;
+public class cdf<T extends bun> extends cdd<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cdf(bvg $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(cbh.a.d));
+   public cdf(cpm $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bun> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (this.a.q() && !this.a.gp()) {
-         buk $$0 = this.a.R_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eo();
-            int $$1 = $$0.ep();
-            return $$1 != this.c && this.a(this.b, cfa.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.dV().h()) {
          return false;
+      } else if (!((cpm)this.e).gF()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.e.h(this.b);
-      buk $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ep();
-      }
-
+      this.j = b(200);
       super.d();
    }
 }

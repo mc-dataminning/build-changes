@@ -1,19 +1,61 @@
-import com.google.common.collect.ImmutableList;
+import java.util.function.Consumer;
 
-public interface foh {
-   default void a(fog $$0, xd $$1) {
-      this.a($$0, foj.a($$1.getString()));
+public class foh implements foe {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public foh(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   default void a(fog $$0, String $$1) {
-      this.a($$0, foj.a($$1));
+   public foh(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   default void a(fog $$0, xd... $$1) {
-      this.a($$0, foj.a(ImmutableList.copyOf($$1)));
+   public static foh a(int $$0) {
+      return new foh($$0, 0);
    }
 
-   void a(fog var1, foj<?> var2);
+   public static foh b(int $$0) {
+      return new foh(0, $$0);
+   }
 
-   foh a();
+   @Override
+   public void m(int $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int D() {
+      return this.a;
+   }
+
+   @Override
+   public int E() {
+      return this.b;
+   }
+
+   @Override
+   public int y() {
+      return this.c;
+   }
+
+   @Override
+   public int w() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fkm> $$0) {
+   }
 }

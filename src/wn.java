@@ -1,24 +1,18 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import io.netty.channel.ChannelHandlerContext;
 
-public class wn extends vx {
-   private static final Logger h = LogUtils.getLogger();
-   private static final xd i = xd.c("disconnect.exceeded_packet_rate");
-   private final int j;
-
-   public wn(int $$0) {
-      super(zl.a);
-      this.j = $$0;
+public interface wn {
+   static void a(ChannelHandlerContext $$0, zl<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wt.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      float $$0 = this.o();
-      if ($$0 > (float)this.j) {
-         h.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new zt(i), wk.a(() -> this.a(i)));
-         this.m();
+   static void b(ChannelHandlerContext $$0, zl<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wt.c());
+         $$0.pipeline().remove($$0.name());
       }
    }
 }

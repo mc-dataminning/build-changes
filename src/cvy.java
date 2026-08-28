@@ -1,43 +1,48 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import org.slf4j.Logger;
 
-public class cvy extends cvk {
-   private static final Logger a = LogUtils.getLogger();
+public record cvy(jo<awf> e, xe f, float g, int h) {
+   public static final Codec<cvy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awf.b.fieldOf("sound_event").forGetter(cvy::b),
+               xg.a.fieldOf("description").forGetter(cvy::c),
+               ayo.n.fieldOf("length_in_seconds").forGetter(cvy::d),
+               ayo.a(0, 15).fieldOf("comparator_output").forGetter(cvy::e)
+            )
+            .apply($$0, cvy::new)
+   );
+   public static final zc<wp, cvy> b = zc.a(awf.d, cvy::b, xg.b, cvy::c, za.j, cvy::d, za.h, cvy::e, cvy::new);
+   public static final Codec<jo<cvy>> c = alb.a(lw.L);
+   public static final zc<wp, jo<cvy>> d = za.a(lw.L, b);
+   private static final int i = 20;
 
-   public cvy(cvk.a $$0) {
-      super($$0);
+   public int a() {
+      return azf.f(this.g * 20.0F);
    }
 
-   @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      List<alc> $$4 = $$3.a(kr.X, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return brp.d;
-      } else {
-         if (!$$0.B) {
-            dal $$5 = $$0.o().aI();
-            List<daj<?>> $$6 = new ArrayList<>($$4.size());
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
+   }
 
-            for (alc $$7 : $$4) {
-               Optional<daj<?>> $$8 = $$5.a($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return brp.d;
-               }
+   public static Optional<jo<cvy>> a(jq.a $$0, cvs $$1) {
+      cvx $$2 = $$1.a(ks.W);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   }
 
-               $$6.add($$8.get());
-            }
+   public jo<awf> b() {
+      return this.e;
+   }
 
-            $$1.a($$6);
-            $$1.b(awo.c.b(this));
-         }
+   public xe c() {
+      return this.f;
+   }
 
-         return brp.a;
-      }
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

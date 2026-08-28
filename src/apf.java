@@ -1,48 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import java.util.Collection;
+import java.util.Set;
 
 public class apf {
-   private static final ya a = ya.a.a(new xj(xj.a.a, xd.c("chat.type.team.hover"))).a(new xb(xb.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("commands.tag.remove.failed"));
 
-   public static void a(CommandDispatcher<et> $$0) {
-      LiteralCommandNode<et> $$1 = $$0.register((LiteralArgumentBuilder)eu.a("teammsg").then(eu.a("message", fk.a()).executes($$0x -> {
-         et $$1x = (et)$$0x.getSource();
-         bto $$2 = $$1x.g();
-         ezs $$3 = $$2.co();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<ari> $$4 = $$1x.l().ag().t().stream().filter($$2x -> $$2x == $$2 || $$2x.co() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               fk.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)eu.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<eu> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a("targets", fh.b())
+                        .then(
+                           ev.a("add")
+                              .then(
+                                 ev.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((eu)$$0x.getSource(), fh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        ev.a("remove")
+                           .then(
+                              ev.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> ez.b(a(fh.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((eu)$$0x.getSource(), fh.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(ev.a("list").executes($$0x -> a((eu)$$0x.getSource(), fh.b($$0x, "targets"))))
+            )
+      );
    }
 
-   private static void a(et $$0, bto $$1, ezs $$2, List<ari> $$3, xt $$4) {
-      xd $$5 = $$2.d().c(a);
-      wz.a $$6 = wz.a(wz.i, $$0).c($$5);
-      wz.a $$7 = wz.a(wz.j, $$0).c($$5);
-      xs $$8 = xs.a($$4);
-      boolean $$9 = false;
+   private static Collection<String> a(Collection<? extends btr> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-      for (ari $$10 : $$3) {
-         wz.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.j();
+      for (btr $$2 : $$0) {
+         $$1.addAll($$2.aq());
       }
 
-      if ($$9) {
-         $$0.a(avh.e);
+      return $$1;
+   }
+
+   private static int a(eu $$0, Collection<? extends btr> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (btr $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
       }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xe.a("commands.tag.add.success.single", $$2, $$1.iterator().next().R_()), true);
+         } else {
+            $$0.a(() -> xe.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int b(eu $$0, Collection<? extends btr> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (btr $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xe.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().R_()), true);
+         } else {
+            $$0.a(() -> xe.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(eu $$0, Collection<? extends btr> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (btr $$3 : $$1) {
+         $$2.addAll($$3.aq());
+      }
+
+      if ($$1.size() == 1) {
+         btr $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> xe.a("commands.tag.list.single.empty", $$4.R_()), false);
+         } else {
+            $$0.a(() -> xe.a("commands.tag.list.single.success", $$4.R_(), $$2.size(), xh.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> xe.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> xe.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xh.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

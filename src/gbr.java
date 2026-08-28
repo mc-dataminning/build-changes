@@ -1,17 +1,28 @@
-public class gbr {
-   private final gbi a;
-   private final bmo b;
+import java.util.EnumMap;
 
-   public gbr(gbi $$0, bmo $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gbr {
+   public static final int a = 5000;
+   private final gbn b;
+   private final fkw c;
+   private final EnumMap<bms, Long> d;
+
+   public gbr(gbn $$0, fkw $$1) {
+      this.c = $$1;
+      this.b = $$0;
+      this.d = new EnumMap<>(bms.class);
    }
 
    public void a() {
-      this.a.b(new ajw(ad.c()));
+      if (this.c.g()) {
+         this.a(bms.a);
+      }
    }
 
-   public void a(ajt $$0) {
-      this.b.a(ad.c() - $$0.b());
+   private void a(bms $$0) {
+      long $$1 = ad.c();
+      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
+         this.b.b(new ahk($$0));
+         this.d.put($$0, $$1);
+      }
    }
 }

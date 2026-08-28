@@ -1,14 +1,15 @@
-public class cui extends ctr {
-   public cui(dhj $$0, cvk.a $$1) {
-      super($$0, $$1);
+public class cui extends cvn {
+   protected cui(cxj $$0, axl<dhm> $$1, float $$2, float $$3, cvn.a $$4) {
+      super($$0.a($$4, $$1, $$2, $$3));
    }
 
    @Override
-   protected boolean a(czk $$0, duo $$1) {
-      deg $$2 = $$0.q();
-      je $$3 = $$0.a().d();
-      duo $$4 = $$2.z($$3) ? dhl.G.o() : dhl.a.o();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public boolean a(cvs $$0, bun $$1, bun $$2) {
+      return true;
+   }
+
+   @Override
+   public void b(cvs $$0, bun $$1, bun $$2) {
+      $$0.a(2, $$2, btz.a);
    }
 }

@@ -1,30 +1,36 @@
-public class gkm implements gjr<dtw> {
-   private final goh a;
-   private final azl b = azl.a();
+public class gkm implements gjw<dtl> {
+   private final gnm a;
 
-   public gkm(gjs.a $$0) {
-      this.a = $$0.d();
+   public gkm(gjx.a $$0) {
+      this.a = $$0.c();
    }
 
-   public void a(dtw $$0, float $$1, fde $$2, ghg $$3, int $$4, int $$5) {
-      if (dtw.a.a($$0.c())) {
-         deg $$6 = $$0.i();
-         if ($$6 != null) {
-            cvp $$7 = $$0.c().a();
-            if (!$$7.f()) {
-               this.b.b((long)gof.a($$7));
-               dtx $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
-            }
+   public void a(dtl $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      dej $$6 = $$0.i();
+      if ($$6 != null) {
+         ddk $$7 = $$0.c();
+         btr $$8 = $$7.b($$6, $$0.aC_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
       }
    }
 
-   public static void a(float $$0, deg $$1, fde $$2, ghg $$3, int $$4, cvp $$5, goh $$6, float $$7, float $$8, azl $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(azd.i($$0, $$7, $$8)));
-      gof.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
+   public static void a(float $$0, fdi $$1, ghl $$2, int $$3, btr $$4, gnm $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dn(), $$4.do());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
+      }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)azf.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

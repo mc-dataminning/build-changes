@@ -1,20 +1,26 @@
-public record adf(ddm b) implements zk<abz> {
-   public static final zb<wa, adf> a = zk.a(adf::a, adf::new);
+import java.util.Optional;
 
-   private adf(wa $$0) {
-      this($$0.f());
-   }
-
-   private void a(wa $$0) {
-      $$0.a(this.b);
-   }
+public record adf(eyw b, Optional<eyw> c, lm d, jo<awf> e) implements zl<aca> {
+   public static final zc<wp, adf> a = zc.a(eyw.b, adf::b, eyw.b.a(za::a), adf::e, lo.bg, adf::f, awf.d, adf::g, adf::new);
 
    @Override
-   public zm<adf> a() {
-      return ago.F;
+   public zn<adf> a() {
+      return agp.E;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   public Optional<eyw> e() {
+      return this.c;
+   }
+
+   public lm f() {
+      return this.d;
+   }
+
+   public jo<awf> g() {
+      return this.e;
    }
 }

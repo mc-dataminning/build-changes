@@ -1,101 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public abstract class gcl {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
-   @Nullable
-   protected gcn e;
-   protected boolean f;
-
-   public gcl(UUID $$0, Instant $$1, UUID $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public interface gcl {
+   static gcl a(gcr $$0, UserApiService $$1) {
+      return new gcl.b($$0, $$1);
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   CompletableFuture<Unit> a(UUID var1, gct var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public abstract gcl b();
+   public static class a extends ye {
+      public a(xe $$0, Throwable $$1) {
+         super($$0, $$1);
+      }
+   }
 
-   public abstract fqd a(fqd var1, gcp var2);
+   public static record b(gcr a, UserApiService b) implements gcl {
+      private static final xe c = xe.c("gui.abuseReport.send.service_unavailable");
+      private static final xe d = xe.c("gui.abuseReport.send.http_error");
+      private static final xe e = xe.c("gui.abuseReport.send.json_error");
 
-   public abstract static class a<R extends gcl> {
-      protected final R a;
-      protected final AbuseReportLimits b;
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gct $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xe $$5 = this.a(var7);
+               throw new CompletionException(new gcl.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xe $$7 = this.a(var8);
+               throw new CompletionException(new gcl.a($$7, var8));
+            }
+         }, ad.h());
       }
 
-      public R e() {
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private xe a(MinecraftClientHttpException $$0) {
+         return xe.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xe a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gcr c() {
          return this.a;
       }
 
-      public UUID f() {
-         return this.a.c;
+      public UserApiService d() {
+         return this.b;
       }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public gcn i() {
-         return this.a.e;
-      }
-
-      public void a(gcn $$0) {
-         this.a.e = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public gcl.b c() {
-         return !this.e().f ? gcl.b.e : null;
-      }
-
-      public abstract Either<gcl.c, gcl.b> a(gcp var1);
-   }
-
-   public static record b(xd f) {
-      public static final gcl.b a = new gcl.b(xd.c("gui.abuseReport.send.no_reason"));
-      public static final gcl.b b = new gcl.b(xd.c("gui.chatReport.send.no_reported_messages"));
-      public static final gcl.b c = new gcl.b(xd.c("gui.chatReport.send.too_many_messages"));
-      public static final gcl.b d = new gcl.b(xd.c("gui.abuseReport.send.comment_too_long"));
-      public static final gcl.b e = new gcl.b(xd.c("gui.abuseReport.send.not_attested"));
-
-      public flv a() {
-         return flv.a(this.f);
-      }
-
-      public xd b() {
-         return this.f;
-      }
-   }
-
-   public static record c(UUID a, gco b, AbuseReport c) {
    }
 }

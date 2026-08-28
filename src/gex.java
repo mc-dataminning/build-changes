@@ -1,40 +1,80 @@
-public class gex extends gfo {
-   private final gfj a;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   gex(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfj $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public ges b() {
-      return ges.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(gfj a) implements ger<lp> {
-      public geo a(lp $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gex $$8 = new gex($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.z.a(12) + 8);
-         return $$8;
+public interface gex {
+   gex a = new gex() {
+      @Override
+      public fdd a(fdk $$0, gxh $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggv.c);
+         RenderSystem.setShaderTexture(0, gxf.d);
+         return $$0.a(fdn.c.h, fdg.d);
       }
-   }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   gex b = new gex() {
+      @Override
+      public fdd a(fdk $$0, gxh $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggv.c);
+         RenderSystem.setShaderTexture(0, gxf.e);
+         return $$0.a(fdn.c.h, fdg.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   gex c = new gex() {
+      @Override
+      public fdd a(fdk $$0, gxh $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggv.c);
+         RenderSystem.setShaderTexture(0, gxf.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fdn.c.h, fdg.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   gex d = new gex() {
+      @Override
+      public fdd a(fdk $$0, gxh $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fdn.c.h, fdg.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   gex e = new gex() {
+      @Nullable
+      @Override
+      public fdd a(fdk $$0, gxh $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fdd a(fdk var1, gxh var2);
 }

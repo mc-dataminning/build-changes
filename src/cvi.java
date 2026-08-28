@@ -1,83 +1,92 @@
-import java.util.Iterator;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import java.util.Optional;
+import java.util.function.Supplier;
 
-public class cvi extends cvk {
-   private final axj<cvh> a;
+public class cvi extends cvn implements cww {
+   public static final Supplier<BiMap<dhm, dhm>> a = Suppliers.memoize(
+      () -> ImmutableBiMap.builder()
+            .put(dho.qW, dho.rw)
+            .put(dho.qX, dho.ry)
+            .put(dho.qY, dho.rx)
+            .put(dho.qZ, dho.rz)
+            .put(dho.rf, dho.rD)
+            .put(dho.re, dho.rC)
+            .put(dho.rd, dho.rB)
+            .put(dho.rc, dho.rA)
+            .put(dho.rv, dho.rL)
+            .put(dho.ru, dho.rK)
+            .put(dho.rt, dho.rJ)
+            .put(dho.rs, dho.rI)
+            .put(dho.rr, dho.rH)
+            .put(dho.rq, dho.rG)
+            .put(dho.rp, dho.rF)
+            .put(dho.ro, dho.rE)
+            .put(dho.rj, dho.rn)
+            .put(dho.ri, dho.rm)
+            .put(dho.rh, dho.rl)
+            .put(dho.rg, dho.rk)
+            .put(dho.rM, dho.rQ)
+            .put(dho.rN, dho.rR)
+            .put(dho.rP, dho.rT)
+            .put(dho.rO, dho.rS)
+            .put(dho.rU, dho.rY)
+            .put(dho.rV, dho.rZ)
+            .put(dho.rX, dho.sb)
+            .put(dho.rW, dho.sa)
+            .put(dho.sc, dho.sg)
+            .put(dho.sd, dho.sh)
+            .put(dho.se, dho.si)
+            .put(dho.sf, dho.sj)
+            .put(dho.sk, dho.so)
+            .put(dho.sl, dho.sp)
+            .put(dho.sm, dho.sq)
+            .put(dho.sn, dho.sr)
+            .build()
+   );
+   public static final Supplier<BiMap<dhm, dhm>> b = Suppliers.memoize(() -> a.get().inverse());
 
-   public cvi(cvk.a $$0, axj<cvh> $$1) {
+   public cvi(cvn.a $$0) {
       super($$0);
-      this.a = $$1;
    }
 
    @Override
-   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      jp.a $$4 = $$1.a();
-      if ($$4 != null) {
-         Optional<jn<cvh>> $$5 = this.a($$0, $$4);
-         if ($$5.isPresent()) {
-            xr $$6 = $$5.get().a().d().f();
-            xg.a($$6, ya.a.a(n.h));
-            $$2.add($$6);
-         }
-      }
-   }
-
-   public static cvp a(cvk $$0, jn<cvh> $$1) {
-      cvp $$2 = new cvp($$0);
-      $$2.b(kr.U, $$1);
-      return $$2;
-   }
-
-   @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      Optional<? extends jn<cvh>> $$4 = this.a($$3, $$1.dU());
-      if ($$4.isPresent()) {
-         cvh $$5 = $$4.get().a();
-         $$1.c($$2);
-         a($$0, $$1, $$5);
-         $$1.gx().a($$3, azd.d($$5.b() * 20.0F));
-         $$1.b(awo.c.b(this));
-         return brp.c;
-      } else {
-         return brp.d;
-      }
-   }
-
-   @Override
-   public int a(cvp $$0, buk $$1) {
-      Optional<jn<cvh>> $$2 = this.a($$0, $$1.dU());
-      return $$2.<Integer>map($$0x -> azd.d(((cvh)$$0x.a()).b() * 20.0F)).orElse(0);
-   }
-
-   private Optional<jn<cvh>> a(cvp $$0, jp.a $$1) {
-      jn<cvh> $$2 = $$0.a(kr.U);
-      if ($$2 != null) {
-         return Optional.of($$2);
-      } else {
-         Optional<jr.c<cvh>> $$3 = $$1.b(lv.I).a(this.a);
-         if ($$3.isPresent()) {
-            Iterator<jn<cvh>> $$4 = $$3.get().iterator();
-            if ($$4.hasNext()) {
-               return Optional.of($$4.next());
-            }
+   public brs a(czp $$0) {
+      dej $$1 = $$0.q();
+      jf $$2 = $$0.a();
+      dus $$3 = $$1.a_($$2);
+      return a($$3).map($$3x -> {
+         cnx $$4 = $$0.o();
+         cvs $$5 = $$0.n();
+         if ($$4 instanceof ark $$6) {
+            an.N.a($$6, $$2, $$5);
          }
 
-         return Optional.empty();
+         $$5.h(1);
+         $$1.a($$2, $$3x, 11);
+         $$1.a(dzp.c, $$2, dzp.a.a($$4, $$3x));
+         $$1.a($$4, 3003, $$2, 0);
+         return brs.a;
+      }).orElse(brs.e);
+   }
+
+   public static Optional<dus> a(dus $$0) {
+      return Optional.ofNullable((dhm)a.get().get($$0.b())).map($$1 -> ((dhm)$$1).m($$0));
+   }
+
+   @Override
+   public boolean a(dej $$0, dth $$1, boolean $$2, cnx $$3) {
+      if ($$1.b(true)) {
+         $$0.a(null, 3003, $$1.aC_(), 0);
+         return true;
+      } else {
+         return false;
       }
    }
 
    @Override
-   public cvr a(cvp $$0) {
-      return cvr.i;
-   }
-
-   private static void a(deg $$0, cnu $$1, cvh $$2) {
-      awd $$3 = $$2.a().a();
-      float $$4 = $$2.c() / 16.0F;
-      $$0.a($$1, $$1, $$3, awf.c, $$4, 1.0F);
-      $$0.a(dzl.B, $$1.dq(), dzl.a.a($$1));
+   public boolean a(dti $$0, cnx $$1) {
+      return true;
    }
 }

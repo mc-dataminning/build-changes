@@ -1,26 +1,23 @@
-public record aap(alb<dzl> c, eys d) implements aan {
-   public static final zb<wa, aap> a = aan.a(aap::a, aap::new);
-   public static final aan.b<aap> b = aan.a("debug/game_event");
-
-   private aap(wa $$0) {
-      this($$0.a(lv.G), $$0.k());
-   }
-
-   private void a(wa $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
+public record aap(ale a) implements aao {
+   public static <T extends wb> zc<T, aap> a(ale $$0, int $$1) {
+      return aao.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aap($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aan.b<aap> a() {
-      return b;
+   public aao.b<aap> a() {
+      return new aao.b<>(this.a);
    }
 
-   public alb<dzl> b() {
-      return this.c;
-   }
-
-   public eys c() {
-      return this.d;
+   public ale b() {
+      return this.a;
    }
 }

@@ -1,30 +1,59 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.concurrent.Immutable;
 
-public record brq(String d) {
-   public static final brq a = new brq("");
-   public static final Codec<brq> b = Codec.STRING.xmap(brq::new, brq::a);
-   public static final String c = "Lock";
+@Immutable
+public class brq {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final brp d;
+   private final float e;
 
-   public boolean a(cvp $$0) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         xd $$1 = $$0.a(kr.g);
-         return $$1 != null && this.d.equals($$1.getString());
-      }
+   public brq(brp $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(uf $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
-      }
-   }
-
-   public static brq b(uf $$0) {
-      return $$0.b("Lock", 8) ? new brq($$0.l("Lock")) : a;
-   }
-
-   public String a() {
+   public brp a() {
       return this.d;
+   }
+
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)brp.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
+   }
+
+   private float a(brp $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == brp.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == brp.d;
+         float $$5 = 0.75F;
+         float $$6 = azf.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azf.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azf.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == brp.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

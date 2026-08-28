@@ -1,30 +1,37 @@
-public record hv(int a, eq b, hv.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface hv<T> {
+   void a(ht<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable hx var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   hx a();
 
-   public eq d() {
-      return this.b;
-   }
+   hw b();
 
-   public hv.a e() {
-      return this.c;
-   }
+   static <T extends ew<T>> hv<T> a(final hu<T> $$0, final hw $$1) {
+      return new hv<T>() {
+         @Override
+         public void a(ht<T> $$0x) {
+            $$0.a(new hq<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable hx $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public hx a() {
+            return $$0.b();
+         }
+
+         @Override
+         public hw b() {
+            return $$1;
+         }
+      };
    }
 }

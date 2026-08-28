@@ -1,41 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cef extends cet<buk> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cef() {
-      this(200);
-   }
-
-   public cef(int $$0) {
-      super($$0);
-   }
-
+public class cef extends cep<clz> {
    @Override
-   protected void a(arh $$0, buk $$1) {
-      a($$1);
+   public Set<cdq<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdq.B)));
    }
 
-   @Override
-   public Set<cdn<?>> a() {
-      return ImmutableSet.of(cdn.g);
-   }
-
-   public static void a(buk $$0) {
-      Optional<List<buk>> $$1 = $$0.dX().c(cdn.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ao().equals(btv.af));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(buk $$0) {
-      $$0.dX().a(cdn.F, true, 599L);
+   protected void a(arj $$0, clz $$1) {
+      super.a($$0, $$1);
+      $$1.dY()
+         .c(cdq.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(btw.e)
+         .filter($$1x -> cew.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dY().a(cdq.B, $$1x), () -> $$1.dY().b(cdq.B));
    }
 }

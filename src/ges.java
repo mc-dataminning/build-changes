@@ -1,80 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class ges extends gft {
+   ges(gbm $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, azf.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, azf.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, azf.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
+   }
 
-public interface ges {
-   ges a = new ges() {
-      @Override
-      public fcz a(fdg $$0, gxc $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggq.c);
-         RenderSystem.setShaderTexture(0, gxa.d);
-         return $$0.a(fdj.c.h, fdc.d);
-      }
+   @Override
+   public gex b() {
+      return gex.b;
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   ges b = new ges() {
-      @Override
-      public fcz a(fdg $$0, gxc $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggq.c);
-         RenderSystem.setShaderTexture(0, gxa.e);
-         return $$0.a(fdj.c.h, fdc.d);
-      }
+   @Override
+   public float b(float $$0) {
+      return this.D * azf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   ges c = new ges() {
-      @Override
-      public fcz a(fdg $$0, gxc $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggq.c);
-         RenderSystem.setShaderTexture(0, gxa.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fdj.c.h, fdc.d);
+   public static class a implements gew<ls> {
+      private final gfo a;
+
+      public a(gfo $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ges $$8 = new ges($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
-   };
-   ges d = new ges() {
-      @Override
-      public fcz a(fdg $$0, gxc $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fdj.c.h, fdc.d);
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   ges e = new ges() {
-      @Nullable
-      @Override
-      public fcz a(fdg $$0, gxc $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fcz a(fdg var1, gxc var2);
+   }
 }

@@ -1,24 +1,61 @@
-import com.google.common.collect.UnmodifiableIterator;
-
-public class eqq {
-   public static final eqo a = a("empty", new eqm());
-   public static final eqn b = a("flowing_water", new eqv.a());
-   public static final eqn c = a("water", new eqv.b());
-   public static final eqn d = a("flowing_lava", new eqs.a());
-   public static final eqn e = a("lava", new eqs.b());
-
-   private static <T extends eqo> T a(String $$0, T $$1) {
-      return ka.a(lu.c, $$0, $$1);
+public class eqq extends eqs {
+   @Override
+   public cvn a() {
+      return cvw.a;
    }
 
-   static {
-      for (eqo $$0 : lu.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Override
+   public boolean a(eqt $$0, ddo $$1, jf $$2, eqs $$3, jk $$4) {
+      return true;
+   }
 
-         while (var2.hasNext()) {
-            eqp $$1 = (eqp)var2.next();
-            eqo.c.b($$1);
-         }
-      }
+   @Override
+   public eyw a(ddo $$0, jf $$1, eqt $$2) {
+      return eyw.c;
+   }
+
+   @Override
+   public int a(dem $$0) {
+      return 0;
+   }
+
+   @Override
+   protected boolean b() {
+      return true;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(eqt $$0, ddo $$1, jf $$2) {
+      return 0.0F;
+   }
+
+   @Override
+   public float a(eqt $$0) {
+      return 0.0F;
+   }
+
+   @Override
+   protected dus b(eqt $$0) {
+      return dho.a.n();
+   }
+
+   @Override
+   public boolean c(eqt $$0) {
+      return false;
+   }
+
+   @Override
+   public int d(eqt $$0) {
+      return 0;
+   }
+
+   @Override
+   public ezq b(eqt $$0, ddo $$1, jf $$2) {
+      return ezn.a();
    }
 }

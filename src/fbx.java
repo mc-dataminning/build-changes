@@ -1,31 +1,40 @@
 import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
 public class fbx {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+   @Nullable
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
+      }
+   });
+
+   public static void a(long $$0) {
+      if (a != null) {
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
+         }
+      }
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
-   }
-
-   public static String a() {
-      return GlStateManager._getString(7936);
-   }
-
-   public static String b() {
-      return GLX._getCpuInfo();
-   }
-
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

@@ -1,36 +1,43 @@
-public class gqe extends gop<cnh, gvu, fzv> {
-   private static final alc b = alc.b("textures/entity/villager/villager.png");
-   public static final grb.a a = new grb.a(-0.1171875F, -0.07421875F, 1.0F);
+public class gqe extends gnn<cki, gvu> {
+   private final gio a;
 
-   public gqe(gnj.a $$0) {
-      super($$0, new fzv($$0.a(gak.cT)), 0.5F);
-      this.a(new grb<>(this, $$0.f(), a, $$0.b()));
-      this.a(new gsg<>(this, $$0.e(), "villager"));
-      this.a(new gra<>(this, $$0.b()));
+   public gqe(gno.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   protected void a(gvu $$0, fde $$1) {
-      super.a($$0, $$1);
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
+   public void a(gvu $$0, fdi $$1, ghl $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azf.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
+      }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gqd.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public alc a(gvu $$0) {
-      return b;
-   }
-
-   protected float b(gvu $$0) {
-      float $$1 = super.f($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
-   }
-
-   public gvu c() {
+   public gvu a() {
       return new gvu();
    }
 
-   public void a(cnh $$0, gvu $$1, float $$2) {
+   public void a(cki $$0, gvu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
-      $$1.b = $$0.gz();
+      $$1.a = (float)$$0.o() - $$2 + 1.0F;
+      $$1.b = $$0.q();
    }
 }

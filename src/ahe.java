@@ -1,23 +1,37 @@
-import io.netty.buffer.ByteBuf;
+public class ahe implements zl<agr> {
+   public static final zc<wb, ahe> a = zl.a(ahe::a, ahe::new);
+   private final int b;
+   private final String c;
 
-public class ahe implements zk<agq> {
-   public static final ahe a = new ahe();
-   public static final zb<ByteBuf, ahe> b = zb.a(a);
+   public ahe(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   private ahe() {
+   private ahe(wb $$0) {
+      this.b = $$0.l();
+      this.c = $$0.d(32500);
+   }
+
+   private void a(wb $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, 32500);
    }
 
    @Override
-   public zm<ahe> a() {
-      return ago.bt;
+   public zn<ahe> a() {
+      return agp.bs;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public int b() {
+      return this.b;
+   }
+
+   public String e() {
+      return this.c;
    }
 }

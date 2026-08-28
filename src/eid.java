@@ -1,49 +1,41 @@
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
 
-public record eid(ehv b, List<eid.a> c) {
-   public static final Codec<eid> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ehv.a.fieldOf("fallback").forGetter(eid::a), eid.a.a.listOf().fieldOf("rules").forGetter(eid::b)).apply($$0, eid::new)
-   );
+public class eid extends eic {
+   public static final MapCodec<eid> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eid::new));
+   protected final List<dus> h;
 
-   public static eid a(ehv $$0) {
-      return new eid($$0, List.of());
+   protected static <P extends eid> P4<Mu<P>, Long, epw.a, Float, List<dus>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dus.a).fieldOf("states").forGetter($$0x -> $$0x.h));
    }
 
-   public static eid a(dhj $$0) {
-      return a(ehv.a($$0));
+   public eid(long $$0, epw.a $$1, float $$2, List<dus> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
-   public duo a(dfd $$0, azl $$1, je $$2) {
-      for (eid.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
-      }
-
-      return this.b.a($$1, $$2);
+   @Override
+   protected eia<?> a() {
+      return eia.d;
    }
 
-   public ehv a() {
-      return this.b;
+   @Override
+   public dus a(azn $$0, jf $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   public List<eid.a> b() {
-      return this.c;
+   protected dus a(List<dus> $$0, jf $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
    }
 
-   public static record a(ebr b, ehv c) {
-      public static final Codec<eid.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ebr.b.fieldOf("if_true").forGetter(eid.a::a), ehv.a.fieldOf("then").forGetter(eid.a::b)).apply($$0, eid.a::new)
-      );
-
-      public ebr a() {
-         return this.b;
-      }
-
-      public ehv b() {
-         return this.c;
-      }
+   protected dus a(List<dus> $$0, double $$1) {
+      double $$2 = azf.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

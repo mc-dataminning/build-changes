@@ -1,58 +1,95 @@
-public class gjv implements gjr<drw> {
-   private final goh a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public gjv(gjs.a $$0) {
-      this.a = $$0.d();
+public class gjv implements auw {
+   private Map<drx<?>, gjw<?>> d = ImmutableMap.of();
+   private final fjz e;
+   private final gam f;
+   public dej a;
+   public fhy b;
+   public eyu c;
+   private final Supplier<gio> g;
+   private final Supplier<gom> h;
+   private final Supplier<gnm> i;
+
+   public gjv(fjz $$0, gam $$1, Supplier<gio> $$2, Supplier<gom> $$3, Supplier<gnm> $$4) {
+      this.h = $$3;
+      this.i = $$4;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(drw $$0, float $$1, fde $$2, ghg $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.m().c(dve.bv);
-         if ($$6 > 0) {
-            jj $$7 = $$0.d();
-            if ($$7 != null) {
-               cvp $$8 = $$0.f();
-               if (!$$8.f()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == jj.f || $$7 == jj.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = ghc.a($$0.i(), $$0.m(), $$0.aB_().a($$7));
-                  this.a.a($$8, cvm.i, $$11, gws.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
+   @Nullable
+   public <E extends drv> gjw<E> a(E $$0) {
+      return (gjw<E>)this.d.get($$0.q());
+   }
+
+   public void a(dej $$0, fhy $$1, eyu $$2) {
+      if (this.a != $$0) {
+         this.a($$0);
+      }
+
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public <E extends drv> void a(E $$0, float $$1, fdi $$2, ghl $$3) {
+      gjw<E> $$4 = this.a($$0);
+      if ($$4 != null) {
+         if ($$0.l() && $$0.q().a($$0.m())) {
+            if ($$4.a($$0, this.b.b())) {
+               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
             }
          }
       }
    }
 
-   private float[] a(jj $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
+   private static <T extends drv> void a(gjw<T> $$0, T $$1, float $$2, fdi $$3, ghl $$4) {
+      dej $$5 = $$1.i();
+      int $$6;
+      if ($$5 != null) {
+         $$6 = ghh.a($$5, $$1.aC_());
+      } else {
+         $$6 = 15728880;
       }
 
-      return $$2;
+      $$0.a($$1, $$2, $$3, $$4, $$6, gwx.d);
+   }
+
+   public <E extends drv> boolean a(E $$0, fdi $$1, ghl $$2, int $$3, int $$4) {
+      gjw<E> $$5 = this.a($$0);
+      if ($$5 == null) {
+         return true;
+      } else {
+         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
+         return false;
+      }
+   }
+
+   private static void a(drv $$0, Runnable $$1) {
+      try {
+         $$1.run();
+      } catch (Throwable var5) {
+         o $$3 = o.a(var5, "Rendering Block Entity");
+         p $$4 = $$3.a("Block Entity Details");
+         $$0.a($$4);
+         throw new z($$3);
+      }
+   }
+
+   public void a(@Nullable dej $$0) {
+      this.a = $$0;
+      if ($$0 == null) {
+         this.b = null;
+      }
+   }
+
+   @Override
+   public void a(auv $$0) {
+      gjx.a $$1 = new gjx.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
+      this.d = gjy.a($$1);
    }
 }

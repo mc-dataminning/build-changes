@@ -1,52 +1,48 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public abstract class ede extends edq<egb> {
-   public ede(Codec<egb> $$0) {
+public class ede extends edu<egf> {
+   public ede(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egb> $$0) {
-      azl $$1 = $$0.d();
-      dfd $$2 = $$0.b();
-      je $$3 = $$0.e();
-      Optional<dhj> $$4 = lu.e.a(awt.ar, $$1).map(jn::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
-   }
+   public boolean a(edw<egf> $$0) {
+      azn $$1 = $$0.d();
+      dfg $$2 = $$0.b();
+      ddp $$3 = new ddp($$0.e());
+      IntArrayList $$4 = ad.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ad.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      jf.a $$6 = new jf.a();
+      IntListIterator var8 = $$4.iterator();
 
-   protected abstract boolean a(deh var1, azl var2, je var3, duo var4);
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-   protected boolean b(deh $$0, azl $$1, je $$2, duo $$3) {
-      je $$4 = $$2.d();
-      duo $$5 = $$0.a_($$2);
-      if (($$5.a(dhl.G) || $$5.a(awt.au)) && $$0.a_($$4).a(dhl.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            lu.e.a(awt.au, $$1).map(jn::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dhl.mV.o().b(doh.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            jf $$9 = $$2.a(eao.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dho.cv.n(), 2);
+               bry.a($$2, $$1, $$9, eth.a);
+               dus $$10 = dho.cp.n();
 
-         for (jj $$6 : jj.c.a) {
-            if ($$1.i() < 0.2F) {
-               je $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dhl.G)) {
-                  lu.e.a(awt.as, $$1).map(jn::a).ifPresent($$3x -> {
-                     duo $$4x = $$3x.o();
-                     if ($$4x.b(dgu.c)) {
-                        $$4x = $$4x.b(dgu.c, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
+               for (jk $$11 : jk.c.a) {
+                  jf $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
                }
+
+               return true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return false;
    }
 }

@@ -2,27 +2,22 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dcm(cxx d, ki e, Optional<jn<dzl>> f) implements dcb {
+public record dcm(kj d, Optional<ebv> e, ehz f, Optional<jo<dzp>> g) implements dce {
    public static final MapCodec<dcm> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               cxx.b.fieldOf("properties").forGetter(dcm::b),
-               ki.f.optionalFieldOf("offset", ki.g).forGetter(dcm::c),
-               dzl.aj.optionalFieldOf("trigger_game_event").forGetter(dcm::d)
+               kj.f.optionalFieldOf("offset", kj.g).forGetter(dcm::b),
+               ebv.b.optionalFieldOf("predicate").forGetter(dcm::c),
+               ehz.a.fieldOf("block_state").forGetter(dcm::d),
+               dzp.aj.optionalFieldOf("trigger_game_event").forGetter(dcm::e)
             )
             .apply($$0, dcm::new)
    );
 
-   public dcm(cxx $$0) {
-      this($$0, ki.g, Optional.of(dzl.c));
-   }
-
    @Override
-   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
-      je $$5 = je.a((jx)$$4).a(this.e);
-      duo $$6 = $$3.dS().a_($$5);
-      duo $$7 = this.d.a($$6);
-      if (!$$6.equals($$7) && $$3.dS().a($$5, $$7, 3)) {
-         this.f.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4) {
+      jf $$5 = jf.a((jy)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dV(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
       }
    }
 
@@ -31,15 +26,19 @@ public record dcm(cxx d, ki e, Optional<jn<dzl>> f) implements dcb {
       return a;
    }
 
-   public cxx b() {
+   public kj b() {
       return this.d;
    }
 
-   public ki c() {
+   public Optional<ebv> c() {
       return this.e;
    }
 
-   public Optional<jn<dzl>> d() {
+   public ehz d() {
       return this.f;
+   }
+
+   public Optional<jo<dzp>> e() {
+      return this.g;
    }
 }

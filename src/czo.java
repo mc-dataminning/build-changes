@@ -1,76 +1,62 @@
-import javax.annotation.Nullable;
+public class czo extends czn {
+   private final jk b;
 
-public abstract class czo implements dah<dax> {
-   protected final dan<?> a;
-   protected final czu b;
-   protected final String c;
-   protected final dad d;
-   protected final cvp e;
-   protected final float f;
-   protected final int g;
-   @Nullable
-   private dag j;
-
-   public czo(dan<?> $$0, String $$1, czu $$2, dad $$3, cvp $$4, float $$5, int $$6) {
-      this.a = $$0;
+   public czo(dej $$0, jf $$1, jk $$2, cvs $$3, jk $$4) {
+      super($$0, null, brr.a, $$3, new eys(eyw.c($$1), $$4, $$1, false));
       this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-   }
-
-   public boolean a(dax $$0, deg $$1) {
-      return this.d.a($$0.c());
-   }
-
-   public cvp a(dax $$0, jp.a $$1) {
-      return this.e.u();
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public jf a() {
+      return this.j().b();
    }
 
    @Override
-   public dag a() {
-      if (this.j == null) {
-         this.j = dag.a(this.d);
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jk d() {
+      return jk.a;
+   }
+
+   @Override
+   public jk[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jk[]{jk.a, jk.c, jk.f, jk.d, jk.e, jk.b};
+         case b:
+            return new jk[]{jk.a, jk.b, jk.c, jk.f, jk.d, jk.e};
+         case c:
+            return new jk[]{jk.a, jk.c, jk.f, jk.e, jk.b, jk.d};
+         case d:
+            return new jk[]{jk.a, jk.d, jk.f, jk.e, jk.b, jk.c};
+         case e:
+            return new jk[]{jk.a, jk.e, jk.d, jk.b, jk.c, jk.f};
+         case f:
+            return new jk[]{jk.a, jk.f, jk.d, jk.b, jk.c, jk.e};
       }
-
-      return this.j;
-   }
-
-   public float b() {
-      return this.f;
    }
 
    @Override
-   public cvp a(jp.a $$0) {
-      return this.e;
+   public jk g() {
+      return this.b.o() == jk.a.b ? jk.c : this.b;
    }
 
    @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
+   public boolean h() {
+      return false;
    }
 
    @Override
-   public dan<?> e() {
-      return this.a;
-   }
-
-   public czu f() {
-      return this.b;
-   }
-
-   public interface a<T extends czo> {
-      T create(String var1, czu var2, dad var3, cvp var4, float var5, int var6);
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

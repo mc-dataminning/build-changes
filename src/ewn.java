@@ -1,85 +1,59 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public record ewn(Map<String, etg> b, eth.b c) implements ews {
-   public static final MapCodec<ewn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, etg.a).fieldOf("scores").forGetter(ewn::c), eth.b.e.fieldOf("entity").forGetter(ewn::d))
-            .apply($$0, ewn::new)
-   );
+public record ewn(ald<eww> b) implements eww {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<ewn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ald.a(lw.bg).fieldOf("name").forGetter(ewn::c)).apply($$0, ewn::new));
 
    @Override
-   public ewt b() {
-      return ewu.h;
+   public ewx b() {
+      return ewy.p;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public void a(etr $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         eww.super.a($$0);
+         $$0.a()
+            .c(this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+      }
    }
 
-   public boolean a(eth $$0) {
-      bto $$1 = $$0.c(this.c.a());
+   public boolean a(etl $$0) {
+      eww $$1 = $$0.a().c(this.b).map(jo.c::a).orElse(null);
       if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
          return false;
       } else {
-         ezx $$2 = $$0.d().f();
-
-         for (Entry<String, etg> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
+         etl.c<?> $$2 = etl.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
             }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
          }
-
-         return true;
       }
    }
 
-   protected boolean a(eth $$0, bto $$1, ezx $$2, String $$3, etg $$4) {
-      ezp $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         ezt $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
+   public static eww.a a(ald<eww> $$0) {
+      return () -> new ewn($$0);
    }
 
-   public static ewn.a a(eth.b $$0) {
-      return new ewn.a($$0);
-   }
-
-   public Map<String, etg> c() {
+   public ald<eww> c() {
       return this.b;
-   }
-
-   public eth.b d() {
-      return this.c;
-   }
-
-   public static class a implements ews.a {
-      private final Builder<String, etg> a = ImmutableMap.builder();
-      private final eth.b b;
-
-      public a(eth.b $$0) {
-         this.b = $$0;
-      }
-
-      public ewn.a a(String $$0, etg $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public ews build() {
-         return new ewn(this.a.build(), this.b);
-      }
    }
 }

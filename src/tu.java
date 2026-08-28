@@ -1,72 +1,129 @@
-import java.util.function.Consumer;
+import com.mojang.brigadier.context.CommandContext;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public record tu(String a, String b, String c, dnx d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sz> l) {
-   public tu(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sz> $$6) {
-      this($$0, $$1, $$2, dnx.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
-   }
-
-   public tu(String $$0, String $$1, String $$2, dnx $$3, int $$4, long $$5, boolean $$6, Consumer<sz> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
-   }
-
-   public void a(sz $$0) {
-      this.l.accept($$0);
-   }
+public class tu<T> implements tp, tx {
+   static final tx a = Stream::empty;
+   static final tp b = Stream::empty;
+   private final tx c;
+   private final tp d;
+   private final eu e;
+   private final Function<tu<T>, T> f;
 
    @Override
-   public String toString() {
-      return this.b;
+   public Stream<jf> findStructureBlockPos() {
+      return this.d.findStructureBlockPos();
    }
 
-   public boolean a() {
-      return this.i > 1;
+   tu(eu $$0, Function<tu<T>, T> $$1, tx $$2, tp $$3) {
+      this.e = $$0;
+      this.f = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public String b() {
-      return this.a;
+   T b() {
+      return this.f.apply(this);
    }
 
-   public String c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public dnx e() {
-      return this.d;
-   }
-
-   public int f() {
+   public eu a() {
       return this.e;
    }
 
-   public long g() {
-      return this.f;
+   @Override
+   public Stream<tv> findTestFunctions() {
+      return this.c.findTestFunctions();
    }
 
-   public boolean h() {
-      return this.g;
-   }
+   public static class a<T> {
+      private final Function<tu<T>, T> a;
+      private final UnaryOperator<Supplier<Stream<tv>>> b;
+      private final UnaryOperator<Supplier<Stream<jf>>> c;
 
-   public boolean i() {
-      return this.h;
-   }
+      public a(Function<tu<T>, T> $$0) {
+         this.a = $$0;
+         this.b = $$0x -> $$0x;
+         this.c = $$0x -> $$0x;
+      }
 
-   public int j() {
-      return this.i;
-   }
+      private a(Function<tu<T>, T> $$0, UnaryOperator<Supplier<Stream<tv>>> $$1, UnaryOperator<Supplier<Stream<jf>>> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public int k() {
-      return this.j;
-   }
+      public tu.a<T> a(int $$0) {
+         return new tu.a<>(this.a, b($$0), b($$0));
+      }
 
-   public boolean l() {
-      return this.k;
-   }
+      private static <Q> UnaryOperator<Supplier<Stream<Q>>> b(int $$0) {
+         return $$1 -> {
+            List<Q> $$2 = new LinkedList<>();
+            List<Q> $$3 = ((Stream)$$1.get()).toList();
 
-   public Consumer<sz> m() {
-      return this.l;
+            for (int $$4 = 0; $$4 < $$0; $$4++) {
+               $$2.addAll($$3);
+            }
+
+            return $$2::stream;
+         };
+      }
+
+      private T a(eu $$0, tx $$1, tp $$2) {
+         return new tu<>($$0, this.a, this.b.apply($$1::findTestFunctions)::get, this.c.apply($$2::findStructureBlockPos)::get).b();
+      }
+
+      public T a(CommandContext<eu> $$0, int $$1) {
+         eu $$2 = (eu)$$0.getSource();
+         jf $$3 = jf.a((jy)$$2.d());
+         return this.a($$2, tu.a, () -> tr.c($$3, $$1, $$2.e()));
+      }
+
+      public T a(CommandContext<eu> $$0) {
+         eu $$1 = (eu)$$0.getSource();
+         jf $$2 = jf.a((jy)$$1.d());
+         return this.a($$1, tu.a, () -> tr.b($$2, 15, $$1.e()).stream());
+      }
+
+      public T b(CommandContext<eu> $$0) {
+         eu $$1 = (eu)$$0.getSource();
+         jf $$2 = jf.a((jy)$$1.d());
+         return this.a($$1, tu.a, () -> tr.c($$2, 200, $$1.e()));
+      }
+
+      public T c(CommandContext<eu> $$0) {
+         eu $$1 = (eu)$$0.getSource();
+         return this.a($$1, tu.a, () -> tr.a(jf.a((jy)$$1.d()), $$1.i().M(), $$1.e()));
+      }
+
+      public T d(CommandContext<eu> $$0) {
+         return this.a((eu)$$0.getSource(), () -> td.a().stream().filter($$0x -> !$$0x.i()), tu.b);
+      }
+
+      public T a(CommandContext<eu> $$0, String $$1) {
+         return this.a((eu)$$0.getSource(), () -> td.a($$1).filter($$0xx -> !$$0xx.i()), tu.b);
+      }
+
+      public T a(CommandContext<eu> $$0, boolean $$1) {
+         return this.a((eu)$$0.getSource(), () -> td.c().filter($$1x -> !$$1 || $$1x.h()), tu.b);
+      }
+
+      public T b(CommandContext<eu> $$0, String $$1) {
+         return this.a((eu)$$0.getSource(), () -> Stream.of(tw.a($$0, $$1)), tu.b);
+      }
+
+      public T c(CommandContext<eu> $$0, String $$1) {
+         eu $$2 = (eu)$$0.getSource();
+         jf $$3 = jf.a((jy)$$2.d());
+         return this.a($$2, tu.a, () -> tr.a($$3, 1024, $$2.e(), $$1));
+      }
+
+      public T e(CommandContext<eu> $$0) {
+         return this.a($$0, false);
+      }
    }
 }

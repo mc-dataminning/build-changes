@@ -1,64 +1,83 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
 
 public class gav {
-   private final List<gao> a;
-   private final gan b;
-   private final Map<String, gav> c = Maps.newHashMap();
+   private static final Set<jk> a = EnumSet.allOf(jk.class);
+   private final List<gat> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   gav(List<gao> $$0, gan $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gav a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public gav a(String $$0, gaq $$1, gan $$2) {
-      gav $$3 = new gav($$1.b(), $$2);
-      return this.a($$0, $$3);
+   public gav a() {
+      return this.a(true);
    }
 
-   public gav a(String $$0, gav $$1) {
-      gav $$2 = this.c.put($$0, $$1);
-      if ($$2 != null) {
-         $$1.c.putAll($$2.c);
-      }
-
-      return $$1;
+   public gav a(boolean $$0) {
+      this.e = $$0;
+      return this;
    }
 
-   public gav a(String $$0) {
-      return this.a($$0, gaq.c(), gan.a);
+   public gav a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gau $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new gat($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public gal a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, gal> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gav)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<gal.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      gal $$4 = new gal($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
+   public gav a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new gat($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gau.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public gav b(String $$0) {
-      return this.c.get($$0);
+   public gav a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new gat(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gau.a, this.e, 1.0F, 1.0F, a));
+      return this;
    }
 
-   public Set<Entry<String, gav>> a() {
-      return this.c.entrySet();
+   public gav a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jk> $$6) {
+      this.b.add(new gat(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gau.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
    }
 
-   public gav a(UnaryOperator<gan> $$0) {
-      gav $$1 = new gav(this.a, $$0.apply(this.b));
-      $$1.c.putAll(this.c);
-      return $$1;
+   public gav a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new gat($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gau.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gav a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gau $$7) {
+      this.b.add(new gat($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gav a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new gat(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gau.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gav a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gau $$6, float $$7, float $$8) {
+      this.b.add(new gat(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public gav a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gau $$6) {
+      this.b.add(new gat(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<gat> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static gav c() {
+      return new gav();
    }
 }

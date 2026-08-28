@@ -1,21 +1,46 @@
-public class gqr extends goa<clv, gwc, gad> {
-   private static final alc a = alc.b("textures/entity/piglin/zombified_piglin.png");
+public class gqr extends gnn<cpf, gwd> {
+   private static final ale a = ale.b("textures/entity/wither/wither_invulnerable.png");
+   private static final ale b = ale.b("textures/entity/wither/wither.png");
+   private final fzk h;
 
-   public gqr(gnj.a $$0, gaj $$1, gaj $$2, gaj $$3, gaj $$4, gaj $$5, gaj $$6) {
-      super($$0, new gad($$0.a($$1)), new gad($$0.a($$2)), 0.5F, goz.a);
-      this.a(new grm<>(this, new fxw($$0.a($$3)), new fxw($$0.a($$4)), new fxw($$0.a($$5)), new fxw($$0.a($$5)), $$0.g()));
+   public gqr(gno.a $$0) {
+      super($$0);
+      this.h = new fzk($$0.a(gap.df));
    }
 
-   public alc a(gwc $$0) {
-      return a;
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      $$1.a("head", gav.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gas.a);
+      return gaw.a($$0, 64, 64);
    }
 
-   public gwc c() {
-      return new gwc();
+   protected int a(cpf $$0, jf $$1) {
+      return 15;
    }
 
-   public void a(clv $$0, gwc $$1, float $$2) {
+   public void a(gwd $$0, fdi $$1, ghl $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      fdm $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
+      this.h.a(0.0F, $$0.c, $$0.b);
+      this.h.a($$1, $$4, $$3, gwx.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private ale a(gwd $$0) {
+      return $$0.a ? a : b;
+   }
+
+   public gwd c() {
+      return new gwd();
+   }
+
+   public void a(cpf $$0, gwd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gg();
+      $$1.a = $$0.w();
+      $$1.c = $$0.k($$2);
+      $$1.b = $$0.j($$2);
    }
 }

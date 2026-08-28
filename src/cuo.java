@@ -1,27 +1,23 @@
-public class cuo extends cua {
-   public cuo(cvk.a $$0) {
+public class cuo extends cvn implements cwn {
+   public cuo(cvn.a $$0) {
       super($$0);
    }
 
    @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return brp.a;
-      } else {
-         $$3.a(1, $$1);
-         $$1.b(awo.c.b(this));
-         $$1.dS().a(null, $$1, awe.AA, $$1.di(), 1.0F, 1.0F);
-         cvp $$4 = cwc.a($$0, $$1.dw(), $$1.dC(), (byte)0, true, false);
-         if ($$3.f()) {
-            return brp.a.a($$4);
-         } else {
-            if (!$$1.gc().f($$4.u())) {
-               $$1.a($$4, false);
-            }
-
-            return brp.a;
-         }
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.hO, awh.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arj $$4) {
+         cor.a(cpa::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
+
+      $$1.b(awq.c.b(this));
+      $$3.a(1, $$1);
+      return brs.a;
+   }
+
+   @Override
+   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
+      return new cpa($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

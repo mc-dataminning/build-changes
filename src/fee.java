@@ -1,30 +1,50 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
 import java.util.Date;
-import java.util.UUID;
+import java.util.Map;
+import java.util.Map.Entry;
 import org.slf4j.Logger;
 
-public class fee extends fey {
+public class fee extends ffc {
    private static final Logger f = LogUtils.getLogger();
    public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public static fee a(JsonObject $$0) {
-      fee $$1 = new fee();
+   public static fee a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fee $$2 = new fee();
 
       try {
-         $$1.a = fgv.b("invitationId", $$0, "");
-         $$1.b = fgv.b("worldName", $$0, "");
-         $$1.c = fgv.b("worldOwnerName", $$0, "");
-         $$1.d = fgv.a("worldOwnerUuid", $$0, ad.e);
-         $$1.e = fgv.b("date", $$0);
-      } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
+         $$2.a = fgz.b("backupId", $$1, "");
+         $$2.b = fgz.b("lastModifiedDate", $$1);
+         $$2.c = fgz.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
+
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
+            }
+         }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
 
-      return $$1;
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

@@ -1,181 +1,134 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cpb extends cob {
-   private static final akg<Byte> g = akk.a(cpb.class, aki.a);
-   private static final akg<Boolean> h = akk.a(cpb.class, aki.k);
-   private boolean i;
-   public int f;
-
-   public cpb(btv<? extends cpb> $$0, deg $$1) {
+public class cpb extends coy {
+   public cpb(bty<? extends cpb> $$0, dej $$1) {
       super($$0, $$1);
    }
 
-   public cpb(deg $$0, buk $$1, cvp $$2) {
-      super(btv.bf, $$1, $$0, $$2, null);
-      this.am.a(g, this.c($$2));
-      this.am.a(h, $$2.z());
-   }
-
-   public cpb(deg $$0, double $$1, double $$2, double $$3, cvp $$4) {
-      super(btv.bf, $$1, $$2, $$3, $$0, $$4, $$4);
-      this.am.a(g, this.c($$4));
-      this.am.a(h, $$4.z());
+   public cpb(dej $$0, bun $$1, cvs $$2) {
+      super(bty.G, $$1, $$0, $$2);
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(g, (byte)0);
-      $$0.a(h, false);
-   }
-
-   @Override
-   public void l() {
-      if (this.c > 4) {
-         this.i = true;
-      }
-
-      bto $$0 = this.s();
-      int $$1 = this.am.a(g);
-      if ($$1 > 0 && (this.i || this.C()) && $$0 != null) {
-         if (!this.I()) {
-            if (!this.dS().B && this.d == cob.a.b) {
-               this.a(this.t(), 0.1F);
-            }
-
-            this.as();
-         } else {
-            this.b(true);
-            eys $$2 = $$0.bC().d(this.dq());
-            this.o(this.dx(), this.dz() + $$2.e * 0.015 * (double)$$1, this.dD());
-            if (this.dS().B) {
-               this.ac = this.dz();
-            }
-
-            double $$3 = 0.05 * (double)$$1;
-            this.h(this.dv().c(0.95).e($$2.d().c($$3)));
-            if (this.f == 0) {
-               this.a(awe.zI, 10.0F, 1.0F);
-            }
-
-            this.f++;
-         }
-      }
-
-      super.l();
-   }
-
-   private boolean I() {
-      bto $$0 = this.s();
-      return $$0 == null || !$$0.bI() ? false : !($$0 instanceof ari) || !$$0.P_();
-   }
-
-   @Override
-   public boolean E() {
-      return this.am.a(h);
+   protected cvn o() {
+      return cvw.sg;
    }
 
    @Nullable
    @Override
-   protected eyp a(eys $$0, eys $$1) {
-      return this.i ? null : super.a($$0, $$1);
+   protected btr b(UUID $$0) {
+      if (this.dS() instanceof arj $$1) {
+         btr $$3 = super.b($$0);
+         if ($$3 != null) {
+            return $$3;
+         } else {
+            for (arj $$4 : $$1.o().L()) {
+               if ($$4 != $$1) {
+                  $$3 = $$4.a($$0);
+                  if ($$3 != null) {
+                     return $$3;
+                  }
+               }
+            }
+
+            return null;
+         }
+      } else {
+         return null;
+      }
    }
 
    @Override
-   protected void a(eyp $$0) {
-      bto $$1 = $$0.a();
-      float $$2 = 8.0F;
-      bto $$3 = this.s();
-      bsg $$4 = this.dT().a(this, (bto)($$3 == null ? this : $$3));
-      if (this.dS() instanceof arh $$5) {
-         $$2 = dbm.a($$5, this.dW(), $$1, $$4, $$2);
+   protected void a(eyt $$0) {
+      super.a($$0);
+      $$0.a().a(this.dT().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(eyu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < 32; $$1++) {
+         this.dS().a(lo.ac, this.dx(), this.dz() + this.af.j() * 2.0, this.dD(), this.af.k(), 0.0, this.af.k());
       }
 
-      this.i = true;
-      if ($$1.a($$4, $$2)) {
-         if ($$1.ao() == btv.H) {
+      if (this.dS() instanceof arj $$2 && !this.dN()) {
+         btr $$4 = this.s();
+         if ($$4 != null && a($$4, $$2)) {
+            if ($$4.bW()) {
+               $$4.am();
+            }
+
+            if ($$4 instanceof ark $$5) {
+               if ($$5.c.c()) {
+                  if (this.af.i() < 0.05F && $$2.ac().b(def.e)) {
+                     cku $$6 = bty.I.a($$2, btx.k);
+                     if ($$6 != null) {
+                        $$6.b($$4.dx(), $$4.dz(), $$4.dD(), $$4.dI(), $$4.dK());
+                        $$2.b($$6);
+                     }
+                  }
+
+                  cnx $$7 = $$5.a(new err($$2, this.dq(), $$4.dv(), $$4.dI(), $$4.dK(), err.a));
+                  if ($$7 != null) {
+                     $$7.n();
+                     $$7.gH();
+                     $$7.a(this.dT().m(), 5.0F);
+                  }
+
+                  this.a($$2, this.dq());
+               }
+            } else {
+               btr $$8 = $$4.b(new err($$2, this.dq(), $$4.dv(), $$4.dI(), $$4.dK(), err.a));
+               if ($$8 != null) {
+                  $$8.n();
+               }
+
+               this.a($$2, this.dq());
+            }
+
+            this.as();
             return;
          }
 
-         if (this.dS() instanceof arh $$6) {
-            dbm.a($$6, $$1, $$4, this.dW());
-         }
-
-         if ($$1 instanceof buk $$7) {
-            this.a($$7, $$4);
-            this.a($$7);
-         }
+         this.as();
+         return;
       }
-
-      this.h(this.dv().d(-0.01, -0.1, -0.01));
-      this.a(awe.zG, 1.0F, 1.0F);
    }
 
-   @Override
-   protected void a(arh $$0, eyo $$1, cvp $$2) {
-      eys $$3 = $$1.b().a($$1.g());
-      dbm.a($$0, $$2, this.s() instanceof buk $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.b()), $$0x -> this.ar());
-   }
-
-   @Override
-   public cvp dW() {
-      return this.w();
-   }
-
-   @Override
-   protected boolean a(cnu $$0) {
-      return super.a($$0) || this.C() && this.e($$0) && $$0.gc().f(this.t());
-   }
-
-   @Override
-   protected cvp v() {
-      return new cvp(cvt.vU);
-   }
-
-   @Override
-   protected awd o() {
-      return awe.zH;
-   }
-
-   @Override
-   public void b_(cnu $$0) {
-      if (this.e($$0) || this.s() == null) {
-         super.b_($$0);
+   private static boolean a(btr $$0, dej $$1) {
+      if ($$0.dS().ag() == $$1.ag()) {
+         return !($$0 instanceof bun $$2) ? $$0.bI() : $$2.bI() && !$$2.fN();
+      } else {
+         return $$0.o(true);
       }
    }
 
    @Override
-   public void a(uf $$0) {
+   public void l() {
+      btr $$0 = this.s();
+      if ($$0 instanceof ark && !$$0.bI() && this.dS().ac().b(def.Y)) {
+         this.as();
+      } else {
+         super.l();
+      }
+   }
+
+   private void a(dej $$0, eyw $$1) {
+      $$0.a(null, $$1.d, $$1.e, $$1.f, awg.uw, awh.h);
+   }
+
+   @Override
+   public boolean a(dej $$0, dej $$1) {
+      return $$0.ag() == dej.j && $$1.ag() == dej.h && this.s() instanceof ark $$2 ? super.a($$0, $$1) && $$2.f : super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dus $$0) {
       super.a($$0);
-      this.i = $$0.q("DealtDamage");
-      this.am.a(g, this.c(this.w()));
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("DealtDamage", this.i);
-   }
-
-   private byte c(cvp $$0) {
-      return this.dS() instanceof arh $$1 ? (byte)azd.a(dbm.c($$1, $$0, this), 0, 127) : 0;
-   }
-
-   @Override
-   public void m() {
-      int $$0 = this.am.a(g);
-      if (this.d != cob.a.b || $$0 <= 0) {
-         super.m();
+      if ($$0.a(dho.kF) && this.s() instanceof ark $$1) {
+         $$1.a($$0);
       }
-   }
-
-   @Override
-   protected float B() {
-      return 0.99F;
-   }
-
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return true;
    }
 }

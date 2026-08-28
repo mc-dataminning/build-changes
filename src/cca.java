@@ -1,90 +1,65 @@
 import java.util.EnumSet;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class cca extends cbh {
-   public static final int b = 1;
-   protected final bus c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<bus, axj<bsi>> a;
+public class cca extends cbk {
+   private final bup a;
+   private bun b;
+   private int c;
 
-   public cca(bus $$0, double $$1) {
-      this($$0, $$1, awv.F);
-   }
-
-   public cca(bus $$0, double $$1, axj<bsi> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public cca(bus $$0, double $$1, Function<bus, axj<bsi>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(cbh.a.a));
+   public cca(bup $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbk.a.a, cbk.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.c.bV()) {
-            je $$0 = this.a(this.c.dS(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.c.eC() != null && this.c.eC().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      eys $$0 = cfe.a(this.c, 5, 4);
+      bun $$0 = this.a.m();
       if ($$0 == null) {
          return false;
       } else {
-         this.e = $$0.d;
-         this.f = $$0.e;
-         this.g = $$0.f;
+         this.b = $$0;
          return true;
       }
    }
 
-   public boolean k() {
-      return this.h;
-   }
-
    @Override
-   public void d() {
-      this.c.P().a(this.e, this.f, this.g, this.d);
-      this.h = true;
+   public boolean c() {
+      if (!this.b.bI()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.P().m() || this.b();
+      }
    }
 
    @Override
    public void e() {
-      this.h = false;
+      this.b = null;
+      this.a.P().o();
    }
 
    @Override
-   public boolean c() {
-      return !this.c.P().m();
+   public boolean U_() {
+      return true;
    }
 
-   @Nullable
-   protected je a(ddl $$0, bto $$1, int $$2) {
-      je $$3 = $$1.ds();
-      return !$$0.a_($$3).g($$0, $$3).c() ? null : je.a($$1.ds(), $$2, 1, $$1x -> $$0.b_($$1x).a(awz.a)).orElse(null);
+   @Override
+   public void a() {
+      this.a.K().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dn() * 2.0F * this.a.dn() * 2.0F);
+      double $$1 = this.a.i(this.b.dx(), this.b.dz(), this.b.dD());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.P().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.E(this.b);
+         }
+      }
    }
 }

@@ -1,62 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class die extends dgc {
-   public static final MapCodec<die> d = b(die::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class die extends djh {
+   public static final MapCodec<die> a = b(die::new);
+   private static final ezq[] b = new ezq[]{
+      dhm.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dhm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
    @Override
    public MapCodec<die> a() {
-      return d;
+      return a;
    }
 
-   public die(dun.d $$0) {
-      super($$0, kk.c);
-   }
-
-   @Override
-   public boolean d(duo $$0) {
-      return false;
-   }
-
-   protected static boolean a(deg $$0, dfh.c $$1) {
-      if ($$1 == dfh.c.b) {
-         return $$0.C_().i() < 0.05F;
-      } else {
-         return $$1 == dfh.c.c ? $$0.C_().i() < 0.1F : false;
-      }
+   public die(dur.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(duo $$0, deg $$1, je $$2, dfh.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == dfh.c.b) {
-            $$1.b($$2, dhl.fu.o());
-            $$1.a(null, dzl.c, $$2);
-         } else if ($$3 == dfh.c.c) {
-            $$1.b($$2, dhl.fw.o());
-            $$1.a(null, dzl.c, $$2);
-         }
-      }
+   protected dei d() {
+      return cvw.uh;
    }
 
    @Override
-   protected boolean a(eqo $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(duo $$0, deg $$1, je $$2, eqo $$3) {
-      if ($$3 == eqq.c) {
-         duo $$4 = dhl.fu.o();
-         $$1.b($$2, $$4);
-         $$1.a(dzl.c, $$2, dzl.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == eqq.e) {
-         duo $$5 = dhl.fv.o();
-         $$1.b($$2, $$5);
-         $$1.a(dzl.c, $$2, dzl.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return b[this.h($$0)];
    }
 }

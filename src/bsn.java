@@ -1,21 +1,19 @@
-class bsn extends bst {
-   protected bsn(bsu $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bsn implements bab {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bsn> d = bab.a(bsn::values);
+   private final String e;
+
+   private bsn(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(buk $$0, int $$1) {
-      return $$0.fs() > 0.0F || $$0.dS().B;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void b(buk $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.E(Math.max($$0.fs(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

@@ -1,24 +1,17 @@
-import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum fhx implements azg, azz {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+public enum fhx implements azi {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public static final Codec<fhx> d = azz.a(fhx::values);
+   private static final IntFunction<fhx> d = axw.a(fhx::b, values(), axw.a.b);
    private final int e;
    private final String f;
-   private final String g;
 
-   private fhx(final int $$0, final String $$1, final String $$2) {
+   private fhx(final int $$0, final String $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
    }
 
    @Override
@@ -28,6 +21,10 @@ public enum fhx implements azg, azz {
 
    @Override
    public String a() {
-      return this.g;
+      return this.f;
+   }
+
+   public static fhx a(int $$0) {
+      return d.apply($$0);
    }
 }

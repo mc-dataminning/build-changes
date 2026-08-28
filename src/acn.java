@@ -1,20 +1,37 @@
-public record acn(int b) implements zk<abz> {
-   public static final zb<wa, acn> a = zk.a(acn::a, acn::new);
+public class acn implements zl<aca> {
+   public static final zc<wb, acn> a = zl.a(acn::a, acn::new);
+   private final brp b;
+   private final boolean c;
 
-   private acn(wa $$0) {
-      this($$0.l());
+   public acn(brp $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
+   private acn(wb $$0) {
+      this.b = brp.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wb $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zm<acn> a() {
-      return ago.n;
+   public zn<acn> a() {
+      return agp.m;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public brp e() {
+      return this.b;
    }
 }

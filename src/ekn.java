@@ -1,11 +1,10 @@
-import java.util.stream.IntStream;
+import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public abstract class ekn extends ekj {
-   protected abstract int a(azl var1, je var2);
+public abstract class ekn {
+   public static final Codec<ekn> b = lv.S.q().dispatch(ekn::b, eko::codec);
 
-   @Override
-   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
-   }
+   public abstract Stream<jf> a_(ekl var1, azn var2, jf var3);
+
+   public abstract eko<?> b();
 }

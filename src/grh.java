@@ -1,24 +1,17 @@
-public abstract class grh<S extends gtl, M extends fxk<S>> extends grw<S, M> {
-   public grh(gpf<S, M> $$0) {
+public class grh extends gsb<gvb, fyt> {
+   private final fyb<gvb> a;
+
+   public grh(gpk<gvb, fyt> $$0, gam $$1) {
       super($$0);
+      this.a = new fys($$1.a(gap.bJ));
    }
 
-   @Override
-   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fdi $$8 = $$1.getBuffer(ghq.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gws.d, -8355712);
+   public void a(fdi $$0, ghl $$1, int $$2, gvb $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.u) {
+         fdm $$6 = $$1.getBuffer(ghv.c($$3.a.a()));
+         int $$7 = gop.a($$3, 0.0F);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
    }
-
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract alc a();
-
-   protected abstract M c();
 }

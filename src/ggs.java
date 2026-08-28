@@ -1,132 +1,113 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Objects;
 
-public abstract class ggs {
-   private static final Object2ObjectMap<alc, ggs> a = ad.a(new Object2ObjectArrayMap(), $$0 -> {
-      ggs.c $$1 = new ggs.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dyi.e, $$1);
-      $$0.put(dyi.f, new ggs.b());
-      $$0.put(dyi.g, new ggs.a());
-   });
-   private final float b;
-   private final boolean c;
-   private final ggs.d d;
-   private final boolean e;
-   private final boolean f;
+public class ggs implements auw {
+   private static final dtg[] a = Arrays.stream(cum.values())
+      .sorted(Comparator.comparingInt(cum::a))
+      .map($$0 -> new dtg($$0, jf.c, dho.kP.n()))
+      .toArray(dtg[]::new);
+   private static final dtg b = new dtg(jf.c, dho.kP.n());
+   private final dsc c = new dsc(jf.c, dho.cv.n());
+   private final dsc d = new dtq(jf.c, dho.gV.n());
+   private final dsr e = new dsr(jf.c, dho.fG.n());
+   private final drk f = new drk(jf.c, dho.iJ.n());
+   private final drr g = new drr(jf.c, dho.bn.n());
+   private final dsh h = new dsh(jf.c, dho.mX.n());
+   private final dsl i = new dsl(jf.c, dho.tp.n());
+   private fzf j;
+   private fzu k;
+   private Map<dop.a, fzl> l;
+   private final gjv m;
+   private final gam n;
 
-   public ggs(float $$0, boolean $$1, ggs.d $$2, boolean $$3, boolean $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public ggs(gjv $$0, gam $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public static ggs a(dyk $$0) {
-      return (ggs)a.get($$0.r());
+   @Override
+   public void a(auv $$0) {
+      this.j = new fzf(this.n.a(gap.ch));
+      this.k = new fzu(this.n.a(gap.cL));
+      this.l = gkl.a(this.n);
    }
 
-   public boolean a(float $$0) {
-      return false;
-   }
+   public void a(cvs $$0, cvp $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      cvn $$6 = $$0.h();
+      if ($$6 instanceof ctu) {
+         dhm $$7 = ((ctu)$$6).d();
+         if ($$7 instanceof dgi $$8) {
+            cyv $$9 = $$0.a(ks.ab);
+            if ($$9 != null && !$$9.b()) {
+               $$0.c(ks.ab);
+               $$9.a().thenAcceptAsync($$1x -> $$0.b(ks.ab, $$1x), fip.Q());
+               $$9 = null;
+            }
 
-   public int b(float $$0) {
-      return 0;
-   }
+            fzl $$10 = this.l.get($$8.b());
+            ghv $$11 = gkl.a($$8.b(), $$9);
+            gkl.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$10, $$11);
+         } else {
+            dus $$12 = $$7.n();
+            drv $$13;
+            if ($$7 instanceof dgd) {
+               this.f.a($$0, ((dgd)$$7).b());
+               $$13 = this.f;
+            } else if ($$7 instanceof dhf) {
+               this.g.a(((dhf)$$7).b());
+               $$13 = this.g;
+            } else if ($$12.a(dho.mX)) {
+               $$13 = this.h;
+            } else if ($$12.a(dho.cv)) {
+               $$13 = this.c;
+            } else if ($$12.a(dho.fG)) {
+               $$13 = this.e;
+            } else if ($$12.a(dho.gV)) {
+               $$13 = this.d;
+            } else if ($$12.a(dho.tp)) {
+               this.i.c($$0);
+               $$13 = this.i;
+            } else {
+               if (!($$7 instanceof dom)) {
+                  return;
+               }
 
-   public float a() {
-      return this.b;
-   }
+               cum $$20 = dom.b($$6);
+               if ($$20 == null) {
+                  $$13 = b;
+               } else {
+                  $$13 = a[$$20.a()];
+               }
+            }
 
-   public boolean b() {
-      return this.c;
-   }
+            this.m.a($$13, $$2, $$3, $$4, $$5);
+         }
+      } else {
+         if ($$0.a(cvw.vu)) {
+            drm $$24 = $$0.a(ks.ad, drm.a);
+            cum $$25 = $$0.a(ks.ae);
+            boolean $$26 = !$$24.b().isEmpty() || $$25 != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            gzm $$27 = $$26 ? gzp.g : gzp.h;
+            fdm $$28 = $$27.c().a(gom.a($$3, this.j.a($$27.a()), $$1 == cvp.g, $$0.A()));
+            this.j.c().a($$2, $$28, $$4, $$5);
+            if ($$26) {
+               gjr.a($$2, $$3, $$4, $$5, this.j.b(), $$27, false, Objects.requireNonNullElse($$25, cum.a), $$24, $$0.A(), false);
+            } else {
+               this.j.b().a($$2, $$28, $$4, $$5);
+            }
 
-   public abstract eys a(eys var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public ggs.d c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public static class a extends ggs {
-      public a() {
-         super(Float.NaN, false, ggs.d.c, true, false);
+            $$2.b();
+         } else if ($$0.a(cvw.vU)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            fdm $$29 = gom.a($$3, this.k.a(fzu.a), false, $$0.A());
+            this.k.a($$2, $$29, $$4, $$5);
+            $$2.b();
+         }
       }
-
-      @Override
-      public eys a(eys $$0, float $$1) {
-         return $$0.c(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static class b extends ggs {
-      public b() {
-         super(Float.NaN, true, ggs.d.a, false, true);
-      }
-
-      @Override
-      public eys a(eys $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends ggs {
-      public static final int a = 192;
-      private static final float b = 0.4F;
-
-      public c() {
-         super(192.0F, true, ggs.d.b, false, false);
-      }
-
-      @Override
-      public boolean a(float $$0) {
-         float $$1 = azd.b($$0 * (float) (Math.PI * 2));
-         return $$1 >= -0.4F && $$1 <= 0.4F;
-      }
-
-      @Override
-      public int b(float $$0) {
-         float $$1 = azd.b($$0 * (float) (Math.PI * 2));
-         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
-         float $$3 = azd.k(1.0F - (1.0F - azd.a($$2 * (float) Math.PI)) * 0.99F);
-         return axo.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
-      }
-
-      @Override
-      public eys a(eys $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

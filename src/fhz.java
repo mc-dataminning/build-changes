@@ -1,29 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public enum fhz {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class fhz {
-   private final List<xi> a = Lists.newArrayList();
+   private static final fhz[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public void a(xi $$0) {
-      this.a.add($$0);
+   private fhz(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   public xi a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xi.a(this.a);
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   public xi b() {
-      xi $$0 = this.a();
-      return $$0 != null ? $$0 : xi.b;
+   public boolean b() {
+      return this.f;
    }
 
-   public void c() {
-      this.a.clear();
+   public fhz c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

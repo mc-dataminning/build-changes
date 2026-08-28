@@ -1,37 +1,77 @@
-public class hdg extends hdk {
-   private final xd a;
-   private fld b = fld.a;
-   private final fqd c;
-   private int B;
+import javax.annotation.Nullable;
 
-   public hdg(fqd $$0, xd $$1, xd $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class hdg implements hdi {
+   private static final int a = 600;
+   private static final xe b = xe.c("tutorial.punch_tree.title");
+   private static final xe c = xe.a("tutorial.punch_tree.description", hdh.a("attack"));
+   private final hdh d;
+   @Nullable
+   private fna e;
+   private int f;
+   private int g;
+
+   public hdg(hdh $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aR_() {
-      this.m.af().i();
-      this.b = fld.a(this.p, this.a, this.n - 50);
-      this.B = this.b.a() * 9;
-      this.c(fkk.a(xc.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(hdj.f);
+      } else {
+         if (this.f == 1) {
+            ggh $$0 = this.d.e().t;
+            if ($$0 != null) {
+               if ($$0.gd().a(axe.r)) {
+                  this.d.a(hdj.e);
+                  return;
+               }
+
+               if (hdd.a($$0)) {
+                  this.d.a(hdj.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new fna(fna.a.c, b, c, true);
+            this.d.e().aA().a(this.e);
+         }
+      }
    }
 
    @Override
-   public xd i() {
-      return xd.i().b(this.l).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.d();
+         this.e = null;
+      }
    }
 
    @Override
-   public void d() {
-      fil.Q().a(this.c);
+   public void a(gbm $$0, jf $$1, dus $$2, float $$3) {
+      boolean $$4 = $$2.a(awv.u);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(hdj.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
    }
 
    @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
+   public void a(cvs $$0) {
+      if ($$0.a(axe.r)) {
+         this.d.a(hdj.e);
+      }
    }
 }

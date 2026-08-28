@@ -1,62 +1,252 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
-import java.util.List;
-import javax.annotation.Nullable;
+public class ftx extends flk<ftx.a> {
+   static final ale a = ale.b("transferable_list/select_highlighted");
+   static final ale m = ale.b("transferable_list/select");
+   static final ale n = ale.b("transferable_list/unselect_highlighted");
+   static final ale o = ale.b("transferable_list/unselect");
+   static final ale p = ale.b("transferable_list/move_up_highlighted");
+   static final ale q = ale.b("transferable_list/move_up");
+   static final ale r = ale.b("transferable_list/move_down_highlighted");
+   static final ale s = ale.b("transferable_list/move_down");
+   static final xe u = xe.c("pack.incompatible");
+   static final xe v = xe.c("pack.incompatible.confirm.title");
+   private final xe w;
+   final ftw x;
 
-public class ftx {
-   private final Reference2ObjectMap<cst, ftx.a> a = new Reference2ObjectArrayMap();
-   private final fug b;
-
-   public ftx(fug $$0) {
-      this.b = $$0;
+   public ftx(fip $$0, ftw $$1, int $$2, int $$3, xe $$4) {
+      super($$0, $$2, $$3, 33, 36);
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
+      this.a(true, (int)(9.0F * 1.5F));
    }
 
-   public void a() {
-      this.a.clear();
+   @Override
+   protected void a(fkb $$0, int $$1, int $$2) {
+      xe $$3 = xe.i().b(this.w).a(n.t, n.r);
+      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.E() + 3, $$2), -1, false);
    }
 
-   public void a(cvp $$0, cst $$1) {
-      this.a.put($$1, new ftx.a(List.of($$0), true));
+   @Override
+   public int b() {
+      return this.g;
    }
 
-   public void a(List<cvp> $$0, cst $$1) {
-      this.a.put($$1, new ftx.a($$0, false));
+   @Override
+   protected int q() {
+      return this.F() - 6;
    }
 
-   public void a(fjx $$0, fil $$1, int $$2, int $$3, boolean $$4) {
-      this.a.forEach(($$5, $$6) -> {
-         int $$7 = $$5.e + $$2;
-         int $$8 = $$5.f + $$3;
-         if ($$6.b && $$4) {
-            $$0.a($$7 - 4, $$8 - 4, $$7 + 20, $$8 + 20, 822018048);
-         } else {
-            $$0.a($$7, $$8, $$7 + 16, $$8 + 16, 822018048);
-         }
-
-         cvp $$9 = $$6.a(this.b.currentIndex());
-         $$0.b($$9, $$7, $$8);
-         $$0.a(ghq.J(), $$7, $$8, $$7 + 16, $$8 + 16, 822083583);
-         if ($$6.b) {
-            $$0.a($$1.h, $$9, $$7, $$8);
-         }
-      });
-   }
-
-   public void a(fjx $$0, fil $$1, int $$2, int $$3, @Nullable cst $$4) {
-      if ($$4 != null) {
-         ftx.a $$5 = (ftx.a)this.a.get($$4);
-         if ($$5 != null) {
-            cvp $$6 = $$5.a(this.b.currentIndex());
-            $$0.a($$1.h, fqd.a($$1, $$6), $$2, $$3);
-         }
+   @Override
+   protected void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      if (this.m()) {
+         int $$6 = 2;
+         int $$7 = this.s() - 2;
+         int $$8 = this.F() - 6 - 1;
+         int $$9 = $$1 - 2;
+         int $$10 = $$1 + $$3 + 2;
+         $$0.a($$7, $$9, $$8, $$10, $$4);
+         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   static record a(List<cvp> a, boolean b) {
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.h() != null) {
+         switch ($$0) {
+            case 32:
+            case 257:
+               this.h().c();
+               return true;
+            default:
+               if (fqh.t()) {
+                  switch ($$0) {
+                     case 264:
+                        this.h().f();
+                        return true;
+                     case 265:
+                        this.h().e();
+                        return true;
+                  }
+               }
+         }
+      }
 
-      public cvp a(int $$0) {
-         int $$1 = this.a.size();
-         return $$1 == 0 ? cvp.k : this.a.get($$0 % $$1);
+      return super.a($$0, $$1, $$2);
+   }
+
+   public static class a extends flk.a<ftx.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final ftx e;
+      protected final fip a;
+      private final ftv.a f;
+      private final ayr g;
+      private final flh h;
+      private final ayr i;
+      private final flh j;
+
+      public a(fip $$0, ftx $$1, ftv.a $$2) {
+         this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, ftx.u);
+         this.j = b($$0, $$2.b().b());
+      }
+
+      private static ayr a(fip $$0, xe $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            xj $$3 = xj.a($$0.h.a($$1, 157 - $$0.h.b("...")), xj.e("..."));
+            return ub.a().a($$3);
+         } else {
+            return $$1.g();
+         }
+      }
+
+      private static flh b(fip $$0, xe $$1) {
+         return flh.a($$0.h, 157, 2, $$1);
+      }
+
+      @Override
+      public xe a() {
+         return xe.a("narrator.select", this.f.d());
+      }
+
+      @Override
+      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         aue $$10 = this.f.b();
+         if (!$$10.a()) {
+            int $$11 = $$3 + $$4 - 3 - (this.e.m() ? 7 : 0);
+            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
+         }
+
+         $$0.a(ghv::B, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         ayr $$12 = this.g;
+         flh $$13 = this.h;
+         if (this.d() && (this.a.n.ab().c() || $$8 || this.e.h() == this && this.e.aN_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$14 = $$6 - $$3;
+            int $$15 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$12 = this.i;
+               $$13 = this.j;
+            }
+
+            if (this.f.o()) {
+               if ($$14 < 32) {
+                  $$0.a(ghv::B, ftx.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(ghv::B, ftx.m, $$3, $$2, 32, 32);
+               }
+            } else {
+               if (this.f.p()) {
+                  if ($$14 < 16) {
+                     $$0.a(ghv::B, ftx.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghv::B, ftx.o, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.q()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
+                     $$0.a(ghv::B, ftx.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghv::B, ftx.q, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.r()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
+                     $$0.a(ghv::B, ftx.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghv::B, ftx.s, $$3, $$2, 32, 32);
+                  }
+               }
+            }
+         }
+
+         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+      }
+
+      public String b() {
+         return this.f.c();
+      }
+
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
+      }
+
+      public void c() {
+         if (this.f.o() && this.h()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
+      }
+
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
+
+      void f() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean h() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            xe $$0 = this.f.b().c();
+            this.a.a(new fpf($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, ftx.v, $$0));
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.s();
+         double $$4 = $$1 - (double)this.e.g(this.e.aJ_().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.m();
+            if (this.f.o()) {
+               this.h();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
+               return true;
+            }
+         }
+
+         return super.a($$0, $$1, $$2);
       }
    }
 }

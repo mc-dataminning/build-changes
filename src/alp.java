@@ -1,69 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class alp extends auy {
+public class alp {
    private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<alc, ag> c = Map.of();
-   private al d = new al();
-   private final jp.a e;
+   private static final CompletableFuture<bak> b = CompletableFuture.completedFuture(bak.a);
+   private final alo.a c;
+   private final ev d;
+   private final dao e;
+   private final alr f;
+   private final als g;
+   private final List<kb.a<?>> h;
 
-   public alp(jp.a $$0) {
-      super(b, lv.c(lv.bg));
-      this.e = $$0;
+   private alp(jv<aln> $$0, jq.a $$1, cqq $$2, ev.a $$3, List<kb.a<?>> $$4, int $$5) {
+      this.c = new alo.a($$0.a());
+      this.h = $$4;
+      this.e = new dao($$1);
+      this.d = new ev($$3, eq.a($$1, $$2));
+      this.f = new alr($$1);
+      this.g = new als($$5, this.d.a());
    }
 
-   protected void a(Map<alc, JsonElement> $$0, aut $$1, bod $$2) {
-      ala<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<alc, ag> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            af $$4x = (af)af.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new ag($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      al $$5 = new al();
-      $$5.a(this.c.values());
-
-      for (ah $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            at.a($$6);
-         }
-      }
-
-      this.d = $$5;
+   public als a() {
+      return this.g;
    }
 
-   private void a(alc $$0, af $$1) {
-      azj.a $$2 = new azj.a();
-      $$1.a($$2, this.e.c());
-      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
+   public alo.a b() {
+      return this.c;
    }
 
-   @Nullable
-   public ag a(alc $$0) {
-      return this.c.get($$0);
+   public dao c() {
+      return this.e;
    }
 
-   public al a() {
+   public ev d() {
       return this.d;
    }
 
-   public Collection<ag> b() {
-      return this.c.values();
+   public alr e() {
+      return this.f;
+   }
+
+   public List<aup> f() {
+      return List.of(this.e, this.g, this.f);
+   }
+
+   public static CompletableFuture<alp> a(auv $$0, jv<aln> $$1, List<kb.a<?>> $$2, cqq $$3, ev.a $$4, int $$5, Executor $$6, Executor $$7) {
+      return alo.a($$1, $$2, $$0, $$6).thenCompose($$7x -> {
+         alp $$8 = new alp($$7x.a(), $$7x.b(), $$3, $$4, $$2, $$5);
+         return avc.a($$0, $$8.f(), $$6, $$7, b, a.isDebugEnabled()).a().thenApply($$1xx -> $$8);
+      });
+   }
+
+   public void g() {
+      this.h.forEach(kb.a::c);
    }
 }

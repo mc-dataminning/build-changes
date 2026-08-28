@@ -1,67 +1,68 @@
-public class dae extends czy {
-   public dae(czv $$0) {
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+
+public class dae extends dab {
+   private static final dag a = dag.a(cvw.ux);
+
+   public dae(czy $$0) {
       super($$0);
    }
 
-   public boolean a(czw $$0, deg $$1) {
-      int $$2 = 0;
-      cvp $$3 = cvp.k;
+   public boolean a(czz $$0, dej $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
+         cvs $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.a(cvt.rV)) {
-               if (!$$3.f()) {
-                  return false;
-               }
-
-               $$3 = $$5;
+            if ($$5.h() instanceof cun) {
+               $$2 = true;
             } else {
-               if (!$$5.a(cvt.ul)) {
+               if (!a.a($$5)) {
                   return false;
                }
 
-               $$2++;
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
       }
 
-      return !$$3.f() && $$2 > 0;
+      return $$3 && $$2;
    }
 
-   public cvp a(czw $$0, jp.a $$1) {
-      int $$2 = 0;
-      cvp $$3 = cvp.k;
+   public cvs a(czz $$0, jq.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cvs $$3 = null;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(cvt.rV)) {
-               if (!$$3.f()) {
-                  return cvp.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cvt.ul)) {
-                  return cvp.k;
-               }
-
-               $$2++;
-            }
+         cvs $$5 = $$0.a($$4);
+         cvn $$6 = $$5.h();
+         if ($$6 instanceof cun) {
+            $$2.add(((cun)$$6).c().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : cvp.k;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(ks.Z, cyl.a, $$2, cyl::a);
+         return $$3;
+      } else {
+         return cvs.k;
+      }
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public dam<?> aq_() {
-      return dam.e;
+   public dap<?> ar_() {
+      return dap.i;
    }
 }

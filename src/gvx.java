@@ -1,6 +1,3 @@
-public class gvx extends guj {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class gvx extends guo {
+   public boolean a;
 }

@@ -1,13 +1,35 @@
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface buz {
-   boolean f();
+public enum buz {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-   void a(cvp var1, @Nullable awf var2);
+   public static final IntFunction<buz> s = axw.a(buz::a, values(), axw.a.a);
+   public static final zc<ByteBuf, buz> t = za.a(s, buz::a);
+   private final int u;
 
-   default awd ab_() {
-      return awe.mR;
+   private buz(final int $$0) {
+      this.u = $$0;
    }
 
-   boolean i();
+   public int a() {
+      return this.u;
+   }
 }

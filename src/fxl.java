@@ -1,50 +1,43 @@
-public class fxl extends fxk<gtn> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gal d;
-   private final gal e;
-   private final gal f;
-   private final gal g;
+import org.joml.Quaternionf;
 
-   public fxl(gal $$0) {
-      this.d = $$0;
-      this.e = $$0.b("base");
-      this.f = this.e.b("upper_jaw");
-      this.g = this.e.b("lower_jaw");
+public class fxl extends fxo<gtn> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   public final gaq a;
+   public final gaq b;
+   public final gaq c;
+   public final gaq d;
+
+   public fxl(gaq $$0) {
+      super($$0);
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      gav $$2 = $$1.a("base", gaq.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gan.a(-5.0F, 24.0F, -5.0F));
-      gaq $$3 = gaq.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gan.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gan.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gar.a($$0, 64, 32);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      float $$2 = 0.875F;
+      gav $$3 = gav.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      gba $$4 = $$1.a("outer_glass", $$3, gas.a(0.0F, 24.0F, 0.0F));
+      gba $$5 = $$4.a("inner_glass", $$3, gas.a.a(0.875F));
+      $$5.a("cube", gav.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gas.a.a(0.765625F));
+      $$1.a("base", gav.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gas.a);
+      return gaw.a($$0, 64, 32);
    }
 
    public void a(gtn $$0) {
-      this.d.e().forEach(gal::c);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.f.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.g.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.e.c = this.e.c - ($$1 + azd.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.d.c = 24.0F - 20.0F * $$3;
-      this.d.h = $$3;
-      this.d.i = $$3;
-      this.d.j = $$3;
-   }
-
-   @Override
-   public gal a() {
-      return this.d;
+      super.a($$0);
+      this.a.k = $$0.a;
+      float $$1 = $$0.p * 3.0F;
+      float $$2 = gni.a($$0.p) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 }

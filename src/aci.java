@@ -1,31 +1,53 @@
-public class aci implements zk<abz> {
-   public static final zb<wo, aci> a = zb.a(je.b, aci::e, yz.a(dhj.q), aci::b, aci::new);
-   private final je b;
-   private final duo c;
+public class aci implements zl<aca> {
+   public static final zc<wp, aci> a = zl.a(aci::a, aci::new);
+   private final jf b;
+   private final int c;
+   private final int d;
+   private final dhm e;
 
-   public aci(je $$0, duo $$1) {
+   public aci(jf $$0, dhm $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public aci(ddl $$0, je $$1) {
-      this($$1, $$0.a_($$1));
+   private aci(wp $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = za.a(lw.f).decode($$0);
+   }
+
+   private void a(wp $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      za.a(lw.f).encode($$0, this.e);
    }
 
    @Override
-   public zm<aci> a() {
-      return ago.k;
+   public zn<aci> a() {
+      return agp.j;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public duo b() {
+   public jf b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public je e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public dhm g() {
+      return this.e;
    }
 }

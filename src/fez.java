@@ -1,27 +1,31 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class fez extends fey {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class fez extends ffc {
+   public long a;
+   public List<fey> b = Lists.newArrayList();
 
    public static fez a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      fez $$3 = new fez();
+      fez $$1 = new fez();
+      JsonParser $$2 = new JsonParser();
 
       try {
-         $$3.a = fgv.b("downloadLink", $$2, "");
-         $$3.b = fgv.b("resourcePackUrl", $$2, "");
-         $$3.c = fgv.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
+         JsonElement $$3 = $$2.parse($$0);
+         JsonObject $$4 = $$3.getAsJsonObject();
+         $$1.a = fgz.a("periodInMillis", $$4, -1L);
+         JsonElement $$5 = $$4.get("playerActivityDto");
+         if ($$5 != null && $$5.isJsonArray()) {
+            for (JsonElement $$7 : $$5.getAsJsonArray()) {
+               fey $$8 = fey.a($$7.getAsJsonObject());
+               $$1.b.add($$8);
+            }
+         }
+      } catch (Exception var10) {
       }
 
-      return $$3;
+      return $$1;
    }
 }

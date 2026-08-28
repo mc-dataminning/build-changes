@@ -1,42 +1,62 @@
-public class acc implements zk<abz> {
-   public static final zb<wa, acc> a = zk.a(acc::a, acc::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+public class acc implements zl<aca> {
+   public static final zc<wb, acc> a = zl.a(acc::a, acc::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-   public acc(bto $$0, int $$1) {
-      this.g = $$0.ap();
-      this.h = $$1;
+   public acc(bud $$0, ari $$1) {
+      this.b = $$0.ap();
+      eyw $$2 = $$1.b();
+      this.c = $$2.a();
+      this.d = $$2.b();
+      this.e = $$2.c();
+      this.f = $$0.m();
    }
 
-   private acc(wa $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
+   private acc(wb $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.g);
-      $$0.l(this.h);
+   private void a(wb $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.m(this.f);
    }
 
    @Override
-   public zm<acc> a() {
-      return ago.e;
+   public zn<acc> a() {
+      return agp.d;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.g;
+      return this.b;
    }
 
-   public int e() {
-      return this.h;
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

@@ -1,45 +1,30 @@
-public class fwq extends fyf {
-   private static final String a = "bell_body";
-   private final gal b;
-   private final gal c;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-   public fwq(gal $$0) {
-      super(ghq::c);
-      this.b = $$0;
-      this.c = $$0.b("bell_body");
+public record fwq(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements gaz {
+   public fwq(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      gav $$2 = $$1.a("bell_body", gaq.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), gan.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", gaq.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), gan.a(-8.0F, -12.0F, -8.0F));
-      return gar.a($$0, 32, 32);
-   }
-
-   public void a(drq $$0, float $$1) {
-      float $$2 = (float)$$0.a + $$1;
-      float $$3 = 0.0F;
-      float $$4 = 0.0F;
-      if ($$0.b) {
-         float $$5 = azd.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
-         if ($$0.c == jj.c) {
-            $$3 = -$$5;
-         } else if ($$0.c == jj.d) {
-            $$3 = $$5;
-         } else if ($$0.c == jj.f) {
-            $$4 = -$$5;
-         } else if ($$0.c == jj.e) {
-            $$4 = $$5;
-         }
-      }
-
-      this.c.e = $$3;
-      this.c.g = $$4;
+   public fwq(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
    @Override
-   public gal a() {
-      return this.b;
+   public gay apply(gay $$0) {
+      float $$1 = this.a ? 1.5F / this.d : 1.0F;
+      float $$2 = 1.0F / this.e;
+      UnaryOperator<gas> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
+      UnaryOperator<gas> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
+      gay $$5 = new gay();
+
+      for (Entry<String, gba> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         gba $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
+      }
+
+      return $$5;
    }
 }

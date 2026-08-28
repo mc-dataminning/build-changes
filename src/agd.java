@@ -1,33 +1,32 @@
-public class agd implements zk<abz> {
-   public static final zb<wa, agd> a = zk.a(agd::a, agd::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import javax.annotation.Nullable;
 
-   public agd(int $$0, int $$1, int $$2) {
+public class agd implements zl<aca> {
+   public static final zc<wb, agd> a = zl.a(agd::a, agd::new);
+   private final int b;
+   @Nullable
+   private final ug c;
+
+   public agd(int $$0, @Nullable ug $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private agd(wa $$0) {
+   private agd(wb $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+      $$0.a((vd)this.c);
    }
 
    @Override
-   public zm<agd> a() {
-      return ago.aZ;
+   public zn<agd> a() {
+      return agp.aY;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +34,13 @@ public class agd implements zk<abz> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public ug e() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
+   @Override
+   public boolean c() {
+      return true;
    }
 }

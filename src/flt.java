@@ -1,66 +1,111 @@
-public class flt extends fki {
-   private static final flx a = new flx(
-      alc.b("widget/tab_selected"), alc.b("widget/tab"), alc.b("widget/tab_selected_highlighted"), alc.b("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fmo m;
-   private final fmn n;
+import javax.annotation.Nullable;
 
-   public flt(fmo $$0, fmn $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+public abstract class flt extends fko {
+   protected final ale a;
+   protected final int b;
+   protected final int c;
+
+   flt(int $$0, int $$1, xe $$2, int $$3, int $$4, ale $$5, fko.c $$6, @Nullable fko.b $$7) {
+      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
+      this.b = $$3;
+      this.c = $$4;
+      this.a = $$5;
    }
 
-   @Override
-   public void b(fjx $$0, int $$1, int $$2, float $$3) {
-      $$0.a(ghq::B, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
-      fjv $$4 = fil.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
-         this.b($$0, $$4, $$5);
+   public static flt.a a(xe $$0, fko.c $$1, boolean $$2) {
+      return new flt.a($$0, $$1, $$2);
+   }
+
+   public static class a {
+      private final xe b;
+      private final fko.c c;
+      private final boolean d;
+      private int e = 150;
+      private int f = 20;
+      @Nullable
+      private ale g;
+      private int h;
+      private int i;
+      @Nullable
+      fko.b a;
+
+      public a(xe $$0, fko.c $$1, boolean $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public flt.a a(int $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public flt.a a(int $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public flt.a a(ale $$0, int $$1, int $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
+
+      public flt.a a(fko.b $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public flt a() {
+         if (this.g == null) {
+            throw new IllegalStateException("Sprite not set");
+         } else {
+            return (flt)(this.d
+               ? new flt.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
+               : new flt.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
+         }
       }
    }
 
-   protected void a(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
-      fqd.a($$0, fqd.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   public static class b extends flt {
+      protected b(int $$0, int $$1, xe $$2, int $$3, int $$4, ale $$5, fko.c $$6, @Nullable fko.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
+
+      @Override
+      public void b(fkb $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() / 2 - this.b / 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(ghv::B, this.a, $$4, $$5, this.b, this.c);
+      }
+
+      @Override
+      public void a(fkb $$0, fjz $$1, int $$2) {
+      }
    }
 
-   public void a(fjx $$0, fjv $$1, int $$2) {
-      int $$3 = this.D() + 1;
-      int $$4 = this.E() + (this.b() ? 0 : 3);
-      int $$5 = this.D() + this.y() - 1;
-      int $$6 = this.E() + this.w();
-      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
-   }
+   public static class c extends flt {
+      protected c(int $$0, int $$1, xe $$2, int $$3, int $$4, ale $$5, fko.c $$6, @Nullable fko.b $$7) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
 
-   private void b(fjx $$0, fjv $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
-      int $$4 = this.D() + (this.y() - $$3) / 2;
-      int $$5 = this.E() + this.w() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
+      @Override
+      public void b(fkb $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         int $$4 = this.D() + this.y() - this.b - 2;
+         int $$5 = this.E() + this.w() / 2 - this.c / 2;
+         $$0.a(ghv::B, this.a, $$4, $$5, this.b, this.c);
+      }
 
-   @Override
-   protected void a(foh $$0) {
-      $$0.a(fog.a, xd.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(hca $$0) {
-   }
-
-   public fmn a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+      @Override
+      public void a(fkb $$0, fjz $$1, int $$2) {
+         int $$3 = this.D() + 2;
+         int $$4 = this.D() + this.y() - this.b - 4;
+         int $$5 = this.D() + this.y() / 2;
+         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+      }
    }
 }

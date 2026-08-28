@@ -1,8 +1,8 @@
-public interface ajy extends ajs, vu {
-   @Override
-   default vy b() {
-      return vy.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajz var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajy {
 }

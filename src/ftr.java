@@ -1,255 +1,88 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ftr {
-   private final aue a;
-   final List<aub> b;
-   final List<aub> c;
-   final Function<aub, alc> d;
-   final Runnable e;
-   private final Consumer<aue> f;
+public class ftr extends ftk {
+   private static final xe v = xe.c("controls.keybinds.title");
+   @Nullable
+   public fin a;
+   public long u;
+   private ftq w;
+   private fko x;
 
-   public ftr(Runnable $$0, Function<aub, alc> $$1, aue $$2, Consumer<aue> $$3) {
-      this.e = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = Lists.newArrayList($$2.f());
-      Collections.reverse(this.b);
-      this.c = Lists.newArrayList($$2.c());
-      this.c.removeAll(this.b);
-      this.f = $$3;
+   public ftr(fqh $$0, fit $$1) {
+      super($$0, $$1, v);
    }
 
-   public Stream<ftr.a> a() {
-      return this.c.stream().map($$0 -> new ftr.d($$0));
+   @Override
+   protected void E() {
+      this.w = this.s.c(new ftq(this, this.m));
    }
 
-   public Stream<ftr.a> b() {
-      return this.b.stream().map($$0 -> new ftr.c($$0));
+   @Override
+   protected void m() {
    }
 
-   void e() {
-      this.a.b(Lists.reverse(this.b).stream().map(aub::g).collect(ImmutableList.toImmutableList()));
+   @Override
+   protected void D() {
+      this.x = fko.a(xe.c("controls.resetAll"), $$0x -> {
+         for (fin $$1 : this.c.V) {
+            $$1.b($$1.i());
+         }
+
+         this.w.c();
+      }).a();
+      fog $$0 = this.s.b(fog.e().a(8));
+      $$0.a(this.x);
+      $$0.a(fko.a(xd.d, $$0x -> this.d()).a());
    }
 
-   public void c() {
-      this.e();
-      this.f.accept(this.a);
+   @Override
+   protected void c() {
+      this.s.a();
+      this.w.a(this.n, this.s);
    }
 
-   public void d() {
-      this.a.a();
-      this.b.retainAll(this.a.c());
-      this.c.clear();
-      this.c.addAll(this.a.c());
-      this.c.removeAll(this.b);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.a != null) {
+         this.a.b(fcd.b.c.a($$2));
+         this.a = null;
+         this.w.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
-   public interface a {
-      alc a();
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.a != null) {
+         if ($$0 == 256) {
+            this.a.b(fcd.bv);
+         } else {
+            this.a.b(fcd.a($$0, $$1));
+         }
 
-      auc b();
-
-      String c();
-
-      xd d();
-
-      xd e();
-
-      auf f();
-
-      default xd g() {
-         return this.f().a(this.e());
+         this.a = null;
+         this.u = ad.c();
+         this.w.c();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      boolean h();
-
-      boolean i();
-
-      void j();
-
-      void k();
-
-      void l();
-
-      void m();
-
-      boolean n();
-
-      default boolean o() {
-         return !this.n();
-      }
-
-      default boolean p() {
-         return this.n() && !this.i();
-      }
-
-      boolean q();
-
-      boolean r();
    }
 
-   abstract class b implements ftr.a {
-      private final aub b;
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      boolean $$4 = false;
 
-      public b(final aub $$0) {
-         this.b = $$0;
-      }
-
-      protected abstract List<aub> s();
-
-      protected abstract List<aub> t();
-
-      @Override
-      public alc a() {
-         return ftr.this.d.apply(this.b);
-      }
-
-      @Override
-      public auc b() {
-         return this.b.d();
-      }
-
-      @Override
-      public String c() {
-         return this.b.g();
-      }
-
-      @Override
-      public xd d() {
-         return this.b.b();
-      }
-
-      @Override
-      public xd e() {
-         return this.b.c();
-      }
-
-      @Override
-      public auf f() {
-         return this.b.l();
-      }
-
-      @Override
-      public boolean h() {
-         return this.b.j();
-      }
-
-      @Override
-      public boolean i() {
-         return this.b.i();
-      }
-
-      protected void u() {
-         this.s().remove(this.b);
-         this.b.k().a(this.t(), this.b, aub::h, true);
-         ftr.this.e.run();
-         ftr.this.e();
-         this.v();
-      }
-
-      private void v() {
-         if (this.b.g().equals("high_contrast")) {
-            fio<Boolean> $$0 = fil.Q().n.u();
-            $$0.a(!$$0.c());
+      for (fin $$5 : this.c.V) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
          }
       }
 
-      protected void a(int $$0) {
-         List<aub> $$1 = this.s();
-         int $$2 = $$1.indexOf(this.b);
-         $$1.remove($$2);
-         $$1.add($$2 + $$0, this.b);
-         ftr.this.e.run();
-      }
-
-      @Override
-      public boolean q() {
-         List<aub> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 > 0 && !$$0.get($$1 - 1).j();
-      }
-
-      @Override
-      public void l() {
-         this.a(-1);
-      }
-
-      @Override
-      public boolean r() {
-         List<aub> $$0 = this.s();
-         int $$1 = $$0.indexOf(this.b);
-         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
-      }
-
-      @Override
-      public void m() {
-         this.a(1);
-      }
-   }
-
-   class c extends ftr.b {
-      public c(final aub $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<aub> s() {
-         return ftr.this.b;
-      }
-
-      @Override
-      protected List<aub> t() {
-         return ftr.this.c;
-      }
-
-      @Override
-      public boolean n() {
-         return true;
-      }
-
-      @Override
-      public void j() {
-      }
-
-      @Override
-      public void k() {
-         this.u();
-      }
-   }
-
-   class d extends ftr.b {
-      public d(final aub $$0) {
-         super($$0);
-      }
-
-      @Override
-      protected List<aub> s() {
-         return ftr.this.c;
-      }
-
-      @Override
-      protected List<aub> t() {
-         return ftr.this.b;
-      }
-
-      @Override
-      public boolean n() {
-         return false;
-      }
-
-      @Override
-      public void j() {
-         this.u();
-      }
-
-      @Override
-      public void k() {
-      }
+      this.x.j = $$4;
    }
 }

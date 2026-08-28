@@ -1,42 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dff {
-   public static final Codec<dff> a = RecordCodecBuilder.create(
+public record dff(ddw d, cqq e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dff> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awd.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+               ddw.b.lenientOptionalFieldOf("DataPacks", ddw.a).forGetter(dff::a), cqs.g.lenientOptionalFieldOf("enabled_features", cqs.i).forGetter(dff::b)
             )
             .apply($$0, dff::new)
    );
-   public static final dff b = new dff(awe.h, 6000, 8, 2.0);
-   private final jn<awd> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   public static final dff c = new dff(ddw.a, cqs.i);
 
-   public dff(jn<awd> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public dff a(cqq $$0) {
+      return new dff(this.d, this.e.c($$0));
    }
 
-   public jn<awd> a() {
-      return this.c;
-   }
-
-   public int b() {
+   public ddw a() {
       return this.d;
    }
 
-   public int c() {
+   public cqq b() {
       return this.e;
-   }
-
-   public double d() {
-      return this.f;
    }
 }

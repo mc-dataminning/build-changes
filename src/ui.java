@@ -2,37 +2,36 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ui extends uv {
-   private static final int c = 12;
-   public static final ui a = new ui(0.0F);
-   public static final ve<ui> b = new ve.a<ui>() {
-      public ui a(DataInput $$0, uo $$1) throws IOException {
-         return ui.a(d($$0, $$1));
+public class ui implements vd {
+   private static final int c = 8;
+   public static final vf<ui> a = new vf<ui>() {
+      public ui a(DataInput $$0, up $$1) {
+         $$1.b(8L);
+         return ui.b;
       }
 
       @Override
-      public uz.b a(DataInput $$0, uz $$1, uo $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static float d(DataInput $$0, uo $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      public va.b a(DataInput $$0, va $$1, up $$2) {
+         $$2.b(8L);
+         return $$1.a();
       }
 
       @Override
-      public int c() {
-         return 4;
+      public void a(DataInput $$0, int $$1, up $$2) {
+      }
+
+      @Override
+      public void b(DataInput $$0, up $$1) {
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "END";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_End";
       }
 
       @Override
@@ -40,34 +39,33 @@ public class ui extends uv {
          return true;
       }
    };
-   private final float w;
+   public static final ui b = new ui();
 
-   private ui(float $$0) {
-      this.w = $$0;
-   }
-
-   public static ui a(float $$0) {
-      return $$0 == 0.0F ? a : new ui($$0);
+   private ui() {
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 8;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 0;
    }
 
    @Override
-   public ve<ui> c() {
-      return b;
+   public vf<ui> c() {
+      return a;
+   }
+
+   @Override
+   public String toString() {
+      return this.s_();
    }
 
    public ui e() {
@@ -75,57 +73,12 @@ public class ui extends uv {
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ui && this.w == ((ui)$$0).w;
-   }
-
-   @Override
-   public int hashCode() {
-      return Float.floatToIntBits(this.w);
-   }
-
-   @Override
-   public void a(vg $$0) {
+   public void a(vh $$0) {
       $$0.a(this);
    }
 
    @Override
-   public long f() {
-      return (long)this.w;
-   }
-
-   @Override
-   public int g() {
-      return azd.d(this.w);
-   }
-
-   @Override
-   public short h() {
-      return (short)(azd.d(this.w) & 65535);
-   }
-
-   @Override
-   public byte i() {
-      return (byte)(azd.d(this.w) & 0xFF);
-   }
-
-   @Override
-   public double j() {
-      return (double)this.w;
-   }
-
-   @Override
-   public float k() {
-      return this.w;
-   }
-
-   @Override
-   public Number l() {
-      return this.w;
-   }
-
-   @Override
-   public uz.b a(uz $$0) {
-      return $$0.a(this.w);
+   public va.b a(va $$0) {
+      return $$0.a();
    }
 }

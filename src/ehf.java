@@ -1,28 +1,43 @@
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ehf extends ehb {
-   public static final MapCodec<ehf> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehf::new));
+public class ehf extends ehk {
+   public static final MapCodec<ehf> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehf::new));
+   protected final int b;
 
-   public ehf(bqu $$0, bqu $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <P extends ehf> P3<Mu<P>, bqx, bqx, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
+   }
+
+   public ehf(bqx $$0, bqx $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ehh<?> a() {
-      return ehh.f;
+   protected ehl<?> a() {
+      return ehl.a;
    }
 
    @Override
-   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+   protected void a(dep $$0, ehk.b $$1, azn $$2, egu $$3, int $$4, ehk.a $$5, int $$6, int $$7, int $$8) {
       for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
          this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azd.k((float)$$1 + 0.5F) + azd.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int a(azn $$0, int $$1, egu $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(azn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

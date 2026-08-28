@@ -1,93 +1,144 @@
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Optional;
 
 public class baa {
-   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
-   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
+   private static final char a = '�';
+   private static final Optional<Object> b = Optional.of(bak.a);
 
-   public static String a(int $$0, float $$1) {
-      int $$2 = azd.d((float)$$0 / $$1);
-      int $$3 = $$2 / 60;
-      $$2 %= 60;
-      int $$4 = $$3 / 60;
-      $$3 %= 60;
-      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
+   private static boolean a(yb $$0, ays $$1, int $$2, char $$3) {
+      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
+   }
+
+   public static boolean a(String $$0, yb $$1, ays $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isHighSurrogate($$5)) {
+            if ($$4 + 1 >= $$3) {
+               if (!$$2.accept($$4, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 + 1);
+            if (Character.isLowSurrogate($$6)) {
+               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
+                  return false;
+               }
+
+               $$4++;
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean b(String $$0, yb $$1, ays $$2) {
+      int $$3 = $$0.length();
+
+      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
+         char $$5 = $$0.charAt($$4);
+         if (Character.isLowSurrogate($$5)) {
+            if ($$4 - 1 < 0) {
+               if (!$$2.accept(0, $$1, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$6 = $$0.charAt($$4 - 1);
+            if (Character.isHighSurrogate($$6)) {
+               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
+                  return false;
+               }
+            } else if (!$$2.accept($$4, $$1, 65533)) {
+               return false;
+            }
+         } else if (!a($$1, $$2, $$4, $$5)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean c(String $$0, yb $$1, ays $$2) {
+      return a($$0, 0, $$1, $$2);
+   }
+
+   public static boolean a(String $$0, int $$1, yb $$2, ays $$3) {
+      return a($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public static boolean a(String $$0, int $$1, yb $$2, yb $$3, ays $$4) {
+      int $$5 = $$0.length();
+      yb $$6 = $$2;
+
+      for (int $$7 = $$1; $$7 < $$5; $$7++) {
+         char $$8 = $$0.charAt($$7);
+         if ($$8 == 167) {
+            if ($$7 + 1 >= $$5) {
+               break;
+            }
+
+            char $$9 = $$0.charAt($$7 + 1);
+            n $$10 = n.a($$9);
+            if ($$10 != null) {
+               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
+            }
+
+            $$7++;
+         } else if (Character.isHighSurrogate($$8)) {
+            if ($$7 + 1 >= $$5) {
+               if (!$$4.accept($$7, $$6, 65533)) {
+                  return false;
+               }
+               break;
+            }
+
+            char $$11 = $$0.charAt($$7 + 1);
+            if (Character.isLowSurrogate($$11)) {
+               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
+                  return false;
+               }
+
+               $$7++;
+            } else if (!$$4.accept($$7, $$6, 65533)) {
+               return false;
+            }
+         } else if (!a($$6, $$4, $$7, $$8)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean a(xj $$0, yb $$1, ays $$2) {
+      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
    }
 
    public static String a(String $$0) {
-      return a.matcher($$0).replaceAll("");
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yb.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 
-   public static boolean b(@Nullable String $$0) {
-      return StringUtils.isEmpty($$0);
-   }
-
-   public static String a(String $$0, int $$1, boolean $$2) {
-      if ($$0.length() <= $$1) {
-         return $$0;
-      } else {
-         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
-      }
-   }
-
-   public static int c(String $$0) {
-      if ($$0.isEmpty()) {
-         return 0;
-      } else {
-         Matcher $$1 = b.matcher($$0);
-         int $$2 = 1;
-
-         while ($$1.find()) {
-            $$2++;
-         }
-
-         return $$2;
-      }
-   }
-
-   public static boolean d(String $$0) {
-      return c.matcher($$0).find();
-   }
-
-   public static String e(String $$0) {
-      return a($$0, 256, false);
-   }
-
-   public static boolean a(char $$0) {
-      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
-   }
-
-   public static boolean f(String $$0) {
-      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
-   }
-
-   public static String g(String $$0) {
-      return a($$0, false);
-   }
-
-   public static String a(String $$0, boolean $$1) {
-      StringBuilder $$2 = new StringBuilder();
-
-      for (char $$3 : $$0.toCharArray()) {
-         if (a($$3)) {
-            $$2.append($$3);
-         } else if ($$1 && $$3 == '\n') {
-            $$2.append($$3);
-         }
-      }
-
-      return $$2.toString();
-   }
-
-   public static boolean a(int $$0) {
-      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
-   }
-
-   public static boolean h(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(baa::a) : true;
+   public static String a(xj $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      a($$0, yb.a, ($$1x, $$2, $$3) -> {
+         $$1.appendCodePoint($$3);
+         return true;
+      });
+      return $$1.toString();
    }
 }

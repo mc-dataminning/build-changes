@@ -1,40 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eko extends eki {
-   public static final MapCodec<eko> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eak.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eko::new)
-   );
-   private final eak.a c;
-   private final int d;
-   private final int e;
+public interface eko<P extends ekn> {
+   eko<ejz> a = a("block_predicate_filter", ejz.a);
+   eko<ekq> b = a("rarity_filter", ekq.a);
+   eko<eks> c = a("surface_relative_threshold_filter", eks.a);
+   eko<ekt> d = a("surface_water_depth_filter", ekt.a);
+   eko<ejy> e = a("biome", ejy.a);
+   eko<ekc> f = a("count", ekc.a);
+   eko<eki> g = a("noise_based_count", eki.a);
+   eko<ekj> h = a("noise_threshold_count", ekj.a);
+   eko<ekb> i = a("count_on_every_layer", ekb.a);
+   eko<ekd> j = a("environment_scan", ekd.a);
+   eko<ekg> k = a("heightmap", ekg.a);
+   eko<ekf> l = a("height_range", ekf.a);
+   eko<ekh> m = a("in_square", ekh.a);
+   eko<ekp> n = a("random_offset", ekp.a);
+   eko<eke> o = a("fixed_placement", eke.a);
 
-   private eko(eak.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
+   MapCodec<P> codec();
 
-   public static eko a(eak.a $$0, int $$1, int $$2) {
-      return new eko($$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(ekh $$0, azl $$1, je $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
-   }
-
-   @Override
-   public ekk<?> b() {
-      return ekk.c;
+   private static <P extends ekn> eko<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.S, $$0, () -> $$1);
    }
 }

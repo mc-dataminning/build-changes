@@ -1,178 +1,146 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eui extends euu {
+public class eui extends euy {
+   private static final Map<ale, eui.c> b = Stream.of(eui.a.a, eui.d.b, eui.e.b).collect(Collectors.toMap(eui.c::a, Function.identity()));
+   private static final Codec<eui.c> c = ale.a.comapFlatMap($$0 -> {
+      eui.c $$1 = b.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
+   }, eui.c::a);
+   private static final MapCodec<eui.b> d = ayo.a("formula", "parameters", c, eui.b::a, eui.c::b);
    public static final MapCodec<eui> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(exh.a.fieldOf("source").forGetter($$0x -> $$0x.b), eui.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eui::new)
+      $$0 -> a($$0).and($$0.group(dbn.c.fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, eui::new)
    );
-   private final exg b;
-   private final List<eui.b> c;
+   private final jo<dbn> e;
+   private final eui.b f;
 
-   eui(List<ews> $$0, exg $$1, List<eui.b> $$2) {
+   private eui(List<eww> $$0, jo<dbn> $$1, eui.b $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public euw<eui> b() {
-      return eux.C;
+   public eva<eui> b() {
+      return evb.x;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return this.b.b();
+   public Set<ewe<?>> a() {
+      return ImmutableSet.of(ewh.i);
    }
 
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      vc $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         MutableObject<uf> $$3 = new MutableObject();
-         Supplier<vc> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(kr.b, cye.a).c());
-            }
-
-            return (vc)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         uf $$5 = (uf)$$3.getValue();
-         if ($$5 != null) {
-            cye.a(kr.b, $$0, $$5);
-         }
-
-         return $$0;
+   public cvs a(cvs $$0, etl $$1) {
+      cvs $$2 = $$1.c(ewh.i);
+      if ($$2 != null) {
+         int $$3 = dbp.a(this.e, $$2);
+         int $$4 = this.f.a($$1.b(), $$0.K(), $$3);
+         $$0.e($$4);
       }
+
+      return $$0;
    }
 
-   @Deprecated
-   public static eui.a a(exg $$0) {
-      return new eui.a($$0);
+   public static euy.a<?> a(jo<dbn> $$0, float $$1, int $$2) {
+      return a($$3 -> new eui($$3, $$0, new eui.a($$2, $$1)));
    }
 
-   public static eui.a a(eth.b $$0) {
-      return new eui.a(exe.a($$0));
+   public static euy.a<?> a(jo<dbn> $$0) {
+      return a($$1 -> new eui($$1, $$0, new eui.d()));
    }
 
-   public static class a extends euu.a<eui.a> {
-      private final exg a;
-      private final List<eui.b> b = Lists.newArrayList();
-
-      a(exg $$0) {
-         this.a = $$0;
-      }
-
-      public eui.a a(String $$0, String $$1, eui.c $$2) {
-         try {
-            this.b.add(new eui.b(fl.g.a($$0), fl.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
-      }
-
-      public eui.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, eui.c.a);
-      }
-
-      protected eui.a a() {
-         return this;
-      }
-
-      @Override
-      public euv b() {
-         return new eui(this.g(), this.a, this.b);
-      }
+   public static euy.a<?> b(jo<dbn> $$0) {
+      return a($$1 -> new eui($$1, $$0, new eui.e(1)));
    }
 
-   static record b(fl.g b, fl.g c, eui.c d) {
-      public static final Codec<eui.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fl.g.a.fieldOf("source").forGetter(eui.b::a), fl.g.a.fieldOf("target").forGetter(eui.b::b), eui.c.d.fieldOf("op").forGetter(eui.b::c))
-               .apply($$0, eui.b::new)
+   public static euy.a<?> a(jo<dbn> $$0, int $$1) {
+      return a($$2 -> new eui($$2, $$0, new eui.e($$1)));
+   }
+
+   static record a(int b, float c) implements eui.b {
+      private static final Codec<eui.a> d = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(eui.a::b), Codec.FLOAT.fieldOf("probability").forGetter(eui.a::c)).apply($$0, eui.a::new)
       );
+      public static final eui.c a = new eui.c(ale.b("binomial_with_bonus_count"), d);
 
-      public void a(Supplier<vc> $$0, vc $$1) {
-         try {
-            List<vc> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
+      @Override
+      public int a(azn $$0, int $$1, int $$2) {
+         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
+            if ($$0.i() < this.c) {
+               $$1++;
             }
-         } catch (CommandSyntaxException var4) {
          }
-      }
 
-      public fl.g a() {
-         return this.b;
-      }
-
-      public fl.g b() {
-         return this.c;
-      }
-
-      public eui.c c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements azz {
-      a("replace") {
-         @Override
-         public void a(vc $$0, fl.g $$1, List<vc> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (vc)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(vc $$0, fl.g $$1, List<vc> $$2) throws CommandSyntaxException {
-            List<vc> $$3 = $$1.a($$0, ul::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof ul) {
-                  $$2.forEach($$1xx -> ((ul)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(vc $$0, fl.g $$1, List<vc> $$2) throws CommandSyntaxException {
-            List<vc> $$3 = $$1.a($$0, uf::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uf) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof uf) {
-                        ((uf)$$1x).a((uf)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
-
-      public static final Codec<eui.c> d = azz.a(eui.c::values);
-      private final String e;
-
-      public abstract void a(vc var1, fl.g var2, List<vc> var3) throws CommandSyntaxException;
-
-      c(final String $$0) {
-         this.e = $$0;
+         return $$1;
       }
 
       @Override
-      public String c() {
-         return this.e;
+      public eui.c a() {
+         return a;
+      }
+   }
+
+   interface b {
+      int a(azn var1, int var2, int var3);
+
+      eui.c a();
+   }
+
+   static record c(ale a, Codec<? extends eui.b> b) {
+   }
+
+   static record d() implements eui.b {
+      public static final Codec<eui.d> a = Codec.unit(eui.d::new);
+      public static final eui.c b = new eui.c(ale.b("ore_drops"), a);
+
+      @Override
+      public int a(azn $$0, int $$1, int $$2) {
+         if ($$2 > 0) {
+            int $$3 = $$0.a($$2 + 2) - 1;
+            if ($$3 < 0) {
+               $$3 = 0;
+            }
+
+            return $$1 * ($$3 + 1);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public eui.c a() {
+         return b;
+      }
+   }
+
+   static record e(int c) implements eui.b {
+      public static final Codec<eui.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(eui.e::b)).apply($$0, eui.e::new)
+      );
+      public static final eui.c b = new eui.c(ale.b("uniform_bonus_count"), a);
+
+      @Override
+      public int a(azn $$0, int $$1, int $$2) {
+         return $$1 + $$0.a(this.c * $$2 + 1);
+      }
+
+      @Override
+      public eui.c a() {
+         return b;
+      }
+
+      public int b() {
+         return this.c;
       }
    }
 }

@@ -1,48 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bzn extends bwc<cnh> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
+public class bzn extends bwf<cnk> {
    public bzn() {
-      super(ImmutableMap.of(cdn.c, cdo.a, cdn.n, cdo.c));
+      super(ImmutableMap.of());
    }
 
-   protected boolean b(arh $$0, cnh $$1) {
-      if ($$0.aa() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.aa();
-         jm $$2 = $$1.dX().c(cdn.c).get();
-         return $$2.a() == $$0.ag() && $$2.b().a($$1.dq(), 1.73);
+   protected boolean a(arj $$0, cnk $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(arj $$0, cnk $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bvo<?> $$3 = $$1.dY();
+         if (!$$3.c(cpp.g)) {
+            $$3.b(cdq.t);
+            $$3.b(cdq.m);
+            $$3.b(cdq.n);
+            $$3.b(cdq.r);
+            $$3.b(cdq.q);
+         }
+
+         $$3.a(cpp.g);
       }
    }
 
-   protected void a(arh $$0, cnh $$1, long $$2) {
-      bvl<cnh> $$3 = $$1.dX();
-      $$3.a(cdn.J, $$2);
-      $$3.c(cdn.c).ifPresent($$1x -> $$3.a(cdn.n, new bwf($$1x.b())));
-      $$1.gE();
-      this.a($$0, $$1);
-      if ($$1.gD()) {
-         $$1.gC();
+   protected void c(arj $$0, cnk $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void a(arh $$0, cnh $$1) {
+   public static boolean b(bun $$0) {
+      return $$0.dY().a(cdq.A);
    }
 
-   protected boolean b(arh $$0, cnh $$1, long $$2) {
-      Optional<jm> $$3 = $$1.dX().c(cdn.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jm $$4 = $$3.get();
-         return $$4.a() == $$0.ag() && $$4.b().a($$1.dq(), 1.73);
-      }
+   public static boolean c(bun $$0) {
+      return $$0.dY().a(cdq.x);
    }
 }

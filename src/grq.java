@@ -1,47 +1,24 @@
-public class grq extends grw<guk, fyc> {
-   private static final alc[] a = new alc[]{
-      alc.b("textures/entity/llama/decor/white.png"),
-      alc.b("textures/entity/llama/decor/orange.png"),
-      alc.b("textures/entity/llama/decor/magenta.png"),
-      alc.b("textures/entity/llama/decor/light_blue.png"),
-      alc.b("textures/entity/llama/decor/yellow.png"),
-      alc.b("textures/entity/llama/decor/lime.png"),
-      alc.b("textures/entity/llama/decor/pink.png"),
-      alc.b("textures/entity/llama/decor/gray.png"),
-      alc.b("textures/entity/llama/decor/light_gray.png"),
-      alc.b("textures/entity/llama/decor/cyan.png"),
-      alc.b("textures/entity/llama/decor/purple.png"),
-      alc.b("textures/entity/llama/decor/blue.png"),
-      alc.b("textures/entity/llama/decor/brown.png"),
-      alc.b("textures/entity/llama/decor/green.png"),
-      alc.b("textures/entity/llama/decor/red.png"),
-      alc.b("textures/entity/llama/decor/black.png")
-   };
-   private static final alc b = alc.b("textures/entity/llama/decor/trader_llama.png");
-   private final fyc c;
-   private final fyc d;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public grq(gpf<guk, fyc> $$0, gah $$1) {
+public class grq extends gsb<guf, fxz> {
+   private static final Map<cil, ale> a = ad.a(Maps.newEnumMap(cil.class), $$0 -> {
+      $$0.put(cil.a, null);
+      $$0.put(cil.b, ale.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cil.c, ale.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cil.d, ale.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cil.e, ale.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public grq(gpk<guf, fxz> $$0) {
       super($$0);
-      this.c = new fyc($$1.a(gak.be));
-      this.d = new fyc($$1.a(gak.bf));
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, guk $$3, float $$4, float $$5) {
-      alc $$6;
-      if ($$3.c != null) {
-         $$6 = a[$$3.c.a()];
-      } else {
-         if (!$$3.d) {
-            return;
-         }
-
-         $$6 = b;
+   public void a(fdi $$0, ghl $$1, int $$2, guf $$3, float $$4, float $$5) {
+      ale $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.u) {
+         fdm $$7 = $$1.getBuffer(ghv.i($$6));
+         this.d().a($$0, $$7, $$2, gop.a($$3, 0.0F));
       }
-
-      fyc $$9 = $$3.ae ? this.d : this.c;
-      $$9.a($$3);
-      fdi $$10 = $$1.getBuffer(ghq.f($$6));
-      $$9.a($$0, $$10, $$2, gws.d);
    }
 }

@@ -1,48 +1,44 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cus {
-   btw l();
-
-   default jn<awd> m() {
-      return awe.as;
+public class cus extends cvn {
+   public cus(cvn.a $$0) {
+      super($$0);
    }
 
-   default brp a(cvk $$0, deg $$1, cnu $$2, bro $$3) {
-      cvp $$4 = $$2.b($$3);
-      btw $$5 = $$2.g($$4);
-      if (!$$2.e($$5)) {
-         return brp.e;
+   @Override
+   public brs a(czp $$0) {
+      dej $$1 = $$0.q();
+      jf $$2 = $$0.a();
+      dus $$3 = $$1.a_($$2);
+      if (!$$3.a(dho.co) && !$$3.a(dho.F)) {
+         return brs.d;
       } else {
-         cvp $$6 = $$2.a($$5);
-         if ((!dbm.a($$6, dbl.E) || $$2.f()) && !cvp.a($$4, $$6)) {
-            if (!$$1.w_()) {
-               $$2.b(awo.c.b($$0));
-            }
-
-            cvp $$7 = $$6.f() ? $$4 : $$6.g();
-            cvp $$8 = $$2.f() ? $$4.u() : $$4.g();
-            $$2.a($$5, $$8);
-            return brp.a.a($$7);
+         jf $$4 = $$2.d();
+         if (!$$1.u($$4)) {
+            return brs.d;
          } else {
-            return brp.d;
-         }
-      }
-   }
+            double $$5 = (double)$$4.u();
+            double $$6 = (double)$$4.v();
+            double $$7 = (double)$$4.w();
+            List<btr> $$8 = $$1.a_(null, new eyr($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
+            if (!$$8.isEmpty()) {
+               return brs.d;
+            } else {
+               if ($$1 instanceof arj) {
+                  ciz $$9 = new ciz($$1, $$5 + 0.5, $$6, $$7 + 0.5);
+                  $$9.a(false);
+                  $$1.b($$9);
+                  $$1.a($$0.o(), dzp.t, $$4);
+                  dyr $$10 = ((arj)$$1).D();
+                  if ($$10 != null) {
+                     $$10.g();
+                  }
+               }
 
-   @Nullable
-   static cus c_(cvp $$0) {
-      cvk $$3 = $$0.h();
-      if ($$3 instanceof cus) {
-         return (cus)$$3;
-      } else {
-         if ($$0.h() instanceof ctr $$2) {
-            dhj var6 = $$2.d();
-            if (var6 instanceof cus) {
-               return (cus)var6;
+               $$0.n().h(1);
+               return brs.a;
             }
          }
-
-         return null;
       }
    }
 }

@@ -1,155 +1,71 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class gku {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final jj[] l = jj.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ad.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+class gku {
+   private final Map<jf, drv> a;
+   @Nullable
+   private final List<dxg<dus>> b;
+   private final boolean c;
+   private final dwy d;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
+   gku(dwy $$0) {
+      this.d = $$0;
+      this.c = $$0.E().aj();
+      this.a = ImmutableMap.copyOf($$0.F());
+      if ($$0 instanceof dwu) {
+         this.b = null;
+      } else {
+         dwz[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
+
+         for (dwz $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
+      }
+   }
+
+   @Nullable
+   public drv a(jf $$0) {
+      return this.a.get($$0);
+   }
+
+   public dus b(jf $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         dus $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dho.hW.n();
+         }
+
+         if ($$2 == 70) {
+            $$4 = eaf.a($$1, $$3);
+         }
+
+         return $$4 == null ? dho.a.n() : $$4;
+      } else if (this.b == null) {
+         return dho.a.n();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               dxg<dus> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
                }
             }
+
+            return dho.a.n();
+         } catch (Throwable var8) {
+            o $$8 = o.a(var8, "Getting block state");
+            p $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
+            throw new z($$8);
          }
-      }
-   });
-   private int o = 4096;
-
-   public void a(je $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
-   }
-
-   private static int b(je $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public gkv a() {
-      gkv $$0 = new gkv();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
-      } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   private Set<jj> a(int $$0) {
-      Set<jj> $$1 = EnumSet.noneOf(jj.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
-
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (jj $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<jj> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(jj.e);
-      } else if ($$2 == 15) {
-         $$1.add(jj.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(jj.a);
-      } else if ($$3 == 15) {
-         $$1.add(jj.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(jj.c);
-      } else if ($$4 == 15) {
-         $$1.add(jj.d);
-      }
-   }
-
-   private int a(int $$0, jj $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
       }
    }
 }

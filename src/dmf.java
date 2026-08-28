@@ -1,49 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmf extends dhj implements dol {
+public class dmf extends dhm {
    public static final MapCodec<dmf> a = b(dmf::new);
-   public static final dvf b = dve.C;
+   private static final int b = 20;
 
    @Override
    public MapCodec<dmf> a() {
       return a;
    }
 
-   protected dmf(dun.d $$0) {
+   public dmf(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(duo $$0, duo $$1, jj $$2) {
-      return $$1.a(dhl.ac) && $$2.o() == jj.a.b;
-   }
+   public void a(dej $$0, jf $$1, dus $$2, btr $$3) {
+      if (!$$3.cb() && $$3 instanceof bun) {
+         $$3.a($$0.ak().f(), 1.0F);
+      }
 
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      eqp $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eqq.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      dhs.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$1 == jk.b && $$2.a(dho.G)) {
+         $$3.a($$4, this, 20);
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(b) ? eqq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b);
+   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 }

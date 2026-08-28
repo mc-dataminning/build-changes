@@ -1,29 +1,19 @@
-public enum dzf {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   private final boolean d;
-   private final boolean e;
+public interface dzf<T extends dyw> {
+   @Nullable
+   T a(int var1);
 
-   private dzf(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   public boolean a() {
-      return this.e;
-   }
+   Iterable<T> a();
 
-   public boolean b() {
-      return this.d;
-   }
+   <U extends T> void a(dzd<T, U> var1, axr<U> var2);
 
-   public static dzf a(aqx $$0) {
-      if ($$0.a(aqx.d)) {
-         return c;
-      } else {
-         return $$0.a(aqx.b) ? b : a;
-      }
-   }
+   void a(eyr var1, Consumer<T> var2);
+
+   <U extends T> void a(dzd<T, U> var1, eyr var2, axr<U> var3);
 }

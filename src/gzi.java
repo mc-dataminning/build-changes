@@ -1,25 +1,20 @@
-import com.mojang.datafixers.util.Either;
-import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public class gzi {
-   public static final String a = "missing";
-   public static final alc b = gzs.a("missing");
-   public static final gzo c = new gzo(b, "missing");
+public interface gzi {
+   List<gir> a(@Nullable dus var1, @Nullable jk var2, azn var3);
 
-   public static gzt a() {
-      giq $$0 = new giq(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jj, gio> $$1 = new EnumMap<>(jj.class);
+   boolean a();
 
-      for (jj $$2 : jj.values()) {
-         $$1.put($$2, new gio($$2, 0, gwr.b().a(), $$0));
-      }
+   boolean b();
 
-      gin $$3 = new gin(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      gir $$4 = new gir(null, List.of($$3), Map.of("particle", Either.left(new gzh(gxa.d, gwr.b()))), null, null, giy.a, List.of());
-      $$4.c = "missingno";
-      return $$4;
-   }
+   boolean c();
+
+   boolean d();
+
+   gxg e();
+
+   gjd f();
+
+   gjb g();
 }

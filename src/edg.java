@@ -1,44 +1,29 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.stream.Stream;
 
-public class edg extends ede {
-   public edg(Codec<egb> $$0) {
-      super($$0);
+public record edg<FC extends efy, F extends edu<FC>>(F d, FC e) {
+   public static final Codec<edg<?, ?>> a = lv.O.q().dispatch($$0 -> $$0.d, edu::a);
+   public static final Codec<jo<edg<?, ?>>> b = ala.a(lw.aK, a);
+   public static final Codec<js<edg<?, ?>>> c = kd.a(lw.aK, a);
+
+   public boolean a(dfg $$0, dwp $$1, azn $$2, jf $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<edg<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   protected boolean a(deh $$0, azl $$1, je $$2, duo $$3) {
-      je.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
+   public F b() {
+      return this.d;
+   }
 
-         $$4.c(jj.b);
-      }
-
-      je $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jj> $$9 = jj.c.a.c($$1);
-
-      for (jj $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jj.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
+   public FC c() {
+      return this.e;
    }
 }

@@ -1,38 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
 public class ekf extends ekn {
-   public static final MapCodec<ekf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ekf::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+   public static final MapCodec<ekf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ejn.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ekf::new));
+   private final ejn c;
 
-   private ekf(double $$0, int $$1, int $$2) {
+   private ekf(ejn $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static ekf a(double $$0, int $$1, int $$2) {
-      return new ekf($$0, $$1, $$2);
+   public static ekf a(ejn $$0) {
+      return new ekf($$0);
+   }
+
+   public static ekf a(ebi $$0, ebi $$1) {
+      return a(ejq.a($$0, $$1));
+   }
+
+   public static ekf b(ebi $$0, ebi $$1) {
+      return a(ejp.a($$0, $$1));
    }
 
    @Override
-   protected int a(azl $$0, je $$1) {
-      double $$2 = dfh.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public Stream<jf> a_(ekl $$0, azn $$1, jf $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
    @Override
-   public ekk<?> b() {
-      return ekk.h;
+   public eko<?> b() {
+      return eko.l;
    }
 }

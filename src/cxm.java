@@ -1,60 +1,39 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cxm implements cqk {
-   public static final Codec<jn<cxm>> a = lu.h.r();
-   public static final zb<wo, jn<cxm>> b = yz.b(lv.ad);
-   @Nullable
-   private final String c;
-   private final List<bsv> d;
-   private cqn e = cqp.h;
-
-   public cxm(bsv... $$0) {
-      this(null, $$0);
-   }
-
-   public cxm(@Nullable String $$0, bsv... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cxm a(cql... $$0) {
-      this.e = cqp.f.a($$0);
-      return this;
+public class cxm extends cvn implements cwn {
+   public cxm(cvn.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cqn i() {
-      return this.e;
-   }
-
-   public static String a(Optional<jn<cxm>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().c;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      if ($$0 instanceof arj $$4) {
+         cor.a(($$2x, $$3x, $$4x) -> new cpj($$1, $$0, $$1.dq().a(), $$1.bC().b(), $$1.dq().c()), $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
       }
 
-      String $$3 = $$0.flatMap(jn::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
+      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.Cx, awh.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      $$1.b(awq.c.b(this));
+      $$3.a(1, $$1);
+      return brs.a;
    }
 
-   public List<bsv> a() {
-      return this.d;
+   @Override
+   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
+      azn $$4 = $$0.D_();
+      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
+      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
+      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
+      eyw $$8 = new eyw($$5, $$6, $$7);
+      cpj $$9 = new cpj($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
+      $$9.h($$8);
+      return $$9;
    }
 
-   public boolean b() {
-      if (!this.d.isEmpty()) {
-         for (bsv $$0 : this.d) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
+   @Override
+   public void a(cor $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+   }
 
-      return false;
+   @Override
+   public cwn.a c() {
+      return cwn.a.a().a(($$0, $$1) -> djr.a($$0, 1.0, eyw.c)).a(6.6666665F).b(1.0F).a(1051).a();
    }
 }

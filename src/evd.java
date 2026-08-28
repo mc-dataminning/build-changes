@@ -1,30 +1,41 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class evd extends euu {
+public class evd implements euz {
    public static final MapCodec<evd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ko.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, evd::new)
+      $$0 -> $$0.group(evb.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, evd::new)
    );
-   private final ko b;
+   public static final Codec<evd> b = evb.b.listOf().xmap(evd::new, $$0 -> $$0.c);
+   private final List<euz> c;
+   private final BiFunction<cvs, etl, cvs> d;
 
-   private evd(List<ews> $$0, ko $$1) {
-      super($$0);
-      this.b = $$1;
+   private evd(List<euz> $$0) {
+      this.c = $$0;
+      this.d = evb.a($$0);
+   }
+
+   public static evd a(List<euz> $$0) {
+      return new evd(List.copyOf($$0));
+   }
+
+   public cvs a(cvs $$0, etl $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public euw<evd> b() {
-      return eux.k;
+   public void a(etr $$0) {
+      euz.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      $$0.a(this.b);
-      return $$0;
-   }
-
-   public static <T> euu.a<?> a(kq<T> $$0, T $$1) {
-      return a($$2 -> new evd($$2, ko.a().a($$0, $$1).a()));
+   public eva<evd> b() {
+      return evb.I;
    }
 }

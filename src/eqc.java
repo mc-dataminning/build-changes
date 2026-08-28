@@ -1,49 +1,24 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public interface eqc extends eqh {
-   @Nullable
-   dwp a(kg var1);
+public class eqc extends eqh<eqc.a> {
+   protected eqc(dxb $$0) {
+      super(des.b, $$0, new eqc.a(new Long2ObjectOpenHashMap()));
+   }
 
-   int b(je var1);
+   @Override
+   protected int a(long $$0) {
+      long $$1 = kh.e($$0);
+      dwt $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kh.b(jf.a($$0)), kh.b(jf.b($$0)), kh.b(jf.c($$0)));
+   }
 
-   public static enum a implements eqc {
-      a;
-
-      @Nullable
-      @Override
-      public dwp a(kg $$0) {
-         return null;
+   protected static final class a extends eqe<eqc.a> {
+      public a(Long2ObjectOpenHashMap<dwt> $$0) {
+         super($$0);
       }
 
-      @Override
-      public int b(je $$0) {
-         return 0;
-      }
-
-      @Override
-      public void a(je $$0) {
-      }
-
-      @Override
-      public boolean I_() {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public void a(kg $$0, boolean $$1) {
-      }
-
-      @Override
-      public void a(ddm $$0, boolean $$1) {
-      }
-
-      @Override
-      public void b(ddm $$0) {
+      public eqc.a a() {
+         return new eqc.a(this.a.clone());
       }
    }
 }

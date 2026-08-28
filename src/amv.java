@@ -1,41 +1,89 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class amv {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.deop.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("commands.damage.invulnerable"));
 
-   public static void a(CommandDispatcher<et> $$0) {
+   public static void a(CommandDispatcher<eu> $$0, eq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("deop").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("damage").requires($$0x -> $$0x.c(2)))
             .then(
-               eu.a("targets", fi.a())
-                  .suggests(($$0x, $$1) -> ey.a(((et)$$0x.getSource()).l().ag().l(), $$1))
-                  .executes($$0x -> a((et)$$0x.getSource(), fi.a($$0x, "targets")))
+               ev.a("target", fh.a())
+                  .then(
+                     ((RequiredArgumentBuilder)ev.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (eu)$$0x.getSource(), fh.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((eu)$$0x.getSource()).e().ak().p()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a("damageType", ft.a($$1, lw.s))
+                                    .executes(
+                                       $$0x -> a(
+                                             (eu)$$0x.getSource(),
+                                             fh.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bsj(ft.a($$0x, "damageType", lw.s))
+                                          )
+                                    ))
+                                 .then(
+                                    ev.a("at")
+                                       .then(
+                                          ev.a("location", gx.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eu)$$0x.getSource(),
+                                                      fh.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bsj(ft.a($$0x, "damageType", lw.s), gx.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ev.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)ev.a("entity", fh.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eu)$$0x.getSource(),
+                                                      fh.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bsj(ft.a($$0x, "damageType", lw.s), fh.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             ev.a("from")
+                                                .then(
+                                                   ev.a("cause", fh.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (eu)$$0x.getSource(),
+                                                               fh.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bsj(ft.a($$0x, "damageType", lw.s), fh.a($$0x, "entity"), fh.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(et $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      avh $$2 = $$0.l().ag();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.f($$4)) {
-            $$2.b($$4);
-            $$3++;
-            $$0.a(() -> xd.a("commands.deop.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
+   private static int a(eu $$0, btr $$1, float $$2, bsj $$3) throws CommandSyntaxException {
+      if ($$1.a($$3, $$2)) {
+         $$0.a(() -> xe.a("commands.damage.success", $$2, $$1.R_()), true);
+         return 1;
       } else {
-         $$0.l().a($$0);
-         return $$3;
+         throw a.create();
       }
    }
 }

@@ -1,112 +1,82 @@
-import com.mojang.logging.LogUtils;
-import java.lang.management.ManagementFactory;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import javax.management.Attribute;
-import javax.management.AttributeList;
-import javax.management.DynamicMBean;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.MBeanAttributeInfo;
-import javax.management.MBeanInfo;
-import javax.management.MBeanNotificationInfo;
-import javax.management.MBeanRegistrationException;
-import javax.management.MalformedObjectNameException;
-import javax.management.NotCompliantMBeanException;
-import javax.management.ObjectName;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public final class bmz implements DynamicMBean {
-   private static final Logger a = LogUtils.getLogger();
-   private final MinecraftServer b;
-   private final MBeanInfo c;
-   private final Map<String, bmz.a> d = Stream.of(
-         new bmz.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
-         new bmz.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
-      )
-      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
+public class bmz<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
 
-   private bmz(MinecraftServer $$0) {
+   public bmz(Codec<T> $$0, FileChannel $$1) {
       this.b = $$0;
-      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bmz.a::a).toArray(MBeanAttributeInfo[]::new);
-      this.c = new MBeanInfo(bmz.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
+      this.c = $$1;
    }
 
-   public static void a(MinecraftServer $$0) {
-      try {
-         ManagementFactory.getPlatformMBeanServer().registerMBean(new bmz($$0), new ObjectName("net.minecraft.server:type=Server"));
-      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
-         a.warn("Failed to initialise server as JMX bean", var2);
+   public static <T> bmz<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bmz<>($$0, $$2);
+   }
+
+   public void a(T $$0) throws IOException {
+      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, a.newJsonWriter($$2));
+      $$2.write(10);
+      $$2.flush();
+   }
+
+   public bna<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
+      } else {
+         this.d.incrementAndGet();
+         final bna<T> $$0 = bna.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bna<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bmz.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bmz.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bmz.this.b();
+            }
+         };
       }
    }
 
-   private float a() {
-      return this.b.aO();
-   }
-
-   private long[] b() {
-      return this.b.aR();
-   }
-
-   @Nullable
    @Override
-   public Object getAttribute(String $$0) {
-      bmz.a $$1 = this.d.get($$0);
-      return $$1 == null ? null : $$1.b.get();
+   public void close() throws IOException {
+      this.b();
    }
 
-   @Override
-   public void setAttribute(Attribute $$0) {
-   }
-
-   @Override
-   public AttributeList getAttributes(String[] $$0) {
-      List<Attribute> $$1 = Arrays.stream($$0)
-         .map(this.d::get)
-         .filter(Objects::nonNull)
-         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
-         .collect(Collectors.toList());
-      return new AttributeList($$1);
-   }
-
-   @Override
-   public AttributeList setAttributes(AttributeList $$0) {
-      return new AttributeList();
-   }
-
-   @Nullable
-   @Override
-   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
-      return null;
-   }
-
-   @Override
-   public MBeanInfo getMBeanInfo() {
-      return this.c;
-   }
-
-   static final class a {
-      final String a;
-      final Supplier<Object> b;
-      private final String c;
-      private final Class<?> d;
-
-      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      private MBeanAttributeInfo a() {
-         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
       }
    }
 }

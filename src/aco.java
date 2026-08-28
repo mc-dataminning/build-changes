@@ -1,18 +1,20 @@
-import io.netty.buffer.ByteBuf;
+public record aco(int b) implements zl<aca> {
+   public static final zc<wb, aco> a = zl.a(aco::a, aco::new);
 
-public class aco implements zk<abz> {
-   public static final aco a = new aco();
-   public static final zb<ByteBuf, aco> b = zb.a(a);
+   private aco(wb $$0) {
+      this($$0.l());
+   }
 
-   private aco() {
+   private void a(wb $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zm<aco> a() {
-      return ago.o;
+   public zn<aco> a() {
+      return agp.n;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 }

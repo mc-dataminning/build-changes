@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
-
-public abstract class gtf extends gtl {
-   @Nullable
-   public btm.k b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class gtf extends guo {
+   public final btl a = new btl();
+   public final btl b = new btl();
+   public final btl c = new btl();
+   public final btl d = new btl();
+   public final btl e = new btl();
 }

@@ -1,71 +1,22 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public abstract class fkc extends fki implements fmg {
-   @Nullable
-   private fmh a;
-   private boolean b;
+public class fkc extends gyk {
+   private static final Set<atu<?>> a = Set.of(gys.a, gyy.c);
 
-   public fkc(int $$0, int $$1, int $$2, int $$3, xd $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fkc(gxh $$0) {
+      super($$0, ale.b("textures/atlas/gui.png"), ale.b("gui"), a);
    }
 
    @Override
-   public final boolean aK_() {
-      return this.b;
+   public gxg a(ale $$0) {
+      return super.a($$0);
    }
 
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
+   public gyz a(gxg $$0) {
+      return this.b($$0).a();
    }
 
-   @Nullable
-   @Override
-   public fmh aL_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable fmh $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public fju a(fon $$0) {
-      return fmg.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return fmg.super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return fmg.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return fmg.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aM_() {
-      return fmg.super.aM_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      fmg.super.a($$0);
+   private gyy b(gxg $$0) {
+      return $$0.e().f().a(gyy.c).orElse(gyy.a);
    }
 }

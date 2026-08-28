@@ -1,22 +1,41 @@
-public enum fgw {
-   a(0, eks.a),
-   b(1, eks.b),
-   c(2, eks.c),
-   d(3, eks.d);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private final int e;
-   private final xd f;
+public interface fgw {
+   fgw a = new fgw() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   private fgw(final int $$0, final alb<ekr> $$1) {
-      this.e = $$0;
-      this.f = xd.c($$1.a().h("generator"));
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   public xd a() {
-      return this.f;
-   }
+   long a();
 
-   public int b() {
-      return this.e;
+   long b();
+
+   static fgw a(final int $$0) {
+      return new fgw() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

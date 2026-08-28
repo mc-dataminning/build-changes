@@ -1,51 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+public class gjt implements gjw<drr> {
+   private final fyj a;
+   private final fyj b;
 
-public class gjt {
-   private static final Map<dru<?>, gjs<?>> a = Maps.newHashMap();
-
-   private static <T extends drs> void a(dru<? extends T> $$0, gjs<T> $$1) {
-      a.put($$0, $$1);
+   public gjt(gjx.a $$0) {
+      this.a = new fyj.a($$0.a(gap.p), ghv::c);
+      this.b = new fyj.a($$0.a(gap.o), ghv::c);
    }
 
-   public static Map<dru<?>, gjr<?>> a(gjs.a $$0) {
-      Builder<dru<?>, gjr<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lu.j.b((dru<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   public static gaw b() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      $$1.a("main", gav.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gas.a);
+      $$1.a("left_leg", gav.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gas.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", gav.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gas.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return gaw.a($$0, 64, 64);
    }
 
-   static {
-      a(dru.h, gkf::new);
-      a(dru.i, gkb::new);
-      a(dru.j, gkh::new);
-      a(dru.k, gkd::new);
-      a(dru.b, gjx::new);
-      a(dru.d, gjx::new);
-      a(dru.c, gjx::new);
-      a(dru.m, gka::new);
-      a(dru.D, gkc::new);
-      a(dru.n, gkk::new);
-      a(dru.v, gkj::new);
-      a(dru.o, gjn::new);
-      a(dru.p, gkg::new);
-      a(dru.t, gjm::new);
-      a(dru.u, gki::new);
-      a(dru.x, gke::new);
-      a(dru.y, gjo::new);
-      a(dru.z, gjy::new);
-      a(dru.E, gjp::new);
-      a(dru.G, gjw::new);
-      a(dru.N, gjv::new);
-      a(dru.O, gjz::new);
-      a(dru.Q, gkl::new);
-      a(dru.R, gkm::new);
+   public static gaw c() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      $$1.a("main", gav.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gas.a);
+      $$1.a("left_leg", gav.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gas.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", gav.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gas.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return gaw.a($$0, 64, 64);
+   }
+
+   public void a(drr $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      gzm $$6 = gig.r[$$0.c().a()];
+      dej $$7 = $$0.i();
+      if ($$7 != null) {
+         dus $$8 = $$0.m();
+         djt.c<? extends drr> $$9 = djt.a(drx.y, dhf::i, dhf::h, dip.c, $$8, $$7, $$0.aC_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new gjz<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dhf.b) == dvf.a ? this.a : this.b, $$8.c(dhf.aF), $$6, $$10, $$5, false);
+      } else {
+         this.a($$2, $$3, this.a, jk.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, jk.d, $$6, $$4, $$5, true);
+      }
+   }
+
+   private void a(fdi $$0, ghl $$1, fyj $$2, jk $$3, gzm $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fdm $$8 = $$4.a($$1, ghv::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

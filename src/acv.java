@@ -1,33 +1,44 @@
-public class acv implements zk<abz> {
-   public static final zb<wa, acv> a = zk.a(acv::a, acv::new);
+import java.util.List;
+
+public class acv implements zl<aca> {
+   public static final zc<wp, acv> a = zl.a(acv::a, acv::new);
    private final int b;
    private final int c;
-   private final int d;
+   private final List<cvs> d;
+   private final cvs e;
 
-   public acv(int $$0, int $$1, int $$2) {
+   public acv(int $$0, int $$1, jx<cvs> $$2, cvs $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = jx.a($$2.size(), cvs.k);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).u());
+      }
+
+      this.e = $$3.u();
    }
 
-   private acv(wa $$0) {
+   private acv(wp $$0) {
       this.b = $$0.x();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+      this.c = $$0.l();
+      this.d = cvs.j.decode($$0);
+      this.e = cvs.h.decode($$0);
    }
 
-   private void a(wa $$0) {
+   private void a(wp $$0) {
       $$0.f(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
+      $$0.c(this.c);
+      cvs.j.encode($$0, this.d);
+      cvs.h.encode($$0, this.e);
    }
 
    @Override
-   public zm<acv> a() {
-      return ago.v;
+   public zn<acv> a() {
+      return agp.u;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
@@ -35,11 +46,15 @@ public class acv implements zk<abz> {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   public List<cvs> e() {
+      return this.d;
    }
 
-   public int f() {
-      return this.d;
+   public cvs f() {
+      return this.e;
+   }
+
+   public int g() {
+      return this.c;
    }
 }

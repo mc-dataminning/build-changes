@@ -1,46 +1,53 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record bsl(String i) {
-   public static final bsl a = new bsl("generic");
-   public static final bsl b = new bsl("ladder");
-   public static final bsl c = new bsl("vines");
-   public static final bsl d = new bsl("weeping_vines");
-   public static final bsl e = new bsl("twisting_vines");
-   public static final bsl f = new bsl("scaffolding");
-   public static final bsl g = new bsl("other_climbable");
-   public static final bsl h = new bsl("water");
+public record bsl(String d, bsi e, float f, bsh g, bsn h) {
+   public static final Codec<bsl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bsl::a),
+               bsi.d.fieldOf("scaling").forGetter(bsl::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bsl::c),
+               bsh.g.optionalFieldOf("effects", bsh.a).forGetter(bsl::d),
+               bsn.d.optionalFieldOf("death_message_type", bsn.a).forGetter(bsl::e)
+            )
+            .apply($$0, bsl::new)
+   );
+   public static final Codec<jo<bsl>> b = alb.a(lw.s);
+   public static final zc<wp, jo<bsl>> c = za.b(lw.s);
 
-   public static bsl a(duo $$0) {
-      if ($$0.a(dhl.cO) || $$0.a(awt.Q)) {
-         return b;
-      } else if ($$0.a(dhl.ff)) {
-         return c;
-      } else if ($$0.a(dhl.oz) || $$0.a(dhl.oA)) {
-         return d;
-      } else if ($$0.a(dhl.oB) || $$0.a(dhl.oC)) {
-         return e;
-      } else {
-         return $$0.a(dhl.nS) ? f : g;
-      }
+   public bsl(String $$0, bsi $$1, float $$2) {
+      this($$0, $$1, $$2, bsh.a, bsn.a);
    }
 
-   @Nullable
-   public static bsl a(buk $$0) {
-      Optional<je> $$1 = $$0.eL();
-      if ($$1.isPresent()) {
-         duo $$2 = $$0.dS().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.bi() ? h : null;
-      }
+   public bsl(String $$0, bsi $$1, float $$2, bsh $$3) {
+      this($$0, $$1, $$2, $$3, bsn.a);
+   }
+
+   public bsl(String $$0, float $$1, bsh $$2) {
+      this($$0, bsi.b, $$1, $$2);
+   }
+
+   public bsl(String $$0, float $$1) {
+      this($$0, bsi.b, $$1);
    }
 
    public String a() {
-      return "death.fell.accident." + this.i;
+      return this.d;
    }
 
-   public String b() {
-      return this.i;
+   public bsi b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bsh d() {
+      return this.g;
+   }
+
+   public bsn e() {
+      return this.h;
    }
 }

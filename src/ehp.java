@@ -1,20 +1,50 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehp(ehv b, float c) {
-   public static final Codec<ehp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehv.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+public class ehp extends ehk {
+   public static final MapCodec<ehp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bqx.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, ehp::new)
    );
+   private final bqx b;
+   private final int c;
 
-   public ehv a() {
-      return this.b;
+   public ehp(bqx $$0, bqx $$1, bqx $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public float b() {
-      return this.c;
+   @Override
+   protected ehl<?> a() {
+      return ehl.j;
+   }
+
+   @Override
+   protected void a(dep $$0, ehk.b $$1, azn $$2, egu $$3, int $$4, ehk.a $$5, int $$6, int $$7, int $$8) {
+      jf $$9 = $$5.a();
+      jf.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
+   }
+
+   @Override
+   public int a(azn $$0, int $$1, egu $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azn $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

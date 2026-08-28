@@ -1,113 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dop extends djr implements dhm, dol {
-   public static final MapCodec<dop> c = b(dop::new);
-   private static final dvf g = dve.C;
-   public static final dvi d = dve.R;
-   protected static final float e = 6.0F;
-   protected static final ezm f = dhj.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dop extends dgi {
+   public static final MapCodec<dop> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dop.a.b.fieldOf("kind").forGetter(dgi::b), t()).apply($$0, dop::new));
+   public static final int d = dvy.a();
+   private static final int b = d + 1;
+   public static final dvs e = dvi.ba;
+   protected static final ezq f = dhm.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ezq g = dhm.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   public MapCodec<dop> a() {
+   public MapCodec<? extends dop> a() {
       return c;
    }
 
-   public dop(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dvk.b).b(g, Boolean.valueOf(false)).b(d, jj.c));
+   protected dop(dop.a $$0, dur.d $$1) {
+      super($$0, $$1);
+      this.l(this.n().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return f;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return this.b() == dop.b.h ? g : f;
    }
 
    @Override
-   protected boolean b(duo $$0, ddl $$1, je $$2) {
-      return $$0.a(awt.by) || $$1.b_($$2.d()).a(eqq.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      duo $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   protected ezq d_(dus $$0) {
+      return ezn.a();
    }
 
    @Override
-   public void a(deg $$0, je $$1, duo $$2, buk $$3, cvp $$4) {
-      if (!$$0.w_()) {
-         je $$5 = $$1.d();
-         duo $$6 = djr.c($$0, $$5, this.o().b(b, dvk.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
+   public dus a(czn $$0) {
+      return super.a($$0).b(e, Integer.valueOf(dvy.a($$0.i())));
+   }
+
+   @Override
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bab {
+      Map<String, dop.a> a = new Object2ObjectArrayMap();
+      Codec<dop.a> b = Codec.stringResolver(bab::c, a::get);
+   }
+
+   public static enum b implements dop.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(g) ? eqq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      if ($$0.c(b) == dvk.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         je $$3 = $$2.e();
-         duo $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      if ($$3.c(djr.b) == dvk.b) {
-         je $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dhg.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         je $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
-      }
-   }
-
-   @Override
-   protected duo a(duo $$0, dnx $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected duo a(duo $$0, dmg $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float au_() {
-      return 0.1F;
    }
 }

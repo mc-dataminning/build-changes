@@ -1,100 +1,120 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public abstract class fkk extends fkm {
+   private static final ale a = ale.b("widget/slider");
+   private static final ale d = ale.b("widget/slider_highlighted");
+   private static final ale e = ale.b("widget/slider_handle");
+   private static final ale f = ale.b("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
+   private boolean o;
 
-public class fkk extends fkb {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fkk.b q = $$0 -> $$0.get();
-   protected final fkk.c r;
-   protected final fkk.b s;
-
-   public static fkk.a a(xd $$0, fkk.c $$1) {
-      return new fkk.a($$0, $$1);
-   }
-
-   protected fkk(int $$0, int $$1, int $$2, int $$3, xd $$4, fkk.c $$5, fkk.b $$6) {
+   public fkk(int $$0, int $$1, int $$2, int $$3, xe $$4, double $$5) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+      this.c = $$5;
+   }
+
+   private ale c() {
+      return this.aN_() && !this.o ? d : a;
+   }
+
+   private ale e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public void b() {
-      this.r.onPress(this);
+   protected xs aP_() {
+      return xe.a("gui.narrate.slider", this.z());
    }
 
    @Override
-   protected xr aO_() {
-      return this.s.createNarrationMessage(() -> super.aO_());
+   public void a(fol $$0) {
+      $$0.a(fok.a, this.aP_());
+      if (this.j) {
+         if (this.aN_()) {
+            $$0.a(fok.d, xe.c("narration.slider.usage.focused"));
+         } else {
+            $$0.a(fok.d, xe.c("narration.slider.usage.hovered"));
+         }
+      }
    }
 
    @Override
-   public void a(foh $$0) {
-      this.c($$0);
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+      fip $$4 = fip.Q();
+      $$0.a(ghv::B, this.c(), this.D(), this.E(), this.y(), this.w(), axq.a(this.l));
+      $$0.a(ghv::B, this.e(), this.D() + (int)(this.c * (double)(this.g - 8)), this.E(), 8, this.w(), axq.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | azf.f(this.l * 255.0F) << 24);
    }
 
-   public static class a {
-      private final xd a;
-      private final fkk.c b;
-      @Nullable
-      private flv c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fkk.b h = fkk.q;
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
+   }
 
-      public a(xd $$0, fkk.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fkk.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fkk.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fkk.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fkk.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fkk.a a(@Nullable flv $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fkk.a a(fkk.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fkk a() {
-         fkk $$0 = new fkk(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         fim $$1 = fip.Q().aY();
+         if ($$1 == fim.b || $$1 == fim.d) {
+            this.o = true;
+         }
       }
    }
 
-   public interface b {
-      xr createNarrationMessage(Supplier<xr> var1);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (foq.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   public interface c {
-      void onPress(fkk var1);
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.D() + 4)) / (double)(this.g - 8));
    }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = azf.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hcf $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(fip.Q().ak());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

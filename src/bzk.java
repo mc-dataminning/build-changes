@@ -1,40 +1,22 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bzk extends bwc<cnh> {
-   public bzk() {
-      super(ImmutableMap.of());
-   }
+public class bzk {
+   private static final int a = 36;
 
-   protected boolean a(arh $$0, cnh $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
+   public static bwg<bun> a() {
+      return bzs.a(
+         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$0 -> $$0.group($$0.a(cdq.x), $$0.a(cdq.y), $$0.a(cdq.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bun>a($$2).filter($$1xx -> $$1xx.g((btr)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dY().a($$4.ab(), $$4.aa());
+                     }
 
-   protected void b(arh $$0, cnh $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bvl<?> $$3 = $$1.dX();
-         if (!$$3.c(cpm.g)) {
-            $$3.b(cdn.t);
-            $$3.b(cdn.m);
-            $$3.b(cdn.n);
-            $$3.b(cdn.r);
-            $$3.b(cdn.q);
-         }
-
-         $$3.a(cpm.g);
-      }
-   }
-
-   protected void c(arh $$0, cnh $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(buk $$0) {
-      return $$0.dX().a(cdn.A);
-   }
-
-   public static boolean c(buk $$0) {
-      return $$0.dX().a(cdn.x);
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,69 +1,60 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
-public class evi extends euu {
+public class evi extends euy {
    public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(dbk.c, exp.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
+            .and($$0.group(etj.e.fieldOf("component").forGetter($$0x -> $$0x.b), etz.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
             .apply($$0, evi::new)
    );
-   private final Map<jn<dbk>, exo> b;
-   private final boolean c;
+   private final eti<?> b;
+   private final List<eub> c;
 
-   evi(List<ews> $$0, Map<jn<dbk>, exo> $$1, boolean $$2) {
+   evi(List<eww> $$0, eti<?> $$1, List<eub> $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+      this.b = $$1;
+      this.c = List.copyOf($$2);
    }
 
    @Override
-   public euw<evi> b() {
-      return eux.i;
+   public eva<evi> b() {
+      return evb.t;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
-   }
-
-   @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.a(cvt.qQ)) {
-         $$0 = $$0.a((def)cvt.uy);
-         $$0.b(kr.D, $$0.c(kr.k));
+   public cvs a(cvs $$0, etl $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Builder<cvs> $$2 = Stream.builder();
+         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(etq.a($$1.d(), $$2::add), $$1)));
+         this.b.a($$0, $$2.build());
+         return $$0;
       }
-
-      dbm.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jn<dbk>)$$2, azd.a($$1x.a((jn<dbk>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jn<dbk>)$$2, azd.a($$3.a($$1), 0, 255)));
-         }
-      });
-      return $$0;
    }
 
-   public static class a extends euu.a<evi.a> {
-      private final Builder<jn<dbk>, exo> a = ImmutableMap.builder();
-      private final boolean b;
+   @Override
+   public void a(etr $$0) {
+      super.a($$0);
 
-      public a() {
-         this(false);
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
       }
+   }
 
-      public a(boolean $$0) {
+   public static evi.a a(eti<?> $$0) {
+      return new evi.a($$0);
+   }
+
+   public static class a extends euy.a<evi.a> {
+      private final com.google.common.collect.ImmutableList.Builder<eub> a = ImmutableList.builder();
+      private final eti<?> b;
+
+      public a(eti<?> $$0) {
          this.b = $$0;
       }
 
@@ -71,14 +62,14 @@ public class evi extends euu {
          return this;
       }
 
-      public evi.a a(jn<dbk> $$0, exo $$1) {
-         this.a.put($$0, $$1);
+      public evi.a a(eub.a<?> $$0) {
+         this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public euv b() {
-         return new evi(this.g(), this.a.build(), this.b);
+      public euz b() {
+         return new evi(this.g(), this.b, this.a.build());
       }
    }
 }

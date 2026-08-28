@@ -1,18 +1,15 @@
-public interface dan<T extends dah<?>> {
-   dan<czx> a = a("crafting");
-   dan<day> b = a("smelting");
-   dan<czr> c = a("blasting");
-   dan<dbd> d = a("smoking");
-   dan<czt> e = a("campfire_cooking");
-   dan<dbe> f = a("stonecutting");
-   dan<daz> g = a("smithing");
+public interface dan {
+   cvs a(int var1);
 
-   static <T extends dah<?>> dan<T> a(final String $$0) {
-      return ka.a(lu.q, alc.b($$0), new dan<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   int a();
+
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).f()) {
+            return false;
          }
-      });
+      }
+
+      return true;
    }
 }

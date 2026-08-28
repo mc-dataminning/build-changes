@@ -1,150 +1,90 @@
-import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
-import org.slf4j.Logger;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-public class fdb implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final MemoryAllocator b = MemoryUtil.getAllocator(false);
-   private static final int c = 2097152;
-   private static final int d = -1;
-   long e;
-   private int f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
+public class fdb {
+   private int a;
 
-   public fdb(int $$0) {
-      this.f = $$0;
-      this.e = b.malloc((long)$$0);
-      if (this.e == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      }
-   }
-
-   public long a(int $$0) {
-      int $$1 = this.g;
-      int $$2 = $$1 + $$0;
-      this.b($$2);
-      this.g = $$2;
-      return this.e + (long)$$1;
-   }
-
-   private void b(int $$0) {
-      if ($$0 > this.f) {
-         int $$1 = Math.min(this.f, 2097152);
-         int $$2 = Math.max(this.f + $$1, $$0);
-         this.c($$2);
-      }
-   }
-
-   private void c(int $$0) {
-      this.e = b.realloc(this.e, (long)$$0);
-      a.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.f, $$0);
-      if (this.e == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.f + " bytes to " + $$0 + " bytes");
-      } else {
-         this.f = $$0;
-      }
-   }
-
-   @Nullable
-   public fdb.a a() {
-      this.f();
-      int $$0 = this.h;
-      int $$1 = this.g - $$0;
-      if ($$1 == 0) {
-         return null;
-      } else {
-         this.h = this.g;
-         this.i++;
-         return new fdb.a($$0, $$1, this.j);
-      }
+   public static Optional<fdb> a() {
+      return fdb.b.a;
    }
 
    public void b() {
-      if (this.i > 0) {
-         a.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.c();
-   }
-
-   public void c() {
-      this.f();
-      if (this.i > 0) {
-         this.e();
-         this.i = 0;
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
       }
    }
 
-   boolean d(int $$0) {
-      return $$0 == this.j;
-   }
-
-   void d() {
-      if (--this.i <= 0) {
-         this.e();
+   public fdb.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         fdb.a $$0 = new fdb.a(this.a);
+         this.a = 0;
+         return $$0;
       }
    }
 
-   private void e() {
-      int $$0 = this.g - this.h;
-      if ($$0 > 0) {
-         MemoryUtil.memCopy(this.e + (long)this.h, this.e, (long)$$0);
-      }
-
-      this.g = $$0;
-      this.h = 0;
-      this.j++;
-   }
-
-   @Override
-   public void close() {
-      if (this.e != 0L) {
-         b.free(this.e);
-         this.e = 0L;
-         this.j = -1;
-      }
-   }
-
-   private void f() {
-      if (this.e == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
-   }
-
-   public class a implements AutoCloseable {
-      private final int b;
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
       private final int c;
-      private final int d;
-      private boolean e;
+      private long d;
 
-      a(final int $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      a(int $$0) {
+         this.c = $$0;
       }
 
-      public ByteBuffer a() {
-         if (!fdb.this.d(this.d)) {
-            throw new IllegalStateException("Buffer is no longer valid");
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
          } else {
-            return MemoryUtil.memByteBuffer(fdb.this.e + (long)this.b, this.c);
+            return false;
          }
       }
 
-      @Override
-      public void close() {
-         if (!this.e) {
-            this.e = true;
-            if (fdb.this.d(this.d)) {
-               fdb.this.d();
-            }
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
          }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<fdb> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static fdb a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fdb();
       }
    }
 }

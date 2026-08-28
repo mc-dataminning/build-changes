@@ -1,4 +1,8 @@
-public class gul extends gtl {
+import javax.annotation.Nullable;
+
+public class gul extends gtq {
    public float a;
-   public float b;
+   @Nullable
+   public gzi b;
+   public cvs c = cvs.k;
 }

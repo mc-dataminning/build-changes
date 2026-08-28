@@ -1,95 +1,88 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ctn extends cuf {
-   protected static final Map<dhj, dhj> a = new Builder()
-      .put(dhl.ao, dhl.aw)
-      .put(dhl.U, dhl.al)
-      .put(dhl.au, dhl.aC)
-      .put(dhl.aa, dhl.ak)
-      .put(dhl.as, dhl.aA)
-      .put(dhl.Y, dhl.ai)
-      .put(dhl.at, dhl.aB)
-      .put(dhl.Z, dhl.aj)
-      .put(dhl.aq, dhl.ay)
-      .put(dhl.W, dhl.ag)
-      .put(dhl.ar, dhl.az)
-      .put(dhl.X, dhl.ah)
-      .put(dhl.ap, dhl.ax)
-      .put(dhl.V, dhl.af)
-      .put(dhl.oj, dhl.ok)
-      .put(dhl.ol, dhl.om)
-      .put(dhl.os, dhl.ot)
-      .put(dhl.ou, dhl.ov)
-      .put(dhl.av, dhl.aD)
-      .put(dhl.ab, dhl.am)
-      .put(dhl.ae, dhl.an)
-      .build();
+public class ctn {
+   static int a = 15;
+   static int b = 12;
+   static int c = 9;
+   static int d = 25;
+   static int e = 10;
+   static int f = 9;
+   static int g = 15;
+   public static final jo<ctm> h = a("leather", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 1);
+      $$0.put(ctl.a.c, 2);
+      $$0.put(ctl.a.b, 3);
+      $$0.put(ctl.a.a, 1);
+      $$0.put(ctl.a.e, 3);
+   }), awg.av, 0.0F, 0.0F, $$0 -> $$0.a(cvw.qE), List.of(new ctm.a(ale.b("leather"), "", true), new ctm.a(ale.b("leather"), "_overlay", false)));
+   public static final jo<ctm> i = a("chainmail", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 1);
+      $$0.put(ctl.a.c, 4);
+      $$0.put(ctl.a.b, 5);
+      $$0.put(ctl.a.a, 2);
+      $$0.put(ctl.a.e, 4);
+   }), awg.ap, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oG));
+   public static final jo<ctm> j = a("iron", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 2);
+      $$0.put(ctl.a.c, 5);
+      $$0.put(ctl.a.b, 6);
+      $$0.put(ctl.a.a, 2);
+      $$0.put(ctl.a.e, 5);
+   }), awg.au, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oG));
+   public static final jo<ctm> k = a("gold", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 1);
+      $$0.put(ctl.a.c, 3);
+      $$0.put(ctl.a.b, 5);
+      $$0.put(ctl.a.a, 2);
+      $$0.put(ctl.a.e, 7);
+   }), awg.at, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oK));
+   public static final jo<ctm> l = a("diamond", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 3);
+      $$0.put(ctl.a.c, 6);
+      $$0.put(ctl.a.b, 8);
+      $$0.put(ctl.a.a, 3);
+      $$0.put(ctl.a.e, 11);
+   }), awg.aq, 2.0F, 0.0F, $$0 -> $$0.a(cvw.oA));
+   public static final jo<ctm> m = a("turtle", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 2);
+      $$0.put(ctl.a.c, 5);
+      $$0.put(ctl.a.b, 6);
+      $$0.put(ctl.a.a, 2);
+      $$0.put(ctl.a.e, 5);
+   }), awg.ax, 0.0F, 0.0F, $$0 -> $$0.a(cvw.oq));
+   public static final jo<ctm> n = a("netherite", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 3);
+      $$0.put(ctl.a.c, 6);
+      $$0.put(ctl.a.b, 8);
+      $$0.put(ctl.a.a, 3);
+      $$0.put(ctl.a.e, 11);
+   }), awg.aw, 3.0F, 0.1F, $$0 -> $$0.a(cvw.oL));
+   public static final jo<ctm> o = a("armadillo", ad.a(new EnumMap<>(ctl.a.class), $$0 -> {
+      $$0.put(ctl.a.d, 3);
+      $$0.put(ctl.a.c, 6);
+      $$0.put(ctl.a.b, 8);
+      $$0.put(ctl.a.a, 3);
+      $$0.put(ctl.a.e, 11);
+   }), awg.ay, 0.0F, 0.0F, $$0 -> $$0.a(cvw.or));
 
-   public ctn(cxg $$0, float $$1, float $$2, cvk.a $$3) {
-      super($$0, awt.bB, $$1, $$2, $$3);
+   public static jo<ctm> a(kb<ctm> $$0) {
+      return h;
    }
 
-   @Override
-   public brp a(czm $$0) {
-      deg $$1 = $$0.q();
-      je $$2 = $$0.a();
-      cnu $$3 = $$0.o();
-      if (b($$0)) {
-         return brp.e;
-      } else {
-         Optional<duo> $$4 = this.a($$1, $$2, $$3, $$1.a_($$2));
-         if ($$4.isEmpty()) {
-            return brp.e;
-         } else {
-            cvp $$5 = $$0.n();
-            if ($$3 instanceof ari) {
-               an.N.a((ari)$$3, $$2, $$5);
-            }
+   private static jo<ctm> a(String $$0, EnumMap<ctl.a, Integer> $$1, jo<awf> $$2, float $$3, float $$4, Predicate<cvs> $$5) {
+      List<ctm.a> $$6 = List.of(new ctm.a(ale.b($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-            $$1.a($$2, $$4.get(), 11);
-            $$1.a(dzl.c, $$2, dzl.a.a($$3, $$4.get()));
-            if ($$3 != null) {
-               $$5.a(1, $$3, buk.d($$0.p()));
-            }
+   private static jo<ctm> a(String $$0, EnumMap<ctl.a, Integer> $$1, jo<awf> $$2, float $$3, float $$4, Predicate<cvs> $$5, List<ctm.a> $$6) {
+      EnumMap<ctl.a, Integer> $$7 = new EnumMap<>(ctl.a.class);
 
-            return brp.a;
-         }
+      for (ctl.a $$8 : ctl.a.values()) {
+         $$7.put($$8, $$1.get($$8));
       }
-   }
 
-   private static boolean b(czm $$0) {
-      cnu $$1 = $$0.o();
-      return $$0.p().equals(bro.a) && $$1.eX().a(cvt.vu) && !$$1.fS();
-   }
-
-   private Optional<duo> a(deg $$0, je $$1, @Nullable cnu $$2, duo $$3) {
-      Optional<duo> $$4 = this.a($$3);
-      if ($$4.isPresent()) {
-         $$0.a($$2, $$1, awe.aH, awf.e, 1.0F, 1.0F);
-         return $$4;
-      } else {
-         Optional<duo> $$5 = dqp.b($$3);
-         if ($$5.isPresent()) {
-            $$0.a($$2, $$1, awe.aI, awf.e, 1.0F, 1.0F);
-            $$0.a($$2, 3005, $$1, 0);
-            return $$5;
-         } else {
-            Optional<duo> $$6 = Optional.ofNullable((dhj)cvf.b.get().get($$3.b())).map($$1x -> $$1x.m($$3));
-            if ($$6.isPresent()) {
-               $$0.a($$2, $$1, awe.aJ, awf.e, 1.0F, 1.0F);
-               $$0.a($$2, 3004, $$1, 0);
-               return $$6;
-            } else {
-               return Optional.empty();
-            }
-         }
-      }
-   }
-
-   private Optional<duo> a(duo $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.o().b(dnw.i, $$0.c(dnw.i)));
+      return kb.b(lv.ao, ale.b($$0), new ctm($$7, $$2, $$5, $$6, $$3, $$4));
    }
 }

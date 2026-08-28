@@ -1,72 +1,130 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dig extends dky implements dif {
-   public static final MapCodec<dig> c = b(dig::new);
-   private static final float g = 0.11F;
-
-   @Override
-   public MapCodec<dig> a() {
-      return c;
-   }
-
-   public dig(dun.d $$0) {
-      super($$0, jj.a, u_, false, 0.1);
-      this.l(this.F.b().b(e, Integer.valueOf(0)).b(v_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected int a(azl $$0) {
-      return 1;
-   }
+public class dig extends dli {
+   public static final MapCodec<dig> a = b(dig::new);
+   public static final dvm b = dli.aF;
+   @Nullable
+   private dux c;
+   @Nullable
+   private dux d;
+   @Nullable
+   private dux e;
+   @Nullable
+   private dux f;
+   private static final Predicate<dus> g = $$0 -> $$0 != null && ($$0.a(dho.ee) || $$0.a(dho.ef));
 
    @Override
-   protected boolean h(duo $$0) {
-      return $$0.l();
+   public MapCodec<? extends dig> a() {
+      return a;
    }
 
-   @Override
-   protected dhj b() {
-      return dhl.sw;
+   protected dig(dur.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jk.c));
    }
 
    @Override
-   protected duo a(duo $$0, duo $$1) {
-      return $$1.b(v_, $$0.c(v_));
+   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public boolean a(dem $$0, jf $$1) {
+      return this.b().a($$0, $$1) != null || this.y().a($$0, $$1) != null;
+   }
+
+   private void a(dej $$0, jf $$1) {
+      dux.b $$2 = this.l().a($$0, $$1);
+      if ($$2 != null) {
+         chb $$3 = bty.aS.a($$0, btx.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dux.b $$4 = this.z().a($$0, $$1);
+         if ($$4 != null) {
+            cgp $$5 = bty.af.a($$0, btx.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+            }
+         }
+      }
+   }
+
+   private static void a(dej $$0, dux.b $$1, btr $$2, jf $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (ark $$4 : $$0.a(ark.class, $$2.cO().g(5.0))) {
+         an.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dej $$0, dux.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            duw $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), dho.a.n(), 2);
+            $$0.c(2001, $$4.d(), dhm.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dej $$0, dux.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            duw $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), dho.a);
+         }
+      }
    }
 
    @Override
-   protected duo a(duo $$0, azl $$1) {
-      return super.a($$0, $$1).b(v_, Boolean.valueOf($$1.i() < 0.11F));
+   public dus a(czn $$0) {
+      return this.n().b(b, $$0.g().g());
    }
 
    @Override
-   public cvp a(dej $$0, je $$1, duo $$2) {
-      return new cvp(cvt.wy);
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      return dif.a($$3, $$0, $$1, $$2);
+   private dux b() {
+      if (this.c == null) {
+         this.c = duy.a().a(" ", "#", "#").a('#', duw.a(dvb.a(dho.dP))).b();
+      }
+
+      return this.c;
    }
 
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      super.a($$0);
-      $$0.a(v_);
+   private dux l() {
+      if (this.d == null) {
+         this.d = duy.a().a("^", "#", "#").a('^', duw.a(g)).a('#', duw.a(dvb.a(dho.dP))).b();
+      }
+
+      return this.d;
    }
 
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return !$$2.c(v_);
+   private dux y() {
+      if (this.e == null) {
+         this.e = duy.a().a("~ ~", "###", "~#~").a('#', duw.a(dvb.a(dho.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
    }
 
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
+   private dux z() {
+      if (this.f == null) {
+         this.f = duy.a().a("~^~", "###", "~#~").a('^', duw.a(g)).a('#', duw.a(dvb.a(dho.ci))).a('~', $$0 -> $$0.a().l()).b();
+      }
 
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      $$0.a($$2, $$3.b(v_, Boolean.valueOf(true)), 2);
+      return this.f;
    }
 }

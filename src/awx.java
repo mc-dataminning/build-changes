@@ -1,40 +1,40 @@
 public interface awx {
-   axj<btv<?>> a = a("skeletons");
-   axj<btv<?>> b = a("zombies");
-   axj<btv<?>> c = a("raiders");
-   axj<btv<?>> d = a("undead");
-   axj<btv<?>> e = a("beehive_inhabitors");
-   axj<btv<?>> f = a("arrows");
-   axj<btv<?>> g = a("impact_projectiles");
-   axj<btv<?>> h = a("powder_snow_walkable_mobs");
-   axj<btv<?>> i = a("axolotl_always_hostiles");
-   axj<btv<?>> j = a("axolotl_hunt_targets");
-   axj<btv<?>> k = a("freeze_immune_entity_types");
-   axj<btv<?>> l = a("freeze_hurts_extra_types");
-   axj<btv<?>> m = a("can_breathe_under_water");
-   axj<btv<?>> n = a("frog_food");
-   axj<btv<?>> o = a("fall_damage_immune");
-   axj<btv<?>> p = a("dismounts_underwater");
-   axj<btv<?>> q = a("non_controlling_rider");
-   axj<btv<?>> r = a("deflects_projectiles");
-   axj<btv<?>> s = a("can_turn_in_boats");
-   axj<btv<?>> t = a("illager");
-   axj<btv<?>> u = a("aquatic");
-   axj<btv<?>> v = a("arthropod");
-   axj<btv<?>> w = a("ignores_poison_and_regen");
-   axj<btv<?>> x = a("inverted_healing_and_harm");
-   axj<btv<?>> y = a("wither_friends");
-   axj<btv<?>> z = a("illager_friends");
-   axj<btv<?>> A = a("not_scary_for_pufferfish");
-   axj<btv<?>> B = a("sensitive_to_impaling");
-   axj<btv<?>> C = a("sensitive_to_bane_of_arthropods");
-   axj<btv<?>> D = a("sensitive_to_smite");
-   axj<btv<?>> E = a("no_anger_from_wind_charge");
-   axj<btv<?>> F = a("immune_to_oozing");
-   axj<btv<?>> G = a("immune_to_infested");
-   axj<btv<?>> H = a("redirectable_projectile");
+   axl<bsl> a = a("damages_helmet");
+   axl<bsl> b = a("bypasses_armor");
+   axl<bsl> c = a("bypasses_shield");
+   axl<bsl> d = a("bypasses_invulnerability");
+   axl<bsl> e = a("bypasses_cooldown");
+   axl<bsl> f = a("bypasses_effects");
+   axl<bsl> g = a("bypasses_resistance");
+   axl<bsl> h = a("bypasses_enchantments");
+   axl<bsl> i = a("is_fire");
+   axl<bsl> j = a("is_projectile");
+   axl<bsl> k = a("witch_resistant_to");
+   axl<bsl> l = a("is_explosion");
+   axl<bsl> m = a("is_fall");
+   axl<bsl> n = a("is_drowning");
+   axl<bsl> o = a("is_freezing");
+   axl<bsl> p = a("is_lightning");
+   axl<bsl> q = a("no_anger");
+   axl<bsl> r = a("no_impact");
+   axl<bsl> s = a("always_most_significant_fall");
+   axl<bsl> t = a("wither_immune_to");
+   axl<bsl> u = a("ignites_armor_stands");
+   axl<bsl> v = a("burns_armor_stands");
+   axl<bsl> w = a("avoids_guardian_thorns");
+   axl<bsl> x = a("always_triggers_silverfish");
+   axl<bsl> y = a("always_hurts_ender_dragons");
+   axl<bsl> z = a("no_knockback");
+   axl<bsl> A = a("always_kills_armor_stands");
+   axl<bsl> B = a("can_break_armor_stand");
+   axl<bsl> C = a("bypasses_wolf_armor");
+   axl<bsl> D = a("is_player_attack");
+   axl<bsl> E = a("burn_from_stepping");
+   axl<bsl> F = a("panic_causes");
+   axl<bsl> G = a("panic_environmental_causes");
+   axl<bsl> H = a("mace_smash");
 
-   private static axj<btv<?>> a(String $$0) {
-      return axj.a(lv.z, alc.b($$0));
+   private static axl<bsl> a(String $$0) {
+      return axl.a(lw.s, ale.b($$0));
    }
 }

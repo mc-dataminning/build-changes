@@ -1,36 +1,69 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
+import java.util.List;
 
-public class ael implements zk<abz> {
-   public static final zb<wa, ael> a = zk.a(ael::a, ael::new);
-   private final IntList b;
+public class ael implements zl<aca> {
+   public static final zc<wb, ael> a = zl.a(ael::a, ael::new);
+   private final ael.a b;
+   private final List<ale> c;
+   private final List<ale> d;
+   private final awk e;
 
-   public ael(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public ael(ael.a $$0, Collection<ale> $$1, Collection<ale> $$2, awk $$3) {
+      this.b = $$0;
+      this.c = ImmutableList.copyOf($$1);
+      this.d = ImmutableList.copyOf($$2);
+      this.e = $$3;
    }
 
-   public ael(int... $$0) {
-      this.b = new IntArrayList($$0);
+   private ael(wb $$0) {
+      this.b = $$0.b(ael.a.class);
+      this.e = awk.a($$0);
+      this.c = $$0.a(wb::q);
+      if (this.b == ael.a.a) {
+         this.d = $$0.a(wb::q);
+      } else {
+         this.d = ImmutableList.of();
+      }
    }
 
-   private ael(wa $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.a(this.b);
+      this.e.b($$0);
+      $$0.a(this.c, wb::a);
+      if (this.b == ael.a.a) {
+         $$0.a(this.d, wb::a);
+      }
    }
 
    @Override
-   public zm<ael> a() {
-      return ago.ak;
+   public zn<ael> a() {
+      return agp.aj;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public List<ale> b() {
+      return this.c;
+   }
+
+   public List<ale> e() {
+      return this.d;
+   }
+
+   public awk f() {
+      return this.e;
+   }
+
+   public ael.a g() {
       return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

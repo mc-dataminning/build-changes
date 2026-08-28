@@ -1,16 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record cyt(alb<etm> b, long c) {
-   public static final Codec<cyt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alb.a(lv.bd).fieldOf("loot_table").forGetter(cyt::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(cyt::b)).apply($$0, cyt::new)
-   );
+public enum cyt {
+   a(0),
+   b(1);
 
-   public alb<etm> a() {
-      return this.b;
+   public static final IntFunction<cyt> c = axw.a(cyt::a, values(), axw.a.a);
+   public static final zc<ByteBuf, cyt> d = za.a(c, cyt::a);
+   private final int e;
+
+   private cyt(final int $$0) {
+      this.e = $$0;
    }
 
-   public long b() {
-      return this.c;
+   public int a() {
+      return this.e;
    }
 }

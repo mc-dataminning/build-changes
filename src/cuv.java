@@ -1,67 +1,48 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class cuv extends cvk implements cwk {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+public interface cuv {
+   btz l();
 
-   public cuv(cvk.a $$0) {
-      super($$0);
+   default jo<awf> m() {
+      return awg.as;
    }
 
-   @Override
-   public brp a(czm $$0) {
-      deg $$1 = $$0.q();
-      if ($$1 instanceof arh $$2) {
-         cvp $$3 = $$0.n();
-         eys $$4 = $$0.l();
-         jj $$5 = $$0.k();
-         coo.a(new coi($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
+   default brs a(cvn $$0, dej $$1, cnx $$2, brr $$3) {
+      cvs $$4 = $$2.b($$3);
+      btz $$5 = $$2.g($$4);
+      if (!$$2.e($$5)) {
+         return brs.e;
+      } else {
+         cvs $$6 = $$2.a($$5);
+         if ((!dbp.a($$6, dbo.E) || $$2.f()) && !cvs.a($$4, $$6)) {
+            if (!$$1.x_()) {
+               $$2.b(awq.c.b($$0));
+            }
+
+            cvs $$7 = $$6.f() ? $$4 : $$6.g();
+            cvs $$8 = $$2.f() ? $$4.u() : $$4.g();
+            $$2.a($$5, $$8);
+            return brs.a.a($$7);
+         } else {
+            return brs.d;
+         }
       }
-
-      return brp.a;
    }
 
-   @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      if ($$1.fF()) {
-         cvp $$3 = $$1.b($$2);
-         if ($$0 instanceof arh $$4) {
-            coo.a(new coi($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awo.c.b(this));
+   @Nullable
+   static cuv c_(cvs $$0) {
+      cvn $$3 = $$0.h();
+      if ($$3 instanceof cuv) {
+         return (cuv)$$3;
+      } else {
+         if ($$0.h() instanceof ctu $$2) {
+            dhm var6 = $$2.d();
+            if (var6 instanceof cuv) {
+               return (cuv)var6;
+            }
          }
 
-         return brp.a;
-      } else {
-         return brp.e;
+         return null;
       }
-   }
-
-   @Override
-   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
-      cyj $$4 = $$0.a(kr.aa);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
-   }
-
-   @Override
-   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
-      return new coi($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
-   }
-
-   @Override
-   public cwk.a c() {
-      return cwk.a.a().a(cuv::a).a(1.0F).b(0.5F).a(1004).a();
-   }
-
-   private static eys a(kv $$0, jj $$1) {
-      return $$0.a()
-         .b(
-            (double)$$1.j() * (0.5000099999997474 - (double)btv.P.l() / 2.0),
-            (double)$$1.k() * (0.5000099999997474 - (double)btv.P.m() / 2.0) - (double)btv.P.m() / 2.0,
-            (double)$$1.l() * (0.5000099999997474 - (double)btv.P.l() / 2.0)
-         );
    }
 }

@@ -1,3 +1,8 @@
-public interface fag<T> extends fam<T> {
-   boolean b(je var1, T var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fag {
 }

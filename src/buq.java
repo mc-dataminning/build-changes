@@ -1,144 +1,57 @@
-public class buq extends bto {
-   private static final int c = 60;
-   private static final int d = 120;
-   private static final String e = "spawn_item_after_ticks";
-   private static final String f = "item";
-   private static final akg<cvp> g = akk.a(buq.class, aki.h);
-   public static final int b = 36;
-   private long h;
+import com.mojang.serialization.Codec;
 
-   public buq(btv<? extends buq> $$0, deg $$1) {
-      super($$0, $$1);
-      this.ae = true;
+public enum buq implements bab {
+   a("monster", 70, false, false, 128),
+   b("creature", 10, true, true, 128),
+   c("ambient", 15, true, false, 128),
+   d("axolotls", 5, true, false, 128),
+   e("underground_water_creature", 5, true, false, 128),
+   f("water_creature", 5, true, false, 128),
+   g("water_ambient", 20, true, false, 64),
+   h("misc", -1, true, true, 128);
+
+   public static final Codec<buq> i = bab.a(buq::values);
+   private final int j;
+   private final boolean k;
+   private final boolean l;
+   private final String m;
+   private final int n = 32;
+   private final int o;
+
+   private buq(final String $$0, final int $$1, final boolean $$2, final boolean $$3, final int $$4) {
+      this.m = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.o = $$4;
    }
 
-   public static buq a(deg $$0, cvp $$1) {
-      buq $$2 = new buq(btv.aj, $$0);
-      $$2.h = (long)$$0.z.a(60, 120);
-      $$2.a($$1);
-      return $$2;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dS().B) {
-         this.t();
-      } else {
-         this.q();
-      }
-   }
-
-   private void q() {
-      if ((long)this.ag == this.h - 36L) {
-         this.dS().a(null, this.ds(), awe.me, awf.g);
-      }
-
-      if ((long)this.ag >= this.h) {
-         this.v();
-         this.ar();
-      }
-   }
-
-   private void t() {
-      if (this.dS().aa() % 5L == 0L) {
-         this.m();
-      }
-   }
-
-   private void v() {
-      if (this.dS() instanceof arh $$0) {
-         cvp $$2 = this.o();
-         if (!$$2.f()) {
-            bto $$4;
-            if ($$2.h() instanceof cwk $$3) {
-               $$4 = this.a($$0, $$3, $$2);
-            } else {
-               $$4 = new cke($$0, this.dx(), this.dz(), this.dD(), $$2);
-               $$0.b($$4);
-            }
-
-            $$0.c(3021, this.ds(), 1);
-            $$0.a($$4, dzl.t, this.dq());
-            this.a(cvp.k);
-         }
-      }
-   }
-
-   private bto a(arh $$0, cwk $$1, cvp $$2) {
-      cwk.a $$3 = $$1.c();
-      $$3.e().ifPresent($$1x -> $$0.c($$1x, this.ds(), 0));
-      jj $$4 = jj.a;
-      coo $$5 = coo.a($$1.a($$0, this.dq(), $$2, $$4), $$0, $$2, (double)$$4.j(), (double)$$4.k(), (double)$$4.l(), $$3.d(), $$3.c());
-      $$5.c(this);
-      return $$5;
+   public String a() {
+      return this.m;
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      $$0.a(g, cvp.k);
+   public String c() {
+      return this.m;
    }
 
-   @Override
-   protected void a(uf $$0) {
-      cvp $$1 = $$0.b("item", 10) ? cvp.a(this.dU(), (vc)$$0.p("item")).orElse(cvp.k) : cvp.k;
-      this.a($$1);
-      this.h = $$0.i("spawn_item_after_ticks");
+   public int b() {
+      return this.j;
    }
 
-   @Override
-   protected void b(uf $$0) {
-      if (!this.o().f()) {
-         $$0.a("item", this.o().a(this.dU()).d());
-      }
-
-      $$0.a("spawn_item_after_ticks", this.h);
+   public boolean d() {
+      return this.k;
    }
 
-   @Override
-   protected boolean r(bto $$0) {
-      return false;
+   public boolean e() {
+      return this.l;
    }
 
-   @Override
-   protected boolean bO() {
-      return false;
+   public int f() {
+      return this.o;
    }
 
-   @Override
-   protected void p(bto $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public equ j_() {
-      return equ.d;
-   }
-
-   @Override
-   public boolean q_() {
-      return true;
-   }
-
-   public void m() {
-      eys $$0 = this.dq();
-      int $$1 = this.af.a(1, 3);
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         double $$3 = 0.4;
-         eys $$4 = new eys(
-            this.dx() + 0.4 * (this.af.k() - this.af.k()), this.dz() + 0.4 * (this.af.k() - this.af.k()), this.dD() + 0.4 * (this.af.k() - this.af.k())
-         );
-         eys $$5 = $$0.a($$4);
-         this.dS().a(ln.bc, $$0.a(), $$0.b(), $$0.c(), $$5.a(), $$5.b(), $$5.c());
-      }
-   }
-
-   public cvp o() {
-      return this.at().a(g);
-   }
-
-   private void a(cvp $$0) {
-      this.at().a(g, $$0);
+   public int g() {
+      return 32;
    }
 }

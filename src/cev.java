@@ -1,47 +1,37 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class cev extends cet<bus> {
-   private static final cfa a = cfa.b().d();
-   private final Predicate<cvp> b;
+public class cev {
+   private final bup a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   public cev(Predicate<cvp> $$0) {
-      this.b = $$0;
+   public cev(bup $$0) {
+      this.a = $$0;
    }
 
-   protected void a(arh $$0, bus $$1) {
-      bvl<?> $$2 = $$1.dX();
-      cfa $$3 = a.c().a((double)((float)$$1.h(bvr.E)));
-      List<cnu> $$4 = $$0.x()
-         .stream()
-         .filter(btt.f)
-         .filter($$2x -> $$3.a($$1, $$2x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         cnu $$5 = $$4.get(0);
-         $$2.a(cdn.O, $$5);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   public boolean a(btr $$0) {
+      int $$1 = $$0.ap();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
       } else {
-         $$2.b(cdn.O);
+         this.a.dS().ah().a("hasLineOfSight");
+         boolean $$2 = this.a.G($$0);
+         this.a.dS().ah().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
+
+         return $$2;
       }
-   }
-
-   private boolean a(cnu $$0) {
-      return this.a($$0.eW()) || this.a($$0.eX());
-   }
-
-   private boolean a(cvp $$0) {
-      return this.b.test($$0);
-   }
-
-   @Override
-   public Set<cdn<?>> a() {
-      return ImmutableSet.of(cdn.O);
    }
 }

@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.function.Function;
 
-public abstract class cn implements dw<dbq> {
+public abstract class cn implements dx<dbt> {
    private final List<bq> a;
 
    protected cn(List<bq> $$0) {
@@ -17,7 +17,7 @@ public abstract class cn implements dw<dbq> {
       return this.a;
    }
 
-   public boolean a(cvp $$0, dbq $$1) {
+   public boolean a(cvs $$0, dbt $$1) {
       for (bq $$2 : this.a) {
          if (!$$2.a($$1)) {
             return false;
@@ -43,8 +43,8 @@ public abstract class cn implements dw<dbq> {
       }
 
       @Override
-      public kq<dbq> a() {
-         return kr.k;
+      public kr<dbt> a() {
+         return ks.k;
       }
    }
 
@@ -56,8 +56,8 @@ public abstract class cn implements dw<dbq> {
       }
 
       @Override
-      public kq<dbq> a() {
-         return kr.D;
+      public kr<dbt> a() {
+         return ks.D;
       }
    }
 }

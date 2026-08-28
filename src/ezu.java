@@ -1,81 +1,34 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ezu implements ezt {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private xd g;
-   @Nullable
-   private yt h;
-
-   @Override
-   public int a() {
-      return this.e;
+public record ezu(String a, int b, @Nullable xe c, @Nullable yu d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   public void a(int $$0) {
-      this.e = $$0;
+   public xe b() {
+      return (xe)(this.c != null ? this.c : xe.b(this.c()));
    }
 
-   @Override
-   public boolean b() {
-      return this.f;
+   public xs a(yu $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
    }
 
-   public void a(boolean $$0) {
-      this.f = $$0;
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 
    @Nullable
-   public xd d() {
-      return this.g;
-   }
-
-   public void a(@Nullable xd $$0) {
-      this.g = $$0;
+   public xe e() {
+      return this.c;
    }
 
    @Nullable
-   @Override
-   public yt c() {
-      return this.h;
-   }
-
-   public void b(@Nullable yt $$0) {
-      this.h = $$0;
-   }
-
-   public uf a(jp.a $$0) {
-      uf $$1 = new uf();
-      $$1.a("Score", this.e);
-      $$1.a("Locked", this.f);
-      if (this.g != null) {
-         $$1.a("display", xd.a.a(this.g, $$0));
-      }
-
-      if (this.h != null) {
-         yv.b.encodeStart($$0.a(ut.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
-      }
-
-      return $$1;
-   }
-
-   public static ezu a(uf $$0, jp.a $$1) {
-      ezu $$2 = new ezu();
-      $$2.e = $$0.h("Score");
-      $$2.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$2.g = xd.a.a($$0.l("display"), $$1);
-      }
-
-      if ($$0.b("format", 10)) {
-         yv.b.parse($$1.a(ut.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
-      }
-
-      return $$2;
+   public yu f() {
+      return this.d;
    }
 }

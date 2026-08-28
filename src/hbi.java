@@ -1,37 +1,36 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class hbi extends avh {
-   @Nullable
-   private uf h;
+public class hbi<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public hbi(hbj $$0, ju<all> $$1, esy $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public hbi(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   @Override
-   protected void b(ari $$0) {
-      if (this.b().a($$0.gb())) {
-         this.h = $$0.f(new uf());
+   protected T computeNext() {
+      boolean $$0 = !this.a.hasNext();
+      boolean $$1 = !this.b.hasNext();
+      if ($$0 && $$1) {
+         return (T)this.endOfData();
+      } else if ($$0) {
+         return (T)this.b.next();
+      } else if ($$1) {
+         return (T)this.a.next();
+      } else {
+         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$2 == 0) {
+            this.b.next();
+         }
+
+         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public xd a(SocketAddress $$0, GameProfile $$1) {
-      return (xd)(this.b().a($$1) && this.a($$1.getName()) != null ? xd.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public hbj b() {
-      return (hbj)super.c();
-   }
-
-   @Nullable
-   @Override
-   public uf r() {
-      return this.h;
    }
 }

@@ -1,62 +1,64 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cas extends cbh {
-   private final bus a;
+public class cas extends cbk {
+   private final chg a;
+   @Nullable
+   private cnx b;
+   private final dej c;
+   private final float d;
+   private int e;
+   private final cfd f;
 
-   public cas(bus $$0) {
+   public cas(chg $$0, float $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(cbh.a.a, cbh.a.b));
+      this.c = $$0.dS();
+      this.d = $$1;
+      this.f = cfd.b().a((double)$$1);
+      this.a(EnumSet.of(cbk.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.cq() < 140;
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
    public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean S_() {
-      return false;
+      if (!this.b.bI()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void d() {
-      this.h();
+      this.a.A(true);
+      this.e = this.a(40 + this.a.dV().a(40));
    }
 
-   private void h() {
-      Iterable<je> $$0 = je.b(
-         azd.a(this.a.dx() - 1.0), this.a.dy(), azd.a(this.a.dD() - 1.0), azd.a(this.a.dx() + 1.0), azd.a(this.a.dz() + 8.0), azd.a(this.a.dD() + 1.0)
-      );
-      je $$1 = null;
-
-      for (je $$2 : $$0) {
-         if (this.a(this.a.dS(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = je.a(this.a.dx(), this.a.dz() + 8.0, this.a.dD());
-      }
-
-      this.a.P().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void e() {
+      this.a.A(false);
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.h();
-      this.a.a(0.02F, new eys((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
-      this.a.a(buo.a, this.a.dv());
+      this.a.K().a(this.b.dx(), this.b.dB(), this.b.dD(), 10.0F, (float)this.a.ad());
+      this.e--;
    }
 
-   private boolean a(dej $$0, je $$1) {
-      duo $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dhl.nd)) && $$2.a(ere.a);
+   private boolean a(cnx $$0) {
+      for (brr $$1 : brr.values()) {
+         cvs $$2 = $$0.b($$1);
+         if ($$2.a(cvw.rA) || this.a.n($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

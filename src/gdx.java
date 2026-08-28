@@ -1,79 +1,21 @@
-import javax.annotation.Nullable;
-
-public class gdx extends gfo {
-   private final float a;
-   private final gfj b;
-
-   gdx(gbh $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gfj $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+public class gdx extends gdy<lj> {
+   protected gdx(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lj $$7, gfo $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.b().x(), $$9);
+      this.w = this.a($$7.b().y(), $$9);
+      this.x = this.a($$7.b().z(), $$9);
    }
 
-   @Override
-   public ges b() {
-      return ges.b;
-   }
+   public static class a implements gew<lj> {
+      private final gfo a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azd.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements ger<lf> {
-      private final gfj a;
-
-      public a(gfj $$0) {
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public geo a(lf $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         duo $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dnq.a) {
-            return null;
-         } else {
-            je $$9 = je.a($$2, $$3, $$4);
-            int $$10 = fil.Q().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof dkf) {
-               $$10 = ((dkf)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gdx($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      public get a(lj $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdx($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

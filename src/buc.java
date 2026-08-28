@@ -1,91 +1,61 @@
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class buc extends cgz {
-   private static final akg<Integer> cg = akk.a(buc.class, aki.b);
+public interface buc {
+   void a(btz var1, cvs var2);
 
-   public buc(btv<? extends buc> $$0, deg $$1) {
-      super($$0, $$1);
+   cvs a(btz var1);
+
+   void a(btz var1, float var2);
+
+   default void a(bub $$0, eto $$1) {
+      this.a($$0.a(), $$1, $$0.b());
    }
 
-   @Override
-   protected ll q() {
-      return ln.aP;
+   default void a(ald<etq> $$0, eto $$1, Map<btz, Float> $$2) {
+      this.a($$0, $$1, 0L, $$2);
    }
 
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(cg, 0);
+   default void a(ald<etq> $$0, eto $$1, long $$2, Map<btz, Float> $$3) {
+      etq $$4 = $$1.a().o().bd().b($$0);
+      if ($$4 != etq.a) {
+         List<cvs> $$5 = $$4.a($$1, $$2);
+         List<btz> $$6 = new ArrayList<>();
+
+         for (cvs $$7 : $$5) {
+            btz $$8 = this.a($$7, $$6);
+            if ($$8 != null) {
+               cvs $$9 = $$8.a($$7);
+               this.a($$8, $$9);
+               Float $$10 = $$3.get($$8);
+               if ($$10 != null) {
+                  this.a($$8, $$10);
+               }
+
+               $$6.add($$8);
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public bth a(arh $$0, bth $$1) {
-      return btv.W.a($$0, btu.e);
-   }
+   default btz a(cvs $$0, List<btz> $$1) {
+      if ($$0.f()) {
+         return null;
+      } else {
+         cuv $$2 = cuv.c_($$0);
+         if ($$2 != null) {
+            btz $$3 = $$2.l();
+            if (!$$1.contains($$3)) {
+               return $$3;
+            }
+         } else if (!$$1.contains(btz.a)) {
+            return btz.a;
+         }
 
-   @Override
-   protected awd t() {
-      return awe.kK;
-   }
-
-   @Override
-   protected awd w() {
-      return awe.kH;
-   }
-
-   @Override
-   protected awd d(bsg $$0) {
-      return awe.kJ;
-   }
-
-   @Override
-   protected awd n_() {
-      return awe.kI;
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.t($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void m_() {
-      super.m_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.t($$0 - 1);
+         return null;
       }
-
-      this.dS().a(ln.aQ, this.d(0.6), this.dA(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bsg $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.t(100);
-      }
-
-      return $$2;
-   }
-
-   private void t(int $$0) {
-      this.am.a(cg, $$0);
-   }
-
-   public int y() {
-      return this.am.a(cg);
-   }
-
-   public static boolean a(btv<? extends buk> $$0, dew $$1, btu $$2, je $$3, azl $$4) {
-      return $$3.v() <= $$1.N() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dhl.G);
    }
 }

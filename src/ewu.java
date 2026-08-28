@@ -1,27 +1,51 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ewu {
-   public static final ewt a = a("inverted", ewp.a);
-   public static final ewt b = a("any_of", ewg.a);
-   public static final ewt c = a("all_of", ewf.a);
-   public static final ewt d = a("random_chance", ewx.a);
-   public static final ewt e = a("random_chance_with_enchanted_bonus", ewy.a);
-   public static final ewt f = a("entity_properties", ewv.a);
-   public static final ewt g = a("killed_by_player", eww.a);
-   public static final ewt h = a("entity_scores", ewn.a);
-   public static final ewt i = a("block_state_property", ewr.a);
-   public static final ewt j = a("match_tool", ewz.a);
-   public static final ewt k = a("table_bonus", ewh.a);
-   public static final ewt l = a("survives_explosion", ewo.a);
-   public static final ewt m = a("damage_source_properties", ewl.a);
-   public static final ewt n = a("location_check", ewq.a);
-   public static final ewt o = a("weather_check", exc.a);
-   public static final ewt p = a("reference", ewj.a);
-   public static final ewt q = a("time_check", exa.a);
-   public static final ewt r = a("value_check", exb.a);
-   public static final ewt s = a("enchantment_active_check", ewm.a);
+public record ewu(Optional<df> b, jf c) implements eww {
+   private static final MapCodec<jf> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kj::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kj::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kj::w)
+            )
+            .apply($$0, jf::new)
+   );
+   public static final MapCodec<ewu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(ewu::c), g.forGetter(ewu::d)).apply($$0, ewu::new)
+   );
 
-   private static ewt a(String $$0, MapCodec<? extends ews> $$1) {
-      return ka.a(lu.F, alc.b($$0), new ewt($$1));
+   @Override
+   public ewx b() {
+      return ewy.n;
+   }
+
+   public boolean a(etl $$0) {
+      eyw $$1 = $$0.c(ewh.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   }
+
+   @Override
+   public Set<ewe<?>> a() {
+      return Set.of(ewh.f);
+   }
+
+   public static eww.a a(df.a $$0) {
+      return () -> new ewu(Optional.of($$0.b()), jf.c);
+   }
+
+   public static eww.a a(df.a $$0, jf $$1) {
+      return () -> new ewu(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<df> c() {
+      return this.b;
+   }
+
+   public jf d() {
+      return this.c;
    }
 }

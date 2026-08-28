@@ -1,22 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ebz implements ebr {
+public class ebz implements ebv {
    public static final MapCodec<ebz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebr.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, ebz::new)
+      $$0 -> $$0.group(kj.v(16).optionalFieldOf("offset", jf.c).forGetter($$0x -> $$0x.e)).apply($$0, ebz::new)
    );
-   private final ebr e;
+   private final kj e;
 
-   public ebz(ebr $$0) {
+   public ebz(kj $$0) {
       this.e = $$0;
    }
 
-   public boolean a(dfd $$0, je $$1) {
-      return !this.e.test($$0, $$1);
+   public boolean a(dfg $$0, jf $$1) {
+      return !$$0.s($$1.a(this.e));
    }
 
    @Override
-   public ebs<?> a() {
-      return ebs.k;
+   public ebw<?> a() {
+      return ebw.h;
    }
 }

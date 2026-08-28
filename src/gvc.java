@@ -1,3 +1,3 @@
-public class gvc extends guj {
-   public cgv.a a = cgv.a.b;
+public class gvc extends guo {
+   public float a;
 }

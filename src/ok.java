@@ -1,87 +1,76 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class ok {
-   public static final ok.a a = a(oi::a, oh.c);
-   public static final ok.a b = a(oi::a, oh.d);
-   public static final ok.a c = a(oi::a, oh.e);
-   public static final ok.a d = a(oi::k, oh.j);
-   public static final ok.a e = a(oi::k, oh.k);
-   public static final ok.a f = a(oi::q, oh.n);
-   public static final ok.a g = a(oi::l, oh.m);
-   public static final ok.a h = a(oi::B, oh.p);
-   public static final ok.a i = a(oi::A, oh.q);
-   public static final ok.a j = a(oi::f, oh.aw);
-   public static final ok.a k = a(oi::g, oh.ax);
-   public static final ok.a l = a(oi::g, oh.ay);
-   public static final ok.a m = a(oi::g, oh.az);
-   public static final ok.a n = a(oi::g, oh.aA);
-   public static final ok.a o = a(oi::i, oh.aD);
-   public static final ok.a p = a(oi::j, oh.aB);
-   public static final ok.a q = a(oi::u, oh.aa);
-   public static final ok.a r = a(oi::D, oh.aS);
-   public static final ok.a s = a(oi::a, oh.ad);
-   public static final ok.a t = a(oi::x, oh.bd);
-   public static final ok.a u = a(oi::x, oh.be);
-   public static final ok.a v = a(oi::b, oh.bm);
-   public static final ok.a w = a(oi::n, oh.j);
-   public static final ok.a x = a(oi::n, oh.k);
-   public static final ok.a y = a(oi::r, oh.n);
-   public static final ok.a z = a(oi::s, oh.j);
-   private final oi A;
-   private final og B;
+public final class ok {
+   public static final ok a = a("all");
+   public static final ok b = a("texture", a);
+   public static final ok c = a("particle", b);
+   public static final ok d = a("end", a);
+   public static final ok e = a("bottom", d);
+   public static final ok f = a("top", d);
+   public static final ok g = a("front", a);
+   public static final ok h = a("back", a);
+   public static final ok i = a("side", a);
+   public static final ok j = a("north", i);
+   public static final ok k = a("south", i);
+   public static final ok l = a("east", i);
+   public static final ok m = a("west", i);
+   public static final ok n = a("up");
+   public static final ok o = a("down");
+   public static final ok p = a("cross");
+   public static final ok q = a("plant");
+   public static final ok r = a("wall", a);
+   public static final ok s = a("rail");
+   public static final ok t = a("wool");
+   public static final ok u = a("pattern");
+   public static final ok v = a("pane");
+   public static final ok w = a("edge");
+   public static final ok x = a("fan");
+   public static final ok y = a("stem");
+   public static final ok z = a("upperstem");
+   public static final ok A = a("crop");
+   public static final ok B = a("dirt");
+   public static final ok C = a("fire");
+   public static final ok D = a("lantern");
+   public static final ok E = a("platform");
+   public static final ok F = a("unsticky");
+   public static final ok G = a("torch");
+   public static final ok H = a("layer0");
+   public static final ok I = a("layer1");
+   public static final ok J = a("layer2");
+   public static final ok K = a("lit_log");
+   public static final ok L = a("candle");
+   public static final ok M = a("inside");
+   public static final ok N = a("content");
+   public static final ok O = a("inner_top");
+   public static final ok P = a("flowerbed");
+   private final String Q;
+   @Nullable
+   private final ok R;
 
-   private ok(oi $$0, og $$1) {
-      this.A = $$0;
-      this.B = $$1;
+   private static ok a(String $$0) {
+      return new ok($$0, null);
    }
 
-   public og a() {
-      return this.B;
+   private static ok a(String $$0, ok $$1) {
+      return new ok($$0, $$1);
    }
 
-   public oi b() {
-      return this.A;
+   private ok(String $$0, @Nullable ok $$1) {
+      this.Q = $$0;
+      this.R = $$1;
    }
 
-   public ok a(Consumer<oi> $$0) {
-      $$0.accept(this.A);
-      return this;
+   public String a() {
+      return this.Q;
    }
 
-   public alc a(dhj $$0, BiConsumer<alc, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   @Nullable
+   public ok b() {
+      return this.R;
    }
 
-   public alc a(dhj $$0, String $$1, BiConsumer<alc, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
-   }
-
-   private static ok.a a(Function<dhj, oi> $$0, og $$1) {
-      return $$2 -> new ok($$0.apply($$2), $$1);
-   }
-
-   public static ok a(alc $$0) {
-      return new ok(oi.b($$0), oh.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      ok get(dhj var1);
-
-      default alc create(dhj $$0, BiConsumer<alc, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
-      }
-
-      default alc createWithSuffix(dhj $$0, String $$1, BiConsumer<alc, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
-
-      default ok.a updateTexture(Consumer<oi> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   @Override
+   public String toString() {
+      return "#" + this.Q;
    }
 }

@@ -1,8 +1,98 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class awq {
+   public static final awp<dhm> a = a("mined", lv.e);
+   public static final awp<cvn> b = a("crafted", lv.g);
+   public static final awp<cvn> c = a("used", lv.g);
+   public static final awp<cvn> d = a("broken", lv.g);
+   public static final awp<cvn> e = a("picked_up", lv.g);
+   public static final awp<cvn> f = a("dropped", lv.g);
+   public static final awp<bty<?>> g = a("killed", lv.f);
+   public static final awp<bty<?>> h = a("killed_by", lv.f);
+   public static final awp<ale> i = a("custom", lv.k);
+   public static final ale j = a("leave_game", awo.b);
+   public static final ale k = a("play_time", awo.e);
+   public static final ale l = a("total_world_time", awo.e);
+   public static final ale m = a("time_since_death", awo.e);
+   public static final ale n = a("time_since_rest", awo.e);
+   public static final ale o = a("sneak_time", awo.e);
+   public static final ale p = a("walk_one_cm", awo.d);
+   public static final ale q = a("crouch_one_cm", awo.d);
+   public static final ale r = a("sprint_one_cm", awo.d);
+   public static final ale s = a("walk_on_water_one_cm", awo.d);
+   public static final ale t = a("fall_one_cm", awo.d);
+   public static final ale u = a("climb_one_cm", awo.d);
+   public static final ale v = a("fly_one_cm", awo.d);
+   public static final ale w = a("walk_under_water_one_cm", awo.d);
+   public static final ale x = a("minecart_one_cm", awo.d);
+   public static final ale y = a("boat_one_cm", awo.d);
+   public static final ale z = a("pig_one_cm", awo.d);
+   public static final ale A = a("horse_one_cm", awo.d);
+   public static final ale B = a("aviate_one_cm", awo.d);
+   public static final ale C = a("swim_one_cm", awo.d);
+   public static final ale D = a("strider_one_cm", awo.d);
+   public static final ale E = a("jump", awo.b);
+   public static final ale F = a("drop", awo.b);
+   public static final ale G = a("damage_dealt", awo.c);
+   public static final ale H = a("damage_dealt_absorbed", awo.c);
+   public static final ale I = a("damage_dealt_resisted", awo.c);
+   public static final ale J = a("damage_taken", awo.c);
+   public static final ale K = a("damage_blocked_by_shield", awo.c);
+   public static final ale L = a("damage_absorbed", awo.c);
+   public static final ale M = a("damage_resisted", awo.c);
+   public static final ale N = a("deaths", awo.b);
+   public static final ale O = a("mob_kills", awo.b);
+   public static final ale P = a("animals_bred", awo.b);
+   public static final ale Q = a("player_kills", awo.b);
+   public static final ale R = a("fish_caught", awo.b);
+   public static final ale S = a("talked_to_villager", awo.b);
+   public static final ale T = a("traded_with_villager", awo.b);
+   public static final ale U = a("eat_cake_slice", awo.b);
+   public static final ale V = a("fill_cauldron", awo.b);
+   public static final ale W = a("use_cauldron", awo.b);
+   public static final ale X = a("clean_armor", awo.b);
+   public static final ale Y = a("clean_banner", awo.b);
+   public static final ale Z = a("clean_shulker_box", awo.b);
+   public static final ale aa = a("interact_with_brewingstand", awo.b);
+   public static final ale ab = a("interact_with_beacon", awo.b);
+   public static final ale ac = a("inspect_dropper", awo.b);
+   public static final ale ad = a("inspect_hopper", awo.b);
+   public static final ale ae = a("inspect_dispenser", awo.b);
+   public static final ale af = a("play_noteblock", awo.b);
+   public static final ale ag = a("tune_noteblock", awo.b);
+   public static final ale ah = a("pot_flower", awo.b);
+   public static final ale ai = a("trigger_trapped_chest", awo.b);
+   public static final ale aj = a("open_enderchest", awo.b);
+   public static final ale ak = a("enchant_item", awo.b);
+   public static final ale al = a("play_record", awo.b);
+   public static final ale am = a("interact_with_furnace", awo.b);
+   public static final ale an = a("interact_with_crafting_table", awo.b);
+   public static final ale ao = a("open_chest", awo.b);
+   public static final ale ap = a("sleep_in_bed", awo.b);
+   public static final ale aq = a("open_shulker_box", awo.b);
+   public static final ale ar = a("open_barrel", awo.b);
+   public static final ale as = a("interact_with_blast_furnace", awo.b);
+   public static final ale at = a("interact_with_smoker", awo.b);
+   public static final ale au = a("interact_with_lectern", awo.b);
+   public static final ale av = a("interact_with_campfire", awo.b);
+   public static final ale aw = a("interact_with_cartography_table", awo.b);
+   public static final ale ax = a("interact_with_loom", awo.b);
+   public static final ale ay = a("interact_with_stonecutter", awo.b);
+   public static final ale az = a("bell_ring", awo.b);
+   public static final ale aA = a("raid_trigger", awo.b);
+   public static final ale aB = a("raid_win", awo.b);
+   public static final ale aC = a("interact_with_anvil", awo.b);
+   public static final ale aD = a("interact_with_grindstone", awo.b);
+   public static final ale aE = a("target_hit", awo.b);
+   public static final ale aF = a("interact_with_smithing_table", awo.b);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface awq {
+   private static ale a(String $$0, awo $$1) {
+      ale $$2 = ale.b($$0);
+      kb.a(lv.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
+   }
+
+   private static <T> awp<T> a(String $$0, kb<T> $$1) {
+      xe $$2 = xe.c("stat_type.minecraft." + $$0);
+      return kb.a(lv.v, $$0, new awp<>($$1, $$2));
+   }
 }

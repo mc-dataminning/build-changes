@@ -1,32 +1,99 @@
-public class hax implements haf {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final ggc e;
-   private final hca f;
-   private int g = 0;
+import javax.annotation.Nullable;
 
-   public hax(ggc $$0, hca $$1) {
-      this.e = $$0;
-      this.f = $$1;
+public class hax implements hch<hax> {
+   public static final akx a = new akx("sounds", ".ogg");
+   private final ale b;
+   private final bra c;
+   private final bra d;
+   private final int e;
+   private final hax.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
+
+   public hax(ale $$0, bra $$1, bra $$2, int $$3, hax.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public ale a() {
+      return this.b;
+   }
+
+   public ale b() {
+      return a.a(this.b);
+   }
+
+   public bra c() {
+      return this.c;
+   }
+
+   public bra d() {
+      return this.d;
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bn()) {
-         float $$0 = this.e.dS().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hav)(new hay.a(this.e, awe.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hav)(new hay.a(this.e, awe.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hav)(new hay.a(this.e, awe.A)));
+   public int e() {
+      return this.e;
+   }
+
+   public hax a(azn $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hcc $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public hax.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
+   }
+
+   @Override
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static hax.a a(String $$0) {
+         for (hax.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return null;
       }
    }
 }

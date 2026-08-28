@@ -1,20 +1,20 @@
-public record aha(float b) implements zk<agq> {
-   public static final zb<wa, aha> a = zk.a(aha::a, aha::new);
+public record aha(xv.a b) implements zl<agr> {
+   public static final zc<wb, aha> a = zl.a(aha::a, aha::new);
 
-   private aha(wa $$0) {
-      this($$0.readFloat());
+   private aha(wb $$0) {
+      this(xv.a.a($$0));
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.b);
+   private void a(wb $$0) {
+      xv.a.a($$0, this.b);
    }
 
    @Override
-   public zm<aha> a() {
-      return ago.bp;
+   public zn<aha> a() {
+      return agp.bo;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 }

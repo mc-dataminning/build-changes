@@ -1,29 +1,11 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class eyb implements eyd<MinecraftServer> {
-   final alc a;
+public interface eyb {
+   @Nullable
+   faa a(etl var1);
 
-   public eyb(alc $$0) {
-      this.a = $$0;
-   }
+   eya a();
 
-   public void a(MinecraftServer $$0, eyf<MinecraftServer> $$1, long $$2) {
-      alr $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
-   }
-
-   public static class a extends eyd.a<MinecraftServer, eyb> {
-      public a() {
-         super(alc.b("function"), eyb.class);
-      }
-
-      public void a(uf $$0, eyb $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public eyb a(uf $$0) {
-         alc $$1 = alc.a($$0.l("Name"));
-         return new eyb($$1);
-      }
-   }
+   Set<ewe<?>> b();
 }

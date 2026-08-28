@@ -1,40 +1,17 @@
-public class gdj extends gfo {
-   gdj(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.125F;
-      this.B = 0.85F;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
+public class gdj extends gdl {
+   protected gdj(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfo $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o && !this.c.b_(je.a(this.g, this.h, this.i)).a(awz.a)) {
-         this.k();
-      }
-   }
+   public static class a implements gew<ls> {
+      private final gfo a;
 
-   @Override
-   public ges b() {
-      return ges.b;
-   }
-
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdj($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

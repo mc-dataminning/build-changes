@@ -1,63 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public final class cya {
-   public static final cya a = new cya(List.of());
-   public static final Codec<cya> b = cvp.b.listOf().xmap(cya::new, $$0 -> $$0.d);
-   public static final zb<wo, cya> c = cvp.i.a(yz.a()).a(cya::new, $$0 -> $$0.d);
-   private final List<cvp> d;
+public record cya(Map<String, String> d) {
+   public static final cya a = new cya(Map.of());
+   public static final Codec<cya> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cya::new, cya::b);
+   private static final zc<ByteBuf, Map<String, String>> e = za.a(Object2ObjectOpenHashMap::new, za.m, za.m);
+   public static final zc<ByteBuf, cya> c = e.a(cya::new, cya::b);
 
-   private cya(List<cvp> $$0) {
-      this.d = $$0;
+   public <T extends Comparable<T>> cya a(dvv<T> $$0, T $$1) {
+      return new cya(ad.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public static cya a(cvp $$0) {
-      return new cya(List.of($$0.u()));
+   public <T extends Comparable<T>> cya a(dvv<T> $$0, dus $$1) {
+      return this.a($$0, $$1.c($$0));
    }
 
-   public static cya a(List<cvp> $$0) {
-      return new cya(List.copyOf(Lists.transform($$0, cvp::u)));
+   @Nullable
+   public <T extends Comparable<T>> T a(dvv<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
    }
 
-   public boolean a(cvk $$0) {
-      for (cvp $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
+   public dus a(dus $$0) {
+      dut<dhm, dus> $$1 = $$0.b().k();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dvv<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
          }
       }
 
-      return false;
+      return $$0;
    }
 
-   public List<cvp> a() {
-      return Lists.transform(this.d, cvp::u);
+   private static <T extends Comparable<T>> dus a(dus $$0, dvv<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
    }
 
-   public boolean b() {
+   public boolean a() {
       return this.d.isEmpty();
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cya $$1 && cvp.a(this.d, $$1.d)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return cvp.a(this.d);
-   }
-
-   @Override
-   public String toString() {
-      return "ChargedProjectiles[items=" + this.d + "]";
+   public Map<String, String> b() {
+      return this.d;
    }
 }

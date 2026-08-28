@@ -3,19 +3,19 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bz extends dv<bz.a> {
+public class bz extends dw<bz.a> {
    @Override
    public Codec<bz.a> a() {
       return bz.a.a;
    }
 
-   public void a(ari $$0, eys $$1, @Nullable bto $$2) {
-      eys $$3 = $$0.dq();
-      eth $$4 = $$2 != null ? bv.b($$0, $$2) : null;
+   public void a(ark $$0, eyw $$1, @Nullable btr $$2) {
+      eyw $$3 = $$0.dq();
+      etl $$4 = $$2 != null ? bv.b($$0, $$2) : null;
       this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
    }
 
-   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d, Optional<bg> e) implements dv.a {
+   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d, Optional<bg> e) implements dw.a {
       public static final Codec<bz.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(bz.a::a),
@@ -32,11 +32,11 @@ public class bz extends dv<bz.a> {
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
+         dw.a.super.a($$0);
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(arh $$0, eys $$1, eys $$2, @Nullable eth $$3) {
+      public boolean a(arj $$0, eyw $$1, eyw $$2, @Nullable etl $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {

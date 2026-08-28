@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class eca extends ecc {
-   public static final MapCodec<eca> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eca::new));
+public class eca extends ecg {
+   final axl<dhm> a;
+   public static final MapCodec<eca> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axl.a(lw.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, eca::new)
+   );
 
-   public eca(ki $$0) {
+   protected eca(kj $$0, axl<dhm> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(duo $$0) {
-      return $$0.v();
+   protected boolean a(dus $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public ebs<?> a() {
-      return ebs.f;
+   public ebw<?> a() {
+      return ebw.b;
    }
 }

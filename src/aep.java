@@ -1,37 +1,36 @@
-public class aep implements zk<abz> {
-   public static final zb<wa, aep> a = zk.a(aep::a, aep::new);
-   private final int b;
-   private final byte c;
+public record aep(agm e, byte f) implements zl<aca> {
+   public static final zc<wp, aep> a = zl.a(aep::a, aep::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aep(bto $$0, byte $$1) {
-      this.b = $$0.ap();
-      this.c = $$1;
+   private aep(wp $$0) {
+      this(new agm($$0), $$0.readByte());
    }
 
-   private aep(wa $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.l(this.c);
+   private void a(wp $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zm<aep> a() {
-      return ago.an;
+   public zn<aep> a() {
+      return agp.am;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public bto a(deg $$0) {
-      return $$0.a(this.b);
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public byte b() {
-      return this.c;
+   public agm b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

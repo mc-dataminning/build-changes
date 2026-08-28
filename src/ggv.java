@@ -1,311 +1,75 @@
-import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
 
 public class ggv {
-   private static final int b = 96;
-   private static final List<ggv.e> c = Lists.newArrayList(new ggv.e[]{new ggv.a(), new ggv.b()});
-   public static final float a = 5000.0F;
-   private static int d = -1;
-   private static int e = -1;
-   private static long f = -1L;
+   private static final List<gid> ad = new ArrayList<>();
+   public static final gid a = a("blit_screen", fdg.a);
+   public static final gid b = a("lightmap", fdg.a);
+   public static final gid c = a("particle", fdg.d);
+   public static final gid d = a("position", fdg.e);
+   public static final gid e = a("position_color", fdg.f);
+   public static final gid f = a("position_color_lightmap", fdg.h);
+   public static final gid g = a("position_color_tex_lightmap", fdg.k);
+   public static final gid h = a("position_tex", fdg.i);
+   public static final gid i = a("position_tex_color", fdg.j);
+   public static final gid j = a("rendertype_solid", fdg.b);
+   public static final gid k = a("rendertype_cutout_mipped", fdg.b);
+   public static final gid l = a("rendertype_cutout", fdg.b);
+   public static final gid m = a("rendertype_translucent", fdg.b);
+   public static final gid n = a("rendertype_translucent_moving_block", fdg.b);
+   public static final gid o = a("rendertype_armor_cutout_no_cull", fdg.c);
+   public static final gid p = a("rendertype_entity_solid", fdg.c);
+   public static final gid q = a("rendertype_entity_cutout", fdg.c);
+   public static final gid r = a("rendertype_entity_cutout_no_cull", fdg.c);
+   public static final gid s = a("rendertype_entity_cutout_no_cull_z_offset", fdg.c);
+   public static final gid t = a("rendertype_item_entity_translucent_cull", fdg.c);
+   public static final gid u = a("rendertype_entity_translucent", fdg.c);
+   public static final gid v = a("rendertype_entity_translucent_emissive", fdg.c);
+   public static final gid w = a("rendertype_entity_smooth_cutout", fdg.c);
+   public static final gid x = a("rendertype_beacon_beam", fdg.b);
+   public static final gid y = a("rendertype_entity_decal", fdg.c);
+   public static final gid z = a("rendertype_entity_no_outline", fdg.c);
+   public static final gid A = a("rendertype_entity_shadow", fdg.c);
+   public static final gid B = a("rendertype_entity_alpha", fdg.c);
+   public static final gid C = a("rendertype_eyes", fdg.c);
+   public static final gid D = a("rendertype_energy_swirl", fdg.c);
+   public static final gid E = a("rendertype_leash", fdg.h);
+   public static final gid F = a("rendertype_water_mask", fdg.e);
+   public static final gid G = a("rendertype_outline", fdg.j);
+   public static final gid H = a("rendertype_armor_entity_glint", fdg.i);
+   public static final gid I = a("rendertype_glint_translucent", fdg.i);
+   public static final gid J = a("rendertype_glint", fdg.i);
+   public static final gid K = a("rendertype_entity_glint", fdg.i);
+   public static final gid L = a("rendertype_text", fdg.k);
+   public static final gid M = a("rendertype_text_background", fdg.h);
+   public static final gid N = a("rendertype_text_intensity", fdg.k);
+   public static final gid O = a("rendertype_text_see_through", fdg.k);
+   public static final gid P = a("rendertype_text_background_see_through", fdg.h);
+   public static final gid Q = a("rendertype_text_intensity_see_through", fdg.k);
+   public static final gid R = a("rendertype_lightning", fdg.f);
+   public static final gid S = a("rendertype_tripwire", fdg.b);
+   public static final gid T = a("rendertype_end_portal", fdg.e);
+   public static final gid U = a("rendertype_end_gateway", fdg.e);
+   public static final gid V = a("rendertype_clouds", fdg.f);
+   public static final gid W = a("rendertype_lines", fdg.g);
+   public static final gid X = a("rendertype_crumbling", fdg.b);
+   public static final gid Y = a("rendertype_gui", fdg.f);
+   public static final gid Z = a("rendertype_gui_overlay", fdg.f);
+   public static final gid aa = a("rendertype_gui_text_highlight", fdg.f);
+   public static final gid ab = a("rendertype_gui_ghost_recipe_overlay", fdg.f);
+   public static final gid ac = a("rendertype_breeze_wind", fdg.c);
 
-   public static Vector4f a(fhu $$0, float $$1, gbh $$2, int $$3, float $$4) {
-      eqr $$5 = $$0.k();
-      bto $$6 = $$0.g();
-      float $$19;
-      float $$20;
-      float $$21;
-      if ($$5 == eqr.b) {
-         long $$7 = ad.c();
-         int $$8 = $$2.t(je.a((jx)$$0.b())).a().j();
-         if (f < 0L) {
-            d = $$8;
-            e = $$8;
-            f = $$7;
-         }
-
-         int $$9 = d >> 16 & 0xFF;
-         int $$10 = d >> 8 & 0xFF;
-         int $$11 = d & 0xFF;
-         int $$12 = e >> 16 & 0xFF;
-         int $$13 = e >> 8 & 0xFF;
-         int $$14 = e & 0xFF;
-         float $$15 = azd.a((float)($$7 - f) / 5000.0F, 0.0F, 1.0F);
-         float $$16 = azd.h($$15, (float)$$12, (float)$$9);
-         float $$17 = azd.h($$15, (float)$$13, (float)$$10);
-         float $$18 = azd.h($$15, (float)$$14, (float)$$11);
-         $$19 = $$16 / 255.0F;
-         $$20 = $$17 / 255.0F;
-         $$21 = $$18 / 255.0F;
-         if (d != $$8) {
-            d = $$8;
-            e = azd.d($$16) << 16 | azd.d($$17) << 8 | azd.d($$18);
-            f = $$7;
-         }
-      } else if ($$5 == eqr.a) {
-         $$19 = 0.6F;
-         $$20 = 0.1F;
-         $$21 = 0.0F;
-         f = -1L;
-      } else if ($$5 == eqr.c) {
-         $$19 = 0.623F;
-         $$20 = 0.734F;
-         $$21 = 0.785F;
-         f = -1L;
-      } else {
-         float $$28 = 0.25F + 0.75F * (float)$$3 / 32.0F;
-         $$28 = 1.0F - (float)Math.pow((double)$$28, 0.25);
-         int $$29 = $$2.a($$0.b(), $$1);
-         float $$30 = axo.h(axo.b($$29));
-         float $$31 = axo.h(axo.c($$29));
-         float $$32 = axo.h(axo.d($$29));
-         float $$33 = azd.a(azd.b($$2.f($$1) * (float) (Math.PI * 2)) * 2.0F + 0.5F, 0.0F, 1.0F);
-         dfj $$34 = $$2.D_();
-         eys $$35 = $$0.b().a(2.0, 2.0, 2.0).c(0.25);
-         eys $$36 = aye.a($$35, ($$3x, $$4x, $$5x) -> $$2.c().a(eys.a($$34.a($$3x, $$4x, $$5x).a().e()), $$33));
-         $$19 = (float)$$36.a();
-         $$20 = (float)$$36.b();
-         $$21 = (float)$$36.c();
-         if ($$3 >= 4) {
-            float $$40 = azd.a($$2.a($$1)) > 0.0F ? -1.0F : 1.0F;
-            Vector3f $$41 = new Vector3f($$40, 0.0F, 0.0F);
-            float $$42 = $$0.l().dot($$41);
-            if ($$42 < 0.0F) {
-               $$42 = 0.0F;
-            }
-
-            if ($$42 > 0.0F && $$2.c().a($$2.f($$1))) {
-               int $$43 = $$2.c().b($$2.f($$1));
-               $$42 *= axo.h(axo.a($$43));
-               $$19 = $$19 * (1.0F - $$42) + axo.h(axo.b($$43)) * $$42;
-               $$20 = $$20 * (1.0F - $$42) + axo.h(axo.c($$43)) * $$42;
-               $$21 = $$21 * (1.0F - $$42) + axo.h(axo.d($$43)) * $$42;
-            }
-         }
-
-         $$19 += ($$30 - $$19) * $$28;
-         $$20 += ($$31 - $$20) * $$28;
-         $$21 += ($$32 - $$21) * $$28;
-         float $$44 = $$2.d($$1);
-         if ($$44 > 0.0F) {
-            float $$45 = 1.0F - $$44 * 0.5F;
-            float $$46 = 1.0F - $$44 * 0.4F;
-            $$19 *= $$45;
-            $$20 *= $$45;
-            $$21 *= $$46;
-         }
-
-         float $$47 = $$2.b($$1);
-         if ($$47 > 0.0F) {
-            float $$48 = 1.0F - $$47 * 0.5F;
-            $$19 *= $$48;
-            $$20 *= $$48;
-            $$21 *= $$48;
-         }
-
-         f = -1L;
-      }
-
-      float $$49 = ((float)$$0.b().e - (float)$$2.G_()) * $$2.j().e();
-      ggv.e $$50 = a($$6, $$1);
-      if ($$50 != null) {
-         buk $$51 = (buk)$$6;
-         $$49 = $$50.a($$51, $$51.c($$50.a()), $$49, $$1);
-      }
-
-      if ($$49 < 1.0F && $$5 != eqr.a && $$5 != eqr.c) {
-         if ($$49 < 0.0F) {
-            $$49 = 0.0F;
-         }
-
-         $$49 *= $$49;
-         $$19 *= $$49;
-         $$20 *= $$49;
-         $$21 *= $$49;
-      }
-
-      if ($$4 > 0.0F) {
-         $$19 = $$19 * (1.0F - $$4) + $$19 * 0.7F * $$4;
-         $$20 = $$20 * (1.0F - $$4) + $$20 * 0.6F * $$4;
-         $$21 = $$21 * (1.0F - $$4) + $$21 * 0.6F * $$4;
-      }
-
-      float $$52;
-      if ($$5 == eqr.b) {
-         if ($$6 instanceof ggc) {
-            $$52 = ((ggc)$$6).E();
-         } else {
-            $$52 = 1.0F;
-         }
-      } else {
-         label86: {
-            if ($$6 instanceof buk $$54 && $$54.b(bsx.p) && !$$54.b(bsx.G)) {
-               $$52 = ggw.a($$54, $$1);
-               break label86;
-            }
-
-            $$52 = 0.0F;
-         }
-      }
-
-      if ($$19 != 0.0F && $$20 != 0.0F && $$21 != 0.0F) {
-         float $$57 = Math.min(1.0F / $$19, Math.min(1.0F / $$20, 1.0F / $$21));
-         $$19 = $$19 * (1.0F - $$52) + $$19 * $$57 * $$52;
-         $$20 = $$20 * (1.0F - $$52) + $$20 * $$57 * $$52;
-         $$21 = $$21 * (1.0F - $$52) + $$21 * $$57 * $$52;
-      }
-
-      return new Vector4f($$19, $$20, $$21, 1.0F);
+   private static gid a(String $$0, fdn $$1) {
+      return a($$0, $$1, gib.a);
    }
 
-   @Nullable
-   private static ggv.e a(bto $$0, float $$1) {
-      return $$0 instanceof buk $$2 ? c.stream().filter($$2x -> $$2x.a($$2, $$1)).findFirst().orElse(null) : null;
+   private static gid a(String $$0, fdn $$1, gib $$2) {
+      gid $$3 = new gid(ale.b("core/" + $$0), $$1, $$2);
+      ad.add($$3);
+      return $$3;
    }
 
-   public static ggu a(fhu $$0, ggv.d $$1, Vector4f $$2, float $$3, boolean $$4, float $$5) {
-      eqr $$6 = $$0.k();
-      bto $$7 = $$0.g();
-      ggv.c $$8 = new ggv.c($$1);
-      ggv.e $$9 = a($$7, $$5);
-      if ($$6 == eqr.a) {
-         if ($$7.P_()) {
-            $$8.b = -8.0F;
-            $$8.c = $$3 * 0.5F;
-         } else if ($$7 instanceof buk && ((buk)$$7).b(bsx.l)) {
-            $$8.b = 0.0F;
-            $$8.c = 5.0F;
-         } else {
-            $$8.b = 0.25F;
-            $$8.c = 1.0F;
-         }
-      } else if ($$6 == eqr.c) {
-         if ($$7.P_()) {
-            $$8.b = -8.0F;
-            $$8.c = $$3 * 0.5F;
-         } else {
-            $$8.b = 0.0F;
-            $$8.c = 2.0F;
-         }
-      } else if ($$9 != null) {
-         buk $$10 = (buk)$$7;
-         bsv $$11 = $$10.c($$9.a());
-         if ($$11 != null) {
-            $$9.a($$8, $$10, $$11, $$3, $$5);
-         }
-      } else if ($$6 == eqr.b) {
-         $$8.b = -8.0F;
-         $$8.c = 96.0F;
-         if ($$7 instanceof ggc $$12) {
-            $$8.c = $$8.c * Math.max(0.25F, $$12.E());
-            jn<dfh> $$13 = $$12.dS().t($$12.ds());
-            if ($$13.a(aws.aa)) {
-               $$8.c *= 0.85F;
-            }
-         }
-
-         if ($$8.c > $$3) {
-            $$8.c = $$3;
-            $$8.d = fcu.b;
-         }
-      } else if ($$4) {
-         $$8.b = $$3 * 0.05F;
-         $$8.c = Math.min($$3, 192.0F) * 0.5F;
-      } else if ($$1 == ggv.d.a) {
-         $$8.b = 0.0F;
-         $$8.c = $$3;
-         $$8.d = fcu.b;
-      } else if ($$1 == ggv.d.b) {
-         float $$14 = azd.a($$3 / 10.0F, 4.0F, 64.0F);
-         $$8.b = $$3 - $$14;
-         $$8.c = $$3;
-         $$8.d = fcu.b;
-      }
-
-      return new ggu($$8.b, $$8.c, $$8.d, $$2.x, $$2.y, $$2.z, $$2.w);
-   }
-
-   static class a implements ggv.e {
-      @Override
-      public jn<bst> a() {
-         return bsx.o;
-      }
-
-      @Override
-      public void a(ggv.c $$0, buk $$1, bsv $$2, float $$3, float $$4) {
-         float $$5 = $$2.b() ? 5.0F : azd.h(Math.min(1.0F, (float)$$2.d() / 20.0F), $$3, 5.0F);
-         if ($$0.a == ggv.d.a) {
-            $$0.b = 0.0F;
-            $$0.c = $$5 * 0.8F;
-         } else if ($$0.a == ggv.d.b) {
-            $$0.b = $$5 * 0.25F;
-            $$0.c = $$5;
-         }
-      }
-   }
-
-   static class b implements ggv.e {
-      @Override
-      public jn<bst> a() {
-         return bsx.G;
-      }
-
-      @Override
-      public void a(ggv.c $$0, buk $$1, bsv $$2, float $$3, float $$4) {
-         float $$5 = azd.h($$2.a($$1, $$4), $$3, 15.0F);
-
-         $$0.b = switch ($$0.a) {
-            case a -> 0.0F;
-            case b -> $$5 * 0.75F;
-         };
-         $$0.c = $$5;
-      }
-
-      @Override
-      public float a(buk $$0, bsv $$1, float $$2, float $$3) {
-         return 1.0F - $$1.a($$0, $$3);
-      }
-   }
-
-   static class c {
-      public final ggv.d a;
-      public float b;
-      public float c;
-      public fcu d = fcu.a;
-
-      public c(ggv.d $$0) {
-         this.a = $$0;
-      }
-   }
-
-   public static enum d {
-      a,
-      b;
-   }
-
-   interface e {
-      jn<bst> a();
-
-      void a(ggv.c var1, buk var2, bsv var3, float var4, float var5);
-
-      default boolean a(buk $$0, float $$1) {
-         return $$0.b(this.a());
-      }
-
-      default float a(buk $$0, bsv $$1, float $$2, float $$3) {
-         bsv $$4 = $$0.c(this.a());
-         if ($$4 != null) {
-            if ($$4.a(19)) {
-               $$2 = 1.0F - (float)$$4.d() / 20.0F;
-            } else {
-               $$2 = 0.0F;
-            }
-         }
-
-         return $$2;
-      }
+   public static List<gid> a() {
+      return ad;
    }
 }

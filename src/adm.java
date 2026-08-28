@@ -1,53 +1,57 @@
-public class adm implements zk<abz> {
-   public static final zb<wa, adm> a = zk.a(adm::a, adm::new);
+import java.util.BitSet;
+import javax.annotation.Nullable;
+
+public class adm implements zl<aca> {
+   public static final zc<wp, adm> a = zl.a(adm::a, adm::new);
    private final int b;
-   private final je c;
-   private final int d;
-   private final boolean e;
+   private final int c;
+   private final adl d;
+   private final adq e;
 
-   public adm(int $$0, je $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1.j();
-      this.d = $$2;
-      this.e = $$3;
+   public adm(dwy $$0, eqi $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      ddp $$4 = $$0.f();
+      this.b = $$4.e;
+      this.c = $$4.f;
+      this.d = new adl($$0);
+      this.e = new adq($$4, $$1, $$2, $$3);
    }
 
-   private adm(wa $$0) {
+   private adm(wp $$0) {
       this.b = $$0.readInt();
-      this.c = $$0.e();
-      this.d = $$0.readInt();
-      this.e = $$0.readBoolean();
+      this.c = $$0.readInt();
+      this.d = new adl($$0, this.b, this.c);
+      this.e = new adq($$0, this.b, this.c);
    }
 
-   private void a(wa $$0) {
+   private void a(wp $$0) {
       $$0.q(this.b);
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
+      $$0.q(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public zm<adm> a() {
-      return ago.L;
+   public zn<adm> a() {
+      return agp.K;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.e;
-   }
-
-   public int e() {
+   public int b() {
       return this.b;
    }
 
-   public int f() {
+   public int e() {
+      return this.c;
+   }
+
+   public adl f() {
       return this.d;
    }
 
-   public je g() {
-      return this.c;
+   public adq g() {
+      return this.e;
    }
 }

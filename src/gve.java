@@ -1,4 +1,5 @@
-public class gve extends gtl {
+public class gve extends guo {
    public float a;
-   public float b;
+   public boolean b;
+   public cgx.g c = cgx.g.a;
 }

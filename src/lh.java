@@ -1,36 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
+import io.netty.buffer.ByteBuf;
 
-public class lh extends lo {
-   public static final Vector3f a = eys.a(3790560).k();
-   public static final lh b = new lh(a, li.a, 1.0F);
-   public static final MapCodec<lh> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               aym.c.fieldOf("from_color").forGetter($$0x -> $$0x.h), aym.c.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(lo::d)
-            )
-            .apply($$0, lh::new)
-   );
-   public static final zb<wo, lh> d = zb.a(yz.r, $$0 -> $$0.h, yz.r, $$0 -> $$0.i, yz.i, lo::d, lh::new);
-   private final Vector3f h;
-   private final Vector3f i;
+public class lh implements lm {
+   private final ln<lh> a;
+   private final int b;
 
-   public lh(Vector3f $$0, Vector3f $$1, float $$2) {
-      super($$2);
-      this.h = $$0;
-      this.i = $$1;
+   public static MapCodec<lh> a(ln<lh> $$0) {
+      return ayo.i.xmap($$1 -> new lh($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public Vector3f b() {
-      return this.h;
+   public static zc<? super ByteBuf, lh> b(ln<lh> $$0) {
+      return za.g.a($$1 -> new lh($$0, $$1), $$0x -> $$0x.b);
    }
 
-   public Vector3f c() {
-      return this.i;
+   private lh(ln<lh> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public lm<lh> a() {
-      return ln.o;
+   public ln<lh> a() {
+      return this.a;
+   }
+
+   public float b() {
+      return (float)axq.b(this.b) / 255.0F;
+   }
+
+   public float c() {
+      return (float)axq.c(this.b) / 255.0F;
+   }
+
+   public float d() {
+      return (float)axq.d(this.b) / 255.0F;
+   }
+
+   public float e() {
+      return (float)axq.a(this.b) / 255.0F;
+   }
+
+   public static lh a(ln<lh> $$0, int $$1) {
+      return new lh($$0, $$1);
+   }
+
+   public static lh a(ln<lh> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, axq.a(1.0F, $$1, $$2, $$3));
    }
 }

@@ -1,64 +1,66 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Predicate;
 
-public class eub extends etq {
-   public static final MapCodec<eub> a = a(eub::new);
+public abstract class eub implements ett {
+   protected final List<eww> e;
+   private final Predicate<etl> a;
 
-   eub(List<etx> $$0, List<ews> $$1) {
-      super($$0, $$1);
+   protected eub(List<eww> $$0) {
+      this.e = $$0;
+      this.a = ad.a($$0);
    }
 
-   @Override
-   public ety a() {
-      return etv.h;
+   protected static <T extends eub> P1<Mu<T>, List<eww>> a(Instance<T> $$0) {
+      return $$0.group(eww.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   protected etp a(List<? extends etp> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (etp)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (etp $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(etr $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   public static eub.a a(etx.a<?>... $$0) {
-      return new eub.a($$0);
+   protected final boolean a(etl $$0) {
+      return this.a.test($$0);
    }
 
-   public static class a extends etx.a<eub.a> {
-      private final Builder<etx> a = ImmutableList.builder();
+   public abstract euc a();
 
-      public a(etx.a<?>... $$0) {
-         for (etx.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   public abstract static class a<T extends eub.a<T>> implements ewo<T> {
+      private final Builder<eww> a = ImmutableList.builder();
+
+      protected abstract T aG_();
+
+      public T a(eww.a $$0) {
+         this.a.add($$0.build());
+         return this.aG_();
       }
 
-      protected eub.a a() {
-         return this;
+      public final T e() {
+         return this.aG_();
       }
 
-      @Override
-      public eub.a c(etx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
+      protected List<eww> f() {
+         return this.a.build();
       }
 
-      @Override
-      public etx b() {
-         return new eub(this.a.build(), this.f());
+      public ets.a a(eub.a<?> $$0) {
+         return new ets.a(this, $$0);
       }
+
+      public etx.a b(eub.a<?> $$0) {
+         return new etx.a(this, $$0);
+      }
+
+      public euf.a c(eub.a<?> $$0) {
+         return new euf.a(this, $$0);
+      }
+
+      public abstract eub b();
    }
 }

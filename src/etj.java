@@ -1,53 +1,69 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
 
-public record etj<T>(alb<ka<T>> d, Codec<T> e, etj.a<T> f) {
-   private static final Logger g = LogUtils.getLogger();
-   public static final etj<ews> a = new etj<>(lv.bf, ews.e, e());
-   public static final etj<euv> b = new etj<>(lv.be, eux.c, e());
-   public static final etj<etm> c = new etj<>(lv.bd, etm.d, f());
+public interface etj {
+   eti<cyo> a = new eti<cyo>() {
+      @Override
+      public kr<cyo> a() {
+         return ks.ag;
+      }
 
-   public void a(etn $$0, alb<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
-   }
+      public Stream<cvs> a(cyo $$0) {
+         return $$0.b();
+      }
 
-   public <V> Optional<T> a(alc $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
-      return $$3.result();
-   }
+      public cyo c() {
+         return cyo.a;
+      }
 
-   public static Stream<etj<?>> a() {
-      return Stream.of(a, b, c);
-   }
+      public cyo a(cyo $$0, Stream<cvs> $$1) {
+         return cyo.a($$1.toList());
+      }
+   };
+   eti<cyc> b = new eti<cyc>() {
+      @Override
+      public kr<cyc> a() {
+         return ks.K;
+      }
 
-   private static <T extends eti> etj.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public cyc c() {
+         return cyc.a;
+      }
 
-   private static etj.a<etm> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
-   }
+      public Stream<cvs> a(cyc $$0) {
+         return $$0.b();
+      }
 
-   public alb<ka<T>> b() {
-      return this.d;
-   }
+      public cyc a(cyc $$0, Stream<cvs> $$1) {
+         cyc.a $$2 = new cyc.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   eti<cyd> c = new eti<cyd>() {
+      @Override
+      public kr<cyd> a() {
+         return ks.J;
+      }
 
-   public Codec<T> c() {
-      return this.e;
-   }
+      public cyd c() {
+         return cyd.a;
+      }
 
-   public etj.a<T> d() {
-      return this.f;
-   }
+      public Stream<cvs> a(cyd $$0) {
+         return $$0.a().stream();
+      }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(etn var1, alb<T> var2, T var3);
-   }
+      public cyd a(cyd $$0, Stream<cvs> $$1) {
+         return cyd.a($$1.toList());
+      }
+   };
+   Map<kr<?>, eti<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(eti::a, $$0 -> (eti<?>)$$0));
+   Codec<eti<?>> e = lv.ap.q().comapFlatMap($$0 -> {
+      eti<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, eti::a);
 }

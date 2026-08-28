@@ -1,54 +1,50 @@
-public class gek extends gfo {
-   gek(gbh $$0, double $$1, double $$2, double $$3) {
+public class gek extends gft {
+   gek(gbm $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public ges b() {
-      return ges.b;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
+   public gex b() {
+      return gex.b;
    }
 
    @Override
    public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
+      return this.D * azf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(ln.ae, this.g, this.h, this.i, this.j, this.k, this.l);
-         }
-      }
-   }
+   public static class a implements gew<ls> {
+      private final gfo a;
 
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gek $$8 = new gek($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gew<ls> {
+      private final gfo a;
+
+      public b(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gek $$8 = new gek($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;

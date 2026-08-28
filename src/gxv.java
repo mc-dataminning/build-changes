@@ -1,17 +1,8 @@
-import java.io.IOException;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gxv extends auz<int[]> {
-   private static final alc a = alc.b("textures/colormap/grass.png");
-
-   protected int[] a(aut $$0, bod $$1) {
-      try {
-         return gxx.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
-      }
-   }
-
-   protected void a(int[] $$0, aut $$1, bod $$2) {
-      dee.a($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gxv {
 }

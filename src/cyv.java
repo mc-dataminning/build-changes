@@ -1,84 +1,53 @@
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record cyv(List<cyv.a> c, float d, int e) {
-   public static final Codec<cyv> a = RecordCodecBuilder.create(
+public record cyv(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cyv> g = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cyv.a.a.listOf().fieldOf("rules").forGetter(cyv::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(cyv::b),
-               aym.k.optionalFieldOf("damage_per_block", 1).forGetter(cyv::c)
+               ayo.x.optionalFieldOf("name").forGetter(cyv::c),
+               ki.a.optionalFieldOf("id").forGetter(cyv::d),
+               ayo.w.optionalFieldOf("properties", new PropertyMap()).forGetter(cyv::e)
             )
             .apply($$0, cyv::new)
    );
-   public static final zb<wo, cyv> b = zb.a(cyv.a.b.a(yz.a()), cyv::a, yz.i, cyv::b, yz.g, cyv::c, cyv::new);
+   public static final Codec<cyv> a = Codec.withAlternative(g, ayo.x, $$0 -> new cyv(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final zc<ByteBuf, cyv> b = zc.a(za.b(16).a(za::a), cyv::c, ki.g.a(za::a), cyv::d, za.v, cyv::e, cyv::new);
 
-   public float a(duo $$0) {
-      for (cyv.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
-         }
-      }
-
-      return this.d;
+   public cyv(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public boolean b(duo $$0) {
-      for (cyv.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
-         }
-      }
-
-      return false;
+   public cyv(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
    }
 
-   public List<cyv.a> a() {
-      return this.c;
+   public CompletableFuture<cyv> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dtj.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new cyv($$1);
+         }) : dtj.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ad.e, this.c.get()));
+            return new cyv($$1);
+         });
+      }
    }
 
-   public float b() {
-      return this.d;
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ad.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
    }
 
-   public int c() {
-      return this.e;
-   }
-
-   public static record a(jr<dhj> c, Optional<Float> d, Optional<Boolean> e) {
-      public static final Codec<cyv.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kc.a(lv.f).fieldOf("blocks").forGetter(cyv.a::a),
-                  aym.n.optionalFieldOf("speed").forGetter(cyv.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(cyv.a::c)
-               )
-               .apply($$0, cyv.a::new)
-      );
-      public static final zb<wo, cyv.a> b = zb.a(yz.c(lv.f), cyv.a::a, yz.i.a(yz::a), cyv.a::b, yz.b.a(yz::a), cyv.a::c, cyv.a::new);
-
-      public static cyv.a a(jr<dhj> $$0, float $$1) {
-         return new cyv.a($$0, Optional.of($$1), Optional.of(true));
-      }
-
-      public static cyv.a a(jr<dhj> $$0) {
-         return new cyv.a($$0, Optional.empty(), Optional.of(false));
-      }
-
-      public static cyv.a b(jr<dhj> $$0, float $$1) {
-         return new cyv.a($$0, Optional.of($$1), Optional.empty());
-      }
-
-      public jr<dhj> a() {
-         return this.c;
-      }
-
-      public Optional<Float> b() {
-         return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
-      }
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

@@ -1,70 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class elu implements elh {
-   private final List<elg> a = Lists.newArrayList();
+@FunctionalInterface
+public interface elu<C extends efy> {
+   Optional<elt<C>> createGenerator(elu.a<C> var1);
 
-   @Override
-   public void a(elg $$0) {
-      this.a.add($$0);
+   static <C extends efy> elu<C> simple(Predicate<elu.a<C>> $$0, elt<C> $$1) {
+      Optional<elt<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   @Nullable
-   @Override
-   public elg a(eku $$0) {
-      return elg.a(this.a, $$0);
+   static <C extends efy> Predicate<elu.a<C>> checkForBiomeOnTop(eao.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Deprecated
-   public void a(int $$0) {
-      for (elg $$1 : this.a) {
-         $$1.a(0, $$0, 0);
+   public static record a<C extends efy>(dwp a, dfo b, ebc c, long d, ddp e, C f, del g, Predicate<jo<dfk>> h, epj i, kc j) {
+      public boolean a(eao.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jo<dfk> $$4 = this.a.d().getNoiseBiome(jz.a($$1), jz.a($$3), jz.a($$2), this.c.b());
+         return this.h.test($$4);
       }
-   }
-
-   @Deprecated
-   public int a(int $$0, int $$1, azl $$2, int $$3) {
-      int $$4 = $$0 - $$3;
-      eku $$5 = this.d();
-      int $$6 = $$5.e() + $$1 + 1;
-      if ($$6 < $$4) {
-         $$6 += $$2.a($$4 - $$6);
-      }
-
-      int $$7 = $$6 - $$5.l();
-      this.a($$7);
-      return $$7;
-   }
-
-   /** @deprecated */
-   public void a(azl $$0, int $$1, int $$2) {
-      eku $$3 = this.d();
-      int $$4 = $$2 - $$1 + 1 - $$3.e();
-      int $$5;
-      if ($$4 > 1) {
-         $$5 = $$1 + $$0.a($$4);
-      } else {
-         $$5 = $$1;
-      }
-
-      int $$7 = $$5 - $$3.i();
-      this.a($$7);
-   }
-
-   public elr a() {
-      return new elr(this.a);
-   }
-
-   public void b() {
-      this.a.clear();
-   }
-
-   public boolean c() {
-      return this.a.isEmpty();
-   }
-
-   public eku d() {
-      return elg.a(this.a.stream());
    }
 }

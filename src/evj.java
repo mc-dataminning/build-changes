@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Optional;
 
-public class evj extends euu {
+public class evj extends euy {
    public static final MapCodec<evj> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cyi.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cyi.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cyi.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  ald.a(lw.be).fieldOf("name").forGetter($$0x -> $$0x.b),
+                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
+                  lv.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, evj::new)
    );
-   public static final cyi b = new cyi(cyi.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cyi.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final ald<etq> b;
+   private final long c;
+   private final jo<drx<?>> d;
 
-   public evj(List<ews> $$0, Optional<cyi.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   private evj(List<eww> $$0, ald<etq> $$1, long $$2, jo<drx<?>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   protected cvp a(cvp $$0, eth $$1) {
-      $$0.a(kr.Z, b, this::a);
-      return $$0;
-   }
-
-   private cyi a(cyi $$0) {
-      return new cyi(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public eva<evj> b() {
+      return evb.y;
    }
 
    @Override
-   public euw<evj> b() {
-      return eux.L;
+   public cvs a(cvs $$0, etl $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         $$0.b(ks.ak, new cyw(this.b, this.c));
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(etr $$0) {
+      super.a($$0);
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else {
+         if ($$0.a().c(this.b).isEmpty()) {
+            $$0.b("Missing loot table used for container: " + this.b.a());
+         }
+      }
+   }
+
+   public static euy.a<?> a(drx<?> $$0, ald<etq> $$1) {
+      return a($$2 -> new evj($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static euy.a<?> a(drx<?> $$0, ald<etq> $$1, long $$2) {
+      return a($$3 -> new evj($$3, $$1, $$2, $$0.a()));
    }
 }

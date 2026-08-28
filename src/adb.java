@@ -1,20 +1,25 @@
-public record adb(xp.a b) implements zk<abz> {
-   public static final zb<wa, adb> a = zk.a(adb::a, adb::new);
+public record adb(long[] b, bms c) implements zl<aca> {
+   public static final zc<wb, adb> a = zl.a(adb::a, adb::new);
 
-   private adb(wa $$0) {
-      this(xp.a.a($$0));
+   private adb(wb $$0) {
+      this($$0.d(), $$0.b(bms.class));
    }
 
-   private void a(wa $$0) {
-      xp.a.a($$0, this.b);
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zm<adb> a() {
-      return ago.B;
+   public zn<adb> a() {
+      return agp.A;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   public bms e() {
+      return this.c;
    }
 }

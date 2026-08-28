@@ -14,7 +14,7 @@ public record bj(dh.c b, dh.c c, Optional<bv> d, Optional<Boolean> e, Optional<b
             .apply($$0, bj::new)
    );
 
-   public boolean a(ari $$0, bsg $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(ark $$0, bsj $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {

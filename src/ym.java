@@ -1,50 +1,81 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record ym(hk c, Optional<xd> d) implements xe {
+public record ym(Either<hl, String> d, String e) implements xf {
    public static final MapCodec<ym> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(hk.a.fieldOf("selector").forGetter(ym::b), xf.a.optionalFieldOf("separator").forGetter(ym::c)).apply($$0, ym::new)
+      $$0 -> $$0.group(Codec.either(hl.a, Codec.STRING).fieldOf("name").forGetter(ym::b), Codec.STRING.fieldOf("objective").forGetter(ym::c))
+            .apply($$0, ym::new)
    );
-   public static final xe.a<ym> b = new xe.a<>(a, "selector");
+   public static final MapCodec<ym> b = a.fieldOf("score");
+   public static final xf.a<ym> c = new xf.a<>(b, "score");
 
    @Override
-   public xe.a<?> a() {
-      return b;
+   public xf.a<?> a() {
+      return c;
+   }
+
+   private faa a(eu $$0) throws CommandSyntaxException {
+      Optional<hl> $$1 = this.d.left();
+      if ($$1.isPresent()) {
+         List<? extends btr> $$2 = $$1.get().b().b($$0);
+         if (!$$2.isEmpty()) {
+            if ($$2.size() != 1) {
+               throw fh.a.create();
+            } else {
+               return $$2.getFirst();
+            }
+         } else {
+            return faa.c($$1.get().a());
+         }
+      } else {
+         return faa.c((String)this.d.right().orElseThrow());
+      }
+   }
+
+   private xs a(faa $$0, eu $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         fab $$3 = $$2.aJ();
+         ezt $$4 = $$3.a(this.e);
+         if ($$4 != null) {
+            ezx $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yx.b));
+            }
+         }
+      }
+
+      return xe.i();
    }
 
    @Override
-   public xr a(@Nullable et $$0, @Nullable bto $$1, int $$2) throws CommandSyntaxException {
+   public xs a(@Nullable eu $$0, @Nullable btr $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
-         return xd.i();
+         return xe.i();
       } else {
-         Optional<? extends xd> $$3 = xg.a($$0, this.d, $$1, $$2);
-         return xg.a(this.c.b().b($$0), $$3, bto::Q_);
+         faa $$3 = this.a($$0);
+         faa $$4 = (faa)($$1 != null && $$3.equals(faa.cz) ? $$1 : $$3);
+         return this.a($$4, $$0);
       }
    }
 
    @Override
-   public <T> Optional<T> a(xi.b<T> $$0, ya $$1) {
-      return $$0.accept($$1, this.c.a());
-   }
-
-   @Override
-   public <T> Optional<T> a(xi.a<T> $$0) {
-      return $$0.accept(this.c.a());
-   }
-
-   @Override
    public String toString() {
-      return "pattern{" + this.c + "}";
+      return "score{name='" + this.d + "', objective='" + this.e + "'}";
    }
 
-   public hk b() {
-      return this.c;
-   }
-
-   public Optional<xd> c() {
+   public Either<hl, String> b() {
       return this.d;
+   }
+
+   public String c() {
+      return this.e;
    }
 }

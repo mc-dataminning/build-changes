@@ -1,17 +1,23 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface auu extends aun {
-   @Override
-   default CompletableFuture<Void> a(aun.a $$0, aut $$1, bod $$2, bod $$3, Executor $$4, Executor $$5) {
-      return $$0.a(bai.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public class auu {
+   private static final Codec<auu> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(azo.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, auu::new)
+   );
+   public static final atv<auu> a = atv.a("filter", b);
+   private final List<azo> c;
+
+   public auu(List<azo> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   void a(aut var1);
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   }
+
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   }
 }

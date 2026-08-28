@@ -1,29 +1,53 @@
-public class aim implements zk<agq> {
-   public static final zb<wa, aim> a = zk.a(aim::a, aim::new);
-   private final bro b;
+public class aim implements zl<agr> {
+   public static final zc<wb, aim> a = zl.a(aim::a, aim::new);
+   private static final int b = 384;
+   private final jf c;
+   private final String[] d;
+   private final boolean e;
 
-   public aim(bro $$0) {
-      this.b = $$0;
+   public aim(jf $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new String[]{$$2, $$3, $$4, $$5};
    }
 
-   private aim(wa $$0) {
-      this.b = $$0.b(bro.class);
+   private aim(wb $$0) {
+      this.c = $$0.e();
+      this.e = $$0.readBoolean();
+      this.d = new String[4];
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.d(384);
+      }
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.b);
+   private void a(wb $$0) {
+      $$0.a(this.c);
+      $$0.a(this.e);
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         $$0.a(this.d[$$1]);
+      }
    }
 
    @Override
-   public zm<aim> a() {
-      return ago.cd;
+   public zn<aim> a() {
+      return agp.cc;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public bro b() {
-      return this.b;
+   public jf b() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public String[] f() {
+      return this.d;
    }
 }

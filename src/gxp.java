@@ -1,124 +1,30 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class gxp implements gxf {
-   static final Logger c = LogUtils.getLogger();
+public class gxp implements gxk {
    public static final MapCodec<gxp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alc.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
-               aym.a(gxp.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, gxp::new)
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gxp::new)
    );
-   private final alc d;
-   private final List<gxp.a> e;
-   private final double f;
-   private final double g;
+   private final String c;
+   private final String d;
 
-   public gxp(alc $$0, List<gxp.a> $$1, double $$2, double $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public gxp(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(aut $$0, gxf.a $$1) {
-      alc $$2 = a.a(this.d);
-      Optional<aur> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         gxl $$4 = new gxl($$2, $$3.get(), this.e.size());
-
-         for (gxp.a $$5 : this.e) {
-            $$1.a($$5.b, new gxp.b($$4, $$5, this.f, this.g));
-         }
-      } else {
-         c.warn("Missing sprite: {}", $$2);
-      }
+   public void a(auv $$0, gxk.a $$1) {
+      akx $$2 = new akx("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         ale $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
    @Override
-   public gxh a() {
-      return gxi.d;
-   }
-
-   static record a(alc b, double c, double d, double e, double f) {
-      public static final Codec<gxp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alc.a.fieldOf("sprite").forGetter(gxp.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(gxp.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(gxp.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(gxp.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(gxp.a::e)
-               )
-               .apply($$0, gxp.a::new)
-      );
-
-      public alc a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements gxf.b {
-      private final gxl a;
-      private final gxp.a b;
-      private final double c;
-      private final double d;
-
-      b(gxl $$0, gxp.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public gwv a(gxe $$0) {
-         try {
-            fce $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = azd.a(this.b.c * $$2);
-            int $$5 = azd.a(this.b.d * $$3);
-            int $$6 = azd.a(this.b.e * $$2);
-            int $$7 = azd.a(this.b.f * $$3);
-            fce $$8 = new fce(fce.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new gwv(this.b.b, new gyp($$6, $$7), $$8, auv.a);
-         } catch (Exception var16) {
-            gxp.c.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return gwr.a();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
+   public gxm a() {
+      return gxn.b;
    }
 }

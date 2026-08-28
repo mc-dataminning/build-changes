@@ -1,166 +1,159 @@
-public class dsc extends drs {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final ddg d = new ddg() {
+public class dsc extends dtc implements dta {
+   private static final int d = 1;
+   private jx<cvs> e = jx.a(27, cvs.k);
+   private final dsi f = new dsi() {
       @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dsc.this.e();
+      protected void a(dej $$0, jf $$1, dus $$2) {
+         dsc.a($$0, $$1, $$2, awg.eR);
       }
 
       @Override
-      public arh e() {
-         return (arh)dsc.this.o;
+      protected void b(dej $$0, jf $$1, dus $$2) {
+         dsc.a($$0, $$1, $$2, awg.eP);
       }
 
       @Override
-      public void f() {
-         duo $$0 = dsc.this.o.a_(dsc.this.p);
-         this.e().a(dsc.this.p, $$0, $$0, 3);
+      protected void a(dej $$0, jf $$1, dus $$2, int $$3, int $$4) {
+         dsc.this.a($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      public eys g() {
-         return eys.b(dsc.this.p);
-      }
-
-      @Override
-      public et i() {
-         jj $$0 = dsc.this.m().c(dis.b);
-         return new et(this, eys.b(dsc.this.p), new eyr(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dsc.this.n();
+      protected boolean a(cnx $$0) {
+         if (!($$0.bZ instanceof cri)) {
+            return false;
+         } else {
+            brl $$1 = ((cri)$$0.bZ).l();
+            return $$1 == dsc.this || $$1 instanceof brk && ((brk)$$1).a(dsc.this);
+         }
       }
    };
+   private final dsd g = new dsd();
 
-   public dsc(je $$0, duo $$1) {
-      super(dru.w, $$0, $$1);
+   protected dsc(drx<?> $$0, jf $$1, dus $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dsc(jf $$0, dus $$1) {
+      this(drx.b, $$0, $$1);
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      this.d.a($$0, $$1);
-      $$0.a("powered", this.c());
-      $$0.a("conditionMet", this.j());
-      $$0.a("auto", this.d());
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(uf $$0, jp.a $$1) {
+   protected xe j() {
+      return xe.c("container.chest");
+   }
+
+   @Override
+   protected void a(ug $$0, jq.a $$1) {
       super.a($$0, $$1);
-      this.d.b($$0, $$1);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.e = jx.a(this.b(), cvs.k);
+      if (!this.b_($$0)) {
+         brm.b($$0, this.e, $$1);
+      }
    }
 
    @Override
-   public boolean p() {
-      return true;
-   }
-
-   public ddg b() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != dsc.a.a) {
-         this.v();
+   protected void b(ug $$0, jq.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         brm.a($$0, this.e, $$1);
       }
    }
 
-   public void f() {
-      dsc.a $$0 = this.t();
-      if ($$0 == dsc.a.b && (this.a || this.b) && this.o != null) {
-         this.v();
+   public static void a(dej $$0, jf $$1, dus $$2, dsc $$3) {
+      $$3.g.a();
+   }
+
+   static void a(dej $$0, jf $$1, dus $$2, awf $$3) {
+      dvk $$4 = $$2.c(dip.d);
+      if ($$4 != dvk.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dvk.c) {
+            jk $$8 = dip.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awh.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
       }
    }
 
-   private void v() {
-      dhj $$0 = this.m().b();
-      if ($$0 instanceof dis) {
-         this.k();
-         this.o.a(this.p, $$0, 1);
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
       }
    }
 
-   public boolean j() {
-      return this.c;
+   @Override
+   public void d_(cnx $$0) {
+      if (!this.q && !$$0.Q_()) {
+         this.f.a($$0, this.i(), this.aC_(), this.m());
+      }
    }
 
-   public boolean k() {
-      this.c = true;
-      if (this.u()) {
-         je $$0 = this.p.a(this.o.a_(this.p).c(dis.b).g());
-         if (this.o.a_($$0).b() instanceof dis) {
-            drs $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof dsc && ((dsc)$$1).b().k() > 0;
-         } else {
-            this.c = false;
+   @Override
+   public void c(cnx $$0) {
+      if (!this.q && !$$0.Q_()) {
+         this.f.b($$0, this.i(), this.aC_(), this.m());
+      }
+   }
+
+   @Override
+   protected jx<cvs> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jx<cvs> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(ddo $$0, jf $$1) {
+      dus $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         drv $$3 = $$0.c_($$1);
+         if ($$3 instanceof dsc) {
+            return ((dsc)$$3).f.a();
          }
       }
 
-      return this.c;
+      return 0;
    }
 
-   public dsc.a t() {
-      duo $$0 = this.m();
-      if ($$0.a(dhl.fN)) {
-         return dsc.a.c;
-      } else if ($$0.a(dhl.kG)) {
-         return dsc.a.b;
-      } else {
-         return $$0.a(dhl.kH) ? dsc.a.a : dsc.a.c;
+   public static void a(dsc $$0, dsc $$1) {
+      jx<cvs> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cqz a(int $$0, cnw $$1) {
+      return cri.a($$0, $$1, this);
+   }
+
+   public void k() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aC_(), this.m());
       }
    }
 
-   public boolean u() {
-      duo $$0 = this.o.a_(this.aB_());
-      return $$0.b() instanceof dis ? $$0.c(dis.c) : false;
-   }
-
-   @Override
-   protected void a(drs.b $$0) {
-      super.a($$0);
-      this.d.b($$0.a(kr.g));
-   }
-
-   @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      $$0.a(kr.g, this.d.o());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      $$0.r("CustomName");
-      $$0.r("conditionMet");
-      $$0.r("powered");
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   protected void a(dej $$0, jf $$1, dus $$2, int $$3, int $$4) {
+      dhm $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

@@ -1,54 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class edj extends edq<efr> {
-   public edj(Codec<efr> $$0) {
+public class edj extends edi {
+   public edj(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<efr> $$0) {
-      efr $$1 = $$0.f();
-      je $$2 = $$0.e();
-      dfd $$3 = $$0.b();
-      azl $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      je.a $$10 = new je.a();
+   protected boolean a(dek $$0, azn $$1, jf $$2, dus $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      jf.a $$8 = $$2.k();
 
-      for (je $$11 : je.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
-         }
-      }
-
-      return $$5;
-   }
-
-   protected boolean a(efr $$0, dfd $$1, azl $$2, int $$3, int $$4, je.a $$5) {
-      boolean $$6 = false;
-      boolean $$7 = false;
-
-      for (int $$8 = $$3; $$8 > $$4; $$8--) {
-         $$5.q($$8);
-         if ($$0.b().test($$1, $$5)) {
-            duo $$9 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$9, 2);
-            if (!$$7) {
-               this.a($$1, $$5);
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(jk.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
             }
-
-            $$6 = true;
-            $$7 = true;
-         } else {
-            $$7 = false;
          }
       }
 
-      return $$6;
+      return true;
    }
 }

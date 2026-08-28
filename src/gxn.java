@@ -1,35 +1,35 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class gxn implements gxf {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gxn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.a.fieldOf("resource").forGetter($$0x -> $$0x.d), alc.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gxn::new)
-   );
-   private final alc d;
-   private final Optional<alc> e;
+public class gxn {
+   private static final BiMap<ale, gxm> i = HashBiMap.create();
+   public static final gxm a = a("single", gxs.b);
+   public static final gxm b = a("directory", gxp.b);
+   public static final gxm c = a("filter", gxt.b);
+   public static final gxm d = a("unstitch", gxu.b);
+   public static final gxm e = a("paletted_permutations", gxr.b);
+   public static Codec<gxm> f = ale.a.flatXmap($$0 -> {
+      gxm $$1 = (gxm)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      ale $$1 = (ale)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gxk> g = f.dispatch(gxk::a, gxm::a);
+   public static Codec<List<gxk>> h = g.listOf().fieldOf("sources").codec();
 
-   public gxn(alc $$0, Optional<alc> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Override
-   public void a(aut $$0, gxf.a $$1) {
-      alc $$2 = a.a(this.d);
-      Optional<aur> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
+   private static gxm a(String $$0, MapCodec<? extends gxk> $$1) {
+      gxm $$2 = new gxm($$1);
+      ale $$3 = ale.b($$0);
+      gxm $$4 = (gxm)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
       } else {
-         c.warn("Missing sprite: {}", $$2);
+         return $$2;
       }
-   }
-
-   @Override
-   public gxh a() {
-      return gxi.a;
    }
 }

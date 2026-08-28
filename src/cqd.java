@@ -1,125 +1,55 @@
-public class cqd extends cpt implements dss {
-   private boolean c = true;
-   private boolean d = false;
-
-   public cqd(btv<? extends cqd> $$0, deg $$1) {
+public class cqd extends cpw {
+   public cqd(bty<? extends cqd> $$0, dej $$1) {
       super($$0, $$1);
    }
 
-   public cqd(deg $$0, double $$1, double $$2, double $$3) {
-      super(btv.aa, $$1, $$2, $$3, $$0);
+   public cqd(dej $$0, double $$1, double $$2, double $$3) {
+      super(bty.s, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public cps.a y() {
-      return cps.a.f;
-   }
-
-   @Override
-   public duo A() {
-      return dhl.hc.o();
-   }
-
-   @Override
-   public int C() {
-      return 1;
+   protected cvn ak_() {
+      return cvw.nN;
    }
 
    @Override
    public int b() {
-      return 5;
+      return 27;
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.K()) {
-         this.s($$4);
+   public cpv.a y() {
+      return cpv.a.b;
+   }
+
+   @Override
+   public dus A() {
+      return dho.cv.n().b(dip.c, jk.c);
+   }
+
+   @Override
+   public int C() {
+      return 8;
+   }
+
+   @Override
+   public cqz a(int $$0, cnw $$1) {
+      return cri.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(cnx $$0) {
+      this.dS().a(dzp.j, this.dq(), dzp.a.a($$0));
+   }
+
+   @Override
+   public brs a(cnx $$0, brr $$1) {
+      brs $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dzp.k, $$0);
+         cmo.a($$0, true);
       }
-   }
 
-   public boolean K() {
-      return this.c;
-   }
-
-   public void s(boolean $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public double L() {
-      return this.dx();
-   }
-
-   @Override
-   public double M() {
-      return this.dz() + 0.5;
-   }
-
-   @Override
-   public double O() {
-      return this.dD();
-   }
-
-   @Override
-   public boolean P() {
-      return false;
-   }
-
-   @Override
-   public void l() {
-      this.d = false;
-      super.l();
-      this.U();
-   }
-
-   @Override
-   protected double a(je $$0, dvs $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.U();
-      return $$3;
-   }
-
-   private void U() {
-      if (!this.dS().B && this.bI() && this.K() && !this.d && this.Q()) {
-         this.d = true;
-         this.e();
-      }
-   }
-
-   public boolean Q() {
-      if (dst.a(this.dS(), this)) {
-         return true;
-      } else {
-         for (cke $$1 : this.dS().a(cke.class, this.cO().c(0.25, 0.0, 0.25), btt.a)) {
-            if (dst.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   protected cvk aj_() {
-      return cvt.nQ;
-   }
-
-   @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
-   }
-
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public cqw a(int $$0, cnt $$1) {
-      return new crx($$0, $$1, this);
+      return $$2;
    }
 }

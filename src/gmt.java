@@ -1,21 +1,22 @@
-public class gmt extends gme<cgf, gtd, fwz> {
-   private static final alc a = alc.b("textures/entity/chicken.png");
+public class gmt extends gmh<ckn, gte> {
+   private static final ale a = ale.b("textures/entity/skeleton/bogged.png");
+   private static final ale b = ale.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gmt(gnj.a $$0) {
-      super($$0, new fwz($$0.a(gak.M)), new fwz($$0.a(gak.N)), 0.3F);
+   public gmt(gno.a $$0) {
+      super($$0, gap.x, gap.y, new fwx($$0.a(gap.w)));
+      this.a(new gse<>(this, $$0.f(), gap.z, b));
    }
 
-   public alc a(gtd $$0) {
+   public ale a(gte $$0) {
       return a;
    }
 
-   public gtd a() {
-      return new gtd();
+   public gte a() {
+      return new gte();
    }
 
-   public void a(cgf $$0, gtd $$1, float $$2) {
+   public void a(ckn $$0, gte $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azd.h($$2, $$0.cc, $$0.bY);
-      $$1.b = azd.h($$2, $$0.ca, $$0.bZ);
+      $$1.a = $$0.gs();
    }
 }

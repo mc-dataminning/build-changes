@@ -1,36 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class bqu {
-   private static final Codec<Either<Integer, bqu>> a = Codec.either(Codec.INT, lu.K.q().dispatch(bqu::c, bqv::codec));
-   public static final Codec<bqu> c = a.xmap(
-      $$0 -> (bqu)$$0.map(bqr::a, $$0x -> $$0x), $$0 -> $$0.c() == bqv.a ? Either.left(((bqr)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bqu> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bqu> e = b(1, Integer.MAX_VALUE);
+public class bqu extends bqx {
+   public static final bqu a = new bqu(0);
+   public static final MapCodec<bqu> b = Codec.INT.fieldOf("value").xmap(bqu::a, bqu::d);
+   private final int f;
 
-   public static Codec<bqu> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public static bqu a(int $$0) {
+      return $$0 == 0 ? a : new bqu($$0);
    }
 
-   public static <T extends bqu> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   private bqu(int $$0) {
+      this.f = $$0;
    }
 
-   private static <T extends bqu> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
+   public int d() {
+      return this.f;
    }
 
-   public abstract int a(azl var1);
+   @Override
+   public int a(azn $$0) {
+      return this.f;
+   }
 
-   public abstract int a();
+   @Override
+   public int a() {
+      return this.f;
+   }
 
-   public abstract int b();
+   @Override
+   public int b() {
+      return this.f;
+   }
 
-   public abstract bqv<?> c();
+   @Override
+   public bqy<?> c() {
+      return bqy.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
+   }
 }

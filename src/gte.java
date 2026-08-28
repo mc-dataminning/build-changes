@@ -1,4 +1,3 @@
-public class gte extends guj {
-   public float a;
-   public boolean b;
+public class gte extends gvl {
+   public boolean a;
 }

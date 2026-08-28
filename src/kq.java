@@ -1,90 +1,100 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public interface kq<T> {
-   Codec<kq<?>> a = Codec.lazyInitialized(() -> lu.ap.q());
-   zb<wo, kq<?>> b = zb.a($$0 -> yz.a(lv.aA));
-   Codec<kq<?>> c = a.validate($$0 -> $$0.d() ? DataResult.error(() -> "Encountered transient component " + lu.ap.b($$0)) : DataResult.success($$0));
-   Codec<Map<kq<?>, Object>> d = Codec.dispatchedMap(c, kq::c);
+public final class kq implements Predicate<ko> {
+   public static final Codec<kq> a = kr.d
+      .xmap(
+         $$0 -> new kq($$0.entrySet().stream().map(ku::a).collect(Collectors.toList())),
+         $$0 -> $$0.d.stream().filter($$0x -> !$$0x.a().d()).collect(Collectors.toMap(ku::a, ku::b))
+      );
+   public static final zc<wp, kq> b = ku.a.a(za.a()).a(kq::new, $$0 -> $$0.d);
+   public static final kq c = new kq(List.of());
+   private final List<ku<?>> d;
 
-   static <T> kq.a<T> a() {
-      return new kq.a<>();
+   kq(List<ku<?>> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   Codec<T> b();
+   public static kq.a a() {
+      return new kq.a();
+   }
 
-   default Codec<T> c() {
-      Codec<T> $$0 = this.b();
-      if ($$0 == null) {
-         throw new IllegalStateException(this + " is not a persistent component");
-      } else {
-         return $$0;
+   public static kq a(ko $$0) {
+      return new kq(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof kq $$1 && this.d.equals($$1.d)) {
+         return true;
       }
+
+      return false;
    }
 
-   default boolean d() {
-      return this.b() == null;
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
    }
 
-   zb<? super wo, T> e();
+   @Override
+   public String toString() {
+      return this.d.toString();
+   }
 
-   public static class a<T> {
-      @Nullable
-      private Codec<T> a;
-      @Nullable
-      private zb<? super wo, T> b;
-      private boolean c;
+   public boolean b(ko $$0) {
+      for (ku<?> $$1 : this.d) {
+         Object $$2 = $$0.a($$1.a());
+         if (!Objects.equals($$1.b(), $$2)) {
+            return false;
+         }
+      }
 
-      public kq.a<T> a(Codec<T> $$0) {
-         this.a = $$0;
+      return true;
+   }
+
+   public boolean a(kn $$0) {
+      return this.b($$0.a());
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
+
+   public kp c() {
+      kp.a $$0 = kp.a();
+
+      for (ku<?> $$1 : this.d) {
+         $$0.a($$1);
+      }
+
+      return $$0.a();
+   }
+
+   public static class a {
+      private final List<ku<?>> a = new ArrayList<>();
+
+      a() {
+      }
+
+      public <T> kq.a a(kr<? super T> $$0, T $$1) {
+         for (ku<?> $$2 : this.a) {
+            if ($$2.a() == $$0) {
+               throw new IllegalArgumentException("Predicate already has component of type: '" + $$0 + "'");
+            }
+         }
+
+         this.a.add(new ku<>($$0, $$1));
          return this;
       }
 
-      public kq.a<T> a(zb<? super wo, T> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public kq.a<T> a() {
-         this.c = true;
-         return this;
-      }
-
-      public kq<T> b() {
-         zb<? super wo, T> $$0 = Objects.requireNonNullElseGet(this.b, () -> yz.d(Objects.requireNonNull(this.a, "Missing Codec for component")));
-         Codec<T> $$1 = this.c && this.a != null ? kr.a.a(this.a) : this.a;
-         return new kq.a.a<>($$1, $$0);
-      }
-
-      static class a<T> implements kq<T> {
-         @Nullable
-         private final Codec<T> e;
-         private final zb<? super wo, T> f;
-
-         a(@Nullable Codec<T> $$0, zb<? super wo, T> $$1) {
-            this.e = $$0;
-            this.f = $$1;
-         }
-
-         @Nullable
-         @Override
-         public Codec<T> b() {
-            return this.e;
-         }
-
-         @Override
-         public zb<? super wo, T> e() {
-            return this.f;
-         }
-
-         @Override
-         public String toString() {
-            return ad.a((ka<kq.a.a<T>>)lu.ap, this);
-         }
+      public kq a() {
+         return new kq(List.copyOf(this.a));
       }
    }
 }

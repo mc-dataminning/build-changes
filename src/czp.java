@@ -1,70 +1,71 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class czp extends czy {
-   public czp(czv $$0) {
-      super($$0);
+public class czp {
+   @Nullable
+   private final cnx a;
+   private final brr b;
+   private final eys c;
+   private final dej d;
+   private final cvs e;
+
+   public czp(cnx $$0, brr $$1, eys $$2) {
+      this($$0.dS(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(czw $$0, deg $$1) {
-      cvp $$2 = cvp.k;
-      List<cvp> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axc.bD)) {
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.h() instanceof cuk)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.isEmpty();
+   protected czp(dej $$0, @Nullable cnx $$1, brr $$2, cvs $$3, eys $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cvp a(czw $$0, jp.a $$1) {
-      List<cuk> $$2 = Lists.newArrayList();
-      cvp $$3 = cvp.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axc.bD)) {
-               if (!$$3.f()) {
-                  return cvp.k;
-               }
-
-               $$3 = $$5.u();
-            } else {
-               if (!($$5.h() instanceof cuk $$6)) {
-                  return cvp.k;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.f() && !$$2.isEmpty() ? cyh.a($$3, $$2) : cvp.k;
+   protected final eys j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public jf a() {
+      return this.c.b();
    }
 
-   @Override
-   public dam<?> aq_() {
-      return dam.c;
+   public jk k() {
+      return this.c.c();
+   }
+
+   public eyw l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cvs n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cnx o() {
+      return this.a;
+   }
+
+   public brr p() {
+      return this.b;
+   }
+
+   public dej q() {
+      return this.d;
+   }
+
+   public jk g() {
+      return this.a == null ? jk.c : this.a.cL();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fT();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dI();
    }
 }

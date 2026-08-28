@@ -1,18 +1,19 @@
-public enum zl {
-   a("serverbound"),
-   b("clientbound");
+import io.netty.buffer.ByteBuf;
 
-   private final String c;
+public interface zl<T extends wk> {
+   zn<? extends zl<T>> a();
 
-   private zl(final String $$0) {
-      this.c = $$0;
+   void a(T var1);
+
+   default boolean c() {
+      return false;
    }
 
-   public zl a() {
-      return this == b ? a : b;
+   default boolean d() {
+      return false;
    }
 
-   public String b() {
-      return this.c;
+   static <B extends ByteBuf, T extends zl<?>> zc<B, T> a(zf<B, T> $$0, zd<B, T> $$1) {
+      return zc.a($$0, $$1);
    }
 }

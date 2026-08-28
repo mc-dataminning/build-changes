@@ -1,84 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgp extends dgv {
+public class dgp extends dhm implements dhp {
    public static final MapCodec<dgp> a = b(dgp::new);
-   public static final dvi b = dve.P;
-   public static final dvf c = dve.u;
+   protected static final float b = 4.0F;
+   protected static final ezq c = dhm.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
 
    @Override
    public MapCodec<dgp> a() {
       return a;
    }
 
-   public dgp(dun.d $$0) {
+   public dgp(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jj.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      if (!$$1.B && $$1.c_($$2) instanceof drl $$5) {
-         $$3.a($$5);
-         $$3.a(awo.ar);
-         cml.a($$3, true);
-      }
-
-      return brp.a;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      eyw $$4 = $$0.a($$2);
+      return c.a($$4.d, $$4.e, $$4.f);
    }
 
    @Override
-   protected void a(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      brl.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      drs $$4 = $$1.c_($$2);
-      if ($$4 instanceof drl) {
-         ((drl)$$4).k();
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+         this.a($$1, $$2);
       }
    }
 
-   @Nullable
    @Override
-   public drs a(je $$0, duo $$1) {
-      return new drl($$0, $$1);
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      return $$1.a_($$2.e()).a(awv.av);
    }
 
    @Override
-   protected dnq a_(duo $$0) {
-      return dnq.c;
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if (!$$0.a($$3, $$4)) {
+         return dho.a.n();
+      } else {
+         if ($$1 == jk.b && $$2.a(dho.mZ)) {
+            $$3.a($$4, dho.mZ.n(), 2);
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   protected boolean c_(duo $$0) {
+   public cvs a(dem $$0, jf $$1, dus $$2) {
+      return new cvs(cvw.dR);
+   }
+
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
       return true;
    }
 
    @Override
-   protected int a(duo $$0, deg $$1, je $$2) {
-      return cqw.a($$1.c_($$2));
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      this.a($$0, $$2);
    }
 
    @Override
-   protected duo a(duo $$0, dnx $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected float a(dus $$0, cnx $$1, ddo $$2, jf $$3) {
+      return $$1.eW().h() instanceof cxg ? 1.0F : super.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected duo a(duo $$0, dmg $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public duo a(czk $$0) {
-      return this.o().b(b, $$0.d().g());
+   protected void a(dej $$0, jf $$1) {
+      $$0.a($$1.d(), dho.mZ.n().b(dgq.i, dve.b), 3);
    }
 }

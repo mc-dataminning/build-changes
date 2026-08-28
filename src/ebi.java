@@ -1,83 +1,93 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
 
-public class ebi {
-   public static final MapCodec<ebi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(ebi::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(ebi::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(ebi::d),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(ebi::new))
-   );
-   public static final ebi b = new ebi((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+public interface ebi {
+   Codec<ebi> a = Codec.xor(ebi.b.d, Codec.xor(ebi.a.d, ebi.c.d)).xmap(ebi::a, ebi::a);
+   ebi b = b(0);
+   ebi c = c(0);
 
-   public ebi(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   static ebi a(int $$0) {
+      return new ebi.b($$0);
    }
 
-   public static ebi a() {
-      return new ebi(f(), true, false);
+   static ebi b(int $$0) {
+      return new ebi.a($$0);
    }
 
-   private ebi(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   static ebi c(int $$0) {
+      return new ebi.c($$0);
    }
 
-   public long b() {
-      return this.c;
+   static ebi a() {
+      return b;
    }
 
-   public boolean c() {
-      return this.d;
+   static ebi b() {
+      return c;
    }
 
-   public boolean d() {
-      return this.e;
+   private static ebi a(Either<ebi.b, Either<ebi.a, ebi.c>> $$0) {
+      return (ebi)$$0.map(Function.identity(), Either::unwrap);
    }
 
-   public boolean e() {
-      return this.f.isPresent();
+   private static Either<ebi.b, Either<ebi.a, ebi.c>> a(ebi $$0) {
+      return $$0 instanceof ebi.b ? Either.left((ebi.b)$$0) : Either.right($$0 instanceof ebi.a ? Either.left((ebi.a)$$0) : Either.right((ebi.c)$$0));
    }
 
-   public ebi a(boolean $$0) {
-      return new ebi(this.c, this.d, $$0, this.f);
-   }
+   int a(ebl var1);
 
-   public ebi b(boolean $$0) {
-      return new ebi(this.c, $$0, this.e, this.f);
-   }
+   public static record a(int e) implements ebi {
+      public static final Codec<ebi.a> d = Codec.intRange(dyo.e, dyo.d).fieldOf("above_bottom").xmap(ebi.a::new, ebi.a::c).codec();
 
-   public ebi a(OptionalLong $$0) {
-      return new ebi($$0.orElse(f()), this.d, this.e, this.f);
-   }
+      @Override
+      public int a(ebl $$0) {
+         return $$0.a() + this.e;
+      }
 
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
-         }
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
+
+      public int c() {
+         return this.e;
       }
    }
 
-   public static long f() {
-      return azl.a().g();
+   public static record b(int e) implements ebi {
+      public static final Codec<ebi.b> d = Codec.intRange(dyo.e, dyo.d).fieldOf("absolute").xmap(ebi.b::new, ebi.b::c).codec();
+
+      @Override
+      public int a(ebl $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
+   }
+
+   public static record c(int e) implements ebi {
+      public static final Codec<ebi.c> d = Codec.intRange(dyo.e, dyo.d).fieldOf("below_top").xmap(ebi.c::new, ebi.c::c).codec();
+
+      @Override
+      public int a(ebl $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 }

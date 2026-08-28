@@ -1,75 +1,49 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public sealed interface brp permits brp.d, brp.a, brp.c, brp.f {
-   brp.d a = new brp.d(brp.e.b, brp.b.b);
-   brp.d b = new brp.d(brp.e.c, brp.b.b);
-   brp.d c = new brp.d(brp.e.a, brp.b.b);
-   brp.a d = new brp.a();
-   brp.c e = new brp.c();
-   brp.f f = new brp.f();
+public enum brp implements bab {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   default boolean a() {
-      return false;
+   public static final bab.a<brp> e = bab.a(brp::values);
+   private static final IntFunction<brp> f = axw.a(brp::a, values(), axw.a.b);
+   private final int g;
+   private final String h;
+
+   private brp(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static record a() implements brp {
+   public int a() {
+      return this.g;
    }
 
-   public static record b(boolean c, @Nullable cvp d) {
-      static brp.b a = new brp.b(false, null);
-      static brp.b b = new brp.b(true, null);
-
-      public boolean a() {
-         return this.c;
-      }
-
-      @Nullable
-      public cvp b() {
-         return this.d;
-      }
+   public xe b() {
+      return xe.c("options.difficulty." + this.h);
    }
 
-   public static record c() implements brp {
+   public xe d() {
+      return xe.c("options.difficulty." + this.h + ".info");
    }
 
-   public static record d(brp.e g, brp.b h) implements brp {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      public brp.d a(cvp $$0) {
-         return new brp.d(this.g, new brp.b(true, $$0));
-      }
-
-      public brp.d b() {
-         return new brp.d(this.g, brp.b.a);
-      }
-
-      public boolean c() {
-         return this.h.c;
-      }
-
-      @Nullable
-      public cvp d() {
-         return this.h.d;
-      }
-
-      public brp.e e() {
-         return this.g;
-      }
-
-      public brp.b f() {
-         return this.h;
-      }
+   public static brp a(int $$0) {
+      return f.apply($$0);
    }
 
-   public static enum e {
-      a,
-      b,
-      c;
+   @Nullable
+   public static brp a(String $$0) {
+      return e.a($$0);
    }
 
-   public static record f() implements brp {
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

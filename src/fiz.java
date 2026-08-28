@@ -1,37 +1,44 @@
-import org.joml.Vector3f;
+import org.joml.Vector2i;
 
-public record fiz(fiz.c a, fjb... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, fjb[] var3, int var4, int var5, float var6);
+public class fiz {
+   private double a;
+   private double b;
+
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
+      }
+
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
+      }
+
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
+      }
    }
 
-   public static class b {
-      public static final fiz.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final fiz.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            azd.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            azd.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            azd.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
-   }
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
 
-   public interface c {
-      void apply(gal var1, Vector3f var2);
-   }
+      while ($$1 < 0) {
+         $$1 += $$2;
+      }
 
-   public static class d {
-      public static final fiz.c a = gal::a;
-      public static final fiz.c b = gal::b;
-      public static final fiz.c c = gal::c;
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
+      }
+
+      return $$1;
    }
 }

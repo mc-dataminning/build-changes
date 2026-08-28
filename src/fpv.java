@@ -1,61 +1,101 @@
-import java.net.URI;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class fpv extends fqd {
-   private static final xd a = xd.c("symlink_warning.title.world").a(n.r);
-   private static final xd b = xd.a("symlink_warning.message.world", xd.a(axz.p));
-   private static final xd c = xd.c("symlink_warning.title.pack").a(n.r);
-   private static final xd d = xd.a("symlink_warning.message.pack", xd.a(axz.p));
-   private final xd s;
-   private final URI u;
-   private final Runnable v;
-   private final fnx w = new fnx().b(10);
+public class fpv extends fqh {
+   private static final long a = 2000L;
+   private final arw b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<dxp> s = ad.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dxp.c, 5526612);
+      $$0.put(dxp.d, 10066329);
+      $$0.put(dxp.e, 6250897);
+      $$0.put(dxp.f, 8434258);
+      $$0.put(dxp.g, 13750737);
+      $$0.put(dxp.h, 7497737);
+      $$0.put(dxp.i, 3159410);
+      $$0.put(dxp.j, 2213376);
+      $$0.put(dxp.k, 13421772);
+      $$0.put(dxp.l, 16769184);
+      $$0.put(dxp.m, 15884384);
+      $$0.put(dxp.n, 16777215);
+   });
 
-   public fpv(xd $$0, xd $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
-   }
-
-   public static fqd a(Runnable $$0) {
-      return new fpv(a, b, axz.p, $$0);
-   }
-
-   public static fqd b(Runnable $$0) {
-      return new fpv(c, d, axz.p, $$0);
-   }
-
-   @Override
-   protected void aR_() {
-      super.aR_();
-      this.w.c().b();
-      fnx.b $$0 = this.w.d(1);
-      $$0.a(new flr(this.l, this.p));
-      $$0.a(new fle(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fnx $$2 = new fnx().a(5);
-      fnx.b $$3 = $$2.d(3);
-      $$3.a(fkk.a(xc.n, $$0x -> ad.m().a(this.u)).b(120, 20).a());
-      $$3.a(fkk.a(xc.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fkk.a(xc.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public fpv(arw $$0) {
+      super(fig.a);
+      this.b = $$0;
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-      fnw.a(this.w, this.H());
+   public boolean aI_() {
+      return false;
    }
 
    @Override
-   public xd i() {
-      return xc.a(super.i(), this.s);
+   protected boolean aR_() {
+      return false;
    }
 
    @Override
-   public void d() {
-      this.v.run();
+   public void j() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fol $$0) {
+      if (this.d) {
+         $$0.a(fok.a, xe.c("narrator.loading.done"));
+      } else {
+         $$0.a(fok.a, this.m());
+      }
+   }
+
+   private xe m() {
+      return xe.a("loading.progress", azf.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = ad.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
+      }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
+   }
+
+   public static void a(fkb $$0, arw $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
+
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            dxp $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axq.f(s.getInt($$17)));
+         }
+      }
    }
 }

@@ -1,40 +1,15 @@
-import javax.annotation.Nullable;
-
 public class fdg {
-   private static final int a = 786432;
-   private final fdb b;
-   @Nullable
-   private static fdg c;
-
-   public static void a() {
-      if (c != null) {
-         throw new IllegalStateException("Tesselator has already been initialized");
-      } else {
-         c = new fdg();
-      }
-   }
-
-   public static fdg b() {
-      if (c == null) {
-         throw new IllegalStateException("Tesselator has not been initialized");
-      } else {
-         return c;
-      }
-   }
-
-   public fdg(int $$0) {
-      this.b = new fdb($$0);
-   }
-
-   public fdg() {
-      this(786432);
-   }
-
-   public fcz a(fdj.c $$0, fdj $$1) {
-      return new fcz(this.b, $$0, $$1);
-   }
-
-   public void c() {
-      this.b.b();
-   }
+   public static final fdn a = fdn.a().a("Position", fdo.b).a();
+   public static final fdn b = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a("UV0", fdo.d).a("UV2", fdo.g).a("Normal", fdo.h).a(1).a();
+   public static final fdn c = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a("UV0", fdo.d).a("UV1", fdo.f).a("UV2", fdo.g).a("Normal", fdo.h).a(1).a();
+   public static final fdn d = fdn.a().a("Position", fdo.b).a("UV0", fdo.d).a("Color", fdo.c).a("UV2", fdo.g).a();
+   public static final fdn e = fdn.a().a("Position", fdo.b).a();
+   public static final fdn f = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a();
+   public static final fdn g = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a("Normal", fdo.h).a(1).a();
+   public static final fdn h = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a("UV2", fdo.g).a();
+   public static final fdn i = fdn.a().a("Position", fdo.b).a("UV0", fdo.d).a();
+   public static final fdn j = fdn.a().a("Position", fdo.b).a("UV0", fdo.d).a("Color", fdo.c).a();
+   public static final fdn k = fdn.a().a("Position", fdo.b).a("Color", fdo.c).a("UV0", fdo.d).a("UV2", fdo.g).a();
+   public static final fdn l = fdn.a().a("Position", fdo.b).a("UV0", fdo.d).a("UV2", fdo.g).a("Color", fdo.c).a();
+   public static final fdn m = fdn.a().a("Position", fdo.b).a("UV0", fdo.d).a("Color", fdo.c).a("Normal", fdo.h).a(1).a();
 }

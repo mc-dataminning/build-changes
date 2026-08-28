@@ -1,146 +1,147 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiFunction;
+import com.google.common.collect.Sets;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
 public class etl {
-   public static final Codec<etl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               etv.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               ews.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.c),
-               eux.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.e),
-               exp.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               exp.a.fieldOf("bonus_rolls").orElse(exl.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, etl::new)
-   );
-   private final List<etx> b;
-   private final List<ews> c;
-   private final Predicate<eth> d;
-   private final List<euv> e;
-   private final BiFunction<cvp, eth, cvp> f;
-   private final exo g;
-   private final exo h;
+   private final eto a;
+   private final azn b;
+   private final jp.a c;
+   private final Set<etl.c<?>> d = Sets.newLinkedHashSet();
 
-   etl(List<etx> $$0, List<ews> $$1, List<euv> $$2, exo $$3, exo $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = ad.a($$1);
-      this.e = $$2;
-      this.f = eux.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   etl(eto $$0, azn $$1, jp.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private void b(Consumer<cvp> $$0, eth $$1) {
-      azl $$2 = $$1.b();
-      List<etw> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
+   public boolean a(ewe<?> $$0) {
+      return this.a.a($$0);
+   }
 
-      for (etx $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
+   public <T> T b(ewe<T> $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(ale $$0, Consumer<cvs> $$1) {
+      this.a.a($$0, $$1);
+   }
+
+   @Nullable
+   public <T> T c(ewe<T> $$0) {
+      return this.a.d($$0);
+   }
+
+   public boolean a(etl.c<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean b(etl.c<?> $$0) {
+      return this.d.add($$0);
+   }
+
+   public void c(etl.c<?> $$0) {
+      this.d.remove($$0);
+   }
+
+   public jp.a a() {
+      return this.c;
+   }
+
+   public azn b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public arj d() {
+      return this.a.a();
+   }
+
+   public static etl.c<etq> a(etq $$0) {
+      return new etl.c<>(etn.c, $$0);
+   }
+
+   public static etl.c<eww> a(eww $$0) {
+      return new etl.c<>(etn.a, $$0);
+   }
+
+   public static etl.c<euz> a(euz $$0) {
+      return new etl.c<>(etn.b, $$0);
+   }
+
+   public static class a {
+      private final eto a;
+      @Nullable
+      private azn b;
+
+      public a(eto $$0) {
+         this.a = $$0;
       }
 
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
+      public etl.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = azn.a($$0);
+         }
+
+         return this;
+      }
+
+      public etl.a a(azn $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public arj a() {
+         return this.a.a();
+      }
+
+      public etl a(Optional<ale> $$0) {
+         arj $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         azn $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::D_);
+         return new etl(this.a, $$3, $$2.bd().a());
+      }
+   }
+
+   public static enum b implements bab {
+      a("this", ewh.a),
+      b("attacker", ewh.d),
+      c("direct_attacker", ewh.e),
+      d("attacking_player", ewh.b);
+
+      public static final bab.a<etl.b> e = bab.a(etl.b::values);
+      private final String f;
+      private final ewe<? extends btr> g;
+
+      private b(final String $$0, final ewe<? extends btr> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public ewe<? extends btr> a() {
+         return this.g;
+      }
+
+      public static etl.b a(String $$0) {
+         etl.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (etw $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
          }
       }
-   }
 
-   public void a(Consumer<cvp> $$0, eth $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cvp> $$2 = euv.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + azd.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
+      @Override
+      public String c() {
+         return this.f;
       }
    }
 
-   public void a(etn $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.a(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.a(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.a(".rolls"));
-      this.h.a($$0.a(".bonusRolls"));
-   }
-
-   public static etl.a a() {
-      return new etl.a();
-   }
-
-   public static class a implements eur<etl.a>, ewk<etl.a> {
-      private final Builder<etx> a = ImmutableList.builder();
-      private final Builder<ews> b = ImmutableList.builder();
-      private final Builder<euv> c = ImmutableList.builder();
-      private exo d = exl.a(1.0F);
-      private exo e = exl.a(0.0F);
-
-      public etl.a a(exo $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public etl.a a() {
-         return this;
-      }
-
-      public etl.a b(exo $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public etl.a a(etx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public etl.a a(ews.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public etl.a a(euv.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public etl b() {
-         return new etl(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static record c<T>(etn<T> a, T b) {
    }
 }

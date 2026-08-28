@@ -1,49 +1,77 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public enum brm implements azz {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public class brm {
+   public static final String a = "Items";
 
-   public static final azz.a<brm> e = azz.a(brm::values);
-   private static final IntFunction<brm> f = axu.a(brm::a, values(), axu.a.b);
-   private final int g;
-   private final String h;
-
-   private brm(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public static cvs a(List<cvs> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).f() && $$2 > 0 ? $$0.get($$1).a($$2) : cvs.k;
    }
 
-   public int a() {
-      return this.g;
+   public static cvs a(List<cvs> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cvs.k) : cvs.k;
    }
 
-   public xd b() {
-      return xd.c("options.difficulty." + this.h);
+   public static ug a(ug $$0, jx<cvs> $$1, jq.a $$2) {
+      return a($$0, $$1, true, $$2);
    }
 
-   public xd d() {
-      return xd.c("options.difficulty." + this.h + ".info");
+   public static ug a(ug $$0, jx<cvs> $$1, boolean $$2, jq.a $$3) {
+      um $$4 = new um();
+
+      for (int $$5 = 0; $$5 < $$1.size(); $$5++) {
+         cvs $$6 = $$1.get($$5);
+         if (!$$6.f()) {
+            ug $$7 = new ug();
+            $$7.a("Slot", (byte)$$5);
+            $$4.add($$6.b($$3, $$7));
+         }
+      }
+
+      if (!$$4.isEmpty() || $$2) {
+         $$0.a("Items", $$4);
+      }
+
+      return $$0;
    }
 
-   public static brm a(int $$0) {
-      return f.apply($$0);
+   public static void b(ug $$0, jx<cvs> $$1, jq.a $$2) {
+      um $$3 = $$0.c("Items", 10);
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         ug $$5 = $$3.a($$4);
+         int $$6 = $$5.f("Slot") & 255;
+         if ($$6 >= 0 && $$6 < $$1.size()) {
+            $$1.set($$6, cvs.a($$2, (vd)$$5).orElse(cvs.k));
+         }
+      }
    }
 
-   @Nullable
-   public static brm a(String $$0) {
-      return e.a($$0);
+   public static int a(brl $$0, Predicate<cvs> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cvs $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.f()) {
+            $$0.a($$5, cvs.k);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static int a(cvs $$0, Predicate<cvs> $$1, int $$2, boolean $$3) {
+      if ($$0.f() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.K();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.K() : Math.min($$2, $$0.K());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

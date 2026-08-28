@@ -1,39 +1,29 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum fid implements azg {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class fid {
+   private final List<xj> a = Lists.newArrayList();
 
-   private static final IntFunction<fid> d = axu.a(fid::b, values(), axu.a.b);
-   private final int e;
-   private final String f;
-
-   private fid(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(xj $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   @Nullable
+   public xj a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : xj.a(this.a);
+      }
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   public xj b() {
+      xj $$0 = this.a();
+      return $$0 != null ? $$0 : xj.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static fid a(int $$0) {
-      return d.apply($$0);
+   public void c() {
+      this.a.clear();
    }
 }

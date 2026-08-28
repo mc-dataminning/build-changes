@@ -1,138 +1,113 @@
-public class cqc extends cps {
-   private static final akg<Boolean> e = akk.a(cqc.class, aki.k);
-   private static final int i = 3600;
-   private static final int j = 32000;
-   private int k;
-   public double c;
-   public double d;
+public abstract class cqc {
+   protected final cpv a;
 
-   public cqc(btv<? extends cqc> $$0, deg $$1) {
-      super($$0, $$1);
+   protected cqc(cpv $$0) {
+      this.a = $$0;
    }
 
-   public cqc(deg $$0, double $$1, double $$2, double $$3) {
-      super(btv.S, $$0, $$1, $$2, $$3);
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.c($$0, $$1, $$2);
+      this.b($$3 % 360.0F);
+      this.a($$4 % 360.0F);
    }
 
-   @Override
-   public cps.a y() {
-      return cps.a.c;
+   public double a() {
+      return this.l();
    }
 
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
+   public double b() {
+      return this.m();
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dS().w_()) {
-         if (this.k > 0) {
-            this.k--;
-         }
-
-         if (this.k <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.s(this.k > 0);
-      }
-
-      if (this.F() && this.af.a(4) == 0) {
-         this.dS().a(ln.X, this.dx(), this.dz() + 0.8, this.dD(), 0.0, 0.0, 0.0);
-      }
+   public double c() {
+      return this.n();
    }
 
-   @Override
-   protected double t() {
-      return this.bi() ? super.t() * 0.75 : super.t() * 0.5;
+   public float d() {
+      return this.o();
    }
 
-   @Override
-   protected cvk aj_() {
-      return cvt.nO;
+   public float e() {
+      return this.p();
    }
 
-   @Override
-   protected void v() {
-      double $$0 = 1.0E-4;
-      double $$1 = 0.001;
-      super.v();
-      eys $$2 = this.dv();
-      double $$3 = $$2.j();
-      double $$4 = this.c * this.c + this.d * this.d;
-      if ($$4 > 1.0E-4 && $$3 > 0.001) {
-         double $$5 = Math.sqrt($$3);
-         double $$6 = Math.sqrt($$4);
-         this.c = $$2.d / $$5 * $$6;
-         this.d = $$2.f / $$5 * $$6;
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.b($$0, $$1, $$2);
    }
 
-   @Override
-   protected eys a(eys $$0) {
-      double $$1 = this.c * this.c + this.d * this.d;
-      eys $$2;
-      if ($$1 > 1.0E-7) {
-         $$1 = Math.sqrt($$1);
-         this.c /= $$1;
-         this.d /= $$1;
-         $$2 = $$0.d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.bi()) {
-            $$2 = $$2.c(0.1);
-         }
-      } else {
-         $$2 = $$0.d(0.98, 0.0, 0.98);
-      }
+   public abstract void f();
 
-      return super.a($$2);
+   public dej g() {
+      return this.a.dS();
    }
 
-   @Override
-   public brp a(cnu $$0, bro $$1) {
-      cvp $$2 = $$0.b($$1);
-      if ($$2.a(axc.bE) && this.k + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.k += 3600;
-      }
+   public abstract void h();
 
-      if (this.k > 0) {
-         this.c = this.dx() - $$0.dx();
-         this.d = this.dD() - $$0.dD();
-      }
+   public abstract double a(jf var1, dvw var2, double var3);
 
-      return brp.a;
+   public abstract boolean i();
+
+   public eyw j() {
+      return this.a.dv();
    }
 
-   @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.k);
+   public void a(eyw $$0) {
+      this.a.h($$0);
    }
 
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.k = $$0.g("Fuel");
+   public void b(double $$0, double $$1, double $$2) {
+      this.a.n($$0, $$1, $$2);
    }
 
-   protected boolean F() {
-      return this.am.a(e);
+   public eyw k() {
+      return this.a.dq();
    }
 
-   protected void s(boolean $$0) {
-      this.am.a(e, $$0);
+   public double l() {
+      return this.a.dx();
    }
 
-   @Override
-   public duo A() {
-      return dhl.cD.o().b(dkq.a, jj.c).b(dkq.b, Boolean.valueOf(this.F()));
+   public double m() {
+      return this.a.dz();
    }
+
+   public double n() {
+      return this.a.dD();
+   }
+
+   public void b(eyw $$0) {
+      this.a.b($$0);
+   }
+
+   public void c(double $$0, double $$1, double $$2) {
+      this.a.a_($$0, $$1, $$2);
+   }
+
+   public float o() {
+      return this.a.dK();
+   }
+
+   public void a(float $$0) {
+      this.a.w($$0);
+   }
+
+   public float p() {
+      return this.a.dI();
+   }
+
+   public void b(float $$0) {
+      this.a.v($$0);
+   }
+
+   public jk q() {
+      return this.a.cL();
+   }
+
+   public eyw c(eyw $$0) {
+      return $$0;
+   }
+
+   public abstract double r();
+
+   public abstract double s();
 }

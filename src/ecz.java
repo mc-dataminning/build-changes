@@ -1,58 +1,83 @@
 import com.mojang.serialization.Codec;
 
-public class ecz extends edq<egb> {
-   public ecz(Codec<egb> $$0) {
+public class ecz extends edu<egf> {
+   public ecz(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egb> $$0) {
-      je $$1 = $$0.e();
-      dfd $$2 = $$0.b();
-      azl $$3 = $$0.d();
-      if ($$1.v() > $$2.N() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dhl.G) && !$$2.a_($$1.e()).a(dhl.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(edw<egf> $$0) {
+      jf $$1 = $$0.e();
+      dfg $$2 = $$0.b();
+      azn $$3 = $$0.d();
+      if ($$2.u($$1) && !$$2.u($$1.d())) {
+         jf.a $$4 = $$1.k();
+         jf.a $$5 = $$1.k();
+         boolean $$6 = true;
+         boolean $$7 = true;
+         boolean $$8 = true;
+         boolean $$9 = true;
 
-         for (jj $$5 : jj.values()) {
-            if ($$5 != jj.a && $$2.a_($$1.a($$5)).a(dhl.iC)) {
-               $$4 = true;
-               break;
+         while ($$2.u($$4)) {
+            if ($$2.s($$4)) {
+               return true;
             }
+
+            $$2.a($$4, dho.dY.n(), 2);
+            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, jk.c));
+            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, jk.d));
+            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, jk.e));
+            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, jk.f));
+            $$4.c(jk.a);
          }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dhl.mW.o(), 2);
+         $$4.c(jk.b);
+         this.a($$2, $$3, $$5.a($$4, jk.c));
+         this.a($$2, $$3, $$5.a($$4, jk.d));
+         this.a($$2, $$3, $$5.a($$4, jk.e));
+         this.a($$2, $$3, $$5.a($$4, jk.f));
+         $$4.c(jk.a);
+         jf.a $$10 = new jf.a();
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
+         for (int $$11 = -3; $$11 < 4; $$11++) {
+            for (int $$12 = -3; $$12 < 4; $$12++) {
+               int $$13 = azf.a($$11) * azf.a($$12);
+               if ($$3.a(10) < 10 - $$13) {
+                  $$10.g($$4.b($$11, 0, $$12));
+                  int $$14 = 3;
 
-               if ($$8 >= 1) {
-                  je $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  duo $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dhl.G) || $$10.a(dhl.iC) || $$10.a(dhl.dO)) {
-                     for (jj $$11 : jj.values()) {
-                        duo $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dhl.mW)) {
-                           $$2.a($$9, dhl.mW.o(), 2);
-                           break;
-                        }
+                  while ($$2.u($$5.a($$10, jk.a))) {
+                     $$10.c(jk.a);
+                     if (--$$14 <= 0) {
+                        break;
                      }
+                  }
+
+                  if (!$$2.u($$5.a($$10, jk.a))) {
+                     $$2.a($$10, dho.dY.n(), 2);
                   }
                }
             }
-
-            return true;
          }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(dek $$0, azn $$1, jf $$2) {
+      if ($$1.h()) {
+         $$0.a($$2, dho.dY.n(), 2);
+      }
+   }
+
+   private boolean b(dek $$0, azn $$1, jf $$2) {
+      if ($$1.a(10) != 0) {
+         $$0.a($$2, dho.dY.n(), 2);
+         return true;
+      } else {
+         return false;
       }
    }
 }

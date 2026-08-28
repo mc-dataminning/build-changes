@@ -1,50 +1,58 @@
-public class ahw implements zk<agq> {
-   public static final zb<wa, ahw> a = zk.a(ahw::a, ahw::new);
-   private final int b;
-   private final ahw.a c;
-   private final int d;
+public class ahw implements zl<agr> {
+   public static final zc<wb, ahw> a = zl.a(ahw::a, ahw::new);
+   private final jf b;
+   private final jk c;
+   private final ahw.a d;
+   private final int e;
 
-   public ahw(bto $$0, ahw.a $$1) {
-      this($$0, $$1, 0);
+   public ahw(ahw.a $$0, jf $$1, jk $$2, int $$3) {
+      this.d = $$0;
+      this.b = $$1.j();
+      this.c = $$2;
+      this.e = $$3;
    }
 
-   public ahw(bto $$0, ahw.a $$1, int $$2) {
-      this.b = $$0.ap();
-      this.c = $$1;
-      this.d = $$2;
+   public ahw(ahw.a $$0, jf $$1, jk $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
-   private ahw(wa $$0) {
-      this.b = $$0.l();
-      this.c = $$0.b(ahw.a.class);
-      this.d = $$0.l();
+   private ahw(wb $$0) {
+      this.d = $$0.b(ahw.a.class);
+      this.b = $$0.e();
+      this.c = jk.a($$0.readUnsignedByte());
+      this.e = $$0.l();
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
+   private void a(wb $$0) {
+      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.l(this.c.d());
+      $$0.c(this.e);
    }
 
    @Override
-   public zm<ahw> a() {
-      return ago.bO;
+   public zn<ahw> a() {
+      return agp.bN;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jf b() {
       return this.b;
    }
 
-   public ahw.a e() {
+   public jk e() {
       return this.c;
    }
 
-   public int f() {
+   public ahw.a f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 
    public static enum a {
@@ -54,8 +62,6 @@ public class ahw implements zk<agq> {
       d,
       e,
       f,
-      g,
-      h,
-      i;
+      g;
    }
 }

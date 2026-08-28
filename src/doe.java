@@ -1,117 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doe extends dgv implements dol {
-   public static final MapCodec<doe> a = b(doe::new);
-   public static final dvf b = dve.F;
-   public static final dvf c = dve.C;
-   public static final dvf d = dve.G;
-   protected static final ezm e = dhj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double f = e.c(jj.a.b);
+public class doe extends djw implements dod {
+   public static final MapCodec<doe> b = b(doe::new);
 
    @Override
    public MapCodec<doe> a() {
-      return a;
+      return b;
    }
 
-   public doe(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b);
-      $$0.a(c);
-      $$0.a(d);
+   public doe(dur.d $$0) {
+      super(bqu.a(1), $$0);
    }
 
    @Override
-   public void a(deg $$0, je $$1, duo $$2, bto $$3) {
-      if ($$0 instanceof arh $$4) {
-         ari $$5 = dtc.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, dru.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+   public int a(doi.a $$0, dek $$1, jf $$2, azn $$3, doi $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         jf $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               jf $$10 = $$7.d();
+               dus $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.A().e(), awh.e, 1.0F, 1.0F);
+            }
+
+            return Math.max(0, $$6 - $$9);
+         } else {
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      if ($$1 instanceof arh $$5 && $$0.c(b) && !$$0.a($$3.b())) {
-         $$5.a($$2, dru.L).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
-         $$1.a($$2, dru.L).ifPresent($$1x -> $$1x.a($$1));
+      } else {
+         return $$6;
       }
    }
 
-   @Override
-   protected dnq a_(duo $$0) {
-      return dnq.c;
+   private static int a(doi $$0, jf $$1, jf $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = azf.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = azf.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
    }
 
-   @Override
-   protected ezm b(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return e;
-   }
-
-   @Override
-   protected ezm d_(duo $$0) {
-      return e;
-   }
-
-   @Override
-   protected boolean g_(duo $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public drs a(je $$0, duo $$1) {
-      return new dtc($$0, $$1);
-   }
-
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
+   private dus a(dek $$0, jf $$1, azn $$2, boolean $$3) {
+      dus $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = dho.qV.n().b(doh.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = dho.qQ.n();
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$4.b(dvi.C) && !$$0.b_($$1).c() ? $$4.b(dvi.C, Boolean.valueOf(true)) : $$4;
    }
 
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      return this.o().b(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eqq.c));
-   }
+   private static boolean a(dek $$0, jf $$1) {
+      dus $$2 = $$0.a_($$1.d());
+      if ($$2.l() || $$2.a(dho.G) && $$2.y().b(equ.c)) {
+         int $$3 = 0;
 
-   @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(c) ? eqq.c.a(false) : super.b_($$0);
-   }
+         for (jf $$4 : jf.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dus $$5 = $$0.a_($$4);
+            if ($$5.a(dho.qQ) || $$5.a(dho.qV)) {
+               $$3++;
+            }
 
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, cvp $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bqr.a(5));
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Nullable
    @Override
-   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
-      return !$$0.B ? dgv.a($$2, dru.L, ($$0x, $$1x, $$2x, $$3) -> dzu.c.a($$0x, $$3.gr(), $$3.gs())) : null;
+   public boolean d() {
+      return false;
    }
 }

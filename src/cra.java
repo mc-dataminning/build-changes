@@ -1,43 +1,86 @@
-import com.mojang.datafixers.util.Pair;
-import javax.annotation.Nullable;
+import java.util.List;
 
-class cra extends cst {
-   private final buk a;
-   private final btw b;
-   @Nullable
-   private final alc g;
+public abstract class cra extends cso {
+   private final int o;
+   private final int p;
+   protected final crr m;
+   protected final csr n = new csr();
 
-   public cra(bri $$0, buk $$1, btw $$2, int $$3, int $$4, int $$5, @Nullable alc $$6) {
-      super($$0, $$3, $$4, $$5);
-      this.a = $$1;
-      this.b = $$2;
-      this.g = $$6;
+   public cra(csi<?> $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1);
+      this.o = $$2;
+      this.p = $$3;
+      this.m = new ctd(this, $$2, $$3);
+   }
+
+   protected csw a(cnx $$0, int $$1, int $$2) {
+      return this.a(new css($$0, this.m, this.n, 0, $$1, $$2));
    }
 
    @Override
-   public void a(cvp $$0, cvp $$1) {
-      this.a.a(this.b, $$1, $$0);
-      super.a($$0, $$1);
+   protected void d(int $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.o; $$2++) {
+         for (int $$3 = 0; $$3 < this.p; $$3++) {
+            this.a(new csw(this.m, $$3 + $$2 * this.o, $$0 + $$3 * 18, $$1 + $$2 * 18));
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return 1;
+   public cso.a a(boolean $$0, boolean $$1, dam<?> $$2, cnw $$3) {
+      dam<daa> $$4 = (dam<daa>)$$2;
+      this.l();
+
+      cso.a var7;
+      try {
+         List<csw> $$5 = this.n();
+         var7 = akq.a(new akq.a<daa>() {
+            @Override
+            public void a(coc $$0) {
+               cra.this.a($$0);
+            }
+
+            @Override
+            public void a() {
+               cra.this.n.a();
+               cra.this.m.a();
+            }
+
+            @Override
+            public boolean a(dam<daa> $$0) {
+               return $$0.b().a(cra.this.m.aD_(), cra.this.q().dS());
+            }
+         }, this.o, this.p, $$5, $$5, $$3, $$4, $$0, $$1);
+      } finally {
+         this.a((dam<daa>)$$2);
+      }
+
+      return var7;
    }
 
    @Override
-   public boolean a(cvp $$0) {
-      return this.b == this.a.g($$0);
+   protected void l() {
    }
 
-   @Override
-   public boolean a(cnu $$0) {
-      cvp $$1 = this.g();
-      return !$$1.f() && !$$0.f() && dbm.a($$1, dbl.E) ? false : super.a($$0);
+   protected void a(dam<daa> $$0) {
    }
 
+   public abstract csw m();
+
+   public abstract List<csw> n();
+
+   public int o() {
+      return this.o;
+   }
+
+   public int p() {
+      return this.p;
+   }
+
+   protected abstract cnx q();
+
    @Override
-   public Pair<alc, alc> b() {
-      return this.g != null ? Pair.of(crz.B, this.g) : super.b();
+   public void a(coc $$0) {
+      this.m.fillStackedContents($$0);
    }
 }

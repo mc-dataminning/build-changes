@@ -1,25 +1,60 @@
-public record aic(int b, int c) implements zk<agq> {
-   public static final zb<wa, aic> a = zk.a(aic::a, aic::new);
+import javax.annotation.Nullable;
 
-   private aic(wa $$0) {
-      this($$0.l(), $$0.l());
+public class aic implements zl<agr> {
+   public static final zc<wb, aic> a = zl.a(aic::a, aic::new);
+   private final aic.a b;
+   @Nullable
+   private final ale c;
+
+   public aic(aic.a $$0, @Nullable ale $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   public static aic a(ag $$0) {
+      return new aic(aic.a.a, $$0.a());
+   }
+
+   public static aic b() {
+      return new aic(aic.a.b, null);
+   }
+
+   private aic(wb $$0) {
+      this.b = $$0.b(aic.a.class);
+      if (this.b == aic.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      if (this.b == aic.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public zm<aic> a() {
-      return ago.bi;
+   public zn<aic> a() {
+      return agp.bT;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int e() {
+   public aic.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public ale f() {
       return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

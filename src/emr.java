@@ -3,19 +3,19 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-record emr(alb<emm> c, bpz<alb<emm>> d) implements emo {
+record emr(ald<emq> c, ald<emq> d) implements ems {
    static MapCodec<emr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alb.a(lv.aV).fieldOf("alias").forGetter(emr::c), bpz.b(alb.a(lv.aV)).fieldOf("targets").forGetter(emr::d)).apply($$0, emr::new)
+      $$0 -> $$0.group(ald.a(lw.aW).fieldOf("alias").forGetter(emr::c), ald.a(lw.aW).fieldOf("target").forGetter(emr::d)).apply($$0, emr::new)
    );
 
    @Override
-   public void a(azl $$0, BiConsumer<alb<emm>, alb<emm>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (alb<emm>)$$1x.b()));
+   public void a(azn $$0, BiConsumer<ald<emq>, ald<emq>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   public Stream<alb<emm>> a() {
-      return this.d.e().stream().map(bqb.b::b);
+   public Stream<ald<emq>> a() {
+      return Stream.of(this.d);
    }
 
    @Override

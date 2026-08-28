@@ -1,26 +1,10 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fsi extends fqx<cta> {
+   private static final ale G = ale.b("container/smoker/lit_progress");
+   private static final ale H = ale.b("container/smoker/burn_progress");
+   private static final ale I = ale.b("textures/gui/container/smoker.png");
+   private static final xe J = xe.c("gui.recipebook.toggleRecipes.smokable");
 
-public class fsi implements fsn {
-   private final fos a;
-
-   public fsi(fos $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
-
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
-
-      return $$6;
+   public fsi(cta $$0, cnw $$1, xe $$2) {
+      super($$0, $$1, $$2, J, I, G, H);
    }
 }

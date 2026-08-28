@@ -1,98 +1,167 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.util.UndashedUuid;
-import java.util.Date;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fgv {
-   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final baf d;
+
+   public fgv(Executor $$0, TimeUnit $$1, baf $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public <T> fgv.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fgw $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         return $$2.apply($$3.getAsJsonObject());
+         return new fgv.e<>($$0, $$1, $$4, $$3);
       }
    }
 
-   @Nullable
-   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 == null || $$3.isJsonNull()) {
-         return null;
-      } else if (!$$3.isJsonObject()) {
-         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
-      } else {
-         return $$2.apply($$3.getAsJsonObject());
+   public fgv.c a() {
+      return new fgv.c();
+   }
+
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final fgv.e<T> a;
+      private final Consumer<T> b;
+      private long c = -1L;
+
+      b(final fgv.e<T> $$0, final Consumer<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      void a(long $$0) {
+         this.a.a($$0);
+         this.a();
+      }
+
+      void a() {
+         fgv.d<T> $$0 = this.a.g;
+         if ($$0 != null && this.c < $$0.b) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void b() {
+         fgv.d<T> $$0 = this.a.g;
+         if ($$0 != null) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void c() {
+         this.a.a();
+         this.c = -1L;
       }
    }
 
-   public static String a(String $$0, JsonObject $$1) {
-      String $$2 = b($$0, $$1, null);
-      if ($$2 == null) {
-         throw new IllegalStateException("Missing required property: " + $$0);
-      } else {
-         return $$2;
+   public class c {
+      private final List<fgv.b<?>> b = new ArrayList<>();
+
+      public <T> void a(fgv.e<T> $$0, Consumer<T> $$1) {
+         fgv.b<T> $$2 = fgv.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (fgv.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (fgv.b<?> $$0 : this.b) {
+            $$0.a(fgv.this.d.get(fgv.this.c));
+         }
+      }
+
+      public void c() {
+         for (fgv.b<?> $$0 : this.b) {
+            $$0.c();
+         }
       }
    }
 
-   public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
+   static record d<T>(T a, long b) {
+   }
+
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final fgw e;
+      @Nullable
+      private CompletableFuture<fgv.a<T>> f;
+      @Nullable
+      fgv.d<T> g;
+      private long h = -1L;
+
+      e(final String $$1, final Callable<T> $$2, final long $$3, final fgw $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
       }
-   }
 
-   @Nullable
-   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
+      void a(long $$0) {
+         if (this.f != null) {
+            fgv.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new fgv.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               fgv.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = fgv.this.d.get(fgv.this.c);
+                  return new fgv.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = fgv.this.d.get(fgv.this.c);
+                  return new fgv.a<>(Either.right(var4x), $$3);
+               }
+            }, fgv.this.b);
+         }
       }
-   }
 
-   @Nullable
-   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
-      String $$3 = b($$0, $$1, null);
-      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
-   }
-
-   public static int a(String $$0, JsonObject $$1, int $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
-      } else {
-         return $$2;
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
       }
-   }
-
-   public static long a(String $$0, JsonObject $$1, long $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
-      } else {
-         return $$2;
-      }
-   }
-
-   public static Date b(String $$0, JsonObject $$1) {
-      JsonElement $$2 = $$1.get($$0);
-      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

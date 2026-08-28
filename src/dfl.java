@@ -1,142 +1,103 @@
 import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class dfl implements dfk {
-   public static final Codec<dfl> a = lu.Z.q().dispatchStable(dfl::a, Function.identity());
-   private final Supplier<Set<jn<dfh>>> b = Suppliers.memoize(() -> this.b().distinct().collect(ImmutableSet.toImmutableSet()));
+public class dfl {
+   private static final Logger c = LogUtils.getLogger();
+   public static final dfl a = new dfl(js.a(), List.of());
+   public static final MapCodec<dfl> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ecs.c.promotePartial(ad.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               ekk.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dfl::new)
+   );
+   private final js<ecs<?>> d;
+   private final List<js<ekk>> e;
+   private final Supplier<List<edg<?, ?>>> f;
+   private final Supplier<Set<ekk>> g;
 
-   protected dfl() {
+   dfl(js<ecs<?>> $$0, List<js<ekk>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(js::a).map(jo::a).flatMap(ekk::a).filter($$0xx -> $$0xx.b() == edu.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(js::a).map(jo::a).collect(Collectors.toSet()));
    }
 
-   protected abstract MapCodec<? extends dfl> a();
-
-   protected abstract Stream<jn<dfh>> b();
-
-   public Set<jn<dfh>> c() {
-      return this.b.get();
+   public Iterable<jo<ecs<?>>> a() {
+      return this.d;
    }
 
-   public Set<jn<dfh>> a(int $$0, int $$1, int $$2, int $$3, dfq.f $$4) {
-      int $$5 = jy.a($$0 - $$3);
-      int $$6 = jy.a($$1 - $$3);
-      int $$7 = jy.a($$2 - $$3);
-      int $$8 = jy.a($$0 + $$3);
-      int $$9 = jy.a($$1 + $$3);
-      int $$10 = jy.a($$2 + $$3);
-      int $$11 = $$8 - $$5 + 1;
-      int $$12 = $$9 - $$6 + 1;
-      int $$13 = $$10 - $$7 + 1;
-      Set<jn<dfh>> $$14 = Sets.newHashSet();
+   public List<edg<?, ?>> b() {
+      return this.f.get();
+   }
 
-      for (int $$15 = 0; $$15 < $$13; $$15++) {
-         for (int $$16 = 0; $$16 < $$11; $$16++) {
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               int $$18 = $$5 + $$16;
-               int $$19 = $$6 + $$17;
-               int $$20 = $$7 + $$15;
-               $$14.add(this.getNoiseBiome($$18, $$19, $$20, $$4));
-            }
-         }
+   public List<js<ekk>> c() {
+      return this.e;
+   }
+
+   public boolean a(ekk $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends dfl.b {
+      private final jp<ekk> a;
+      private final jp<ecs<?>> b;
+
+      public a(jp<ekk> $$0, jp<ecs<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      return $$14;
-   }
+      public dfl.a a(eak.a $$0, ald<ekk> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
 
-   @Nullable
-   public Pair<je, jn<dfh>> a(int $$0, int $$1, int $$2, int $$3, Predicate<jn<dfh>> $$4, azl $$5, dfq.f $$6) {
-      return this.a($$0, $$1, $$2, $$3, 1, $$4, $$5, false, $$6);
-   }
-
-   @Nullable
-   public Pair<je, jn<dfh>> a(je $$0, int $$1, int $$2, int $$3, Predicate<jn<dfh>> $$4, dfq.f $$5, dej $$6) {
-      Set<jn<dfh>> $$7 = this.c().stream().filter($$4).collect(Collectors.toUnmodifiableSet());
-      if ($$7.isEmpty()) {
-         return null;
-      } else {
-         int $$8 = Math.floorDiv($$1, $$2);
-         int[] $$9 = azd.a($$0.v(), $$6.G_() + 1, $$6.an() + 1, $$3).toArray();
-
-         for (je.a $$10 : je.a(je.c, $$8, jj.f, jj.d)) {
-            int $$11 = $$0.u() + $$10.u() * $$2;
-            int $$12 = $$0.w() + $$10.w() * $$2;
-            int $$13 = jy.a($$11);
-            int $$14 = jy.a($$12);
-
-            for (int $$15 : $$9) {
-               int $$16 = jy.a($$15);
-               jn<dfh> $$17 = this.getNoiseBiome($$13, $$16, $$14, $$5);
-               if ($$7.contains($$17)) {
-                  return Pair.of(new je($$11, $$15, $$12), $$17);
-               }
-            }
-         }
-
-         return null;
+      public dfl.a a(ald<ecs<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
       }
    }
 
-   @Nullable
-   public Pair<je, jn<dfh>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jn<dfh>> $$5, azl $$6, boolean $$7, dfq.f $$8) {
-      int $$9 = jy.a($$0);
-      int $$10 = jy.a($$2);
-      int $$11 = jy.a($$3);
-      int $$12 = jy.a($$1);
-      Pair<je, jn<dfh>> $$13 = null;
-      int $$14 = 0;
-      int $$15 = $$7 ? 0 : $$11;
-      int $$16 = $$15;
+   public static class b {
+      private final List<jo<ecs<?>>> a = new ArrayList<>();
+      private final List<List<jo<ekk>>> b = new ArrayList<>();
 
-      while ($$16 <= $$11) {
-         for (int $$17 = ab.as ? 0 : -$$16; $$17 <= $$16; $$17 += $$4) {
-            boolean $$18 = Math.abs($$17) == $$16;
-
-            for (int $$19 = -$$16; $$19 <= $$16; $$19 += $$4) {
-               if ($$7) {
-                  boolean $$20 = Math.abs($$19) == $$16;
-                  if (!$$20 && !$$18) {
-                     continue;
-                  }
-               }
-
-               int $$21 = $$9 + $$19;
-               int $$22 = $$10 + $$17;
-               jn<dfh> $$23 = this.getNoiseBiome($$21, $$12, $$22, $$8);
-               if ($$5.test($$23)) {
-                  if ($$13 == null || $$6.a($$14 + 1) == 0) {
-                     je $$24 = new je(jy.c($$21), $$1, jy.c($$22));
-                     if ($$7) {
-                        return Pair.of($$24, $$23);
-                     }
-
-                     $$13 = Pair.of($$24, $$23);
-                  }
-
-                  $$14++;
-               }
-            }
-         }
-
-         $$16 += $$4;
+      public dfl.b a(eak.a $$0, jo<ekk> $$1) {
+         return this.a($$0.ordinal(), $$1);
       }
 
-      return $$13;
-   }
+      public dfl.b a(int $$0, jo<ekk> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
 
-   @Override
-   public abstract jn<dfh> getNoiseBiome(int var1, int var2, int var3, dfq.f var4);
+      public dfl.b a(jo<ecs<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   public void a(List<String> $$0, je $$1, dfq.f $$2) {
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public dfl a() {
+         return new dfl(js.a(this.a), this.b.stream().map(js::a).collect(ImmutableList.toImmutableList()));
+      }
    }
 }

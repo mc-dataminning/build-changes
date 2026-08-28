@@ -1,69 +1,42 @@
-public class ads implements zk<abz> {
-   public static final zb<wo, ads> a = zk.a(ads::a, ads::new);
-   private final int b;
-   private final dde c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public ads(int $$0, dde $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-   }
+public record ads(esl b, byte c, boolean d, Optional<List<esh>> e, Optional<esn.c> f) implements zl<aca> {
+   public static final zc<wp, ads> a = zc.a(esl.b, ads::b, za.c, ads::e, za.b, ads::f, esh.a.a(za.a()).a(za::a), ads::g, esn.c.a, ads::h, ads::new);
 
-   private ads(wo $$0) {
-      this.b = $$0.x();
-      this.c = dde.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
-   }
-
-   private void a(wo $$0) {
-      $$0.f(this.b);
-      dde.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public ads(esl $$0, byte $$1, boolean $$2, @Nullable Collection<esh> $$3, @Nullable esn.c $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public zm<ads> a() {
-      return ago.Q;
+   public zn<ads> a() {
+      return agp.P;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public void a(esn $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public dde e() {
+   public byte e() {
       return this.c;
    }
 
-   public int f() {
+   public boolean f() {
       return this.d;
    }
 
-   public int g() {
+   public Optional<List<esh>> g() {
       return this.e;
    }
 
-   public boolean h() {
+   public Optional<esn.c> h() {
       return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

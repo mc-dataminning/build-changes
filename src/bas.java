@@ -1,42 +1,62 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.Validate;
 
-public abstract class bas extends DataFix {
-   private final String a;
+public class bas {
+   private static final int a = 6;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-   public bas(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bas(int $$0, int $$1) {
+      this($$0, $$1, new long[azf.d($$1 * $$0, 64) / 64]);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bhm.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bhm.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+   public bas(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.b = $$2;
+      this.d = (1L << $$0) - 1L;
+      int $$3 = azf.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
       }
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
+      } else {
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+      }
    }
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   public long[] a() {
+      return this.b;
    }
 
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
+   public int b() {
+      return this.c;
+   }
 }

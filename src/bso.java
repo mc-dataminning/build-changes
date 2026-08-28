@@ -1,27 +1,46 @@
-class bso extends bst {
-   protected bso(bsu $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+public record bso(String i) {
+   public static final bso a = new bso("generic");
+   public static final bso b = new bso("ladder");
+   public static final bso c = new bso("vines");
+   public static final bso d = new bso("weeping_vines");
+   public static final bso e = new bso("twisting_vines");
+   public static final bso f = new bso("scaffolding");
+   public static final bso g = new bso("other_climbable");
+   public static final bso h = new bso("water");
 
-   @Override
-   public boolean a(buk $$0, int $$1) {
-      if ($$0 instanceof ari $$2 && !$$2.P_()) {
-         arh $$3 = $$2.B();
-         if ($$3.am() != brm.a && $$3.c($$2.ds())) {
-            cpi $$4 = $$3.d($$2.ds());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.a(new bsv(bsx.I, 600, $$1));
-               $$2.c($$2.ds());
-               return false;
-            }
-         }
+   public static bso a(dus $$0) {
+      if ($$0.a(dho.cO) || $$0.a(awv.Q)) {
+         return b;
+      } else if ($$0.a(dho.ff)) {
+         return c;
+      } else if ($$0.a(dho.oz) || $$0.a(dho.oA)) {
+         return d;
+      } else if ($$0.a(dho.oB) || $$0.a(dho.oC)) {
+         return e;
+      } else {
+         return $$0.a(dho.nS) ? f : g;
       }
+   }
 
-      return true;
+   @Nullable
+   public static bso a(bun $$0) {
+      Optional<jf> $$1 = $$0.eL();
+      if ($$1.isPresent()) {
+         dus $$2 = $$0.dS().a_($$1.get());
+         return a($$2);
+      } else {
+         return $$0.bi() ? h : null;
+      }
+   }
+
+   public String a() {
+      return "death.fell.accident." + this.i;
+   }
+
+   public String b() {
+      return this.i;
    }
 }

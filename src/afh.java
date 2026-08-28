@@ -1,45 +1,31 @@
-public class afh implements zk<abz> {
-   public static final zb<wa, afh> a = zk.a(afh::a, afh::new);
+import javax.annotation.Nullable;
+
+public class afh implements zl<aca> {
+   public static final zc<wb, afh> a = zl.a(afh::a, afh::new);
    private final int b;
    private final int c;
-   private final int d;
-   private final int e;
 
-   public afh(bto $$0) {
-      this($$0.ap(), $$0.dv());
+   public afh(btr $$0, @Nullable btr $$1) {
+      this.b = $$0.ap();
+      this.c = $$1 != null ? $$1.ap() : 0;
    }
 
-   public afh(int $$0, eys $$1) {
-      this.b = $$0;
-      double $$2 = 3.9;
-      double $$3 = azd.a($$1.d, -3.9, 3.9);
-      double $$4 = azd.a($$1.e, -3.9, 3.9);
-      double $$5 = azd.a($$1.f, -3.9, 3.9);
-      this.c = (int)($$3 * 8000.0);
-      this.d = (int)($$4 * 8000.0);
-      this.e = (int)($$5 * 8000.0);
+   private afh(wb $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private afh(wa $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-      this.e = $$0.readShort();
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
-      $$0.m(this.e);
+   private void a(wb $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zm<afh> a() {
-      return ago.aE;
+   public zn<afh> a() {
+      return agp.aD;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
@@ -47,15 +33,7 @@ public class afh implements zk<abz> {
       return this.b;
    }
 
-   public double e() {
-      return (double)this.c / 8000.0;
-   }
-
-   public double f() {
-      return (double)this.d / 8000.0;
-   }
-
-   public double g() {
-      return (double)this.e / 8000.0;
+   public int e() {
+      return this.c;
    }
 }

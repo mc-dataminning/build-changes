@@ -1,30 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class ceh extends cet<buk> {
+public class ceh extends ceq {
+   public static final float a = 10.0F;
+
    @Override
-   public Set<cdn<?>> a() {
-      return ImmutableSet.of(cdn.x, cdn.y);
+   protected boolean a(bun $$0, bun $$1) {
+      return !$$0.dY().a(cdq.U) && cew.c($$0, $$1) && chx.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   }
+
+   private boolean e(bun $$0, bun $$1) {
+      List<UUID> $$2 = $$0.dY().c(cdq.aa).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cD());
    }
 
    @Override
-   protected void a(arh $$0, buk $$1) {
-      bvl<?> $$2 = $$1.dX();
-      bsg $$3 = $$1.eC();
-      if ($$3 != null) {
-         $$2.a(cdn.x, $$1.eC());
-         bto $$4 = $$3.d();
-         if ($$4 instanceof buk) {
-            $$2.a(cdn.y, (buk)$$4);
-         }
-      } else {
-         $$2.b(cdn.x);
-      }
-
-      $$2.c(cdn.y).ifPresent($$2x -> {
-         if (!$$2x.bI() || $$2x.dS() != $$0) {
-            $$2.b(cdn.y);
-         }
-      });
+   protected cdq<bun> b() {
+      return cdq.B;
    }
 }

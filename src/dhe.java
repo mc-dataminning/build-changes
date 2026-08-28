@@ -1,59 +1,46 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dhe extends dje {
+public class dhe extends dgy implements dhd {
    public static final MapCodec<dhe> a = b(dhe::new);
-   public static final int b = 3;
-   public static final dvo c = dve.as;
-   private static final ezm[] g = new ezm[]{
-      dhj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
 
    @Override
    public MapCodec<dhe> a() {
       return a;
    }
 
-   public dhe(dun.d $$0) {
+   public dhe(dur.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dvo b() {
-      return c;
+   public cum b() {
+      return cum.a;
    }
 
    @Override
-   public int c() {
-      return 3;
+   public drv a(jf $$0, dus $$1) {
+      return new drq($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return a($$2, drx.o, drq::a);
    }
 
    @Override
-   protected def d() {
-      return cvt.vn;
-   }
-
-   @Override
-   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if (!$$1.B && $$1.c_($$2) instanceof drq $$5) {
+         $$3.a($$5);
+         $$3.a(awq.ab);
       }
+
+      return brs.a;
    }
 
    @Override
-   protected int a(deg $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return g[this.h($$0)];
+   protected dnt a_(dus $$0) {
+      return dnt.c;
    }
 }

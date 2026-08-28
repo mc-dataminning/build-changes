@@ -1,52 +1,101 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
+import io.netty.channel.ChannelDuplexHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
 import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
+import io.netty.util.ReferenceCountUtil;
 
 public class wt {
-   public static String a(ByteBuf $$0, int $$1) {
-      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
-      int $$3 = wu.a($$0);
-      if ($$3 > $$2) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
-      } else if ($$3 < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
-      } else {
-         int $$4 = $$0.readableBytes();
-         if ($$3 > $$4) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
+   public static <T extends wk> wt.b a(wm<T> $$0) {
+      return a(new wi<T>($$0));
+   }
+
+   private static wt.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
+   }
+
+   public static <T extends wk> wt.d b(wm<T> $$0) {
+      return a(new wj<T>($$0));
+   }
+
+   private static wt.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   }
+
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof zl)) {
+            $$0.fireChannelRead($$1);
          } else {
-            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
-            $$0.readerIndex($$0.readerIndex() + $$3);
-            if ($$5.length() > $$1) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
+         }
+      }
+
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof wt.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
+            }
+
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default wt.b andThen(wt.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
+   }
+
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof zl) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof wt.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
             } else {
-               return $$5;
+               $$0.write($$1, $$2);
             }
          }
       }
    }
 
-   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
-      if ($$1.length() > $$2) {
-         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
-      } else {
-         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
-         ByteBuf $$4 = $$0.alloc().buffer($$3);
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
 
-         try {
-            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
-            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
-            if ($$5 > $$6) {
-               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
-            }
-
-            wu.a($$0, $$5);
-            $$0.writeBytes($$4);
-         } finally {
-            $$4.release();
-         }
+      default wt.d andThen(wt.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
       }
    }
 }

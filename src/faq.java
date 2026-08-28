@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface faq<T> {
+   void a(fao<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface faq {
+   boolean a(jf var1, T var2);
+
+   int a();
 }

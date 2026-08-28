@@ -1,55 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
 
-public class dkp extends dhs implements dhm {
+public class dkp extends dhm {
    public static final MapCodec<dkp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alb.a(lv.aJ).fieldOf("feature").forGetter($$0x -> $$0x.e), lu.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dkp::new)
+      $$0 -> $$0.group(lv.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), t()).apply($$0, dkp::new)
    );
-   protected static final ezm b = dhj.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dhj d;
-   private final alb<edc<?, ?>> e;
+   private static final Map<dhm, dhm> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ezq c = dhm.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dhm e;
 
    @Override
    public MapCodec<dkp> a() {
       return a;
    }
 
-   protected dkp(alb<edc<?, ?>> $$0, dhj $$1, dun.d $$2) {
-      super($$2);
+   public dkp(dhm $$0, dur.d $$1) {
+      super($$1);
       this.e = $$0;
-      this.d = $$1;
+      d.put($$0, this);
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return b;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return c;
    }
 
    @Override
-   protected boolean b(duo $$0, ddl $$1, je $$2) {
-      return $$0.a(awt.aM) || $$0.a(dhl.fl) || $$0.a(dhl.dX) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends jn<edc<?, ?>>> a(dej $$0) {
-      return $$0.F_().d(lv.aJ).b(this.e);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      duo $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return (double)$$1.i() < 0.4;
+   protected brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
+      dus $$8 = ($$0.h() instanceof ctu $$7 ? d.getOrDefault($$7.d(), dho.a) : dho.a).n();
+      if ($$8.l()) {
+         return brs.f;
+      } else if (!this.l()) {
+         return brs.c;
+      } else {
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dzp.c, $$3);
+         $$4.a(awq.ah);
+         $$0.a(1, $$4);
+         return brs.a;
+      }
    }
 
    @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      this.a($$0).ifPresent($$3x -> ((edc)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if (this.l()) {
+         return brs.c;
+      } else {
+         cvs $$5 = new cvs(this.e);
+         if (!$$3.j($$5)) {
+            $$3.a($$5, false);
+         }
+
+         $$1.a($$2, dho.fR.n(), 3);
+         $$1.a($$3, dzp.c, $$2);
+         return brs.a;
+      }
+   }
+
+   @Override
+   public cvs a(dem $$0, jf $$1, dus $$2) {
+      return this.l() ? super.a($$0, $$1, $$2) : new cvs(this.e);
+   }
+
+   private boolean l() {
+      return this.e == dho.a;
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return $$1 == jk.a && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dhm b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
    }
 }

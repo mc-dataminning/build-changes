@@ -1,3 +1,3 @@
-public class gtt extends gtl {
-   public eys a = eys.c;
+public class gtt extends guh {
+   public boolean a;
 }

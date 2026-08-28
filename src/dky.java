@@ -1,106 +1,167 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dky extends dkw implements dhm {
-   public static final dvo e = dve.ax;
-   public static final int f = 25;
-   private final double c;
+public class dky extends dkg {
+   public static final MapCodec<dky> a = b(dky::new);
+   public static final ezq b = dhm.a(2.0, 0.0, 6.0, 4.0, 7.0, 10.0);
+   public static final ezq c = dhm.a(12.0, 0.0, 6.0, 14.0, 7.0, 10.0);
+   public static final ezq d = dhm.a(2.0, 7.0, 5.0, 4.0, 13.0, 11.0);
+   public static final ezq e = dhm.a(12.0, 7.0, 5.0, 14.0, 13.0, 11.0);
+   public static final ezq f = ezn.a(b, d);
+   public static final ezq g = ezn.a(c, e);
+   public static final ezq h = ezn.a(f, g);
+   public static final ezq i = ezn.a(h, dhm.a(4.0, 4.0, 2.0, 12.0, 16.0, 14.0));
+   public static final ezq j = dhm.a(6.0, 0.0, 2.0, 10.0, 7.0, 4.0);
+   public static final ezq k = dhm.a(6.0, 0.0, 12.0, 10.0, 7.0, 14.0);
+   public static final ezq l = dhm.a(5.0, 7.0, 2.0, 11.0, 13.0, 4.0);
+   public static final ezq m = dhm.a(5.0, 7.0, 12.0, 11.0, 13.0, 14.0);
+   public static final ezq n = ezn.a(j, l);
+   public static final ezq o = ezn.a(k, m);
+   public static final ezq G = ezn.a(n, o);
+   public static final ezq H = ezn.a(G, dhm.a(2.0, 4.0, 4.0, 14.0, 16.0, 12.0));
+   public static final ezq I = dhm.a(2.0, 6.0, 0.0, 4.0, 10.0, 7.0);
+   public static final ezq J = dhm.a(12.0, 6.0, 0.0, 14.0, 10.0, 7.0);
+   public static final ezq K = dhm.a(2.0, 5.0, 7.0, 4.0, 11.0, 13.0);
+   public static final ezq M = dhm.a(12.0, 5.0, 7.0, 14.0, 11.0, 13.0);
+   public static final ezq N = ezn.a(I, K);
+   public static final ezq O = ezn.a(J, M);
+   public static final ezq P = ezn.a(N, O);
+   public static final ezq Q = ezn.a(P, dhm.a(4.0, 2.0, 4.0, 12.0, 14.0, 16.0));
+   public static final ezq R = dhm.a(2.0, 6.0, 7.0, 4.0, 10.0, 16.0);
+   public static final ezq S = dhm.a(12.0, 6.0, 7.0, 14.0, 10.0, 16.0);
+   public static final ezq T = dhm.a(2.0, 5.0, 3.0, 4.0, 11.0, 9.0);
+   public static final ezq U = dhm.a(12.0, 5.0, 3.0, 14.0, 11.0, 9.0);
+   public static final ezq V = ezn.a(R, T);
+   public static final ezq W = ezn.a(S, U);
+   public static final ezq X = ezn.a(V, W);
+   public static final ezq Y = ezn.a(X, dhm.a(4.0, 2.0, 0.0, 12.0, 14.0, 12.0));
+   public static final ezq Z = dhm.a(7.0, 6.0, 2.0, 16.0, 10.0, 4.0);
+   public static final ezq aa = dhm.a(7.0, 6.0, 12.0, 16.0, 10.0, 14.0);
+   public static final ezq ab = dhm.a(3.0, 5.0, 2.0, 9.0, 11.0, 4.0);
+   public static final ezq ac = dhm.a(3.0, 5.0, 12.0, 9.0, 11.0, 14.0);
+   public static final ezq ad = ezn.a(Z, ab);
+   public static final ezq ae = ezn.a(aa, ac);
+   public static final ezq af = ezn.a(ad, ae);
+   public static final ezq ag = ezn.a(af, dhm.a(0.0, 2.0, 4.0, 12.0, 14.0, 12.0));
+   public static final ezq ah = dhm.a(0.0, 6.0, 2.0, 9.0, 10.0, 4.0);
+   public static final ezq ai = dhm.a(0.0, 6.0, 12.0, 9.0, 10.0, 14.0);
+   public static final ezq aj = dhm.a(7.0, 5.0, 2.0, 13.0, 11.0, 4.0);
+   public static final ezq ak = dhm.a(7.0, 5.0, 12.0, 13.0, 11.0, 14.0);
+   public static final ezq al = ezn.a(ah, aj);
+   public static final ezq am = ezn.a(ai, ak);
+   public static final ezq an = ezn.a(al, am);
+   public static final ezq ao = ezn.a(an, dhm.a(4.0, 2.0, 4.0, 16.0, 14.0, 12.0));
+   public static final ezq ap = dhm.a(2.0, 9.0, 6.0, 4.0, 16.0, 10.0);
+   public static final ezq aq = dhm.a(12.0, 9.0, 6.0, 14.0, 16.0, 10.0);
+   public static final ezq ar = dhm.a(2.0, 3.0, 5.0, 4.0, 9.0, 11.0);
+   public static final ezq as = dhm.a(12.0, 3.0, 5.0, 14.0, 9.0, 11.0);
+   public static final ezq at = ezn.a(ap, ar);
+   public static final ezq au = ezn.a(aq, as);
+   public static final ezq av = ezn.a(at, au);
+   public static final ezq aw = ezn.a(av, dhm.a(4.0, 0.0, 2.0, 12.0, 12.0, 14.0));
+   public static final ezq ax = dhm.a(6.0, 9.0, 2.0, 10.0, 16.0, 4.0);
+   public static final ezq ay = dhm.a(6.0, 9.0, 12.0, 10.0, 16.0, 14.0);
+   public static final ezq az = dhm.a(5.0, 3.0, 2.0, 11.0, 9.0, 4.0);
+   public static final ezq aA = dhm.a(5.0, 3.0, 12.0, 11.0, 9.0, 14.0);
+   public static final ezq aB = ezn.a(ax, az);
+   public static final ezq aC = ezn.a(ay, aA);
+   public static final ezq aD = ezn.a(aB, aC);
+   public static final ezq aE = ezn.a(aD, dhm.a(2.0, 0.0, 4.0, 14.0, 12.0, 12.0));
+   private static final xe aT = xe.c("container.grindstone_title");
 
-   protected dky(dun.d $$0, jj $$1, ezm $$2, boolean $$3, double $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
-      this.l(this.F.b().b(e, Integer.valueOf(0)));
+   @Override
+   public MapCodec<dky> a() {
+      return a;
+   }
+
+   protected dky(dur.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(aF, jk.c).b(L, dvd.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends dky> a();
-
-   @Override
-   public duo a(deh $$0) {
-      return this.o().b(e, Integer.valueOf($$0.C_().a(25)));
+   protected dnt a_(dus $$0) {
+      return dnt.c;
    }
 
-   @Override
-   protected boolean f(duo $$0) {
-      return $$0.c(e) < 25;
-   }
+   private ezq o(dus $$0) {
+      jk $$1 = $$0.c(aF);
+      switch ((dvd)$$0.c(L)) {
+         case a:
+            if ($$1 != jk.c && $$1 != jk.d) {
+               return H;
+            }
 
-   @Override
-   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
-      if ($$0.c(e) < 25 && $$3.j() < this.c) {
-         je $$4 = $$2.a(this.a);
-         if (this.h($$1.a_($$4))) {
-            $$1.b($$4, this.a($$0, $$1.z));
-         }
+            return i;
+         case b:
+            if ($$1 == jk.c) {
+               return Y;
+            } else if ($$1 == jk.d) {
+               return Q;
+            } else {
+               if ($$1 == jk.f) {
+                  return ao;
+               }
+
+               return ag;
+            }
+         case c:
+            if ($$1 != jk.c && $$1 != jk.d) {
+               return aE;
+            }
+
+            return aw;
+         default:
+            return H;
       }
    }
 
-   protected duo a(duo $$0, azl $$1) {
-      return $$0.a(e);
-   }
-
-   public duo p(duo $$0) {
-      return $$0.b(e, Integer.valueOf(25));
-   }
-
-   public boolean q(duo $$0) {
-      return $$0.c(e) == 25;
-   }
-
-   protected duo a(duo $$0, duo $$1) {
-      return $$1;
+   @Override
+   protected ezq b(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
-         if (this.b) {
-            $$3.a($$4, eqq.c, eqq.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return this.a($$0, this.b().o());
-      }
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return this.o($$0);
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(e);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return this.h($$0.a_($$1.a(this.a)));
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
       return true;
    }
 
    @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      je $$4 = $$2.a(this.a);
-      int $$5 = Math.min($$3.c(e) + 1, 25);
-      int $$6 = this.a($$1);
-
-      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
-         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
-         $$4 = $$4.a(this.a);
-         $$5 = Math.min($$5 + 1, 25);
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if (!$$1.B) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awq.aD);
       }
+
+      return brs.a;
    }
 
-   protected abstract int a(azl var1);
-
-   protected abstract boolean h(duo var1);
+   @Override
+   protected bru b(dus $$0, dej $$1, jf $$2) {
+      return new bsa(($$2x, $$3, $$4) -> new crz($$2x, $$3, crm.a($$1, $$2)), aT);
+   }
 
    @Override
-   protected dky c() {
-      return this;
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(aF, $$1.a($$0.c(aF)));
+   }
+
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(aF)));
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(aF, L);
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
    }
 }

@@ -1,65 +1,43 @@
-public class se {
-   public static final alb<ekg> a = sj.a("monster_room");
-   public static final alb<ekg> b = sj.a("monster_room_deep");
-   public static final alb<ekg> c = sj.a("fossil_upper");
-   public static final alb<ekg> d = sj.a("fossil_lower");
-   public static final alb<ekg> e = sj.a("dripstone_cluster");
-   public static final alb<ekg> f = sj.a("large_dripstone");
-   public static final alb<ekg> g = sj.a("pointed_dripstone");
-   public static final alb<ekg> h = sj.a("underwater_magma");
-   public static final alb<ekg> i = sj.a("glow_lichen");
-   public static final alb<ekg> j = sj.a("rooted_azalea_tree");
-   public static final alb<ekg> k = sj.a("cave_vines");
-   public static final alb<ekg> l = sj.a("lush_caves_vegetation");
-   public static final alb<ekg> m = sj.a("lush_caves_clay");
-   public static final alb<ekg> n = sj.a("lush_caves_ceiling_vegetation");
-   public static final alb<ekg> o = sj.a("spore_blossom");
-   public static final alb<ekg> p = sj.a("classic_vines_cave_feature");
-   public static final alb<ekg> q = sj.a("amethyst_geode");
-   public static final alb<ekg> r = sj.a("sculk_patch_deep_dark");
-   public static final alb<ekg> s = sj.a("sculk_patch_ancient_city");
-   public static final alb<ekg> t = sj.a("sculk_vein");
+import java.util.List;
 
-   public static void a(qt<ekg> $$0) {
-      jo<edc<?, ?>> $$1 = $$0.a(lv.aJ);
-      jn<edc<?, ?>> $$2 = $$1.b(rs.a);
-      jn<edc<?, ?>> $$3 = $$1.b(rs.b);
-      jn<edc<?, ?>> $$4 = $$1.b(rs.c);
-      jn<edc<?, ?>> $$5 = $$1.b(rs.d);
-      jn<edc<?, ?>> $$6 = $$1.b(rs.e);
-      jn<edc<?, ?>> $$7 = $$1.b(rs.f);
-      jn<edc<?, ?>> $$8 = $$1.b(rs.g);
-      jn<edc<?, ?>> $$9 = $$1.b(rs.h);
-      jn<edc<?, ?>> $$10 = $$1.b(rs.i);
-      jn<edc<?, ?>> $$11 = $$1.b(rs.j);
-      jn<edc<?, ?>> $$12 = $$1.b(rs.m);
-      jn<edc<?, ?>> $$13 = $$1.b(rs.r);
-      jn<edc<?, ?>> $$14 = $$1.b(rs.s);
-      jn<edc<?, ?>> $$15 = $$1.b(rs.t);
-      jn<edc<?, ?>> $$16 = $$1.b(sa.c);
-      jn<edc<?, ?>> $$17 = $$1.b(rs.u);
-      jn<edc<?, ?>> $$18 = $$1.b(rs.v);
-      jn<edc<?, ?>> $$19 = $$1.b(rs.w);
-      jn<edc<?, ?>> $$20 = $$1.b(rs.x);
-      sj.a($$0, a, $$2, ejy.a(10), ekd.a(), ekb.a(ebe.a(0), ebe.b()), eju.a());
-      sj.a($$0, b, $$2, ejy.a(4), ekd.a(), ekb.a(ebe.b(6), ebe.a(-1)), eju.a());
-      sj.a($$0, c, $$3, ekm.a(64), ekd.a(), ekb.a(ebe.a(0), ebe.b()), eju.a());
-      sj.a($$0, d, $$4, ekm.a(64), ekd.a(), ekb.a(ebe.a(), ebe.a(-8)), eju.a());
-      sj.a($$0, e, $$5, ejy.a(bra.a(48, 96)), ekd.a(), sj.i, eju.a());
-      sj.a($$0, f, $$6, ejy.a(bra.a(10, 48)), ekd.a(), sj.i, eju.a());
-      sj.a($$0, g, $$7, ejy.a(bra.a(192, 256)), ekd.a(), sj.i, ejy.a(bra.a(1, 5)), ekl.a(bqp.a(0.0F, 3.0F, -10, 10), bqp.a(0.0F, 0.6F, -2, 2)), eju.a());
-      sj.a($$0, h, $$8, ejy.a(bra.a(44, 52)), ekd.a(), sj.i, eko.a(eak.a.c, Integer.MIN_VALUE, -2), eju.a());
-      sj.a($$0, i, $$9, ejy.a(bra.a(104, 157)), sj.i, ekd.a(), eko.a(eak.a.c, Integer.MIN_VALUE, -13), eju.a());
-      sj.a($$0, j, $$10, ejy.a(bra.a(1, 2)), ekd.a(), sj.i, ejz.a(jj.b, ebr.c(), ebr.c, 12), ekl.a(bqr.a(-1)), eju.a());
-      sj.a($$0, k, $$11, ejy.a(188), ekd.a(), sj.i, ejz.a(jj.b, ebr.a(jj.a), ebr.c, 12), ekl.a(bqr.a(-1)), eju.a());
-      sj.a($$0, l, $$12, ejy.a(125), ekd.a(), sj.i, ejz.a(jj.a, ebr.c(), ebr.c, 12), ekl.a(bqr.a(1)), eju.a());
-      sj.a($$0, m, $$13, ejy.a(62), ekd.a(), sj.i, ejz.a(jj.a, ebr.c(), ebr.c, 12), ekl.a(bqr.a(1)), eju.a());
-      sj.a($$0, n, $$14, ejy.a(125), ekd.a(), sj.i, ejz.a(jj.b, ebr.c(), ebr.c, 12), ekl.a(bqr.a(-1)), eju.a());
-      sj.a($$0, o, $$15, ejy.a(25), ekd.a(), sj.i, ejz.a(jj.b, ebr.c(), ebr.c, 12), ekl.a(bqr.a(-1)), eju.a());
-      sj.a($$0, p, $$16, ejy.a(256), ekd.a(), sj.i, eju.a());
-      sj.a($$0, q, $$17, ekm.a(24), ekd.a(), ekb.a(ebe.b(6), ebe.a(30)), eju.a());
-      sj.a($$0, r, $$18, ejy.a(bqr.a(256)), ekd.a(), sj.i, eju.a());
-      sj.a($$0, s, $$19);
-      sj.a($$0, t, $$20, ejy.a(bra.a(204, 250)), ekd.a(), sj.i, eju.a());
+public class se {
+   public static final ald<ekk> a = sk.a("seagrass_warm");
+   public static final ald<ekk> b = sk.a("seagrass_normal");
+   public static final ald<ekk> c = sk.a("seagrass_cold");
+   public static final ald<ekk> d = sk.a("seagrass_river");
+   public static final ald<ekk> e = sk.a("seagrass_swamp");
+   public static final ald<ekk> f = sk.a("seagrass_deep_warm");
+   public static final ald<ekk> g = sk.a("seagrass_deep");
+   public static final ald<ekk> h = sk.a("seagrass_deep_cold");
+   public static final ald<ekk> i = sk.a("sea_pickle");
+   public static final ald<ekk> j = sk.a("kelp_cold");
+   public static final ald<ekk> k = sk.a("kelp_warm");
+   public static final ald<ekk> l = sk.a("warm_ocean_vegetation");
+
+   private static List<ekn> a(int $$0) {
+      return List.of(ekh.a(), sk.b, ekc.a($$0), ejy.a());
+   }
+
+   public static void a(qu<ekk> $$0) {
+      jp<edg<?, ?>> $$1 = $$0.a(lw.aK);
+      jo.c<edg<?, ?>> $$2 = $$1.b(rs.a);
+      jo.c<edg<?, ?>> $$3 = $$1.b(rs.b);
+      jo.c<edg<?, ?>> $$4 = $$1.b(rs.c);
+      jo.c<edg<?, ?>> $$5 = $$1.b(rs.d);
+      jo.c<edg<?, ?>> $$6 = $$1.b(rs.e);
+      jo.c<edg<?, ?>> $$7 = $$1.b(rs.f);
+      jo.c<edg<?, ?>> $$8 = $$1.b(rs.g);
+      sk.a($$0, a, $$2, a(80));
+      sk.a($$0, b, $$2, a(48));
+      sk.a($$0, c, $$2, a(32));
+      sk.a($$0, d, $$3, a(48));
+      sk.a($$0, e, $$4, a(64));
+      sk.a($$0, f, $$5, a(80));
+      sk.a($$0, g, $$5, a(48));
+      sk.a($$0, h, $$5, a(40));
+      sk.a($$0, i, $$6, ekq.a(16), ekh.a(), sk.b, ejy.a());
+      sk.a($$0, j, $$7, eki.a(120, 80.0, 0.0), ekh.a(), sk.b, ejy.a());
+      sk.a($$0, k, $$7, eki.a(80, 80.0, 0.0), ekh.a(), sk.b, ejy.a());
+      sk.a($$0, l, $$8, eki.a(20, 400.0, 0.0), ekh.a(), sk.b, ejy.a());
    }
 }

@@ -1,40 +1,21 @@
-import javax.annotation.Nullable;
-
-public class add implements zk<abz> {
-   public static final zb<wa, add> a = zk.a(add::a, add::new);
-   private final int b;
-   private final byte c;
-
-   public add(bto $$0, byte $$1) {
-      this.b = $$0.ap();
-      this.c = $$1;
-   }
-
-   private add(wa $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(wa $$0) {
-      $$0.q(this.b);
-      $$0.l(this.c);
-   }
+public record add(xe b, xa.a c) implements zl<aca> {
+   public static final zc<wp, add> a = zc.a(xg.d, add::b, xa.a.a, add::e, add::new);
 
    @Override
-   public zm<add> a() {
-      return ago.D;
+   public zn<add> a() {
+      return agp.C;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bto a(deg $$0) {
-      return $$0.a(this.b);
+   @Override
+   public boolean c() {
+      return true;
    }
 
-   public byte b() {
+   public xa.a e() {
       return this.c;
    }
 }

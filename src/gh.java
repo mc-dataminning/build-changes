@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gh extends gd<dnx> {
+public class gh extends ge<dmj> {
    private gh() {
-      super(dnx.e, dnx::values);
+      super(dmj.d, dmj::values);
    }
 
-   public static gh a() {
+   public static ge<dmj> a() {
       return new gh();
    }
 
-   public static dnx a(CommandContext<et> $$0, String $$1) {
-      return (dnx)$$0.getArgument($$1, dnx.class);
+   public static dmj a(CommandContext<eu> $$0, String $$1) {
+      return (dmj)$$0.getArgument($$1, dmj.class);
    }
 }

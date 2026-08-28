@@ -1,87 +1,46 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public final class ezp extends ezf {
+   private final ezf d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class ezp {
-   private final ezx a;
-   private final String b;
-   private final faa c;
-   private xd d;
-   private xd e;
-   private faa.a f;
-   private boolean g;
-   @Nullable
-   private yt h;
-
-   public ezp(ezx $$0, String $$1, faa $$2, xd $$3, faa.a $$4, boolean $$5, @Nullable yt $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.i();
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-   }
-
-   public ezx a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public faa c() {
-      return this.c;
-   }
-
-   public xd d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   @Nullable
-   public yt f() {
-      return this.h;
-   }
-
-   public yt a(yt $$0) {
-      return Objects.requireNonNullElse(this.h, $$0);
-   }
-
-   private xd i() {
-      return xg.a((xd)this.d.f().a($$0 -> $$0.a(new xj(xj.a.a, xd.b(this.b)))));
-   }
-
-   public xd g() {
-      return this.e;
-   }
-
-   public void a(xd $$0) {
+   protected ezp(ezf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
       this.d = $$0;
-      this.e = this.i();
-      this.a.b(this);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public faa.a h() {
-      return this.f;
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void a(faa.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
-      this.a.b(this);
+   @Override
+   public int a(jk.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public void b(@Nullable yt $$0) {
-      this.h = $$0;
-      this.a.b(this);
+   @Override
+   public int b(jk.a $$0) {
+      return this.a($$0, this.d.b($$0));
+   }
+
+   private int a(jk.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return azf.a($$1, $$2, $$3) - $$2;
    }
 }

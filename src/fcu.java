@@ -1,14 +1,11 @@
-public enum fcu {
-   a(0),
-   b(1);
+public interface fcu<T> {
+   fcu<?> a = () -> {
+      throw new IllegalStateException("Cannot dereference handle with no underlying resource");
+   };
 
-   private final int c;
-
-   private fcu(final int $$0) {
-      this.c = $$0;
+   static <T> fcu<T> a() {
+      return (fcu<T>)a;
    }
 
-   public int a() {
-      return this.c;
-   }
+   T get();
 }

@@ -1,73 +1,41 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gko extends gkp<dtn> {
+   private static final ale c = ale.b("textures/entity/end_gateway_beam.png");
 
-public class gko {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<gkt.b.a> c = new ObjectArrayList();
-   private final Object d = new Object();
-
-   public void a(gkt.b.a $$0) {
-      synchronized (this.d) {
-         this.c.add($$0);
-      }
+   public gko(gjx.a $$0) {
+      super($$0);
    }
 
-   @Nullable
-   public gkt.b.a a(eys $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-
-      for (int $$5 = 0; $$5 < this.c.size(); $$5++) {
-         gkt.b.a $$6 = this.c.get($$5);
-         double $$7 = $$6.d().b($$0);
-         if (!$$6.c() && $$7 < $$3) {
-            $$3 = $$7;
-            $$1 = $$5;
-         }
-
-         if ($$6.c() && $$7 < $$4) {
-            $$4 = $$7;
-            $$2 = $$5;
-         }
+   public void a(dtn $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
+         $$6 = azf.a($$6 * (float) Math.PI);
+         int $$8 = azf.a((double)$$6 * $$7);
+         int $$9 = $$0.b() ? cum.c.d() : cum.k.d();
+         long $$10 = $$0.i().aa();
+         gjs.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
 
-      boolean $$8 = $$2 >= 0;
-      boolean $$9 = $$1 >= 0;
-      if (!$$8 || $$9 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
-      }
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public int a() {
-      return this.c.size();
+   @Override
+   protected float b() {
+      return 1.0F;
    }
 
-   @Nullable
-   private gkt.b.a a(int $$0) {
-      if ($$0 >= 0) {
-         synchronized (this.d) {
-            return this.c.remove($$0);
-         }
-      } else {
-         return null;
-      }
+   @Override
+   protected float c() {
+      return 0.0F;
    }
 
-   public void b() {
-      synchronized (this.d) {
-         for (gkt.b.a $$0 : this.c) {
-            $$0.a();
-         }
+   @Override
+   protected ghv d() {
+      return ghv.u();
+   }
 
-         this.c.clear();
-      }
+   @Override
+   public int aV_() {
+      return 256;
    }
 }

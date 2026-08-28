@@ -1,44 +1,32 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public enum cmw {
-   a(0, awe.BN, awe.BV),
-   b(40, awe.BM, awe.BW),
-   c(80, awe.BO, awe.BW);
+public class cmw {
+   public static bwg<bun> a(int $$0, int $$1) {
+      return bzs.a(
+         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$2 -> $$2.group($$2.b(cdq.ad), $$2.b(cdq.L), $$2.a(cdq.ae), $$2.a(cdq.af))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.eX().f()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   private static final cmw[] d = ad.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awd f;
-   private final awd g;
-
-   private cmw(final int $$0, final awd $$1, final awd $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public awd b() {
-      return this.f;
-   }
-
-   public awd c() {
-      return this.g;
-   }
-
-   public static cmw a(int $$0) {
-      for (cmw $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

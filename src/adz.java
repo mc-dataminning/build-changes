@@ -1,37 +1,37 @@
-public class adz implements zk<abz> {
-   public static final zb<wa, adz> a = zk.a(adz::a, adz::new);
-   private final int b;
-   private final alc c;
+public class adz implements zl<aca> {
+   public static final zc<wb, adz> a = zl.a(adz::a, adz::new);
+   private final jf b;
+   private final boolean c;
 
-   public adz(int $$0, daj<?> $$1) {
+   public adz(jf $$0, boolean $$1) {
       this.b = $$0;
-      this.c = $$1.a();
+      this.c = $$1;
    }
 
-   private adz(wa $$0) {
-      this.b = $$0.x();
-      this.c = $$0.q();
+   private adz(wb $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(wa $$0) {
-      $$0.f(this.b);
+   private void a(wb $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zm<adz> a() {
-      return ago.Z;
+   public zn<adz> a() {
+      return agp.Y;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public alc b() {
-      return this.c;
+   public jf b() {
+      return this.b;
    }
 
-   public int e() {
-      return this.b;
+   public boolean e() {
+      return this.c;
    }
 }

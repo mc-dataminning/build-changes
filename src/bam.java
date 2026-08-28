@@ -1,76 +1,63 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public enum bam {
-   a(bhm.a),
-   b(bhm.b),
-   c(bhm.c),
-   d(bhm.d),
-   e(bhm.e),
-   f(bhm.f),
-   g(bhm.g),
-   h(bhm.h),
-   i(bhm.i),
-   j(bhm.j),
-   k(bhm.k),
-   l(bhm.l),
-   m(bhm.m),
-   n(bhm.o),
-   o(bhm.n),
-   p(bhm.p),
-   q(bhm.q),
-   r(bhm.M),
-   s(bhm.r);
+public class bam implements axu {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bam(final TypeReference $$0) {
-      this.u = $$0;
+   public bam(int $$0) {
+      this.b = $$0;
    }
 
-   static int a() {
-      return ab.b().d().c();
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bam.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bam.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   @Override
+   public long[] a() {
+      return a;
    }
 
-   public uf a(DataFixer $$0, uf $$1, int $$2, int $$3) {
-      return (uf)this.a($$0, new Dynamic(ut.a, $$1), $$2, $$3).getValue();
+   @Override
+   public int b() {
+      return this.b;
    }
 
-   public uf a(DataFixer $$0, uf $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   @Override
+   public int c() {
+      return 0;
    }
 
-   static {
-      t = Set.of(a.u);
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
+      }
+   }
+
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
+   }
+
+   @Override
+   public axu d() {
+      return this;
    }
 }

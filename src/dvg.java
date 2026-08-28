@@ -1,24 +1,17 @@
-public enum dvg implements azz {
-   a("single"),
-   b("left"),
-   c("right");
+public enum dvg implements bab {
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   private final String d;
+   private final String e;
 
    private dvg(final String $$0) {
-      this.d = $$0;
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public dvg a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+      return this.e;
    }
 }

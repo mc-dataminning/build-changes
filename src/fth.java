@@ -1,22 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fth extends ftg {
-   private static final xd a = xd.c("options.skinCustomisation.title");
+public class fth extends ftk {
+   private static final xe a = xe.c("options.mouse_settings.title");
 
-   public fth(fqd $$0, fip $$1) {
+   private static fis<?>[] a(fit $$0) {
+      return new fis[]{$$0.d(), $$0.T(), $$0.G(), $$0.U(), $$0.ab()};
+   }
+
+   public fth(fqh $$0, fit $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      List<fki> $$0 = new ArrayList<>();
-
-      for (cnv $$1 : cnv.values()) {
-         $$0.add(fkr.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      if (fcd.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.H())).toArray(fis[]::new));
+      } else {
+         this.d.a(a(this.c));
       }
-
-      $$0.add(this.c.w().a(this.c));
-      this.d.a($$0);
    }
 }

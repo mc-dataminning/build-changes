@@ -2,41 +2,30 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qq {
-   public static void a(qt<emm> $$0) {
-      jo<emm> $$1 = $$0.a(lv.aV);
-      jn<emm> $$2 = $$1.b(ra.a);
-      ra.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new emm(
-            $$2,
+   public static final ald<emq> a = rb.a("bastion/starts");
+
+   public static void a(qu<emq> $$0) {
+      jp<epg> $$1 = $$0.a(lw.aU);
+      jo<epg> $$2 = $$1.b(rc.w);
+      jp<emq> $$3 = $$0.a(lw.aW);
+      jo<emq> $$4 = $$3.b(rb.a);
+      $$0.a(
+         a,
+         new emq(
+            $$4,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(emk.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(emk.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(emk.b("bastion/mobs/empty"), 1)
+               Pair.of(emo.b("bastion/units/air_base", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(emo.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(emo.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a(
-         $$0, "bastion/mobs/hoglin", new emm($$2, ImmutableList.of(Pair.of(emk.b("bastion/mobs/hoglin"), 2), Pair.of(emk.b("bastion/mobs/empty"), 1)), emm.a.b)
-      );
-      ra.a(
-         $$0, "bastion/blocks/gold", new emm($$2, ImmutableList.of(Pair.of(emk.b("bastion/blocks/air"), 3), Pair.of(emk.b("bastion/blocks/gold"), 1)), emm.a.b)
-      );
-      ra.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new emm(
-            $$2,
-            ImmutableList.of(
-               Pair.of(emk.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(emk.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(emk.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            emm.a.b
-         )
-      );
+      qp.a($$0);
+      qo.a($$0);
+      qs.a($$0);
+      qn.a($$0);
+      qr.a($$0);
    }
 }

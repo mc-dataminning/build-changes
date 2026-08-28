@@ -1,47 +1,53 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Arrays;
+import java.util.Collection;
 
-public record fa(List<fa.a> b) {
-   public static final fa a = new fa(List.of());
-   private static final int c = 8;
-   private static final int d = 16;
+public class fa implements ArgumentType<fa.a> {
+   private static final Collection<String> c = Arrays.asList("0", "~", "~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xe.c("argument.angle.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("argument.angle.invalid"));
 
-   public fa(wa $$0) {
-      this($$0.a(wa.a(ArrayList::new, 8), fa.a::new));
+   public static fa a() {
+      return new fa();
    }
 
-   public void a(wa $$0) {
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   public static float a(CommandContext<eu> $$0, String $$1) {
+      return ((fa.a)$$0.getArgument($$1, fa.a.class)).a((eu)$$0.getSource());
    }
 
-   public static fa a(xv<?> $$0, fa.b $$1) {
-      List<fa.a> $$2 = $$0.a().stream().map($$1x -> {
-         xp $$2x = $$1.sign($$1x.c());
-         return $$2x != null ? new fa.a($$1x.a(), $$2x) : null;
-      }).filter(Objects::nonNull).toList();
-      return new fa($$2);
-   }
-
-   public List<fa.a> a() {
-      return this.b;
-   }
-
-   public static record a(String a, xp b) {
-      public a(wa $$0) {
-         this($$0.d(16), xp.a($$0));
-      }
-
-      public void a(wa $$0) {
-         $$0.a(this.a, 16);
-         xp.a($$0, this.b);
+   public fa.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$1 = gy.b($$0);
+         float $$2 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readFloat() : 0.0F;
+         if (!Float.isNaN($$2) && !Float.isInfinite($$2)) {
+            return new fa.a($$2, $$1);
+         } else {
+            throw b.createWithContext($$0);
+         }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      @Nullable
-      xp sign(String var1);
+   public Collection<String> getExamples() {
+      return c;
+   }
+
+   public static final class a {
+      private final float a;
+      private final boolean b;
+
+      a(float $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public float a(eu $$0) {
+         return azf.h(this.b ? this.a + $$0.k().j : this.a);
+      }
    }
 }

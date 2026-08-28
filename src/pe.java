@@ -1,21 +1,46 @@
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pe {
-   public static CompletableFuture<kd.g> a(CompletableFuture<jp.a> $$0, kd $$1) {
-      return $$0.thenApply($$1x -> {
-         kb.b $$2 = kb.a(lu.aA);
-         jf.a $$3 = new jf.a();
-         akx.a.forEach($$1xx -> $$1xx.a($$3::a));
-         kd.g $$4 = $$1.a($$2, $$1x, $$3);
-         jp.a $$5 = $$4.a();
-         Optional<jp.b<dfh>> $$6 = $$5.a(lv.aG);
-         Optional<jp.b<ekg>> $$7 = $$5.a(lv.aR);
-         if ($$6.isPresent() || $$7.isPresent()) {
-            pg.a($$7.orElseGet(() -> $$1x.b(lv.aR)), $$6.orElseGet(() -> $$1x.b(lv.aG)));
-         }
+public class pe implements mc {
+   private final me d;
+   private final CompletableFuture<jq.a> e;
 
-         return $$4;
+   public pe(me $$0, CompletableFuture<jq.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
+   }
+
+   @Override
+   public CompletableFuture<?> a(ma $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akz.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akz.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
+   }
+
+   private <T> Optional<CompletableFuture<?>> a(ma $$0, jq.a $$1, DynamicOps<JsonElement> $$2, akz.d<T> $$3) {
+      ald<? extends kb<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         me.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
+
+   private static <E> CompletableFuture<?> a(Path $$0, ma $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mc.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

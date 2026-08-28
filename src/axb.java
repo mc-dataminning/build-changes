@@ -1,9 +1,11 @@
-public interface axb {
-   axj<cvh> a = a("regular_goat_horns");
-   axj<cvh> b = a("screaming_goat_horns");
-   axj<cvh> c = a("goat_horns");
+public final class axb {
+   public static final axl<eqs> a = a("water");
+   public static final axl<eqs> b = a("lava");
 
-   private static axj<cvh> a(String $$0) {
-      return axj.a(lv.I, alc.b($$0));
+   private axb() {
+   }
+
+   private static axl<eqs> a(String $$0) {
+      return axl.a(lw.D, ale.b($$0));
    }
 }

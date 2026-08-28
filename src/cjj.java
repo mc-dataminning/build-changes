@@ -1,100 +1,69 @@
 import javax.annotation.Nullable;
 
-public class cjj extends cja {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
+public class cjj extends cjc {
    @Nullable
-   private btj g;
+   private eyw b;
 
-   public cjj(cix $$0) {
+   public cjj(cja $$0) {
       super($$0);
    }
 
    @Override
    public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         eys $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.d.dx();
-         double $$2 = this.a.d.e(0.5);
-         double $$3 = this.a.d.dD();
+      eyw $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.d.dx();
+      double $$2 = this.a.d.e(0.5);
+      double $$3 = this.a.d.dD();
 
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dV().k() / 2.0;
-            double $$6 = $$2 + this.a.dV().k() / 2.0;
-            double $$7 = $$3 + this.a.dV().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dS().a(ln.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azn $$5 = this.a.dV();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         eyw $$9 = this.a.dv();
+         this.a.dS().a(lo.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
    public void c() {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gm().a(cjn.e);
-         } else {
-            this.a.gm().a(cjn.g);
-         }
-      } else if (this.e == 10) {
-         eys $$0 = new eys(this.a.d.dx() - this.a.dx(), 0.0, this.a.d.dD() - this.a.dD()).d();
-         float $$1 = 5.0F;
-         double $$2 = this.a.d.dx() + $$0.d * 5.0 / 2.0;
-         double $$3 = this.a.d.dD() + $$0.f * 5.0 / 2.0;
-         double $$4 = this.a.d.e(0.5);
-         double $$5 = $$4;
-         je.a $$6 = new je.a($$2, $$4, $$3);
-
-         while (this.a.dS().u($$6)) {
-            if (--$$5 < 0.0) {
-               $$5 = $$4;
-               break;
-            }
-
-            $$6.b($$2, $$5, $$3);
-         }
-
-         $$5 = (double)(azd.a($$5) + 1);
-         this.g = new btj(this.a.dS(), $$2, $$5, $$3);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(ln.h);
-         this.g.a(new bsv(bsx.g));
-         this.a.dS().b(this.g);
+      if (this.b == null) {
+         this.b = eyw.c(this.a.dS().a(eao.a.f, edt.a(this.a.q())));
       }
+
+      if (this.b.c(this.a.dx(), this.a.dz(), this.a.dD()) < 1.0) {
+         this.a.gl().b(cjq.f).j();
+         this.a.gl().a(cjq.g);
+      }
+   }
+
+   @Override
+   public float f() {
+      return 1.5F;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dv().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
    @Override
    public void d() {
-      this.e = 0;
-      this.f++;
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public eyw g() {
+      return this.b;
    }
 
    @Override
-   public void e() {
-      if (this.g != null) {
-         this.g.as();
-         this.g = null;
-      }
-   }
-
-   @Override
-   public cjn<cjj> i() {
-      return cjn.f;
-   }
-
-   public void j() {
-      this.f = 0;
+   public cjq<cjj> i() {
+      return cjq.d;
    }
 }

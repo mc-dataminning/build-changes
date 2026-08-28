@@ -1,7 +1,6 @@
-public class gsw extends guj {
-   public float a;
-   public boolean b = true;
-   public boolean c;
-   public boolean d;
-   public boolean e;
+public class gsw extends guo {
+   public boolean a;
+   public final btl b = new btl();
+   public final btl c = new btl();
+   public final btl d = new btl();
 }

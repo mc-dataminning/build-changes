@@ -1,65 +1,135 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class csj extends cst {
-   public csj(bri $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class csj implements brl {
+   private final ddf b;
+   private final jx<cvs> c = jx.a(3, cvs.k);
+   @Nullable
+   private ddg d;
+   private int e;
+   private int f;
+
+   public csj(ddf $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void b(cvp $$0, cvp $$1) {
+   public int b() {
+      return this.c.size();
    }
 
    @Override
-   public boolean a(cnu $$0) {
-      return false;
-   }
+   public boolean c() {
+      for (cvs $$0 : this.c) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
 
-   @Override
-   public Optional<cvp> a(int $$0, int $$1, cnu $$2) {
-      return Optional.empty();
-   }
-
-   @Override
-   public cvp b(int $$0, int $$1, cnu $$2) {
-      return cvp.k;
-   }
-
-   @Override
-   public cvp d(cvp $$0) {
-      return $$0;
-   }
-
-   @Override
-   public cvp b(cvp $$0, int $$1) {
-      return this.d($$0);
-   }
-
-   @Override
-   public boolean b(cnu $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cvp $$0) {
-      return false;
-   }
-
-   @Override
-   public cvp a(int $$0) {
-      return cvp.k;
-   }
-
-   @Override
-   public void a(cnu $$0, cvp $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
       return true;
+   }
+
+   @Override
+   public cvs a(int $$0) {
+      return this.c.get($$0);
+   }
+
+   @Override
+   public cvs a(int $$0, int $$1) {
+      cvs $$2 = this.c.get($$0);
+      if ($$0 == 2 && !$$2.f()) {
+         return brm.a(this.c, $$0, $$2.K());
+      } else {
+         cvs $$3 = brm.a(this.c, $$0, $$1);
+         if (!$$3.f() && this.d($$0)) {
+            this.f();
+         }
+
+         return $$3;
+      }
+   }
+
+   private boolean d(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
+
+   @Override
+   public cvs b(int $$0) {
+      return brm.a(this.c, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cvs $$1) {
+      this.c.set($$0, $$1);
+      $$1.f(this.f_($$1));
+      if (this.d($$0)) {
+         this.f();
+      }
+   }
+
+   @Override
+   public boolean a(cnx $$0) {
+      return this.b.go() == $$0;
+   }
+
+   @Override
+   public void e() {
+      this.f();
+   }
+
+   public void f() {
+      this.d = null;
+      cvs $$0;
+      cvs $$1;
+      if (this.c.get(0).f()) {
+         $$0 = this.c.get(1);
+         $$1 = cvs.k;
+      } else {
+         $$0 = this.c.get(0);
+         $$1 = this.c.get(1);
+      }
+
+      if ($$0.f()) {
+         this.a(2, cvs.k);
+         this.f = 0;
+      } else {
+         ddh $$4 = this.b.gq();
+         if (!$$4.isEmpty()) {
+            ddg $$5 = $$4.a($$0, $$1, this.e);
+            if ($$5 == null || $$5.r()) {
+               this.d = $$5;
+               $$5 = $$4.a($$1, $$0, this.e);
+            }
+
+            if ($$5 != null && !$$5.r()) {
+               this.d = $$5;
+               this.a(2, $$5.h());
+               this.f = $$5.q();
+            } else {
+               this.a(2, cvs.k);
+               this.f = 0;
+            }
+         }
+
+         this.b.m(this.a(2));
+      }
+   }
+
+   @Nullable
+   public ddg g() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.e = $$0;
+      this.f();
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public int h() {
+      return this.f;
    }
 }

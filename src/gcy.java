@@ -1,85 +1,77 @@
-import com.google.common.net.HostAndPort;
-import com.mojang.logging.LogUtils;
-import java.net.IDN;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public final class gcy {
-   private static final Logger a = LogUtils.getLogger();
-   private final HostAndPort b;
-   private static final gcy c = new gcy(HostAndPort.fromParts("server.invalid", 25565));
+public class gcy implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gcy.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   public gcy(String $$0, int $$1) {
-      this(HostAndPort.fromParts($$0, $$1));
+   public void a(jf $$0, dus $$1, ggh $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gcy.a(this.b, $$1, $$2.dq()));
    }
 
-   private gcy(HostAndPort $$0) {
-      this.b = $$0;
-   }
-
-   public String a() {
-      try {
-         return IDN.toASCII(this.b.getHost());
-      } catch (IllegalArgumentException var2) {
-         return "";
+   public boolean a(jf $$0, dus $$1) {
+      gcy.a $$2 = (gcy.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
       }
+   }
+
+   public void a(int $$0, gbm $$1) {
+      ObjectIterator<Entry<gcy.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<gcy.a> $$3 = (Entry<gcy.a>)$$2.next();
+         gcy.a $$4 = (gcy.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            jf $$5 = jf.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public gcy a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
    }
 
    public int b() {
-      return this.b.getPort();
+      return this.b;
    }
 
-   public static gcy a(String $$0) {
-      if ($$0 == null) {
-         return c;
-      } else {
-         try {
-            HostAndPort $$1 = HostAndPort.fromString($$0).withDefaultPort(25565);
-            return $$1.getHost().isEmpty() ? c : new gcy($$1);
-         } catch (IllegalArgumentException var2) {
-            a.info("Failed to parse URL {}", $$0, var2);
-            return c;
-         }
-      }
+   public boolean c() {
+      return this.c;
    }
 
-   public static boolean b(String $$0) {
-      try {
-         HostAndPort $$1 = HostAndPort.fromString($$0);
-         String $$2 = $$1.getHost();
-         if (!$$2.isEmpty()) {
-            IDN.toASCII($$2);
-            return true;
-         }
-      } catch (IllegalArgumentException var3) {
+   static class a {
+      final eyw a;
+      int b;
+      dus c;
+
+      a(int $$0, dus $$1, eyw $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      return false;
-   }
-
-   static int c(String $$0) {
-      try {
-         return Integer.parseInt($$0.trim());
-      } catch (Exception var2) {
-         return 25565;
+      gcy.a a(int $$0) {
+         this.b = $$0;
+         return this;
       }
-   }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof gcy ? this.b.equals(((gcy)$$0).b) : false;
+      void a(dus $$0) {
+         this.c = $$0;
       }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
    }
 }

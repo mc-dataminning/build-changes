@@ -1,45 +1,37 @@
-public class fxi<T extends gtk> extends fxx<T> {
-   public fxi(gal $$0) {
+public class fxi extends fwf<gtm> {
+   private final gaq e = this.c.b("left_chest");
+   private final gaq f = this.c.b("right_chest");
+
+   public fxi(gaq $$0) {
       super($$0);
    }
 
-   public static gar b() {
-      float $$0 = -14.0F;
-      gat $$1 = fxx.a(gap.a, -14.0F);
-      gav $$2 = $$1.a();
-      gav $$3 = $$2.a("head", gaq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gan.a(0.0F, -13.0F, 0.0F));
-      $$3.a("hat", gaq.c().a(0, 16).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gap(-0.5F)), gan.a);
-      $$2.a("body", gaq.c().a(32, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F), gan.a(0.0F, -14.0F, 0.0F));
-      $$2.a("right_arm", gaq.c().a(56, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gan.a(-5.0F, -12.0F, 0.0F));
-      $$2.a("left_arm", gaq.c().a(56, 0).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 30.0F, 2.0F), gan.a(5.0F, -12.0F, 0.0F));
-      $$2.a("right_leg", gaq.c().a(56, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gan.a(-2.0F, -5.0F, 0.0F));
-      $$2.a("left_leg", gaq.c().a(56, 0).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 30.0F, 2.0F), gan.a(2.0F, -5.0F, 0.0F));
-      return gar.a($$1, 64, 32);
+   public static gaw a() {
+      gay $$0 = fwf.a(gau.a);
+      a($$0.a());
+      return gaw.a($$0, 64, 64);
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.o.k = true;
-      this.r.e *= 0.5F;
-      this.s.e *= 0.5F;
-      this.t.e *= 0.5F;
-      this.u.e *= 0.5F;
-      float $$1 = 0.4F;
-      this.r.e = azd.a(this.r.e, -0.4F, 0.4F);
-      this.s.e = azd.a(this.s.e, -0.4F, 0.4F);
-      this.t.e = azd.a(this.t.e, -0.4F, 0.4F);
-      this.u.e = azd.a(this.u.e, -0.4F, 0.4F);
-      if ($$0.b != null) {
-         this.r.e = -0.5F;
-         this.s.e = -0.5F;
-         this.r.g = 0.05F;
-         this.s.g = -0.05F;
-      }
+   public static gaw b() {
+      gay $$0 = fwf.c(gau.a);
+      a($$0.a());
+      return gaw.a(fwf.b.apply($$0), 64, 64);
+   }
 
-      if ($$0.a) {
-         float $$2 = 5.0F;
-         this.o.c -= 5.0F;
-         this.p.c += 5.0F;
-      }
+   private static void a(gba $$0) {
+      gba $$1 = $$0.b("body");
+      gav $$2 = gav.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
+      $$1.a("left_chest", $$2, gas.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("right_chest", $$2, gas.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      gba $$3 = $$0.b("head_parts").b("head");
+      gav $$4 = gav.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
+      $$3.a("left_ear", $$4, gas.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
+      $$3.a("right_ear", $$4, gas.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
+   }
+
+   public void a(gtm $$0) {
+      super.a($$0);
+      this.e.k = $$0.a;
+      this.f.k = $$0.a;
    }
 }

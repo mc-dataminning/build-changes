@@ -1,23 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejo extends ejj {
-   public static final MapCodec<ejo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpz.b(ejj.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ejo::new)
-   );
-   private final bpz<ejj> b;
+public interface ejo<P extends ejn> {
+   ejo<ejm> a = a("constant", ejm.b);
+   ejo<ejq> b = a("uniform", ejq.a);
+   ejo<ejl> c = a("biased_to_bottom", ejl.a);
+   ejo<ejr> d = a("very_biased_to_bottom", ejr.a);
+   ejo<ejp> e = a("trapezoid", ejp.a);
+   ejo<ejs> f = a("weighted_list", ejs.a);
 
-   public ejo(bpz<ejj> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public int a(azl $$0, ebh $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
-   }
-
-   @Override
-   public ejk<?> a() {
-      return ejk.f;
+   private static <P extends ejn> ejo<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.L, $$0, () -> $$1);
    }
 }

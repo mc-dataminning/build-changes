@@ -1,76 +1,101 @@
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
 import com.mojang.datafixers.util.Either;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.UUID;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class gcq extends gcl {
-   final Supplier<gyc> g;
+public abstract class gcq {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
+   @Nullable
+   protected gcs e;
+   protected boolean f;
 
-   gcq(UUID $$0, Instant $$1, UUID $$2, Supplier<gyc> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+   public gcq(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public Supplier<gyc> a() {
-      return this.g;
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
    }
 
-   public gcq c() {
-      gcq $$0 = new gcq(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
+   public abstract gcq b();
 
-   @Override
-   public fqd a(fqd $$0, gcp $$1) {
-      return new fup($$0, $$1, this);
-   }
+   public abstract fqh a(fqh var1, gcu var2);
 
-   public static class a extends gcl.a<gcq> {
-      public a(gcq $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
+   public abstract static class a<R extends gcq> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public a(UUID $$0, Supplier<gyc> $$1, AbuseReportLimits $$2) {
-         super(new gcq(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      public R e() {
+         return this.a;
       }
 
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public boolean h() {
+         return this.e().f;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
       }
 
       @Nullable
-      @Override
-      public gcl.b c() {
-         if (this.a.e == null) {
-            return gcl.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gcl.b.d : super.c();
-         }
+      public gcs i() {
+         return this.a.e;
       }
 
-      @Override
-      public Either<gcl.c, gcl.b> a(gcp $$0) {
-         gcl.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gyc $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new gcl.c(this.a.a, gco.b, $$6));
-         }
+      public void a(gcs $$0) {
+         this.a.e = $$0;
       }
+
+      public void a(boolean $$0) {
+         this.a.f = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public gcq.b c() {
+         return !this.e().f ? gcq.b.e : null;
+      }
+
+      public abstract Either<gcq.c, gcq.b> a(gcu var1);
+   }
+
+   public static record b(xe f) {
+      public static final gcq.b a = new gcq.b(xe.c("gui.abuseReport.send.no_reason"));
+      public static final gcq.b b = new gcq.b(xe.c("gui.chatReport.send.no_reported_messages"));
+      public static final gcq.b c = new gcq.b(xe.c("gui.chatReport.send.too_many_messages"));
+      public static final gcq.b d = new gcq.b(xe.c("gui.abuseReport.send.comment_too_long"));
+      public static final gcq.b e = new gcq.b(xe.c("gui.abuseReport.send.not_attested"));
+
+      public flz a() {
+         return flz.a(this.f);
+      }
+
+      public xe b() {
+         return this.f;
+      }
+   }
+
+   public static record c(UUID a, gct b, AbuseReport c) {
    }
 }

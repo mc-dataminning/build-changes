@@ -1,23 +1,14 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+public class gju implements gjw<drt> {
+   public static final gzm a = new gzm(gxf.d, ale.b("entity/bell/bell_body"));
+   private final fwu b;
 
-public class gju<S extends drs> implements djq.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = ghc.a($$0.i(), $$0.aB_());
-         int $$4 = ghc.a($$1.i(), $$1.aB_());
-         int $$5 = ghe.a($$3);
-         int $$6 = ghe.a($$4);
-         int $$7 = ghe.b($$3);
-         int $$8 = ghe.b($$4);
-         return ghe.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+   public gju(gjx.a $$0) {
+      this.b = new fwu($$0.a(gap.t));
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
-
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   public void a(drt $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      fdm $$6 = a.a($$3, ghv::c);
+      this.b.a($$0, $$1);
+      this.b.a($$2, $$6, $$4, $$5);
    }
 }

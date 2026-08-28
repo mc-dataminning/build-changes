@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbv extends cbh {
-   private final bus a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cbv extends cch {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cbv(bus $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cbh.a.a));
+   public cbv(buv $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      if (this.a.fZ()) {
-         return false;
-      } else {
-         eys $$0 = cfe.a(this.a, 16, 7, eys.c(this.a.ga()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
-      }
+      arj $$0 = (arj)this.b.dS();
+      jf $$1 = this.b.ds();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public boolean c() {
-      return !this.a.P().m();
-   }
-
-   @Override
-   public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+   protected eyw h() {
+      arj $$0 = (arj)this.b.dS();
+      jf $$1 = this.b.ds();
+      kh $$2 = kh.a($$1);
+      kh $$3 = bwh.a($$0, $$2, 2);
+      return $$3 != $$2 ? cfh.a(this.b, 10, 7, eyw.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

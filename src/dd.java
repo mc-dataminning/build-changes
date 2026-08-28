@@ -19,8 +19,8 @@ public record dd(dh.d c, Optional<bv> d) implements bw {
    }
 
    @Override
-   public boolean a(bto $$0, arh $$1, @Nullable eys $$2) {
-      return !($$0 instanceof buj $$3) ? false : this.c.d($$3.o()) && (this.d.isEmpty() || $$3.q().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(btr $$0, arj $$1, @Nullable eyw $$2) {
+      return !($$0 instanceof bum $$3) ? false : this.c.d($$3.o()) && (this.d.isEmpty() || $$3.q().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public dh.d b() {

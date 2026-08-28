@@ -1,15 +1,23 @@
 import io.netty.buffer.ByteBuf;
-import java.util.List;
 
-public record abr(List<aua> b) implements zk<abp> {
-   public static final zb<ByteBuf, abr> a = zb.a(aua.a.a(yz.c(64)), abr::b, abr::new);
+public class abr implements zl<abq> {
+   public static final abr a = new abr();
+   public static final zc<ByteBuf, abr> b = zc.a(a);
 
-   @Override
-   public zm<abr> a() {
-      return abn.g;
+   private abr() {
    }
 
-   public void a(abp $$0) {
+   @Override
+   public zn<abr> a() {
+      return abo.f;
+   }
+
+   public void a(abq $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

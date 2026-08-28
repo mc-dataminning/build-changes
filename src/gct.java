@@ -1,77 +1,17 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Locale;
 
-public class gct implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<gct.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public enum gct {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   public void a(je $$0, duo $$1, ggc $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gct.a(this.b, $$1, $$2.dq()));
+   private final String d;
+
+   private gct(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
-   public boolean a(je $$0, duo $$1) {
-      gct.a $$2 = (gct.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
-      }
-   }
-
-   public void a(int $$0, gbh $$1) {
-      ObjectIterator<Entry<gct.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
-
-      while ($$2.hasNext()) {
-         Entry<gct.a> $$3 = (Entry<gct.a>)$$2.next();
-         gct.a $$4 = (gct.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            je $$5 = je.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
-         }
-      }
-   }
-
-   public gct a() {
-      this.b++;
-      this.c = true;
-      return this;
-   }
-
-   @Override
-   public void close() {
-      this.c = false;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final eys a;
-      int b;
-      duo c;
-
-      a(int $$0, duo $$1, eys $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
-      }
-
-      gct.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      void a(duo $$0) {
-         this.c = $$0;
-      }
+   public String a() {
+      return this.d;
    }
 }

@@ -1,128 +1,71 @@
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
 import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 
-public class ala<T> extends aku<T> {
-   private final ala.c b;
+public final class ala<E> implements Codec<jo<E>> {
+   private final ald<? extends kb<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   public static <T> ala<T> a(DynamicOps<T> $$0, jp.a $$1) {
-      return a($$0, new ala.a($$1));
+   public static <E> ala<E> a(ald<? extends kb<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <T> ala<T> a(DynamicOps<T> $$0, ala.c $$1) {
-      return new ala<>($$0, $$1);
+   public static <E> ala<E> a(ald<? extends kb<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new ala<>($$0, $$1, $$2);
    }
 
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, jp.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
-   }
-
-   private ala(DynamicOps<T> $$0, ala.c $$1) {
-      super($$0);
+   private ala(ald<? extends kb<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public <U> ala<U> a(DynamicOps<U> $$0) {
-      return (ala<U>)($$0 == this.a ? this : new ala((DynamicOps<T>)$$0, this.b));
-   }
-
-   public <E> Optional<jq<E>> a(alb<? extends ka<? extends E>> $$0) {
-      return this.b.a($$0).map(ala.b::a);
-   }
-
-   public <E> Optional<jo<E>> b(alb<? extends ka<? extends E>> $$0) {
-      return this.b.a($$0).map(ala.b::b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ala<?> $$1 = (ala<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode() * 31 + this.b.hashCode();
-   }
-
-   public static <E, O> RecordCodecBuilder<O, jo<E>> c(alb<? extends ka<? extends E>> $$0) {
-      return aym.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof ala<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   public static <E, O> RecordCodecBuilder<O, jn.c<E>> d(alb<E> $$0) {
-      alb<? extends ka<E>> $$1 = alb.a($$0.b());
-      return aym.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof ala<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
-   }
-
-   static final class a implements ala.c {
-      private final jp.a a;
-      private final Map<alb<? extends ka<?>>, Optional<? extends ala.b<?>>> b = new ConcurrentHashMap<>();
-
-      public a(jp.a $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public <E> Optional<ala.b<E>> a(alb<? extends ka<? extends E>> $$0) {
-         return (Optional<ala.b<E>>)this.b.computeIfAbsent($$0, this::b);
-      }
-
-      private Optional<ala.b<Object>> b(alb<? extends ka<?>> $$0) {
-         return this.a.a($$0).map(ala.b::a);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof ala.a $$1 && this.a.equals($$1.a)) {
-               return true;
+   public <T> DataResult<T> a(jo<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof alc<?> $$3) {
+         Optional<jr<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
             }
 
-            return false;
+            return (DataResult<T>)$$0.d().map($$2x -> ale.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
          }
       }
 
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
+      return this.b.encode($$0.a(), $$1, $$2);
+   }
+
+   public <T> DataResult<Pair<jo<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof alc<?> $$2) {
+         Optional<jp<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            jp<E> $$4 = $$3.get();
+            DataResult<Pair<ale, T>> $$5 = ale.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jo::a));
+            } else {
+               Pair<ale, T> $$6 = (Pair<ale, T>)$$5.result().get();
+               ald<E> $$7 = ald.a(this.a, (ale)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jo::a));
       }
    }
 
-   public static record b<T>(jq<T> a, jo<T> b, Lifecycle c) {
-      public static <T> ala.b<T> a(jp.b<T> $$0) {
-         return new ala.b<>($$0, $$0, $$0.g());
-      }
-   }
-
-   public interface c {
-      <T> Optional<ala.b<T>> a(alb<? extends ka<? extends T>> var1);
+   @Override
+   public String toString() {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

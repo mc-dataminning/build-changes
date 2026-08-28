@@ -1,51 +1,33 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class bbo extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("Airportal", "minecraft:end_portal");
-      $$0.put("Banner", "minecraft:banner");
-      $$0.put("Beacon", "minecraft:beacon");
-      $$0.put("Cauldron", "minecraft:brewing_stand");
-      $$0.put("Chest", "minecraft:chest");
-      $$0.put("Comparator", "minecraft:comparator");
-      $$0.put("Control", "minecraft:command_block");
-      $$0.put("DLDetector", "minecraft:daylight_detector");
-      $$0.put("Dropper", "minecraft:dropper");
-      $$0.put("EnchantTable", "minecraft:enchanting_table");
-      $$0.put("EndGateway", "minecraft:end_gateway");
-      $$0.put("EnderChest", "minecraft:ender_chest");
-      $$0.put("FlowerPot", "minecraft:flower_pot");
-      $$0.put("Furnace", "minecraft:furnace");
-      $$0.put("Hopper", "minecraft:hopper");
-      $$0.put("MobSpawner", "minecraft:mob_spawner");
-      $$0.put("Music", "minecraft:noteblock");
-      $$0.put("Piston", "minecraft:piston");
-      $$0.put("RecordPlayer", "minecraft:jukebox");
-      $$0.put("Sign", "minecraft:sign");
-      $$0.put("Skull", "minecraft:skull");
-      $$0.put("Structure", "minecraft:structure_block");
-      $$0.put("Trap", "minecraft:dispenser");
-   });
-
+public class bbo extends bgj {
    public bbo(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityBlockStateFix", bho.s, "minecraft:piston");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhm.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bhm.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bhm.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bhm.s);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
-         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bho.s, "minecraft:piston");
+      Type<?> $$2 = $$1.findFieldType("blockState");
+      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
+      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      int $$5 = $$4.get("blockId").asInt(0);
+      $$4 = $$4.remove("blockId");
+      int $$6 = $$4.get("blockData").asInt(0) & 15;
+      $$4 = $$4.remove("blockData");
+      Dynamic<?> $$7 = bcb.b($$5 << 4 | $$6);
+      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
+      return $$8.set(DSL.remainderFinder(), $$4)
+         .set(
+            $$3,
+            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
+               .getFirst()
+         );
    }
 }

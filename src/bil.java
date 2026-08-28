@@ -1,62 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class bil extends bgh {
-   public bil(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", bhm.B, $$1);
+public class bil extends bgk {
+   public bil(Schema $$0) {
+      super($$0, true, "Trial Spawner config tag fixer", bho.s, "minecraft:trial_spawner");
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
+      );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      return $$0.set(
-         DSL.remainderFinder(),
-         $$1.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               $$1.createMap(
-                  ImmutableMap.of(
-                     $$1.createString("type"),
-                     $$1.createString("minecraft:plains"),
-                     $$1.createString("profession"),
-                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
-                     $$1.createString("level"),
-                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
-                  )
-               )
-            )
-      );
-   }
-
-   private static String a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         if ($$1 == 2) {
-            return "minecraft:fisherman";
-         } else if ($$1 == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
-         }
-      } else if ($$0 == 1) {
-         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if ($$0 == 2) {
-         return "minecraft:cleric";
-      } else if ($$0 == 3) {
-         if ($$1 == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if ($$0 == 4) {
-         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
-      } else {
-         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
-      }
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

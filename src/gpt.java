@@ -1,39 +1,23 @@
-public class gpt extends gop<cln, gvk, fzn> {
-   private static final alc a = alc.b("textures/entity/strider/strider.png");
-   private static final alc b = alc.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class gpt extends gou<chb, guo, fzo> {
+   private static final ale a = ale.b("textures/entity/snow_golem.png");
 
-   public gpt(gnj.a $$0) {
-      super($$0, new fzn($$0.a(gak.cF)), 0.5F);
-      this.a(new grx<>(this, new fzn($$0.a(gak.cG)), alc.b("textures/entity/strider/strider_saddle.png")));
+   public gpt(gno.a $$0) {
+      super($$0, new fzo($$0.a(gap.cw)), 0.5F);
+      this.a(new gsg(this, $$0.d(), $$0.b()));
    }
 
-   public alc a(gvk $$0) {
-      return $$0.b ? b : a;
+   @Override
+   public ale b(guo $$0) {
+      return a;
    }
 
-   protected float b(gvk $$0) {
-      float $$1 = super.f($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
+   public guo c() {
+      return new guo();
    }
 
-   public gvk c() {
-      return new gvk();
-   }
-
-   public void a(cln $$0, gvk $$1, float $$2) {
+   public void a(chb $$0, guo $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.q();
-      $$1.c = $$0.bX();
-   }
-
-   protected void a(gvk $$0, fde $$1) {
-      float $$2 = $$0.ab;
-      $$1.b($$2, $$2, $$2);
-   }
-
-   protected boolean c(gvk $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.ao = $$0.t() ? new cvs(cvw.fl) : cvs.k;
+      $$1.an = this.i.a($$1.ao, $$0, cvp.f);
    }
 }

@@ -1,96 +1,179 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
-import java.util.List;
+import com.google.common.collect.ArrayTable;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class duu {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dus>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public abstract class duu<O, S> {
+   public static final String b = "Name";
+   public static final String c = "Properties";
+   private static final Function<Entry<dvv<?>, Comparable<?>>, String> a = new Function<Entry<dvv<?>, Comparable<?>>, String>() {
+      public String a(@Nullable Entry<dvv<?>, Comparable<?>> $$0) {
+         if ($$0 == null) {
+            return "<NULL>";
+         } else {
+            dvv<?> $$1 = $$0.getKey();
+            return $$1.f() + "=" + this.a($$1, $$0.getValue());
+         }
+      }
 
-   private duu() {
-      this.c.put(' ', $$0 -> true);
+      private <T extends Comparable<T>> String a(dvv<T> $$0, Comparable<?> $$1) {
+         return $$0.a((T)$$1);
+      }
+   };
+   protected final O d;
+   private final Reference2ObjectArrayMap<dvv<?>, Comparable<?>> f;
+   private Table<dvv<?>, Comparable<?>, S> g;
+   protected final MapCodec<S> e;
+
+   protected duu(O $$0, Reference2ObjectArrayMap<dvv<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
+      this.d = $$0;
+      this.f = $$1;
+      this.e = $$2;
    }
 
-   public duu a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
+   public <T extends Comparable<T>> S a(dvv<T> $$0) {
+      return this.b($$0, a($$0.a(), this.c($$0)));
+   }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+   protected static <T> T a(Collection<T> $$0, T $$1) {
+      Iterator<T> $$2 = $$0.iterator();
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
+      while ($$2.hasNext()) {
+         if ($$2.next().equals($$1)) {
+            if ($$2.hasNext()) {
+               return $$2.next();
             }
 
-            this.b.add($$0);
-            return this;
+            return $$0.iterator().next();
+         }
+      }
+
+      return $$2.next();
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(this.d);
+      if (!this.G().isEmpty()) {
+         $$0.append('[');
+         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
+         $$0.append(']');
+      }
+
+      return $$0.toString();
+   }
+
+   public Collection<dvv<?>> F() {
+      return Collections.unmodifiableCollection(this.f.keySet());
+   }
+
+   public <T extends Comparable<T>> boolean b(dvv<T> $$0) {
+      return this.f.containsKey($$0);
+   }
+
+   public <T extends Comparable<T>> T c(dvv<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
+      } else {
+         return $$0.g().cast($$1);
+      }
+   }
+
+   public <T extends Comparable<T>> Optional<T> d(dvv<T> $$0) {
+      return Optional.ofNullable(this.e($$0));
+   }
+
+   public <T extends Comparable<T>> T a(dvv<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.e($$0), $$1);
+   }
+
+   @Nullable
+   public <T extends Comparable<T>> T e(dvv<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      return $$1 == null ? null : $$0.g().cast($$1);
+   }
+
+   public <T extends Comparable<T>, V extends T> S b(dvv<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
+      } else if ($$2.equals($$1)) {
+         return (S)this;
+      } else {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
+         } else {
+            return $$3;
+         }
+      }
+   }
+
+   public <T extends Comparable<T>, V extends T> S c(dvv<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      if ($$2 != null && !$$2.equals($$1)) {
+         S $$3 = (S)this.g.get($$0, $$1);
+         if ($$3 == null) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
+         } else {
+            return $$3;
          }
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         return (S)this;
       }
    }
 
-   public static duu a() {
-      return new duu();
-   }
+   public void a(Map<Map<dvv<?>, Comparable<?>>, S> $$0) {
+      if (this.g != null) {
+         throw new IllegalStateException();
+      } else {
+         Table<dvv<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
+         ObjectIterator var3 = this.f.entrySet().iterator();
 
-   public duu a(char $$0, Predicate<dus> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
+         while (var3.hasNext()) {
+            Entry<dvv<?>, Comparable<?>> $$2 = (Entry<dvv<?>, Comparable<?>>)var3.next();
+            dvv<?> $$3 = $$2.getKey();
 
-   public dut b() {
-      return new dut(this.c());
-   }
-
-   private Predicate<dus>[][][] c() {
-      this.d();
-      Predicate<dus>[][][] $$0 = (Predicate<dus>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
+            for (Comparable<?> $$4 : $$3.a()) {
+               if (!$$4.equals($$2.getValue())) {
+                  $$1.put($$3, $$4, $$0.get(this.d($$3, $$4)));
+               }
             }
          }
-      }
 
-      return $$0;
+         this.g = (Table<dvv<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
+      }
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   private Map<dvv<?>, Comparable<?>> d(dvv<?> $$0, Comparable<?> $$1) {
+      Map<dvv<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
+      $$2.put($$0, $$1);
+      return $$2;
+   }
 
-      for (Entry<Character, Predicate<dus>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
+   public Map<dvv<?>, Comparable<?>> G() {
+      return this.f;
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   protected static <O, S extends duu<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
+      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
+         S $$2 = $$1.apply((O)$$1x);
+         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
+      });
    }
 }

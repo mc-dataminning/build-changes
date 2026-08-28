@@ -1,34 +1,20 @@
 import com.mojang.serialization.Codec;
 
-public class edf extends ede {
-   public edf(Codec<egb> $$0) {
+public class edf extends edu<egf> {
+   public edf(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(deh $$0, azl $$1, je $$2, duo $$3) {
-      int $$4 = $$1.a(3) + 3;
-      int $$5 = $$1.a(3) + 3;
-      int $$6 = $$1.a(3) + 3;
-      int $$7 = $$1.a(3) + 1;
-      je.a $$8 = $$2.k();
-
-      for (int $$9 = 0; $$9 <= $$5; $$9++) {
-         for (int $$10 = 0; $$10 <= $$4; $$10++) {
-            for (int $$11 = 0; $$11 <= $$6; $$11++) {
-               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
-               $$8.c(jj.a, $$7);
-               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
-                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
-                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
-                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
-                  && !($$1.i() < 0.1F)
-                  && !this.b($$0, $$1, $$8, $$3)) {
-               }
-            }
-         }
+   public boolean a(edw<egf> $$0) {
+      dfg $$1 = $$0.b();
+      jf $$2 = $$0.e();
+      azn $$3 = $$0.d();
+      if ($$1.u($$2) && $$1.a_($$2.e()).a(dho.fz)) {
+         dir.a($$1, $$2, $$3, 8);
+         return true;
+      } else {
+         return false;
       }
-
-      return true;
    }
 }

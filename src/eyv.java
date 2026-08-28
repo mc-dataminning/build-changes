@@ -1,219 +1,60 @@
-import java.util.BitSet;
+public class eyv {
+   public static final eyv a = new eyv(0.0F, 0.0F);
+   public static final eyv b = new eyv(1.0F, 1.0F);
+   public static final eyv c = new eyv(1.0F, 0.0F);
+   public static final eyv d = new eyv(-1.0F, 0.0F);
+   public static final eyv e = new eyv(0.0F, 1.0F);
+   public static final eyv f = new eyv(0.0F, -1.0F);
+   public static final eyv g = new eyv(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final eyv h = new eyv(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public final class eyv extends ezb {
-   private final BitSet d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
-
-   public eyv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-      this.d = new BitSet($$0 * $$1 * $$2);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public eyv(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public static eyv a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      eyv $$9 = new eyv($$0, $$1, $$2);
-      $$9.e = $$3;
-      $$9.f = $$4;
-      $$9.g = $$5;
-      $$9.h = $$6;
-      $$9.i = $$7;
-      $$9.j = $$8;
-
-      for (int $$10 = $$3; $$10 < $$6; $$10++) {
-         for (int $$11 = $$4; $$11 < $$7; $$11++) {
-            for (int $$12 = $$5; $$12 < $$8; $$12++) {
-               $$9.a($$10, $$11, $$12, false);
-            }
-         }
-      }
-
-      return $$9;
+   public eyv a(float $$0) {
+      return new eyv(this.i * $$0, this.j * $$0);
    }
 
-   public eyv(ezb $$0) {
-      super($$0.a, $$0.b, $$0.c);
-      if ($$0 instanceof eyv) {
-         this.d = (BitSet)((eyv)$$0).d.clone();
-      } else {
-         this.d = new BitSet(this.a * this.b * this.c);
-
-         for (int $$1 = 0; $$1 < this.a; $$1++) {
-            for (int $$2 = 0; $$2 < this.b; $$2++) {
-               for (int $$3 = 0; $$3 < this.c; $$3++) {
-                  if ($$0.b($$1, $$2, $$3)) {
-                     this.d.set(this.a($$1, $$2, $$3));
-                  }
-               }
-            }
-         }
-      }
-
-      this.e = $$0.a(jj.a.a);
-      this.f = $$0.a(jj.a.b);
-      this.g = $$0.a(jj.a.c);
-      this.h = $$0.b(jj.a.a);
-      this.i = $$0.b(jj.a.b);
-      this.j = $$0.b(jj.a.c);
+   public float a(eyv $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   protected int a(int $$0, int $$1, int $$2) {
-      return ($$0 * this.b + $$1) * this.c + $$2;
+   public eyv b(eyv $$0) {
+      return new eyv(this.i + $$0.i, this.j + $$0.j);
    }
 
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.get(this.a($$0, $$1, $$2));
+   public eyv b(float $$0) {
+      return new eyv(this.i + $$0, this.j + $$0);
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3) {
-      this.d.set(this.a($$0, $$1, $$2));
-      if ($$3) {
-         this.e = Math.min(this.e, $$0);
-         this.f = Math.min(this.f, $$1);
-         this.g = Math.min(this.g, $$2);
-         this.h = Math.max(this.h, $$0 + 1);
-         this.i = Math.max(this.i, $$1 + 1);
-         this.j = Math.max(this.j, $$2 + 1);
-      }
+   public boolean c(eyv $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, $$2, true);
+   public eyv a() {
+      float $$0 = azf.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new eyv(this.i / $$0, this.j / $$0);
    }
 
-   @Override
-   public boolean a() {
-      return this.d.isEmpty();
+   public float b() {
+      return azf.c(this.i * this.i + this.j * this.j);
    }
 
-   @Override
-   public int a(jj.a $$0) {
-      return $$0.a(this.e, this.f, this.g);
+   public float c() {
+      return this.i * this.i + this.j * this.j;
    }
 
-   @Override
-   public int b(jj.a $$0) {
-      return $$0.a(this.h, this.i, this.j);
+   public float d(eyv $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
    }
 
-   static eyv a(ezb $$0, ezb $$1, eze $$2, eze $$3, eze $$4, eyw $$5) {
-      eyv $$6 = new eyv($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
-      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
-      $$2.a(($$7x, $$8, $$9) -> {
-         boolean[] $$10 = new boolean[]{false};
-         $$3.a(($$10x, $$11, $$12) -> {
-            boolean[] $$13 = new boolean[]{false};
-            $$4.a(($$12x, $$13x, $$14) -> {
-               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
-                  $$6.d.set($$6.a($$9, $$12, $$14));
-                  $$7[2] = Math.min($$7[2], $$14);
-                  $$7[5] = Math.max($$7[5], $$14);
-                  $$13[0] = true;
-               }
-
-               return true;
-            });
-            if ($$13[0]) {
-               $$7[1] = Math.min($$7[1], $$12);
-               $$7[4] = Math.max($$7[4], $$12);
-               $$10[0] = true;
-            }
-
-            return true;
-         });
-         if ($$10[0]) {
-            $$7[0] = Math.min($$7[0], $$9);
-            $$7[3] = Math.max($$7[3], $$9);
-         }
-
-         return true;
-      });
-      $$6.e = $$7[0];
-      $$6.f = $$7[1];
-      $$6.g = $$7[2];
-      $$6.h = $$7[3] + 1;
-      $$6.i = $$7[4] + 1;
-      $$6.j = $$7[5] + 1;
-      return $$6;
-   }
-
-   protected static void a(ezb $$0, ezb.b $$1, boolean $$2) {
-      eyv $$3 = new eyv($$0);
-
-      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
-         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
-            int $$6 = -1;
-
-            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
-               if ($$3.e($$5, $$4, $$7)) {
-                  if ($$2) {
-                     if ($$6 == -1) {
-                        $$6 = $$7;
-                     }
-                  } else {
-                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
-                  }
-               } else if ($$6 != -1) {
-                  int $$8 = $$5;
-                  int $$9 = $$4;
-                  $$3.b($$6, $$7, $$5, $$4);
-
-                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
-                     $$3.b($$6, $$7, $$8 + 1, $$4);
-                     $$8++;
-                  }
-
-                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
-                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
-                        $$3.b($$6, $$7, $$10, $$9 + 1);
-                     }
-
-                     $$9++;
-                  }
-
-                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
-                  $$6 = -1;
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
-   }
-
-   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      for (int $$5 = $$0; $$5 < $$1; $$5++) {
-         if (!this.a($$2, $$3, $$5, $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private void b(int $$0, int $$1, int $$2, int $$3) {
-      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
-   }
-
-   public boolean d(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
-      return $$3
-         && this.b($$0, $$1, $$2)
-         && this.b($$0 - 1, $$1, $$2)
-         && this.b($$0 + 1, $$1, $$2)
-         && this.b($$0, $$1 - 1, $$2)
-         && this.b($$0, $$1 + 1, $$2)
-         && this.b($$0, $$1, $$2 - 1)
-         && this.b($$0, $$1, $$2 + 1);
+   public eyv d() {
+      return new eyv(-this.i, -this.j);
    }
 }

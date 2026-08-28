@@ -1,42 +1,40 @@
-public class fyr extends fxk<gtl> {
-   private final gal a;
-   private final gal b;
-   private final gal c;
+import org.joml.Quaternionf;
 
-   public fyr(gal $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.c = $$0.b("right_blue_fin");
+public class fyr<T extends gvb> extends fyb<T> {
+   private static final String a = "cape";
+   private final gaq b = this.q.b("cape");
+
+   public fyr(gaq $$0) {
+      super($$0);
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gaq.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gan.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gaq.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gan.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", gaq.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gan.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", gaq.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gan.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", gaq.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gan.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", gaq.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gan.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gaq.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gan.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gaq.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gan.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", gaq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gan.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", gaq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gan.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", gaq.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gan.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", gaq.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gan.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gaq.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gan.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return gar.a($$0, 32, 32);
+   public static gaw a() {
+      gay $$0 = fyb.a(gau.a, 0.0F);
+      gba $$1 = $$0.a();
+      gba $$2 = $$1.a("head");
+      $$2.a("hat");
+      gba $$3 = $$1.a("body");
+      $$1.a("left_arm");
+      $$1.a("right_arm");
+      $$1.a("left_leg");
+      $$1.a("right_leg");
+      $$3.a("cape", gav.c().a(0, 0).a(-5.0F, 0.0F, 0.0F, 10.0F, 16.0F, 1.0F, gau.a, 1.0F, 0.5F), gas.a(0.0F, 0.0F, 3.0F, 0.0F, (float) Math.PI, 0.0F));
+      return gaw.a($$0, 64, 64);
    }
 
-   @Override
-   public gal a() {
-      return this.a;
-   }
+   public void a(T $$0) {
+      super.a($$0);
+      if (!$$0.Q.f()) {
+         this.b.d++;
+         this.b.c -= 0.85F;
+      }
 
-   @Override
-   public void a(gtl $$0) {
-      this.c.g = -0.2F + 0.4F * azd.a($$0.p * 0.2F);
-      this.b.g = 0.2F - 0.4F * azd.a($$0.p * 0.2F);
+      this.b
+         .a(
+            new Quaternionf()
+               .rotationX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
+               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
+               .rotateY(-$$0.d / 2.0F * (float) (Math.PI / 180.0))
+         );
    }
 }

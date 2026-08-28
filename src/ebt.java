@@ -1,16 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 
-abstract class ebt implements ebr {
-   protected final List<ebr> e;
+class ebt extends ebx {
+   public static final MapCodec<ebt> a = a(ebt::new);
 
-   protected ebt(List<ebr> $$0) {
-      this.e = $$0;
+   public ebt(List<ebv> $$0) {
+      super($$0);
    }
 
-   public static <T extends ebt> MapCodec<T> a(Function<List<ebr>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ebr.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
+   public boolean a(dfg $$0, jf $$1) {
+      for (ebv $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public ebw<?> a() {
+      return ebw.j;
    }
 }

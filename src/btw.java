@@ -1,77 +1,72 @@
-public enum btw implements azz {
-   a(btw.a.a, 0, 0, "mainhand"),
-   b(btw.a.a, 1, 5, "offhand"),
-   c(btw.a.b, 0, 1, 1, "feet"),
-   d(btw.a.b, 1, 1, 2, "legs"),
-   e(btw.a.b, 2, 1, 3, "chest"),
-   f(btw.a.b, 3, 1, 4, "head"),
-   g(btw.a.c, 0, 1, 6, "body");
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   public static final int h = 0;
-   public static final azz.a<btw> i = azz.a(btw::values);
-   private final btw.a j;
-   private final int k;
-   private final int l;
-   private final int m;
-   private final String n;
+public final class btw {
+   public static final Predicate<btr> a = btr::bI;
+   public static final Predicate<btr> b = $$0 -> $$0.bI() && $$0 instanceof bun;
+   public static final Predicate<btr> c = $$0 -> $$0.bI() && !$$0.bX() && !$$0.bW();
+   public static final Predicate<btr> d = $$0 -> $$0 instanceof brl && $$0.bI();
+   public static final Predicate<btr> e = $$0 -> !($$0 instanceof cnx) || !$$0.Q_() && !((cnx)$$0).f();
+   public static final Predicate<btr> f = $$0 -> !$$0.Q_();
+   public static final Predicate<btr> g = f.and(btr::bK);
+   public static final Predicate<btr> h = f.and(btr::bE);
 
-   private btw(final btw.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.j = $$0;
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.n = $$4;
+   private btw() {
    }
 
-   private btw(final btw.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
+   public static Predicate<btr> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.i($$0, $$1, $$2) <= $$4;
    }
 
-   public btw.a a() {
-      return this.j;
+   public static Predicate<btr> a(btr $$0) {
+      fad $$1 = $$0.co();
+      fad.a $$2 = $$1 == null ? fad.a.a : $$1.l();
+      return (Predicate<btr>)($$2 == fad.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bF()) {
+            return false;
+         } else if (!$$0.dS().B || $$3 instanceof cnx && ((cnx)$$3).g()) {
+            fad $$4 = $$3.co();
+            fad.a $$5 = $$4 == null ? fad.a.a : $$4.l();
+            if ($$5 == fad.a.b) {
+               return false;
+            } else {
+               boolean $$6 = $$1 != null && $$1.a($$4);
+               return ($$2 == fad.a.d || $$5 == fad.a.d) && $$6 ? false : $$2 != fad.a.c && $$5 != fad.a.c || $$6;
+            }
+         } else {
+            return false;
+         }
+      }));
    }
 
-   public int b() {
-      return this.k;
+   public static Predicate<btr> b(btr $$0) {
+      return $$1 -> {
+         while ($$1.bW()) {
+            $$1 = $$1.dg();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   public int a(int $$0) {
-      return $$0 + this.k;
-   }
+   public static class a implements Predicate<btr> {
+      private final cvs a;
 
-   public cvp a(cvp $$0) {
-      return this.l > 0 ? $$0.a(this.l) : $$0;
-   }
-
-   public int d() {
-      return this.m;
-   }
-
-   public String e() {
-      return this.n;
-   }
-
-   public boolean f() {
-      return this.j == btw.a.b || this.j == btw.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.n;
-   }
-
-   public static btw a(String $$0) {
-      btw $$1 = i.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      public a(cvs $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static enum a {
-      a,
-      b,
-      c;
+      public boolean a(@Nullable btr $$0) {
+         if (!$$0.bI()) {
+            return false;
+         } else {
+            return !($$0 instanceof bun $$1) ? false : $$1.e(this.a);
+         }
+      }
    }
 }

@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record df(
    Optional<df.b> b,
-   Optional<jr<dfh>> c,
-   Optional<jr<elc>> d,
-   Optional<alb<deg>> e,
+   Optional<js<dfk>> c,
+   Optional<js<elg>> d,
+   Optional<ald<dej>> e,
    Optional<Boolean> f,
    Optional<dc> g,
    Optional<aw> h,
@@ -16,9 +16,9 @@ public record df(
    public static final Codec<df> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                df.b.a.optionalFieldOf("position").forGetter(df::a),
-               kc.a(lv.aG).optionalFieldOf("biomes").forGetter(df::b),
-               kc.a(lv.aS).optionalFieldOf("structures").forGetter(df::c),
-               alb.a(lv.bb).optionalFieldOf("dimension").forGetter(df::d),
+               kd.a(lw.aH).optionalFieldOf("biomes").forGetter(df::b),
+               kd.a(lw.aT).optionalFieldOf("structures").forGetter(df::c),
+               ald.a(lw.bc).optionalFieldOf("dimension").forGetter(df::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(df::e),
                dc.a.optionalFieldOf("light").forGetter(df::f),
                aw.a.optionalFieldOf("block").forGetter(df::g),
@@ -28,17 +28,17 @@ public record df(
             .apply($$0, df::new)
    );
 
-   public boolean a(arh $$0, double $$1, double $$2, double $$3) {
+   public boolean a(arj $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.ag()) {
          return false;
       } else {
-         je $$4 = je.a($$1, $$2, $$3);
+         jf $$4 = jf.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dhx.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dia.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record df(
       return this.b;
    }
 
-   public Optional<jr<dfh>> b() {
+   public Optional<js<dfk>> b() {
       return this.c;
    }
 
-   public Optional<jr<elc>> c() {
+   public Optional<js<elg>> c() {
       return this.d;
    }
 
-   public Optional<alb<deg>> d() {
+   public Optional<ald<dej>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record df(
       private dh.c a;
       private dh.c b;
       private dh.c c;
-      private Optional<jr<dfh>> d;
-      private Optional<jr<elc>> e;
-      private Optional<alb<deg>> f;
+      private Optional<js<dfk>> d;
+      private Optional<js<elg>> e;
+      private Optional<ald<dej>> f;
       private Optional<Boolean> g;
       private Optional<dc> h;
       private Optional<aw> i;
@@ -125,16 +125,16 @@ public record df(
          return new df.a();
       }
 
-      public static df.a a(jn<dfh> $$0) {
-         return a().a(jr.a($$0));
+      public static df.a a(jo<dfk> $$0) {
+         return a().a(js.a($$0));
       }
 
-      public static df.a a(alb<deg> $$0) {
+      public static df.a a(ald<dej> $$0) {
          return a().b($$0);
       }
 
-      public static df.a b(jn<elc> $$0) {
-         return a().b(jr.a($$0));
+      public static df.a b(jo<elg> $$0) {
+         return a().b(js.a($$0));
       }
 
       public static df.a a(dh.c $$0) {
@@ -156,17 +156,17 @@ public record df(
          return this;
       }
 
-      public df.a a(jr<dfh> $$0) {
+      public df.a a(js<dfk> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public df.a b(jr<elc> $$0) {
+      public df.a b(js<elg> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public df.a b(alb<deg> $$0) {
+      public df.a b(ald<dej> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

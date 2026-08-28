@@ -1,37 +1,32 @@
-public class afa implements zk<abz> {
-   public static final zb<wa, afa> a = zk.a(afa::a, afa::new);
+import javax.annotation.Nullable;
+
+public class afa implements zl<aca> {
+   public static final zc<wb, afa> a = zl.a(afa::a, afa::new);
    private final int b;
-   private final int c;
 
-   public afa(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public afa(btr $$0) {
+      this.b = $$0.ap();
    }
 
-   private afa(wa $$0) {
+   private afa(wb $$0) {
       this.b = $$0.l();
-      this.c = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.c(this.b);
-      $$0.c(this.c);
    }
 
    @Override
-   public zm<afa> a() {
-      return ago.ay;
+   public zn<afa> a() {
+      return agp.ax;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public btr a(dej $$0) {
+      return $$0.a(this.b);
    }
 }

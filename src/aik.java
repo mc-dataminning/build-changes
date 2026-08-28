@@ -1,156 +1,85 @@
-public class aik implements zk<agq> {
-   public static final zb<wa, aik> a = zk.a(aik::a, aik::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final je e;
-   private final dtj.a f;
-   private final dvy g;
-   private final String h;
-   private final je i;
-   private final ki j;
-   private final dmg k;
-   private final dnx l;
-   private final String m;
-   private final boolean n;
-   private final boolean o;
-   private final boolean p;
-   private final float q;
-   private final long r;
+public class aik implements zl<agr> {
+   public static final zc<wb, aik> a = zl.a(aik::a, aik::new);
+   private final jf b;
+   private final ale c;
+   private final ale d;
+   private final ale e;
+   private final String f;
+   private final dsx.a g;
+   private final int h;
+   private final int i;
 
-   public aik(
-      je $$0, dtj.a $$1, dvy $$2, String $$3, je $$4, ki $$5, dmg $$6, dnx $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
-   ) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      this.o = $$10;
-      this.p = $$11;
-      this.q = $$12;
-      this.r = $$13;
+   public aik(jf $$0, ale $$1, ale $$2, ale $$3, String $$4, dsx.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private aik(wa $$0) {
-      this.e = $$0.e();
-      this.f = $$0.b(dtj.a.class);
-      this.g = $$0.b(dvy.class);
-      this.h = $$0.p();
-      int $$1 = 48;
-      this.i = new je(azd.a($$0.readByte(), -48, 48), azd.a($$0.readByte(), -48, 48), azd.a($$0.readByte(), -48, 48));
-      int $$2 = 48;
-      this.j = new ki(azd.a($$0.readByte(), 0, 48), azd.a($$0.readByte(), 0, 48), azd.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dmg.class);
-      this.l = $$0.b(dnx.class);
-      this.m = $$0.d(128);
-      this.q = azd.a($$0.readFloat(), 0.0F, 1.0F);
-      this.r = $$0.m();
-      int $$3 = $$0.readByte();
-      this.n = ($$3 & 1) != 0;
-      this.o = ($$3 & 2) != 0;
-      this.p = ($$3 & 4) != 0;
+   private aik(wb $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dsx.a.a($$0.p()).orElse(dsx.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.l(this.i.u());
-      $$0.l(this.i.v());
-      $$0.l(this.i.w());
-      $$0.l(this.j.u());
-      $$0.l(this.j.v());
-      $$0.l(this.j.w());
-      $$0.a(this.k);
-      $$0.a(this.l);
-      $$0.a(this.m);
-      $$0.a(this.q);
-      $$0.a(this.r);
-      int $$1 = 0;
-      if (this.n) {
-         $$1 |= 1;
-      }
-
-      if (this.o) {
-         $$1 |= 2;
-      }
-
-      if (this.p) {
-         $$1 |= 4;
-      }
-
-      $$0.l($$1);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zm<aik> a() {
-      return ago.cb;
+   public zn<aik> a() {
+      return agp.ca;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public je b() {
+   public jf b() {
+      return this.b;
+   }
+
+   public ale e() {
+      return this.c;
+   }
+
+   public ale f() {
+      return this.d;
+   }
+
+   public ale g() {
       return this.e;
    }
 
-   public dtj.a e() {
+   public String h() {
       return this.f;
    }
 
-   public dvy f() {
+   public dsx.a i() {
       return this.g;
    }
 
-   public String g() {
+   public int j() {
       return this.h;
    }
 
-   public je h() {
+   public int k() {
       return this.i;
-   }
-
-   public ki i() {
-      return this.j;
-   }
-
-   public dmg j() {
-      return this.k;
-   }
-
-   public dnx k() {
-      return this.l;
-   }
-
-   public String l() {
-      return this.m;
-   }
-
-   public boolean m() {
-      return this.n;
-   }
-
-   public boolean n() {
-      return this.o;
-   }
-
-   public boolean o() {
-      return this.p;
-   }
-
-   public float p() {
-      return this.q;
-   }
-
-   public long q() {
-      return this.r;
    }
 }

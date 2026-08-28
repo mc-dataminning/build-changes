@@ -1,19 +1,29 @@
-public class aje {
-   public static final zm<aiz> a = a("custom_query");
-   public static final zm<aja> b = a("game_profile");
-   public static final zm<ajb> c = a("hello");
-   public static final zm<ajc> d = a("login_compression");
-   public static final zm<ajd> e = a("login_disconnect");
-   public static final zm<ajh> f = b("custom_query_answer");
-   public static final zm<aji> g = b("hello");
-   public static final zm<ajj> h = b("key");
-   public static final zm<ajk> i = b("login_acknowledged");
+public class aje implements zl<aiz> {
+   public static final zc<wb, aje> a = zl.a(aje::a, aje::new);
+   private final xe b;
 
-   private static <T extends zk<aiy>> zm<T> a(String $$0) {
-      return new zm<>(zl.b, alc.b($$0));
+   public aje(xe $$0) {
+      this.b = $$0;
    }
 
-   private static <T extends zk<ajg>> zm<T> b(String $$0) {
-      return new zm<>(zl.a, alc.b($$0));
+   private aje(wb $$0) {
+      this.b = xe.a.b($$0.d(262144), kc.b);
+   }
+
+   private void a(wb $$0) {
+      $$0.a(xe.a.a(this.b, kc.b));
+   }
+
+   @Override
+   public zn<aje> a() {
+      return ajf.e;
+   }
+
+   public void a(aiz $$0) {
+      $$0.a(this);
+   }
+
+   public xe b() {
+      return this.b;
    }
 }

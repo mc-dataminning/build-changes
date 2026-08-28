@@ -1,185 +1,278 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.authlib.minecraft.BanDetails;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class fqj {
-   private final fil a;
-   private final fqn b;
-   private final fqk c;
-   private final int d;
-   private final ah e;
-   private final as f;
-   private final cvp g;
-   private final xd h;
-   private final fql i;
-   private final Map<ag, fql> j = Maps.newLinkedHashMap();
-   private double k;
-   private double l;
-   private int m = Integer.MAX_VALUE;
-   private int n = Integer.MAX_VALUE;
-   private int o = Integer.MIN_VALUE;
-   private int p = Integer.MIN_VALUE;
-   private float q;
-   private boolean r;
+public class fqj extends fqh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final xe b = xe.c("narrator.screen.title");
+   private static final xe c = xe.c("title.credits");
+   private static final String d = "Demo_World";
+   private static final float s = 2000.0F;
+   @Nullable
+   private fls u;
+   private fko v;
+   @Nullable
+   private fgf w;
+   private float x = 1.0F;
+   private boolean y;
+   private long z;
+   private final flf A;
 
-   public fqj(fil $$0, fqn $$1, fqk $$2, int $$3, ah $$4, as $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$5.c();
-      this.h = $$5.a();
-      this.i = new fql(this, $$0, $$4, $$5);
-      this.a(this.i, $$4.b());
+   public fqj() {
+      this(false);
    }
 
-   public fqk a() {
-      return this.c;
+   public fqj(boolean $$0) {
+      this($$0, null);
    }
 
-   public int b() {
-      return this.d;
+   public fqj(boolean $$0, @Nullable flf $$1) {
+      super(b);
+      this.y = $$0;
+      this.A = Objects.requireNonNullElseGet($$1, () -> new flf(false));
    }
 
-   public ah c() {
-      return this.e;
+   private boolean m() {
+      return this.w != null;
    }
 
-   public xd d() {
-      return this.h;
+   @Override
+   public void e() {
+      if (this.m()) {
+         this.w.e();
+      }
    }
 
-   public as e() {
-      return this.f;
+   public static CompletableFuture<Void> a(gxh $$0, Executor $$1) {
+      return CompletableFuture.allOf($$0.a(flf.a, $$1), $$0.a(flf.c, $$1), $$0.a(gho.a, $$1), e.a($$0, $$1));
    }
 
-   public void a(fjx $$0, int $$1, int $$2, boolean $$3) {
-      this.c.a($$0, $$1, $$2, $$3, this.d);
+   @Override
+   public boolean k() {
+      return false;
    }
 
-   public void a(fjx $$0, int $$1, int $$2) {
-      this.c.a($$0, $$1, $$2, this.d, this.g);
+   @Override
+   public boolean aI_() {
+      return false;
    }
 
-   public void b(fjx $$0, int $$1, int $$2) {
-      if (!this.r) {
-         this.k = (double)(117 - (this.o + this.m) / 2);
-         this.l = (double)(56 - (this.p + this.n) / 2);
-         this.r = true;
+   @Override
+   protected void aS_() {
+      if (this.u == null) {
+         this.u = this.m.aM().a();
       }
 
-      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
-      $$0.c().a();
-      $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      alc $$3 = this.f.d().orElse(gxc.a);
-      int $$4 = azd.a(this.k);
-      int $$5 = azd.a(this.l);
-      int $$6 = $$4 % 16;
-      int $$7 = $$5 % 16;
-
-      for (int $$8 = -1; $$8 <= 15; $$8++) {
-         for (int $$9 = -1; $$9 <= 8; $$9++) {
-            $$0.a(ghq::B, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
-         }
-      }
-
-      this.i.a($$0, $$4, $$5, true);
-      this.i.a($$0, $$4, $$5, false);
-      this.i.a($$0, $$4, $$5);
-      $$0.c().b();
-      $$0.f();
-   }
-
-   public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, -200.0F);
-      $$0.a(0, 0, 234, 113, azd.d(this.q * 255.0F) << 24);
-      boolean $$5 = false;
-      int $$6 = azd.a(this.k);
-      int $$7 = azd.a(this.l);
-      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
-         for (fql $$8 : this.j.values()) {
-            if ($$8.a($$6, $$7, $$1, $$2)) {
-               $$5 = true;
-               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
-               break;
-            }
-         }
-      }
-
-      $$0.c().b();
-      if ($$5) {
-         this.q = azd.a(this.q + 0.02F, 0.0F, 0.3F);
+      int $$0 = this.p.a(c);
+      int $$1 = this.n - $$0 - 2;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      if (this.m.K()) {
+         this.b($$3, 24);
       } else {
-         this.q = azd.a(this.q - 0.04F, 0.0F, 1.0F);
+         this.a($$3, 24);
+      }
+
+      flt $$4 = this.c(fks.a(20, $$0x -> this.m.a(new ftg(this, this.m.n, this.m.ah())), true));
+      $$4.c(this.n / 2 - 124, $$3 + 72 + 12);
+      this.c(fko.a(xe.c("menu.options"), $$0x -> this.m.a(new ftj(this, this.m.n))).a(this.n / 2 - 100, $$3 + 72 + 12, 98, 20).a());
+      this.c(fko.a(xe.c("menu.quit"), $$0x -> this.m.q()).a(this.n / 2 + 2, $$3 + 72 + 12, 98, 20).a());
+      flt $$5 = this.c(fks.b(20, $$0x -> this.m.a(new ftd(this, this.m.n)), true));
+      $$5.c(this.n / 2 + 104, $$3 + 72 + 12);
+      this.c(new flm($$1, this.o - 10, $$0, 10, c, $$0x -> this.m.a(new fpj(this)), this.p));
+      if (this.w == null) {
+         this.w = new fgf();
+      }
+
+      if (this.m()) {
+         this.w.b(this.m, this.n, this.o);
       }
    }
 
-   public boolean a(int $$0, int $$1, double $$2, double $$3) {
-      return this.c.a($$0, $$1, this.d, $$2, $$3);
+   private void a(int $$0, int $$1) {
+      this.c(fko.a(xe.c("menu.singleplayer"), $$0x -> this.m.a(new fvk(this))).a(this.n / 2 - 100, $$0, 200, 20).a());
+      xe $$2 = this.D();
+      boolean $$3 = $$2 == null;
+      flz $$4 = $$2 != null ? flz.a($$2) : null;
+      this.c(fko.a(xe.c("menu.multiplayer"), $$0x -> {
+         fqh $$1x = (fqh)(this.m.n.u ? new fsw(this) : new fsx(this));
+         this.m.a($$1x);
+      }).a(this.n / 2 - 100, $$0 + $$1 * 1, 200, 20).a($$4).a()).j = $$3;
+      this.c(fko.a(xe.c("menu.online"), $$0x -> this.m.a(new fdt(this))).a(this.n / 2 - 100, $$0 + $$1 * 2, 200, 20).a($$4).a()).j = $$3;
    }
 
    @Nullable
-   public static fqj a(fil $$0, fqn $$1, int $$2, ah $$3) {
-      Optional<as> $$4 = $$3.a().c();
-      if ($$4.isEmpty()) {
+   private xe D() {
+      if (this.m.F()) {
          return null;
+      } else if (this.m.I()) {
+         return xe.c("title.multiplayer.disabled.banned.name");
       } else {
-         for (fqk $$5 : fqk.values()) {
-            if ($$2 < $$5.a()) {
-               return new fqj($$0, $$1, $$5, $$2, $$3, $$4.get());
-            }
+         BanDetails $$0 = this.m.H();
+         if ($$0 != null) {
+            return $$0.expires() != null ? xe.c("title.multiplayer.disabled.banned.temporary") : xe.c("title.multiplayer.disabled.banned.permanent");
+         } else {
+            return xe.c("title.multiplayer.disabled");
+         }
+      }
+   }
 
-            $$2 -= $$5.a();
+   private void b(int $$0, int $$1) {
+      boolean $$2 = this.E();
+      this.c(fko.a(xe.c("menu.playdemo"), $$1x -> {
+         if ($$2) {
+            this.m.x().a("Demo_World", () -> this.m.a(this));
+         } else {
+            this.m.x().a("Demo_World", MinecraftServer.d, ebm.b, ekw::a, this);
+         }
+      }).a(this.n / 2 - 100, $$0, 200, 20).a());
+      this.v = this.c(
+         fko.a(
+               xe.c("menu.resetdemo"),
+               $$0x -> {
+                  esz $$1x = this.m.m();
+
+                  try (esz.c $$2x = $$1x.e("Demo_World")) {
+                     if ($$2x.m()) {
+                        this.m
+                           .a(
+                              new fpf(
+                                 this::c,
+                                 xe.c("selectWorld.deleteQuestion"),
+                                 xe.a("selectWorld.deleteWarning", MinecraftServer.d.a()),
+                                 xe.c("selectWorld.deleteButton"),
+                                 xd.e
+                              )
+                           );
+                     }
+                  } catch (IOException var8) {
+                     fmx.a(this.m, "Demo_World");
+                     a.warn("Failed to access demo world", var8);
+                  }
+               }
+            )
+            .a(this.n / 2 - 100, $$0 + $$1 * 1, 200, 20)
+            .a()
+      );
+      this.v.j = $$2;
+   }
+
+   private boolean E() {
+      try {
+         boolean var2;
+         try (esz.c $$0 = this.m.m().e("Demo_World")) {
+            var2 = $$0.m();
          }
 
-         return null;
+         return var2;
+      } catch (IOException var6) {
+         fmx.a(this.m, "Demo_World");
+         a.warn("Failed to read demo world data", var6);
+         return false;
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.o - this.m > 234) {
-         this.k = azd.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      if (this.z == 0L && this.y) {
+         this.z = ad.c();
       }
 
-      if (this.p - this.n > 113) {
-         this.l = azd.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      float $$4 = 1.0F;
+      if (this.y) {
+         float $$5 = (float)(ad.c() - this.z) / 2000.0F;
+         if ($$5 > 1.0F) {
+            this.y = false;
+            this.x = 1.0F;
+         } else {
+            $$5 = azf.a($$5, 0.0F, 1.0F);
+            $$4 = azf.b($$5, 0.5F, 1.0F, 0.0F, 1.0F);
+            this.x = azf.b($$5, 0.0F, 0.5F, 0.0F, 1.0F);
+         }
+
+         this.a($$4);
+      }
+
+      this.a($$0, $$3);
+      int $$6 = azf.f($$4 * 255.0F) << 24;
+      if (($$6 & -67108864) != 0) {
+         super.a($$0, $$1, $$2, $$3);
+         this.A.a($$0, this.n, $$4);
+         if (this.u != null && !this.m.n.c().c()) {
+            this.u.a($$0, this.n, this.p, $$6);
+         }
+
+         String $$7 = "Minecraft " + ab.b().c();
+         if (this.m.K()) {
+            $$7 = $$7 + " Demo";
+         } else {
+            $$7 = $$7 + ("release".equalsIgnoreCase(this.m.j()) ? "" : "/" + this.m.j());
+         }
+
+         if (fip.e().a()) {
+            $$7 = $$7 + gyn.a("menu.modded");
+         }
+
+         $$0.b(this.p, $$7, 2, this.o - 10, 16777215 | $$6);
+         if (this.m() && $$4 >= 1.0F) {
+            this.w.a($$0, $$1, $$2, $$3);
+         }
       }
    }
 
-   public void a(ah $$0) {
-      Optional<as> $$1 = $$0.a().c();
-      if (!$$1.isEmpty()) {
-         fql $$2 = new fql(this, this.a, $$0, $$1.get());
-         this.a($$2, $$0.b());
+   private void a(float $$0) {
+      for (fml $$1 : this.aJ_()) {
+         if ($$1 instanceof fkm $$2) {
+            $$2.a($$0);
+         }
       }
    }
 
-   private void a(fql $$0, ag $$1) {
-      this.j.put($$1, $$0);
-      int $$2 = $$0.d();
-      int $$3 = $$2 + 28;
-      int $$4 = $$0.c();
-      int $$5 = $$4 + 27;
-      this.m = Math.min(this.m, $$2);
-      this.o = Math.max(this.o, $$3);
-      this.n = Math.min(this.n, $$4);
-      this.p = Math.max(this.p, $$5);
+   @Override
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+   }
 
-      for (fql $$6 : this.j.values()) {
-         $$6.b();
+   @Override
+   protected void a(fkb $$0, float $$1) {
+      f.a($$0, this.n, this.o, this.x, $$1);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return super.a($$0, $$1, $$2) ? true : this.m() && this.w.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void j() {
+      if (this.w != null) {
+         this.w.j();
       }
    }
 
-   @Nullable
-   public fql a(ag $$0) {
-      return this.j.get($$0);
+   @Override
+   public void aK_() {
+      super.aK_();
+      if (this.w != null) {
+         this.w.aK_();
+      }
    }
 
-   public fqn f() {
-      return this.b;
+   private void c(boolean $$0) {
+      if ($$0) {
+         try (esz.c $$1 = this.m.m().e("Demo_World")) {
+            $$1.k();
+         } catch (IOException var7) {
+            fmx.b(this.m, "Demo_World");
+            a.warn("Failed to delete demo world", var7);
+         }
+      }
+
+      this.m.a(this);
    }
 }

@@ -1,60 +1,29 @@
-import javax.annotation.Nullable;
+public class aib implements zl<agr> {
+   public static final zc<wb, aib> a = zl.a(aib::a, aib::new);
+   private final String b;
 
-public class aib implements zk<agq> {
-   public static final zb<wa, aib> a = zk.a(aib::a, aib::new);
-   private final aib.a b;
-   @Nullable
-   private final alc c;
-
-   public aib(aib.a $$0, @Nullable alc $$1) {
+   public aib(String $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   public static aib a(ag $$0) {
-      return new aib(aib.a.a, $$0.a());
+   private aib(wb $$0) {
+      this.b = $$0.p();
    }
 
-   public static aib b() {
-      return new aib(aib.a.b, null);
-   }
-
-   private aib(wa $$0) {
-      this.b = $$0.b(aib.a.class);
-      if (this.b == aib.a.a) {
-         this.c = $$0.q();
-      } else {
-         this.c = null;
-      }
-   }
-
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.a(this.b);
-      if (this.b == aib.a.a) {
-         $$0.a(this.c);
-      }
    }
 
    @Override
-   public zm<aib> a() {
-      return ago.bT;
+   public zn<aib> a() {
+      return agp.bS;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public aib.a e() {
+   public String b() {
       return this.b;
-   }
-
-   @Nullable
-   public alc f() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

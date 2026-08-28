@@ -1,60 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pz extends qc<cka> {
-   public pz(md $$0, CompletableFuture<jp.a> $$1) {
-      super($$0, lv.X, $$1);
+public abstract class pz extends py<cvn> {
+   private final CompletableFuture<qd.c<dhm>> d;
+   private final Map<axl<dhm>, axl<cvn>> g = new HashMap<>();
+
+   public pz(me $$0, CompletableFuture<jq.a> $$1, CompletableFuture<qd.c<dhm>> $$2) {
+      super($$0, lw.K, $$1, $$0x -> $$0x.n().h());
+      this.d = $$2;
+   }
+
+   public pz(me $$0, CompletableFuture<jq.a> $$1, CompletableFuture<qd.c<cvn>> $$2, CompletableFuture<qd.c<dhm>> $$3) {
+      super($$0, lw.K, $$1, $$2, $$0x -> $$0x.n().h());
+      this.d = $$3;
+   }
+
+   protected void a(axl<dhm> $$0, axl<cvn> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(jp.a $$0) {
-      this.b(axd.a)
-         .a(
-            ckb.a,
-            ckb.b,
-            ckb.c,
-            ckb.d,
-            ckb.e,
-            ckb.f,
-            ckb.g,
-            ckb.h,
-            ckb.i,
-            ckb.j,
-            ckb.k,
-            ckb.l,
-            ckb.m,
-            ckb.n,
-            ckb.o,
-            ckb.p,
-            ckb.q,
-            ckb.r,
-            ckb.s,
-            ckb.t,
-            ckb.u,
-            ckb.v,
-            ckb.w,
-            ckb.x,
-            ckb.y,
-            ckb.z,
-            ckb.E,
-            ckb.F,
-            ckb.G,
-            ckb.H,
-            ckb.I,
-            ckb.J,
-            ckb.K,
-            ckb.L,
-            ckb.M,
-            ckb.N,
-            ckb.O,
-            ckb.P,
-            ckb.Q,
-            ckb.R,
-            ckb.S,
-            ckb.T,
-            ckb.U,
-            ckb.V,
-            ckb.W,
-            ckb.X
-         );
+   protected CompletableFuture<jq.a> b() {
+      return super.b().thenCombine(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            axi $$3 = this.c((axl<cvn>)$$2);
+            Optional<axi> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (jq.a)$$0;
+      });
    }
 }

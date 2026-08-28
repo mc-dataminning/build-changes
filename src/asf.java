@@ -1,137 +1,30 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class asf extends aso {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
+public class asf implements aix {
+   private final MinecraftServer b;
+   private final vy c;
 
-   private asf(URL $$0, aso.b $$1, aso.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-   }
-
-   @Nullable
-   public static aso a(String $$0) {
-      JsonObject $$1 = ayt.a($$0);
-      URI $$2 = URI.create(ayt.i($$1, "apiServer"));
-      String $$3 = ayt.i($$1, "apiPath");
-      String $$4 = ayt.i($$1, "scope");
-      String $$5 = ayt.a($$1, "serverId", "");
-      String $$6 = ayt.i($$1, "applicationId");
-      String $$7 = ayt.i($$1, "tenantId");
-      String $$8 = ayt.a($$1, "roomId", "Java:Chat");
-      String $$9 = ayt.i($$1, "certificatePath");
-      String $$10 = ayt.a($$1, "certificatePassword", "");
-      int $$11 = ayt.a($$1, "hashesToDrop", -1);
-      int $$12 = ayt.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = ayt.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(ayt.a($$1x, "filteredEvent")));
-      int $$15 = ayt.a($$1, "connectionReadTimeoutMs", 2000);
-
-      URL $$16;
-      try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
-      }
-
-      aso.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      aso.a $$20 = aso.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new asf($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
-   }
-
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
+   public asf(MinecraftServer $$0, vy $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
-   }
-
-   @Override
-   protected arz a(String $$0, aso.a $$1, JsonObject $$2) {
-      JsonObject $$3 = ayt.a($$2, "result", null);
-      if ($$3 == null) {
-         return arz.b($$0);
+   public void a(aiu $$0) {
+      if ($$0.g() != ait.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
       } else {
-         boolean $$4 = ayt.a($$3, "filtered", true);
-         if (!$$4) {
-            return arz.a($$0);
-         } else {
-            for (JsonElement $$6 : ayt.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = ayt.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return arz.b($$0);
-               }
-            }
-
-            JsonArray $$9 = ayt.a($$3, "redactedTextIndex", new JsonArray());
-            return new arz($$0, this.a($$0, $$9, $$1));
-         }
+         this.c.a(ajg.b, new asn(this.b, this.c, false));
+         this.c.a(ajg.d);
       }
    }
 
    @Override
-   protected int a() {
-      return this.e;
+   public void a(wa $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.i();
    }
 }

@@ -1,162 +1,107 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gbk implements ey {
-   private final gbi a;
-   private final fil b;
-   private int c = -1;
+public class gbk extends gbj implements abi, ws {
+   private static final Logger m = LogUtils.getLogger();
+   private final GameProfile n;
+   private cqq o;
+   private final kc.b p;
+   private final gbz q = new gbz();
    @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
+   private gbs r;
+   @Nullable
+   protected fkp.b l;
 
-   public gbk(gbi $$0, fil $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gbk(fip $$0, vy $$1, gbq $$2) {
+      super($$0, $$1, $$2);
+      this.n = $$2.a();
+      this.p = $$2.c();
+      this.o = $$2.d();
+      this.l = $$2.i();
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
+   public boolean c() {
+      return this.b.i();
+   }
 
-      for (gbs $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
+   @Override
+   protected void a(aao $$0) {
+      this.b($$0);
+   }
+
+   private void b(aao $$0) {
+      m.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abk $$0) {
+      zo.a($$0, this, this.a);
+      this.q.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aac $$0) {
+      zo.a($$0, this, this.a);
+      this.q.a($$0.b());
+   }
+
+   @Override
+   public void a(abn $$0) {
+      this.o = cqs.f.a($$0.b());
+   }
+
+   @Override
+   public void a(abm $$0) {
+      zo.a($$0, this, this.a);
+      if (this.r == null) {
+         this.r = new gbs();
       }
 
-      return $$0;
+      List<auc> $$1 = this.r.a($$0.b());
+      this.b(new abs($$1));
    }
 
    @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   public void a(abl $$0) {
+      this.l = null;
+   }
+
+   private <T> T a(Function<auz, T> $$0) {
+      if (this.r == null) {
+         return $$0.apply(auz.b);
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         Object var3;
+         try (aul $$1 = this.r.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
       }
    }
 
    @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.w != null && this.b.w.d() == eyq.a.c ? Collections.singleton(((eyp)this.b.w).a().cE()) : Collections.emptyList());
+   public void a(abj $$0) {
+      zo.a($$0, this, this.a);
+      kc.b $$1 = this.a($$0x -> this.q.a($$0x, this.p, this.b.e()));
+      this.b
+         .a(agq.b.a(wp.a($$1)), new gbn(this.a, this.b, new gbq(this.n, this.e, $$1, this.o, this.d, this.c, this.f, this.i, this.l, this.h, this.j, this.k)));
+      this.b.a(abr.a);
+      this.b.a(agq.a.a(wp.a($$1)));
    }
 
    @Override
-   public Collection<String> r() {
-      return this.a.z().f();
+   public void d() {
+      this.e();
    }
 
    @Override
-   public Stream<alc> s() {
-      return this.b.ak().d().stream();
-   }
-
-   @Override
-   public Stream<alc> t() {
-      return this.a.j().g();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      ggc $$1 = this.b.t;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(alb<? extends ka<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new ahd($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<ey.b> B() {
-      eyq $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == eyq.a.b) {
-         je $$1 = ((eyo)$$0).b();
-         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return ey.super.B();
-      }
-   }
-
-   @Override
-   public Collection<ey.b> C() {
-      eyq $$0 = this.b.w;
-      if ($$0 != null && $$0.d() == eyq.a.b) {
-         eys $$1 = $$0.g();
-         return Collections.singleton(new ey.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return ey.super.C();
-      }
-   }
-
-   @Override
-   public Set<alb<deg>> u() {
-      return this.a.u();
-   }
-
-   @Override
-   public kb v() {
-      return this.a.v();
-   }
-
-   @Override
-   public cqn w() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(acy.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
-      }
+   public void a(wa $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

@@ -1,16 +1,32 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
 
-public abstract class dgd<E extends drs> extends dgv {
-   protected final Supplier<dru<? extends E>> a;
+public abstract class dgd extends dgy {
+   private final cum a;
 
-   protected dgd(dun.d $$0, Supplier<dru<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   protected dgd(cum $$0, dur.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dgd<E>> a();
+   protected abstract MapCodec<? extends dgd> a();
 
-   public abstract djq.c<? extends drz> a(duo var1, deg var2, je var3, boolean var4);
+   @Override
+   public boolean a(dus $$0) {
+      return true;
+   }
+
+   @Override
+   public drv a(jf $$0, dus $$1) {
+      return new drk($$0, $$1, this.a);
+   }
+
+   @Override
+   public cvs a(dem $$0, jf $$1, dus $$2) {
+      return $$0.c_($$1) instanceof drk $$3 ? $$3.c() : super.a($$0, $$1, $$2);
+   }
+
+   public cum b() {
+      return this.a;
+   }
 }

@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class ccu extends cbk {
+   private final buv a;
 
-public class ccu extends cce {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public ccu(bus $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public ccu(buv $$0) {
+      this.a = $$0;
    }
 
-   public ccu(bus $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected eys h() {
-      if (this.b.bl()) {
-         eys $$0 = cfh.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.dV().i() >= this.j ? cfh.a(this.b, 10, 7) : super.h();
+   public boolean b() {
+      return this.a.aH() && !this.a.dS().b_(this.a.ds()).a(axb.a);
+   }
+
+   @Override
+   public void d() {
+      jf $$0 = null;
+
+      for (jf $$2 : jf.b(
+         azf.a(this.a.dx() - 2.0), azf.a(this.a.dz() - 2.0), azf.a(this.a.dD() - 2.0), azf.a(this.a.dx() + 2.0), this.a.dy(), azf.a(this.a.dD() + 2.0)
+      )) {
+         if (this.a.dS().b_($$2).a(axb.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.M().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

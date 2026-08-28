@@ -1,17 +1,21 @@
-public class gur extends guj {
-   public cgp.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+import javax.annotation.Nullable;
 
-   public gur() {
-      this.a = cgp.a.a;
-   }
+public class gur extends gtq {
+   public float a;
+   public float b;
+   public long c;
+   public int d;
+   public float e;
+   public float f;
+   public int g;
+   public dus h = dho.a.n();
+   public boolean i;
+   @Nullable
+   public eyw j;
+   @Nullable
+   public eyw k;
+   @Nullable
+   public eyw l;
+   @Nullable
+   public eyw B;
 }

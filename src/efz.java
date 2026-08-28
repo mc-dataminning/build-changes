@@ -1,62 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class efz implements efu {
-   public static final Codec<efz> a = RecordCodecBuilder.create(
+public class efz implements efy {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<efz> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               lu.e.q().fieldOf("block").flatXmap(efz::a, DataResult::success).orElse((dmj)dhl.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kc.a(lv.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+               eal.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               ean.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               eam.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bqx.b(1, 20).fieldOf("outer_wall_distance").orElse(brd.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bqx.b(1, 20).fieldOf("distribution_points").orElse(brd.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bqx.b(0, 10).fieldOf("point_offset").orElse(brd.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, efz::new)
    );
-   public final dmj b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jr<dhj> h;
-   private final ObjectArrayList<jj> i;
+   public final eal c;
+   public final ean d;
+   public final eam e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bqx i;
+   public final bqx j;
+   public final bqx k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   private static DataResult<dmj> a(dhj $$0) {
-      return $$0 instanceof dmj $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
-   }
-
-   public efz(dmj $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jr<dhj> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jj.b);
-      }
-
-      if ($$2) {
-         this.i.add(jj.a);
-      }
-
-      if ($$4) {
-         jj.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<jj> a(azl $$0, jj $$1) {
-      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<jj> a(azl $$0) {
-      return ad.a(this.i, $$0);
+   public efz(eal $$0, ean $$1, eam $$2, double $$3, double $$4, boolean $$5, bqx $$6, bqx $$7, bqx $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

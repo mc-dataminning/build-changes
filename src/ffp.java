@@ -1,125 +1,148 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class ffp extends hdk {
-   private static final xd a = xd.c("mco.backup.info.title");
-   private static final xd b = xd.c("mco.backup.unknown");
-   private final fqd c;
-   final fea B;
-   final fny C = new fny(this);
-   private ffp.a D;
+public class ffp extends fko {
+   private static final ale u = ale.b("widget/slot_frame");
+   private static final ale v = ale.b("icon/checkmark");
+   public static final ale a = ale.b("textures/gui/realms/empty_frame.png");
+   public static final ale b = ale.b("textures/gui/title/background/panorama_0.png");
+   public static final ale c = ale.b("textures/gui/title/background/panorama_2.png");
+   public static final ale d = ale.b("textures/gui/title/background/panorama_3.png");
+   private static final xe w = xe.c("mco.configure.world.slot.tooltip.active");
+   private static final xe x = xe.c("mco.configure.world.slot.tooltip.minigame");
+   private static final xe y = xe.c("mco.configure.world.slot.tooltip");
+   static final xe z = xe.c("mco.worldSlot.minigame");
+   private final int A;
+   @Nullable
+   private ffp.b B;
 
-   public ffp(fqd $$0, fea $$1) {
-      super(a);
-      this.c = $$0;
-      this.B = $$1;
+   public ffp(int $$0, int $$1, int $$2, int $$3, int $$4, fko.c $$5) {
+      super($$0, $$1, $$2, $$3, xd.a, $$5, q);
+      this.A = $$4;
    }
 
-   @Override
-   public void aR_() {
-      this.C.a(a, this.p);
-      this.D = this.C.c(new ffp.a(this.m));
-      this.C.b(fkk.a(xc.k, $$0 -> this.d()).a());
-      this.c();
-      this.C.a($$1 -> {
-         fki var10000 = this.c($$1);
-      });
+   @Nullable
+   public ffp.b a() {
+      return this.B;
    }
 
-   @Override
-   protected void c() {
-      this.D.b(this.n, this.C.d());
-      this.C.a();
+   public void a(fep $$0) {
+      this.B = new ffp.b($$0, this.A);
+      this.a(this.B, $$0.o);
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.c);
+   private void a(ffp.b $$0, @Nullable String $$1) {
+      xe $$2 = switch ($$0.c) {
+         case b -> $$0.b ? x : y;
+         case c -> w;
+         default -> null;
+      };
+      if ($$2 != null) {
+         this.a(flz.a($$2));
+      }
+
+      xs $$3 = xe.b($$0.e);
+      if ($$0.b && $$1 != null) {
+         $$3 = $$3.b(xd.v).f($$1);
+      }
+
+      this.b($$3);
    }
 
-   xd a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
+   static ffp.a a(fep $$0, boolean $$1, boolean $$2) {
+      if ($$1 && !$$0.j && $$0.e != fep.c.c) {
+         return ffp.a.c;
       } else {
-         return (xd)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : xd.b($$1));
+         return $$1 || $$2 && $$0.j ? ffp.a.a : ffp.a.b;
       }
    }
 
-   private xd a(String $$0) {
-      try {
-         return fgl.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private xd b(String $$0) {
-      try {
-         return fgl.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends flg<ffp.b> {
-      public a(final fil $$0) {
-         super($$0, ffp.this.n, ffp.this.C.d(), ffp.this.C.c(), 36);
-         if (ffp.this.B.e != null) {
-            ffp.this.B.e.forEach(($$0x, $$1) -> this.b(ffp.this.new b($$0x, $$1)));
+   @Override
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+      if (this.B != null) {
+         int $$4 = this.D();
+         int $$5 = this.E();
+         boolean $$6 = this.B();
+         ale $$7;
+         if (this.B.b) {
+            $$7 = fhc.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.B.a) {
+            $$7 = a;
+         } else if (this.B.i != null && this.B.h != -1L) {
+            $$7 = fhc.a(String.valueOf(this.B.h), this.B.i);
+         } else if (this.A == 1) {
+            $$7 = b;
+         } else if (this.A == 2) {
+            $$7 = c;
+         } else if (this.A == 3) {
+            $$7 = d;
+         } else {
+            $$7 = a;
          }
+
+         int $$14 = -1;
+         if (this.B.d) {
+            $$14 = axq.a(1.0F, 0.56F, 0.56F, 0.56F);
+         }
+
+         $$0.a(ghv::B, $$7, $$4 + 3, $$5 + 3, 0.0F, 0.0F, 74, 74, 74, 74, 74, 74, $$14);
+         if ($$6 && this.B.c != ffp.a.a) {
+            $$0.a(ghv::B, u, $$4, $$5, 80, 80);
+         } else if (this.B.d) {
+            $$0.a(ghv::B, u, $$4, $$5, 80, 80, axq.a(1.0F, 0.8F, 0.8F, 0.8F));
+         } else {
+            $$0.a(ghv::B, u, $$4, $$5, 80, 80, axq.a(1.0F, 0.56F, 0.56F, 0.56F));
+         }
+
+         if (this.B.d) {
+            $$0.a(ghv::B, v, $$4 + 67, $$5 + 4, 9, 8);
+         }
+
+         fjz $$15 = fip.Q().h;
+         $$0.a($$15, this.B.e, $$4 + 40, $$5 + 66, -1);
+         $$0.a($$15, fdt.a(this.B.f, this.B.g.a()), $$4 + 40, $$5 + 80 + 2, -1);
       }
    }
 
-   class b extends flg.a<ffp.b> {
-      private static final xd b = xd.c("mco.backup.entry.templateName");
-      private static final xd c = xd.c("mco.backup.entry.gameDifficulty");
-      private static final xd d = xd.c("mco.backup.entry.name");
-      private static final xd e = xd.c("mco.backup.entry.gameServerVersion");
-      private static final xd f = xd.c("mco.backup.entry.uploaded");
-      private static final xd g = xd.c("mco.backup.entry.enabledPack");
-      private static final xd h = xd.c("mco.backup.entry.description");
-      private static final xd i = xd.c("mco.backup.entry.gameMode");
-      private static final xd j = xd.c("mco.backup.entry.seed");
-      private static final xd k = xd.c("mco.backup.entry.worldType");
-      private static final xd l = xd.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 
-      public b(final String $$0, final String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   public static class b {
+      final boolean d;
+      final String e;
+      final String f;
+      final fep.a g;
+      final long h;
+      @Nullable
+      final String i;
+      public final boolean a;
+      public final boolean b;
+      public final ffp.a c;
 
-      @Override
-      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(ffp.this.p, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(ffp.this.p, ffp.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
+      public b(fep $$0, int $$1) {
+         this.b = $$1 == 4;
+         if (this.b) {
+            this.d = $$0.i();
+            this.e = ffp.z.getString();
+            this.h = (long)$$0.p;
+            this.i = $$0.q;
+            this.a = $$0.p == -1;
+            this.f = "";
+            this.g = fep.a.a;
+         } else {
+            feu $$2 = $$0.i.get($$1);
+            this.d = $$0.n == $$1 && !$$0.i();
+            this.e = $$2.a($$1);
+            this.h = $$2.j;
+            this.i = $$2.k;
+            this.a = $$2.l;
+            this.f = $$2.h;
+            this.g = $$2.i;
+         }
 
-      private xd a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_packs" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public xd a() {
-         return xd.a("narrator.select", this.m + " " + this.n);
+         this.c = ffp.a($$0, this.d, this.b);
       }
    }
 }

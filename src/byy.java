@@ -1,28 +1,32 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class byy {
-   public static <E extends buk> bxn<E> a(List<Pair<? extends bzs<? super E>, Integer>> $$0) {
-      return a($$0, bwq.a.b, bwq.b.a);
-   }
+   public static bwg<cnk> a(cdq<List<jn>> $$0, float $$1, int $$2, int $$3, cdq<jn> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bzs.a(
+         (Function<bzs.b<cnk>, ? extends App<bzs.c<cnk>, bzv<cnk>>>)($$6 -> $$6.group($$6.a(cdq.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<jn> $$11 = $$6.b($$6x);
+                     jn $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        jn $$13 = $$11.get($$8.D_().a($$11.size()));
+                        if ($$13 != null && $$8.ag() == $$13.a() && $$12.b().a($$9.dq(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new cdt($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
+                           }
 
-   public static <E extends buk> bxn<E> a(List<Pair<? extends bzs<? super E>, Integer>> $$0, bwq.a $$1, bwq.b $$2) {
-      byl<bzs<? super E>> $$3 = new byl<>();
-      $$0.forEach($$1x -> $$3.a((bzs<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bzp.a((Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$3x -> $$3x.a((bzs<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bwq.a.b) {
-               $$3.a();
-            }
-
-            for (bzs<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bwq.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+                           return true;
+                        } else {
+                           return false;
+                        }
+                     }
+                  }))
+      );
    }
 }

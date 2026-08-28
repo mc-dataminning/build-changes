@@ -1,3 +1,3 @@
-public interface gvt {
-   cni a();
+public class gvt extends gsy {
+   public boolean d;
 }

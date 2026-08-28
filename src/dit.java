@@ -1,161 +1,125 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dit extends djl implements dkb {
+public class dit extends dli implements dhp {
    public static final MapCodec<dit> a = b(dit::new);
-   public static final dvm<dvh> b = dve.bd;
+   public static final int b = 2;
+   public static final dvs c = dvi.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final ezq[] m = new ezq[]{
+      dhm.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dhm.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dhm.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final ezq[] n = new ezq[]{
+      dhm.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dhm.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dhm.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final ezq[] o = new ezq[]{
+      dhm.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dhm.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dhm.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final ezq[] G = new ezq[]{
+      dhm.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dhm.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dhm.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<dit> a() {
       return a;
    }
 
-   public dit(dun.d $$0) {
+   public dit(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(aF, jj.c).b(d, Boolean.valueOf(false)).b(b, dvh.a));
+      this.l(this.F.b().b(aF, jk.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected int h(duo $$0) {
-      return 2;
+   protected boolean f(dus $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      return $$1 == jj.a && !this.b($$3, $$5, $$2) ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected int a(ddl $$0, je $$1, duo $$2) {
-      drs $$3 = $$0.c_($$1);
-      return $$3 instanceof dsd ? ((dsd)$$3).b() : 0;
-   }
-
-   private int e(deg $$0, je $$1, duo $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return 0;
-      } else {
-         int $$4 = this.a((dex)$$0, $$1, $$2);
-         if ($$4 > $$3) {
-            return 0;
-         } else {
-            return $$2.c(b) == dvh.b ? $$3 - $$4 : $$3;
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
          }
       }
    }
 
    @Override
-   protected boolean a(deg $$0, je $$1, duo $$2) {
-      int $$3 = this.b($$0, $$1, $$2);
-      if ($$3 == 0) {
-         return false;
-      } else {
-         int $$4 = this.a((dex)$$0, $$1, $$2);
-         return $$3 > $$4 ? true : $$3 == $$4 && $$2.c(b) == dvh.a;
-      }
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      dus $$3 = $$1.a_($$2.a($$0.c(aF)));
+      return $$3.a(awv.A);
    }
 
    @Override
-   protected int b(deg $$0, je $$1, duo $$2) {
-      int $$3 = super.b($$0, $$1, $$2);
-      jj $$4 = $$2.c(aF);
-      je $$5 = $$1.a($$4);
-      duo $$6 = $$0.a_($$5);
-      if ($$6.q()) {
-         $$3 = $$6.a($$0, $$5);
-      } else if ($$3 < 15 && $$6.d($$0, $$5)) {
-         $$5 = $$5.a($$4);
-         $$6 = $$0.a_($$5);
-         cjx $$7 = this.a($$0, $$4, $$5);
-         int $$8 = Math.max($$7 == null ? Integer.MIN_VALUE : $$7.F(), $$6.q() ? $$6.a($$0, $$5) : Integer.MIN_VALUE);
-         if ($$8 != Integer.MIN_VALUE) {
-            $$3 = $$8;
-         }
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      int $$4 = $$0.c(c);
+      switch ((jk)$$0.c(aF)) {
+         case d:
+            return G[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
       }
-
-      return $$3;
    }
 
    @Nullable
-   private cjx a(deg $$0, jj $$1, je $$2) {
-      List<cjx> $$3 = $$0.a(
-         cjx.class,
-         new eyn((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)($$2.u() + 1), (double)($$2.v() + 1), (double)($$2.w() + 1)),
-         $$1x -> $$1x != null && $$1x.cL() == $$1
-      );
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
    @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      if (!$$3.gd().e) {
-         return brp.e;
-      } else {
-         $$0 = $$0.a(b);
-         float $$5 = $$0.c(b) == dvh.b ? 0.55F : 0.5F;
-         $$1.a($$3, $$2, awe.fs, awf.e, 0.3F, $$5);
-         $$1.a($$2, $$0, 2);
-         this.f($$1, $$2, $$0);
-         return brp.a;
-      }
-   }
+   public dus a(czn $$0) {
+      dus $$1 = this.n();
+      dem $$2 = $$0.q();
+      jf $$3 = $$0.a();
 
-   @Override
-   protected void c(deg $$0, je $$1, duo $$2) {
-      if (!$$0.R().b($$1, this)) {
-         int $$3 = this.e($$0, $$1, $$2);
-         drs $$4 = $$0.c_($$1);
-         int $$5 = $$4 instanceof dsd ? ((dsd)$$4).b() : 0;
-         if ($$3 != $$5 || $$2.c(d) != this.a($$0, $$1, $$2)) {
-            fao $$6 = this.b($$0, $$1, $$2) ? fao.c : fao.d;
-            $$0.a($$1, this, 2, $$6);
+      for (jk $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(aF, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
-   }
 
-   private void f(deg $$0, je $$1, duo $$2) {
-      int $$3 = this.e($$0, $$1, $$2);
-      drs $$4 = $$0.c_($$1);
-      int $$5 = 0;
-      if ($$4 instanceof dsd $$6) {
-         $$5 = $$6.b();
-         $$6.a($$3);
-      }
-
-      if ($$5 != $$3 || $$2.c(b) == dvh.a) {
-         boolean $$7 = this.a($$0, $$1, $$2);
-         boolean $$8 = $$2.c(d);
-         if ($$8 && !$$7) {
-            $$0.a($$1, $$2.b(d, Boolean.valueOf(false)), 2);
-         } else if (!$$8 && $$7) {
-            $$0.a($$1, $$2.b(d, Boolean.valueOf(true)), 2);
-         }
-
-         this.d($$0, $$1, $$2);
-      }
+      return null;
    }
 
    @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      this.f($$1, $$2, $$0);
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return $$1 == $$0.c(aF) && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(duo $$0, deg $$1, je $$2, int $$3, int $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      drs $$5 = $$1.c_($$2);
-      return $$5 != null && $$5.a_($$3, $$4);
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return $$2.c(c) < 2;
    }
 
    @Override
-   public drs a(je $$0, duo $$1) {
-      return new dsd($$0, $$1);
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(aF, b, d);
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(aF, c);
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
    }
 }

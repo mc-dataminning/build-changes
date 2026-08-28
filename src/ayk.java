@@ -1,65 +1,53 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class ayk {
-   final LoadingCache<ayk.a<?, ?>, DataResult<?>> a;
+public class ayk<K, V extends ayk.a<K>> {
+   private final Map<K, V> a = new HashMap<>();
 
-   public ayk(int $$0) {
-      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<ayk.a<?, ?>, DataResult<?>>() {
-         public DataResult<?> a(ayk.a<?, ?> $$0) {
-            return $$0.a();
-         }
-      });
+   public ayk<K, V> a(K $$0, V $$1) {
+      this.a.put($$0, $$1);
+      return this;
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return $$0.decode($$0, $$1);
+   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
+      if ($$1.add($$2)) {
+         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
+         V $$4 = this.a.get($$2);
+         if ($$4 != null) {
+            $$3.accept($$2, $$4);
          }
-
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)ayk.this.a.getUnchecked(new ayk.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof vc $$1x ? $$1x.d() : $$0xx);
-         }
-      };
+      }
    }
 
-   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
-      public DataResult<T> a() {
-         return this.a.encodeStart(this.c, this.b);
-      }
+   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
+      Collection<K> $$3 = $$0.get($$2);
+      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof ayk.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
-         }
+   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
+      if (!a($$0, $$1, $$2)) {
+         $$0.put($$1, $$2);
       }
+   }
 
-      @Override
-      public int hashCode() {
-         int $$0 = System.identityHashCode(this.a);
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
-      }
+   public void a(BiConsumer<K, V> $$0) {
+      Multimap<K, K> $$1 = HashMultimap.create();
+      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
+      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
+      Set<K> $$2 = new HashSet<>();
+      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
+   }
 
-      public Codec<A> b() {
-         return this.a;
-      }
+   public interface a<K> {
+      void a(Consumer<K> var1);
 
-      public A c() {
-         return this.b;
-      }
-
-      public DynamicOps<T> d() {
-         return this.c;
-      }
+      void b(Consumer<K> var1);
    }
 }

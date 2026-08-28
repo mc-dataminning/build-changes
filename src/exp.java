@@ -1,21 +1,36 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class exp {
-   private static final Codec<exo> h = lu.G.q().dispatch(exo::b, exn::a);
-   public static final Codec<exo> a = Codec.lazyInitialized(() -> {
-      Codec<exo> $$0 = Codec.withAlternative(h, exs.a.codec());
-      return Codec.either(exl.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof exl $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final exn b = a("constant", exl.a);
-   public static final exn c = a("uniform", exs.a);
-   public static final exn d = a("binomial", exk.a);
-   public static final exn e = a("score", exq.a);
-   public static final exn f = a("storage", exr.a);
-   public static final exn g = a("enchantment_level", exm.a);
+public record exp(float c) implements exs {
+   public static final MapCodec<exp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(exp::c)).apply($$0, exp::new));
+   public static final Codec<exp> b = Codec.FLOAT.xmap(exp::new, exp::c);
 
-   private static exn a(String $$0, MapCodec<? extends exo> $$1) {
-      return ka.a(lu.G, alc.b($$0), new exn($$1));
+   @Override
+   public exr b() {
+      return ext.b;
+   }
+
+   @Override
+   public float b(etl $$0) {
+      return this.c;
+   }
+
+   public static exp a(float $$0) {
+      return new exp($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((exp)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

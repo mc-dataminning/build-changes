@@ -1,14 +1,36 @@
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+
 public class axy {
    public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -4539718;
-   public static final int f = -65536;
-   public static final int g = -2142128;
-   public static final int h = -16711936;
-   public static final int i = -16776961;
-   public static final int j = -256;
-   public static final int k = -171;
-   public static final int l = -11534256;
+   private final Object2IntMap<Class<?>> b = ad.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+
+   public int a(Class<?> $$0) {
+      int $$1 = this.b.getInt($$0);
+      if ($$1 != -1) {
+         return $$1;
+      } else {
+         Class<?> $$2 = $$0;
+
+         while (($$2 = $$2.getSuperclass()) != Object.class) {
+            int $$3 = this.b.getInt($$2);
+            if ($$3 != -1) {
+               return $$3;
+            }
+         }
+
+         return -1;
+      }
+   }
+
+   public int b(Class<?> $$0) {
+      return this.a($$0) + 1;
+   }
+
+   public int c(Class<?> $$0) {
+      int $$1 = this.a($$0);
+      int $$2 = $$1 == -1 ? 0 : $$1 + 1;
+      this.b.put($$0, $$2);
+      return $$2;
+   }
 }

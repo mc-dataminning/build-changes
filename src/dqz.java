@@ -1,20 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqz extends dkx {
-   public static final MapCodec<dqz> c = b(dqz::new);
-   public static final ezm e = dhj.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dqz extends dqa implements dqs {
+   public static final MapCodec<dqz> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvh.a.fieldOf("block_set_type").forGetter(dqa::l), dqs.a.e.fieldOf("weathering_state").forGetter(dqz::m), t()).apply($$0, dqz::new)
+   );
+   private final dqs.a n;
 
    @Override
    public MapCodec<dqz> a() {
-      return c;
+      return m;
    }
 
-   public dqz(dun.d $$0) {
-      super($$0, jj.a, e, false);
+   protected dqz(dvh $$0, dqs.a $$1, dur.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
    @Override
-   protected dky c() {
-      return (dky)dhl.oz;
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(dus $$0) {
+      return dqs.c($$0.b()).isPresent();
+   }
+
+   public dqs.a m() {
+      return this.n;
    }
 }

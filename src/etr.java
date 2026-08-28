@@ -1,30 +1,62 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class etr extends etz {
-   public static final MapCodec<etr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alc.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, etr::new)
-   );
-   private final alc j;
+public class etr {
+   private final azl a;
+   private final ewf b;
+   private final Optional<jp.a> c;
+   private final Set<ald<?>> d;
 
-   private etr(alc $$0, int $$1, int $$2, List<ews> $$3, List<euv> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public etr(azl $$0, ewf $$1, jp.a $$2) {
+      this($$0, $$1, Optional.of($$2), Set.of());
    }
 
-   @Override
-   public ety a() {
-      return etv.e;
+   public etr(azl $$0, ewf $$1) {
+      this($$0, $$1, Optional.empty(), Set.of());
    }
 
-   @Override
-   public void a(Consumer<cvp> $$0, eth $$1) {
-      $$1.a(this.j, $$0);
+   private etr(azl $$0, ewf $$1, Optional<jp.a> $$2, Set<ald<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static etz.a<?> a(alc $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new etr($$0, $$1, $$2, $$3, $$4));
+   public etr a(String $$0) {
+      return new etr(this.a.a($$0), this.b, this.c, this.d);
+   }
+
+   public etr a(String $$0, ald<?> $$1) {
+      Set<ald<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new etr(this.a.a($$0), this.b, this.c, $$2);
+   }
+
+   public boolean a(ald<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
+
+   public void a(etm $$0) {
+      this.b.a(this, $$0);
+   }
+
+   public jp.a a() {
+      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   }
+
+   public boolean b() {
+      return this.c.isPresent();
+   }
+
+   public etr a(ewf $$0) {
+      return new etr(this.a, $$0, this.c, this.d);
+   }
+
+   public azl c() {
+      return this.a;
    }
 }

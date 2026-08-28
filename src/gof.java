@@ -1,110 +1,57 @@
-import com.google.common.annotations.VisibleForTesting;
-
-public class gof extends gni<cke, gug> {
-   private static final float a = 0.15F;
-   private static final float b = 0.0F;
-   private static final float h = 0.0F;
-   private static final float i = 0.09375F;
-   private final goh j;
-   private final azl k = azl.a();
-
-   public gof(gnj.a $$0) {
-      super($$0);
-      this.j = $$0.b();
-      this.f = 0.15F;
-      this.g = 0.75F;
+public abstract class gof<T extends bup, S extends gug, M extends fyb<S>> extends gmj<T, S, M> {
+   public gof(gno.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$1, $$2);
    }
 
-   public alc a(gug $$0) {
-      return gxa.d;
+   public gof(gno.a $$0, M $$1, M $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, grg.a.a);
    }
 
-   public gug a() {
-      return new gug();
+   public gof(gno.a $$0, M $$1, M $$2, float $$3, grg.a $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a(new grg<>(this, $$0.f(), $$4, $$0.b()));
+      this.a(new grk<>(this, $$0.f()));
+      this.a(new gru<>(this, $$0.b()));
    }
 
-   public void a(cke $$0, gug $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.p = (float)$$0.o() + $$2;
-      $$1.a = $$0.c;
-      cvp $$3 = $$0.m();
-      $$1.c = $$3.u();
-      $$1.b = this.j.a($$3, $$0.dS(), null, $$0.ap());
+      a($$0, $$1, $$2);
    }
 
-   public void a(gug $$0, fde $$1, ghg $$2, int $$3) {
-      gzd $$4 = $$0.b;
-      if ($$4 != null) {
-         $$1.a();
-         cvp $$5 = $$0.c;
-         this.k.b((long)a($$5));
-         boolean $$6 = $$4.b();
-         float $$7 = 0.25F;
-         float $$8 = azd.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
-         float $$9 = $$4.f().a(cvm.h).d.y();
-         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
-         float $$10 = cke.e($$0.p, $$0.a);
-         $$1.a(a.d.rotation($$10));
-         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public static int a(cvp $$0) {
-      return $$0.f() ? 187 : cvk.a($$0.h()) + $$0.o();
-   }
-
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
-   }
-
-   public static void a(goh $$0, fde $$1, ghg $$2, int $$3, cvp $$4, azl $$5, deg $$6) {
-      gzd $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
-   }
-
-   public static void a(goh $$0, fde $$1, ghg $$2, int $$3, cvp $$4, gzd $$5, boolean $$6, azl $$7) {
-      int $$8 = a($$4.J());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
+   public static void a(bun $$0, gug $$1, float $$2) {
+      $$1.I = $$0.cf();
+      $$1.J = $$0.fF();
+      $$1.K = $$0.ci();
+      $$1.L = $$0.bW();
+      $$1.D = 1.0F;
+      if ($$1.J) {
+         $$1.D = (float)$$0.dv().h();
+         $$1.D /= 0.2F;
+         $$1.D = $$1.D * $$1.D * $$1.D;
       }
 
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
-
-         $$0.a($$4, cvm.h, false, $$1, $$2, $$3, gws.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
-         }
+      if ($$1.D < 1.0F) {
+         $$1.D = 1.0F;
       }
+
+      $$1.C = $$0.D($$2);
+      $$1.B = $$0.a($$2);
+      $$1.G = c($$0);
+      $$1.H = $$0.fw();
+      $$1.E = (float)cug.b($$0.fx(), $$0);
+      $$1.F = $$0.fz();
+      $$1.M = $$0.fv();
+      $$1.N = $$0.aX.a($$2);
+      $$1.O = $$0.aX.b($$2);
+      $$1.P = $$0.aX.c($$2);
+      $$1.Q = $$0.a(btz.e).u();
+      $$1.R = $$0.a(btz.d).u();
+      $$1.S = $$0.a(btz.c).u();
+   }
+
+   private static buh c(bun $$0) {
+      buh $$1 = $$0.fu();
+      return $$0.aF == brr.a ? $$1 : $$1.e();
    }
 }

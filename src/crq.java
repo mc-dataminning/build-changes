@@ -1,58 +1,19 @@
-public abstract class crq {
-   private int a;
+public class crq extends csw {
+   private final crp a;
 
-   public static crq a(final cri $$0, final int $$1) {
-      return new crq() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
+   public crq(brl $$0, int $$1, int $$2, int $$3, crp $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public static crq a(final int[] $$0, final int $$1) {
-      return new crq() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
+   @Override
+   public boolean a(cvs $$0) {
+      return !this.a.e(this.d) && super.a($$0);
    }
 
-   public static crq a() {
-      return new crq() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
-   }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
+   @Override
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

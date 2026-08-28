@@ -1,59 +1,85 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cvz extends cvk {
-   public cvz(cvk.a $$0) {
-      super($$0);
+public class cvz {
+   public static final int a = 20;
+   private long b;
+   @Nullable
+   private jo<cvy> c;
+   private final jf d;
+   private final cvz.a e;
+
+   public cvz(cvz.a $$0, jf $$1) {
+      this.e = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public brp a(czm $$0) {
-      deg $$1 = $$0.q();
-      je $$2 = $$0.a();
-      duo $$3 = $$1.a_($$2);
-      if ($$3.a(awt.T)) {
-         cnu $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
-      }
-
-      return brp.e;
+   public boolean a() {
+      return this.c != null;
    }
 
-   public static brp a(cnu $$0, deg $$1, je $$2) {
-      cjy $$3 = null;
-      List<bui> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+   @Nullable
+   public cvy b() {
+      return this.c == null ? null : this.c.a();
+   }
 
-      for (bui $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cjy.b($$1, $$2);
-            $$3.t();
-         }
+   public long c() {
+      return this.b;
+   }
 
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(dzl.b, $$2, dzl.a.a($$0));
-         return brp.b;
-      } else {
-         return brp.e;
+   public void a(jo<cvy> $$0, long $$1) {
+      if (!$$0.a().a($$1)) {
+         this.c = $$0;
+         this.b = $$1;
       }
    }
 
-   public static List<bui> a(deg $$0, je $$1, Predicate<bui> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      eyn $$7 = new eyn((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bto.class, $$7, $$1x -> {
-         if ($$1x instanceof bui $$2x && $$2.test($$2x)) {
-            return true;
-         }
+   public void a(dek $$0, jo<cvy> $$1) {
+      this.c = $$1;
+      this.b = 0L;
+      int $$2 = $$0.G_().e(lw.L).a(this.c.a());
+      $$0.a(null, 1010, this.d, $$2);
+      this.e.notifyChange();
+   }
 
-         return false;
-      }).stream().map(bui.class::cast).toList();
+   public void a(dek $$0, @Nullable dus $$1) {
+      if (this.c != null) {
+         this.c = null;
+         this.b = 0L;
+         $$0.a(dzp.F, this.d, dzp.a.a($$1));
+         $$0.c(1011, this.d, 0);
+         this.e.notifyChange();
+      }
+   }
+
+   public void b(dek $$0, @Nullable dus $$1) {
+      if (this.c != null) {
+         if (this.c.a().a(this.b)) {
+            this.a($$0, $$1);
+         } else {
+            if (this.d()) {
+               $$0.a(dzp.E, this.d, dzp.a.a($$1));
+               a($$0, this.d);
+            }
+
+            this.b++;
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.b % 20L == 0L;
+   }
+
+   private static void a(dek $$0, jf $$1) {
+      if ($$0 instanceof arj $$2) {
+         eyw $$3 = eyw.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.D_().a(4) / 24.0F;
+         $$2.a(lo.aa, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void notifyChange();
    }
 }

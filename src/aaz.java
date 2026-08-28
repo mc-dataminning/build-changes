@@ -1,26 +1,21 @@
-public record aaz(je c, int d) implements aan {
-   public static final zb<wa, aaz> a = aan.a(aaz::a, aaz::new);
-   public static final aan.b<aaz> b = aan.a("debug/poi_ticket_count");
+public record aaz(jf c) implements aao {
+   public static final zc<wb, aaz> a = aao.a(aaz::a, aaz::new);
+   public static final aao.b<aaz> b = aao.a("debug/poi_removed");
 
-   private aaz(wa $$0) {
-      this($$0.e(), $$0.readInt());
+   private aaz(wb $$0) {
+      this($$0.e());
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.a(this.c);
-      $$0.q(this.d);
    }
 
    @Override
-   public aan.b<aaz> a() {
+   public aao.b<aaz> a() {
       return b;
    }
 
-   public je b() {
+   public jf b() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
    }
 }

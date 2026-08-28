@@ -1,102 +1,93 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class euk extends euu {
-   private static final Logger b = LogUtils.getLogger();
+public class euk extends euy {
    public static final MapCodec<euk> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  kc.a(lv.aM).optionalFieldOf("options").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.optionalFieldOf("only_compatible", true).forGetter($$0x -> $$0x.d)
+                  lv.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dvv::f).toList())
                )
             )
             .apply($$0, euk::new)
    );
-   private final Optional<jr<dbk>> c;
-   private final boolean d;
+   private final jo<dhm> b;
+   private final Set<dvv<?>> c;
 
-   euk(List<ews> $$0, Optional<jr<dbk>> $$1, boolean $$2) {
+   euk(List<eww> $$0, jo<dhm> $$1, Set<dvv<?>> $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private euk(List<eww> $$0, jo<dhm> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().k()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public euw<euk> b() {
-      return eux.h;
+   public eva<euk> b() {
+      return evb.D;
    }
 
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      azl $$2 = $$1.b();
-      boolean $$3 = $$0.a(cvt.qQ);
-      boolean $$4 = !$$3 && this.d;
-      Stream<jn<dbk>> $$5 = this.c
-         .<Stream<jn<dbk>>>map(jr::a)
-         .orElseGet(() -> $$1.d().F_().d(lv.aM).i().map(Function.identity()))
-         .filter($$2x -> !$$4 || ((dbk)$$2x.a()).c($$0));
-      List<jn<dbk>> $$6 = $$5.toList();
-      Optional<jn<dbk>> $$7 = ad.b($$6, $$2);
-      if ($$7.isEmpty()) {
-         b.warn("Couldn't find a compatible enchantment for {}", $$0);
-         return $$0;
-      } else {
-         return a($$0, $$7.get(), $$2);
-      }
+   public Set<ewe<?>> a() {
+      return ImmutableSet.of(ewh.g);
    }
 
-   private static cvp a(cvp $$0, jn<dbk> $$1, azl $$2) {
-      int $$3 = azd.a($$2, $$1.a().d(), $$1.a().e());
-      if ($$0.a(cvt.qQ)) {
-         $$0 = new cvp(cvt.uy);
+   @Override
+   protected cvs a(cvs $$0, etl $$1) {
+      dus $$2 = $$1.c(ewh.g);
+      if ($$2 != null) {
+         $$0.a(ks.ah, cya.a, $$1x -> {
+            for (dvv<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
       }
 
-      $$0.a($$1, $$3);
       return $$0;
    }
 
-   public static euk.a c() {
-      return new euk.a();
+   public static euk.a a(dhm $$0) {
+      return new euk.a($$0);
    }
 
-   public static euk.a a(jp.a $$0) {
-      return c().a($$0.b(lv.aM).b(aww.n));
-   }
+   public static class a extends euy.a<euk.a> {
+      private final jo<dhm> a;
+      private final Builder<dvv<?>> b = ImmutableSet.builder();
 
-   public static class a extends euu.a<euk.a> {
-      private Optional<jr<dbk>> a = Optional.empty();
-      private boolean b = true;
+      a(dhm $$0) {
+         this.a = $$0.r();
+      }
+
+      public euk.a a(dvv<?> $$0) {
+         if (!this.a.a().k().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
 
       protected euk.a a() {
          return this;
       }
 
-      public euk.a a(jn<dbk> $$0) {
-         this.a = Optional.of(jr.a($$0));
-         return this;
-      }
-
-      public euk.a a(jr<dbk> $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public euk.a e() {
-         this.b = false;
-         return this;
-      }
-
       @Override
-      public euv b() {
-         return new euk(this.g(), this.a, this.b);
+      public euz b() {
+         return new euk(this.g(), this.a, this.b.build());
       }
    }
 }

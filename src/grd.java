@@ -1,27 +1,20 @@
-public class grd extends grw<gtg, fxd> {
-   private final goh a;
+public class grd extends gsb<gth, fxb> {
+   private static final ale a = ale.b("textures/entity/cat/cat_collar.png");
+   private final fxb b;
+   private final fxb c;
 
-   public grd(gpf<gtg, fxd> $$0, goh $$1) {
+   public grd(gpk<gth, fxb> $$0, gam $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fxb($$1.a(gap.F));
+      this.c = new fxb($$1.a(gap.G));
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, gtg $$3, float $$4, float $$5) {
-      cvp $$6 = $$3.aW_();
-      gzd $$7 = $$3.b();
-      if ($$7 != null) {
-         $$0.a();
-         float $$8 = 1.0F;
-         float $$9 = -1.0F;
-         float $$10 = azd.e($$3.V) / 60.0F;
-         if ($$3.V < 0.0F) {
-            $$0.a(0.0F, 1.0F - $$10 * 0.5F, -1.0F + $$10 * 0.5F);
-         } else {
-            $$0.a(0.0F, 1.0F + $$10 * 0.8F, -1.0F + $$10 * 0.2F);
-         }
-
-         this.a.a($$6, cvm.h, false, $$0, $$1, $$2, gws.d, $$7);
-         $$0.b();
+   public void a(fdi $$0, ghl $$1, int $$2, gth $$3, float $$4, float $$5) {
+      cum $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         fxb $$8 = $$3.ae ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
 }

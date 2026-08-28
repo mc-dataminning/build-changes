@@ -1,93 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-
-public abstract class daw implements dah<dax> {
-   protected final dad a;
-   protected final cvp b;
-   private final dan<?> d;
-   private final dam<?> e;
-   protected final String c;
-   @Nullable
-   private dag f;
-
-   public daw(dan<?> $$0, dam<?> $$1, String $$2, dad $$3, cvp $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+public class daw extends dab {
+   public daw(czy $$0) {
+      super($$0);
    }
 
-   @Override
-   public dan<?> e() {
-      return this.d;
-   }
+   public boolean a(czz $$0, dej $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-   @Override
-   public dam<?> aq_() {
-      return this.e;
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (dhm.a($$5.h()) instanceof dom) {
+               $$2++;
+            } else {
+               if (!($$5.h() instanceof cun)) {
+                  return false;
+               }
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+               $$3++;
+            }
 
-   @Override
-   public cvp a(jp.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public dag a() {
-      if (this.f == null) {
-         this.f = dag.a(this.a);
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
       }
 
-      return this.f;
+      return $$2 == 1 && $$3 == 1;
+   }
+
+   public cvs a(czz $$0, jq.a $$1) {
+      cvs $$2 = cvs.k;
+      cun $$3 = (cun)cvw.rj;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            cvn $$6 = $$5.h();
+            if (dhm.a($$6) instanceof dom) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cun) {
+               $$3 = (cun)$$6;
+            }
+         }
+      }
+
+      dhm $$7 = dom.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
-   public cvp a(dax $$0, jp.a $$1) {
-      return this.b.u();
-   }
-
-   public interface a<T extends daw> {
-      T create(String var1, dad var2, cvp var3);
-   }
-
-   public static class b<T extends daw> implements dam<T> {
-      final daw.a<T> w;
-      private final MapCodec<T> x;
-      private final zb<wo, T> y;
-
-      protected b(daw.a<T> $$0) {
-         this.w = $$0;
-         this.x = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     dad.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cvp.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.y = zb.a(yz.l, $$0x -> $$0x.c, dad.a, $$0x -> $$0x.a, cvp.i, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.x;
-      }
-
-      @Override
-      public zb<wo, T> b() {
-         return this.y;
-      }
+   @Override
+   public dap<?> ar_() {
+      return dap.m;
    }
 }

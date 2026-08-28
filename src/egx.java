@@ -1,46 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class egx extends egv {
-   public static final MapCodec<egx> d = RecordCodecBuilder.mapCodec(
+public class egx implements efy {
+   public static final Codec<egx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               axl.b(lw.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               ehz.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               ekk.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               eka.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bqx.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bqx.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
             )
             .apply($$0, egx::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   public final axl<dhm> b;
+   public final ehz c;
+   public final jo<ekk> d;
+   public final eka e;
+   public final bqx f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bqx j;
+   public final float k;
 
-   public egx(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   @Override
-   protected egw<?> b() {
-      return egw.b;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
-      }
+   public egx(axl<dhm> $$0, ehz $$1, jo<ekk> $$2, eka $$3, bqx $$4, float $$5, int $$6, float $$7, bqx $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

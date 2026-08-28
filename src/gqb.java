@@ -1,27 +1,30 @@
-public class gqb extends gme<chb, gvr, fzs> {
-   private static final alc a = alc.b("textures/entity/turtle/big_sea_turtle.png");
+public class gqb extends gnn<cpe, gvs> {
+   public static final ale a = ale.b("textures/entity/trident.png");
+   private final fzu b;
 
-   public gqb(gnj.a $$0) {
-      super($$0, new fzs($$0.a(gak.cQ)), new fzs($$0.a(gak.cR)), 0.7F);
+   public gqb(gno.a $$0) {
+      super($$0);
+      this.b = new fzu($$0.a(gap.cL));
    }
 
-   protected float a(gvr $$0) {
-      float $$1 = super.f($$0);
-      return $$0.ae ? $$1 * 0.83F : $$1;
+   public void a(gvs $$0, fdi $$1, ghl $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      fdm $$4 = gom.a($$2, this.b.a(a), false, $$0.c);
+      this.b.a($$1, $$4, $$3, gwx.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gvr c() {
-      return new gvr();
+   public gvs a() {
+      return new gvs();
    }
 
-   public void a(chb $$0, gvr $$1, float $$2) {
+   public void a(cpe $$0, gvs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = !$$0.bi() && $$0.aH();
-      $$1.b = $$0.t();
-      $$1.c = !$$0.o_() && $$0.q();
-   }
-
-   public alc b(gvr $$0) {
-      return a;
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
+      $$1.c = $$0.E();
    }
 }

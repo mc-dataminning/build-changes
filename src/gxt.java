@@ -1,45 +1,21 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gxt {
-   private static final gyc[] a = new gyc[]{
-      a("textures/entity/player/slim/alex.png", gyc.a.a),
-      a("textures/entity/player/slim/ari.png", gyc.a.a),
-      a("textures/entity/player/slim/efe.png", gyc.a.a),
-      a("textures/entity/player/slim/kai.png", gyc.a.a),
-      a("textures/entity/player/slim/makena.png", gyc.a.a),
-      a("textures/entity/player/slim/noor.png", gyc.a.a),
-      a("textures/entity/player/slim/steve.png", gyc.a.a),
-      a("textures/entity/player/slim/sunny.png", gyc.a.a),
-      a("textures/entity/player/slim/zuri.png", gyc.a.a),
-      a("textures/entity/player/wide/alex.png", gyc.a.b),
-      a("textures/entity/player/wide/ari.png", gyc.a.b),
-      a("textures/entity/player/wide/efe.png", gyc.a.b),
-      a("textures/entity/player/wide/kai.png", gyc.a.b),
-      a("textures/entity/player/wide/makena.png", gyc.a.b),
-      a("textures/entity/player/wide/noor.png", gyc.a.b),
-      a("textures/entity/player/wide/steve.png", gyc.a.b),
-      a("textures/entity/player/wide/sunny.png", gyc.a.b),
-      a("textures/entity/player/wide/zuri.png", gyc.a.b)
-   };
+public class gxt implements gxk {
+   public static final MapCodec<gxt> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azo.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gxt::new));
+   private final azo c;
 
-   public static alc a() {
-      return b().a();
+   public gxt(azo $$0) {
+      this.c = $$0;
    }
 
-   public static gyc b() {
-      return a[6];
+   @Override
+   public void a(auv $$0, gxk.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public static gyc a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
-   }
-
-   public static gyc a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gyc a(String $$0, gyc.a $$1) {
-      return new gyc(alc.b($$0), null, null, null, $$1, true);
+   @Override
+   public gxm a() {
+      return gxn.c;
    }
 }

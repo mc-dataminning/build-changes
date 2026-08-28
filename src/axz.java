@@ -1,34 +1,32 @@
-import com.mojang.util.UndashedUuid;
-import java.net.URI;
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-public class axz {
-   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
-   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
-   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
-   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
-   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
-   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
-   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
-   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
-   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
-   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
-   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
-   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
-   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
-   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
-   public static final URI o = URI.create("https://aka.ms/javablocking");
-   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
-   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
-   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
-   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
-   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+public record axz(int b) {
+   private static final String c = "#";
+   public static final Codec<axz> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new axz($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
+      }
+   }, axz::b);
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public int a() {
+      return this.b;
    }
 }

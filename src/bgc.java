@@ -1,19 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bgc extends DataFix {
-   public bgc(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bgc extends bfi {
+   public bgc(Schema $$0) {
+      super($$0, "LodestoneCompassComponentFix", "minecraft:lodestone_target", "minecraft:lodestone_tracker");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "Map id fix",
-         this.getInputSchema().getType(bhm.j),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("pos").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("dimension").result();
+      $$0 = $$0.remove("pos").remove("dimension");
+      if ($$1.isPresent() && $$2.isPresent()) {
+         $$0 = $$0.set("target", $$0.emptyMap().set("pos", $$1.get()).set("dimension", $$2.get()));
+      }
+
+      return $$0;
    }
 }

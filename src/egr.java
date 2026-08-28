@@ -1,23 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record egr(int b, int c, int d) implements efu {
-   public static final Codec<egr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aym.l.fieldOf("spread_width").forGetter(egr::a), aym.l.fieldOf("spread_height").forGetter(egr::b), aym.l.fieldOf("max_height").forGetter(egr::c)
-            )
-            .apply($$0, egr::new)
-   );
+public class egr implements efy {
+   public static final Codec<egr> a = ayo.b(ekk.c).fieldOf("features").xmap(egr::new, $$0 -> $$0.b).codec();
+   public final js<ekk> b;
 
-   public int a() {
-      return this.b;
+   public egr(js<ekk> $$0) {
+      this.b = $$0;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   public Stream<edg<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

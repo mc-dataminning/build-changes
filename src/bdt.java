@@ -1,75 +1,54 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Arrays;
-import java.util.function.Function;
 
 public class bdt extends DataFix {
-   public bdt(Schema $$0) {
-      super($$0, false);
+   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
+
+   public bdt(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("EntityProjectileOwner", $$0.getType(bhm.B), this::a);
+   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
+      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
+         int $$3;
+         if ($$0.get("Direction").asNumber().result().isPresent()) {
+            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
+            int[] $$4 = a[$$3];
+            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
+            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
+            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
+            $$0 = $$0.remove("Direction");
+            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
+               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
+            }
+         } else {
+            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
+            $$0 = $$0.remove("Dir");
+         }
+
+         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
+      }
+
+      return $$0;
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:egg", this::d);
-      $$0 = this.a($$0, "minecraft:ender_pearl", this::d);
-      $$0 = this.a($$0, "minecraft:experience_bottle", this::d);
-      $$0 = this.a($$0, "minecraft:snowball", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::d);
-      $$0 = this.a($$0, "minecraft:potion", this::c);
-      $$0 = this.a($$0, "minecraft:llama_spit", this::b);
-      $$0 = this.a($$0, "minecraft:arrow", this::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", this::a);
-      return this.a($$0, "minecraft:trident", this::a);
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      long $$1 = $$0.get("OwnerUUIDMost").asLong(0L);
-      long $$2 = $$0.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$1, $$2).remove("OwnerUUIDMost").remove("OwnerUUIDLeast");
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Owner");
-      long $$2 = $$1.get("OwnerUUIDMost").asLong(0L);
-      long $$3 = $$1.get("OwnerUUIDLeast").asLong(0L);
-      return this.a($$0, $$2, $$3).remove("Owner");
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      OptionalDynamic<?> $$1 = $$0.get("Potion");
-      return $$0.set("Item", $$1.orElseEmptyMap()).remove("Potion");
-   }
-
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      String $$1 = "owner";
-      OptionalDynamic<?> $$2 = $$0.get("owner");
-      long $$3 = $$2.get("M").asLong(0L);
-      long $$4 = $$2.get("L").asLong(0L);
-      return this.a($$0, $$3, $$4).remove("owner");
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0, long $$1, long $$2) {
-      String $$3 = "OwnerUUID";
-      return $$1 != 0L && $$2 != 0L ? $$0.set("OwnerUUID", $$0.createIntList(Arrays.stream(a($$1, $$2)))) : $$0;
-   }
-
-   private static int[] a(long $$0, long $$1) {
-      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
-   }
-
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bhm.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bhm.B, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bho.B, "Painting");
+      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bho.B, "ItemFrame");
+      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
+      Type<?> $$4 = this.getInputSchema().getType(bho.B);
+      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
+         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
+      );
+      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
+         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
+      );
+      return TypeRewriteRule.seq($$5, $$6);
    }
 }

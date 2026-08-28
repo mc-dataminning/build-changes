@@ -1,133 +1,21 @@
-public class dve {
-   public static final dvf a = dvf.a("attached");
-   public static final dvf b = dvf.a("bottom");
-   public static final dvf c = dvf.a("conditional");
-   public static final dvf d = dvf.a("disarmed");
-   public static final dvf e = dvf.a("drag");
-   public static final dvf f = dvf.a("enabled");
-   public static final dvf g = dvf.a("extended");
-   public static final dvf h = dvf.a("eye");
-   public static final dvf i = dvf.a("falling");
-   public static final dvf j = dvf.a("hanging");
-   public static final dvf k = dvf.a("has_bottle_0");
-   public static final dvf l = dvf.a("has_bottle_1");
-   public static final dvf m = dvf.a("has_bottle_2");
-   public static final dvf n = dvf.a("has_record");
-   public static final dvf o = dvf.a("has_book");
-   public static final dvf p = dvf.a("inverted");
-   public static final dvf q = dvf.a("in_wall");
-   public static final dvf r = dvf.a("lit");
-   public static final dvf s = dvf.a("locked");
-   public static final dvf t = dvf.a("occupied");
-   public static final dvf u = dvf.a("open");
-   public static final dvf v = dvf.a("persistent");
-   public static final dvf w = dvf.a("powered");
-   public static final dvf x = dvf.a("short");
-   public static final dvf y = dvf.a("signal_fire");
-   public static final dvf z = dvf.a("snowy");
-   public static final dvf A = dvf.a("triggered");
-   public static final dvf B = dvf.a("unstable");
-   public static final dvf C = dvf.a("waterlogged");
-   public static final dvf D = dvf.a("berries");
-   public static final dvf E = dvf.a("bloom");
-   public static final dvf F = dvf.a("shrieking");
-   public static final dvf G = dvf.a("can_summon");
-   public static final dvm<jj.a> H = dvm.a("axis", jj.a.class, jj.a.a, jj.a.c);
-   public static final dvm<jj.a> I = dvm.a("axis", jj.a.class);
-   public static final dvf J = dvf.a("up");
-   public static final dvf K = dvf.a("down");
-   public static final dvf L = dvf.a("north");
-   public static final dvf M = dvf.a("east");
-   public static final dvf N = dvf.a("south");
-   public static final dvf O = dvf.a("west");
-   public static final dvi P = dvi.a("facing", jj.c, jj.f, jj.d, jj.e, jj.b, jj.a);
-   public static final dvi Q = dvi.a("facing", $$0 -> $$0 != jj.b);
-   public static final dvi R = dvi.a("facing", jj.c.a);
-   public static final dvo S = dvo.a("flower_amount", 1, 4);
-   public static final dvm<jl> T = dvm.a("orientation", jl.class);
-   public static final dvm<duz> U = dvm.a("face", duz.class);
-   public static final dvm<dvc> V = dvm.a("attachment", dvc.class);
-   public static final dvm<dwa> W = dvm.a("east", dwa.class);
-   public static final dvm<dwa> X = dvm.a("north", dwa.class);
-   public static final dvm<dwa> Y = dvm.a("south", dwa.class);
-   public static final dvm<dwa> Z = dvm.a("west", dwa.class);
-   public static final dvm<dvt> aa = dvm.a("east", dvt.class);
-   public static final dvm<dvt> ab = dvm.a("north", dvt.class);
-   public static final dvm<dvt> ac = dvm.a("south", dvt.class);
-   public static final dvm<dvt> ad = dvm.a("west", dvt.class);
-   public static final dvm<dvk> ae = dvm.a("half", dvk.class);
-   public static final dvm<dvn> af = dvm.a("half", dvn.class);
-   public static final dvm<dvs> ag = dvm.a("shape", dvs.class);
-   public static final dvm<dvs> ah = dvm.a("shape", dvs.class, $$0 -> $$0 != dvs.j && $$0 != dvs.i && $$0 != dvs.g && $$0 != dvs.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final dvo aq = dvo.a("age", 0, 1);
-   public static final dvo ar = dvo.a("age", 0, 2);
-   public static final dvo as = dvo.a("age", 0, 3);
-   public static final dvo at = dvo.a("age", 0, 4);
-   public static final dvo au = dvo.a("age", 0, 5);
-   public static final dvo av = dvo.a("age", 0, 7);
-   public static final dvo aw = dvo.a("age", 0, 15);
-   public static final dvo ax = dvo.a("age", 0, 25);
-   public static final dvo ay = dvo.a("bites", 0, 6);
-   public static final dvo az = dvo.a("candles", 1, 4);
-   public static final dvo aA = dvo.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final dvo aC = dvo.a("distance", 1, 7);
-   public static final dvo aD = dvo.a("eggs", 1, 4);
-   public static final dvo aE = dvo.a("hatch", 0, 2);
-   public static final dvo aF = dvo.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final dvo aK = dvo.a("level", 1, 3);
-   public static final dvo aL = dvo.a("level", 0, 8);
-   public static final dvo aM = dvo.a("level", 1, 8);
-   public static final dvo aN = dvo.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final dvo aP = dvo.a("level", 0, 15);
-   public static final dvo aQ = dvo.a("moisture", 0, 7);
-   public static final dvo aR = dvo.a("note", 0, 24);
-   public static final dvo aS = dvo.a("pickles", 1, 4);
-   public static final dvo aT = dvo.a("power", 0, 15);
-   public static final dvo aU = dvo.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final dvo aW = dvo.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final dvo aZ = dvo.a("charges", 0, 4);
-   public static final dvo ba = dvo.a("rotation", 0, dvu.a());
-   public static final dvm<dvb> bb = dvm.a("part", dvb.class);
-   public static final dvm<dvg> bc = dvm.a("type", dvg.class);
-   public static final dvm<dvh> bd = dvm.a("mode", dvh.class);
-   public static final dvm<dvj> be = dvm.a("hinge", dvj.class);
-   public static final dvm<dvp> bf = dvm.a("instrument", dvp.class);
-   public static final dvm<dvq> bg = dvm.a("type", dvq.class);
-   public static final dvm<dvw> bh = dvm.a("type", dvw.class);
-   public static final dvm<dvx> bi = dvm.a("shape", dvx.class);
-   public static final dvm<dvy> bj = dvm.a("mode", dvy.class);
-   public static final dvm<dva> bk = dvm.a("leaves", dva.class);
-   public static final dvm<dvz> bl = dvm.a("tilt", dvz.class);
-   public static final dvi bm = dvi.a("vertical_direction", jj.b, jj.a);
-   public static final dvm<dvl> bn = dvm.a("thickness", dvl.class);
-   public static final dvm<dvv> bo = dvm.a("sculk_sensor_phase", dvv.class);
-   public static final dvf bp = dvf.a("slot_0_occupied");
-   public static final dvf bq = dvf.a("slot_1_occupied");
-   public static final dvf br = dvf.a("slot_2_occupied");
-   public static final dvf bs = dvf.a("slot_3_occupied");
-   public static final dvf bt = dvf.a("slot_4_occupied");
-   public static final dvf bu = dvf.a("slot_5_occupied");
-   public static final dvo bv = dvo.a("dusted", 0, 3);
-   public static final dvf bw = dvf.a("cracked");
-   public static final dvf bx = dvf.a("crafting");
-   public static final dvm<dtu> by = dvm.a("trial_spawner_state", dtu.class);
-   public static final dvm<dub> bz = dvm.a("vault_state", dub.class);
-   public static final dvf bA = dvf.a("ominous");
+public enum dve implements bab {
+   a("none"),
+   b("small"),
+   c("large");
+
+   private final String d;
+
+   private dve(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.d;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

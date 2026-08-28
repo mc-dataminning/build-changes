@@ -1,21 +1,22 @@
-public class ftl extends ftg {
-   private static final xd a = xd.c("controls.title");
+import java.util.ArrayList;
+import java.util.List;
 
-   private static fio<?>[] a(fip $$0) {
-      return new fio[]{$$0.ae(), $$0.af(), $$0.I(), $$0.K()};
-   }
+public class ftl extends ftk {
+   private static final xe a = xe.c("options.skinCustomisation.title");
 
-   public ftl(fqd $$0, fip $$1) {
+   public ftl(fqh $$0, fit $$1) {
       super($$0, $$1, a);
    }
 
    @Override
    protected void m() {
-      this.d
-         .a(
-            fkk.a(xd.c("options.mouse_settings"), $$0 -> this.m.a(new ftd(this, this.c))).a(),
-            fkk.a(xd.c("controls.keybinds"), $$0 -> this.m.a(new ftn(this, this.c))).a()
-         );
-      this.d.a(a(this.c));
+      List<fkm> $$0 = new ArrayList<>();
+
+      for (cny $$1 : cny.values()) {
+         $$0.add(fkv.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+      }
+
+      $$0.add(this.c.w().a(this.c));
+      this.d.a($$0);
    }
 }

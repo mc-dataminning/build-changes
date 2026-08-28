@@ -1,14 +1,14 @@
-public class cvd extends cwu {
-   public cvd(dhj $$0, dhj $$1, cvk.a $$2) {
-      super($$2, $$0, $$1, jj.b);
+import javax.annotation.Nullable;
+
+public class cvd extends ctu {
+   public cvd(dhm $$0, cvn.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected boolean a(dej $$0, duo $$1, je $$2) {
-      if ($$1.b() instanceof dqj $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
-
-      return super.a($$0, $$1, $$2);
+   protected dus c(czn $$0) {
+      cnx $$1 = $$0.o();
+      return $$1 != null && !$$1.gA() ? null : super.c($$0);
    }
 }

@@ -1,68 +1,51 @@
-public abstract class cow extends coo {
-   private static final float b = 12.25F;
-
-   protected cow(btv<? extends cow> $$0, deg $$1) {
+public class cow extends coy {
+   public cow(bty<? extends cow> $$0, dej $$1) {
       super($$0, $$1);
    }
 
-   protected cow(btv<? extends cow> $$0, double $$1, double $$2, double $$3, deg $$4) {
-      this($$0, $$4);
-      this.a_($$1, $$2, $$3);
+   public cow(dej $$0, bun $$1, cvs $$2) {
+      super(bty.aT, $$1, $$0, $$2);
+   }
+
+   public cow(dej $$0, double $$1, double $$2, double $$3, cvs $$4) {
+      super(bty.aT, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   public boolean a(double $$0) {
-      if (this.ag < 2 && $$0 < 12.25) {
-         return false;
-      } else {
-         double $$1 = this.cO().a() * 4.0;
-         if (Double.isNaN($$1)) {
-            $$1 = 4.0;
+   protected cvn o() {
+      return cvw.qD;
+   }
+
+   private lm q() {
+      cvs $$0 = this.m();
+      return (lm)(!$$0.f() && !$$0.a(this.o()) ? new lk(lo.S, $$0) : lo.W);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lm $$1 = this.q();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dS().a($$1, this.dx(), this.dz(), this.dD(), 0.0, 0.0, 0.0);
          }
-
-         $$1 *= 64.0;
-         return $$0 < $$1 * $$1;
       }
    }
 
    @Override
-   public boolean o(boolean $$0) {
-      return true;
+   protected void a(eyt $$0) {
+      super.a($$0);
+      btr $$1 = $$0.a();
+      int $$2 = $$1 instanceof ckm ? 3 : 0;
+      $$1.a(this.dT().b(this, this.s()), (float)$$2);
    }
 
    @Override
-   public void l() {
-      super.l();
-      eyq $$0 = coq.a(this, this::b);
-      if ($$0.d() != eyq.a.a) {
-         this.b($$0);
+   protected void a(eyu $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         this.dS().a(this, (byte)3);
+         this.as();
       }
-
-      eys $$1 = this.dv();
-      double $$2 = this.dx() + $$1.d;
-      double $$3 = this.dz() + $$1.e;
-      double $$4 = this.dD() + $$1.f;
-      this.G();
-      float $$7;
-      if (this.bi()) {
-         for (int $$5 = 0; $$5 < 4; $$5++) {
-            float $$6 = 0.25F;
-            this.dS().a(ln.d, $$2 - $$1.d * 0.25, $$3 - $$1.e * 0.25, $$4 - $$1.f * 0.25, $$1.d, $$1.e, $$1.f);
-         }
-
-         $$7 = 0.8F;
-      } else {
-         $$7 = 0.99F;
-      }
-
-      this.h($$1.c((double)$$7));
-      this.be();
-      this.a_($$2, $$3, $$4);
-      this.aW();
-   }
-
-   @Override
-   protected double bc() {
-      return 0.03;
    }
 }

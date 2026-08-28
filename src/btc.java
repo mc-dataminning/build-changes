@@ -1,14 +1,20 @@
-class btc extends bss {
-   protected btc(bsu $$0, int $$1) {
+class btc extends bsw {
+   protected btc(bsx $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(buk $$0, int $$1) {
-      if (!$$0.dS().B && $$0 instanceof cnu $$2) {
-         $$2.gm().a($$1 + 1, 1.0F);
+   public boolean a(bun $$0, int $$1) {
+      if ($$0.eB() > 1.0F) {
+         $$0.a($$0.dT().q(), 1.0F);
       }
 
       return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

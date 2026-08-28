@@ -1,27 +1,31 @@
-public class gmq extends gme<chr, gtb, fww> {
-   private static final alc a = alc.b("textures/entity/camel/camel.png");
+public class gmq extends gmj<cge, gtb, fws> {
+   private static final ale a = ale.b("textures/entity/bee/bee_angry.png");
+   private static final ale b = ale.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final ale k = ale.b("textures/entity/bee/bee.png");
+   private static final ale l = ale.b("textures/entity/bee/bee_nectar.png");
 
-   public gmq(gnj.a $$0) {
-      super($$0, new fww($$0.a(gak.H)), new fww($$0.a(gak.I)), 0.7F);
+   public gmq(gno.a $$0) {
+      super($$0, new fws($$0.a(gap.q)), new fws($$0.a(gap.r)), 0.4F);
    }
 
-   public alc a(gtb $$0) {
-      return a;
+   public ale a(gtb $$0) {
+      if ($$0.d) {
+         return $$0.e ? b : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
    public gtb a() {
       return new gtb();
    }
 
-   public void a(chr $$0, gtb $$1, float $$2) {
+   public void a(cge $$0, gtb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.i();
-      $$1.b = $$0.bX();
-      $$1.c = Math.max((float)$$0.c() - $$2, 0.0F);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.cf);
-      $$1.f.a($$0.cg);
-      $$1.g.a($$0.ch);
-      $$1.h.a($$0.ci);
+      $$1.a = $$0.J($$2);
+      $$1.b = !$$0.gB();
+      $$1.c = $$0.aH() && $$0.dv().h() < 1.0E-7;
+      $$1.d = $$0.ad_();
+      $$1.e = $$0.gA();
    }
 }

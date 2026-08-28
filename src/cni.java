@@ -1,62 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cni {
+   String e_ = "Inventory";
 
-public class cni {
-   public static final int a = 1;
-   public static final int b = 5;
-   private static final int[] e = new int[]{0, 10, 70, 150, 250};
-   public static final Codec<cni> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lu.w.q().fieldOf("type").orElseGet(() -> cnm.c).forGetter($$0x -> $$0x.f),
-               lu.x.q().fieldOf("profession").orElseGet(() -> cnk.b).forGetter($$0x -> $$0x.g),
-               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cni::new)
-   );
-   public static final zb<wo, cni> d = zb.a(yz.a(lv.aw), $$0 -> $$0.f, yz.a(lv.av), $$0 -> $$0.g, yz.g, $$0 -> $$0.h, cni::new);
-   private final cnm f;
-   private final cnk g;
-   private final int h;
+   brz y();
 
-   public cni(cnm $$0, cnk $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = Math.max(1, $$2);
+   static void a(bup $$0, cni $$1, ckh $$2) {
+      cvs $$3 = $$2.m();
+      if ($$0.j($$3)) {
+         brz $$4 = $$1.y();
+         boolean $$5 = $$4.c($$3);
+         if (!$$5) {
+            return;
+         }
+
+         $$0.a($$2);
+         int $$6 = $$3.K();
+         cvs $$7 = $$4.b($$3);
+         $$0.a($$2, $$6 - $$7.K());
+         if ($$7.f()) {
+            $$2.as();
+         } else {
+            $$3.e($$7.K());
+         }
+      }
    }
 
-   public cnm a() {
-      return this.f;
+   default void a(ug $$0, jq.a $$1) {
+      if ($$0.b("Inventory", 9)) {
+         this.y().a($$0.c("Inventory", 10), $$1);
+      }
    }
 
-   public cnk b() {
-      return this.g;
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   public cni a(cnm $$0) {
-      return new cni($$0, this.g, this.h);
-   }
-
-   public cni a(cnk $$0) {
-      return new cni(this.f, $$0, this.h);
-   }
-
-   public cni a(int $$0) {
-      return new cni(this.f, this.g, $$0);
-   }
-
-   public static int b(int $$0) {
-      return d($$0) ? e[$$0 - 1] : 0;
-   }
-
-   public static int c(int $$0) {
-      return d($$0) ? e[$$0] : 0;
-   }
-
-   public static boolean d(int $$0) {
-      return $$0 >= 1 && $$0 < 5;
+   default void b(ug $$0, jq.a $$1) {
+      $$0.a("Inventory", this.y().a($$1));
    }
 }

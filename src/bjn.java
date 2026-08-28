@@ -1,17 +1,17 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjn extends biz {
+public class bjn extends bjc {
    public bjn(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.remove("minecraft:flower_pot");
-      $$1.remove("minecraft:noteblock");
+      $$0.register($$1, "minecraft:piston", $$1x -> DSL.optionalFields("blockState", bho.u.in($$0)));
       return $$1;
    }
 }

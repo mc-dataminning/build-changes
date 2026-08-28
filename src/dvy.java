@@ -1,23 +1,37 @@
-public enum dvy implements azz {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+import java.util.Optional;
 
-   private final String e;
-   private final xd f;
+public class dvy {
+   private static final azp a = new azp(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private dvy(final String $$0) {
-      this.e = $$0;
-      this.f = xd.c("structure_block.mode_info." + $$0);
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static int a(jk $$0) {
+      return a.a($$0);
    }
 
-   public xd a() {
-      return this.f;
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<jk> a(int $$0) {
+      jk $$1 = switch ($$0) {
+         case 0 -> jk.c;
+         case 4 -> jk.f;
+         case 8 -> jk.d;
+         case 12 -> jk.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

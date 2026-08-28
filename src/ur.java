@@ -1,4 +1,4 @@
-public class ur extends uq {
+public class ur extends RuntimeException {
    public ur(String $$0) {
       super($$0);
    }

@@ -1,25 +1,25 @@
-public class aey implements zk<abz> {
-   public static final zb<wa, aey> a = zk.a(aey::a, aey::new);
+public class aey implements zl<aca> {
+   public static final zc<wb, aey> a = zl.a(aey::a, aey::new);
    private final int b;
 
-   public aey(dwf $$0) {
-      this.b = $$0.r();
+   public aey(dwj $$0) {
+      this.b = $$0.q();
    }
 
-   private aey(wa $$0) {
+   private aey(wb $$0) {
       this.b = $$0.l();
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.c(this.b);
    }
 
    @Override
-   public zm<aey> a() {
-      return ago.aw;
+   public zn<aey> a() {
+      return agp.av;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 

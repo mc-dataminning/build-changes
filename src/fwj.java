@@ -1,64 +1,69 @@
-public class fwj extends fwi {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String c = "shoulder_stick";
-   private static final String d = "base_plate";
-   private final gal e;
-   private final gal f;
-   private final gal g;
-   private final gal w;
-
-   public fwj(gal $$0) {
-      super($$0);
-      this.e = $$0.b("right_body_stick");
-      this.f = $$0.b("left_body_stick");
-      this.g = $$0.b("shoulder_stick");
-      this.w = $$0.b("base_plate");
-      this.p.k = false;
+public class fwj {
+   public static void a(gaq $$0, gaq $$1, gaq $$2, boolean $$3) {
+      gaq $$4 = $$3 ? $$0 : $$1;
+      gaq $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static gar b() {
-      gat $$0 = fxx.a(gap.a, 0.0F);
-      gav $$1 = $$0.a();
-      $$1.a("head", gaq.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), gan.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", gaq.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), gan.a);
-      $$1.a("right_arm", gaq.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gan.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", gaq.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gan.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", gaq.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gan.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", gaq.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gan.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", gaq.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gan.a);
-      $$1.a("left_body_stick", gaq.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gan.a);
-      $$1.a("shoulder_stick", gaq.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), gan.a);
-      $$1.a("base_plate", gaq.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), gan.a(0.0F, 12.0F, 0.0F));
-      return gar.a($$0, 64, 64);
+   public static void a(gaq $$0, gaq $$1, float $$2, int $$3, boolean $$4) {
+      gaq $$5 = $$4 ? $$0 : $$1;
+      gaq $$6 = $$4 ? $$1 : $$0;
+      $$5.f = $$4 ? -0.8F : 0.8F;
+      $$5.e = -0.97079635F;
+      $$6.e = $$5.e;
+      float $$7 = azf.a((float)$$3, 0.0F, $$2);
+      float $$8 = $$7 / $$2;
+      $$6.f = azf.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
+      $$6.e = azf.h($$8, $$6.e, (float) (-Math.PI / 2));
    }
 
-   @Override
-   public void a(gss $$0) {
-      this.w.e = 0.0F;
-      this.w.f = (float) (Math.PI / 180.0) * -$$0.a;
-      this.w.g = 0.0F;
-      super.a($$0);
-      this.s.k = $$0.e;
-      this.r.k = $$0.e;
-      this.w.k = $$0.f;
-      this.e.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.e.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.e.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.f.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.f.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.f.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.g.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.g.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.g.g = (float) (Math.PI / 180.0) * $$0.h.d();
+   public static void a(gaq $$0, gaq $$1, buh $$2, float $$3, float $$4) {
+      float $$5 = azf.a($$3 * (float) Math.PI);
+      float $$6 = azf.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2 == buh.b) {
+         $$0.e = -1.8849558F + azf.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + azf.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + azf.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + azf.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+      }
+
+      a($$0, $$1, $$4);
    }
 
-   @Override
-   public void a(bue $$0, fde $$1) {
-      gal $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public static void a(gaq $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (azf.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * azf.a($$1 * 0.067F) * 0.05F;
+   }
+
+   public static void a(gaq $$0, gaq $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
+
+   public static void a(gaq $$0, gaq $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = azf.a($$3 * (float) Math.PI);
+      float $$6 = azf.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

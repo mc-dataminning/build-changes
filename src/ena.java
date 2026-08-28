@@ -1,31 +1,25 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class ena extends elc {
+public class ena extends elg {
    public static final MapCodec<ena> d = a(ena::new);
 
-   public ena(elc.c $$0) {
+   public ena(elg.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<elc.b> a(elc.a $$0) {
-      dnx $$1 = dnx.a($$0.f());
-      je $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new elc.b($$2, (Consumer<elu>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public Optional<elg.b> a(elg.a $$0) {
+      return a($$0, eao.a.c, $$1 -> a($$1, $$0));
    }
 
-   private void a(elu $$0, je $$1, dnx $$2, elc.a $$3) {
-      List<elg> $$4 = Lists.newArrayList();
-      emz.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(ely $$0, elg.a $$1) {
+      jf $$2 = new jf($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new emz.a($$2));
    }
 
    @Override
-   public ell<?> e() {
-      return ell.c;
+   public elp<?> e() {
+      return elp.a;
    }
 }

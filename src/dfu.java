@@ -1,84 +1,108 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dfu extends dfl {
-   private static final MapCodec<jn<dfh>> d = dfh.c.fieldOf("biome");
-   public static final MapCodec<dfq.c<jn<dfh>>> b = dfq.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jn<dfv>> e = dfv.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dfu> c = Codec.mapEither(b, e).xmap(dfu::new, $$0 -> $$0.f);
-   private final Either<dfq.c<jn<dfh>>, jn<dfv>> f;
+public class dfu {
+   public static <T> List<dfu.b> a(List<T> $$0, Function<T, List<js<ekk>>> $$1, boolean $$2) {
+      Object2IntMap<ekk> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   private dfu(Either<dfq.c<jn<dfh>>, jn<dfv>> $$0) {
-      this.f = $$0;
+      record a(int a, int b, ekk c) {
+      }
+
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
+
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<js<ekk>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
+
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jo<ekk> $$12 : $$10.get($$11)) {
+               ekk $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
+         }
+      }
+
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
+
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
+         }
+
+         if (!$$16.contains($$19) && ayu.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<dfu.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<ekk> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dfu.b($$28));
+      }
+
+      return $$25.build();
    }
 
-   public static dfu a(dfq.c<jn<dfh>> $$0) {
-      return new dfu(Either.left($$0));
-   }
-
-   public static dfu a(jn<dfv> $$0) {
-      return new dfu(Either.right($$0));
-   }
-
-   private dfq.c<jn<dfh>> d() {
-      return (dfq.c<jn<dfh>>)this.f.map($$0 -> $$0, $$0 -> ((dfv)$$0.a()).a());
-   }
-
-   @Override
-   protected Stream<jn<dfh>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
-
-   @Override
-   protected MapCodec<? extends dfl> a() {
-      return c;
-   }
-
-   public boolean a(alb<dfv> $$0) {
-      Optional<jn<dfv>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2, dfq.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @baj
-   public jn<dfh> a(dfq.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, je $$1, dfq.f $$2) {
-      int $$3 = jy.a($$1.u());
-      int $$4 = jy.a($$1.v());
-      int $$5 = jy.a($$1.w());
-      dfq.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dfq.a($$6.d());
-      float $$8 = dfq.a($$6.e());
-      float $$9 = dfq.a($$6.b());
-      float $$10 = dfq.a($$6.c());
-      float $$11 = dfq.a($$6.g());
-      double $$12 = (double)ear.a($$11);
-      dfx $$13 = new dfx();
-      $$0.add(
-         "Biome builder PV: "
-            + dfx.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public static record b(List<ekk> a, ToIntFunction<ekk> b) {
+      b(List<ekk> $$0) {
+         this($$0, ad.h($$0));
+      }
    }
 }

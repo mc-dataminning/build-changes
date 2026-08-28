@@ -1,44 +1,30 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class eka extends ekj {
-   public static final MapCodec<eka> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(je.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eka::new)
-   );
-   private final List<je> c;
+public enum eka implements bab {
+   a(jk.b, 1, "ceiling"),
+   b(jk.a, -1, "floor");
 
-   public static eka a(je... $$0) {
-      return new eka(List.of($$0));
+   public static final Codec<eka> c = bab.a(eka::values);
+   private final jk d;
+   private final int e;
+   private final String f;
+
+   private eka(final jk $$0, final int $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   private eka(List<je> $$0) {
-      this.c = $$0;
+   public jk a() {
+      return this.d;
    }
 
-   @Override
-   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
-      int $$3 = kg.a($$2.u());
-      int $$4 = kg.a($$2.w());
-      boolean $$5 = false;
-
-      for (je $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
-         }
-      }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
-   }
-
-   private static boolean a(int $$0, int $$1, je $$2) {
-      return $$0 == kg.a($$2.u()) && $$1 == kg.a($$2.w());
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public ekk<?> b() {
-      return ekk.o;
+   public String c() {
+      return this.f;
    }
 }

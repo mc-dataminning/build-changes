@@ -1,30 +1,96 @@
-import org.joml.Vector3f;
+public class frp {
+   private static final ale a = ale.b("alt");
+   private static final yb b = yb.a.a(a);
+   private static final frp c = new frp();
+   private final azn d = azn.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-public class frp extends fqu {
-   public static final float c = 4.5F;
-   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int s = 16;
-   private static final int u = 16;
-   private final alc v = alc.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
-
-   public frp(dte $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, xd.c("hanging_sign.edit"));
+   private frp() {
    }
 
-   @Override
-   protected void a(fjx $$0, duo $$1) {
-      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   public static frp a() {
+      return c;
    }
 
-   @Override
-   protected void c(fjx $$0) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(ghq::B, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   public xj a(fjz $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ad.a(this.e, this.d));
+      }
+
+      return $$0.b().a(xe.b($$2.toString()).c(b), $$1, yb.a);
    }
 
-   @Override
-   protected Vector3f m() {
-      return d;
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

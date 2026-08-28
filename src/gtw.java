@@ -1,3 +1,8 @@
-public class gtw extends guj {
-   public boolean a;
+public class gtw extends guo {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

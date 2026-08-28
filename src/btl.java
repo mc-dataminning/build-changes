@@ -1,38 +1,53 @@
-public class btl {
-   public static final btl a = new btl(0.75F, 0.5F, 0.25F);
-   public static final btl b = new btl(0.95F, 0.69F, 0.32F);
-   private final float c;
-   private final float d;
-   private final float e;
+import java.util.function.Consumer;
 
-   private btl(float $$0, float $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public class btl {
+   private static final int a = Integer.MIN_VALUE;
+   private int b = Integer.MIN_VALUE;
+
+   public void a(int $$0) {
+      this.b = $$0;
    }
 
-   public btl.a a(float $$0) {
-      if ($$0 < this.e) {
-         return btl.a.d;
-      } else if ($$0 < this.d) {
-         return btl.a.c;
-      } else {
-         return $$0 < this.c ? btl.a.b : btl.a.a;
+   public void b(int $$0) {
+      if (!this.b()) {
+         this.a($$0);
       }
    }
 
-   public btl.a a(cvp $$0) {
-      return !$$0.m() ? btl.a.a : this.a($$0.o(), $$0.p());
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
    }
 
-   public btl.a a(int $$0, int $$1) {
-      return this.a((float)($$1 - $$0) / (float)$$1);
+   public void a() {
+      this.b = Integer.MIN_VALUE;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public void a(Consumer<btl> $$0) {
+      if (this.b()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.b()) {
+         this.b -= (int)((float)$$0 * $$1);
+      }
+   }
+
+   public long a(float $$0) {
+      float $$1 = $$0 - (float)this.b;
+      return (long)($$1 * 50.0F);
+   }
+
+   public boolean b() {
+      return this.b != Integer.MIN_VALUE;
+   }
+
+   public void a(btl $$0) {
+      this.b = $$0.b;
    }
 }

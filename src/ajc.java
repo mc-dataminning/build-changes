@@ -1,29 +1,55 @@
-public class ajc implements zk<aiy> {
-   public static final zb<wa, ajc> a = zk.a(ajc::a, ajc::new);
-   private final int b;
+import java.security.PublicKey;
 
-   public ajc(int $$0) {
+public class ajc implements zl<aiz> {
+   public static final zc<wb, ajc> a = zl.a(ajc::a, ajc::new);
+   private final String b;
+   private final byte[] c;
+   private final byte[] d;
+   private final boolean e;
+
+   public ajc(String $$0, byte[] $$1, byte[] $$2, boolean $$3) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private ajc(wa $$0) {
-      this.b = $$0.l();
+   private ajc(wb $$0) {
+      this.b = $$0.d(20);
+      this.c = $$0.b();
+      this.d = $$0.b();
+      this.e = $$0.readBoolean();
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zm<ajc> a() {
-      return aje.d;
+   public zn<ajc> a() {
+      return ajf.c;
    }
 
-   public void a(aiy $$0) {
+   public void a(aiz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public String b() {
       return this.b;
+   }
+
+   public PublicKey e() throws aye {
+      return ayd.a(this.c);
+   }
+
+   public byte[] f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

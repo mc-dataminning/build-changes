@@ -1,61 +1,118 @@
-public class gfr extends gfo {
-   private final gfj a;
-   private static final int b = 8;
-
-   protected gfr(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfj $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / azd.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
+public class gfr extends gft {
+   gfr(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public ges b() {
-      return ges.b;
+   public gex b() {
+      return gex.b;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gfb.a p() {
-      return gfb.a.b;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azd.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gew<ls> {
+      private final gfo a;
 
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.D_().a(5));
+         return $$8;
+      }
+   }
+
+   public static class b implements gew<ls> {
+      private final gfo a;
+
+      public b(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.z.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
+   }
+
+   public static class c implements gew<ls> {
+      private final gfo a;
+
+      public c(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gew<ls> {
+      private final gfo a;
+
+      public d(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements gew<ls> {
+      private final gfo a;
+
+      public e(gfo $$0) {
+         this.a = $$0;
+      }
+
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfr $$8 = new gfr($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

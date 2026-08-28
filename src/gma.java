@@ -1,23 +1,37 @@
-public abstract class gma<T extends cie, S extends gtm, M extends fxk<? super S>> extends gme<T, S, M> {
-   private final float a;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gma(gnj.a $$0, M $$1, M $$2, float $$3) {
-      super($$0, $$1, $$2, 0.75F);
-      this.a = $$3;
+public class gma implements gll.a {
+   private static final int a = 60;
+   private final Set<kh> b = Sets.newHashSet();
+
+   gma() {
    }
 
-   protected void a(S $$0, fde $$1) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1);
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.i();
-      $$1.c = $$0.bX();
-      $$1.e = $$0.J($$2);
-      $$1.f = $$0.K($$2);
-      $$1.g = $$0.L($$2);
-      $$1.d = $$0.cq > 0;
+   public void a(kh $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kh $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
+      jf $$5 = jf.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fdi $$0, ghl $$1, kh $$2) {
+      gll.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

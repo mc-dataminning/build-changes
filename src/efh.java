@@ -1,43 +1,79 @@
 import com.mojang.serialization.Codec;
 
-public class efh extends edq<egb> {
-   private static final je a = new je(8, 3, 8);
-   private static final ddm b = new ddm(a);
-   private static final int c = 16;
-   private static final int d = 1;
-
-   public efh(Codec<egb> $$0) {
+public class efh extends edu<egv> {
+   public efh(Codec<egv> $$0) {
       super($$0);
    }
 
-   private static int a(int $$0, int $$1, int $$2, int $$3) {
-      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
-   }
-
    @Override
-   public boolean a(eds<egb> $$0) {
-      dfd $$1 = $$0.b();
-      ddm $$2 = new ddm($$0.e());
-      if (a($$2.e, $$2.f, b.e, b.f) > 1) {
-         return true;
+   public boolean a(edw<egv> $$0) {
+      dfg $$1 = $$0.b();
+      jf $$2 = $$0.e();
+      if (a($$1, $$2)) {
+         return false;
       } else {
-         je $$3 = a.h($$0.e().v() + a.v());
-         je.a $$4 = new je.a();
+         azn $$3 = $$0.d();
+         egv $$4 = $$0.f();
+         int $$5 = $$4.a();
+         int $$6 = $$4.b();
+         int $$7 = $$4.c();
+         jf.a $$8 = new jf.a();
 
-         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
-            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
-               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
-                  $$4.d($$6, $$3.v(), $$5);
-                  if ($$4.equals($$3)) {
-                     $$1.a($$4, dhl.m.o(), 2);
-                  } else {
-                     $$1.a($$4, dhl.b.o(), 2);
-                  }
+         for (int $$9 = 0; $$9 < $$5 * $$5; $$9++) {
+            $$8.g($$2).e(azf.a($$3, -$$5, $$5), azf.a($$3, -$$6, $$6), azf.a($$3, -$$5, $$5));
+            if (a($$1, $$8) && !a($$1, (jf)$$8)) {
+               int $$10 = azf.a($$3, 1, $$7);
+               if ($$3.a(6) == 0) {
+                  $$10 *= 2;
                }
+
+               if ($$3.a(5) == 0) {
+                  $$10 = 1;
+               }
+
+               int $$11 = 17;
+               int $$12 = 25;
+               a($$1, $$3, $$8, $$10, 17, 25);
             }
          }
 
          return true;
+      }
+   }
+
+   private static boolean a(dek $$0, jf.a $$1) {
+      do {
+         $$1.e(0, -1, 0);
+         if ($$0.s($$1)) {
+            return false;
+         }
+      } while ($$0.a_($$1).l());
+
+      $$1.e(0, 1, 0);
+      return true;
+   }
+
+   public static void a(dek $$0, azn $$1, jf.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 1; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.d())) {
+               $$0.a($$2, dho.oB.n().b(dlb.e, Integer.valueOf(azf.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dho.oC.n(), 2);
+         }
+
+         $$2.c(jk.b);
+      }
+   }
+
+   private static boolean a(dek $$0, jf $$1) {
+      if (!$$0.u($$1)) {
+         return true;
+      } else {
+         dus $$2 = $$0.a_($$1.e());
+         return !$$2.a(dho.dV) && !$$2.a(dho.on) && !$$2.a(dho.op);
       }
    }
 }

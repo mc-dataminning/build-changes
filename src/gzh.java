@@ -1,67 +1,70 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class gzh {
-   public static final Comparator<gzh> a = Comparator.<gzh, alc>comparing(gzh::a).thenComparing(gzh::b);
-   private final alc b;
-   private final alc c;
-   @Nullable
-   private ghq d;
+public class gzh implements AutoCloseable {
+   private final Map<ale, gzh.a> a;
 
-   public gzh(alc $$0, alc $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gzh(Map<ale, ale> $$0, gxh $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gxf $$2 = new gxf((ale)$$1x.getKey());
+         $$1.a((ale)$$1x.getKey(), $$2);
+         return new gzh.a($$2, (ale)$$1x.getValue());
+      }));
    }
 
-   public alc a() {
-      return this.b;
-   }
-
-   public alc b() {
-      return this.c;
-   }
-
-   public gxb c() {
-      return fil.Q().a(this.a()).apply(this.b());
-   }
-
-   public ghq a(Function<alc, ghq> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
-      return this.d;
-   }
-
-   public fdi a(ghg $$0, Function<alc, ghq> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fdi a(ghg $$0, Function<alc, ghq> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(goh.a($$0, this.a($$1), $$2, $$3));
+   public gxf a(ale $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gzh $$1 = (gzh)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+   public void close() {
+      this.a.values().forEach(gzh.a::close);
+      this.a.clear();
+   }
+
+   public Map<ale, CompletableFuture<gzh.b>> a(auv $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         gzh.a $$4 = $$3.getValue();
+         return gxb.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gzh.b($$4.a, $$1xx));
+      }));
+   }
+
+   static record a(gxf a, ale b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.g();
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
+   public static class b {
+      private final gxf a;
+      private final gxb.a b;
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+      public b(gxf $$0, gxb.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Nullable
+      public gxg a(ale $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public gxg a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

@@ -1,8 +1,7 @@
-public class guu extends guj implements gvb {
-   public boolean a;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class guu extends gtq {
+   @Nullable
+   public gzi a;
+   public cvs b = cvs.k;
 }

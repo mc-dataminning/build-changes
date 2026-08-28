@@ -1,56 +1,52 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class evn extends euu {
-   private static final Logger b = LogUtils.getLogger();
+public class evn extends euy {
    public static final MapCodec<evn> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(exp.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  cyl.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cyl.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cyl.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
             .apply($$0, evn::new)
    );
-   private final exo c;
-   private final boolean d;
+   public static final cyl b = new cyl(cyl.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cyl.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private evn(List<ews> $$0, exo $$1, boolean $$2) {
+   public evn(List<eww> $$0, Optional<cyl.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public euw<evn> b() {
-      return eux.n;
-   }
-
-   @Override
-   public Set<ewa<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.m()) {
-         int $$2 = $$0.p();
-         float $$3 = this.d ? 1.0F - (float)$$0.o() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - azd.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(azd.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   protected cvs a(cvs $$0, etl $$1) {
+      $$0.a(ks.Z, b, this::a);
       return $$0;
    }
 
-   public static euu.a<?> a(exo $$0) {
-      return a($$1 -> new evn($$1, $$0, false));
+   private cyl a(cyl $$0) {
+      return new cyl(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static euu.a<?> a(exo $$0, boolean $$1) {
-      return a($$2 -> new evn($$2, $$0, $$1));
+   @Override
+   public eva<evn> b() {
+      return evb.L;
    }
 }

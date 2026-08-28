@@ -1,28 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class ejy extends ekn {
-   public static final MapCodec<ejy> a = bqu.b(0, 256).fieldOf("count").xmap(ejy::new, $$0 -> $$0.c);
-   private final bqu c;
+public class ejy extends ekm {
+   private static final ejy c = new ejy();
+   public static MapCodec<ejy> a = MapCodec.unit(() -> c);
 
-   private ejy(bqu $$0) {
-      this.c = $$0;
+   private ejy() {
    }
 
-   public static ejy a(bqu $$0) {
-      return new ejy($$0);
-   }
-
-   public static ejy a(int $$0) {
-      return a(bqr.a($$0));
+   public static ejy a() {
+      return c;
    }
 
    @Override
-   protected int a(azl $$0, je $$1) {
-      return this.c.a($$0);
+   protected boolean a(ekl $$0, azn $$1, jf $$2) {
+      ekk $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jo<dfk> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public ekk<?> b() {
-      return ekk.f;
+   public eko<?> b() {
+      return eko.e;
    }
 }

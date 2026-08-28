@@ -1,52 +1,105 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface doa {
-   doa w_ = new doa() {
-      @Override
-      public boolean a(deh $$0, je $$1, duo $$2, @Nullable Collection<jj> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((dog)dhl.qT).l().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.l() && !$$2.y().b(eqq.c) ? false : dog.a($$0, $$1, $$2, $$3);
-         } else {
-            return doa.super.a($$0, $$1, $$2, $$3, $$4);
+public enum doa implements bab {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
+
+   public static final Codec<doa> e = bab.a(doa::values);
+   private final String f;
+   private final h g;
+
+   private doa(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
+   }
+
+   public doa a(doa $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public jk a(jk $$0) {
+      if ($$0.o() == jk.a.b) {
+         return $$0;
+      } else {
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
          }
       }
+   }
 
-      @Override
-      public int a(dof.a $$0, deh $$1, je $$2, azl $$3, dof $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
       }
-
-      @Override
-      public int j_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte b() {
-      return 1;
    }
 
-   default void a(deh $$0, duo $$1, je $$2, azl $$3) {
+   public static doa a(azn $$0) {
+      return ad.a(values(), $$0);
    }
 
-   default boolean a(deh $$0, je $$1, azl $$2) {
-      return false;
+   public static List<doa> b(azn $$0) {
+      return ad.b(values(), $$0);
    }
 
-   default boolean a(deh $$0, je $$1, duo $$2, @Nullable Collection<jj> $$3, boolean $$4) {
-      return ((dmj)dhl.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   @Override
+   public String c() {
+      return this.f;
    }
-
-   default boolean d() {
-      return true;
-   }
-
-   default int j_(int $$0) {
-      return 1;
-   }
-
-   int a(dof.a var1, deh var2, je var3, azl var4, dof var5, boolean var6);
 }

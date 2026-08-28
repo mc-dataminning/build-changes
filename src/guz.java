@@ -1,5 +1,8 @@
-public class guz extends guj {
-   public float a;
-   public boolean b;
-   public cgu.g c = cgu.g.a;
+public class guz extends guo implements gvg {
+   public boolean a;
+
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

@@ -1,12 +1,18 @@
-public class ctp extends cvk {
-   private final axj<dri> a;
+import javax.annotation.Nullable;
 
-   public ctp(axj<dri> $$0, cvk.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class ctp extends cvn implements cwn {
+   public ctp(cvn.a $$0) {
+      super($$0);
    }
 
-   public axj<dri> b() {
-      return this.a;
+   public coe a(dej $$0, cvs $$1, bun $$2, @Nullable cvs $$3) {
+      return new cog($$0, $$2, $$1.c(1), $$3);
+   }
+
+   @Override
+   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
+      cog $$4 = new cog($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.d = coe.a.b;
+      return $$4;
    }
 }

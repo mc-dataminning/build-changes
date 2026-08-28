@@ -1,3 +1,7 @@
-public interface hch {
-   void log(hcf var1);
+public interface hch<T> {
+   int e();
+
+   T b(azn var1);
+
+   void a(hcc var1);
 }

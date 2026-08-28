@@ -1,27 +1,13 @@
-public class gqz extends grh<gte, fxc> {
-   private static final alc a = alc.b("textures/entity/creeper/creeper_armor.png");
-   private final fxc b;
+public class gqz extends gsb<gtf, fwz> {
+   private static final ghv a = ghv.q(ale.b("textures/entity/breeze/breeze_eyes.png"));
 
-   public gqz(gpf<gte, fxc> $$0, gah $$1) {
+   public gqz(gpk<gtf, fwz> $$0) {
       super($$0);
-      this.b = new fxc($$1.a(gak.X));
    }
 
-   protected boolean a(gte $$0) {
-      return $$0.b;
-   }
-
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected alc a() {
-      return a;
-   }
-
-   protected fxc b() {
-      return this.b;
+   public void a(fdi $$0, ghl $$1, int $$2, gtf $$3, float $$4, float $$5) {
+      fdm $$6 = $$1.getBuffer(a);
+      fwz $$7 = this.d();
+      gmu.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, gwx.d);
    }
 }

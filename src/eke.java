@@ -1,38 +1,44 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class eke extends ekn {
    public static final MapCodec<eke> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eke::new)
+      $$0 -> $$0.group(jf.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eke::new)
    );
-   private final int c;
-   private final double d;
-   private final double e;
+   private final List<jf> c;
 
-   private eke(int $$0, double $$1, double $$2) {
+   public static eke a(jf... $$0) {
+      return new eke(List.of($$0));
+   }
+
+   private eke(List<jf> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static eke a(int $$0, double $$1, double $$2) {
-      return new eke($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(azl $$0, je $$1) {
-      double $$2 = dfh.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<jf> a_(ekl $$0, azn $$1, jf $$2) {
+      int $$3 = kh.a($$2.u());
+      int $$4 = kh.a($$2.w());
+      boolean $$5 = false;
+
+      for (jf $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, jf $$2) {
+      return $$0 == kh.a($$2.u()) && $$1 == kh.a($$2.w());
    }
 
    @Override
-   public ekk<?> b() {
-      return ekk.g;
+   public eko<?> b() {
+      return eko.o;
    }
 }

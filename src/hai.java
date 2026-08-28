@@ -1,65 +1,107 @@
-public abstract class hai extends hae {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final cgb n;
-   private boolean r;
+public abstract class hai implements hba {
+   protected hax a;
+   protected final awh b;
+   protected final ale c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hba.a k = hba.a.b;
+   protected boolean l;
+   protected azn m;
 
-   public hai(cgb $$0, awd $$1, awf $$2) {
-      super($$1, $$2, hav.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dx());
-      this.g = (double)((float)$$0.dz());
-      this.h = (double)((float)$$0.dD());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   protected hai(awf $$0, awh $$1, azn $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected hai(ale $$0, awh $$1, azn $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         fil.Q().ak().a((haw)this.o());
-         this.r = true;
-      }
+   public ale a() {
+      return this.c;
+   }
 
-      if (!this.n.dN() && !this.r) {
-         this.f = (double)((float)this.n.dx());
-         this.g = (double)((float)this.n.dz());
-         this.h = (double)((float)this.n.dD());
-         float $$1 = (float)this.n.dv().i();
-         if ($$1 >= 0.01F) {
-            this.e = azd.h(azd.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = azd.h(azd.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   @Override
+   public hcg a(hcf $$0) {
+      if (this.c.equals(hcf.c)) {
+         this.a = hcf.e;
+         return hcf.d;
       } else {
-         this.n();
+         hcg $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hcf.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
       }
    }
 
-   private float u() {
-      return this.n.o_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.o_() ? 1.5F : 1.1F;
+   @Override
+   public hax b() {
+      return this.a;
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public awh c() {
+      return this.b;
    }
 
    @Override
-   public boolean s() {
-      return !this.n.ba();
+   public boolean d() {
+      return this.i;
    }
 
-   protected abstract hae o();
+   @Override
+   public int e() {
+      return this.j;
+   }
 
-   protected abstract boolean p();
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hba.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
+   }
 }

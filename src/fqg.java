@@ -1,283 +1,132 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.BufferedReader;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import org.apache.commons.lang3.StringUtils;
+import java.time.Instant;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fqg extends fqd {
-   private static final alc a = alc.b("textures/misc/credits_vignette.png");
-   private static final Logger b = LogUtils.getLogger();
-   private static final xd c = xd.b("============").a(n.p);
-   private static final String d = "           ";
-   private static final String s = "" + n.p + n.q + n.k + n.l;
-   private static final float u = 5.0F;
-   private static final float v = 15.0F;
-   private static final alc w = alc.b("texts/end.txt");
-   private static final alc x = alc.b("texts/credits.json");
-   private static final alc y = alc.b("texts/postcredits.txt");
-   private final boolean z;
-   private final Runnable A;
-   private float B;
-   private List<ayp> C;
-   private IntSet D;
-   private int E;
-   private boolean F;
-   private final IntSet G = new IntOpenHashSet();
-   private float H;
-   private final float I;
-   private int J;
-   private final flb K = new flb(false);
+public class fqg extends fqh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 25;
+   private static final xe c = xe.c("recover_world.title").a(n.r);
+   private static final xe d = xe.c("recover_world.bug_tracker");
+   private static final xe s = xe.c("recover_world.restore");
+   private static final xe u = xe.c("recover_world.no_fallback");
+   private static final xe v = xe.c("recover_world.done.title");
+   private static final xe w = xe.c("recover_world.done.success");
+   private static final xe x = xe.c("recover_world.done.failed");
+   private static final xe y = xe.c("recover_world.issue.none").a(n.k);
+   private static final xe z = xe.c("recover_world.issue.missing_file").a(n.m);
+   private final BooleanConsumer A;
+   private final fog B = fog.d().a(8);
+   private final xe C;
+   private final fli D;
+   private final fli E;
+   private final esz.c F;
 
-   public fqg(boolean $$0, Runnable $$1) {
-      super(fic.a);
-      this.z = $$0;
+   public fqg(fip $$0, BooleanConsumer $$1, esz.c $$2) {
+      super(c);
       this.A = $$1;
-      if (!$$0) {
-         this.I = 0.75F;
+      this.C = xe.a("recover_world.message", xe.b($$2.f()).a(n.h));
+      this.D = new fli(this.C, $$0.h);
+      this.F = $$2;
+      Exception $$3 = this.a($$2, false);
+      Exception $$4 = this.a($$2, true);
+      xe $$5 = xe.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
+      this.E = new fli($$5, $$0.h);
+      boolean $$6 = $$3 != null && $$4 == null;
+      this.B.c().b();
+      this.B.a(new flv(this.l, $$0.h));
+      this.B.a(this.D.b(true));
+      this.B.a(this.E);
+      fog $$7 = fog.e().a(5);
+      $$7.a(fko.a(d, fpe.b(this, ayb.j)).b(120, 20).a());
+      $$7.a(fko.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : flz.a(u)).a()).j = $$6;
+      this.B.a($$7);
+      this.B.a(fko.a(xd.k, $$0x -> this.d()).b(120, 20).a());
+      this.B.a(this::c);
+   }
+
+   private void a(fip $$0) {
+      Exception $$1 = this.a(this.F, false);
+      Exception $$2 = this.a(this.F, true);
+      if ($$1 != null && $$2 == null) {
+         $$0.d(new fps(xe.c("recover_world.restoring")));
+         fvg.a(this.F);
+         if (this.F.n()) {
+            $$0.a(new fpf(this.A, v, w, xd.j, xd.k));
+         } else {
+            $$0.a(new fpa(() -> this.A.accept(false), v, x));
+         }
       } else {
-         this.I = 0.5F;
+         a.error(
+            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
+            $$1 != null ? $$1.getMessage() : "no issues",
+            $$2 != null ? $$2.getMessage() : "no issues"
+         );
+         $$0.a(new fpa(() -> this.A.accept(false), v, x));
       }
-
-      this.J = 1;
-      this.H = this.I;
    }
 
-   private float m() {
-      return this.F ? this.I * (5.0F + (float)this.G.size() * 15.0F) * (float)this.J : this.I * (float)this.J;
+   private xe a(esz.c $$0, boolean $$1, @Nullable Exception $$2) {
+      if ($$1 && $$2 instanceof FileNotFoundException) {
+         return xe.i();
+      } else {
+         xs $$3 = xe.i();
+         Instant $$4 = $$0.a($$1);
+         xs $$5 = $$4 != null ? xe.b(fvp.a.format($$4)) : xe.c("recover_world.state_entry.unknown");
+         $$3.b(xe.a("recover_world.state_entry", $$5.a(n.h)));
+         if ($$2 == null) {
+            $$3.b(y);
+         } else if ($$2 instanceof FileNotFoundException) {
+            $$3.b(z);
+         } else if ($$2 instanceof ux) {
+            $$3.b(xe.b($$2.getCause().toString()).a(n.m));
+         } else {
+            $$3.b(xe.b($$2.toString()).a(n.m));
+         }
+
+         return $$3;
+      }
+   }
+
+   @Nullable
+   private Exception a(esz.c $$0, boolean $$1) {
+      try {
+         if (!$$1) {
+            $$0.a($$0.h());
+         } else {
+            $$0.a($$0.i());
+         }
+
+         return null;
+      } catch (ur | ux | IOException var4) {
+         return var4;
+      }
    }
 
    @Override
-   public void e() {
-      this.m.s().a();
-      this.m.ak().a(false);
-      float $$0 = (float)(this.E + this.o + this.o + 24);
-      if (this.B > $$0) {
-         this.D();
-      }
+   protected void aS_() {
+      super.aS_();
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.J = -1;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.G.add($$0);
-      } else if ($$0 == 32) {
-         this.F = true;
-      }
-
-      this.H = this.m();
-      return super.a($$0, $$1, $$2);
+   protected void c() {
+      this.E.d(this.n - 50);
+      this.D.d(this.n - 50);
+      this.B.a();
+      foa.a(this.B, this.H());
    }
 
    @Override
-   public boolean c(int $$0, int $$1, int $$2) {
-      if ($$0 == 265) {
-         this.J = 1;
-      }
-
-      if ($$0 == 32) {
-         this.F = false;
-      } else if ($$0 == 341 || $$0 == 345) {
-         this.G.remove($$0);
-      }
-
-      this.H = this.m();
-      return super.c($$0, $$1, $$2);
+   public xe i() {
+      return xd.a(super.i(), this.C);
    }
 
    @Override
    public void d() {
-      this.D();
-   }
-
-   private void D() {
-      this.A.run();
-   }
-
-   @Override
-   protected void aR_() {
-      if (this.C == null) {
-         this.C = Lists.newArrayList();
-         this.D = new IntOpenHashSet();
-         if (this.z) {
-            this.a(w, this::a);
-         }
-
-         this.a(x, this::b);
-         if (this.z) {
-            this.a(y, this::a);
-         }
-
-         this.E = this.C.size() * 12;
-      }
-   }
-
-   private void a(alc $$0, fqg.a $$1) {
-      try (Reader $$2 = this.m.ac().openAsReader($$0)) {
-         $$1.read($$2);
-      } catch (Exception var8) {
-         b.error("Couldn't load credits from file {}", $$0, var8);
-      }
-   }
-
-   private void a(Reader $$0) throws IOException {
-      BufferedReader $$1 = new BufferedReader($$0);
-      azl $$2 = azl.a(8124371L);
-
-      String $$3;
-      while (($$3 = $$1.readLine()) != null) {
-         $$3 = $$3.replaceAll("PLAYERNAME", this.m.X().c());
-
-         int $$4;
-         while (($$4 = $$3.indexOf(s)) != -1) {
-            String $$5 = $$3.substring(0, $$4);
-            String $$6 = $$3.substring($$4 + s.length());
-            $$3 = $$5 + n.p + n.q + "XXXXXXXX".substring(0, $$2.a(4) + 3) + $$6;
-         }
-
-         this.a($$3);
-         this.E();
-      }
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         this.E();
-      }
-   }
-
-   private void b(Reader $$0) {
-      for (JsonElement $$2 : ayt.b($$0)) {
-         JsonObject $$3 = $$2.getAsJsonObject();
-         String $$4 = $$3.get("section").getAsString();
-         this.a(c, true);
-         this.a(xd.b($$4).a(n.o), true);
-         this.a(c, true);
-         this.E();
-         this.E();
-
-         for (JsonElement $$6 : $$3.getAsJsonArray("disciplines")) {
-            JsonObject $$7 = $$6.getAsJsonObject();
-            String $$8 = $$7.get("discipline").getAsString();
-            if (StringUtils.isNotEmpty($$8)) {
-               this.a(xd.b($$8).a(n.o), true);
-               this.E();
-               this.E();
-            }
-
-            for (JsonElement $$10 : $$7.getAsJsonArray("titles")) {
-               JsonObject $$11 = $$10.getAsJsonObject();
-               String $$12 = $$11.get("title").getAsString();
-               JsonArray $$13 = $$11.getAsJsonArray("names");
-               this.a(xd.b($$12).a(n.h), false);
-
-               for (JsonElement $$14 : $$13) {
-                  String $$15 = $$14.getAsString();
-                  this.a(xd.b("           ").f($$15).a(n.p), false);
-               }
-
-               this.E();
-               this.E();
-            }
-         }
-      }
-   }
-
-   private void E() {
-      this.C.add(ayp.a);
-   }
-
-   private void a(String $$0) {
-      this.C.addAll(this.m.h.c(xd.b($$0), 256));
-   }
-
-   private void a(xd $$0, boolean $$1) {
-      if ($$1) {
-         this.D.add(this.C.size());
-      }
-
-      this.C.add($$0.g());
-   }
-
-   @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
-      this.B = Math.max(0.0F, this.B + $$3 * this.H);
-      int $$4 = this.n / 2 - 128;
-      int $$5 = this.o + 50;
-      float $$6 = -this.B;
-      $$0.c().a();
-      $$0.c().a(0.0F, $$6, 0.0F);
-      this.K.a($$0, this.n, 1.0F, $$5);
-      int $$7 = $$5 + 100;
-
-      for (int $$8 = 0; $$8 < this.C.size(); $$8++) {
-         if ($$8 == this.C.size() - 1) {
-            float $$9 = (float)$$7 + $$6 - (float)(this.o / 2 - 6);
-            if ($$9 < 0.0F) {
-               $$0.c().a(0.0F, -$$9, 0.0F);
-            }
-         }
-
-         if ((float)$$7 + $$6 + 12.0F + 8.0F > 0.0F && (float)$$7 + $$6 < (float)this.o) {
-            ayp $$10 = this.C.get($$8);
-            if (this.D.contains($$8)) {
-               $$0.a(this.p, $$10, $$4 + 128, $$7, -1);
-            } else {
-               $$0.b(this.p, $$10, $$4, $$7, -1);
-            }
-         }
-
-         $$7 += 12;
-      }
-
-      $$0.c().b();
-   }
-
-   private void c(fjx $$0) {
-      $$0.a(ghq::C, a, 0, 0, 0.0F, 0.0F, this.n, this.o, this.n, this.o);
-   }
-
-   @Override
-   public void b(fjx $$0, int $$1, int $$2, float $$3) {
-      if (this.z) {
-         $$0.b(ghq.t(), 0, 0, this.n, this.o, 0);
-      } else {
-         super.b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   protected void a(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
-      float $$5 = this.B * 0.5F;
-      fqd.a($$0, fqd.g, 0, 0, 0.0F, $$5, $$3, $$4);
-   }
-
-   @Override
-   public boolean k() {
-      return !this.z;
-   }
-
-   @Override
-   public void j() {
-      this.m.s().b(awc.c);
-   }
-
-   @Override
-   public awb C() {
-      return awc.c;
-   }
-
-   @FunctionalInterface
-   interface a {
-      void read(Reader var1) throws IOException;
+      this.A.accept(false);
    }
 }

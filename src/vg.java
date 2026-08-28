@@ -1,27 +1,7 @@
-public interface vg {
-   void a(va var1);
+public class vg {
+   private static final vf<?>[] a = new vf[]{ui.a, ue.a, uy.a, ul.a, uo.a, uj.b, uh.b, ud.a, vb.a, um.a, ug.b, uk.a, un.a};
 
-   void a(ud var1);
-
-   void a(ux var1);
-
-   void a(uk var1);
-
-   void a(un var1);
-
-   void a(ui var1);
-
-   void a(ug var1);
-
-   void a(uc var1);
-
-   void a(uj var1);
-
-   void a(um var1);
-
-   void a(ul var1);
-
-   void a(uf var1);
-
-   void a(uh var1);
+   public static vf<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < a.length ? a[$$0] : vf.a($$0);
+   }
 }

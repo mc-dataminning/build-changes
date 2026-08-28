@@ -1,21 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gum extends gtl {
-   public float a;
-   public float b;
-   public long c;
-   public int d;
-   public float e;
-   public float f;
-   public int g;
-   public duo h = dhl.a.o();
-   public boolean i;
+public class gum extends gtq {
+   public jk a = jk.c;
+   public cvs b = cvs.k;
+   public int c;
+   public boolean d;
    @Nullable
-   public eys j;
+   public gzi e;
    @Nullable
-   public eys k;
-   @Nullable
-   public eys l;
-   @Nullable
-   public eys B;
+   public esl f;
+   public final gwp g = new gwp();
 }

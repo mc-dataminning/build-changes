@@ -1,92 +1,88 @@
-import java.util.Optional;
-import org.joml.Quaternionf;
+import javax.annotation.Nullable;
 
-public class gfs extends gfo {
-   private final dzp a;
-   private float b;
-   private float F;
-   private float G;
-   private float H;
+public class gfs extends gft {
+   private final jf a;
+   private final float b;
+   private final float F;
 
-   gfs(gbh $$0, double $$1, double $$2, double $$3, dzp $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.3F;
-      this.a = $$4;
-      this.t = $$5;
-      Optional<eys> $$6 = $$4.a($$0);
-      if ($$6.isPresent()) {
-         eys $$7 = $$6.get();
-         double $$8 = $$1 - $$7.a();
-         double $$9 = $$2 - $$7.b();
-         double $$10 = $$3 - $$7.c();
-         this.F = this.b = (float)azd.d($$8, $$10);
-         this.H = this.G = (float)azd.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
+   public gfs(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dus $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jf.a($$1, $$2, $$3));
+   }
+
+   public gfs(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dus $$7, jf $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fip.Q().ap().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dho.i)) {
+         int $$9 = fip.Q().aw().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
       }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a(fdi $$0, fhu $$1, float $$2) {
-      float $$3 = azd.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
-      float $$4 = azd.h($$2, this.F, this.b);
-      float $$5 = azd.h($$2, this.H, this.G) + (float) (Math.PI / 2);
-      Quaternionf $$6 = new Quaternionf();
-      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
-      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
-      this.a($$0, $$1, $$6, $$2);
+   public gex b() {
+      return gex.a;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? ghh.a(this.c, this.a) : $$1;
    }
 
-   @Override
-   public ges b() {
-      return ges.c;
+   @Nullable
+   static gfs a(lg $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      dus $$8 = $$0.b();
+      return !$$8.l() && !$$8.a(dho.bQ) && $$8.D() ? new gfs($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         Optional<eys> $$0 = this.a.a(this.c);
-         if ($$0.isEmpty()) {
-            this.k();
-         } else {
-            int $$1 = this.t - this.s;
-            double $$2 = 1.0 / (double)$$1;
-            eys $$3 = $$0.get();
-            this.g = azd.d($$2, this.g, $$3.a());
-            this.h = azd.d($$2, this.h, $$3.b());
-            this.i = azd.d($$2, this.i, $$3.c());
-            double $$4 = this.g - $$3.a();
-            double $$5 = this.h - $$3.b();
-            double $$6 = this.i - $$3.c();
-            this.F = this.b;
-            this.b = (float)azd.d($$4, $$6);
-            this.H = this.G;
-            this.G = (float)azd.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
+   public static class a implements gew<lg> {
+      @Nullable
+      public get a(lg $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         get $$8 = gfs.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
+            $$8.a($$1.z.a(20) + 20);
          }
+
+         return $$8;
       }
    }
 
-   public static class a implements ger<ls> {
-      private final gfj a;
-
-      public a(gfj $$0) {
-         this.a = $$0;
-      }
-
-      public geo a(ls $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfs $$8 = new gfs($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+   public static class b implements gew<lg> {
+      @Nullable
+      public get a(lg $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return gfs.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
    }
 }

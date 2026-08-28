@@ -1,4 +1,6 @@
-import java.util.concurrent.Executor;
+import java.util.concurrent.CompletableFuture;
 
-public record dxq(arh a, dwl b, epf c, ark d, Executor e) {
+@FunctionalInterface
+public interface dxq {
+   CompletableFuture<dwo> doWork(dxu var1, dxs var2, azz<arb> var3, dwo var4);
 }

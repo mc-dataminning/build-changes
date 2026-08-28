@@ -1,51 +1,55 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface dik<T extends Enum<T>> {
-   int z_ = 4;
+public class dik extends dla implements dii {
+   public static final MapCodec<dik> c = b(dik::new);
 
-   Optional<duo> k_(duo var1);
-
-   float av_();
-
-   default void a_(duo $$0, arh $$1, je $$2, azl $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<dik> a() {
+      return c;
    }
 
-   T c();
+   public dik(dur.d $$0) {
+      super($$0, jk.a, u_, false);
+      this.l(this.F.b().b(v_, Boolean.valueOf(false)));
+   }
 
-   default Optional<duo> c(duo $$0, arh $$1, je $$2, azl $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Override
+   protected dlb c() {
+      return (dlb)dho.sv;
+   }
 
-      for (je $$7 : je.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Override
+   protected dus a(dus $$0, dus $$1) {
+      return $$1.b(v_, $$0.c(v_));
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dik<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Override
+   public cvs a(dem $$0, jf $$1, dus $$2) {
+      return new cvs(cvw.wy);
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      return dii.a($$3, $$0, $$1, $$2);
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.av_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(v_);
+   }
+
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return !$$2.c(v_);
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      $$0.a($$2, $$3.b(v_, Boolean.valueOf(true)), 2);
    }
 }

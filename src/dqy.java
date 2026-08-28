@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqy extends dky {
-   public static final MapCodec<dqy> c = b(dqy::new);
-   protected static final ezm g = dhj.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dqy extends dph implements dqs {
+   public static final MapCodec<dqy> J = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqs.a.e.fieldOf("weathering_state").forGetter(din::c), dus.a.fieldOf("base_state").forGetter($$0x -> $$0x.I), t()).apply($$0, dqy::new)
+   );
+   private final dqs.a K;
 
    @Override
    public MapCodec<dqy> a() {
-      return c;
+      return J;
    }
 
-   public dqy(dun.d $$0) {
-      super($$0, jj.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azl $$0) {
-      return dmp.a($$0);
+   public dqy(dqs.a $$0, dus $$1, dur.d $$2) {
+      super($$1, $$2);
+      this.K = $$0;
    }
 
    @Override
-   protected dhj b() {
-      return dhl.oA;
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean h(duo $$0) {
-      return dmp.a($$0);
+   protected boolean f(dus $$0) {
+      return dqs.c($$0.b()).isPresent();
+   }
+
+   public dqs.a l() {
+      return this.K;
    }
 }

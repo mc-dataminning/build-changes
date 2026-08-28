@@ -1,107 +1,150 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class eab extends dwl {
-   public static final MapCodec<eab> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ala.d(dfo.b)).apply($$0, $$0.stable(eab::new)));
-   private static final int h = 2;
-   private static final List<duo> i = StreamSupport.stream(lu.e.spliterator(), false).flatMap($$0 -> $$0.n().a().stream()).collect(Collectors.toList());
-   private static final int j = azd.f(azd.c((float)i.size()));
-   private static final int k = azd.f((float)i.size() / (float)j);
-   protected static final duo d = dhl.a.o();
-   protected static final duo e = dhl.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
-
-   public eab(jn.c<dfh> $$0) {
-      super(new dfs($$0));
-   }
-
-   @Override
-   protected MapCodec<? extends dwl> b() {
-      return c;
-   }
-
-   @Override
-   public void a(aro $$0, dfb $$1, eay $$2, dwk $$3) {
-   }
-
-   @Override
-   public void a(dfd $$0, dwk $$1, dfb $$2) {
-      je.a $$3 = new je.a();
-      ddm $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = kg.a($$5, $$7);
-            int $$10 = kg.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            duo $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
-      }
-   }
-
-   @Override
-   public CompletableFuture<dwk> a(ebm $$0, eay $$1, dfb $$2, dwk $$3) {
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, eak.a $$2, dei $$3, eay $$4) {
-      return 0;
-   }
-
-   @Override
-   public des a(int $$0, int $$1, dei $$2, eay $$3) {
-      return new des(0, new duo[0]);
-   }
-
-   @Override
-   public void a(List<String> $$0, eay $$1, je $$2) {
-   }
-
-   public static duo a(int $$0, int $$1) {
-      duo $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = azd.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
+public class eab implements eai.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ad.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
             }
          }
       }
+   });
+   private final ObjectListIterator<eab.a> h;
+   private final ObjectListIterator<emj> i;
 
-      return $$2;
+   public static eab a(dfe $$0, ddp $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<eab.a> $$4 = new ObjectArrayList(10);
+      ObjectList<emj> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != elr.a).forEach($$5x -> {
+         elr $$6 = $$5x.h().d();
+
+         for (elk $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof elc) {
+                  elc $$8 = (elc)$$7;
+                  emq.a $$9 = $$8.b().f();
+                  if ($$9 == emq.a.b) {
+                     $$4.add(new eab.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (emj $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new eab.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new eab($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public eab(ObjectListIterator<eab.a> $$0, ObjectListIterator<emj> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public void a(aro $$0, long $$1, eay $$2, dfj $$3, dfb $$4, dwk $$5) {
+   public double a(eah.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         eab.a $$5 = (eab.a)this.h.next();
+         eky $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         emj $$13 = (emj)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
    @Override
-   public void a(aro $$0) {
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
    @Override
-   public int g() {
-      return 0;
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   public int e() {
-      return 384;
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = azf.g($$0, $$1, $$2);
+      return azf.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   @Override
-   public int f() {
-      return 63;
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = azf.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * azf.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = azf.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(eky a, elr b, int c) {
    }
 }

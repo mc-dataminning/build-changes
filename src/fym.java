@@ -1,67 +1,133 @@
-public class fym extends fwc<guv> {
-   public fym(gal $$0) {
+public class fym extends fxo<gux> {
+   private static final String a = "feather";
+   private final gaq b;
+   private final gaq c;
+   private final gaq d;
+   private final gaq e;
+   private final gaq f;
+   private final gaq g;
+   private final gaq i;
+
+   public fym(gaq $$0) {
       super($$0);
+      this.b = $$0.b("body");
+      this.c = $$0.b("tail");
+      this.d = $$0.b("left_wing");
+      this.e = $$0.b("right_wing");
+      this.f = $$0.b("head");
+      this.g = $$0.b("left_leg");
+      this.i = $$0.b("right_leg");
    }
 
-   public void a(guv $$0) {
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      $$1.a("body", gav.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gas.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
+      $$1.a("tail", gav.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gas.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
+      $$1.a("left_wing", gav.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gas.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      $$1.a("right_wing", gav.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gas.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      gba $$2 = $$1.a("head", gav.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gas.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", gav.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gas.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", gav.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gas.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", gav.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gas.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", gav.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gas.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
+      gav $$3 = gav.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, gas.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      $$1.a("right_leg", $$3, gas.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      return gaw.a($$0, 32, 32);
+   }
+
+   public void a(gux $$0) {
       super.a($$0);
-      float $$1 = (float) (Math.PI / 6);
-      float $$2 = $$0.C;
-      cmm $$3 = $$0.d;
-      if ($$3 == cmm.e) {
-         float $$4 = $$0.p / 60.0F;
-         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azd.a($$4 * 30.0F) * 10.0F;
-         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azd.b($$4 * 30.0F) * 10.0F;
-         this.o.b = this.o.b + azd.a($$4 * 10.0F);
-         this.o.c = this.o.c + azd.a($$4 * 40.0F) + 0.4F;
-         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azd.b($$4 * 40.0F) * 10.0F);
-         this.s.g = this.r.g * -1.0F;
-         this.r.c = this.r.c + (azd.a($$4 * 40.0F) * 0.5F - 0.5F);
-         this.s.c = this.s.c + azd.a($$4 * 40.0F) * 0.5F + 0.5F;
-         this.q.c = this.q.c + azd.a($$4 * 40.0F) * 0.35F;
-      } else if ($$3 == cmm.a && $$2 == 0.0F) {
-         this.b($$0);
-      } else if ($$3 == cmm.b) {
-         fwf.a(this.r, this.s, this.o, $$0.ap == bue.b);
-      } else if ($$3 == cmm.c) {
-         fwf.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == bue.b);
-      } else if ($$3 == cmm.d) {
-         this.o.e = 0.5F;
-         this.o.f = 0.0F;
-         if ($$0.ap == bue.a) {
-            this.r.f = -0.5F;
-            this.r.e = -0.9F;
-         } else {
-            this.s.f = 0.5F;
-            this.s.e = -0.9F;
-         }
+      this.a($$0.c);
+      this.f.e = $$0.V * (float) (Math.PI / 180.0);
+      this.f.f = $$0.U * (float) (Math.PI / 180.0);
+      switch ($$0.c) {
+         case b:
+            this.g.e = this.g.e + azf.b($$0.X * 0.6662F) * 1.4F * $$0.Y;
+            this.i.e = this.i.e + azf.b($$0.X * 0.6662F + (float) Math.PI) * 1.4F * $$0.Y;
+         case a:
+         case e:
+         default:
+            float $$3 = $$0.b * 0.3F;
+            this.f.c += $$3;
+            this.c.e = this.c.e + azf.b($$0.X * 0.6662F) * 0.3F * $$0.Y;
+            this.c.c += $$3;
+            this.b.c += $$3;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.c += $$3;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.c += $$3;
+            this.g.c += $$3;
+            this.i.c += $$3;
+         case c:
+            break;
+         case d:
+            float $$1 = azf.b($$0.p);
+            float $$2 = azf.a($$0.p);
+            this.f.b += $$1;
+            this.f.c += $$2;
+            this.f.e = 0.0F;
+            this.f.f = 0.0F;
+            this.f.g = azf.a($$0.p) * 0.4F;
+            this.b.b += $$1;
+            this.b.c += $$2;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.b += $$1;
+            this.d.c += $$2;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.b += $$1;
+            this.e.c += $$2;
+            this.c.b += $$1;
+            this.c.c += $$2;
       }
    }
 
-   protected void a(guv $$0, float $$1) {
-      float $$2 = $$0.C;
-      if ($$2 > 0.0F && $$0.d == cmm.a) {
-         fwf.a(this.r, this.s, $$0.ap, $$2, $$0.p);
+   private void a(fym.a $$0) {
+      switch ($$0) {
+         case a:
+            this.g.e += (float) (Math.PI * 2.0 / 9.0);
+            this.i.e += (float) (Math.PI * 2.0 / 9.0);
+         case b:
+         case e:
+         default:
+            break;
+         case c:
+            float $$1 = 1.9F;
+            this.f.c++;
+            this.c.e += (float) (Math.PI / 6);
+            this.c.c++;
+            this.b.c++;
+            this.d.g = -0.0873F;
+            this.d.c++;
+            this.e.g = 0.0873F;
+            this.e.c++;
+            this.g.c++;
+            this.i.c++;
+            this.g.e++;
+            this.i.e++;
+            break;
+         case d:
+            this.g.g = (float) (-Math.PI / 9);
+            this.i.g = (float) (Math.PI / 9);
+      }
+   }
+
+   public static fym.a a(cgt $$0) {
+      if ($$0.gB()) {
+         return fym.a.d;
+      } else if ($$0.y()) {
+         return fym.a.c;
       } else {
-         super.a($$0, $$1);
+         return $$0.gD() ? fym.a.a : fym.a.b;
       }
    }
 
-   private void b(guv $$0) {
-      if ($$0.ap == bue.a) {
-         this.s.e = -1.8F;
-      } else {
-         this.r.e = -1.8F;
-      }
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

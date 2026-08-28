@@ -1,48 +1,58 @@
-public class chf {
-   public static final alb<che> a = a("pale");
-   public static final alb<che> b = a("spotted");
-   public static final alb<che> c = a("snowy");
-   public static final alb<che> d = a("black");
-   public static final alb<che> e = a("ashen");
-   public static final alb<che> f = a("rusty");
-   public static final alb<che> g = a("woods");
-   public static final alb<che> h = a("chestnut");
-   public static final alb<che> i = a("striped");
-   public static final alb<che> j = a;
+public abstract class chf extends buv {
+   public static final int e = 120;
 
-   private static alb<che> a(String $$0) {
-      return alb.a(lv.m, alc.b($$0));
+   protected chf(bty<? extends chf> $$0, dej $$1) {
+      super($$0, $$1);
+      this.a(erk.j, 0.0F);
    }
 
-   static void a(qt<che> $$0, alb<che> $$1, String $$2, alb<dfh> $$3) {
-      a($$0, $$1, $$2, jr.a($$0.a(lv.aG).b($$3)));
+   @Override
+   public boolean a(dem $$0) {
+      return $$0.f(this);
    }
 
-   static void a(qt<che> $$0, alb<che> $$1, String $$2, axj<dfh> $$3) {
-      a($$0, $$1, $$2, $$0.a(lv.aG).b($$3));
+   @Override
+   public int T() {
+      return 120;
    }
 
-   static void a(qt<che> $$0, alb<che> $$1, String $$2, jr<dfh> $$3) {
-      alc $$4 = alc.b("entity/wolf/" + $$2);
-      alc $$5 = alc.b("entity/wolf/" + $$2 + "_tame");
-      alc $$6 = alc.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new che($$4, $$5, $$6, $$3));
+   @Override
+   protected int el() {
+      return 1 + this.dS().z.a(3);
    }
 
-   public static jn<che> a(kb $$0, jn<dfh> $$1) {
-      ka<che> $$2 = $$0.d(lv.m);
-      return $$2.i().filter($$1x -> ((che)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.b(j)).or($$2::a).orElseThrow();
+   protected void u(int $$0) {
+      if (this.bI() && !this.bl()) {
+         this.j($$0 - 1);
+         if (this.cq() == -20) {
+            this.j(0);
+            this.a(this.dT().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
    }
 
-   public static void a(qt<che> $$0) {
-      a($$0, a, "wolf", dfo.p);
-      a($$0, b, "wolf_spotted", aws.k);
-      a($$0, c, "wolf_snowy", dfo.F);
-      a($$0, d, "wolf_black", dfo.n);
-      a($$0, e, "wolf_ashen", dfo.q);
-      a($$0, f, "wolf_rusty", aws.i);
-      a($$0, g, "wolf_woods", dfo.i);
-      a($$0, h, "wolf_chestnut", dfo.o);
-      a($$0, i, "wolf_striped", aws.f);
+   @Override
+   public void ay() {
+      int $$0 = this.cq();
+      super.ay();
+      this.u($$0);
+   }
+
+   @Override
+   public boolean cG() {
+      return false;
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   public static boolean c(bty<? extends chf> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
+      int $$5 = $$1.N();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axb.a) && $$1.a_($$3.d()).a(dho.G);
    }
 }

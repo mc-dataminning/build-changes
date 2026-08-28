@@ -1,63 +1,61 @@
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
+import java.util.Map;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dyy {
-   private Int2ObjectMap<bto> a = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<bto> b = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<bto> c;
+public class dyy<T extends dyw> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   private void a() {
-      if (this.c == this.a) {
-         this.b.clear();
-         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+   public <U extends T> void a(dzd<T, U> $$0, axr<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-         while ($$1.hasNext()) {
-            Entry<bto> $$0 = (Entry<bto>)$$1.next();
-            this.b.put($$0.getIntKey(), (bto)$$0.getValue());
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
          }
-
-         Int2ObjectMap<bto> $$1x = this.a;
-         this.a = this.b;
-         this.b = $$1x;
       }
    }
 
-   public void a(bto $$0) {
-      this.a();
-      this.a.put($$0.ap(), $$0);
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
    }
 
-   public void b(bto $$0) {
-      this.a();
-      this.a.remove($$0.ap());
-   }
-
-   public boolean c(bto $$0) {
-      return this.a.containsKey($$0.ap());
-   }
-
-   public void a(Consumer<bto> $$0) {
-      if (this.c != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+   public void a(T $$0) {
+      UUID $$1 = $$0.cD();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
       } else {
-         this.c = this.a;
-
-         try {
-            ObjectIterator var2 = this.a.values().iterator();
-
-            while (var2.hasNext()) {
-               bto $$1 = (bto)var2.next();
-               $$0.accept($$1);
-            }
-         } finally {
-            this.c = null;
-         }
+         this.c.put($$1, $$0);
+         this.b.put($$0.ap(), $$0);
       }
+   }
+
+   public void b(T $$0) {
+      this.c.remove($$0.cD());
+      this.b.remove($$0.ap());
+   }
+
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public int b() {
+      return this.c.size();
    }
 }

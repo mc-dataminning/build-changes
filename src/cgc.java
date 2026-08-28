@@ -1,90 +1,56 @@
-import java.util.Optional;
-
-public interface cgc {
-   boolean t();
-
-   void x(boolean var1);
-
-   void m(cvp var1);
-
-   void h(uf var1);
-
-   cvp V_();
-
-   awd y();
-
-   @Deprecated
-   static void a(bum $$0, cvp $$1) {
-      $$1.b(kr.g, $$0.al());
-      cye.a(kr.S, $$1, $$1x -> {
-         if ($$0.ge()) {
-            $$1x.a("NoAI", $$0.ge());
-         }
-
-         if ($$0.ba()) {
-            $$1x.a("Silent", $$0.ba());
-         }
-
-         if ($$0.bb()) {
-            $$1x.a("NoGravity", $$0.bb());
-         }
-
-         if ($$0.ck()) {
-            $$1x.a("Glowing", $$0.ck());
-         }
-
-         if ($$0.cz()) {
-            $$1x.a("Invulnerable", $$0.cz());
-         }
-
-         $$1x.a("Health", $$0.eA());
-      });
+public abstract class cgc extends btk {
+   protected cgc(bty<? extends cgc> $$0, dej $$1) {
+      super($$0, $$1);
+      this.a(erk.j, 0.0F);
    }
 
-   @Deprecated
-   static void a(bum $$0, uf $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.u($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.x($$1.j("Health"));
-      }
+   @Override
+   public boolean a(dem $$0) {
+      return $$0.f(this);
    }
 
-   static <T extends buk & cgc> Optional<brp> a(cnu $$0, bro $$1, T $$2) {
-      cvp $$3 = $$0.b($$1);
-      if ($$3.h() == cvt.qA && $$2.bI()) {
-         $$2.a($$2.y(), 1.0F, 1.0F);
-         cvp $$4 = $$2.V_();
-         $$2.m($$4);
-         cvp $$5 = cvs.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         deg $$6 = $$2.dS();
-         if (!$$6.B) {
-            an.k.a((ari)$$0, $$4);
-         }
+   @Override
+   public int T() {
+      return 120;
+   }
 
-         $$2.as();
-         return Optional.of(brp.a);
+   @Override
+   public int el() {
+      return 1 + this.dS().z.a(3);
+   }
+
+   protected void s(int $$0) {
+      if (this.bI() && !this.bl()) {
+         this.j($$0 - 1);
+         if (this.cq() == -20) {
+            this.j(0);
+            this.a(this.dT().i(), 2.0F);
+         }
       } else {
-         return Optional.empty();
+         this.j(300);
       }
+   }
+
+   @Override
+   public void ay() {
+      int $$0 = this.cq();
+      super.ay();
+      this.s($$0);
+   }
+
+   @Override
+   public boolean cG() {
+      return false;
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   public static boolean b(bty<? extends cgc> $$0, dek $$1, btx $$2, jf $$3, azn $$4) {
+      int $$5 = $$1.N();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axb.a) && $$1.a_($$3.d()).a(dho.G);
    }
 }

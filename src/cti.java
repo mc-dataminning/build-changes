@@ -1,138 +1,117 @@
-import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class cti extends cvk implements cus {
-   public static final ky a = new kx() {
-      @Override
-      protected cvp a(kv $$0, cvp $$1) {
-         return cti.a($$0, $$1) ? $$1 : super.a($$0, $$1);
-      }
-   };
-   protected final cti.a b;
-   protected final jn<ctj> c;
-   private final Supplier<cyk> d;
+public class cti {
+   private static final Codec<cti> e = aw.a.flatComapMap($$0 -> new cti(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
+   private static final Codec<cti> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayo.a(aw.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cti::a)
+            )
+            .apply($$0, cti::new)
+   );
+   public static final Codec<cti> a = Codec.withAlternative(f, e);
+   public static final zc<wp, cti> b = zc.a(aw.b.a(za.a()), $$0 -> $$0.h, za.b, cti::a, cti::new);
+   public static final xe c = xe.c("item.canBreak").a(n.h);
+   public static final xe d = xe.c("item.canPlace").a(n.h);
+   private static final xe g = xe.c("item.canUse.unknown").a(n.h);
+   private final List<aw> h;
+   private final boolean i;
+   private final List<xe> j;
+   @Nullable
+   private duw k;
+   private boolean l;
+   private boolean m;
 
-   public static boolean a(kv $$0, cvp $$1) {
-      je $$2 = $$0.c().a($$0.d().c(djo.b));
-      List<buk> $$3 = $$0.b().a(buk.class, new eyn($$2), btt.f.and(new btt.a($$1)));
-      if ($$3.isEmpty()) {
+   private cti(List<aw> $$0, boolean $$1, List<xe> $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public cti(List<aw> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = a($$0);
+   }
+
+   private static boolean a(duw $$0, @Nullable duw $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
          return false;
-      } else {
-         buk $$4 = $$3.get(0);
-         btw $$5 = $$4.g($$1);
-         cvp $$6 = $$1.a(1);
-         $$4.a($$5, $$6);
-         if ($$4 instanceof bum) {
-            ((bum)$$4).a($$5, 2.0F);
-            ((bum)$$4).fW();
-         }
-
+      } else if (!$$2) {
          return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         kc $$3 = $$0.c().G_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
+      } else {
+         return false;
       }
    }
 
-   public cti(jn<ctj> $$0, cti.a $$1, cvk.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
-      djo.a(this, a);
-      this.d = Suppliers.memoize(() -> {
-         int $$2x = $$0.a().a($$1);
-         float $$3 = $$0.a().e();
-         cyk.a $$4 = cyk.a();
-         btx $$5 = btx.a($$1.a());
-         alc $$6 = alc.b("armor." + $$1.b());
-         $$4.a(bvr.a, new bvp($$6, (double)$$2x, bvp.a.a), $$5);
-         $$4.a(bvr.b, new bvp($$6, (double)$$3, bvp.a.a), $$5);
-         float $$7 = $$0.a().f();
-         if ($$7 > 0.0F) {
-            $$4.a(bvr.p, new bvp($$6, (double)$$7, bvp.a.a), $$5);
+   public boolean a(duw $$0) {
+      if (a($$0, this.k, this.m)) {
+         return this.l;
+      } else {
+         this.k = $$0;
+         this.m = false;
+
+         for (aw $$1 : this.h) {
+            if ($$1.a($$0)) {
+               this.m = this.m | $$1.a();
+               this.l = true;
+               return true;
+            }
          }
 
-         return $$4.a();
-      });
+         this.l = false;
+         return false;
+      }
    }
 
-   public cti.a f() {
-      return this.b;
+   public void a(Consumer<xe> $$0) {
+      this.j.forEach($$0);
    }
 
-   public jn<ctj> g() {
-      return this.c;
+   public cti a(boolean $$0) {
+      return new cti(this.h, $$0, this.j);
+   }
+
+   private static List<xe> a(List<aw> $$0) {
+      for (aw $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(g);
+         }
+      }
+
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dhm)$$0x.a()).f().a(n.i)).toList();
+   }
+
+   public boolean a() {
+      return this.i;
    }
 
    @Override
-   public boolean a(cvp $$0, cvp $$1) {
-      return this.c.a().c().test($$1) || super.a($$0, $$1);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cti $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
+      }
    }
 
    @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      return this.a(this, $$0, $$1, $$2);
+   public int hashCode() {
+      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
    }
 
    @Override
-   public cyk h() {
-      return this.d.get();
-   }
-
-   public int j() {
-      return this.c.a().a(this.b);
-   }
-
-   public float k() {
-      return this.c.a().e();
-   }
-
-   @Override
-   public btw l() {
-      return this.b.a();
-   }
-
-   @Override
-   public jn<awd> m() {
-      return this.g().a().b();
-   }
-
-   public static enum a implements azz {
-      a(btw.f, 11, "helmet"),
-      b(btw.e, 16, "chestplate"),
-      c(btw.d, 15, "leggings"),
-      d(btw.c, 13, "boots"),
-      e(btw.g, 16, "body");
-
-      public static final Codec<cti.a> f = azz.b(cti.a::values);
-      private final btw g;
-      private final String h;
-      private final int i;
-
-      private a(final btw $$0, final int $$1, final String $$2) {
-         this.g = $$0;
-         this.h = $$2;
-         this.i = $$1;
-      }
-
-      public int a(int $$0) {
-         return this.i * $$0;
-      }
-
-      public btw a() {
-         return this.g;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public boolean d() {
-         return this == a || this == b || this == c || this == d;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

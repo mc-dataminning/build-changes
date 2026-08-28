@@ -1,29 +1,54 @@
 import com.mojang.serialization.Codec;
 
-public class edn extends edq<egb> {
-   public edn(Codec<egb> $$0) {
+public class edn extends edu<efv> {
+   public edn(Codec<efv> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egb> $$0) {
-      dfd $$1 = $$0.b();
-      azl $$2 = $$0.d();
-      je $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public boolean a(edw<efv> $$0) {
+      efv $$1 = $$0.f();
+      jf $$2 = $$0.e();
+      dfg $$3 = $$0.b();
+      azn $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      jf.a $$10 = new jf.a();
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = azd.d(-$$4); $$6 <= azd.f($$4); $$6++) {
-            for (int $$7 = azd.d(-$$4); $$7 <= azd.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dhl.fz.o());
-               }
-            }
+      for (jf $$11 : jf.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
-
-         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      return true;
+      return $$5;
+   }
+
+   protected boolean a(efv $$0, dfg $$1, azn $$2, int $$3, int $$4, jf.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            dus $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
+      }
+
+      return $$6;
    }
 }

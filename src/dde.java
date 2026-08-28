@@ -1,48 +1,57 @@
 import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class dde extends ArrayList<ddd> {
-   public static final Codec<dde> a = ddd.a.listOf().fieldOf("Recipes").xmap(dde::new, Function.identity()).codec();
-   public static final zb<wo, dde> b = ddd.b.a(yz.a(dde::new));
+public record dde(jo<cvn> d, int e, kq f, cvs g) {
+   public static final Codec<dde> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cvs.a.fieldOf("id").forGetter(dde::a),
+               ayo.l.fieldOf("count").orElse(1).forGetter(dde::b),
+               kq.a.optionalFieldOf("components", kq.c).forGetter(dde::c)
+            )
+            .apply($$0, dde::new)
+   );
+   public static final zc<wp, dde> b = zc.a(za.b(lw.K), dde::a, za.h, dde::b, kq.b, dde::c, dde::new);
+   public static final zc<wp, Optional<dde>> c = b.a(za::a);
 
-   public dde() {
+   public dde(dei $$0) {
+      this($$0, 1);
    }
 
-   private dde(int $$0) {
-      super($$0);
+   public dde(dei $$0, int $$1) {
+      this($$0.q().n(), $$1, kq.c);
    }
 
-   private dde(Collection<ddd> $$0) {
-      super($$0);
+   public dde(jo<cvn> $$0, int $$1, kq $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Nullable
-   public ddd a(cvp $$0, cvp $$1, int $$2) {
-      if ($$2 > 0 && $$2 < this.size()) {
-         ddd $$3 = this.get($$2);
-         return $$3.a($$0, $$1) ? $$3 : null;
-      } else {
-         for (int $$4 = 0; $$4 < this.size(); $$4++) {
-            ddd $$5 = this.get($$4);
-            if ($$5.a($$0, $$1)) {
-               return $$5;
-            }
-         }
-
-         return null;
-      }
+   public dde a(UnaryOperator<kq.a> $$0) {
+      return new dde(this.d, this.e, $$0.apply(kq.a()).a());
    }
 
-   public dde a() {
-      dde $$0 = new dde(this.size());
+   private static cvs a(jo<cvn> $$0, int $$1, kq $$2) {
+      return new cvs($$0, $$1, $$2.c());
+   }
 
-      for (ddd $$1 : this) {
-         $$0.add($$1.v());
-      }
+   public boolean a(cvs $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
 
-      return $$0;
+   public jo<cvn> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kq c() {
+      return this.f;
+   }
+
+   public cvs d() {
+      return this.g;
    }
 }

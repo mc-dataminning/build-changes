@@ -1,111 +1,143 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class don extends dhj implements dol {
-   public static final MapCodec<don> a = b(don::new);
-   public static final dvm<dvw> b = dve.bh;
-   public static final dvf c = dve.C;
-   protected static final ezm d = dhj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final ezm e = dhj.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public abstract class don extends dgy implements doo {
+   public static final dvj f = dvi.C;
+   protected static final float g = 4.0F;
+   protected static final ezq h = dhm.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private final dwf a;
 
-   @Override
-   public MapCodec<? extends don> a() {
-      return a;
-   }
-
-   public don(dun.d $$0) {
-      super($$0);
-      this.l(this.o().b(b, dvw.b).b(c, Boolean.valueOf(false)));
+   protected don(dwf $$0, dur.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected boolean g_(duo $$0) {
-      return $$0.c(b) != dvw.c;
-   }
+   protected abstract MapCodec<? extends don> a();
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      dvw $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return ezj.b();
-         case a:
-            return e;
-         default:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      je $$1 = $$0.a();
-      duo $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dvw.c).b(c, Boolean.valueOf(false));
-      } else {
-         eqp $$3 = $$0.q().b_($$1);
-         duo $$4 = this.o().b(b, dvw.b).b(c, Boolean.valueOf($$3.a() == eqq.c));
-         jj $$5 = $$0.k();
-         return $$5 != jj.a && ($$5 == jj.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dvw.a);
-      }
-   }
-
-   @Override
-   protected boolean a(duo $$0, czk $$1) {
-      cvp $$2 = $$1.n();
-      dvw $$3 = $$0.c(b);
-      if ($$3 == dvw.c || !$$2.a(this.q())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jj $$5 = $$1.k();
-         return $$3 == dvw.b ? $$5 == jj.b || $$4 && $$5.o().d() : $$5 == jj.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
-   }
-
-   @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(c) ? eqq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   public boolean a(deh $$0, je $$1, duo $$2, eqp $$3) {
-      return $$2.c(b) != dvw.c ? dol.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cnu $$0, ddl $$1, je $$2, duo $$3, eqo $$4) {
-      return $$3.c(b) != dvw.c ? dol.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$0.c(f)) {
+         $$3.a($$4, equ.c, equ.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(duo $$0, ere $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(awz.a);
-         case c:
-            return false;
-         default:
-            return false;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return h;
+   }
+
+   @Override
+   public boolean a(dus $$0) {
+      return true;
+   }
+
+   @Override
+   public drv a(jf $$0, dus $$1) {
+      return new dth($$0, $$1);
+   }
+
+   @Override
+   protected brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
+      if ($$2.c_($$3) instanceof dth $$7) {
+         cww $$10 = $$0.h() instanceof cww $$9 ? $$9 : null;
+         boolean $$11 = $$10 != null && $$4.gp();
+         if (!$$2.B) {
+            if ($$11 && !$$7.v() && !this.a($$4, $$7)) {
+               boolean $$12 = $$7.a($$4);
+               if ($$10.a($$7.a($$12), $$4) && $$10.a($$2, $$7, $$12, $$4)) {
+                  $$7.a($$4, $$2, $$3, $$12);
+                  $$4.b(awq.c.b($$0.h()));
+                  $$2.a(dzp.c, $$7.aC_(), dzp.a.a($$4, $$7.m()));
+                  $$0.a(1, $$4);
+                  return brs.a;
+               } else {
+                  return brs.f;
+               }
+            } else {
+               return brs.f;
+            }
+         } else {
+            return !$$11 && !$$7.v() ? brs.c : brs.a;
+         }
+      } else {
+         return brs.e;
       }
+   }
+
+   @Override
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if ($$1.c_($$2) instanceof dth $$5) {
+         if ($$1.B) {
+            ad.b(new IllegalStateException("Expected to only call this on server"));
+         }
+
+         boolean $$7 = $$5.a($$3);
+         boolean $$8 = $$5.a($$3, $$1, $$2, $$7);
+         if ($$5.v()) {
+            $$1.a(null, $$5.aC_(), $$5.d(), awh.e);
+            return brs.b;
+         } else if ($$8) {
+            return brs.b;
+         } else if (!this.a($$3, $$5) && $$3.gp() && this.b($$3, $$5, $$7)) {
+            this.a($$3, $$5, $$7);
+            return brs.b;
+         } else {
+            return brs.e;
+         }
+      } else {
+         return brs.e;
+      }
+   }
+
+   private boolean b(cnx $$0, dth $$1, boolean $$2) {
+      dti $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.ab())).allMatch($$0x -> $$0x.equals(xd.a) || $$0x.b() instanceof yl);
+   }
+
+   public abstract float h(dus var1);
+
+   public eyw o(dus $$0) {
+      return new eyw(0.5, 0.5, 0.5);
+   }
+
+   @Override
+   protected eqt b_(dus $$0) {
+      return $$0.c(f) ? equ.c.a(false) : super.b_($$0);
+   }
+
+   public dwf d() {
+      return this.a;
+   }
+
+   public static dwf a(dhm $$0) {
+      dwf $$1;
+      if ($$0 instanceof don) {
+         $$1 = ((don)$$0).d();
+      } else {
+         $$1 = dwf.b;
+      }
+
+      return $$1;
+   }
+
+   public void a(cnx $$0, dth $$1, boolean $$2) {
+      $$1.a($$0.cD());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(cnx $$0, dth $$1) {
+      UUID $$2 = $$1.u();
+      return $$2 != null && !$$2.equals($$0.cD());
+   }
+
+   @Nullable
+   @Override
+   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return a($$2, drx.h, dth::a);
    }
 }

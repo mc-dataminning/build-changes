@@ -1,36 +1,51 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class eox extends epb {
-   public static final MapCodec<eox> a = eot.b.listOf().fieldOf("rules").xmap(eox::new, $$0 -> $$0.b);
-   private final ImmutableList<eot> b;
+public class eox {
+   public static final epp a = epp.a;
+   public static final Codec<eox> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               epc.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               epc.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eov.c.lenientOptionalFieldOf("position_predicate", eou.b).forGetter($$0x -> $$0x.e),
+               dus.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               epq.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eox::new)
+   );
+   private final epc c;
+   private final epc d;
+   private final eov e;
+   private final dus f;
+   private final epq g;
 
-   public eox(List<? extends eot> $$0) {
-      this.b = ImmutableList.copyOf($$0);
+   public eox(epc $$0, epc $$1, dus $$2) {
+      this($$0, $$1, eou.b, $$2);
+   }
+
+   public eox(epc $$0, epc $$1, eov $$2, dus $$3) {
+      this($$0, $$1, $$2, $$3, a);
+   }
+
+   public eox(epc $$0, epc $$1, eov $$2, dus $$3, epq $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a(dus $$0, dus $$1, jf $$2, jf $$3, jf $$4, azn $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
+   }
+
+   public dus a() {
+      return this.f;
    }
 
    @Nullable
-   @Override
-   public epe.c a(dej $$0, je $$1, je $$2, epe.c $$3, epe.c $$4, epa $$5) {
-      azl $$6 = azl.a(azd.a($$4.a()));
-      duo $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         eot $$8 = (eot)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new epe.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected epd<?> a() {
-      return epd.i;
+   public ug a(azn $$0, @Nullable ug $$1) {
+      return this.g.a($$0, $$1);
    }
 }

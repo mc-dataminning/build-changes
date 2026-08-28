@@ -1,35 +1,22 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gnz extends gou<cky, gwf, fyb<gwf>> {
+   private static final ale a = ale.b("textures/entity/zombie/zombie.png");
 
-public final class gnz extends gma<cig, gua, fxv> {
-   private static final Map<cin, alc> a = ad.a(Maps.newEnumMap(cin.class), $$0 -> {
-      $$0.put(cin.a, alc.b("textures/entity/horse/horse_white.png"));
-      $$0.put(cin.b, alc.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cin.c, alc.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cin.d, alc.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(cin.e, alc.b("textures/entity/horse/horse_black.png"));
-      $$0.put(cin.f, alc.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(cin.g, alc.b("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public gnz(gnj.a $$0) {
-      super($$0, new fxv($$0.a(gak.aP)), new fxv($$0.a(gak.aQ)), 1.1F);
-      this.a(new grl(this));
-      this.a(new grk(this, $$0.f()));
+   public gnz(gno.a $$0, float $$1) {
+      super($$0, new fxu($$0.a(gap.aE)), 0.5F * $$1);
+      this.a(new gru<>(this, $$0.b()));
+      this.a(new grr<>(this, new fxu($$0.a(gap.aF)), new fxu($$0.a(gap.aG)), $$0.g()));
    }
 
-   public alc a(gua $$0) {
-      return a.get($$0.a);
+   public ale a(gwf $$0) {
+      return a;
    }
 
-   public gua c() {
-      return new gua();
+   public gwf c() {
+      return new gwf();
    }
 
-   public void a(cig $$0, gua $$1, float $$2) {
+   public void a(cky $$0, gwf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.fT().u();
+      gof.a($$0, $$1, $$2);
    }
 }

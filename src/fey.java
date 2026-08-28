@@ -1,32 +1,20 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.gson.JsonObject;
 
-public abstract class fey {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public class fey extends ffc {
+   public String a;
+   public long b;
+   public long c;
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
-         }
+   public static fey a(JsonObject $$0) {
+      fey $$1 = new fey();
+
+      try {
+         $$1.a = fgz.b("profileUuid", $$0, null);
+         $$1.b = fgz.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fgz.a("leaveTime", $$0, Long.MIN_VALUE);
+      } catch (Exception var3) {
       }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
-   }
-
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
-
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+      return $$1;
    }
 }

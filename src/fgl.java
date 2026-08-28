@@ -1,195 +1,186 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fgl extends hdk {
-   private static final int B = 2;
-   public static final List<brm> a = ImmutableList.of(brm.a, brm.b, brm.c, brm.d);
-   private static final int C = 0;
-   public static final List<ded> b = ImmutableList.of(ded.a, ded.b, ded.c);
-   private static final xd D = xd.c("mco.configure.world.edit.slot.name");
-   static final xd E = xd.c("mco.configure.world.spawnProtection");
-   private fkt F;
-   protected final fft c;
-   private int G;
-   private int H;
-   private final feq I;
-   private final fel.d J;
-   private brm K;
-   private ded L;
-   private final String M;
-   private String N;
-   private boolean O;
-   private boolean P;
-   int Q;
-   private boolean R;
-   private boolean S;
-   fgl.a T;
+public class fgl extends hdp {
+   static final Logger c = LogUtils.getLogger();
+   private static final xe B = xe.c("mco.selectServer.create");
+   private static final xe C = xe.c("mco.selectServer.create.subtitle");
+   private static final xe D = xe.c("mco.configure.world.switch.slot");
+   private static final xe E = xe.c("mco.configure.world.switch.slot.subtitle");
+   private static final xe F = xe.c("mco.reset.world.title");
+   private static final xe G = xe.c("mco.reset.world.warning");
+   public static final xe a = xe.c("mco.create.world.reset.title");
+   private static final xe H = xe.c("mco.reset.world.resetting.screen.title");
+   private static final xe I = xe.c("mco.reset.world.template");
+   private static final xe J = xe.c("mco.reset.world.adventure");
+   private static final xe K = xe.c("mco.reset.world.experience");
+   private static final xe L = xe.c("mco.reset.world.inspiration");
+   private final fqh M;
+   private final fep N;
+   private final xe O;
+   private final int P;
+   private final xe Q;
+   private static final ale R = ale.b("textures/gui/realms/upload.png");
+   private static final ale S = ale.b("textures/gui/realms/adventure.png");
+   private static final ale T = ale.b("textures/gui/realms/survival_spawn.png");
+   private static final ale U = ale.b("textures/gui/realms/new_world.png");
+   private static final ale V = ale.b("textures/gui/realms/experience.png");
+   private static final ale W = ale.b("textures/gui/realms/inspiration.png");
+   fff X;
+   fff Y;
+   fff Z;
+   fff aa;
+   public final int b;
+   @Nullable
+   private final fhp ab;
+   private final Runnable ac;
+   private final foc ad = new foc(this);
 
-   public fgl(fft $$0, feq $$1, fel.d $$2, int $$3) {
-      super(xd.c("mco.configure.world.buttons.options"));
-      this.c = $$0;
-      this.I = $$1;
-      this.J = $$2;
-      this.K = a(a, $$1.f, 2);
-      this.L = a(b, $$1.g, 0);
-      this.M = $$1.b($$3);
-      this.a($$1.a($$3));
-      if ($$2 == fel.d.a) {
-         this.O = $$1.a;
-         this.Q = $$1.c;
-         this.S = $$1.e;
-         this.P = $$1.b;
-         this.R = $$1.d;
-      } else {
-         this.O = true;
-         this.Q = 0;
-         this.S = false;
-         this.P = true;
-         this.R = true;
-      }
+   private fgl(fqh $$0, fep $$1, int $$2, xe $$3, xe $$4, int $$5, xe $$6, Runnable $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   }
+
+   public fgl(fqh $$0, fep $$1, int $$2, xe $$3, xe $$4, int $$5, xe $$6, @Nullable fhp $$7, Runnable $$8) {
+      super($$3);
+      this.M = $$0;
+      this.N = $$1;
+      this.b = $$2;
+      this.O = $$4;
+      this.P = $$5;
+      this.Q = $$6;
+      this.ab = $$7;
+      this.ac = $$8;
+   }
+
+   public static fgl a(fqh $$0, fep $$1, fhp $$2, Runnable $$3) {
+      return new fgl($$0, $$1, $$1.n, B, C, -6250336, a, $$2, $$3);
+   }
+
+   public static fgl a(fqh $$0, int $$1, fep $$2, Runnable $$3) {
+      return new fgl($$0, $$2, $$1, D, E, -6250336, a, $$3);
+   }
+
+   public static fgl a(fqh $$0, fep $$1, Runnable $$2) {
+      return new fgl($$0, $$1, $$1.n, F, G, -65536, H, $$2);
+   }
+
+   @Override
+   public void aS_() {
+      fog $$0 = this.ad.a(fog.d());
+      $$0.c().a(9 / 3);
+      $$0.a(new flv(this.l, this.p), fof::b);
+      $$0.a(new flv(this.O, this.p).b(this.P), fof::b);
+      (new Thread("Realms-reset-world-fetcher") {
+         @Override
+         public void run() {
+            fdy $$0 = fdy.a();
+
+            try {
+               fff $$1 = $$0.a(1, 10, fep.d.a);
+               fff $$2 = $$0.a(1, 10, fep.d.c);
+               fff $$3 = $$0.a(1, 10, fep.d.d);
+               fff $$4 = $$0.a(1, 10, fep.d.e);
+               fgl.this.m.execute(() -> {
+                  fgl.this.X = $$1;
+                  fgl.this.Y = $$2;
+                  fgl.this.Z = $$3;
+                  fgl.this.aa = $$4;
+               });
+            } catch (ffj var6) {
+               fgl.c.error("Couldn't fetch templates in reset world", var6);
+            }
+         }
+      }).start();
+      fob $$1 = this.ad.c(new fob());
+      fob.b $$2 = $$1.d(3);
+      $$2.c().f(16);
+      $$2.a(new fgl.a(this.m.h, fgk.a, U, $$0x -> this.m.a(new fgk(this::a, this.l))));
+      $$2.a(new fgl.a(this.m.h, fgm.a, R, $$0x -> this.m.a(new fgm(this.ab, this.N.a, this.b, this))));
+      $$2.a(new fgl.a(this.m.h, I, T, $$0x -> this.m.a(new fgn(I, this::a, fep.d.a, this.X))));
+      $$2.a(foh.b(16), 3);
+      $$2.a(new fgl.a(this.m.h, J, S, $$0x -> this.m.a(new fgn(J, this::a, fep.d.c, this.Y))));
+      $$2.a(new fgl.a(this.m.h, K, V, $$0x -> this.m.a(new fgn(K, this::a, fep.d.d, this.Z))));
+      $$2.a(new fgl.a(this.m.h, L, W, $$0x -> this.m.a(new fgn(L, this::a, fep.d.e, this.aa))));
+      this.ad.b(fko.a(xd.k, $$0x -> this.d()).a());
+      this.ad.a($$1x -> {
+         fkm var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.ad.a();
+   }
+
+   @Override
+   public xe i() {
+      return xd.a(this.n(), this.O);
    }
 
    @Override
    public void d() {
-      this.m.a(this.c);
+      this.m.a(this.M);
    }
 
-   private static <T> T a(List<T> $$0, int $$1, int $$2) {
-      try {
-         return $$0.get($$1);
-      } catch (IndexOutOfBoundsException var4) {
-         return $$0.get($$2);
+   private void a(@Nullable ffe $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new fhr($$0, this.N.a, this.Q, this.ac));
       }
    }
 
-   private static <T> int a(List<T> $$0, T $$1, int $$2) {
-      int $$3 = $$0.indexOf($$1);
-      return $$3 == -1 ? $$2 : $$3;
-   }
-
-   @Override
-   public void aR_() {
-      this.H = 170;
-      this.G = this.n / 2 - this.H;
-      int $$0 = this.n / 2 + 10;
-      if (this.J != fel.d.a) {
-         xd $$1;
-         if (this.J == fel.d.c) {
-            $$1 = xd.c("mco.configure.world.edit.subscreen.adventuremap");
-         } else if (this.J == fel.d.e) {
-            $$1 = xd.c("mco.configure.world.edit.subscreen.inspiration");
-         } else {
-            $$1 = xd.c("mco.configure.world.edit.subscreen.experience");
-         }
-
-         this.a(new hdi($$1, this.n / 2, 26, 16711680));
-      }
-
-      this.F = this.d(new fkt(this.m.h, this.G, g(1), this.H, 20, null, xd.c("mco.configure.world.edit.slot.name")));
-      this.F.f(10);
-      this.F.a(this.N);
-      this.F.b(this::a);
-      fkr<Boolean> $$4 = this.c(fkr.b(this.O).a($$0, g(1), this.H, 20, xd.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.O = $$1));
-      this.c(fkr.a(ded::e).a(b).a(this.L).a(this.G, g(3), this.H, 20, xd.c("selectWorld.gameMode"), ($$0x, $$1) -> this.L = $$1));
-      this.T = this.c(new fgl.a($$0, g(3), this.H, this.Q, 0.0F, 16.0F));
-      xd $$5 = xd.c("mco.configure.world.spawn_toggle.message");
-      fkr<Boolean> $$6 = fkr.b(this.K != brm.a && this.P)
-         .a($$0, g(5), this.H, 20, xd.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.P = $$0x));
-      this.c(fkr.a(brm::b).a(a).a(this.K).a(this.G, g(5), this.H, 20, xd.c("options.difficulty"), ($$1, $$2) -> {
-         this.K = $$2;
-         if (this.J == fel.d.a) {
-            boolean $$3 = this.K != brm.a;
-            $$6.j = $$3;
-            $$6.a($$3 && this.P);
-         }
-      }));
-      this.c($$6);
-      fkr<Boolean> $$7 = this.c(fkr.b(this.S).a(this.G, g(7), this.H, 20, xd.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.S = $$1));
-      fkr<Boolean> $$8 = this.c(fkr.b(this.R).a($$0, g(7), this.H, 20, xd.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.R = $$1));
-      if (this.J != fel.d.a) {
-         $$4.j = false;
-         $$6.j = false;
-         this.T.j = false;
-         $$8.j = false;
-         $$7.j = false;
-      }
-
-      if (this.K == brm.a) {
-         $$6.j = false;
-      }
-
-      this.c(fkk.a(xd.c("mco.configure.world.buttons.done"), $$0x -> this.D()).a(this.G, g(13), this.H, 20).a());
-      this.c(fkk.a(xc.e, $$0x -> this.d()).a($$0, g(13), this.H, 20).a());
-   }
-
-   private fkr.b<Boolean> a(xd $$0, Consumer<Boolean> $$1) {
-      return ($$2, $$3) -> {
-         if ($$3) {
-            $$1.accept(true);
-         } else {
-            this.m.a(fgf.b(this, $$0, $$1xx -> {
-               $$1.accept(false);
-               $$1xx.d();
-            }));
-         }
-      };
-   }
-
-   @Override
-   public xd i() {
-      return xc.a(this.n(), this.m());
-   }
-
-   @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.a(this.p, D, this.G + this.H / 2 - this.p.a(D) / 2, g(0) - 5, -1, false);
-      this.F.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(String $$0) {
-      if ($$0.equals(this.M)) {
-         this.N = "";
-      } else {
-         this.N = $$0;
+   private void a(@Nullable fhg $$0) {
+      this.m.a(this);
+      if ($$0 != null) {
+         this.a(new fhq($$0, this.N.a, this.Q, this.ac));
       }
    }
 
-   private void D() {
-      int $$0 = a(a, this.K, 2);
-      int $$1 = a(b, this.L, 0);
-      if (this.J != fel.d.c && this.J != fel.d.d && this.J != fel.d.e) {
-         boolean $$2 = this.J == fel.d.a && this.K != brm.a && this.P;
-         this.c.a(new feq(this.O, $$2, this.Q, this.R, $$0, $$1, this.S, this.N, this.I.h, this.I.i));
-      } else {
-         this.c.a(new feq(this.I.a, this.I.b, this.I.c, this.I.d, $$0, $$1, this.I.e, this.N, this.I.h, this.I.i));
+   private void a(fhn $$0) {
+      List<fhn> $$1 = new ArrayList<>();
+      if (this.ab != null) {
+         $$1.add(this.ab);
       }
+
+      if (this.b != this.N.n) {
+         $$1.add(new fhv(this.N.a, this.b, () -> {
+         }));
+      }
+
+      $$1.add($$0);
+      this.m.a(new fgd(this.M, $$1.toArray(new fhn[0])));
    }
 
-   class a extends fkg {
-      private final double d;
-      private final double e;
+   class a extends fko {
+      private static final ale b = ale.b("widget/slot_frame");
+      private static final int c = 60;
+      private static final int d = 2;
+      private static final int u = 56;
+      private final ale v;
 
-      public a(final int $$0, final int $$1, final int $$2, final int $$3, final float $$4, final float $$5) {
-         super($$0, $$1, $$2, 20, xc.a, 0.0);
-         this.d = (double)$$4;
-         this.e = (double)$$5;
-         this.c = (double)((azd.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
-         this.b();
+      a(final fjz $$0, final xe $$1, final ale $$2, final fko.c $$3) {
+         super(0, 0, 60, 60 + 9, $$1, $$3, q);
+         this.v = $$2;
       }
 
       @Override
-      public void a() {
-         if (fgl.this.T.j) {
-            fgl.this.Q = (int)azd.d(azd.a(this.c, 0.0, 1.0), this.d, this.e);
+      public void b(fkb $$0, int $$1, int $$2, float $$3) {
+         boolean $$4 = this.B();
+         int $$5 = -1;
+         if ($$4) {
+            $$5 = axq.a(1.0F, 0.56F, 0.56F, 0.56F);
          }
-      }
 
-      @Override
-      protected void b() {
-         this.b(xc.a(fgl.E, (xd)(fgl.this.Q == 0 ? xc.c : xd.b(String.valueOf(fgl.this.Q)))));
+         int $$6 = this.D();
+         int $$7 = this.E();
+         $$0.a(ghv::B, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
+         $$0.a(ghv::B, b, $$6, $$7, 60, 60, $$5);
+         int $$8 = $$4 ? -6250336 : -1;
+         $$0.a(fgl.this.p, this.z(), $$6 + 28, $$7 - 14, $$8);
       }
    }
 }

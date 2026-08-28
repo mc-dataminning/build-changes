@@ -1,32 +1,16 @@
-public class ccw extends cbr {
-   private final clt b;
-   private int c;
+import javax.annotation.Nullable;
 
-   public ccw(clt $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class ccw extends ccx {
+   public ccw(buv $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public void d() {
-      super.d();
-      this.c = 0;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
-      }
+   protected eyw h() {
+      eyw $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      eyw $$2 = cfj.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cff.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

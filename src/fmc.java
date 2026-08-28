@@ -1,29 +1,55 @@
-import java.util.Locale;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public class fmc extends flz {
-   private static final int f = 500;
+public class fmc {
+   @Nullable
+   private flz a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public fmc(fjv $$0, bms $$1) {
-      super($$0, $$1);
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void d(fjx $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(@Nullable flz $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
+   @Nullable
+   public flz a() {
+      return this.a;
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
+   public void a(boolean $$0, boolean $$1, fow $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fip.Q().aY().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ad.c();
+            }
+
+            this.d = $$3;
+         }
+
+         if ($$3 && ad.c() - this.c > this.b.toMillis()) {
+            fqh $$4 = fip.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
+      }
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   private fsr a(fow $$0, boolean $$1, boolean $$2) {
+      return (fsr)(!$$1 && $$2 && fip.Q().aY().b() ? new fsm($$0) : new fst($$0));
+   }
+
+   public void a(fol $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
    }
 }

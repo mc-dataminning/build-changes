@@ -1,55 +1,88 @@
-public class csf<T extends cqw> implements cqk {
-   public static final csf<crf> a = a("generic_9x1", crf::a);
-   public static final csf<crf> b = a("generic_9x2", crf::b);
-   public static final csf<crf> c = a("generic_9x3", crf::c);
-   public static final csf<crf> d = a("generic_9x4", crf::d);
-   public static final csf<crf> e = a("generic_9x5", crf::e);
-   public static final csf<crf> f = a("generic_9x6", crf::f);
-   public static final csf<crr> g = a("generic_3x3", crr::new);
-   public static final csf<crm> h = a("crafter_3x3", crm::new);
-   public static final csf<cqz> i = a("anvil", cqz::new);
-   public static final csf<crb> j = a("beacon", crb::new);
-   public static final csf<crc> k = a("blast_furnace", crc::new);
-   public static final csf<crd> l = a("brewing_stand", crd::new);
-   public static final csf<crp> m = a("crafting", crp::new);
-   public static final csf<crs> n = a("enchantment", crs::new);
-   public static final csf<cru> o = a("furnace", cru::new);
-   public static final csf<crw> p = a("grindstone", crw::new);
-   public static final csf<crx> q = a("hopper", crx::new);
-   public static final csf<csc> r = a("lectern", ($$0, $$1) -> new csc($$0));
-   public static final csf<csd> s = a("loom", csd::new);
-   public static final csf<csh> t = a("merchant", csh::new);
-   public static final csf<csq> u = a("shulker_box", csq::new);
-   public static final csf<csw> v = a("smithing", csw::new);
-   public static final csf<csx> w = a("smoker", csx::new);
-   public static final csf<cre> x = a("cartography_table", cre::new);
-   public static final csf<csz> y = a("stonecutter", csz::new);
-   private final cqn z;
-   private final csf.a<T> A;
+public class csf extends cqz {
+   private static final int q = 1;
+   private static final int r = 1;
+   public static final int m = 1;
+   public static final int n = 2;
+   public static final int o = 3;
+   public static final int p = 100;
+   private final brl s;
+   private final crl t;
 
-   private static <T extends cqw> csf<T> a(String $$0, csf.a<T> $$1) {
-      return ka.a(lu.p, $$0, new csf<>($$1, cqp.h));
+   public csf(int $$0) {
+      this($$0, new brz(1), new csv(1));
    }
 
-   private static <T extends cqw> csf<T> a(String $$0, csf.a<T> $$1, cql... $$2) {
-      return ka.a(lu.p, $$0, new csf<>($$1, cqp.f.a($$2)));
-   }
-
-   private csf(csf.a<T> $$0, cqn $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
-
-   public T a(int $$0, cnt $$1) {
-      return this.A.create($$0, $$1);
+   public csf(int $$0, brl $$1, crl $$2) {
+      super(csi.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.s = $$1;
+      this.t = $$2;
+      this.a(new csw($$1, 0, 0, 0) {
+         @Override
+         public void c() {
+            super.c();
+            csf.this.a(this.c);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public cqn i() {
-      return this.z;
+   public boolean a(cnx $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.b(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.t.a(0);
+               this.b(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.t.a(0);
+               this.b(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gp()) {
+                  return false;
+               }
+
+               cvs $$5 = this.s.b(0);
+               this.s.e();
+               if (!$$0.gd().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
    }
 
-   interface a<T extends cqw> {
-      T create(int var1, cnt var2);
+   @Override
+   public cvs b(cnx $$0, int $$1) {
+      return cvs.k;
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean b(cnx $$0) {
+      return this.s.a($$0);
+   }
+
+   public cvs l() {
+      return this.s.a(0);
+   }
+
+   public int m() {
+      return this.t.a(0);
    }
 }

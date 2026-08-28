@@ -1,95 +1,45 @@
-public abstract class cay extends cbh {
-   protected bum d;
-   protected je e = je.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+public class cay extends cbx {
+   private final cgg g;
 
-   public cay(bum $$0) {
-      this.d = $$0;
-      if (!cff.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
-
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         duo $$0 = this.d.dS().a_(this.e);
-         if (!($$0.b() instanceof djp)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(djp.c);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         duo $$1 = this.d.dS().a_(this.e);
-         if ($$1.b() instanceof djp) {
-            ((djp)$$1.b()).a(this.d, this.d.dS(), $$1, this.e, $$0);
-         }
-      }
+   public cay(cgg $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      if (!cff.a(this.d)) {
-         return false;
-      } else if (!this.d.Q) {
-         return false;
-      } else {
-         cdu $$0 = (cdu)this.d.P();
-         erd $$1 = $$0.k();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               erb $$3 = $$1.a($$2);
-               this.e = new je($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dz(), (double)this.e.w()) > 2.25)) {
-                  this.f = djp.a(this.d.dS(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.ds().d();
-            this.f = djp.a(this.d.dS(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a;
+      return this.g.q() && !this.g.go() && super.b();
    }
 
    @Override
    public void d() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dx());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dD());
+      super.d();
+      this.g.y(false);
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void e() {
+      super.e();
+      this.g.y(false);
    }
 
    @Override
    public void a() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dx());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dD());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      super.a();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(dem $$0, jf $$1) {
+      if (!$$0.u($$1.d())) {
+         return false;
+      } else {
+         dus $$2 = $$0.a_($$1);
+         if ($$2.a(dho.cv)) {
+            return dsc.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dho.cD) && $$2.c(dkt.b) ? true : $$2.a(awv.S, $$0x -> $$0x.d(dhf.b).map($$0xx -> $$0xx != dvf.a).orElse(true));
+         }
       }
    }
 }

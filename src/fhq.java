@@ -1,52 +1,13 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fhq extends fhs {
+   private final fhg b;
 
-public class fhq extends fhj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xd c = xd.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final ffa e;
-   private final fft f;
-
-   public fhq(long $$0, ffa $$1, fft $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fhq(fhg $$0, long $$1, xe $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public void run() {
-      fdu $$0 = fdu.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (ffg var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
-      }
-   }
-
-   @Override
-   public xd a() {
-      return c;
+   protected void a(fdy $$0, long $$1) throws ffj {
+      $$0.a($$1, this.b);
    }
 }

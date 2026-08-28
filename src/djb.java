@@ -1,43 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class djb extends dgu {
-   public static final MapCodec<djb> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(diy.a.forGetter($$0x -> $$0x.f), u()).apply($$0, djb::new));
-   private final dhj f;
+public class djb extends dhm {
+   public static final MapCodec<dhm> a = lv.e.q().fieldOf("dead");
+   public static final MapCodec<djb> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), t()).apply($$0, djb::new));
+   private final dhm c;
+
+   public djb(dhm $$0, dur.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
 
    @Override
    public MapCodec<djb> a() {
-      return e;
-   }
-
-   protected djb(dhj $$0, dun.d $$1) {
-      super($$1);
-      this.f = $$0;
+      return b;
    }
 
    @Override
-   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      this.a($$0, (deh)$$1, $$2);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().b(d, Boolean.valueOf(false)).b(c, $$0.c(c)), 2);
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if (!this.a($$1, $$2)) {
+         $$1.a($$2, this.c.n(), 2);
       }
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return dhl.a.o();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, eqq.c, eqq.c.a($$3));
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if (!this.a($$3, $$4)) {
+         $$3.a($$4, this, 60 + $$3.D_().a(40));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected boolean a(ddo $$0, jf $$1) {
+      for (jk $$2 : jk.values()) {
+         eqt $$3 = $$0.b_($$1.a($$2));
+         if ($$3.a(axb.a)) {
+            return true;
          }
-
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public dus a(czn $$0) {
+      if (!this.a($$0.q(), $$0.a())) {
+         $$0.q().a($$0.a(), this, 60 + $$0.q().D_().a(40));
+      }
+
+      return this.n();
    }
 }

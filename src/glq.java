@@ -1,44 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class glq implements glg.a {
-   private static final int a = 160;
-   private static final float b = 0.04F;
-   private final fil c;
-   private Collection<je> d = Lists.newArrayList();
+public class glq implements gll.a {
+   private final fip a;
+   private static final int b = 10;
 
-   public glq(fil $$0) {
-      this.c = $$0;
-   }
-
-   public void a(Collection<je> $$0) {
-      this.d = $$0;
+   public glq(fip $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
-      je $$5 = this.b().c();
+   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
+      dej $$5 = this.a.s;
+      jf $$6 = jf.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (je $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      for (jf $$8 : jf.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(des.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azf.g($$10, 0.9F, 0.9F);
+         long $$12 = kh.e($$8.a());
+         if ($$7.add($$12)) {
+            gll.a(
+               $$0,
+               $$1,
+               $$5.P().p().a(des.a, kh.a($$12)),
+               (double)kh.a(kh.b($$12), 8),
+               (double)kh.a(kh.c($$12), 8),
+               (double)kh.a(kh.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gll.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   private static void a(fde $$0, ghg $$1, je $$2) {
-      glg.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(fde $$0, ghg $$1, String $$2, je $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      glg.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private fhu b() {
-      return this.c.j.k();
    }
 }

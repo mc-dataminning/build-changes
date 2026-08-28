@@ -1,28 +1,24 @@
-public class grt extends grw<guw, fyp> {
-   private final fyi a;
+public class grt extends gsb<guj, fyd> {
+   private final gio a;
 
-   public grt(gpf<guw, fyp> $$0, gah $$1) {
+   public grt(gpk<guj, fyd> $$0, gio $$1) {
       super($$0);
-      this.a = new fyi($$1.a(gak.br));
+      this.a = $$1;
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, guw $$3, float $$4, float $$5) {
-      cgq.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+   public void a(fdi $$0, ghl $$1, int $$2, guj $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gaq $$6 = this.d().b();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dho.bT.n(), $$0, $$1, $$2, gwx.d);
+         $$0.b();
       }
-
-      cgq.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
-      }
-   }
-
-   private void a(fde $$0, ghg $$1, int $$2, guw $$3, cgq.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      fdi $$8 = $$1.getBuffer(this.a.a(gow.a($$4)));
-      this.a.a($$0, $$8, $$2, gws.d, $$3.X, $$3.Y, $$5, $$6, $$3.p);
-      $$0.b();
    }
 }

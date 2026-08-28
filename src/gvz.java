@@ -1,26 +1,9 @@
-import javax.annotation.Nullable;
-
-public class gvz extends guj {
-   private static final alc j = alc.b("textures/entity/wolf/wolf.png");
+public class gvz extends guo implements gvy {
    public boolean a;
-   public boolean b;
-   public float c = (float) (Math.PI / 5);
-   public float d;
-   public float e;
-   public float f = 1.0F;
-   public alc g = j;
-   @Nullable
-   public cuj h;
-   public cvp i = cvp.k;
+   public cnl b = new cnl(cnp.c, cnn.b, 1);
 
-   public float a(float $$0) {
-      float $$1 = (this.e + $$0) / 1.8F;
-      if ($$1 < 0.0F) {
-         $$1 = 0.0F;
-      } else if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return azd.a($$1 * (float) Math.PI) * azd.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
+   @Override
+   public cnl a() {
+      return this.b;
    }
 }

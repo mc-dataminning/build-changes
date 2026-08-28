@@ -1,118 +1,74 @@
-public class cqb extends cps {
-   static final akg<String> c = akk.a(cqb.class, aki.e);
-   static final akg<xd> d = akk.a(cqb.class, aki.f);
-   private final ddg e = new cqb.a();
-   private static final int i = 4;
-   private int j;
+public class cqb extends cpv {
+   private float c;
+   private float d;
 
-   public cqb(btv<? extends cqb> $$0, deg $$1) {
+   public cqb(bty<?> $$0, dej $$1) {
       super($$0, $$1);
    }
 
-   public cqb(deg $$0, double $$1, double $$2, double $$3) {
-      super(btv.v, $$0, $$1, $$2, $$3);
+   public cqb(dej $$0, double $$1, double $$2, double $$3) {
+      super(bty.ar, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected cvk aj_() {
-      return cvt.nM;
+   public brs a(cnx $$0, brr $$1) {
+      if (!$$0.fT() && !this.bX() && (this.dS().B || $$0.n(this))) {
+         this.d = this.c;
+         if (!this.dS().B) {
+            return (brs)($$0.n(this) ? brs.c : brs.e);
+         } else {
+            return brs.a;
+         }
+      } else {
+         return brs.e;
+      }
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xc.a);
-   }
-
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dU());
-      this.at().a(c, this.F().m());
-      this.at().a(d, this.F().l());
-   }
-
-   @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dU());
-   }
-
-   @Override
-   public cps.a y() {
-      return cps.a.g;
-   }
-
-   @Override
-   public duo A() {
-      return dhl.fN.o();
-   }
-
-   public ddg F() {
-      return this.e;
+   protected cvn ak_() {
+      return cvw.nM;
    }
 
    @Override
    public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ag - this.j >= 4) {
-         this.F().a(this.dS());
-         this.j = this.ag;
-      }
-   }
-
-   @Override
-   public brp a(cnu $$0, bro $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akg<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.at().a(d));
-         } catch (Throwable var3) {
+      if ($$3) {
+         if (this.bX()) {
+            this.bM();
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.at().a(c));
+
+         if (this.S() == 0) {
+            this.m(-this.T());
+            this.d(10);
+            this.b(50.0F);
+            this.bA();
+         }
       }
    }
 
    @Override
-   public boolean cT() {
-      return true;
+   public cpv.a y() {
+      return cpv.a.a;
    }
 
-   public class a extends ddg {
-      @Override
-      public arh e() {
-         return (arh)cqb.this.dS();
+   @Override
+   public void l() {
+      double $$0 = (double)this.dI();
+      eyw $$1 = this.dq();
+      super.l();
+      double $$2 = ((double)this.dI() - $$0) % 360.0;
+      if (this.dS().B && $$1.f(this.dq()) > 0.01) {
+         this.c += (float)$$2;
+         this.c %= 360.0F;
       }
+   }
 
-      @Override
-      public void f() {
-         cqb.this.at().a(cqb.c, this.m());
-         cqb.this.at().a(cqb.d, this.l());
-      }
-
-      @Override
-      public eys g() {
-         return cqb.this.dq();
-      }
-
-      public cqb h() {
-         return cqb.this;
-      }
-
-      @Override
-      public et i() {
-         return new et(this, cqb.this.dq(), cqb.this.bR(), this.e(), 2, this.n().getString(), cqb.this.Q_(), this.e().o(), cqb.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cqb.this.dN();
+   @Override
+   protected void a(btr $$0, btr.a $$1) {
+      super.a($$0, $$1);
+      if (this.dS().B && $$0 instanceof cnx $$2 && $$2.gI() && b(this.dS())) {
+         float $$3 = (float)azf.e(0.5, (double)this.d, (double)this.c);
+         $$2.v($$2.dI() - ($$3 - this.d));
+         this.d = $$3;
       }
    }
 }

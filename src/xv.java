@@ -1,75 +1,44 @@
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.tree.ArgumentCommandNode;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
+import java.util.UUID;
 
-public record xv<S>(List<xv.a<S>> a) {
-   public static <S> boolean a(ParseResults<S> $$0) {
-      return !b($$0).a().isEmpty();
+public record xv(UUID a, coa b) {
+   public ya a(Duration $$0) {
+      return new ya.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public static <S> xv<S> b(ParseResults<S> $$0) {
-      String $$1 = $$0.getReader().getString();
-      CommandContextBuilder<S> $$2 = $$0.getContext();
-      CommandContextBuilder<S> $$3 = $$2;
-      List<xv.a<S>> $$4 = a($$1, $$2);
-
-      CommandContextBuilder<S> $$5;
-      while (($$5 = $$3.getChild()) != null && $$5.getRootNode() != $$2.getRootNode()) {
-         $$4.addAll(a($$1, $$5));
-         $$3 = $$5;
-      }
-
-      return new xv<>($$4);
+   public xy.b a(UUID $$0) {
+      return new xy($$0, this.a).a(this.b);
    }
 
-   private static <S> List<xv.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
-      List<xv.a<S>> $$2 = new ArrayList<>();
-
-      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
-         CommandNode $$5 = $$3.getNode();
-         if ($$5 instanceof ArgumentCommandNode) {
-            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof ga) {
-               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
-               if ($$5x != null) {
-                  String $$6 = $$5x.getRange().get($$0);
-                  $$2.add(new xv.a<>($$4, $$6));
-               }
-            }
-         }
-      }
-
-      return $$2;
+   public xv.a a() {
+      return new xv.a(this.a, this.b.b());
    }
 
-   @Nullable
-   public xv.a<S> a(String $$0) {
-      for (xv.a<S> $$1 : this.a) {
-         if ($$0.equals($$1.a())) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public boolean b() {
+      return this.b.b().a();
    }
 
-   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
-      public String a() {
-         return this.a.getName();
+   public UUID c() {
+      return this.a;
+   }
+
+   public coa d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, coa.a b) {
+      public static xv.a a(wb $$0) {
+         return new xv.a($$0.n(), new coa.a($$0));
       }
 
-      public ArgumentCommandNode<S, ?> b() {
-         return this.a;
+      public static void a(wb $$0, xv.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public String c() {
-         return this.b;
+      public xv a(GameProfile $$0, azs $$1) throws coa.b {
+         return new xv(this.a, coa.a($$1, $$0.getId(), this.b));
       }
    }
 }

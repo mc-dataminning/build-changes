@@ -1,10 +1,29 @@
-public abstract class cft extends bum {
-   protected cft(btv<? extends cft> $$0, deg $$1) {
-      super($$0, $$1);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public record cft(Set<dus> b, int c, int d) {
+   public static final Predicate<jo<cft>> a = $$0 -> false;
+
+   public cft(Set<dus> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   public boolean A() {
-      return false;
+   public boolean a(dus $$0) {
+      return this.b.contains($$0);
+   }
+
+   public Set<dus> a() {
+      return this.b;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

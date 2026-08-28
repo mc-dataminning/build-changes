@@ -1,27 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+public class asp implements akc {
+   private static final xe b = xe.c("multiplayer.status.request_handled");
+   private final akb c;
+   private final vy d;
+   private boolean e;
 
-public interface asp {
-   asp e = new asp() {
-      @Override
-      public CompletableFuture<arz> a(String $$0) {
-         return CompletableFuture.completedFuture(arz.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<arz>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(arz::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   default void a() {
+   public asp(akb $$0, vy $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   default void b() {
+   @Override
+   public void a(wa $$0) {
    }
 
-   CompletableFuture<arz> a(String var1);
+   @Override
+   public boolean c() {
+      return this.d.i();
+   }
 
-   CompletableFuture<List<arz>> a(List<String> var1);
+   @Override
+   public void a(akd $$0) {
+      if (this.e) {
+         this.d.a(b);
+      } else {
+         this.e = true;
+         this.d.a(new aka(this.c));
+      }
+   }
+
+   @Override
+   public void a(ajx $$0) {
+      this.d.a(new aju($$0.b()));
+      this.d.a(b);
+   }
 }

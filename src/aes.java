@@ -1,19 +1,33 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aes(xd b, Optional<byte[]> c) implements zk<abz> {
-   public static final zb<ByteBuf, aes> a = zb.a(xf.f, aes::b, yz.k.a(yz::a), aes::e, aes::new);
+public class aes implements zl<aca> {
+   public static final zc<wb, aes> a = zl.a(aes::a, aes::new);
+   @Nullable
+   private final ale b;
 
-   @Override
-   public zm<aes> a() {
-      return ago.aq;
+   public aes(@Nullable ale $$0) {
+      this.b = $$0;
    }
 
-   public void a(abz $$0) {
+   private aes(wb $$0) {
+      this.b = $$0.c(wb::q);
+   }
+
+   private void a(wb $$0) {
+      $$0.a(this.b, wb::a);
+   }
+
+   @Override
+   public zn<aes> a() {
+      return agp.ap;
+   }
+
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
-      return this.c;
+   @Nullable
+   public ale b() {
+      return this.b;
    }
 }

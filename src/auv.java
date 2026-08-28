@@ -1,71 +1,52 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public interface auv {
-   auv a = new auv() {
+public interface auv extends auz {
+   Set<String> a();
+
+   List<aut> a(ale var1);
+
+   Map<ale, aut> b(String var1, Predicate<ale> var2);
+
+   Map<ale, List<aut>> c(String var1, Predicate<ale> var2);
+
+   Stream<ath> b();
+
+   public static enum a implements auv {
+      a;
+
       @Override
-      public <T> Optional<T> a(ats<T> $$0) {
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<aut> getResource(ale $$0) {
          return Optional.empty();
       }
-   };
-   aul<auv> b = () -> a;
 
-   static auv a(InputStream $$0) throws IOException {
-      auv var3;
-      try (BufferedReader $$1 = new BufferedReader(new InputStreamReader($$0, StandardCharsets.UTF_8))) {
-         final JsonObject $$2 = ayt.a($$1);
-         var3 = new auv() {
-            @Override
-            public <T> Optional<T> a(ats<T> $$0) {
-               String $$1 = $$0.a();
-               return $$2.has($$1) ? Optional.of($$0.a(ayt.u($$2, $$1))) : Optional.empty();
-            }
-         };
+      @Override
+      public List<aut> a(ale $$0) {
+         return List.of();
       }
 
-      return var3;
-   }
-
-   <T> Optional<T> a(ats<T> var1);
-
-   default auv a(Collection<ats<?>> $$0) {
-      auv.a $$1 = new auv.a();
-
-      for (ats<?> $$2 : $$0) {
-         this.a($$1, $$2);
+      @Override
+      public Map<ale, aut> b(String $$0, Predicate<ale> $$1) {
+         return Map.of();
       }
 
-      return $$1.a();
-   }
-
-   private <T> void a(auv.a $$0, ats<T> $$1) {
-      this.a($$1).ifPresent($$2 -> $$0.a($$1, (T)$$2));
-   }
-
-   public static class a {
-      private final Builder<ats<?>, Object> a = ImmutableMap.builder();
-
-      public <T> auv.a a(ats<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
+      @Override
+      public Map<ale, List<aut>> c(String $$0, Predicate<ale> $$1) {
+         return Map.of();
       }
 
-      public auv a() {
-         final ImmutableMap<ats<?>, Object> $$0 = this.a.build();
-         return $$0.isEmpty() ? auv.a : new auv() {
-            @Override
-            public <T> Optional<T> a(ats<T> $$0x) {
-               return Optional.ofNullable((T)$$0.get($$0));
-            }
-         };
+      @Override
+      public Stream<ath> b() {
+         return Stream.of();
       }
    }
 }

@@ -1,5 +1,4 @@
-public class gvj extends guj {
+public class gvj extends gtq {
    public float a;
    public float b;
-   public float c;
 }

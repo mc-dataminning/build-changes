@@ -1,81 +1,95 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public class xb {
+public record xb(String c, List<xb.a> d, yb e) {
    public static final Codec<xb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(xb.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, xb::new)
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(xb::a),
+               xb.a.d.listOf().fieldOf("parameters").forGetter(xb::b),
+               yb.b.b.optionalFieldOf("style", yb.a).forGetter(xb::c)
+            )
+            .apply($$0, xb::new)
    );
-   private final xb.a b;
-   private final String c;
+   public static final zc<wp, xb> b = zc.a(za.m, xb::a, xb.a.e.a(za.a()), xb::b, yb.b.c, xb::c, xb::new);
 
-   public xb(xb.a $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public static xb a(String $$0) {
+      return new xb($$0, List.of(xb.a.a, xb.a.c), yb.a);
    }
 
-   public xb.a a() {
-      return this.b;
+   public static xb b(String $$0) {
+      yb $$1 = yb.a.a(n.h).b(true);
+      return new xb($$0, List.of(xb.a.a, xb.a.c), $$1);
    }
 
-   public String b() {
+   public static xb c(String $$0) {
+      yb $$1 = yb.a.a(n.h).b(true);
+      return new xb($$0, List.of(xb.a.b, xb.a.c), $$1);
+   }
+
+   public static xb d(String $$0) {
+      return new xb($$0, List.of(xb.a.b, xb.a.a, xb.a.c), yb.a);
+   }
+
+   public xe a(xe $$0, xa.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return xe.a(this.c, $$2).c(this.e);
+   }
+
+   private xe[] b(xe $$0, xa.a $$1) {
+      xe[] $$2 = new xe[this.d.size()];
+
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         xb.a $$4 = this.d.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
+      }
+
+      return $$2;
+   }
+
+   public String a() {
       return this.c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         xb $$1 = (xb)$$0;
-         return this.b == $$1.b && this.c.equals($$1.c);
-      } else {
-         return false;
-      }
+   public List<xb.a> b() {
+      return this.d;
    }
 
-   @Override
-   public String toString() {
-      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   public yb c() {
+      return this.e;
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
-   }
+   public static enum a implements bab {
+      a(0, "sender", ($$0, $$1) -> $$1.b()),
+      b(1, "target", ($$0, $$1) -> $$1.c().orElse(xd.a)),
+      c(2, "content", ($$0, $$1) -> $$0);
 
-   public static enum a implements azz {
-      a("open_url", true),
-      b("open_file", false),
-      c("run_command", true),
-      d("suggest_command", true),
-      e("change_page", true),
-      f("copy_to_clipboard", true);
+      private static final IntFunction<xb.a> f = axw.a($$0 -> $$0.g, values(), axw.a.a);
+      public static final Codec<xb.a> d = bab.a(xb.a::values);
+      public static final zc<ByteBuf, xb.a> e = za.a(f, $$0 -> $$0.g);
+      private final int g;
+      private final String h;
+      private final xb.a.a i;
 
-      public static final MapCodec<xb.a> g = azz.a(xb.a::values).fieldOf("action");
-      public static final MapCodec<xb.a> h = g.validate(xb.a::a);
-      private final boolean i;
-      private final String j;
-
-      private a(final String $$0, final boolean $$1) {
-         this.j = $$0;
-         this.i = $$1;
+      private a(final int $$0, final String $$1, final xb.a.a $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
       }
 
-      public boolean a() {
-         return this.i;
+      public xe a(xe $$0, xa.a $$1) {
+         return this.i.select($$0, $$1);
       }
 
       @Override
       public String c() {
-         return this.j;
+         return this.h;
       }
 
-      public static DataResult<xb.a> a(xb.a $$0) {
-         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
+      public interface a {
+         xe select(xe var1, xa.a var2);
       }
    }
 }

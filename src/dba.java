@@ -1,33 +1,19 @@
-public record dba(cvp a, cvp b, cvp c) implements dak {
+public record dba(cvs a) implements dan {
    @Override
-   public cvp a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   public cvs a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
    public int a() {
-      return 3;
+      return 1;
    }
 
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cvp c() {
+   public cvs c() {
       return this.a;
-   }
-
-   public cvp d() {
-      return this.b;
-   }
-
-   public cvp e() {
-      return this.c;
    }
 }

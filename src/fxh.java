@@ -1,49 +1,48 @@
-import org.joml.Quaternionf;
+public class fxh extends fxo<gtl> {
+   public static final gaz a = gaz.scaling(0.5F);
+   private final gaq b;
+   private final gaq c;
+   private final gaq d;
 
-public class fxh extends fxk<gti> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   private final gal j;
-   public final gal a;
-   public final gal b;
-   public final gal c;
-   public final gal d;
-
-   public fxh(gal $$0) {
-      this.j = $$0;
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+   public fxh(gaq $$0) {
+      super($$0);
+      this.b = $$0.b("body");
+      this.c = this.b.b("tail");
+      this.d = this.c.b("tail_fin");
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      float $$2 = 0.875F;
-      gaq $$3 = gaq.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      gav $$4 = $$1.a("outer_glass", $$3, gan.a(0.0F, 24.0F, 0.0F));
-      gav $$5 = $$4.a("inner_glass", $$3, gan.a.a(0.875F));
-      $$5.a("cube", gaq.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gan.a.a(0.765625F));
-      $$1.a("base", gaq.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gan.a);
-      return gar.a($$0, 64, 32);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      gba $$4 = $$1.a("body", gav.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gas.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", gav.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gas.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         gav.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gas.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         gav.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         gas.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      gba $$5 = $$4.a("tail", gav.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gas.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", gav.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gas.a(0.0F, 0.0F, 9.0F));
+      gba $$6 = $$4.a("head", gav.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gas.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", gav.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gas.a);
+      return gaw.a($$0, 64, 64);
    }
 
-   public void a(gti $$0) {
-      this.j.e().forEach(gal::c);
-      this.a.k = $$0.a;
-      float $$1 = $$0.p * 3.0F;
-      float $$2 = gnd.a($$0.p) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-   }
-
-   @Override
-   public gal a() {
-      return this.j;
+   public void a(gtl $$0) {
+      super.a($$0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      if ($$0.a) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * azf.b($$0.p * 0.3F));
+         this.c.e = -0.1F * azf.b($$0.p * 0.3F);
+         this.d.e = -0.2F * azf.b($$0.p * 0.3F);
+      }
    }
 }

@@ -1,37 +1,14 @@
-public class fwt extends fzf<gsz> {
-   private final gal a;
-
-   public fwt(gal $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+public class fwt extends fyj {
+   public fwt(gaq $$0) {
+      super($$0, ghv::e);
    }
 
-   public static gar b() {
-      gat $$0 = fxx.a(gap.a, 0.0F);
-      gav $$1 = $$0.a();
-      fzf.a($$1);
-      gav $$2 = $$1.b("head").a("mushrooms");
-      $$2.a("red_mushroom_1", gaq.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gan.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", gaq.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gan.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", gaq.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gan.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", gaq.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gan.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         gaq.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gan.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         gaq.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gan.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return gar.a($$0, 64, 32);
-   }
-
-   public void a(gsz $$0) {
-      super.a($$0);
-      this.a.k = !$$0.a;
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      gav $$2 = gav.c().a(0, 0).a(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
+      $$1.a("cross_1", $$2, gas.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gas.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gaw.a($$0, 16, 16);
    }
 }

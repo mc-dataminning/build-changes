@@ -1,61 +1,59 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class evt extends euu {
-   private static final Codec<List<evt.b>> b = evt.b.a.listOf().validate($$0 -> {
-      Set<jn<bst>> $$1 = new ObjectOpenHashSet();
-
-      for (evt.b $$2 : $$0) {
-         if (!$$1.add($$2.a())) {
-            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
-         }
-      }
-
-      return DataResult.success($$0);
-   });
+public class evt extends euy {
    public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, evt::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  xg.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  eux.a(256).forGetter($$0x -> $$0x.c),
+                  etl.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, evt::new)
    );
-   private final List<evt.b> c;
+   private final List<xe> b;
+   private final eux c;
+   private final Optional<etl.b> d;
 
-   evt(List<ews> $$0, List<evt.b> $$1) {
+   public evt(List<eww> $$0, List<xe> $$1, eux $$2, Optional<etl.b> $$3) {
       super($$0);
-      this.c = $$1;
+      this.b = List.copyOf($$1);
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public euw<evt> b() {
-      return eux.r;
+   public eva<evt> b() {
+      return evb.A;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   public Set<ewe<?>> a() {
+      return this.d.<Set<ewe<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
    }
 
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.a(cvt.vY) && !this.c.isEmpty()) {
-         evt.b $$2 = ad.a(this.c, $$1.b());
-         jn<bst> $$3 = $$2.a();
-         int $$4 = $$2.b().a($$1);
-         if (!$$3.a().a()) {
-            $$4 *= 20;
-         }
+   public cvs a(cvs $$0, etl $$1) {
+      $$0.a(ks.i, cyp.a, $$1x -> new cyp(this.a($$1x, $$1)));
+      return $$0;
+   }
 
-         cyu.a $$5 = new cyu.a($$3, $$4);
-         $$0.a(kr.M, cyu.a, $$5, cyu::a);
-         return $$0;
+   private List<xe> a(@Nullable cyp $$0, etl $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         return $$0;
+         UnaryOperator<xe> $$2 = evu.a($$1, this.d.orElse(null));
+         List<xe> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
@@ -63,35 +61,33 @@ public class evt extends euu {
       return new evt.a();
    }
 
-   public static class a extends euu.a<evt.a> {
-      private final Builder<evt.b> a = ImmutableList.builder();
+   public static class a extends euy.a<evt.a> {
+      private Optional<etl.b> a = Optional.empty();
+      private final Builder<xe> b = ImmutableList.builder();
+      private eux c = eux.a.b;
+
+      public evt.a a(eux $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public evt.a a(etl.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public evt.a a(xe $$0) {
+         this.b.add($$0);
+         return this;
+      }
 
       protected evt.a a() {
          return this;
       }
 
-      public evt.a a(jn<bst> $$0, exo $$1) {
-         this.a.add(new evt.b($$0, $$1));
-         return this;
-      }
-
       @Override
-      public euv b() {
-         return new evt(this.g(), this.a.build());
-      }
-   }
-
-   static record b(jn<bst> b, exo c) {
-      public static final Codec<evt.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bst.a.fieldOf("type").forGetter(evt.b::a), exp.a.fieldOf("duration").forGetter(evt.b::b)).apply($$0, evt.b::new)
-      );
-
-      public jn<bst> a() {
-         return this.b;
-      }
-
-      public exo b() {
-         return this.c;
+      public euz b() {
+         return new evt(this.g(), this.b.build(), this.c, this.a);
       }
    }
 }

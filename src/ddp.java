@@ -1,144 +1,209 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public interface ddp extends ddl {
-   dwf A_();
+public class ddp {
+   private static final int g = 1056;
+   public static final long a = c(1875066, 1875066);
+   public static final ddp b = new ddp(0, 0);
+   private static final long h = 32L;
+   private static final long i = 4294967295L;
+   private static final int j = 5;
+   public static final int c = 32;
+   private static final int k = 31;
+   public static final int d = 31;
+   public final int e;
+   public final int f;
+   private static final int l = 1664525;
+   private static final int m = 1013904223;
+   private static final int n = -559038737;
 
-   @Nullable
-   ddl c(int var1, int var2);
-
-   default boolean a(@Nullable bto $$0, ezm $$1) {
-      return true;
+   public ddp(int $$0, int $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   default boolean a(duo $$0, je $$1, eyx $$2) {
-      ezm $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public ddp(jf $$0) {
+      this.e = kh.a($$0.u());
+      this.f = kh.a($$0.w());
    }
 
-   default boolean f(bto $$0) {
-      return this.a($$0, ezj.a($$0.cO()));
+   public ddp(long $$0) {
+      this.e = (int)$$0;
+      this.f = (int)($$0 >> 32);
    }
 
-   default boolean b(eyn $$0) {
-      return this.a(null, $$0);
+   public static ddp a(int $$0, int $$1) {
+      return new ddp($$0 << 5, $$1 << 5);
    }
 
-   default boolean g(bto $$0) {
-      return this.a($$0, $$0.cO());
+   public static ddp b(int $$0, int $$1) {
+      return new ddp(($$0 << 5) + 31, ($$1 << 5) + 31);
    }
 
-   default boolean a(@Nullable bto $$0, eyn $$1) {
-      return this.a($$0, $$1, false);
+   public long a() {
+      return c(this.e, this.f);
    }
 
-   default boolean a(@Nullable bto $$0, eyn $$1, boolean $$2) {
-      for (ezm $$4 : $$2 ? this.f($$0, $$1) : this.e($$0, $$1)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
+   public static long c(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   }
 
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
+   public static long a(jf $$0) {
+      return c(kh.a($$0.u()), kh.a($$0.w()));
+   }
+
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
+   }
+
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
+   }
+
+   @Override
+   public int hashCode() {
+      return d(this.e, this.f);
+   }
+
+   public static int d(int $$0, int $$1) {
+      int $$2 = 1664525 * $$0 + 1013904223;
+      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
+      return $$2 ^ $$3;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
       } else {
-         ezm $$5 = this.i($$0, $$1);
-         return $$5 == null || !ezj.c($$5, ezj.a($$1), eyw.i);
+         return !($$0 instanceof ddp $$1) ? false : this.e == $$1.e && this.f == $$1.f;
       }
    }
 
-   default boolean b(@Nullable bto $$0, eyn $$1) {
-      for (ezm $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
+   public int b() {
+      return this.a(8);
    }
 
-   List<ezm> c(@Nullable bto var1, eyn var2);
-
-   default Iterable<ezm> d(@Nullable bto $$0, eyn $$1) {
-      List<ezm> $$2 = this.c($$0, $$1);
-      Iterable<ezm> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
+   public int c() {
+      return this.b(8);
    }
 
-   default Iterable<ezm> e(@Nullable bto $$0, eyn $$1) {
-      return () -> new ddj<ezm>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   public int d() {
+      return kh.c(this.e);
    }
 
-   default Iterable<ezm> f(@Nullable bto $$0, eyn $$1) {
-      return () -> new ddj<ezm>(this, eyx.a($$0, true), $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   public int e() {
+      return kh.c(this.f);
    }
 
-   @Nullable
-   private ezm i(bto $$0, eyn $$1) {
-      dwf $$2 = this.A_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
+   public int f() {
+      return this.a(15);
    }
 
-   default eyq b(ddo $$0) {
-      eyq $$1 = this.a($$0);
-      dwf $$2 = this.A_();
-      if ($$2.a($$0.b()) && !$$2.a($$1.g())) {
-         eys $$3 = $$1.g().d($$0.b());
-         jj $$4 = jj.a($$3.d, $$3.e, $$3.f);
-         eys $$5 = $$2.c($$1.g());
-         return new eyo($$5, $$4, je.a((jx)$$5), false, true);
-      } else {
-         return $$1;
-      }
+   public int g() {
+      return this.b(15);
    }
 
-   default boolean g(@Nullable bto $$0, eyn $$1) {
-      ddj<ezm> $$2 = new ddj<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
+   public int h() {
+      return this.e >> 5;
+   }
 
-      while ($$2.hasNext()) {
-         if (!((ezm)$$2.next()).c()) {
+   public int i() {
+      return this.f >> 5;
+   }
+
+   public int j() {
+      return this.e & 31;
+   }
+
+   public int k() {
+      return this.f & 31;
+   }
+
+   public jf a(int $$0, int $$1, int $$2) {
+      return new jf(this.a($$0), $$1, this.b($$2));
+   }
+
+   public int a(int $$0) {
+      return kh.a(this.e, $$0);
+   }
+
+   public int b(int $$0) {
+      return kh.a(this.f, $$0);
+   }
+
+   public jf c(int $$0) {
+      return new jf(this.b(), $$0, this.c());
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.e + ", " + this.f + "]";
+   }
+
+   public jf l() {
+      return new jf(this.d(), 0, this.e());
+   }
+
+   public int a(ddp $$0) {
+      return this.e($$0.e, $$0.f);
+   }
+
+   public int e(int $$0, int $$1) {
+      return Math.max(Math.abs(this.e - $$0), Math.abs(this.f - $$1));
+   }
+
+   public int b(ddp $$0) {
+      return this.f($$0.e, $$0.f);
+   }
+
+   public int c(long $$0) {
+      return this.f(a($$0), b($$0));
+   }
+
+   private int f(int $$0, int $$1) {
+      int $$2 = $$0 - this.e;
+      int $$3 = $$1 - this.f;
+      return $$2 * $$2 + $$3 * $$3;
+   }
+
+   public static Stream<ddp> a(ddp $$0, int $$1) {
+      return a(new ddp($$0.e - $$1, $$0.f - $$1), new ddp($$0.e + $$1, $$0.f + $$1));
+   }
+
+   public static Stream<ddp> a(final ddp $$0, final ddp $$1) {
+      int $$2 = Math.abs($$0.e - $$1.e) + 1;
+      int $$3 = Math.abs($$0.f - $$1.f) + 1;
+      final int $$4 = $$0.e < $$1.e ? 1 : -1;
+      final int $$5 = $$0.f < $$1.f ? 1 : -1;
+      return StreamSupport.stream(new AbstractSpliterator<ddp>((long)($$2 * $$3), 64) {
+         @Nullable
+         private ddp e;
+
+         @Override
+         public boolean tryAdvance(Consumer<? super ddp> $$0x) {
+            if (this.e == null) {
+               this.e = $$0;
+            } else {
+               int $$1 = this.e.e;
+               int $$2 = this.e.f;
+               if ($$1 == $$1.e) {
+                  if ($$2 == $$1.f) {
+                     return false;
+                  }
+
+                  this.e = new ddp($$0.e, $$2 + $$5);
+               } else {
+                  this.e = new ddp($$1 + $$4, $$2);
+               }
+            }
+
+            $$0.accept(this.e);
             return true;
          }
-      }
-
-      return false;
-   }
-
-   default Optional<je> h(bto $$0, eyn $$1) {
-      je $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      ddj<je> $$4 = new ddj<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         je $$5 = (je)$$4.next();
-         double $$6 = $$5.b($$0.dq());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.j();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<eys> a(@Nullable bto $$0, ezm $$1, eys $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         eyn $$6 = $$1.a().c($$3, $$4, $$5);
-         ezm $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.A_() == null || this.A_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(ezj::a)
-            .reduce(ezj.a(), ezj::a);
-         ezm $$8 = ezj.a($$1, $$7, eyw.e);
-         return $$8.a($$2);
-      }
+      }, false);
    }
 }

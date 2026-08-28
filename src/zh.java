@@ -1,9 +1,8 @@
-public abstract class zh<T extends wj> implements zk<T> {
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public abstract zm<? extends zh<T>> a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface zh {
 }

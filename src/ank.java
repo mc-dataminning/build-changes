@@ -1,188 +1,162 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class ank {
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xd.b("commands.function.error.argument_not_compound", $$0));
-   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xd.b("commands.function.scheduled.no_functions", $$0));
-   @VisibleForTesting
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("commands.function.instantiationFailure", $$0, $$1));
-   public static final SuggestionProvider<et> b = ($$0, $$1) -> {
-      alr $$2 = ((et)$$0.getSource()).l().aE();
-      ey.a($$2.e(), $$1, "#");
-      return ey.a($$2.d(), $$1);
-   };
-   static final ank.b<et> e = new ank.b<et>() {
-      public void a(et $$0, alc $$1, int $$2) {
-         $$0.a(() -> xd.a("commands.function.result", xd.a($$1), $$2), true);
-      }
-   };
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xe.b("commands.fill.toobig", $$0, $$1));
+   static final gl b = new gl(dho.a.n(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xe.c("commands.fill.failed"));
 
-   public static void a(CommandDispatcher<et> $$0) {
-      LiteralArgumentBuilder<et> $$1 = eu.a("with");
-
-      for (apt.c $$2 : apt.c) {
-         $$2.a($$1, $$1x -> $$1x.executes(new ank.c() {
-               @Override
-               protected uf a(CommandContext<et> $$0) throws CommandSyntaxException {
-                  return $$2.a($$0).a();
-               }
-            }).then(eu.a("path", fl.a()).executes(new ank.c() {
-               @Override
-               protected uf a(CommandContext<et> $$0) throws CommandSyntaxException {
-                  return ank.a(fl.a($$0, "path"), $$2.a($$0));
-               }
-            })));
-      }
-
+   public static void a(CommandDispatcher<eu> $$0, eq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("function").requires($$0x -> $$0x.c(2)))
-            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("name", hb.a()).suggests(b).executes(new ank.c() {
-               @Nullable
-               @Override
-               protected uf a(CommandContext<et> $$0) {
-                  return null;
-               }
-            })).then(eu.a("arguments", fd.a()).executes(new ank.c() {
-               @Override
-               protected uf a(CommandContext<et> $$0) {
-                  return fd.a($$0, "arguments");
-               }
-            }))).then($$1))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("fill").requires($$0x -> $$0x.c(2)))
+            .then(
+               ev.a("from", gq.a())
+                  .then(
+                     ev.a("to", gq.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a(
+                                                "block", gn.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((eu)$$0x.getSource(), eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")), gn.a($$0x, "block"), ank.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ev.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (eu)$$0x.getSource(),
+                                                            eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")),
+                                                            gn.a($$0x, "block"),
+                                                            ank.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ev.a("filter", gm.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (eu)$$0x.getSource(),
+                                                               eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")),
+                                                               gn.a($$0x, "block"),
+                                                               ank.a.a,
+                                                               gm.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          ev.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (eu)$$0x.getSource(),
+                                                      eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")),
+                                                      gn.a($$0x, "block"),
+                                                      ank.a.a,
+                                                      $$0xx -> $$0xx.c().u($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ev.a("outline")
+                                          .executes(
+                                             $$0x -> a((eu)$$0x.getSource(), eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")), gn.a($$0x, "block"), ank.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    ev.a("hollow")
+                                       .executes(
+                                          $$0x -> a((eu)$$0x.getSource(), eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")), gn.a($$0x, "block"), ank.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 ev.a("destroy")
+                                    .executes($$0x -> a((eu)$$0x.getSource(), eky.a(gq.a($$0x, "from"), gq.a($$0x, "to")), gn.a($$0x, "block"), ank.a.d, null))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   static uf a(fl.g $$0, aps $$1) throws CommandSyntaxException {
-      vc $$2 = apt.a($$0, $$1);
-      if ($$2 instanceof uf) {
-         return (uf)$$2;
+   private static int a(eu $$0, eky $$1, gl $$2, ank.a $$3, @Nullable Predicate<duw> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().ac().c(def.z);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         throw c.create($$2.c().a());
-      }
-   }
+         List<jf> $$7 = Lists.newArrayList();
+         arj $$8 = $$0.e();
+         int $$9 = 0;
 
-   public static et a(et $$0) {
-      return $$0.a().b(2);
-   }
-
-   public static <T extends ev<T>> void a(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, ank.b<T> $$5, ho $$6) throws CommandSyntaxException {
-      if ($$6.c()) {
-         a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         b($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   private static <T extends ev<T>> void a(@Nullable uf $$0, hu<T> $$1, CommandDispatcher<T> $$2, T $$3, ih<T> $$4, alc $$5, eq $$6, boolean $$7) throws CommandSyntaxException {
-      try {
-         ij<T> $$8 = $$4.a($$0, $$2);
-         $$1.a(new ia<>($$8, $$6, $$7).bind($$3));
-      } catch (ew var9) {
-         throw a.create($$5, var9.a());
-      }
-   }
-
-   private static <T extends ev<T>> eq a(T $$0, ank.b<T> $$1, alc $$2, eq $$3) {
-      return $$0.y() ? $$3 : ($$4, $$5) -> {
-         $$1.a($$0, $$2, $$5);
-         $$3.onResult($$4, $$5);
-      };
-   }
-
-   private static <T extends ev<T>> void a(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, ank.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      eq $$8 = eq.chain($$2.p(), $$4.b().d());
-
-      for (ih<T> $$9 : $$0) {
-         alc $$10 = $$9.a();
-         eq $$11 = a($$2, $$5, $$10, $$8);
-         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
-      }
-
-      $$4.a(id.a());
-   }
-
-   private static <T extends ev<T>> void b(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, ank.b<T> $$5) throws CommandSyntaxException {
-      CommandDispatcher<T> $$6 = $$2.x();
-      T $$7 = $$3.a_();
-      eq $$8 = $$2.p();
-      if (!$$0.isEmpty()) {
-         if ($$0.size() == 1) {
-            ih<T> $$9 = $$0.iterator().next();
-            alc $$10 = $$9.a();
-            eq $$11 = a($$2, $$5, $$10, $$8);
-            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
-         } else if ($$8 == eq.a) {
-            for (ih<T> $$12 : $$0) {
-               alc $$13 = $$12.a();
-               eq $$14 = a($$2, $$5, $$13, $$8);
-               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
+         for (jf $$10 : jf.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new duw($$8, $$10, true))) {
+               gl $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  drv $$12 = $$8.c_($$10);
+                  brj.a_($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.j());
+                     $$9++;
+                  }
+               }
             }
+         }
+
+         for (jf $$13 : $$7) {
+            dhm $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
          } else {
-            class a {
-               boolean a;
-               int b;
-
-               public void a(int $$0) {
-                  this.a = true;
-                  this.b += $$0;
-               }
-            }
-
-            a $$15 = new a();
-            eq $$16 = ($$1x, $$2x) -> $$15.a($$2x);
-
-            for (ih<T> $$17 : $$0) {
-               alc $$18 = $$17.a();
-               eq $$19 = a($$2, $$5, $$18, $$16);
-               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
-            }
-
-            $$4.a(($$2x, $$3x) -> {
-               if ($$15.a) {
-                  $$8.onSuccess($$15.b);
-               }
-            });
+            int $$15 = $$9;
+            $$0.a(() -> xe.a("commands.fill.success", $$15), true);
+            return $$9;
          }
       }
    }
 
-   public interface b<T> {
-      void a(T var1, alc var2, int var3);
-   }
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? ank.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
 
-   abstract static class c extends hq.b<et> implements hq.a<et> {
-      @Nullable
-      protected abstract uf a(CommandContext<et> var1) throws CommandSyntaxException;
+      public final aov.a e;
 
-      public void a(et $$0, ContextChain<et> $$1, ho $$2, hu<et> $$3) throws CommandSyntaxException {
-         CommandContext<et> $$4 = $$1.getTopContext().copyFor($$0);
-         Pair<alc, Collection<ih<et>>> $$5 = hb.c($$4, "name");
-         Collection<ih<et>> $$6 = (Collection<ih<et>>)$$5.getSecond();
-         if ($$6.isEmpty()) {
-            throw ank.d.create(xd.a((alc)$$5.getFirst()));
-         } else {
-            uf $$7 = this.a($$4);
-            et $$8 = ank.a($$0);
-            if ($$6.size() == 1) {
-               $$0.a(() -> xd.a("commands.function.scheduled.single", xd.a($$6.iterator().next().a())), true);
-            } else {
-               $$0.a(() -> xd.a("commands.function.scheduled.multiple", xg.b($$6.stream().map(ih::a).toList(), xd::a)), true);
-            }
-
-            ank.a($$6, $$7, $$0, $$8, $$3, ank.e, $$2);
-         }
+      private a(final aov.a $$0) {
+         this.e = $$0;
       }
    }
 }

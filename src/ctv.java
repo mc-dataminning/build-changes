@@ -1,79 +1,65 @@
 import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class ctv extends cwl {
-   public static final int a = 20;
-   public static final int b = 15;
+public class ctv extends cvn {
+   private final cpx.b a;
+   private final boolean b;
 
-   public ctv(cvk.a $$0) {
-      super($$0);
+   public ctv(boolean $$0, cpx.b $$1, cvn.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public void a(cvp $$0, deg $$1, buk $$2, int $$3) {
-      if ($$2 instanceof cnu $$4) {
-         cvp $$5 = $$4.f($$0);
-         if (!$$5.f()) {
-            int $$6 = this.a($$0, $$2) - $$3;
-            float $$7 = a($$6);
-            if (!((double)$$7 < 0.1)) {
-               List<cvp> $$8 = a($$0, $$5, $$4);
-               if ($$1 instanceof arh $$9 && !$$8.isEmpty()) {
-                  this.a($$9, $$4, $$4.fw(), $$0, $$8, $$7 * 3.0F, 1.0F, $$7 == 1.0F, null);
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      eyu $$4 = a($$0, $$1, ddr.b.c);
+      if ($$4.d() == eyu.a.a) {
+         return brs.e;
+      } else {
+         eyw $$5 = $$1.g(1.0F);
+         double $$6 = 5.0;
+         List<btr> $$7 = $$0.a($$1, $$1.cO().b($$5.c(5.0)).g(1.0), btw.h);
+         if (!$$7.isEmpty()) {
+            eyw $$8 = $$1.bC();
+
+            for (btr $$9 : $$7) {
+               eyr $$10 = $$9.cO().g((double)$$9.bP());
+               if ($$10.d($$8)) {
+                  return brs.e;
+               }
+            }
+         }
+
+         if ($$4.d() == eyu.a.b) {
+            cpx $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.a);
+            $$11.v($$1.dI());
+            if (!$$0.a($$11, $$11.cO())) {
+               return brs.d;
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dzp.t, $$4.g());
+                  $$3.a(1, $$1);
                }
 
-               $$1.a(null, $$4.dx(), $$4.dz(), $$4.dD(), awe.aG, awf.h, 1.0F, 1.0F / ($$1.C_().i() * 0.4F + 1.2F) + $$7 * 0.5F);
-               $$4.b(awo.c.b(this));
+               $$1.b(awq.c.b(this));
+               return brs.a;
             }
+         } else {
+            return brs.e;
          }
       }
    }
 
-   @Override
-   protected void a(buk $$0, coo $$1, int $$2, float $$3, float $$4, float $$5, @Nullable buk $$6) {
-      $$1.a($$0, $$0.dK(), $$0.dI() + $$5, 0.0F, $$3, $$4);
-   }
-
-   public static float a(int $$0) {
-      float $$1 = (float)$$0 / 20.0F;
-      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
-      if ($$1 > 1.0F) {
-         $$1 = 1.0F;
+   private cpx a(dej $$0, eyu $$1, cvs $$2, cnx $$3) {
+      eyw $$4 = $$1.g();
+      cpx $$5 = (cpx)(this.b ? new cpy($$0, $$4.d, $$4.e, $$4.f) : new cpx($$0, $$4.d, $$4.e, $$4.f));
+      if ($$0 instanceof arj $$6) {
+         bty.<cpx>a($$6, $$2, $$3).accept($$5);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public int a(cvp $$0, buk $$1) {
-      return 72000;
-   }
-
-   @Override
-   public cvr a(cvp $$0) {
-      return cvr.e;
-   }
-
-   @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      boolean $$4 = !$$1.f($$3).f();
-      if (!$$1.fQ() && !$$4) {
-         return brp.d;
-      } else {
-         $$1.c($$2);
-         return brp.c;
-      }
-   }
-
-   @Override
-   public Predicate<cvp> b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 15;
+      return $$5;
    }
 }

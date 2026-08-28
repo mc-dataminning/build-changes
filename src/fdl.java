@@ -1,142 +1,209 @@
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fdl {
-   public static fdi a() {
-      throw new IllegalArgumentException();
+public class fdl implements AutoCloseable {
+   private final fdl.a a;
+   private int b;
+   private int c;
+   private int d;
+   @Nullable
+   private fdn e;
+   @Nullable
+   private RenderSystem.a f;
+   private fdn.b g;
+   private int h;
+   private fdn.c i;
+
+   public fdl(fdl.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   public static fdi a(fdi $$0) {
-      return $$0;
-   }
+   public void a(fdh $$0) {
+      fdh var2 = $$0;
 
-   public static fdi a(fdi $$0, fdi $$1) {
-      return new fdl.a($$0, $$1);
-   }
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
 
-   public static fdi a(fdi... $$0) {
-      return new fdl.b($$0);
-   }
-
-   static class a implements fdi {
-      private final fdi a;
-      private final fdi b;
-
-      public a(fdi $$0, fdi $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
-         } else {
-            this.a = $$0;
-            this.b = $$1;
-         }
-      }
-
-      @Override
-      public fdi a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fdi a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fdi a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdi a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdi b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fdi b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   static record b(fdi[] a) implements fdi {
-      b(fdi[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
+            RenderSystem.assertOnRenderThread();
+            fdh.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.c();
+            this.g = $$1.e();
+            this.i = $$1.d();
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
                }
             }
+
+            throw var6;
          }
 
-         this.a = a;
-      }
-
-      private void a(Consumer<fdi> $$0) {
-         for (fdi $$1 : this.a) {
-            $$0.accept($$1);
+         if ($$0 != null) {
+            $$0.close();
          }
+
+         return;
       }
 
-      @Override
-      public fdi a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   public void a(fdf.a $$0) {
+      fdf.a var2 = $$0;
+
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            GlStateManager._glBindBuffer(34963, this.c);
+            RenderSystem.glBufferData(34963, $$0.a(), this.a.c);
+            this.f = null;
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
       }
 
-      @Override
-      public fdi a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   private fdn a(fdh.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.a().equals(this.e)) {
+         if (this.e != null) {
+            this.e.h();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.a().g();
+         $$2 = true;
       }
 
-      @Override
-      public fdi a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
       }
 
-      @Override
-      public fdi a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
+      return $$0.a();
+   }
+
+   @Nullable
+   private RenderSystem.a b(fdh.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
+         if ($$2 != this.f || !$$2.a($$0.c())) {
+            $$2.b($$0.c());
+         }
+
+         return $$2;
+      }
+   }
+
+   public void a() {
+      fde.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      fde.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fdn.b f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable ggu $$2) {
+      if ($$2 != null) {
+         RenderSystem.assertOnRenderThread();
+         $$2.a(this.i, $$0, $$1, fip.Q().aP());
+         $$2.b();
+         this.c();
+         $$2.a();
+      }
+   }
+
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
       }
 
-      @Override
-      public fdi b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
       }
 
-      @Override
-      public fdi b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
       }
+   }
 
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+   public fdn d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d == -1;
+   }
+
+   public static enum a {
+      a(35044),
+      b(35048);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

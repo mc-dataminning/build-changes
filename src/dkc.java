@@ -1,19 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkc extends did implements cus {
-   public static final MapCodec<dkc> c = b(dkc::new);
+public class dkc extends dnw {
+   public static final MapCodec<dkc> b = b(dkc::new);
 
    @Override
    public MapCodec<dkc> a() {
-      return c;
+      return b;
    }
 
-   protected dkc(dun.d $$0) {
+   protected dkc(dur.d $$0) {
       super($$0);
+      this.l(this.F.b().b(a, jk.b));
    }
 
    @Override
-   public btw l() {
-      return btw.f;
+   public dus a(czn $$0) {
+      jk $$1 = $$0.k();
+      dus $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().b(a, $$1.g()) : this.n().b(a, $$1);
+   }
+
+   @Override
+   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
+      jk $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(lo.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+      }
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(a);
    }
 }

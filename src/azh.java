@@ -1,109 +1,192 @@
-import java.util.function.Supplier;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class azh {
-   public static void a(deg $$0, je $$1, ll $$2, bqu $$3) {
-      for (jj $$4 : jj.values()) {
-         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
+public class azh implements DynamicOps<bak> {
+   public static final azh a = new azh();
+
+   private azh() {
+   }
+
+   public <U> U a(DynamicOps<U> $$0, bak $$1) {
+      return (U)$$0.empty();
+   }
+
+   public bak a() {
+      return bak.a;
+   }
+
+   public bak b() {
+      return bak.a;
+   }
+
+   public bak c() {
+      return bak.a;
+   }
+
+   public bak a(Number $$0) {
+      return bak.a;
+   }
+
+   public bak a(byte $$0) {
+      return bak.a;
+   }
+
+   public bak a(short $$0) {
+      return bak.a;
+   }
+
+   public bak a(int $$0) {
+      return bak.a;
+   }
+
+   public bak a(long $$0) {
+      return bak.a;
+   }
+
+   public bak a(float $$0) {
+      return bak.a;
+   }
+
+   public bak a(double $$0) {
+      return bak.a;
+   }
+
+   public bak a(boolean $$0) {
+      return bak.a;
+   }
+
+   public bak a(String $$0) {
+      return bak.a;
+   }
+
+   public DataResult<Number> a(bak $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(bak $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(bak $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<bak> a(bak $$0, bak $$1) {
+      return DataResult.success(bak.a);
+   }
+
+   public DataResult<bak> a(bak $$0, List<bak> $$1) {
+      return DataResult.success(bak.a);
+   }
+
+   public DataResult<bak> a(bak $$0, bak $$1, bak $$2) {
+      return DataResult.success(bak.a);
+   }
+
+   public DataResult<bak> a(bak $$0, Map<bak, bak> $$1) {
+      return DataResult.success(bak.a);
+   }
+
+   public DataResult<bak> a(bak $$0, MapLike<bak> $$1) {
+      return DataResult.success(bak.a);
+   }
+
+   public DataResult<Stream<Pair<bak, bak>>> d(bak $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<bak, bak>>> e(bak $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<bak>> f(bak $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<bak>> g(bak $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<bak>>> h(bak $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(bak $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(bak $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(bak $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public bak a(Stream<Pair<bak, bak>> $$0) {
+      return bak.a;
+   }
+
+   public bak a(Map<bak, bak> $$0) {
+      return bak.a;
+   }
+
+   public bak b(Stream<bak> $$0) {
+      return bak.a;
+   }
+
+   public bak a(ByteBuffer $$0) {
+      return bak.a;
+   }
+
+   public bak a(IntStream $$0) {
+      return bak.a;
+   }
+
+   public bak a(LongStream $$0) {
+      return bak.a;
+   }
+
+   public bak a(bak $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<bak> mapBuilder() {
+      return new azh.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<bak, bak> {
+      public a(DynamicOps<bak> $$0) {
+         super($$0);
       }
-   }
 
-   public static void a(deg $$0, je $$1, ll $$2, bqu $$3, jj $$4, Supplier<eys> $$5, double $$6) {
-      int $$7 = $$3.a($$0.z);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
-      }
-   }
-
-   private static eys a(azl $$0) {
-      return new eys(azd.a($$0, -0.5, 0.5), azd.a($$0, -0.5, 0.5), azd.a($$0, -0.5, 0.5));
-   }
-
-   public static void a(jj.a $$0, deg $$1, je $$2, double $$3, ll $$4, bra $$5) {
-      eys $$6 = eys.b($$2);
-      boolean $$7 = $$0 == jj.a.a;
-      boolean $$8 = $$0 == jj.a.b;
-      boolean $$9 = $$0 == jj.a.c;
-      int $$10 = $$5.a($$1.z);
-
-      for (int $$11 = 0; $$11 < $$10; $$11++) {
-         double $$12 = $$6.d + azd.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
-         double $$13 = $$6.e + azd.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
-         double $$14 = $$6.f + azd.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
-         double $$15 = $$7 ? azd.a($$1.z, -1.0, 1.0) : 0.0;
-         double $$16 = $$8 ? azd.a($$1.z, -1.0, 1.0) : 0.0;
-         double $$17 = $$9 ? azd.a($$1.z, -1.0, 1.0) : 0.0;
-         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
-      }
-   }
-
-   public static void a(deg $$0, je $$1, jj $$2, ll $$3, eys $$4, double $$5) {
-      eys $$6 = eys.b($$1);
-      int $$7 = $$2.j();
-      int $$8 = $$2.k();
-      int $$9 = $$2.l();
-      double $$10 = $$6.d + ($$7 == 0 ? azd.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
-      double $$11 = $$6.e + ($$8 == 0 ? azd.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
-      double $$12 = $$6.f + ($$9 == 0 ? azd.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
-      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
-      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
-      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
-      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
-   }
-
-   public static void a(deg $$0, je $$1, azl $$2, ll $$3) {
-      double $$4 = (double)$$1.u() + $$2.j();
-      double $$5 = (double)$$1.v() - 0.05;
-      double $$6 = (double)$$1.w() + $$2.j();
-      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(deh $$0, je $$1, int $$2, ll $$3) {
-      double $$4 = 0.5;
-      duo $$5 = $$0.a_($$1);
-      double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(jj.a.b);
-      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
-   }
-
-   public static void a(deh $$0, je $$1, int $$2, double $$3, double $$4, boolean $$5, ll $$6) {
-      azl $$7 = $$0.C_();
-
-      for (int $$8 = 0; $$8 < $$2; $$8++) {
-         double $$9 = $$7.k() * 0.02;
-         double $$10 = $$7.k() * 0.02;
-         double $$11 = $$7.k() * 0.02;
-         double $$12 = 0.5 - $$3;
-         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
-         double $$14 = (double)$$1.v() + $$7.j() * $$4;
-         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
-         if ($$5 || !$$0.a_(je.a($$13, $$14, $$15).e()).l()) {
-            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
-         }
-      }
-   }
-
-   public static void a(deh $$0, je $$1, int $$2) {
-      eys $$3 = $$1.b().b(0.0, 0.5, 0.0);
-      lf $$4 = new lf(ln.bb, $$0.a_($$1));
-
-      for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {
-         double $$6 = $$3.d + $$0.C_().k() / 2.0;
-         double $$7 = $$3.e;
-         double $$8 = $$3.f + $$0.C_().k() / 2.0;
-         double $$9 = $$0.C_().k() * 0.2F;
-         double $$10 = $$0.C_().k() * 0.2F;
-         double $$11 = $$0.C_().k() * 0.2F;
-         $$0.a($$4, $$6, $$7, $$8, $$9, $$10, $$11);
+      protected bak a() {
+         return bak.a;
       }
 
-      for (int $$12 = 0; (float)$$12 < (float)$$2 / 1.5F; $$12++) {
-         double $$13 = $$3.d + 3.5 * Math.cos((double)$$12) + $$0.C_().k() / 2.0;
-         double $$14 = $$3.e;
-         double $$15 = $$3.f + 3.5 * Math.sin((double)$$12) + $$0.C_().k() / 2.0;
-         double $$16 = $$0.C_().k() * 0.05F;
-         double $$17 = $$0.C_().k() * 0.05F;
-         double $$18 = $$0.C_().k() * 0.05F;
-         $$0.a($$4, $$13, $$14, $$15, $$16, $$17, $$18);
+      protected bak a(bak $$0, bak $$1, bak $$2) {
+         return $$2;
+      }
+
+      protected DataResult<bak> a(bak $$0, bak $$1) {
+         return DataResult.success($$1);
       }
    }
 }

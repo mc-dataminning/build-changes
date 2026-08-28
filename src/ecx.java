@@ -1,66 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class ecx extends edq<efl> {
-   public ecx(Codec<efl> $$0) {
+public class ecx extends edu<egi> {
+   private static final dus a = dho.mZ.n().b(dgq.h, Integer.valueOf(1)).b(dgq.i, dve.a).b(dgq.j, Integer.valueOf(0));
+   private static final dus b = a.b(dgq.i, dve.c).b(dgq.j, Integer.valueOf(1));
+   private static final dus c = a.b(dgq.i, dve.c);
+   private static final dus d = a.b(dgq.i, dve.b);
+
+   public ecx(Codec<egi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<efl> $$0) {
-      dfd $$1 = $$0.b();
-      efl $$2 = $$0.f();
-      azl $$3 = $$0.d();
-      int $$4 = $$2.a().size();
-      int[] $$5 = new int[$$4];
-      int $$6 = 0;
+   public boolean a(edw<egi> $$0) {
+      int $$1 = 0;
+      jf $$2 = $$0.e();
+      dfg $$3 = $$0.b();
+      azn $$4 = $$0.d();
+      egi $$5 = $$0.f();
+      jf.a $$6 = $$2.k();
+      jf.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dho.mZ.n().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      for (int $$7 = 0; $$7 < $$4; $$7++) {
-         $$5[$$7] = $$2.a().get($$7).a().a($$3);
-         $$6 += $$5[$$7];
-      }
-
-      if ($$6 == 0) {
-         return false;
-      } else {
-         je.a $$8 = $$0.e().k();
-         je.a $$9 = $$8.k().c($$2.b());
-
-         for (int $$10 = 0; $$10 < $$6; $$10++) {
-            if (!$$2.c().test($$1, $$9)) {
-               a($$5, $$6, $$10, $$2.d());
-               break;
-            }
-
-            $$9.c($$2.b());
-         }
-
-         for (int $$11 = 0; $$11 < $$4; $$11++) {
-            int $$12 = $$5[$$11];
-            if ($$12 != 0) {
-               efl.a $$13 = $$2.a().get($$11);
-
-               for (int $$14 = 0; $$14 < $$12; $$14++) {
-                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
-                  $$8.c($$2.b());
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(eao.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dho.l.n(), 2);
+                        }
+                     }
+                  }
                }
             }
+
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jk.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jk.a, 1), c, 2);
+               $$3.a($$6.c(jk.a, 1), d, 2);
+            }
          }
 
-         return true;
+         $$1++;
       }
-   }
 
-   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$1 - $$2;
-      int $$5 = $$3 ? 1 : -1;
-      int $$6 = $$3 ? 0 : $$0.length - 1;
-      int $$7 = $$3 ? $$0.length : -1;
-
-      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
-         int $$9 = $$0[$$8];
-         int $$10 = Math.min($$9, $$4);
-         $$4 -= $$10;
-         $$0[$$8] -= $$10;
-      }
+      return $$1 > 0;
    }
 }

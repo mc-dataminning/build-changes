@@ -1,27 +1,34 @@
-import java.util.Map;
-import javax.annotation.Nullable;
-
+@FunctionalInterface
 public interface er {
    er a = new er() {
-      @Nullable
       @Override
-      public xt a(String $$0) {
-         return null;
+      public void onResult(boolean $$0, int $$1) {
+      }
+
+      @Override
+      public String toString() {
+         return "<empty>";
       }
    };
 
-   @Nullable
-   xt a(String var1);
+   void onResult(boolean var1, int var2);
 
-   public static record a(Map<String, xt> b) implements er {
-      @Nullable
-      @Override
-      public xt a(String $$0) {
-         return this.b.get($$0);
-      }
+   default void onSuccess(int $$0) {
+      this.onResult(true, $$0);
+   }
 
-      public Map<String, xt> a() {
-         return this.b;
+   default void onFailure() {
+      this.onResult(false, 0);
+   }
+
+   static er chain(er $$0, er $$1) {
+      if ($$0 == a) {
+         return $$1;
+      } else {
+         return $$1 == a ? $$0 : ($$2, $$3) -> {
+            $$0.onResult($$2, $$3);
+            $$1.onResult($$2, $$3);
+         };
       }
    }
 }

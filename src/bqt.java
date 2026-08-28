@@ -1,14 +1,45 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public interface bqt<P extends bqs> {
-   bqt<bqq> a = a("constant", bqq.b);
-   bqt<bqz> b = a("uniform", bqz.a);
-   bqt<bqo> c = a("clamped_normal", bqo.a);
-   bqt<bqy> d = a("trapezoid", bqy.a);
+public class bqt extends bqv {
+   public static final bqt a = new bqt(0.0F);
+   public static final MapCodec<bqt> b = Codec.FLOAT.fieldOf("value").xmap(bqt::a, bqt::d);
+   private final float d;
 
-   MapCodec<P> codec();
+   public static bqt a(float $$0) {
+      return $$0 == 0.0F ? a : new bqt($$0);
+   }
 
-   static <P extends bqs> bqt<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.J, $$0, () -> $$1);
+   private bqt(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(azn $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public bqw<?> c() {
+      return bqw.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

@@ -1,174 +1,159 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.MoreObjects;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSortedMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Decoder;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dut {
-   private final Predicate<dus>[][][] a;
-   private final int b;
-   private final int c;
-   private final int d;
+public class dut<O, S extends duu<O, S>> {
+   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
+   private final O b;
+   private final ImmutableSortedMap<String, dvv<?>> c;
+   private final ImmutableList<S> d;
 
-   public dut(Predicate<dus>[][][] $$0) {
-      this.a = $$0;
-      this.b = $$0.length;
-      if (this.b > 0) {
-         this.c = $$0[0].length;
-         if (this.c > 0) {
-            this.d = $$0[0][0].length;
-         } else {
-            this.d = 0;
-         }
-      } else {
-         this.c = 0;
-         this.d = 0;
+   protected dut(Function<O, S> $$0, O $$1, dut.b<O, S> $$2, Map<String, dvv<?>> $$3) {
+      this.b = $$1;
+      this.c = ImmutableSortedMap.copyOf($$3);
+      Supplier<S> $$4 = () -> $$0.apply($$1);
+      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
+      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+
+      while ($$7.hasNext()) {
+         Entry<String, dvv<?>> $$6 = (Entry<String, dvv<?>>)$$7.next();
+         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
       }
+
+      MapCodec<S> $$7x = $$5;
+      Map<Map<dvv<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
+      List<S> $$9 = Lists.newArrayList();
+      Stream<List<Pair<dvv<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
+      UnmodifiableIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         dvv<?> $$11 = (dvv<?>)var11.next();
+         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
+               List<Pair<dvv<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
+               $$3x.add(Pair.of($$11, $$2x));
+               return $$3x;
+            }));
+      }
+
+      $$10.forEach($$5x -> {
+         Reference2ObjectArrayMap<dvv<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
+
+         for (Pair<dvv<?>, Comparable<?>> $$7xx : $$5x) {
+            $$6.put((dvv)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+         }
+
+         S $$8x = $$2.create($$1, $$6, $$7);
+         $$8.put($$6, $$8x);
+         $$9.add($$8x);
+      });
+
+      for (S $$12 : $$9) {
+         $$12.a($$8);
+      }
+
+      this.d = ImmutableList.copyOf($$9);
    }
 
-   public int a() {
-      return this.b;
+   private static <S extends duu<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dvv<T> $$3) {
+      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
+      }, () -> $$3.a($$1.get()))).xmap($$1x -> (duu)((duu)$$1x.getFirst()).b($$3, ((dvv.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
+   public ImmutableList<S> a() {
       return this.d;
    }
 
-   @VisibleForTesting
-   public Predicate<dus>[][][] d() {
-      return this.a;
+   public S b() {
+      return (S)this.d.get(0);
+   }
+
+   public O c() {
+      return this.b;
+   }
+
+   public Collection<dvv<?>> d() {
+      return this.c.values();
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this)
+         .add("block", this.b)
+         .add("properties", this.c.values().stream().map(dvv::f).collect(Collectors.toList()))
+         .toString();
    }
 
    @Nullable
-   @VisibleForTesting
-   public dut.b a(dej $$0, je $$1, jj $$2, jj $$3) {
-      LoadingCache<je, dus> $$4 = a($$0, false);
-      return this.a($$1, $$2, $$3, $$4);
+   public dvv<?> a(String $$0) {
+      return (dvv<?>)this.c.get($$0);
    }
 
-   @Nullable
-   private dut.b a(je $$0, jj $$1, jj $$2, LoadingCache<je, dus> $$3) {
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         for (int $$5 = 0; $$5 < this.c; $$5++) {
-            for (int $$6 = 0; $$6 < this.b; $$6++) {
-               if (!this.a[$$6][$$5][$$4].test((dus)$$3.getUnchecked(a($$0, $$1, $$2, $$4, $$5, $$6)))) {
-                  return null;
-               }
-            }
-         }
+   public static class a<O, S extends duu<O, S>> {
+      private final O a;
+      private final Map<String, dvv<?>> b = Maps.newHashMap();
+
+      public a(O $$0) {
+         this.a = $$0;
       }
 
-      return new dut.b($$0, $$1, $$2, $$3, this.d, this.c, this.b);
-   }
+      public dut.a<O, S> a(dvv<?>... $$0) {
+         for (dvv<?> $$1 : $$0) {
+            this.a($$1);
+            this.b.put($$1.f(), $$1);
+         }
 
-   @Nullable
-   public dut.b a(dej $$0, je $$1) {
-      LoadingCache<je, dus> $$2 = a($$0, false);
-      int $$3 = Math.max(Math.max(this.d, this.c), this.b);
+         return this;
+      }
 
-      for (je $$4 : je.c($$1, $$1.b($$3 - 1, $$3 - 1, $$3 - 1))) {
-         for (jj $$5 : jj.values()) {
-            for (jj $$6 : jj.values()) {
-               if ($$6 != $$5 && $$6 != $$5.g()) {
-                  dut.b $$7 = this.a($$4, $$5, $$6, $$2);
-                  if ($$7 != null) {
-                     return $$7;
+      private <T extends Comparable<T>> void a(dvv<T> $$0) {
+         String $$1 = $$0.f();
+         if (!dut.a.matcher($$1).matches()) {
+            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+         } else {
+            Collection<T> $$2 = $$0.a();
+            if ($$2.size() <= 1) {
+               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            } else {
+               for (T $$3 : $$2) {
+                  String $$4 = $$0.a($$3);
+                  if (!dut.a.matcher($$4).matches()) {
+                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
                   }
                }
+
+               if (this.b.containsKey($$1)) {
+                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+               }
             }
          }
       }
 
-      return null;
-   }
-
-   public static LoadingCache<je, dus> a(dej $$0, boolean $$1) {
-      return CacheBuilder.newBuilder().build(new dut.a($$0, $$1));
-   }
-
-   protected static je a(je $$0, jj $$1, jj $$2, int $$3, int $$4, int $$5) {
-      if ($$1 != $$2 && $$1 != $$2.g()) {
-         ki $$6 = new ki($$1.j(), $$1.k(), $$1.l());
-         ki $$7 = new ki($$2.j(), $$2.k(), $$2.l());
-         ki $$8 = $$6.d($$7);
-         return $$0.b(
-            $$7.u() * -$$4 + $$8.u() * $$3 + $$6.u() * $$5, $$7.v() * -$$4 + $$8.v() * $$3 + $$6.v() * $$5, $$7.w() * -$$4 + $$8.w() * $$3 + $$6.w() * $$5
-         );
-      } else {
-         throw new IllegalArgumentException("Invalid forwards & up combination");
+      public dut<O, S> a(Function<O, S> $$0, dut.b<O, S> $$1) {
+         return new dut<>($$0, this.a, $$1, this.b);
       }
    }
 
-   static class a extends CacheLoader<je, dus> {
-      private final dej a;
-      private final boolean b;
-
-      public a(dej $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dus a(je $$0) {
-         return new dus(this.a, $$0, this.b);
-      }
-   }
-
-   public static class b {
-      private final je a;
-      private final jj b;
-      private final jj c;
-      private final LoadingCache<je, dus> d;
-      private final int e;
-      private final int f;
-      private final int g;
-
-      public b(je $$0, jj $$1, jj $$2, LoadingCache<je, dus> $$3, int $$4, int $$5, int $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-      }
-
-      public je a() {
-         return this.a;
-      }
-
-      public jj b() {
-         return this.b;
-      }
-
-      public jj c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public int f() {
-         return this.g;
-      }
-
-      public dus a(int $$0, int $$1, int $$2) {
-         return (dus)this.d.getUnchecked(dut.a(this.a, this.b(), this.c(), $$0, $$1, $$2));
-      }
-
-      @Override
-      public String toString() {
-         return MoreObjects.toStringHelper(this).add("up", this.c).add("forwards", this.b).add("frontTopLeft", this.a).toString();
-      }
+   public interface b<O, S> {
+      S create(O var1, Reference2ObjectArrayMap<dvv<?>, Comparable<?>> var2, MapCodec<S> var3);
    }
 }

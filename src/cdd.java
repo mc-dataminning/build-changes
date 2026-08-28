@@ -1,21 +1,68 @@
+import java.util.EnumSet;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdd<T extends buk> extends cda<T> {
-   private final bvg i;
+public class cdd<T extends bun> extends cdk {
+   private static final int i = 10;
+   protected final Class<T> a;
+   protected final int b;
+   @Nullable
+   protected bun c;
+   protected cfd d;
 
-   public cdd(bvg $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<buk> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cdd(bup $$0, Class<T> $$1, boolean $$2) {
+      this($$0, $$1, 10, $$2, false, null);
+   }
+
+   public cdd(bup $$0, Class<T> $$1, boolean $$2, Predicate<bun> $$3) {
+      this($$0, $$1, 10, $$2, false, $$3);
+   }
+
+   public cdd(bup $$0, Class<T> $$1, boolean $$2, boolean $$3) {
+      this($$0, $$1, 10, $$2, $$3, null);
+   }
+
+   public cdd(bup $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bun> $$5) {
+      super($$0, $$3, $$4);
+      this.a = $$1;
+      this.b = b($$2);
+      this.a(EnumSet.of(cbk.a.d));
+      this.d = cfd.a().a(this.l()).a($$5);
    }
 
    @Override
    public boolean b() {
-      return !this.i.q() && super.b();
+      if (this.b > 0 && this.e.dV().a(this.b) != 0) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
+   }
+
+   protected eyr a(double $$0) {
+      return this.e.cO().c($$0, $$0, $$0);
+   }
+
+   protected void h() {
+      if (this.a != cnx.class && this.a != ark.class) {
+         this.c = this.e.dS().a(this.e.dS().a(this.a, this.a(this.l()), $$0 -> true), this.i(), this.e, this.e.dx(), this.e.dB(), this.e.dD());
+      } else {
+         this.c = this.e.dS().a(this.i(), this.e, this.e.dx(), this.e.dB(), this.e.dD());
+      }
    }
 
    @Override
-   public boolean c() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.c();
+   public void d() {
+      this.e.h(this.c);
+      super.d();
+   }
+
+   public void a(@Nullable bun $$0) {
+      this.c = $$0;
+   }
+
+   private cfd i() {
+      return this.d.a(this.l());
    }
 }

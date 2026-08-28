@@ -1,18 +1,21 @@
-public class gqc extends gma<cie, gtm, fwb<gtm>> {
-   private static final alc a = alc.b("textures/entity/horse/horse_zombie.png");
-   private static final alc b = alc.b("textures/entity/horse/horse_skeleton.png");
-   private final alc k;
+public class gqc extends gmn<cog, gvt> {
+   public static final ale a = ale.b("textures/entity/projectiles/arrow.png");
+   public static final ale b = ale.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gqc(gnj.a $$0, gaj $$1, gaj $$2, boolean $$3) {
-      super($$0, new fxv($$0.a($$1)), new fxv($$0.a($$2)), 1.0F);
-      this.k = $$3 ? b : a;
+   public gqc(gno.a $$0) {
+      super($$0);
    }
 
-   public alc a(gtm $$0) {
-      return this.k;
+   protected ale a(gvt $$0) {
+      return $$0.d ? b : a;
    }
 
-   public gtm c() {
-      return new gtm();
+   public gvt a() {
+      return new gvt();
+   }
+
+   public void a(cog $$0, gvt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.E() > 0;
    }
 }

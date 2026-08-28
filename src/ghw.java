@@ -1,103 +1,35 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+public class ghw {
+   private final long[] a;
+   private int b;
+   private int c;
 
-public record ghw(Map<String, String> c, Set<String> d) {
-   public static final ghw a = new ghw(Map.of(), Set.of());
-   public static final Codec<ghw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(ghw::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(ghw::e)
-            )
-            .apply($$0, ghw::new)
-   );
-
-   public static ghw.a a() {
-      return new ghw.a();
+   public ghw(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public ghw a(ghw $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
+      }
+
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
+
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
       } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new ghw($$1.buildKeepingLast(), $$2.build());
-      }
-   }
-
-   public String b() {
-      StringBuilder $$0 = new StringBuilder();
-
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
-      }
-
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
-
-      return $$0.toString();
-   }
-
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
-
-   public Map<String, String> d() {
-      return this.c;
-   }
-
-   public Set<String> e() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
-
-      a() {
-      }
-
-      public ghw.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.a.put($$0, b($$1));
-            return this;
-         }
-      }
-
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
-      }
-
-      public ghw.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
-      }
-
-      public ghw.a a(String $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      public ghw a() {
-         return new ghw(this.a.build(), this.b.build());
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
       }
    }
 }

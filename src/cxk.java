@@ -1,13 +1,32 @@
-public class cxk extends cvk {
-   public cxk(cvk.a $$0) {
-      super($$0);
-   }
+public interface cxk {
+   cxk.a a = new cxk.a(false, false);
+   cxk.a b = new cxk.a(true, false);
 
-   @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(awo.c.b(this));
-      return brp.a;
+   boolean a();
+
+   boolean b();
+
+   public static record a(boolean c, boolean d) implements cxk {
+      @Override
+      public boolean a() {
+         return this.c;
+      }
+
+      @Override
+      public boolean b() {
+         return this.d;
+      }
+
+      public cxk.a c() {
+         return new cxk.a(this.c, true);
+      }
+
+      public boolean d() {
+         return this.c;
+      }
+
+      public boolean e() {
+         return this.d;
+      }
    }
 }

@@ -2,29 +2,43 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.Map;
 
 public class bbf extends DataFix {
-   public bbf(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bbf(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bhm.D.typeName(), biz.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bhm.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
-         }
-
-         return $$1;
+      Type<?> $$0 = this.getInputSchema().getType(bho.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bho.s);
+      OpticFinder<?> $$2 = $$0.findField("components");
+      return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$2x -> {
+         Object $$3 = ((Pair)$$2x.get($$1.finder())).getFirst();
+         return $$3.equals("minecraft:banner") ? this.a($$2x, $$2) : $$2x;
       });
+   }
+
+   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
+      Dynamic<?> $$2 = (Dynamic<?>)$$0.getOptional(DSL.remainderFinder()).orElseThrow();
+      OptionalDynamic<?> $$3 = $$2.get("CustomName");
+      boolean $$4 = $$3.asString().result().flatMap(ban::a).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
+      if ($$4) {
+         Typed<?> $$5 = $$0.getOrCreateTyped($$1)
+            .update(
+               DSL.remainderFinder(),
+               $$1x -> $$1x.set("minecraft:item_name", (Dynamic)$$3.result().get()).set("minecraft:hide_additional_tooltip", $$1x.createMap(Map.of()))
+            );
+         return $$0.set($$1, $$5).set(DSL.remainderFinder(), $$2.remove("CustomName"));
+      } else {
+         return $$0;
+      }
    }
 }

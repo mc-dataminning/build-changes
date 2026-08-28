@@ -1,10 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 
-public class bcx {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:cactus_green", "minecraft:green_dye")
-      .put("minecraft:rose_red", "minecraft:red_dye")
-      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
-      .build();
+public class bcx extends DataFix {
+   private static final String a = "minecraft:decorated_pot";
+
+   public bcx(Schema $$0) {
+      super($$0, true);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bho.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bho.s, "minecraft:decorated_pot");
+      return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
+   }
 }

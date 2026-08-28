@@ -1,89 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dfv {
-   public static final Codec<dfv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dfv.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ala.c(lv.aG)).apply($$0, dfv::new)
-   );
-   public static final Codec<jn<dfv>> b = aky.a(lv.ba, a);
-   private final dfv.a c;
-   private final dfq.c<jn<dfh>> d;
+public class dfv extends dfo implements dfm.a {
+   public static final MapCodec<dfv> b = dfk.c.fieldOf("biome").xmap(dfv::new, $$0 -> $$0.c).stable();
+   private final jo<dfk> c;
 
-   public dfv(dfv.a $$0, jo<dfh> $$1) {
+   public dfv(jo<dfk> $$0) {
       this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
    }
 
-   public dfq.c<jn<dfh>> a() {
-      return this.d;
+   @Override
+   protected Stream<jo<dfk>> b() {
+      return Stream.of(this.c);
    }
 
-   public static Map<dfv.a, dfq.c<alb<dfh>>> b() {
-      return dfv.a.f.values().stream().collect(Collectors.toMap($$0 -> (dfv.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
+   @Override
+   protected MapCodec<? extends dfo> a() {
+      return b;
    }
 
-   public static record a(alc d, dfv.a.a e) {
-      public static final dfv.a a = new dfv.a(
-         alc.b("nether"),
-         new dfv.a.a() {
-            @Override
-            public <T> dfq.c<T> apply(Function<alb<dfh>, T> $$0) {
-               return new dfq.c<>(
-                  List.of(
-                     Pair.of(dfq.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.ac)),
-                     Pair.of(dfq.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.af)),
-                     Pair.of(dfq.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.ae)),
-                     Pair.of(dfq.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dfo.ad)),
-                     Pair.of(dfq.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dfo.ag))
-                  )
-               );
-            }
-         }
-      );
-      public static final dfv.a b = new dfv.a(alc.b("overworld"), new dfv.a.a() {
-         @Override
-         public <T> dfq.c<T> apply(Function<alb<dfh>, T> $$0) {
-            return dfv.a.a($$0);
-         }
-      });
-      static final Map<alc, dfv.a> f = Stream.of(a, b).collect(Collectors.toMap(dfv.a::b, $$0 -> (dfv.a)$$0));
-      public static final Codec<dfv.a> c = alc.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
+   @Override
+   public jo<dfk> getNoiseBiome(int $$0, int $$1, int $$2, dft.f $$3) {
+      return this.c;
+   }
 
-      static <T> dfq.c<T> a(Function<alb<dfh>, T> $$0) {
-         Builder<Pair<dfq.d, T>> $$1 = ImmutableList.builder();
-         new dfx().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dfq.c<>($$1.build());
-      }
+   @Override
+   public jo<dfk> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
 
-      public Stream<alb<dfh>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<alb<dfh>>map(Pair::getSecond).distinct();
+   @Nullable
+   @Override
+   public Pair<jf, jo<dfk>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jo<dfk>> $$5, azn $$6, boolean $$7, dft.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new jf($$0, $$1, $$2), this.c) : Pair.of(new jf($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
+      } else {
+         return null;
       }
+   }
 
-      public alc b() {
-         return this.d;
-      }
+   @Nullable
+   @Override
+   public Pair<jf, jo<dfk>> a(jf $$0, int $$1, int $$2, int $$3, Predicate<jo<dfk>> $$4, dft.f $$5, dem $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
+   }
 
-      public dfv.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dfq.c<T> apply(Function<alb<dfh>, T> var1);
-      }
+   @Override
+   public Set<jo<dfk>> a(int $$0, int $$1, int $$2, int $$3, dft.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

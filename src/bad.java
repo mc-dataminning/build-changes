@@ -1,14 +1,28 @@
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
 @FunctionalInterface
 public interface bad {
-   long get(TimeUnit var1);
+   Logger a = LogUtils.getLogger();
 
-   public interface a extends bad, LongSupplier {
-      @Override
-      default long get(TimeUnit $$0) {
-         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
-      }
+   static bad immediate(final Executor $$0) {
+      return new bad() {
+         @Override
+         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
+            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
+               a.error("Task failed", $$0xx);
+               return null;
+            });
+         }
+      };
    }
+
+   default void append(Runnable $$0) {
+      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   }
+
+   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
 }

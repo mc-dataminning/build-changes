@@ -1,21 +1,21 @@
-public class gmy extends gme<cgi, gtg, fxd> {
-   private static final alc a = alc.b("textures/entity/dolphin.png");
+public class gmy extends gmj<cgi, gti, fxd> {
+   private static final ale a = ale.b("textures/entity/chicken.png");
 
-   public gmy(gnj.a $$0) {
-      super($$0, new fxd($$0.a(gak.ab)), new fxd($$0.a(gak.ac)), 0.7F);
-      this.a(new grd(this, $$0.b()));
+   public gmy(gno.a $$0) {
+      super($$0, new fxd($$0.a(gap.M)), new fxd($$0.a(gap.N)), 0.3F);
    }
 
-   public alc a(gtg $$0) {
+   public ale a(gti $$0) {
       return a;
    }
 
-   public gtg a() {
-      return new gtg();
+   public gti a() {
+      return new gti();
    }
 
-   public void a(cgi $$0, gtg $$1, float $$2) {
+   public void a(cgi $$0, gti $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.dv().j() > 1.0E-7;
+      $$1.a = azf.h($$2, $$0.cc, $$0.bY);
+      $$1.b = azf.h($$2, $$0.ca, $$0.bZ);
    }
 }

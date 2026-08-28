@@ -1,96 +1,108 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dqp extends dik<dqp.a> {
-   Supplier<BiMap<dhj, dhj>> x_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dhl.qW, dhl.qX)
-            .put(dhl.qX, dhl.qY)
-            .put(dhl.qY, dhl.qZ)
-            .put(dhl.rf, dhl.re)
-            .put(dhl.re, dhl.rd)
-            .put(dhl.rd, dhl.rc)
-            .put(dhl.rj, dhl.ri)
-            .put(dhl.ri, dhl.rh)
-            .put(dhl.rh, dhl.rg)
-            .put(dhl.rv, dhl.ru)
-            .put(dhl.ru, dhl.rt)
-            .put(dhl.rt, dhl.rs)
-            .put(dhl.rr, dhl.rq)
-            .put(dhl.rq, dhl.rp)
-            .put(dhl.rp, dhl.ro)
-            .put(dhl.rM, dhl.rN)
-            .put(dhl.rN, dhl.rP)
-            .put(dhl.rP, dhl.rO)
-            .put(dhl.rU, dhl.rV)
-            .put(dhl.rV, dhl.rX)
-            .put(dhl.rX, dhl.rW)
-            .put(dhl.sc, dhl.sd)
-            .put(dhl.sd, dhl.se)
-            .put(dhl.se, dhl.sf)
-            .put(dhl.sk, dhl.sl)
-            .put(dhl.sl, dhl.sm)
-            .put(dhl.sm, dhl.sn)
-            .build()
+public class dqp extends dpx {
+   public static final MapCodec<dqp> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dqp::new));
+   public static final dvm g = dli.aF;
+   protected static final float h = 2.5F;
+   private static final Map<jk, ezq> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jk.c,
+         dhm.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         jk.d,
+         dhm.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         jk.e,
+         dhm.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         jk.f,
+         dhm.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
-   Supplier<BiMap<dhj, dhj>> y_ = Suppliers.memoize(() -> x_.get().inverse());
 
-   static Optional<dhj> a(dhj $$0) {
-      return Optional.ofNullable((dhj)y_.get().get($$0));
+   @Override
+   public MapCodec<dqp> a() {
+      return f;
    }
 
-   static dhj b(dhj $$0) {
-      dhj $$1 = $$0;
-
-      for (dhj $$2 = (dhj)y_.get().get($$0); $$2 != null; $$2 = (dhj)y_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<duo> b(duo $$0) {
-      return a($$0.b()).map($$1 -> $$1.m($$0));
-   }
-
-   static Optional<dhj> c(dhj $$0) {
-      return Optional.ofNullable((dhj)x_.get().get($$0));
-   }
-
-   static duo c(duo $$0) {
-      return b($$0.b()).m($$0);
+   protected dqp(ls $$0, dur.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(g, jk.c));
    }
 
    @Override
-   default Optional<duo> k_(duo $$0) {
-      return c($$0.b()).map($$1 -> $$1.m($$0));
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return o($$0);
+   }
+
+   public static ezq o(dus $$0) {
+      return i.get($$0.c(g));
    }
 
    @Override
-   default float av_() {
-      return this.c() == dqp.a.a ? 0.75F : 1.0F;
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      return b($$1, $$2, $$0.c(g));
    }
 
-   public static enum a implements azz {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   public static boolean b(dem $$0, jf $$1, jk $$2) {
+      jf $$3 = $$1.a($$2.g());
+      dus $$4 = $$0.a_($$3);
+      return $$4.c($$0, $$3, $$2);
+   }
 
-      public static final Codec<dqp.a> e = azz.a(dqp.a::values);
-      private final String f;
+   @Nullable
+   @Override
+   public dus a(czn $$0) {
+      dus $$1 = this.n();
+      dem $$2 = $$0.q();
+      jf $$3 = $$0.a();
+      jk[] $$4 = $$0.f();
 
-      private a(final String $$0) {
-         this.f = $$0;
+      for (jk $$5 : $$4) {
+         if ($$5.o().d()) {
+            jk $$6 = $$5.g();
+            $$1 = $$1.b(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dho.a.n() : $$0;
+   }
+
+   @Override
+   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
+      jk $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      jk $$10 = $$4.g();
+      $$1.a(lo.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(g);
    }
 }

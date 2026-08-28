@@ -1,17 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record ejd(jn<cvk> c, ejf d) {
-   public static final Codec<ejd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akz.a(lv.K).fieldOf("display").forGetter($$0x -> $$0x.c), ejf.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, ejd::new)
-   );
-   public static final Codec<jn<ejd>> b = aky.a(lv.aO, a);
+public class ejd<P extends ejc> {
+   public static final ejd<ejb> a = a("straight_trunk_placer", ejb.a);
+   public static final ejd<eiy> b = a("forking_trunk_placer", eiy.a);
+   public static final ejd<eiz> c = a("giant_trunk_placer", eiz.a);
+   public static final ejd<eja> d = a("mega_jungle_trunk_placer", eja.b);
+   public static final ejd<eiw> e = a("dark_oak_trunk_placer", eiw.a);
+   public static final ejd<eix> f = a("fancy_trunk_placer", eix.a);
+   public static final ejd<eiu> g = a("bending_trunk_placer", eiu.a);
+   public static final ejd<eje> h = a("upwards_branching_trunk_placer", eje.a);
+   public static final ejd<eiv> i = a("cherry_trunk_placer", eiv.a);
+   private final MapCodec<P> j;
 
-   public jn<cvk> a() {
-      return this.c;
+   private static <P extends ejc> ejd<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.V, $$0, new ejd<>($$1));
    }
 
-   public ejf b() {
-      return this.d;
+   private ejd(MapCodec<P> $$0) {
+      this.j = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

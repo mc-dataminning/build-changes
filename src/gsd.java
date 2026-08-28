@@ -1,45 +1,42 @@
-public class gsd extends grw<guw, fyp> {
-   public static final alc a = alc.b("textures/entity/trident_riptide.png");
-   private static final int b = 2;
-   private final fyf c;
-   private final gal[] d = new gal[2];
+public class gsd extends gsb<gvi, fze> {
+   private static final ale a = ale.b("textures/entity/sheep/sheep_fur.png");
+   private final fxo<gvi> b;
+   private final fxo<gvi> c;
 
-   public gsd(gpf<guw, fyp> $$0, gah $$1) {
+   public gsd(gpk<gvi, fze> $$0, gam $$1) {
       super($$0);
-      gal $$2 = $$1.a(gak.bR);
-      this.c = new fyf.a($$2, ghq::f);
-
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         this.d[$$3] = $$2.b(a($$3));
-      }
+      this.b = new fzd($$1.a(gap.cf));
+      this.c = new fzd($$1.a(gap.cg));
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
-   }
+   public void a(fdi $$0, ghl $$1, int $$2, gvi $$3, float $$4, float $$5) {
+      if (!$$3.c) {
+         fxo<gvi> $$6 = $$3.ae ? this.c : this.b;
+         if ($$3.u) {
+            if ($$3.aj) {
+               $$6.a($$3);
+               fdm $$7 = $$1.getBuffer(ghv.r(a));
+               $$6.a($$0, $$7, $$2, gop.a($$3, 0.0F), -16777216);
+            }
+         } else {
+            int $$17;
+            if ($$3.al != null && "jeb_".equals($$3.al.getString())) {
+               int $$8 = 25;
+               int $$9 = azf.d($$3.p);
+               int $$10 = $$9 / 25 + $$3.e;
+               int $$11 = cum.values().length;
+               int $$12 = $$10 % $$11;
+               int $$13 = ($$10 + 1) % $$11;
+               float $$14 = ((float)($$9 % 25) + azf.i($$3.p)) / 25.0F;
+               int $$15 = cgz.a(cum.a($$12));
+               int $$16 = cgz.a(cum.a($$13));
+               $$17 = axq.a($$14, $$15, $$16);
+            } else {
+               $$17 = cgz.a($$3.d);
+            }
 
-   public static gar a() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gaq.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gan.a.a($$4));
-      }
-
-      return gar.a($$0, 64, 64);
-   }
-
-   public void a(fde $$0, ghg $$1, int $$2, guw $$3, float $$4, float $$5) {
-      if ($$3.ag) {
-         for (int $$6 = 0; $$6 < this.d.length; $$6++) {
-            float $$7 = $$3.p * (float)(-(45 + ($$6 + 1) * 5));
-            this.d[$$6].f = azd.g($$7) * (float) (Math.PI / 180.0);
+            a($$6, a, $$0, $$1, $$2, $$3, $$17);
          }
-
-         fdi $$8 = $$1.getBuffer(this.c.a(a));
-         this.c.a($$0, $$8, $$2, gws.d);
       }
    }
 }

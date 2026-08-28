@@ -1,19 +1,23 @@
-import javax.annotation.Nullable;
-
-public class cwz extends ctm {
-   public cwz(cvk.a $$0) {
+public class cwz extends cvn implements cwn {
+   public cwz(cvn.a $$0) {
       super($$0);
    }
 
    @Override
-   public cob a(deg $$0, cvp $$1, buk $$2, @Nullable cvp $$3) {
-      return new cou($$0, $$2, $$1.c(1), $$3);
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.yG, awh.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arj $$4) {
+         cor.a(cow::new, $$4, $$3, $$1, 0.0F, 1.5F, 1.0F);
+      }
+
+      $$1.b(awq.c.b(this));
+      $$3.a(1, $$1);
+      return brs.a;
    }
 
    @Override
-   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
-      cou $$4 = new cou($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cob.a.b;
-      return $$4;
+   public cor a(dej $$0, jy $$1, cvs $$2, jk $$3) {
+      return new cow($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

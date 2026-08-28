@@ -1,88 +1,48 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
 import java.util.BitSet;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class adp {
-   private static final zb<ByteBuf, byte[]> a = yz.a(2048);
-   private final BitSet b;
-   private final BitSet c;
-   private final BitSet d;
-   private final BitSet e;
-   private final List<byte[]> f;
-   private final List<byte[]> g;
+public class adp implements zl<aca> {
+   public static final zc<wb, adp> a = zl.a(adp::a, adp::new);
+   private final int b;
+   private final int c;
+   private final adq d;
 
-   public adp(ddm $$0, eqe $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = new BitSet();
-      this.c = new BitSet();
-      this.d = new BitSet();
-      this.e = new BitSet();
-      this.f = Lists.newArrayList();
-      this.g = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
-         if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, dep.a, $$4, this.b, this.d, this.f);
-         }
-
-         if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, dep.b, $$4, this.c, this.e, this.g);
-         }
-      }
+   public adp(ddp $$0, eqi $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adq($$0, $$1, $$2, $$3);
    }
 
-   public adp(wa $$0, int $$1, int $$2) {
-      this.b = $$0.w();
-      this.c = $$0.w();
-      this.d = $$0.w();
-      this.e = $$0.w();
-      this.f = $$0.a(a);
-      this.g = $$0.a(a);
+   private adp(wb $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adq($$0, this.b, this.c);
    }
 
-   public void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f, a);
-      $$0.a(this.g, a);
+   private void a(wb $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
-   private void a(ddm $$0, eqe $$1, dep $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      dwp $$7 = $$1.a($$2).a(kg.a($$0, $$1.d() + $$3));
-      if ($$7 != null) {
-         if ($$7.d()) {
-            $$5.set($$3);
-         } else {
-            $$4.set($$3);
-            $$6.add($$7.b().a());
-         }
-      }
+   @Override
+   public zn<adp> a() {
+      return agp.N;
    }
 
-   public BitSet a() {
+   public void a(aca $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public BitSet b() {
-      return this.d;
-   }
-
-   public List<byte[]> c() {
-      return this.f;
-   }
-
-   public BitSet d() {
+   public int e() {
       return this.c;
    }
 
-   public BitSet e() {
-      return this.e;
-   }
-
-   public List<byte[]> f() {
-      return this.g;
+   public adq f() {
+      return this.d;
    }
 }

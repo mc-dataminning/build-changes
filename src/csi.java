@@ -1,57 +1,55 @@
-public class csi extends cst {
-   private final csg a;
-   private final cnu b;
-   private int g;
-   private final ddc h;
+public class csi<T extends cqz> implements cqn {
+   public static final csi<cri> a = a("generic_9x1", cri::a);
+   public static final csi<cri> b = a("generic_9x2", cri::b);
+   public static final csi<cri> c = a("generic_9x3", cri::c);
+   public static final csi<cri> d = a("generic_9x4", cri::d);
+   public static final csi<cri> e = a("generic_9x5", cri::e);
+   public static final csi<cri> f = a("generic_9x6", cri::f);
+   public static final csi<cru> g = a("generic_3x3", cru::new);
+   public static final csi<crp> h = a("crafter_3x3", crp::new);
+   public static final csi<crc> i = a("anvil", crc::new);
+   public static final csi<cre> j = a("beacon", cre::new);
+   public static final csi<crf> k = a("blast_furnace", crf::new);
+   public static final csi<crg> l = a("brewing_stand", crg::new);
+   public static final csi<crs> m = a("crafting", crs::new);
+   public static final csi<crv> n = a("enchantment", crv::new);
+   public static final csi<crx> o = a("furnace", crx::new);
+   public static final csi<crz> p = a("grindstone", crz::new);
+   public static final csi<csa> q = a("hopper", csa::new);
+   public static final csi<csf> r = a("lectern", ($$0, $$1) -> new csf($$0));
+   public static final csi<csg> s = a("loom", csg::new);
+   public static final csi<csk> t = a("merchant", csk::new);
+   public static final csi<cst> u = a("shulker_box", cst::new);
+   public static final csi<csz> v = a("smithing", csz::new);
+   public static final csi<cta> w = a("smoker", cta::new);
+   public static final csi<crh> x = a("cartography_table", crh::new);
+   public static final csi<ctc> y = a("stonecutter", ctc::new);
+   private final cqq z;
+   private final csi.a<T> A;
 
-   public csi(cnu $$0, ddc $$1, csg $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   private static <T extends cqz> csi<T> a(String $$0, csi.a<T> $$1) {
+      return kb.a(lv.p, $$0, new csi<>($$1, cqs.h));
+   }
+
+   private static <T extends cqz> csi<T> a(String $$0, csi.a<T> $$1, cqo... $$2) {
+      return kb.a(lv.p, $$0, new csi<>($$1, cqs.f.a($$2)));
+   }
+
+   private csi(csi.a<T> $$0, cqq $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cnw $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public boolean a(cvp $$0) {
-      return false;
+   public cqq i() {
+      return this.z;
    }
 
-   @Override
-   public cvp a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().J());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cvp $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cvp $$0) {
-      $$0.a(this.b.dS(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(cnu $$0, cvp $$1) {
-      this.b_($$1);
-      ddd $$2 = this.a.g();
-      if ($$2 != null) {
-         cvp $$3 = this.a.a(0);
-         cvp $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awo.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
-
-         this.h.t(this.h.t() + $$2.q());
-      }
+   interface a<T extends cqz> {
+      T create(int var1, cnw var2);
    }
 }

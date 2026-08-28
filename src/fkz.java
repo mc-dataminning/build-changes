@@ -1,39 +1,50 @@
-import javax.annotation.Nullable;
+public class fkz extends fli {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-public class fkz extends fki {
-   private final fjv a;
+   public fkz(int $$0, xe $$1, fjz $$2) {
+      this($$0, $$1, $$2, 4);
+   }
 
-   public fkz(fjv $$0, xd $$1) {
-      super(0, 0, $$0.a($$1), 9 * 3, $$1);
-      this.a = $$0;
+   public fkz(int $$0, xe $$1, fjz $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public fkz(int $$0, xe $$1, fjz $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
    }
 
    @Override
-   protected void b(fjx $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.D() + this.y() / 2;
-      int $$5 = this.E() + this.w() / 2;
-      xd $$6 = this.z();
-      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
-      String $$7 = fps.a(ad.c());
-      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
+   protected void a(fol $$0) {
+      $$0.a(fok.a, this.z());
    }
 
    @Override
-   protected void a(foh $$0) {
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+      if (this.aN_() || this.b) {
+         int $$4 = this.D() - this.c;
+         int $$5 = this.E() - this.c;
+         int $$6 = this.y() + this.c * 2;
+         int $$7 = this.w() + this.c * 2;
+         int $$8 = this.b ? (this.aN_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(hca $$0) {
-   }
-
-   @Override
-   public boolean C() {
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public fju a(fon $$0) {
-      return null;
+   public void a(hcf $$0) {
    }
 }

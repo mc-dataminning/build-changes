@@ -1,89 +1,64 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
 
-public class dmw extends dhs implements dhm {
+public class dmw extends dhm implements dhp {
    public static final MapCodec<dmw> a = b(dmw::new);
-   public static final int b = 1;
-   public static final int c = 4;
-   public static final dvi d = dve.R;
-   public static final dvo e = dve.S;
-   private static final BiFunction<jj, Integer, ezm> f = ad.a(
-      ($$0, $$1) -> {
-         ezm[] $$2 = new ezm[]{
-            dhj.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            dhj.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            dhj.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            dhj.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         ezm $$3 = ezj.a();
-
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = ezj.a($$3, $$2[$$5]);
-         }
-
-         return $$3.b();
-      }
-   );
 
    @Override
    public MapCodec<dmw> a() {
       return a;
    }
 
-   protected dmw(dun.d $$0) {
+   protected dmw(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(d, jj.c).b(e, Integer.valueOf(1)));
+   }
+
+   private static boolean b(dus $$0, dem $$1, jf $$2) {
+      jf $$3 = $$2.d();
+      dus $$4 = $$1.a_($$3);
+      int $$5 = eqk.a($$0, $$4, jk.b, $$4.g());
+      return $$5 < 15;
    }
 
    @Override
-   public duo a(duo $$0, dnx $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public duo a(duo $$0, dmg $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public boolean a(duo $$0, czk $$1) {
-      return !$$1.h() && $$1.n().a(this.q()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return f.apply($$0.c(d), $$0.c(e));
-   }
-
-   @Override
-   public duo a(czk $$0) {
-      duo $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.b(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().b(d, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(d, e);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      int $$4 = $$3.c(e);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(e, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new cvp(this));
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dho.dV.n());
       }
+   }
+
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      dus $$4 = $$0.a_($$2);
+      jf $$5 = $$2.d();
+      dwp $$6 = $$0.l().g();
+      kb<edg<?, ?>> $$7 = $$0.G_().e(lw.aK);
+      if ($$4.a(dho.ow)) {
+         this.a($$7, rx.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dho.on)) {
+         this.a($$7, rx.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rx.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rx.n, $$0, $$6, $$1, $$5);
+         }
+      }
+   }
+
+   private void a(kb<edg<?, ?>> $$0, ald<edg<?, ?>> $$1, arj $$2, dwp $$3, azn $$4, jf $$5) {
+      $$0.a($$1).ifPresent($$4x -> ((edg)$$4x.a()).a($$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public dhp.a as_() {
+      return dhp.a.a;
    }
 }

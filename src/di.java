@@ -7,24 +7,24 @@ import java.util.Optional;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public record di(Map<jn<bst>, di.b> b) {
-   public static final Codec<di> a = Codec.unboundedMap(bst.a, di.b.a).xmap(di::new, di::a);
+public record di(Map<jo<bsw>, di.b> b) {
+   public static final Codec<di> a = Codec.unboundedMap(bsw.a, di.b.a).xmap(di::new, di::a);
 
-   public boolean a(bto $$0) {
-      if ($$0 instanceof buk $$1 && this.a($$1.ey())) {
+   public boolean a(btr $$0) {
+      if ($$0 instanceof bun $$1 && this.a($$1.ez())) {
          return true;
       }
 
       return false;
    }
 
-   public boolean a(buk $$0) {
-      return this.a($$0.ey());
+   public boolean a(bun $$0) {
+      return this.a($$0.ez());
    }
 
-   public boolean a(Map<jn<bst>, bsv> $$0) {
-      for (Entry<jn<bst>, di.b> $$1 : this.b.entrySet()) {
-         bsv $$2 = $$0.get($$1.getKey());
+   public boolean a(Map<jo<bsw>, bsy> $$0) {
+      for (Entry<jo<bsw>, di.b> $$1 : this.b.entrySet()) {
+         bsy $$2 = $$0.get($$1.getKey());
          if (!$$1.getValue().a($$2)) {
             return false;
          }
@@ -33,23 +33,23 @@ public record di(Map<jn<bst>, di.b> b) {
       return true;
    }
 
-   public Map<jn<bst>, di.b> a() {
+   public Map<jo<bsw>, di.b> a() {
       return this.b;
    }
 
    public static class a {
-      private final Builder<jn<bst>, di.b> a = ImmutableMap.builder();
+      private final Builder<jo<bsw>, di.b> a = ImmutableMap.builder();
 
       public static di.a a() {
          return new di.a();
       }
 
-      public di.a a(jn<bst> $$0) {
+      public di.a a(jo<bsw> $$0) {
          this.a.put($$0, new di.b());
          return this;
       }
 
-      public di.a a(jn<bst> $$0, di.b $$1) {
+      public di.a a(jo<bsw> $$0, di.b $$1) {
          this.a.put($$0, $$1);
          return this;
       }
@@ -74,7 +74,7 @@ public record di(Map<jn<bst>, di.b> b) {
          this(dh.d.c, dh.d.c, Optional.empty(), Optional.empty());
       }
 
-      public boolean a(@Nullable bsv $$0) {
+      public boolean a(@Nullable bsy $$0) {
          if ($$0 == null) {
             return false;
          } else if (!this.b.d($$0.e())) {

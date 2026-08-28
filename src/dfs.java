@@ -1,57 +1,35 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class dfs extends dfl implements dfj.a {
-   public static final MapCodec<dfs> b = dfh.c.fieldOf("biome").xmap(dfs::new, $$0 -> $$0.c).stable();
-   private final jn<dfh> c;
+public class dfs extends dfo {
+   public static final MapCodec<dfs> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfk.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dfs::new)
+   );
+   private final js<dfk> c;
+   private final int d;
+   private final int e;
 
-   public dfs(jn<dfh> $$0) {
+   public dfs(js<dfk> $$0, int $$1) {
       this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   protected Stream<jn<dfh>> b() {
-      return Stream.of(this.c);
+   protected Stream<jo<dfk>> b() {
+      return this.c.a();
    }
 
    @Override
-   protected MapCodec<? extends dfl> a() {
+   protected MapCodec<? extends dfo> a() {
       return b;
    }
 
    @Override
-   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2, dfq.f $$3) {
-      return this.c;
-   }
-
-   @Override
-   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.c;
-   }
-
-   @Nullable
-   @Override
-   public Pair<je, jn<dfh>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jn<dfh>> $$5, azl $$6, boolean $$7, dfq.f $$8) {
-      if ($$5.test(this.c)) {
-         return $$7 ? Pair.of(new je($$0, $$1, $$2), this.c) : Pair.of(new je($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   @Override
-   public Pair<je, jn<dfh>> a(je $$0, int $$1, int $$2, int $$3, Predicate<jn<dfh>> $$4, dfq.f $$5, dej $$6) {
-      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
-   }
-
-   @Override
-   public Set<jn<dfh>> a(int $$0, int $$1, int $$2, int $$3, dfq.f $$4) {
-      return Sets.newHashSet(Set.of(this.c));
+   public jo<dfk> getNoiseBiome(int $$0, int $$1, int $$2, dft.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

@@ -1,52 +1,50 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record exc(Optional<Boolean> b, Optional<Boolean> c) implements ews {
+public record exc(float b, dbu c, jo<dbn> g) implements eww {
    public static final MapCodec<exc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(exc::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(exc::e))
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(exc::c),
+               dbu.b.fieldOf("enchanted_chance").forGetter(exc::d),
+               dbn.c.fieldOf("enchantment").forGetter(exc::e)
+            )
             .apply($$0, exc::new)
    );
 
    @Override
-   public ewt b() {
-      return ewu.o;
+   public ewx b() {
+      return ewy.e;
    }
 
-   public boolean a(eth $$0) {
-      arh $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.ae() ? false : !this.c.isPresent() || this.c.get() == $$1.ad();
+   @Override
+   public Set<ewe<?>> a() {
+      return ImmutableSet.of(ewh.d);
    }
 
-   public static exc.a c() {
-      return new exc.a();
+   public boolean a(etl $$0) {
+      btr $$1 = $$0.c(ewh.d);
+      int $$3 = $$1 instanceof bun $$2 ? dbp.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public Optional<Boolean> d() {
+   public static eww.a a(jq.a $$0, float $$1, float $$2) {
+      jq.b<dbn> $$3 = $$0.d(lw.aN);
+      return () -> new exc($$1, new dbu.e($$1 + $$2, $$2), $$3.b(dbs.s));
+   }
+
+   public float c() {
       return this.b;
    }
 
-   public Optional<Boolean> e() {
+   public dbu d() {
       return this.c;
    }
 
-   public static class a implements ews.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public exc.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public exc.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public exc a() {
-         return new exc(this.a, this.b);
-      }
+   public jo<dbn> e() {
+      return this.g;
    }
 }

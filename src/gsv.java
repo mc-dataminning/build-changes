@@ -1,5 +1,6 @@
-public class gsv extends guj {
+public class gsv extends guo {
    public boolean a;
-   public final bti b = new bti();
-   public final bti c = new bti();
+   public boolean b;
+   public float c;
+   public float d;
 }

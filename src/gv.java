@@ -3,69 +3,45 @@ import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.concurrent.CompletableFuture;
+import java.util.EnumSet;
 
-public class gv implements ArgumentType<gr> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("argument.pos2d.incomplete"));
-   private final boolean c;
-
-   public gv(boolean $$0) {
-      this.c = $$0;
-   }
+public class gv implements ArgumentType<EnumSet<jk.a>> {
+   private static final Collection<String> a = Arrays.asList("xyz", "x");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xe.c("arguments.swizzle.invalid"));
 
    public static gv a() {
-      return new gv(true);
+      return new gv();
    }
 
-   public static gv a(boolean $$0) {
-      return new gv($$0);
+   public static EnumSet<jk.a> a(CommandContext<eu> $$0, String $$1) {
+      return (EnumSet<jk.a>)$$0.getArgument($$1, EnumSet.class);
    }
 
-   public static eyr a(CommandContext<et> $$0, String $$1) {
-      eys $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
-      return new eyr((float)$$2.d, (float)$$2.f);
-   }
+   public EnumSet<jk.a> a(StringReader $$0) throws CommandSyntaxException {
+      EnumSet<jk.a> $$1 = EnumSet.noneOf(jk.a.class);
 
-   public gr a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
-      } else {
-         gx $$2 = gx.a($$0, this.c);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gx $$3 = gx.a($$0, this.c);
-            return new gy($$2, new gx(true, 0.0), $$3);
-         } else {
-            $$0.setCursor($$1);
-            throw a.createWithContext($$0);
-         }
-      }
-   }
+      while ($$0.canRead() && $$0.peek() != ' ') {
+         char $$2 = $$0.read();
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof ey)) {
-         return Suggestions.empty();
-      } else {
-         String $$2 = $$1.getRemaining();
-         Collection<ey.b> $$3;
-         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(ey.b.a);
-         } else {
-            $$3 = ((ey)$$0.getSource()).C();
+         jk.a $$6 = switch ($$2) {
+            case 'x' -> jk.a.a;
+            case 'y' -> jk.a.b;
+            case 'z' -> jk.a.c;
+            default -> throw b.createWithContext($$0);
+         };
+         if ($$1.contains($$6)) {
+            throw b.createWithContext($$0);
          }
 
-         return ey.b($$2, $$3, $$1, eu.a(this::a));
+         $$1.add($$6);
       }
+
+      return $$1;
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 }

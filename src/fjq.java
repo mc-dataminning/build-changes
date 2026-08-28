@@ -1,3 +1,5 @@
+import javax.annotation.Nullable;
+
 public interface fjq {
-   int getColor(cvp var1, int var2);
+   int getColor(dus var1, @Nullable ddl var2, @Nullable jf var3, int var4);
 }

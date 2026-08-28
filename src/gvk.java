@@ -1,10 +1,11 @@
-public class gvk extends guj implements gvb {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gvk extends guo {
+   public eyw a = eyw.c;
+   @Nullable
+   public cum b;
+   public float c;
+   public float d;
+   public float e;
+   public jk f = jk.a;
 }

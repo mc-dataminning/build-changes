@@ -1,29 +1,32 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dif {
-   ezm u_ = dhj.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dvf v_ = dve.D;
+public class dif extends dhm {
+   public static final MapCodec<dif> a = b(dif::new);
+   private static final xe b = xe.c("container.cartography_table");
 
-   static brp a(@Nullable bto $$0, duo $$1, deg $$2, je $$3) {
-      if ($$1.c(v_)) {
-         dhj.a($$2, $$3, new cvp(cvt.wy, 1));
-         float $$4 = azd.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, awe.ef, awf.e, 1.0F, $$4);
-         duo $$5 = $$1.b(v_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dzl.c, $$3, dzl.a.a($$0, $$5));
-         return brp.a;
-      } else {
-         return brp.e;
+   @Override
+   public MapCodec<dif> a() {
+      return a;
+   }
+
+   protected dif(dur.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if (!$$1.B) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awq.aw);
       }
+
+      return brs.a;
    }
 
-   static boolean j_(duo $$0) {
-      return $$0.b(v_) && $$0.c(v_);
-   }
-
-   static ToIntFunction<duo> i_(int $$0) {
-      return $$1 -> $$1.c(dve.D) ? $$0 : 0;
+   @Nullable
+   @Override
+   protected bru b(dus $$0, dej $$1, jf $$2) {
+      return new bsa(($$2x, $$3, $$4) -> new crh($$2x, $$3, crm.a($$1, $$2)), b);
    }
 }

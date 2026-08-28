@@ -1,23 +1,27 @@
-public class gmz<T extends cid> extends gma<T, gth, fxe> {
-   public static final alc a = alc.b("textures/entity/horse/donkey.png");
-   public static final alc b = alc.b("textures/entity/horse/mule.png");
-   private final alc k;
+public class gmz extends gou<cgj, guo, fxe> {
+   private static final ale a = ale.b("textures/entity/fish/cod.png");
 
-   public gmz(gnj.a $$0, float $$1, gaj $$2, gaj $$3, boolean $$4) {
-      super($$0, new fxe($$0.a($$2)), new fxe($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public gmz(gno.a $$0) {
+      super($$0, new fxe($$0.a(gap.O)), 0.3F);
    }
 
-   public alc a(gth $$0) {
-      return this.k;
+   @Override
+   public ale b(guo $$0) {
+      return a;
    }
 
-   public gth a() {
-      return new gth();
+   public guo a() {
+      return new guo();
    }
 
-   public void a(T $$0, gth $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+   @Override
+   protected void a(guo $$0, fdi $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azf.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

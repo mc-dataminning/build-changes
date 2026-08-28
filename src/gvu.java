@@ -1,9 +1,7 @@
-public class gvu extends guj implements gvt {
-   public boolean a;
-   public cni b = new cni(cnm.c, cnk.b, 1);
+import javax.annotation.Nullable;
 
-   @Override
-   public cni a() {
-      return this.b;
-   }
+public class gvu extends gtq {
+   public float a;
+   @Nullable
+   public dus b;
 }

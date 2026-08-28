@@ -1,78 +1,69 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class dll extends dhj implements dkb, dkr {
-   public static final MapCodec<dll> a = b(dll::new);
-   public static final dvm<jl> b = dve.T;
+public class dll extends dhm {
+   public static final MapCodec<dll> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lv.e.q().fieldOf("host").forGetter(dll::b), t()).apply($$0, dll::new));
+   private final dhm b;
+   private static final Map<dhm, dhm> c = Maps.newIdentityHashMap();
+   private static final Map<dus, dus> d = Maps.newIdentityHashMap();
+   private static final Map<dus, dus> e = Maps.newIdentityHashMap();
 
    @Override
-   public MapCodec<dll> a() {
+   public MapCodec<? extends dll> a() {
       return a;
    }
 
-   protected dll(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jl.k));
+   public dll(dhm $$0, dur.d $$1) {
+      super($$1.e($$0.x() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
    }
 
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b);
+   public dhm b() {
+      return this.b;
    }
 
-   @Override
-   protected duo a(duo $$0, dnx $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
+   public static boolean o(dus $$0) {
+      return c.containsKey($$0.b());
    }
 
-   @Override
-   protected duo a(duo $$0, dmg $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public duo a(czk $$0) {
-      jj $$1 = $$0.k();
-      jj $$2;
-      if ($$1.o() == jj.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = jj.b;
-      }
-
-      return this.o().b(b, jl.a($$1, $$2));
-   }
-
-   @Override
-   public drs a(je $$0, duo $$1) {
-      return new dsu($$0, $$1);
-   }
-
-   @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      drs $$5 = $$1.c_($$2);
-      if ($$5 instanceof dsu && $$3.gz()) {
-         $$3.a((dsu)$$5);
-         return brp.a;
-      } else {
-         return brp.e;
+   private void a(arj $$0, jf $$1) {
+      clk $$2 = bty.aM.a($$0, btx.k);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.V();
       }
    }
 
-   public static boolean a(epe.c $$0, epe.c $$1) {
-      jj $$2 = o($$0.b());
-      jj $$3 = o($$1.b());
-      jj $$4 = p($$0.b());
-      jj $$5 = p($$1.b());
-      dsu.a $$6 = dsu.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dsu.a.b : dsu.a.a);
-      boolean $$7 = $$6 == dsu.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   protected void a(dus $$0, arj $$1, jf $$2, cvs $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.ac().b(def.h) && !dbp.a($$3, awy.t)) {
+         this.a($$1, $$2);
+      }
    }
 
-   public static jj o(duo $$0) {
-      return $$0.c(b).a();
+   public static dus p(dus $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).n());
    }
 
-   public static jj p(duo $$0) {
-      return $$0.c(b).b();
+   public dus q(dus $$0) {
+      return a(e, $$0, () -> this.b().n());
+   }
+
+   private static dus a(Map<dus, dus> $$0, dus $$1, Supplier<dus> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dus $$2x = $$2.get();
+
+         for (dvv $$3 : $$1x.F()) {
+            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
+         }
+
+         return $$2x;
+      });
    }
 }

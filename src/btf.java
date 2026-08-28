@@ -1,17 +1,14 @@
-class btf extends bst {
-   protected btf(bsu $$0, int $$1) {
+class btf extends bsv {
+   protected btf(bsx $$0, int $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public boolean a(buk $$0, int $$1) {
-      $$0.a($$0.dT().r(), 1.0F);
-      return true;
-   }
+   public boolean a(bun $$0, int $$1) {
+      if (!$$0.dS().B && $$0 instanceof cnx $$2) {
+         $$2.gn().a($$1 + 1, 1.0F);
+      }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+      return true;
    }
 }

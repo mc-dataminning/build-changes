@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface aix extends ags {
+   @Override
+   default vz b() {
+      return vz.a;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aix {
+   void a(aiu var1);
 }

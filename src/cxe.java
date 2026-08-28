@@ -1,27 +1,41 @@
-public class cxe extends cwj implements cwk {
-   public cxe(cvk.a $$0) {
+public class cxe extends cvn {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
+
+   public cxe(cvn.a $$0) {
       super($$0);
    }
 
    @Override
-   public brp a(deg $$0, cnu $$1, bro $$2) {
-      cvp $$3 = $$1.b($$2);
-      if ($$0 instanceof arh $$4) {
-         coo.a(cpa::new, $$4, $$3, $$1, -20.0F, 0.5F, 1.0F);
-      }
-
-      $$1.b(awo.c.b(this));
-      $$3.a(1, $$1);
-      return brp.a;
+   public int a(cvs $$0, bun $$1) {
+      return 1200;
    }
 
    @Override
-   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
-      return new cpa($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   public cvu a(cvs $$0) {
+      return cvu.h;
    }
 
    @Override
-   public cwk.a c() {
-      return cwk.a.a().a(cwk.a.a.c() * 0.5F).b(cwk.a.a.d() * 1.25F).a();
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      $$1.a(awg.zd, 1.0F, 1.0F);
+      $$1.b(awq.c.b(this));
+      return cvv.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cvs a(cvs $$0, dej $$1, bun $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cvs $$0, dej $$1, bun $$2, int $$3) {
+      this.a($$2);
+      return true;
+   }
+
+   private void a(bun $$0) {
+      $$0.a(awg.ze, 1.0F, 1.0F);
    }
 }

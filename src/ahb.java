@@ -1,34 +1,20 @@
-public class ahb implements zk<agq> {
-   public static final zb<wa, ahb> a = zk.a(ahb::a, ahb::new);
-   private final ahb.a b;
+public record ahb(float b) implements zl<agr> {
+   public static final zc<wb, ahb> a = zl.a(ahb::a, ahb::new);
 
-   public ahb(ahb.a $$0) {
-      this.b = $$0;
+   private ahb(wb $$0) {
+      this($$0.readFloat());
    }
 
-   private ahb(wa $$0) {
-      this.b = $$0.b(ahb.a.class);
-   }
-
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zm<ahb> a() {
-      return ago.bq;
+   public zn<ahb> a() {
+      return agp.bp;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
-   }
-
-   public ahb.a b() {
-      return this.b;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

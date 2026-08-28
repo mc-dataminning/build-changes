@@ -1,33 +1,121 @@
-public class fxa extends fxk<guj> {
-   private final gal a;
-   private final gal b;
+public class fxa extends fxo<gtg> {
+   private static final float b = 2.0F;
+   private static final float c = 2.5F;
+   public static final gaz a = gaz.scaling(0.45F);
+   private static final String d = "saddle";
+   private static final String e = "bridle";
+   private static final String f = "reins";
+   private final gaq g;
+   private final gaq[] i;
+   private final gaq[] j;
 
-   public fxa(gal $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail_fin");
+   public fxa(gaq $$0) {
+      super($$0);
+      gaq $$1 = $$0.b("body");
+      this.g = $$1.b("head");
+      this.i = new gaq[]{$$1.b("saddle"), this.g.b("bridle")};
+      this.j = new gaq[]{this.g.b("reins")};
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gaq.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gan.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", gaq.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gan.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", gaq.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gan.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", gaq.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gan.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", gaq.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gan.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", gaq.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gan.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", gaq.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gan.a(0.0F, 20.0F, 0.0F));
-      return gar.a($$0, 32, 32);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      gau $$2 = new gau(0.05F);
+      gba $$3 = $$1.a("body", gav.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gas.a(0.0F, 4.0F, 9.5F));
+      $$3.a("hump", gav.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gas.a(0.0F, -12.0F, -10.0F));
+      $$3.a("tail", gav.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gas.a(0.0F, -9.0F, 3.5F));
+      gba $$4 = $$3.a(
+         "head",
+         gav.c()
+            .a(60, 24)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
+            .a(21, 0)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
+            .a(50, 0)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
+         gas.a(0.0F, -3.0F, -19.5F)
+      );
+      $$4.a("left_ear", gav.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gas.a(2.5F, -21.0F, -9.5F));
+      $$4.a("right_ear", gav.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gas.a(-2.5F, -21.0F, -9.5F));
+      $$1.a("left_hind_leg", gav.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gas.a(4.9F, 1.0F, 9.5F));
+      $$1.a("right_hind_leg", gav.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gas.a(-4.9F, 1.0F, 9.5F));
+      $$1.a("left_front_leg", gav.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gas.a(4.9F, 1.0F, -10.5F));
+      $$1.a("right_front_leg", gav.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gas.a(-4.9F, 1.0F, -10.5F));
+      $$3.a(
+         "saddle",
+         gav.c()
+            .a(74, 64)
+            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
+            .a(92, 114)
+            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
+            .a(0, 89)
+            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
+         gas.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "reins",
+         gav.c()
+            .a(98, 42)
+            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
+            .a(84, 57)
+            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
+            .a(98, 42)
+            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
+         gas.a(0.0F, 0.0F, 0.0F)
+      );
+      $$4.a(
+         "bridle",
+         gav.c()
+            .a(60, 87)
+            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
+            .a(21, 64)
+            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
+            .a(50, 64)
+            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
+            .a(74, 70)
+            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
+            .a(74, 70)
+            .a()
+            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
+         gas.a(0.0F, 0.0F, 0.0F)
+      );
+      return gaw.a($$0, 128, 128);
    }
 
-   @Override
-   public gal a() {
-      return this.a;
+   public void a(gtg $$0) {
+      super.a($$0);
+      this.a($$0, $$0.U, $$0.V);
+      this.b($$0);
+      this.a(fjk.a, $$0.X, $$0.Y, 2.0F, 2.5F);
+      this.a($$0.d, fjk.b, $$0.p, 1.0F);
+      this.a($$0.e, fjk.c, $$0.p, 1.0F);
+      this.a($$0.f, fjk.d, $$0.p, 1.0F);
+      this.a($$0.g, fjk.f, $$0.p, 1.0F);
+      this.a($$0.h, fjk.e, $$0.p, 1.0F);
    }
 
-   public void a(guj $$0) {
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.b.f = -$$1 * 0.45F * azd.a(0.6F * $$0.p);
+   private void a(gtg $$0, float $$1, float $$2) {
+      $$1 = azf.a($$1, -30.0F, 30.0F);
+      $$2 = azf.a($$2, -25.0F, 45.0F);
+      if ($$0.c > 0.0F) {
+         float $$3 = 45.0F * $$0.c / 55.0F;
+         $$2 = azf.a($$2 + $$3, -25.0F, 70.0F);
+      }
+
+      this.g.f = $$1 * (float) (Math.PI / 180.0);
+      this.g.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   private void b(gtg $$0) {
+      boolean $$1 = $$0.a;
+      boolean $$2 = $$0.b;
+
+      for (gaq $$3 : this.i) {
+         $$3.k = $$1;
+      }
+
+      for (gaq $$4 : this.j) {
+         $$4.k = $$2 && $$1;
+      }
    }
 }

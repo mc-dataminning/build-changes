@@ -1,33 +1,69 @@
-public record aqt(String b, int c, cns d, boolean e, int f, bue g, boolean h, boolean i, ara j) {
-   public static final int a = 16;
-
-   public aqt(wa $$0) {
-      this(
-         $$0.d(16),
-         $$0.readByte(),
-         $$0.b(cns.class),
-         $$0.readBoolean(),
-         $$0.readUnsignedByte(),
-         $$0.b(bue.class),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(ara.class)
-      );
+public abstract class aqt extends eqf {
+   protected aqt(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
+   @Override
+   protected boolean a(long $$0) {
+      return $$0 == ddp.a;
    }
 
-   public static aqt a() {
-      return new aqt("en_us", 2, cns.a, true, 0, cnu.bD, false, false, ara.a);
+   @Override
+   protected void a(long $$0, int $$1, boolean $$2) {
+      if (!$$2 || $$1 < this.f - 2) {
+         ddp $$3 = new ddp($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = ddp.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   protected int a(long $$0, long $$1, int $$2) {
+      int $$3 = $$2;
+      ddp $$4 = new ddp($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
+
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = ddp.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = ddp.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
+               }
+
+               if ($$3 == 0) {
+                  return $$3;
+               }
+            }
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected int b(long $$0, long $$1, int $$2) {
+      return $$0 == ddp.a ? this.b($$1) : $$2 + 1;
+   }
+
+   protected abstract int b(long var1);
+
+   public void b(long $$0, int $$1, boolean $$2) {
+      this.a(ddp.a, $$0, $$1, $$2);
    }
 }

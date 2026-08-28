@@ -1,29 +1,60 @@
-public class aec implements zk<abz> {
-   public static final zb<wa, aec> a = zk.a(aec::a, aec::new);
-   private final int b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aec(bsd $$0) {
-      this($$0.b());
+public record aec(UUID b, int c, @Nullable xq d, xx.a e, @Nullable xe f, xi g, xa.a h) implements zl<aca> {
+   public static final zc<wp, aec> a = zl.a(aec::a, aec::new);
+
+   private aec(wp $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xq::a), new xx.a($$0), wb.a($$0, xg.d), xi.a($$0), xa.a.a.decode($$0));
    }
 
-   public aec(int $$0) {
-      this.b = $$0;
-   }
-
-   private aec(wa $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
+   private void a(wp $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, xq::a);
+      this.e.a($$0);
+      wb.a($$0, this.f, xg.d);
+      xi.a($$0, this.g);
+      xa.a.a.encode($$0, this.h);
    }
 
    @Override
-   public zm<aec> a() {
-      return ago.ac;
+   public zn<aec> a() {
+      return agp.ab;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public xq f() {
+      return this.d;
+   }
+
+   public xx.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public xe h() {
+      return this.f;
+   }
+
+   public xi i() {
+      return this.g;
+   }
+
+   public xa.a j() {
+      return this.h;
    }
 }

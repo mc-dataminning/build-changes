@@ -2,44 +2,173 @@ import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class cjo {
-   private static final Logger a = LogUtils.getLogger();
-   private final cix b;
-   private final cjh[] c = new cjh[cjn.c()];
+public class cjo extends cjc {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 5;
+   private int d;
    @Nullable
-   private cjh d;
+   private erh e;
+   @Nullable
+   private eyw f;
+   @Nullable
+   private bun g;
+   private boolean h;
 
-   public cjo(cix $$0) {
-      this.b = $$0;
-      this.a(cjn.k);
+   public cjo(cja $$0) {
+      super($$0);
    }
 
-   public void a(cjn<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
+   @Override
+   public void c() {
+      if (this.g == null) {
+         b.warn("Skipping player strafe phase because no player was found");
+         this.a.gl().a(cjq.a);
+      } else {
+         if (this.e != null && this.e.c()) {
+            double $$0 = this.g.dx();
+            double $$1 = this.g.dD();
+            double $$2 = $$0 - this.a.dx();
+            double $$3 = $$1 - this.a.dD();
+            double $$4 = Math.sqrt($$2 * $$2 + $$3 * $$3);
+            double $$5 = Math.min(0.4F + $$4 / 80.0 - 1.0, 10.0);
+            this.f = new eyw($$0, this.g.dz() + $$5, $$1);
          }
 
-         this.d = this.b((cjn<cjh>)$$0);
-         if (!this.b.dS().B) {
-            this.b.at().a(cix.b, $$0.b());
+         double $$6 = this.f == null ? 0.0 : this.f.c(this.a.dx(), this.a.dz(), this.a.dD());
+         if ($$6 < 100.0 || $$6 > 22500.0) {
+            this.j();
          }
 
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dS().B ? "client" : "server");
-         this.d.d();
+         double $$7 = 64.0;
+         if (this.g.g(this.a) < 4096.0) {
+            if (this.a.G(this.g)) {
+               this.d++;
+               eyw $$8 = new eyw(this.g.dx() - this.a.dx(), 0.0, this.g.dD() - this.a.dD()).d();
+               eyw $$9 = new eyw((double)azf.a(this.a.dI() * (float) (Math.PI / 180.0)), 0.0, (double)(-azf.b(this.a.dI() * (float) (Math.PI / 180.0)))).d();
+               float $$10 = (float)$$9.b($$8);
+               float $$11 = (float)(Math.acos((double)$$10) * 180.0F / (float)Math.PI);
+               $$11 += 0.5F;
+               if (this.d >= 5 && $$11 >= 0.0F && $$11 < 10.0F) {
+                  double $$12 = 1.0;
+                  eyw $$13 = this.a.g(1.0F);
+                  double $$14 = this.a.d.dx() - $$13.d * 1.0;
+                  double $$15 = this.a.d.e(0.5) + 0.5;
+                  double $$16 = this.a.d.dD() - $$13.f * 1.0;
+                  double $$17 = this.g.dx() - $$14;
+                  double $$18 = this.g.e(0.5) - $$15;
+                  double $$19 = this.g.dD() - $$16;
+                  eyw $$20 = new eyw($$17, $$18, $$19);
+                  if (!this.a.ba()) {
+                     this.a.dS().a(null, 1017, this.a.ds(), 0);
+                  }
+
+                  coh $$21 = new coh(this.a.dS(), this.a, $$20.d());
+                  $$21.b($$14, $$15, $$16, 0.0F, 0.0F);
+                  this.a.dS().b($$21);
+                  this.d = 0;
+                  if (this.e != null) {
+                     while (!this.e.c()) {
+                        this.e.a();
+                     }
+                  }
+
+                  this.a.gl().a(cjq.a);
+               }
+            } else if (this.d > 0) {
+               this.d--;
+            }
+         } else if (this.d > 0) {
+            this.d--;
+         }
       }
    }
 
-   public cjh a() {
-      return this.d;
-   }
+   private void j() {
+      if (this.e == null || this.e.c()) {
+         int $$0 = this.a.y();
+         int $$1 = $$0;
+         if (this.a.dV().a(8) == 0) {
+            this.h = !this.h;
+            $$1 = $$0 + 6;
+         }
 
-   public <T extends cjh> T b(cjn<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
+         if (this.h) {
+            $$1++;
+         } else {
+            $$1--;
+         }
+
+         if (this.a.gm() != null && this.a.gm().e() > 0) {
+            $$1 %= 12;
+            if ($$1 < 0) {
+               $$1 += 12;
+            }
+         } else {
+            $$1 -= 12;
+            $$1 &= 7;
+            $$1 += 12;
+         }
+
+         this.e = this.a.a($$0, $$1, null);
+         if (this.e != null) {
+            this.e.a();
+         }
       }
 
-      return (T)this.c[$$1];
+      this.k();
+   }
+
+   private void k() {
+      if (this.e != null && !this.e.c()) {
+         kj $$0 = this.e.g();
+         this.e.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dV().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.f = new eyw($$1, $$3, $$2);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.d = 0;
+      this.f = null;
+      this.e = null;
+      this.g = null;
+   }
+
+   public void a(bun $$0) {
+      this.g = $$0;
+      int $$1 = this.a.y();
+      int $$2 = this.a.q(this.g.dx(), this.g.dz(), this.g.dD());
+      int $$3 = this.g.dw();
+      int $$4 = this.g.dC();
+      double $$5 = (double)$$3 - this.a.dx();
+      double $$6 = (double)$$4 - this.a.dD();
+      double $$7 = Math.sqrt($$5 * $$5 + $$6 * $$6);
+      double $$8 = Math.min(0.4F + $$7 / 80.0 - 1.0, 10.0);
+      int $$9 = azf.a(this.g.dz() + $$8);
+      erf $$10 = new erf($$3, $$9, $$4);
+      this.e = this.a.a($$1, $$2, $$10);
+      if (this.e != null) {
+         this.e.a();
+         this.k();
+      }
+   }
+
+   @Nullable
+   @Override
+   public eyw g() {
+      return this.f;
+   }
+
+   @Override
+   public cjq<cjo> i() {
+      return cjq.b;
    }
 }

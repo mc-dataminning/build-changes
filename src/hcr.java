@@ -1,60 +1,109 @@
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class hcr {
-   private boolean a;
-   @Nullable
-   private hcl.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   final Map<hcq<?>, Object> a;
 
-   public hcr(@Nullable String $$0) {
-      this.d = $$0;
+   hcr(Map<hcq<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public void a(hcm.a $$0) {
-      if (this.c != null) {
-         $$0.a(hcl.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(hcl.k, this.a());
+   public static hcr.a a() {
+      return new hcr.a();
    }
 
-   private hcl.c a() {
-      gbv $$0 = fil.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return hcl.c.a;
-      } else {
-         return fil.Q().U() ? hcl.c.b : hcl.c.c;
-      }
-   }
+   public static MapCodec<hcr> a(final List<hcq<?>> $$0) {
+      return new MapCodec<hcr>() {
+         public <T> RecordBuilder<T> a(hcr $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
 
-   public boolean a(hci $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(hcj.b, $$0x -> {
-            $$0x.a(hcl.n, this.b);
-            if (this.d != null) {
-               $$0x.a(hcl.o, this.d);
+            for (hcq<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
             }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
 
-   public void a(ded $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? hcl.b.e : hcl.b.a;
-         case b -> hcl.b.b;
-         case c -> hcl.b.c;
-         case d -> hcl.b.d;
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(hcr $$0x, RecordBuilder<T> $$1, hcq<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<hcr> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<hcr.a> $$2 = DataResult.success(new hcr.a());
+
+            for (hcq<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(hcr.a::a);
+         }
+
+         private <T, V> DataResult<hcr.a> a(DataResult<hcr.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hcq<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(hcq::b).map($$0::createString);
+         }
       };
    }
 
-   public void a(String $$0) {
-      this.c = $$0;
+   @Nullable
+   public <T> T a(hcq<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<hcq<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<hcq<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> hcr.a a(hcq<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> hcr.a b(hcq<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public hcr.a a(hcr $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public hcr a() {
+         return new hcr(this.a);
+      }
    }
 }

@@ -1,15 +1,21 @@
-public class gpp extends gmi<cou, gst> {
-   public static final alc a = alc.b("textures/entity/projectiles/spectral_arrow.png");
+public class gpp extends gou<clk, guo, fzi> {
+   private static final ale a = ale.b("textures/entity/silverfish.png");
 
-   public gpp(gnj.a $$0) {
-      super($$0);
+   public gpp(gno.a $$0) {
+      super($$0, new fzi($$0.a(gap.cl)), 0.3F);
    }
 
-   public alc a(gst $$0) {
+   @Override
+   protected float aW_() {
+      return 180.0F;
+   }
+
+   @Override
+   public ale b(guo $$0) {
       return a;
    }
 
-   public gst a() {
-      return new gst();
+   public guo c() {
+      return new guo();
    }
 }

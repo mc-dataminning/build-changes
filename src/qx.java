@@ -1,72 +1,24 @@
+import java.util.OptionalLong;
+
 public class qx {
-   @Deprecated
-   public static final eps.a a = new eps.a(-3, 1.0, 1.0, 1.0, 0.0);
-
-   public static void a(qt<eps.a> $$0) {
-      a($$0, 0, eat.a, eat.b, eat.c, eat.d);
-      a($$0, -2, eat.e, eat.f, eat.g, eat.h);
-      a($$0, eat.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(eat.j, a);
-      a($$0, eat.k, -3, 1.0);
-      a($$0, eat.l, -7, 1.0);
-      a($$0, eat.m, -1, 1.0);
-      a($$0, eat.n, -5, 1.0);
-      a($$0, eat.o, -7, 1.0, 1.0);
-      a($$0, eat.p, -8, 1.0);
-      a($$0, eat.q, -8, 1.0);
-      a($$0, eat.r, -7, 1.0);
-      a($$0, eat.s, -8, 1.0);
-      a($$0, eat.t, -11, 1.0);
-      a($$0, eat.u, -11, 1.0);
-      a($$0, eat.v, -7, 1.0);
-      a($$0, eat.w, -7, 1.0);
-      a($$0, eat.x, -11, 1.0);
-      a($$0, eat.y, -8, 1.0);
-      a($$0, eat.z, -5, 1.0);
-      a($$0, eat.A, -8, 1.0);
-      a($$0, eat.B, -7, 0.4, 0.5, 1.0);
-      a($$0, eat.C, -8, 1.0);
-      a($$0, eat.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, eat.E, -8, 1.0);
-      a($$0, eat.F, -7, 1.0);
-      a($$0, eat.G, -7, 1.0);
-      a($$0, eat.H, -5, 1.0);
-      a($$0, eat.I, -8, 1.0);
-      a($$0, eat.J, -8, 1.0);
-      a($$0, eat.K, -7, 1.0);
-      a($$0, eat.L, -7, 1.0);
-      a($$0, eat.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.N, -6, 1.0, 1.0, 1.0);
-      a($$0, eat.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, eat.P, -8, 1.0);
-      a($$0, eat.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.R, -8, 1.0);
-      a($$0, eat.S, -6, 1.0, 1.0, 1.0);
-      a($$0, eat.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.U, -3, 1.0);
-      a($$0, eat.V, -6, 1.0, 1.0, 1.0);
-      a($$0, eat.W, -2, 1.0);
-      a($$0, eat.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eat.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eat.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eat.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eat.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, eat.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, eat.ah, -4, 1.0);
-   }
-
-   private static void a(qt<eps.a> $$0, int $$1, alb<eps.a> $$2, alb<eps.a> $$3, alb<eps.a> $$4, alb<eps.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qt<eps.a> $$0, alb<eps.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eps.a($$2, $$3, $$4));
+   public static void a(qu<dyo> $$0) {
+      $$0.a(
+         dym.a,
+         new dyo(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awv.bc, dym.e, 0.0F, new dyo.a(false, true, brd.a(0, 7), 0))
+      );
+      $$0.a(
+         dym.b,
+         new dyo(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awv.bd, dym.f, 0.1F, new dyo.a(true, false, bqu.a(7), 15))
+      );
+      $$0.a(
+         dym.c,
+         new dyo(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awv.be, dym.g, 0.0F, new dyo.a(false, true, brd.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         dym.d,
+         new dyo(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awv.bc, dym.e, 0.0F, new dyo.a(false, true, brd.a(0, 7), 0))
+      );
    }
 }

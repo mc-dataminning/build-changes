@@ -1,23 +1,25 @@
-public enum dvx implements azz {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+public enum dvx implements bab {
+   a("up"),
+   b("side"),
+   c("none");
 
-   private final String f;
+   private final String d;
 
    private dvx(final String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

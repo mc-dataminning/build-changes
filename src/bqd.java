@@ -1,67 +1,52 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bqd<E extends bqb> {
-   private final int a;
-   private final ImmutableList<E> b;
+public class bqd {
+   public static final Codec<bqd> a = Codec.INT.xmap(bqd::a, bqd::a);
+   private static final bqd b = new bqd(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   bqd(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bqc.a($$0);
+   private bqd(int $$0) {
+      this.d = $$0;
    }
 
-   public static <E extends bqb> bqd<E> c() {
-      return new bqd<>(ImmutableList.of());
-   }
-
-   @SafeVarargs
-   public static <E extends bqb> bqd<E> a(E... $$0) {
-      return new bqd<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends bqb> bqd<E> a(List<E> $$0) {
-      return new bqd<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(azl $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
+   public static bqd a(int $$0) {
+      if ($$0 == 1) {
+         return b;
       } else {
-         int $$1 = $$0.a(this.a);
-         return bqc.a(this.b, $$1);
+         b($$0);
+         return new bqd($$0);
       }
    }
 
-   public List<E> e() {
-      return this.b;
+   public int a() {
+      return this.d;
    }
 
-   public static <E extends bqb> Codec<bqd<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bqd::a, bqd::e);
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && ab.aW) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
    }
 
    @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         bqd<?> $$1 = (bqd<?>)$$0;
-         return this.a == $$1.a && Objects.equals(this.b, $$1.b);
-      } else {
-         return false;
-      }
+   public String toString() {
+      return Integer.toString(this.d);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.a, this.b);
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bqd && this.d == ((bqd)$$0).d;
    }
 }

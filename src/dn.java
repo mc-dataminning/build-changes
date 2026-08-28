@@ -2,18 +2,18 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dn extends dv<dn.a> {
+public class dn extends dw<dn.a> {
    @Override
    public Codec<dn.a> a() {
       return dn.a.a;
    }
 
-   public void a(ari $$0, cvp $$1, bto $$2) {
-      eth $$3 = bv.b($$0, $$2);
+   public void a(ark $$0, cvs $$1, btr $$2) {
+      etl $$3 = bv.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
-   public static record a(Optional<bg> b, Optional<cs> c, Optional<bg> d) implements dv.a {
+   public static record a(Optional<bg> b, Optional<cs> c, Optional<bg> d) implements dw.a {
       public static final Codec<dn.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(dn.a::a),
@@ -31,13 +31,13 @@ public class dn extends dv<dn.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cvp $$0, eth $$1) {
+      public boolean a(cvs $$0, etl $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
+         dw.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 

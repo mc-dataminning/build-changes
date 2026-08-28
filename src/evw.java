@@ -1,42 +1,28 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class evw extends euu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, evw::new));
+public class evw extends euy {
+   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxp.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, evw::new));
+   private final jo<cxp> b;
 
-   private evw(List<ews> $$0) {
+   private evw(List<eww> $$0, jo<cxp> $$1) {
       super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public euw<evw> b() {
-      return eux.l;
+   public eva<evw> b() {
+      return evb.F;
    }
 
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         Optional<daj<day>> $$2 = $$1.d().r().a(dan.b, new dax($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cvp $$3 = $$2.get().b().a($$1.d().F_());
-            if (!$$3.f()) {
-               return $$3.c($$0.J());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
+   public cvs a(cvs $$0, etl $$1) {
+      $$0.a(ks.L, cxr.a, this.b, cxr::b);
+      return $$0;
    }
 
-   public static euu.a<?> c() {
-      return a(evw::new);
+   public static euy.a<?> a(jo<cxp> $$0) {
+      return a($$1 -> new evw($$1, $$0));
    }
 }

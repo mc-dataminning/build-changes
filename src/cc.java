@@ -3,18 +3,18 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
 import java.util.Optional;
 
-public class cc extends dv<cc.a> {
+public class cc extends dw<cc.a> {
    @Override
    public Codec<cc.a> a() {
       return cc.a.a;
    }
 
-   public void a(ari $$0, cvp $$1, coj $$2, Collection<cvp> $$3) {
-      eth $$4 = bv.b($$0, (bto)($$2.q() != null ? $$2.q() : $$2));
+   public void a(ark $$0, cvs $$1, com $$2, Collection<cvs> $$3) {
+      etl $$4 = bv.b($$0, (btr)($$2.q() != null ? $$2.q() : $$2));
       this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public static record a(Optional<bg> b, Optional<cs> c, Optional<bg> d, Optional<cs> e) implements dv.a {
+   public static record a(Optional<bg> b, Optional<cs> c, Optional<bg> d, Optional<cs> e) implements dw.a {
       public static final Codec<cc.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(cc.a::a),
@@ -29,7 +29,7 @@ public class cc extends dv<cc.a> {
          return an.E.a(new cc.a(Optional.empty(), $$0, bv.a($$1), $$2));
       }
 
-      public boolean a(cvp $$0, eth $$1, Collection<cvp> $$2) {
+      public boolean a(cvs $$0, etl $$1, Collection<cvs> $$2) {
          if (this.c.isPresent() && !this.c.get().a($$0)) {
             return false;
          } else if (this.d.isPresent() && !this.d.get().a($$1)) {
@@ -37,12 +37,12 @@ public class cc extends dv<cc.a> {
          } else {
             if (this.e.isPresent()) {
                boolean $$3 = false;
-               bto $$4 = $$1.c(ewd.a);
-               if ($$4 instanceof cke $$5 && this.e.get().a($$5.m())) {
+               btr $$4 = $$1.c(ewh.a);
+               if ($$4 instanceof ckh $$5 && this.e.get().a($$5.m())) {
                   $$3 = true;
                }
 
-               for (cvp $$6 : $$2) {
+               for (cvs $$6 : $$2) {
                   if (this.e.get().a($$6)) {
                      $$3 = true;
                      break;
@@ -60,7 +60,7 @@ public class cc extends dv<cc.a> {
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
+         dw.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 

@@ -1,44 +1,43 @@
-public class fyy extends fxk<gvc> {
-   public static final gau a = gau.scaling(0.5F);
-   public static final gau b = gau.scaling(1.5F);
-   private static final String c = "body_front";
-   private static final String d = "body_back";
-   private final gal e;
-   private final gal f;
+public class fyy<T extends guo> extends fxo<T> {
+   protected final gaq b;
+   protected final gaq c;
+   protected final gaq d;
+   protected final gaq e;
+   protected final gaq f;
+   protected final gaq g;
 
-   public fyy(gal $$0) {
-      this.e = $$0;
-      this.f = $$0.b("body_back");
+   protected fyy(gaq $$0) {
+      super($$0);
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      int $$2 = 20;
-      gav $$3 = $$1.a("body_front", gaq.c().a(0, 0).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), gan.a(0.0F, 20.0F, 0.0F));
-      gav $$4 = $$1.a("body_back", gaq.c().a(0, 13).a(-1.5F, -2.5F, 0.0F, 3.0F, 5.0F, 8.0F), gan.a(0.0F, 20.0F, 8.0F));
-      $$1.a("head", gaq.c().a(22, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gan.a(0.0F, 20.0F, 0.0F));
-      $$4.a("back_fin", gaq.c().a(20, 10).a(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 6.0F), gan.a(0.0F, 0.0F, 8.0F));
-      $$3.a("top_front_fin", gaq.c().a(2, 1).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 3.0F), gan.a(0.0F, -4.5F, 5.0F));
-      $$4.a("top_back_fin", gaq.c().a(0, 2).a(0.0F, 0.0F, 0.0F, 0.0F, 2.0F, 4.0F), gan.a(0.0F, -4.5F, -1.0F));
-      $$1.a("right_fin", gaq.c().a(-4, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gan.a(-1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", gaq.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gan.a(1.5F, 21.5F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      return gar.a($$0, 32, 32);
+   public static gay a(int $$0, gau $$1) {
+      gay $$2 = new gay();
+      gba $$3 = $$2.a();
+      $$3.a("head", gav.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gas.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", gav.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gas.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gav $$4 = gav.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gas.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gas.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gas.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gas.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   @Override
-   public gal a() {
-      return this.e;
-   }
-
-   public void a(gvc $$0) {
-      float $$1 = 1.0F;
-      float $$2 = 1.0F;
-      if (!$$0.af) {
-         $$1 = 1.3F;
-         $$2 = 1.7F;
-      }
-
-      this.f.f = -$$1 * 0.25F * azd.a($$2 * 0.6F * $$0.p);
+   public void a(T $$0) {
+      super.a($$0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      this.d.e = azf.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azf.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = azf.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = azf.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

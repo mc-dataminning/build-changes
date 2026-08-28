@@ -1,27 +1,30 @@
-public abstract class czy implements czx {
-   private final czv a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public czy(czv $$0) {
-      this.a = $$0;
+public enum czy implements bab {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
+
+   public static final Codec<czy> e = bab.a(czy::values);
+   public static final IntFunction<czy> f = axw.a(czy::a, values(), axw.a.a);
+   public static final zc<ByteBuf, czy> g = za.a(f, czy::a);
+   private final String h;
+   private final int i;
+
+   private czy(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean ap_() {
-      return true;
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public cvp a(jp.a $$0) {
-      return cvp.k;
-   }
-
-   @Override
-   public czv d() {
-      return this.a;
-   }
-
-   @Override
-   public dag a() {
-      return dag.a;
+   private int a() {
+      return this.i;
    }
 }

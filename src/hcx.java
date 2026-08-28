@@ -1,68 +1,22 @@
+import java.time.Duration;
 import javax.annotation.Nullable;
 
-public class hcx implements hdd {
-   private static final int a = 1200;
-   private static final xd b = xd.c("tutorial.craft_planks.title");
-   private static final xd c = xd.c("tutorial.craft_planks.description");
-   private final hdc d;
+public class hcx {
+   private final boolean a;
    @Nullable
-   private fmw e;
-   private int f;
+   private final Duration b;
 
-   public hcx(hdc $$0) {
-      this.d = $$0;
+   public hcx(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hde.f);
-      } else {
-         if (this.f == 1) {
-            ggc $$0 = this.d.e().t;
-            if ($$0 != null) {
-               if ($$0.gc().a(axc.b)) {
-                  this.d.a(hde.f);
-                  return;
-               }
-
-               if (a($$0, axc.b)) {
-                  this.d.a(hde.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fmw(fmw.a.e, b, c, false);
-            this.d.e().aA().a(this.e);
-         }
+   public void a(hcn $$0) {
+      if (this.b != null) {
+         $$0.send(hco.d, $$0x -> {
+            $$0x.a(hcq.x, (int)this.b.toMillis());
+            $$0x.a(hcq.y, this.a);
+         });
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.d();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(cvp $$0) {
-      if ($$0.a(axc.b)) {
-         this.d.a(hde.f);
-      }
-   }
-
-   public static boolean a(ggc $$0, axj<cvk> $$1) {
-      for (jn<cvk> $$2 : lu.g.b($$1)) {
-         if ($$0.i().a(awo.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

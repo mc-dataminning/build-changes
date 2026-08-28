@@ -1,177 +1,48 @@
-import com.google.common.collect.EvictingQueue;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBDebugOutput;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GLCapabilities;
-import org.lwjgl.opengl.GLDebugMessageARBCallback;
-import org.lwjgl.opengl.GLDebugMessageCallback;
-import org.lwjgl.opengl.KHRDebug;
-import org.slf4j.Logger;
+import com.google.common.base.Charsets;
+import java.nio.ByteBuffer;
+import org.lwjgl.BufferUtils;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.system.MemoryUtil;
 
 public class fbw {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 10;
-   private static final Queue<fbw.a> c = EvictingQueue.create(10);
-   @Nullable
-   private static volatile fbw.a d;
-   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
-   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
-   private static boolean g;
+   public static final int a = 65545;
+   private final ByteBuffer b = BufferUtils.createByteBuffer(8192);
 
-   private static String d(int $$0) {
-      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
-   }
-
-   public static String a(int $$0) {
-      switch ($$0) {
-         case 33350:
-            return "API";
-         case 33351:
-            return "WINDOW SYSTEM";
-         case 33352:
-            return "SHADER COMPILER";
-         case 33353:
-            return "THIRD PARTY";
-         case 33354:
-            return "APPLICATION";
-         case 33355:
-            return "OTHER";
-         default:
-            return d($$0);
+   public String a(long $$0, GLFWErrorCallbackI $$1) {
+      GLFWErrorCallback $$2 = GLFW.glfwSetErrorCallback($$1);
+      String $$3 = GLFW.glfwGetClipboardString($$0);
+      $$3 = $$3 != null ? baa.a($$3) : "";
+      GLFWErrorCallback $$4 = GLFW.glfwSetErrorCallback($$2);
+      if ($$4 != null) {
+         $$4.free();
       }
+
+      return $$3;
    }
 
-   public static String b(int $$0) {
-      switch ($$0) {
-         case 33356:
-            return "ERROR";
-         case 33357:
-            return "DEPRECATED BEHAVIOR";
-         case 33358:
-            return "UNDEFINED BEHAVIOR";
-         case 33359:
-            return "PORTABILITY";
-         case 33360:
-            return "PERFORMANCE";
-         case 33361:
-            return "OTHER";
-         case 33384:
-            return "MARKER";
-         default:
-            return d($$0);
-      }
+   private static void a(long $$0, ByteBuffer $$1, byte[] $$2) {
+      $$1.clear();
+      $$1.put($$2);
+      $$1.put((byte)0);
+      $$1.flip();
+      GLFW.glfwSetClipboardString($$0, $$1);
    }
 
-   public static String c(int $$0) {
-      switch ($$0) {
-         case 33387:
-            return "NOTIFICATION";
-         case 37190:
-            return "HIGH";
-         case 37191:
-            return "MEDIUM";
-         case 37192:
-            return "LOW";
-         default:
-            return d($$0);
-      }
-   }
+   public void a(long $$0, String $$1) {
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      int $$3 = $$2.length + 1;
+      if ($$3 < this.b.capacity()) {
+         a($$0, this.b, $$2);
+      } else {
+         ByteBuffer $$4 = MemoryUtil.memAlloc($$3);
 
-   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
-      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
-      fbw.a $$8;
-      synchronized (c) {
-         $$8 = d;
-         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
-            $$8.f++;
-         } else {
-            $$8 = new fbw.a($$0, $$1, $$2, $$3, $$7);
-            c.add($$8);
-            d = $$8;
+         try {
+            a($$0, $$4, $$2);
+         } finally {
+            MemoryUtil.memFree($$4);
          }
-      }
-
-      a.info("OpenGL debug message: {}", $$8);
-   }
-
-   public static List<String> a() {
-      synchronized (c) {
-         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
-
-         for (fbw.a $$1 : c) {
-            $$0.add($$1 + " x " + $$1.f);
-         }
-
-         return $$0;
-      }
-   }
-
-   public static boolean b() {
-      return g;
-   }
-
-   public static void a(int $$0, boolean $$1) {
-      if ($$0 > 0) {
-         GLCapabilities $$2 = GL.getCapabilities();
-         if ($$2.GL_KHR_debug) {
-            g = true;
-            GL11.glEnable(37600);
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$3 = 0; $$3 < e.size(); $$3++) {
-               boolean $$4 = $$3 < $$0;
-               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
-            }
-
-            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(fbw::a), fbt::a), 0L);
-         } else if ($$2.GL_ARB_debug_output) {
-            g = true;
-            if ($$1) {
-               GL11.glEnable(33346);
-            }
-
-            for (int $$5 = 0; $$5 < f.size(); $$5++) {
-               boolean $$6 = $$5 < $$0;
-               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
-            }
-
-            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(fbw::a), fbt::a), 0L);
-         }
-      }
-   }
-
-   static class a {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      private final String e;
-      int f = 1;
-
-      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         this.a = $$2;
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
-         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
-      }
-
-      @Override
-      public String toString() {
-         return "id=" + this.a + ", source=" + fbw.a(this.b) + ", type=" + fbw.b(this.c) + ", severity=" + fbw.c(this.d) + ", message='" + this.e + "'";
       }
    }
 }

@@ -1,8 +1,7 @@
-public abstract class fkd extends fkg {
-   protected final fip a;
+public interface fkd {
+   boolean a(csw var1);
 
-   protected fkd(fip $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
-      super($$1, $$2, $$3, $$4, xc.a, $$5);
-      this.a = $$0;
-   }
+   boolean a(double var1, double var3, int var5, cvs var6);
+
+   void b(csw var1);
 }

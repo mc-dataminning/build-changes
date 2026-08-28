@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bpu {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bpu {
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bog f();
+
+   void d();
 }

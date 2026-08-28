@@ -1,16 +1,26 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egn implements efu {
-   public static final Codec<egn> a = aym.b(ekg.c).fieldOf("features").xmap(egn::new, $$0 -> $$0.b).codec();
-   public final jr<ekg> b;
+public class egn implements efy {
+   public static final Codec<egn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dus.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dus.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bqx.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, egn::new)
+   );
+   public final dus b;
+   public final dus c;
+   private final bqx d;
 
-   public egn(jr<ekg> $$0) {
+   public egn(dus $$0, dus $$1, bqx $$2) {
       this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public Stream<edc<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public bqx a() {
+      return this.d;
    }
 }

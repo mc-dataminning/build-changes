@@ -1,20 +1,21 @@
-public class gny extends glz<cme> {
-   private static final alc a = alc.b("textures/entity/hoglin/hoglin.png");
+public class gny extends gou<ckx, gub, fxt> {
+   private static final ale a = ale.b("textures/entity/ghast/ghast.png");
+   private static final ale b = ale.b("textures/entity/ghast/ghast_shooting.png");
 
-   public gny(gnj.a $$0) {
-      super($$0, gak.aM, gak.aN, 0.7F);
+   public gny(gno.a $$0) {
+      super($$0, new fxt($$0.a(gap.aD)), 1.5F);
    }
 
-   public alc a(gtz $$0) {
-      return a;
+   public ale a(gub $$0) {
+      return $$0.a ? b : a;
    }
 
-   public void a(cme $$0, gtz $$1, float $$2) {
+   public gub c() {
+      return new gub();
+   }
+
+   public void a(ckx $$0, gub $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.y();
-   }
-
-   protected boolean b(gtz $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = $$0.q();
    }
 }

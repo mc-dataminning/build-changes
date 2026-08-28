@@ -1,25 +1,26 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+@FunctionalInterface
+public interface eyh<T> {
+   void handle(T var1, eyj<T> var2, long var3);
 
-public class eyh extends Exception {
-   private final Path a;
-   private final List<eyj> b;
+   public abstract static class a<T, C extends eyh<T>> {
+      private final ale a;
+      private final Class<?> b;
 
-   public eyh(Path $$0, List<eyj> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+      public a(ale $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
-   }
+      public ale a() {
+         return this.a;
+      }
 
-   public static String a(Path $$0, List<eyj> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(ug var1, C var2);
+
+      public abstract C b(ug var1);
    }
 }

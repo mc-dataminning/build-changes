@@ -1,34 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmd extends dlt implements dhm {
-   public static final MapCodec<dmd> a = b(dmd::new);
+public interface dmd {
+   boolean a(@Nullable cnx var1, ddo var2, jf var3, dus var4, eqs var5);
 
-   @Override
-   public MapCodec<dmd> a() {
-      return a;
-   }
-
-   public dmd(dun.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return $$0.a_($$1.e()).l();
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      $$0.a($$2.e(), dme.c(), 2);
-   }
-
-   @Override
-   public je a(je $$0) {
-      return $$0.e();
-   }
+   boolean a(dek var1, jf var2, dus var3, eqt var4);
 }

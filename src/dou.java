@@ -1,36 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dou extends dhj {
-   public static final MapCodec<dou> b = b(dou::new);
-   public static final dvf c = dve.z;
+public class dou extends dgh {
+   public static final MapCodec<dou> c = b(dou::new);
 
    @Override
-   protected MapCodec<? extends dou> a() {
-      return b;
+   public MapCodec<dou> a() {
+      return c;
    }
 
-   protected dou(dun.d $$0) {
+   protected dou(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      return $$1 == jj.b ? $$0.b(c, Boolean.valueOf(o($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public drv a(jf $$0, dus $$1) {
+      return new dtk($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return a($$0, $$2, drx.B);
    }
 
    @Override
-   public duo a(czk $$0) {
-      duo $$1 = $$0.q().a_($$0.a().d());
-      return this.o().b(c, Boolean.valueOf(o($$1)));
-   }
-
-   private static boolean o(duo $$0) {
-      return $$0.a(awt.bA);
+   protected void a(dej $$0, jf $$1, cnx $$2) {
+      drv $$3 = $$0.c_($$1);
+      if ($$3 instanceof dtk) {
+         $$2.a((bru)$$3);
+         $$2.a(awq.at);
+      }
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(c);
+   public void a(dus $$0, dej $$1, jf $$2, azn $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awg.yq, awh.e, 1.0F, 1.0F, false);
+         }
+
+         $$1.a(lo.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

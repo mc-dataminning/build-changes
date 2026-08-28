@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class gvm extends gtl {
-   @Nullable
-   public gzd a;
-   public cvp b = cvp.k;
+public class gvm extends guo {
+   public float a;
+   public int b = 1;
 }

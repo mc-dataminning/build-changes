@@ -1,325 +1,166 @@
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+public class eqd {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axu d;
+   private final jf.a e = new jf.a();
+   private final jf.a f = new jf.a();
 
-public abstract class eqd<M extends eqa<M>> {
-   private final dep i;
-   protected final dwx a;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   protected volatile M c;
-   protected final M d;
-   protected final LongSet e = new LongOpenHashSet();
-   protected final LongSet f = new LongOpenHashSet();
-   protected final Long2ObjectMap<dwp> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
-   private final LongSet k = new LongOpenHashSet();
-   private final LongSet l = new LongOpenHashSet();
-   protected volatile boolean h;
-
-   protected eqd(dep $$0, dwx $$1, M $$2) {
-      this.i = $$0;
-      this.a = $$1;
-      this.d = $$2;
-      this.c = $$2.b();
-      this.c.d();
-      this.b.defaultReturnValue((byte)0);
+   public eqd(del $$0) {
+      this.c = $$0.H_() - 1;
+      int $$1 = $$0.an() + 1;
+      int $$2 = azf.e($$1 - this.c + 1);
+      this.d = new azu($$2, 256);
    }
 
-   protected boolean b(long $$0) {
-      return this.a($$0, true) != null;
-   }
-
-   @Nullable
-   protected dwp a(long $$0, boolean $$1) {
-      return this.a($$1 ? this.d : this.c, $$0);
-   }
-
-   @Nullable
-   protected dwp a(M $$0, long $$1) {
-      return $$0.c($$1);
-   }
-
-   @Nullable
-   protected dwp c(long $$0) {
-      dwp $$1 = this.d.c($$0);
-      if ($$1 == null) {
-         return null;
+   public void a(dwo $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         if (this.e.add($$0)) {
-            $$1 = $$1.b();
-            this.d.a($$0, $$1);
-            this.d.c();
-         }
-
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public dwp d(long $$0) {
-      dwp $$1 = (dwp)this.g.get($$0);
-      return $$1 != null ? $$1 : this.a($$0, false);
-   }
-
-   protected abstract int a(long var1);
-
-   protected int e(long $$0) {
-      long $$1 = kg.e($$0);
-      dwp $$2 = this.a($$1, true);
-      return $$2.a(kg.b(je.a($$0)), kg.b(je.b($$0)), kg.b(je.c($$0)));
-   }
-
-   protected void a(long $$0, int $$1) {
-      long $$2 = kg.e($$0);
-      dwp $$3;
-      if (this.e.add($$2)) {
-         $$3 = this.d.a($$2);
-      } else {
-         $$3 = this.a($$2, true);
-      }
-
-      $$3.a(kg.b(je.a($$0)), kg.b(je.b($$0)), kg.b(je.c($$0)), $$1);
-      kg.a($$0, this.f::add);
-   }
-
-   protected void f(long $$0) {
-      int $$1 = kg.b($$0);
-      int $$2 = kg.c($$0);
-      int $$3 = kg.d($$0);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               this.f.add(kg.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
             }
          }
       }
    }
 
-   protected dwp g(long $$0) {
-      dwp $$1 = (dwp)this.g.get($$0);
-      return $$1 != null ? $$1 : new dwp();
-   }
+   private int a(dwo $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kh.c($$0.h($$1) + 1);
+      jf.a $$5 = this.e.d($$2, $$4, $$3);
+      jf.a $$6 = this.f.a($$5, jk.a);
+      dus $$7 = dho.a.n();
 
-   protected boolean a() {
-      return this.h;
-   }
-
-   protected void a(eqg<M, ?> $$0) {
-      if (this.h) {
-         this.h = false;
-         LongIterator $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$1 = (Long)$$5.next();
-            dwp $$2 = (dwp)this.g.remove($$1);
-            dwp $$3 = this.d.d($$1);
-            if (this.k.contains(kg.f($$1))) {
-               if ($$2 != null) {
-                  this.g.put($$1, $$2);
-               } else if ($$3 != null) {
-                  this.g.put($$1, $$3);
-               }
-            }
-         }
-
-         this.d.c();
-         $$5 = this.l.iterator();
-
-         while ($$5.hasNext()) {
-            long $$4 = (Long)$$5.next();
-            this.i($$4);
-            this.e.add($$4);
-         }
-
-         this.l.clear();
-         ObjectIterator<Entry<dwp>> $$5x = Long2ObjectMaps.fastIterator(this.g);
-
-         while ($$5x.hasNext()) {
-            Entry<dwp> $$6 = (Entry<dwp>)$$5x.next();
-            long $$7 = $$6.getLongKey();
-            if (this.b($$7)) {
-               dwp $$8 = (dwp)$$6.getValue();
-               if (this.d.c($$7) != $$8) {
-                  this.d.a($$7, $$8);
-                  this.e.add($$7);
-               }
-
-               $$5x.remove();
-            }
-         }
-
-         this.d.c();
-      }
-   }
-
-   protected void h(long $$0) {
-   }
-
-   protected void i(long $$0) {
-   }
-
-   protected void b(long $$0, boolean $$1) {
-      if ($$1) {
-         this.j.add($$0);
-      } else {
-         this.j.remove($$0);
-      }
-   }
-
-   protected boolean j(long $$0) {
-      long $$1 = kg.f($$0);
-      return this.j.contains($$1);
-   }
-
-   protected boolean k(long $$0) {
-      return this.j.contains($$0);
-   }
-
-   public void c(long $$0, boolean $$1) {
-      if ($$1) {
-         this.k.add($$0);
-      } else {
-         this.k.remove($$0);
-      }
-   }
-
-   protected void a(long $$0, @Nullable dwp $$1) {
-      if ($$1 != null) {
-         this.g.put($$0, $$1);
-         this.h = true;
-      } else {
-         this.g.remove($$0);
-      }
-   }
-
-   protected void d(long $$0, boolean $$1) {
-      byte $$2 = this.b.get($$0);
-      byte $$3 = eqd.a.a($$2, !$$1);
-      if ($$2 != $$3) {
-         this.a($$0, $$3);
-         int $$4 = $$1 ? -1 : 1;
-
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               for (int $$7 = -1; $$7 <= 1; $$7++) {
-                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
-                     long $$8 = kg.a($$0, $$5, $$6, $$7);
-                     byte $$9 = this.b.get($$8);
-                     this.a($$8, eqd.a.a($$9, eqd.a.b($$9) + $$4));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(long $$0, byte $$1) {
-      if ($$1 != 0) {
-         if (this.b.put($$0, $$1) == 0) {
-            this.m($$0);
-         }
-      } else if (this.b.remove($$0) != 0) {
-         this.n($$0);
-      }
-   }
-
-   private void m(long $$0) {
-      if (!this.l.remove($$0)) {
-         this.d.a($$0, this.g($$0));
-         this.e.add($$0);
-         this.h($$0);
-         this.f($$0);
-         this.h = true;
-      }
-   }
-
-   private void n(long $$0) {
-      this.l.add($$0);
-      this.h = true;
-   }
-
-   protected void b() {
-      if (!this.e.isEmpty()) {
-         M $$0 = this.d.b();
-         $$0.d();
-         this.c = $$0;
-         this.e.clear();
-      }
-
-      if (!this.f.isEmpty()) {
-         LongIterator $$1 = this.f.iterator();
-
-         while ($$1.hasNext()) {
-            long $$2 = $$1.nextLong();
-            this.a.a(this.i, kg.a($$2));
-         }
-
-         this.f.clear();
-      }
-   }
-
-   public eqd.b l(long $$0) {
-      return eqd.a.c(this.b.get($$0));
-   }
-
-   protected static class a {
-      public static final byte a = 0;
-      private static final int b = 0;
-      private static final int c = 26;
-      private static final byte d = 32;
-      private static final byte e = 31;
-
-      public static byte a(byte $$0, boolean $$1) {
-         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
-      }
-
-      public static byte a(byte $$0, int $$1) {
-         if ($$1 >= 0 && $$1 <= 26) {
-            return (byte)($$0 & -32 | $$1 & 31);
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dwz $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = dho.a.n();
+            int $$10 = $$0.h($$8);
+            $$5.q(kh.c($$10));
+            $$6.q($$5.v() - 1);
          } else {
-            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dus $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jk.a);
+            }
          }
       }
 
-      public static boolean a(byte $$0) {
-         return ($$0 & 32) != 0;
-      }
+      return this.c;
+   }
 
-      public static int b(byte $$0) {
-         return $$0 & 31;
-      }
-
-      public static eqd.b c(byte $$0) {
-         if ($$0 == 0) {
-            return eqd.b.a;
+   public boolean a(ddo $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         jf $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dus $$8 = $$0.a_($$7);
+         jf $$9 = this.f.d($$1, $$2, $$3);
+         dus $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
          } else {
-            return a($$0) ? eqd.b.c : eqd.b.b;
+            jf $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dus $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
          }
       }
    }
 
-   public static enum b {
-      a("2"),
-      b("1"),
-      c("0");
-
-      private final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
+   private boolean a(ddo $$0, int $$1, int $$2, jf $$3, dus $$4, jf $$5, dus $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
-      public String a() {
-         return this.d;
+      return false;
+   }
+
+   private int a(ddo $$0, jf $$1, dus $$2) {
+      jf.a $$3 = this.e.g($$1);
+      jf.a $$4 = this.f.a($$1, jk.a);
+      dus $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dus $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jk.a);
       }
+
+      return this.c;
+   }
+
+   private static boolean a(dus $$0, dus $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         ezq $$2 = eqk.a($$0, jk.a);
+         ezq $$3 = eqk.a($$1, jk.b);
+         return ezn.b($$2, $$3);
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

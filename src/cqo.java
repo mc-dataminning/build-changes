@@ -1,12 +1,9 @@
 public class cqo {
-   private final String a;
+   final cqr a;
+   final long b;
 
-   public cqo(String $$0) {
+   cqo(cqr $$0, int $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
+      this.b = 1L << $$1;
    }
 }

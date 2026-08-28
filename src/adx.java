@@ -1,33 +1,29 @@
-public class adx implements zk<abz> {
-   public static final zb<wo, adx> a = zb.a(yz.t, adx::b, yz.a(lv.V), adx::e, xf.d, adx::f, adx::new);
-   private final int b;
-   private final csf<?> c;
-   private final xd d;
+public class adx implements zl<aca> {
+   public static final zc<wb, adx> a = zl.a(adx::a, adx::new);
+   private final brr b;
 
-   public adx(int $$0, csf<?> $$1, xd $$2) {
+   public adx(brr $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   private adx(wb $$0) {
+      this.b = $$0.b(brr.class);
+   }
+
+   private void a(wb $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zm<adx> a() {
-      return ago.X;
+   public zn<adx> a() {
+      return agp.W;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public brr b() {
       return this.b;
-   }
-
-   public csf<?> e() {
-      return this.c;
-   }
-
-   public xd f() {
-      return this.d;
    }
 }

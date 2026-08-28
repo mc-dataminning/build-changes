@@ -1,47 +1,52 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import java.util.List;
 import java.util.Optional;
 
-public class bqc {
-   private bqc() {
+public class bqc<E> extends bqg<bqe.b<E>> {
+   public static <E> Codec<bqc<E>> a(Codec<E> $$0) {
+      return bqe.b.a($$0).listOf().xmap(bqc::new, bqg::e);
    }
 
-   public static int a(List<? extends bqb> $$0) {
-      long $$1 = 0L;
-
-      for (bqb $$2 : $$0) {
-         $$1 += (long)$$2.a().a();
-      }
-
-      if ($$1 > 2147483647L) {
-         throw new IllegalArgumentException("Sum of weights must be <= 2147483647");
-      } else {
-         return (int)$$1;
-      }
+   public static <E> Codec<bqc<E>> b(Codec<E> $$0) {
+      return ayo.a(bqe.b.a($$0).listOf()).xmap(bqc::new, bqg::e);
    }
 
-   public static <T extends bqb> Optional<T> a(azl $$0, List<T> $$1, int $$2) {
-      if ($$2 < 0) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Negative total weight in getRandomItem"));
-      } else if ($$2 == 0) {
-         return Optional.empty();
-      } else {
-         int $$3 = $$0.a($$2);
-         return a($$1, $$3);
-      }
+   bqc(List<? extends bqe.b<E>> $$0) {
+      super($$0);
    }
 
-   public static <T extends bqb> Optional<T> a(List<T> $$0, int $$1) {
-      for (T $$2 : $$0) {
-         $$1 -= $$2.a().a();
-         if ($$1 < 0) {
-            return Optional.of($$2);
-         }
-      }
-
-      return Optional.empty();
+   public static <E> bqc.a<E> a() {
+      return new bqc.a<>();
    }
 
-   public static <T extends bqb> Optional<T> a(azl $$0, List<T> $$1) {
-      return a($$0, $$1, a($$1));
+   public static <E> bqc<E> b() {
+      return new bqc<>(List.of());
+   }
+
+   public static <E> bqc<E> a(E $$0) {
+      return new bqc<>(List.of(bqe.a($$0, 1)));
+   }
+
+   public Optional<E> a(azn $$0) {
+      return this.b($$0).map(bqe.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bqe.b<E>> a = ImmutableList.builder();
+
+      public bqc.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public bqc.a<E> a(E $$0, int $$1) {
+         this.a.add(bqe.a($$0, $$1));
+         return this;
+      }
+
+      public bqc<E> a() {
+         return new bqc<>(this.a.build());
+      }
    }
 }

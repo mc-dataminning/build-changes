@@ -1,53 +1,67 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bzr<F extends K1, Value> {
-   cdn<Value> a();
+public class bzr {
+   public static bwg<cnk> a(float $$0) {
+      return bzs.a(
+         (Function<bzs.b<cnk>, ? extends App<bzs.c<cnk>, bzv<cnk>>>)($$1 -> $$1.group($$1.b(cdq.d), $$1.c(cdq.c), $$1.b(cdq.g), $$1.a(cdq.m), $$1.a(cdq.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.p_()) {
+                           return false;
+                        } else if ($$7.gy().b() != cnn.b) {
+                           return false;
+                        } else {
+                           jf $$9 = $$1.<jn>b($$2).b();
+                           Optional<jo<cft>> $$10 = $$6x.y().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bun>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof cnk && $$1xxx != $$7)
+                                 .map($$0xxxx -> (cnk)$$0xxxx)
+                                 .filter(bun::bI)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.dY().c(cdq.c).isEmpty()) {
+                                       bwh.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.dY().a(cdq.d, jn.a($$6x.ag(), $$9));
+                                       ago.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
+   }
 
-   cdo b();
-
-   @Nullable
-   bzq<F, Value> a(bvl<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cdn<Value> a) implements bzr<Mu<Unit>, Value> {
-      @Override
-      public cdo b() {
-         return cdo.b;
-      }
-
-      @Override
-      public bzq<Mu<Unit>, Value> a(bvl<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bzq<>($$0, this.a, Const.create(Unit.INSTANCE));
+   private static boolean a(jo<cft> $$0, cnk $$1, jf $$2) {
+      boolean $$3 = $$1.dY().c(cdq.d).isPresent();
+      if ($$3) {
+         return false;
+      } else {
+         Optional<jn> $$4 = $$1.dY().c(cdq.c);
+         cnn $$5 = $$1.gy().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
+         }
       }
    }
 
-   public static record b<Value>(cdn<Value> a) implements bzr<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cdo b() {
-         return cdo.a;
-      }
-
-      @Override
-      public bzq<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bvl<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bzq<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(cdn<Value> a) implements bzr<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cdo b() {
-         return cdo.c;
-      }
-
-      @Override
-      public bzq<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bvl<?> $$0, Optional<Value> $$1) {
-         return new bzq<>($$0, this.a, OptionalBox.create($$1));
-      }
+   private static boolean a(buv $$0, jf $$1, cft $$2) {
+      erh $$3 = $$0.P().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

@@ -1,15 +1,21 @@
-public enum dwe {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dwe implements bab {
+   a("none"),
+   b("low"),
+   c("tall");
 
-   private final int d;
+   private final String d;
 
-   private dwe(final int $$0) {
+   private dwe(final String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
       return this.d;
    }
 }

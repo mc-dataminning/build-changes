@@ -1,61 +1,44 @@
-import java.util.Map;
-import java.util.Map.Entry;
+public class gii implements fdm {
+   private final fdm a;
+   private final gxg b;
 
-public class gii {
-   private Map<duo, gzd> a = Map.of();
-   private final gzn b;
-
-   public gii(gzn $$0) {
-      this.b = $$0;
-   }
-
-   public gxb a(duo $$0) {
-      return this.b($$0).e();
-   }
-
-   public gzd b(duo $$0) {
-      gzd $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
-      }
-
-      return $$1;
-   }
-
-   public gzn a() {
-      return this.b;
-   }
-
-   public void a(Map<duo, gzd> $$0) {
+   public gii(fdm $$0, gxg $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public static gzo c(duo $$0) {
-      return a(lu.e.b($$0.b()), $$0);
+   @Override
+   public fdm a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static gzo a(alc $$0, duo $$1) {
-      return new gzo($$0, b($$1.G()));
+   @Override
+   public fdm a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public static String b(Map<dvr<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dvr<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dvr<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
+   @Override
+   public fdm a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   private static <T extends Comparable<T>> String a(dvr<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   @Override
+   public fdm a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public fdm b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public fdm b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

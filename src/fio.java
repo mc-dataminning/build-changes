@@ -1,485 +1,509 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import java.util.function.DoubleFunction;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.stream.IntStream;
+import com.google.common.base.MoreObjects;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import java.text.MessageFormat;
+import java.util.Locale;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public final class fio<T> {
-   private static final Logger c = LogUtils.getLogger();
-   public static final fio.e<Boolean> a = new fio.e<>(ImmutableList.of(Boolean.TRUE, Boolean.FALSE), Codec.BOOL);
-   public static final fio.b<Boolean> b = ($$0, $$1) -> $$1 ? xc.b : xc.c;
-   private final fio.l<T> d;
-   final Function<T, xd> e;
-   private final fio.n<T> f;
-   private final Codec<T> g;
-   private final T h;
-   private final Consumer<T> i;
-   final xd j;
-   T k;
+public class fio {
+   public static final int a = 10000;
+   private final fip b;
+   private final fbw c = new fbw();
+   private long d = -1L;
+   private long e = -1L;
+   private long f = -1L;
+   private boolean g;
 
-   public static fio<Boolean> a(String $$0, boolean $$1, Consumer<Boolean> $$2) {
-      return a($$0, a(), $$1, $$2);
+   public fio(fip $$0) {
+      this.b = $$0;
    }
 
-   public static fio<Boolean> a(String $$0, boolean $$1) {
-      return a($$0, a(), $$1, $$0x -> {
-      });
+   private boolean a(int $$0) {
+      switch ($$0) {
+         case 69:
+            this.b.C = !this.b.C;
+            this.c("SectionPath: {0}", this.b.C ? "shown" : "hidden");
+            return true;
+         case 70:
+            boolean $$2 = gha.a();
+            this.c("Fog: {0}", $$2 ? "enabled" : "disabled");
+            return true;
+         case 71:
+         case 72:
+         case 73:
+         case 74:
+         case 75:
+         case 77:
+         case 78:
+         case 80:
+         case 81:
+         case 82:
+         case 83:
+         case 84:
+         default:
+            return false;
+         case 76:
+            this.b.E = !this.b.E;
+            this.c("SmartCull: {0}", this.b.E ? "enabled" : "disabled");
+            return true;
+         case 79:
+            boolean $$1 = this.b.l.c();
+            this.c("Frustum culling Octree: {0}", $$1 ? "enabled" : "disabled");
+            return true;
+         case 85:
+            if (fqh.t()) {
+               this.b.f.m();
+               this.c("Killed frustum");
+            } else {
+               this.b.f.l();
+               this.c("Captured frustum");
+            }
+
+            return true;
+         case 86:
+            this.b.D = !this.b.D;
+            this.c("SectionVisibility: {0}", this.b.D ? "enabled" : "disabled");
+            return true;
+         case 87:
+            this.b.B = !this.b.B;
+            this.c("WireFrame: {0}", this.b.B ? "enabled" : "disabled");
+            return true;
+      }
    }
 
-   public static fio<Boolean> a(String $$0, fio.l<Boolean> $$1, boolean $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   private void a(n $$0, xe $$1) {
+      this.b.m.d().a(xe.i().b(xe.c("debug.prefix").a($$0, n.r)).b(xd.v).b($$1));
    }
 
-   public static fio<Boolean> a(String $$0, fio.l<Boolean> $$1, boolean $$2, Consumer<Boolean> $$3) {
-      return a($$0, $$1, b, $$2, $$3);
+   private void a(xe $$0) {
+      this.a(n.o, $$0);
    }
 
-   public static fio<Boolean> a(String $$0, fio.l<Boolean> $$1, fio.b<Boolean> $$2, boolean $$3, Consumer<Boolean> $$4) {
-      return new fio<>($$0, $$1, $$2, a, $$3, $$4);
+   private void a(String $$0, Object... $$1) {
+      this.a(xe.b($$0, $$1));
    }
 
-   public fio(String $$0, fio.l<T> $$1, fio.b<T> $$2, fio.n<T> $$3, T $$4, Consumer<T> $$5) {
-      this($$0, $$1, $$2, $$3, $$3.f(), $$4, $$5);
+   private void b(String $$0, Object... $$1) {
+      this.a(n.m, xe.b($$0, $$1));
    }
 
-   public fio(String $$0, fio.l<T> $$1, fio.b<T> $$2, fio.n<T> $$3, Codec<T> $$4, T $$5, Consumer<T> $$6) {
-      this.j = xd.c($$0);
-      this.d = $$1;
-      this.e = $$1x -> $$2.toString(this.j, (T)$$1x);
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.k = this.h;
+   private void c(String $$0, Object... $$1) {
+      this.a(xe.b(MessageFormat.format($$0, $$1)));
    }
 
-   public static <T> fio.l<T> a() {
-      return $$0 -> null;
-   }
-
-   public static <T> fio.l<T> a(xd $$0) {
-      return $$1 -> flv.a($$0);
-   }
-
-   public static <T extends azg> fio.b<T> b() {
-      return ($$0, $$1) -> $$1.d();
-   }
-
-   public fki a(fip $$0) {
-      return this.a($$0, 0, 0, 150);
-   }
-
-   public fki a(fip $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, $$0x -> {
-      });
-   }
-
-   public fki a(fip $$0, int $$1, int $$2, int $$3, Consumer<T> $$4) {
-      return this.f.a(this.d, $$0, $$1, $$2, $$3, $$4).apply(this);
-   }
-
-   public T c() {
-      return this.k;
-   }
-
-   public Codec<T> d() {
-      return this.g;
-   }
-
-   @Override
-   public String toString() {
-      return this.j.getString();
-   }
-
-   public void a(T $$0) {
-      T $$1 = this.f.a($$0).orElseGet(() -> {
-         c.error("Illegal option value " + $$0 + " for " + this.j);
-         return this.h;
-      });
-      if (!fil.Q().r()) {
-         this.k = $$1;
+   private boolean b(int $$0) {
+      if (this.d > 0L && this.d < ad.c() - 100L) {
+         return true;
       } else {
-         if (!Objects.equals(this.k, $$1)) {
-            this.k = $$1;
-            this.i.accept(this.k);
-         }
-      }
-   }
+         switch ($$0) {
+            case 49:
+               this.b.aR().k();
+               return true;
+            case 50:
+               this.b.aR().j();
+               return true;
+            case 51:
+               this.b.aR().i();
+               return true;
+            case 65:
+               this.b.f.e();
+               this.a("debug.reload_chunks.message");
+               return true;
+            case 66:
+               boolean $$1 = !this.b.aq().a();
+               this.b.aq().b($$1);
+               this.a($$1 ? "debug.show_hitboxes.on" : "debug.show_hitboxes.off");
+               return true;
+            case 67:
+               if (this.b.t.gt()) {
+                  return false;
+               } else {
+                  gbn $$7 = this.b.t.cw;
+                  if ($$7 == null) {
+                     return false;
+                  }
 
-   public fio.n<T> e() {
-      return this.f;
-   }
-
-   public static record a<T>(List<T> a, List<T> b, BooleanSupplier c, fio.d.a<T> d, Codec<T> e) implements fio.d<T> {
-      @Override
-      public fkr.c<T> a() {
-         return fkr.c.a(this.c, this.a, this.b);
-      }
-
-      @Override
-      public Optional<T> a(T $$0) {
-         return (this.c.getAsBoolean() ? this.b : this.a).contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      public List<T> c() {
-         return this.b;
-      }
-
-      public BooleanSupplier d() {
-         return this.c;
-      }
-
-      @Override
-      public fio.d.a<T> e() {
-         return this.d;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.e;
-      }
-   }
-
-   public interface b<T> {
-      xd toString(xd var1, T var2);
-   }
-
-   public static record c(int a, IntSupplier b, int c) implements fio.g, fio.j<Integer> {
-      public Optional<Integer> a(Integer $$0) {
-         return Optional.of(azd.a($$0, this.d(), this.b()));
-      }
-
-      @Override
-      public int b() {
-         return this.b.getAsInt();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.INT
-            .validate(
-               $$0 -> {
-                  int $$1 = this.c + 1;
-                  return $$0.compareTo(this.a) >= 0 && $$0.compareTo($$1) <= 0
-                     ? DataResult.success($$0)
-                     : DataResult.error(() -> "Value " + $$0 + " outside of range [" + this.a + ":" + $$1 + "]", $$0);
+                  this.a("debug.copy_location.message");
+                  this.a(
+                     String.format(
+                        Locale.ROOT,
+                        "/execute in %s run tp @s %.2f %.2f %.2f %.2f %.2f",
+                        this.b.t.dS().ag().a(),
+                        this.b.t.dx(),
+                        this.b.t.dz(),
+                        this.b.t.dD(),
+                        this.b.t.dI(),
+                        this.b.t.dK()
+                     )
+                  );
+                  return true;
                }
-            );
-      }
+            case 68:
+               if (this.b.m != null) {
+                  this.b.m.d().a(false);
+               }
 
-      @Override
-      public boolean c() {
-         return true;
-      }
+               return true;
+            case 71:
+               boolean $$2 = this.b.l.b();
+               this.a($$2 ? "debug.chunk_boundaries.on" : "debug.chunk_boundaries.off");
+               return true;
+            case 72:
+               this.b.n.m = !this.b.n.m;
+               this.a(this.b.n.m ? "debug.advanced_tooltips.on" : "debug.advanced_tooltips.off");
+               this.b.n.ay();
+               return true;
+            case 73:
+               if (!this.b.t.gt()) {
+                  this.a(this.b.t.l(2), !fqh.t());
+               }
 
-      @Override
-      public fkr.c<Integer> a() {
-         return fkr.c.a(IntStream.range(this.a, this.b() + 1).boxed().toList());
-      }
+               return true;
+            case 76:
+               if (this.b.a(this::a)) {
+                  this.a("debug.profiling.start", 10);
+               }
 
-      @Override
-      public int d() {
-         return this.a;
-      }
+               return true;
+            case 78:
+               if (!this.b.t.l(2)) {
+                  this.a("debug.creative_spectator.error");
+               } else if (!this.b.t.Q_()) {
+                  this.b.t.cw.d("gamemode spectator");
+               } else {
+                  this.b.t.cw.d("gamemode " + ((deg)MoreObjects.firstNonNull(this.b.r.i(), deg.b)).b());
+               }
 
-      public IntSupplier g() {
-         return this.b;
-      }
+               return true;
+            case 80:
+               this.b.n.n = !this.b.n.n;
+               this.b.n.ay();
+               this.a(this.b.n.n ? "debug.pause_focus.on" : "debug.pause_focus.off");
+               return true;
+            case 81:
+               this.a("debug.help.message");
+               fkp $$3 = this.b.m.d();
+               $$3.a(xe.c("debug.reload_chunks.help"));
+               $$3.a(xe.c("debug.show_hitboxes.help"));
+               $$3.a(xe.c("debug.copy_location.help"));
+               $$3.a(xe.c("debug.clear_chat.help"));
+               $$3.a(xe.c("debug.chunk_boundaries.help"));
+               $$3.a(xe.c("debug.advanced_tooltips.help"));
+               $$3.a(xe.c("debug.inspect.help"));
+               $$3.a(xe.c("debug.profiling.help"));
+               $$3.a(xe.c("debug.creative_spectator.help"));
+               $$3.a(xe.c("debug.pause_focus.help"));
+               $$3.a(xe.c("debug.help.help"));
+               $$3.a(xe.c("debug.dump_dynamic_textures.help"));
+               $$3.a(xe.c("debug.reload_resourcepacks.help"));
+               $$3.a(xe.c("debug.pause.help"));
+               $$3.a(xe.c("debug.gamemodes.help"));
+               return true;
+            case 83:
+               Path $$4 = this.b.q.toPath().toAbsolutePath();
+               Path $$5 = TextureUtil.getDebugTexturePath($$4);
+               this.b.aa().a($$5);
+               xe $$6 = xe.b($$4.relativize($$5).toString()).a(n.t).a($$1x -> $$1x.a(new xc(xc.a.b, $$5.toFile().toString())));
+               this.a("debug.dump_dynamic_textures", $$6);
+               return true;
+            case 84:
+               this.a("debug.reload_resourcepacks.message");
+               this.b.l();
+               return true;
+            case 293:
+               if (!this.b.t.l(2)) {
+                  this.a("debug.gamemodes.error");
+               } else {
+                  this.b.a(new fqt());
+               }
 
-      public int h() {
-         return this.c;
-      }
-   }
-
-   interface d<T> extends fio.n<T> {
-      fkr.c<T> a();
-
-      default fio.d.a<T> e() {
-         return fio::a;
-      }
-
-      @Override
-      default Function<fio<T>, fki> a(fio.l<T> $$0, fip $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> fkr.a($$6.e).a(this.a()).a($$0).a($$6.k).a($$2, $$3, $$4, 20, $$6.j, ($$3xx, $$4xx) -> {
-               this.e().set($$6, (T)$$4xx);
-               $$1.ay();
-               $$5.accept((T)$$4xx);
-            });
-      }
-
-      public interface a<T> {
-         void set(fio<T> var1, T var2);
-      }
-   }
-
-   public static record e<T>(List<T> a, Codec<T> b) implements fio.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.a.contains($$0) ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public fkr.c<T> a() {
-         return fkr.c.a(this.a);
-      }
-
-      public List<T> b() {
-         return this.a;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.b;
-      }
-   }
-
-   public static record f(int a, int b, boolean c) implements fio.g {
-      public f(int $$0, int $$1) {
-         this($$0, $$1, true);
-      }
-
-      public Optional<Integer> a(Integer $$0) {
-         return $$0.compareTo(this.d()) >= 0 && $$0.compareTo(this.b()) <= 0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      @Override
-      public Codec<Integer> f() {
-         return Codec.intRange(this.a, this.b + 1);
-      }
-
-      @Override
-      public int d() {
-         return this.a;
-      }
-
-      @Override
-      public boolean aP_() {
-         return this.c;
+               return true;
+            default:
+               return false;
+         }
       }
    }
 
-   interface g extends fio.k<Integer> {
-      int d();
+   private void a(boolean $$0, boolean $$1) {
+      eyu $$2 = this.b.w;
+      if ($$2 != null) {
+         switch ($$2.d()) {
+            case b:
+               jf $$3 = ((eys)$$2).b();
+               dej $$4 = this.b.t.dS();
+               dus $$5 = $$4.a_($$3);
+               if ($$0) {
+                  if ($$1) {
+                     this.b.t.cw.s().a($$3, $$2x -> {
+                        this.a($$5, $$3, $$2x);
+                        this.a("debug.inspect.server.block");
+                     });
+                  } else {
+                     drv $$6 = $$4.c_($$3);
+                     ug $$7 = $$6 != null ? $$6.d($$4.G_()) : null;
+                     this.a($$5, $$3, $$7);
+                     this.a("debug.inspect.client.block");
+                  }
+               } else {
+                  this.a($$5, $$3, null);
+                  this.a("debug.inspect.client.block");
+               }
+               break;
+            case c:
+               btr $$8 = ((eyt)$$2).a();
+               ale $$9 = lv.f.b($$8.ao());
+               if ($$0) {
+                  if ($$1) {
+                     this.b.t.cw.s().a($$8.ap(), $$2x -> {
+                        this.a($$9, $$8.dq(), $$2x);
+                        this.a("debug.inspect.server.entity");
+                     });
+                  } else {
+                     ug $$10 = $$8.f(new ug());
+                     this.a($$9, $$8.dq(), $$10);
+                     this.a("debug.inspect.client.entity");
+                  }
+               } else {
+                  this.a($$9, $$8.dq(), null);
+                  this.a("debug.inspect.client.entity");
+               }
+         }
+      }
+   }
 
-      int b();
+   private void a(dus $$0, jf $$1, @Nullable ug $$2) {
+      StringBuilder $$3 = new StringBuilder(go.a($$0));
+      if ($$2 != null) {
+         $$3.append($$2);
+      }
 
-      default double b(Integer $$0) {
-         if ($$0 == this.d()) {
-            return 0.0;
+      String $$4 = String.format(Locale.ROOT, "/setblock %d %d %d %s", $$1.u(), $$1.v(), $$1.w(), $$3);
+      this.a($$4);
+   }
+
+   private void a(ale $$0, eyw $$1, @Nullable ug $$2) {
+      String $$4;
+      if ($$2 != null) {
+         $$2.r("UUID");
+         $$2.r("Pos");
+         $$2.r("Dimension");
+         String $$3 = uv.c((vd)$$2).getString();
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f %s", $$0, $$1.d, $$1.e, $$1.f, $$3);
+      } else {
+         $$4 = String.format(Locale.ROOT, "/summon %s %.2f %.2f %.2f", $$0, $$1.d, $$1.e, $$1.f);
+      }
+
+      this.a($$4);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3, int $$4) {
+      if ($$0 == this.b.aP().i()) {
+         this.b.aQ().b();
+         boolean $$5 = fcd.a(fip.Q().aP().i(), 292);
+         if (this.d > 0L) {
+            if (!fcd.a(fip.Q().aP().i(), 67) || !$$5) {
+               this.d = -1L;
+            }
+         } else if (fcd.a(fip.Q().aP().i(), 67) && $$5) {
+            this.g = true;
+            this.d = ad.c();
+            this.e = ad.c();
+            this.f = 0L;
+         }
+
+         fqh $$6 = this.b.z;
+         if ($$6 != null) {
+            switch ($$1) {
+               case 258:
+                  this.b.a(fim.d);
+               case 259:
+               case 260:
+               case 261:
+               default:
+                  break;
+               case 262:
+               case 263:
+               case 264:
+               case 265:
+                  this.b.a(fim.c);
+            }
+         }
+
+         if ($$3 == 1 && (!(this.b.z instanceof ftr) || ((ftr)$$6).u <= ad.c() - 20L)) {
+            if (this.b.n.P.a($$1, $$2)) {
+               this.b.aP().h();
+               this.b.n.ac().a(this.b.aP().j());
+               return;
+            }
+
+            if (this.b.n.M.a($$1, $$2)) {
+               if (fqh.s()) {
+               }
+
+               fiy.a(this.b.q, this.b.h(), $$0x -> this.b.execute(() -> this.b.m.d().a($$0x)));
+               return;
+            }
+         }
+
+         if ($$3 != 0) {
+            boolean $$7 = $$6 == null || !($$6.aM_() instanceof fkx) || !((fkx)$$6.aM_()).c();
+            if ($$7) {
+               if (fqh.s() && $$1 == 66 && this.b.aZ().a() && this.b.n.v().c()) {
+                  boolean $$8 = this.b.n.au().c() == fir.a;
+                  this.b.n.au().a(fir.a(this.b.n.au().c().a() + 1));
+                  this.b.n.ay();
+                  if ($$6 != null) {
+                     $$6.e($$8);
+                  }
+               }
+
+               ggh var16 = this.b.t;
+            }
+         }
+
+         if ($$6 != null) {
+            boolean[] $$9 = new boolean[]{false};
+            fqh.a(() -> {
+               if ($$3 == 1 || $$3 == 2) {
+                  $$6.y();
+                  $$9[0] = $$6.a($$1, $$2, $$4);
+               } else if ($$3 == 0) {
+                  $$9[0] = $$6.c($$1, $$2, $$4);
+               }
+            }, "keyPressed event handler", $$6.getClass().getCanonicalName());
+            if ($$9[0]) {
+               return;
+            }
+         }
+
+         fcd.a $$10;
+         boolean $$11;
+         boolean var10000;
+         label180: {
+            $$10 = fcd.a($$1, $$2);
+            $$11 = this.b.z == null;
+            label141:
+            if (!$$11) {
+               if (this.b.z instanceof fqc $$12 && !$$12.m()) {
+                  break label141;
+               }
+
+               var10000 = false;
+               break label180;
+            }
+
+            var10000 = true;
+         }
+
+         boolean $$13 = var10000;
+         if ($$3 == 0) {
+            fin.a($$10, false);
+            if ($$13 && $$1 == 292) {
+               if (this.g) {
+                  this.g = false;
+               } else {
+                  this.b.aR().h();
+               }
+            }
          } else {
-            return $$0 == this.b() ? 1.0 : azd.b((double)$$0.intValue() + 0.5, (double)this.d(), (double)this.b() + 1.0, 0.0, 1.0);
-         }
-      }
+            boolean $$14 = false;
+            if ($$13) {
+               if ($$1 == 293 && this.b.j != null) {
+                  this.b.j.c();
+               }
 
-      default Integer a(double $$0) {
-         if ($$0 >= 1.0) {
-            $$0 = 0.99999F;
-         }
+               if ($$1 == 256) {
+                  this.b.b($$5);
+                  $$14 |= $$5;
+               }
 
-         return azd.a(azd.b($$0, 0.0, 1.0, (double)this.d(), (double)this.b() + 1.0));
-      }
+               $$14 |= $$5 && this.b($$1);
+               this.g |= $$14;
+               if ($$1 == 290) {
+                  this.b.n.X = !this.b.n.X;
+               }
 
-      default <R> fio.k<R> a(final IntFunction<? extends R> $$0, final ToIntFunction<? super R> $$1) {
-         return new fio.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return g.this.a(Integer.valueOf($$1.applyAsInt($$0))).map($$0::apply);
+               if (this.b.aR().e() && !$$5 && $$1 >= 48 && $$1 <= 57) {
+                  this.b.aR().o().b($$1 - 48);
+               }
             }
 
-            @Override
-            public double b(R $$0x) {
-               return g.this.b($$1.applyAsInt($$0));
+            if ($$11) {
+               if ($$14) {
+                  fin.a($$10, false);
+               } else {
+                  fin.a($$10, true);
+                  fin.a($$10);
+               }
             }
-
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(g.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return g.this.f().xmap($$0::apply, $$1::applyAsInt);
-            }
-         };
-      }
-   }
-
-   public static record h<T>(Supplier<List<T>> a, Function<T, Optional<T>> b, Codec<T> c) implements fio.d<T> {
-      @Override
-      public Optional<T> a(T $$0) {
-         return this.b.apply($$0);
-      }
-
-      @Override
-      public fkr.c<T> a() {
-         return fkr.c.a(this.a.get());
-      }
-
-      public Supplier<List<T>> b() {
-         return this.a;
-      }
-
-      public Function<T, Optional<T>> c() {
-         return this.b;
-      }
-
-      @Override
-      public Codec<T> f() {
-         return this.c;
-      }
-   }
-
-   public static final class i<N> extends fkd {
-      private final fio<N> d;
-      private final fio.k<N> e;
-      private final fio.l<N> f;
-      private final Consumer<N> m;
-      @Nullable
-      private Long n;
-      private final boolean o;
-
-      i(fip $$0, int $$1, int $$2, int $$3, int $$4, fio<N> $$5, fio.k<N> $$6, fio.l<N> $$7, Consumer<N> $$8, boolean $$9) {
-         super($$0, $$1, $$2, $$3, $$4, $$6.b($$5.c()));
-         this.d = $$5;
-         this.e = $$6;
-         this.f = $$7;
-         this.m = $$8;
-         this.o = $$9;
-         this.b();
-      }
-
-      @Override
-      protected void b() {
-         this.b(this.d.e.apply(this.e.b(this.c)));
-         this.a(this.f.apply(this.e.b(this.c)));
-      }
-
-      @Override
-      protected void a() {
-         if (this.o) {
-            this.c();
-         } else {
-            this.n = ad.c() + 600L;
-         }
-      }
-
-      public void c() {
-         N $$0 = this.e.b(this.c);
-         if (!Objects.equals($$0, this.d.c())) {
-            this.d.a($$0);
-            this.m.accept(this.d.c());
-         }
-      }
-
-      @Override
-      public void b(fjx $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         if (this.n != null && ad.c() >= this.n) {
-            this.n = null;
-            this.c();
          }
       }
    }
 
-   interface j<T> extends fio.d<T>, fio.k<T> {
-      boolean c();
-
-      @Override
-      default Function<fio<T>, fki> a(fio.l<T> $$0, fip $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return this.c() ? fio.d.super.a($$0, $$1, $$2, $$3, $$4, $$5) : fio.k.super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private void a(long $$0, int $$1, int $$2) {
+      if ($$0 == this.b.aP().i()) {
+         fml $$3 = this.b.z;
+         if ($$3 != null && this.b.aN() == null) {
+            if (Character.charCount($$1) == 1) {
+               fqh.a(() -> $$3.a((char)$$1, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+            } else {
+               for (char $$4 : Character.toChars($$1)) {
+                  fqh.a(() -> $$3.a($$4, $$2), "charTyped event handler", $$3.getClass().getCanonicalName());
+               }
+            }
+         }
       }
    }
 
-   interface k<T> extends fio.n<T> {
-      double b(T var1);
+   public void a(long $$0) {
+      fcd.a(
+         $$0,
+         ($$0x, $$1, $$2, $$3, $$4) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3, $$4)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2))
+      );
+   }
 
-      T b(double var1);
+   public String a() {
+      return this.c.a(this.b.aP().i(), ($$0, $$1) -> {
+         if ($$0 != 65545) {
+            this.b.aP().a($$0, $$1);
+         }
+      });
+   }
 
-      default boolean aP_() {
-         return true;
-      }
-
-      @Override
-      default Function<fio<T>, fki> a(fio.l<T> $$0, fip $$1, int $$2, int $$3, int $$4, Consumer<T> $$5) {
-         return $$6 -> new fio.i<>($$1, $$2, $$3, $$4, 20, $$6, this, $$0, $$5, this.aP_());
+   public void a(String $$0) {
+      if (!$$0.isEmpty()) {
+         this.c.a(this.b.aP().i(), $$0);
       }
    }
 
-   @FunctionalInterface
-   public interface l<T> {
-      @Nullable
-      flv apply(T var1);
-   }
-
-   public static enum m implements fio.k<Double> {
-      a;
-
-      public Optional<Double> a(Double $$0) {
-         return $$0 >= 0.0 && $$0 <= 1.0 ? Optional.of($$0) : Optional.empty();
-      }
-
-      public double b(Double $$0) {
-         return $$0;
-      }
-
-      public Double a(double $$0) {
-         return $$0;
-      }
-
-      public <R> fio.k<R> a(final DoubleFunction<? extends R> $$0, final ToDoubleFunction<? super R> $$1) {
-         return new fio.k<R>() {
-            @Override
-            public Optional<R> a(R $$0x) {
-               return m.this.a(Double.valueOf($$1.applyAsDouble($$0))).map($$0::apply);
+   public void b() {
+      if (this.d > 0L) {
+         long $$0 = ad.c();
+         long $$1 = 10000L - ($$0 - this.d);
+         long $$2 = $$0 - this.e;
+         if ($$1 < 0L) {
+            if (fqh.s()) {
+               fav.a();
             }
 
-            @Override
-            public double b(R $$0x) {
-               return m.this.b(Double.valueOf($$1.applyAsDouble($$0)));
+            String $$3 = "Manually triggered debug crash";
+            o $$4 = new o("Manually triggered debug crash", new Throwable("Manually triggered debug crash"));
+            p $$5 = $$4.a("Manual crash details");
+            azg.a($$5);
+            throw new z($$4);
+         }
+
+         if ($$2 >= 1000L) {
+            if (this.f == 0L) {
+               this.a("debug.crash.message");
+            } else {
+               this.b("debug.crash.warning", azf.f((float)$$1 / 1000.0F));
             }
 
-            @Override
-            public R b(double $$0x) {
-               return (R)$$0.apply(m.this.a($$0));
-            }
-
-            @Override
-            public Codec<R> f() {
-               return m.this.f().xmap($$0::apply, $$1::applyAsDouble);
-            }
-         };
+            this.e = $$0;
+            this.f++;
+         }
       }
-
-      @Override
-      public Codec<Double> f() {
-         return Codec.withAlternative(Codec.doubleRange(0.0, 1.0), Codec.BOOL, $$0 -> $$0 ? 1.0 : 0.0);
-      }
-   }
-
-   interface n<T> {
-      Function<fio<T>, fki> a(fio.l<T> var1, fip var2, int var3, int var4, int var5, Consumer<T> var6);
-
-      Optional<T> a(T var1);
-
-      Codec<T> f();
    }
 }

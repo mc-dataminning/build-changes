@@ -1,34 +1,18 @@
-public class fhf extends fhj {
-   private static final xd b = xd.c("mco.connect.connecting");
-   private final hdh c;
-   private final fel d;
-   private final fem e;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-   public fhf(fqd $$0, fel $$1, fem $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hdh($$0);
+public class fhf {
+   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+
+   public static String a(long $$0) {
+      return (String)a.get($$0);
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, gcy.a(this.e.a));
+   public static void b(long $$0) {
+      a.remove($$0);
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      fil.Q().af().i();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public xd a() {
-      return b;
+   public static void a(long $$0, String $$1) {
+      a.put($$0, $$1);
    }
 }

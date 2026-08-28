@@ -1,16 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eoz<P extends eoy> {
-   eoz<eob> a = a("always_true", eob.a);
-   eoz<eog> b = a("block_match", eog.a);
-   eoz<eoi> c = a("blockstate_match", eoi.a);
-   eoz<epg> d = a("tag_match", epg.a);
-   eoz<eov> e = a("random_block_match", eov.a);
-   eoz<eow> f = a("random_blockstate_match", eow.a);
+public class eoz extends epc {
+   public static final MapCodec<eoz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lv.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eoz::new)
+   );
+   private final dhm b;
+   private final float d;
 
-   MapCodec<P> codec();
+   public eoz(dhm $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
 
-   static <P extends eoy> eoz<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.m, $$0, () -> $$1);
+   @Override
+   public boolean a(dus $$0, azn $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
+
+   @Override
+   protected epd<?> a() {
+      return epd.e;
    }
 }

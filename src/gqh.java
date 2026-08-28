@@ -1,36 +1,18 @@
-public class gqh extends gop<cmy, gvv, fzw> {
-   private static final alc a = alc.b("textures/entity/warden/warden.png");
-   private static final alc b = alc.b("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final alc k = alc.b("textures/entity/warden/warden_heart.png");
-   private static final alc l = alc.b("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final alc m = alc.b("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gqh extends gmf<cih, gtr, fwf<gtr>> {
+   private static final ale a = ale.b("textures/entity/horse/horse_zombie.png");
+   private static final ale b = ale.b("textures/entity/horse/horse_skeleton.png");
+   private final ale k;
 
-   public gqh(gnj.a $$0) {
-      super($$0, new fzw($$0.a(gak.cV)), 0.9F);
-      this.a(new gsh(this, b, ($$0x, $$1) -> 1.0F, fzw::e));
-      this.a(new gsh(this, l, ($$0x, $$1) -> Math.max(0.0F, azd.b($$1 * 0.045F) * 0.25F), fzw::f));
-      this.a(new gsh(this, m, ($$0x, $$1) -> Math.max(0.0F, azd.b($$1 * 0.045F + (float) Math.PI) * 0.25F), fzw::f));
-      this.a(new gsh(this, a, ($$0x, $$1) -> $$0x.a, fzw::c));
-      this.a(new gsh(this, k, ($$0x, $$1) -> $$0x.b, fzw::d));
+   public gqh(gno.a $$0, gao $$1, gao $$2, boolean $$3) {
+      super($$0, new fxz($$0.a($$1)), new fxz($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   public alc a(gvv $$0) {
-      return a;
+   public ale a(gtr $$0) {
+      return this.k;
    }
 
-   public gvv c() {
-      return new gvv();
-   }
-
-   public void a(cmy $$0, gvv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.K($$2);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.d);
-      $$1.f.a($$0.e);
-      $$1.g.a($$0.bY);
-      $$1.h.a($$0.bZ);
+   public gtr c() {
+      return new gtr();
    }
 }

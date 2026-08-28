@@ -1,17 +1,22 @@
-public class gde extends gdg {
-   protected gde(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfj $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
-   }
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
-         this.a = $$0;
+@FunctionalInterface
+public interface gde {
+   Logger a = LogUtils.getLogger();
+   gde b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(gdc.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
+   };
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gde($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
-   }
+   Optional<gdc> resolve(gdd var1);
 }

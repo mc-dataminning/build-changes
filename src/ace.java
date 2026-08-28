@@ -1,20 +1,16 @@
-public record ace(int b) implements zk<abz> {
-   public static final zb<wa, ace> a = zk.a(ace::a, ace::new);
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private ace(wa $$0) {
-      this($$0.l());
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-   }
+public record ace(Object2IntMap<awn<?>> b) implements zl<aca> {
+   private static final zc<wp, Object2IntMap<awn<?>>> c = za.a(Object2IntOpenHashMap::new, awn.a, za.h);
+   public static final zc<wp, ace> a = c.a(ace::new, ace::b);
 
    @Override
-   public zm<ace> a() {
-      return ago.g;
+   public zn<ace> a() {
+      return agp.f;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 }

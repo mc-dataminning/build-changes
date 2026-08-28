@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqu extends don implements dqp {
-   public static final MapCodec<dqu> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dqp.a.e.fieldOf("weathering_state").forGetter(dik::c), u()).apply($$0, dqu::new)
+public class dqu extends djs implements dqs {
+   public static final MapCodec<dqu> l = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvh.a.fieldOf("block_set_type").forGetter(djs::b), dqs.a.e.fieldOf("weathering_state").forGetter(dqu::l), t()).apply($$0, dqu::new)
    );
-   private final dqp.a g;
+   private final dqs.a m;
 
    @Override
    public MapCodec<dqu> a() {
-      return f;
+      return l;
    }
 
-   public dqu(dqp.a $$0, dun.d $$1) {
-      super($$1);
-      this.g = $$0;
-   }
-
-   @Override
-   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dqu(dvh $$0, dqs.a $$1, dur.d $$2) {
+      super($$0, $$2);
+      this.m = $$1;
    }
 
    @Override
-   protected boolean f(duo $$0) {
-      return dqp.c($$0.b()).isPresent();
+   protected void b(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if ($$0.c(djs.f) == dvo.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
    }
 
-   public dqp.a l() {
-      return this.g;
+   @Override
+   protected boolean f(dus $$0) {
+      return dqs.c($$0.b()).isPresent();
+   }
+
+   public dqs.a l() {
+      return this.m;
    }
 }

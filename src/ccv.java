@@ -1,99 +1,41 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ccv extends cbh {
-   private final cbh a;
-   private final int b;
-   private boolean c;
+public class ccv<T extends bup> extends cbk {
+   private final T a;
+   private final cvs b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final awf d;
 
-   public ccv(int $$0, cbh $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(ccv $$0) {
-      return this.S_() && $$0.i() < this.i();
+   public ccv(T $$0, cvs $$1, @Nullable awf $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
+      return this.c.test(this.a);
    }
 
    @Override
    public boolean c() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean S_() {
-      return this.a.S_();
+      return this.a.fv();
    }
 
    @Override
    public void d() {
-      if (!this.c) {
-         this.c = true;
-         this.a.d();
-      }
+      this.a.a(btz.a, this.b.u());
+      this.a.c(brr.a);
    }
 
    @Override
    public void e() {
-      if (this.c) {
-         this.c = false;
-         this.a.e();
+      this.a.a(btz.a, cvs.k);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dV().i() * 0.2F + 0.9F);
       }
-   }
-
-   @Override
-   public boolean T_() {
-      return this.a.T_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public void a(EnumSet<cbh.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<cbh.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public cbh k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((ccv)$$0).a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

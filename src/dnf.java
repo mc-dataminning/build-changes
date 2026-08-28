@@ -1,24 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnf extends dhj {
-   public static final MapCodec<dnf> a = b(dnf::new);
-
-   @Override
-   public MapCodec<dnf> a() {
-      return a;
+public interface dnf {
+   default int a(arj $$0, btr $$1) {
+      return 0;
    }
 
-   public dnf(dun.d $$0) {
-      super($$0);
+   @Nullable
+   err a(arj var1, btr var2, jf var3);
+
+   default dnf.a b() {
+      return dnf.a.b;
    }
 
-   @Override
-   protected boolean f_(duo $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(duo $$0, ddl $$1, je $$2, jj $$3) {
-      return 15;
+   public static enum a {
+      a,
+      b;
    }
 }

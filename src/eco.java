@@ -1,24 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eco<WC extends ecj>(ecq<WC> d, WC e) {
-   public static final Codec<eco<?>> a = lu.N.q().dispatch($$0 -> $$0.d, ecq::c);
-   public static final Codec<jn<eco<?>>> b = aky.a(lv.aI, a);
-   public static final Codec<jr<eco<?>>> c = kc.a(lv.aI, a);
+public class eco {
+   public static final eco a = new eco(false, dho.gz.n(), dho.pL.n(), dho.ej.n(), dho.aQ.n());
+   public static final Codec<eco> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eco::a),
+               dus.a.optionalFieldOf("air_state", a.b()).forGetter(eco::b),
+               dus.a.optionalFieldOf("water_state", a.b()).forGetter(eco::c),
+               dus.a.optionalFieldOf("lava_state", a.b()).forGetter(eco::d),
+               dus.a.optionalFieldOf("barrier_state", a.b()).forGetter(eco::e)
+            )
+            .apply($$0, eco::new)
+   );
+   private final boolean c;
+   private final dus d;
+   private final dus e;
+   private final dus f;
+   private final dus g;
 
-   public boolean a(azl $$0) {
-      return this.d.a(this.e, $$0);
+   public static eco a(boolean $$0, dus $$1, dus $$2, dus $$3, dus $$4) {
+      return new eco($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean a(ecl $$0, dwk $$1, Function<je, jn<dfh>> $$2, azl $$3, dzw $$4, ddm $$5, dwj $$6) {
-      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public static eco a(dus $$0, dus $$1, dus $$2, dus $$3) {
+      return new eco(false, $$0, $$1, $$2, $$3);
    }
 
-   public ecq<WC> a() {
+   public static eco a(boolean $$0, dus $$1) {
+      return new eco($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private eco(boolean $$0, dus $$1, dus $$2, dus $$3, dus $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dus b() {
       return this.d;
    }
 
-   public WC b() {
+   public dus c() {
       return this.e;
+   }
+
+   public dus d() {
+      return this.f;
+   }
+
+   public dus e() {
+      return this.g;
    }
 }

@@ -1,37 +1,12 @@
-public class aeu implements zk<abz> {
-   public static final zb<wa, aeu> a = zk.a(aeu::a, aeu::new);
-   private final double b;
-   private final double c;
-
-   public aeu(dwf $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
-
-   private aeu(wa $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aeu(xe b) implements zl<aca> {
+   public static final zc<wp, aeu> a = zc.a(xg.d, aeu::b, aeu::new);
 
    @Override
-   public zm<aeu> a() {
-      return ago.as;
+   public zn<aeu> a() {
+      return agp.ar;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.c;
-   }
-
-   public double e() {
-      return this.b;
    }
 }

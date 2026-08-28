@@ -1,13 +1,8 @@
-public interface bpr {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bod f();
-
-   void d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bpr {
 }

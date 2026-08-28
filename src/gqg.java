@@ -1,27 +1,27 @@
-public class gqg extends gop<cnn, gvu, fzv> {
-   private static final alc a = alc.b("textures/entity/wandering_trader.png");
+public class gqg extends gmj<che, gvw, fzx> {
+   private static final ale a = ale.b("textures/entity/turtle/big_sea_turtle.png");
 
-   public gqg(gnj.a $$0) {
-      super($$0, new fzv($$0.a(gak.cW)), 0.5F);
-      this.a(new grb<>(this, $$0.f(), $$0.b()));
-      this.a(new gra<>(this, $$0.b()));
+   public gqg(gno.a $$0) {
+      super($$0, new fzx($$0.a(gap.cQ)), new fzx($$0.a(gap.cR)), 0.7F);
    }
 
-   public alc a(gvu $$0) {
-      return a;
+   protected float a(gvw $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.83F : $$1;
    }
 
-   protected void a(gvu $$0, fde $$1) {
-      float $$2 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public gvw c() {
+      return new gvw();
    }
 
-   public gvu c() {
-      return new gvu();
-   }
-
-   public void a(cnn $$0, gvu $$1, float $$2) {
+   public void a(che $$0, gvw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q() > 0;
+      $$1.a = !$$0.bi() && $$0.aH();
+      $$1.b = $$0.t();
+      $$1.c = !$$0.p_() && $$0.q();
+   }
+
+   public ale b(gvw $$0) {
+      return a;
    }
 }

@@ -1,63 +1,77 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public enum btz implements bab {
+   a(btz.a.a, 0, 0, "mainhand"),
+   b(btz.a.a, 1, 5, "offhand"),
+   c(btz.a.b, 0, 1, 1, "feet"),
+   d(btz.a.b, 1, 1, 2, "legs"),
+   e(btz.a.b, 2, 1, 3, "chest"),
+   f(btz.a.b, 3, 1, 4, "head"),
+   g(btz.a.c, 0, 1, 6, "body");
 
-public interface btz {
-   void a(btw var1, cvp var2);
+   public static final int h = 0;
+   public static final bab.a<btz> i = bab.a(btz::values);
+   private final btz.a j;
+   private final int k;
+   private final int l;
+   private final int m;
+   private final String n;
 
-   cvp a(btw var1);
-
-   void a(btw var1, float var2);
-
-   default void a(bty $$0, etk $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private btz(final btz.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
    }
 
-   default void a(alb<etm> $$0, etk $$1, Map<btw, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
+   private btz(final btz.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
    }
 
-   default void a(alb<etm> $$0, etk $$1, long $$2, Map<btw, Float> $$3) {
-      if (!$$0.equals(etd.a)) {
-         etm $$4 = $$1.a().o().bd().b($$0);
-         if ($$4 != etm.a) {
-            List<cvp> $$5 = $$4.a($$1, $$2);
-            List<btw> $$6 = new ArrayList<>();
-
-            for (cvp $$7 : $$5) {
-               btw $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  cvp $$9 = $$8.a($$7);
-                  this.a($$8, $$9);
-                  Float $$10 = $$3.get($$8);
-                  if ($$10 != null) {
-                     this.a($$8, $$10);
-                  }
-
-                  $$6.add($$8);
-               }
-            }
-         }
-      }
+   public btz.a a() {
+      return this.j;
    }
 
-   @Nullable
-   default btw a(cvp $$0, List<btw> $$1) {
-      if ($$0.f()) {
-         return null;
+   public int b() {
+      return this.k;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.k;
+   }
+
+   public cvs a(cvs $$0) {
+      return this.l > 0 ? $$0.a(this.l) : $$0;
+   }
+
+   public int d() {
+      return this.m;
+   }
+
+   public String e() {
+      return this.n;
+   }
+
+   public boolean f() {
+      return this.j == btz.a.b || this.j == btz.a.c;
+   }
+
+   @Override
+   public String c() {
+      return this.n;
+   }
+
+   public static btz a(String $$0) {
+      btz $$1 = i.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         cus $$2 = cus.c_($$0);
-         if ($$2 != null) {
-            btw $$3 = $$2.l();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(btw.a)) {
-            return btw.a;
-         }
-
-         return null;
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

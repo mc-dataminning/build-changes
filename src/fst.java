@@ -1,32 +1,39 @@
-public class fst extends fsx {
-   private static final xd b = xd.c("multiplayerWarning.header").a(n.r);
-   private static final xd c = xd.c("multiplayerWarning.message");
-   private static final xd d = xd.c("multiplayerWarning.check");
-   private static final xd s = b.f().f("\n").b(c);
-   private final fqd u;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fst(fqd $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+public class fst implements fsr {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fow e;
+
+   public fst(fow $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected fnz m() {
-      foc $$0 = foc.e().a(8);
-      $$0.a(fkk.a(xc.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.ay();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
+      }
 
-         this.m.a(new fss(this.u));
-      }).a());
-      $$0.a(fkk.a(xc.k, $$0x -> this.d()).a());
-      return $$0;
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
+      }
+
+      return $$6;
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.u);
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(azf.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

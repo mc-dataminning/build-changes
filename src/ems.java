@@ -1,25 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-record ems(bpz<List<emo>> c) implements emo {
-   static MapCodec<ems> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bpz.b(Codec.list(emo.b)).fieldOf("groups").forGetter(ems::c)).apply($$0, ems::new));
+public interface ems {
+   Codec<ems> b = lv.ah.q().dispatch(ems::b, Function.identity());
 
-   @Override
-   public void a(azl $$0, BiConsumer<alb<emm>, alb<emm>> $$1) {
-      this.c.b($$0).ifPresent($$2 -> $$2.b().forEach($$2x -> $$2x.a($$0, $$1)));
+   void a(azn var1, BiConsumer<ald<emq>, ald<emq>> var2);
+
+   Stream<ald<emq>> a();
+
+   static emr a(String $$0, String $$1) {
+      return a(rb.a($$0), rb.a($$1));
    }
 
-   @Override
-   public Stream<alb<emm>> a() {
-      return this.c.e().stream().flatMap($$0 -> $$0.b().stream()).flatMap(emo::a);
+   static emr a(ald<emq> $$0, ald<emq> $$1) {
+      return new emr($$0, $$1);
    }
 
-   @Override
-   public MapCodec<ems> b() {
-      return a;
+   static emv a(String $$0, bqc<String> $$1) {
+      bqc.a<ald<emq>> $$2 = bqc.a();
+      $$1.e().forEach($$1x -> $$2.a(rb.a((String)$$1x.b()), $$1x.a().a()));
+      return a(rb.a($$0), $$2.a());
    }
+
+   static emv a(ald<emq> $$0, bqc<ald<emq>> $$1) {
+      return new emv($$0, $$1);
+   }
+
+   static emw a(bqc<List<ems>> $$0) {
+      return new emw($$0);
+   }
+
+   MapCodec<? extends ems> b();
 }

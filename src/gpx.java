@@ -1,21 +1,17 @@
-public class gpx extends gmi<cod, gvo> {
-   public static final alc a = alc.b("textures/entity/projectiles/arrow.png");
-   public static final alc b = alc.b("textures/entity/projectiles/tipped_arrow.png");
+public class gpx extends gmh<clp, gvl> {
+   private static final ale a = ale.b("textures/entity/skeleton/stray.png");
+   private static final ale b = ale.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gpx(gnj.a $$0) {
-      super($$0);
+   public gpx(gno.a $$0) {
+      super($$0, gap.cB, gap.cC, gap.cD);
+      this.a(new gse<>(this, $$0.f(), gap.cE, b));
    }
 
-   public alc a(gvo $$0) {
-      return $$0.d ? b : a;
+   public ale b(gvl $$0) {
+      return a;
    }
 
-   public gvo a() {
-      return new gvo();
-   }
-
-   public void a(cod $$0, gvo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.E() > 0;
+   public gvl c() {
+      return new gvl();
    }
 }

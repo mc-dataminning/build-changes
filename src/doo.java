@@ -1,51 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class doo extends dkz {
-   public static final MapCodec<doo> a = b(doo::new);
-
+public interface doo extends dht, dmd {
    @Override
-   public MapCodec<doo> a() {
-      return a;
-   }
-
-   public doo(dun.d $$0) {
-      super($$0);
+   default boolean a(@Nullable cnx $$0, ddo $$1, jf $$2, dus $$3, eqs $$4) {
+      return $$4 == equ.c;
    }
 
    @Override
-   public void a(deg $$0, duo $$1, je $$2, bto $$3, float $$4) {
-      if ($$3.cc()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
+   default boolean a(dek $$0, jf $$1, dus $$2, eqt $$3) {
+      if (!$$2.c(dvi.C) && $$3.a() == equ.c) {
+         if (!$$0.x_()) {
+            $$0.a($$1, $$2.b(dvi.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
+
+         return true;
       } else {
-         $$3.a($$4, 0.0F, $$0.ak().l());
+         return false;
       }
    }
 
    @Override
-   public void a(ddl $$0, bto $$1) {
-      if ($$1.cc()) {
-         super.a($$0, $$1);
+   default cvs a(@Nullable cnx $$0, dek $$1, jf $$2, dus $$3) {
+      if ($$3.c(dvi.C)) {
+         $$1.a($$2, $$3.b(dvi.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cvs(cvw.qA);
       } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(bto $$0) {
-      eys $$1 = $$0.dv();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof buk ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+         return cvs.k;
       }
    }
 
    @Override
-   public void a(deg $$0, je $$1, duo $$2, bto $$3) {
-      double $$4 = Math.abs($$3.dv().e);
-      if ($$4 < 0.1 && !$$3.cb()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.h($$3.dv().d($$5, 1.0, $$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   default Optional<awf> au_() {
+      return equ.c.j();
    }
 }

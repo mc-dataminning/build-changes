@@ -1,186 +1,234 @@
 import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fgh extends hdk {
-   static final Logger c = LogUtils.getLogger();
-   private static final xd B = xd.c("mco.selectServer.create");
-   private static final xd C = xd.c("mco.selectServer.create.subtitle");
-   private static final xd D = xd.c("mco.configure.world.switch.slot");
-   private static final xd E = xd.c("mco.configure.world.switch.slot.subtitle");
-   private static final xd F = xd.c("mco.reset.world.title");
-   private static final xd G = xd.c("mco.reset.world.warning");
-   public static final xd a = xd.c("mco.create.world.reset.title");
-   private static final xd H = xd.c("mco.reset.world.resetting.screen.title");
-   private static final xd I = xd.c("mco.reset.world.template");
-   private static final xd J = xd.c("mco.reset.world.adventure");
-   private static final xd K = xd.c("mco.reset.world.experience");
-   private static final xd L = xd.c("mco.reset.world.inspiration");
-   private final fqd M;
-   private final fel N;
-   private final xd O;
-   private final int P;
-   private final xd Q;
-   private static final alc R = alc.b("textures/gui/realms/upload.png");
-   private static final alc S = alc.b("textures/gui/realms/adventure.png");
-   private static final alc T = alc.b("textures/gui/realms/survival_spawn.png");
-   private static final alc U = alc.b("textures/gui/realms/new_world.png");
-   private static final alc V = alc.b("textures/gui/realms/experience.png");
-   private static final alc W = alc.b("textures/gui/realms/inspiration.png");
-   ffb X;
-   ffb Y;
-   ffb Z;
-   ffb aa;
-   public final int b;
+public class fgh extends hdp {
+   static final ale a = ale.b("pending_invite/accept_highlighted");
+   static final ale b = ale.b("pending_invite/accept");
+   static final ale c = ale.b("pending_invite/reject_highlighted");
+   static final ale B = ale.b("pending_invite/reject");
+   private static final Logger C = LogUtils.getLogger();
+   private static final xe D = xe.c("mco.invites.nopending");
+   static final xe E = xe.c("mco.invites.button.accept");
+   static final xe F = xe.c("mco.invites.button.reject");
+   private final fqh G;
+   private final CompletableFuture<List<fei>> H = CompletableFuture.supplyAsync(() -> {
+      try {
+         return fdy.a().i().a;
+      } catch (ffj var1x) {
+         C.error("Couldn't list invites", var1x);
+         return List.of();
+      }
+   }, ad.h());
    @Nullable
-   private final fhl ab;
-   private final Runnable ac;
-   private final fny ad = new fny(this);
+   xe I;
+   fgh.b J;
+   int K = -1;
+   private fko L;
+   private fko M;
 
-   private fgh(fqd $$0, fel $$1, int $$2, xd $$3, xd $$4, int $$5, xd $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
-   }
-
-   public fgh(fqd $$0, fel $$1, int $$2, xd $$3, xd $$4, int $$5, xd $$6, @Nullable fhl $$7, Runnable $$8) {
-      super($$3);
-      this.M = $$0;
-      this.N = $$1;
-      this.b = $$2;
-      this.O = $$4;
-      this.P = $$5;
-      this.Q = $$6;
-      this.ab = $$7;
-      this.ac = $$8;
-   }
-
-   public static fgh a(fqd $$0, fel $$1, fhl $$2, Runnable $$3) {
-      return new fgh($$0, $$1, $$1.n, B, C, -6250336, a, $$2, $$3);
-   }
-
-   public static fgh a(fqd $$0, int $$1, fel $$2, Runnable $$3) {
-      return new fgh($$0, $$2, $$1, D, E, -6250336, a, $$3);
-   }
-
-   public static fgh a(fqd $$0, fel $$1, Runnable $$2) {
-      return new fgh($$0, $$1, $$1.n, F, G, -65536, H, $$2);
+   public fgh(fqh $$0, xe $$1) {
+      super($$1);
+      this.G = $$0;
    }
 
    @Override
-   public void aR_() {
-      foc $$0 = this.ad.a(foc.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new flr(this.l, this.p), fob::b);
-      $$0.a(new flr(this.O, this.p).b(this.P), fob::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            fdu $$0 = fdu.a();
-
-            try {
-               ffb $$1 = $$0.a(1, 10, fel.d.a);
-               ffb $$2 = $$0.a(1, 10, fel.d.c);
-               ffb $$3 = $$0.a(1, 10, fel.d.d);
-               ffb $$4 = $$0.a(1, 10, fel.d.e);
-               fgh.this.m.execute(() -> {
-                  fgh.this.X = $$1;
-                  fgh.this.Y = $$2;
-                  fgh.this.Z = $$3;
-                  fgh.this.aa = $$4;
-               });
-            } catch (fff var6) {
-               fgh.c.error("Couldn't fetch templates in reset world", var6);
-            }
+   public void aS_() {
+      fdt.f();
+      this.J = new fgh.b();
+      this.H.thenAcceptAsync($$0 -> {
+         List<fgh.a> $$1 = $$0.stream().map($$0x -> new fgh.a($$0x)).toList();
+         this.J.a($$1);
+         if ($$1.isEmpty()) {
+            this.m.aZ().b(D);
          }
-      }).start();
-      fnx $$1 = this.ad.c(new fnx());
-      fnx.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new fgh.a(this.m.h, fgg.a, U, $$0x -> this.m.a(new fgg(this::a, this.l))));
-      $$2.a(new fgh.a(this.m.h, fgi.a, R, $$0x -> this.m.a(new fgi(this.ab, this.N.a, this.b, this))));
-      $$2.a(new fgh.a(this.m.h, I, T, $$0x -> this.m.a(new fgj(I, this::a, fel.d.a, this.X))));
-      $$2.a(fod.b(16), 3);
-      $$2.a(new fgh.a(this.m.h, J, S, $$0x -> this.m.a(new fgj(J, this::a, fel.d.c, this.Y))));
-      $$2.a(new fgh.a(this.m.h, K, V, $$0x -> this.m.a(new fgj(K, this::a, fel.d.d, this.Z))));
-      $$2.a(new fgh.a(this.m.h, L, W, $$0x -> this.m.a(new fgj(L, this::a, fel.d.e, this.aa))));
-      this.ad.b(fkk.a(xc.k, $$0x -> this.d()).a());
-      this.ad.a($$1x -> {
-         fki var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.ad.a();
-   }
-
-   @Override
-   public xd i() {
-      return xc.a(this.n(), this.O);
+      }, this.r);
+      this.c(this.J);
+      this.L = this.c((fko)fko.a(E, $$0 -> {
+         this.a(this.K, true);
+         this.K = -1;
+         this.D();
+      }).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
+      this.c((fko)fko.a(xd.d, $$0 -> this.d()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
+      this.M = this.c((fko)fko.a(F, $$0 -> {
+         this.a(this.K, false);
+         this.K = -1;
+         this.D();
+      }).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
+      this.D();
    }
 
    @Override
    public void d() {
-      this.m.a(this.M);
+      this.m.a(this.G);
    }
 
-   private void a(@Nullable ffa $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new fhn($$0, this.N.a, this.Q, this.ac));
+   void a(int $$0, boolean $$1) {
+      if ($$0 < this.J.l()) {
+         String $$2 = this.J.aJ_().get($$0).c.a;
+         CompletableFuture.<Boolean>supplyAsync(() -> {
+            try {
+               fdy $$2x = fdy.a();
+               if ($$1) {
+                  $$2x.a($$2);
+               } else {
+                  $$2x.b($$2);
+               }
+
+               return true;
+            } catch (ffj var3x) {
+               C.error("Couldn't handle invite", var3x);
+               return false;
+            }
+         }, ad.h()).thenAcceptAsync($$2x -> {
+            if ($$2x) {
+               this.J.a($$0);
+               ffm $$3 = this.m.bc();
+               if ($$1) {
+                  $$3.c.a();
+               }
+
+               $$3.d.a();
+            }
+         }, this.r);
       }
    }
 
-   private void a(@Nullable fhc $$0) {
-      this.m.a(this);
-      if ($$0 != null) {
-         this.a(new fhm($$0, this.N.a, this.Q, this.ac));
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.I = null;
+      $$0.a(this.p, this.l, this.n / 2, 12, -1);
+      if (this.I != null) {
+         $$0.a(this.p, this.I, $$1, $$2);
+      }
+
+      if (this.H.isDone() && this.J.l() == 0) {
+         $$0.a(this.p, D, this.n / 2, this.o / 2 - 20, -1);
       }
    }
 
-   private void a(fhj $$0) {
-      List<fhj> $$1 = new ArrayList<>();
-      if (this.ab != null) {
-         $$1.add(this.ab);
-      }
-
-      if (this.b != this.N.n) {
-         $$1.add(new fhr(this.N.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.m.a(new ffz(this.M, $$1.toArray(new fhj[0])));
+   void D() {
+      this.L.k = this.a(this.K);
+      this.M.k = this.a(this.K);
    }
 
-   class a extends fkk {
-      private static final alc b = alc.b("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final alc v;
+   private boolean a(int $$0) {
+      return $$0 != -1;
+   }
 
-      a(final fjv $$0, final xd $$1, final alc $$2, final fkk.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
+   class a extends flk.a<fgh.a> {
+      private static final int b = 38;
+      final fei c;
+      private final List<ffq> d;
+
+      a(final fei $$0) {
+         this.c = $$0;
+         this.d = Arrays.asList(new fgh.a.a(), new fgh.a.b());
       }
 
       @Override
-      public void b(fjx $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.B();
-         int $$5 = -1;
-         if ($$4) {
-            $$5 = axo.a(1.0F, 0.56F, 0.56F, 0.56F);
+      public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, this.c, $$3, $$2, $$6, $$7);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ffq.a(fgh.this.J, this, this.d, $$2, $$0, $$1);
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(fkb $$0, fei $$1, int $$2, int $$3, int $$4, int $$5) {
+         $$0.a(fgh.this.p, $$1.b, $$2 + 38, $$3 + 1, -1, false);
+         $$0.a(fgh.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
+         $$0.a(fgh.this.p, fhd.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
+         ffq.a($$0, this.d, fgh.this.J, $$2, $$3, $$4, $$5);
+         fhd.a($$0, $$2, $$3, 32, $$1.d);
+      }
+
+      @Override
+      public xe a() {
+         xe $$0 = xd.b(xe.b(this.c.b), xe.b(this.c.c), fhd.a(this.c.e));
+         return xe.a("narrator.select", $$0);
+      }
+
+      class a extends ffq {
+         a() {
+            super(15, 15, 215, 5);
          }
 
-         int $$6 = this.D();
-         int $$7 = this.E();
-         $$0.a(ghq::B, this.v, $$6 + 2, $$7 + 2, 0.0F, 0.0F, 56, 56, 56, 56, 56, 56, $$5);
-         $$0.a(ghq::B, b, $$6, $$7, 60, 60, $$5);
-         int $$8 = $$4 ? -6250336 : -1;
-         $$0.a(fgh.this.p, this.z(), $$6 + 28, $$7 - 14, $$8);
+         @Override
+         protected void a(fkb $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(ghv::B, $$3 ? fgh.a : fgh.b, $$1, $$2, 18, 18);
+            if ($$3) {
+               fgh.this.I = fgh.E;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fgh.this.a($$0, true);
+         }
+      }
+
+      class b extends ffq {
+         b() {
+            super(15, 15, 235, 5);
+         }
+
+         @Override
+         protected void a(fkb $$0, int $$1, int $$2, boolean $$3) {
+            $$0.a(ghv::B, $$3 ? fgh.c : fgh.B, $$1, $$2, 18, 18);
+            if ($$3) {
+               fgh.this.I = fgh.F;
+            }
+         }
+
+         @Override
+         public void a(int $$0) {
+            fgh.this.a($$0, false);
+         }
+      }
+   }
+
+   class b extends hdo<fgh.a> {
+      public b() {
+         super(fgh.this.n, fgh.this.o - 72, 32, 36);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.i($$0);
+      }
+
+      @Override
+      public int a() {
+         return this.l() * 36;
+      }
+
+      @Override
+      public int b() {
+         return 260;
+      }
+
+      @Override
+      public void b(int $$0) {
+         super.b($$0);
+         this.c($$0);
+      }
+
+      public void c(int $$0) {
+         fgh.this.K = $$0;
+         fgh.this.D();
+      }
+
+      public void a(@Nullable fgh.a $$0) {
+         super.a($$0);
+         fgh.this.K = this.aJ_().indexOf($$0);
+         fgh.this.D();
       }
    }
 }

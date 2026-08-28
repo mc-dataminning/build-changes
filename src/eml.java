@@ -1,15 +1,30 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public interface eml<P extends emk> {
-   eml<emj> a = a("single_pool_element", emj.b);
-   eml<emi> b = a("list_pool_element", emi.a);
-   eml<eme> c = a("feature_pool_element", eme.a);
-   eml<emd> d = a("empty_pool_element", emd.a);
-   eml<emh> e = a("legacy_single_pool_element", emh.a);
+public class eml extends emn {
+   public static final MapCodec<eml> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eml::new));
 
-   MapCodec<P> codec();
+   protected eml(Either<ale, epi> $$0, jo<epg> $$1, emq.a $$2, Optional<eos> $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   static <P extends emk> eml<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.ag, $$0, () -> $$1);
+   @Override
+   protected epe a(doa $$0, eky $$1, eos $$2, boolean $$3) {
+      epe $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(eoj.b);
+      $$4.a(eoj.d);
+      return $$4;
+   }
+
+   @Override
+   public emp<?> a() {
+      return emp.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

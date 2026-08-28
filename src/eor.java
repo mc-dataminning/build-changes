@@ -1,9 +1,42 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class eor {
-   public static final Codec<eor> c = lu.o.q().dispatch("predicate_type", eor::a, eos::codec);
+public class eor extends eov {
+   public static final MapCodec<eor> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eor::new)
+   );
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public abstract boolean a(je var1, je var2, je var3, azl var4);
+   public eor(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+   }
 
-   protected abstract eos<?> a();
+   @Override
+   public boolean a(jf $$0, jf $$1, jf $$2, azn $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= azf.b(this.b, this.d, azf.f((float)$$4, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected eow<?> a() {
+      return eow.b;
+   }
 }

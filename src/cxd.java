@@ -1,20 +1,11 @@
-public class cxd extends cvk {
-   public cxd(cxg $$0, float $$1, float $$2, cvk.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+public class cxd extends cxh {
+   public cxd(cvn.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(duo $$0, deg $$1, je $$2, cnu $$3) {
-      return !$$3.f();
-   }
-
-   @Override
-   public boolean a(cvp $$0, buk $$1, buk $$2) {
-      return true;
-   }
-
-   @Override
-   public void b(cvp $$0, buk $$1, buk $$2) {
-      $$0.a(1, $$2, btw.a);
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awg.yW, awh.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
+      return super.a($$0, $$1, $$2);
    }
 }

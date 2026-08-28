@@ -1,37 +1,28 @@
-public class fxe extends fwb<gth> {
-   private final gal e = this.c.b("left_chest");
-   private final gal f = this.c.b("right_chest");
+public class fxe extends fxo<guo> {
+   private final gaq a;
 
-   public fxe(gal $$0) {
+   public fxe(gaq $$0) {
       super($$0);
+      this.a = $$0.b("tail_fin");
    }
 
-   public static gar b() {
-      gat $$0 = fwb.a(gap.a);
-      a($$0.a());
-      return gar.a($$0, 64, 64);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gav.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gas.a(0.0F, 22.0F, 0.0F));
+      $$1.a("head", gav.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gas.a(0.0F, 22.0F, 0.0F));
+      $$1.a("nose", gav.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gas.a(0.0F, 22.0F, -3.0F));
+      $$1.a("right_fin", gav.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gas.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
+      $$1.a("left_fin", gav.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gas.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
+      $$1.a("tail_fin", gav.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gas.a(0.0F, 22.0F, 7.0F));
+      $$1.a("top_fin", gav.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gas.a(0.0F, 20.0F, 0.0F));
+      return gaw.a($$0, 32, 32);
    }
 
-   public static gar c() {
-      gat $$0 = fwb.c(gap.a);
-      a($$0.a());
-      return gar.a(fwb.b.apply($$0), 64, 64);
-   }
-
-   private static void a(gav $$0) {
-      gav $$1 = $$0.b("body");
-      gaq $$2 = gaq.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$1.a("left_chest", $$2, gan.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("right_chest", $$2, gan.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      gav $$3 = $$0.b("head_parts").b("head");
-      gaq $$4 = gaq.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$3.a("left_ear", $$4, gan.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$3.a("right_ear", $$4, gan.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void a(gth $$0) {
+   public void a(guo $$0) {
       super.a($$0);
-      this.e.k = $$0.a;
-      this.f.k = $$0.a;
+      float $$1 = $$0.af ? 1.0F : 1.5F;
+      this.a.f = -$$1 * 0.45F * azf.a(0.6F * $$0.p);
    }
 }

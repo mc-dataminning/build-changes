@@ -1,24 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cec extends cem<clw> {
-   @Override
-   public Set<cdn<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdn.B)));
-   }
-
-   protected void a(arh $$0, clw $$1) {
-      super.a($$0, $$1);
-      $$1.dX()
-         .c(cdn.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(btt.e)
-         .filter($$1x -> cet.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dX().a(cdn.B, $$1x), () -> $$1.dX().b(cdn.B));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cec {
 }

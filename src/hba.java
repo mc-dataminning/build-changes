@@ -1,28 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class hba<T> extends hbb<T> {
-   private final hbf<T> c;
+public interface hba {
+   ale a();
 
-   public hba(Function<T, Stream<String>> $$0, Function<T, Stream<alc>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hbf.plainText($$2, $$0);
+   @Nullable
+   hcg a(hcf var1);
+
+   hax b();
+
+   awh c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   hba.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   default boolean s() {
+      return true;
    }
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hbd<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hbc<T>($$2.iterator(), $$5, this.a));
+   static azn t() {
+      return azn.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

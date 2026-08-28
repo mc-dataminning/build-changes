@@ -1,98 +1,124 @@
-public class enw extends ela {
-   private boolean h;
-   private boolean i;
+import java.util.Map;
 
-   public enw(azl $$0, int $$1, int $$2) {
-      super(elt.K, $$1, 64, $$2, 7, 7, 9, a($$0));
+public class enw {
+   private static final int a = 32;
+   static final jf b = new jf(4, 0, 15);
+   private static final ale[] c = new ale[]{
+      ale.b("shipwreck/with_mast"),
+      ale.b("shipwreck/sideways_full"),
+      ale.b("shipwreck/sideways_fronthalf"),
+      ale.b("shipwreck/sideways_backhalf"),
+      ale.b("shipwreck/rightsideup_full"),
+      ale.b("shipwreck/rightsideup_fronthalf"),
+      ale.b("shipwreck/rightsideup_backhalf"),
+      ale.b("shipwreck/with_mast_degraded"),
+      ale.b("shipwreck/rightsideup_full_degraded"),
+      ale.b("shipwreck/rightsideup_fronthalf_degraded"),
+      ale.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   private static final ale[] d = new ale[]{
+      ale.b("shipwreck/with_mast"),
+      ale.b("shipwreck/upsidedown_full"),
+      ale.b("shipwreck/upsidedown_fronthalf"),
+      ale.b("shipwreck/upsidedown_backhalf"),
+      ale.b("shipwreck/sideways_full"),
+      ale.b("shipwreck/sideways_fronthalf"),
+      ale.b("shipwreck/sideways_backhalf"),
+      ale.b("shipwreck/rightsideup_full"),
+      ale.b("shipwreck/rightsideup_fronthalf"),
+      ale.b("shipwreck/rightsideup_backhalf"),
+      ale.b("shipwreck/with_mast_degraded"),
+      ale.b("shipwreck/upsidedown_full_degraded"),
+      ale.b("shipwreck/upsidedown_fronthalf_degraded"),
+      ale.b("shipwreck/upsidedown_backhalf_degraded"),
+      ale.b("shipwreck/sideways_full_degraded"),
+      ale.b("shipwreck/sideways_fronthalf_degraded"),
+      ale.b("shipwreck/sideways_backhalf_degraded"),
+      ale.b("shipwreck/rightsideup_full_degraded"),
+      ale.b("shipwreck/rightsideup_fronthalf_degraded"),
+      ale.b("shipwreck/rightsideup_backhalf_degraded")
+   };
+   static final Map<String, ald<etq>> e = Map.of("map_chest", eth.G, "treasure_chest", eth.I, "supply_chest", eth.H);
+
+   public static enw.a a(epj $$0, jf $$1, doa $$2, ell $$3, azn $$4, boolean $$5) {
+      ale $$6 = ad.a($$5 ? c : d, $$4);
+      enw.a $$7 = new enw.a($$0, $$6, $$1, $$2, $$5);
+      $$3.a($$7);
+      return $$7;
    }
 
-   public enw(uf $$0) {
-      super(elt.K, $$0);
-      this.h = $$0.q("Witch");
-      this.i = $$0.q("Cat");
-   }
+   public static class a extends elq {
+      private final boolean h;
 
-   @Override
-   protected void a(els $$0, uf $$1) {
-      super.a($$0, $$1);
-      $$1.a("Witch", this.h);
-      $$1.a("Cat", this.i);
-   }
-
-   @Override
-   public void a(dfd $$0, dfb $$1, dwl $$2, azl $$3, eku $$4, ddm $$5, je $$6) {
-      if (this.a($$0, $$4, 0)) {
-         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, dhl.o.o(), dhl.o.o(), false);
-         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, dhl.U.o(), dhl.U.o(), false);
-         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, dhl.U.o(), dhl.U.o(), false);
-         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, dhl.U.o(), dhl.U.o(), false);
-         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, dhl.U.o(), dhl.U.o(), false);
-         this.a($$0, dhl.dU.o(), 2, 3, 2, $$4);
-         this.a($$0, dhl.dU.o(), 3, 3, 7, $$4);
-         this.a($$0, dhl.a.o(), 1, 3, 4, $$4);
-         this.a($$0, dhl.a.o(), 5, 3, 4, $$4);
-         this.a($$0, dhl.a.o(), 5, 3, 5, $$4);
-         this.a($$0, dhl.gp.o(), 1, 3, 5, $$4);
-         this.a($$0, dhl.cA.o(), 3, 2, 6, $$4);
-         this.a($$0, dhl.ft.o(), 4, 2, 6, $$4);
-         this.a($$0, dhl.dU.o(), 1, 2, 1, $$4);
-         this.a($$0, dhl.dU.o(), 5, 2, 1, $$4);
-         duo $$7 = dhl.fK.o().b(dpe.b, jj.c);
-         duo $$8 = dhl.fK.o().b(dpe.b, jj.f);
-         duo $$9 = dhl.fK.o().b(dpe.b, jj.e);
-         duo $$10 = dhl.fK.o().b(dpe.b, jj.d);
-         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
-         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
-         this.a($$0, $$7.b(dpe.d, dvx.e), 0, 4, 1, $$4);
-         this.a($$0, $$7.b(dpe.d, dvx.d), 6, 4, 1, $$4);
-         this.a($$0, $$10.b(dpe.d, dvx.d), 0, 4, 8, $$4);
-         this.a($$0, $$10.b(dpe.d, dvx.e), 6, 4, 8, $$4);
-
-         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
-            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
-               this.b($$0, dhl.U.o(), $$12, -1, $$11, $$4);
-            }
-         }
-
-         if (!this.h) {
-            je $$13 = this.b(2, 2, 5);
-            if ($$4.b($$13)) {
-               this.h = true;
-               clq $$14 = btv.bo.a($$0.E(), btu.d);
-               if ($$14 != null) {
-                  $$14.fW();
-                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
-                  $$14.a($$0, $$0.d_($$13), btu.d, null);
-                  $$0.a_($$14);
-               }
-            }
-         }
-
-         this.a($$0, $$4);
+      public a(epj $$0, ale $$1, jf $$2, doa $$3, boolean $$4) {
+         super(elx.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+         this.h = $$4;
       }
-   }
 
-   private void a(dew $$0, eku $$1) {
-      if (!this.i) {
-         je $$2 = this.b(2, 2, 5);
-         if ($$1.b($$2)) {
-            this.i = true;
-            cgd $$3 = btv.p.a($$0.E(), btu.d);
-            if ($$3 != null) {
-               $$3.fW();
-               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
-               $$3.a($$0, $$0.d_($$2), btu.d, null);
-               $$0.a_($$3);
-            }
+      public a(epj $$0, ug $$1) {
+         super(elx.ab, $$1, $$0, $$1x -> a(doa.valueOf($$1.l("Rot"))));
+         this.h = $$1.q("isBeached");
+      }
+
+      @Override
+      protected void a(elw $$0, ug $$1) {
+         super.a($$0, $$1);
+         $$1.a("isBeached", this.h);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      private static epe a(doa $$0) {
+         return new epe().a($$0).a(dmj.a).a(enw.b).a(eoj.d);
+      }
+
+      @Override
+      protected void a(String $$0, jf $$1, dez $$2, azn $$3, eky $$4) {
+         ald<etq> $$5 = enw.e.get($$0);
+         if ($$5 != null) {
+            bry.a($$2, $$3, $$1.e(), $$5);
          }
+      }
+
+      @Override
+      public void a(dfg $$0, dfe $$1, dwp $$2, azn $$3, eky $$4, ddp $$5, jf $$6) {
+         if (this.l()) {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         } else {
+            int $$7 = $$0.an() + 1;
+            int $$8 = 0;
+            kj $$9 = this.b.a();
+            eao.a $$10 = this.h ? eao.a.a : eao.a.c;
+            int $$11 = $$9.u() * $$9.w();
+            if ($$11 == 0) {
+               $$8 = $$0.a($$10, this.d.u(), this.d.w());
+            } else {
+               jf $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+
+               for (jf $$13 : jf.c(this.d, $$12)) {
+                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
+                  $$8 += $$14;
+                  $$7 = Math.min($$7, $$14);
+               }
+
+               $$8 /= $$11;
+            }
+
+            this.c(this.h ? this.a($$7, $$3) : $$8);
+            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         }
+      }
+
+      public boolean l() {
+         kj $$0 = this.b.a();
+         return $$0.u() > 32 || $$0.v() > 32;
+      }
+
+      public int a(int $$0, azn $$1) {
+         return $$0 - this.b.a().v() / 2 - $$1.a(3);
+      }
+
+      public void c(int $$0) {
+         this.d = new jf(this.d.u(), $$0, this.d.w());
       }
    }
 }

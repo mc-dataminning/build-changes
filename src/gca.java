@@ -1,200 +1,169 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
 public class gca {
-   private static final xd a = xd.c("chat.validation_error").a(n.m, n.u);
-   private final fil b;
-   private final Deque<gca.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xe c;
+   public xe d;
+   @Nullable
+   public akb.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xe h = xe.b(ab.b().c());
+   public List<xe> i = Collections.emptyList();
+   private gca.a l = gca.a.c;
+   @Nullable
+   private byte[] m;
+   private gca.c n;
+   private gca.b o = gca.b.a;
 
-   public gca(fil $$0) {
-      this.b = $$0;
+   public gca(String $$0, String $$1, gca.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (ad.c() >= this.e + this.d) {
-            gca.a $$0 = this.c.poll();
+   public ug a() {
+      ug $$0 = new ug();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
+      if (this.l == gca.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gca.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
+   }
+
+   public gca.a b() {
+      return this.l;
+   }
+
+   public void a(gca.a $$0) {
+      this.l = $$0;
+   }
+
+   public static gca a(ug $$0) {
+      gca $$1 = new gca($$0.l("name"), $$0.l("ip"), gca.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gca.a.a);
+         } else {
+            $$1.a(gca.a.b);
+         }
+      } else {
+         $$1.a(gca.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == gca.c.a;
+   }
+
+   public boolean e() {
+      return this.n == gca.c.b;
+   }
+
+   public gca.c f() {
+      return this.n;
+   }
+
+   public void a(gca $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gca $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gca.b g() {
+      return this.o;
+   }
+
+   public void a(gca.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azk $$1 = azk.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
             }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
          }
       }
+
+      return null;
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(gca.a::a);
-         this.c.clear();
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xe d;
+
+      private a(final String $$0) {
+         this.d = xe.c("addServer.resourcePack." + $$0);
       }
 
-      this.d = $$1;
-   }
-
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(gca.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xp $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && ad.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xp $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new gca.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
+      public xe a() {
+         return this.d;
       }
    }
 
-   public void a(xt $$0, GameProfile $$1, wz.a $$2) {
-      boolean $$3 = this.b.n.ai().c();
-      xt $$4 = $$3 ? $$0.a() : $$0;
-      xd $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         gbi $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   public void a(UUID $$0, wz.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            xd $$2 = $$1.a(a);
-            this.b.m.d().a($$2, null, fif.d());
-            this.e = ad.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(xd $$0, wz.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         xd $$3 = $$1.a($$0);
-         this.b.m.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = ad.c();
-         return true;
-      });
-   }
-
-   private boolean a(wz.a $$0, xt $$1, xd $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      gcc $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fif $$7 = $$6.a($$1);
-         xp $$8 = $$1.l();
-         xh $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.m.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            xd $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.m.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = ad.c();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(wz.a $$0, xd $$1) {
-      this.b.aZ().a($$0.b($$1));
-   }
-
-   private gcc a(xt $$0, xd $$1, Instant $$2) {
-      return this.a($$0.g()) ? gcc.a : gcc.a($$0, $$1, $$2);
-   }
-
-   private void a(xt $$0, wz.a $$1, GameProfile $$2, gcc $$3) {
-      gcb $$4 = this.b.bb().b();
-      $$4.a(gce.a($$2, $$0, $$3));
-   }
-
-   private void a(xd $$0, Instant $$1) {
-      gcb $$2 = this.b.bb().b();
-      $$2.a(gce.a($$0, $$1));
-   }
-
-   public void a(xd $$0, boolean $$1) {
-      if (!this.b.n.ag().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.m.a($$0, false);
-         } else {
-            this.b.m.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aZ().b($$0);
-      }
-   }
-
-   private UUID a(xd $$0) {
-      String $$1 = azy.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? ad.e : this.b.aO().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.t != null) {
-         UUID $$1 = this.b.t.gb().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable xp a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xp b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

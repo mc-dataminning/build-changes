@@ -1,118 +1,60 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
-public class arn extends aqr {
-   public static final int a = 33;
-   private static final int c = 4;
-   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final Long2ObjectOpenHashMap<azv<arl<?>>> d = new Long2ObjectOpenHashMap();
+public final class arn<T> implements Comparable<arn<?>> {
+   private final aro<T> a;
+   private final int b;
+   private final T c;
+   private long d;
 
-   public arn() {
-      super(34, 16, 256);
-      this.b.defaultReturnValue((byte)33);
+   protected arn(aro<T> $$0, int $$1, T $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private azv<arl<?>> g(long $$0) {
-      return (azv<arl<?>>)this.d.computeIfAbsent($$0, $$0x -> azv.a(4));
-   }
-
-   private int a(azv<arl<?>> $$0) {
-      return $$0.isEmpty() ? 34 : $$0.b().b();
-   }
-
-   public void a(long $$0, arl<?> $$1) {
-      azv<arl<?>> $$2 = this.g($$0);
-      int $$3 = this.a($$2);
-      $$2.add($$1);
-      if ($$1.b() < $$3) {
-         this.b($$0, $$1.b(), true);
-      }
-   }
-
-   public void b(long $$0, arl<?> $$1) {
-      azv<arl<?>> $$2 = this.g($$0);
-      $$2.remove($$1);
-      if ($$2.isEmpty()) {
-         this.d.remove($$0);
-      }
-
-      this.b($$0, this.a($$2), false);
-   }
-
-   public <T> void a(arm<T> $$0, ddm $$1, int $$2, T $$3) {
-      this.a($$1.a(), new arl<>($$0, $$2, $$3));
-   }
-
-   public <T> void b(arm<T> $$0, ddm $$1, int $$2, T $$3) {
-      arl<T> $$4 = new arl<>($$0, $$2, $$3);
-      this.b($$1.a(), $$4);
-   }
-
-   public void a(int $$0) {
-      List<Pair<arl<ddm>, Long>> $$1 = new ArrayList<>();
-      ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<azv<arl<?>>> $$2 = (Entry<azv<arl<?>>>)var3.next();
-
-         for (arl<?> $$3 : (azv)$$2.getValue()) {
-            if ($$3.a() == arm.c) {
-               $$1.add(Pair.of($$3, $$2.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<arl<ddm>, Long> $$4 : $$1) {
-         Long $$5 = (Long)$$4.getSecond();
-         arl<ddm> $$6 = (arl<ddm>)$$4.getFirst();
-         this.b($$5, $$6);
-         ddm $$7 = new ddm($$5);
-         arm<ddm> $$8 = $$6.a();
-         this.a($$8, $$7, $$0, $$7);
-      }
-   }
-
-   @Override
-   protected int b(long $$0) {
-      azv<arl<?>> $$1 = (azv<arl<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
-   }
-
-   public int a(ddm $$0) {
-      return this.c($$0.a());
-   }
-
-   @Override
-   protected int c(long $$0) {
-      return this.b.get($$0);
-   }
-
-   @Override
-   protected void a(long $$0, int $$1) {
-      if ($$1 >= 33) {
-         this.b.remove($$0);
+   public int a(arn<?> $$0) {
+      int $$1 = Integer.compare(this.b, $$0.b);
+      if ($$1 != 0) {
+         return $$1;
       } else {
-         this.b.put($$0, (byte)$$1);
+         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
+         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
       }
    }
 
-   public LongSet a() {
-      return this.b.keySet();
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof arn<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
+      }
    }
 
-   public void b() {
-      this.b(Integer.MAX_VALUE);
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   public String d(long $$0) {
-      azv<arl<?>> $$1 = (azv<arl<?>>)this.d.get($$0);
-      return $$1 != null && !$$1.isEmpty() ? $$1.b().toString() : "no_ticket";
+   @Override
+   public String toString() {
+      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
+   }
+
+   public aro<T> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   protected void a(long $$0) {
+      this.d = $$0;
+   }
+
+   protected boolean b(long $$0) {
+      long $$1 = this.a.b();
+      return $$1 != 0L && $$0 - this.d > $$1;
    }
 }

@@ -1,61 +1,24 @@
-public class adv implements zk<abz> {
-   public static final zb<wa, adv> a = zk.a(adv::a, adv::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adv(bto $$0) {
-      this.b = $$0.dx();
-      this.c = $$0.dz();
-      this.d = $$0.dD();
-      this.e = $$0.dI();
-      this.f = $$0.dK();
-   }
-
-   private adv(wa $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-   }
+public record adv(int b, List<cqj.a> c) implements zl<aca> {
+   public static final zc<wb, adv> a = zc.a(za.h, adv::b, cqj.a.a.a(za.a()), adv::e, adv::new);
 
    @Override
-   public zm<adv> a() {
-      return ago.V;
+   public zn<adv> a() {
+      return agp.T;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   @Nullable
+   public btr a(dej $$0) {
+      return $$0.a(this.b);
    }
 
-   public double e() {
+   public List<cqj.a> e() {
       return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

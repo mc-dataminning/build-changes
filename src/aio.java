@@ -1,45 +1,33 @@
-public class aio implements zk<agq> {
-   public static final zb<wa, aio> a = zk.a(aio::a, aio::new);
-   private final eyo b;
-   private final bro c;
-   private final int d;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aio(bro $$0, eyo $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class aio implements zl<agr> {
+   public static final zc<wb, aio> a = zl.a(aio::a, aio::new);
+   private final UUID b;
+
+   public aio(UUID $$0) {
+      this.b = $$0;
    }
 
-   private aio(wa $$0) {
-      this.c = $$0.b(bro.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private aio(wb $$0) {
+      this.b = $$0.n();
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.c);
+   private void a(wb $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
    }
 
    @Override
-   public zm<aio> a() {
-      return ago.cf;
+   public zn<aio> a() {
+      return agp.ce;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public bro b() {
-      return this.c;
-   }
-
-   public eyo e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public btr a(arj $$0) {
+      return $$0.a(this.b);
    }
 }

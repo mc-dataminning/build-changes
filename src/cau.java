@@ -1,50 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class cau extends cbu {
-   private final cgd g;
+public class cau extends cbb {
+   private static final int g = 240;
+   private final Predicate<brp> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public cau(cgd $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(cbh.a.c, cbh.a.a));
+   public cau(bup $$0, Predicate<brp> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public cau(bup $$0, int $$1, Predicate<brp> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean b() {
-      return this.g.q() && !this.g.gp() && !this.g.gC() && super.b();
+      if (!super.b()) {
+         return false;
+      } else {
+         return !this.d.dS().ac().b(def.c) ? false : this.a(this.d.dS().am()) && !this.h();
+      }
    }
 
    @Override
    public void d() {
       super.d();
-      this.g.y(false);
+      this.a = 0;
    }
 
    @Override
-   protected int a(bus $$0) {
-      return 40;
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dq(), 2.0) && this.a(this.d.dS().am());
    }
 
    @Override
    public void e() {
       super.e();
-      this.g.A(false);
+      this.d.dS().a(this.d.ap(), this.e, -1);
    }
 
    @Override
    public void a() {
       super.a();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gC()) {
-         this.g.A(true);
+      if (this.d.dV().a(20) == 0) {
+         this.d.dS().c(1019, this.e, 0);
+         if (!this.d.aE) {
+            this.d.a(this.d.fw());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dS().a(this.d.ap(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dS().am())) {
+         this.d.dS().a(this.e, false);
+         this.d.dS().c(1021, this.e, 0);
+         this.d.dS().c(2001, this.e, dhm.j(this.d.dS().a_(this.e)));
       }
    }
 
-   @Override
-   protected boolean a(dej $$0, je $$1) {
-      return $$0.u($$1.d()) && $$0.a_($$1).a(awt.S);
+   private boolean a(brp $$0) {
+      return this.h.test($$0);
    }
 }

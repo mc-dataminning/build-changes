@@ -1,33 +1,31 @@
-public enum auc {
-   a("old"),
-   b("new"),
-   c("compatible");
+import io.netty.buffer.ByteBuf;
 
-   private final xd d;
-   private final xd e;
+public record auc(String c, String d, String e) {
+   public static final zc<ByteBuf, auc> a = zc.a(za.m, auc::b, za.m, auc::c, za.m, auc::d, auc::new);
+   public static final String b = "minecraft";
 
-   private auc(final String $$0) {
-      this.d = xd.c("pack.incompatible." + $$0).a(n.h);
-      this.e = xd.c("pack.incompatible.confirm." + $$0);
+   public static auc a(String $$0) {
+      return new auc("minecraft", $$0, ab.b().b());
    }
 
    public boolean a() {
-      return this == c;
+      return this.c.equals("minecraft");
    }
 
-   public static auc a(ayv<Integer> $$0, int $$1) {
-      if ($$0.b() < $$1) {
-         return a;
-      } else {
-         return $$1 < $$0.a() ? b : c;
-      }
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
    }
 
-   public xd b() {
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
       return this.d;
    }
 
-   public xd c() {
+   public String d() {
       return this.e;
    }
 }

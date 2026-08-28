@@ -1,49 +1,42 @@
 import java.util.EnumSet;
 
-public class cby extends cbh {
-   private static final cfa b = cfa.b().a(6.0);
-   public static final int a = 400;
-   private final cgm c;
-   private cnh d;
-   private int e;
+public class cby extends cbk {
+   private final buv a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public cby(cgm $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cbh.a.a, cbh.a.b));
+   public cby(buv $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(cbk.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!this.c.dS().S()) {
-         return false;
-      } else if (this.c.dV().a(8000) != 0) {
+      if (this.a.fY()) {
          return false;
       } else {
-         this.d = this.c.dS().a(cnh.class, b, this.c, this.c.dx(), this.c.dz(), this.c.dD(), this.c.cO().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         eyw $$0 = cfh.a(this.a, 16, 7, eyw.c(this.a.fZ()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.d;
+            this.c = $$0.e;
+            this.d = $$0.f;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.e > 0;
+      return !this.a.P().m();
    }
 
    @Override
    public void d() {
-      this.e = this.a(400);
-      this.c.x(true);
-   }
-
-   @Override
-   public void e() {
-      this.c.x(false);
-      this.d = null;
-   }
-
-   @Override
-   public void a() {
-      this.c.K().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.P().a(this.b, this.c, this.d, this.e);
    }
 }

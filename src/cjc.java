@@ -1,59 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cjc extends ciz {
-   @Nullable
-   private eys b;
-   private int c;
+public abstract class cjc implements cjk {
+   protected final cja a;
 
-   public cjc(cix $$0) {
-      super($$0);
+   public cjc(cja $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dV().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dV().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dV().i() - 0.5F) * 8.0F;
-         this.a.dS().a(ln.v, this.a.dx() + (double)$$0, this.a.dz() + 2.0 + (double)$$1, this.a.dD() + (double)$$2, 0.0, 0.0, 0.0);
-      }
    }
 
    @Override
    public void c() {
-      this.c++;
-      if (this.b == null) {
-         je $$0 = this.a.dS().a(eak.a.e, edp.a(this.a.q()));
-         this.b = eys.c($$0);
-      }
+   }
 
-      double $$1 = this.b.c(this.a.dx(), this.a.dz(), this.a.dD());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.x(1.0F);
-      } else {
-         this.a.x(0.0F);
-      }
+   @Override
+   public void a(ciz $$0, jf $$1, bsj $$2, @Nullable cnx $$3) {
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.c = 0;
+   }
+
+   @Override
+   public void e() {
    }
 
    @Override
    public float f() {
-      return 3.0F;
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public eys g() {
-      return this.b;
+   public eyw g() {
+      return null;
    }
 
    @Override
-   public cjn<cjc> i() {
-      return cjn.j;
+   public float a(bsj $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.dv().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

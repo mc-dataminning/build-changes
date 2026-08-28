@@ -1,49 +1,77 @@
-import java.util.List;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class fjc {
-   public static void a(fyf $$0, fja $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final fjc.a f;
 
-      for (Entry<String, List<fiz>> $$6 : $$1.c().entrySet()) {
-         Optional<gal> $$7 = $$0.a($$6.getKey());
-         List<fiz> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fjb[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, azd.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fjb $$8x = $$5x[$$6x];
-               fjb $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = azd.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
+   public fjc(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fjc.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+   }
 
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public fjc.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, fjc.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
-   }
 
-   private static float a(fja $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
-   }
+      @Nullable
+      public static fjc.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
-   }
-
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
-
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+      public String a() {
+         return this.e;
+      }
    }
 }

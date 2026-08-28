@@ -1,24 +1,29 @@
-public record agg(int b) implements zk<abz> {
-   public static final zb<wa, agg> a = zk.a(agg::a, agg::new);
+public record agg(float b, boolean c) implements zl<aca> {
+   public static final zc<wb, agg> a = zl.a(agg::a, agg::new);
 
-   private agg(wa $$0) {
-      this($$0.l());
+   private agg(wb $$0) {
+      this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static agg a(bry $$0) {
-      return new agg($$0.k());
+   public static agg a(bsb $$0) {
+      return new agg($$0.f(), $$0.l());
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
+   private void a(wb $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zm<agg> a() {
-      return ago.cj;
+   public zn<agg> a() {
+      return agp.ci;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

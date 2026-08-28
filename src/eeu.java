@@ -1,60 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class eeu extends edq<egl> {
-   public eeu(Codec<egl> $$0) {
+public class eeu extends edu<egn> {
+   public eeu(Codec<egn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egl> $$0) {
-      dfd $$1 = $$0.b();
-      je $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
+   public boolean a(edw<egn> $$0) {
+      egn $$1 = $$0.f();
+      dfg $$2 = $$0.b();
+      azn $$3 = $$0.d();
+      dhm $$4 = $$1.b.b();
+      jf $$5 = a($$2, $$0.e().k().a(jk.a.b, $$2.H_() + 1, $$2.an()), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         egl $$3 = $$0.f();
-         azl $$4 = $$0.d();
-         dof $$5 = dof.b();
-         int $$6 = $$3.f() + $$3.d();
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
+         for (jf $$11 : jf.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            boolean $$9 = $$7 < $$3.f();
-
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
-
-            $$5.j();
-         }
-
-         je $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dhl.qU.o(), 3);
-         }
-
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            je $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jj.b)) {
-               $$1.a($$14, dhl.qV.o().b(doe.d, Boolean.valueOf(true)), 3);
+            dus $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
 
-         return true;
+         return $$10;
       }
    }
 
-   private boolean a(deh $$0, je $$1) {
-      duo $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof doa) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dhl.G) || !$$2.y().b()) ? false : jj.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+   @Nullable
+   private static jf a(dek $$0, jf.a $$1, dhm $$2) {
+      while ($$1.v() > $$0.H_() + 1) {
+         dus $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jk.a);
       }
+
+      return null;
    }
 }

@@ -1,62 +1,41 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class euj extends euu {
-   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(euj.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, euj::new)
-   );
-   private final euj.a b;
+public class euj extends euy {
+   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, euj::new));
 
-   private euj(List<ews> $$0, euj.a $$1) {
+   private euj(List<eww> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public euw<euj> b() {
-      return eux.s;
+   public eva<euj> b() {
+      return evb.z;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return ImmutableSet.of(this.b.g);
-   }
+   public cvs a(cvs $$0, etl $$1) {
+      Float $$2 = $$1.c(ewh.j);
+      if ($$2 != null) {
+         azn $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.K();
+         int $$6 = 0;
 
-   @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$1.c(this.b.g) instanceof brs $$3) {
-         $$0.b(kr.g, $$3.al());
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
       }
 
       return $$0;
    }
 
-   public static euu.a<?> a(euj.a $$0) {
-      return a($$1 -> new euj($$1, $$0));
-   }
-
-   public static enum a implements azz {
-      a("this", ewd.a),
-      b("attacking_entity", ewd.d),
-      c("last_damage_player", ewd.b),
-      d("block_entity", ewd.h);
-
-      public static final Codec<euj.a> e = azz.a(euj.a::values);
-      private final String f;
-      final ewa<?> g;
-
-      private a(final String $$0, final ewa<?> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
+   public static euy.a<?> c() {
+      return a(euj::new);
    }
 }

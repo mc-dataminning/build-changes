@@ -1,164 +1,43 @@
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class crd extends cqw {
-   private static final int m = 0;
-   private static final int n = 2;
-   private static final int o = 3;
-   private static final int p = 4;
-   private static final int q = 5;
-   private static final int r = 2;
-   private static final int s = 5;
-   private static final int t = 32;
-   private static final int u = 32;
-   private static final int v = 41;
-   private final bri w;
-   private final cri x;
-   private final cst y;
+class crd extends csw {
+   private final bun a;
+   private final btz b;
+   @Nullable
+   private final ale g;
 
-   public crd(int $$0, cnt $$1) {
-      this($$0, $$1, new brw(5), new css(2));
-   }
-
-   public crd(int $$0, cnt $$1, bri $$2, cri $$3) {
-      super(csf.l, $$0);
-      a($$2, 5);
-      a($$3, 2);
-      this.w = $$2;
-      this.x = $$3;
-      cxn $$4 = $$1.k.dS().K();
-      this.a(new crd.c($$2, 0, 56, 51));
-      this.a(new crd.c($$2, 1, 79, 58));
-      this.a(new crd.c($$2, 2, 102, 51));
-      this.y = this.a(new crd.b($$4, $$2, 3, 79, 17));
-      this.a(new crd.a($$2, 4, 17, 17));
-      this.a($$3);
-      this.c($$1, 8, 84);
+   public crd(brl $$0, bun $$1, btz $$2, int $$3, int $$4, int $$5, @Nullable ale $$6) {
+      super($$0, $$3, $$4, $$5);
+      this.a = $$1;
+      this.b = $$2;
+      this.g = $$6;
    }
 
    @Override
-   public boolean b(cnu $$0) {
-      return this.w.a($$0);
+   public void a(cvs $$0, cvs $$1) {
+      this.a.a(this.b, $$1, $$0);
+      super.a($$0, $$1);
    }
 
    @Override
-   public cvp b(cnu $$0, int $$1) {
-      cvp $$2 = cvp.k;
-      cst $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cvp $$4 = $$3.g();
-         $$2 = $$4.u();
-         if (($$1 < 0 || $$1 > 2) && $$1 != 3 && $$1 != 4) {
-            if (crd.a.b($$2)) {
-               if (this.a($$4, 4, 5, false) || this.y.a($$4) && !this.a($$4, 3, 4, false)) {
-                  return cvp.k;
-               }
-            } else if (this.y.a($$4)) {
-               if (!this.a($$4, 3, 4, false)) {
-                  return cvp.k;
-               }
-            } else if (crd.c.b($$2)) {
-               if (!this.a($$4, 0, 3, false)) {
-                  return cvp.k;
-               }
-            } else if ($$1 >= 5 && $$1 < 32) {
-               if (!this.a($$4, 32, 41, false)) {
-                  return cvp.k;
-               }
-            } else if ($$1 >= 32 && $$1 < 41) {
-               if (!this.a($$4, 5, 32, false)) {
-                  return cvp.k;
-               }
-            } else if (!this.a($$4, 5, 41, false)) {
-               return cvp.k;
-            }
-         } else {
-            if (!this.a($$4, 5, 41, true)) {
-               return cvp.k;
-            }
-
-            $$3.b($$4, $$2);
-         }
-
-         if ($$4.f()) {
-            $$3.e(cvp.k);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.J() == $$2.J()) {
-            return cvp.k;
-         }
-
-         $$3.a($$0, $$2);
-      }
-
-      return $$2;
+   public int a() {
+      return 1;
    }
 
-   public int l() {
-      return this.x.a(1);
+   @Override
+   public boolean a(cvs $$0) {
+      return this.b == this.a.g($$0);
    }
 
-   public int m() {
-      return this.x.a(0);
+   @Override
+   public boolean a(cnx $$0) {
+      cvs $$1 = this.g();
+      return !$$1.f() && !$$0.f() && dbp.a($$1, dbo.E) ? false : super.a($$0);
    }
 
-   static class a extends cst {
-      public a(bri $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cvp $$0) {
-         return b($$0);
-      }
-
-      public static boolean b(cvp $$0) {
-         return $$0.a(cvt.sp);
-      }
-   }
-
-   static class b extends cst {
-      private final cxn a;
-
-      public b(cxn $$0, bri $$1, int $$2, int $$3, int $$4) {
-         super($$1, $$2, $$3, $$4);
-         this.a = $$0;
-      }
-
-      @Override
-      public boolean a(cvp $$0) {
-         return this.a.a($$0);
-      }
-   }
-
-   static class c extends cst {
-      public c(bri $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(cvp $$0) {
-         return b($$0);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
-
-      @Override
-      public void a(cnu $$0, cvp $$1) {
-         Optional<jn<cxm>> $$2 = $$1.a(kr.L, cxo.a).e();
-         if ($$2.isPresent() && $$0 instanceof ari $$3) {
-            an.l.a($$3, $$2.get());
-         }
-
-         super.a($$0, $$1);
-      }
-
-      public static boolean b(cvp $$0) {
-         return $$0.a(cvt.sm) || $$0.a(cvt.vq) || $$0.a(cvt.vt) || $$0.a(cvt.sl);
-      }
+   @Override
+   public Pair<ale, ale> b() {
+      return this.g != null ? Pair.of(csc.B, this.g) : super.b();
    }
 }

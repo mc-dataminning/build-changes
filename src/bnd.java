@@ -1,10 +1,8 @@
-public record bnd<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> bnd<T> a(String $$0) {
-      return new bnd<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bnd {
 }

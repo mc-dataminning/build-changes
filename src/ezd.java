@@ -1,32 +1,18 @@
 import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class ezd implements eze {
-   private final DoubleList a;
-
-   public ezd(DoubleList $$0) {
-      this.a = $$0;
+public final class ezd extends ezq {
+   protected ezd(ezf $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(eze.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public DoubleList a(jk.a $$0) {
+      return new ezc(this.a.c($$0));
    }
 
    @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   protected int a(jk.a $$0, double $$1) {
+      int $$2 = this.a.c($$0);
+      return azf.a(azf.a($$1 * (double)$$2, -1.0, (double)$$2));
    }
 }

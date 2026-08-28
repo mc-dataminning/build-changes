@@ -1,10 +1,85 @@
-public enum aqx {
-   a,
-   b,
-   c,
-   d;
+public class aqx extends arl {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-   public boolean a(aqx $$0) {
-      return this.ordinal() >= $$0.ordinal();
+   public aqx(ark $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.aa();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new adh(adh.g, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new adh(adh.g, 104.0F));
+            } else {
+               this.d.a(xe.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new adh(adh.g, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new adh(adh.g, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new adh(adh.g, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(xe.c("demo.day.warning"));
+      }
+   }
+
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(xe.c("demo.reminder"));
+         this.g = 0;
+      }
+   }
+
+   @Override
+   public void a(jf $$0, ahw.a $$1, jk $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public brs a(ark $$0, dej $$1, cvs $$2, brr $$3) {
+      if (this.f) {
+         this.f();
+         return brs.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public brs a(ark $$0, dej $$1, cvs $$2, brr $$3, eys $$4) {
+      if (this.f) {
+         this.f();
+         return brs.e;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

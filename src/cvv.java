@@ -1,48 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record cvv(jn<awd> e, xd f, float g, int h) {
-   public static final Codec<cvv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awd.b.fieldOf("sound_event").forGetter(cvv::b),
-               xf.a.fieldOf("description").forGetter(cvv::c),
-               aym.n.fieldOf("length_in_seconds").forGetter(cvv::d),
-               aym.a(0, 15).fieldOf("comparator_output").forGetter(cvv::e)
-            )
-            .apply($$0, cvv::new)
-   );
-   public static final zb<wo, cvv> b = zb.a(awd.d, cvv::b, xf.b, cvv::c, yz.i, cvv::d, yz.g, cvv::e, cvv::new);
-   public static final Codec<jn<cvv>> c = akz.a(lv.L);
-   public static final zb<wo, jn<cvv>> d = yz.a(lv.L, b);
-   private static final int i = 20;
-
-   public int a() {
-      return azd.f(this.g * 20.0F);
+public class cvv {
+   public static brs a(dej $$0, cnx $$1, brr $$2) {
+      $$1.c($$2);
+      return brs.c;
    }
 
-   public boolean a(long $$0) {
-      return $$0 >= (long)(this.a() + 20);
+   public static cvs a(cvs $$0, cnx $$1, cvs $$2, boolean $$3) {
+      boolean $$4 = $$1.fR();
+      if ($$3 && $$4) {
+         if (!$$1.gd().i($$2)) {
+            $$1.gd().f($$2);
+         }
+
+         return $$0;
+      } else {
+         $$0.a(1, $$1);
+         if ($$0.f()) {
+            return $$2;
+         } else {
+            if (!$$1.gd().f($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
+      }
    }
 
-   public static Optional<jn<cvv>> a(jp.a $$0, cvp $$1) {
-      cvu $$2 = $$1.a(kr.W);
-      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   public static cvs a(cvs $$0, cnx $$1, cvs $$2) {
+      return a($$0, $$1, $$2, true);
    }
 
-   public jn<awd> b() {
-      return this.e;
-   }
-
-   public xd c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   public static void a(ckh $$0, Iterable<cvs> $$1) {
+      dej $$2 = $$0.dS();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new ckh($$2, $$0.dx(), $$0.dz(), $$0.dD(), $$2x)));
+      }
    }
 }

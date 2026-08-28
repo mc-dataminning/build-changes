@@ -1,81 +1,179 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class feo extends fey {
-   private static final Logger b = LogUtils.getLogger();
-   public Map<Long, List<ProfileResult>> a = Map.of();
+public class feo {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final xe h = xe.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public static feo a(String $$0) {
-      feo $$1 = new feo();
-      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
+   feo(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+   }
+
+   public boolean a() {
+      return this.k;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public UUID c() {
+      return this.i;
+   }
+
+   public static List<feo> a(String $$0) {
+      List<feo> $$1 = new ArrayList<>();
 
       try {
-         JsonObject $$3 = ayt.a($$0);
-         if (ayt.d($$3, "lists")) {
-            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
-               JsonObject $$6 = $$5.getAsJsonObject();
-               String $$7 = fgv.b("playerList", $$6, null);
-               List<ProfileResult> $$9;
-               if ($$7 != null) {
-                  JsonElement $$8 = JsonParser.parseString($$7);
-                  if ($$8.isJsonArray()) {
-                     $$9 = a($$8.getAsJsonArray());
-                  } else {
-                     $$9 = Lists.newArrayList();
-                  }
-               } else {
-                  $$9 = Lists.newArrayList();
-               }
-
-               $$2.put(fgv.a("serverId", $$6, -1L), $$9);
-            }
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
-      } catch (Exception var11) {
-         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
-      }
-
-      $$1.a = $$2.build();
-      return $$1;
-   }
-
-   private static List<ProfileResult> a(JsonArray $$0) {
-      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
-      MinecraftSessionService $$2 = fil.Q().am();
-
-      for (JsonElement $$3 : $$0) {
-         if ($$3.isJsonObject()) {
-            UUID $$4 = fgv.a("playerId", $$3.getAsJsonObject(), null);
-            if ($$4 != null && !fil.Q().b($$4)) {
-               try {
-                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
-                  if ($$5 != null) {
-                     $$1.add($$5);
-                  }
-               } catch (Exception var7) {
-                  b.error("Could not get name for {}", $$4, var7);
-               }
-            }
-         }
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
 
       return $$1;
    }
 
-   public List<ProfileResult> a(long $$0) {
-      List<ProfileResult> $$1 = this.a.get($$0);
-      return $$1 != null ? $$1 : List.of();
+   private static feo a(JsonObject $$0) {
+      UUID $$1 = fgz.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
+      } else {
+         boolean $$2 = fgz.a("dismissable", $$0, true);
+         boolean $$3 = fgz.a("seen", $$0, false);
+         String $$4 = fgz.a("type", $$0);
+         feo $$5 = new feo($$1, $$2, $$3, $$4);
+
+         return (feo)(switch ($$4) {
+            case "visitUrl" -> feo.c.a($$5, $$0);
+            case "infoPopup" -> feo.a.a($$5, $$0);
+            default -> $$5;
+         });
+      }
+   }
+
+   public static class a extends feo {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fet e;
+      private final fet f;
+      private final ale g;
+      @Nullable
+      private final feo.b h;
+
+      private a(feo $$0, fet $$1, fet $$2, ale $$3, @Nullable feo.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
+      }
+
+      public static feo.a a(feo $$0, JsonObject $$1) {
+         fet $$2 = fgz.a("title", $$1, fet::a);
+         fet $$3 = fgz.a("message", $$1, fet::a);
+         ale $$4 = ale.a(fgz.a("image", $$1));
+         feo.b $$5 = fgz.b("urlButton", $$1, feo.b::a);
+         return new feo.a($$0, $$2, $$3, $$4, $$5);
+      }
+
+      @Nullable
+      public flq a(fqh $$0, Consumer<UUID> $$1) {
+         xe $$2 = this.e.a();
+         if ($$2 == null) {
+            feo.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            flq.a $$3 = new flq.a($$0, $$2).a(this.g).a(this.f.a(xd.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(feo.h), $$2x -> {
+                  fip $$3x = fip.Q();
+                  $$3x.a(new fpe($$3xx -> {
+                     if ($$3xx) {
+                        ad.m().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
+                     }
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
+            }
+
+            $$3.a(xd.h, $$1x -> {
+               $$1x.d();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
+         }
+      }
+   }
+
+   static record b(String a, fet b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
+
+      public static feo.b a(JsonObject $$0) {
+         String $$1 = fgz.a("url", $$0);
+         fet $$2 = fgz.a("urlText", $$0, fet::a);
+         return new feo.b($$1, $$2);
+      }
+   }
+
+   public static class c extends feo {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fet e;
+      private final fet f;
+
+      private c(feo $$0, String $$1, fet $$2, fet $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static feo.c a(feo $$0, JsonObject $$1) {
+         String $$2 = fgz.a("url", $$1);
+         fet $$3 = fgz.a("buttonText", $$1, fet::a);
+         fet $$4 = fgz.a("message", $$1, fet::a);
+         return new feo.c($$0, $$2, $$3, $$4);
+      }
+
+      public xe d() {
+         return this.f.a(xe.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public fko a(fqh $$0) {
+         xe $$1 = this.e.a(feo.h);
+         return fko.a($$1, fpe.b($$0, this.d)).a();
+      }
    }
 }

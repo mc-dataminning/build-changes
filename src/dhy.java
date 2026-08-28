@@ -1,137 +1,117 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.List;
-import java.util.function.ToIntFunction;
 
-public class dhy extends dgb implements dol {
-   public static final MapCodec<dhy> c = b(dhy::new);
-   public static final int d = 1;
-   public static final int e = 4;
-   public static final dvo f = dve.az;
-   public static final dvf g = dgb.b;
-   public static final dvf h = dve.C;
-   public static final ToIntFunction<duo> i = $$0 -> $$0.c(g) ? 3 * $$0.c(f) : 0;
-   private static final Int2ObjectMap<List<eys>> j = ad.a(() -> {
-      Int2ObjectMap<List<eys>> $$0 = new Int2ObjectOpenHashMap();
-      $$0.defaultReturnValue(ImmutableList.of());
-      $$0.put(1, ImmutableList.of(new eys(0.5, 0.5, 0.5)));
-      $$0.put(2, ImmutableList.of(new eys(0.375, 0.44, 0.5), new eys(0.625, 0.5, 0.44)));
-      $$0.put(3, ImmutableList.of(new eys(0.5, 0.313, 0.625), new eys(0.375, 0.44, 0.5), new eys(0.56, 0.5, 0.44)));
-      $$0.put(4, ImmutableList.of(new eys(0.44, 0.313, 0.56), new eys(0.625, 0.44, 0.56), new eys(0.375, 0.44, 0.375), new eys(0.56, 0.5, 0.375)));
-      return Int2ObjectMaps.unmodifiable($$0);
-   });
-   private static final ezm k = dhj.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
-   private static final ezm l = dhj.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
-   private static final ezm m = dhj.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
-   private static final ezm n = dhj.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
+public class dhy extends dhm {
+   public static final MapCodec<dhy> a = b(dhy::new);
+   public static final int b = 6;
+   public static final dvs c = dvi.ay;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final ezq[] g = new ezq[]{
+      dhm.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      dhm.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
    @Override
    public MapCodec<dhy> a() {
-      return c;
+      return a;
    }
 
-   public dhy(dun.d $$0) {
+   protected dhy(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(f, Integer.valueOf(1)).b(g, Boolean.valueOf(false)).b(h, Boolean.valueOf(false)));
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected brp a(cvp $$0, duo $$1, deg $$2, je $$3, cnu $$4, bro $$5, eyo $$6) {
-      if ($$0.f() && $$4.gd().e && $$1.c(g)) {
-         a($$4, $$1, $$2, $$3);
-         return brp.a;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return g[$$0.c(c)];
+   }
+
+   @Override
+   protected brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
+      cvn $$7 = $$0.h();
+      if ($$0.a(axe.aJ) && $$1.c(c) == 0 && dhm.a($$7) instanceof dib $$8) {
+         $$0.a(1, $$4);
+         $$2.a(null, $$3, awg.ds, awh.e, 1.0F, 1.0F);
+         $$2.b($$3, dic.a($$8));
+         $$2.a($$4, dzp.c, $$3);
+         $$4.b(awq.c.b($$7));
+         return brs.a;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         return brs.f;
       }
    }
 
    @Override
-   protected boolean a(duo $$0, czk $$1) {
-      return !$$1.h() && $$1.n().h() == this.q() && $$0.c(f) < 4 ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public duo a(czk $$0) {
-      duo $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         return $$1.a(f);
-      } else {
-         eqp $$2 = $$0.q().b_($$0.a());
-         boolean $$3 = $$2.a() == eqq.c;
-         return super.a($$0).b(h, Boolean.valueOf($$3));
-      }
-   }
-
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, eqq.c, eqq.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected eqp b_(duo $$0) {
-      return $$0.c(h) ? eqq.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      switch ($$0.c(f)) {
-         case 1:
-         default:
-            return k;
-         case 2:
-            return l;
-         case 3:
-            return m;
-         case 4:
-            return n;
-      }
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(f, g, h);
-   }
-
-   @Override
-   public boolean a(deh $$0, je $$1, duo $$2, eqp $$3) {
-      if (!$$2.c(h) && $$3.a() == eqq.c) {
-         duo $$4 = $$2.b(h, Boolean.valueOf(true));
-         if ($$2.c(g)) {
-            a(null, $$4, $$0, $$1);
-         } else {
-            $$0.a($$1, $$4, 3);
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return brs.a;
          }
 
-         $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         return true;
+         if ($$3.b(brr.a).f()) {
+            return brs.c;
+         }
+      }
+
+      return a($$1, $$2, $$0, $$3);
+   }
+
+   protected static brs a(dek $$0, jf $$1, dus $$2, cnx $$3) {
+      if (!$$3.u(false)) {
+         return brs.e;
       } else {
-         return false;
+         $$3.a(awq.U);
+         $$3.gn().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, dzp.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.b(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, dzp.f, $$1);
+         }
+
+         return brs.a;
       }
    }
 
-   public static boolean h(duo $$0) {
-      return $$0.a(awt.af, $$0x -> $$0x.b(g) && $$0x.b(h)) && !$$0.c(g) && !$$0.c(h);
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return $$1 == jk.a && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected Iterable<eys> b(duo $$0) {
-      return (Iterable<eys>)j.get($$0.c(f));
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   protected boolean d(duo $$0) {
-      return !$$0.c(h) && super.d($$0);
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      return dhj.a($$1, $$2.e(), jj.b);
+   protected int a(dus $$0, dej $$1, jf $$2) {
+      return b($$0.c(c));
+   }
+
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
+   }
+
+   @Override
+   protected boolean c_(dus $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
    }
 }

@@ -1,42 +1,39 @@
-public class gpy extends gmb<cqf, gun> {
-   private final gij b;
+public class gpy extends gou<clq, gvp, fzs> {
+   private static final ale a = ale.b("textures/entity/strider/strider.png");
+   private static final ale b = ale.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gpy(gnj.a $$0) {
-      super($$0, gak.cI);
-      this.b = $$0.d();
+   public gpy(gno.a $$0) {
+      super($$0, new fzs($$0.a(gap.cF)), 0.5F);
+      this.a(new gsc<>(this, new fzs($$0.a(gap.cG)), ale.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(gun $$0, duo $$1, fde $$2, ghg $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azd.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public ale a(gvp $$0) {
+      return $$0.b ? b : a;
    }
 
-   public static void a(gij $$0, duo $$1, fde $$2, ghg $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gws.a(gws.a(1.0F), 10);
-      } else {
-         $$6 = gws.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected float b(gvp $$0) {
+      float $$1 = super.g($$0);
+      return $$0.ae ? $$1 * 0.5F : $$1;
    }
 
-   public gun a() {
-      return new gun();
+   public gvp c() {
+      return new gvp();
    }
 
-   public void a(cqf $$0, gun $$1, float $$2) {
+   public void a(clq $$0, gvp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.G() > -1 ? (float)$$0.G() - $$2 + 1.0F : -1.0F;
+      $$1.a = $$0.i();
+      $$1.b = $$0.q();
+      $$1.c = $$0.bX();
+   }
+
+   protected void a(gvp $$0, fdi $$1) {
+      float $$2 = $$0.ab;
+      $$1.b($$2, $$2, $$2);
+   }
+
+   protected boolean c(gvp $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

@@ -1,24 +1,37 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.Nullable;
 
-public class ezk extends ezm {
-   private final ezm b;
-   private final jj.a c;
-   private static final DoubleList d = new eyy(1);
+public class ezk extends ezg {
+   @Nullable
+   private jf b;
+   @Nullable
+   private jf c;
 
-   public ezk(ezm $$0, jj.a $$1, int $$2) {
-      super(a($$0.a, $$1, $$2));
-      this.b = $$0;
-      this.c = $$1;
+   protected ezk(cpv $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
    }
 
-   private static ezb a(ezb $$0, jj.a $$1, int $$2) {
-      return new ezl(
-         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
-      );
+   private void a(cpv $$0) {
+      jf $$1 = $$0.q();
+      dus $$2 = $$0.dS().a_($$1);
+      boolean $$3 = dhb.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dvw $$4 = $$2.c(((dhb)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
    }
 
    @Override
-   public DoubleList a(jj.a $$0) {
-      return $$0 == this.c ? d : this.b.a($$0);
+   public ezq a(dus $$0, dds $$1, jf $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : ezn.a();
    }
 }

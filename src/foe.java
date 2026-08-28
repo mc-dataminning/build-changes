@@ -1,8 +1,26 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface foe {
+public interface foe {
+   void m(int var1);
+
+   void n(int var1);
+
+   int D();
+
+   int E();
+
+   int y();
+
+   int w();
+
+   default fow H() {
+      return new fow(this.D(), this.E(), this.y(), this.w());
+   }
+
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
+   }
+
+   void a(Consumer<fkm> var1);
 }

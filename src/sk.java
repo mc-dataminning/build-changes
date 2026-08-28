@@ -1,95 +1,71 @@
 import java.util.List;
 
 public class sk {
-   public static final alb<ekg> a = sj.a("crimson_fungi");
-   public static final alb<ekg> b = sj.a("warped_fungi");
-   public static final alb<ekg> c = sj.a("oak_checked");
-   public static final alb<ekg> d = sj.a("dark_oak_checked");
-   public static final alb<ekg> e = sj.a("birch_checked");
-   public static final alb<ekg> f = sj.a("acacia_checked");
-   public static final alb<ekg> g = sj.a("spruce_checked");
-   public static final alb<ekg> h = sj.a("mangrove_checked");
-   public static final alb<ekg> i = sj.a("cherry_checked");
-   public static final alb<ekg> j = sj.a("pine_on_snow");
-   public static final alb<ekg> k = sj.a("spruce_on_snow");
-   public static final alb<ekg> l = sj.a("pine_checked");
-   public static final alb<ekg> m = sj.a("jungle_tree");
-   public static final alb<ekg> n = sj.a("fancy_oak_checked");
-   public static final alb<ekg> o = sj.a("mega_jungle_tree_checked");
-   public static final alb<ekg> p = sj.a("mega_spruce_checked");
-   public static final alb<ekg> q = sj.a("mega_pine_checked");
-   public static final alb<ekg> r = sj.a("tall_mangrove_checked");
-   public static final alb<ekg> s = sj.a("jungle_bush");
-   public static final alb<ekg> t = sj.a("super_birch_bees_0002");
-   public static final alb<ekg> u = sj.a("super_birch_bees");
-   public static final alb<ekg> v = sj.a("oak_bees_0002");
-   public static final alb<ekg> w = sj.a("oak_bees_002");
-   public static final alb<ekg> x = sj.a("birch_bees_0002");
-   public static final alb<ekg> y = sj.a("birch_bees_002");
-   public static final alb<ekg> z = sj.a("fancy_oak_bees_0002");
-   public static final alb<ekg> A = sj.a("fancy_oak_bees_002");
-   public static final alb<ekg> B = sj.a("fancy_oak_bees");
-   public static final alb<ekg> C = sj.a("cherry_bees_005");
+   public static final ekn a = ekg.a(eao.a.e);
+   public static final ekn b = ekg.a(eao.a.c);
+   public static final ekn c = ekg.a(eao.a.a);
+   public static final ekn d = ekg.a(eao.a.d);
+   public static final ekn e = ekf.a(ebi.a(), ebi.b());
+   public static final ekn f = ekf.a(ebi.b(10), ebi.c(10));
+   public static final ekn g = ekf.a(ebi.b(8), ebi.c(8));
+   public static final ekn h = ekf.a(ebi.b(4), ebi.c(4));
+   public static final ekn i = ekf.a(ebi.a(), ebi.a(256));
 
-   public static void a(qt<ekg> $$0) {
-      jo<edc<?, ?>> $$1 = $$0.a(lv.aJ);
-      jn<edc<?, ?>> $$2 = $$1.b(rz.a);
-      jn<edc<?, ?>> $$3 = $$1.b(rz.c);
-      jn<edc<?, ?>> $$4 = $$1.b(rz.g);
-      jn<edc<?, ?>> $$5 = $$1.b(rz.h);
-      jn<edc<?, ?>> $$6 = $$1.b(rz.i);
-      jn<edc<?, ?>> $$7 = $$1.b(rz.j);
-      jn<edc<?, ?>> $$8 = $$1.b(rz.k);
-      jn<edc<?, ?>> $$9 = $$1.b(rz.x);
-      jn<edc<?, ?>> $$10 = $$1.b(rz.z);
-      jn<edc<?, ?>> $$11 = $$1.b(rz.l);
-      jn<edc<?, ?>> $$12 = $$1.b(rz.m);
-      jn<edc<?, ?>> $$13 = $$1.b(rz.n);
-      jn<edc<?, ?>> $$14 = $$1.b(rz.p);
-      jn<edc<?, ?>> $$15 = $$1.b(rz.q);
-      jn<edc<?, ?>> $$16 = $$1.b(rz.r);
-      jn<edc<?, ?>> $$17 = $$1.b(rz.y);
-      jn<edc<?, ?>> $$18 = $$1.b(rz.v);
-      jn<edc<?, ?>> $$19 = $$1.b(rz.s);
-      jn<edc<?, ?>> $$20 = $$1.b(rz.t);
-      jn<edc<?, ?>> $$21 = $$1.b(rz.A);
-      jn<edc<?, ?>> $$22 = $$1.b(rz.B);
-      jn<edc<?, ?>> $$23 = $$1.b(rz.D);
-      jn<edc<?, ?>> $$24 = $$1.b(rz.E);
-      jn<edc<?, ?>> $$25 = $$1.b(rz.G);
-      jn<edc<?, ?>> $$26 = $$1.b(rz.H);
-      jn<edc<?, ?>> $$27 = $$1.b(rz.J);
-      jn<edc<?, ?>> $$28 = $$1.b(rz.K);
-      sj.a($$0, a, $$2, ejx.a(8), eju.a());
-      sj.a($$0, b, $$3, ejx.a(8), eju.a());
-      sj.a($$0, c, $$4, sj.a(dhl.x));
-      sj.a($$0, d, $$5, sj.a(dhl.D));
-      sj.a($$0, e, $$6, sj.a(dhl.z));
-      sj.a($$0, f, $$7, sj.a(dhl.B));
-      sj.a($$0, g, $$8, sj.a(dhl.y));
-      sj.a($$0, h, $$9, sj.a(dhl.E));
-      sj.a($$0, i, $$10, sj.a(dhl.C));
-      ebr $$29 = ebr.a(jj.a.q(), dhl.dP, dhl.qP);
-      List<ekj> $$30 = List.of(ejz.a(jj.b, ebr.a(ebr.a(dhl.qP)), 8), ejv.a($$29));
-      sj.a($$0, j, $$11, $$30);
-      sj.a($$0, k, $$8, $$30);
-      sj.a($$0, l, $$11, sj.a(dhl.y));
-      sj.a($$0, m, $$12, sj.a(dhl.A));
-      sj.a($$0, n, $$13, sj.a(dhl.x));
-      sj.a($$0, o, $$14, sj.a(dhl.A));
-      sj.a($$0, p, $$15, sj.a(dhl.y));
-      sj.a($$0, q, $$16, sj.a(dhl.y));
-      sj.a($$0, r, $$17, sj.a(dhl.E));
-      sj.a($$0, s, $$18, sj.a(dhl.x));
-      sj.a($$0, t, $$19, sj.a(dhl.z));
-      sj.a($$0, u, $$20, sj.a(dhl.z));
-      sj.a($$0, v, $$21, sj.a(dhl.x));
-      sj.a($$0, w, $$22, sj.a(dhl.x));
-      sj.a($$0, x, $$23, sj.a(dhl.z));
-      sj.a($$0, y, $$24, sj.a(dhl.z));
-      sj.a($$0, z, $$25, sj.a(dhl.x));
-      sj.a($$0, A, $$26, sj.a(dhl.x));
-      sj.a($$0, B, $$27, sj.a(dhl.x));
-      sj.a($$0, C, $$28, sj.a(dhl.C));
+   public static void a(qu<ekk> $$0) {
+      se.a($$0);
+      sf.a($$0);
+      sg.a($$0);
+      sh.a($$0);
+      si.a($$0);
+      sj.a($$0);
+      sl.a($$0);
+      sm.a($$0);
+      sn.a($$0);
+   }
+
+   public static ald<ekk> a(String $$0) {
+      return ald.a(lw.aS, ale.b($$0));
+   }
+
+   public static void a(qu<ekk> $$0, ald<ekk> $$1, jo<edg<?, ?>> $$2, List<ekn> $$3) {
+      $$0.a($$1, new ekk($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qu<ekk> $$0, ald<ekk> $$1, jo<edg<?, ?>> $$2, ekn... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static ekn a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bqc<bqx> $$4 = bqc.<bqx>a().a(bqu.a($$0), (int)$$3 - 1).a(bqu.a($$0 + $$2), 1).a();
+         return ekc.a(new bre($$4));
+      }
+   }
+
+   public static ekm a() {
+      return ejz.a(ebv.c);
+   }
+
+   public static ejz a(dhm $$0) {
+      return ejz.a(ebv.a($$0.n(), jf.c));
+   }
+
+   public static jo<ekk> a(jo<edg<?, ?>> $$0, ekn... $$1) {
+      return jo.a(new ekk($$0, List.of($$1)));
+   }
+
+   public static <FC extends efy, F extends edu<FC>> jo<ekk> a(F $$0, FC $$1, ekn... $$2) {
+      return a(jo.a(new edg($$0, $$1)), $$2);
+   }
+
+   public static <FC extends efy, F extends edu<FC>> jo<ekk> a(F $$0, FC $$1) {
+      return a($$0, $$1, ebv.c);
+   }
+
+   public static <FC extends efy, F extends edu<FC>> jo<ekk> a(F $$0, FC $$1, ebv $$2) {
+      return a($$0, $$1, ejz.a($$2));
    }
 }

@@ -1,44 +1,28 @@
-public class lb extends kz {
-   @Override
-   protected cvp a(kv $$0, cvp $$1) {
-      arh $$2 = $$0.b();
-      if (!$$2.w_()) {
-         je $$3 = $$0.c().a($$0.d().c(djo.b));
-         this.a(a($$2, $$3) || b($$2, $$3));
-         if (this.b()) {
-            $$1.a(1, $$2, null, $$0x -> {
-            });
-         }
-      }
+public class lb extends ky {
+   private final cwn c;
+   private final cwn.a d;
 
+   public lb(cvn $$0) {
+      if ($$0 instanceof cwn $$1) {
+         this.c = $$1;
+         this.d = $$1.c();
+      } else {
+         throw new IllegalArgumentException($$0 + " not instance of " + cwn.class.getSimpleName());
+      }
+   }
+
+   @Override
+   public cvs a(kw $$0, cvs $$1) {
+      arj $$2 = $$0.b();
+      jk $$3 = $$0.d().c(djr.b);
+      jy $$4 = this.d.b().getDispensePosition($$0, $$3);
+      cor.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      $$1.h(1);
       return $$1;
    }
 
-   private static boolean a(arh $$0, je $$1) {
-      duo $$2 = $$0.a_($$1);
-      if ($$2.a(awt.aH, $$0x -> $$0x.b(dhd.c) && $$0x.b() instanceof dhd)) {
-         int $$3 = $$2.c(dhd.c);
-         if ($$3 >= 5) {
-            $$0.a(null, $$1, awe.bX, awf.e, 1.0F, 1.0F);
-            dhd.a($$0, $$1);
-            ((dhd)$$2.b()).a($$0, $$2, $$1, null, drp.b.b);
-            $$0.a(null, dzl.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean b(arh $$0, je $$1) {
-      for (buk $$3 : $$0.a(buk.class, new eyn($$1), btt.f)) {
-         if ($$3 instanceof bva $$4 && $$4.a()) {
-            $$4.a(awf.e);
-            $$0.a(null, dzl.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected void a(kw $$0) {
+      $$0.b().c(this.d.e().orElse(1002), $$0.c(), 0);
    }
 }

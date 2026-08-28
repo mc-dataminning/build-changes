@@ -1,15 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Map;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxz<E extends buk> extends bwq<E> {
-   public bxz(List<Pair<? extends bwd<? super E>, Integer>> $$0) {
-      this(ImmutableMap.of(), $$0);
-   }
-
-   public bxz(Map<cdn<?>, cdo> $$0, List<Pair<? extends bwd<? super E>, Integer>> $$1) {
-      super($$0, ImmutableSet.of(), bwq.a.b, bwq.b.a, $$1);
+public class bxz {
+   public static bwg<cnk> a() {
+      return bzs.a((Function<bzs.b<cnk>, ? extends App<bzs.c<cnk>, bzv<cnk>>>)($$0 -> $$0.group($$0.c(cdq.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cnl $$3 = $$1.gy();
+               if ($$3.b() != cnn.b && $$3.b() != cnn.m && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gy().a(cnn.b));
+                  $$1.a($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

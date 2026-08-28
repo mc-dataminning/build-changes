@@ -1,103 +1,53 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
 public class fcf {
-   private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<fcc> b = new Long2ObjectOpenHashMap();
-   private final fcd c;
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   public fcf(fcd $$0) {
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
-         }
-      }
+   public static void a(long $$0) {
+      c($$0).filter(fcf::a).ifPresent(fcf::c);
    }
 
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
-      }
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   @Nullable
-   public fcc a(long $$0) {
-      return (fcc)this.b.get($$0);
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   @Nullable
-   public fcc a(fch $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
-      if ($$1 != 0L) {
-         return this.a($$1);
-      } else {
-         int $$2 = $$0.r();
-         int $$3 = $$2 + $$0.n();
-         int $$4 = $$0.s();
-         int $$5 = $$4 + $$0.o();
-         int $$6 = -1;
-         fcc $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
-
-         while (var12.hasNext()) {
-            fcc $$9 = (fcc)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
-            }
-         }
-
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
-      }
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
-      } else {
-         return $$0 > $$2 ? $$2 : $$0;
-      }
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
+   }
+
+   public static void a(aun<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
    }
 }

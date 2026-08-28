@@ -1,51 +1,18 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ehx extends ehz {
-   public static final MapCodec<ehx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayv.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               eps.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               aym.n.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ehx::new)
-   );
-   private final ayv<Integer> i;
-   private final eps.a j;
-   private final float k;
-   private final eps l;
+public class ehx<P extends ehw> {
+   public static final ehx<ehv> a = a("mangrove_root_placer", ehv.c);
+   private final MapCodec<P> b;
 
-   public ehx(ayv<Integer> $$0, eps.a $$1, float $$2, long $$3, eps.a $$4, float $$5, List<duo> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = eps.b(new ebj(new eal($$3)), $$1);
+   private static <P extends ehw> ehx<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.W, $$0, new ehx<>($$1));
    }
 
-   @Override
-   protected ehw<?> a() {
-      return ehw.e;
+   private ehx(MapCodec<P> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public duo a(azl $$0, je $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azd.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<duo> $$4 = Lists.newArrayListWithCapacity($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
-      }
-
-      return this.a($$4, $$1, (double)this.e);
-   }
-
-   protected double a(je $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   public MapCodec<P> a() {
+      return this.b;
    }
 }

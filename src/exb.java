@@ -1,36 +1,28 @@
-import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record exb(exo b, etg c) implements ews {
-   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(exp.a.fieldOf("value").forGetter(exb::c), etg.a.fieldOf("range").forGetter(exb::d)).apply($$0, exb::new)
-   );
+public record exb(exs b) implements eww {
+   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ext.a.fieldOf("chance").forGetter(exb::c)).apply($$0, exb::new));
 
    @Override
-   public ewt b() {
-      return ewu.r;
+   public ewx b() {
+      return ewy.d;
    }
 
-   @Override
-   public Set<ewa<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public boolean a(etl $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public boolean a(eth $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public static eww.a a(float $$0) {
+      return () -> new exb(exp.a($$0));
    }
 
-   public static ews.a a(exo $$0, etg $$1) {
-      return () -> new exb($$0, $$1);
+   public static eww.a a(exs $$0) {
+      return () -> new exb($$0);
    }
 
-   public exo c() {
+   public exs c() {
       return this.b;
-   }
-
-   public etg d() {
-      return this.c;
    }
 }

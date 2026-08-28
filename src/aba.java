@@ -1,23 +1,26 @@
-import java.util.List;
+public record aba(jf c, int d) implements aao {
+   public static final zc<wb, aba> a = aao.a(aba::a, aba::new);
+   public static final aao.b<aba> b = aao.a("debug/poi_ticket_count");
 
-public record aba(List<je> c) implements aan {
-   public static final zb<wa, aba> a = aan.a(aba::a, aba::new);
-   public static final aan.b<aba> b = aan.a("debug/raids");
-
-   private aba(wa $$0) {
-      this($$0.a(je.b));
+   private aba(wb $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.c, je.b);
+   private void a(wb $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public aan.b<aba> a() {
+   public aao.b<aba> a() {
       return b;
    }
 
-   public List<je> b() {
+   public jf b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

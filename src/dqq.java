@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqq extends dix implements dqp {
-   public static final MapCodec<dqq> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dqp.a.e.fieldOf("weathering_state").forGetter(dqq::l), u()).apply($$0, dqq::new)
-   );
-   private final dqp.a e;
+public class dqq extends dhv {
+   public static final MapCodec<dqq> a = b(dqq::new);
+   protected static final ezq b = dhm.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<dqq> a() {
-      return d;
+   public MapCodec<dqq> a() {
+      return a;
    }
 
-   public dqq(dqp.a $$0, dun.d $$1) {
-      super($$1);
-      this.e = $$0;
+   protected dqq(dur.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected void a(dus $$0, dej $$1, jf $$2, btr $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof arj && $$3 instanceof cpx) {
+         $$1.a(new jf($$2), true, $$3);
+      }
    }
 
    @Override
-   protected boolean f(duo $$0) {
-      return dqp.c($$0.b()).isPresent();
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return b;
    }
 
-   public dqp.a l() {
-      return this.e;
+   @Override
+   protected boolean b(dus $$0, ddo $$1, jf $$2) {
+      eqt $$3 = $$1.b_($$2);
+      eqt $$4 = $$1.b_($$2.d());
+      return ($$3.a() == equ.c || $$0.b() instanceof dlk) && $$4.a() == equ.a;
    }
 }

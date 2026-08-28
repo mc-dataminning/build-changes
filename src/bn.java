@@ -2,18 +2,18 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class bn extends dv<bn.a> {
+public class bn extends dw<bn.a> {
    @Override
    public Codec<bn.a> a() {
       return bn.a.a;
    }
 
-   public void a(ari $$0, eys $$1) {
-      eys $$2 = $$0.dq();
+   public void a(ark $$0, eyw $$1) {
+      eyw $$2 = $$0.dq();
       this.a($$0, $$3 -> $$3.a($$0.B(), $$1, $$2));
    }
 
-   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d) implements dv.a {
+   public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d) implements dw.a {
       public static final Codec<bn.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(bn.a::a),
@@ -35,7 +35,7 @@ public class bn extends dv<bn.a> {
          return an.D.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(arh $$0, eys $$1, eys $$2) {
+      public boolean a(arj $$0, eyw $$1, eyw $$2) {
          return this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)
             ? false
             : !this.d.isPresent() || this.d.get().a($$1.d, $$1.e, $$1.f, $$2.d, $$2.e, $$2.f);

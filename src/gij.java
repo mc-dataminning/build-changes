@@ -1,81 +1,132 @@
-public class gij implements auu {
-   private final gii a;
-   private final gil b;
-   private final ggn c;
-   private final gik d;
-   private final azl e = azl.a();
-   private final fjn f;
+import javax.annotation.Nullable;
 
-   public gij(gii $$0, ggn $$1, fjn $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new gil(this.f);
-      this.d = new gik();
+public class gij {
+   protected final ghh a;
+   protected final dej b;
+   protected int c;
+   protected int d;
+   protected int e;
+   private int g;
+   private kh h;
+   public gky.b[] f;
+
+   public gij(gky $$0, dej $$1, int $$2, ghh $$3) {
+      this.a = $$3;
+      this.b = $$1;
+      this.a($$2);
+      this.a($$0);
+      this.h = kh.a(this.g + 1, 0, this.g + 1);
    }
 
-   public gii a() {
-      return this.a;
-   }
+   protected void a(gky $$0) {
+      if (!fip.Q().by()) {
+         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
+      } else {
+         int $$1 = this.d * this.c * this.e;
+         this.f = new gky.b[$$1];
 
-   public void a(duo $$0, je $$1, ddi $$2, fde $$3, fdi $$4) {
-      if ($$0.o() == dnq.c) {
-         gzd $$5 = this.a.b($$0);
-         long $$6 = $$0.b($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gws.d);
-      }
-   }
-
-   public void a(duo $$0, je $$1, ddi $$2, fde $$3, fdi $$4, boolean $$5, azl $$6) {
-      try {
-         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), gws.d);
-      } catch (Throwable var11) {
-         o $$8 = o.a(var11, "Tesselating block in world");
-         p $$9 = $$8.a("Block being tesselated");
-         p.a($$9, $$2, $$1, $$0);
-         throw new z($$8);
-      }
-   }
-
-   public void a(je $$0, ddi $$1, fdi $$2, duo $$3, eqp $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new z($$6);
-      }
-   }
-
-   public gil b() {
-      return this.b;
-   }
-
-   public gzd a(duo $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(duo $$0, fde $$1, ghg $$2, int $$3, int $$4) {
-      dnq $$5 = $$0.o();
-      if ($$5 != dnq.a) {
-         switch ($$5) {
-            case c:
-               gzd $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(ggy.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cvp($$0.b()), cvm.a, $$1, $$2, $$3, $$4);
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.c; $$3++) {
+               for (int $$4 = 0; $$4 < this.e; $$4++) {
+                  int $$5 = this.a($$2, $$3, $$4);
+                  this.f[$$5] = $$0.new b($$5, kh.b($$2, $$3 + this.b.ap(), $$4));
+               }
+            }
          }
       }
    }
 
-   @Override
-   public void a(aut $$0) {
-      this.d.a();
+   public void a() {
+      for (gky.b $$0 : this.f) {
+         $$0.e();
+      }
+   }
+
+   private int a(int $$0, int $$1, int $$2) {
+      return ($$2 * this.c + $$1) * this.d + $$0;
+   }
+
+   protected void a(int $$0) {
+      int $$1 = $$0 * 2 + 1;
+      this.d = $$1;
+      this.c = this.b.ao();
+      this.e = $$1;
+      this.g = $$0;
+   }
+
+   public int b() {
+      return this.g;
+   }
+
+   public del c() {
+      return this.b;
+   }
+
+   public void a(kh $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = $$0.a() - this.g;
+         int $$3 = $$2 + Math.floorMod($$1 - $$2, this.d);
+
+         for (int $$4 = 0; $$4 < this.e; $$4++) {
+            int $$5 = $$0.c() - this.g;
+            int $$6 = $$5 + Math.floorMod($$4 - $$5, this.e);
+
+            for (int $$7 = 0; $$7 < this.c; $$7++) {
+               int $$8 = this.b.ap() + $$7;
+               gky.b $$9 = this.f[this.a($$1, $$7, $$4)];
+               long $$10 = $$9.g();
+               if ($$10 != kh.b($$3, $$8, $$6)) {
+                  $$9.a(kh.b($$3, $$8, $$6));
+               }
+            }
+         }
+      }
+
+      this.h = $$0;
+      this.a.x().a();
+   }
+
+   public kh d() {
+      return this.h;
+   }
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      gky.b $$4 = this.b($$0, $$1, $$2);
+      if ($$4 != null) {
+         $$4.a($$3);
+      }
+   }
+
+   @Nullable
+   protected gky.b a(jf $$0) {
+      return this.a(kh.c($$0));
+   }
+
+   @Nullable
+   protected gky.b a(long $$0) {
+      int $$1 = kh.b($$0);
+      int $$2 = kh.c($$0);
+      int $$3 = kh.d($$0);
+      return this.b($$1, $$2, $$3);
+   }
+
+   @Nullable
+   private gky.b b(int $$0, int $$1, int $$2) {
+      if (!this.c($$0, $$1, $$2)) {
+         return null;
+      } else {
+         int $$3 = $$1 - this.b.ap();
+         int $$4 = Math.floorMod($$0, this.d);
+         int $$5 = Math.floorMod($$2, this.e);
+         return this.f[this.a($$4, $$3, $$5)];
+      }
+   }
+
+   private boolean c(int $$0, int $$1, int $$2) {
+      if ($$1 >= this.b.ap() && $$1 <= this.b.aq()) {
+         return $$0 < this.h.a() - this.g || $$0 > this.h.a() + this.g ? false : $$2 >= this.h.c() - this.g && $$2 <= this.h.c() + this.g;
+      } else {
+         return false;
+      }
    }
 }

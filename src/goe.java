@@ -1,34 +1,35 @@
-public class goe extends gop<cgm, gue, fxz> {
-   private static final alc a = alc.b("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public goe(gnj.a $$0) {
-      super($$0, new fxz($$0.a(gak.ba)), 0.7F);
-      this.a(new grn(this));
-      this.a(new gro(this, $$0.d()));
+public final class goe extends gmf<cij, guf, fxz> {
+   private static final Map<ciq, ale> a = ad.a(Maps.newEnumMap(ciq.class), $$0 -> {
+      $$0.put(ciq.a, ale.b("textures/entity/horse/horse_white.png"));
+      $$0.put(ciq.b, ale.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(ciq.c, ale.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(ciq.d, ale.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(ciq.e, ale.b("textures/entity/horse/horse_black.png"));
+      $$0.put(ciq.f, ale.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(ciq.g, ale.b("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public goe(gno.a $$0) {
+      super($$0, new fxz($$0.a(gap.aP)), new fxz($$0.a(gap.aQ)), 1.1F);
+      this.a(new grq(this));
+      this.a(new grp(this, $$0.f()));
    }
 
-   public alc a(gue $$0) {
-      return a;
+   public ale a(guf $$0) {
+      return a.get($$0.a);
    }
 
-   public gue c() {
-      return new gue();
+   public guf c() {
+      return new guf();
    }
 
-   public void a(cgm $$0, gue $$1, float $$2) {
+   public void a(cij $$0, guf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.y() > 0.0F ? (float)$$0.y() - $$2 : 0.0F;
-      $$1.b = $$0.gp();
-      $$1.c = $$0.t();
-   }
-
-   protected void a(gue $$0, fde $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.Y < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.X + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
-      }
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.fT().u();
    }
 }

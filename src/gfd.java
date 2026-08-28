@@ -1,43 +1,37 @@
-public class gfd extends gfo {
-   private final gfj a;
+public class gfd extends gft {
+   private final gfo a;
 
-   protected gfd(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfj $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
+   gfd(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfo $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.d(1.0F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public ges b() {
-      return ges.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gex b() {
+      return gex.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements ger<lr> {
-      private final gfj a;
-
-      public a(gfj $$0) {
-         this.a = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(gfo a) implements gew<ls> {
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gfd $$8 = new gfd($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.z.a(4) + 6);
          return $$8;
       }
    }

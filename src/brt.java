@@ -1,37 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class brt {
-   public static final Codec<brt> a = RecordCodecBuilder.create($$0 -> $$0.group(ebl.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, brt::new));
-   private final ebl b;
+public record brt(String d) {
+   public static final brt a = new brt("");
+   public static final Codec<brt> b = Codec.STRING.xmap(brt::new, brt::a);
+   public static final String c = "Lock";
 
-   public brt(ebl $$0) {
-      this.b = $$0;
-   }
-
-   public brt(long $$0, alc $$1) {
-      this(a($$0, Optional.of($$1)));
-   }
-
-   public brt(long $$0, Optional<alc> $$1) {
-      this(a($$0, $$1));
-   }
-
-   private static ebl a(long $$0, Optional<alc> $$1) {
-      eaz.a $$2 = eaz.b($$0);
-      if ($$1.isPresent()) {
-         $$2 = $$2.a(a($$1.get()));
+   public boolean a(cvs $$0) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         xe $$1 = $$0.a(ks.g);
+         return $$1 != null && this.d.equals($$1.getString());
       }
-
-      return new ebl($$2.a());
    }
 
-   public static eaz.a a(alc $$0) {
-      return eaz.a($$0.toString());
+   public void a(ug $$0) {
+      if (!this.d.isEmpty()) {
+         $$0.a("Lock", this.d);
+      }
    }
 
-   public azl a() {
-      return this.b;
+   public static brt b(ug $$0) {
+      return $$0.b("Lock", 8) ? new brt($$0.l("Lock")) : a;
+   }
+
+   public String a() {
+      return this.d;
    }
 }

@@ -1,13 +1,9 @@
-import javax.annotation.Nullable;
-
-public class guh extends gtl {
-   public jj a = jj.c;
-   public cvp b = cvp.k;
-   public int c;
-   public boolean d;
-   @Nullable
-   public gzd e;
-   @Nullable
-   public esh f;
-   public final gwk g = new gwk();
+public class guh extends guo {
+   public boolean b;
+   public boolean c;
+   public buh d = buh.b;
+   public ckk.a e = ckk.a.h;
+   public int f;
+   public int g;
+   public float h;
 }

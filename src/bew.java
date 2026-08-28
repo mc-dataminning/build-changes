@@ -1,9 +1,11 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bew extends DataFix {
    public bew(Schema $$0, boolean $$1) {
@@ -11,20 +13,44 @@ public class bew extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhm.G);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bew::a));
+      Type<?> $$0 = this.getInputSchema().getType(bho.c);
+      OpticFinder<?> $$1 = $$0.findField("Level");
+      return this.fixTypeEverywhereTyped("HeightmapRenamingFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(bew::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", bew::b);
-   }
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("Heightmaps").result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<? extends Dynamic<?>> $$3 = $$2.get("LIQUID").result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.remove("LIQUID");
+            $$2 = $$2.set("WORLD_SURFACE_WG", $$3.get());
+         }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
+         Optional<? extends Dynamic<?>> $$4 = $$2.get("SOLID").result();
+         if ($$4.isPresent()) {
+            $$2 = $$2.remove("SOLID");
+            $$2 = $$2.set("OCEAN_FLOOR_WG", $$4.get());
+            $$2 = $$2.set("OCEAN_FLOOR", $$4.get());
+         }
 
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+         Optional<? extends Dynamic<?>> $$5 = $$2.get("LIGHT").result();
+         if ($$5.isPresent()) {
+            $$2 = $$2.remove("LIGHT");
+            $$2 = $$2.set("LIGHT_BLOCKING", $$5.get());
+         }
+
+         Optional<? extends Dynamic<?>> $$6 = $$2.get("RAIN").result();
+         if ($$6.isPresent()) {
+            $$2 = $$2.remove("RAIN");
+            $$2 = $$2.set("MOTION_BLOCKING", $$6.get());
+            $$2 = $$2.set("MOTION_BLOCKING_NO_LEAVES", $$6.get());
+         }
+
+         return $$0.set("Heightmaps", $$2);
+      }
    }
 }

@@ -1,46 +1,36 @@
-public class gqm extends gni<cpc, gvy> {
-   private static final alc a = alc.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alc b = alc.b("textures/entity/wither/wither.png");
-   private final fzg h;
+public class gqm extends gou<cnb, gwa, gab> {
+   private static final ale a = ale.b("textures/entity/warden/warden.png");
+   private static final ale b = ale.b("textures/entity/warden/warden_bioluminescent_layer.png");
+   private static final ale k = ale.b("textures/entity/warden/warden_heart.png");
+   private static final ale l = ale.b("textures/entity/warden/warden_pulsating_spots_1.png");
+   private static final ale m = ale.b("textures/entity/warden/warden_pulsating_spots_2.png");
 
-   public gqm(gnj.a $$0) {
-      super($$0);
-      this.h = new fzg($$0.a(gak.df));
+   public gqm(gno.a $$0) {
+      super($$0, new gab($$0.a(gap.cV)), 0.9F);
+      this.a(new gsm(this, b, ($$0x, $$1) -> 1.0F, gab::d));
+      this.a(new gsm(this, l, ($$0x, $$1) -> Math.max(0.0F, azf.b($$1 * 0.045F) * 0.25F), gab::h));
+      this.a(new gsm(this, m, ($$0x, $$1) -> Math.max(0.0F, azf.b($$1 * 0.045F + (float) Math.PI) * 0.25F), gab::h));
+      this.a(new gsm(this, a, ($$0x, $$1) -> $$0x.a, gab::b));
+      this.a(new gsm(this, k, ($$0x, $$1) -> $$0x.b, gab::c));
    }
 
-   public static gar a() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      $$1.a("head", gaq.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gan.a);
-      return gar.a($$0, 64, 64);
+   public ale a(gwa $$0) {
+      return a;
    }
 
-   protected int a(cpc $$0, je $$1) {
-      return 15;
+   public gwa c() {
+      return new gwa();
    }
 
-   public void a(gvy $$0, fde $$1, ghg $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fdi $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, gws.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public alc a(gvy $$0) {
-      return $$0.a ? a : b;
-   }
-
-   public gvy c() {
-      return new gvy();
-   }
-
-   public void a(cpc $$0, gvy $$1, float $$2) {
+   public void a(cnb $$0, gwa $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.w();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.K($$2);
+      $$1.c.a($$0.b);
+      $$1.d.a($$0.c);
+      $$1.e.a($$0.d);
+      $$1.f.a($$0.e);
+      $$1.g.a($$0.bY);
+      $$1.h.a($$0.bZ);
    }
 }

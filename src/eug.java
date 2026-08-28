@@ -1,93 +1,61 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Consumer;
 
-public class eug extends euu {
+public class eug extends eud {
    public static final MapCodec<eug> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  lu.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dvr::f).toList())
-               )
-            )
+      $$0 -> $$0.group(axl.a(lw.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
             .apply($$0, eug::new)
    );
-   private final jn<dhj> b;
-   private final Set<dvr<?>> c;
+   private final axl<cvn> j;
+   private final boolean k;
 
-   eug(List<ews> $$0, jn<dhj> $$1, Set<dvr<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   private eug(List<ews> $$0, jn<dhj> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   private eug(axl<cvn> $$0, boolean $$1, int $$2, int $$3, List<eww> $$4, List<euz> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public euw<eug> b() {
-      return eux.D;
+   public euc a() {
+      return etz.f;
    }
 
    @Override
-   public Set<ewa<?>> a() {
-      return ImmutableSet.of(ewd.g);
+   public void a(Consumer<cvs> $$0, etl $$1) {
+      lv.g.c(this.j).forEach($$1x -> $$0.accept(new cvs($$1x)));
    }
 
-   @Override
-   protected cvp a(cvp $$0, eth $$1) {
-      duo $$2 = $$1.c(ewd.g);
-      if ($$2 != null) {
-         $$0.a(kr.ah, cxx.a, $$1x -> {
-            for (dvr<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
+   private boolean a(etl $$0, Consumer<eua> $$1) {
+      if (!this.a($$0)) {
+         return false;
+      } else {
+         for (final jo<cvn> $$2 : lv.g.c(this.j)) {
+            $$1.accept(new eud.c() {
+               @Override
+               public void a(Consumer<cvs> $$0, etl $$1) {
+                  $$0.accept(new cvs($$2));
                }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static eug.a a(dhj $$0) {
-      return new eug.a($$0);
-   }
-
-   public static class a extends euu.a<eug.a> {
-      private final jn<dhj> a;
-      private final Builder<dvr<?>> b = ImmutableSet.builder();
-
-      a(dhj $$0) {
-         this.a = $$0.s();
-      }
-
-      public eug.a a(dvr<?> $$0) {
-         if (!this.a.a().n().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+            });
          }
-      }
 
-      protected eug.a a() {
-         return this;
+         return true;
       }
+   }
 
-      @Override
-      public euv b() {
-         return new eug(this.g(), this.a, this.b.build());
-      }
+   @Override
+   public boolean expand(etl $$0, Consumer<eua> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static eud.a<?> a(axl<cvn> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eug($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static eud.a<?> b(axl<cvn> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new eug($$0, true, $$1, $$2, $$3, $$4));
    }
 }

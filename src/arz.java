@@ -1,35 +1,14 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public record arz(String b, xh c) {
-   public static final arz a = a("");
+public interface arz {
+   void a(Consumer<zl<?>> var1);
 
-   public static arz a(String $$0) {
-      return new arz($$0, xh.c);
-   }
+   arz.a a();
 
-   public static arz b(String $$0) {
-      return new arz($$0, xh.b);
-   }
-
-   @Nullable
-   public String a() {
-      return this.c.a(this.b);
-   }
-
-   public String b() {
-      return Objects.requireNonNullElse(this.a(), "");
-   }
-
-   public boolean c() {
-      return !this.c.a();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public xh e() {
-      return this.c;
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
+      }
    }
 }

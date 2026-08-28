@@ -1,60 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class enn extends elc {
-   public static final MapCodec<enn> d = a(enn::new);
+public class enn extends elg {
+   public static final bqg<dfw.c> d = bqg.a(
+      new dfw.c(bty.i, 10, 2, 3), new dfw.c(bty.bx, 5, 4, 4), new dfw.c(bty.bq, 8, 5, 5), new dfw.c(bty.aN, 2, 5, 5), new dfw.c(bty.ap, 3, 4, 4)
+   );
+   public static final MapCodec<enn> e = a(enn::new);
 
-   public enn(elc.c $$0) {
+   public enn(elg.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<elc.b> a(elc.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<elg.b> a(elg.a $$0) {
+      ddp $$1 = $$0.h();
+      jf $$2 = new jf($$1.d(), 64, $$1.e());
+      return Optional.of(new elg.b($$2, (Consumer<ely>)($$1x -> a($$1x, $$0))));
+   }
 
-      for (jn<dfh> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(aws.X)) {
-            return Optional.empty();
-         }
+   private static void a(ely $$0, elg.a $$1) {
+      enm.q $$2 = new enm.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<elk> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         elk $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      return a($$0, eak.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static elg a(ddm $$0, ebj $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jj $$4 = jj.c.a.a($$1);
-      return new enm.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(elu $$0, elc.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static elr a(ddm $$0, long $$1, elr $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         ebj $$3 = new ebj(new eal(eaz.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         elg $$4 = $$2.c().get(0);
-         eku $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jj $$8 = jj.c.a.a($$3);
-         jj $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         elg $$10 = new enm.h($$3, $$6, $$7, $$9);
-         elu $$11 = new elu();
-         $$11.a($$10);
-         return $$11.a();
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public ell<?> e() {
-      return ell.j;
+   public elp<?> e() {
+      return elp.d;
    }
 }

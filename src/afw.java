@@ -1,69 +1,45 @@
-public class afw implements zk<abz> {
-   public static final zb<wo, afw> a = zk.a(afw::a, afw::new);
-   private final jn<awd> b;
-   private final awf c;
+public class afw implements zl<aca> {
+   public static final zc<wb, afw> a = zl.a(afw::a, afw::new);
+   private final int b;
+   private final int c;
    private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
 
-   public afw(jn<awd> $$0, awf $$1, bto $$2, float $$3, float $$4, long $$5) {
+   public afw(int $$0, int $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.ap();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      this.d = $$2;
    }
 
-   private afw(wo $$0) {
-      this.b = awd.d.decode($$0);
-      this.c = $$0.b(awf.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
+   private afw(wb $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(wo $$0) {
-      awd.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
+   private void a(wb $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zm<afw> a() {
-      return ago.aS;
+   public zn<afw> a() {
+      return agp.aR;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public jn<awd> b() {
+   public int b() {
       return this.b;
    }
 
-   public awf e() {
+   public int e() {
       return this.c;
    }
 
    public int f() {
       return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

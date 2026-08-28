@@ -1,26 +1,27 @@
-public class grs extends grw<gur, fyh> {
-   private final goh a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public grs(gpf<gur, fyh> $$0, goh $$1) {
+public class grs extends gsb<guj, fyd> {
+   private static final Map<bto.a, ale> a = ImmutableMap.of(
+      bto.a.b,
+      ale.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bto.a.c,
+      ale.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bto.a.d,
+      ale.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public grs(gpk<guj, fyd> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, gur $$3, float $$4, float $$5) {
-      gzd $$6 = $$3.b();
-      if ($$6 != null && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * azd.a($$3.p * 0.6F) + 0.2F;
-            $$8 -= 0.09F * azd.a($$3.p * 0.6F);
+   public void a(fdi $$0, ghl $$1, int $$2, guj $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         bto.a $$6 = $$3.c;
+         if ($$6 != bto.a.a) {
+            ale $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
          }
-
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         cvp $$9 = $$3.aW_();
-         this.a.a($$9, cvm.h, false, $$0, $$1, $$2, gws.d, $$6);
-         $$0.b();
       }
    }
 }

@@ -1,13 +1,29 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public abstract class auz<T> implements aun {
-   @Override
-   public final CompletableFuture<Void> a(aun.a $$0, aut $$1, bod $$2, bod $$3, Executor $$4, Executor $$5) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
+@FunctionalInterface
+public interface auz {
+   auz b = $$0 -> Optional.empty();
+
+   Optional<aut> getResource(ale var1);
+
+   default aut getResourceOrThrow(ale $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected abstract T b(aut var1, bod var2);
+   default InputStream open(ale $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
+   }
 
-   protected abstract void a(T var1, aut var2, bod var3);
+   default BufferedReader openAsReader(ale $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
+   }
+
+   static auz fromMap(Map<ale, aut> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
+   }
 }

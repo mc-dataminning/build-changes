@@ -1,7 +1,13 @@
 import javax.annotation.Nullable;
 
-public class gup extends gtl {
+public class gup extends guo {
+   public cik.d a;
+   public boolean b;
    @Nullable
-   public gzd a;
-   public cvp b = cvp.k;
+   public cum c;
+   public boolean d;
+
+   public gup() {
+      this.a = cik.d.a;
+   }
 }

@@ -1,29 +1,5 @@
-public class bpq implements bpr {
-   public static final bpr a = new bpq();
+import java.util.List;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bod f() {
-      return boa.a;
-   }
-
-   @Override
-   public void d() {
-   }
+public interface bpq {
+   List<bpn> bx();
 }

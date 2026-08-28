@@ -1,145 +1,117 @@
-import java.util.Arrays;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eqz {
-   private erb[] a = new erb[128];
-   private int b;
+public abstract class eqz extends eqr {
+   @Override
+   public eqs d() {
+      return equ.b;
+   }
 
-   public erb a(erb $$0) {
-      if ($$0.d >= 0) {
-         throw new IllegalStateException("OW KNOWS!");
-      } else {
-         if (this.b == this.a.length) {
-            erb[] $$1 = new erb[this.b << 1];
-            System.arraycopy(this.a, 0, $$1, 0, this.b);
-            this.a = $$1;
+   @Override
+   public eqs e() {
+      return equ.c;
+   }
+
+   @Override
+   public cvn a() {
+      return cvw.qA;
+   }
+
+   @Override
+   public void a(dej $$0, jf $$1, eqt $$2, azn $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awg.Ci, awh.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
-
-         this.a[this.b] = $$0;
-         $$0.d = this.b;
-         this.a(this.b++);
-         return $$0;
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lo.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
    }
 
-   public void a() {
-      this.b = 0;
+   @Nullable
+   @Override
+   public lm h() {
+      return lo.l;
    }
 
-   public erb b() {
-      return this.a[0];
+   @Override
+   protected boolean a(dej $$0) {
+      return $$0.ac().b(def.U);
    }
 
-   public erb c() {
-      erb $$0 = this.a[0];
-      this.a[0] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > 0) {
-         this.b(0);
+   @Override
+   protected void a(dek $$0, jf $$1, dus $$2) {
+      drv $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dhm.a($$2, $$0, $$1, $$3);
+   }
+
+   @Override
+   public int b(dem $$0) {
+      return 4;
+   }
+
+   @Override
+   public dus b(eqt $$0) {
+      return dho.G.n().b(dmc.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eqs $$0) {
+      return $$0 == equ.c || $$0 == equ.b;
+   }
+
+   @Override
+   public int c(dem $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dem $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(eqt $$0, ddo $$1, jf $$2, eqs $$3, jk $$4) {
+      return $$4 == jk.a && !$$3.a(axb.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awf> j() {
+      return Optional.of(awg.di);
+   }
+
+   public static class a extends eqz {
+      @Override
+      protected void a(dut.a<eqs, eqt> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      $$0.d = -1;
-      return $$0;
-   }
-
-   public void b(erb $$0) {
-      this.a[$$0.d] = this.a[--this.b];
-      this.a[this.b] = null;
-      if (this.b > $$0.d) {
-         if (this.a[$$0.d].g < $$0.g) {
-            this.a($$0.d);
-         } else {
-            this.b($$0.d);
-         }
+      @Override
+      public int d(eqt $$0) {
+         return $$0.c(b);
       }
 
-      $$0.d = -1;
-   }
-
-   public void a(erb $$0, float $$1) {
-      float $$2 = $$0.g;
-      $$0.g = $$1;
-      if ($$1 < $$2) {
-         this.a($$0.d);
-      } else {
-         this.b($$0.d);
+      @Override
+      public boolean c(eqt $$0) {
+         return false;
       }
    }
 
-   public int d() {
-      return this.b;
-   }
-
-   private void a(int $$0) {
-      erb $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while ($$0 > 0) {
-         int $$3 = $$0 - 1 >> 1;
-         erb $$4 = this.a[$$3];
-         if (!($$2 < $$4.g)) {
-            break;
-         }
-
-         this.a[$$0] = $$4;
-         $$4.d = $$0;
-         $$0 = $$3;
+   public static class b extends eqz {
+      @Override
+      public int d(eqt $$0) {
+         return 8;
       }
 
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   private void b(int $$0) {
-      erb $$1 = this.a[$$0];
-      float $$2 = $$1.g;
-
-      while (true) {
-         int $$3 = 1 + ($$0 << 1);
-         int $$4 = $$3 + 1;
-         if ($$3 >= this.b) {
-            break;
-         }
-
-         erb $$5 = this.a[$$3];
-         float $$6 = $$5.g;
-         erb $$7;
-         float $$8;
-         if ($$4 >= this.b) {
-            $$7 = null;
-            $$8 = Float.POSITIVE_INFINITY;
-         } else {
-            $$7 = this.a[$$4];
-            $$8 = $$7.g;
-         }
-
-         if ($$6 < $$8) {
-            if (!($$6 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$5;
-            $$5.d = $$0;
-            $$0 = $$3;
-         } else {
-            if (!($$8 < $$2)) {
-               break;
-            }
-
-            this.a[$$0] = $$7;
-            $$7.d = $$0;
-            $$0 = $$4;
-         }
+      @Override
+      public boolean c(eqt $$0) {
+         return true;
       }
-
-      this.a[$$0] = $$1;
-      $$1.d = $$0;
-   }
-
-   public boolean e() {
-      return this.b == 0;
-   }
-
-   public erb[] f() {
-      return Arrays.copyOf(this.a, this.b);
    }
 }

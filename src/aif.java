@@ -1,29 +1,18 @@
-public class aif implements zk<agq> {
-   public static final zb<wa, aif> a = zk.a(aif::a, aif::new);
-   private final int b;
+import java.util.Optional;
 
-   public aif(int $$0) {
-      this.b = $$0;
-   }
-
-   private aif(wa $$0) {
-      this.b = $$0.readShort();
-   }
-
-   private void a(wa $$0) {
-      $$0.m(this.b);
-   }
+public record aif(Optional<jo<bsw>> b, Optional<jo<bsw>> c) implements zl<agr> {
+   public static final zc<wp, aif> a = zc.a(bsw.b.a(za::a), aif::b, bsw.b.a(za::a), aif::e, aif::new);
 
    @Override
-   public zm<aif> a() {
-      return ago.bW;
+   public zn<aif> a() {
+      return agp.bV;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<jo<bsw>> e() {
+      return this.c;
    }
 }

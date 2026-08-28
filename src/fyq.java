@@ -1,61 +1,67 @@
-import java.util.Set;
-
-public class fyq extends fyu<gux> {
-   private static final float j = 2.25F;
-   public static final gau a = new fwm(true, 16.0F, 4.0F, 2.25F, 2.0F, 24.0F, Set.of("head"));
-
-   public fyq(gal $$0) {
+public class fyq extends fwg<gva> {
+   public fyq(gaq $$0) {
       super($$0);
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      $$1.a(
-         "head",
-         gaq.c()
-            .a(0, 0)
-            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
-            .a(0, 44)
-            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
-            .a(26, 0)
-            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
-            .a(26, 0)
-            .a()
-            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
-         gan.a(0.0F, 10.0F, -16.0F)
-      );
-      $$1.a(
-         "body",
-         gaq.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
-         gan.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      int $$2 = 10;
-      gaq $$3 = gaq.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
-      $$1.a("right_hind_leg", $$3, gan.a(-4.5F, 14.0F, 6.0F));
-      $$1.a("left_hind_leg", $$3, gan.a(4.5F, 14.0F, 6.0F));
-      gaq $$4 = gaq.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
-      $$1.a("right_front_leg", $$4, gan.a(-3.5F, 14.0F, -8.0F));
-      $$1.a("left_front_leg", $$4, gan.a(3.5F, 14.0F, -8.0F));
-      return gar.a($$0, 128, 64).a(gau.scaling(1.2F));
+   public void a(gva $$0) {
+      super.a($$0);
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.C;
+      cmp $$3 = $$0.d;
+      if ($$3 == cmp.e) {
+         float $$4 = $$0.p / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azf.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azf.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + azf.a($$4 * 10.0F);
+         this.o.c = this.o.c + azf.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azf.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (azf.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + azf.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + azf.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == cmp.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == cmp.b) {
+         fwj.a(this.r, this.s, this.o, $$0.ap == buh.b);
+      } else if ($$3 == cmp.c) {
+         fwj.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == buh.b);
+      } else if ($$3 == cmp.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.ap == buh.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
    }
 
-   public void a(gux $$0) {
-      this.a().e().forEach(gal::c);
-      super.a($$0);
-      float $$1 = $$0.a * $$0.a;
-      float $$2 = $$0.ab;
-      float $$3 = $$0.ae ? 0.44444445F : 1.0F;
-      this.d.e -= $$1 * (float) Math.PI * 0.35F;
-      this.d.c += $$1 * $$2 * 2.0F;
-      this.g.c -= $$1 * $$2 * 20.0F;
-      this.g.d += $$1 * $$2 * 4.0F;
-      this.g.e -= $$1 * (float) Math.PI * 0.45F;
-      this.i.c = this.g.c;
-      this.i.d = this.g.d;
-      this.i.e -= $$1 * (float) Math.PI * 0.45F;
-      this.c.c -= $$1 * $$3 * 24.0F;
-      this.c.d += $$1 * $$3 * 13.0F;
-      this.c.e += $$1 * (float) Math.PI * 0.15F;
+   protected void a(gva $$0, float $$1) {
+      float $$2 = $$0.C;
+      if ($$2 > 0.0F && $$0.d == cmp.a) {
+         fwj.a(this.r, this.s, $$0.ap, $$2, $$0.p);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(gva $$0) {
+      if ($$0.ap == buh.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

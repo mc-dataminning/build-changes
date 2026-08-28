@@ -2,110 +2,170 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class qo {
-   public static void a(qt<emm> $$0) {
-      jo<epc> $$1 = $$0.a(lv.aT);
-      jn<epc> $$2 = $$1.b(rb.t);
-      jo<emm> $$3 = $$0.a(lv.aV);
-      jn<emm> $$4 = $$3.b(ra.a);
-      ra.a(
+   public static void a(qu<emq> $$0) {
+      jp<epg> $$1 = $$0.a(lw.aU);
+      jo<epg> $$2 = $$1.b(rc.v);
+      jo<epg> $$3 = $$1.b(rc.u);
+      jp<emq> $$4 = $$0.a(lw.aW);
+      jo<emq> $$5 = $$4.b(rb.a);
+      rb.a(
          $$0,
-         "bastion/units/center_pieces",
-         new emm(
-            $$4,
+         "bastion/hoglin_stable/starting_pieces",
+         new emq(
+            $$5,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/units/center_pieces/center_0", $$2), 1),
-               Pair.of(emk.b("bastion/units/center_pieces/center_1", $$2), 1),
-               Pair.of(emk.b("bastion/units/center_pieces/center_2", $$2), 1)
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a(
+      rb.a(
          $$0,
-         "bastion/units/pathways",
-         new emm(
-            $$4,
-            ImmutableList.of(Pair.of(emk.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(emk.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
-            emm.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "bastion/units/walls/wall_bases",
-         new emm(
-            $$4,
-            ImmutableList.of(Pair.of(emk.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(emk.b("bastion/units/walls/connected_wall", $$2), 1)),
-            emm.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "bastion/units/stages/stage_0",
-         new emm(
-            $$4,
+         "bastion/hoglin_stable/mirrored_starting_pieces",
+         new emq(
+            $$5,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/units/stages/stage_0_0", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_0_1", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_0_2", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_0_3", $$2), 1)
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a(
+      rb.a($$0, "bastion/hoglin_stable/wall_bases", new emq($$5, ImmutableList.of(Pair.of(emo.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), emq.a.b));
+      rb.a(
          $$0,
-         "bastion/units/stages/stage_1",
-         new emm(
-            $$4,
+         "bastion/hoglin_stable/walls",
+         new emq(
+            $$5,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/units/stages/stage_1_0", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_1_1", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_1_2", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_1_3", $$2), 1)
+               Pair.of(emo.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(emo.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a($$0, "bastion/units/stages/rot/stage_1", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), emm.a.b));
-      ra.a(
+      rb.a(
          $$0,
-         "bastion/units/stages/stage_2",
-         new emm(
-            $$4, ImmutableList.of(Pair.of(emk.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(emk.b("bastion/units/stages/stage_2_1", $$2), 1)), emm.a.b
-         )
-      );
-      ra.a(
-         $$0,
-         "bastion/units/stages/stage_3",
-         new emm(
-            $$4,
+         "bastion/hoglin_stable/stairs",
+         new emq(
+            $$5,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/units/stages/stage_3_0", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_3_1", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_3_2", $$2), 1),
-               Pair.of(emk.b("bastion/units/stages/stage_3_3", $$2), 1)
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
+               new Pair[]{
+                  Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
+                  Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
+                  Pair.of(emo.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
+               }
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a($$0, "bastion/units/fillers/stage_0", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/fillers/stage_0", $$2), 1)), emm.a.b));
-      ra.a($$0, "bastion/units/edges", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/edges/edge_0", $$2), 1)), emm.a.b));
-      ra.a($$0, "bastion/units/wall_units", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/wall_units/unit_0", $$2), 1)), emm.a.b));
-      ra.a($$0, "bastion/units/edge_wall_units", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/wall_units/edge_0_large", $$2), 1)), emm.a.b));
-      ra.a(
+      rb.a(
          $$0,
-         "bastion/units/ramparts",
-         new emm(
-            $$4,
+         "bastion/hoglin_stable/small_stables/inner",
+         new emq(
+            $$5,
             ImmutableList.of(
-               Pair.of(emk.b("bastion/units/ramparts/ramparts_0", $$2), 1),
-               Pair.of(emk.b("bastion/units/ramparts/ramparts_1", $$2), 1),
-               Pair.of(emk.b("bastion/units/ramparts/ramparts_2", $$2), 1)
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
             ),
-            emm.a.b
+            emq.a.b
          )
       );
-      ra.a($$0, "bastion/units/large_ramparts", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/ramparts/ramparts_0", $$2), 1)), emm.a.b));
-      ra.a($$0, "bastion/units/rampart_plates", new emm($$4, ImmutableList.of(Pair.of(emk.b("bastion/units/rampart_plates/plate_0", $$2), 1)), emm.a.b));
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/small_stables/outer",
+         new emq(
+            $$5,
+            ImmutableList.of(
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
+            ),
+            emq.a.b
+         )
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/large_stables/inner",
+         new emq(
+            $$5,
+            ImmutableList.of(
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
+            ),
+            emq.a.b
+         )
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/large_stables/outer",
+         new emq(
+            $$5,
+            ImmutableList.of(
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
+            ),
+            emq.a.b
+         )
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/posts",
+         new emq(
+            $$5,
+            ImmutableList.of(Pair.of(emo.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(emo.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
+            emq.a.b
+         )
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/ramparts",
+         new emq(
+            $$5,
+            ImmutableList.of(
+               Pair.of(emo.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
+               Pair.of(emo.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
+            ),
+            emq.a.b
+         )
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/rampart_plates",
+         new emq($$5, ImmutableList.of(Pair.of(emo.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), emq.a.b)
+      );
+      rb.a(
+         $$0,
+         "bastion/hoglin_stable/connectors",
+         new emq($$5, ImmutableList.of(Pair.of(emo.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), emq.a.b)
+      );
    }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gwd {
+public class gwd extends gtq {
+   public boolean a;
+   public float b;
+   public float c;
 }

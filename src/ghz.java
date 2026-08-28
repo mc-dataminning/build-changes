@@ -1,82 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record ghz(alc b, alc c, List<ghz.a> d, List<ghz.b> e, ghw f) {
-   public static final Codec<ghz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alc.a.fieldOf("vertex").forGetter(ghz::a),
-               alc.a.fieldOf("fragment").forGetter(ghz::b),
-               ghz.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(ghz::c),
-               ghz.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(ghz::d),
-               ghw.b.optionalFieldOf("defines", ghw.a).forGetter(ghz::e)
-            )
-            .apply($$0, ghz::new)
-   );
+public class ghz {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<ghy> b;
+   private volatile int c;
 
-   public alc a() {
-      return this.b;
+   private ghz(List<ghy> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   public alc b() {
+   public static ghz a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / ghy.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<ghy> $$3 = new ArrayList<>($$2);
+
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new ghy());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
+      }
+
+      return new ghz($$3);
+   }
+
+   @Nullable
+   public ghy a() {
+      ghy $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(ghy $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
+
+   public boolean b() {
+      return this.b.isEmpty();
+   }
+
+   public int c() {
       return this.c;
-   }
-
-   public List<ghz.a> c() {
-      return this.d;
-   }
-
-   public List<ghz.b> d() {
-      return this.e;
-   }
-
-   public ghw e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<ghz.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ghz.a::a)).apply($$0, ghz.a::new));
-
-      public String a() {
-         return this.b;
-      }
-   }
-
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<ghz.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(ghz.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(ghz.b::b),
-                     Codec.INT.fieldOf("count").forGetter(ghz.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(ghz.b::d)
-                  )
-                  .apply($$0, ghz.b::new)
-         )
-         .validate(ghz.b::a);
-
-      private static DataResult<ghz.b> a(ghz.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
-      }
    }
 }

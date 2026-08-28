@@ -1,44 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class ee extends dv<ee.a> {
-   @Override
-   public Codec<ee.a> a() {
-      return ee.a.a;
-   }
-
-   public void a(ari $$0, cga $$1) {
-      eth $$2 = bv.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
-   }
-
-   public static record a(Optional<bg> b, Optional<bg> c) implements dv.a {
-      public static final Codec<ee.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ee.a::a), bv.b.optionalFieldOf("entity").forGetter(ee.a::c)).apply($$0, ee.a::new)
+public record ee<T>(axl<T> a, boolean b) {
+   public static <T> Codec<ee<T>> a(ald<? extends kb<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(axl.a($$0).fieldOf("id").forGetter(ee::a), Codec.BOOL.fieldOf("expected").forGetter(ee::b)).apply($$1, ee::new)
       );
+   }
 
-      public static ao<ee.a> b() {
-         return an.y.a(new ee.a(Optional.empty(), Optional.empty()));
-      }
+   public static <T> ee<T> a(axl<T> $$0) {
+      return new ee<>($$0, true);
+   }
 
-      public static ao<ee.a> a(bv.a $$0) {
-         return an.y.a(new ee.a(Optional.empty(), Optional.of(bv.a($$0))));
-      }
+   public static <T> ee<T> b(axl<T> $$0) {
+      return new ee<>($$0, false);
+   }
 
-      public boolean a(eth $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public void a(bh $$0) {
-         dv.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bg> a() {
-         return this.b;
-      }
+   public boolean a(jo<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

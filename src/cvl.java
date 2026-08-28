@@ -1,69 +1,83 @@
-import com.google.common.collect.Maps;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
+import java.util.Optional;
 
-public class cvl {
-   private final Map<alc, cvl.a> a = Maps.newHashMap();
-   private int b;
+public class cvl extends cvn {
+   private final axl<cvk> a;
 
-   public boolean a(cvp $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cvl(cvn.a $$0, axl<cvk> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public float a(cvp $$0, float $$1) {
-      alc $$2 = this.b($$0);
-      cvl.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azd.a($$5 / $$4, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alc, cvl.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alc, cvl.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
-            }
+   @Override
+   public void a(cvs $$0, cvn.b $$1, List<xe> $$2, cxk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      jq.a $$4 = $$1.a();
+      if ($$4 != null) {
+         Optional<jo<cvk>> $$5 = this.a($$0, $$4);
+         if ($$5.isPresent()) {
+            xs $$6 = $$5.get().a().d().f();
+            xh.a($$6, yb.a.a(n.h));
+            $$2.add($$6);
          }
       }
    }
 
-   public alc b(cvp $$0) {
-      cyy $$1 = $$0.a(kr.y);
-      alc $$2 = lu.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   public static cvs a(cvn $$0, jo<cvk> $$1) {
+      cvs $$2 = new cvs($$0);
+      $$2.b(ks.U, $$1);
+      return $$2;
    }
 
-   public void a(cvp $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   @Override
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      Optional<? extends jo<cvk>> $$4 = this.a($$3, $$1.dU());
+      if ($$4.isPresent()) {
+         cvk $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gy().a($$3, azf.d($$5.b() * 20.0F));
+         $$1.b(awq.c.b(this));
+         return brs.c;
+      } else {
+         return brs.d;
+      }
    }
 
-   public void a(alc $$0, int $$1) {
-      this.a.put($$0, new cvl.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
+   @Override
+   public int a(cvs $$0, bun $$1) {
+      Optional<jo<cvk>> $$2 = this.a($$0, $$1.dU());
+      return $$2.<Integer>map($$0x -> azf.d(((cvk)$$0x.a()).b() * 20.0F)).orElse(0);
    }
 
-   public void a(alc $$0) {
-      this.a.remove($$0);
-      this.b($$0);
+   private Optional<jo<cvk>> a(cvs $$0, jq.a $$1) {
+      jo<cvk> $$2 = $$0.a(ks.U);
+      if ($$2 != null) {
+         return Optional.of($$2);
+      } else {
+         Optional<js.c<cvk>> $$3 = $$1.d(lw.I).a(this.a);
+         if ($$3.isPresent()) {
+            Iterator<jo<cvk>> $$4 = $$3.get().iterator();
+            if ($$4.hasNext()) {
+               return Optional.of($$4.next());
+            }
+         }
+
+         return Optional.empty();
+      }
    }
 
-   protected void b(alc $$0, int $$1) {
+   @Override
+   public cvu a(cvs $$0) {
+      return cvu.i;
    }
 
-   protected void b(alc $$0) {
-   }
-
-   static record a(int a, int b) {
+   private static void a(dej $$0, cnx $$1, cvk $$2) {
+      awf $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, awh.c, $$4, 1.0F);
+      $$0.a(dzp.B, $$1.dq(), dzp.a.a($$1));
    }
 }

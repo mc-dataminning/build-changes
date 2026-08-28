@@ -1,27 +1,13 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eow extends eoy {
-   public static final MapCodec<eow> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(duo.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, eow::new)
-   );
-   private final duo b;
-   private final float d;
+public interface eow<P extends eov> {
+   eow<eou> a = a("always_true", eou.a);
+   eow<eor> b = a("linear_pos", eor.a);
+   eow<eog> c = a("axis_aligned_linear_pos", eog.a);
 
-   public eow(duo $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(duo $$0, azl $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected eoz<?> a() {
-      return eoz.f;
+   static <P extends eov> eow<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.o, $$0, () -> $$1);
    }
 }

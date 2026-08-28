@@ -1,34 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnd extends dje {
-   public static final MapCodec<dnd> a = b(dnd::new);
-   private static final ezm[] b = new ezm[]{
-      dhj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dhj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+public class dnd extends dqo {
+   public static final MapCodec<dnd> b = b(dnd::new);
 
    @Override
    public MapCodec<dnd> a() {
-      return a;
+      return b;
    }
 
-   public dnd(dun.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected def d() {
-      return cvt.ui;
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return b[this.h($$0)];
+   protected dnd(dur.d $$0) {
+      super(dop.b.e, $$0);
    }
 }

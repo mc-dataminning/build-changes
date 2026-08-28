@@ -1,20 +1,25 @@
-public class drr extends drg {
-   public drr(je $$0, duo $$1) {
-      super(dru.C, $$0, $$1, dan.c);
+public class drr extends drv {
+   private cum a;
+
+   public drr(jf $$0, dus $$1) {
+      super(drx.y, $$0, $$1);
+      this.a = ((dhf)$$1.b()).b();
    }
 
-   @Override
-   protected xd j() {
-      return xd.c("container.blast_furnace");
+   public drr(jf $$0, dus $$1, cum $$2) {
+      super(drx.y, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected int a(dsp $$0, cvp $$1) {
-      return super.a($$0, $$1) / 2;
+   public ach b() {
+      return ach.a(this);
    }
 
-   @Override
-   protected cqw a(int $$0, cnt $$1) {
-      return new crc($$0, $$1, this, this.n);
+   public cum c() {
+      return this.a;
+   }
+
+   public void a(cum $$0) {
+      this.a = $$0;
    }
 }

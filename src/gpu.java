@@ -1,15 +1,16 @@
-public class gpu extends gop<chx, guj, fzo> {
-   private static final alc a = alc.b("textures/entity/tadpole/tadpole.png");
+public class gpu extends gmn<cox, gsy> {
+   public static final ale a = ale.b("textures/entity/projectiles/spectral_arrow.png");
 
-   public gpu(gnj.a $$0) {
-      super($$0, new fzo($$0.a(gak.cH)), 0.14F);
+   public gpu(gno.a $$0) {
+      super($$0);
    }
 
-   public alc g(guj $$0) {
+   @Override
+   protected ale a(gsy $$0) {
       return a;
    }
 
-   public guj c() {
-      return new guj();
+   public gsy a() {
+      return new gsy();
    }
 }

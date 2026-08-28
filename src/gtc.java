@@ -1,9 +1,11 @@
 import javax.annotation.Nullable;
 
-public class gtc extends gtr {
-   private static final alc j = alc.b("textures/entity/cat/tabby.png");
-   public alc a = j;
-   public boolean b;
+public class gtc extends gtk {
    @Nullable
-   public cuj c;
+   public btp.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

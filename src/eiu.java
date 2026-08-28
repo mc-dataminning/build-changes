@@ -2,76 +2,68 @@ import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.function.BiConsumer;
 
-public class eiu extends eiy {
-   public static final MapCodec<eiu> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiu::new));
+public class eiu extends ejc {
+   public static final MapCodec<eiu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  ayo.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bqx.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, eiu::new)
+   );
+   private final int b;
+   private final bqx h;
 
-   public eiu(int $$0, int $$1, int $$2) {
+   public eiu(int $$0, int $$1, int $$2, int $$3, bqx $$4) {
       super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
    @Override
-   protected eiz<?> a() {
-      return eiz.b;
+   protected ejd<?> a() {
+      return ejd.g;
    }
 
    @Override
-   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<ehg.a> $$6 = Lists.newArrayList();
-      jj $$7 = jj.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      je.a $$10 = new je.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+   public List<ehk.a> a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, int $$3, jf $$4, egu $$5) {
+      jk $$6 = jk.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      jf.a $$8 = $$4.k();
+      jf $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<ehk.a> $$10 = Lists.newArrayList();
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
 
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
+         if (efg.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
          }
+
+         if ($$11 >= this.b) {
+            $$10.add(new ehk.a($$8.j(), 0, false));
+         }
+
+         $$8.c(jk.b);
       }
 
-      if ($$13.isPresent()) {
-         $$6.add(new ehg.a(new je($$11, $$13.getAsInt(), $$12), 1, false));
-      }
+      int $$12 = this.h.a($$2);
 
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jj $$16 = jj.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (efg.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
          }
 
-         if ($$13.isPresent()) {
-            $$6.add(new ehg.a(new je($$11, $$13.getAsInt(), $$12), 0, false));
-         }
+         $$10.add(new ehk.a($$8.j(), 0, false));
+         $$8.c($$6);
       }
 
-      return $$6;
+      return $$10;
    }
 }

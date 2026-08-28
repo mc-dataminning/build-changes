@@ -1,86 +1,147 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public interface bri extends brg {
-   float q_ = 4.0F;
+public abstract class bri {
+   private final UUID h;
+   protected xe a;
+   protected float b;
+   protected bri.a c;
+   protected bri.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean c();
-
-   cvp a(int var1);
-
-   cvp a(int var1, int var2);
-
-   cvp b(int var1);
-
-   void a(int var1, cvp var2);
-
-   default int ak_() {
-      return 99;
+   public bri(UUID $$0, xe $$1, bri.a $$2, bri.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   default int f_(cvp $$0) {
-      return Math.min(this.ak_(), $$0.k());
+   public UUID h() {
+      return this.h;
    }
 
-   void e();
-
-   boolean a(cnu var1);
-
-   default void d_(cnu $$0) {
+   public xe i() {
+      return this.a;
    }
 
-   default void c(cnu $$0) {
+   public void a(xe $$0) {
+      this.a = $$0;
    }
 
-   default boolean b(int $$0, cvp $$1) {
-      return true;
+   public float j() {
+      return this.b;
    }
 
-   default boolean a(bri $$0, int $$1, cvp $$2) {
-      return true;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   default int a_(cvk $$0) {
-      int $$1 = 0;
+   public bri.a k() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cvp $$3 = this.a($$2);
-         if ($$3.h().equals($$0)) {
-            $$1 += $$3.J();
-         }
+   public void a(bri.a $$0) {
+      this.c = $$0;
+   }
+
+   public bri.b l() {
+      return this.d;
+   }
+
+   public void a(bri.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean m() {
+      return this.e;
+   }
+
+   public bri a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean n() {
+      return this.f;
+   }
+
+   public bri b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bri c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(final String $$0, final n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a_(Set<cvk> $$0) {
-      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
-   }
-
-   default boolean a_(Predicate<cvp> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cvp $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
+      public n a() {
+         return this.i;
       }
 
-      return false;
+      public String b() {
+         return this.h;
+      }
+
+      public static bri.a a(String $$0) {
+         for (bri.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   static boolean a(drs $$0, cnu $$1) {
-      return a($$0, $$1, 4.0F);
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   static boolean a(drs $$0, cnu $$1, float $$2) {
-      deg $$3 = $$0.i();
-      je $$4 = $$0.aB_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
+      private final String f;
+
+      private b(final String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bri.b a(String $$0) {
+         for (bri.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

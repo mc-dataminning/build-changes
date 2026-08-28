@@ -1,12 +1,20 @@
-public class abv {
-   public static final zm<abu> a = a("cookie_request");
-   public static final zm<abx> b = b("cookie_response");
+public record abv(ale b) implements zl<abu> {
+   public static final zc<wb, abv> a = zl.a(abv::a, abv::new);
 
-   private static <T extends zk<abt>> zm<T> a(String $$0) {
-      return new zm<>(zl.b, alc.b($$0));
+   private abv(wb $$0) {
+      this($$0.q());
    }
 
-   private static <T extends zk<abw>> zm<T> b(String $$0) {
-      return new zm<>(zl.a, alc.b($$0));
+   private void a(wb $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zn<abv> a() {
+      return abw.a;
+   }
+
+   public void a(abu $$0) {
+      $$0.a(this);
    }
 }

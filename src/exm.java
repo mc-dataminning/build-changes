@@ -1,25 +1,29 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record exm(dbr b) implements exo {
-   public static final MapCodec<exm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbr.b.fieldOf("amount").forGetter(exm::c)).apply($$0, exm::new));
-
-   @Override
-   public float b(eth $$0) {
-      int $$1 = $$0.b(ewd.k);
-      return this.b.a($$1);
-   }
+public record exm(ale b) implements exk {
+   public static final MapCodec<exm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ale.a.fieldOf("source").forGetter(exm::c)).apply($$0, exm::new));
 
    @Override
-   public exn b() {
-      return exp.g;
+   public exj a() {
+      return exl.b;
    }
 
-   public static exm a(dbr $$0) {
-      return new exm($$0);
+   @Nullable
+   @Override
+   public vd a(etl $$0) {
+      return $$0.d().o().aK().a(this.b);
    }
 
-   public dbr c() {
+   @Override
+   public Set<ewe<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public ale c() {
       return this.b;
    }
 }

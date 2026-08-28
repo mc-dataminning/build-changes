@@ -1,19 +1,34 @@
-public class dee {
-   private static int[] a = new int[65536];
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public class dee extends esf {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
+
+   public static esf.a<dee> a() {
+      return new esf.a<>(dee::new, dee::b, bao.i);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   private dee(LongSet $$0) {
+      this.c = $$0;
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   public dee() {
+      this(new LongOpenHashSet());
+   }
+
+   public static dee b(ug $$0, jq.a $$1) {
+      return new dee(new LongOpenHashSet($$0.o("Forced")));
+   }
+
+   @Override
+   public ug a(ug $$0, jq.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

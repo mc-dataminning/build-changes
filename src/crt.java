@@ -1,22 +1,58 @@
-public class crt extends cst {
-   private final cqy a;
+public abstract class crt {
+   private int a;
 
-   public crt(cqy $$0, bri $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+   public static crt a(final crl $$0, final int $$1) {
+      return new crt() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
+   }
+
+   public static crt a(final int[] $$0, final int $$1) {
+      return new crt() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static crt a() {
+      return new crt() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
       this.a = $$0;
-   }
-
-   @Override
-   public boolean a(cvp $$0) {
-      return this.a.d($$0) || c($$0);
-   }
-
-   @Override
-   public int a_(cvp $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cvp $$0) {
-      return $$0.a(cvt.qz);
+      return $$1;
    }
 }

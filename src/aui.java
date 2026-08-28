@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aui {
+@FunctionalInterface
+public interface aui {
+   void loadPacks(Consumer<aud> var1);
 }

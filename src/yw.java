@@ -1,36 +1,16 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class yw implements yt {
-   public static final yu<yw> a = new yu<yw>() {
-      private static final MapCodec<yw> a = ya.b.a.xmap(yw::new, $$0 -> $$0.e);
-      private static final zb<wo, yw> b = zb.a(ya.b.c, $$0 -> $$0.e, yw::new);
+public class yw {
+   public static final MapCodec<yu> a = lv.an.q().dispatchMap(yu::a, yv::a);
+   public static final Codec<yu> b = a.codec();
+   public static final zc<wp, yu> c = za.a(lw.ay).b(yu::a, yv::b);
+   public static final zc<wp, Optional<yu>> d = c.a(za::a);
 
-      @Override
-      public MapCodec<yw> a() {
-         return a;
-      }
-
-      @Override
-      public zb<wo, yw> b() {
-         return b;
-      }
-   };
-   public static final yw b = new yw(ya.a);
-   public static final yw c = new yw(ya.a.a(n.m));
-   public static final yw d = new yw(ya.a.a(n.o));
-   final ya e;
-
-   public yw(ya $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public xr a(int $$0) {
-      return xd.b(Integer.toString($$0)).c(this.e);
-   }
-
-   @Override
-   public yu<yw> a() {
-      return a;
+   public static yv<?> a(kb<yv<?>> $$0) {
+      kb.a($$0, "blank", ys.b);
+      kb.a($$0, "styled", yx.a);
+      return kb.a($$0, "fixed", yt.a);
    }
 }

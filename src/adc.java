@@ -1,21 +1,20 @@
-public record adc(xd b, wz.a c) implements zk<abz> {
-   public static final zb<wo, adc> a = zb.a(xf.d, adc::b, wz.a.a, adc::e, adc::new);
+public record adc(xq.a b) implements zl<aca> {
+   public static final zc<wb, adc> a = zl.a(adc::a, adc::new);
 
-   @Override
-   public zm<adc> a() {
-      return ago.C;
+   private adc(wb $$0) {
+      this(xq.a.a($$0));
    }
 
-   public void a(abz $$0) {
+   private void a(wb $$0) {
+      xq.a.a($$0, this.b);
+   }
+
+   @Override
+   public zn<adc> a() {
+      return agp.B;
+   }
+
+   public void a(aca $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wz.a e() {
-      return this.c;
    }
 }

@@ -1,120 +1,48 @@
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class rf {
-   public static void a(qt<elc> $$0) {
-      jo<dfh> $$1 = $$0.a(lv.aG);
-      jo<emm> $$2 = $$0.a(lv.aV);
-      $$0.a(
-         ekw.a,
-         new end(
-            new elc.c.a($$1.b(aws.y)).a(Map.of(bun.a, new elj(elj.a.b, bqd.a(new dft.c(btv.aC, 1, 1, 1))))).a(eln.c).a(),
-            $$2.b(qy.a),
-            7,
-            eji.a(ebe.a(0)),
-            true,
-            eak.a.a
+public interface rf {
+   static void a(qu<elm> $$0) {
+      jp<elg> $$1 = $$0.a(lw.aT);
+      jp<dfk> $$2 = $$0.a(lw.aH);
+      jo.c<elm> $$3 = $$0.a(
+         ekz.a,
+         new elm(
+            List.of(elm.a($$1.b(ela.t)), elm.a($$1.b(ela.u)), elm.a($$1.b(ela.v)), elm.a($$1.b(ela.w)), elm.a($$1.b(ela.x))), new emb(34, 8, emc.a, 10387312)
          )
       );
-      $$0.a(ekw.b, new enh(new elc.c.a($$1.b(aws.t)).a(eag.a.d).a(), enh.a.a));
-      $$0.a(ekw.c, new enh(new elc.c.a($$1.b(aws.u)).a(eag.a.d).a(), enh.a.b));
-      $$0.a(ekw.d, new enz(new elc.c($$1.b(aws.Q))));
-      $$0.a(ekw.e, new enf(new elc.c($$1.b(aws.s))));
-      $$0.a(ekw.f, new emy(new elc.c($$1.b(aws.q))));
-      $$0.a(ekw.g, new enc(new elc.c($$1.b(aws.r))));
-      $$0.a(ekw.h, new ent(new elc.c($$1.b(aws.G)), false));
-      $$0.a(ekw.i, new ent(new elc.c($$1.b(aws.F)), true));
+      $$0.a(ekz.b, new elm($$1.b(ela.f), new emb(32, 8, emc.a, 14357617)));
+      $$0.a(ekz.c, new elm($$1.b(ela.g), new emb(32, 8, emc.a, 14357618)));
+      $$0.a(ekz.d, new elm($$1.b(ela.e), new emb(32, 8, emc.a, 14357619)));
+      $$0.a(ekz.e, new elm($$1.b(ela.j), new emb(32, 8, emc.a, 14357620)));
+      $$0.a(ekz.f, new elm($$1.b(ela.a), new emb(kj.g, emd.c.b, 0.2F, 165745296, Optional.of(new emd.a($$3, 10)), 32, 8, emc.a)));
+      $$0.a(ekz.q, new elm($$1.b(ela.F), new emb(24, 8, emc.a, 20083232)));
+      $$0.a(ekz.g, new elm($$1.b(ela.l), new emb(32, 5, emc.b, 10387313)));
+      $$0.a(ekz.h, new elm($$1.b(ela.d), new emb(80, 20, emc.b, 10387319)));
+      $$0.a(ekz.i, new elm($$1.b(ela.r), new emb(new kj(9, 0, 9), emd.c.c, 0.01F, 0, Optional.empty(), 1, 0, emc.a)));
+      $$0.a(ekz.j, new elm(List.of(elm.a($$1.b(ela.b)), elm.a($$1.b(ela.c))), new emb(kj.g, emd.c.d, 0.004F, 0, Optional.empty(), 1, 0, emc.a)));
       $$0.a(
-         ekw.j,
-         new enx(
-            new elc.c.a($$1.b(aws.J))
-               .a(Map.of(bun.a, new elj(elj.a.a, bqd.a(new dft.c(btv.bo, 1, 1, 1))), bun.b, new elj(elj.a.a, bqd.a(new dft.c(btv.p, 1, 1, 1)))))
-               .a()
+         ekz.k,
+         new elm(
+            List.of(
+               elm.a($$1.b(ela.y)),
+               elm.a($$1.b(ela.z)),
+               elm.a($$1.b(ela.A)),
+               elm.a($$1.b(ela.B)),
+               elm.a($$1.b(ela.C)),
+               elm.a($$1.b(ela.D)),
+               elm.a($$1.b(ela.E))
+            ),
+            new emb(40, 15, emc.a, 34222645)
          )
       );
-      $$0.a(ekw.k, new env(new elc.c.a($$1.b(aws.H)).a(eln.b).a()));
-      $$0.a(
-         ekw.l,
-         new enn(
-            new elc.c.a($$1.b(aws.v))
-               .a(Map.of(bun.a, new elj(elj.a.b, bqd.a(new dft.c(btv.Y, 1, 2, 4))), bun.e, new elj(elj.a.b, dft.a), bun.d, new elj(elj.a.b, dft.a)))
-               .a()
-         )
-      );
-      $$0.a(ekw.m, new enp(new elc.c($$1.b(aws.w)), enp.a.b, 0.3F, 0.9F));
-      $$0.a(ekw.n, new enp(new elc.c($$1.b(aws.x)), enp.a.a, 0.3F, 0.9F));
-      $$0.a(ekw.o, new enj(new elc.c.a($$1.b(aws.R)).a(Map.of(bun.a, new elj(elj.a.a, enj.d))).a(eag.a.h).a()));
-      $$0.a(ekw.p, new enl(new elc.c.a($$1.b(aws.S)).a(eag.a.h).a(eln.c).a(), ejm.a(ebe.a(32), ebe.c(2))));
-      $$0.a(ekw.q, new ena(new elc.c($$1.b(aws.W))));
-      $$0.a(ekw.r, new emw(new elc.c.a($$1.b(aws.p)).a(eag.a.d).a()));
-      $$0.a(ekw.s, new end(new elc.c($$1.b(aws.T)), $$2.b(qp.a), 6, eji.a(ebe.a(33)), false));
-      $$0.a(ekw.t, new end(new elc.c.a($$1.b(aws.L)).a(eln.c).a(), $$2.b(qz.a), 6, eji.a(ebe.a(0)), true, eak.a.a));
-      $$0.a(ekw.u, new end(new elc.c.a($$1.b(aws.K)).a(eln.c).a(), $$2.b(qv.a), 6, eji.a(ebe.a(0)), true, eak.a.a));
-      $$0.a(ekw.v, new end(new elc.c.a($$1.b(aws.M)).a(eln.c).a(), $$2.b(rc.a), 6, eji.a(ebe.a(0)), true, eak.a.a));
-      $$0.a(ekw.w, new end(new elc.c.a($$1.b(aws.N)).a(eln.c).a(), $$2.b(rd.a), 6, eji.a(ebe.a(0)), true, eak.a.a));
-      $$0.a(ekw.x, new end(new elc.c.a($$1.b(aws.O)).a(eln.c).a(), $$2.b(rh.a), 6, eji.a(ebe.a(0)), true, eak.a.a));
-      $$0.a(
-         ekw.y,
-         new enr(
-            new elc.c($$1.b(aws.E)),
-            List.of(new enr.a(enq.b.e, 1.0F, 0.2F, false, false, true, false, 0.5F), new enr.a(enq.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
-         )
-      );
-      $$0.a(ekw.z, new enr(new elc.c($$1.b(aws.z)), new enr.a(enq.b.b, 0.0F, 0.0F, false, false, false, false, 1.0F)));
-      $$0.a(ekw.A, new enr(new elc.c($$1.b(aws.A)), new enr.a(enq.b.a, 0.5F, 0.8F, true, true, false, false, 1.0F)));
-      $$0.a(ekw.B, new enr(new elc.c($$1.b(aws.C)), new enr.a(enq.b.c, 0.0F, 0.5F, false, true, false, false, 1.0F)));
-      $$0.a(
-         ekw.C,
-         new enr(
-            new elc.c($$1.b(aws.D)),
-            List.of(new enr.a(enq.b.d, 1.0F, 0.2F, false, false, true, false, 0.5F), new enr.a(enq.b.a, 0.5F, 0.2F, false, false, true, false, 0.5F))
-         )
-      );
-      $$0.a(ekw.D, new enr(new elc.c($$1.b(aws.B)), new enr.a(enq.b.c, 0.0F, 0.8F, false, false, true, false, 1.0F)));
-      $$0.a(ekw.E, new enr(new elc.c($$1.b(aws.V)), new enr.a(enq.b.f, 0.5F, 0.0F, false, false, false, true, 1.0F)));
-      $$0.a(
-         ekw.F,
-         new end(
-            new elc.c.a($$1.b(aws.U))
-               .a(Arrays.stream(bun.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new elj(elj.a.b, bqd.c()))))
-               .a(eag.a.h)
-               .a(eln.d)
-               .a(),
-            $$2.b(qk.a),
-            Optional.of(alc.b("city_anchor")),
-            7,
-            eji.a(ebe.a(-27)),
-            false,
-            Optional.empty(),
-            116,
-            List.of(),
-            end.d,
-            end.e
-         )
-      );
-      $$0.a(ekw.G, new end(new elc.c.a($$1.b(aws.P)).a(eag.a.d).a(eln.b).a(), $$2.b(rj.a), 7, eji.a(ebe.a(-15)), false, eak.a.a));
-      $$0.a(
-         ekw.H,
-         new end(
-            new elc.c.a($$1.b(aws.I))
-               .a(eag.a.d)
-               .a(eln.e)
-               .a(Arrays.stream(bun.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new elj(elj.a.a, bqd.c()))))
-               .a(),
-            $$2.b(rk.a),
-            Optional.empty(),
-            20,
-            ejm.a(ebe.a(-40), ebe.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            rk.c,
-            new emc(10),
-            eoo.a
-         )
-      );
+      $$0.a(ekz.l, new elm(List.of(elm.a($$1.b(ela.h)), elm.a($$1.b(ela.i))), new emb(24, 4, emc.a, 165745295)));
+      $$0.a(ekz.m, new elm(List.of(elm.a($$1.b(ela.m)), elm.a($$1.b(ela.n))), new emb(20, 8, emc.a, 14357621)));
+      $$0.a(ekz.n, new elm(List.of(elm.a($$1.b(ela.o), 2), elm.a($$1.b(ela.s), 3)), new emb(27, 4, emc.a, 30084232)));
+      $$0.a(ekz.o, new elm($$1.b(ela.p), new emb(2, 1, emc.a, 14357921)));
+      $$0.a(ekz.p, new elm($$1.b(ela.q), new emb(20, 11, emc.b, 10387313)));
+      $$0.a(ekz.r, new elm($$1.b(ela.k), new ema(32, 3, 128, $$2.b(awu.o))));
+      $$0.a(ekz.s, new elm($$1.b(ela.G), new emb(34, 8, emc.a, 83469867)));
+      $$0.a(ekz.t, new elm($$1.b(ela.H), new emb(34, 12, emc.a, 94251327)));
    }
 }

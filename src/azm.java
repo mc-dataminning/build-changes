@@ -1,37 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+public interface azm {
+   void a(xe var1);
 
-public class azm {
-   public static final Codec<azm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aym.o.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), aym.o.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, azm::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<alc> f;
+   void b(xe var1);
 
-   private azm(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
-   }
+   void c(xe var1);
 
-   public Predicate<String> a() {
-      return this.c;
-   }
+   void a(int var1);
 
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<alc> c() {
-      return this.f;
-   }
+   void a();
 }

@@ -1,54 +1,53 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class esg {
-   private final je a;
-   private final int b;
-   private final int c;
-
-   public esg(je $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public record esg(jf c, cum d, Optional<xe> e) {
+   public static final Codec<esg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jf.a.fieldOf("pos").forGetter(esg::c),
+               cum.q.lenientOptionalFieldOf("color", cum.a).forGetter(esg::d),
+               xg.g.lenientOptionalFieldOf("name").forGetter(esg::e)
+            )
+            .apply($$0, esg::new)
+   );
+   public static final Codec<List<esg>> b = a.listOf();
 
    @Nullable
-   public static esg a(uf $$0) {
-      Optional<je> $$1 = uu.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
+   public static esg a(ddo $$0, jf $$1) {
+      if ($$0.c_($$1) instanceof drk $$3) {
+         cum $$4 = $$3.f();
+         Optional<xe> $$5 = Optional.ofNullable($$3.al());
+         return new esg($$1, $$4, $$5);
       } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new esg($$1.get(), $$2, $$3);
+         return null;
       }
    }
 
-   public uf a() {
-      uf $$0 = new uf();
-      $$0.a("pos", uu.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
+   public jo<esi> a() {
+      return switch (this.d) {
+         case a -> esj.k;
+         case b -> esj.l;
+         case c -> esj.m;
+         case d -> esj.n;
+         case e -> esj.o;
+         case f -> esj.p;
+         case g -> esj.q;
+         case h -> esj.r;
+         case i -> esj.s;
+         case j -> esj.t;
+         case k -> esj.u;
+         case l -> esj.v;
+         case m -> esj.w;
+         case n -> esj.x;
+         case o -> esj.y;
+         case p -> esj.z;
+      };
    }
 
-   public je b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(je $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

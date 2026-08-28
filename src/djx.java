@@ -1,84 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import org.slf4j.Logger;
 
-public class djx extends dgv implements dnc {
-   public static final MapCodec<djx> a = b(djx::new);
-   protected static final ezm b = dhj.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+public class djx extends djr {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<djx> e = b(djx::new);
+   private static final kz g = new ky();
 
    @Override
    public MapCodec<djx> a() {
-      return a;
+      return e;
    }
 
-   protected djx(dun.d $$0) {
+   public djx(dur.d $$0) {
       super($$0);
    }
 
    @Override
-   public drs a(je $$0, duo $$1) {
-      return new dtl($$0, $$1);
+   protected kz a(dej $$0, cvs $$1) {
+      return g;
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return b;
+   public drv a(jf $$0, dus $$1) {
+      return new dsp($$0, $$1);
    }
 
    @Override
-   protected void a(duo $$0, deg $$1, je $$2, bto $$3) {
-      if ($$3.o(false) && ezj.c(ezj.a($$3.cO().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.f($$1, $$2), eyw.i)) {
-         if (!$$1.B && $$1.ag() == deg.j && $$3 instanceof ari $$4 && !$$4.f) {
-            $$4.q();
-            return;
-         }
-
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public ern a(arh $$0, bto $$1, je $$2) {
-      alb<deg> $$3 = $$0.ag() == deg.j ? deg.h : deg.j;
-      arh $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
+   protected void a(arj $$0, dus $$1, jf $$2) {
+      dso $$3 = $$0.a($$2, drx.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         boolean $$5 = $$3 == deg.j;
-         je $$6 = $$5 ? arh.a : $$4.W();
-         eys $$7 = $$6.c();
-         float $$8 = $$1.dI();
-         if ($$5) {
-            edo.a($$4, je.a((jx)$$7).e(), true);
-            $$8 = jj.e.p();
-            if ($$1 instanceof ari) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
+         kw $$4 = new kw($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
          } else {
-            if ($$1 instanceof ari $$9) {
-               return $$9.a(false, ern.a);
+            cvs $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jk $$7 = $$0.a_($$2).c(b);
+               brl $$8 = dsw.a($$0, $$2.a($$7));
+               cvs $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dsw.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.u();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.u();
+                  }
+               }
+
+               $$3.a($$5, $$9);
             }
-
-            $$7 = $$1.a($$4, $$6).c();
          }
-
-         return new ern($$4, $$7, $$1.dv(), $$8, $$1.dK(), ern.b.then(ern.c));
       }
-   }
-
-   @Override
-   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ln.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public cvp a(dej $$0, je $$1, duo $$2) {
-      return cvp.k;
-   }
-
-   @Override
-   protected boolean a(duo $$0, eqo $$1) {
-      return false;
    }
 }

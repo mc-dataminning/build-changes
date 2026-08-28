@@ -1,137 +1,143 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class erf {
-   private static final float a = 1.5F;
-   private final erb[] b = new erb[32];
-   private int c;
-   private final erc d;
-   private static final boolean e = false;
-   private final eqz f = new eqz();
-
-   public erf(erc $$0, int $$1) {
-      this.d = $$0;
-      this.c = $$1;
-   }
-
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
    @Nullable
-   public erd a(det $$0, bum $$1, Set<je> $$2, float $$3, int $$4, float $$5) {
-      this.f.a();
-      this.d.a($$0, $$1);
-      erb $$6 = this.d.a();
-      if ($$6 == null) {
-         return null;
-      } else {
-         Map<erk, je> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
-         erd $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
-         this.d.b();
-         return $$8;
-      }
+   public erf h;
+   public boolean i;
+   public float j;
+   public float k;
+   public erk l = erk.a;
+
+   public erf(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   @Nullable
-   private erd a(bod $$0, erb $$1, Map<erk, je> $$2, float $$3, int $$4, float $$5) {
-      $$0.a("find_path");
-      $$0.a(bpj.a);
-      Set<erk> $$6 = $$2.keySet();
-      $$1.e = 0.0F;
-      $$1.f = this.a($$1, $$6);
-      $$1.g = $$1.f;
-      this.f.a();
-      this.f.a($$1);
-      Set<erb> $$7 = ImmutableSet.of();
-      int $$8 = 0;
-      Set<erk> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
-      int $$10 = (int)((float)this.c * $$5);
-
-      while (!this.f.e()) {
-         if (++$$8 >= $$10) {
-            break;
-         }
-
-         erb $$11 = this.f.c();
-         $$11.i = true;
-
-         for (erk $$12 : $$6) {
-            if ($$11.d($$12) <= (float)$$4) {
-               $$12.e();
-               $$9.add($$12);
-            }
-         }
-
-         if (!$$9.isEmpty()) {
-            break;
-         }
-
-         if (!($$11.a($$1) >= $$3)) {
-            int $$13 = this.d.a(this.b, $$11);
-
-            for (int $$14 = 0; $$14 < $$13; $$14++) {
-               erb $$15 = this.b[$$14];
-               float $$16 = this.a($$11, $$15);
-               $$15.j = $$11.j + $$16;
-               float $$17 = $$11.e + $$16 + $$15.k;
-               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
-                  $$15.h = $$11;
-                  $$15.e = $$17;
-                  $$15.f = this.a($$15, $$6) * 1.5F;
-                  if ($$15.c()) {
-                     this.f.a($$15, $$15.e + $$15.f);
-                  } else {
-                     $$15.g = $$15.e + $$15.f;
-                     this.f.a($$15);
-                  }
-               }
-            }
-         }
-      }
-
-      Optional<erd> $$18 = !$$9.isEmpty()
-         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(erd::e))
-         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(erd::m).thenComparingInt(erd::e));
-      $$0.c();
-      return $$18.isEmpty() ? null : $$18.get();
+   public erf a(int $$0, int $$1, int $$2) {
+      erf $$3 = new erf($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   protected float a(erb $$0, erb $$1) {
-      return $$0.a($$1);
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
    }
 
-   private float a(erb $$0, Set<erk> $$1) {
-      float $$2 = Float.MAX_VALUE;
-
-      for (erk $$3 : $$1) {
-         float $$4 = $$0.a($$3);
-         $$3.a($$4, $$0);
-         $$2 = Math.min($$4, $$2);
-      }
-
-      return $$2;
+   public float a(erf $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return azf.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
    }
 
-   private erd a(erb $$0, je $$1, boolean $$2) {
-      List<erb> $$3 = Lists.newArrayList();
-      erb $$4 = $$0;
-      $$3.add(0, $$0);
+   public float b(erf $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return azf.c($$1 * $$1 + $$2 * $$2);
+   }
 
-      while ($$4.h != null) {
-         $$4 = $$4.h;
-         $$3.add(0, $$4);
-      }
+   public float a(jf $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return azf.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
 
-      return new erd($$3, $$1, $$2);
+   public float c(erf $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float b(jf $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(erf $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(jf $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public jf a() {
+      return new jf(this.a, this.b, this.c);
+   }
+
+   public eyw b() {
+      return new eyw((double)this.a, (double)this.b, (double)this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof erf $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.m;
+   }
+
+   public boolean c() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   }
+
+   public void a(wb $$0) {
+      $$0.q(this.a);
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
+   }
+
+   public static erf b(wb $$0) {
+      erf $$1 = new erf($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
+      return $$1;
+   }
+
+   protected static void a(wb $$0, erf $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(erk.class);
+      $$1.g = $$0.readFloat();
    }
 }

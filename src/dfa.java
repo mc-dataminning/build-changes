@@ -1,34 +1,92 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface dfa extends ddo {
+   jk[] C = jk.values();
 
-public interface dfa {
-   void a(btv<?> var1, azl var2);
+   default int a(jf $$0, jk $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
+   }
 
-   static void a(cvp $$0, List<xd> $$1, String $$2) {
-      xd $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
+   default int e_(jf $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jk.a));
+      if ($$1 >= 15) {
+         return $$1;
       } else {
-         $$1.add(xc.a);
-         $$1.add(xd.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(xc.a().b(xd.c("block.minecraft.spawner.desc2").a(n.j)));
+         $$1 = Math.max($$1, this.a($$0.d(), jk.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jk.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jk.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jk.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jk.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
       }
    }
 
-   @Nullable
-   static xd a(cvp $$0, String $$1) {
-      uf $$2 = $$0.a(kr.T, cye.a).d();
-      alc $$3 = a($$2, $$1);
-      return $$3 != null ? lu.f.b($$3).map($$0x -> xd.c($$0x.g()).a(n.h)).orElse(null) : null;
+   default int a(jf $$0, jk $$1, boolean $$2) {
+      dus $$3 = this.a_($$0);
+      if ($$2) {
+         return djo.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(dho.ha)) {
+         return 15;
+      } else if ($$3.a(dho.cw)) {
+         return $$3.c(dnp.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   @Nullable
-   private static alc a(uf $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return alc.c($$2);
+   default boolean b(jf $$0, jk $$1) {
+      return this.c($$0, $$1) > 0;
+   }
+
+   default int c(jf $$0, jk $$1) {
+      dus $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean C(jf $$0) {
+      if (this.c($$0.e(), jk.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jk.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jk.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jk.d) > 0) {
+         return true;
       } else {
-         return null;
+         return this.c($$0.h(), jk.e) > 0 ? true : this.c($$0.i(), jk.f) > 0;
       }
+   }
+
+   default int D(jf $$0) {
+      int $$1 = 0;
+
+      for (jk $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

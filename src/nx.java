@@ -1,78 +1,97 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
 
-public class nx implements nu {
-   private final dhj a;
-   private final List<oa> b;
-   private final Set<dvr<?>> c = Sets.newHashSet();
-   private final List<ny> d = Lists.newArrayList();
+public class nx implements nv {
+   private final dhm a;
+   private final List<nx.b> b = Lists.newArrayList();
 
-   private nx(dhj $$0, List<oa> $$1) {
+   private nx(dhm $$0) {
       this.a = $$0;
-      this.b = $$1;
-   }
-
-   public nx a(ny $$0) {
-      $$0.b().forEach($$0x -> {
-         if (this.a.n().a($$0x.f()) != $$0x) {
-            throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
-         } else if (!this.c.add($$0x)) {
-            throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
-         }
-      });
-      this.d.add($$0);
-      return this;
-   }
-
-   public JsonElement b() {
-      Stream<Pair<nz, List<oa>>> $$0 = Stream.of(Pair.of(nz.a(), this.b));
-
-      for (ny $$1 : this.d) {
-         Map<nz, List<oa>> $$2 = $$1.a();
-         $$0 = $$0.flatMap($$1x -> $$2.entrySet().stream().map($$1xx -> {
-               nz $$2x = ((nz)$$1.getFirst()).a((nz)$$1xx.getKey());
-               List<oa> $$3 = a((List<oa>)$$1.getSecond(), (List<oa>)$$1xx.getValue());
-               return Pair.of($$2x, $$3);
-            }));
-      }
-
-      Map<String, JsonElement> $$3 = new TreeMap<>();
-      $$0.forEach($$1 -> $$3.put(((nz)$$1.getFirst()).b(), oa.a((List<oa>)$$1.getSecond())));
-      JsonObject $$4 = new JsonObject();
-      $$4.add("variants", ad.a(new JsonObject(), $$1 -> $$3.forEach($$1::add)));
-      return $$4;
-   }
-
-   private static List<oa> a(List<oa> $$0, List<oa> $$1) {
-      Builder<oa> $$2 = ImmutableList.builder();
-      $$0.forEach($$2x -> $$1.forEach($$2xx -> $$2.add(oa.a($$2x, $$2xx))));
-      return $$2.build();
    }
 
    @Override
-   public dhj a() {
+   public dhm a() {
       return this.a;
    }
 
-   public static nx a(dhj $$0) {
-      return new nx($$0, ImmutableList.of(oa.a()));
+   public static nx a(dhm $$0) {
+      return new nx($$0);
    }
 
-   public static nx a(dhj $$0, oa $$1) {
-      return new nx($$0, ImmutableList.of($$1));
+   public nx a(List<ob> $$0) {
+      this.b.add(new nx.b($$0));
+      return this;
    }
 
-   public static nx a(dhj $$0, oa... $$1) {
-      return new nx($$0, ImmutableList.copyOf($$1));
+   public nx a(ob $$0) {
+      return this.a(ImmutableList.of($$0));
+   }
+
+   public nx a(nw $$0, List<ob> $$1) {
+      this.b.add(new nx.a($$0, $$1));
+      return this;
+   }
+
+   public nx a(nw $$0, ob... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public nx a(nw $$0, ob $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dut<dhm, dus> $$0 = this.a.k();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(nx.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends nx.b {
+      private final nw a;
+
+      a(nw $$0, List<ob> $$1) {
+         super($$1);
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dut<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
+   }
+
+   static class b implements Supplier<JsonElement> {
+      private final List<ob> a;
+
+      b(List<ob> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dut<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", ob.a(this.a));
+         return $$0;
+      }
    }
 }

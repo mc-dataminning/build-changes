@@ -1,27 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bww {
-   public static bwd<buk> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
-   }
-
-   public static <E extends buk> bwd<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return bzp.a((Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$4 -> {
-         bzp<E, ? extends bzq<? extends K1, cdq>> $$5 = $$2 ? $$4.a(cdn.m) : $$4.c(cdn.m);
-         return $$4.group($$4.a(cdn.n), $$5, $$4.b(cdn.L), $$4.a(cdn.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cke $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dS().A_().a($$11.ds())) {
-                  cdq $$12 = new cdq(new bwn($$11, false), $$1, 0);
-                  $$4x.a(new bwn($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
+   public static bwg<cnk> a(float $$0, int $$1) {
+      return bzs.a((Function<bzs.b<cnk>, ? extends App<bzs.c<cnk>, bzv<cnk>>>)($$2 -> $$2.group($$2.c(cdq.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.ds())) {
                   return false;
+               } else {
+                  cfq $$6 = $$3.y();
+                  int $$7 = $$6.a(kh.a($$4.ds()));
+                  eyw $$8 = null;
+
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     eyw $$10 = cfk.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kh.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kh.a(jf.a((jy)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
+
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new cdt($$8, $$0, $$1));
+                  }
+
+                  return true;
                }
-            });
-      }));
+            })));
    }
 }

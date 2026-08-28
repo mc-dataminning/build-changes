@@ -1,42 +1,30 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class cer extends cet<cnh> {
-   private static final int a = 40;
-
-   public cer() {
-      super(40);
-   }
-
-   protected void a(arh $$0, cnh $$1) {
-      alb<deg> $$2 = $$0.ag();
-      je $$3 = $$1.ds();
-      List<jm> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               je $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gz().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jm.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bvl<?> $$10 = $$1.dX();
-      if (!$$4.isEmpty()) {
-         $$10.a(cdn.f, $$4);
-      } else {
-         $$10.b(cdn.f);
-      }
+public class cer extends cew<bun> {
+   @Override
+   public Set<cdq<?>> a() {
+      return ImmutableSet.of(cdq.h, cdq.M, cdq.an);
    }
 
    @Override
-   public Set<cdn<?>> a() {
-      return ImmutableSet.of(cdn.f);
+   protected void a(arj $$0, bun $$1) {
+      bvo<?> $$2 = $$1.dY();
+      List<cmm> $$3 = Lists.newArrayList();
+      cds $$4 = $$2.c(cdq.h).orElse(cds.a());
+      Optional<bup> $$5 = $$4.a($$0x -> $$0x instanceof clu || $$0x instanceof cju).map(bup.class::cast);
+
+      for (bun $$7 : $$2.c(cdq.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cmm && ((cmm)$$7).gp()) {
+            $$3.add((cmm)$$7);
+         }
+      }
+
+      $$2.a(cdq.M, $$5);
+      $$2.a(cdq.an, $$3);
    }
 }

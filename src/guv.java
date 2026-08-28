@@ -1,6 +1,8 @@
-public class guv extends gub {
-   public boolean a;
-   public boolean b;
-   public float c;
-   public cmm d = cmm.f;
+import javax.annotation.Nullable;
+
+public class guv extends gtq {
+   public jk a = jk.c;
+   @Nullable
+   public ckd b;
+   public int[] c = new int[0];
 }

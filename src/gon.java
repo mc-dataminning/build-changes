@@ -1,37 +1,25 @@
-public class gon extends gop<ckz, gvh, fya> {
-   private static final alc a = alc.b("textures/entity/slime/magmacube.png");
+public class gon extends gnn<ckb, gtq> {
+   private static final ale a = ale.b("textures/entity/lead_knot.png");
+   private final fyf b;
 
-   public gon(gnj.a $$0) {
-      super($$0, new fya($$0.a(gak.bh)), 0.25F);
+   public gon(gno.a $$0) {
+      super($$0);
+      this.b = new fyf($$0.a(gap.bb));
    }
 
-   protected int a(ckz $$0, je $$1) {
-      return 15;
-   }
-
-   public alc a(gvh $$0) {
-      return a;
-   }
-
-   public gvh c() {
-      return new gvh();
-   }
-
-   public void a(ckz $$0, gvh $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = azd.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gq();
-   }
-
-   public void a(gvh $$0, fde $$1, ghg $$2, int $$3) {
-      this.f = 0.25F * (float)$$0.b;
+   @Override
+   public void a(gtq $$0, fdi $$1, ghl $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fdm $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gwx.d);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(gvh $$0, fde $$1) {
-      int $$2 = $$0.b;
-      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
-      float $$4 = 1.0F / ($$3 + 1.0F);
-      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
+   @Override
+   public gtq b() {
+      return new gtq();
    }
 }

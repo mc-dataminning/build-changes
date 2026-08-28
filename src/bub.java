@@ -1,44 +1,47 @@
-public abstract class bub extends bum {
-   protected bub(btv<? extends bub> $$0, deg $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+
+public record bub(ald<etq> c, Map<btz, Float> d) {
+   public static final Codec<Map<btz, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(btz.i, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bub::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(btz.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bub> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ald.a(lw.be).fieldOf("loot_table").forGetter(bub::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bub::b))
+            .apply($$0, bub::new)
+   );
+
+   public bub(ald<etq> $$0, float $$1) {
+      this($$0, a($$1));
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, duo $$2, je $$3) {
+   private static Map<btz, Float> a(float $$0) {
+      return a(List.of(btz.values()), $$0);
    }
 
-   @Override
-   public void a_(eys $$0) {
-      if (this.de()) {
-         if (this.bi()) {
-            this.a(0.02F, $$0);
-            this.a(buo.a, this.dv());
-            this.h(this.dv().c(0.8F));
-         } else if (this.bw()) {
-            this.a(0.02F, $$0);
-            this.a(buo.a, this.dv());
-            this.h(this.dv().c(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aH()) {
-               $$1 = this.dS().a_(this.aO()).b().h() * 0.91F;
-            }
+   private static Map<btz, Float> a(List<btz> $$0, float $$1) {
+      Map<btz, Float> $$2 = Maps.newHashMap();
 
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aH()) {
-               $$1 = this.dS().a_(this.aO()).b().h() * 0.91F;
-            }
-
-            this.a(this.aH() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(buo.a, this.dv());
-            this.h(this.dv().c((double)$$1));
-         }
+      for (btz $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Override
-   public boolean p_() {
-      return false;
+   public ald<etq> a() {
+      return this.c;
+   }
+
+   public Map<btz, Float> b() {
+      return this.d;
    }
 }

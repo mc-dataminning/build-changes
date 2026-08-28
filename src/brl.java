@@ -1,44 +1,86 @@
-public class brl {
-   public static void a(deg $$0, je $$1, bri $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface brl extends brj {
+   float q_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   cvs a(int var1);
+
+   cvs a(int var1, int var2);
+
+   cvs b(int var1);
+
+   void a(int var1, cvs var2);
+
+   default int al_() {
+      return 99;
    }
 
-   public static void a(deg $$0, bto $$1, bri $$2) {
-      a($$0, $$1.dx(), $$1.dz(), $$1.dD(), $$2);
+   default int f_(cvs $$0) {
+      return Math.min(this.al_(), $$0.k());
    }
 
-   private static void a(deg $$0, double $$1, double $$2, double $$3, bri $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
-      }
+   void e();
+
+   boolean a(cnx var1);
+
+   default void d_(cnx $$0) {
    }
 
-   public static void a(deg $$0, je $$1, jw<cvp> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default void c(cnx $$0) {
    }
 
-   public static void a(deg $$0, double $$1, double $$2, double $$3, cvp $$4) {
-      double $$5 = (double)btv.ag.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         cke $$11 = new cke($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
+   default boolean b(int $$0, cvs $$1) {
+      return true;
    }
 
-   public static void a(duo $$0, duo $$1, deg $$2, je $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bri $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
+   default boolean a(brl $$0, int $$1, cvs $$2) {
+      return true;
+   }
+
+   default int a_(cvn $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cvs $$3 = this.a($$2);
+         if ($$3.h().equals($$0)) {
+            $$1 += $$3.K();
          }
+      }
+
+      return $$1;
+   }
+
+   default boolean a_(Set<cvn> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
+
+   default boolean a_(Predicate<cvs> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cvs $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(drv $$0, cnx $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(drv $$0, cnx $$1, float $$2) {
+      dej $$3 = $$0.i();
+      jf $$4 = $$0.aC_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 }

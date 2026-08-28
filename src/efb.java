@@ -1,75 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class efb extends edq<egp> {
-   public efb(Codec<egp> $$0) {
+public class efb extends edu<egq> {
+   public efb(Codec<egq> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egp> $$0) {
-      egp $$1 = $$0.f();
-      dfd $$2 = $$0.b();
-      je $$3 = $$0.e();
-      if (!$$2.a_($$3.d()).a($$1.f)) {
-         return false;
-      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
-         return false;
-      } else {
-         duo $$4 = $$2.a_($$3);
-         if (!$$4.l() && !$$4.a($$1.f)) {
-            return false;
+   public boolean a(edw<egq> $$0) {
+      egq $$1 = $$0.f();
+      dfg $$2 = $$0.b();
+      jf $$3 = $$0.e();
+      dus $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof dju) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            dju.a($$2, $$4, $$3, 2);
          } else {
-            int $$5 = 0;
-            int $$6 = 0;
-            if ($$2.a_($$3.h()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.i()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.f()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.g()).a($$1.f)) {
-               $$6++;
-            }
-
-            if ($$2.a_($$3.e()).a($$1.f)) {
-               $$6++;
-            }
-
-            int $$7 = 0;
-            if ($$2.u($$3.h())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.i())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.f())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.g())) {
-               $$7++;
-            }
-
-            if ($$2.u($$3.e())) {
-               $$7++;
-            }
-
-            if ($$6 == $$1.d && $$7 == $$1.e) {
-               $$2.a($$3, $$1.b.g(), 2);
-               $$2.a($$3, $$1.b.a(), 0);
-               $$5++;
-            }
-
-            return $$5 > 0;
+            $$2.a($$3, $$4, 2);
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 }

@@ -1,10 +1,20 @@
-import com.google.common.collect.Lists;
-import com.google.gson.annotations.SerializedName;
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class feg extends fey implements fes {
-   @SerializedName("pingResults")
-   public List<fet> a = Lists.newArrayList();
-   @SerializedName("worldIds")
-   public List<Long> b = Lists.newArrayList();
+public class feg {
+   private final Gson a = new Gson();
+
+   public String a(few $$0) {
+      return this.a.toJson($$0);
+   }
+
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
+
+   @Nullable
+   public <T extends few> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
+   }
 }

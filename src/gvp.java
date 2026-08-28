@@ -1,7 +1,10 @@
-import javax.annotation.Nullable;
+public class gvp extends guo implements gvg {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
-public class gvp extends gtl {
-   public float a;
-   @Nullable
-   public duo b;
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

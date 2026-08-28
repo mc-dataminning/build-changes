@@ -1,42 +1,23 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class ekh extends ebh {
-   private final dfd a;
-   private final dwl b;
-   private final Optional<ekg> c;
+public class ekh extends ekn {
+   private static final ekh c = new ekh();
+   public static final MapCodec<ekh> a = MapCodec.unit(() -> c);
 
-   public ekh(dfd $$0, dwl $$1, Optional<ekg> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static ekh a() {
+      return c;
    }
 
-   public int a(eak.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   @Override
+   public Stream<jf> a_(ekl $$0, azn $$1, jf $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new jf($$3, $$2.v(), $$4));
    }
 
-   public dwj a(ddm $$0) {
-      return ((dxe)this.a.a($$0.e, $$0.f)).C();
-   }
-
-   public duo a(je $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.G_();
-   }
-
-   public dfd d() {
-      return this.a;
-   }
-
-   public Optional<ekg> e() {
-      return this.c;
-   }
-
-   public dwl f() {
-      return this.b;
+   @Override
+   public eko<?> b() {
+      return eko.m;
    }
 }

@@ -1,57 +1,36 @@
-import java.util.Collection;
+import java.util.function.Function;
 
-public abstract class hdj<E extends flg.a<E>> extends flg<E> {
-   protected hdj(int $$0, int $$1, int $$2, int $$3) {
-      super(fil.Q(), $$0, $$1, $$2, $$3);
+public enum hdj {
+   a("movement", hde::new),
+   b("find_tree", hdd::new),
+   c("punch_tree", hdg::new),
+   d("open_inventory", hdf::new),
+   e("craft_planks", hdc::new),
+   f("none", hdb::new);
+
+   private final String g;
+   private final Function<hdh, ? extends hdi> h;
+
+   private <T extends hdi> hdj(final String $$0, final Function<hdh, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   public hdi a(hdh $$0) {
+      return this.h.apply($$0);
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public static hdj a(String $$0) {
+      for (hdj $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
       }
-   }
 
-   public void b(int $$0) {
-      this.p($$0);
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
+      return f;
    }
 }

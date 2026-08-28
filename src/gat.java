@@ -1,22 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import java.util.function.UnaryOperator;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class gat {
-   private final gav a;
+public final class gat {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final gau d;
+   private final boolean e;
+   private final gbb f;
+   private final gbb g;
+   private final Set<jk> h;
 
-   public gat() {
-      this(new gav(ImmutableList.of(), gan.a));
-   }
-
-   private gat(gav $$0) {
+   protected gat(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      gau $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<jk> $$13
+   ) {
       this.a = $$0;
+      this.f = new gbb($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new gbb($$11, $$12);
+      this.h = $$13;
    }
 
-   public gav a() {
-      return this.a;
-   }
-
-   public gat a(UnaryOperator<gan> $$0) {
-      return new gat(this.a.a($$0));
+   public gaq.a a(int $$0, int $$1) {
+      return new gaq.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

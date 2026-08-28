@@ -1,51 +1,59 @@
-public interface cvx {
-   alb<cvv> a = a("13");
-   alb<cvv> b = a("cat");
-   alb<cvv> c = a("blocks");
-   alb<cvv> d = a("chirp");
-   alb<cvv> e = a("far");
-   alb<cvv> f = a("mall");
-   alb<cvv> g = a("mellohi");
-   alb<cvv> h = a("stal");
-   alb<cvv> i = a("strad");
-   alb<cvv> j = a("ward");
-   alb<cvv> k = a("11");
-   alb<cvv> l = a("wait");
-   alb<cvv> m = a("pigstep");
-   alb<cvv> n = a("otherside");
-   alb<cvv> o = a("5");
-   alb<cvv> p = a("relic");
-   alb<cvv> q = a("precipice");
-   alb<cvv> r = a("creator");
-   alb<cvv> s = a("creator_music_box");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-   private static alb<cvv> a(String $$0) {
-      return alb.a(lv.L, alc.b($$0));
+public record cvx(cup<cvy> c, boolean d) implements cyz {
+   public static final Codec<cvx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cup.a(lw.L, cvy.c).fieldOf("song").forGetter(cvx::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cvx::b))
+            .apply($$0, cvx::new)
+   );
+   public static final zc<wp, cvx> b = zc.a(cup.a(lw.L, cvy.d), cvx::a, za.b, cvx::b, cvx::new);
+
+   @Override
+   public void a(cvn.b $$0, Consumer<xe> $$1, cxk $$2) {
+      jq.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xs $$2x = ((cvy)$$1x.a()).c().f();
+            xh.a($$2x, yb.a.a(n.h));
+            $$1.accept($$2x);
+         });
+      }
    }
 
-   private static void a(qt<cvv> $$0, alb<cvv> $$1, jn.c<awd> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cvv($$2, xd.c(ad.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   public cvx a(boolean $$0) {
+      return new cvx(this.c, $$0);
    }
 
-   static void a(qt<cvv> $$0) {
-      a($$0, a, awe.pJ, 178, 1);
-      a($$0, b, awe.pL, 185, 2);
-      a($$0, c, awe.pK, 345, 3);
-      a($$0, d, awe.pM, 185, 4);
-      a($$0, e, awe.pN, 174, 5);
-      a($$0, f, awe.pO, 197, 6);
-      a($$0, g, awe.pP, 96, 7);
-      a($$0, h, awe.pR, 150, 8);
-      a($$0, i, awe.pS, 188, 9);
-      a($$0, j, awe.pU, 251, 10);
-      a($$0, k, awe.pI, 71, 11);
-      a($$0, l, awe.pT, 238, 12);
-      a($$0, m, awe.pQ, 149, 13);
-      a($$0, n, awe.pV, 195, 14);
-      a($$0, o, awe.pH, 178, 15);
-      a($$0, p, awe.pW, 218, 14);
-      a($$0, q, awe.pZ, 299, 13);
-      a($$0, r, awe.pX, 176, 12);
-      a($$0, s, awe.pY, 73, 11);
+   public static brs a(dej $$0, jf $$1, cvs $$2, cnx $$3) {
+      cvx $$4 = $$2.a(ks.W);
+      if ($$4 == null) {
+         return brs.f;
+      } else {
+         dus $$5 = $$0.a_($$1);
+         if ($$5.a(dho.dT) && !$$5.c(dlp.b)) {
+            if (!$$0.B) {
+               cvs $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dsy $$7) {
+                  $$7.b($$6);
+                  $$0.a(dzp.c, $$1, dzp.a.a($$3, $$5));
+               }
+
+               $$3.a(awq.al);
+            }
+
+            return brs.a;
+         } else {
+            return brs.f;
+         }
+      }
+   }
+
+   public cup<cvy> a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
    }
 }

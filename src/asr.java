@@ -1,22 +1,27 @@
-import java.util.Optional;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class asr implements arx {
-   public static final arx.a a = new arx.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface asr {
+   asr e = new asr() {
+      @Override
+      public CompletableFuture<asb> a(String $$0) {
+         return CompletableFuture.completedFuture(asb.a($$0));
+      }
 
-   public asr(MinecraftServer.b $$0) {
-      this.b = $$0;
+      @Override
+      public CompletableFuture<List<asb>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(asb::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   default void a() {
    }
 
-   @Override
-   public void a(Consumer<zk<?>> $$0) {
-      $$0.accept(new zx(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   default void b() {
    }
 
-   @Override
-   public arx.a a() {
-      return a;
-   }
+   CompletableFuture<asb> a(String var1);
+
+   CompletableFuture<List<asb>> a(List<String> var1);
 }

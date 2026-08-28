@@ -1,88 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dko extends dlh {
-   public static final MapCodec<dko> a = b(dko::new);
-   public static final int b = 3;
-   public static final dvo c = dve.as;
-   private static final int f = 4;
-   private static final int g = 2;
-
-   @Override
-   public MapCodec<dko> a() {
-      return a;
-   }
-
-   public dko(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
-   }
+public class dko extends dhv implements dpp {
+   protected static final MapCodec<cyx> a = cyx.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dko> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dko::b), t()).apply($$0, dko::new));
+   protected static final float c = 3.0F;
+   protected static final ezq d = dhm.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final cyx e;
 
    @Override
-   public void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      $$1.a($$2, this, azd.a($$1.C_(), 60, 120));
+   public MapCodec<? extends dko> a() {
+      return b;
    }
 
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.e($$0, $$1, $$2)) {
-         je.a $$4 = new je.a();
-
-         for (jj $$5 : jj.values()) {
-            $$4.a($$2, $$5);
-            duo $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.e($$6, $$1, $$4)) {
-               $$1.a($$4, this, azd.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, azd.a($$3, 20, 40));
-      }
+   public dko(jo<bsw> $$0, float $$1, dur.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   private boolean e(duo $$0, deg $$1, je $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.d($$0, $$1, $$2);
-         return true;
-      }
+   public dko(cyx $$0, dur.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static cyx a(jo<bsw> $$0, float $$1) {
+      return new cyx(List.of(new cyx.a($$0, azf.d($$1 * 20.0F))));
    }
 
    @Override
-   protected void a(duo $$0, deg $$1, je $$2, dhj $$3, @Nullable erx $$4, boolean $$5) {
-      if ($$3.o().a(this) && this.a($$1, $$2, 2)) {
-         this.d($$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private boolean a(ddl $$0, je $$1, int $$2) {
-      int $$3 = 0;
-      je.a $$4 = new je.a();
-
-      for (jj $$5 : jj.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
-      }
-
-      return true;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      eyw $$4 = $$0.a($$2);
+      return d.a($$4.d, $$4.e, $$4.f);
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public cvp a(dej $$0, je $$1, duo $$2) {
-      return cvp.k;
+   public cyx b() {
+      return this.e;
    }
 }

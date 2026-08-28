@@ -1,23 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public record aem(int b, jn<bst> c) implements zk<abz> {
-   public static final zb<wo, aem> a = zb.a(yz.g, aem::b, bst.b, aem::e, aem::new);
+public class aem implements zl<aca> {
+   public static final zc<wb, aem> a = zl.a(aem::a, aem::new);
+   private final IntList b;
 
-   @Override
-   public zm<aem> a() {
-      return ago.al;
+   public aem(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   public void a(abz $$0) {
+   public aem(int... $$0) {
+      this.b = new IntArrayList($$0);
+   }
+
+   private aem(wb $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wb $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public zn<aem> a() {
+      return agp.ak;
+   }
+
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bto a(deg $$0) {
-      return $$0.a(this.b);
-   }
-
-   public jn<bst> e() {
-      return this.c;
+   public IntList b() {
+      return this.b;
    }
 }

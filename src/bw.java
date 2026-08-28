@@ -4,9 +4,9 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public interface bw {
-   Codec<bw> a = lu.aq.q().dispatch(bw::a, Function.identity());
+   Codec<bw> a = lv.aq.q().dispatch(bw::a, Function.identity());
 
    MapCodec<? extends bw> a();
 
-   boolean a(bto var1, arh var2, @Nullable eys var3);
+   boolean a(btr var1, arj var2, @Nullable eyw var3);
 }

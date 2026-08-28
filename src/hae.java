@@ -1,17 +1,20 @@
-public abstract class hae extends had implements haw {
-   private boolean n;
+import java.util.UUID;
 
-   protected hae(awd $$0, awf $$1, azl $$2) {
-      super($$0, $$1, $$2);
+public interface hae {
+   void a(UUID var1, hae.b var2);
+
+   void a(UUID var1, hae.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public static enum b {
+      a,
+      b;
    }
 }

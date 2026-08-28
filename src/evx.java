@@ -1,61 +1,97 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class evx extends euu {
-   private static final Map<kq<?>, evx.a<?>> b = Stream.of(
-         new evx.a<>(kr.P, cxr::a),
-         new evx.a<>(kr.E, cyh::a),
-         new evx.a<>(kr.k, dbq::a),
-         new evx.a<>(kr.D, dbq::a),
-         new evx.a<>(kr.f, cyx::a),
-         new evx.a<>(kr.m, ctf::a),
-         new evx.a<>(kr.l, ctf::a),
-         new evx.a<>(kr.n, cyk::a),
-         new evx.a<>(kr.W, cvu::a)
-      )
-      .collect(Collectors.toMap(evx.a::a, $$0 -> (evx.a<?>)$$0));
-   private static final Codec<evx.a<?>> c = lu.ap.q().comapFlatMap($$0 -> {
-      evx.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lu.ap.b($$0));
-   }, evx.a::a);
-   public static final MapCodec<evx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, evx::new)
-   );
-   private final Map<evx.a<?>, Boolean> d;
+public class evx extends euy {
+   private static final Codec<List<evx.b>> b = evx.b.a.listOf().validate($$0 -> {
+      Set<jo<bsw>> $$1 = new ObjectOpenHashSet();
 
-   private evx(List<ews> $$0, Map<evx.a<?>, Boolean> $$1) {
-      super($$0);
-      this.d = $$1;
-   }
-
-   @Override
-   protected cvp a(cvp $$0, eth $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
-      return $$0;
-   }
-
-   @Override
-   public euw<evx> b() {
-      return eux.P;
-   }
-
-   static record a<T>(kq<T> a, evx.b<T> b) {
-      public void a(cvp $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
+      for (evx.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
          }
+      }
+
+      return DataResult.success($$0);
+   });
+   public static final MapCodec<evx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, evx::new)
+   );
+   private final List<evx.b> c;
+
+   evx(List<eww> $$0, List<evx.b> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   @Override
+   public eva<evx> b() {
+      return evb.r;
+   }
+
+   @Override
+   public Set<ewe<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cvs a(cvs $$0, etl $$1) {
+      if ($$0.a(cvw.vY) && !this.c.isEmpty()) {
+         evx.b $$2 = ad.a(this.c, $$1.b());
+         jo<bsw> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
+         }
+
+         cyx.a $$5 = new cyx.a($$3, $$4);
+         $$0.a(ks.M, cyx.a, $$5, cyx::a);
+         return $$0;
+      } else {
+         return $$0;
       }
    }
 
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+   public static evx.a c() {
+      return new evx.a();
+   }
+
+   public static class a extends euy.a<evx.a> {
+      private final Builder<evx.b> a = ImmutableList.builder();
+
+      protected evx.a a() {
+         return this;
+      }
+
+      public evx.a a(jo<bsw> $$0, exs $$1) {
+         this.a.add(new evx.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public euz b() {
+         return new evx(this.g(), this.a.build());
+      }
+   }
+
+   static record b(jo<bsw> b, exs c) {
+      public static final Codec<evx.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bsw.a.fieldOf("type").forGetter(evx.b::a), ext.a.fieldOf("duration").forGetter(evx.b::b)).apply($$0, evx.b::new)
+      );
+
+      public jo<bsw> a() {
+         return this.b;
+      }
+
+      public exs b() {
+         return this.c;
+      }
    }
 }

@@ -1,73 +1,214 @@
-import javax.annotation.Nullable;
+public class csk extends cqz {
+   protected static final int m = 0;
+   protected static final int n = 1;
+   protected static final int o = 2;
+   private static final int p = 3;
+   private static final int q = 30;
+   private static final int r = 30;
+   private static final int s = 39;
+   private static final int t = 136;
+   private static final int u = 162;
+   private static final int v = 220;
+   private static final int w = 37;
+   private final ddf x;
+   private final csj y;
+   private int z;
+   private boolean A;
+   private boolean B;
 
-public class csk extends brw {
-   @Nullable
-   private dso b;
-
-   public csk() {
-      super(27);
+   public csk(int $$0, cnw $$1) {
+      this($$0, $$1, new cnh($$1.k));
    }
 
-   public void a(dso $$0) {
-      this.b = $$0;
+   public csk(int $$0, cnw $$1, ddf $$2) {
+      super(csi.t, $$0);
+      this.x = $$2;
+      this.y = new csj($$2);
+      this.a(new csw(this.y, 0, 136, 37));
+      this.a(new csw(this.y, 1, 162, 37));
+      this.a(new csl($$1.k, $$2, this.y, 2, 220, 37));
+      this.c($$1, 108, 84);
    }
 
-   public boolean b(dso $$0) {
-      return this.b == $$0;
+   public void a(boolean $$0) {
+      this.A = $$0;
    }
 
    @Override
-   public void a(ul $$0, jp.a $$1) {
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         this.a($$2, cvp.k);
+   public void a(brl $$0) {
+      this.y.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.y.c($$0);
+   }
+
+   @Override
+   public boolean b(cnx $$0) {
+      return this.x.go() == $$0;
+   }
+
+   public int l() {
+      return this.x.t();
+   }
+
+   public int m() {
+      return this.y.h();
+   }
+
+   public void f(int $$0) {
+      this.x.t($$0);
+   }
+
+   public int n() {
+      return this.z;
+   }
+
+   public void g(int $$0) {
+      this.z = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.B = $$0;
+   }
+
+   public boolean o() {
+      return this.B;
+   }
+
+   @Override
+   public boolean a(cvs $$0, csw $$1) {
+      return false;
+   }
+
+   @Override
+   public cvs b(cnx $$0, int $$1) {
+      cvs $$2 = cvs.k;
+      csw $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvs $$4 = $$3.g();
+         $$2 = $$4.u();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cvs.k;
+            }
+
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cvs.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cvs.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cvs.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cvs.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.K() == $$2.K()) {
+            return cvs.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         uf $$4 = $$0.a($$3);
-         int $$5 = $$4.f("Slot") & 255;
-         if ($$5 >= 0 && $$5 < this.b()) {
-            this.a($$5, cvp.a($$1, (vc)$$4).orElse(cvp.k));
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.x.gw()) {
+         btr $$0 = (btr)this.x;
+         $$0.dS().a($$0.dx(), $$0.dz(), $$0.dD(), this.x.gs(), awh.g, 1.0F, 1.0F, false);
+      }
+   }
+
+   @Override
+   public void a(cnx $$0) {
+      super.a($$0);
+      this.x.a(null);
+      if (!this.x.gw()) {
+         if (!$$0.bI() || $$0 instanceof ark && ((ark)$$0).x()) {
+            cvs $$1 = this.y.b(0);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+
+            $$1 = this.y.b(1);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof ark) {
+            $$0.gd().g(this.y.b(0));
+            $$0.gd().g(this.y.b(1));
          }
       }
    }
 
-   @Override
-   public ul a(jp.a $$0) {
-      ul $$1 = new ul();
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         cvs $$1 = this.y.a(0);
+         if (!$$1.f()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cvp $$3 = this.a($$2);
-         if (!$$3.f()) {
-            uf $$4 = new uf();
-            $$4.a("Slot", (byte)$$2);
-            $$1.add($$3.b($$0, $$4));
+            this.y.a(0, $$1);
+         }
+
+         cvs $$2 = this.y.a(1);
+         if (!$$2.f()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(1, $$2);
+         }
+
+         if (this.y.a(0).f() && this.y.a(1).f()) {
+            ddg $$3 = this.p().get($$0);
+            this.a(0, $$3.d());
+            $$3.e().ifPresent($$0x -> this.a(1, $$0x));
          }
       }
-
-      return $$1;
    }
 
-   @Override
-   public boolean a(cnu $$0) {
-      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
-   }
-
-   @Override
-   public void d_(cnu $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
+   private void a(int $$0, dde $$1) {
+      for (int $$2 = 3; $$2 < 39; $$2++) {
+         cvs $$3 = this.k.get($$2).g();
+         if (!$$3.f() && $$1.a($$3)) {
+            cvs $$4 = this.y.a($$0);
+            if ($$4.f() || cvs.c($$3, $$4)) {
+               int $$5 = $$3.k();
+               int $$6 = Math.min($$5 - $$4.K(), $$3.K());
+               cvs $$7 = $$3.c($$4.K() + $$6);
+               $$3.h($$6);
+               this.y.a($$0, $$7);
+               if ($$7.K() >= $$5) {
+                  break;
+               }
+            }
+         }
       }
-
-      super.d_($$0);
    }
 
-   @Override
-   public void c(cnu $$0) {
-      if (this.b != null) {
-         this.b.b($$0);
-      }
+   public void a(ddh $$0) {
+      this.x.a($$0);
+   }
 
-      super.c($$0);
-      this.b = null;
+   public ddh p() {
+      return this.x.gq();
+   }
+
+   public boolean q() {
+      return this.A;
    }
 }

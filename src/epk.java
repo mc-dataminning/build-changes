@@ -1,17 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class epk implements epm {
-   private static final epk b = new epk();
-   public static final MapCodec<epk> a = MapCodec.unit(b);
+public class epk extends epc {
+   public static final MapCodec<epk> a = axl.a(lw.f).fieldOf("tag").xmap(epk::new, $$0 -> $$0.b);
+   private final axl<dhm> b;
 
-   @Override
-   public uf a(azl $$0, @Nullable uf $$1) {
-      return new uf();
+   public epk(axl<dhm> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public epn<?> a() {
-      return epn.a;
+   public boolean a(dus $$0, azn $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected epd<?> a() {
+      return epd.d;
    }
 }

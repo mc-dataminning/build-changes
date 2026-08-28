@@ -1,29 +1,51 @@
-public abstract class grw<S extends gtl, M extends fxk<? super S>> {
-   private final gpf<S, M> a;
+public class grw extends gsb<gut, fxf> {
+   private final gio a;
 
-   public grw(gpf<S, M> $$0) {
-      this.a = $$0;
+   public grw(gpk<gut, fxf> $$0, gio $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <S extends guj> void a(fxk<S> $$0, alc $$1, fde $$2, ghg $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fdi $$0, ghl $$1, int $$2, gut $$3, float $$4, float $$5) {
+      if (!$$3.ae) {
+         boolean $$6 = $$3.aj && $$3.u;
+         if (!$$3.u || $$6) {
+            dus $$7 = $$3.a.a();
+            int $$8 = gop.a($$3, 0.0F);
+            gzi $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().b().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
       }
    }
 
-   protected static void b(fxk<?> $$0, alc $$1, fde $$2, ghg $$3, int $$4, guj $$5, int $$6) {
-      fdi $$7 = $$3.getBuffer(ghq.f($$1));
-      $$0.a($$2, $$7, $$4, gok.a($$5, 0.0F), $$6);
+   private void a(fdi $$0, ghl $$1, int $$2, boolean $$3, dus $$4, int $$5, gzi $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(ghv.r(gxf.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
-
-   public M d() {
-      return this.a.e();
-   }
-
-   protected alc b(S $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(fde var1, ghg var2, int var3, S var4, float var5, float var6);
 }

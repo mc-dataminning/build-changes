@@ -1,36 +1,16 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record exl(float c) implements exo {
-   public static final MapCodec<exl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(exl::c)).apply($$0, exl::new));
-   public static final Codec<exl> b = Codec.FLOAT.xmap(exl::new, exl::c);
+public class exl {
+   private static final Codec<exk> d = lv.H.q().dispatch(exk::a, exj::a);
+   public static final Codec<exk> a = Codec.lazyInitialized(
+      () -> Codec.either(exi.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof exi $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final exj b = a("storage", exm.a);
+   public static final exj c = a("context", exi.b);
 
-   @Override
-   public exn b() {
-      return exp.b;
-   }
-
-   @Override
-   public float b(eth $$0) {
-      return this.c;
-   }
-
-   public static exl a(float $$0) {
-      return new exl($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((exl)$$0).c, this.c) == 0 : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   private static exj a(String $$0, MapCodec<? extends exk> $$1) {
+      return kb.a(lv.H, ale.b($$0), new exj($$1));
    }
 }

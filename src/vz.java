@@ -1,9 +1,17 @@
-import java.net.URI;
-import java.nio.file.Path;
-import java.util.Optional;
+public enum vz {
+   a("handshake"),
+   b("play"),
+   c("status"),
+   d("login"),
+   e("configuration");
 
-public record vz(xd a, Optional<Path> b, Optional<URI> c) {
-   public vz(xd $$0) {
-      this($$0, Optional.empty(), Optional.empty());
+   private final String f;
+
+   private vz(final String $$0) {
+      this.f = $$0;
+   }
+
+   public String a() {
+      return this.f;
    }
 }

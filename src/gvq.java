@@ -1,5 +1,13 @@
-public class gvq extends guj {
-   public cha.b a = cha.b.g;
-   public int b = -1;
-   public int c = -1;
+import javax.annotation.Nullable;
+
+public class gvq extends gtk {
+   @Nullable
+   public btp.l.e a;
+   @Nullable
+   public btp.l.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

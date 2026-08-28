@@ -1,26 +1,40 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record ade(eys b, Optional<eys> c, ll d, jn<awd> e) implements zk<abz> {
-   public static final zb<wo, ade> a = zb.a(eys.b, ade::b, eys.b.a(yz::a), ade::e, ln.bg, ade::f, awd.d, ade::g, ade::new);
+public class ade implements zl<aca> {
+   public static final zc<wb, ade> a = zl.a(ade::a, ade::new);
+   private final int b;
+   private final byte c;
 
-   @Override
-   public zm<ade> a() {
-      return ago.E;
+   public ade(btr $$0, byte $$1) {
+      this.b = $$0.ap();
+      this.c = $$1;
    }
 
-   public void a(abz $$0) {
+   private ade(wb $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
+   }
+
+   private void a(wb $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
+   }
+
+   @Override
+   public zn<ade> a() {
+      return agp.D;
+   }
+
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public Optional<eys> e() {
+   @Nullable
+   public btr a(dej $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
-   }
-
-   public ll f() {
-      return this.d;
-   }
-
-   public jn<awd> g() {
-      return this.e;
    }
 }

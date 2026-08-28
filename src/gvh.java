@@ -1,4 +1,3 @@
-public class gvh extends guj {
-   public float a;
-   public int b = 1;
+public class gvh extends guo {
+   public cgy.a a = cgy.a.b;
 }

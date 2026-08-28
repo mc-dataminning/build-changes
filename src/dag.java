@@ -1,98 +1,76 @@
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dag {
-   public static final dag a = new dag(List.of(), List.of());
-   private final List<cny.a<jn<cvk>>> b;
-   private final List<Optional<dag.a>> c;
+public final class dag implements Predicate<cvs> {
+   public static final zc<wp, dag> a = za.c(lw.K).a(dag::new, $$0 -> $$0.e);
+   public static final zc<wp, Optional<dag>> b = za.c(lw.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dag((js<cvn>)$$0)), $$0 -> $$0.<js.a<cvn>>map($$0x -> $$0x.e).orElse(js.a()));
+   public static final Codec<js<cvn>> c = aky.a(lw.K, cvs.a, false);
+   public static final Codec<dag> d = ayo.b(c).xmap(dag::new, $$0 -> $$0.e);
+   private final js<cvn> e;
+   @Nullable
+   private List<jo<cvn>> f;
 
-   private dag(List<cny.a<jn<cvk>>> $$0, List<Optional<dag.a>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private dag(js<cvn> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cvw.a.n())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
+         }
+      });
+      this.e = $$0;
    }
 
-   private static cny.a<jn<cvk>> c(List<cvp> $$0) {
-      return cnz.a($$0.stream().map(cvp::i));
+   public static boolean a(Optional<dag> $$0, cvs $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
    }
 
-   private static List<cvp> b(dad $$0) {
-      return $$0.a().stream().map(cvp::new).toList();
-   }
-
-   public static dag a(dad $$0) {
-      List<cvp> $$1 = b($$0);
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cny.a<jn<cvk>> $$2 = c($$1);
-         dag.a $$3 = new dag.a($$1, 0);
-         return new dag(List.of($$2), List.of(Optional.of($$3)));
+   public List<jo<cvn>> a() {
+      if (this.f == null) {
+         this.f = ImmutableList.copyOf(this.e);
       }
+
+      return this.f;
    }
 
-   public static dag a(List<Optional<dad>> $$0) {
-      int $$1 = $$0.size();
-      List<cny.a<jn<cvk>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dag.a>> $$3 = new ArrayList<>($$1);
-      int $$4 = 0;
+   public boolean a(cvs $$0) {
+      List<jo<cvn>> $$1 = this.a();
 
-      for (Optional<dad> $$5 : $$0) {
-         if ($$5.isPresent()) {
-            List<cvp> $$6 = b($$5.get());
-            if ($$6.isEmpty()) {
-               return a;
-            }
-
-            $$2.add(c($$6));
-            $$3.add(Optional.of(new dag.a($$6, $$4++)));
-         } else {
-            $$3.add(Optional.empty());
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$0.a($$1.get($$2))) {
+            return true;
          }
       }
 
-      return new dag($$2, $$3);
+      return false;
    }
 
-   public static dag b(List<dad> $$0) {
-      int $$1 = $$0.size();
-      List<cny.a<jn<cvk>>> $$2 = new ArrayList<>($$1);
-      List<Optional<dag.a>> $$3 = new ArrayList<>($$1);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         dad $$5 = $$0.get($$4);
-         List<cvp> $$6 = b($$5);
-         if ($$6.isEmpty()) {
-            return a;
-         }
-
-         $$2.add(c($$6));
-         $$3.add(Optional.of(new dag.a($$6, $$4)));
-      }
-
-      return new dag($$2, $$3);
+   @Override
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dag $$1 ? Objects.equals(this.e, $$1.e) : false;
    }
 
-   public List<Optional<dag.a>> a() {
-      return this.c;
+   public static dag a(dei $$0) {
+      return new dag(js.a($$0.q().n()));
    }
 
-   public List<cny.a<jn<cvk>>> b() {
-      return this.b;
+   public static dag a(dei... $$0) {
+      return a(Arrays.stream($$0));
    }
 
-   public boolean c() {
-      return this.c.isEmpty();
+   public static dag a(Stream<? extends dei> $$0) {
+      return new dag(js.a($$0.map($$0x -> $$0x.q().n()).toList()));
    }
 
-   public static record a(List<cvp> a, int b) {
-      public a(List<cvp> a, int b) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Possible items list must be not empty");
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public static dag a(js<cvn> $$0) {
+      return new dag($$0);
    }
 }

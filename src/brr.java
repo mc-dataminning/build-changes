@@ -1,3 +1,4 @@
-public interface brr extends cse {
-   xd Q_();
+public enum brr {
+   a,
+   b;
 }

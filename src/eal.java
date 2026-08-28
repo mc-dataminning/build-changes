@@ -1,82 +1,38 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eal implements dzz {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final eam i = new eam(this);
+public class eal {
+   public final ehz a;
+   public final ehz b;
+   public final ehz c;
+   public final ehz d;
+   public final ehz e;
+   public final List<dus> f;
+   public final axl<dhm> g;
+   public final axl<dhm> h;
+   public static final Codec<eal> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehz.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               ehz.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               ehz.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               ehz.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               ehz.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               ayo.a(dus.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               axl.b(lw.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               axl.b(lw.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eal::new)
+   );
 
-   public eal(long $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public azl d() {
-      return new eal(this.g());
-   }
-
-   @Override
-   public eax e() {
-      return new eal.a(this.g());
-   }
-
-   @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bac.a("LegacyRandomSource", null);
-      } else {
-         this.i.a();
-      }
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bac.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
-
-   public static class a implements eax {
-      private final long a;
-
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public azl a(int $$0, int $$1, int $$2) {
-         long $$3 = azd.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new eal($$4);
-      }
-
-      @Override
-      public azl a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new eal((long)$$1 ^ this.a);
-      }
-
-      @Override
-      public azl a(long $$0) {
-         return new eal($$0);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   public eal(ehz $$0, ehz $$1, ehz $$2, ehz $$3, ehz $$4, List<dus> $$5, axl<dhm> $$6, axl<dhm> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

@@ -1,234 +1,95 @@
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
+import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fgd extends hdk {
-   static final alc a = alc.b("pending_invite/accept_highlighted");
-   static final alc b = alc.b("pending_invite/accept");
-   static final alc c = alc.b("pending_invite/reject_highlighted");
-   static final alc B = alc.b("pending_invite/reject");
-   private static final Logger C = LogUtils.getLogger();
-   private static final xd D = xd.c("mco.invites.nopending");
-   static final xd E = xd.c("mco.invites.button.accept");
-   static final xd F = xd.c("mco.invites.button.reject");
-   private final fqd G;
-   private final CompletableFuture<List<fee>> H = CompletableFuture.supplyAsync(() -> {
-      try {
-         return fdu.a().i().a;
-      } catch (fff var1x) {
-         C.error("Couldn't list invites", var1x);
-         return List.of();
-      }
-   }, ad.h());
+public class fgd extends hdp {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hdq b = new hdq(Duration.ofSeconds(5L));
+   private final List<fhn> c;
+   private final fqh B;
+   private final fog C = fog.d();
+   private volatile xe D;
    @Nullable
-   xd I;
-   fgd.b J;
-   int K = -1;
-   private fkk L;
-   private fkk M;
+   private fld E;
 
-   public fgd(fqd $$0, xd $$1) {
-      super($$1);
-      this.G = $$0;
-   }
-
-   @Override
-   public void aR_() {
-      fdp.f();
-      this.J = new fgd.b();
-      this.H.thenAcceptAsync($$0 -> {
-         List<fgd.a> $$1 = $$0.stream().map($$0x -> new fgd.a($$0x)).toList();
-         this.J.a($$1);
-         if ($$1.isEmpty()) {
-            this.m.aZ().b(D);
-         }
-      }, this.r);
-      this.c(this.J);
-      this.L = this.c((fkk)fkk.a(E, $$0 -> {
-         this.a(this.K, true);
-         this.K = -1;
-         this.D();
-      }).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
-      this.c((fkk)fkk.a(xc.d, $$0 -> this.d()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
-      this.M = this.c((fkk)fkk.a(F, $$0 -> {
-         this.a(this.K, false);
-         this.K = -1;
-         this.D();
-      }).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
-      this.D();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.G);
-   }
-
-   void a(int $$0, boolean $$1) {
-      if ($$0 < this.J.l()) {
-         String $$2 = this.J.aI_().get($$0).c.a;
-         CompletableFuture.<Boolean>supplyAsync(() -> {
-            try {
-               fdu $$2x = fdu.a();
-               if ($$1) {
-                  $$2x.a($$2);
-               } else {
-                  $$2x.b($$2);
+   public fgd(fqh $$0, fhn... $$1) {
+      super(fig.a);
+      this.B = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.D = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (fhn $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
                }
 
-               return true;
-            } catch (fff var3x) {
-               C.error("Couldn't handle invite", var3x);
-               return false;
-            }
-         }, ad.h()).thenAcceptAsync($$2x -> {
-            if ($$2x) {
-               this.J.a($$0);
-               ffi $$3 = this.m.bc();
-               if ($$1) {
-                  $$3.c.a();
+               $$1x.run();
+               if ($$1x.d()) {
+                  return;
                }
-
-               $$3.d.a();
             }
-         }, this.r);
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new ffh(a));
+         $$3.start();
       }
    }
 
    @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.I = null;
-      $$0.a(this.p, this.l, this.n / 2, 12, -1);
-      if (this.I != null) {
-         $$0.a(this.p, this.I, $$1, $$2);
-      }
-
-      if (this.H.isDone() && this.J.l() == 0) {
-         $$0.a(this.p, D, this.n / 2, this.o / 2 - 20, -1);
+   public void e() {
+      super.e();
+      if (this.E != null) {
+         b.a(this.m.aZ(), this.E.z());
       }
    }
 
-   void D() {
-      this.L.k = this.a(this.K);
-      this.M.k = this.a(this.K);
-   }
-
-   private boolean a(int $$0) {
-      return $$0 != -1;
-   }
-
-   class a extends flg.a<fgd.a> {
-      private static final int b = 38;
-      final fee c;
-      private final List<ffm> d;
-
-      a(final fee $$0) {
-         this.c = $$0;
-         this.d = Arrays.asList(new fgd.a.a(), new fgd.a.b());
-      }
-
-      @Override
-      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         ffm.a(fgd.this.J, this, this.d, $$2, $$0, $$1);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f();
+         return true;
+      } else {
          return super.a($$0, $$1, $$2);
       }
-
-      private void a(fjx $$0, fee $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.a(fgd.this.p, $$1.b, $$2 + 38, $$3 + 1, -1, false);
-         $$0.a(fgd.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
-         $$0.a(fgd.this.p, fgz.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
-         ffm.a($$0, this.d, fgd.this.J, $$2, $$3, $$4, $$5);
-         fgz.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public xd a() {
-         xd $$0 = xc.b(xd.b(this.c.b), xd.b(this.c.c), fgz.a(this.c.e));
-         return xd.a("narrator.select", $$0);
-      }
-
-      class a extends ffm {
-         a() {
-            super(15, 15, 215, 5);
-         }
-
-         @Override
-         protected void a(fjx $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(ghq::B, $$3 ? fgd.a : fgd.b, $$1, $$2, 18, 18);
-            if ($$3) {
-               fgd.this.I = fgd.E;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            fgd.this.a($$0, true);
-         }
-      }
-
-      class b extends ffm {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(fjx $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(ghq::B, $$3 ? fgd.c : fgd.B, $$1, $$2, 18, 18);
-            if ($$3) {
-               fgd.this.I = fgd.F;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            fgd.this.a($$0, false);
-         }
-      }
    }
 
-   class b extends hdj<fgd.a> {
-      public b() {
-         super(fgd.this.n, fgd.this.o - 72, 32, 36);
+   @Override
+   public void aS_() {
+      this.C.c().b();
+      this.E = new fld(this.p, this.D);
+      this.C.a(this.E, $$0 -> $$0.e(30));
+      this.C.a(fko.a(xd.e, $$0 -> this.f()).a());
+      this.C.a($$1 -> {
+         fkm var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
+      foa.a(this.C, this.H());
+   }
+
+   protected void f() {
+      for (fhn $$0 : this.c) {
+         $$0.b();
       }
 
-      @Override
-      public void a(int $$0) {
-         this.i($$0);
+      this.m.a(this.B);
+   }
+
+   public void a(xe $$0) {
+      if (this.E != null) {
+         this.E.b($$0);
       }
 
-      @Override
-      public int a() {
-         return this.l() * 36;
-      }
-
-      @Override
-      public int b() {
-         return 260;
-      }
-
-      @Override
-      public void b(int $$0) {
-         super.b($$0);
-         this.c($$0);
-      }
-
-      public void c(int $$0) {
-         fgd.this.K = $$0;
-         fgd.this.D();
-      }
-
-      public void a(@Nullable fgd.a $$0) {
-         super.a($$0);
-         fgd.this.K = this.aI_().indexOf($$0);
-         fgd.this.D();
-      }
+      this.D = $$0;
    }
 }

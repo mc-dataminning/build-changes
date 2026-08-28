@@ -1,59 +1,42 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
 
-public record ewj(alb<ews> b) implements ews {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<ewj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.a(lv.bf).fieldOf("name").forGetter(ewj::c)).apply($$0, ewj::new));
+public class ewj extends ewm {
+   public static final MapCodec<ewj> a = a(ewj::new);
+   public static final Codec<ewj> b = b(ewj::new);
 
-   @Override
-   public ewt b() {
-      return ewu.p;
+   ewj(List<eww> $$0) {
+      super($$0, ad.a($$0));
+   }
+
+   public static ewj a(List<eww> $$0) {
+      return new ewj(List.copyOf($$0));
    }
 
    @Override
-   public void a(etn $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         ews.super.a($$0);
-         $$0.a()
-            .a(lv.bf, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public ewx b() {
+      return ewy.c;
+   }
+
+   public static ewj.a a(eww.a... $$0) {
+      return new ewj.a($$0);
+   }
+
+   public static class a extends ewm.a {
+      public a(eww.a... $$0) {
+         super($$0);
       }
-   }
 
-   public boolean a(eth $$0) {
-      ews $$1 = $$0.a().a(lv.bf, this.b).map(jn.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         eth.c<?> $$2 = eth.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
+      @Override
+      public ewj.a and(eww.a $$0) {
+         this.a($$0);
+         return this;
       }
-   }
 
-   public static ews.a a(alb<ews> $$0) {
-      return () -> new ewj($$0);
-   }
-
-   public alb<ews> c() {
-      return this.b;
+      @Override
+      protected eww a(List<eww> $$0) {
+         return new ewj($$0);
+      }
    }
 }

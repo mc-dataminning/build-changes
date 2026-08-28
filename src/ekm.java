@@ -1,24 +1,10 @@
-import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class ekm extends eki {
-   public static final MapCodec<ekm> a = aym.l.fieldOf("chance").xmap(ekm::new, $$0 -> $$0.c);
-   private final int c;
-
-   private ekm(int $$0) {
-      this.c = $$0;
-   }
-
-   public static ekm a(int $$0) {
-      return new ekm($$0);
-   }
-
+public abstract class ekm extends ekn {
    @Override
-   protected boolean a(ekh $$0, azl $$1, je $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public final Stream<jf> a_(ekl $$0, azn $$1, jf $$2) {
+      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
    }
 
-   @Override
-   public ekk<?> b() {
-      return ekk.b;
-   }
+   protected abstract boolean a(ekl var1, azn var2, jf var3);
 }

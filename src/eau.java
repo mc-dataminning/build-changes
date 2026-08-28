@@ -1,68 +1,110 @@
-public final class eau {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   private eau() {
+public record eau(eah b, eah c, eah d, eah e, eah f, eah g, eah h, eah i, eah j, eah k, eah l, eah m, eah n, eah o, eah p) {
+   public static final Codec<eau> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", eau::a),
+               a("fluid_level_floodedness", eau::b),
+               a("fluid_level_spread", eau::c),
+               a("lava", eau::d),
+               a("temperature", eau::e),
+               a("vegetation", eau::f),
+               a("continents", eau::g),
+               a("erosion", eau::h),
+               a("depth", eau::i),
+               a("ridges", eau::j),
+               a("initial_density_without_jaggedness", eau::k),
+               a("final_density", eau::l),
+               a("vein_toggle", eau::m),
+               a("vein_ridged", eau::n),
+               a("vein_gap", eau::o)
+            )
+            .apply($$0, eau::new)
+   );
+
+   private static RecordCodecBuilder<eau, eah> a(String $$0, Function<eau, eah> $$1) {
+      return eah.d.fieldOf($$0).forGetter($$1);
    }
 
-   protected static eao.c a(ead $$0, ead $$1, ead $$2, eax $$3) {
-      duo $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         eau.a $$8 = $$6 > 0.0 ? eau.a.a : eau.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azd.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               azl $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azd.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
-            }
-         } else {
-            return $$4;
-         }
-      };
+   public eau a(eah.f $$0) {
+      return new eau(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   protected static enum a {
-      a(dhl.ra.o(), dhl.tg.o(), dhl.c.o(), 0, 50),
-      b(dhl.Q.o(), dhl.tf.o(), dhl.qz.o(), -60, -8);
+   public eah a() {
+      return this.b;
+   }
 
-      final duo e;
-      final duo f;
-      final duo g;
-      protected final int c;
-      protected final int d;
+   public eah b() {
+      return this.c;
+   }
 
-      private a(final duo $$0, final duo $$1, final duo $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
-      }
+   public eah c() {
+      return this.d;
+   }
+
+   public eah d() {
+      return this.e;
+   }
+
+   public eah e() {
+      return this.f;
+   }
+
+   public eah f() {
+      return this.g;
+   }
+
+   public eah g() {
+      return this.h;
+   }
+
+   public eah h() {
+      return this.i;
+   }
+
+   public eah i() {
+      return this.j;
+   }
+
+   public eah j() {
+      return this.k;
+   }
+
+   public eah k() {
+      return this.l;
+   }
+
+   public eah l() {
+      return this.m;
+   }
+
+   public eah m() {
+      return this.n;
+   }
+
+   public eah n() {
+      return this.o;
+   }
+
+   public eah o() {
+      return this.p;
    }
 }

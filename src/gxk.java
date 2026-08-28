@@ -1,30 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gxk implements gxf {
-   public static final MapCodec<gxk> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gxk::new)
-   );
-   private final String c;
-   private final String d;
+public interface gxk {
+   akx a = new akx("textures", ".png");
 
-   public gxk(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   void a(auv var1, gxk.a var2);
+
+   gxm a();
+
+   public interface a {
+      default void a(ale $$0, aut $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(ale var1, gxk.b var2);
+
+      void a(Predicate<ale> var1);
    }
 
-   @Override
-   public void a(aut $$0, gxf.a $$1) {
-      akv $$2 = new akv("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         alc $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gxh a() {
-      return gxi.b;
+   public interface b extends Function<gxj, gxa> {
+      default void a() {
+      }
    }
 }

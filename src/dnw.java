@@ -1,48 +1,44 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnw extends dhj {
-   public static final MapCodec<dnw> h = b(dnw::new);
-   public static final dvm<jj.a> i = dve.I;
+public abstract class dnw extends djp {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final ezq h = dhm.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final ezq i = dhm.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final ezq j = dhm.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<? extends dnw> a() {
-      return h;
-   }
-
-   public dnw(dun.d $$0) {
+   protected dnw(dur.d $$0) {
       super($$0);
-      this.l(this.o().b(i, jj.a.b));
    }
 
    @Override
-   protected duo a(duo $$0, dnx $$1) {
-      return b($$0, $$1);
-   }
+   protected abstract MapCodec<? extends dnw> a();
 
-   public static duo b(duo $$0, dnx $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jj.a)$$0.c(i)) {
-               case a:
-                  return $$0.b(i, jj.a.c);
-               case c:
-                  return $$0.b(i, jj.a.a);
-               default:
-                  return $$0;
-            }
+   @Override
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
          default:
-            return $$0;
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(i);
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public duo a(czk $$0) {
-      return this.o().b(i, $$0.k().o());
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.b(a, $$1.b($$0.c(a)));
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
    }
 }

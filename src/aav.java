@@ -1,26 +1,35 @@
-public record aav(long c, je d) implements aan {
-   public static final zb<wa, aav> a = aan.a(aav::a, aav::new);
-   public static final aan.b<aav> b = aan.a("debug/neighbors_update");
+public record aav(aav.a c) implements aao {
+   public static final zc<wb, aav> a = aao.a(aav::a, aav::new);
+   public static final aao.b<aav> b = aao.a("debug/hive");
 
-   private aav(wa $$0) {
-      this($$0.m(), $$0.e());
+   private aav(wb $$0) {
+      this(new aav.a($$0));
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(wb $$0) {
+      this.c.a($$0);
    }
 
    @Override
-   public aan.b<aav> a() {
+   public aao.b<aav> a() {
       return b;
    }
 
-   public long b() {
+   public aav.a b() {
       return this.c;
    }
 
-   public je c() {
-      return this.d;
+   public static record a(jf a, String b, int c, int d, boolean e) {
+      public a(wb $$0) {
+         this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
+      }
+
+      public void a(wb $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+         $$0.q(this.c);
+         $$0.q(this.d);
+         $$0.a(this.e);
+      }
    }
 }

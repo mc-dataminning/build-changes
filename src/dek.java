@@ -1,78 +1,98 @@
-import com.mojang.serialization.Dynamic;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public final class dek {
-   private final String a;
-   private final ded b;
-   private final boolean c;
-   private final brm d;
-   private final boolean e;
-   private final dec f;
-   private final dfc g;
-
-   public dek(String $$0, ded $$1, boolean $$2, brm $$3, boolean $$4, dec $$5, dfc $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public interface dek extends ddu, deq {
+   @Override
+   default long al() {
+      return this.z_().d();
    }
 
-   public static dek a(Dynamic<?> $$0, dfc $$1) {
-      ded $$2 = ded.a($$0.get("GameType").asInt(0));
-      return new dek(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> brm.a($$0x.byteValue())).result().orElse(brm.c),
-         $$0.get("allowCommands").asBoolean($$2 == ded.b),
-         new dec($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   long F_();
+
+   fak<dhm> R();
+
+   private <T> fao<T> a(jf $$0, T $$1, int $$2, fas $$3) {
+      return new fao<>($$1, $$0, this.z_().c() + (long)$$2, $$3, this.F_());
    }
 
-   public String a() {
-      return this.a;
+   private <T> fao<T> a(jf $$0, T $$1, int $$2) {
+      return new fao<>($$1, $$0, this.z_().c() + (long)$$2, this.F_());
    }
 
-   public ded b() {
-      return this.b;
+   default void a(jf $$0, dhm $$1, int $$2, fas $$3) {
+      this.R().a(this.a($$0, $$1, $$2, $$3));
    }
 
-   public boolean c() {
-      return this.c;
+   default void a(jf $$0, dhm $$1, int $$2) {
+      this.R().a(this.a($$0, $$1, $$2));
    }
 
-   public brm d() {
-      return this.d;
+   fak<eqs> Q();
+
+   default void a(jf $$0, eqs $$1, int $$2, fas $$3) {
+      this.Q().a(this.a($$0, $$1, $$2, $$3));
    }
 
-   public boolean e() {
-      return this.e;
+   default void a(jf $$0, eqs $$1, int $$2) {
+      this.Q().a(this.a($$0, $$1, $$2));
    }
 
-   public dec f() {
-      return this.f;
+   esv z_();
+
+   brq d_(jf var1);
+
+   @Nullable
+   MinecraftServer o();
+
+   default brp am() {
+      return this.z_().q();
    }
 
-   public dfc g() {
-      return this.g;
+   dws P();
+
+   @Override
+   default boolean b(int $$0, int $$1) {
+      return this.P().b($$0, $$1);
    }
 
-   public dek a(ded $$0) {
-      return new dek(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   azn D_();
+
+   default void b(jf $$0, dhm $$1) {
    }
 
-   public dek a(brm $$0) {
-      return new dek(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   default void a(jk $$0, jf $$1, jf $$2, dus $$3, int $$4, int $$5) {
+      esa.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public dek a(dfc $$0) {
-      return new dek(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   default void a(@Nullable cnx $$0, jf $$1, awf $$2, awh $$3) {
+      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
    }
 
-   public dek h() {
-      return new dek(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   void a(@Nullable cnx var1, jf var2, awf var3, awh var4, float var5, float var6);
+
+   void a(lm var1, double var2, double var4, double var6, double var8, double var10, double var12);
+
+   void a(@Nullable cnx var1, int var2, jf var3, int var4);
+
+   default void c(int $$0, jf $$1, int $$2) {
+      this.a(null, $$0, $$1, $$2);
+   }
+
+   void a(jo<dzp> var1, eyw var2, dzp.a var3);
+
+   default void a(@Nullable btr $$0, jo<dzp> $$1, eyw $$2) {
+      this.a($$1, $$2, new dzp.a($$0, null));
+   }
+
+   default void a(@Nullable btr $$0, jo<dzp> $$1, jf $$2) {
+      this.a($$1, $$2, new dzp.a($$0, null));
+   }
+
+   default void a(jo<dzp> $$0, jf $$1, dzp.a $$2) {
+      this.a($$0, eyw.b($$1), $$2);
+   }
+
+   default void a(ald<dzp> $$0, jf $$1, dzp.a $$2) {
+      this.a(this.G_().e(lw.G).b($$0), $$1, $$2);
    }
 }

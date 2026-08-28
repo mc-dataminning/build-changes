@@ -1,65 +1,95 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class euq extends euu {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(alb.a(lv.be).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, euq::new)
+public class euq extends euy {
+   public static final int a = 0;
+   public static final MapCodec<euq> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  dbn.c.fieldOf("enchantment").forGetter($$0x -> $$0x.c),
+                  ext.a.fieldOf("count").forGetter($$0x -> $$0x.d),
+                  Codec.INT.optionalFieldOf("limit", 0).forGetter($$0x -> $$0x.e)
+               )
+            )
+            .apply($$0, euq::new)
    );
-   private final alb<euv> c;
+   private final jo<dbn> c;
+   private final exs d;
+   private final int e;
 
-   private euq(List<ews> $$0, alb<euv> $$1) {
+   euq(List<eww> $$0, jo<dbn> $$1, exs $$2, int $$3) {
       super($$0);
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    @Override
-   public euw<euq> b() {
-      return eux.H;
+   public eva<euq> b() {
+      return evb.m;
    }
 
    @Override
-   public void a(etn $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lv.be, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
+   public Set<ewe<?>> a() {
+      return Sets.union(ImmutableSet.of(ewh.d), this.d.a());
+   }
+
+   private boolean c() {
+      return this.e > 0;
    }
 
    @Override
-   protected cvp a(cvp $$0, eth $$1) {
-      euv $$2 = $$1.a().a(lv.be, this.c).map(jn::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         eth.c<?> $$3 = eth.a($$2);
-         if ($$1.b($$3)) {
-            cvp var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
+   public cvs a(cvs $$0, etl $$1) {
+      btr $$2 = $$1.c(ewh.d);
+      if ($$2 instanceof bun $$3) {
+         int $$4 = dbp.a(this.c, $$3);
+         if ($$4 == 0) {
             return $$0;
          }
+
+         float $$5 = (float)$$4 * this.d.b($$1);
+         $$0.g(Math.round($$5));
+         if (this.c()) {
+            $$0.f(this.e);
+         }
       }
+
+      return $$0;
    }
 
-   public static euu.a<?> a(alb<euv> $$0) {
-      return a($$1 -> new euq($$1, $$0));
+   public static euq.a a(jq.a $$0, exs $$1) {
+      jq.b<dbn> $$2 = $$0.d(lw.aN);
+      return new euq.a($$2.b(dbs.s), $$1);
+   }
+
+   public static class a extends euy.a<euq.a> {
+      private final jo<dbn> a;
+      private final exs b;
+      private int c = 0;
+
+      public a(jo<dbn> $$0, exs $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      protected euq.a a() {
+         return this;
+      }
+
+      public euq.a a(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      @Override
+      public euz b() {
+         return new euq(this.g(), this.a, this.b, this.c);
+      }
    }
 }

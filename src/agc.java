@@ -1,46 +1,16 @@
-import javax.annotation.Nullable;
-
-public class agc implements zk<abz> {
-   public static final zb<wa, agc> a = zk.a(agc::a, agc::new);
-   private final int b;
-   @Nullable
-   private final uf c;
-
-   public agc(int $$0, @Nullable uf $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private agc(wa $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
-   }
-
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.a((vc)this.c);
-   }
+public record agc(xe b, xe c) implements zl<aca> {
+   public static final zc<wp, agc> a = zc.a(xg.d, agc::b, xg.d, agc::e, agc::new);
 
    @Override
-   public zm<agc> a() {
-      return ago.aY;
+   public zn<agc> a() {
+      return agp.aX;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   @Nullable
-   public uf e() {
+   public xe e() {
       return this.c;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
    }
 }

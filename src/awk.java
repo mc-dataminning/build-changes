@@ -1,196 +1,153 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
-public class awk extends awp {
-   private static final Logger b = LogUtils.getLogger();
-   private final MinecraftServer c;
-   private final File d;
-   private final Set<awl<?>> e = Sets.newHashSet();
+public final class awk {
+   private static final Map<csp, Pair<String, String>> a = ImmutableMap.of(
+      csp.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      csp.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      csp.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      csp.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<csp, awk.a> b;
 
-   public awk(MinecraftServer $$0, File $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$1.isFile()) {
-         try {
-            this.a($$0.aC(), FileUtils.readFileToString($$1));
-         } catch (IOException var4) {
-            b.error("Couldn't read statistics file {}", $$1, var4);
-         } catch (JsonParseException var5) {
-            b.error("Couldn't parse statistics file {}", $$1, var5);
+   private awk(Map<csp, awk.a> $$0) {
+      this.b = $$0;
+   }
+
+   public awk() {
+      this(ad.a(Maps.newEnumMap(csp.class), $$0 -> {
+         for (csp $$1 : csp.values()) {
+            $$0.put($$1, new awk.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(csp $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(csp $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(csp $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(csp $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static awk a(wb $$0) {
+      Map<csp, awk.a> $$1 = Maps.newEnumMap(csp.class);
+
+      for (csp $$2 : csp.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new awk.a($$3, $$4));
+      }
+
+      return new awk($$1);
+   }
+
+   public void b(wb $$0) {
+      for (csp $$1 : csp.values()) {
+         awk.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
          }
       }
    }
 
-   public void a() {
-      try {
-         FileUtils.writeStringToFile(this.d, this.b());
-      } catch (IOException var2) {
-         b.error("Couldn't save stats", var2);
+   public static awk a(ug $$0) {
+      Map<csp, awk.a> $$1 = Maps.newEnumMap(csp.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new awk.a($$4, $$5));
+      });
+      return new awk($$1);
+   }
+
+   public void b(ug $$0) {
+      a.forEach(($$1, $$2) -> {
+         awk.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public awk a() {
+      Map<csp, awk.a> $$0 = Maps.newEnumMap(csp.class);
+
+      for (csp $$1 : csp.values()) {
+         awk.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new awk($$0);
+   }
+
+   public void a(awk $$0) {
+      this.b.clear();
+
+      for (csp $$1 : csp.values()) {
+         awk.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
       }
    }
 
    @Override
-   public void a(cnu $$0, awl<?> $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e.add($$1);
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awk && this.b.equals(((awk)$$0).b);
    }
 
-   private Set<awl<?>> d() {
-      Set<awl<?>> $$0 = Sets.newHashSet(this.e);
-      this.e.clear();
-      return $$0;
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   public void a(DataFixer $$0, String $$1) {
-      try {
-         JsonReader $$2 = new JsonReader(new StringReader($$1));
+   static final class a {
+      boolean a;
+      boolean b;
 
-         label47: {
-            try {
-               $$2.setLenient(false);
-               JsonElement $$3 = Streams.parse($$2);
-               if (!$$3.isJsonNull()) {
-                  uf $$4 = a($$3.getAsJsonObject());
-                  $$4 = bam.g.a($$0, $$4, uu.b($$4, 1343));
-                  if (!$$4.b("stats", 10)) {
-                     break label47;
-                  }
-
-                  uf $$5 = $$4.p("stats");
-                  Iterator var7 = $$5.e().iterator();
-
-                  while (true) {
-                     if (!var7.hasNext()) {
-                        break label47;
-                     }
-
-                     String $$6 = (String)var7.next();
-                     if ($$5.b($$6, 10)) {
-                        ad.a(
-                           lu.v.b(alc.a($$6)),
-                           $$2x -> {
-                              uf $$3x = $$5.p($$6);
-
-                              for (String $$4x : $$3x.e()) {
-                                 if ($$3x.b($$4x, 99)) {
-                                    ad.a(
-                                       this.a($$2x, $$4x),
-                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
-                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
-                                    );
-                                 } else {
-                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
-                                 }
-                              }
-                           },
-                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
-                        );
-                     }
-                  }
-               }
-
-               b.error("Unable to parse Stat data from {}", this.d);
-            } catch (Throwable var10) {
-               try {
-                  $$2.close();
-               } catch (Throwable var9) {
-                  var10.addSuppressed(var9);
-               }
-
-               throw var10;
-            }
-
-            $$2.close();
-            return;
-         }
-
-         $$2.close();
-      } catch (IOException | JsonParseException var11) {
-         b.error("Unable to parse Stat data from {}", this.d, var11);
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   private <T> Optional<awl<T>> a(awn<T> $$0, String $$1) {
-      return Optional.ofNullable(alc.c($$1)).flatMap($$0.b()::b).map($$0::b);
-   }
+      public awk.a a() {
+         return new awk.a(this.a, this.b);
+      }
 
-   private static uf a(JsonObject $$0) {
-      uf $$1 = new uf();
-
-      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
-         JsonElement $$3 = $$2.getValue();
-         if ($$3.isJsonObject()) {
-            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
-         } else if ($$3.isJsonPrimitive()) {
-            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
-            if ($$4.isNumber()) {
-               $$1.a($$2.getKey(), $$4.getAsInt());
-            }
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof awk.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
          }
       }
 
-      return $$1;
-   }
-
-   protected String b() {
-      Map<awn<?>, JsonObject> $$0 = Maps.newHashMap();
-      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
-
-      while ($$3.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awl<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awl<?>>)$$3.next();
-         awl<?> $$2 = (awl<?>)$$1.getKey();
-         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
       }
 
-      JsonObject $$3x = new JsonObject();
-
-      for (Entry<awn<?>, JsonObject> $$4 : $$0.entrySet()) {
-         $$3x.add(lu.v.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
       }
-
-      JsonObject $$5 = new JsonObject();
-      $$5.add("stats", $$3x);
-      $$5.addProperty("DataVersion", ab.b().d().c());
-      return $$5.toString();
-   }
-
-   private static <T> alc b(awl<T> $$0) {
-      return $$0.a().b().b($$0.b());
-   }
-
-   public void c() {
-      this.e.addAll(this.a.keySet());
-   }
-
-   public void a(ari $$0) {
-      Object2IntMap<awl<?>> $$1 = new Object2IntOpenHashMap();
-
-      for (awl<?> $$2 : this.d()) {
-         $$1.put($$2, this.a($$2));
-      }
-
-      $$0.c.b(new acd($$1));
    }
 }

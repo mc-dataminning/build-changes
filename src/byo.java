@@ -1,34 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class byo {
-   public static <E extends bum> bwd<E> a(Function<E, Optional<? extends buk>> $$0) {
-      return a($$0x -> true, $$0);
+public class byo<U> implements Iterable<U> {
+   protected final List<byo.a<U>> a;
+   private final azn b = azn.a();
+
+   public byo() {
+      this.a = Lists.newArrayList();
    }
 
-   public static <E extends bum> bwd<E> a(Predicate<E> $$0, Function<E, Optional<? extends buk>> $$1) {
-      return bzp.a(
-         (Function<bzp.b<E>, ? extends App<bzp.c<E>, bzs<E>>>)($$2 -> $$2.group($$2.c(cdn.o), $$2.a(cdn.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test((E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends buk> $$7 = $$1.apply((E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        buk $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
-                  }
-               }))
-      );
+   private byo(List<byo.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<byo<U>> a(Codec<U> $$0) {
+      return byo.a.a($$0).listOf().xmap(byo::new, $$0x -> $$0x.a);
+   }
+
+   public byo<U> a(U $$0, int $$1) {
+      this.a.add(new byo.a<>($$0, $$1));
+      return this;
+   }
+
+   public byo<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(byo.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(byo.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), byo.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<byo.a<E>> a(final Codec<E> $$0) {
+         return new Codec<byo.a<E>>() {
+            public <T> DataResult<Pair<byo.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new byo.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(byo.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

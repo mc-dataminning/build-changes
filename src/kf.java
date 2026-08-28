@@ -1,65 +1,74 @@
+import com.mojang.serialization.DynamicOps;
 import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class kf {
-   public static final zb<ByteBuf, kf> a = new zb<ByteBuf, kf>() {
-      public kf a(ByteBuf $$0) {
-         return new kf($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+   private static final Set<ald<? extends kb<?>>> a = akz.c.stream().map(akz.d::a).collect(Collectors.toUnmodifiableSet());
+
+   public static void a(DynamicOps<vd> $$0, kc $$1, Set<auc> $$2, BiConsumer<ald<? extends kb<?>>, List<kf.a>> $$3) {
+      akz.c.forEach($$4 -> a($$0, (akz.d<?>)$$4, $$1, $$2, $$3));
+   }
+
+   private static <T> void a(DynamicOps<vd> $$0, akz.d<T> $$1, kc $$2, Set<auc> $$3, BiConsumer<ald<? extends kb<?>>, List<kf.a>> $$4) {
+      $$2.a($$1.a())
+         .ifPresent(
+            $$4x -> {
+               List<kf.a> $$5 = new ArrayList<>($$4x.d());
+               $$4x.c()
+                  .forEach(
+                     $$5x -> {
+                        boolean $$6 = $$4x.d($$5x.h()).flatMap(ka::a).filter($$3::contains).isPresent();
+                        Optional<vd> $$7;
+                        if ($$6) {
+                           $$7 = Optional.empty();
+                        } else {
+                           vd $$8 = (vd)$$1.b()
+                              .encodeStart($$0, $$5x.a())
+                              .getOrThrow($$1xxx -> new IllegalArgumentException("Failed to serialize " + $$5x.h() + ": " + $$1xxx));
+                           $$7 = Optional.of($$8);
+                        }
+
+                        $$5.add(new kf.a($$5x.h().a(), $$7));
+                     }
+                  );
+               $$4.accept($$4x.g(), $$5);
+            }
+         );
+   }
+
+   private static Stream<kc.d<?>> a(kc $$0) {
+      return $$0.d().filter($$0x -> a($$0x.a()));
+   }
+
+   public static Stream<kc.d<?>> a(jv<aln> $$0) {
+      return a($$0.c(aln.b));
+   }
+
+   public static Stream<kc.d<?>> b(jv<aln> $$0) {
+      Stream<kc.d<?>> $$1 = $$0.a(aln.a).d();
+      Stream<kc.d<?>> $$2 = a($$0);
+      return Stream.concat($$2, $$1);
+   }
+
+   public static boolean a(ald<? extends kb<?>> $$0) {
+      return a.contains($$0);
+   }
+
+   public static record a(ale b, Optional<vd> c) {
+      public static final zc<ByteBuf, kf.a> a = zc.a(ale.b, kf.a::a, za.n.a(za::a), kf.a::b, kf.a::new);
+
+      public ale a() {
+         return this.b;
       }
 
-      public void a(ByteBuf $$0, kf $$1) {
-         $$0.writeFloat($$1.b);
-         $$0.writeFloat($$1.c);
-         $$0.writeFloat($$1.d);
+      public Optional<vd> b() {
+         return this.c;
       }
-   };
-   protected final float b;
-   protected final float c;
-   protected final float d;
-
-   public kf(float $$0, float $$1, float $$2) {
-      this.b = !Float.isInfinite($$0) && !Float.isNaN($$0) ? $$0 % 360.0F : 0.0F;
-      this.c = !Float.isInfinite($$1) && !Float.isNaN($$1) ? $$1 % 360.0F : 0.0F;
-      this.d = !Float.isInfinite($$2) && !Float.isNaN($$2) ? $$2 % 360.0F : 0.0F;
-   }
-
-   public kf(ul $$0) {
-      this($$0.i(0), $$0.i(1), $$0.i(2));
-   }
-
-   public ul a() {
-      ul $$0 = new ul();
-      $$0.add(ui.a(this.b));
-      $$0.add(ui.a(this.c));
-      $$0.add(ui.a(this.d));
-      return $$0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof kf $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.c;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   public float e() {
-      return azd.g(this.b);
-   }
-
-   public float f() {
-      return azd.g(this.c);
-   }
-
-   public float g() {
-      return azd.g(this.d);
    }
 }

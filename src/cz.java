@@ -8,17 +8,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cz extends dv<cz.a> {
+public class cz extends dw<cz.a> {
    @Override
    public Codec<cz.a> a() {
       return cz.a.a;
    }
 
-   public void a(ari $$0, Collection<bto> $$1) {
-      List<eth> $$2 = Lists.newArrayList();
-      Set<btv<?>> $$3 = Sets.newHashSet();
+   public void a(ark $$0, Collection<btr> $$1) {
+      List<etl> $$2 = Lists.newArrayList();
+      Set<bty<?>> $$3 = Sets.newHashSet();
 
-      for (bto $$4 : $$1) {
+      for (btr $$4 : $$1) {
          $$3.add($$4.ao());
          $$2.add(bv.b($$0, $$4));
       }
@@ -26,7 +26,7 @@ public class cz extends dv<cz.a> {
       this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static record a(Optional<bg> b, List<bg> c, dh.d d) implements dv.a {
+   public static record a(Optional<bg> b, List<bg> c, dh.d d) implements dw.a {
       public static final Codec<cz.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(cz.a::a),
@@ -44,16 +44,16 @@ public class cz extends dv<cz.a> {
          return an.H.a(new cz.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<eth> $$0, int $$1) {
+      public boolean a(Collection<etl> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<eth> $$2 = Lists.newArrayList($$0);
+            List<etl> $$2 = Lists.newArrayList($$0);
 
             for (bg $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<eth> $$5 = $$2.iterator();
+               Iterator<etl> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  eth $$6 = $$5.next();
+                  etl $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;
@@ -72,7 +72,7 @@ public class cz extends dv<cz.a> {
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
+         dw.a.super.a($$0);
          $$0.a(this.c, ".victims");
       }
 

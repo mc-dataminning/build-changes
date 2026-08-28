@@ -1,20 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bye {
-   public static bwd<buk> a(btv<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return bzp.a(
-         (Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$2x -> $$2x.group($$2x.a(cdn.n), $$2x.c(cdn.q), $$2x.b(cdn.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<buk> $$9 = $$2x.<cdp>b($$5).a($$3xx -> $$3xx.g((bto)$$7) <= (double)$$2 && $$0.equals($$3xx.ao()));
-                     if ($$9.isEmpty()) {
+   public static bwg<bun> a(buq $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ao().f()), $$1);
+   }
+
+   public static bxq<bun> a(bty<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ao()), $$1);
+   }
+
+   public static bxq<bun> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bxq<bun> a(Predicate<bun> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bzs.a(
+         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$2x -> $$2x.group($$2x.c(cdq.n), $$2x.b(cdq.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bun> $$8 = $$2x.<cds>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((btr)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        buk $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bwn($$10, true));
+                        $$3.a(new bwq($$8.get(), true));
                         return true;
                      }
                   }))

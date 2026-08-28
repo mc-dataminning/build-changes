@@ -1,42 +1,85 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-public record adr(esh b, byte c, boolean d, Optional<List<esd>> e, Optional<esj.c> f) implements zk<abz> {
-   public static final zb<wo, adr> a = zb.a(esh.b, adr::b, yz.c, adr::e, yz.b, adr::f, esd.a.a(yz.a()).a(yz::a), adr::g, esj.c.a, adr::h, adr::new);
+public record adr(int b, boolean c, Set<ald<dej>> d, int e, int f, int g, boolean h, boolean i, boolean j, agm k, boolean l) implements zl<aca> {
+   public static final zc<wp, adr> a = zl.a(adr::a, adr::new);
 
-   public adr(esh $$0, byte $$1, boolean $$2, @Nullable Collection<esd> $$3, @Nullable esj.c $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private adr(wp $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lw.bc)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new agm($$0),
+         $$0.readBoolean()
+      );
+   }
+
+   private void a(wp $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, wb::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zm<adr> a() {
-      return ago.P;
+   public zn<adr> a() {
+      return agp.O;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public void a(esj $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public byte e() {
+   public boolean e() {
       return this.c;
    }
 
-   public boolean f() {
+   public Set<ald<dej>> f() {
       return this.d;
    }
 
-   public Optional<List<esd>> g() {
+   public int g() {
       return this.e;
    }
 
-   public Optional<esj.c> h() {
+   public int h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public agm m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

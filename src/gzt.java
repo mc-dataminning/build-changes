@@ -1,20 +1,28 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Locale;
 
-public interface gzt {
-   void a(gzt.b var1, gzt.a var2);
+public record gzt(ale b, String c) {
+   public static final String a = "inventory";
 
-   @Nullable
-   gzd a(gzj var1, Function<gzh, gxb> var2, gzp var3);
-
-   public static enum a {
-      a,
-      b;
+   public gzt(ale b, String c) {
+      c = a(c);
+      this.b = b;
+      this.c = c;
    }
 
-   public interface b {
-      gzt a(alc var1);
+   public static gzt a(ale $$0) {
+      return new gzt($$0, "inventory");
+   }
 
-      gzt b(alc var1);
+   private static String a(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.b + "#" + this.c;
    }
 }

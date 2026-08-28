@@ -1,80 +1,56 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class gfz extends gft {
+   private float a;
 
-public abstract class gfz extends cnu {
-   @Nullable
-   private gbs cv;
-   protected eys b = eys.c;
-   public float c;
-   public float d;
-   public float e;
-   public final gbh f;
-   public float g;
-   public float h;
-
-   public gfz(gbh $$0, GameProfile $$1) {
-      super($$0, $$0.W(), $$0.X(), $$1);
-      this.f = $$0;
+   gfz(gbm $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public boolean P_() {
-      gbs $$0 = this.a();
-      return $$0 != null && $$0.e() == ded.d;
+   public gex b() {
+      return gex.b;
    }
 
    @Override
-   public boolean f() {
-      gbs $$0 = this.a();
-      return $$0 != null && $$0.e() == ded.b;
-   }
-
-   @Nullable
-   protected gbs a() {
-      if (this.cv == null) {
-         this.cv = fil.Q().L().a(this.cD());
-      }
-
-      return this.cv;
-   }
-
-   @Override
-   public void l() {
-      this.g = this.h;
-      this.b = this.dv();
-      super.l();
-   }
-
-   public eys I(float $$0) {
-      return this.b.a(this.dv(), (double)$$0);
-   }
-
-   public gyc b() {
-      gbs $$0 = this.a();
-      return $$0 == null ? gxt.a(this.cD()) : $$0.g();
-   }
-
-   public float a(boolean $$0, float $$1) {
-      float $$2 = 1.0F;
-      if (this.gd().b) {
-         $$2 *= 1.1F;
-      }
-
-      float $$3 = this.gd().b();
-      if ($$3 != 0.0F) {
-         float $$4 = (float)this.h(bvr.v) / $$3;
-         $$2 *= ($$4 + 1.0F) / 2.0F;
-      }
-
-      if (this.fv()) {
-         if (this.fx().a(cvt.ow)) {
-            float $$5 = Math.min((float)this.fz() / 20.0F, 1.0F);
-            $$2 *= 1.0F - azd.k($$5) * 0.15F;
-         } else if ($$0 && this.gA()) {
-            return 0.1F;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * azf.b(this.a));
+         this.l = this.l + (double)(0.6F * azf.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(jf.a(this.g, this.h, this.i)).a(axb.a) || this.m) {
+            this.k();
          }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements gew<ls> {
+      private final gfo a;
+
+      public a(gfo $$0) {
+         this.a = $$0;
       }
 
-      return azd.h($$1, 1.0F, $$2);
+      public get a(ls $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfz $$8 = new gfz($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

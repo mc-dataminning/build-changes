@@ -1,252 +1,141 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import java.util.Arrays;
 import javax.annotation.Nullable;
 
-public class dwt extends dxe {
-   private final dwu n;
-   private final boolean o;
-
-   public dwt(dwu $$0, boolean $$1) {
-      super($$0.f(), dxh.a, $$0.l, $$0.E().F_().d(lv.aG), $$0.s());
-      this.n = $$0;
-      this.o = $$1;
-   }
-
+public class dwt {
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
    @Nullable
-   @Override
-   public drs c_(je $$0) {
-      return this.n.c_($$0);
+   protected byte[] d;
+   private int f;
+
+   public dwt() {
+      this(0);
    }
 
-   @Override
-   public duo a_(je $$0) {
-      return this.n.a_($$0);
+   public dwt(int $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public eqp b_(je $$0) {
-      return this.n.b_($$0);
-   }
-
-   @Override
-   public dwv b(int $$0) {
-      return this.o ? this.n.b($$0) : super.b($$0);
-   }
-
-   @Nullable
-   @Override
-   public duo a(je $$0, duo $$1, boolean $$2) {
-      return this.o ? this.n.a($$0, $$1, $$2) : null;
-   }
-
-   @Override
-   public void a(drs $$0) {
-      if (this.o) {
-         this.n.a($$0);
+   public dwt(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
       }
    }
 
-   @Override
-   public void a(bto $$0) {
-      if (this.o) {
-         this.n.a($$0);
-      }
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   @Override
-   public void a(dxl $$0) {
-      if (this.o) {
-         super.a($$0);
-      }
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   @Override
-   public dwv[] d() {
-      return this.n.d();
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   @Override
-   public void a(eak.a $$0, long[] $$1) {
-   }
-
-   private eak.a c(eak.a $$0) {
-      if ($$0 == eak.a.a) {
-         return eak.a.b;
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         return $$0 == eak.a.c ? eak.a.d : $$0;
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
       }
    }
 
-   @Override
-   public eak a(eak.a $$0) {
-      return this.n.a($$0);
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
    }
 
-   @Override
-   public int a(eak.a $$0, int $$1, int $$2) {
-      return this.n.a(this.c($$0), $$1, $$2);
+   private static int e(int $$0) {
+      return $$0 & 1;
    }
 
-   @Override
-   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.n.getNoiseBiome($$0, $$1, $$2);
+   private static int f(int $$0) {
+      return $$0 >> 1;
    }
 
-   @Override
-   public ddm f() {
-      return this.n.f();
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
    }
 
-   @Nullable
-   @Override
-   public elk a(elc $$0) {
-      return this.n.a($$0);
-   }
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
 
-   @Override
-   public void a(elc $$0, elk $$1) {
-   }
-
-   @Override
-   public Map<elc, elk> g() {
-      return this.n.g();
-   }
-
-   @Override
-   public void a(Map<elc, elk> $$0) {
-   }
-
-   @Override
-   public LongSet b(elc $$0) {
-      return this.n.b($$0);
-   }
-
-   @Override
-   public void a(elc $$0, long $$1) {
-   }
-
-   @Override
-   public Map<elc, LongSet> h() {
-      return this.n.h();
-   }
-
-   @Override
-   public void b(Map<elc, LongSet> $$0) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.n.a($$0);
-   }
-
-   @Override
-   public boolean i() {
-      return false;
-   }
-
-   @Override
-   public dxl j() {
-      return this.n.j();
-   }
-
-   @Override
-   public void d(je $$0) {
-   }
-
-   @Override
-   public void e(je $$0) {
-   }
-
-   @Override
-   public void a(uf $$0) {
-   }
-
-   @Nullable
-   @Override
-   public uf f(je $$0) {
-      return this.n.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public uf a(je $$0, jp.a $$1) {
-      return this.n.a($$0, $$1);
-   }
-
-   @Override
-   public void a(Predicate<duo> $$0, BiConsumer<je, duo> $$1) {
-      this.n.a($$0, $$1);
-   }
-
-   @Override
-   public fan<dhj> o() {
-      return this.o ? this.n.o() : fad.a();
-   }
-
-   @Override
-   public fan<eqo> p() {
-      return this.o ? this.n.p() : fad.a();
-   }
-
-   @Override
-   public dwk.a a(long $$0) {
-      return this.n.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public ebn s() {
-      return this.n.s();
-   }
-
-   @Override
-   public dwj B() {
-      if (this.o) {
-         return super.B();
-      } else {
-         throw (UnsupportedOperationException)ad.b(new UnsupportedOperationException("Meaningless in this context"));
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
       }
+
+      return $$1;
    }
 
-   @Override
-   public dwj C() {
-      if (this.o) {
-         return super.C();
-      } else {
-         throw (UnsupportedOperationException)ad.b(new UnsupportedOperationException("Meaningless in this context"));
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
+         }
       }
+
+      return this.d;
    }
 
-   public dwu D() {
-      return this.n;
-   }
-
-   @Override
-   public boolean u() {
-      return this.n.u();
+   public dwt b() {
+      return this.d == null ? new dwt(this.f) : new dwt((byte[])this.d.clone());
    }
 
    @Override
-   public void b(boolean $$0) {
-      this.n.b($$0);
-   }
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
 
-   @Override
-   public void a(dfk $$0, dfq.f $$1) {
-      if (this.o) {
-         this.n.a($$0, $$1);
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
+         }
       }
+
+      return $$0.toString();
    }
 
-   @Override
-   public void z() {
-      this.n.z();
+   @bal
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
+      }
+
+      return $$1.toString();
    }
 
-   @Override
-   public epz A() {
-      return this.n.A();
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

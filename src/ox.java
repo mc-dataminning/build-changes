@@ -3,38 +3,44 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ox {
-   private final op a;
-   private final dad b;
-   private final dad c;
-   private final dad d;
-   private final Map<String, ao<?>> e = new LinkedHashMap<>();
+   private final dag a;
+   private final dag b;
+   private final dag c;
+   private final oq d;
+   private final cvn e;
+   private final Map<String, ao<?>> f = new LinkedHashMap<>();
 
-   public ox(op $$0, dad $$1, dad $$2, dad $$3) {
+   public ox(dag $$0, dag $$1, dag $$2, oq $$3, cvn $$4) {
+      this.d = $$3;
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static ox a(dad $$0, dad $$1, dad $$2, op $$3) {
-      return new ox($$3, $$0, $$1, $$2);
+   public static ox a(dag $$0, dag $$1, dag $$2, oq $$3, cvn $$4) {
+      return new ox($$0, $$1, $$2, $$3, $$4);
    }
 
    public ox a(String $$0, ao<?> $$1) {
-      this.e.put($$0, $$1);
+      this.f.put($$0, $$1);
       return this;
    }
 
-   public void a(oq $$0, alc $$1) {
-      this.a($$1);
-      af.a $$2 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
-      this.e.forEach($$2::a);
-      dbc $$3 = new dbc(Optional.of(this.b), Optional.of(this.c), Optional.of(this.d));
-      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.a.a() + "/")));
+   public void a(or $$0, String $$1) {
+      this.a($$0, ale.a($$1));
    }
 
-   private void a(alc $$0) {
-      if (this.e.isEmpty()) {
+   public void a(or $$0, ale $$1) {
+      this.a($$1);
+      af.a $$2 = $$0.a().a("has_the_recipe", dt.a($$1)).a(ak.a.a($$1)).a(aj.a.b);
+      this.f.forEach($$2::a);
+      dbe $$3 = new dbe(Optional.of(this.a), Optional.of(this.b), Optional.of(this.c), new cvs(this.e));
+      $$0.a($$1, $$3, $$2.b($$1.f("recipes/" + this.d.a() + "/")));
+   }
+
+   private void a(ale $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }

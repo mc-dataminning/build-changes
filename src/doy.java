@@ -1,47 +1,33 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class doy extends dgv {
-   public static final MapCodec<doy> a = b(doy::new);
+public class doy extends dgz {
+   public static final MapCodec<doy> c = b(doy::new);
 
    @Override
    public MapCodec<doy> a() {
-      return a;
+      return c;
    }
 
-   protected doy(dun.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public drs a(je $$0, duo $$1) {
-      return new dti($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
-      return a($$2, dru.j, $$0.B ? dti::a : dti::b);
+   public doy(dur.d $$0) {
+      super($$0, 2.0F);
    }
 
    @Override
-   protected void a(duo $$0, arh $$1, je $$2, cvp $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
-      }
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return this.a($$0, $$3, $$4) ? this.n() : dho.a.n();
    }
 
    @Override
-   protected dnq a_(duo $$0) {
-      return dnq.c;
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      return o($$1.a_($$2.e()));
+   }
+
+   public static boolean o(dus $$0) {
+      return $$0.a(awv.aU);
    }
 
    @Override
-   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dfa.a($$0, $$2, "SpawnData");
+   protected boolean g(dus $$0) {
+      return true;
    }
 }

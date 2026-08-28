@@ -1,145 +1,85 @@
-import com.google.common.collect.Lists;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class adk implements zl<aca> {
+   public static final zc<wb, adk> a = zl.a(adk::a, adk::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final long f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-public class adk {
-   private static final int a = 2097152;
-   private final uf b;
-   private final byte[] c;
-   private final List<adk.a> d;
-
-   public adk(dwu $$0) {
-      this.b = new uf();
-
-      for (Entry<eak.a, eak> $$1 : $$0.e()) {
-         if ($$1.getKey().b()) {
-            this.b.a($$1.getKey().a(), new um($$1.getValue().a()));
-         }
-      }
-
-      this.c = new byte[a($$0)];
-      a(new wa(this.c()), $$0);
-      this.d = Lists.newArrayList();
-
-      for (Entry<je, drs> $$2 : $$0.F().entrySet()) {
-         this.d.add(adk.a.a($$2.getValue()));
-      }
+   private adk(wb $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.m();
+      this.g = $$0.l();
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   public adk(wo $$0, int $$1, int $$2) {
-      this.b = $$0.o();
-      if (this.b == null) {
-         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
-      } else {
-         int $$3 = $$0.l();
-         if ($$3 > 2097152) {
-            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
-         } else {
-            this.c = new byte[$$3];
-            $$0.b(this.c);
-            this.d = adk.a.b.decode($$0);
-         }
-      }
+   public adk(dwj $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.i();
+      this.e = $$0.k();
+      this.f = $$0.j();
+      this.g = $$0.m();
+      this.h = $$0.r();
+      this.i = $$0.q();
    }
 
-   public void a(wo $$0) {
+   private void a(wb $$0) {
       $$0.a(this.b);
-      $$0.c(this.c.length);
-      $$0.c(this.c);
-      adk.a.b.encode($$0, this.d);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
-   private static int a(dwu $$0) {
-      int $$1 = 0;
-
-      for (dwv $$2 : $$0.d()) {
-         $$1 += $$2.j();
-      }
-
-      return $$1;
+   @Override
+   public zn<adk> a() {
+      return agp.J;
    }
 
-   private ByteBuf c() {
-      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
-      $$0.writerIndex(0);
-      return $$0;
+   public void a(aca $$0) {
+      $$0.a(this);
    }
 
-   public static void a(wa $$0, dwu $$1) {
-      for (dwv $$2 : $$1.d()) {
-         $$2.c($$0);
-      }
-   }
-
-   public Consumer<adk.b> a(int $$0, int $$1) {
-      return $$2 -> this.a($$2, $$0, $$1);
-   }
-
-   private void a(adk.b $$0, int $$1, int $$2) {
-      int $$3 = 16 * $$1;
-      int $$4 = 16 * $$2;
-      je.a $$5 = new je.a();
-
-      for (adk.a $$6 : this.d) {
-         int $$7 = $$3 + kg.b($$6.c >> 4);
-         int $$8 = $$4 + kg.b($$6.c);
-         $$5.d($$7, $$6.d, $$8);
-         $$0.accept($$5, $$6.e, $$6.f);
-      }
-   }
-
-   public wa a() {
-      return new wa(Unpooled.wrappedBuffer(this.c));
-   }
-
-   public uf b() {
+   public double b() {
       return this.b;
    }
 
-   static class a {
-      public static final zb<wo, adk.a> a = zb.a(adk.a::a, adk.a::new);
-      public static final zb<wo, List<adk.a>> b = a.a(yz.a());
-      final int c;
-      final int d;
-      final dru<?> e;
-      @Nullable
-      final uf f;
-
-      private a(int $$0, int $$1, dru<?> $$2, @Nullable uf $$3) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
-
-      private a(wo $$0) {
-         this.c = $$0.readByte();
-         this.d = $$0.readShort();
-         this.e = yz.a(lv.h).decode($$0);
-         this.f = $$0.o();
-      }
-
-      private void a(wo $$0) {
-         $$0.l(this.c);
-         $$0.m(this.d);
-         yz.a(lv.h).encode($$0, this.e);
-         $$0.a(this.f);
-      }
-
-      static adk.a a(drs $$0) {
-         uf $$1 = $$0.a($$0.i().F_());
-         je $$2 = $$0.aB_();
-         int $$3 = kg.b($$2.u()) << 4 | kg.b($$2.w());
-         return new adk.a($$3, $$2.v(), $$0.q(), $$1.g() ? null : $$1);
-      }
+   public double e() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(je var1, dru<?> var2, @Nullable uf var3);
+   public double f() {
+      return this.e;
+   }
+
+   public double g() {
+      return this.d;
+   }
+
+   public long h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.h;
    }
 }

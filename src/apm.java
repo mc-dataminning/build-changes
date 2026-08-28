@@ -1,47 +1,59 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class apm {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.trigger.failed.invalid"));
-
-   public static void a(CommandDispatcher<et> $$0) {
+   public static void a(CommandDispatcher<eu> $$0, eq $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)eu.a("trigger")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ev.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("objective", fn.a())
-                        .suggests(($$0x, $$1) -> a((et)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((et)$$0x.getSource(), ((et)$$0x.getSource()).h(), fn.a($$0x, "objective"))))
-                     .then(
-                        eu.a("add")
-                           .then(
-                              eu.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (et)$$0x.getSource(),
-                                          ((et)$$0x.getSource()).h(),
-                                          fn.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ev.a(
+                                    "targets", fh.d()
                                  )
+                                 .then(ev.a("clear").executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets")))))
+                              .then(ev.a("reset").executes($$0x -> b((eu)$$0x.getSource(), fh.f($$0x, "targets")))))
+                           .then(
+                              ev.a("title")
+                                 .then(
+                                    ev.a("title", fd.a($$1))
+                                       .executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), fd.a($$0x, "title"), "title", afv::new))
+                                 )
+                           ))
+                        .then(
+                           ev.a("subtitle")
+                              .then(
+                                 ev.a("title", fd.a($$1))
+                                    .executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), fd.a($$0x, "title"), "subtitle", aft::new))
+                              )
+                        ))
+                     .then(
+                        ev.a("actionbar")
+                           .then(
+                              ev.a("title", fd.a($$1))
+                                 .executes($$0x -> a((eu)$$0x.getSource(), fh.f($$0x, "targets"), fd.a($$0x, "title"), "actionbar", aeu::new))
                            )
                      ))
                   .then(
-                     eu.a("set")
+                     ev.a("times")
                         .then(
-                           eu.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (et)$$0x.getSource(), ((et)$$0x.getSource()).h(), fn.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                           ev.a("fadeIn", gj.a())
+                              .then(
+                                 ev.a("stay", gj.a())
+                                    .then(
+                                       ev.a("fadeOut", gj.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (eu)$$0x.getSource(),
+                                                   fh.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
                                     )
                               )
                         )
@@ -50,58 +62,65 @@ public class apm {
       );
    }
 
-   public static CompletableFuture<Suggestions> a(et $$0, SuggestionsBuilder $$1) {
-      ezw $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
-      if ($$2 != null) {
-         ezx $$4 = $$0.l().aJ();
+   private static int a(eu $$0, Collection<ark> $$1) {
+      acr $$2 = new acr(false);
 
-         for (ezp $$5 : $$4.c()) {
-            if ($$5.c() == faa.c) {
-               ezt $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
+      for (ark $$3 : $$1) {
+         $$3.c.b($$2);
       }
 
-      return ey.b($$3, $$1);
-   }
-
-   private static int a(et $$0, ari $$1, ezp $$2, int $$3) throws CommandSyntaxException {
-      ezv $$4 = a($$0.l().aJ(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> xd.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(et $$0, ari $$1, ezp $$2, int $$3) throws CommandSyntaxException {
-      ezv $$4 = a($$0.l().aJ(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> xd.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(et $$0, ari $$1, ezp $$2) throws CommandSyntaxException {
-      ezv $$3 = a($$0.l().aJ(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> xd.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static ezv a(ezx $$0, ezw $$1, ezp $$2) throws CommandSyntaxException {
-      if ($$2.c() != faa.c) {
-         throw b.create();
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.cleared.single", $$1.iterator().next().R_()), true);
       } else {
-         ezt $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            ezv $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
-         } else {
-            throw a.create();
-         }
+         $$0.a(() -> xe.a("commands.title.cleared.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
+   }
+
+   private static int b(eu $$0, Collection<ark> $$1) {
+      acr $$2 = new acr(true);
+
+      for (ark $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.reset.single", $$1.iterator().next().R_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(eu $$0, Collection<ark> $$1, xe $$2, String $$3, Function<xe, zl<?>> $$4) throws CommandSyntaxException {
+      for (ark $$5 : $$1) {
+         $$5.c.b($$4.apply(xh.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().R_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(eu $$0, Collection<ark> $$1, int $$2, int $$3, int $$4) {
+      afw $$5 = new afw($$2, $$3, $$4);
+
+      for (ark $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xe.a("commands.title.times.single", $$1.iterator().next().R_()), true);
+      } else {
+         $$0.a(() -> xe.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

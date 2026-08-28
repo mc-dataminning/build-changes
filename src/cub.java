@@ -1,274 +1,209 @@
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.apache.commons.lang3.math.Fraction;
 
-public class cub {
-   static final alc a = a("items");
-   private final xd b;
-   alc c = a;
-   boolean d = true;
-   boolean e = true;
-   boolean f = false;
-   private final cub.f g;
-   private final int h;
-   private final cub.h i;
-   @Nullable
-   private cvp j;
-   private Collection<cvp> k = cvq.a();
-   private Set<cvp> l = cvq.a();
-   private final Supplier<cvp> m;
-   private final cub.b n;
+public class cub extends cvn {
+   public static final int a = 4;
+   public static final int b = 3;
+   public static final int c = 12;
+   public static final int d = 11;
+   private static final int k = axq.a(1.0F, 1.0F, 0.33F, 0.33F);
+   private static final int l = axq.a(1.0F, 0.44F, 0.53F, 1.0F);
+   private final String m;
+   private final String n;
 
-   cub(cub.f $$0, int $$1, cub.h $$2, xd $$3, Supplier<cvp> $$4, cub.b $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.b = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.i = $$2;
+   public cub(String $$0, String $$1, cvn.a $$2) {
+      super($$2);
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public static alc a(String $$0) {
-      return alc.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
+   public static float b(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.f().floatValue();
    }
 
-   public static cub.a a(cub.f $$0, int $$1) {
-      return new cub.a($$0, $$1);
+   public String b() {
+      return this.m;
    }
 
-   public xd a() {
-      return this.b;
+   public String c() {
+      return this.n;
    }
 
-   public cvp b() {
-      if (this.j == null) {
-         this.j = this.m.get();
-      }
+   @Override
+   public boolean a(cvs $$0, csw $$1, crj $$2, cnx $$3) {
+      cyc $$4 = $$0.a(ks.K);
+      if ($$4 == null) {
+         return false;
+      } else {
+         cvs $$5 = $$1.g();
+         cyc.a $$6 = new cyc.a($$4);
+         if ($$2 == crj.a && !$$5.f()) {
+            if ($$6.a($$1, $$3) > 0) {
+               this.b($$3);
+            } else {
+               c($$3);
+            }
 
-      return this.j;
-   }
+            $$0.b(ks.K, $$6.d());
+            return true;
+         } else if ($$2 == crj.b && $$5.f()) {
+            cvs $$7 = $$6.b();
+            if ($$7 != null) {
+               cvs $$8 = $$1.d($$7);
+               if ($$8.K() > 0) {
+                  $$6.a($$8);
+               } else {
+                  this.a($$3);
+               }
+            }
 
-   public alc c() {
-      return this.c;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.h;
-   }
-
-   public cub.f g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return !this.k.isEmpty();
-   }
-
-   public boolean i() {
-      return this.i != cub.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public cub.h k() {
-      return this.i;
-   }
-
-   public void a(cub.d $$0) {
-      cub.c $$1 = new cub.c(this, $$0.a);
-      alb<cub> $$2 = lu.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.k = $$1.a;
-      this.l = $$1.b;
-   }
-
-   public Collection<cvp> l() {
-      return this.k;
-   }
-
-   public Collection<cvp> m() {
-      return this.l;
-   }
-
-   public boolean a(cvp $$0) {
-      return this.l.contains($$0);
-   }
-
-   public static class a {
-      private static final cub.b a = ($$0, $$1) -> {
-      };
-      private final cub.f b;
-      private final int c;
-      private xd d = xd.i();
-      private Supplier<cvp> e = () -> cvp.k;
-      private cub.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private cub.h j = cub.h.a;
-      private alc k = cub.a;
-
-      public a(cub.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public cub.a a(xd $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public cub.a a(Supplier<cvp> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public cub.a a(cub.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public cub.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public cub.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public cub.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected cub.a a(cub.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public cub.a a(alc $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public cub d() {
-         if ((this.j == cub.h.c || this.j == cub.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
+            $$0.b(ks.K, $$6.d());
+            return true;
          } else {
-            cub $$0 = new cub(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.f = this.i;
-            $$0.e = this.h;
-            $$0.d = this.g;
-            $$0.c = this.k;
-            return $$0;
+            return false;
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      void accept(cub.d var1, cub.e var2);
-   }
-
-   static class c implements cub.e {
-      public final Collection<cvp> a = cvq.a();
-      public final Set<cvp> b = cvq.a();
-      private final cub c;
-      private final cqn d;
-
-      public c(cub $$0, cqn $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(cvp $$0, cub.g $$1) {
-         if ($$0.J() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
+   @Override
+   public boolean a(cvs $$0, cvs $$1, csw $$2, crj $$3, cnx $$4, bve $$5) {
+      if ($$3 == crj.a && $$1.f()) {
+         a($$0, -1);
+         return false;
+      } else {
+         cyc $$6 = $$0.a(ks.K);
+         if ($$6 == null) {
+            return false;
          } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != cub.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.H().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.h().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+            cyc.a $$7 = new cyc.a($$6);
+            if ($$3 == crj.a && !$$1.f()) {
+               if ($$2.b($$4) && $$7.a($$1) > 0) {
+                  this.b($$4);
+               } else {
+                  c($$4);
+               }
+
+               $$0.b(ks.K, $$7.d());
+               return true;
+            } else if ($$3 == crj.b && $$1.f()) {
+               if ($$2.b($$4)) {
+                  cvs $$8 = $$7.b();
+                  if ($$8 != null) {
+                     this.a($$4);
+                     $$5.a($$8);
                   }
                }
+
+               $$0.b(ks.K, $$7.d());
+               return true;
+            } else {
+               return false;
             }
          }
       }
    }
 
-   public static record d(cqn a, boolean b, jp.a c) {
-
-      public boolean a(cqn $$0, boolean $$1, jp.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   @Override
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      cvs $$3 = $$1.b($$2);
+      if (a($$3, $$1)) {
+         this.d($$1);
+         $$1.b(awq.c.b(this));
+         return brs.a;
+      } else {
+         return brs.d;
       }
    }
 
-   public interface e {
-      void a(cvp var1, cub.g var2);
+   @Override
+   public boolean c(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.f().compareTo(Fraction.ZERO) > 0;
+   }
 
-      default void a(cvp $$0) {
-         this.a($$0, cub.g.a);
-      }
+   @Override
+   public int d(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return Math.min(1 + azf.a($$1.f(), 12), 13);
+   }
 
-      default void a(def $$0, cub.g $$1) {
-         this.a(new cvp($$0), $$1);
-      }
+   @Override
+   public int e(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.f().compareTo(Fraction.ONE) >= 0 ? k : l;
+   }
 
-      default void a(def $$0) {
-         this.a(new cvp($$0), cub.g.a);
-      }
-
-      default void a(Collection<cvp> $$0, cub.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cvp> $$0) {
-         this.a($$0, cub.g.a);
+   public static void a(cvs $$0, int $$1) {
+      cyc $$2 = $$0.a(ks.K);
+      if ($$2 != null) {
+         cyc.a $$3 = new cyc.a($$2);
+         $$3.a($$1);
+         $$0.b(ks.K, $$3.d());
       }
    }
 
-   public static enum f {
-      a,
-      b;
+   public static boolean f(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.h() != -1;
    }
 
-   protected static enum g {
-      a,
-      b,
-      c;
+   public static int g(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.h();
    }
 
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
+   public static cvs h(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.a($$1.h());
+   }
+
+   public static int i(cvs $$0) {
+      cyc $$1 = $$0.a(ks.K, cyc.a);
+      return $$1.a();
+   }
+
+   private static boolean a(cvs $$0, cnx $$1) {
+      cyc $$2 = $$0.a(ks.K);
+      if ($$2 != null && !$$2.g()) {
+         $$0.b(ks.K, cyc.a);
+         if ($$1 instanceof ark) {
+            $$2.d().forEach($$1x -> $$1.a($$1x, true));
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public Optional<ctg> j(cvs $$0) {
+      return !$$0.b(ks.q) && !$$0.b(ks.p) ? Optional.ofNullable($$0.a(ks.K)).map(ctf::new) : Optional.empty();
+   }
+
+   @Override
+   public void a(ckh $$0) {
+      cyc $$1 = $$0.m().a(ks.K);
+      if ($$1 != null) {
+         $$0.m().b(ks.K, cyc.a);
+         cvv.a($$0, $$1.d());
+      }
+   }
+
+   private void a(btr $$0) {
+      $$0.a(awg.dr, 0.8F, 0.8F + $$0.dS().D_().i() * 0.4F);
+   }
+
+   private void b(btr $$0) {
+      $$0.a(awg.dp, 0.8F, 0.8F + $$0.dS().D_().i() * 0.4F);
+   }
+
+   private static void c(btr $$0) {
+      $$0.a(awg.dq, 1.0F, 1.0F);
+   }
+
+   private void d(btr $$0) {
+      $$0.a(awg.do, 0.8F, 0.8F + $$0.dS().D_().i() * 0.4F);
    }
 }

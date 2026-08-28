@@ -1,32 +1,16 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class eyc implements eyd<MinecraftServer> {
-   final alc a;
+public class eyc {
+   private static final Codec<eyb> d = lv.I.q().dispatch(eyb::a, eya::a);
+   public static final Codec<eyb> a = Codec.lazyInitialized(
+      () -> Codec.either(exy.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof exy $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final eya b = a("fixed", exz.a);
+   public static final eya c = a("context", exy.a);
 
-   public eyc(alc $$0) {
-      this.a = $$0;
-   }
-
-   public void a(MinecraftServer $$0, eyf<MinecraftServer> $$1, long $$2) {
-      alr $$3 = $$0.aE();
-
-      for (ih<et> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
-   }
-
-   public static class a extends eyd.a<MinecraftServer, eyc> {
-      public a() {
-         super(alc.b("function_tag"), eyc.class);
-      }
-
-      public void a(uf $$0, eyc $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public eyc a(uf $$0) {
-         alc $$1 = alc.a($$0.l("Name"));
-         return new eyc($$1);
-      }
+   private static eya a(String $$0, MapCodec<? extends eyb> $$1) {
+      return kb.a(lv.I, ale.b($$0), new eya($$1));
    }
 }

@@ -1,26 +1,22 @@
-public abstract class gmi<T extends cob, S extends gst> extends gni<T, S> {
-   private final fwk a;
+public abstract class gmi<T extends clw, S extends gwf, M extends gag<S>> extends gof<T, S, M> {
+   private static final ale a = ale.b("textures/entity/zombie/zombie.png");
 
-   public gmi(gnj.a $$0) {
-      super($$0);
-      this.a = new fwk($$0.a(gak.j));
+   protected gmi(gno.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new grr<>(this, $$3, $$4, $$5, $$6, $$0.g()));
    }
 
-   public void a(S $$0, fde $$1, ghg $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      fdi $$4 = $$2.getBuffer(ghq.e(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, gws.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public ale a(S $$0) {
+      return a;
    }
 
    public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j($$2);
-      $$1.b = $$0.k($$2);
-      $$1.c = (float)$$0.e - $$2;
+      $$1.a = $$0.gf();
+      $$1.b = $$0.gs();
+   }
+
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

@@ -1,18 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class een extends edq<egf> {
-   public een(Codec<egf> $$0) {
+public class een extends edu<ege> {
+   public een(Codec<ege> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egf> $$0) {
-      azl $$1 = $$0.d();
-      egf $$2 = $$0.f();
-      dfd $$3 = $$0.b();
-      dwl $$4 = $$0.c();
-      je $$5 = $$0.e();
-      boolean $$6 = $$1.h();
-      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
+   public boolean a(edw<ege> $$0) {
+      dfg $$1 = $$0.b();
+      jf $$2 = $$0.e();
+      dus $$3 = $$1.a_($$2.e());
+      ege $$4 = $$0.f();
+      azn $$5 = $$0.d();
+      if (!$$3.a(awv.aM)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.H_() + 1 && $$6 + 1 <= $$1.an()) {
+            int $$7 = 0;
+
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               jf $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dus $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.H_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
+
+            return $$7 > 0;
+         } else {
+            return false;
+         }
+      }
    }
 }

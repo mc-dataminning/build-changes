@@ -1,23 +1,22 @@
-import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum fih implements azg, azz {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public enum fih implements azi {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   public static final Codec<fih> c = azz.a(fih::values);
-   private final int d;
-   private final String e;
+   private static final IntFunction<fih> d = axw.a(fih::b, values(), axw.a.b);
+   private final int e;
    private final String f;
 
-   private fih(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private fih(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
    public int b() {
-      return this.d;
+      return this.e;
    }
 
    @Override
@@ -26,7 +25,15 @@ public enum fih implements azg, azz {
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static fih a(int $$0) {
+      return d.apply($$0);
    }
 }

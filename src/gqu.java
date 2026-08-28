@@ -1,13 +1,13 @@
-public class gqu extends grw<gta, fwv> {
-   private static final ghq a = ghq.q(alc.b("textures/entity/breeze/breeze_eyes.png"));
-
-   public gqu(gpf<gta, fwv> $$0) {
-      super($$0);
+public class gqu extends gmi<clw, gwf, gag<gwf>> {
+   public gqu(gno.a $$0) {
+      this($$0, gap.dm, gap.ds, gap.dq, gap.dr, gap.dt, gap.du);
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, gta $$3, float $$4, float $$5) {
-      fdi $$6 = $$1.getBuffer(a);
-      fwv $$7 = this.d();
-      gmp.a($$7, $$7.b(), $$7.c()).a($$0, $$6, $$2, gws.d);
+   public gwf c() {
+      return new gwf();
+   }
+
+   public gqu(gno.a $$0, gao $$1, gao $$2, gao $$3, gao $$4, gao $$5, gao $$6) {
+      super($$0, new gag<>($$0.a($$1)), new gag<>($$0.a($$2)), new gag<>($$0.a($$3)), new gag<>($$0.a($$4)), new gag<>($$0.a($$5)), new gag<>($$0.a($$6)));
    }
 }

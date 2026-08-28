@@ -2,27 +2,27 @@ import com.mojang.serialization.Codec;
 import io.netty.buffer.ByteBuf;
 import javax.annotation.Nullable;
 
-public record dk(uf c) {
-   public static final Codec<dk> a = vd.j.xmap(dk::new, dk::a);
-   public static final zb<ByteBuf, dk> b = yz.o.a(dk::new, dk::a);
+public record dk(ug c) {
+   public static final Codec<dk> a = ve.j.xmap(dk::new, dk::a);
+   public static final zc<ByteBuf, dk> b = za.p.a(dk::new, dk::a);
 
-   public boolean a(cvp $$0) {
-      cye $$1 = $$0.a(kr.b, cye.a);
+   public boolean a(cvs $$0) {
+      cyh $$1 = $$0.a(ks.b, cyh.a);
       return $$1.b(this.c);
    }
 
-   public boolean a(bto $$0) {
+   public boolean a(btr $$0) {
       return this.a(b($$0));
    }
 
-   public boolean a(@Nullable vc $$0) {
-      return $$0 != null && uu.a(this.c, $$0, true);
+   public boolean a(@Nullable vd $$0) {
+      return $$0 != null && uv.a(this.c, $$0, true);
    }
 
-   public static uf b(bto $$0) {
-      uf $$1 = $$0.f(new uf());
-      if ($$0 instanceof cnu) {
-         cvp $$2 = ((cnu)$$0).gc().f();
+   public static ug b(btr $$0) {
+      ug $$1 = $$0.f(new ug());
+      if ($$0 instanceof cnx) {
+         cvs $$2 = ((cnx)$$0).gd().f();
          if (!$$2.f()) {
             $$1.a("SelectedItem", $$2.a($$0.dU()));
          }
@@ -31,7 +31,7 @@ public record dk(uf c) {
       return $$1;
    }
 
-   public uf a() {
+   public ug a() {
       return this.c;
    }
 }

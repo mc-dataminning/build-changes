@@ -1,2 +1,78 @@
-public record gyp(int a, int b) {
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class gyp implements auw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gyo b = new gyo("US", "English", false);
+   private Map<String, gyo> c = ImmutableMap.of("en_us", b);
+   private String d;
+   private final Consumer<gyl> e;
+
+   public gyp(String $$0, Consumer<gyl> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   private static Map<String, gyo> a(Stream<ath> $$0) {
+      Map<String, gyo> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gzb $$2 = $$1x.a(gzb.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(auv $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         gyo $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
+      }
+
+      gyl $$4 = gyl.a($$0, $$1, $$2);
+      gyn.a($$4);
+      ub.a($$4);
+      this.e.accept($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, gyo> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public gyo b(String $$0) {
+      return this.c.get($$0);
+   }
 }

@@ -1,108 +1,71 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
 import java.time.Instant;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class xx {
-   static final Logger a = LogUtils.getLogger();
-   @Nullable
-   xy b;
-   Instant c = Instant.EPOCH;
+public record xx(String b, Instant c, long d, xl e) {
+   public static final MapCodec<xx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(xx::a),
+               ayo.p.fieldOf("time_stamp").forGetter(xx::b),
+               Codec.LONG.fieldOf("salt").forGetter(xx::c),
+               xl.a.optionalFieldOf("last_seen", xl.b).forGetter(xx::d)
+            )
+            .apply($$0, xx::new)
+   );
 
-   public xx(UUID $$0, UUID $$1) {
-      this.b = xy.a($$0, $$1);
+   public static xx a(String $$0) {
+      return new xx($$0, Instant.now(), 0L, xl.b);
    }
 
-   public xx.c a(azr $$0) {
-      return $$1 -> {
-         xy $$2 = this.b;
-         if ($$2 == null) {
-            return null;
-         } else {
-            this.b = $$2.a();
-            return new xp($$0.sign($$2x -> xt.a($$2x, $$2, $$1)));
-         }
-      };
+   public void a(azr.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public xx.b a(final cnx $$0) {
-      final azq $$1 = $$0.a();
-      return new xx.b() {
-         @Override
-         public xt unpack(@Nullable xp $$0x, xw $$1x) throws xx.a {
-            if ($$0 == null) {
-               throw new xx.a(xx.a.a);
-            } else if ($$0.b().a()) {
-               throw new xx.a(xx.a.c);
-            } else {
-               xy $$2 = xx.this.b;
-               if ($$2 == null) {
-                  throw new xx.a(xx.a.b);
-               } else if ($$1.b().isBefore(xx.this.c)) {
-                  this.setChainBroken();
-                  throw new xx.a(xx.a.e);
-               } else {
-                  xx.this.c = $$1.b();
-                  xt $$3 = new xt($$2, $$0, $$1, null, xh.c);
-                  if (!$$3.a($$1)) {
-                     this.setChainBroken();
-                     throw new xx.a(xx.a.d);
-                  } else {
-                     if ($$3.a(Instant.now())) {
-                        xx.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
-                     }
-
-                     xx.this.b = $$2.a();
-                     return $$3;
-                  }
-               }
-            }
-         }
-
-         @Override
-         public void setChainBroken() {
-            xx.this.b = null;
-         }
-      };
+   public xx.a a(xr $$0) {
+      return new xx.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   public static class a extends yd {
-      static final xd a = xd.c("chat.disabled.missingProfileKey");
-      static final xd b = xd.c("chat.disabled.chain_broken");
-      static final xd c = xd.c("chat.disabled.expiredProfileKey");
-      static final xd d = xd.c("chat.disabled.invalid_signature");
-      static final xd e = xd.c("chat.disabled.out_of_order_chat");
-
-      public a(xd $$0) {
-         super($$0);
-      }
+   public String a() {
+      return this.b;
    }
 
-   @FunctionalInterface
-   public interface b {
-      static xx.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new xx.a(xx.a.a);
-            } else {
-               return xt.a($$0, $$3.a());
-            }
-         };
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public xl d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, xl.a d) {
+      public a(wb $$0) {
+         this($$0.d(256), $$0.t(), $$0.readLong(), new xl.a($$0));
       }
 
-      xt unpack(@Nullable xp var1, xw var2) throws xx.a;
-
-      default void setChainBroken() {
+      public void a(wb $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
-   }
 
-   @FunctionalInterface
-   public interface c {
-      xx.c a = $$0 -> null;
-
-      @Nullable
-      xp pack(xw var1);
+      public Optional<xx> a(xr $$0) {
+         return this.d.a($$0).map($$0x -> new xx(this.a, this.b, this.c, $$0x));
+      }
    }
 }

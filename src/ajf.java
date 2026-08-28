@@ -1,6 +1,19 @@
 public class ajf {
-   public static final wl.a<ajg, wa> a = zp.a(vy.d, $$0 -> $$0.a(aje.g, aji.a).a(aje.h, ajj.a).a(aje.f, ajh.a).a(aje.i, ajk.b).a(abv.b, abx.a));
-   public static final wl<ajg> b = a.a(wa::new);
-   public static final wl.a<aiy, wa> c = zp.b(vy.d, $$0 -> $$0.a(aje.e, ajd.a).a(aje.c, ajb.a).a(aje.b, aja.a).a(aje.d, ajc.a).a(aje.a, aiz.a).a(abv.a, abu.a));
-   public static final wl<aiy> d = c.a(wa::new);
+   public static final zn<aja> a = a("custom_query");
+   public static final zn<ajb> b = a("game_profile");
+   public static final zn<ajc> c = a("hello");
+   public static final zn<ajd> d = a("login_compression");
+   public static final zn<aje> e = a("login_disconnect");
+   public static final zn<aji> f = b("custom_query_answer");
+   public static final zn<ajj> g = b("hello");
+   public static final zn<ajk> h = b("key");
+   public static final zn<ajl> i = b("login_acknowledged");
+
+   private static <T extends zl<aiz>> zn<T> a(String $$0) {
+      return new zn<>(zm.b, ale.b($$0));
+   }
+
+   private static <T extends zl<ajh>> zn<T> b(String $$0) {
+      return new zn<>(zm.a, ale.b($$0));
+   }
 }

@@ -1,50 +1,100 @@
-import java.util.List;
+public class fri extends fqw<crp> {
+   private static final ale G = ale.b("container/crafter/disabled_slot");
+   private static final ale H = ale.b("container/crafter/powered_redstone");
+   private static final ale I = ale.b("container/crafter/unpowered_redstone");
+   private static final ale J = ale.b("textures/gui/container/crafter.png");
+   private static final xe K = xe.c("gui.togglable_slot");
+   private final cnx L;
 
-public class fri {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<alc> e = List.of();
-   private int f;
-   private int g;
-
-   public fri(int $$0) {
-      this.d = $$0;
+   public fri(crp $$0, cnw $$1, xe $$2) {
+      super($$0, $$1, $$2);
+      this.L = $$1.k;
    }
 
-   public void a(List<alc> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   @Override
+   protected void aS_() {
+      super.aS_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   public void a(cqw $$0, fjx $$1, float $$2, int $$3, int $$4) {
-      cst $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+   @Override
+   protected void a(csw $$0, int $$1, int $$2, crk $$3) {
+      if ($$0 instanceof crq && !$$0.h() && !this.L.Q_()) {
+         switch ($$3) {
+            case a:
+               if (this.z.e($$1)) {
+                  this.a($$1);
+               } else if (this.z.g().f()) {
+                  this.b($$1);
+               }
+               break;
+            case c:
+               cvs $$4 = this.L.gd().a($$2);
+               if (this.z.e($$1) && !$$4.f()) {
+                  this.a($$1);
+               }
          }
+      }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(int $$0) {
+      this.a($$0, true);
+   }
+
+   private void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   private void a(int $$0, boolean $$1) {
+      this.z.a($$0, $$1);
+      super.a($$0, this.z.l, $$1);
+      float $$2 = $$1 ? 1.0F : 0.75F;
+      this.L.a(awg.Ax.a(), 0.4F, $$2);
+   }
+
+   @Override
+   public void a(fkb $$0, csw $$1) {
+      if ($$1 instanceof crq $$2 && this.z.e($$1.d)) {
+         this.a($$0, $$2);
+         return;
+      }
+
+      super.a($$0, $$1);
+   }
+
+   private void a(fkb $$0, crq $$1) {
+      $$0.a(ghv::B, G, $$1.e - 1, $$1.f - 1, 18, 18);
+   }
+
+   @Override
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0);
+      this.a($$0, $$1, $$2);
+      if (this.B instanceof crq && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.Q_()) {
+         $$0.a(this.p, K, $$1, $$2);
       }
    }
 
-   private void a(cst $$0, alc $$1, float $$2, fjx $$3, int $$4, int $$5) {
-      gxb $$6 = fil.Q().a(gxa.d).apply($$1);
-      $$3.a(ghq::B, $$6, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axo.a($$2));
+   private void c(fkb $$0) {
+      int $$1 = this.n / 2 + 9;
+      int $$2 = this.o / 2 - 48;
+      ale $$3;
+      if (this.z.l()) {
+         $$3 = H;
+      } else {
+         $$3 = I;
+      }
+
+      $$0.a(ghv::B, $$3, $$1, $$2, 16, 16);
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   protected void a(fkb $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(ghv::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

@@ -1,34 +1,50 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class deb extends esb {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static esb.a<deb> a() {
-      return new esb.a<>(deb::new, deb::b, bam.i);
+public interface deb {
+   static bsj a(dej $$0, @Nullable btr $$1) {
+      return $$0.ak().d($$1, a($$1));
    }
 
-   private deb(LongSet $$0) {
-      this.c = $$0;
+   @Nullable
+   static bun a(@Nullable btr $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case cki $$1 -> $$1.m();
+         case bun $$2 -> $$2;
+         case cor $$3 when $$3.s() instanceof bun $$4 -> $$4;
+      };
    }
 
-   public deb() {
-      this(new LongOpenHashSet());
-   }
+   deb.a a();
 
-   public static deb b(uf $$0, jp.a $$1) {
-      return new deb(new LongOpenHashSet($$0.o("Forced")));
-   }
+   @Nullable
+   bun b();
 
-   @Override
-   public uf a(uf $$0, jp.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
+   @Nullable
+   btr c();
 
-   public LongSet b() {
-      return this.c;
+   float d();
+
+   eyw e();
+
+   boolean f();
+
+   boolean g();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a() {
+         return this.e;
+      }
    }
 }

@@ -1,26 +1,44 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record cyr(int f) implements cyc, cyw {
-   public static final int a = 120000;
-   public static final int b = 0;
-   public static final int c = 4;
-   public static final Codec<cyr> d = aym.a(0, 4).xmap(cyr::new, cyr::a);
-   public static final zb<wo, cyr> e = zb.a(yz.g, cyr::a, cyr::new);
+public record cyr(Map<String, cyr.a> c) {
+   public static final cyr a = new cyr(Map.of());
+   public static final Codec<cyr> b = Codec.unboundedMap(Codec.STRING, cyr.a.a).xmap(cyr::new, cyr::a);
 
-   @Override
-   public void a(deg $$0, buk $$1, cvp $$2, cyb $$3) {
-      $$1.a(new bsv(bsx.E, 120000, this.f, false, false, true));
+   public cyr a(String $$0, cyr.a $$1) {
+      return new cyr(ad.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
-      List<bsv> $$3 = List.of(new bsv(bsx.E, 120000, this.f, false, false, true));
-      cxo.a($$3, $$1, 1.0F, $$0.b());
+   public Map<String, cyr.a> a() {
+      return this.c;
    }
 
-   public int a() {
-      return this.f;
+   public static record a(jo<esi> b, double c, double d, float e) {
+      public static final Codec<cyr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  esi.b.fieldOf("type").forGetter(cyr.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(cyr.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(cyr.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(cyr.a::d)
+               )
+               .apply($$0, cyr.a::new)
+      );
+
+      public jo<esi> a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public float d() {
+         return this.e;
+      }
    }
 }

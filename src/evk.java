@@ -1,41 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 
-public class evk extends euu {
-   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  eut.e.a(cyi.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
-                  aym.j.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, evk::new)
-   );
-   public static final cyj b = new cyj(0, List.of());
-   private final Optional<eut.e<cyi>> c;
-   private final Optional<Integer> d;
+public class evk extends euy {
+   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(ve.j.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, evk::new));
+   private final ug b;
 
-   protected evk(List<ews> $$0, Optional<eut.e<cyi>> $$1, Optional<Integer> $$2) {
+   private evk(List<eww> $$0, ug $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cvp a(cvp $$0, eth $$1) {
-      $$0.a(kr.aa, b, this::a);
+   public eva<evk> b() {
+      return evb.j;
+   }
+
+   @Override
+   public cvs a(cvs $$0, etl $$1) {
+      cyh.a(ks.b, $$0, $$0x -> $$0x.a(this.b));
       return $$0;
    }
 
-   private cyj a(cyj $$0) {
-      return new cyj(this.d.orElseGet($$0::a), this.c.<List<cyi>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
-   }
-
-   @Override
-   public euw<evk> b() {
-      return eux.K;
+   @Deprecated
+   public static euy.a<?> a(ug $$0) {
+      return a($$1 -> new evk($$1, $$0));
    }
 }

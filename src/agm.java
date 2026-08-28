@@ -1,93 +1,32 @@
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class agm {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bto $$0) {
-      if ($$0 instanceof cnu) {
-         return $$0.aj().getString();
-      } else {
-         xd $$1 = $$0.al();
-         return $$1 != null ? $$1.getString() : a($$0.cD());
-      }
+public record agm(jo<dyo> a, ald<dej> b, long c, deg d, @Nullable deg e, boolean f, boolean g, Optional<jn> h, int i, int j) {
+   public agm(wp $$0) {
+      this(
+         dyo.i.decode($$0),
+         $$0.a(lw.bc),
+         $$0.readLong(),
+         deg.a($$0.readByte()),
+         deg.b($$0.readByte()),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.b(wb::h),
+         $$0.l(),
+         $$0.l()
+      );
    }
 
-   public static String a(UUID $$0) {
-      azl $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
-   }
-
-   private static String a(azl $$0, String[] $$1) {
-      return ad.a($$1, $$0);
-   }
-
-   private static azl b(UUID $$0) {
-      return azl.a((long)($$0.hashCode() >> 2));
+   public void a(wp $$0) {
+      dyo.i.encode($$0, this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.l(this.d.a());
+      $$0.l(deg.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, wb::a);
+      $$0.c(this.i);
+      $$0.c(this.j);
    }
 }

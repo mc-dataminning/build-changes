@@ -1,11 +1,26 @@
 import javax.annotation.Nullable;
 
-public interface gwe extends gwh {
-   @Deprecated
-   @Override
-   default float call(cvp $$0, @Nullable gbh $$1, @Nullable buk $$2, int $$3) {
-      return azd.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
-   }
+public class gwe extends guo {
+   private static final ale j = ale.b("textures/entity/wolf/wolf.png");
+   public boolean a;
+   public boolean b;
+   public float c = (float) (Math.PI / 5);
+   public float d;
+   public float e;
+   public float f = 1.0F;
+   public ale g = j;
+   @Nullable
+   public cum h;
+   public cvs i = cvs.k;
 
-   float unclampedCall(cvp var1, @Nullable gbh var2, @Nullable buk var3, int var4);
+   public float a(float $$0) {
+      float $$1 = (this.e + $$0) / 1.8F;
+      if ($$1 < 0.0F) {
+         $$1 = 0.0F;
+      } else if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return azf.a($$1 * (float) Math.PI) * azf.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
+   }
 }

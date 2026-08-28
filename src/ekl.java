@@ -1,42 +1,42 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class ekl extends ekj {
-   public static final MapCodec<ekl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bqu.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bqu.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, ekl::new)
-   );
-   private final bqu c;
-   private final bqu d;
+public class ekl extends ebl {
+   private final dfg a;
+   private final dwp b;
+   private final Optional<ekk> c;
 
-   public static ekl a(bqu $$0, bqu $$1) {
-      return new ekl($$0, $$1);
+   public ekl(dfg $$0, dwp $$1, Optional<ekk> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static ekl a(bqu $$0) {
-      return new ekl(bqr.a(0), $$0);
+   public int a(eao.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public static ekl b(bqu $$0) {
-      return new ekl($$0, bqr.a(0));
+   public dwn a(ddp $$0) {
+      return ((dxi)this.a.a($$0.e, $$0.f)).C();
    }
 
-   private ekl(bqu $$0, bqu $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public dus a(jf $$0) {
+      return this.a.a_($$0);
    }
 
-   @Override
-   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new je($$3, $$4, $$5));
+   public int c() {
+      return this.a.H_();
    }
 
-   @Override
-   public ekk<?> b() {
-      return ekk.n;
+   public dfg d() {
+      return this.a;
+   }
+
+   public Optional<ekk> e() {
+      return this.c;
+   }
+
+   public dwp f() {
+      return this.b;
    }
 }

@@ -1,263 +1,342 @@
-import java.util.List;
-import java.util.Objects;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public enum dtu implements azz {
-   a("inactive", 0, dtu.b.a, -1.0, false),
-   b("waiting_for_players", 4, dtu.b.b, 200.0, true),
-   c("active", 8, dtu.b.c, 1000.0, true),
-   d("waiting_for_reward_ejection", 8, dtu.b.b, -1.0, false),
-   e("ejecting_reward", 8, dtu.b.b, -1.0, false),
-   f("cooldown", 0, dtu.b.d, -1.0, false);
+public final class dtu {
+   public static final String a = "normal_config";
+   public static final String b = "ominous_config";
+   public static final int c = 40;
+   private static final int d = 36000;
+   private static final int e = 14;
+   private static final int f = 47;
+   private static final int g = azf.h(47);
+   private static final float h = 0.02F;
+   private final jo<dtv> i;
+   private final jo<dtv> j;
+   private final dtx k;
+   private final int l;
+   private final int m;
+   private final dtu.b n;
+   private dtt o;
+   private final dtt.a p;
+   private boolean q;
+   private boolean r;
 
-   private static final float g = 40.0F;
-   private static final int h = azd.d(30.0F);
-   private final String i;
-   private final int j;
-   private final double k;
-   private final dtu.b l;
-   private final boolean m;
+   public Codec<dtu> a() {
+      return RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dtv.c.optionalFieldOf("normal_config", jo.a(dtv.a)).forGetter($$0x -> $$0x.i),
+                  dtv.c.optionalFieldOf("ominous_config", jo.a(dtv.a)).forGetter($$0x -> $$0x.j),
+                  dtx.b.forGetter(dtu::f),
+                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dtu::g),
+                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dtu::h)
+               )
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dtu($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
+      );
+   }
 
-   private dtu(final String $$0, final int $$1, final dtu.b $$2, final double $$3, final boolean $$4) {
+   public dtu(dtu.b $$0, dtt $$1, dtt.a $$2) {
+      this(jo.a(dtv.a), jo.a(dtv.a), new dtx(), 36000, 14, $$0, $$1, $$2);
+   }
+
+   public dtu(jo<dtv> $$0, jo<dtv> $$1, dtx $$2, int $$3, int $$4, dtu.b $$5, dtt $$6, dtt.a $$7) {
       this.i = $$0;
       this.j = $$1;
-      this.l = $$2;
-      this.k = $$3;
-      this.m = $$4;
+      this.k = $$2;
+      this.m = $$3;
+      this.l = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
    }
 
-   dtu a(je $$0, dtr $$1, arh $$2) {
-      dtt $$3 = $$1.f();
-      dts $$4 = $$1.b();
-
-      return switch (this) {
-         case a -> $$3.a($$1, $$2, b) == null ? this : b;
-         case b -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield this;
-            } else if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               $$3.a($$2, $$0, $$1);
-               yield $$3.c.isEmpty() ? this : c;
-            }
-         }
-         case c -> {
-            if (!$$1.a($$2)) {
-               $$3.b();
-               yield b;
-            } else if (!$$3.a($$1, $$2.z)) {
-               yield a;
-            } else {
-               int $$5 = $$3.a($$0);
-               $$3.a($$2, $$0, $$1);
-               if ($$1.e()) {
-                  this.a($$2, $$0, $$1);
-               }
-
-               if ($$3.a($$4, $$5)) {
-                  if ($$3.c()) {
-                     $$3.e = $$2.aa() + (long)$$1.g();
-                     $$3.g = 0;
-                     $$3.f = 0L;
-                     yield d;
-                  }
-               } else if ($$3.a($$2, $$4, $$5)) {
-                  $$1.c($$2, $$0).ifPresent($$4x -> {
-                     $$3.d.add($$4x);
-                     $$3.g++;
-                     $$3.f = $$2.aa() + (long)$$4.g();
-                     $$4.h().b($$2.C_()).ifPresent($$2xx -> {
-                        $$3.h = Optional.of((dez)$$2xx.b());
-                        $$1.j();
-                     });
-                  });
-               }
-
-               yield this;
-            }
-         }
-         case d -> {
-            if ($$3.a($$2, 40.0F, $$1.g())) {
-               $$2.a(null, $$0, awe.ml, awf.e);
-               yield e;
-            } else {
-               yield this;
-            }
-         }
-         case e -> {
-            if (!$$3.b($$2, (float)h, $$1.g())) {
-               yield this;
-            } else if ($$3.c.isEmpty()) {
-               $$2.a(null, $$0, awe.mm, awf.e);
-               $$3.i = Optional.empty();
-               yield f;
-            } else {
-               if ($$3.i.isEmpty()) {
-                  $$3.i = $$4.i().a($$2.C_());
-               }
-
-               $$3.i.ifPresent($$3x -> $$1.a($$2, $$0, $$3x));
-               $$3.c.remove($$3.c.iterator().next());
-               yield this;
-            }
-         }
-         case f -> {
-            $$3.a($$2, $$0, $$1);
-            if (!$$3.c.isEmpty()) {
-               $$3.g = 0;
-               $$3.f = 0L;
-               yield c;
-            } else if ($$3.a($$2)) {
-               $$1.b($$2, $$0);
-               $$3.a();
-               yield b;
-            } else {
-               yield this;
-            }
-         }
-      };
+   public dtv b() {
+      return this.r ? this.d() : this.c();
    }
 
-   private void a(arh $$0, je $$1, dtr $$2) {
-      dtt $$3 = $$2.f();
-      dts $$4 = $$2.b();
-      cvp $$5 = $$3.a($$0, $$4, $$1).a($$0.z).orElse(cvp.k);
-      if (!$$5.f()) {
-         if (this.a($$0, $$3)) {
-            a($$0, $$1, $$2, $$3).ifPresent($$4x -> {
-               buq $$5x = buq.a($$0, $$5);
-               $$5x.e($$4x);
-               $$0.b($$5x);
-               float $$6 = ($$0.C_().i() - $$0.C_().i()) * 0.2F + 1.0F;
-               $$0.a(null, je.a((jx)$$4x), awe.mg, awf.e, 1.0F, $$6);
-               $$3.e = $$0.aa() + $$2.d().a();
-            });
-         }
-      }
+   @VisibleForTesting
+   public dtv c() {
+      return this.i.a();
    }
 
-   private static Optional<eys> a(arh $$0, je $$1, dtr $$2, dtt $$3) {
-      List<cnu> $$4 = $$3.c
-         .stream()
-         .map($$0::b)
-         .filter(Objects::nonNull)
-         .filter($$2x -> !$$2x.f() && !$$2x.P_() && $$2x.bI() && $$2x.f($$1.b()) <= (double)azd.h($$2.h()))
-         .toList();
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         bto $$5 = a($$4, $$3.d, $$2, $$1, $$0);
-         return $$5 == null ? Optional.empty() : a($$5, $$0);
-      }
+   @VisibleForTesting
+   public dtv d() {
+      return this.j.a();
    }
 
-   private static Optional<eys> a(bto $$0, arh $$1) {
-      eys $$2 = $$0.dq();
-      eys $$3 = $$2.a(jj.b, (double)($$0.do() + 2.0F + (float)$$1.z.a(4)));
-      eyo $$4 = $$1.a(new ddo($$2, $$3, ddo.a.c, ddo.b.a, eyx.a()));
-      eys $$5 = $$4.b().b().a(jj.a, 1.0);
-      je $$6 = je.a((jx)$$5);
-      return !$$1.a_($$6).g($$1, $$6).c() ? Optional.empty() : Optional.of($$5);
+   public void a(arj $$0, jf $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dqc.c, Boolean.valueOf(true)), 3);
+      $$0.c(3020, $$1, 1);
+      this.r = true;
+      this.k.a(this, $$0);
    }
 
-   @Nullable
-   private static bto a(List<cnu> $$0, Set<UUID> $$1, dtr $$2, je $$3, arh $$4) {
-      Stream<bto> $$5 = $$1.stream().map($$4::a).filter(Objects::nonNull).filter($$2x -> $$2x.bI() && $$2x.f($$3.b()) <= (double)azd.h($$2.h()));
-      List<? extends bto> $$6 = $$4.z.h() ? $$5.toList() : $$0;
-      if ($$6.isEmpty()) {
-         return null;
-      } else {
-         return $$6.size() == 1 ? $$6.getFirst() : ad.a($$6, $$4.z);
-      }
-   }
-
-   private boolean a(arh $$0, dtt $$1) {
-      return $$0.aa() >= $$1.e;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public double b() {
-      return this.k;
-   }
-
-   public boolean d() {
-      return this.k >= 0.0;
+   public void b(arj $$0, jf $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dqc.c, Boolean.valueOf(false)), 3);
+      this.r = false;
    }
 
    public boolean e() {
+      return this.r;
+   }
+
+   public dtx f() {
+      return this.k;
+   }
+
+   public int g() {
       return this.m;
    }
 
-   public void a(deg $$0, je $$1, boolean $$2) {
-      this.l.emit($$0, $$0.C_(), $$1, $$2);
+   public int h() {
+      return this.l;
    }
 
-   @Override
-   public String c() {
-      return this.i;
+   public dty i() {
+      return this.n.d();
    }
 
-   static class a {
-      private static final int a = 0;
-      private static final int b = 4;
-      private static final int c = 8;
+   public void a(dej $$0, dty $$1) {
+      this.n.a($$0, $$1);
+   }
 
-      private a() {
+   public void j() {
+      this.n.f();
+   }
+
+   public dtt k() {
+      return this.o;
+   }
+
+   public dtt.a l() {
+      return this.p;
+   }
+
+   public boolean a(dej $$0) {
+      if (this.q) {
+         return true;
+      } else {
+         return $$0.am() == brp.a ? false : $$0.ac().b(def.e);
       }
    }
 
-   interface b {
-      dtu.b a = ($$0, $$1, $$2, $$3) -> {
-      };
-      dtu.b b = ($$0, $$1, $$2, $$3) -> {
-         if ($$1.a(2) == 0) {
-            eys $$4 = $$2.b().a($$1, 0.9F);
-            a($$3 ? ln.L : ln.aJ, $$4, $$0);
-         }
-      };
-      dtu.b c = ($$0, $$1, $$2, $$3) -> {
-         eys $$4 = $$2.b().a($$1, 1.0F);
-         a(ln.ae, $$4, $$0);
-         a($$3 ? ln.L : ln.F, $$4, $$0);
-      };
-      dtu.b d = ($$0, $$1, $$2, $$3) -> {
-         eys $$4 = $$2.b().a($$1, 0.9F);
-         if ($$1.a(3) == 0) {
-            a(ln.ae, $$4, $$0);
-         }
+   public Optional<UUID> c(arj $$0, jf $$1) {
+      azn $$2 = $$0.D_();
+      dfc $$3 = this.k.b(this, $$0.D_());
+      ug $$4 = $$3.d();
+      um $$5 = $$4.c("Pos", 6);
+      Optional<bty<?>> $$6 = bty.a($$4);
+      if ($$6.isEmpty()) {
+         return Optional.empty();
+      } else {
+         int $$7 = $$5.size();
+         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
+         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
+         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().c() + 0.5;
+         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
+            return Optional.empty();
+         } else {
+            eyw $$11 = new eyw($$8, $$9, $$10);
+            if (!a($$0, $$1.b(), $$11)) {
+               return Optional.empty();
+            } else {
+               jf $$12 = jf.a((jy)$$11);
+               if (!bvi.a($$6.get(), $$0, btx.q, $$12, $$0.D_())) {
+                  return Optional.empty();
+               } else {
+                  if ($$3.b().isPresent()) {
+                     dfc.a $$13 = $$3.b().get();
+                     if (!$$13.a($$12, $$0)) {
+                        return Optional.empty();
+                     }
+                  }
 
-         if ($$0.aa() % 20L == 0L) {
-            eys $$5 = $$2.b().b(0.0, 0.5, 0.0);
-            int $$6 = $$0.C_().a(4) + 20;
+                  btr $$14 = bty.a($$4, $$0, btx.q, $$4x -> {
+                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
+                     return $$4x;
+                  });
+                  if ($$14 == null) {
+                     return Optional.empty();
+                  } else {
+                     if ($$14 instanceof bup $$15) {
+                        if (!$$15.a($$0)) {
+                           return Optional.empty();
+                        }
 
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               a(ln.ae, $$5, $$0);
+                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
+                        if ($$16) {
+                           $$15.a($$0, $$0.d_($$15.ds()), btx.q, null);
+                        }
+
+                        $$15.fW();
+                        $$3.c().ifPresent($$15::a);
+                     }
+
+                     if (!$$0.e($$14)) {
+                        return Optional.empty();
+                     } else {
+                        dtu.a $$17 = this.r ? dtu.a.b : dtu.a.a;
+                        $$0.c(3011, $$1, $$17.a());
+                        $$0.c(3012, $$12, $$17.a());
+                        $$0.a($$14, dzp.t, $$12);
+                        return Optional.of($$14.cD());
+                     }
+                  }
+               }
             }
          }
-      };
-
-      private static void a(lr $$0, eys $$1, deg $$2) {
-         $$2.a($$0, $$1.a(), $$1.b(), $$1.c(), 0.0, 0.0, 0.0);
       }
-
-      void emit(deg var1, azl var2, je var3, boolean var4);
    }
 
-   static class c {
-      private static final double a = -1.0;
-      private static final double b = 200.0;
-      private static final double c = 1000.0;
+   public void a(arj $$0, jf $$1, ald<etq> $$2) {
+      etq $$3 = $$0.o().bd().b($$2);
+      eto $$4 = new eto.a($$0).a(ewg.b);
+      ObjectArrayList<cvs> $$5 = $$3.a($$4);
+      if (!$$5.isEmpty()) {
+         ObjectListIterator var7 = $$5.iterator();
 
-      private c() {
+         while (var7.hasNext()) {
+            cvs $$6 = (cvs)var7.next();
+            ky.a($$0, $$6, 2, jk.b, eyw.c($$1).a(jk.b, 1.2));
+         }
+
+         $$0.c(3014, $$1, 0);
       }
+   }
+
+   public void a(dej $$0, jf $$1, boolean $$2) {
+      dty $$3 = this.i();
+      $$3.a($$0, $$1, $$2);
+      if ($$3.d()) {
+         double $$4 = (double)Math.max(0L, this.k.f - $$0.aa());
+         this.k.l = this.k.k;
+         this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
+      }
+
+      if ($$3.e()) {
+         azn $$5 = $$0.D_();
+         if ($$5.i() <= 0.02F) {
+            awf $$6 = $$2 ? awg.mk : awg.mj;
+            $$0.a($$1, $$6, awh.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
+         }
+      }
+   }
+
+   public void a(arj $$0, jf $$1, boolean $$2) {
+      this.r = $$2;
+      dty $$3 = this.i();
+      if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
+         this.k.f = $$0.aa() + (long)this.b().h();
+      }
+
+      dty $$4 = $$3.a($$1, this, $$0);
+      if ($$4 != $$3) {
+         this.a($$0, $$4);
+      }
+   }
+
+   private static boolean a(arj $$0, jf $$1, UUID $$2) {
+      btr $$3 = $$0.a($$2);
+      return $$3 == null || !$$3.bI() || !$$3.dS().ag().equals($$0.ag()) || $$3.ds().j($$1) > (double)g;
+   }
+
+   private static boolean a(dej $$0, eyw $$1, eyw $$2) {
+      eys $$3 = $$0.a(new ddr($$2, $$1, ddr.a.c, ddr.b.a, ezb.a()));
+      return $$3.b().equals(jf.a((jy)$$1)) || $$3.d() == eyu.a.a;
+   }
+
+   public static void a(dej $$0, jf $$1, azn $$2, ls $$3) {
+      for (int $$4 = 0; $$4 < 20; $$4++) {
+         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         $$0.a(lo.ae, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void a(dej $$0, jf $$1, azn $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(lo.be, $$4, $$5, $$6, $$7, $$8, $$9);
+         $$0.a(lo.L, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   public static void a(dej $$0, jf $$1, azn $$2, int $$3, lm $$4) {
+      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
+         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$8 = (double)$$1.u() + 0.5 + $$6;
+         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
+         double $$10 = (double)$$1.w() + 0.5 + $$7;
+         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void b(dej $$0, jf $$1, azn $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
+         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
+         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(lo.aJ, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
+         $$0.a(lo.ae, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void a(dtt $$0) {
+      this.o = $$0;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void m() {
+      this.q = true;
+   }
+
+   public static enum a {
+      a(lo.F),
+      b(lo.L);
+
+      public final ls c;
+
+      private a(final ls $$0) {
+         this.c = $$0;
+      }
+
+      public static dtu.a a(int $$0) {
+         dtu.a[] $$1 = values();
+         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
+      }
+
+      public int a() {
+         return this.ordinal();
+      }
+   }
+
+   public interface b {
+      void a(dej var1, dty var2);
+
+      dty d();
+
+      void f();
    }
 }

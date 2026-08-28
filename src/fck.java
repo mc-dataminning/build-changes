@@ -1,129 +1,130 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public abstract class fck {
-   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
-   private static final String b = "//[^\\v]*";
-   private static final Pattern c = Pattern.compile(
-      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
-   );
-   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
-   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
+public final class fck {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final int f;
+   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
 
-   public List<String> a(String $$0) {
-      fck.a $$1 = new fck.a();
-      List<String> $$2 = this.a($$0, $$1, "");
-      $$2.set(0, this.a($$2.get(0), $$1.a));
-      return $$2;
+   public fck(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   private List<String> a(String $$0, fck.a $$1, String $$2) {
-      int $$3 = $$1.b;
-      int $$4 = 0;
-      String $$5 = "";
-      List<String> $$6 = Lists.newArrayList();
-      Matcher $$7 = c.matcher($$0);
+   public fck(Buffer $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
 
-      while ($$7.find()) {
-         if (!a($$0, $$7, $$4)) {
-            String $$8 = $$7.group(2);
-            boolean $$9 = $$8 != null;
-            if (!$$9) {
-               $$8 = $$7.group(3);
-            }
+   public fck(GLFWVidMode $$0) {
+      this.a = $$0.width();
+      this.b = $$0.height();
+      this.c = $$0.redBits();
+      this.d = $$0.greenBits();
+      this.e = $$0.blueBits();
+      this.f = $$0.refreshRate();
+   }
 
-            if ($$8 != null) {
-               String $$10 = $$0.substring($$4, $$7.start(1));
-               String $$11 = $$2 + $$8;
-               String $$12 = this.a($$9, $$11);
-               if (!Strings.isNullOrEmpty($$12)) {
-                  if (!baa.d($$12)) {
-                     $$12 = $$12 + System.lineSeparator();
-                  }
+   public int a() {
+      return this.a;
+   }
 
-                  $$1.b++;
-                  int $$13 = $$1.b;
-                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.b($$11) : "");
-                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
-                  if (!baa.h($$10)) {
-                     $$6.add($$10);
-                  }
+   public int b() {
+      return this.b;
+   }
 
-                  $$6.addAll($$14);
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.e;
+   }
+
+   public int f() {
+      return this.f;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         fck $$1 = (fck)$$0;
+         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
+   }
+
+   public static Optional<fck> a(@Nullable String $$0) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         try {
+            Matcher $$1 = g.matcher($$0);
+            if ($$1.matches()) {
+               int $$2 = Integer.parseInt($$1.group(1));
+               int $$3 = Integer.parseInt($$1.group(2));
+               String $$4 = $$1.group(3);
+               int $$5;
+               if ($$4 == null) {
+                  $$5 = 60;
                } else {
-                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
-                  $$6.add($$5 + $$10 + $$15);
+                  $$5 = Integer.parseInt($$4);
                }
 
-               int $$16 = baa.c($$0.substring(0, $$7.end(1)));
-               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
-               $$4 = $$7.end(1);
+               String $$7 = $$1.group(4);
+               int $$8;
+               if ($$7 == null) {
+                  $$8 = 24;
+               } else {
+                  $$8 = Integer.parseInt($$7);
+               }
+
+               int $$10 = $$8 / 3;
+               return Optional.of(new fck($$2, $$3, $$10, $$10, $$10, $$5));
             }
+         } catch (Exception var9) {
          }
-      }
 
-      String $$17 = $$0.substring($$4);
-      if (!baa.h($$17)) {
-         $$6.add($$5 + $$17);
-      }
-
-      return $$6;
-   }
-
-   private String a(String $$0, fck.a $$1) {
-      Matcher $$2 = d.matcher($$0);
-      if ($$2.find() && a($$0, $$2)) {
-         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
-         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
-      } else {
-         return $$0;
+         return Optional.empty();
       }
    }
 
-   private String a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
-   }
-
-   private static boolean a(String $$0, Matcher $$1) {
-      return !a($$0, $$1, 0);
-   }
-
-   private static boolean a(String $$0, Matcher $$1, int $$2) {
-      int $$3 = $$1.start() - $$2;
-      if ($$3 == 0) {
-         return false;
-      } else {
-         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
-         if (!$$4.find()) {
-            return true;
-         } else {
-            int $$5 = $$4.end(1);
-            return $$5 == $$1.start();
-         }
-      }
-   }
-
-   @Nullable
-   public abstract String a(boolean var1, String var2);
-
-   public static String a(String $$0, ghw $$1) {
-      if ($$1.c()) {
-         return $$0;
-      } else {
-         int $$2 = $$0.indexOf(10);
-         int $$3 = $$2 + 1;
-         return $$0.substring(0, $$3) + $$1.b() + "#line 1 0\n" + $$0.substring($$3);
-      }
-   }
-
-   static final class a {
-      int a;
-      int b;
+   public String g() {
+      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
    }
 }

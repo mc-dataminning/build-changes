@@ -1,33 +1,16 @@
-import java.util.List;
-
-public record acy(acy.a b, List<String> c) implements zk<abz> {
-   public static final zb<wa, acy> a = zk.a(acy::a, acy::new);
-
-   private acy(wa $$0) {
-      this($$0.b(acy.a.class), $$0.a(wa::p));
-   }
-
-   private void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, wa::a);
-   }
+public record acy(ale b, int c) implements zl<aca> {
+   public static final zc<wp, acy> a = zc.a(ale.b, acy::b, za.h, acy::e, acy::new);
 
    @Override
-   public zm<acy> a() {
-      return ago.y;
+   public zn<acy> a() {
+      return agp.x;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
+   public int e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

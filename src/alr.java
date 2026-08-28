@@ -1,95 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.brigadier.CommandDispatcher;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alr {
+public class alr extends ava {
    private static final Logger a = LogUtils.getLogger();
-   private static final alc b = alc.b("tick");
-   private static final alc c = alc.b("load");
-   private final MinecraftServer d;
-   private List<ih<et>> e = ImmutableList.of();
-   private boolean f;
-   private alq g;
+   private static final Gson b = new GsonBuilder().create();
+   private Map<ale, ag> c = Map.of();
+   private al d = new al();
+   private final jq.a e;
 
-   public alr(MinecraftServer $$0, alq $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public alr(jq.a $$0) {
+      super(b, lw.c(lw.bh));
+      this.e = $$0;
    }
 
-   public CommandDispatcher<et> a() {
-      return this.d.aG().a();
-   }
-
-   public void b() {
-      if (this.d.aP().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<ih<et>> $$0 = this.g.b(c);
-            this.a($$0, c);
+   protected void a(Map<ale, JsonElement> $$0, auv $$1, bog $$2) {
+      alc<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<ale, ag> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            af $$4x = (af)af.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new ag($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
          }
+      });
+      this.c = $$4.buildOrThrow();
+      al $$5 = new al();
+      $$5.a(this.c.values());
 
-         this.a(this.e, b);
+      for (ah $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            at.a($$6);
+         }
       }
+
+      this.d = $$5;
    }
 
-   private void a(Collection<ih<et>> $$0, alc $$1) {
-      this.d.aS().a($$1::toString);
-
-      for (ih<et> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.d.aS().c();
+   private void a(ale $$0, af $$1) {
+      azl.a $$2 = new azl.a();
+      $$1.a($$2, this.e);
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   public void a(ih<et> $$0, et $$1) {
-      bod $$2 = this.d.aS();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         ij<et> $$3 = $$0.a(null, this.a());
-         eu.a($$1, $$2x -> ht.a($$2x, $$3, $$1, eq.a));
-      } catch (ew var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
-      }
+   @Nullable
+   public ag a(ale $$0) {
+      return this.c.get($$0);
    }
 
-   public void a(alq $$0) {
-      this.g = $$0;
-      this.b($$0);
+   public al a() {
+      return this.d;
    }
 
-   private void b(alq $$0) {
-      this.e = List.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public et c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<ih<et>> a(alc $$0) {
-      return this.g.a($$0);
-   }
-
-   public List<ih<et>> b(alc $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<alc> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<alc> e() {
-      return this.g.b();
+   public Collection<ag> b() {
+      return this.c.values();
    }
 }

@@ -1,5 +1,4 @@
-public class gue extends guj {
-   public float a;
-   public int b;
-   public btl.a c = btl.a.a;
+public class gue extends guo {
+   public int a;
+   public boolean b;
 }

@@ -1,8 +1,272 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.bytes.ByteCollection;
+import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface vi {
+public class vi implements vh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 8;
+   private static final int c = 64;
+   private static final int d = 128;
+   private static final ByteCollection e = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
+   private static final n f = n.l;
+   private static final n g = n.k;
+   private static final n h = n.g;
+   private static final n i = n.m;
+   private static final Pattern j = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String k = "[";
+   private static final String l = "]";
+   private static final String m = ";";
+   private static final String n = " ";
+   private static final String o = "{";
+   private static final String p = "}";
+   private static final String q = "\n";
+   private static final String r = ": ";
+   private static final String s = String.valueOf(',');
+   private static final String t = s + "\n";
+   private static final String u = s + " ";
+   private static final xe v = xe.b("<...>").a(n.h);
+   private static final xe w = xe.b("b").a(i);
+   private static final xe x = xe.b("s").a(i);
+   private static final xe y = xe.b("I").a(i);
+   private static final xe z = xe.b("L").a(i);
+   private static final xe A = xe.b("f").a(i);
+   private static final xe B = xe.b("d").a(i);
+   private static final xe C = xe.b("B").a(i);
+   private final String D;
+   private int E;
+   private int F;
+   private final xs G = xe.i();
+
+   public vi(String $$0) {
+      this.D = $$0;
+   }
+
+   public xe a(vd $$0) {
+      $$0.a(this);
+      return this.G;
+   }
+
+   @Override
+   public void a(vb $$0) {
+      String $$1 = vb.b($$0.s_());
+      String $$2 = $$1.substring(0, 1);
+      xe $$3 = xe.b($$1.substring(1, $$1.length() - 1)).a(g);
+      this.G.f($$2).b($$3).f($$2);
+   }
+
+   @Override
+   public void a(ue $$0) {
+      this.G.b(xe.b(String.valueOf($$0.l())).a(h)).b(w);
+   }
+
+   @Override
+   public void a(uy $$0) {
+      this.G.b(xe.b(String.valueOf($$0.l())).a(h)).b(x);
+   }
+
+   @Override
+   public void a(ul $$0) {
+      this.G.b(xe.b(String.valueOf($$0.l())).a(h));
+   }
+
+   @Override
+   public void a(uo $$0) {
+      this.G.b(xe.b(String.valueOf($$0.l())).a(h)).b(z);
+   }
+
+   @Override
+   public void a(uj $$0) {
+      this.G.b(xe.b(String.valueOf($$0.k())).a(h)).b(A);
+   }
+
+   @Override
+   public void a(uh $$0) {
+      this.G.b(xe.b(String.valueOf($$0.j())).a(h)).b(B);
+   }
+
+   @Override
+   public void a(ud $$0) {
+      this.G.f("[").b(C).f(";");
+      byte[] $$1 = $$0.e();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         xs $$3 = xe.b(String.valueOf($$1[$$2])).a(h);
+         this.G.f(" ").b($$3).b(C);
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
+         }
+      }
+
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
+   }
+
+   @Override
+   public void a(uk $$0) {
+      this.G.f("[").b(y).f(";");
+      int[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         this.G.f(" ").b(xe.b(String.valueOf($$1[$$2])).a(h));
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
+         }
+      }
+
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
+   }
+
+   @Override
+   public void a(un $$0) {
+      this.G.f("[").b(z).f(";");
+      long[] $$1 = $$0.g();
+
+      for (int $$2 = 0; $$2 < $$1.length && $$2 < 128; $$2++) {
+         xe $$3 = xe.b(String.valueOf($$1[$$2])).a(h);
+         this.G.f(" ").b($$3).b(z);
+         if ($$2 != $$1.length - 1) {
+            this.G.f(s);
+         }
+      }
+
+      if ($$1.length > 128) {
+         this.G.b(v);
+      }
+
+      this.G.f("]");
+   }
+
+   @Override
+   public void a(um $$0) {
+      if ($$0.isEmpty()) {
+         this.G.f("[]");
+      } else if (this.F >= 64) {
+         this.G.f("[").b(v).f("]");
+      } else if (e.contains($$0.f()) && $$0.size() <= 8) {
+         this.G.f("[");
+
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            if ($$1 != 0) {
+               this.G.f(u);
+            }
+
+            this.a($$0.k($$1), false);
+         }
+
+         this.G.f("]");
+      } else {
+         this.G.f("[");
+         if (!this.D.isEmpty()) {
+            this.G.f("\n");
+         }
+
+         String $$2 = Strings.repeat(this.D, this.E + 1);
+
+         for (int $$3 = 0; $$3 < $$0.size() && $$3 < 128; $$3++) {
+            this.G.f($$2);
+            this.a($$0.k($$3), true);
+            if ($$3 != $$0.size() - 1) {
+               this.G.f(this.D.isEmpty() ? u : t);
+            }
+         }
+
+         if ($$0.size() > 128) {
+            this.G.f($$2).b(v);
+         }
+
+         if (!this.D.isEmpty()) {
+            this.G.f("\n" + Strings.repeat(this.D, this.E));
+         }
+
+         this.G.f("]");
+      }
+   }
+
+   @Override
+   public void a(ug $$0) {
+      if ($$0.g()) {
+         this.G.f("{}");
+      } else if (this.F >= 64) {
+         this.G.f("{").b(v).f("}");
+      } else {
+         this.G.f("{");
+         Collection<String> $$1 = $$0.e();
+         if (a.isDebugEnabled()) {
+            List<String> $$2 = Lists.newArrayList($$0.e());
+            Collections.sort($$2);
+            $$1 = $$2;
+         }
+
+         if (!this.D.isEmpty()) {
+            this.G.f("\n");
+         }
+
+         String $$3 = Strings.repeat(this.D, this.E + 1);
+         Iterator<String> $$4 = $$1.iterator();
+
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            this.G.f($$3).b(a($$5)).f(": ");
+            this.a($$0.c($$5), true);
+            if ($$4.hasNext()) {
+               this.G.f(this.D.isEmpty() ? u : t);
+            }
+         }
+
+         if (!this.D.isEmpty()) {
+            this.G.f("\n" + Strings.repeat(this.D, this.E));
+         }
+
+         this.G.f("}");
+      }
+   }
+
+   private void a(vd $$0, boolean $$1) {
+      if ($$1) {
+         this.E++;
+      }
+
+      this.F++;
+
+      try {
+         $$0.a(this);
+      } finally {
+         if ($$1) {
+            this.E--;
+         }
+
+         this.F--;
+      }
+   }
+
+   protected static xe a(String $$0) {
+      if (j.matcher($$0).matches()) {
+         return xe.b($$0).a(f);
+      } else {
+         String $$1 = vb.b($$0);
+         String $$2 = $$1.substring(0, 1);
+         xe $$3 = xe.b($$1.substring(1, $$1.length() - 1)).a(f);
+         return xe.b($$2).b($$3).f($$2);
+      }
+   }
+
+   @Override
+   public void a(ui $$0) {
+   }
 }

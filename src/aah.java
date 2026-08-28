@@ -1,29 +1,29 @@
-public class aah implements zk<aad> {
-   public static final zb<wa, aah> a = zk.a(aah::a, aah::new);
-   private final int b;
+public class aah implements zl<aae> {
+   public static final zc<wb, aah> a = zl.a(aah::a, aah::new);
+   private final long b;
 
-   public aah(int $$0) {
+   public aah(long $$0) {
       this.b = $$0;
    }
 
-   private aah(wa $$0) {
-      this.b = $$0.readInt();
+   private aah(wb $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(wa $$0) {
-      $$0.q(this.b);
+   private void a(wb $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zm<aah> a() {
-      return aac.o;
+   public zn<aah> a() {
+      return aad.n;
    }
 
-   public void a(aad $$0) {
+   public void a(aae $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

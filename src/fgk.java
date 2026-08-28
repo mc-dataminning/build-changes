@@ -1,62 +1,77 @@
-public class fgk extends hdk {
-   private static final int a = 212;
-   private static final xd b = xd.c("mco.configure.world.name");
-   private static final xd c = xd.c("mco.configure.world.description");
-   private final fft B;
-   private final fel C;
-   private fkt D;
-   private fkt E;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Consumer;
 
-   public fgk(fft $$0, fel $$1) {
-      super(xd.c("mco.configure.world.settings.title"));
-      this.B = $$0;
-      this.C = $$1;
+public class fgk extends hdp {
+   private static final xe b = xe.c("mco.reset.world.seed");
+   public static final xe a = xe.c("mco.reset.world.generate");
+   private static final int c = 10;
+   private static final int B = 210;
+   private final foc C = new foc(this);
+   private final Consumer<fhg> D;
+   private fkx E;
+   private fha F = fha.a;
+   private boolean G = true;
+   private final Set<String> H = new HashSet<>();
+   private final xe I;
+
+   public fgk(Consumer<fhg> $$0, xe $$1) {
+      super(a);
+      this.D = $$0;
+      this.I = $$1;
    }
 
    @Override
-   public void aR_() {
-      int $$0 = this.n / 2 - 106;
-      String $$1 = this.C.e == fel.c.b ? "mco.configure.world.buttons.close" : "mco.configure.world.buttons.open";
-      fkk $$2 = fkk.a(xd.c($$1), $$0x -> {
-         if (this.C.e == fel.c.b) {
-            this.m.a(fgf.a(this, xd.c("mco.configure.world.close.question.line1"), $$0xx -> this.B.b()));
-         } else {
-            this.B.b(false);
-         }
-      }).a(this.n / 2 - 53, g(0), 106, 20).a();
-      this.c($$2);
-      this.E = new fkt(this.m.h, $$0, g(4), 212, 20, xd.c("mco.configure.world.name"));
+   public void aS_() {
+      this.E = new fkx(this.p, 210, 20, xe.c("mco.reset.world.seed"));
       this.E.f(32);
-      this.E.a(this.C.b());
-      this.c(this.E);
-      this.D = new fkt(this.m.h, $$0, g(8), 212, 20, xd.c("mco.configure.world.description"));
-      this.D.f(32);
-      this.D.a(this.C.a());
-      this.c(this.D);
-      fkk $$3 = this.c(fkk.a(xd.c("mco.configure.world.buttons.done"), $$0x -> this.g()).a($$0 - 2, g(12), 106, 20).a());
-      this.E.b($$1x -> $$3.j = !baa.h($$1x));
-      this.c(fkk.a(xc.e, $$0x -> this.d()).a(this.n / 2 + 2, g(12), 106, 20).a());
+      this.C.a(this.l, this.p);
+      fog $$0 = this.C.c(fog.d()).a(10);
+      $$0.a(fny.a(this.p, this.E, b));
+      $$0.a(fkv.a(fha::a).a(fha.values()).a(this.F).a(0, 0, 210, 20, xe.c("selectWorld.mapType"), ($$0x, $$1x) -> this.F = $$1x));
+      $$0.a(fkv.b(this.G).a(0, 0, 210, 20, xe.c("selectWorld.mapFeatures"), ($$0x, $$1x) -> this.G = $$1x));
+      this.a($$0);
+      fog $$1 = this.C.b(fog.e().a(10));
+      $$1.a(fko.a(this.I, $$0x -> this.D.accept(this.D())).a());
+      $$1.a(fko.a(xd.k, $$0x -> this.d()).a());
+      this.C.a($$1x -> {
+         fkm var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void aG_() {
+   protected void aH_() {
       this.b(this.E);
+   }
+
+   private void a(fog $$0) {
+      aug $$1 = auj.c();
+      $$1.a();
+      $$0.a(fko.a(xe.c("selectWorld.experiments"), $$1x -> this.m.a(new fvh(this, $$1, $$0xx -> {
+            this.H.clear();
+
+            for (aud $$1xx : $$0xx.f()) {
+               if ($$1xx.l() == auh.d) {
+                  this.H.add($$1xx.g());
+               }
+            }
+
+            this.m.a(this);
+         }))).a(210).a());
+   }
+
+   private fhg D() {
+      return new fhg(this.E.a(), this.F, this.G, this.H);
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
    }
 
    @Override
    public void d() {
-      this.m.a(this.B);
-   }
-
-   @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.a(this.p, b, this.n / 2 - 106, g(3), -1, false);
-      $$0.a(this.p, c, this.n / 2 - 106, g(7), -1, false);
-   }
-
-   public void g() {
-      this.B.a(this.E.a(), this.D.a());
+      this.D.accept(null);
    }
 }

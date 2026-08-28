@@ -1,233 +1,195 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface bui {
-   String b_ = "leash";
-   double r_ = 10.0;
-   double s_ = 6.0;
-
+public class bui extends btr implements btn, bvk {
+   private static final Logger b = LogUtils.getLogger();
+   private static final akh<Float> c = akl.a(bui.class, akj.d);
+   private static final akh<Float> d = akl.a(bui.class, akj.d);
+   private static final akh<Boolean> e = akl.a(bui.class, akj.k);
+   private static final String f = "width";
+   private static final String g = "height";
+   private static final String h = "attack";
+   private static final String i = "interaction";
+   private static final String j = "response";
    @Nullable
-   bui.a W_();
+   private bui.a k;
+   @Nullable
+   private bui.a l;
 
-   void a(@Nullable bui.a var1);
-
-   default boolean K_() {
-      return this.W_() != null && this.W_().a != null;
+   public bui(bty<?> $$0, dej $$1) {
+      super($$0, $$1);
+      this.ae = true;
    }
 
-   default boolean L_() {
-      return this.W_() != null;
+   @Override
+   protected void a(akl.a $$0) {
+      $$0.a(c, 1.0F);
+      $$0.a(d, 1.0F);
+      $$0.a(e, false);
    }
 
-   default boolean M_() {
-      return this.A() && !this.K_();
+   @Override
+   protected void a(ug $$0) {
+      if ($$0.b("width", 99)) {
+         this.a($$0.j("width"));
+      }
+
+      if ($$0.b("height", 99)) {
+         this.b($$0.j("height"));
+      }
+
+      if ($$0.e("attack")) {
+         bui.a.a.decode(uu.a, $$0.c("attack")).resultOrPartial(ad.a("Interaction entity", b::error)).ifPresent($$0x -> this.k = (bui.a)$$0x.getFirst());
+      } else {
+         this.k = null;
+      }
+
+      if ($$0.e("interaction")) {
+         bui.a.a.decode(uu.a, $$0.c("interaction")).resultOrPartial(ad.a("Interaction entity", b::error)).ifPresent($$0x -> this.l = (bui.a)$$0x.getFirst());
+      } else {
+         this.l = null;
+      }
+
+      this.a($$0.q("response"));
+      this.a(this.aw());
    }
 
-   default boolean A() {
+   @Override
+   protected void b(ug $$0) {
+      $$0.a("width", this.o());
+      $$0.a("height", this.q());
+      if (this.k != null) {
+         bui.a.a.encodeStart(uu.a, this.k).ifSuccess($$1 -> $$0.a("attack", $$1));
+      }
+
+      if (this.l != null) {
+         bui.a.a.encodeStart(uu.a, this.l).ifSuccess($$1 -> $$0.a("interaction", $$1));
+      }
+
+      $$0.a("response", this.t());
+   }
+
+   @Override
+   public void a(akh<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0) || c.equals($$0)) {
+         this.j_();
+      }
+   }
+
+   @Override
+   public boolean bD() {
+      return false;
+   }
+
+   @Override
+   public boolean bE() {
       return true;
    }
 
-   default void h_(int $$0) {
-      this.a(new bui.a($$0));
-      a((bto)this, false, false);
+   @Override
+   public eqy k_() {
+      return eqy.d;
    }
 
-   @Nullable
-   default bui.a c(uf $$0) {
-      if ($$0.b("leash", 10)) {
-         return new bui.a(Either.left($$0.p("leash").a("UUID")));
-      } else {
-         if ($$0.b("leash", 11)) {
-            Either<UUID, je> $$1 = uu.a($$0, "leash").<Either<UUID, je>>map(Either::right).orElse(null);
-            if ($$1 != null) {
-               return new bui.a($$1);
-            }
-         }
-
-         return null;
-      }
-   }
-
-   default void a(uf $$0, @Nullable bui.a $$1) {
-      if ($$1 != null) {
-         Either<UUID, je> $$2 = $$1.b;
-         if ($$1.a instanceof cjy $$3) {
-            $$2 = Either.right($$3.q());
-         } else if ($$1.a != null) {
-            $$2 = Either.left($$1.a.cD());
-         }
-
-         if ($$2 != null) {
-            $$0.a("leash", (vc)$$2.map($$0x -> {
-               uf $$1x = new uf();
-               $$1x.a("UUID", $$0x);
-               return $$1x;
-            }, uu::a));
-         }
-      }
-   }
-
-   private static <E extends bto & bui> void a(E $$0, bui.a $$1) {
-      if ($$1.b != null && $$0.dS() instanceof arh $$2) {
-         Optional<UUID> $$3 = $$1.b.left();
-         Optional<je> $$4 = $$1.b.right();
-         if ($$3.isPresent()) {
-            bto $$5 = $$2.a($$3.get());
-            if ($$5 != null) {
-               a($$0, $$5, true);
-               return;
-            }
-         } else if ($$4.isPresent()) {
-            a($$0, cjy.b($$2, $$4.get()), true);
-            return;
-         }
-
-         if ($$0.ag > 100) {
-            $$0.a((def)cvt.uM);
-            $$0.a(null);
-         }
-      }
-   }
-
-   default void a(boolean $$0, boolean $$1) {
-      a((bto)this, $$0, $$1);
-   }
-
-   private static <E extends bto & bui> void a(E $$0, boolean $$1, boolean $$2) {
-      bui.a $$3 = $$0.W_();
-      if ($$3 != null && $$3.a != null) {
-         $$0.a(null);
-         if (!$$0.dS().B && $$2) {
-            $$0.a((def)cvt.uM);
-         }
-
-         if ($$1 && $$0.dS() instanceof arh $$4) {
-            $$4.l().b($$0, new afg($$0, null));
-         }
-      }
-   }
-
-   static <E extends bto & bui> void b_(E $$0) {
-      bui.a $$1 = $$0.W_();
-      if ($$1 != null && $$1.b != null) {
-         a($$0, $$1);
-      }
-
-      if ($$1 != null && $$1.a != null) {
-         if (!$$0.bI() || !$$1.a.bI()) {
-            a($$0, true, $$0.dS().ac().b(dec.i));
-         }
-
-         bto $$2 = $$0.C();
-         if ($$2 != null && $$2.dS() == $$0.dS()) {
-            float $$3 = $$0.f($$2);
-            if (!$$0.a($$2, $$3)) {
-               return;
-            }
-
-            if ((double)$$3 > 10.0) {
-               $$0.B();
-            } else if ((double)$$3 > 6.0) {
-               $$0.b($$2, $$3);
-               $$0.cv();
-            } else {
-               $$0.b($$2);
-            }
-         }
-      }
-   }
-
-   default boolean a(bto $$0, float $$1) {
+   @Override
+   public boolean r_() {
       return true;
    }
 
-   default void B() {
-      this.a(true, true);
-   }
-
-   default void b(bto $$0) {
-   }
-
-   default void b(bto $$0, float $$1) {
-      a((bto)this, $$0, $$1);
-   }
-
-   private static <E extends bto & bui> void a(E $$0, bto $$1, float $$2) {
-      double $$3 = ($$1.dx() - $$0.dx()) / (double)$$2;
-      double $$4 = ($$1.dz() - $$0.dz()) / (double)$$2;
-      double $$5 = ($$1.dD() - $$0.dD()) / (double)$$2;
-      $$0.h($$0.dv().b(Math.copySign($$3 * $$3 * 0.4, $$3), Math.copySign($$4 * $$4 * 0.4, $$4), Math.copySign($$5 * $$5 * 0.4, $$5)));
-   }
-
-   default void b(bto $$0, boolean $$1) {
-      a((bto)this, $$0, $$1);
-   }
-
-   private static <E extends bto & bui> void a(E $$0, bto $$1, boolean $$2) {
-      bui.a $$3 = $$0.W_();
-      if ($$3 == null) {
-         $$3 = new bui.a($$1);
-         $$0.a($$3);
-      } else {
-         $$3.a($$1);
-      }
-
-      if ($$2 && $$0.dS() instanceof arh $$4) {
-         $$4.l().b($$0, new afg($$0, $$1));
-      }
-
-      if ($$0.bW()) {
-         $$0.af();
-      }
-   }
-
-   @Nullable
-   default bto C() {
-      return c((bto)this);
-   }
-
-   @Nullable
-   private static <E extends bto & bui> bto c(E $$0) {
-      bui.a $$1 = $$0.W_();
-      if ($$1 == null) {
-         return null;
-      } else {
-         if ($$1.c != 0 && $$0.dS().B) {
-            bto var3 = $$0.dS().a($$1.c);
-            if (var3 instanceof bto) {
-               $$1.a(var3);
-            }
+   @Override
+   public boolean v(btr $$0) {
+      if ($$0 instanceof cnx $$1) {
+         this.k = new bui.a($$1.cD(), this.dS().aa());
+         if ($$1 instanceof ark $$2) {
+            an.h.a($$2, this, $$1.dT().p(), 1.0F, 1.0F, false);
          }
 
-         return $$1.a;
+         return !this.t();
+      } else {
+         return false;
       }
    }
 
-   public static final class a {
-      int c;
-      @Nullable
-      public bto a;
-      @Nullable
-      public Either<UUID, je> b;
+   @Override
+   public brs a(cnx $$0, brr $$1) {
+      if (this.dS().B) {
+         return this.t() ? brs.a : brs.c;
+      } else {
+         this.l = new bui.a($$0.cD(), this.dS().aa());
+         return brs.c;
+      }
+   }
 
-      a(Either<UUID, je> $$0) {
-         this.b = $$0;
+   @Override
+   public void l() {
+   }
+
+   @Nullable
+   @Override
+   public bun Y_() {
+      return this.k != null ? this.dS().b(this.k.a()) : null;
+   }
+
+   @Nullable
+   @Override
+   public bun m() {
+      return this.l != null ? this.dS().b(this.l.a()) : null;
+   }
+
+   private void a(float $$0) {
+      this.am.a(c, $$0);
+   }
+
+   private float o() {
+      return this.am.a(c);
+   }
+
+   private void b(float $$0) {
+      this.am.a(d, $$0);
+   }
+
+   private float q() {
+      return this.am.a(d);
+   }
+
+   private void a(boolean $$0) {
+      this.am.a(e, $$0);
+   }
+
+   private boolean t() {
+      return this.am.a(e);
+   }
+
+   private btu v() {
+      return btu.b(this.o(), this.q());
+   }
+
+   @Override
+   public btu a(buz $$0) {
+      return this.v();
+   }
+
+   @Override
+   protected eyr aw() {
+      return this.v().a(this.dq());
+   }
+
+   static record a(UUID b, long c) {
+      public static final Codec<bui.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ki.a.fieldOf("player").forGetter(bui.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bui.a::b)).apply($$0, bui.a::new)
+      );
+
+      public UUID a() {
+         return this.b;
       }
 
-      a(bto $$0) {
-         this.a = $$0;
-      }
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a(bto $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = 0;
+      public long b() {
+         return this.c;
       }
    }
 }

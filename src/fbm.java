@@ -1,134 +1,350 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fbm extends fbo {
-   public static final int a = 854;
-   public static final int b = 480;
-   static final fbm.b l = new fbm.b(854, 480);
+public class fbm {
+   private final List<fbm.d<?>> a = new ArrayList<>();
+   private final List<fbm.a<?>> b = new ArrayList<>();
+   private final List<fbm.e> c = new ArrayList<>();
 
-   public fbm(int $$0, int $$1) {
-      super(true);
-      this.e($$0, $$1);
+   public fbn a(String $$0) {
+      fbm.e $$1 = new fbm.e(this.c.size(), $$0);
+      this.c.add($$1);
+      return $$1;
    }
 
-   private void e(int $$0, int $$1) {
-      fbm.b $$2 = this.f($$0, $$1);
-      this.h = GlStateManager.glGenFramebuffers();
-      GlStateManager._glBindFramebuffer(36160, this.h);
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texParameter(3553, 34892, 0);
-      GlStateManager._texParameter(3553, 10241, 9728);
-      GlStateManager._texParameter(3553, 10240, 9728);
-      GlStateManager._texParameter(3553, 10242, 33071);
-      GlStateManager._texParameter(3553, 10243, 33071);
-      GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
-      GlStateManager._bindTexture(0);
-      this.e = $$2.a;
-      this.f = $$2.b;
-      this.c = $$2.a;
-      this.d = $$2.b;
-      this.b();
-      GlStateManager._glBindFramebuffer(36160, 0);
+   public <T> fcu<T> a(String $$0, T $$1) {
+      fbm.a<T> $$2 = new fbm.a<>($$0, null, $$1);
+      this.b.add($$2);
+      return $$2.b;
    }
 
-   private fbm.b f(int $$0, int $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.i = TextureUtil.generateTextureId();
-      this.j = TextureUtil.generateTextureId();
-      fbm.a $$2 = fbm.a.a;
+   public <T> fcu<T> a(String $$0, fct<T> $$1) {
+      return this.a($$0, $$1, null).b;
+   }
 
-      for (fbm.b $$3 : fbm.b.a($$0, $$1)) {
-         $$2 = fbm.a.a;
-         if (this.a($$3)) {
-            $$2 = $$2.a(fbm.a.b);
-         }
+   <T> fbm.d<T> a(String $$0, fct<T> $$1, @Nullable fbm.e $$2) {
+      int $$3 = this.a.size();
+      fbm.d<T> $$4 = new fbm.d<>($$3, $$0, $$2, $$1);
+      this.a.add($$4);
+      return $$4;
+   }
 
-         if (this.b($$3)) {
-            $$2 = $$2.a(fbm.a.c);
-         }
+   public void a(fcr $$0) {
+      this.a($$0, fbm.c.a);
+   }
 
-         if ($$2 == fbm.a.d) {
-            return $$3;
-         }
+   public void a(fcr $$0, fbm.c $$1) {
+      BitSet $$2 = this.a();
+      List<fbm.e> $$3 = new ArrayList<>($$2.cardinality());
+      BitSet $$4 = new BitSet(this.c.size());
+
+      for (fbm.e $$5 : this.c) {
+         this.a($$5, $$2, $$4, $$3);
       }
 
-      throw new RuntimeException("Unrecoverable GL_OUT_OF_MEMORY (allocated attachments = " + $$2.name() + ")");
-   }
+      this.a($$3);
 
-   private boolean a(fbm.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.i);
-      GlStateManager._texImage2D(3553, 0, 32856, $$0.a, $$0.b, 0, 6408, 5121, null);
-      return GlStateManager._getError() != 1285;
-   }
+      for (fbm.e $$6 : $$3) {
+         for (fbm.d<?> $$7 : $$6.h) {
+            $$1.a($$7.a);
+            $$7.a($$0);
+         }
 
-   private boolean b(fbm.b $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._getError();
-      GlStateManager._bindTexture(this.j);
-      GlStateManager._texImage2D(3553, 0, 6402, $$0.a, $$0.b, 0, 6402, 5126, null);
-      return GlStateManager._getError() != 1285;
-   }
+         $$1.c($$6.c);
+         $$6.g.run();
+         $$1.d($$6.c);
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
-
-      private static final fbm.a[] e = values();
-
-      fbm.a a(fbm.a $$0) {
-         return e[this.ordinal() | $$0.ordinal()];
+         for (int $$8 = $$6.i.nextSetBit(0); $$8 >= 0; $$8 = $$6.i.nextSetBit($$8 + 1)) {
+            fbm.d<?> $$9 = this.a.get($$8);
+            $$1.b($$9.a);
+            $$9.b($$0);
+         }
       }
    }
 
-   static class b {
-      public final int a;
-      public final int b;
+   private BitSet a() {
+      Deque<fbm.e> $$0 = new ArrayDeque<>(this.c.size());
+      BitSet $$1 = new BitSet(this.c.size());
 
-      b(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (fbm.f<?> $$2 : this.b) {
+         fbm.e $$3 = $$2.b.d;
+         if ($$3 != null) {
+            this.a($$3, $$1, $$0);
+         }
       }
 
-      static List<fbm.b> a(int $$0, int $$1) {
-         RenderSystem.assertOnRenderThreadOrInit();
-         int $$2 = RenderSystem.maxSupportedTextureSize();
-         return $$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2 ? ImmutableList.of(new fbm.b($$0, $$1), fbm.l) : ImmutableList.of(fbm.l);
+      for (fbm.e $$4 : this.c) {
+         if ($$4.j) {
+            this.a($$4, $$1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(fbm.e $$0, BitSet $$1, Deque<fbm.e> $$2) {
+      $$2.add($$0);
+
+      while (!$$2.isEmpty()) {
+         fbm.e $$3 = $$2.poll();
+         if (!$$1.get($$3.b)) {
+            $$1.set($$3.b);
+
+            for (int $$4 = $$3.f.nextSetBit(0); $$4 >= 0; $$4 = $$3.f.nextSetBit($$4 + 1)) {
+               $$2.add(this.c.get($$4));
+            }
+         }
+      }
+   }
+
+   private void a(fbm.e $$0, BitSet $$1, BitSet $$2, List<fbm.e> $$3) {
+      if ($$2.get($$0.b)) {
+         String $$4 = $$2.stream().mapToObj($$0x -> this.c.get($$0x).c).collect(Collectors.joining(", "));
+         throw new IllegalStateException("Frame graph cycle detected between " + $$4);
+      } else if ($$1.get($$0.b)) {
+         $$2.set($$0.b);
+         $$1.clear($$0.b);
+
+         for (int $$5 = $$0.f.nextSetBit(0); $$5 >= 0; $$5 = $$0.f.nextSetBit($$5 + 1)) {
+            this.a(this.c.get($$5), $$1, $$2, $$3);
+         }
+
+         for (fbm.b<?> $$6 : $$0.d) {
+            for (int $$7 = $$6.e.nextSetBit(0); $$7 >= 0; $$7 = $$6.e.nextSetBit($$7 + 1)) {
+               if ($$7 != $$0.b) {
+                  this.a(this.c.get($$7), $$1, $$2, $$3);
+               }
+            }
+         }
+
+         $$3.add($$0);
+         $$2.clear($$0.b);
+      }
+   }
+
+   private void a(Collection<fbm.e> $$0) {
+      fbm.e[] $$1 = new fbm.e[this.a.size()];
+
+      for (fbm.e $$2 : $$0) {
+         for (int $$3 = $$2.e.nextSetBit(0); $$3 >= 0; $$3 = $$2.e.nextSetBit($$3 + 1)) {
+            fbm.d<?> $$4 = this.a.get($$3);
+            fbm.e $$5 = $$1[$$3];
+            $$1[$$3] = $$2;
+            if ($$5 == null) {
+               $$2.h.add($$4);
+            } else {
+               $$5.i.clear($$3);
+            }
+
+            $$2.i.set($$3);
+         }
+      }
+   }
+
+   static class a<T> extends fbm.f<T> {
+      private final T c;
+
+      public a(String $$0, @Nullable fbm.e $$1, T $$2) {
+         super($$0, $$1);
+         this.c = $$2;
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fbm.b $$1 = (fbm.b)$$0;
-            return this.a == $$1.a && this.b == $$1.b;
+      public T a() {
+         return this.c;
+      }
+   }
+
+   static class b<T> implements fcu<T> {
+      final fbm.f<T> b;
+      private final int c;
+      @Nullable
+      final fbm.e d;
+      final BitSet e = new BitSet();
+      @Nullable
+      private fbm.b<T> f;
+
+      b(fbm.f<T> $$0, int $$1, @Nullable fbm.e $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public T get() {
+         return this.b.a();
+      }
+
+      fbm.b<T> a(fbm.e $$0) {
+         if (this.b.b != this) {
+            throw new IllegalStateException("Handle " + this + " is no longer valid, as its contents were moved into " + this.f);
          } else {
-            return false;
+            fbm.b<T> $$1 = new fbm.b<>(this.b, this.c + 1, $$0);
+            this.b.b = $$1;
+            this.f = $$1;
+            return $$1;
          }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b);
       }
 
       @Override
       public String toString() {
-         return this.a + "x" + this.b;
+         return this.d != null ? this.b + "#" + this.c + " (from " + this.d + ")" : this.b + "#" + this.c;
+      }
+   }
+
+   public interface c {
+      fbm.c a = new fbm.c() {
+      };
+
+      default void a(String $$0) {
+      }
+
+      default void b(String $$0) {
+      }
+
+      default void c(String $$0) {
+      }
+
+      default void d(String $$0) {
+      }
+   }
+
+   static class d<T> extends fbm.f<T> {
+      final int c;
+      private final fct<T> d;
+      @Nullable
+      private T e;
+
+      public d(int $$0, String $$1, @Nullable fbm.e $$2, fct<T> $$3) {
+         super($$1, $$2);
+         this.c = $$0;
+         this.d = $$3;
+      }
+
+      @Override
+      public T a() {
+         return Objects.requireNonNull(this.e, "Resource is not currently available");
+      }
+
+      public void a(fcr $$0) {
+         if (this.e != null) {
+            throw new IllegalStateException("Tried to acquire physical resource, but it was already assigned");
+         } else {
+            this.e = $$0.a(this.d);
+         }
+      }
+
+      public void b(fcr $$0) {
+         if (this.e == null) {
+            throw new IllegalStateException("Tried to release physical resource that was not allocated");
+         } else {
+            $$0.a(this.d, this.e);
+            this.e = null;
+         }
+      }
+   }
+
+   class e implements fbn {
+      final int b;
+      final String c;
+      final List<fbm.b<?>> d = new ArrayList<>();
+      final BitSet e = new BitSet();
+      final BitSet f = new BitSet();
+      Runnable g = () -> {
+      };
+      final List<fbm.d<?>> h = new ArrayList<>();
+      final BitSet i = new BitSet();
+      boolean j;
+
+      public e(final int $$0, final String $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      private <T> void a(fbm.b<T> $$0) {
+         if ($$0.b instanceof fbm.d<?> $$1) {
+            this.e.set($$1.c);
+         }
+      }
+
+      private void a(fbm.e $$0) {
+         this.f.set($$0.b);
+      }
+
+      @Override
+      public <T> fcu<T> a(String $$0, fct<T> $$1) {
+         fbm.d<T> $$2 = fbm.this.a($$0, $$1, this);
+         this.e.set($$2.c);
+         return $$2.b;
+      }
+
+      @Override
+      public <T> void a(fcu<T> $$0) {
+         this.b((fbm.b<T>)$$0);
+      }
+
+      private <T> void b(fbm.b<T> $$0) {
+         this.a($$0);
+         if ($$0.d != null) {
+            this.a($$0.d);
+         }
+
+         $$0.e.set(this.b);
+      }
+
+      @Override
+      public <T> fcu<T> b(fcu<T> $$0) {
+         return this.c((fbm.b<T>)$$0);
+      }
+
+      @Override
+      public void a(fbn $$0) {
+         this.f.set(((fbm.e)$$0).b);
+      }
+
+      @Override
+      public void a() {
+         this.j = true;
+      }
+
+      private <T> fbm.b<T> c(fbm.b<T> $$0) {
+         this.d.add($$0);
+         this.b($$0);
+         return $$0.a(this);
+      }
+
+      @Override
+      public void a(Runnable $$0) {
+         this.g = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
+      }
+   }
+
+   abstract static class f<T> {
+      public final String a;
+      public fbm.b<T> b;
+
+      public f(String $$0, @Nullable fbm.e $$1) {
+         this.a = $$0;
+         this.b = new fbm.b<>(this, 0, $$1);
+      }
+
+      public abstract T a();
+
+      @Override
+      public String toString() {
+         return this.a;
       }
    }
 }

@@ -1,105 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dnx implements azz {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dnx extends dhm implements dhp {
+   public static final MapCodec<dnx> a = b(dnx::new);
 
-   public static final Codec<dnx> e = azz.a(dnx::values);
-   private final String f;
-   private final h g;
-
-   private dnx(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dnx> a() {
+      return a;
    }
 
-   public dnx a(dnx $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jj a(jj $$0) {
-      if ($$0.o() == jj.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dnx a(azl $$0) {
-      return ad.a(values(), $$0);
-   }
-
-   public static List<dnx> b(azl $$0) {
-      return ad.b(values(), $$0);
+   public dnx(dur.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return $$0.a_($$1.e()).l();
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      $$0.b($$2.e(), dho.sG.n());
+   }
+
+   @Override
+   public jf a(jf $$0) {
+      return $$0.e();
    }
 }

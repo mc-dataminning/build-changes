@@ -1,35 +1,66 @@
-public class flb {
-   public static final alc a = alc.b("textures/gui/title/minecraft.png");
-   public static final alc b = alc.b("textures/gui/title/minceraft.png");
-   public static final alc c = alc.b("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)azl.a().i() < 1.0E-4;
-   private final boolean o;
+import javax.annotation.Nullable;
 
-   public flb(boolean $$0) {
-      this.o = $$0;
+public abstract class flb extends fkm {
+   flb(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, xd.a);
    }
 
-   public void a(fjx $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public static flb a(int $$0, int $$1, ale $$2, int $$3, int $$4) {
+      return new flb.b(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(fjx $$0, int $$1, float $$2, int $$3) {
-      int $$4 = $$1 / 2 - 128;
-      float $$5 = this.o ? 1.0F : $$2;
-      int $$6 = axo.a($$5);
-      $$0.a(ghq::B, this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64, $$6);
-      int $$7 = $$1 / 2 - 64;
-      int $$8 = $$3 + 44 - 7;
-      $$0.a(ghq::B, c, $$7, $$8, 0.0F, 0.0F, 128, 14, 128, 16, $$6);
+   public static flb a(int $$0, int $$1, ale $$2) {
+      return new flb.a(0, 0, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fol $$0) {
+   }
+
+   @Override
+   public void a(hcf $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fjy a(fos $$0) {
+      return null;
+   }
+
+   static class a extends flb {
+      private final ale a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, ale $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(fkb $$0, int $$1, int $$2, float $$3) {
+         $$0.a(ghv::B, this.a, this.D(), this.E(), this.y(), this.w());
+      }
+   }
+
+   static class b extends flb {
+      private final ale a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, int $$2, int $$3, ale $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
+
+      @Override
+      protected void b(fkb $$0, int $$1, int $$2, float $$3) {
+         $$0.a(ghv::B, this.a, this.D(), this.E(), 0.0F, 0.0F, this.y(), this.w(), this.b, this.c);
+      }
    }
 }

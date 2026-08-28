@@ -1,103 +1,42 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
 
 public class dfi {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dfi a = new dfi(jr.a(), List.of());
-   public static final MapCodec<dfi> b = RecordCodecBuilder.mapCodec(
+   public static final Codec<dfi> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eco.c.promotePartial(ad.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
-               ekg.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+               awf.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dfi::new)
    );
-   private final jr<eco<?>> d;
-   private final List<jr<ekg>> e;
-   private final Supplier<List<edc<?, ?>>> f;
-   private final Supplier<Set<ekg>> g;
+   public static final dfi b = new dfi(awg.h, 6000, 8, 2.0);
+   private final jo<awf> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   dfi(jr<eco<?>> $$0, List<jr<ekg>> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = Suppliers.memoize(
-         () -> $$1.stream().flatMap(jr::a).map(jn::a).flatMap(ekg::a).filter($$0xx -> $$0xx.b() == edq.g).collect(ImmutableList.toImmutableList())
-      );
-      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jr::a).map(jn::a).collect(Collectors.toSet()));
+   public dfi(jo<awf> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public Iterable<jn<eco<?>>> a() {
+   public jo<awf> a() {
+      return this.c;
+   }
+
+   public int b() {
       return this.d;
    }
 
-   public List<edc<?, ?>> b() {
-      return this.f.get();
-   }
-
-   public List<jr<ekg>> c() {
+   public int c() {
       return this.e;
    }
 
-   public boolean a(ekg $$0) {
-      return this.g.get().contains($$0);
-   }
-
-   public static class a extends dfi.b {
-      private final jo<ekg> a;
-      private final jo<eco<?>> b;
-
-      public a(jo<ekg> $$0, jo<eco<?>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public dfi.a a(eag.a $$0, alb<ekg> $$1) {
-         this.a($$0.ordinal(), this.a.b($$1));
-         return this;
-      }
-
-      public dfi.a a(alb<eco<?>> $$0) {
-         this.a(this.b.b($$0));
-         return this;
-      }
-   }
-
-   public static class b {
-      private final List<jn<eco<?>>> a = new ArrayList<>();
-      private final List<List<jn<ekg>>> b = new ArrayList<>();
-
-      public dfi.b a(eag.a $$0, jn<ekg> $$1) {
-         return this.a($$0.ordinal(), $$1);
-      }
-
-      public dfi.b a(int $$0, jn<ekg> $$1) {
-         this.a($$0);
-         this.b.get($$0).add($$1);
-         return this;
-      }
-
-      public dfi.b a(jn<eco<?>> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      private void a(int $$0) {
-         while (this.b.size() <= $$0) {
-            this.b.add(Lists.newArrayList());
-         }
-      }
-
-      public dfi a() {
-         return new dfi(jr.a(this.a), this.b.stream().map(jr::a).collect(ImmutableList.toImmutableList()));
-      }
+   public double d() {
+      return this.f;
    }
 }

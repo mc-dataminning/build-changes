@@ -1,38 +1,105 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class eah {
-   public final ehv a;
-   public final ehv b;
-   public final ehv c;
-   public final ehv d;
-   public final ehv e;
-   public final List<duo> f;
-   public final axj<dhj> g;
-   public final axj<dhj> h;
-   public static final Codec<eah> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehv.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               ehv.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               ehv.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               ehv.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               ehv.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               aym.a(duo.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axj.b(lv.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axj.b(lv.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eah::new)
-   );
+public interface eah {
+   Codec<eah> b = eai.b;
+   Codec<jo<eah>> c = ala.a(lw.aL, b);
+   Codec<eah> d = c.xmap(eai.j::new, $$0 -> (jo)($$0 instanceof eai.j $$1 ? $$1.j() : new jo.a<>($$0)));
 
-   public eah(ehv $$0, ehv $$1, ehv $$2, ehv $$3, ehv $$4, List<duo> $$5, axj<dhj> $$6, axj<dhj> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   double a(eah.b var1);
+
+   void a(double[] var1, eah.a var2);
+
+   eah a(eah.f var1);
+
+   double a();
+
+   double b();
+
+   ayy<? extends eah> c();
+
+   default eah a(double $$0, double $$1) {
+      return new eai.g(this, $$0, $$1);
+   }
+
+   default eah d() {
+      return eai.a(this, eai.k.a.a);
+   }
+
+   default eah e() {
+      return eai.a(this, eai.k.a.b);
+   }
+
+   default eah f() {
+      return eai.a(this, eai.k.a.c);
+   }
+
+   default eah g() {
+      return eai.a(this, eai.k.a.d);
+   }
+
+   default eah h() {
+      return eai.a(this, eai.k.a.e);
+   }
+
+   default eah i() {
+      return eai.a(this, eai.k.a.f);
+   }
+
+   public interface a {
+      eah.b a(int var1);
+
+      void a(double[] var1, eah var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default ebq d() {
+         return ebq.a();
+      }
+   }
+
+   public static record c(jo<epw.a> b, @Nullable epw c) {
+      public static final Codec<eah.c> a = epw.a.b.xmap($$0 -> new eah.c($$0, null), eah.c::b);
+
+      public c(jo<epw.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends eah {
+      @Override
+      default void a(double[] $$0, eah.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default eah a(eah.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements eah.b {
+   }
+
+   public interface f {
+      eah apply(eah var1);
+
+      default eah.c a(eah.c $$0) {
+         return $$0;
+      }
    }
 }

@@ -1,19 +1,22 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egw<P extends egv> {
-   public static final egw<egy> a = a("two_layers_feature_size", egy.d);
-   public static final egw<egx> b = a("three_layers_feature_size", egx.d);
-   private final MapCodec<P> c;
+public class egw implements efy {
+   public static final Codec<egw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, egw::new)
+   );
+   public final int b;
+   public final int c;
+   public final float d;
 
-   private static <P extends egv> egw<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.Y, $$0, new egw<>($$1));
-   }
-
-   private egw(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.c;
+   public egw(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

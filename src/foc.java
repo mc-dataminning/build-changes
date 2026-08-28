@@ -1,111 +1,130 @@
 import java.util.function.Consumer;
 
-public class foc implements fnz {
-   private final fnx a;
-   private final foc.a b;
-   private int c = 0;
+public class foc implements fod {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final foa c = new foa();
+   private final foa d = new foa();
+   private final foa e = new foa();
+   private final fqh f;
+   private int g;
+   private int h;
 
-   private foc(foc.a $$0) {
-      this(0, 0, $$0);
+   public foc(fqh $$0) {
+      this($$0, 33);
    }
 
-   public foc(int $$0, int $$1, foc.a $$2) {
-      this.a = new fnx($$0, $$1);
-      this.b = $$2;
+   public foc(fqh $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public foc a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public fob b() {
-      return this.a.b();
-   }
-
-   public fob c() {
-      return this.a.c();
-   }
-
-   public <T extends foa> T a(T $$0, fob $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends foa> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends foa> T a(T $$0, Consumer<fob> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ad.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<foa> $$0) {
-      this.a.b($$0);
-   }
-
-   @Override
-   public void a() {
-      this.a.a();
-   }
-
-   @Override
-   public int y() {
-      return this.a.y();
-   }
-
-   @Override
-   public int w() {
-      return this.a.w();
+   public foc(fqh $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
    @Override
    public void m(int $$0) {
-      this.a.m($$0);
    }
 
    @Override
    public void n(int $$0) {
-      this.a.n($$0);
    }
 
    @Override
    public int D() {
-      return this.a.D();
+      return 0;
    }
 
    @Override
    public int E() {
-      return this.a.E();
+      return 0;
    }
 
-   public static foc d() {
-      return new foc(foc.a.b);
+   @Override
+   public int y() {
+      return this.f.n;
    }
 
-   public static foc e() {
-      return new foc(foc.a.a);
+   @Override
+   public int w() {
+      return this.f.o;
    }
 
-   public static enum a {
-      a,
-      b;
+   public int b() {
+      return this.h;
+   }
 
-      void a(fnx $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
-         }
-      }
+   public void a(int $$0) {
+      this.h = $$0;
+   }
 
-      public <T extends foa> T a(fnx $$0, T $$1, int $$2, fob $$3) {
-         return (T)(switch (this) {
-            case a -> (foa)$$0.a($$1, 0, $$2, $$3);
-            case b -> (foa)$$0.a($$1, $$2, 0, $$3);
-         });
-      }
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.f.o - this.c() - this.b();
+   }
+
+   @Override
+   public void b(Consumer<foe> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
+   }
+
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.n(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.w();
+      this.e.c(0, Math.min($$2, $$3));
+   }
+
+   public <T extends foe> T a(T $$0) {
+      return this.c.a($$0);
+   }
+
+   public <T extends foe> T a(T $$0, Consumer<fof> $$1) {
+      return this.c.a($$0, $$1);
+   }
+
+   public void a(xe $$0, fjz $$1) {
+      this.c.a(new flv($$0, $$1));
+   }
+
+   public <T extends foe> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends foe> T b(T $$0, Consumer<fof> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends foe> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends foe> T c(T $$0, Consumer<fof> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

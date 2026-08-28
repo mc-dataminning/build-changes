@@ -1,21 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cwu extends cxc {
-   public cwu(cvk.a $$0, dhj $$1, dhj $$2) {
-      super($$1, $$2, $$0, jj.a);
-   }
+public class cwu extends cvn implements cuv {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public cwu(cvk.a $$0, dhj $$1, dhj $$2, jj $$3) {
-      super($$1, $$2, $$0, $$3);
+   public cwu(cvn.a $$0) {
+      super($$0);
+      djr.a(this, ctl.a);
    }
 
    @Override
-   protected boolean a(je $$0, deg $$1, @Nullable cnu $$2, cvp $$3, duo $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dte $$6 && $$1.a_($$0).b() instanceof dok $$7) {
-         $$7.a($$2, $$6, true);
-      }
+   public String d_(cvs $$0) {
+      cum $$1 = $$0.a(ks.ae);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.d_($$0);
+   }
 
-      return $$5;
+   @Override
+   public void a(cvs $$0, cvn.b $$1, List<xe> $$2, cxk $$3) {
+      ctr.a($$0, $$2);
+   }
+
+   @Override
+   public cvu a(cvs $$0) {
+      return cvu.d;
+   }
+
+   @Override
+   public int a(cvs $$0, bun $$1) {
+      return 72000;
+   }
+
+   @Override
+   public brs a(dej $$0, cnx $$1, brr $$2) {
+      $$1.c($$2);
+      return brs.c;
+   }
+
+   @Override
+   public btz l() {
+      return btz.b;
    }
 }

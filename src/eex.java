@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class eex extends edq<egm> {
-   public eex(Codec<egm> $$0) {
+public class eex extends edu<egg> {
+   private static final int a = 7;
+
+   eex(Codec<egg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egm> $$0) {
-      egm $$1 = $$0.f();
-      dfd $$2 = $$0.b();
-      je $$3 = $$0.e();
-      duo $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof djr) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   public boolean a(edw<egg> $$0) {
+      dfg $$1 = $$0.b();
+      azn $$2 = $$0.d();
+      egg $$3 = $$0.f();
+      jf $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      jf.a $$6 = new jf.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dus $$8 = $$1.a_($$6);
+
+         for (egg.a $$9 : $$3.b) {
+            if (eep.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
-
-            djr.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
+   }
+
+   private void a(jf.a $$0, azn $$1, jf $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azn $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

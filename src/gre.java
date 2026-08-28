@@ -1,16 +1,27 @@
-public class gre extends grw<gwa, fxf> {
-   private static final alc a = alc.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final fxf b;
-   private final fxf c;
+public class gre extends grm<gtj, fxg> {
+   private static final ale a = ale.b("textures/entity/creeper/creeper_armor.png");
+   private final fxg b;
 
-   public gre(gpf<gwa, fxf> $$0, gah $$1) {
+   public gre(gpk<gtj, fxg> $$0, gam $$1) {
       super($$0);
-      this.b = new fxf($$1.a(gak.al));
-      this.c = new fxf($$1.a(gak.ap));
+      this.b = new fxg($$1.a(gap.X));
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, gwa $$3, float $$4, float $$5) {
-      fxf $$6 = $$3.ae ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   protected boolean a(gtj $$0) {
+      return $$0.b;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected ale a() {
+      return a;
+   }
+
+   protected fxg b() {
+      return this.b;
    }
 }

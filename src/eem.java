@@ -1,57 +1,73 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.List;
 
-public class eem extends edq<egd> {
+public class eem extends edu<egd> {
    public eem(Codec<egd> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egd> $$0) {
-      deh $$1 = $$0.b();
-      je $$2 = $$0.e();
-      azl $$3 = $$0.d();
+   public boolean a(edw<egd> $$0) {
+      dfg $$1 = $$0.b();
+      jf $$2 = $$0.e();
+      azn $$3 = $$0.d();
       egd $$4 = $$0.f();
-      Optional<jj> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         je $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && edl.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         edl.a($$1, $$2, $$5.get(), $$7, false);
-         return true;
-      }
-   }
+         List<jk> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            jf.a $$6 = $$2.k();
 
-   private static Optional<jj> a(deh $$0, je $$1, azl $$2) {
-      boolean $$3 = edl.b($$0.a_($$1.d()));
-      boolean $$4 = edl.b($$0.a_($$1.e()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? jj.a : jj.b);
-      } else if ($$3) {
-         return Optional.of(jj.a);
-      } else {
-         return $$4 ? Optional.of(jj.b) : Optional.empty();
-      }
-   }
+            for (jk $$7 : $$5) {
+               $$6.g($$2);
+               List<jk> $$8 = $$4.a($$3, $$7.g());
 
-   private static void a(deh $$0, azl $$1, je $$2, egd $$3) {
-      edl.c($$0, $$2);
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dus $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
 
-      for (jj $$4 : jj.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            je $$5 = $$2.a($$4);
-            edl.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               je $$6 = $$5.a(jj.b($$1));
-               edl.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  je $$7 = $$6.a(jj.b($$1));
-                  edl.c($$0, $$7);
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
                }
             }
+
+            return false;
          }
       }
+   }
+
+   public static boolean a(dfg $$0, jf $$1, dus $$2, egd $$3, azn $$4, List<jk> $$5) {
+      jf.a $$6 = $$1.k();
+
+      for (jk $$7 : $$5) {
+         dus $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dus $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean c(dus $$0) {
+      return $$0.l() || $$0.a(dho.G);
    }
 }

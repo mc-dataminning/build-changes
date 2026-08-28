@@ -1,100 +1,48 @@
-public class fre extends fqs<crm> {
-   private static final alc G = alc.b("container/crafter/disabled_slot");
-   private static final alc H = alc.b("container/crafter/powered_redstone");
-   private static final alc I = alc.b("container/crafter/unpowered_redstone");
-   private static final alc J = alc.b("textures/gui/container/crafter.png");
-   private static final xd K = xd.c("gui.togglable_slot");
-   private final cnu L;
+public class fre extends fqw<crg> {
+   private static final ale G = ale.b("container/brewing_stand/fuel_length");
+   private static final ale H = ale.b("container/brewing_stand/brew_progress");
+   private static final ale I = ale.b("container/brewing_stand/bubbles");
+   private static final ale J = ale.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public fre(crm $$0, cnt $$1, xd $$2) {
+   public fre(crg $$0, cnw $$1, xe $$2) {
       super($$0, $$1, $$2);
-      this.L = $$1.k;
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
+   protected void aS_() {
+      super.aS_();
       this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void a(cst $$0, int $$1, int $$2, crh $$3) {
-      if ($$0 instanceof crn && !$$0.h() && !this.L.P_()) {
-         switch ($$3) {
-            case a:
-               if (this.z.e($$1)) {
-                  this.a($$1);
-               } else if (this.z.g().f()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cvp $$4 = this.L.gc().a($$2);
-               if (this.z.e($$1) && !$$4.f()) {
-                  this.a($$1);
-               }
-         }
-      }
-
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.z.a($$0, $$1);
-      super.a($$0, this.z.l, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.L.a(awe.Ax.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(fjx $$0, cst $$1) {
-      if ($$1 instanceof crn $$2 && this.z.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fjx $$0, crn $$1) {
-      $$0.a(ghq::B, G, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fjx $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0);
       this.a($$0, $$1, $$2);
-      if (this.B instanceof crn && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.P_()) {
-         $$0.a(this.p, K, $$1, $$2);
-      }
-   }
-
-   private void c(fjx $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      alc $$3;
-      if (this.z.l()) {
-         $$3 = H;
-      } else {
-         $$3 = I;
-      }
-
-      $$0.a(ghq::B, $$3, $$1, $$2, 16, 16);
    }
 
    @Override
-   protected void a(fjx $$0, float $$1, int $$2, int $$3) {
+   protected void a(fkb $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.n - this.s) / 2;
       int $$5 = (this.o - this.u) / 2;
-      $$0.a(ghq::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      $$0.a(ghv::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azf.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(ghv::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(ghv::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(ghv::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

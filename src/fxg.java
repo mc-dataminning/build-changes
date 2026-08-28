@@ -1,45 +1,42 @@
-public class fxg extends fxk<gub> {
-   public static final gau a = gau.scaling(0.5F);
-   private final gal b;
-   private final gal c;
-   private final gal d;
+public class fxg extends fxo<gtj> {
+   private final gaq a;
+   private final gaq b;
+   private final gaq c;
+   private final gaq d;
+   private final gaq e;
+   private static final int f = 6;
 
-   public fxg(gal $$0) {
-      this.b = $$0;
-      this.d = $$0.b("left_wing");
-      this.c = $$0.b("right_wing");
+   public fxg(gaq $$0) {
+      super($$0);
+      this.a = $$0.b("head");
+      this.c = $$0.b("right_hind_leg");
+      this.b = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.d = $$0.b("left_front_leg");
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      gap $$2 = new gap(1.0F);
-      $$1.a(
-         "left_wing",
-         gaq.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gan.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
-      );
-      $$1.a(
-         "right_wing",
-         gaq.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
-         gan.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
-      );
-      return gar.a($$0, 64, 32);
+   public static gaw a(gau $$0) {
+      gay $$1 = new gay();
+      gba $$2 = $$1.a();
+      $$2.a("head", gav.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gas.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", gav.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gas.a(0.0F, 6.0F, 0.0F));
+      gav $$3 = gav.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, gas.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, gas.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, gas.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, gas.a(2.0F, 18.0F, -4.0F));
+      return gaw.a($$1, 64, 32);
    }
 
-   public void a(gub $$0) {
-      this.d.c = $$0.I ? 3.0F : 0.0F;
-      this.d.e = $$0.N;
-      this.d.g = $$0.P;
-      this.d.f = $$0.O;
-      this.c.f = -this.d.f;
-      this.c.c = this.d.c;
-      this.c.e = this.d.e;
-      this.c.g = -this.d.g;
-   }
-
-   @Override
-   public gal a() {
-      return this.b;
+   public void a(gtj $$0) {
+      super.a($$0);
+      this.a.f = $$0.U * (float) (Math.PI / 180.0);
+      this.a.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.Y;
+      float $$2 = $$0.X;
+      this.b.e = azf.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.c.e = azf.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.d.e = azf.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = azf.b($$2 * 0.6662F) * 1.4F * $$1;
    }
 }

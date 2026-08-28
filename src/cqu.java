@@ -1,46 +1,31 @@
 public class cqu {
-   public static final cqt a = new cqt.a().a(4).a(0.3F).b();
-   public static final cqt b = new cqt.a().a(5).a(0.6F).b();
-   public static final cqt c = new cqt.a().a(3).a(0.3F).b();
-   public static final cqt d = new cqt.a().a(1).a(0.6F).b();
-   public static final cqt e = a(6).b();
-   public static final cqt f = new cqt.a().a(5).a(0.6F).b();
-   public static final cqt g = new cqt.a().a(3).a(0.6F).b();
-   public static final cqt h = new cqt.a().a(2).a(0.3F).b();
-   public static final cqt i = new cqt.a().a(4).a(0.3F).a().b();
-   public static final cqt j = new cqt.a().a(2).a(0.1F).b();
-   public static final cqt k = new cqt.a().a(8).a(0.8F).b();
-   public static final cqt l = new cqt.a().a(6).a(0.6F).b();
-   public static final cqt m = new cqt.a().a(5).a(0.6F).b();
-   public static final cqt n = new cqt.a().a(6).a(0.8F).b();
-   public static final cqt o = new cqt.a().a(8).a(0.8F).b();
-   public static final cqt p = new cqt.a().a(5).a(0.6F).b();
-   public static final cqt q = new cqt.a().a(6).a(0.8F).b();
-   public static final cqt r = new cqt.a().a(2).a(0.1F).b();
-   public static final cqt s = new cqt.a().a(1).a(0.3F).b();
-   public static final cqt t = new cqt.a().a(4).a(1.2F).a().b();
-   public static final cqt u = new cqt.a().a(4).a(1.2F).a().b();
-   public static final cqt v = new cqt.a().a(6).a(1.2F).b();
-   public static final cqt w = new cqt.a().a(6).a(0.1F).b();
-   public static final cqt x = new cqt.a().a(2).a(0.3F).b();
-   public static final cqt y = a(6).b();
-   public static final cqt z = new cqt.a().a(2).a(0.3F).b();
-   public static final cqt A = new cqt.a().a(2).a(0.3F).b();
-   public static final cqt B = new cqt.a().a(3).a(0.3F).b();
-   public static final cqt C = new cqt.a().a(1).a(0.3F).b();
-   public static final cqt D = new cqt.a().a(1).a(0.1F).b();
-   public static final cqt E = new cqt.a().a(8).a(0.3F).b();
-   public static final cqt F = new cqt.a().a(3).a(0.3F).b();
-   public static final cqt G = a(10).b();
-   public static final cqt H = new cqt.a().a(4).a(0.1F).b();
-   public static final cqt I = new cqt.a().a(2).a(0.1F).b();
-   public static final cqt J = new cqt.a().a(2).a(0.8F).b();
-   public static final cqt K = a(6).a().b();
-   public static final cqt L = new cqt.a().a(2).a(0.1F).b();
-   public static final cqt M = new cqt.a().a(2).a(0.1F).b();
-   public static final cqt N = new cqt.a().a(1).a(0.1F).b();
+   public static final int a = 20;
+   public static final float b = 20.0F;
+   public static final float c = 5.0F;
+   public static final float d = 2.5F;
+   public static final float e = 4.0F;
+   public static final int f = 80;
+   public static final int g = 10;
+   public static final int h = 18;
+   public static final int i = 6;
+   public static final int j = 0;
+   public static final float k = 0.1F;
+   public static final float l = 0.3F;
+   public static final float m = 0.6F;
+   public static final float n = 0.8F;
+   public static final float o = 1.0F;
+   public static final float p = 1.2F;
+   public static final float q = 6.0F;
+   public static final float r = 0.05F;
+   public static final float s = 0.2F;
+   public static final float t = 0.005F;
+   public static final float u = 0.1F;
+   public static final float v = 0.0F;
+   public static final float w = 0.0F;
+   public static final float x = 0.1F;
+   public static final float y = 0.01F;
 
-   private static cqt.a a(int $$0) {
-      return new cqt.a().a($$0).a(0.6F);
+   public static float a(int $$0, float $$1) {
+      return (float)$$0 * $$1 * 2.0F;
    }
 }

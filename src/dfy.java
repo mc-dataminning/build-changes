@@ -1,59 +1,89 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class dfy extends dfl {
-   public static final MapCodec<dfy> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ala.d(dfo.ah), ala.d(dfo.ai), ala.d(dfo.aj), ala.d(dfo.ak), ala.d(dfo.al)).apply($$0, $$0.stable(dfy::new))
+public class dfy {
+   public static final Codec<dfy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dfy.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), alc.c(lw.aH)).apply($$0, dfy::new)
    );
-   private final jn<dfh> c;
-   private final jn<dfh> d;
-   private final jn<dfh> e;
-   private final jn<dfh> f;
-   private final jn<dfh> g;
+   public static final Codec<jo<dfy>> b = ala.a(lw.bb, a);
+   private final dfy.a c;
+   private final dft.c<jo<dfk>> d;
 
-   public static dfy a(jo<dfh> $$0) {
-      return new dfy($$0.b(dfo.ah), $$0.b(dfo.ai), $$0.b(dfo.aj), $$0.b(dfo.ak), $$0.b(dfo.al));
-   }
-
-   private dfy(jn<dfh> $$0, jn<dfh> $$1, jn<dfh> $$2, jn<dfh> $$3, jn<dfh> $$4) {
+   public dfy(dfy.a $$0, jp<dfk> $$1) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   @Override
-   protected Stream<jn<dfh>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   public dft.c<jo<dfk>> a() {
+      return this.d;
    }
 
-   @Override
-   protected MapCodec<? extends dfl> a() {
-      return b;
+   public static Map<dfy.a, dft.c<ald<dfk>>> b() {
+      return dfy.a.f.values().stream().collect(Collectors.toMap($$0 -> (dfy.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2, dfq.f $$3) {
-      int $$4 = jy.c($$0);
-      int $$5 = jy.c($$1);
-      int $$6 = jy.c($$2);
-      int $$7 = kg.a($$4);
-      int $$8 = kg.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kg.a($$4) * 2 + 1) * 8;
-         int $$10 = (kg.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new ead.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+   public static record a(ale d, dfy.a.a e) {
+      public static final dfy.a a = new dfy.a(
+         ale.b("nether"),
+         new dfy.a.a() {
+            @Override
+            public <T> dft.c<T> apply(Function<ald<dfk>, T> $$0) {
+               return new dft.c<>(
+                  List.of(
+                     Pair.of(dft.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.ac)),
+                     Pair.of(dft.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.af)),
+                     Pair.of(dft.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfr.ae)),
+                     Pair.of(dft.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dfr.ad)),
+                     Pair.of(dft.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dfr.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final dfy.a b = new dfy.a(ale.b("overworld"), new dfy.a.a() {
+         @Override
+         public <T> dft.c<T> apply(Function<ald<dfk>, T> $$0) {
+            return dfy.a.a($$0);
+         }
+      });
+      static final Map<ale, dfy.a> f = Stream.of(a, b).collect(Collectors.toMap(dfy.a::b, $$0 -> (dfy.a)$$0));
+      public static final Codec<dfy.a> c = ale.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dft.c<T> a(Function<ald<dfk>, T> $$0) {
+         Builder<Pair<dft.d, T>> $$1 = ImmutableList.builder();
+         new dga().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dft.c<>($$1.build());
+      }
+
+      public Stream<ald<dfk>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ald<dfk>>map(Pair::getSecond).distinct();
+      }
+
+      public ale b() {
+         return this.d;
+      }
+
+      public dfy.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> dft.c<T> apply(Function<ald<dfk>, T> var1);
       }
    }
 }

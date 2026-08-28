@@ -1,11 +1,18 @@
-import javax.annotation.Nullable;
+public class ger extends get {
+   protected ger(gbm $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-public interface ger<T extends ll> {
-   @Nullable
-   geo createParticle(T var1, gbh var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   protected ger(gbm $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-   public interface a<T extends ll> {
-      @Nullable
-      gfo createParticle(T var1, gbh var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public final void a(fdm $$0, fhy $$1, float $$2) {
+   }
+
+   @Override
+   public gex b() {
+      return gex.e;
    }
 }

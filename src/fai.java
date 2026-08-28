@@ -1,46 +1,59 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Set;
+public interface fai extends brl {
+   cvs f();
 
-public class fai<T> implements fal<T>, fan<T> {
-   private final List<faj<T>> a = Lists.newArrayList();
-   private final Set<faj<?>> b = new ObjectOpenCustomHashSet(faj.a);
-
-   @Override
-   public void a(fak<T> $$0) {
-      faj<T> $$1 = new faj<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   default cvs c(int $$0) {
+      return this.f().a($$0);
    }
 
-   private void a(faj<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   void b(cvs var1);
+
+   default cvs h() {
+      return this.c(this.al_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean c() {
+      return this.f().f();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cvs b(int $$0) {
+      return this.a($$0, this.al_());
+   }
+
+   @Override
+   default cvs a(int $$0) {
+      return $$0 == 0 ? this.f() : cvs.k;
+   }
+
+   @Override
+   default cvs a(int $$0, int $$1) {
+      return $$0 != 0 ? cvs.k : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cvs $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
    }
 
-   @Override
-   public boolean a(je $$0, T $$1) {
-      return this.b.contains(faj.a($$1, $$0));
-   }
+   public interface a extends fai {
+      drv v();
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public List<faj<T>> a(long $$0) {
-      return this.a;
-   }
-
-   public List<faj<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> fai<T> a(List<faj<T>> $$0) {
-      fai<T> $$1 = new fai<>();
-      $$0.forEach($$1::a);
-      return $$1;
+      @Override
+      default boolean a(cnx $$0) {
+         return brl.a(this.v(), $$0);
+      }
    }
 }

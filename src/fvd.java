@@ -1,81 +1,132 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class fvd extends fqd {
-   private static final xd a = xd.c("selectWorld.experiments");
-   private static final xd b = xd.c("selectWorld.experiments.info").a(n.m);
-   private static final int c = 310;
-   private final fny d = new fny(this);
-   private final fqd s;
-   private final aue u;
-   private final Consumer<aue> v;
-   private final Object2BooleanMap<aub> w = new Object2BooleanLinkedOpenHashMap();
+public class fvd extends fqh {
+   private static final xe a = xe.c("selectWorld.experimental.title");
+   private static final xe b = xe.c("selectWorld.experimental.message");
+   private static final xe c = xe.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<aud> v;
+   private final fob w = new fob().a(10).b(20);
 
-   public fvd(fqd $$0, aue $$1, Consumer<aue> $$2) {
+   public fvd(Collection<aud> $$0, BooleanConsumer $$1) {
       super(a);
-      this.s = $$0;
+      this.v = $$0;
       this.u = $$1;
-      this.v = $$2;
-
-      for (aub $$3 : $$1.c()) {
-         if ($$3.l() == auf.d) {
-            this.w.put($$3, $$1.f().contains($$3));
-         }
-      }
    }
 
    @Override
-   protected void aR_() {
-      this.d.a(a, this.p);
-      foc $$0 = this.d.c(foc.d());
-      $$0.a(new fle(b, this.p).d(310), $$0x -> $$0x.e(15));
-      fvh.a $$1 = fvh.a(310).a(2, true).b(4);
-      this.w.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.w.getBoolean($$1x), $$1xx -> this.w.put($$1x, $$1xx)).a($$1x.c()));
-      $$1.a($$0::a);
-      foc $$2 = this.d.b(foc.e().a(8));
-      $$2.a(fkk.a(xc.d, $$0x -> this.m()).a());
-      $$2.a(fkk.a(xc.e, $$0x -> this.d()).a());
-      this.d.a($$1x -> {
-         fki var10000 = this.c($$1x);
-      });
-      this.c();
+   public xe i() {
+      return xd.a(super.i(), b);
    }
 
-   private static xd a(aub $$0) {
-      String $$1 = "dataPack." + $$0.g() + ".name";
-      return (xd)(gyi.a($$1) ? xd.c($$1) : $$0.b());
+   @Override
+   protected void aS_() {
+      super.aS_();
+      fob.b $$0 = this.w.d(2);
+      fof $$1 = $$0.b().b();
+      $$0.a(new flv(this.l, this.p), 2, $$1);
+      fli $$2 = $$0.a(new fli(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fko.a(c, $$0x -> this.m.a(new fvd.a())).a(100).a(), 2, $$1);
+      $$0.a(fko.a(xd.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fko.a(xd.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fkm var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
    }
 
    @Override
    protected void c() {
-      this.d.a();
-   }
-
-   @Override
-   public xd i() {
-      return xc.a(super.i(), b);
+      foa.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
    }
 
    @Override
    public void d() {
-      this.m.a(this.s);
+      this.u.accept(false);
    }
 
-   private void m() {
-      List<aub> $$0 = new ArrayList<>(this.u.f());
-      List<aub> $$1 = new ArrayList<>();
-      this.w.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
+   class a extends fqh {
+      private static final xe b = xe.c("selectWorld.experimental.details.title");
+      final foc c = new foc(this);
+      @Nullable
+      private fvd.a.a d;
+
+      a() {
+         super(b);
+      }
+
+      @Override
+      protected void aS_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new fvd.a.a(this.m, fvd.this.v));
+         this.c.b(fko.a(xd.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fkm var10000 = this.c($$1);
+         });
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
          }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.u.b($$0.stream().map(aub::g).toList());
-      this.v.accept(this.u);
+
+         this.c.a();
+      }
+
+      @Override
+      public void d() {
+         this.m.a(fvd.this);
+      }
+
+      class a extends flk<fvd.a.b> {
+         public a(final fip $$0, final Collection<aud> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (aud $$2 : $$1) {
+               String $$3 = cqs.a(cqs.h, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xe $$4 = xh.a($$2.b().f(), yb.a.a(true));
+                  xe $$5 = xe.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, flh.a(a.this.p, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends flk.a<fvd.a.b> {
+         private final xe b;
+         private final xe c;
+         private final flh d;
+
+         b(final xe $$0, final xe $$1, final flh $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fkb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public xe a() {
+            return xe.a("narrator.select", xd.a(this.b, this.c));
+         }
+      }
    }
 }

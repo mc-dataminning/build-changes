@@ -1,128 +1,124 @@
-import java.util.Optional;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class ckb {
-   public static final alb<cka> a = a("kebab");
-   public static final alb<cka> b = a("aztec");
-   public static final alb<cka> c = a("alban");
-   public static final alb<cka> d = a("aztec2");
-   public static final alb<cka> e = a("bomb");
-   public static final alb<cka> f = a("plant");
-   public static final alb<cka> g = a("wasteland");
-   public static final alb<cka> h = a("pool");
-   public static final alb<cka> i = a("courbet");
-   public static final alb<cka> j = a("sea");
-   public static final alb<cka> k = a("sunset");
-   public static final alb<cka> l = a("creebet");
-   public static final alb<cka> m = a("wanderer");
-   public static final alb<cka> n = a("graham");
-   public static final alb<cka> o = a("match");
-   public static final alb<cka> p = a("bust");
-   public static final alb<cka> q = a("stage");
-   public static final alb<cka> r = a("void");
-   public static final alb<cka> s = a("skull_and_roses");
-   public static final alb<cka> t = a("wither");
-   public static final alb<cka> u = a("fighters");
-   public static final alb<cka> v = a("pointer");
-   public static final alb<cka> w = a("pigscene");
-   public static final alb<cka> x = a("burning_skull");
-   public static final alb<cka> y = a("skeleton");
-   public static final alb<cka> z = a("donkey_kong");
-   public static final alb<cka> A = a("earth");
-   public static final alb<cka> B = a("wind");
-   public static final alb<cka> C = a("water");
-   public static final alb<cka> D = a("fire");
-   public static final alb<cka> E = a("baroque");
-   public static final alb<cka> F = a("humble");
-   public static final alb<cka> G = a("meditative");
-   public static final alb<cka> H = a("prairie_ride");
-   public static final alb<cka> I = a("unpacked");
-   public static final alb<cka> J = a("backyard");
-   public static final alb<cka> K = a("bouquet");
-   public static final alb<cka> L = a("cavebird");
-   public static final alb<cka> M = a("changing");
-   public static final alb<cka> N = a("cotan");
-   public static final alb<cka> O = a("endboss");
-   public static final alb<cka> P = a("fern");
-   public static final alb<cka> Q = a("finding");
-   public static final alb<cka> R = a("lowmist");
-   public static final alb<cka> S = a("orb");
-   public static final alb<cka> T = a("owlemons");
-   public static final alb<cka> U = a("passage");
-   public static final alb<cka> V = a("pond");
-   public static final alb<cka> W = a("sunflowers");
-   public static final alb<cka> X = a("tides");
+public class ckb extends cjx {
+   public static final double c = 0.375;
 
-   public static void a(qt<cka> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2, false);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2, false);
-      a($$0, B, 2, 2, false);
-      a($$0, C, 2, 2, false);
-      a($$0, D, 2, 2, false);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+   public ckb(bty<? extends ckb> $$0, dej $$1) {
+      super($$0, $$1);
    }
 
-   private static void a(qt<cka> $$0, alb<cka> $$1, int $$2, int $$3) {
-      a($$0, $$1, $$2, $$3, true);
+   public ckb(dej $$0, jf $$1) {
+      super(bty.al, $$0, $$1);
+      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
    }
 
-   private static void a(qt<cka> $$0, alb<cka> $$1, int $$2, int $$3, boolean $$4) {
-      $$0.a(
-         $$1,
-         new cka(
-            $$2,
-            $$3,
-            $$1.a(),
-            Optional.of(xd.c($$1.a().c("painting", "title")).a(n.o)),
-            $$4 ? Optional.of(xd.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
-         )
-      );
+   @Override
+   protected void a(akl.a $$0) {
    }
 
-   private static alb<cka> a(String $$0) {
-      return alb.a(lv.X, alc.b($$0));
+   @Override
+   protected void m() {
+      this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
+      double $$0 = (double)this.ao().l() / 2.0;
+      double $$1 = (double)this.ao().m();
+      this.a(new eyr(this.dx() - $$0, this.dz(), this.dD() - $$0, this.dx() + $$0, this.dz() + $$1, this.dD() + $$0));
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void b(@Nullable btr $$0) {
+      this.a(awg.nT, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(ug $$0) {
+   }
+
+   @Override
+   public void a(ug $$0) {
+   }
+
+   @Override
+   public brs a(cnx $$0, brr $$1) {
+      if (this.dS().B) {
+         return brs.a;
+      } else {
+         boolean $$2 = false;
+         List<bul> $$3 = cwc.a(this.dS(), this.q(), $$1x -> {
+            btr $$2x = $$1x.C();
+            return $$2x == $$0 || $$2x == this;
+         });
+
+         for (bul $$4 : $$3) {
+            if ($$4.C() == $$0) {
+               $$4.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$5 = false;
+         if (!$$2) {
+            this.as();
+            if ($$0.ge().d) {
+               for (bul $$6 : $$3) {
+                  if ($$6.L_() && $$6.C() == this) {
+                     $$6.a(true, false);
+                     $$5 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$5) {
+            this.a(dzp.b, $$0);
+         }
+
+         return brs.a;
+      }
+   }
+
+   @Override
+   public boolean o() {
+      return this.dS().a_(this.b).a(awv.T);
+   }
+
+   public static ckb b(dej $$0, jf $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (ckb $$6 : $$0.a(ckb.class, new eyr((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.q().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      ckb $$7 = new ckb($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   public void t() {
+      this.a(awg.nU, 1.0F, 1.0F);
+   }
+
+   @Override
+   public zl<aca> a(ari $$0) {
+      return new acb(this, 0, this.q());
+   }
+
+   @Override
+   public eyw u(float $$0) {
+      return this.o($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cvs dF() {
+      return new cvs(cvw.uM);
    }
 }

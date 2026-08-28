@@ -1,44 +1,18 @@
-import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dca(alc b, jn<bvm> d, dbr e, bvp.a f) implements dcc {
+public record dca(dbu d, dbu e, jo<bsl> f) implements dce {
    public static final MapCodec<dca> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               alc.a.fieldOf("id").forGetter(dca::b),
-               bvm.a.fieldOf("attribute").forGetter(dca::c),
-               dbr.b.fieldOf("amount").forGetter(dca::d),
-               bvp.a.f.fieldOf("operation").forGetter(dca::e)
+               dbu.b.fieldOf("min_damage").forGetter(dca::b), dbu.b.fieldOf("max_damage").forGetter(dca::c), bsl.b.fieldOf("damage_type").forGetter(dca::d)
             )
             .apply($$0, dca::new)
    );
 
-   private alc a(azz $$0) {
-      return this.b.g("/" + $$0.c());
-   }
-
-   public bvp a(int $$0, azz $$1) {
-      return new bvp(this.a($$1), (double)this.d().a($$0), this.e());
-   }
-
    @Override
-   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4, boolean $$5) {
-      if ($$5 && $$3 instanceof buk $$6) {
-         $$6.eV().a(this.a($$1, $$2.b()));
-      }
-   }
-
-   @Override
-   public void a(dbj $$0, bto $$1, eys $$2, int $$3) {
-      if ($$1 instanceof buk $$4) {
-         $$4.eV().b(this.a($$3, $$0.b()));
-      }
-   }
-
-   private HashMultimap<jn<bvm>, bvp> a(int $$0, btw $$1) {
-      HashMultimap<jn<bvm>, bvp> $$2 = HashMultimap.create();
-      $$2.put(this.d, this.a($$0, (azz)$$1));
-      return $$2;
+   public void a(arj $$0, int $$1, dbm $$2, btr $$3, eyw $$4) {
+      float $$5 = azf.b($$3.dV(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsj(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -46,15 +20,15 @@ public record dca(alc b, jn<bvm> d, dbr e, bvp.a f) implements dcc {
       return a;
    }
 
-   public jn<bvm> c() {
+   public dbu b() {
       return this.d;
    }
 
-   public dbr d() {
+   public dbu c() {
       return this.e;
    }
 
-   public bvp.a e() {
+   public jo<bsl> d() {
       return this.f;
    }
 }

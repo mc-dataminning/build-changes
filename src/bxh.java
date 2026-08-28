@@ -1,44 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class bxh extends bwc<cnh> {
-   private final float c;
+public class bxh<E extends bup> extends bxi<E> {
+   private final axl<dhm> m;
+   private final float n;
+   private final List<bxi.a> o = new ArrayList<>();
+   private boolean p;
 
-   public bxh(float $$0) {
-      super(ImmutableMap.of(cdn.m, cdo.c, cdn.n, cdo.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(arh $$0, cnh $$1) {
-      cnu $$2 = $$1.gp();
-      return $$1.bI() && $$2 != null && !$$1.bi() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.bZ != null;
-   }
-
-   protected boolean a(arh $$0, cnh $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arh $$0, cnh $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(arh $$0, cnh $$1, long $$2) {
-      bvl<?> $$3 = $$1.dX();
-      $$3.b(cdn.m);
-      $$3.b(cdn.n);
-   }
-
-   protected void d(arh $$0, cnh $$1, long $$2) {
-      this.a($$1);
+   public bxh(brd $$0, int $$1, int $$2, float $$3, Function<E, awf> $$4, axl<dhm> $$5, float $$6, BiPredicate<E, jf> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
    @Override
-   protected boolean a(long $$0) {
-      return false;
+   protected void a(arj $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dV().i() < this.n;
    }
 
-   private void a(cnh $$0) {
-      bvl<?> $$1 = $$0.dX();
-      $$1.a(cdn.m, new cdq(new bwn($$0.gp(), false), this.c, 2));
-      $$1.a(cdn.n, new bwn($$0.gp(), true));
+   @Override
+   protected Optional<bxi.a> a(arj $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         jf.a $$1 = new jf.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bxi.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bxi.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jk.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

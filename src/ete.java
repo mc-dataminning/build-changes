@@ -1,38 +1,67 @@
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public interface ete<T> {
-   kq<T> a();
+public interface ete extends etg {
+   @Override
+   String e();
 
-   T b();
+   void a(boolean var1);
 
-   T a(T var1, Stream<cvp> var2);
+   int j();
 
-   Stream<cvp> a(T var1);
+   void c(int var1);
 
-   default void a(cvp $$0, T $$1, Stream<cvp> $$2) {
-      T $$3 = $$0.a(this.a(), $$1);
-      T $$4 = this.a($$3, $$2);
-      $$0.b(this.a(), $$4);
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(p $$0, del $$1) {
+      etg.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   default void a(cvp $$0, Stream<cvp> $$1) {
-      this.a($$0, this.b(), $$1);
-   }
+   int f();
 
-   default void a(cvp $$0, UnaryOperator<cvp> $$1) {
-      T $$2 = $$0.a(this.a());
-      if ($$2 != null) {
-         UnaryOperator<cvp> $$3 = $$1x -> {
-            if ($$1x.f()) {
-               return $$1x;
-            } else {
-               cvp $$2x = $$1.apply($$1x);
-               $$2x.f($$2x.k());
-               return $$2x;
-            }
-         };
-         this.a($$0, this.a($$2).map($$3));
-      }
-   }
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   deg k();
+
+   void a(dwj.c var1);
+
+   dwj.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(deg var1);
+
+   eyj<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

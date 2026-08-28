@@ -1,78 +1,28 @@
-public interface dcx {
-   alb<dcs> a = dcy.a("trades/desert_armorer_boots_4");
-   alb<dcs> b = dcy.a("trades/desert_armorer_leggings_4");
-   alb<dcs> c = dcy.a("trades/desert_armorer_chestplate_4");
-   alb<dcs> d = dcy.a("trades/desert_armorer_helmet_4");
-   alb<dcs> e = dcy.a("trades/desert_armorer_leggings_5");
-   alb<dcs> f = dcy.a("trades/desert_armorer_chestplate_5");
-   alb<dcs> g = dcy.a("trades/plains_armorer_boots_4");
-   alb<dcs> h = dcy.a("trades/plains_armorer_leggings_4");
-   alb<dcs> i = dcy.a("trades/plains_armorer_chestplate_4");
-   alb<dcs> j = dcy.a("trades/plains_armorer_helmet_4");
-   alb<dcs> k = dcy.a("trades/plains_armorer_boots_5");
-   alb<dcs> l = dcy.a("trades/plains_armorer_leggings_5");
-   alb<dcs> m = dcy.a("trades/savanna_armorer_boots_4");
-   alb<dcs> n = dcy.a("trades/savanna_armorer_leggings_4");
-   alb<dcs> o = dcy.a("trades/savanna_armorer_chestplate_4");
-   alb<dcs> p = dcy.a("trades/savanna_armorer_helmet_4");
-   alb<dcs> q = dcy.a("trades/savanna_armorer_chestplate_5");
-   alb<dcs> r = dcy.a("trades/savanna_armorer_helmet_5");
-   alb<dcs> s = dcy.a("trades/snow_armorer_boots_4");
-   alb<dcs> t = dcy.a("trades/snow_armorer_helmet_4");
-   alb<dcs> u = dcy.a("trades/snow_armorer_boots_5");
-   alb<dcs> v = dcy.a("trades/snow_armorer_helmet_5");
-   alb<dcs> w = dcy.a("trades/jungle_armorer_boots_4");
-   alb<dcs> x = dcy.a("trades/jungle_armorer_leggings_4");
-   alb<dcs> y = dcy.a("trades/jungle_armorer_chestplate_4");
-   alb<dcs> z = dcy.a("trades/jungle_armorer_helmet_4");
-   alb<dcs> A = dcy.a("trades/jungle_armorer_boots_5");
-   alb<dcs> B = dcy.a("trades/jungle_armorer_helmet_5");
-   alb<dcs> C = dcy.a("trades/swamp_armorer_boots_4");
-   alb<dcs> D = dcy.a("trades/swamp_armorer_leggings_4");
-   alb<dcs> E = dcy.a("trades/swamp_armorer_chestplate_4");
-   alb<dcs> F = dcy.a("trades/swamp_armorer_helmet_4");
-   alb<dcs> G = dcy.a("trades/swamp_armorer_boots_5");
-   alb<dcs> H = dcy.a("trades/swamp_armorer_helmet_5");
-   alb<dcs> I = dcy.a("trades/taiga_armorer_leggings_5");
-   alb<dcs> J = dcy.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qt<dcs> $$0) {
-      jo<dbk> $$1 = $$0.a(lv.aM);
-      $$0.a(a, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(b, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(c, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(d, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(e, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(f, new dcw($$1.b(dbp.h), bqr.a(1)));
-      $$0.a(g, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(h, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(i, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(j, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(k, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(l, new dcw($$1.b(dbp.a), bqr.a(1)));
-      $$0.a(m, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(n, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(o, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(p, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(q, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(r, new dcw($$1.b(dbp.k), bqr.a(1)));
-      $$0.a(s, new dcw($$1.b(dbp.j), bqr.a(1)));
-      $$0.a(t, new dcw($$1.b(dbp.g), bqr.a(1)));
-      $$0.a(u, new dcw($$1.b(dbp.j), bqr.a(1)));
-      $$0.a(v, new dcw($$1.b(dbp.g), bqr.a(1)));
-      $$0.a(w, new dcw($$1.b(dbp.w), bqr.a(1)));
-      $$0.a(x, new dcw($$1.b(dbp.w), bqr.a(1)));
-      $$0.a(y, new dcw($$1.b(dbp.w), bqr.a(1)));
-      $$0.a(z, new dcw($$1.b(dbp.w), bqr.a(1)));
-      $$0.a(A, new dcw($$1.b(dbp.c), bqr.a(1)));
-      $$0.a(B, new dcw($$1.b(dbp.e), bqr.a(1)));
-      $$0.a(C, new dcw($$1.b(dbp.O), bqr.a(1)));
-      $$0.a(D, new dcw($$1.b(dbp.O), bqr.a(1)));
-      $$0.a(E, new dcw($$1.b(dbp.O), bqr.a(1)));
-      $$0.a(F, new dcw($$1.b(dbp.O), bqr.a(1)));
-      $$0.a(G, new dcw($$1.b(dbp.i), bqr.a(1)));
-      $$0.a(H, new dcw($$1.b(dbp.f), bqr.a(1)));
-      $$0.a(I, new dcw($$1.b(dbp.d), bqr.a(1)));
-      $$0.a(J, new dcw($$1.b(dbp.d), bqr.a(1)));
+public record dcx(js<dbn> c, bqx d) implements dcv {
+   public static final MapCodec<dcx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kd.a(lw.aN).fieldOf("enchantments").forGetter(dcx::b), bqx.c.fieldOf("cost").forGetter(dcx::c)).apply($$0, dcx::new)
+   );
+
+   @Override
+   public void a(cvs $$0, dbt.a $$1, azn $$2, brq $$3) {
+      for (dbq $$5 : dbp.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
+      }
+   }
+
+   @Override
+   public MapCodec<dcx> a() {
+      return b;
+   }
+
+   public js<dbn> b() {
+      return this.c;
+   }
+
+   public bqx c() {
+      return this.d;
    }
 }

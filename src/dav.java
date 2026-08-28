@@ -1,27 +1,74 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dav extends dab {
+   public dav(czy $$0) {
+      super($$0);
+   }
 
-public class dav<T extends czx> implements dam<T> {
-   private final MapCodec<T> w;
-   private final zb<wo, T> x;
+   public boolean a(czz $$0, dej $$1) {
+      cvs $$2 = cvs.k;
+      cvs $$3 = cvs.k;
 
-   public dav(dav.a<T> $$0) {
-      this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(czv.e.fieldOf("category").orElse(czv.d).forGetter(czx::d)).apply($$1, $$0::create));
-      this.x = zb.a(czv.g, czx::d, $$0::create);
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof ctr) {
+               if (!$$3.f()) {
+                  return false;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cvw.vu)) {
+                  return false;
+               }
+
+               if (!$$2.f()) {
+                  return false;
+               }
+
+               drm $$6 = $$5.a(ks.ad, drm.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            }
+         }
+      }
+
+      return !$$2.f() && !$$3.f();
+   }
+
+   public cvs a(czz $$0, jq.a $$1) {
+      cvs $$2 = cvs.k;
+      cvs $$3 = cvs.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvs $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.h() instanceof ctr) {
+               $$2 = $$5;
+            } else if ($$5.a(cvw.vu)) {
+               $$3 = $$5.u();
+            }
+         }
+      }
+
+      if ($$3.f()) {
+         return $$3;
+      } else {
+         $$3.b(ks.ad, $$2.a(ks.ad));
+         $$3.b(ks.ae, ((ctr)$$2.h()).b());
+         return $$3;
+      }
    }
 
    @Override
-   public MapCodec<T> a() {
-      return this.w;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public zb<wo, T> b() {
-      return this.x;
-   }
-
-   @FunctionalInterface
-   public interface a<T extends czx> {
-      T create(czv var1);
+   public dap<?> ar_() {
+      return dap.l;
    }
 }

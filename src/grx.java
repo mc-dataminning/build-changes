@@ -1,25 +1,26 @@
-public class grx<S extends guj & gvb, M extends fxk<? super S>> extends grw<S, M> {
-   private final alc a;
-   private final M b;
-   private final M c;
+public class grx extends gsb<guw, fyl> {
+   private final gom a;
 
-   public grx(gpf<S, M> $$0, M $$1, M $$2, alc $$3) {
+   public grx(gpk<guw, fyl> $$0, gom $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.a = $$3;
+      this.a = $$1;
    }
 
-   public grx(gpf<S, M> $$0, M $$1, alc $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
+   public void a(fdi $$0, ghl $$1, int $$2, guw $$3, float $$4, float $$5) {
+      gzi $$6 = $$3.b();
+      if ($$6 != null && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * azf.a($$3.p * 0.6F) + 0.2F;
+            $$8 -= 0.09F * azf.a($$3.p * 0.6F);
+         }
 
-   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if ($$3.c()) {
-         M $$6 = $$3.ae ? this.c : this.b;
-         $$6.a($$3);
-         fdi $$7 = $$1.getBuffer(ghq.f(this.a));
-         $$6.a($$0, $$7, $$2, gws.d);
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         cvs $$9 = $$3.aX_();
+         this.a.a($$9, cvp.h, false, $$0, $$1, $$2, gwx.d, $$6);
+         $$0.b();
       }
    }
 }

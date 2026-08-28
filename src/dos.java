@@ -1,79 +1,113 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dos extends dhj {
-   public static final MapCodec<dos> a = b(dos::new);
-   public static final int b = 2;
-   public static final dvo c = dve.aE;
-   private static final int d = 24000;
-   private static final int e = 12000;
-   private static final int f = 300;
-   private static final ezm g = dhj.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+public class dos extends dju implements dhp, doo {
+   public static final MapCodec<dos> c = b(dos::new);
+   private static final dvj g = dvi.C;
+   public static final dvm d = dvi.R;
+   protected static final float e = 6.0F;
+   protected static final ezq f = dhm.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dos> a() {
-      return a;
+      return c;
    }
 
-   public dos(dun.d $$0) {
+   public dos(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+      this.l(this.F.b().b(b, dvo.b).b(g, Boolean.valueOf(false)).b(d, jk.c));
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(c);
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return f;
    }
 
    @Override
-   public ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return g;
+   protected boolean b(dus $$0, ddo $$1, jf $$2) {
+      return $$0.a(awv.by) || $$1.b_($$2.d()).a(equ.c) && super.b($$0, $$1, $$2);
    }
 
-   public int o(duo $$0) {
-      return $$0.c(c);
-   }
-
-   private boolean q(duo $$0) {
-      return this.o($$0) == 2;
+   @Nullable
+   @Override
+   public dus a(czn $$0) {
+      dus $$1 = super.a($$0);
+      return $$1 != null ? c($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
    }
 
    @Override
-   public void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (!this.q($$0)) {
-         $$1.a(null, $$2, awe.yE, awf.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
+   public void a(dej $$0, jf $$1, dus $$2, bun $$3, cvs $$4) {
+      if (!$$0.x_()) {
+         jf $$5 = $$1.d();
+         dus $$6 = dju.c($$0, $$5, this.n().b(b, dvo.a).b(d, $$2.c(d)));
+         $$0.a($$5, $$6, 3);
+      }
+   }
+
+   @Override
+   protected eqt b_(dus $$0) {
+      return $$0.c(g) ? equ.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      if ($$0.c(b) == dvo.a) {
+         return super.a($$0, $$1, $$2);
       } else {
-         $$1.a(null, $$2, awe.yF, awf.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         cir $$4 = btv.aR.a($$1, btu.e);
-         if ($$4 != null) {
-            eys $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), azd.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         jf $$3 = $$2.e();
+         dus $$4 = $$1.a_($$3);
+         return this.b($$4, $$1, $$3);
       }
    }
 
    @Override
-   public void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.w_() && $$5) {
-         $$1.c(3009, $$2, 0);
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, equ.c, equ.c.a($$3));
       }
 
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(dzl.i, $$2, dzl.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(duo $$0, ere $$1) {
-      return false;
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(b, g, d);
    }
 
-   public static boolean a(ddl $$0, je $$1) {
-      return $$0.a_($$1.e()).a(awt.ct);
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      if ($$3.c(dju.b) == dvo.b) {
+         jf $$4 = $$2.d();
+         $$0.a($$4, $$0.b_($$4).g(), 18);
+         dhj.a($$0, $$1, $$2, $$3.c(d));
+      } else {
+         jf $$5 = $$2.e();
+         this.a($$0, $$1, $$5, $$0.a_($$5));
+      }
+   }
+
+   @Override
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(d, $$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(d)));
+   }
+
+   @Override
+   protected float av_() {
+      return 0.1F;
    }
 }

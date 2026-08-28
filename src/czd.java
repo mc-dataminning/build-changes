@@ -1,54 +1,36 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.stream.Stream;
 
-public record czd(List<bsv> c, float f) implements czf {
-   public static final MapCodec<czd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsv.d.listOf().fieldOf("effects").forGetter(czd::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czd::c))
-            .apply($$0, czd::new)
-   );
-   public static final zb<wo, czd> b = zb.a(bsv.e.a(yz.a()), czd::b, yz.i, czd::c, czd::new);
+public record czd(List<asa<String>> g) implements cyb<String, czd> {
+   public static final czd a = new czd(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<asa<String>> h = asa.a(Codec.string(0, 1024));
+   public static final Codec<List<asa<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<czd> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(czd::a)).apply($$0, czd::new));
+   public static final zc<ByteBuf, czd> f = asa.a(za.b(1024)).a(za.c(100)).a(czd::new, czd::a);
 
-   public czd(bsv $$0, float $$1) {
-      this(List.of($$0), $$1);
-   }
-
-   public czd(List<bsv> $$0) {
-      this($$0, 1.0F);
-   }
-
-   public czd(bsv $$0) {
-      this($$0, 1.0F);
-   }
-
-   @Override
-   public czf.a<czd> a() {
-      return czf.a.a;
-   }
-
-   @Override
-   public boolean a(deg $$0, cvp $$1, buk $$2) {
-      if ($$2.dV().i() >= this.f) {
-         return false;
+   public czd(List<asa<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
       } else {
-         boolean $$3 = false;
-
-         for (bsv $$4 : this.c) {
-            if ($$2.a(new bsv($$4))) {
-               $$3 = true;
-            }
-         }
-
-         return $$3;
+         this.g = g;
       }
    }
 
-   public List<bsv> b() {
-      return this.c;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
    }
 
-   public float c() {
-      return this.f;
+   public czd b(List<asa<String>> $$0) {
+      return new czd($$0);
+   }
+
+   @Override
+   public List<asa<String>> a() {
+      return this.g;
    }
 }

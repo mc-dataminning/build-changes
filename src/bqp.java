@@ -3,59 +3,50 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bqp extends bqu {
+public class bqp extends bqx {
    public static final MapCodec<bqp> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
-               )
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
                .apply($$0, bqp::new)
       )
-      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
-   private final float b;
-   private final float f;
-   private final int g;
-   private final int h;
+      .validate(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0)
+      );
+   private final int b;
+   private final int f;
 
-   public static bqp a(float $$0, float $$1, int $$2, int $$3) {
-      return new bqp($$0, $$1, $$2, $$3);
-   }
-
-   private bqp(float $$0, float $$1, int $$2, int $$3) {
+   private bqp(int $$0, int $$1) {
       this.b = $$0;
       this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
+   }
+
+   public static bqp a(int $$0, int $$1) {
+      return new bqp($$0, $$1);
    }
 
    @Override
-   public int a(azl $$0) {
-      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
-   }
-
-   public static int a(azl $$0, float $$1, float $$2, float $$3, float $$4) {
-      return (int)azd.a(azd.c($$0, $$1, $$2), $$3, $$4);
+   public int a(azn $$0) {
+      return this.b + $$0.a($$0.a(this.f - this.b + 1) + 1);
    }
 
    @Override
    public int a() {
-      return this.g;
+      return this.b;
    }
 
    @Override
    public int b() {
-      return this.h;
+      return this.f;
    }
 
    @Override
-   public bqv<?> c() {
-      return bqv.f;
+   public bqy<?> c() {
+      return bqy.c;
    }
 
    @Override
    public String toString() {
-      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

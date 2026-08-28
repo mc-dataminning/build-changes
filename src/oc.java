@@ -1,43 +1,22 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.google.gson.JsonPrimitive;
 
-public class oc<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class oc {
+   public static final od<oc.a> a = new od<>("x", $$0 -> new JsonPrimitive($$0.e));
+   public static final od<oc.a> b = new od<>("y", $$0 -> new JsonPrimitive($$0.e));
+   public static final od<ale> c = new od<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final od<Boolean> d = new od<>("uvlock", JsonPrimitive::new);
+   public static final od<Integer> e = new od<>("weight", JsonPrimitive::new);
 
-   public oc(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static enum a {
+      a(0),
+      b(90),
+      c(180),
+      d(270);
 
-   public oc<T>.a a(T $$0) {
-      return new oc.a($$0);
-   }
+      final int e;
 
-   @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public oc<T> a() {
-         return oc.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(oc.this.a, oc.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return oc.this.a + "=" + this.b;
+      private a(final int $$0) {
+         this.e = $$0;
       }
    }
 }

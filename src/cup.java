@@ -1,44 +1,48 @@
-import java.util.List;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cup extends cvk {
-   public cup(cvk.a $$0) {
-      super($$0);
+public record cup<T>(Optional<jo<T>> a, ald<T> b) {
+   public cup(jo<T> $$0) {
+      this(Optional.of($$0), $$0.e().orElseThrow());
    }
 
-   @Override
-   public brp a(czm $$0) {
-      deg $$1 = $$0.q();
-      je $$2 = $$0.a();
-      duo $$3 = $$1.a_($$2);
-      if (!$$3.a(dhl.co) && !$$3.a(dhl.F)) {
-         return brp.d;
-      } else {
-         je $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return brp.d;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bto> $$8 = $$1.a_(null, new eyn($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return brp.d;
-            } else {
-               if ($$1 instanceof arh) {
-                  ciw $$9 = new ciw($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), dzl.t, $$4);
-                  dyn $$10 = ((arh)$$1).D();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
+   public cup(ald<T> $$0) {
+      this(Optional.empty(), $$0);
+   }
 
-               $$0.n().h(1);
-               return brp.a;
-            }
-         }
-      }
+   public static <T> Codec<cup<T>> a(ald<kb<T>> $$0, Codec<jo<T>> $$1) {
+      return Codec.either($$1, ald.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cup::a, cup::a);
+   }
+
+   public static <T> zc<wp, cup<T>> a(ald<kb<T>> $$0, zc<wp, jo<T>> $$1) {
+      return zc.a(za.a($$1, ald.b($$0)), cup::a, cup::a);
+   }
+
+   public Either<jo<T>, ald<T>> a() {
+      return this.a.<Either<jo<T>, ald<T>>>map(Either::left).orElseGet(() -> Either.right(this.b));
+   }
+
+   public static <T> cup<T> a(Either<jo<T>, ald<T>> $$0) {
+      return (cup<T>)$$0.map(cup::new, cup::new);
+   }
+
+   public Optional<T> a(kb<T> $$0) {
+      return this.a.<T>map(jo::a).or(() -> $$0.f(this.b));
+   }
+
+   public Optional<jo<T>> a(jq.a $$0) {
+      return this.a.or(() -> $$0.d(this.b.c()).a(this.b));
+   }
+
+   public Optional<jo<T>> b() {
+      return this.a;
+   }
+
+   public ald<T> c() {
+      return this.b;
    }
 }

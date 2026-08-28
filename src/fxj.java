@@ -1,52 +1,43 @@
-public class fxj extends fxk<gtl> {
-   private static final int a = 4;
-   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
-   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
-   private final gal d;
-   private final gal[] e;
-
-   public fxj(gal $$0) {
-      this.d = $$0;
-      this.e = new gal[4];
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.e[$$1] = $$0.b(a($$1));
-      }
+public class fxj extends gag<gwf> {
+   public fxj(gaq $$0) {
+      super($$0);
    }
 
-   private static String a(int $$0) {
-      return "segment" + $$0;
+   public static gaw a(gau $$0) {
+      gay $$1 = fyb.a($$0, 0.0F);
+      gba $$2 = $$1.a();
+      $$2.a("left_arm", gav.c().a(32, 48).a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gas.a(5.0F, 2.0F, 0.0F));
+      $$2.a("left_leg", gav.c().a(16, 48).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0), gas.a(1.9F, 12.0F, 0.0F));
+      return gaw.a($$1, 64, 64);
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      float $$2 = -3.5F;
-
-      for (int $$3 = 0; $$3 < 4; $$3++) {
-         $$1.a(
-            a($$3),
-            gaq.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
-            gan.a(0.0F, (float)(24 - b[$$3][1]), $$2)
-         );
-         if ($$3 < 3) {
-            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
-         }
-      }
-
-      return gar.a($$0, 64, 32);
+   protected fyb.a a(gwf $$0, buh $$1) {
+      cvs $$2 = $$1 == buh.b ? $$0.ar : $$0.at;
+      return $$2.a(cvw.vU) && $$0.a && $$0.ap == $$1 ? fyb.a.e : fyb.a.a;
    }
 
    @Override
-   public gal a() {
-      return this.d;
-   }
+   public void a(gwf $$0) {
+      super.a($$0);
+      if (this.a($$0, buh.a) == fyb.a.e) {
+         this.s.e = this.s.e * 0.5F - (float) Math.PI;
+         this.s.f = 0.0F;
+      }
 
-   @Override
-   public void a(gtl $$0) {
-      for (int $$1 = 0; $$1 < this.e.length; $$1++) {
-         this.e[$$1].f = azd.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
-         this.e[$$1].b = azd.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      if (this.a($$0, buh.b) == fyb.a.e) {
+         this.r.e = this.r.e * 0.5F - (float) Math.PI;
+         this.r.f = 0.0F;
+      }
+
+      float $$1 = $$0.B;
+      if ($$1 > 0.0F) {
+         this.r.e = azf.j($$1, this.r.e, (float) (-Math.PI * 4.0 / 5.0)) + $$1 * 0.35F * azf.a(0.1F * $$0.p);
+         this.s.e = azf.j($$1, this.s.e, (float) (-Math.PI * 4.0 / 5.0)) - $$1 * 0.35F * azf.a(0.1F * $$0.p);
+         this.r.g = azf.j($$1, this.r.g, -0.15F);
+         this.s.g = azf.j($$1, this.s.g, 0.15F);
+         this.u.e = this.u.e - $$1 * 0.55F * azf.a(0.1F * $$0.p);
+         this.t.e = this.t.e + $$1 * 0.55F * azf.a(0.1F * $$0.p);
+         this.o.e = 0.0F;
       }
    }
 }

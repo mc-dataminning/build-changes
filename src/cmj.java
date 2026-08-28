@@ -1,112 +1,46 @@
-import javax.annotation.Nullable;
+public interface cmj {
+   int o_ = 10;
+   float p_ = 0.2F;
 
-public abstract class cmj extends cla {
-   protected static final akg<Boolean> b = akk.a(cmj.class, aki.k);
-   protected static final int c = 300;
-   protected int d;
+   int go();
 
-   public cmj(btv<? extends cmj> $$0, deg $$1) {
-      super($$0, $$1);
-      this.a_(true);
-      this.y();
-      this.a(erg.n, 16.0F);
-      this.a(erg.o, -1.0F);
-   }
-
-   private void y() {
-      if (cff.a(this)) {
-         ((cdu)this.P()).b(true);
-      }
-   }
-
-   @Override
-   protected abstract boolean q();
-
-   public void x(boolean $$0) {
-      this.at().a(b, $$0);
-   }
-
-   protected boolean t() {
-      return this.at().a(b);
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      if (this.t()) {
-         $$0.a("IsImmuneToZombification", true);
-      }
-
-      $$0.a("TimeInOverworld", this.d);
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.x($$0.q("IsImmuneToZombification"));
-      this.d = $$0.h("TimeInOverworld");
-   }
-
-   @Override
-   protected void ad() {
-      super.ad();
-      if (this.gp()) {
-         this.d++;
+   static boolean a(bun $$0, bun $$1) {
+      float $$2 = (float)$$0.h(bvu.c);
+      float $$3;
+      if (!$$0.p_() && (int)$$2 > 0) {
+         $$3 = $$2 / 2.0F + (float)$$0.dS().z.a((int)$$2);
       } else {
-         this.d = 0;
+         $$3 = $$2;
       }
 
-      if (this.d > 300) {
-         this.gt();
-         this.a((arh)this.dS());
+      bsj $$5 = $$0.dT().b($$0);
+      boolean $$6 = $$1.a($$5, $$3);
+      if ($$6) {
+         if ($$0.dS() instanceof arj $$7) {
+            dbp.a($$7, (btr)$$1, $$5);
+         }
+
+         if (!$$0.p_()) {
+            b($$0, $$1);
+         }
+      }
+
+      return $$6;
+   }
+
+   static void b(bun $$0, bun $$1) {
+      double $$2 = $$0.h(bvu.d);
+      double $$3 = $$1.h(bvu.p);
+      double $$4 = $$2 - $$3;
+      if (!($$4 <= 0.0)) {
+         double $$5 = $$1.dx() - $$0.dx();
+         double $$6 = $$1.dD() - $$0.dD();
+         float $$7 = (float)($$0.dS().z.a(21) - 10);
+         double $$8 = $$4 * (double)($$0.dS().z.i() * 0.5F + 0.2F);
+         eyw $$9 = new eyw($$5, 0.0, $$6).d().c($$8).b($$7);
+         double $$10 = $$4 * (double)$$0.dS().z.i() * 0.5;
+         $$1.j($$9.d, $$10, $$9.f);
+         $$1.U = true;
       }
    }
-
-   public boolean gp() {
-      return !this.dS().B_().b() && !this.t() && !this.ge();
-   }
-
-   protected void a(arh $$0) {
-      clv $$1 = this.a(btv.bx, true);
-      if ($$1 != null) {
-         $$1.a(new bsv(bsx.i, 200, 0));
-      }
-   }
-
-   public boolean gq() {
-      return !this.o_();
-   }
-
-   public abstract cmm gr();
-
-   @Nullable
-   @Override
-   public buk m() {
-      return this.R();
-   }
-
-   protected boolean gs() {
-      return this.eW().b(kr.A);
-   }
-
-   @Override
-   public void U() {
-      if (cml.d(this)) {
-         super.U();
-      }
-   }
-
-   @Override
-   protected void ac() {
-      super.ac();
-      agn.a(this);
-   }
-
-   protected abstract void gt();
 }

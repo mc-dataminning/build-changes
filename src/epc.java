@@ -1,18 +1,9 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class epc {
-   private final List<epb> a;
+public abstract class epc {
+   public static final Codec<epc> c = lv.m.q().dispatch("predicate_type", epc::a, epd::codec);
 
-   public epc(List<epb> $$0) {
-      this.a = $$0;
-   }
+   public abstract boolean a(dus var1, azn var2);
 
-   public List<epb> a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
-   }
+   protected abstract epd<?> a();
 }

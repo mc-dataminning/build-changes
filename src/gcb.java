@@ -1,67 +1,166 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gcb {
-   private final gcd[] a;
-   private int b;
+   private static final Logger a = LogUtils.getLogger();
+   private static final bql<Runnable> b = bql.a(ad.g(), "server-list-io");
+   private static final int c = 16;
+   private final fip d;
+   private final List<gca> e = Lists.newArrayList();
+   private final List<gca> f = Lists.newArrayList();
 
-   public static Codec<gcb> a(int $$0) {
-      return Codec.list(gcd.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new gcb($$0, $$1));
-            },
-            gcb::c
-         );
+   public gcb(fip $$0) {
+      this.d = $$0;
    }
 
-   public gcb(int $$0) {
-      this.a = new gcd[$$0];
-   }
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         ug $$0 = ut.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-   private gcb(int $$0, List<gcd> $$1) {
-      this.a = $$1.toArray(gcd[]::new);
-      this.b = $$1.size();
-   }
+         um $$1 = $$0.c("servers", 10);
 
-   private List<gcd> c() {
-      List<gcd> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            ug $$3 = $$1.a($$2);
+            gca $$4 = gca.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
-
-      return $$0;
    }
 
-   public void a(gcd $$0) {
-      this.a[this.c(this.b++)] = $$0;
+   public void b() {
+      try {
+         um $$0 = new um();
+
+         for (gca $$1 : this.e) {
+            ug $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gca $$3 : this.f) {
+            ug $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         ug $$5 = new ug();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ut.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ad.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public gca a(int $$0) {
+      return this.e.get($$0);
    }
 
    @Nullable
-   public gcd b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   public gca a(String $$0) {
+      for (gca $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      for (gca $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   private int c(int $$0) {
-      return $$0 % this.a.length;
+   @Nullable
+   public gca b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gca $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
+   public void a(gca $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
    }
 
-   public int b() {
-      return this.b - 1;
+   public void a(gca $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
    }
 
-   private int d() {
-      return this.b() - this.a() + 1;
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gca $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gca $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gca $$0, List<gca> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gca $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(gca $$0) {
+      b.a(() -> {
+         gcb $$1 = new gcb(fip.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

@@ -1,112 +1,127 @@
-public class ctw extends cvk {
-   public static final int a = 10;
-   private static final int b = 200;
+import javax.annotation.Nullable;
 
-   public ctw(cvk.a $$0) {
+public class ctw extends cvn {
+   public static final int a = 3;
+   public static final int b = 1;
+   public static final int c = 3;
+
+   public ctw(cvn.a $$0) {
       super($$0);
    }
 
    @Override
-   public brp a(czm $$0) {
-      cnu $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).d() == eyq.a.b) {
-         $$1.c($$0.p());
+   public brs a(czp $$0) {
+      dej $$1 = $$0.q();
+      jf $$2 = $$0.a();
+      jf $$3 = $$2.a($$0.k());
+      if (a($$0.n(), $$1, $$2)) {
+         if (!$$1.B) {
+            $$0.o().a(dzp.C);
+            $$1.c(1505, $$2, 15);
+         }
+
+         return brs.a;
+      } else {
+         dus $$4 = $$1.a_($$2);
+         boolean $$5 = $$4.c($$1, $$2, $$0.k());
+         if ($$5 && a($$0.n(), $$1, $$3, $$0.k())) {
+            if (!$$1.B) {
+               $$0.o().a(dzp.C);
+               $$1.c(1505, $$3, 15);
+            }
+
+            return brs.a;
+         } else {
+            return brs.e;
+         }
+      }
+   }
+
+   public static boolean a(cvs $$0, dej $$1, jf $$2) {
+      dus $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dhp $$4 && $$4.b($$1, $$2, $$3)) {
+         if ($$1 instanceof arj) {
+            if ($$4.a($$1, $$1.z, $$2, $$3)) {
+               $$4.a((arj)$$1, $$1.z, $$2, $$3);
+            }
+
+            $$0.h(1);
+         }
+
+         return true;
       }
 
-      return brp.c;
+      return false;
    }
 
-   @Override
-   public cvr a(cvp $$0) {
-      return cvr.j;
-   }
+   public static boolean a(cvs $$0, dej $$1, jf $$2, @Nullable jk $$3) {
+      if ($$1.a_($$2).a(dho.G) && $$1.b_($$2).e() == 8) {
+         if (!($$1 instanceof arj)) {
+            return true;
+         } else {
+            azn $$4 = $$1.D_();
 
-   @Override
-   public int a(cvp $$0, buk $$1) {
-      return 200;
-   }
+            label80:
+            for (int $$5 = 0; $$5 < 128; $$5++) {
+               jf $$6 = $$2;
+               dus $$7 = dho.bw.n();
 
-   @Override
-   public void a(deg $$0, buk $$1, cvp $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof cnu $$4) {
-         eyq $$6 = this.a($$4);
-         if ($$6 instanceof eyo $$7 && $$6.d() == eyq.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               je $$11 = $$7.b();
-               duo $$12 = $$0.a_($$11);
-               bue $$13 = $$1.fw() == bro.a ? $$4.fu() : $$4.fu().e();
-               if ($$12.D() && $$12.o() != dnq.a) {
-                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
+               for (int $$8 = 0; $$8 < $$5 / 16; $$8++) {
+                  $$6 = $$6.b($$4.a(3) - 1, ($$4.a(3) - 1) * $$4.a(3) / 2, $$4.a(3) - 1);
+                  if ($$1.a_($$6).m($$1, $$6)) {
+                     continue label80;
+                  }
                }
 
-               awd $$15;
-               if ($$12.b() instanceof dho $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = awe.cS;
+               jo<dfk> $$9 = $$1.t($$6);
+               if ($$9.a(awu.ac)) {
+                  if ($$5 == 0 && $$3 != null && $$3.o().d()) {
+                     $$7 = lv.e.a(awv.as, $$1.z).map($$0x -> ((dhm)$$0x.a()).n()).orElse($$7);
+                     if ($$7.b(dgx.c)) {
+                        $$7 = $$7.b(dgx.c, $$3);
+                     }
+                  } else if ($$4.a(4) == 0) {
+                     $$7 = lv.e.a(awv.aq, $$1.z).map($$0x -> ((dhm)$$0x.a()).n()).orElse($$7);
+                  }
                }
 
-               $$0.a($$4, $$11, $$15, awf.e);
-               if (!$$0.w_() && $$0.c_($$11) instanceof drw $$17) {
-                  boolean $$18 = $$17.a($$0.aa(), $$4, $$7.c());
-                  if ($$18) {
-                     btw $$19 = $$2.equals($$4.a(btw.b)) ? btw.b : btw.a;
-                     $$2.a(1, $$1, $$19);
+               if ($$7.a(awv.as, $$0x -> $$0x.b(dgx.c))) {
+                  for (int $$10 = 0; !$$7.a((dem)$$1, $$6) && $$10 < 4; $$10++) {
+                     $$7 = $$7.b(dgx.c, jk.c.a.a($$4));
+                  }
+               }
+
+               if ($$7.a((dem)$$1, $$6)) {
+                  dus $$11 = $$1.a_($$6);
+                  if ($$11.a(dho.G) && $$1.b_($$6).e() == 8) {
+                     $$1.a($$6, $$7, 3);
+                  } else if ($$11.a(dho.bw) && ((dhp)dho.bw).b($$1, $$6, $$11) && $$4.a(10) == 0) {
+                     ((dhp)dho.bw).a((arj)$$1, $$4, $$6, $$11);
                   }
                }
             }
 
-            return;
+            $$0.h(1);
+            return true;
          }
-
-         $$1.fA();
       } else {
-         $$1.fA();
+         return false;
       }
    }
 
-   private eyq a(cnu $$0) {
-      return coq.a($$0, btt.h, $$0.gC());
-   }
-
-   private void a(deg $$0, eyo $$1, duo $$2, eys $$3, bue $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == bue.b ? 1 : -1;
-      int $$7 = $$0.C_().b(7, 12);
-      lf $$8 = new lf(ln.b, $$2);
-      jj $$9 = $$1.c();
-      ctw.a $$10 = ctw.a.a($$3, $$9);
-      eys $$11 = $$1.g();
-
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.d - (double)($$9 == jj.e ? 1.0E-6F : 0.0F),
-            $$11.e,
-            $$11.f - (double)($$9 == jj.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
-         );
-      }
-   }
-
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static ctw.a a(eys $$0, jj $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new ctw.a($$0.c(), 0.0, -$$0.a());
-            case c -> new ctw.a(1.0, 0.0, -0.1);
-            case d -> new ctw.a(-1.0, 0.0, 0.1);
-            case e -> new ctw.a(-0.1, 0.0, -1.0);
-            case f -> new ctw.a(0.1, 0.0, 1.0);
-         };
+   public static void a(dek $$0, jf $$1, int $$2) {
+      dus $$3 = $$0.a_($$1);
+      if ($$3.b() instanceof dhp $$4) {
+         jf $$5 = $$4.a($$1);
+         switch ($$4.as_()) {
+            case a:
+               azj.a($$0, $$5, $$2 * 3, 3.0, 1.0, false, lo.O);
+               break;
+            case b:
+               azj.a($$0, $$5, $$2, lo.O);
+         }
+      } else if ($$3.a(dho.G)) {
+         azj.a($$0, $$1, $$2 * 3, 3.0, 1.0, false, lo.O);
       }
    }
 }

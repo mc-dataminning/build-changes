@@ -1,29 +1,29 @@
-public class zv implements zk<zq> {
-   public static final zb<wa, zv> a = zk.a(zv::a, zv::new);
-   private final int b;
+public class zv implements zl<zr> {
+   public static final zc<wb, zv> a = zl.a(zv::a, zv::new);
+   private final long b;
 
-   public zv(int $$0) {
+   public zv(long $$0) {
       this.b = $$0;
    }
 
-   private zv(wa $$0) {
-      this.b = $$0.readInt();
+   private zv(wb $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(wa $$0) {
-      $$0.q(this.b);
+   private void a(wb $$0) {
+      $$0.b(this.b);
    }
 
    @Override
-   public zm<zv> a() {
-      return aac.e;
+   public zn<zv> a() {
+      return aad.d;
    }
 
-   public void a(zq $$0) {
+   public void a(zr $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

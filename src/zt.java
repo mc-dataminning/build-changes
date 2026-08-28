@@ -1,14 +1,20 @@
 import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-public record zt(xd b) implements zk<zq> {
-   public static final zb<ByteBuf, zt> a = xf.f.a(zt::new, zt::b);
+public record zt(Map<String, String> b) implements zl<zr> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final zc<ByteBuf, Map<String, String>> f = za.a(HashMap::new, za.b(128), za.b(4096), 32);
+   public static final zc<ByteBuf, zt> a = zc.a(f, zt::b, zt::new);
 
    @Override
-   public zm<zt> a() {
-      return aac.c;
+   public zn<zt> a() {
+      return aad.b;
    }
 
-   public void a(zq $$0) {
+   public void a(zr $$0) {
       $$0.a(this);
    }
 }

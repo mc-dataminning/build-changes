@@ -1,8 +1,8 @@
-public class gtr extends guj {
+public class gtr extends guo {
+   public boolean b;
+   public boolean c;
    public boolean d;
-   public boolean e;
-   public boolean f;
+   public float e;
+   public float f;
    public float g;
-   public float h;
-   public float i;
 }

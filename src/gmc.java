@@ -1,20 +1,45 @@
-public abstract class gmc<T extends cki, S extends gvg> extends goa<T, S, fzf<S>> {
-   public gmc(gnj.a $$0, gaj $$1, gaj $$2, gaj $$3) {
-      this($$0, $$2, $$3, new fzf<>($$0.a($$1)));
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class gmc implements gll.a {
+   private final List<jf> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(jf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public gmc(gnj.a $$0, gaj $$1, gaj $$2, fzf<S> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new grm<>(this, new fzf($$0.a($$1)), new fzf($$0.a($$2)), $$0.g()));
-   }
+   @Override
+   public void a(fdi $$0, ghl $$1, double $$2, double $$3, double $$4) {
+      fdm $$5 = $$1.getBuffer(ghv.A());
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gg();
-      $$1.c = $$0.gr();
-   }
-
-   protected boolean a(S $$0) {
-      return $$0.c;
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         jf $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gif.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

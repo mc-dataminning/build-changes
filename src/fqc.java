@@ -1,132 +1,168 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
+import java.net.URI;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fqc extends fqd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xd c = xd.c("recover_world.title").a(n.r);
-   private static final xd d = xd.c("recover_world.bug_tracker");
-   private static final xd s = xd.c("recover_world.restore");
-   private static final xd u = xd.c("recover_world.no_fallback");
-   private static final xd v = xd.c("recover_world.done.title");
-   private static final xd w = xd.c("recover_world.done.success");
-   private static final xd x = xd.c("recover_world.done.failed");
-   private static final xd y = xd.c("recover_world.issue.none").a(n.k);
-   private static final xd z = xd.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final foc B = foc.d().a(8);
-   private final xd C;
-   private final fle D;
-   private final fle E;
-   private final esv.c F;
-
-   public fqc(fil $$0, BooleanConsumer $$1, esv.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xd.a("recover_world.message", xd.b($$2.f()).a(n.h));
-      this.D = new fle(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xd $$5 = xd.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new fle($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new flr(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      foc $$7 = foc.e().a(5);
-      $$7.a(fkk.a(d, fpa.b(this, axz.j)).b(120, 20).a());
-      $$7.a(fkk.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : flv.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(fkk.a(xc.k, $$0x -> this.d()).b(120, 20).a());
-      this.B.a(this::c);
-   }
-
-   private void a(fil $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new fpo(xd.c("recover_world.restoring")));
-         fvc.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fpb(this.A, v, w, xc.j, xc.k));
-         } else {
-            $$0.a(new fow(() -> this.A.accept(false), v, x));
-         }
-      } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fow(() -> this.A.accept(false), v, x));
-      }
-   }
-
-   private xd a(esv.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xd.i();
-      } else {
-         xr $$3 = xd.i();
-         Instant $$4 = $$0.a($$1);
-         xr $$5 = $$4 != null ? xd.b(fvl.a.format($$4)) : xd.c("recover_world.state_entry.unknown");
-         $$3.b(xd.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof uw) {
-            $$3.b(xd.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xd.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
+public class fqc extends fqh {
+   private static final ale a = ale.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final xe v = xe.c("menu.returnToGame");
+   private static final xe w = xe.c("gui.advancements");
+   private static final xe x = xe.c("gui.stats");
+   private static final xe y = xe.c("menu.sendFeedback");
+   private static final xe z = xe.c("menu.reportBugs");
+   private static final xe A = xe.c("menu.feedback");
+   private static final xe B = xe.c("menu.server_links");
+   private static final xe C = xe.c("menu.options");
+   private static final xe D = xe.c("menu.shareToLan");
+   private static final xe E = xe.c("menu.playerReporting");
+   private static final xe F = xe.c("menu.returnToMenu");
+   private static final xe G = xe.c("menu.savingLevel");
+   private static final xe H = xe.c("menu.game");
+   private static final xe I = xe.c("menu.paused");
+   private final boolean J;
    @Nullable
-   private Exception a(esv.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
+   private fko K;
 
-         return null;
-      } catch (uq | uw | IOException var4) {
-         return var4;
+   public fqc(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
+   }
+
+   public boolean m() {
+      return this.J;
+   }
+
+   @Override
+   protected void aS_() {
+      if (this.J) {
+         this.D();
+      }
+
+      this.c(new flv(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   }
+
+   private void D() {
+      fob $$0 = new fob();
+      $$0.c().a(4, 4, 4, 0);
+      fob.b $$1 = $$0.d(2);
+      $$1.a(fko.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fqr(this.m.t.cw.p(), this)));
+      $$1.a(this.a(x, () -> new fql(this, this.m.t.i())));
+      alw $$2 = this.m.t.cw.E();
+      if ($$2.a()) {
+         a(this, $$1);
+      } else {
+         $$1.a(this.a(A, () -> new fqc.a(this)));
+         $$1.a(this.a(B, () -> new fsy(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new ftj(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fqi(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fuy(this)));
+      }
+
+      xe $$3 = this.m.T() ? F : xd.p;
+      this.K = $$1.a(fko.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.bb().a(this.m, this, this::E, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      foa.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(fqh $$0, fob.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? ayb.i : ayb.h));
+      $$1.a(a($$0, z, ayb.j)).j = !ab.b().d().a();
+   }
+
+   private void E() {
+      boolean $$0 = this.m.T();
+      gca $$1 = this.m.S();
+      this.m.s.Z();
+      if ($$0) {
+         this.m.b(new fps(G));
+      } else {
+         this.m.y();
+      }
+
+      fqj $$2 = new fqj();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fdt($$2));
+      } else {
+         this.m.a(new fsw($$2));
       }
    }
 
    @Override
-   protected void aR_() {
-      super.aR_();
-      this.c();
+   public void e() {
+      super.e();
    }
 
    @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      fnw.a(this.B, this.H());
+   public void a(fkb $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.bb().c() && this.K != null) {
+         $$0.a(ghv::B, a, this.K.D() + this.K.y() - 17, this.K.E() + 3, 15, 15);
+      }
    }
 
    @Override
-   public xd i() {
-      return xc.a(super.i(), this.C);
+   public void b(fkb $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
    }
 
-   @Override
-   public void d() {
-      this.A.accept(false);
+   private fko a(xe $$0, Supplier<fqh> $$1) {
+      return fko.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   }
+
+   private static fko a(fqh $$0, xe $$1, URI $$2) {
+      return fko.a($$1, fpe.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends fqh {
+      private static final xe b = xe.c("menu.feedback.title");
+      public final fqh a;
+      private final foc c = new foc(this);
+
+      protected a(fqh $$0) {
+         super(b);
+         this.a = $$0;
+      }
+
+      @Override
+      protected void aS_() {
+         this.c.a(b, this.p);
+         fob $$0 = this.c.c(new fob());
+         $$0.c().a(4, 4, 4, 0);
+         fob.b $$1 = $$0.d(2);
+         fqc.a(this, $$1);
+         this.c.b(fko.a(xd.k, $$0x -> this.d()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void d() {
+         this.m.a(this.a);
+      }
    }
 }

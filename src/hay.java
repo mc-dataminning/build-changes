@@ -1,52 +1,28 @@
+import java.util.List;
+import javax.annotation.Nullable;
+
 public class hay {
-   public static class a extends hae {
-      private final ggc n;
+   private final List<hax> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
 
-      protected a(ggc $$0, awd $$1) {
-         super($$1, awf.i, hav.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dN() || !this.n.bn()) {
-            this.n();
-         }
-      }
+   public hay(List<hax> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static class b extends hae {
-      public static final int n = 40;
-      private final ggc o;
-      private int p;
+   public List<hax> a() {
+      return this.a;
+   }
 
-      public b(ggc $$0) {
-         super(awe.z, awf.i, hav.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+   public boolean b() {
+      return this.b;
+   }
 
-      @Override
-      public void q() {
-         if (!this.o.dN() && this.p >= 0) {
-            if (this.o.bn()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

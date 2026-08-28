@@ -1,156 +1,116 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class crp extends cqz implements crn {
+   protected static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final csr r = new csr();
+   private final crl s;
+   private final cnx t;
+   private final crr u;
 
-public class crp extends cqx {
-   private static final int p = 3;
-   private static final int q = 3;
-   public static final int o = 0;
-   private static final int r = 1;
-   private static final int s = 9;
-   private static final int t = 10;
-   private static final int u = 10;
-   private static final int v = 37;
-   private static final int w = 37;
-   private static final int x = 46;
-   private final crj y;
-   private final cnu z;
-   private boolean A;
-
-   public crp(int $$0, cnt $$1) {
-      this($$0, $$1, crj.a);
+   public crp(int $$0, cnw $$1) {
+      super(csi.h, $$0);
+      this.t = $$1.k;
+      this.s = new csv(10);
+      this.u = new ctd(this, 3, 3);
+      this.a($$1);
    }
 
-   public crp(int $$0, cnt $$1, crj $$2) {
-      super(csf.m, $$0, 3, 3);
-      this.y = $$2;
-      this.z = $$1.k;
-      this.a(this.z, 124, 35);
-      this.d(30, 17);
-      this.c($$1, 8, 84);
+   public crp(int $$0, cnw $$1, crr $$2, crl $$3) {
+      super(csi.h, $$0);
+      this.t = $$1.k;
+      this.s = $$3;
+      this.u = $$2;
+      a($$2, 9);
+      $$2.d_($$1.k);
+      this.a($$1);
+      this.a(this);
    }
 
-   protected static void a(cqw $$0, deg $$1, cnu $$2, cro $$3, cso $$4, @Nullable daj<czx> $$5) {
-      if (!$$1.B) {
-         czw $$6 = $$3.aC_();
-         ari $$7 = (ari)$$2;
-         cvp $$8 = cvp.k;
-         Optional<daj<czx>> $$9 = $$1.o().aI().a(dan.a, $$6, $$1, $$5);
-         if ($$9.isPresent()) {
-            daj<czx> $$10 = $$9.get();
-            czx $$11 = $$10.b();
-            if ($$4.a($$1, $$7, $$10)) {
-               cvp $$12 = $$11.a($$6, $$1.F_());
-               if ($$12.a($$1.J())) {
-                  $$8 = $$12;
-               }
-            }
+   private void a(cnw $$0) {
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            int $$3 = $$2 + $$1 * 3;
+            this.a(new crq(this.u, $$3, 26 + $$2 * 18, 17 + $$1 * 18, this));
          }
-
-         $$4.a(0, $$8);
-         $$0.a(0, $$8);
-         $$7.c.b(new acw($$0.l, $$0.k(), 0, $$8));
       }
+
+      this.c($$0, 8, 84);
+      this.a(new csm(this.r, 0, 134, 35));
+      this.a(this.s);
+      this.n();
+   }
+
+   public void a(int $$0, boolean $$1) {
+      crq $$2 = (crq)this.b($$0);
+      this.s.a($$2.d, $$1 ? 0 : 1);
+      this.d();
+   }
+
+   public boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 ? this.s.a($$0) == 1 : false;
+   }
+
+   public boolean l() {
+      return this.s.a(9) == 1;
    }
 
    @Override
-   public void a(bri $$0) {
-      if (!this.A) {
-         this.y.a(($$0x, $$1) -> a(this, $$0x, this.z, this.m, this.n, null));
-      }
-   }
-
-   @Override
-   public void l() {
-      this.A = true;
-   }
-
-   @Override
-   public void a(daj<czx> $$0) {
-      this.A = false;
-      this.y.a(($$1, $$2) -> a(this, $$1, this.z, this.m, this.n, $$0));
-   }
-
-   @Override
-   public void a(cnu $$0) {
-      super.a($$0);
-      this.y.a(($$1, $$2) -> this.a($$0, this.m));
-   }
-
-   @Override
-   public boolean b(cnu $$0) {
-      return a(this.y, $$0, dhl.cA);
-   }
-
-   @Override
-   public cvp b(cnu $$0, int $$1) {
-      cvp $$2 = cvp.k;
-      cst $$3 = this.k.get($$1);
+   public cvs b(cnx $$0, int $$1) {
+      cvs $$2 = cvs.k;
+      csw $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         cvp $$4 = $$3.g();
+         cvs $$4 = $$3.g();
          $$2 = $$4.u();
-         if ($$1 == 0) {
-            this.y.a(($$2x, $$3x) -> $$4.h().b($$4, $$2x, $$0));
-            if (!this.a($$4, 10, 46, true)) {
-               return cvp.k;
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cvs.k;
             }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 >= 10 && $$1 < 46) {
-            if (!this.a($$4, 1, 10, false)) {
-               if ($$1 < 37) {
-                  if (!this.a($$4, 37, 46, false)) {
-                     return cvp.k;
-                  }
-               } else if (!this.a($$4, 10, 37, false)) {
-                  return cvp.k;
-               }
-            }
-         } else if (!this.a($$4, 10, 46, false)) {
-            return cvp.k;
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cvs.k;
          }
 
          if ($$4.f()) {
-            $$3.e(cvp.k);
+            $$3.f(cvs.k);
          } else {
             $$3.c();
          }
 
-         if ($$4.J() == $$2.J()) {
-            return cvp.k;
+         if ($$4.K() == $$2.K()) {
+            return cvs.k;
          }
 
          $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
-         }
       }
 
       return $$2;
    }
 
    @Override
-   public boolean a(cvp $$0, cst $$1) {
-      return $$1.c != this.n && super.a($$0, $$1);
+   public boolean b(cnx $$0) {
+      return this.u.a($$0);
+   }
+
+   private void n() {
+      if (this.t instanceof ark $$0) {
+         dej $$1 = $$0.dS();
+         czz $$2 = this.u.aD_();
+         cvs $$3 = djf.a($$1, $$2).map($$2x -> ((daa)$$2x.b()).a($$2, $$1.G_())).orElse(cvs.k);
+         this.r.a(0, $$3);
+      }
+   }
+
+   public brl m() {
+      return this.u;
    }
 
    @Override
-   public cst m() {
-      return this.k.get(0);
+   public void a(cqz $$0, int $$1, cvs $$2) {
+      this.n();
    }
 
    @Override
-   public List<cst> n() {
-      return this.k.subList(1, 10);
-   }
-
-   @Override
-   public csm am_() {
-      return csm.a;
-   }
-
-   @Override
-   protected cnu q() {
-      return this.z;
+   public void a(cqz $$0, int $$1, int $$2) {
    }
 }

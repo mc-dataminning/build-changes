@@ -1,47 +1,32 @@
-public class fsq {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+import java.util.Objects;
+import org.joml.Matrix4f;
 
-   public static void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+public interface fsq {
+   static fsq a(ayr $$0) {
+      return new fsp($$0);
    }
 
-   private static void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   static fsq a(ctg $$0) {
+      Objects.requireNonNull($$0);
+
+      return (fsq)(switch ($$0) {
+         case ctf $$1 -> new fso($$1.a());
+         case fsn.a $$2 -> new fsn($$2);
+         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
+      });
    }
 
-   private static void b(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   int a(fjz var1);
+
+   int b(fjz var1);
+
+   default boolean a() {
+      return false;
    }
 
-   private static void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   default void a(fjz $$0, int $$1, int $$2, Matrix4f $$3, ghl.a $$4) {
    }
 
-   private static void c(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
-   }
-
-   private static void b(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   default void a(fjz $$0, int $$1, int $$2, int $$3, int $$4, fkb $$5) {
    }
 }

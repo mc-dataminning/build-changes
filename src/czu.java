@@ -1,17 +1,15 @@
-public enum czu implements azz {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final azz.a<czu> d = azz.a(czu::values);
-   private final String e;
-
-   private czu(final String $$0) {
-      this.e = $$0;
+public class czu extends czr {
+   public czu(String $$0, czx $$1, dag $$2, cvs $$3, float $$4, int $$5) {
+      super(daq.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cvs g() {
+      return new cvs(dho.nW);
+   }
+
+   @Override
+   public dap<?> ar_() {
+      return dap.p;
    }
 }

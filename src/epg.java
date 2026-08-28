@@ -1,20 +1,18 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class epg extends eoy {
-   public static final MapCodec<epg> a = axj.a(lv.f).fieldOf("tag").xmap(epg::new, $$0 -> $$0.b);
-   private final axj<dhj> b;
+public class epg {
+   private final List<epf> a;
 
-   public epg(axj<dhj> $$0) {
-      this.b = $$0;
+   public epg(List<epf> $$0) {
+      this.a = $$0;
+   }
+
+   public List<epf> a() {
+      return this.a;
    }
 
    @Override
-   public boolean a(duo $$0, azl $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected eoz<?> a() {
-      return eoz.d;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

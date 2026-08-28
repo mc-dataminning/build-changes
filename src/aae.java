@@ -1,20 +1,11 @@
-public record aae(aqt b) implements zk<aad> {
-   public static final zb<wa, aae> a = zk.a(aae::a, aae::new);
+public interface aae extends abx {
+   void a(aah var1);
 
-   private aae(wa $$0) {
-      this(new aqt($$0));
-   }
+   void a(aai var1);
 
-   private void a(wa $$0) {
-      this.b.a($$0);
-   }
+   void a(aag var1);
 
-   @Override
-   public zm<aae> a() {
-      return aac.l;
-   }
+   void a(aaj var1);
 
-   public void a(aad $$0) {
-      $$0.a(this);
-   }
+   void a(aaf var1);
 }

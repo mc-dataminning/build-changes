@@ -1,26 +1,42 @@
-public class gqd extends gop<clo, gvs, fzt> {
-   private static final alc a = alc.b("textures/entity/illager/vex.png");
-   private static final alc b = alc.b("textures/entity/illager/vex_charging.png");
+public class gqd extends gmg<cqi, gus> {
+   private final gio b;
 
-   public gqd(gnj.a $$0) {
-      super($$0, new fzt($$0.a(gak.cS)), 0.3F);
-      this.a(new grp<>(this, $$0.b()));
+   public gqd(gno.a $$0) {
+      super($$0, gap.cI);
+      this.b = $$0.d();
    }
 
-   protected int a(clo $$0, je $$1) {
-      return 15;
+   protected void a(gus $$0, dus $$1, fdi $$2, ghl $$3, int $$4) {
+      float $$5 = $$0.C;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azf.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
+      }
+
+      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
    }
 
-   public alc a(gvs $$0) {
-      return $$0.a ? b : a;
+   public static void a(gio $$0, dus $$1, fdi $$2, ghl $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gwx.a(gwx.a(1.0F), 10);
+      } else {
+         $$6 = gwx.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
    }
 
-   public gvs c() {
-      return new gvs();
+   public gus a() {
+      return new gus();
    }
 
-   public void a(clo $$0, gvs $$1, float $$2) {
+   public void a(cqi $$0, gus $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
+      $$1.C = $$0.G() > -1 ? (float)$$0.G() - $$2 + 1.0F : -1.0F;
    }
 }

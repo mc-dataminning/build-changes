@@ -1,45 +1,31 @@
-public class hap extends hae {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cnu p;
-   private final cps q;
-   private final boolean r;
+public class hap implements hak {
+   private final ggh a;
+   private boolean b;
+   private boolean c = true;
 
-   public hap(cnu $$0, cps $$1, boolean $$2) {
-      super($$2 ? awe.oM : awe.oN, awf.g, hav.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = hav.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   public hap(ggh $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.q.ba();
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dN() || !this.p.bW() || this.p.dg() != this.q) {
-         this.n();
-      } else if (this.r != this.p.bn()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dv().i();
-         boolean $$1 = !this.q.cn() && this.q.m() instanceof cqg;
-         if ($$0 >= 0.01F && !$$1) {
-            this.d = azd.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
+   public void a() {
+      dej $$0 = this.a.dS();
+      dus $$1 = $$0.c(this.a.cO().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dho.nd)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dho.nd) && !this.a.Q_()) {
+            boolean $$2 = $$1.c(dhs.b);
+            if ($$2) {
+               this.a.a(awg.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awg.cZ, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

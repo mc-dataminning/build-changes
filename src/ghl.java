@@ -1,201 +1,97 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
+import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-public record ghl(Map<alc, ghl.d> b, List<ghl.e> c) {
-   public static final Codec<ghl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(alc.a, ghl.d.b).optionalFieldOf("targets", Map.of()).forGetter(ghl::a),
-               ghl.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(ghl::b)
-            )
-            .apply($$0, ghl::new)
-   );
-
-   public Map<alc, ghl.d> a() {
-      return this.b;
+public interface ghl {
+   static ghl.a a(fdf $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   public List<ghl.e> b() {
-      return this.c;
+   static ghl.a a(SequencedMap<ghv, fdf> $$0, fdf $$1) {
+      return new ghl.a($$1, $$0);
    }
 
-   public static record a(int c, int d) implements ghl.d {
-      public static final Codec<ghl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(aym.l.fieldOf("width").forGetter(ghl.a::a), aym.l.fieldOf("height").forGetter(ghl.a::b)).apply($$0, ghl.a::new)
-      );
+   fdm getBuffer(ghv var1);
 
-      public int a() {
-         return this.c;
+   public static class a implements ghl {
+      protected final fdf a;
+      protected final SequencedMap<ghv, fdf> b;
+      protected final Map<ghv, fdd> c = new HashMap<>();
+      @Nullable
+      protected ghv d;
+
+      protected a(fdf $$0, SequencedMap<ghv, fdf> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      public int b() {
-         return this.d;
-      }
-   }
-
-   public static record b() implements ghl.d {
-      public static final Codec<ghl.b> a = Codec.unit(ghl.b::new);
-   }
-
-   public sealed interface c permits ghl.g, ghl.f {
-      Codec<ghl.c> a = Codec.xor(ghl.g.b, ghl.f.b).xmap($$0 -> (ghl.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case ghl.g $$3 -> Either.left($$3);
-            case ghl.f $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-
-      String a();
-
-      Set<alc> b();
-   }
-
-   public sealed interface d permits ghl.b, ghl.a {
-      Codec<ghl.d> b = Codec.xor(ghl.b.a, ghl.a.a).xmap($$0 -> (ghl.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
-         Objects.requireNonNull($$0);
-
-         return switch ($$0) {
-            case ghl.b $$3 -> Either.left($$3);
-            case ghl.a $$4 -> Either.right($$4);
-            default -> throw new MatchException(null, null);
-         };
-      });
-   }
-
-   public static record e(alc b, List<ghl.c> c, alc d, List<ghl.h> e) {
-      private static final Codec<List<ghl.c>> f = ghl.c.a.listOf().validate($$0 -> {
-         Set<String> $$1 = new ObjectArraySet($$0.size());
-
-         for (ghl.c $$2 : $$0) {
-            if (!$$1.add($$2.a())) {
-               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
-            }
+      @Override
+      public fdm getBuffer(ghv $$0) {
+         fdd $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.S()) {
+            this.a($$0, $$1);
+            $$1 = null;
          }
 
-         return DataResult.success($$0);
-      });
-      public static final Codec<ghl.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alc.a.fieldOf("program").forGetter(ghl.e::a),
-                  f.optionalFieldOf("inputs", List.of()).forGetter(ghl.e::b),
-                  alc.a.fieldOf("output").forGetter(ghl.e::c),
-                  ghl.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(ghl.e::d)
-               )
-               .apply($$0, ghl.e::new)
-      );
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fdf $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fdd($$2, $$0.O(), $$0.N());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
 
-      public alc a() {
-         return this.b;
+               $$1 = new fdd(this.a, $$0.O(), $$0.N());
+               this.d = $$0;
+            }
+
+            this.c.put($$0, $$1);
+            return $$1;
+         }
       }
 
-      public List<ghl.c> b() {
-         return this.c;
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
       }
 
-      public alc c() {
-         return this.d;
+      public void b() {
+         this.a();
+
+         for (ghv $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
       }
 
-      public List<ghl.h> d() {
-         return this.e;
-      }
-   }
-
-   public static record f(String c, alc d, boolean e, boolean f) implements ghl.c {
-      public static final Codec<ghl.f> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(ghl.f::a),
-                  alc.a.fieldOf("target").forGetter(ghl.f::c),
-                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(ghl.f::d),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(ghl.f::e)
-               )
-               .apply($$0, ghl.f::new)
-      );
-
-      @Override
-      public Set<alc> b() {
-         return Set.of(this.d);
+      public void a(ghv $$0) {
+         fdd $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
       }
 
-      @Override
-      public String a() {
-         return this.c;
-      }
+      private void a(ghv $$0, fdd $$1) {
+         fdh $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.T()) {
+               fdf $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getVertexSorting());
+            }
 
-      public alc c() {
-         return this.d;
-      }
+            $$0.a($$2);
+         }
 
-      public boolean d() {
-         return this.e;
-      }
-
-      public boolean e() {
-         return this.f;
-      }
-   }
-
-   public static record g(String c, alc d, int e, int f, boolean g) implements ghl.c {
-      public static final Codec<ghl.g> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.STRING.fieldOf("sampler_name").forGetter(ghl.g::a),
-                  alc.a.fieldOf("location").forGetter(ghl.g::c),
-                  aym.l.fieldOf("width").forGetter(ghl.g::d),
-                  aym.l.fieldOf("height").forGetter(ghl.g::e),
-                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(ghl.g::f)
-               )
-               .apply($$0, ghl.g::new)
-      );
-
-      @Override
-      public Set<alc> b() {
-         return Set.of();
-      }
-
-      @Override
-      public String a() {
-         return this.c;
-      }
-
-      public alc c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      public int e() {
-         return this.f;
-      }
-
-      public boolean f() {
-         return this.g;
-      }
-   }
-
-   public static record h(String b, List<Float> c) {
-      public static final Codec<ghl.h> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ghl.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(ghl.h::b))
-               .apply($$0, ghl.h::new)
-      );
-
-      public String a() {
-         return this.b;
-      }
-
-      public List<Float> b() {
-         return this.c;
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
       }
    }
 }

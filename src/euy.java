@@ -1,40 +1,80 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class euy extends euu {
-   public static final MapCodec<euy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(etf.e.fieldOf("component").forGetter($$0x -> $$0x.b), eux.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, euy::new)
-   );
-   private final ete<?> b;
-   private final euv c;
+public abstract class euy implements euz {
+   protected final List<eww> g;
+   private final Predicate<etl> a;
 
-   private euy(List<ews> $$0, ete<?> $$1, euv $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected euy(List<eww> $$0) {
+      this.g = $$0;
+      this.a = ad.a($$0);
    }
 
    @Override
-   public euw<euy> b() {
-      return eux.u;
+   public abstract eva<? extends euy> b();
+
+   protected static <T extends euy> P1<Mu<T>, List<eww>> a(Instance<T> $$0) {
+      return $$0.group(eww.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
+   public final cvs b(cvs $$0, etl $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cvs a(cvs var1, etl var2);
+
    @Override
-   public cvp a(cvp $$0, eth $$1) {
-      if ($$0.f()) {
-         return $$0;
-      } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+   public void a(etr $$0) {
+      euz.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public void a(etn $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   protected static euy.a<?> a(Function<List<eww>, euz> $$0) {
+      return new euy.b($$0);
+   }
+
+   public abstract static class a<T extends euy.a<T>> implements euz.a, ewo<T> {
+      private final Builder<eww> a = ImmutableList.builder();
+
+      public T a(eww.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<eww> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends euy.a<euy.b> {
+      private final Function<List<eww>, euz> a;
+
+      public b(Function<List<eww>, euz> $$0) {
+         this.a = $$0;
+      }
+
+      protected euy.b a() {
+         return this;
+      }
+
+      @Override
+      public euz b() {
+         return this.a.apply(this.g());
+      }
    }
 }

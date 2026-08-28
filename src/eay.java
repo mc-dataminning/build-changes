@@ -1,127 +1,68 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 public final class eay {
-   final eax a;
-   private final jo<eps.a> b;
-   private final eaq c;
-   private final dfq.f d;
-   private final ebc e;
-   private final eax f;
-   private final eax g;
-   private final Map<alb<eps.a>, eps> h;
-   private final Map<alc, eax> i;
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-   public static eay a(jo.a $$0, alb<eap> $$1, long $$2) {
-      return a($$0.b(lv.aP).b($$1).a(), $$0.b(lv.aQ), $$2);
+   private eay() {
    }
 
-   public static eay a(eap $$0, jo<eps.a> $$1, long $$2) {
-      return new eay($$0, $$1, $$2);
-   }
-
-   private eay(eap $$0, jo<eps.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(alc.b("aquifer")).e();
-      this.g = this.a.a(alc.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new ebc(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements ead.f {
-         private final Map<ead, ead> d = new HashMap<>();
-
-         private azl a(long $$0) {
-            return new eal($$2 + $$0);
-         }
-
-         @Override
-         public ead.c a(ead.c $$0) {
-            jn<eps.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(eat.a)) {
-                  eps $$2 = eps.a(this.a(0L), new eps.a(-7, 1.0, 1.0));
-                  return new ead.c($$1, $$2);
-               }
-
-               if ($$1.a(eat.b)) {
-                  eps $$3 = eps.a(this.a(1L), new eps.a(-7, 1.0, 1.0));
-                  return new ead.c($$1, $$3);
-               }
-
-               if ($$1.a(eat.j)) {
-                  eps $$4 = eps.b(eay.this.a.a(eat.j.a()), new eps.a(0, 0.0));
-                  return new ead.c($$1, $$4);
-               }
-            }
-
-            eps $$5 = eay.this.a($$1.e().orElseThrow());
-            return new ead.c($$1, $$5);
-         }
-
-         private ead a(ead $$0) {
-            if ($$0 instanceof epp $$1) {
-               azl $$2 = $$3 ? this.a(0L) : eay.this.a.a(alc.b("terrain"));
-               return $$1.a($$2);
+   protected static eas.c a(eah $$0, eah $$1, eah $$2, ebb $$3) {
+      dus $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eay.a $$8 = $$6 > 0.0 ? eay.a.a : eay.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = azf.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
             } else {
-               return (ead)($$0 instanceof eae.i ? new eae.i($$2) : $$0);
+               azn $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = azf.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
             }
-         }
-
-         @Override
-         public ead apply(ead $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
-      }
-
-      this.c = $$0.i().a(new a());
-      ead.f $$4 = new ead.f() {
-         private final Map<ead, ead> a = new HashMap<>();
-
-         private ead a(ead $$0) {
-            if ($$0 instanceof eae.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof eae.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public ead apply(ead $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
+         } else {
+            return $$4;
          }
       };
-      this.d = new dfq.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
    }
 
-   public eps a(alb<eps.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> eat.a(this.b, this.a, $$0));
-   }
+   protected static enum a {
+      a(dho.ra.n(), dho.tg.n(), dho.c.n(), 0, 50),
+      b(dho.Q.n(), dho.tf.n(), dho.qz.n(), -60, -8);
 
-   public eax a(alc $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
+      final dus e;
+      final dus f;
+      final dus g;
+      protected final int c;
+      protected final int d;
 
-   public eaq a() {
-      return this.c;
-   }
-
-   public dfq.f b() {
-      return this.d;
-   }
-
-   public ebc c() {
-      return this.e;
-   }
-
-   public eax d() {
-      return this.f;
-   }
-
-   public eax e() {
-      return this.g;
+      private a(final dus $$0, final dus $$1, final dus $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

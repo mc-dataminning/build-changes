@@ -1,95 +1,70 @@
-public class czs extends czy {
-   public czs(czv $$0) {
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class czs extends dab {
+   public czs(czy $$0) {
       super($$0);
    }
 
-   public boolean a(czw $$0, deg $$1) {
-      int $$2 = 0;
-      cvp $$3 = cvp.k;
+   public boolean a(czz $$0, dej $$1) {
+      cvs $$2 = cvs.k;
+      List<cvs> $$3 = Lists.newArrayList();
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
+         cvs $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.a(cvt.ub)) {
-               if (!$$3.f()) {
+            if ($$5.a(axe.bD)) {
+               if (!$$2.f()) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$2 = $$5;
             } else {
-               if (!$$5.a(cvt.ua)) {
+               if (!($$5.h() instanceof cun)) {
                   return false;
                }
 
-               $$2++;
+               $$3.add($$5);
             }
          }
       }
 
-      return !$$3.f() && $$2 > 0;
+      return !$$2.f() && !$$3.isEmpty();
    }
 
-   public cvp a(czw $$0, jp.a $$1) {
-      int $$2 = 0;
-      cvp $$3 = cvp.k;
+   public cvs a(czz $$0, jq.a $$1) {
+      List<cun> $$2 = Lists.newArrayList();
+      cvs $$3 = cvs.k;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvp $$5 = $$0.a($$4);
+         cvs $$5 = $$0.a($$4);
          if (!$$5.f()) {
-            if ($$5.a(cvt.ub)) {
+            if ($$5.a(axe.bD)) {
                if (!$$3.f()) {
-                  return cvp.k;
+                  return cvs.k;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.u();
             } else {
-               if (!$$5.a(cvt.ua)) {
-                  return cvp.k;
+               if (!($$5.h() instanceof cun $$6)) {
+                  return cvs.k;
                }
 
-               $$2++;
+               $$2.add($$6);
             }
          }
       }
 
-      czb $$6 = $$3.a(kr.O);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         czb $$7 = $$6.b();
-         if ($$7 == null) {
-            return cvp.k;
-         } else {
-            cvp $$8 = $$3.c($$2);
-            $$8.b(kr.O, $$7);
-            return $$8;
-         }
-      } else {
-         return cvp.k;
-      }
-   }
-
-   public jw<cvp> a(czw $$0) {
-      jw<cvp> $$1 = jw.a($$0.a(), cvp.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cvp $$3 = $$0.a($$2);
-         if ($$3.h().u()) {
-            $$1.set($$2, new cvp($$3.h().t()));
-         } else if ($$3.h() instanceof cxl) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public dam<?> aq_() {
-      return dam.d;
+      return !$$3.f() && !$$2.isEmpty() ? cyk.a($$3, $$2) : cvs.k;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public dap<?> ar_() {
+      return dap.c;
    }
 }

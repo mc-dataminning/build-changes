@@ -1,20 +1,29 @@
-public record agv(int b) implements zk<agq> {
-   public static final zb<wa, agv> a = zk.a(agv::a, agv::new);
+public class agv implements zl<agr> {
+   public static final zc<wb, agv> a = zl.a(agv::a, agv::new);
+   private final brp b;
 
-   private agv(wa $$0) {
-      this($$0.l());
+   public agv(brp $$0) {
+      this.b = $$0;
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
+   private agv(wb $$0) {
+      this.b = brp.a($$0.readUnsignedByte());
+   }
+
+   private void a(wb $$0) {
+      $$0.l(this.b.a());
    }
 
    @Override
-   public zm<agv> a() {
-      return ago.bk;
+   public zn<agv> a() {
+      return agp.bj;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
+   }
+
+   public brp b() {
+      return this.b;
    }
 }

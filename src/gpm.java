@@ -1,37 +1,25 @@
-public class gpm extends gop<clj, gvh, fzi> {
-   private static final alc a = alc.b("textures/entity/slime/slime.png");
+public class gpm extends gmj<cgz, gvi, fze> {
+   private static final ale a = ale.b("textures/entity/sheep/sheep.png");
 
-   public gpm(gnj.a $$0) {
-      super($$0, new fzi($$0.a(gak.cs)), 0.25F);
-      this.a(new gsa(this, $$0.f()));
+   public gpm(gno.a $$0) {
+      super($$0, new fze($$0.a(gap.cd)), new fze($$0.a(gap.ce)), 0.7F);
+      this.a(new gsd(this, $$0.f()));
    }
 
-   public void a(gvh $$0, fde $$1, ghg $$2, int $$3) {
-      this.f = 0.25F * (float)$$0.b;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(gvh $$0, fde $$1) {
-      float $$2 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$3 = (float)$$0.b;
-      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
-   }
-
-   public alc a(gvh $$0) {
+   public ale a(gvi $$0) {
       return a;
    }
 
-   public gvh c() {
-      return new gvh();
+   public gvi c() {
+      return new gvi();
    }
 
-   public void a(clj $$0, gvh $$1, float $$2) {
+   public void a(cgz $$0, gvi $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azd.h($$2, $$0.bY, $$0.bX);
-      $$1.b = $$0.gq();
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.y();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ap();
    }
 }

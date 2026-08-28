@@ -1,64 +1,68 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cap extends can {
+   private static final float l = 10.0F;
+   private static final float m = 60.0F;
+   private final int n;
+   private final int o;
+   private final float p;
+   private final float q;
+   private final boolean r;
 
-public class cap extends cbh {
-   private final chd a;
-   @Nullable
-   private cnu b;
-   private final deg c;
-   private final float d;
-   private int e;
-   private final cfa f;
-
-   public cap(chd $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dS();
-      this.d = $$1;
-      this.f = cfa.b().a((double)$$1);
-      this.a(EnumSet.of(cbh.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean c() {
-      if (!this.b.bI()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.dV().a(40));
-   }
-
-   @Override
-   public void e() {
-      this.a.A(false);
-      this.b = null;
+   public cap(bup $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
+      super($$0);
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+      this.r = $$5;
    }
 
    @Override
    public void a() {
-      this.a.K().a(this.b.dx(), this.b.dB(), this.b.dD(), 10.0F, (float)this.a.ae());
-      this.e--;
-   }
-
-   private boolean a(cnu $$0) {
-      for (bro $$1 : bro.values()) {
-         cvp $$2 = $$0.b($$1);
-         if ($$2.a(cvt.rA) || this.a.n($$2)) {
-            return true;
-         }
+      if (this.r && this.d.bi()) {
+         this.d.h(this.d.dv().b(0.0, 0.005, 0.0));
       }
 
-      return false;
+      if (this.k == can.a.b && !this.d.P().m()) {
+         double $$0 = this.e - this.d.dx();
+         double $$1 = this.f - this.d.dz();
+         double $$2 = this.g - this.d.dD();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.G(0.0F);
+         } else {
+            float $$4 = (float)(azf.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+            this.d.v(this.a(this.d.dI(), $$4, (float)this.o));
+            this.d.aT = this.d.dI();
+            this.d.aV = this.d.dI();
+            float $$5 = (float)(this.h * this.d.h(bvu.v));
+            if (this.d.bi()) {
+               this.d.C($$5 * this.p);
+               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
+                  float $$7 = -((float)(azf.d($$1, $$6) * 180.0F / (float)Math.PI));
+                  $$7 = azf.a(azf.h($$7), (float)(-this.n), (float)this.n);
+                  this.d.w(this.a(this.d.dK(), $$7, 5.0F));
+               }
+
+               float $$8 = azf.b(this.d.dK() * (float) (Math.PI / 180.0));
+               float $$9 = azf.a(this.d.dK() * (float) (Math.PI / 180.0));
+               this.d.bm = $$8 * $$5;
+               this.d.bl = -$$9 * $$5;
+            } else {
+               float $$10 = Math.abs(azf.h(this.d.dI() - $$4));
+               float $$11 = a($$10);
+               this.d.C($$5 * this.q * $$11);
+            }
+         }
+      } else {
+         this.d.C(0.0F);
+         this.d.I(0.0F);
+         this.d.H(0.0F);
+         this.d.G(0.0F);
+      }
+   }
+
+   private static float a(float $$0) {
+      return 1.0F - azf.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
    }
 }

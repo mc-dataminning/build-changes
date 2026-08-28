@@ -1,255 +1,304 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class dhf extends dgv {
-   public static final MapCodec<dhf> a = b(dhf::new);
-   public static final dvi b = dlf.aF;
-   public static final dvm<dvc> c = dve.V;
-   public static final dvf d = dve.w;
-   private static final ezm f = dhj.a(0.0, 0.0, 4.0, 16.0, 16.0, 12.0);
-   private static final ezm g = dhj.a(4.0, 0.0, 0.0, 12.0, 16.0, 16.0);
-   private static final ezm h = dhj.a(5.0, 6.0, 5.0, 11.0, 13.0, 11.0);
-   private static final ezm i = dhj.a(4.0, 4.0, 4.0, 12.0, 6.0, 12.0);
-   private static final ezm j = ezj.a(i, h);
-   private static final ezm k = ezj.a(j, dhj.a(7.0, 13.0, 0.0, 9.0, 15.0, 16.0));
-   private static final ezm l = ezj.a(j, dhj.a(0.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final ezm m = ezj.a(j, dhj.a(0.0, 13.0, 7.0, 13.0, 15.0, 9.0));
-   private static final ezm n = ezj.a(j, dhj.a(3.0, 13.0, 7.0, 16.0, 15.0, 9.0));
-   private static final ezm o = ezj.a(j, dhj.a(7.0, 13.0, 0.0, 9.0, 15.0, 13.0));
-   private static final ezm G = ezj.a(j, dhj.a(7.0, 13.0, 3.0, 9.0, 15.0, 16.0));
-   private static final ezm H = ezj.a(j, dhj.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0));
-   public static final int e = 1;
+public class dhf extends dli implements dke {
+   public static final MapCodec<dhf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cum.q.fieldOf("color").forGetter(dhf::b), t()).apply($$0, dhf::new));
+   public static final dvq<dvf> b = dvi.bb;
+   public static final dvj c = dvi.t;
+   protected static final int d = 9;
+   protected static final ezq e = dhm.a(0.0, 3.0, 0.0, 16.0, 9.0, 16.0);
+   private static final int n = 3;
+   protected static final ezq f = dhm.a(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
+   protected static final ezq g = dhm.a(0.0, 0.0, 13.0, 3.0, 3.0, 16.0);
+   protected static final ezq h = dhm.a(13.0, 0.0, 0.0, 16.0, 3.0, 3.0);
+   protected static final ezq i = dhm.a(13.0, 0.0, 13.0, 16.0, 3.0, 16.0);
+   protected static final ezq j = ezn.a(e, f, h);
+   protected static final ezq k = ezn.a(e, g, i);
+   protected static final ezq l = ezn.a(e, f, g);
+   protected static final ezq m = ezn.a(e, h, i);
+   private final cum o;
 
    @Override
    public MapCodec<dhf> a() {
       return a;
    }
 
-   public dhf(dun.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jj.c).b(c, dvc.a).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(duo $$0, deg $$1, je $$2, dhj $$3, @Nullable erx $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(d)) {
-         if ($$6) {
-            this.a($$1, $$2, null);
-         }
-
-         $$1.a($$2, $$0.b(d, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   @Override
-   protected void a(deg $$0, duo $$1, eyo $$2, coo $$3) {
-      bto $$4 = $$3.s();
-      cnu $$5 = $$4 instanceof cnu ? (cnu)$$4 : null;
-      this.a($$0, $$1, $$2, $$5, true);
-   }
-
-   @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      return (brp)(this.a($$1, $$0, $$4, $$3, true) ? brp.a : brp.e);
-   }
-
-   public boolean a(deg $$0, duo $$1, eyo $$2, @Nullable cnu $$3, boolean $$4) {
-      jj $$5 = $$2.c();
-      je $$6 = $$2.b();
-      boolean $$7 = !$$4 || this.a($$1, $$5, $$2.g().e - (double)$$6.v());
-      if ($$7) {
-         boolean $$8 = this.a($$3, $$0, $$6, $$5);
-         if ($$8 && $$3 != null) {
-            $$3.a(awo.az);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(duo $$0, jj $$1, double $$2) {
-      if ($$1.o() != jj.a.b && !($$2 > 0.8124F)) {
-         jj $$3 = $$0.c(b);
-         dvc $$4 = $$0.c(c);
-         switch ($$4) {
-            case a:
-               return $$3.o() == $$1.o();
-            case c:
-            case d:
-               return $$3.o() != $$1.o();
-            case b:
-               return true;
-            default:
-               return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean a(deg $$0, je $$1, @Nullable jj $$2) {
-      return this.a(null, $$0, $$1, $$2);
-   }
-
-   public boolean a(@Nullable bto $$0, deg $$1, je $$2, @Nullable jj $$3) {
-      drs $$4 = $$1.c_($$2);
-      if (!$$1.B && $$4 instanceof drq) {
-         if ($$3 == null) {
-            $$3 = $$1.a_($$2).c(b);
-         }
-
-         ((drq)$$4).a($$3);
-         $$1.a(null, $$2, awe.bZ, awf.e, 2.0F, 1.0F);
-         $$1.a($$0, dzl.c, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private ezm o(duo $$0) {
-      jj $$1 = $$0.c(b);
-      dvc $$2 = $$0.c(c);
-      if ($$2 == dvc.a) {
-         return $$1 != jj.c && $$1 != jj.d ? g : f;
-      } else if ($$2 == dvc.b) {
-         return H;
-      } else if ($$2 == dvc.d) {
-         return $$1 != jj.c && $$1 != jj.d ? l : k;
-      } else if ($$1 == jj.c) {
-         return o;
-      } else if ($$1 == jj.d) {
-         return G;
-      } else {
-         return $$1 == jj.f ? n : m;
-      }
-   }
-
-   @Override
-   protected ezm b(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return this.o($$0);
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return this.o($$0);
-   }
-
-   @Override
-   protected dnq a_(duo $$0) {
-      return dnq.c;
+   public dhf(cum $$0, dur.d $$1) {
+      super($$1);
+      this.o = $$0;
+      this.l(this.F.b().b(b, dvf.b).b(c, Boolean.valueOf(false)));
    }
 
    @Nullable
-   @Override
-   public duo a(czk $$0) {
-      jj $$1 = $$0.k();
-      je $$2 = $$0.a();
-      deg $$3 = $$0.q();
-      jj.a $$4 = $$1.o();
-      if ($$4 == jj.a.b) {
-         duo $$5 = this.o().b(c, $$1 == jj.a ? dvc.b : dvc.a).b(b, $$0.g());
-         if ($$5.a((dej)$$0.q(), $$2)) {
-            return $$5;
-         }
-      } else {
-         boolean $$6 = $$4 == jj.a.a && $$3.a_($$2.h()).c($$3, $$2.h(), jj.f) && $$3.a_($$2.i()).c($$3, $$2.i(), jj.e)
-            || $$4 == jj.a.c && $$3.a_($$2.f()).c($$3, $$2.f(), jj.d) && $$3.a_($$2.g()).c($$3, $$2.g(), jj.c);
-         duo $$7 = this.o().b(b, $$1.g()).b(c, $$6 ? dvc.d : dvc.c);
-         if ($$7.a((dej)$$0.q(), $$0.a())) {
-            return $$7;
-         }
-
-         boolean $$8 = $$3.a_($$2.e()).c($$3, $$2.e(), jj.b);
-         $$7 = $$7.b(c, $$8 ? dvc.a : dvc.b);
-         if ($$7.a((dej)$$0.q(), $$0.a())) {
-            return $$7;
-         }
-      }
-
-      return null;
+   public static jk a(ddo $$0, jf $$1) {
+      dus $$2 = $$0.a_($$1);
+      return $$2.b() instanceof dhf ? $$2.c(aF) : null;
    }
 
    @Override
-   protected void a(duo $$0, arh $$1, je $$2, ddy $$3, BiConsumer<cvp, je> $$4) {
-      if ($$3.f()) {
-         this.a($$1, $$2, null);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      dvc $$6 = $$0.c(c);
-      jj $$7 = q($$0).g();
-      if ($$7 == $$1 && !$$0.a($$3, $$4) && $$6 != dvc.d) {
-         return dhl.a.o();
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if ($$1.B) {
+         return brs.b;
       } else {
-         if ($$1.o() == $$0.c(b).o()) {
-            if ($$6 == dvc.d && !$$2.c($$3, $$5, $$1)) {
-               return $$0.b(c, dvc.c).b(b, $$1.g());
-            }
-
-            if ($$6 == dvc.c && $$7.g() == $$1 && $$2.c($$3, $$5, $$0.c(b))) {
-               return $$0.b(c, dvc.d);
+         if ($$0.c(b) != dvf.a) {
+            $$2 = $$2.a($$0.c(aF));
+            $$0 = $$1.a_($$2);
+            if (!$$0.a(this)) {
+               return brs.c;
             }
          }
 
+         if (!a($$1)) {
+            $$1.a($$2, false);
+            jf $$5 = $$2.a($$0.c(aF).g());
+            if ($$1.a_($$5).a(this)) {
+               $$1.a($$5, false);
+            }
+
+            eyw $$6 = $$2.b();
+            $$1.a(null, $$1.ak().a($$6), null, $$6, 5.0F, true, dej.a.b);
+            return brs.b;
+         } else if ($$0.c(c)) {
+            if (!this.a($$1, $$2)) {
+               $$3.a(xe.c("block.minecraft.bed.occupied"), true);
+            }
+
+            return brs.b;
+         } else {
+            $$3.a($$2).ifLeft($$1x -> {
+               if ($$1x.a() != null) {
+                  $$3.a($$1x.a(), true);
+               }
+            });
+            return brs.b;
+         }
+      }
+   }
+
+   public static boolean a(dej $$0) {
+      return $$0.C_().l();
+   }
+
+   private boolean a(dej $$0, jf $$1) {
+      List<cnk> $$2 = $$0.a(cnk.class, new eyr($$1), bun::fN);
+      if ($$2.isEmpty()) {
+         return false;
+      } else {
+         $$2.get(0).fO();
+         return true;
+      }
+   }
+
+   @Override
+   public void a(dej $$0, dus $$1, jf $$2, btr $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4 * 0.5F);
+   }
+
+   @Override
+   public void a(ddo $$0, btr $$1) {
+      if ($$1.cc()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(btr $$0) {
+      eyw $$1 = $$0.dv();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bun ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * 0.66F * $$2, $$1.f);
+      }
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$1 == a($$0.c(b), $$0.c(aF))) {
+         return $$2.a(this) && $$2.c(b) != $$0.c(b) ? $$0.b(c, $$2.c(c)) : dho.a.n();
+      } else {
          return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      jj $$3 = q($$0).g();
-      return $$3 == jj.b ? dhj.a($$1, $$2.d(), jj.a) : dkd.b($$1, $$2, $$3);
+   private static jk a(dvf $$0, jk $$1) {
+      return $$0 == dvf.b ? $$1 : $$1.g();
    }
 
-   private static jj q(duo $$0) {
-      switch ((dvc)$$0.c(c)) {
-         case a:
-            return jj.b;
-         case b:
-            return jj.a;
+   @Override
+   public dus a(dej $$0, jf $$1, dus $$2, cnx $$3) {
+      if (!$$0.B && $$3.f()) {
+         dvf $$4 = $$2.c(b);
+         if ($$4 == dvf.b) {
+            jf $$5 = $$1.a(a($$4, $$2.c(aF)));
+            dus $$6 = $$0.a_($$5);
+            if ($$6.a(this) && $$6.c(b) == dvf.a) {
+               $$0.a($$5, dho.a.n(), 35);
+               $$0.a($$3, 2001, $$5, dhm.j($$6));
+            }
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dus a(czn $$0) {
+      jk $$1 = $$0.g();
+      jf $$2 = $$0.a();
+      jf $$3 = $$2.a($$1);
+      dej $$4 = $$0.q();
+      return $$4.a_($$3).a($$0) && $$4.B_().a($$3) ? this.n().b(aF, $$1) : null;
+   }
+
+   @Override
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      jk $$4 = h($$0).g();
+      switch ($$4) {
+         case c:
+            return j;
+         case d:
+            return k;
+         case e:
+            return l;
          default:
-            return $$0.c(b).g();
+            return m;
       }
    }
 
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b, c, d);
+   public static jk h(dus $$0) {
+      jk $$1 = $$0.c(aF);
+      return $$0.c(b) == dvf.a ? $$1.g() : $$1;
    }
 
-   @Nullable
-   @Override
-   public drs a(je $$0, duo $$1) {
-      return new drq($$0, $$1);
+   public static djt.a i(dus $$0) {
+      dvf $$1 = $$0.c(b);
+      return $$1 == dvf.a ? djt.a.b : djt.a.c;
    }
 
-   @Nullable
-   @Override
-   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
-      return a($$2, dru.E, $$0.B ? drq::a : drq::b);
+   private static boolean b(ddo $$0, jf $$1) {
+      return $$0.a_($$1.e()).b() instanceof dhf;
+   }
+
+   public static Optional<eyw> a(bty<?> $$0, dds $$1, jf $$2, jk $$3, float $$4) {
+      jk $$5 = $$3.h();
+      jk $$6 = $$5.a($$4) ? $$5.g() : $$5;
+      if (b($$1, $$2)) {
+         return a($$0, $$1, $$2, $$3, $$6);
+      } else {
+         int[][] $$7 = a($$3, $$6);
+         Optional<eyw> $$8 = a($$0, $$1, $$2, $$7, true);
+         return $$8.isPresent() ? $$8 : a($$0, $$1, $$2, $$7, false);
+      }
+   }
+
+   private static Optional<eyw> a(bty<?> $$0, dds $$1, jf $$2, jk $$3, jk $$4) {
+      int[][] $$5 = b($$3, $$4);
+      Optional<eyw> $$6 = a($$0, $$1, $$2, $$5, true);
+      if ($$6.isPresent()) {
+         return $$6;
+      } else {
+         jf $$7 = $$2.e();
+         Optional<eyw> $$8 = a($$0, $$1, $$7, $$5, true);
+         if ($$8.isPresent()) {
+            return $$8;
+         } else {
+            int[][] $$9 = a($$3);
+            Optional<eyw> $$10 = a($$0, $$1, $$2, $$9, true);
+            if ($$10.isPresent()) {
+               return $$10;
+            } else {
+               Optional<eyw> $$11 = a($$0, $$1, $$2, $$5, false);
+               if ($$11.isPresent()) {
+                  return $$11;
+               } else {
+                  Optional<eyw> $$12 = a($$0, $$1, $$7, $$5, false);
+                  return $$12.isPresent() ? $$12 : a($$0, $$1, $$2, $$9, false);
+               }
+            }
+         }
+      }
+   }
+
+   private static Optional<eyw> a(bty<?> $$0, dds $$1, jf $$2, int[][] $$3, boolean $$4) {
+      jf.a $$5 = new jf.a();
+
+      for (int[] $$6 : $$3) {
+         $$5.d($$2.u() + $$6[0], $$2.v(), $$2.w() + $$6[1]);
+         eyw $$7 = cqa.a($$0, $$1, $$5, $$4);
+         if ($$7 != null) {
+            return Optional.of($$7);
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   protected boolean a(duo $$0, ere $$1) {
+   protected dnt a_(dus $$0) {
+      return dnt.b;
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(aF, b, c);
+   }
+
+   @Override
+   public drv a(jf $$0, dus $$1) {
+      return new drr($$0, $$1, this.o);
+   }
+
+   @Override
+   public void a(dej $$0, jf $$1, dus $$2, @Nullable bun $$3, cvs $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$0.B) {
+         jf $$5 = $$1.a($$2.c(aF));
+         $$0.a($$5, $$2.b(b, dvf.a), 3);
+         $$0.b($$1, dho.a);
+         $$2.a($$0, $$1, 3);
+      }
+   }
+
+   public cum b() {
+      return this.o;
+   }
+
+   @Override
+   protected long a(dus $$0, jf $$1) {
+      jf $$2 = $$1.a($$0.c(aF), $$0.c(b) == dvf.a ? 0 : 1);
+      return azf.b($$2.u(), $$1.v(), $$2.w());
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
       return false;
    }
 
-   @Override
-   public duo a(duo $$0, dnx $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   private static int[][] a(jk $$0, jk $$1) {
+      return (int[][])ArrayUtils.addAll(b($$0, $$1), a($$0));
    }
 
-   @Override
-   public duo a(duo $$0, dmg $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   private static int[][] b(jk $$0, jk $$1) {
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$1.j() - $$0.j(), $$1.l() - $$0.l()},
+         {$$1.j() - $$0.j() * 2, $$1.l() - $$0.l() * 2},
+         {-$$0.j() * 2, -$$0.l() * 2},
+         {-$$1.j() - $$0.j() * 2, -$$1.l() - $$0.l() * 2},
+         {-$$1.j() - $$0.j(), -$$1.l() - $$0.l()},
+         {-$$1.j(), -$$1.l()},
+         {-$$1.j() + $$0.j(), -$$1.l() + $$0.l()},
+         {$$0.j(), $$0.l()},
+         {$$1.j() + $$0.j(), $$1.l() + $$0.l()}
+      };
+   }
+
+   private static int[][] a(jk $$0) {
+      return new int[][]{{0, 0}, {-$$0.j(), -$$0.l()}};
    }
 }

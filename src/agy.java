@@ -1,27 +1,26 @@
 import java.time.Instant;
-import javax.annotation.Nullable;
 
-public record agy(String b, Instant c, long d, @Nullable xp e, xk.b f) implements zk<agq> {
-   public static final zb<wa, agy> a = zk.a(agy::a, agy::new);
+public record agy(String b, Instant c, long d, fb e, xl.b f) implements zl<agr> {
+   public static final zc<wb, agy> a = zl.a(agy::a, agy::new);
 
-   private agy(wa $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xp::a), new xk.b($$0));
+   private agy(wb $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new fb($$0), new xl.b($$0));
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.b, 256);
+   private void a(wb $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
       $$0.b(this.d);
-      $$0.a(this.e, xp::a);
+      this.e.a($$0);
       this.f.a($$0);
    }
 
    @Override
-   public zm<agy> a() {
-      return ago.bn;
+   public zn<agy> a() {
+      return agp.bm;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
@@ -33,12 +32,11 @@ public record agy(String b, Instant c, long d, @Nullable xp e, xk.b f) implement
       return this.d;
    }
 
-   @Nullable
-   public xp g() {
+   public fb g() {
       return this.e;
    }
 
-   public xk.b h() {
+   public xl.b h() {
       return this.f;
    }
 }

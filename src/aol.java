@@ -1,29 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.ContextChain;
+import java.util.List;
 
 public class aol {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.save.failed"));
-
-   public static void a(CommandDispatcher<et> $$0) {
+   public static <T extends ew<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("save-all").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((et)$$0x.getSource(), false)))
-            .then(eu.a("flush").executes($$0x -> a((et)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
+                     .requires($$0x -> $$0x.c(2)))
+                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aol.c())))
+               .then(LiteralArgumentBuilder.literal("fail").executes(new aol.a())))
+            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aol.b(), false))
       );
    }
 
-   private static int a(et $$0, boolean $$1) throws CommandSyntaxException {
-      $$0.a(() -> xd.c("commands.save.saving"), false);
-      MinecraftServer $$2 = $$0.l();
-      boolean $$3 = $$2.b(true, $$1, true);
-      if (!$$3) {
-         throw a.create();
-      } else {
-         $$0.a(() -> xd.c("commands.save.success"), true);
-         return 1;
+   static class a<T extends ew<T>> implements hr.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hp $$2, hv<T> $$3) {
+         $$0.p().onFailure();
+         hw $$4 = $$3.b();
+         $$4.a();
+         $$4.b();
+      }
+   }
+
+   static class b<T extends ew<T>> implements hs.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hp $$3, hv<T> $$4) {
+         if ($$1.isEmpty()) {
+            if ($$3.c()) {
+               $$4.a(ie.a());
+            }
+         } else {
+            $$4.b().b();
+            ContextChain<T> $$5 = $$2.nextStage();
+            String $$6 = $$5.getTopContext().getInput();
+            $$4.a(new ia.a<>($$6, $$5, $$3.d(), $$0, $$1));
+         }
+      }
+   }
+
+   static class c<T extends ew<T>> implements hr.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hp $$2, hv<T> $$3) {
+         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
+         $$0.p().onSuccess($$4);
+         hw $$5 = $$3.b();
+         $$5.a($$4);
+         $$5.b();
       }
    }
 }

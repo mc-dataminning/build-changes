@@ -1,56 +1,72 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public abstract class dkw extends dhj {
-   protected final jj a;
-   protected final boolean b;
-   protected final ezm d;
+public class dkw extends dmm implements dhp, doo {
+   public static final MapCodec<dkw> a = b(dkw::new);
+   private static final dvj c = dvi.C;
+   private final dmn d = new dmn(this);
 
-   protected dkw(dun.d $$0, jj $$1, ezm $$2, boolean $$3) {
+   @Override
+   public MapCodec<dkw> a() {
+      return a;
+   }
+
+   public dkw(dur.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+      this.l(this.n().b(c, Boolean.valueOf(false)));
+   }
+
+   public static ToIntFunction<dus> b(int $$0) {
+      return $$1 -> dmm.q($$1) ? $$0 : 0;
    }
 
    @Override
-   protected abstract MapCodec<? extends dkw> a();
-
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      duo $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
-   }
-
-   public duo a(deh $$0) {
-      return this.o();
+   protected void a(dut.a<dhm, dus> $$0) {
+      super.a($$0);
+      $$0.a(c);
    }
 
    @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      je $$3 = $$2.a(this.a.g());
-      duo $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, equ.c, equ.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean o(duo $$0) {
+   @Override
+   protected boolean a(dus $$0, czn $$1) {
+      return !$$1.n().a(cvw.fW) || super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      return jk.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
       return true;
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return this.d;
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      this.d.a($$3, $$0, $$2, $$1);
    }
 
-   protected abstract dky c();
+   @Override
+   protected eqt b_(dus $$0) {
+      return $$0.c(c) ? equ.c.a(false) : super.b_($$0);
+   }
 
-   protected abstract dhj b();
+   @Override
+   protected boolean e_(dus $$0) {
+      return $$0.y().c();
+   }
+
+   @Override
+   public dmn c() {
+      return this.d;
+   }
 }

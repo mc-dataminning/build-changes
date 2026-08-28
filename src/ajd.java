@@ -1,29 +1,29 @@
-public class ajd implements zk<aiy> {
-   public static final zb<wa, ajd> a = zk.a(ajd::a, ajd::new);
-   private final xd b;
+public class ajd implements zl<aiz> {
+   public static final zc<wb, ajd> a = zl.a(ajd::a, ajd::new);
+   private final int b;
 
-   public ajd(xd $$0) {
+   public ajd(int $$0) {
       this.b = $$0;
    }
 
-   private ajd(wa $$0) {
-      this.b = xd.a.b($$0.d(262144), kb.b);
+   private ajd(wb $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(wa $$0) {
-      $$0.a(xd.a.a(this.b, kb.b));
+   private void a(wb $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zm<ajd> a() {
-      return aje.e;
+   public zn<ajd> a() {
+      return ajf.d;
    }
 
-   public void a(aiy $$0) {
+   public void a(aiz $$0) {
       $$0.a(this);
    }
 
-   public xd b() {
+   public int b() {
       return this.b;
    }
 }

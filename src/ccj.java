@@ -1,125 +1,94 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class ccj extends cbu {
-   private final dhj g;
-   private final bum h;
-   private int i;
-   private static final int j = 20;
+public class ccj extends cbk {
+   private final bup a;
+   private final clh b;
+   @Nullable
+   private bun c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public ccj(dhj $$0, bus $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public ccj(clh $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public ccj(clh $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bun)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bup)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(cbk.a.a, cbk.a.b));
+      }
    }
 
    @Override
    public boolean b() {
-      if (!this.h.dS().ac().b(dec.c)) {
-         return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
+      bun $$0 = this.a.m();
+      if ($$0 != null && $$0.bI()) {
+         this.c = $$0;
          return true;
       } else {
-         this.c = this.a(this.a);
          return false;
       }
+   }
+
+   @Override
+   public boolean c() {
+      return this.b() || this.c.bI() && !this.a.P().m();
    }
 
    @Override
    public void e() {
-      super.e();
-      this.h.aa = 1.0F;
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.i = 0;
-   }
-
-   public void a(deh $$0, je $$1) {
-   }
-
-   public void a(deg $$0, je $$1) {
+   public boolean U_() {
+      return true;
    }
 
    @Override
    public void a() {
-      super.a();
-      deg $$0 = this.h.dS();
-      je $$1 = this.h.ds();
-      je $$2 = this.a($$1, $$0);
-      azl $$3 = this.h.dV();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            eys $$4 = this.h.dv();
-            this.h.n($$4.d, 0.3, $$4.f);
-            if (!$$0.B) {
-               double $$5 = 0.08;
-               ((arh)$$0)
-                  .a(
-                     new lj(ln.S, new cvp(cvt.qS)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
-            }
-         }
-
-         if (this.i % 2 == 0) {
-            eys $$6 = this.h.dv();
-            this.h.n($$6.d, -0.3, $$6.f);
-            if (this.i % 6 == 0) {
-               this.a((deh)$$0, this.e);
-            }
-         }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.B) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((arh)$$0).a(ln.ab, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
-      }
-   }
-
-   @Nullable
-   private je a(je $$0, ddl $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
+      double $$0 = this.a.i(this.c.dx(), this.c.dz(), this.c.dD());
+      boolean $$1 = this.a.Q().a(this.c);
+      if ($$1) {
+         this.f++;
       } else {
-         je[] $$2 = new je[]{$$0.e(), $$0.h(), $$0.i(), $$0.f(), $$0.g(), $$0.e().e()};
+         this.f = 0;
+      }
 
-         for (je $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.P().o();
+      } else {
+         this.a.P().a(this.c, this.e);
+      }
+
+      this.a.K().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
+            return;
          }
 
-         return null;
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = azf.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = azf.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = azf.a(azf.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
-   }
-
-   @Override
-   protected boolean a(dej $$0, je $$1) {
-      dwk $$2 = $$0.a(kg.a($$1.u()), kg.a($$1.w()), dxl.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.d()).l() && $$2.a_($$1.b(2)).l();
    }
 }

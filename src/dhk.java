@@ -1,250 +1,114 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class dhk {
-   public static final MapCodec<dhj> a = lu.ae.q().dispatchMap(dhj::a, Function.identity());
+public class dhk extends dli implements dhp, doo {
+   public static final MapCodec<dhk> a = b(dhk::new);
+   private static final dvj f = dvi.C;
+   private static final int g = 6;
+   protected static final ezq b = dhm.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final ezq c = dhm.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final ezq d = dhm.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final ezq e = dhm.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
-   public static MapCodec<? extends dhj> a(ka<MapCodec<? extends dhj>> $$0) {
-      ka.a($$0, "block", dhj.p);
-      ka.a($$0, "air", dgg.a);
-      ka.a($$0, "amethyst", dgh.a);
-      ka.a($$0, "amethyst_cluster", dgi.b);
-      ka.a($$0, "anvil", dgj.a);
-      ka.a($$0, "attached_stem", dgk.a);
-      ka.a($$0, "azalea", dgl.a);
-      ka.a($$0, "bamboo_sapling", dgm.a);
-      ka.a($$0, "bamboo_stalk", dgn.a);
-      ka.a($$0, "banner", dgo.a);
-      ka.a($$0, "barrel", dgp.a);
-      ka.a($$0, "barrier", dgq.a);
-      ka.a($$0, "base_coral_fan", dgr.a);
-      ka.a($$0, "base_coral_plant", dgs.a);
-      ka.a($$0, "base_coral_wall_fan", dgu.b);
-      ka.a($$0, "beacon", dhb.a);
-      ka.a($$0, "bed", dhc.a);
-      ka.a($$0, "beehive", dhd.a);
-      ka.a($$0, "beetroot", dhe.a);
-      ka.a($$0, "bell", dhf.a);
-      ka.a($$0, "big_dripleaf", dhg.a);
-      ka.a($$0, "big_dripleaf_stem", dhh.a);
-      ka.a($$0, "blast_furnace", dhi.c);
-      ka.a($$0, "brewing_stand", dhn.a);
-      ka.a($$0, "brushable", dho.a);
-      ka.a($$0, "bubble_column", dhp.a);
-      ka.a($$0, "budding_amethyst", dhr.b);
-      ka.a($$0, "button", dht.a);
-      ka.a($$0, "cactus", dhu.a);
-      ka.a($$0, "cake", dhv.a);
-      ka.a($$0, "calibrated_sculk_sensor", dhw.a);
-      ka.a($$0, "campfire", dhx.a);
-      ka.a($$0, "candle_cake", dhz.c);
-      ka.a($$0, "candle", dhy.c);
-      ka.a($$0, "carpet", dia.a);
-      ka.a($$0, "carrot", dib.a);
-      ka.a($$0, "cartography_table", dic.a);
-      ka.a($$0, "carved_pumpkin", dkc.c);
-      ka.a($$0, "cauldron", die.d);
-      ka.a($$0, "cave_vines", dig.c);
-      ka.a($$0, "cave_vines_plant", dih.c);
-      ka.a($$0, "ceiling_hanging_sign", dii.a);
-      ka.a($$0, "chain", dij.a);
-      ka.a($$0, "cherry_leaves", dil.a);
-      ka.a($$0, "chest", dim.b);
-      ka.a($$0, "chiseled_book_shelf", din.a);
-      ka.a($$0, "chorus_flower", dio.a);
-      ka.a($$0, "chorus_plant", dip.a);
-      ka.a($$0, "cocoa", diq.a);
-      ka.a($$0, "colored_falling", dir.a);
-      ka.a($$0, "command", dis.a);
-      ka.a($$0, "comparator", dit.a);
-      ka.a($$0, "composter", diu.a);
-      ka.a($$0, "concrete_powder", div.a);
-      ka.a($$0, "conduit", diw.a);
-      ka.a($$0, "copper_bulb_block", dix.a);
-      ka.a($$0, "coral", diy.b);
-      ka.a($$0, "coral_fan", diz.b);
-      ka.a($$0, "coral_plant", dja.a);
-      ka.a($$0, "coral_wall_fan", djb.e);
-      ka.a($$0, "crafter", djc.a);
-      ka.a($$0, "crafting_table", djd.a);
-      ka.a($$0, "crop", dje.d);
-      ka.a($$0, "crying_obsidian", djg.a);
-      ka.a($$0, "daylight_detector", djh.a);
-      ka.a($$0, "dead_bush", dji.a);
-      ka.a($$0, "decorated_pot", djj.a);
-      ka.a($$0, "detector_rail", djk.d);
-      ka.a($$0, "dirt_path", djn.a);
-      ka.a($$0, "dispenser", djo.a);
-      ka.a($$0, "door", djp.a);
-      ka.a($$0, "double_plant", djr.a);
-      ka.a($$0, "dragon_egg", djs.a);
-      ka.a($$0, "drop_experience", djt.a);
-      ka.a($$0, "dropper", dju.e);
-      ka.a($$0, "enchantment_table", djv.a);
-      ka.a($$0, "ender_chest", dka.b);
-      ka.a($$0, "end_gateway", djw.a);
-      ka.a($$0, "end_portal", djx.a);
-      ka.a($$0, "end_portal_frame", djy.a);
-      ka.a($$0, "end_rod", djz.b);
-      ka.a($$0, "farm", dkg.a);
-      ka.a($$0, "fence", dkh.i);
-      ka.a($$0, "fence_gate", dki.a);
-      ka.a($$0, "fire", dkj.c);
-      ka.a($$0, "fletching_table", dkk.b);
-      ka.a($$0, "flower", dkl.b);
-      ka.a($$0, "flower_pot", dkm.a);
-      ka.a($$0, "frogspawn", dkn.a);
-      ka.a($$0, "frosted_ice", dko.a);
-      ka.a($$0, "fungus", dkp.a);
-      ka.a($$0, "furnace", dkq.c);
-      ka.a($$0, "glazed_terracotta", dks.a);
-      ka.a($$0, "glow_lichen", dkt.a);
-      ka.a($$0, "grass", dku.a);
-      ka.a($$0, "grindstone", dkv.a);
-      ka.a($$0, "half_transparent", dkz.d);
-      ka.a($$0, "hanging_roots", dla.a);
-      ka.a($$0, "hay", dlb.a);
-      ka.a($$0, "heavy_core", dlc.a);
-      ka.a($$0, "honey", dld.a);
-      ka.a($$0, "hopper", dle.a);
-      ka.a($$0, "huge_mushroom", dlg.a);
-      ka.a($$0, "ice", dlh.e);
-      ka.a($$0, "infested", dli.a);
-      ka.a($$0, "infested_rotated_pillar", dlj.b);
-      ka.a($$0, "iron_bars", dlk.i);
-      ka.a($$0, "jack_o_lantern", did.a);
-      ka.a($$0, "jigsaw", dll.a);
-      ka.a($$0, "jukebox", dlm.a);
-      ka.a($$0, "kelp", dln.c);
-      ka.a($$0, "kelp_plant", dlo.c);
-      ka.a($$0, "ladder", dlp.a);
-      ka.a($$0, "lantern", dlq.a);
-      ka.a($$0, "lava_cauldron", dlr.d);
-      ka.a($$0, "layered_cauldron", dls.d);
-      ka.a($$0, "leaves", dlt.b);
-      ka.a($$0, "lectern", dlu.a);
-      ka.a($$0, "lever", dlw.a);
-      ka.a($$0, "light", dlx.a);
-      ka.a($$0, "lightning_rod", dly.b);
-      ka.a($$0, "liquid", dlz.a);
-      ka.a($$0, "loom", dmb.a);
-      ka.a($$0, "magma", dmc.a);
-      ka.a($$0, "mangrove_leaves", dmd.a);
-      ka.a($$0, "mangrove_propagule", dme.a);
-      ka.a($$0, "mangrove_roots", dmf.a);
-      ka.a($$0, "moss", dmh.a);
-      ka.a($$0, "moving_piston", dug.a);
-      ka.a($$0, "mud", dmi.a);
-      ka.a($$0, "mushroom", dml.a);
-      ka.a($$0, "mycelium", dmm.a);
-      ka.a($$0, "nether_portal", dmn.a);
-      ka.a($$0, "netherrack", dmr.a);
-      ka.a($$0, "nether_sprouts", dmo.a);
-      ka.a($$0, "nether_wart", dmq.a);
-      ka.a($$0, "note", dms.a);
-      ka.a($$0, "nylium", dmt.a);
-      ka.a($$0, "observer", dmu.b);
-      ka.a($$0, "piglinwallskull", dmv.b);
-      ka.a($$0, "pink_petals", dmw.a);
-      ka.a($$0, "piston_base", duh.b);
-      ka.a($$0, "piston_head", dui.b);
-      ka.a($$0, "pitcher_crop", dmy.c);
-      ka.a($$0, "player_head", dmz.b);
-      ka.a($$0, "player_wall_head", dna.b);
-      ka.a($$0, "pointed_dripstone", dnb.a);
-      ka.a($$0, "potato", dnd.a);
-      ka.a($$0, "powder_snow", dne.a);
-      ka.a($$0, "powered", dnf.a);
-      ka.a($$0, "powered_rail", dng.d);
-      ka.a($$0, "pressure_plate", dnh.e);
-      ka.a($$0, "pumpkin", dni.a);
-      ka.a($$0, "rail", dnj.d);
-      ka.a($$0, "redstone_lamp", dnn.a);
-      ka.a($$0, "redstone_ore", dnl.a);
-      ka.a($$0, "redstone_torch", dno.c);
-      ka.a($$0, "redstone_wall_torch", dnp.h);
-      ka.a($$0, "redstone_wire", dnm.a);
-      ka.a($$0, "repeater", dnr.a);
-      ka.a($$0, "respawn_anchor", dns.a);
-      ka.a($$0, "rooted_dirt", dnu.a);
-      ka.a($$0, "roots", dnv.a);
-      ka.a($$0, "rotated_pillar", dnw.h);
-      ka.a($$0, "sapling", dny.e);
-      ka.a($$0, "scaffolding", dnz.a);
-      ka.a($$0, "sculk_catalyst", doc.a);
-      ka.a($$0, "sculk", dob.b);
-      ka.a($$0, "sculk_sensor", dod.c);
-      ka.a($$0, "sculk_shrieker", doe.a);
-      ka.a($$0, "sculk_vein", dog.c);
-      ka.a($$0, "seagrass", doi.a);
-      ka.a($$0, "sea_pickle", doh.a);
-      ka.a($$0, "shulker_box", doj.a);
-      ka.a($$0, "skull", dom.c);
-      ka.a($$0, "slab", don.a);
-      ka.a($$0, "slime", doo.a);
-      ka.a($$0, "small_dripleaf", dop.c);
-      ka.a($$0, "smithing_table", doq.b);
-      ka.a($$0, "smoker", dor.c);
-      ka.a($$0, "sniffer_egg", dos.a);
-      ka.a($$0, "snow_layer", dot.a);
-      ka.a($$0, "snowy_dirt", dou.b);
-      ka.a($$0, "soul_fire", dov.c);
-      ka.a($$0, "soul_sand", dow.a);
-      ka.a($$0, "spawner", doy.a);
-      ka.a($$0, "sponge", doz.a);
-      ka.a($$0, "spore_blossom", dpa.a);
-      ka.a($$0, "stained_glass_pane", dpd.j);
-      ka.a($$0, "stained_glass", dpc.a);
-      ka.a($$0, "stair", dpe.a);
-      ka.a($$0, "standing_sign", dpf.a);
-      ka.a($$0, "stem", dpg.a);
-      ka.a($$0, "stonecutter", dph.a);
-      ka.a($$0, "structure", dpi.a);
-      ka.a($$0, "structure_void", dpj.a);
-      ka.a($$0, "sugar_cane", dpk.a);
-      ka.a($$0, "sweet_berry_bush", dpn.a);
-      ka.a($$0, "tall_flower", dpo.c);
-      ka.a($$0, "tall_grass", dpp.a);
-      ka.a($$0, "tall_seagrass", dpq.c);
-      ka.a($$0, "target", dpr.a);
-      ka.a($$0, "tinted_glass", dps.a);
-      ka.a($$0, "tnt", dpt.a);
-      ka.a($$0, "torchflower_crop", dpv.a);
-      ka.a($$0, "torch", dpu.d);
-      ka.a($$0, "transparent", dpw.b);
-      ka.a($$0, "trapdoor", dpx.a);
-      ka.a($$0, "trapped_chest", dpy.n);
-      ka.a($$0, "trial_spawner", dpz.a);
-      ka.a($$0, "trip_wire_hook", dqb.a);
-      ka.a($$0, "tripwire", dqa.a);
-      ka.a($$0, "turtle_egg", dqc.a);
-      ka.a($$0, "twisting_vines_plant", dqe.c);
-      ka.a($$0, "twisting_vines", dqd.c);
-      ka.a($$0, "vault", dqf.a);
-      ka.a($$0, "vine", dqg.a);
-      ka.a($$0, "wall_banner", dqh.a);
-      ka.a($$0, "wall_hanging_sign", dqj.a);
-      ka.a($$0, "wall_sign", dqk.a);
-      ka.a($$0, "wall_skull", dql.c);
-      ka.a($$0, "wall_torch", dqm.f);
-      ka.a($$0, "wall", dqi.a);
-      ka.a($$0, "waterlily", dqn.a);
-      ka.a($$0, "waterlogged_transparent", dqo.a);
-      ka.a($$0, "weathering_copper_bulb", dqq.d);
-      ka.a($$0, "weathering_copper_door", dqr.l);
-      ka.a($$0, "weathering_copper_full", dqs.d);
-      ka.a($$0, "weathering_copper_grate", dqt.e);
-      ka.a($$0, "weathering_copper_slab", dqu.f);
-      ka.a($$0, "weathering_copper_stair", dqv.J);
-      ka.a($$0, "weathering_copper_trap_door", dqw.m);
-      ka.a($$0, "web", dqx.a);
-      ka.a($$0, "weeping_vines_plant", dqz.c);
-      ka.a($$0, "weeping_vines", dqy.c);
-      ka.a($$0, "weighted_pressure_plate", dra.e);
-      ka.a($$0, "wet_sponge", drb.a);
-      ka.a($$0, "wither_rose", drc.e);
-      ka.a($$0, "wither_skull", drd.b);
-      ka.a($$0, "wither_wall_skull", dre.b);
-      return ka.a($$0, "wool_carpet", drf.c);
+   @Override
+   public MapCodec<dhk> a() {
+      return a;
+   }
+
+   protected dhk(dur.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)).b(aF, jk.c));
+   }
+
+   @Override
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      switch ((jk)$$0.c(aF)) {
+         case d:
+            return c;
+         case c:
+         default:
+            return b;
+         case e:
+            return e;
+         case f:
+            return d;
+      }
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(f, aF);
+   }
+
+   @Override
+   protected eqt b_(dus $$0) {
+      return $$0.c(f) ? equ.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      jf $$3 = $$2.e();
+      dus $$4 = $$1.a_($$3);
+      dus $$5 = $$1.a_($$2.d());
+      return ($$4.a(this) || $$4.a(awv.bz)) && ($$5.a(this) || $$5.a(dho.sD));
+   }
+
+   protected static boolean a(dek $$0, jf $$1, eqt $$2, jk $$3) {
+      dus $$4 = dho.sE.n().b(f, Boolean.valueOf($$2.a(equ.c))).b(aF, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if (($$1 == jk.a || $$1 == jk.b) && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$0.c(f)) {
+         $$3.a($$4, equ.c, equ.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public boolean b(dem $$0, jf $$1, dus $$2) {
+      Optional<jf> $$3 = l.a($$0, $$1, $$2.b(), jk.b, dho.sD);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         jf $$4 = $$3.get().d();
+         dus $$5 = $$0.a_($$4);
+         return dhj.a($$0, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(dej $$0, azn $$1, jf $$2, dus $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arj $$0, azn $$1, jf $$2, dus $$3) {
+      Optional<jf> $$4 = l.a($$0, $$2, $$3.b(), jk.b, dho.sD);
+      if (!$$4.isEmpty()) {
+         jf $$5 = $$4.get();
+         jf $$6 = $$5.d();
+         jk $$7 = $$3.c(aF);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         dhj.a($$0, $$6, $$0.b_($$6), $$7);
+      }
+   }
+
+   @Override
+   public cvs a(dem $$0, jf $$1, dus $$2) {
+      return new cvs(dho.sD);
    }
 }

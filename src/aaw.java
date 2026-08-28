@@ -1,31 +1,26 @@
-public record aaw(int c, erd d, float e) implements aan {
-   public static final zb<wa, aaw> a = aan.a(aaw::a, aaw::new);
-   public static final aan.b<aaw> b = aan.a("debug/path");
+public record aaw(long c, jf d) implements aao {
+   public static final zc<wb, aaw> a = aao.a(aaw::a, aaw::new);
+   public static final aao.b<aaw> b = aao.a("debug/neighbors_update");
 
-   private aaw(wa $$0) {
-      this($$0.readInt(), erd.b($$0), $$0.readFloat());
+   private aaw(wb $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(wa $$0) {
-      $$0.q(this.c);
-      this.d.a($$0);
-      $$0.a(this.e);
+   private void a(wb $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public aan.b<aaw> a() {
+   public aao.b<aaw> a() {
       return b;
    }
 
-   public int b() {
+   public long b() {
       return this.c;
    }
 
-   public erd c() {
+   public jf c() {
       return this.d;
-   }
-
-   public float d() {
-      return this.e;
    }
 }

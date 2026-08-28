@@ -1,21 +1,18 @@
-public enum dva implements azz {
-   a("none"),
-   b("small"),
-   c("large");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String d;
+public class dva implements Predicate<dus> {
+   private final dhm a;
 
-   private dva(final String $$0) {
-      this.d = $$0;
+   public dva(dhm $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.d;
+   public static dva a(dhm $$0) {
+      return new dva($$0);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public boolean a(@Nullable dus $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

@@ -1,12 +1,68 @@
+import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.Products.P9;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.Optional;
 
-public interface ema<SP extends elz> {
-   ema<elx> a = a("random_spread", elx.a);
-   ema<elw> b = a("concentric_rings", elw.a);
+public class ema extends emd {
+   public static final MapCodec<ema> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ema::new));
+   private final int c;
+   private final int d;
+   private final int e;
+   private final js<dfk> f;
 
-   MapCodec<SP> codec();
+   private static P9<Mu<ema>, kj, emd.c, Float, Integer, Optional<emd.a>, Integer, Integer, Integer, js<dfk>> b(Instance<ema> $$0) {
+      P5<Mu<ema>, kj, emd.c, Float, Integer, Optional<emd.a>> $$1 = a($$0);
+      P4<Mu<ema>, Integer, Integer, Integer, js<dfk>> $$2 = $$0.group(
+         Codec.intRange(0, 1023).fieldOf("distance").forGetter(ema::a),
+         Codec.intRange(0, 1023).fieldOf("spread").forGetter(ema::b),
+         Codec.intRange(1, 4095).fieldOf("count").forGetter(ema::c),
+         kd.a(lw.aH).fieldOf("preferred_biomes").forGetter(ema::d)
+      );
+      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   }
 
-   private static <SP extends elz> ema<SP> a(String $$0, MapCodec<SP> $$1) {
-      return ka.a(lu.P, $$0, () -> $$1);
+   public ema(kj $$0, emd.c $$1, float $$2, int $$3, Optional<emd.a> $$4, int $$5, int $$6, int $$7, js<dfk> $$8) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+      this.f = $$8;
+   }
+
+   public ema(int $$0, int $$1, int $$2, js<dfk> $$3) {
+      this(kj.g, emd.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public int c() {
+      return this.e;
+   }
+
+   public js<dfk> d() {
+      return this.f;
+   }
+
+   @Override
+   protected boolean a(dwq $$0, int $$1, int $$2) {
+      List<ddp> $$3 = $$0.a(this);
+      return $$3 == null ? false : $$3.contains(new ddp($$1, $$2));
+   }
+
+   @Override
+   public eme<?> e() {
+      return eme.b;
    }
 }

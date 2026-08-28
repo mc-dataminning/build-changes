@@ -1,48 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class byg {
-   public static bwd<bus> a(cdn<je> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, eys::c);
-   }
+   private static final int a = 300;
 
-   public static bxn<bus> b(cdn<? extends bto> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bto::dq);
-   }
-
-   private static <T> bxn<bus> a(cdn<T> $$0, float $$1, int $$2, boolean $$3, Function<T, eys> $$4) {
-      return bzp.a(
-         (Function<bzp.b<bus>, ? extends App<bzp.c<bus>, bzs<bus>>>)($$5 -> $$5.group($$5.a(cdn.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cdq> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     eys $$11 = $$8.dq();
-                     eys $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jx)$$12, (double)$$2)) {
-                        return false;
-                     } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           eys $$13 = $$10.get().a().a().d($$11);
-                           eys $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           eys $$16 = cfh.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cdq($$16, $$1, 0));
-                              break;
-                           }
+   public static bwg<bun> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bzs.a(
+         (Function<bzs.b<bun>, ? extends App<bzs.c<bun>, bzv<bun>>>)($$3x -> $$3x.group($$3x.b(cdq.C), $$3x.b(cdq.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        jf $$11 = $$3x.<jn>b($$4).b();
+                        if ($$11.a($$7.ds(), (double)$$1)) {
+                           $$3.increment();
                         }
 
                         return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dY().a($$6.ab(), $$6.aa());
+                        $$3.setValue(0);
+                        return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

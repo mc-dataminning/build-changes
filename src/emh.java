@@ -1,30 +1,42 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Collections;
+import java.util.List;
 
-public class emh extends emj {
-   public static final MapCodec<emh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, emh::new));
+public class emh extends emo {
+   public static final MapCodec<emh> a = MapCodec.unit(() -> emh.b);
+   public static final emh b = new emh();
 
-   protected emh(Either<alc, epe> $$0, jn<epc> $$1, emm.a $$2, Optional<eoo> $$3) {
-      super($$0, $$1, $$2, $$3);
+   private emh() {
+      super(emq.a.a);
    }
 
    @Override
-   protected epa a(dnx $$0, eku $$1, eoo $$2, boolean $$3) {
-      epa $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(eof.b);
-      $$4.a(eof.d);
-      return $$4;
+   public kj a(epj $$0, doa $$1) {
+      return kj.g;
    }
 
    @Override
-   public eml<?> a() {
-      return eml.e;
+   public List<epi.c> a(epj $$0, jf $$1, doa $$2, azn $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eky a(epj $$0, jf $$1, doa $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(epj $$0, dfg $$1, dfe $$2, dwp $$3, jf $$4, jf $$5, doa $$6, eky $$7, azn $$8, eos $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public emp<?> a() {
+      return emp.d;
    }
 
    @Override
    public String toString() {
-      return "LegacySingle[" + this.c + "]";
+      return "Empty";
    }
 }

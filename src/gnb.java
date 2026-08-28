@@ -1,27 +1,38 @@
-public class gnb extends gmd<cko, gwa, fxf> {
-   private static final alc a = alc.b("textures/entity/zombie/drowned.png");
+public class gnb extends gou<ckp, gtj, fxg> {
+   private static final ale a = ale.b("textures/entity/creeper/creeper.png");
 
-   public gnb(gnj.a $$0) {
-      super($$0, new fxf($$0.a(gak.ai)), new fxf($$0.a(gak.am)), new fxf($$0.a(gak.aj)), new fxf($$0.a(gak.ak)), new fxf($$0.a(gak.an)), new fxf($$0.a(gak.ao)));
+   public gnb(gno.a $$0) {
+      super($$0, new fxg($$0.a(gap.W)), 0.5F);
       this.a(new gre(this, $$0.f()));
    }
 
-   public gwa a() {
-      return new gwa();
+   protected void a(gtj $$0, fdi $$1) {
+      float $$2 = $$0.a;
+      float $$3 = 1.0F + azf.a($$2 * 100.0F) * $$2 * 0.01F;
+      $$2 = azf.a($$2, 0.0F, 1.0F);
+      $$2 *= $$2;
+      $$2 *= $$2;
+      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
+      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
+      $$1.b($$4, $$5, $$4);
    }
 
-   @Override
-   public alc a(gwa $$0) {
+   protected float a(gtj $$0) {
+      float $$1 = $$0.a;
+      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azf.a($$1, 0.5F, 1.0F);
+   }
+
+   public ale b(gtj $$0) {
       return a;
    }
 
-   protected void a(gwa $$0, fde $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.B;
-      if ($$4 > 0.0F) {
-         float $$5 = -10.0F - $$0.V;
-         float $$6 = azd.h($$4, 0.0F, $$5);
-         $$1.a(a.b.rotationDegrees($$6), 0.0F, $$0.r / 2.0F / $$3, 0.0F);
-      }
+   public gtj a() {
+      return new gtj();
+   }
+
+   public void a(ckp $$0, gtj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.b = $$0.t();
    }
 }

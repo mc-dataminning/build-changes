@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Predicate;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gjj {
+@FunctionalInterface
+public interface gjj {
+   gjj b = $$0 -> $$0x -> true;
+   gjj c = $$0 -> $$0x -> false;
+
+   Predicate<dus> getPredicate(dut<dhm, dus> var1);
 }

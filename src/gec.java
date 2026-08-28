@@ -1,147 +1,79 @@
-public class gec extends gfo {
-   static final azl a = azl.a();
-   private final gfj b;
+import javax.annotation.Nullable;
 
-   gec(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfj $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
+public class gec extends gft {
+   private final float a;
+   private final gfo b;
+
+   gec(gbm $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gfo $$7) {
+      super($$0, $$1, $$2, $$3);
       this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
+      this.v = $$4;
+      this.w = $$5;
+      this.x = $$6;
+      float $$8 = 0.9F;
+      this.D *= 0.67499995F;
+      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
       this.b($$7);
+      this.a = ((float)Math.random() - 0.5F) * 0.1F;
+      this.z = (float)Math.random() * (float) (Math.PI * 2);
    }
 
    @Override
-   public ges b() {
-      return ges.c;
+   public gex b() {
+      return gex.b;
    }
 
    @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azd.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public float b(float $$0) {
+      return this.D * azf.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-   }
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.b);
+         this.A = this.z;
+         this.z = this.z + (float) Math.PI * this.a * 2.0F;
+         if (this.m) {
+            this.A = this.z = 0.0F;
+         }
 
-   public static class a implements ger<lr> {
-      private final double a = 0.25;
-      private final gfj b;
-
-      public a(gfj $$0) {
-         this.b = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gec $$8 = new gec($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.z.a(2) + 2);
-         return $$8;
+         this.a(this.j, this.k, this.l);
+         this.k -= 0.003F;
+         this.k = Math.max(this.k, -0.14F);
       }
    }
 
-   public static class b implements ger<lr> {
-      private final gfj a;
+   public static class a implements gew<lg> {
+      private final gfo a;
 
-      public b(gfj $$0) {
+      public a(gfo $$0) {
          this.a = $$0;
       }
 
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gec $$8 = new gec($$1, $$2, $$3, $$4, 0.5 - gec.a.j(), $$6, 0.5 - gec.a.j(), this.a);
-         if ($$1.z.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
+      @Nullable
+      public get a(lg $$0, gbm $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         dus $$8 = $$0.b();
+         if (!$$8.l() && $$8.o() == dnt.a) {
+            return null;
          } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
+            jf $$9 = jf.a($$2, $$3, $$4);
+            int $$10 = fip.Q().aw().a($$8, $$1, $$9);
+            if ($$8.b() instanceof dki) {
+               $$10 = ((dki)$$8.b()).b($$8, $$1, $$9);
+            }
+
+            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
+            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
+            float $$13 = (float)($$10 & 0xFF) / 255.0F;
+            return new gec($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
          }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.z.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements ger<lr> {
-      private final double a = 0.01;
-      private final gfj b;
-
-      public c(gfj $$0) {
-         this.b = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gec $$8 = new gec($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.z.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements ger<lr> {
-      private final double a = 0.01;
-      private final gfj b;
-
-      public d(gfj $$0) {
-         this.b = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gec $$8 = new gec($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements ger<lr> {
-      private final double a = 0.01;
-      private final gfj b;
-
-      public e(gfj $$0) {
-         this.b = $$0;
-      }
-
-      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gec $$8 = new gec($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.z.a(30) + 10);
-         return $$8;
       }
    }
 }

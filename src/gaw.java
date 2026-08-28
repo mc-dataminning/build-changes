@@ -1,22 +1,21 @@
 public class gaw {
-   private final float a;
-   private final float b;
+   private final gay a;
+   private final gax b;
 
-   public gaw(float $$0, float $$1) {
+   private gaw(gay $$0, gax $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public float a() {
-      return this.a;
+   public gaw a(gaz $$0) {
+      return new gaw($$0.apply(this.a), this.b);
    }
 
-   public float b() {
-      return this.b;
+   public gaq a() {
+      return this.a.a().a(this.b.a, this.b.b);
    }
 
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public static gaw a(gay $$0, int $$1, int $$2) {
+      return new gaw($$0, new gax($$1, $$2));
    }
 }

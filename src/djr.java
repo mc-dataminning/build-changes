@@ -1,102 +1,140 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class djr extends dhs {
+public class djr extends dgy {
+   private static final Logger e = LogUtils.getLogger();
    public static final MapCodec<djr> a = b(djr::new);
-   public static final dvm<dvk> b = dve.ae;
+   public static final dvm b = djp.a;
+   public static final dvj c = dvi.A;
+   private static final ky f = new ky();
+   public static final Map<cvn, kz> d = ad.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(f));
+   private static final int g = 4;
 
    @Override
    public MapCodec<? extends djr> a() {
       return a;
    }
 
-   public djr(dun.d $$0) {
+   public static void a(dei $$0, kz $$1) {
+      d.put($$0.q(), $$1);
+   }
+
+   public static void a(dei $$0) {
+      d.put($$0.q(), new lb($$0.q()));
+   }
+
+   protected djr(dur.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dvk.b));
+      this.l(this.F.b().b(b, jk.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      dvk $$6 = $$0.c(b);
-      if ($$1.o() != jj.a.b || $$6 == dvk.b != ($$1 == jj.b) || $$2.a(this) && $$2.c(b) != $$6) {
-         return $$6 == dvk.b && $$1 == jj.a && !$$0.a($$3, $$4) ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return dhl.a.o();
+   protected brs a(dus $$0, dej $$1, jf $$2, cnx $$3, eys $$4) {
+      if (!$$1.B && $$1.c_($$2) instanceof dso $$5) {
+         $$3.a($$5);
+         $$3.a($$5 instanceof dsp ? awq.ac : awq.ae);
       }
+
+      return brs.a;
    }
 
-   @Nullable
-   @Override
-   public duo a(czk $$0) {
-      je $$1 = $$0.a();
-      deg $$2 = $$0.q();
-      return $$1.v() < $$2.an() && $$2.a_($$1.d()).a($$0) ? super.a($$0) : null;
-   }
-
-   @Override
-   public void a(deg $$0, je $$1, duo $$2, buk $$3, cvp $$4) {
-      je $$5 = $$1.d();
-      $$0.a($$5, c($$0, $$5, this.o().b(b, dvk.a)), 3);
-   }
-
-   @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      if ($$0.c(b) != dvk.a) {
-         return super.a($$0, $$1, $$2);
+   protected void a(arj $$0, dus $$1, jf $$2) {
+      dso $$3 = $$0.a($$2, drx.f).orElse(null);
+      if ($$3 == null) {
+         e.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
       } else {
-         duo $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(b) == dvk.b;
-      }
-   }
-
-   public static void a(deh $$0, duo $$1, je $$2, int $$3) {
-      je $$4 = $$2.d();
-      $$0.a($$2, c($$0, $$2, $$1.b(b, dvk.b)), $$3);
-      $$0.a($$4, c($$0, $$4, $$1.b(b, dvk.a)), $$3);
-   }
-
-   public static duo c(dej $$0, je $$1, duo $$2) {
-      return $$2.b(dve.C) ? $$2.b(dve.C, Boolean.valueOf($$0.z($$1))) : $$2;
-   }
-
-   @Override
-   public duo a(deg $$0, je $$1, duo $$2, cnu $$3) {
-      if (!$$0.B) {
-         if ($$3.f()) {
-            b($$0, $$1, $$2, $$3);
+         kw $$4 = new kw($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.z);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+            $$0.a(dzp.a, $$2, dzp.a.a($$3.m()));
          } else {
-            a($$2, $$0, $$1, null, $$3, $$3.eW());
-         }
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(deg $$0, cnu $$1, je $$2, duo $$3, @Nullable drs $$4, cvp $$5) {
-      super.a($$0, $$1, $$2, dhl.a.o(), $$4, $$5);
-   }
-
-   protected static void b(deg $$0, je $$1, duo $$2, cnu $$3) {
-      dvk $$4 = $$2.c(b);
-      if ($$4 == dvk.a) {
-         je $$5 = $$1.e();
-         duo $$6 = $$0.a_($$5);
-         if ($$6.a($$2.b()) && $$6.c(b) == dvk.b) {
-            duo $$7 = $$6.y().b(eqq.c) ? dhl.G.o() : dhl.a.o();
-            $$0.a($$5, $$7, 35);
-            $$0.a($$3, 2001, $$5, dhj.j($$6));
+            cvs $$6 = $$3.a($$5);
+            kz $$7 = this.a($$0, $$6);
+            if ($$7 != kz.b) {
+               $$3.a($$5, $$7.dispense($$4, $$6));
+            }
          }
       }
    }
 
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(b);
+   protected kz a(dej $$0, cvs $$1) {
+      return (kz)(!$$1.a($$0.J()) ? f : d.get($$1.h()));
    }
 
    @Override
-   protected long a(duo $$0, je $$1) {
-      return azd.b($$1.u(), $$1.c($$0.c(b) == dvk.b ? 0 : 1).v(), $$1.w());
+   protected void a(dus $$0, dej $$1, jf $$2, dhm $$3, @Nullable esb $$4, boolean $$5) {
+      boolean $$6 = $$1.C($$2) || $$1.C($$2.d());
+      boolean $$7 = $$0.c(c);
+      if ($$6 && !$$7) {
+         $$1.a($$2, this, 4);
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+      } else if (!$$6 && $$7) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      this.a($$1, $$0, $$2);
+   }
+
+   @Override
+   public drv a(jf $$0, dus $$1) {
+      return new dso($$0, $$1);
+   }
+
+   @Override
+   public dus a(czn $$0) {
+      return this.n().b(b, $$0.d().g());
+   }
+
+   @Override
+   protected void a(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      bro.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static jy a(kw $$0) {
+      return a($$0, 0.7, eyw.c);
+   }
+
+   public static jy a(kw $$0, double $$1, eyw $$2) {
+      jk $$3 = $$0.d().c(b);
+      return $$0.a().b($$1 * (double)$$3.j() + $$2.a(), $$1 * (double)$$3.k() + $$2.b(), $$1 * (double)$$3.l() + $$2.c());
+   }
+
+   @Override
+   protected boolean c_(dus $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dus $$0, dej $$1, jf $$2) {
+      return cqz.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dnt a_(dus $$0) {
+      return dnt.c;
+   }
+
+   @Override
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(b, c);
    }
 }

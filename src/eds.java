@@ -1,43 +1,33 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class eds<FC extends efu> {
-   private final Optional<edc<?, ?>> a;
-   private final dfd b;
-   private final dwl c;
-   private final azl d;
-   private final je e;
-   private final FC f;
-
-   public eds(Optional<edc<?, ?>> $$0, dfd $$1, dwl $$2, azl $$3, je $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class eds extends edu<egf> {
+   public eds(Codec<egf> $$0) {
+      super($$0);
    }
 
-   public Optional<edc<?, ?>> a() {
-      return this.a;
+   @Override
+   public boolean a(edw<egf> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
    }
 
-   public dfd b() {
-      return this.b;
-   }
+   public static void a(dez $$0, jf $$1, boolean $$2) {
+      jf.a $$3 = $$1.k();
 
-   public dwl c() {
-      return this.c;
-   }
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               jf $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dhm $$8 = $$6 == -1 ? dho.co : dho.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
 
-   public azl d() {
-      return this.d;
-   }
-
-   public je e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+                  $$0.a($$7, $$8.n(), 3);
+               }
+            }
+         }
+      }
    }
 }

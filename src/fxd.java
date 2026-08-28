@@ -1,53 +1,57 @@
-public class fxd extends fxk<gtg> {
-   public static final gau a = gau.scaling(0.5F);
-   private final gal b;
-   private final gal c;
-   private final gal d;
-   private final gal e;
+import java.util.Set;
 
-   public fxd(gal $$0) {
-      this.b = $$0;
-      this.c = $$0.b("body");
-      this.d = this.c.b("tail");
-      this.e = this.d.b("tail_fin");
+public class fxd extends fxo<gti> {
+   public static final String a = "red_thing";
+   public static final gaz b = new fwq(Set.of("head", "beak", "red_thing"));
+   private final gaq c;
+   private final gaq d;
+   private final gaq e;
+   private final gaq f;
+   private final gaq g;
+   private final gaq i;
+   private final gaq j;
+
+   public fxd(gaq $$0) {
+      super($$0);
+      this.c = $$0.b("head");
+      this.i = $$0.b("beak");
+      this.j = $$0.b("red_thing");
+      this.d = $$0.b("right_leg");
+      this.e = $$0.b("left_leg");
+      this.f = $$0.b("right_wing");
+      this.g = $$0.b("left_wing");
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      gav $$4 = $$1.a("body", gaq.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), gan.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", gaq.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), gan.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         gaq.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gan.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         gaq.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         gan.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      gav $$5 = $$4.a("tail", gaq.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), gan.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", gaq.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), gan.a(0.0F, 0.0F, 9.0F));
-      gav $$6 = $$4.a("head", gaq.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), gan.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", gaq.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), gan.a);
-      return gar.a($$0, 64, 64);
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      int $$2 = 16;
+      $$1.a("head", gav.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), gas.a(0.0F, 15.0F, -4.0F));
+      $$1.a("beak", gav.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), gas.a(0.0F, 15.0F, -4.0F));
+      $$1.a("red_thing", gav.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), gas.a(0.0F, 15.0F, -4.0F));
+      $$1.a("body", gav.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), gas.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gav $$3 = gav.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
+      $$1.a("right_leg", $$3, gas.a(-2.0F, 19.0F, 1.0F));
+      $$1.a("left_leg", $$3, gas.a(1.0F, 19.0F, 1.0F));
+      $$1.a("right_wing", gav.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gas.a(-4.0F, 13.0F, 0.0F));
+      $$1.a("left_wing", gav.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), gas.a(4.0F, 13.0F, 0.0F));
+      return gaw.a($$0, 64, 32);
    }
 
-   @Override
-   public gal a() {
-      return this.b;
-   }
-
-   public void a(gtg $$0) {
+   public void a(gti $$0) {
+      super.a($$0);
+      float $$1 = (azf.a($$0.a) + 1.0F) * $$0.b;
       this.c.e = $$0.V * (float) (Math.PI / 180.0);
       this.c.f = $$0.U * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.c.e = this.c.e + (-0.05F - 0.05F * azd.b($$0.p * 0.3F));
-         this.d.e = -0.1F * azd.b($$0.p * 0.3F);
-         this.e.e = -0.2F * azd.b($$0.p * 0.3F);
-      }
+      this.i.e = this.c.e;
+      this.i.f = this.c.f;
+      this.j.e = this.c.e;
+      this.j.f = this.c.f;
+      float $$2 = $$0.Y;
+      float $$3 = $$0.X;
+      this.d.e = azf.b($$3 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azf.b($$3 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.g = $$1;
+      this.g.g = -$$1;
    }
 }

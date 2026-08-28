@@ -1,17 +1,9 @@
-import java.util.List;
+public interface cro {
+   void a(cqz var1, jx<cvs> var2, cvs var3, int[] var4);
 
-public interface cro extends bri, csy {
-   int az_();
+   void a(cqz var1, int var2, cvs var3);
 
-   int g();
+   void a(cqz var1, cvs var2);
 
-   List<cvp> h();
-
-   default czw aC_() {
-      return this.aD_().a();
-   }
-
-   default czw.a aD_() {
-      return czw.b(this.az_(), this.g(), this.h());
-   }
+   void a(cqz var1, int var2, int var3);
 }

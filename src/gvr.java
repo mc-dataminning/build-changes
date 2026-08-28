@@ -1,5 +1,7 @@
-public class gvr extends guj {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+import javax.annotation.Nullable;
+
+public class gvr extends gtq {
+   @Nullable
+   public gzi a;
+   public cvs b = cvs.k;
 }

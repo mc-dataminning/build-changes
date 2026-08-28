@@ -1,57 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class edd extends ede {
-   public edd(Codec<egb> $$0) {
+public class edd extends edu<egf> {
+   public edd(Codec<egf> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(deh $$0, azl $$1, je $$2, duo $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(edw<egf> $$0) {
+      jf $$1 = $$0.e();
+      dfg $$2 = $$0.b();
+      azn $$3 = $$0.d();
+      if ($$1.v() > $$2.N() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dho.G) && !$$2.a_($$1.e()).a(dho.G)) {
          return false;
       } else {
-         jj $$4 = jj.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jj> $$6 = ad.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+         boolean $$4 = false;
 
-         for (jj $$8 : $$6.subList(0, $$5)) {
-            je.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jj $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jj.b);
-               jj[] $$13 = new jj[]{$$8, jj.b};
-               $$11 = ad.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jj.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jj.b);
-               }
+         for (jk $$5 : jk.values()) {
+            if ($$5 != jk.a && $$2.a_($$1.a($$5)).a(dho.iC)) {
+               $$4 = true;
+               break;
             }
          }
 
-         return true;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dho.mW.n(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  jf $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dus $$10 = $$2.a_($$9);
+                  if ($$10.l() || $$10.a(dho.G) || $$10.a(dho.iC) || $$10.a(dho.dO)) {
+                     for (jk $$11 : jk.values()) {
+                        dus $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dho.mW)) {
+                           $$2.a($$9, dho.mW.n(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

@@ -1,42 +1,35 @@
-public class gry extends grw<gvd, fza> {
-   private static final alc a = alc.b("textures/entity/sheep/sheep_fur.png");
-   private final fxk<gvd> b;
-   private final fxk<gvd> c;
+public class gry extends gsb<gvb, fyt> {
+   private final fym a;
+   private final gux b = new gux();
 
-   public gry(gpf<gvd, fza> $$0, gah $$1) {
+   public gry(gpk<gvb, fyt> $$0, gam $$1) {
       super($$0);
-      this.b = new fyz($$1.a(gak.cf));
-      this.c = new fyz($$1.a(gak.cg));
+      this.a = new fym($$1.a(gap.br));
+      this.b.c = fym.a.e;
    }
 
-   public void a(fde $$0, ghg $$1, int $$2, gvd $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         fxk<gvd> $$6 = $$3.ae ? this.c : this.b;
-         if ($$3.u) {
-            if ($$3.aj) {
-               $$6.a($$3);
-               fdi $$7 = $$1.getBuffer(ghq.r(a));
-               $$6.a($$0, $$7, $$2, gok.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            int $$17;
-            if ($$3.al != null && "jeb_".equals($$3.al.getString())) {
-               int $$8 = 25;
-               int $$9 = azd.d($$3.p);
-               int $$10 = $$9 / 25 + $$3.e;
-               int $$11 = cuj.values().length;
-               int $$12 = $$10 % $$11;
-               int $$13 = ($$10 + 1) % $$11;
-               float $$14 = ((float)($$9 % 25) + azd.h($$3.p)) / 25.0F;
-               int $$15 = cgw.a(cuj.a($$12));
-               int $$16 = cgw.a(cuj.a($$13));
-               $$17 = axo.a($$14, $$15, $$16);
-            } else {
-               $$17 = cgw.a($$3.d);
-            }
-
-            a($$6, a, $$0, $$1, $$2, $$3, $$17);
-         }
+   public void a(fdi $$0, ghl $$1, int $$2, gvb $$3, float $$4, float $$5) {
+      cgt.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
       }
+
+      cgt.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+      }
+   }
+
+   private void a(fdi $$0, ghl $$1, int $$2, gvb $$3, cgt.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
+      this.b.p = $$3.p;
+      this.b.X = $$3.X;
+      this.b.Y = $$3.Y;
+      this.b.U = $$5;
+      this.b.V = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gpb.a($$4))), $$2, gwx.d);
+      $$0.b();
    }
 }

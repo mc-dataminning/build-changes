@@ -1,26 +1,7 @@
-import java.util.function.Function;
+public record fbc(eyw b, eyw c, eyw d) {
+   public static final fbc a = new fbc(eyw.c, new eyw(0.0, 0.0, -1.0), new eyw(0.0, 1.0, 0.0));
 
-public interface fbc {
-   float getAdvance();
-
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
-   }
-
-   default float a() {
-      return 1.0F;
-   }
-
-   default float b() {
-      return 1.0F;
-   }
-
-   fng bake(Function<fbe, fng> var1);
-
-   public interface a extends fbc {
-      @Override
-      default fng bake(Function<fbe, fng> $$0) {
-         return fnh.a;
-      }
+   public eyw a() {
+      return this.c.c(this.d);
    }
 }

@@ -1,88 +1,106 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public abstract class dmx extends dhj {
-   private static final jj[] a = jj.values();
-   public static final dvf b = dve.L;
-   public static final dvf c = dve.M;
-   public static final dvf d = dve.N;
-   public static final dvf e = dve.O;
-   public static final dvf f = dve.J;
-   public static final dvf g = dve.K;
-   public static final Map<jj, dvf> h = ImmutableMap.copyOf(ad.a(Maps.newEnumMap(jj.class), $$0 -> {
-      $$0.put(jj.c, b);
-      $$0.put(jj.f, c);
-      $$0.put(jj.d, d);
-      $$0.put(jj.e, e);
-      $$0.put(jj.b, f);
-      $$0.put(jj.a, g);
-   }));
-   protected final ezm[] i;
+public class dmx extends djp {
+   public static final MapCodec<dmx> b = b(dmx::new);
+   public static final dvj c = dvi.w;
 
-   protected dmx(float $$0, dun.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<dmx> a() {
+      return b;
+   }
+
+   public dmx(dur.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jk.d).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dmx> a();
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(a, c);
+   }
 
-   private ezm[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ezm $$3 = dhj.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ezm[] $$4 = new ezm[a.length];
+   @Override
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
 
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         jj $$6 = a[$$5];
-         $$4[$$5] = ezj.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   @Override
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dus $$0, arj $$1, jf $$2, azn $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
+      } else {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
       }
 
-      ezm[] $$7 = new ezm[64];
+      this.a($$1, $$2, $$0);
+   }
 
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ezm $$9 = $$3;
+   @Override
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
 
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = ezj.a($$9, $$4[$$10]);
-            }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(dek $$0, jf $$1) {
+      if (!$$0.x_() && !$$0.R().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(dej $$0, jf $$1, dus $$2) {
+      jk $$3 = $$2.c(a);
+      jf $$4 = $$1.a($$3.g());
+      esb $$5 = erx.a($$0, $$3.g(), null);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
+   }
+
+   @Override
+   protected boolean f_(dus $$0) {
+      return true;
+   }
+
+   @Override
+   protected int b(dus $$0, ddo $$1, jf $$2, jk $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(dus $$0, ddo $$1, jf $$2, jk $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.x_() && $$0.c(c) && !$$1.R().a($$2, this)) {
+            dus $$5 = $$0.b(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
          }
-
-         $$7[$$8] = $$9;
       }
-
-      return $$7;
    }
 
    @Override
-   protected boolean e_(duo $$0) {
-      return false;
-   }
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return this.i[this.o($$0)];
-   }
-
-   protected int o(duo $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
+   protected void a(dus $$0, dej $$1, jf $$2, dus $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.R().a($$2, this)) {
+            this.a($$1, $$2, $$0.b(c, Boolean.valueOf(false)));
          }
       }
+   }
 
-      return $$1;
+   @Override
+   public dus a(czn $$0) {
+      return this.n().b(a, $$0.d().g().g());
    }
 }

@@ -1,8 +1,29 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum fot {
+   a,
+   b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fot {
+   public fot a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
+      };
+   }
+
+   public fou b() {
+      return switch (this) {
+         case a -> fou.d;
+         case b -> fou.b;
+      };
+   }
+
+   public fou c() {
+      return switch (this) {
+         case a -> fou.c;
+         case b -> fou.a;
+      };
+   }
+
+   public fou a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
+   }
 }

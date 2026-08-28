@@ -1,20 +1,70 @@
-public interface dzn {
-   dzp a();
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-   int b();
+public class dzn implements dzt {
+   public static final MapCodec<dzn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ki.a.fieldOf("source_entity").forGetter(dzn::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dzn(Either.right(Either.left($$0x)), $$1))
+   );
+   public static final zc<ByteBuf, dzn> b = zc.a(za.h, dzn::c, za.j, $$0 -> $$0.f, ($$0, $$1) -> new dzn(Either.right(Either.right($$0)), $$1));
+   private Either<btr, Either<UUID, Integer>> e;
+   private final float f;
 
-   boolean a(arh var1, jn<dzl> var2, dzl.a var3, eys var4);
-
-   default dzn.a c() {
-      return dzn.a.a;
+   public dzn(btr $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   public static enum a {
-      a,
-      b;
+   private dzn(Either<btr, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public interface b<T extends dzn> {
-      T c();
+   @Override
+   public Optional<eyw> a(dej $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.e.left().map($$0x -> $$0x.dq().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dej $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((btr)$$1.map($$1x -> $$0 instanceof arj $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(btr::cD, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(btr::ap, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dzu<dzn> a() {
+      return dzu.b;
+   }
+
+   public static class a implements dzu<dzn> {
+      @Override
+      public MapCodec<dzn> a() {
+         return dzn.a;
+      }
+
+      @Override
+      public zc<ByteBuf, dzn> b() {
+         return dzn.b;
+      }
    }
 }

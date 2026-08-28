@@ -1,11 +1,16 @@
+import javax.annotation.Nullable;
+
 public interface dke {
-   default void a(deg $$0, je $$1, duo $$2, duo $$3, ckd $$4) {
+   @Nullable
+   drv a(jf var1, dus var2);
+
+   @Nullable
+   default <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return null;
    }
 
-   default void a(deg $$0, je $$1, ckd $$2) {
-   }
-
-   default bsg a(bto $$0) {
-      return $$0.dT().a($$0);
+   @Nullable
+   default <T extends drv> dzr a(arj $$0, T $$1) {
+      return $$1 instanceof dzr.b<?> $$2 ? $$2.c() : null;
    }
 }

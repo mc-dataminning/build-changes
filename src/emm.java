@@ -1,112 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class emm {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<jn<emm>>> d = new MutableObject();
-   public static final Codec<emm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(emm::a),
-               Codec.mapPair(emk.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, emm::new)
+public class emm extends emo {
+   public static final MapCodec<emm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(emo.f.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), e()).apply($$0, emm::new)
    );
-   public static final Codec<jn<emm>> b = ad.a(aky.a(lv.aV, a), d::setValue);
-   private final List<Pair<emk, Integer>> e;
-   private final ObjectArrayList<emk> f;
-   private final jn<emm> g;
-   private int h = Integer.MIN_VALUE;
+   private final List<emo> b;
 
-   public emm(jn<emm> $$0, List<Pair<emk, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
+   public emm(List<emo> $$0, emq.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
+   }
 
-      for (Pair<emk, Integer> $$2 : $$1) {
-         emk $$3 = (emk)$$2.getFirst();
+   @Override
+   public kj a(epj $$0, doa $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
 
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
+      for (emo $$5 : this.b) {
+         kj $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new kj($$2, $$3, $$4);
+   }
+
+   @Override
+   public List<epi.c> a(epj $$0, jf $$1, doa $$2, azn $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public eky a(epj $$0, jf $$1, doa $$2) {
+      Stream<eky> $$3 = this.b.stream().filter($$0x -> $$0x != emh.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return eky.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
+   }
+
+   @Override
+   public boolean a(epj $$0, dfg $$1, dfe $$2, dwp $$3, jf $$4, jf $$5, doa $$6, eky $$7, azn $$8, eos $$9, boolean $$10) {
+      for (emo $$11 : this.b) {
+         if (!$$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return false;
          }
       }
 
-      this.g = $$0;
+      return true;
    }
 
-   public emm(jn<emm> $$0, List<Pair<Function<emm.a, ? extends emk>, Integer>> $$1, emm.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<emm.a, ? extends emk>, Integer> $$3 : $$1) {
-         emk $$4 = (emk)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   @Override
+   public emp<?> a() {
+      return emp.b;
    }
 
-   public int a(epf $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != emd.b).mapToInt($$1 -> $$1.a($$0, je.c, dnx.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   @Override
+   public emo a(emq.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public jn<emm> a() {
-      return this.g;
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public emk a(azl $$0) {
-      return (emk)(this.f.isEmpty() ? emd.b : (emk)this.f.get($$0.a(this.f.size())));
-   }
-
-   public List<emk> b(azl $$0) {
-      return ad.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements azz {
-      a("terrain_matching", ImmutableList.of(new eok(eak.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final azz.a<emm.a> c = azz.a(emm.a::values);
-      private final String d;
-      private final ImmutableList<epb> e;
-
-      private a(final String $$0, final ImmutableList<epb> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static emm.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<epb> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   private void b(emq.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

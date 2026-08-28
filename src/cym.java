@@ -1,42 +1,46 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.function.Consumer;
 
-public record cym(List<xd> e, List<xd> f) implements cyw {
-   public static final cym a = new cym(List.of());
-   public static final int b = 256;
-   private static final ya g = ya.a.a(n.f).b(true);
-   public static final Codec<cym> c = xf.g.sizeLimitedListOf(256).xmap(cym::new, cym::a);
-   public static final zb<wo, cym> d = xf.b.a(yz.c(256)).a(cym::new, cym::a);
+public record cym(int d, List<cyl> e) implements cyz {
+   public static final int a = 256;
+   public static final Codec<cym> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayo.j.optionalFieldOf("flight_duration", 0).forGetter(cym::a),
+               cyl.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cym::b)
+            )
+            .apply($$0, cym::new)
+   );
+   public static final zc<ByteBuf, cym> c = zc.a(za.h, cym::a, cyl.d.a(za.c(256)), cym::b, cym::new);
 
-   public cym(List<xd> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xg.a($$0x.f(), g)));
-   }
-
-   public cym(List<xd> e, List<xd> f) {
+   public cym(int d, List<cyl> e) {
       if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
       } else {
+         this.d = d;
          this.e = e;
-         this.f = f;
       }
    }
 
-   public cym a(xd $$0) {
-      return new cym(ad.a(this.e, $$0));
-   }
-
    @Override
-   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
-      this.f.forEach($$1);
+   public void a(cvn.b $$0, Consumer<xe> $$1, cxk $$2) {
+      if (this.d > 0) {
+         $$1.accept(xe.c("item.minecraft.firework_rocket.flight").b(xd.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (cyl $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(xe.b("  ").b($$1x)));
+      }
    }
 
-   public List<xd> a() {
+   public int a() {
+      return this.d;
+   }
+
+   public List<cyl> b() {
       return this.e;
-   }
-
-   public List<xd> b() {
-      return this.f;
    }
 }

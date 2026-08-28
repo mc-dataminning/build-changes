@@ -1,55 +1,62 @@
 import com.mojang.serialization.MapCodec;
 
-public class dih extends dkx implements dif {
-   public static final MapCodec<dih> c = b(dih::new);
+public class dih extends dgf {
+   public static final MapCodec<dih> d = b(dih::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dih> a() {
-      return c;
+      return d;
    }
 
-   public dih(dun.d $$0) {
-      super($$0, jj.a, u_, false);
-      this.l(this.F.b().b(v_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected dky c() {
-      return (dky)dhl.sv;
+   public dih(dur.d $$0) {
+      super($$0, kl.c);
    }
 
    @Override
-   protected duo a(duo $$0, duo $$1) {
-      return $$1.b(v_, $$0.c(v_));
+   public boolean d(dus $$0) {
+      return false;
+   }
+
+   protected static boolean a(dej $$0, dfk.c $$1) {
+      if ($$1 == dfk.c.b) {
+         return $$0.D_().i() < 0.05F;
+      } else {
+         return $$1 == dfk.c.c ? $$0.D_().i() < 0.1F : false;
+      }
    }
 
    @Override
-   public cvp a(dej $$0, je $$1, duo $$2) {
-      return new cvp(cvt.wy);
+   public void a(dus $$0, dej $$1, jf $$2, dfk.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == dfk.c.b) {
+            $$1.b($$2, dho.fu.n());
+            $$1.a(null, dzp.c, $$2);
+         } else if ($$3 == dfk.c.c) {
+            $$1.b($$2, dho.fw.n());
+            $$1.a(null, dzp.c, $$2);
+         }
+      }
    }
 
    @Override
-   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
-      return dif.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(v_);
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return !$$2.c(v_);
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+   protected boolean a(eqs $$0) {
       return true;
    }
 
    @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      $$0.a($$2, $$3.b(v_, Boolean.valueOf(true)), 2);
+   protected void a(dus $$0, dej $$1, jf $$2, eqs $$3) {
+      if ($$3 == equ.c) {
+         dus $$4 = dho.fu.n();
+         $$1.b($$2, $$4);
+         $$1.a(dzp.c, $$2, dzp.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == equ.e) {
+         dus $$5 = dho.fv.n();
+         $$1.b($$2, $$5);
+         $$1.a(dzp.c, $$2, dzp.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

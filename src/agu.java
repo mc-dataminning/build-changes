@@ -1,29 +1,37 @@
-public class agu implements zk<agq> {
-   public static final zb<wa, agu> a = zk.a(agu::a, agu::new);
-   private final brm b;
+public class agu implements zl<agr> {
+   public static final zc<wb, agu> a = zl.a(agu::a, agu::new);
+   private final int b;
+   private final jf c;
 
-   public agu(brm $$0) {
+   public agu(int $$0, jf $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private agu(wa $$0) {
-      this.b = brm.a($$0.readUnsignedByte());
+   private agu(wb $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(wa $$0) {
-      $$0.l(this.b.a());
+   private void a(wb $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zm<agu> a() {
-      return ago.bj;
+   public zn<agu> a() {
+      return agp.bh;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public brm b() {
+   public int b() {
       return this.b;
+   }
+
+   public jf e() {
+      return this.c;
    }
 }

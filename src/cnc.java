@@ -1,218 +1,153 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.function.Function;
 
-public abstract class cnc extends bth implements cnf, cng, ddc {
-   private static final akg<Integer> ca = akk.a(cnc.class, aki.b);
-   private static final Logger cb = LogUtils.getLogger();
-   public static final int bY = 300;
-   private static final int cc = 8;
-   @Nullable
-   private cnu cd;
-   @Nullable
-   protected dde bZ;
-   private final brw ce = new brw(8);
+public class cnc {
+   private static final float d = 0.5F;
+   private static final float e = 0.7F;
+   private static final float f = 1.2F;
+   private static final int g = 18;
+   private static final int h = azf.f(100.0F);
+   public static final int a = azf.f(133.59999F);
+   public static final int b = azf.f(84.0F);
+   private static final int i = azf.f(83.2F);
+   public static final int c = 1200;
+   private static final int j = 100;
+   private static final List<cex<? extends cew<? super cnb>>> k = List.of(cex.d, cex.x);
+   private static final List<cdq<?>> l = List.of(
+      cdq.g,
+      cdq.h,
+      cdq.k,
+      cdq.l,
+      cdq.M,
+      cdq.n,
+      cdq.m,
+      cdq.E,
+      cdq.t,
+      cdq.o,
+      cdq.p,
+      cdq.B,
+      cdq.ay,
+      cdq.az,
+      cdq.aA,
+      cdq.aB,
+      cdq.aC,
+      cdq.aD,
+      cdq.aE,
+      cdq.aF,
+      cdq.aG,
+      cdq.aH,
+      cdq.aI,
+      cdq.aJ,
+      cdq.aK,
+      cdq.aL
+   );
+   private static final bwg<cnb> m = bzs.a(
+      (Function<bzs.b<cnb>, ? extends App<bzs.c<cnb>, bzv<cnb>>>)($$0 -> $$0.group($$0.a(cdq.aE)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$0.a($$1).isPresent()) {
+                  $$1.a(bak.a, 1200L);
+               }
 
-   public cnc(btv<? extends cnc> $$0, deg $$1) {
-      super($$0, $$1);
-      this.a(erg.n, 16.0F);
-      this.a(erg.o, -1.0F);
+               return true;
+            }))
+   );
+
+   public static void a(cnb $$0) {
+      $$0.dY().a(ImmutableList.of(cpp.y, cpp.z, cpp.x, cpp.k, cpp.w, cpp.v, cpp.b));
    }
 
-   @Override
-   public bvc a(dew $$0, brn $$1, btu $$2, @Nullable bvc $$3) {
-      if ($$3 == null) {
-         $$3 = new bth.a(false);
+   protected static bvo<?> a(cnb $$0, Dynamic<?> $$1) {
+      bvo.b<cnb> $$2 = bvo.a(l, k);
+      bvo<cnb> $$3 = $$2.a($$1);
+      a($$3);
+      b($$3);
+      c($$3);
+      d($$3);
+      g($$3);
+      a($$0, $$3);
+      e($$3);
+      f($$3);
+      $$3.a(ImmutableSet.of(cpp.a));
+      $$3.b(cpp.b);
+      $$3.f();
+      return $$3;
+   }
+
+   private static void a(bvo<cnb> $$0) {
+      $$0.a(cpp.a, 0, ImmutableList.of(new byz(0.8F), cad.a(), new bxl(45, 90), new bxp()));
+   }
+
+   private static void b(bvo<cnb> $$0) {
+      $$0.a(cpp.y, 5, ImmutableList.of(new bzz(a)), cdq.aC);
+   }
+
+   private static void c(bvo<cnb> $$0) {
+      $$0.a(cpp.z, ImmutableList.of(Pair.of(0, new caa()), Pair.of(1, new bzy(h))), ImmutableSet.of(Pair.of(cdq.ay, cdr.b), Pair.of(cdq.aE, cdr.b)));
+   }
+
+   private static void d(bvo<cnb> $$0) {
+      $$0.a(
+         cpp.b,
+         10,
+         ImmutableList.of(
+            cac.a(cnb::go), cag.a(), new byc(ImmutableMap.of(cdq.aB, cdr.b), ImmutableList.of(Pair.of(bxx.a(0.5F), 2), Pair.of(new bwp(30, 60), 1)))
+         )
+      );
+   }
+
+   private static void e(bvo<cnb> $$0) {
+      $$0.a(cpp.w, 5, ImmutableList.of(cac.a(cnb::go), bwy.a(cdq.az, 2, 0.7F)), cdq.az);
+   }
+
+   private static void f(bvo<cnb> $$0) {
+      $$0.a(cpp.v, 5, ImmutableList.of(cac.a(cnb::go), new cae(i)), cdq.aB);
+   }
+
+   private static void g(bvo<cnb> $$0) {
+      $$0.a(cpp.x, 10, ImmutableList.of(new cab()), cdq.ay);
+   }
+
+   private static void a(cnb $$0, bvo<cnb> $$1) {
+      $$1.a(
+         cpp.k,
+         10,
+         ImmutableList.of(
+            m, byu.a($$1x -> !$$0.y().d() || !$$0.c($$1x), cnc::b, false), bye.a($$1x -> a($$0, $$1x), (float)$$0.h(bvu.m)), byk.a(1.2F), new caf(), bxm.a(18)
+         ),
+         cdq.o
+      );
+   }
+
+   private static boolean a(cnb $$0, bun $$1) {
+      return $$0.dY().c(cdq.o).filter($$1x -> $$1x == $$1).isPresent();
+   }
+
+   private static void b(cnb $$0, bun $$1) {
+      if (!$$0.c($$1)) {
+         $$0.d($$1);
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      a((bun)$$0);
    }
 
-   public int q() {
-      return this.am.a(ca);
-   }
-
-   public void s(int $$0) {
-      this.am.a(ca, $$0);
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(ca, 0);
-   }
-
-   @Override
-   public void a(@Nullable cnu $$0) {
-      this.cd = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cnu gp() {
-      return this.cd;
-   }
-
-   public boolean gq() {
-      return this.cd != null;
-   }
-
-   @Override
-   public dde gr() {
-      if (this.dS().B) {
-         throw new IllegalStateException("Cannot load Villager offers on the client");
-      } else {
-         if (this.bZ == null) {
-            this.bZ = new dde();
-            this.gw();
-         }
-
-         return this.bZ;
-      }
-   }
-
-   @Override
-   public void a(@Nullable dde $$0) {
-   }
-
-   @Override
-   public void t(int $$0) {
-   }
-
-   @Override
-   public void a(ddd $$0) {
-      $$0.l();
-      this.bM = -this.T();
-      this.b($$0);
-      if (this.cd instanceof ari) {
-         an.t.a((ari)this.cd, this, $$0.f());
-      }
-   }
-
-   protected abstract void b(ddd var1);
-
-   @Override
-   public boolean gs() {
-      return true;
-   }
-
-   @Override
-   public void m(cvp $$0) {
-      if (!this.dS().B && this.bM > -this.T() + 20) {
-         this.bM = -this.T();
-         this.b(this.x(!$$0.f()));
-      }
-   }
-
-   @Override
-   public awd gt() {
-      return awe.Be;
-   }
-
-   protected awd x(boolean $$0) {
-      return $$0 ? awe.Be : awe.Bc;
-   }
-
-   public void gu() {
-      this.b(awe.AZ);
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      if (!this.dS().B) {
-         dde $$1 = this.gr();
-         if (!$$1.isEmpty()) {
-            $$0.a("Offers", (vc)dde.a.encodeStart(this.dU().a(ut.a), $$1).getOrThrow());
-         }
-      }
-
-      this.b($$0, this.dU());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      if ($$0.e("Offers")) {
-         dde.a.parse(this.dU().a(ut.a), $$0.c("Offers")).resultOrPartial(ad.a("Failed to load offers: ", cb::warn)).ifPresent($$0x -> this.bZ = $$0x);
-      }
-
-      this.a($$0, this.dU());
-   }
-
-   @Nullable
-   @Override
-   public bto b(ern $$0) {
-      this.gv();
-      return super.b($$0);
-   }
-
-   protected void gv() {
-      this.a(null);
-   }
-
-   @Override
-   public void a(bsg $$0) {
-      super.a($$0);
-      this.gv();
-   }
-
-   protected void a(ll $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.af.k() * 0.02;
-         double $$3 = this.af.k() * 0.02;
-         double $$4 = this.af.k() * 0.02;
-         this.dS().a($$0, this.d(1.0), this.dA() + 1.0, this.g(1.0), $$2, $$3, $$4);
+   public static void a(bun $$0) {
+      if ($$0.dY().a(cdq.aE)) {
+         $$0.dY().a(cdq.aE, bak.a, 1200L);
       }
    }
 
-   @Override
-   public boolean A() {
-      return false;
-   }
-
-   @Override
-   public brw y() {
-      return this.ce;
-   }
-
-   @Override
-   public bvb a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.ce.b() ? bvb.a(this.ce, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gw();
-
-   protected void a(dde $$0, cnl.g[] $$1, int $$2) {
-      ArrayList<cnl.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         ddd $$5 = $$3.remove(this.af.a($$3.size())).a(this, this.af);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
-         }
+   public static void a(cnb $$0, jf $$1) {
+      if ($$0.dS().B_().a($$1) && !$$0.go().isPresent() && !$$0.dY().c(cdq.o).isPresent()) {
+         a((bun)$$0);
+         $$0.dY().a(cdq.aG, bak.a, 100L);
+         $$0.dY().a(cdq.n, new bwi($$1), 100L);
+         $$0.dY().a(cdq.az, $$1, 100L);
+         $$0.dY().b(cdq.m);
       }
-   }
-
-   @Override
-   public eys u(float $$0) {
-      float $$1 = azd.h($$0, this.aU, this.aT) * (float) (Math.PI / 180.0);
-      eys $$2 = new eys(0.0, this.cO().c() - 1.0, 0.2);
-      return this.o($$0).e($$2.b(-$$1));
-   }
-
-   @Override
-   public boolean gx() {
-      return this.dS().B;
    }
 }

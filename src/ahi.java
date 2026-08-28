@@ -1,30 +1,29 @@
-public record ahi(int b, int c, boolean d) implements zk<agq> {
-   public static final zb<wa, ahi> a = zk.a(ahi::a, ahi::new);
+public class ahi implements zl<agr> {
+   public static final zc<wb, ahi> a = zl.a(ahi::a, ahi::new);
+   private final int b;
 
-   private ahi(wa $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+   public ahi(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wa $$0) {
-      $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+   private ahi(wb $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(wb $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zm<ahi> a() {
-      return ago.bx;
+   public zn<ahi> a() {
+      return agp.bw;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

@@ -4,64 +4,31 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class bfi extends DataFix {
-   private static final Set<String> a = Set.of(
-      "filled_map.buried_treasure",
-      "filled_map.explorer_jungle",
-      "filled_map.explorer_swamp",
-      "filled_map.mansion",
-      "filled_map.monument",
-      "filled_map.trial_chambers",
-      "filled_map.village_desert",
-      "filled_map.village_plains",
-      "filled_map.village_savanna",
-      "filled_map.village_snowy",
-      "filled_map.village_taiga"
-   );
+public abstract class bfi extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
 
-   public bfi(Schema $$0) {
+   public bfi(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
+   }
+
+   public bfi(Schema $$0, String $$1, String $$2, String $$3) {
       super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhm.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhm.D.typeName(), biz.a()));
-      OpticFinder<?> $$2 = $$0.findField("components");
+      Type<?> $$0 = this.getInputSchema().getType(bho.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
-         "ItemStack custom_name to item_name component fix",
-         $$0,
-         $$2x -> {
-            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
-            Optional<String> $$4 = $$3.map(Pair::getSecond);
-            if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bfi::b));
-            } else {
-               return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent()
-                  ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bfi::a))
-                  : $$2x;
-            }
-         }
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
       );
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return a($$0, a::contains);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Predicate<String> $$1) {
-      OptionalDynamic<T> $$2 = $$0.get("minecraft:custom_name");
-      Optional<String> $$3 = $$2.asString().result().flatMap(bal::a).filter($$1);
-      return $$3.isPresent() ? $$0.renameField("minecraft:custom_name", "minecraft:item_name") : $$0;
-   }
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

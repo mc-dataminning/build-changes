@@ -1,20 +1,66 @@
 import com.mojang.serialization.Codec;
 
-public class edb extends edq<egb> {
-   public edb(Codec<egb> $$0) {
+public class edb extends edu<efp> {
+   public edb(Codec<efp> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(eds<egb> $$0) {
-      dfd $$1 = $$0.b();
-      je $$2 = $$0.e();
-      azl $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.e()).a(dhl.fz)) {
-         dio.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
+   public boolean a(edw<efp> $$0) {
+      dfg $$1 = $$0.b();
+      efp $$2 = $$0.f();
+      azn $$3 = $$0.d();
+      int $$4 = $$2.a().size();
+      int[] $$5 = new int[$$4];
+      int $$6 = 0;
+
+      for (int $$7 = 0; $$7 < $$4; $$7++) {
+         $$5[$$7] = $$2.a().get($$7).a().a($$3);
+         $$6 += $$5[$$7];
+      }
+
+      if ($$6 == 0) {
          return false;
+      } else {
+         jf.a $$8 = $$0.e().k();
+         jf.a $$9 = $$8.k().c($$2.b());
+
+         for (int $$10 = 0; $$10 < $$6; $$10++) {
+            if (!$$2.c().test($$1, $$9)) {
+               a($$5, $$6, $$10, $$2.d());
+               break;
+            }
+
+            $$9.c($$2.b());
+         }
+
+         for (int $$11 = 0; $$11 < $$4; $$11++) {
+            int $$12 = $$5[$$11];
+            if ($$12 != 0) {
+               efp.a $$13 = $$2.a().get($$11);
+
+               for (int $$14 = 0; $$14 < $$12; $$14++) {
+                  $$1.a($$8, $$13.b().a($$3, $$8), 2);
+                  $$8.c($$2.b());
+               }
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private static void a(int[] $$0, int $$1, int $$2, boolean $$3) {
+      int $$4 = $$1 - $$2;
+      int $$5 = $$3 ? 1 : -1;
+      int $$6 = $$3 ? 0 : $$0.length - 1;
+      int $$7 = $$3 ? $$0.length : -1;
+
+      for (int $$8 = $$6; $$8 != $$7 && $$4 > 0; $$8 += $$5) {
+         int $$9 = $$0[$$8];
+         int $$10 = Math.min($$9, $$4);
+         $$4 -= $$10;
+         $$0[$$8] -= $$10;
       }
    }
 }

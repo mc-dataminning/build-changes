@@ -1,18 +1,16 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjw extends biz {
+public class bjw extends bjc {
    public bjw(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:panda", () -> bja.a($$0));
-      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(bhm.t.in($$0)), bja.a($$0)));
+      $$1.put("minecraft:pufferfish", $$1.remove("minecraft:puffer_fish"));
       return $$1;
    }
 }

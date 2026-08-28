@@ -1,9 +1,10 @@
 import com.mojang.serialization.MapCodec;
 
-public class ys implements yt {
-   public static final yu<ys> a = new yu<ys>() {
-      private static final MapCodec<ys> a = xf.a.fieldOf("value").xmap(ys::new, $$0 -> $$0.b);
-      private static final zb<wo, ys> b = zb.a(xf.d, $$0 -> $$0.b, ys::new);
+public class ys implements yu {
+   public static final ys a = new ys();
+   public static final yv<ys> b = new yv<ys>() {
+      private static final MapCodec<ys> a = MapCodec.unit(ys.a);
+      private static final zc<wp, ys> b = zc.a(ys.a);
 
       @Override
       public MapCodec<ys> a() {
@@ -11,23 +12,18 @@ public class ys implements yt {
       }
 
       @Override
-      public zb<wo, ys> b() {
+      public zc<wp, ys> b() {
          return b;
       }
    };
-   final xd b;
 
-   public ys(xd $$0) {
-      this.b = $$0;
+   @Override
+   public xs a(int $$0) {
+      return xe.i();
    }
 
    @Override
-   public xr a(int $$0) {
-      return this.b.f();
-   }
-
-   @Override
-   public yu<ys> a() {
-      return a;
+   public yv<ys> a() {
+      return b;
    }
 }

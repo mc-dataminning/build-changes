@@ -1,37 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjf extends biz {
+public class bjf extends Schema {
    public bjf(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:bed");
-      return $$1;
-   }
-
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bho.J, () -> DSL.constType(bjc.a()));
       $$0.registerType(
          false,
-         bhm.p,
+         bho.b,
          () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bhm.K.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bhm.z.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bhm.z.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bhm.z.in($$0), DSL.constType(DSL.string())))
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bho.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bho.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bho.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bho.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bho.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bho.J.in($$0)), "toBeDisplayed", DSL.list(bho.J.in($$0))))
+               }
             )
       );
-      $$0.registerType(false, bhm.K, () -> DSL.constType(a()));
-      $$0.registerType(false, bhm.z, () -> DSL.constType(a()));
+      $$0.registerType(false, bho.d, () -> DSL.compoundList(DSL.list(bho.t.in($$0))));
    }
 }

@@ -1,2 +1,6 @@
-public record bnh<S>(int a, bnl<S> b, Object c) {
+public interface bnh {
+   bnh a = () -> {
+   };
+
+   void cut();
 }

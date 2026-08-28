@@ -2,52 +2,43 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ef extends dv<ef.a> {
+public class ef extends dw<ef.a> {
    @Override
    public Codec<ef.a> a() {
       return ef.a.a;
    }
 
-   public void a(ari $$0, bto $$1, eys $$2, int $$3) {
-      eth $$4 = bv.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
+   public void a(ark $$0, cgd $$1) {
+      etl $$2 = bv.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bg> b, dh.d c, Optional<bg> d) implements dv.a {
+   public static record a(Optional<bg> b, Optional<bg> c) implements dw.a {
       public static final Codec<ef.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bv.b.optionalFieldOf("player").forGetter(ef.a::a),
-                  dh.d.d.optionalFieldOf("signal_strength", dh.d.c).forGetter(ef.a::b),
-                  bv.b.optionalFieldOf("projectile").forGetter(ef.a::c)
-               )
-               .apply($$0, ef.a::new)
+         $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(ef.a::a), bv.b.optionalFieldOf("entity").forGetter(ef.a::c)).apply($$0, ef.a::new)
       );
 
-      public static ao<ef.a> a(dh.d $$0, Optional<bg> $$1) {
-         return an.M.a(new ef.a(Optional.empty(), $$0, $$1));
+      public static ao<ef.a> b() {
+         return an.y.a(new ef.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(eth $$0, eys $$1, int $$2) {
-         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      public static ao<ef.a> a(bv.a $$0) {
+         return an.y.a(new ef.a(Optional.empty(), Optional.of(bv.a($$0))));
+      }
+
+      public boolean a(etl $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bh $$0) {
-         dv.a.super.a($$0);
-         $$0.a(this.d, ".projectile");
+         dw.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override
       public Optional<bg> a() {
          return this.b;
-      }
-
-      public dh.d b() {
-         return this.c;
-      }
-
-      public Optional<bg> c() {
-         return this.d;
       }
    }
 }

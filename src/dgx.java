@@ -1,125 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public abstract class dgx extends dhj {
-   protected static final ezm a = dhj.a(1.0, 0.0, 1.0, 15.0, 0.5, 15.0);
-   protected static final ezm b = dhj.a(1.0, 0.0, 1.0, 15.0, 1.0, 15.0);
-   protected static final eyn c = new eyn(0.0625, 0.0, 0.0625, 0.9375, 0.25, 0.9375);
-   protected final dvd d;
+public class dgx extends dgu {
+   public static final MapCodec<dgx> b = b(dgx::new);
+   public static final dvm c = dli.aF;
+   private static final Map<jk, ezq> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         jk.c,
+         dhm.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         jk.d,
+         dhm.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         jk.e,
+         dhm.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         jk.f,
+         dhm.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
-   protected dgx(dun.d $$0, dvd $$1) {
-      super($$0.a($$1.g()));
-      this.d = $$1;
+   @Override
+   public MapCodec<? extends dgx> a() {
+      return b;
+   }
+
+   protected dgx(dur.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, jk.c).b(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dgx> a();
-
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return this.h($$0) > 0 ? a : b;
-   }
-
-   protected int b() {
-      return 20;
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public boolean a(duo $$0) {
-      return true;
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      return $$1 == jj.a && !$$0.a($$3, $$4) ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      je $$3 = $$2.e();
-      return c($$1, $$3) || a($$1, $$3, jj.b);
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
-      int $$4 = this.h($$0);
-      if ($$4 > 0) {
-         this.a(null, $$1, $$2, $$0, $$4);
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, equ.c, equ.c.a($$3));
       }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dho.a.n() : $$0;
    }
 
    @Override
-   protected void a(duo $$0, deg $$1, je $$2, bto $$3) {
-      if (!$$1.B) {
-         int $$4 = this.h($$0);
-         if ($$4 == 0) {
-            this.a($$3, $$1, $$2, $$0, $$4);
+   protected boolean a(dus $$0, dem $$1, jf $$2) {
+      jk $$3 = $$0.c(c);
+      jf $$4 = $$2.a($$3.g());
+      dus $$5 = $$1.a_($$4);
+      return $$5.c($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dus a(czn $$0) {
+      dus $$1 = super.a($$0);
+      dem $$2 = $$0.q();
+      jf $$3 = $$0.a();
+      jk[] $$4 = $$0.f();
+
+      for (jk $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.b(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
+
+      return null;
    }
-
-   private void a(@Nullable bto $$0, deg $$1, je $$2, duo $$3, int $$4) {
-      int $$5 = this.b($$1, $$2);
-      boolean $$6 = $$4 > 0;
-      boolean $$7 = $$5 > 0;
-      if ($$4 != $$5) {
-         duo $$8 = this.a($$3, $$5);
-         $$1.a($$2, $$8, 2);
-         this.a($$1, $$2);
-         $$1.b($$2, $$3, $$8);
-      }
-
-      if (!$$7 && $$6) {
-         $$1.a(null, $$2, this.d.l(), awf.e);
-         $$1.a($$0, dzl.e, $$2);
-      } else if ($$7 && !$$6) {
-         $$1.a(null, $$2, this.d.m(), awf.e);
-         $$1.a($$0, dzl.a, $$2);
-      }
-
-      if ($$7) {
-         $$1.a(new je($$2), this, this.b());
-      }
-   }
-
-   @Override
-   protected void a(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         if (this.h($$0) > 0) {
-            this.a($$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected void a(deg $$0, je $$1) {
-      $$0.a($$1, this);
-      $$0.a($$1.e(), this);
-   }
-
-   @Override
-   protected int a(duo $$0, ddl $$1, je $$2, jj $$3) {
-      return this.h($$0);
-   }
-
-   @Override
-   protected int b(duo $$0, ddl $$1, je $$2, jj $$3) {
-      return $$3 == jj.b ? this.h($$0) : 0;
-   }
-
-   @Override
-   protected boolean f_(duo $$0) {
-      return true;
-   }
-
-   protected static int a(deg $$0, eyn $$1, Class<? extends bto> $$2) {
-      return $$0.a($$2, $$1, btt.f.and($$0x -> !$$0x.q_())).size();
-   }
-
-   protected abstract int b(deg var1, je var2);
-
-   protected abstract int h(duo var1);
-
-   protected abstract duo a(duo var1, int var2);
 }

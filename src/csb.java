@@ -1,73 +1,105 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class csb extends cqz {
+   private final brl m;
+   private final brl n;
+   private final cih o;
+   private static final int p = 1;
+   private static final int q = 2;
 
-public class csb {
-   private final List<csb.b> a;
-   private final csb.b b;
+   public csb(int $$0, cnw $$1, brl $$2, final cih $$3, int $$4) {
+      super(null, $$0);
+      this.m = $$2;
+      this.n = $$3.ha();
+      this.o = $$3;
+      $$2.d_($$1.k);
+      this.a(new csw($$2, 0, 8, 18) {
+         @Override
+         public boolean a(cvs $$0) {
+            return $$0.a(cvw.nL) && !this.h() && $$3.f();
+         }
 
-   csb(List<csb.b> $$0, csb.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(csb.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
-   }
+         @Override
+         public boolean d() {
+            return $$3.f();
+         }
+      });
+      this.a(new crd(this.n, $$3, btz.g, 0, 8, 36, null) {
+         @Override
+         public boolean a(cvs $$0) {
+            return $$3.k($$0);
+         }
 
-   public static csb.a a() {
-      return new csb.a();
-   }
-
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
-
-   public csb.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public csb.b b() {
-      return this.b;
-   }
-
-   public List<csb.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(csb.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<csb.b> a = new ArrayList<>();
-      private csb.b b = csb.b.e;
-
-      public csb.a a(int $$0, int $$1, int $$2, Predicate<cvp> $$3) {
-         this.a.add(new csb.b($$0, $$1, $$2, $$3));
-         return this;
+         @Override
+         public boolean d() {
+            return $$3.e(btz.g);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$5 = 0; $$5 < 3; $$5++) {
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               this.a(new csw($$2, 1 + $$6 + $$5 * $$4, 80 + $$6 * 18, 18 + $$5 * 18));
+            }
+         }
       }
 
-      public csb.a a(int $$0, int $$1, int $$2) {
-         this.b = new csb.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public csb a() {
-         return new csb(this.a, this.b);
-      }
+      this.c($$1, 8, 84);
    }
 
-   public static record b(int a, int b, int c, Predicate<cvp> d) {
-      static final csb.b e = new csb.b(0, 0, 0, $$0 -> true);
+   @Override
+   public boolean b(cnx $$0) {
+      return !this.o.b(this.m) && this.m.a($$0) && this.n.a($$0) && this.o.bI() && $$0.b(this.o, 4.0);
+   }
+
+   @Override
+   public cvs b(cnx $$0, int $$1) {
+      cvs $$2 = cvs.k;
+      csw $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvs $$4 = $$3.g();
+         $$2 = $$4.u();
+         int $$5 = this.m.b() + 1;
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return cvs.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cvs.k;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cvs.k;
+            }
+         } else if ($$5 <= 1 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cvs.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cvs.k;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cvs.k;
+            }
+
+            return cvs.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cvs.k);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(cnx $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 }

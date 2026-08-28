@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class ain implements zl<agr> {
+   public static final zc<wb, ain> a = zl.a(ain::a, ain::new);
+   private final brr b;
 
-public class ain implements zk<agq> {
-   public static final zb<wa, ain> a = zk.a(ain::a, ain::new);
-   private final UUID b;
-
-   public ain(UUID $$0) {
+   public ain(brr $$0) {
       this.b = $$0;
    }
 
-   private ain(wa $$0) {
-      this.b = $$0.n();
+   private ain(wb $$0) {
+      this.b = $$0.b(brr.class);
    }
 
-   private void a(wa $$0) {
+   private void a(wb $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zm<ain> a() {
-      return ago.ce;
+   public zn<ain> a() {
+      return agp.cd;
    }
 
-   public void a(agq $$0) {
+   public void a(agr $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bto a(arh $$0) {
-      return $$0.a(this.b);
+   public brr b() {
+      return this.b;
    }
 }

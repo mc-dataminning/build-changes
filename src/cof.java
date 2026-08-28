@@ -1,139 +1,172 @@
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class cof extends bto implements bvi {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private buk i;
-   @Nullable
-   private UUID j;
+public abstract class cof extends cor {
+   public static final double b = 0.1;
+   public static final double c = 0.5;
+   public double d = 0.1;
 
-   public cof(btv<? extends cof> $$0, deg $$1) {
+   protected cof(bty<? extends cof> $$0, dej $$1) {
       super($$0, $$1);
    }
 
-   public cof(deg $$0, double $$1, double $$2, double $$3, float $$4, int $$5, buk $$6) {
-      this(btv.K, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.v($$4 * (180.0F / (float)Math.PI));
+   protected cof(bty<? extends cof> $$0, double $$1, double $$2, double $$3, dej $$4) {
+      this($$0, $$4);
       this.a_($$1, $$2, $$3);
    }
 
-   @Override
-   protected void a(akk.a $$0) {
+   public cof(bty<? extends cof> $$0, double $$1, double $$2, double $$3, eyw $$4, dej $$5) {
+      this($$0, $$5);
+      this.b($$1, $$2, $$3, this.dI(), this.dK());
+      this.ax();
+      this.a($$4, this.d);
    }
 
-   public void a(@Nullable buk $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cD();
-   }
-
-   @Nullable
-   public buk m() {
-      if (this.i == null && this.j != null && this.dS() instanceof arh) {
-         bto $$0 = ((arh)this.dS()).a(this.j);
-         if ($$0 instanceof buk) {
-            this.i = (buk)$$0;
-         }
-      }
-
-      return this.i;
+   public cof(bty<? extends cof> $$0, bun $$1, eyw $$2, dej $$3) {
+      this($$0, $$1.dx(), $$1.dz(), $$1.dD(), $$2, $$3);
+      this.c($$1);
+      this.a($$1.dI(), $$1.dK());
    }
 
    @Override
-   protected void a(uf $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
+   protected void a(akl.a $$0) {
    }
 
    @Override
-   protected void b(uf $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
+   public boolean a(double $$0) {
+      double $$1 = this.cO().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
       }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   protected ddr.a aj_() {
+      return ddr.a.a;
    }
 
    @Override
    public void l() {
-      super.l();
-      if (this.dS().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dx() + (this.af.j() * 2.0 - 1.0) * (double)this.dn() * 0.5;
-                  double $$2 = this.dz() + 0.05 + this.af.j();
-                  double $$3 = this.dD() + (this.af.j() * 2.0 - 1.0) * (double)this.dn() * 0.5;
-                  double $$4 = (this.af.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.af.j() * 0.3;
-                  double $$6 = (this.af.j() * 2.0 - 1.0) * 0.3;
-                  this.dS().a(ln.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
+      btr $$0 = this.s();
+      if (this.dS().B || ($$0 == null || !$$0.dN()) && this.dS().B(this.ds())) {
+         super.l();
+         if (this.o()) {
+            this.d(1.0F);
+         }
+
+         eyu $$1 = cot.a(this, this::b, this.aj_());
+         if ($$1.d() != eyu.a.a) {
+            this.b($$1);
+         }
+
+         if (!this.dS().x_()) {
+            this.aI();
+         }
+
+         eyw $$2 = this.dv();
+         double $$3 = this.dx() + $$2.d;
+         double $$4 = this.dz() + $$2.e;
+         double $$5 = this.dD() + $$2.f;
+         cot.a(this, 0.2F);
+         float $$8;
+         if (this.bi()) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               float $$7 = 0.25F;
+               this.dS().a(lo.d, $$3 - $$2.d * 0.25, $$4 - $$2.e * 0.25, $$5 - $$2.f * 0.25, $$2.d, $$2.e, $$2.f);
             }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (buk $$8 : this.dS().a(buk.class, this.cO().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
 
-         if (!this.f) {
-            this.dS().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.as();
-         }
-      }
-   }
-
-   private void c(buk $$0) {
-      buk $$1 = this.m();
-      if ($$0.bI() && !$$0.cz() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dT().q(), 6.0F);
+            $$8 = this.v();
          } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            bsg $$2 = this.dT().c(this, (bto)$$1);
-            if ($$0.a($$2, 6.0F) && this.dS() instanceof arh $$3) {
-               dbm.a($$3, (bto)$$0, $$2);
-            }
+            $$8 = this.t();
          }
+
+         this.h($$2.e($$2.d().c(this.d)).c((double)$$8));
+         lm $$10 = this.q();
+         if ($$10 != null) {
+            this.dS().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
+         }
+
+         this.a_($$3, $$4, $$5);
+      } else {
+         this.as();
       }
    }
 
    @Override
-   public void b(byte $$0) {
+   public boolean a(bsj $$0, float $$1) {
+      return !this.b($$0);
+   }
+
+   @Override
+   protected boolean b(btr $$0) {
+      return super.b($$0) && !$$0.ae;
+   }
+
+   @Override
+   protected boolean o() {
+      return true;
+   }
+
+   @Nullable
+   protected lm q() {
+      return lo.ae;
+   }
+
+   protected float t() {
+      return 0.95F;
+   }
+
+   protected float v() {
+      return 0.8F;
+   }
+
+   @Override
+   public void b(ug $$0) {
       super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.ba()) {
-            this.dS().a(this.dx(), this.dz(), this.dD(), awe.iC, this.di(), 1.0F, this.af.i() * 0.2F + 0.85F, false);
-         }
+      $$0.a("acceleration_power", this.d);
+   }
+
+   @Override
+   public void a(ug $$0) {
+      super.a($$0);
+      if ($$0.b("acceleration_power", 6)) {
+         this.d = $$0.k("acceleration_power");
       }
    }
 
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
+   @Override
+   public float bx() {
+      return 1.0F;
+   }
+
+   @Override
+   public zl<aca> a(ari $$0) {
+      btr $$1 = this.s();
+      int $$2 = $$1 == null ? 0 : $$1.ap();
+      eyw $$3 = $$0.b();
+      return new acb(this.ap(), this.cD(), $$3.a(), $$3.b(), $$3.c(), $$0.d(), $$0.e(), this.ao(), $$2, $$0.c(), 0.0);
+   }
+
+   @Override
+   public void a(acb $$0) {
+      super.a($$0);
+      eyw $$1 = new eyw($$0.j(), $$0.k(), $$0.l());
+      this.h($$1);
+   }
+
+   private void a(eyw $$0, double $$1) {
+      this.h($$0.d().c($$1));
+      this.as = true;
+   }
+
+   @Override
+   protected void b(@Nullable btr $$0, boolean $$1) {
+      super.b($$0, $$1);
+      if ($$1) {
+         this.d = 0.1;
       } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
+         this.d *= 0.5;
       }
    }
 }

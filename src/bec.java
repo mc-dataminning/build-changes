@@ -1,33 +1,26 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class bec extends DataFix {
-   public bec(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bec extends bgj {
+   public bec(Schema $$0) {
+      super($$0, false, "EntityShulkerRotationFix", bho.B, "minecraft:shulker");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(bhm.B),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
+      if (!$$1.isEmpty()) {
+         $$1.set(0, $$1.get(0) - 180.0);
+         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
+      } else {
+         return $$0;
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

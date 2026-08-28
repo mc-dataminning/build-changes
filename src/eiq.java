@@ -1,69 +1,66 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
-public class eiq extends eiy {
-   public static final MapCodec<eiq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aym.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bqu.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, eiq::new)
-   );
-   private final int b;
-   private final bqu h;
+public abstract class eiq {
+   public static final Codec<eiq> h = lv.X.q().dispatch(eiq::a, eir::a);
 
-   public eiq(int $$0, int $$1, int $$2, int $$3, bqu $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
-   }
+   protected abstract eir<?> a();
 
-   @Override
-   protected eiz<?> a() {
-      return eiz.g;
-   }
+   public abstract void a(eiq.a var1);
 
-   @Override
-   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
-      jj $$6 = jj.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      je.a $$8 = $$4.k();
-      je $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ehg.a> $$10 = Lists.newArrayList();
+   public static final class a {
+      private final dep a;
+      private final BiConsumer<jf, dus> b;
+      private final azn c;
+      private final ObjectArrayList<jf> d;
+      private final ObjectArrayList<jf> e;
+      private final ObjectArrayList<jf> f;
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (efc.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ehg.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jj.b);
+      public a(dep $$0, BiConsumer<jf, dus> $$1, azn $$2, Set<jf> $$3, Set<jf> $$4, Set<jf> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(kj::v));
+         this.e.sort(Comparator.comparingInt(kj::v));
+         this.f.sort(Comparator.comparingInt(kj::v));
       }
 
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (efc.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ehg.a($$8.j(), 0, false));
-         $$8.c($$6);
+      public void a(jf $$0, dvj $$1) {
+         this.a($$0, dho.ff.n().b($$1, Boolean.valueOf(true)));
       }
 
-      return $$10;
+      public void a(jf $$0, dus $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(jf $$0) {
+         return this.a.a($$0, dur.a::l);
+      }
+
+      public dep a() {
+         return this.a;
+      }
+
+      public azn b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<jf> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<jf> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<jf> e() {
+         return this.f;
+      }
    }
 }

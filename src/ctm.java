@@ -1,18 +1,69 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
-public class ctm extends cvk implements cwk {
-   public ctm(cvk.a $$0) {
-      super($$0);
+public record ctm(Map<ctl.a, Integer> b, jo<awf> c, Predicate<cvs> d, List<ctm.a> e, float f, float g) {
+   public static final Codec<jo<ctm>> a = lv.ao.r();
+
+   public int a(ctl.a $$0) {
+      return this.b.getOrDefault($$0, 0);
    }
 
-   public cob a(deg $$0, cvp $$1, buk $$2, @Nullable cvp $$3) {
-      return new cod($$0, $$2, $$1.c(1), $$3);
+   public Map<ctl.a, Integer> a() {
+      return this.b;
    }
 
-   @Override
-   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
-      cod $$4 = new cod($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cob.a.b;
-      return $$4;
+   public jo<awf> b() {
+      return this.c;
+   }
+
+   public Predicate<cvs> c() {
+      return this.d;
+   }
+
+   public List<ctm.a> d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public static final class a {
+      private final ale a;
+      private final String b;
+      private final boolean c;
+      private final ale d;
+      private final ale e;
+
+      public a(ale $$0, String $$1, boolean $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = this.b(true);
+         this.e = this.b(false);
+      }
+
+      public a(ale $$0) {
+         this($$0, "", false);
+      }
+
+      private ale b(boolean $$0) {
+         return this.a.a((UnaryOperator<String>)($$1 -> "textures/models/armor/" + this.a.a() + "_layer_" + ($$0 ? 2 : 1) + this.b + ".png"));
+      }
+
+      public ale a(boolean $$0) {
+         return $$0 ? this.d : this.e;
+      }
+
+      public boolean a() {
+         return this.c;
+      }
    }
 }

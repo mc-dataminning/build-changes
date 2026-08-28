@@ -1,148 +1,47 @@
-import java.util.Set;
+public class fxn extends fxo<gtq> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final gaq[] d = new gaq[4];
 
-public class fxn extends fxk<gtu> {
-   public static final gau a = new fwm(true, 8.0F, 3.35F, Set.of("head"));
-   private final gal c;
-   public final gal b;
-   private final gal d;
-   private final gal e;
-   private final gal f;
-   private final gal g;
-   private final gal i;
-   private final gal j;
-   private static final int k = 6;
-   private static final float l = 16.5F;
-   private static final float m = 17.5F;
-   private float n;
+   public fxn(gaq $$0) {
+      super($$0);
 
-   public fxn(gal $$0) {
-      this.c = $$0;
-      this.b = $$0.b("head");
-      this.d = $$0.b("body");
-      this.e = $$0.b("right_hind_leg");
-      this.f = $$0.b("left_hind_leg");
-      this.g = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
-      this.j = this.d.b("tail");
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gar b() {
-      gat $$0 = new gat();
-      gav $$1 = $$0.a();
-      gav $$2 = $$1.a("head", gaq.c().a(1, 5).a(-3.0F, -2.0F, -5.0F, 8.0F, 6.0F, 6.0F), gan.a(-1.0F, 16.5F, -3.0F));
-      $$2.a("right_ear", gaq.c().a(8, 1).a(-3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), gan.a);
-      $$2.a("left_ear", gaq.c().a(15, 1).a(3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), gan.a);
-      $$2.a("nose", gaq.c().a(6, 18).a(-1.0F, 2.01F, -8.0F, 4.0F, 2.0F, 3.0F), gan.a);
-      gav $$3 = $$1.a("body", gaq.c().a(24, 15).a(-3.0F, 3.999F, -3.5F, 6.0F, 11.0F, 6.0F), gan.a(0.0F, 16.0F, -6.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gap $$4 = new gap(0.001F);
-      gaq $$5 = gaq.c().a(4, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
-      gaq $$6 = gaq.c().a(13, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
-      $$1.a("right_hind_leg", $$6, gan.a(-5.0F, 17.5F, 7.0F));
-      $$1.a("left_hind_leg", $$5, gan.a(-1.0F, 17.5F, 7.0F));
-      $$1.a("right_front_leg", $$6, gan.a(-5.0F, 17.5F, 0.0F));
-      $$1.a("left_front_leg", $$5, gan.a(-1.0F, 17.5F, 0.0F));
-      $$3.a("tail", gaq.c().a(30, 0).a(2.0F, 0.0F, -1.0F, 4.0F, 9.0F, 5.0F), gan.a(-4.0F, 15.0F, -1.0F, -0.05235988F, 0.0F, 0.0F));
-      return gar.a($$0, 48, 32);
+   private static String a(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static gaw a() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      float $$2 = -3.5F;
+
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            gav.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            gas.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
+      }
+
+      return gaw.a($$0, 64, 32);
    }
 
    @Override
-   public gal a() {
-      return this.c;
-   }
+   public void a(gtq $$0) {
+      super.a($$0);
 
-   public void a(gtu $$0) {
-      this.d.c();
-      this.b.c();
-      this.j.c();
-      this.e.c();
-      this.f.c();
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.e.e = azd.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.f.e = azd.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.g.e = azd.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.i.e = azd.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.b.g = $$0.a;
-      this.e.k = true;
-      this.f.k = true;
-      this.g.k = true;
-      this.i.k = true;
-      float $$3 = $$0.ab;
-      if ($$0.c) {
-         this.d.e += 0.10471976F;
-         float $$4 = $$0.b;
-         this.d.c += $$4 * $$3;
-         this.b.c += $$4 * $$3;
-      } else if ($$0.d) {
-         this.d.g = (float) (-Math.PI / 2);
-         this.d.c += 5.0F * $$3;
-         this.j.e = (float) (-Math.PI * 5.0 / 6.0);
-         if ($$0.ae) {
-            this.j.e = -2.1816616F;
-            this.d.d += 2.0F;
-         }
-
-         this.b.b += 2.0F * $$3;
-         this.b.c += 2.99F * $$3;
-         this.b.f = (float) (-Math.PI * 2.0 / 3.0);
-         this.b.g = 0.0F;
-         this.e.k = false;
-         this.f.k = false;
-         this.g.k = false;
-         this.i.k = false;
-      } else if ($$0.e) {
-         this.d.e = (float) (Math.PI / 6);
-         this.d.c -= 7.0F * $$3;
-         this.d.d += 3.0F * $$3;
-         this.j.e = (float) (Math.PI / 4);
-         this.j.d -= 1.0F * $$3;
-         this.b.e = 0.0F;
-         this.b.f = 0.0F;
-         if ($$0.ae) {
-            this.b.c--;
-            this.b.d -= 0.375F;
-         } else {
-            this.b.c -= 6.5F;
-            this.b.d += 2.75F;
-         }
-
-         this.e.e = (float) (-Math.PI * 5.0 / 12.0);
-         this.e.c += 4.0F * $$3;
-         this.e.d -= 0.25F * $$3;
-         this.f.e = (float) (-Math.PI * 5.0 / 12.0);
-         this.f.c += 4.0F * $$3;
-         this.f.d -= 0.25F * $$3;
-         this.g.e = (float) (-Math.PI / 12);
-         this.i.e = (float) (-Math.PI / 12);
-      }
-
-      if (!$$0.d && !$$0.f && !$$0.c) {
-         this.b.e = $$0.V * (float) (Math.PI / 180.0);
-         this.b.f = $$0.U * (float) (Math.PI / 180.0);
-      }
-
-      if ($$0.d) {
-         this.b.e = 0.0F;
-         this.b.f = (float) (-Math.PI * 2.0 / 3.0);
-         this.b.g = azd.b($$0.p * 0.027F) / 22.0F;
-      }
-
-      if ($$0.c) {
-         float $$5 = azd.b($$0.p) * 0.01F;
-         this.d.f = $$5;
-         this.e.g = $$5;
-         this.f.g = $$5;
-         this.g.g = $$5 / 2.0F;
-         this.i.g = $$5 / 2.0F;
-      }
-
-      if ($$0.f) {
-         float $$6 = 0.1F;
-         this.n += 0.67F;
-         this.e.e = azd.b(this.n * 0.4662F) * 0.1F;
-         this.f.e = azd.b(this.n * 0.4662F + (float) Math.PI) * 0.1F;
-         this.g.e = azd.b(this.n * 0.4662F + (float) Math.PI) * 0.1F;
-         this.i.e = azd.b(this.n * 0.4662F) * 0.1F;
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].f = azf.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
+         this.d[$$1].b = azf.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
       }
    }
 }

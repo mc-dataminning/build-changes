@@ -1,94 +1,59 @@
-public class agj implements zk<abz> {
-   public static final zb<wo, agj> a = zk.a(agj::a, agj::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final int f;
-   private final jn<bst> g;
-   private final int h;
-   private final int i;
-   private final byte j;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-   public agj(int $$0, bsv $$1, boolean $$2) {
-      this.f = $$0;
-      this.g = $$1.c();
-      this.h = $$1.e();
-      this.i = $$1.d();
-      byte $$3 = 0;
-      if ($$1.f()) {
-         $$3 = (byte)($$3 | 1);
+public class agj implements zl<aca> {
+   public static final zc<wp, agj> a = zc.a(za.h, agj::b, agj.a.b.a(za.a()), agj::e, agj::new);
+   private final int b;
+   private final List<agj.a> c;
+
+   public agj(int $$0, Collection<bvq> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bvq $$2 : $$1) {
+         this.c.add(new agj.a($$2.a(), $$2.b(), $$2.c()));
       }
-
-      if ($$1.g()) {
-         $$3 = (byte)($$3 | 2);
-      }
-
-      if ($$1.h()) {
-         $$3 = (byte)($$3 | 4);
-      }
-
-      if ($$2) {
-         $$3 = (byte)($$3 | 8);
-      }
-
-      this.j = $$3;
    }
 
-   private agj(wo $$0) {
-      this.f = $$0.l();
-      this.g = bst.b.decode($$0);
-      this.h = $$0.l();
-      this.i = $$0.l();
-      this.j = $$0.readByte();
-   }
-
-   private void a(wo $$0) {
-      $$0.c(this.f);
-      bst.b.encode($$0, this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-      $$0.l(this.j);
+   private agj(int $$0, List<agj.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public zm<agj> a() {
-      return ago.bd;
+   public zn<agj> a() {
+      return agp.bc;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.f;
+      return this.b;
    }
 
-   public jn<bst> e() {
-      return this.g;
+   public List<agj.a> e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.h;
-   }
+   public static record a(jo<bvp> c, double d, Collection<bvs> e) {
+      public static final zc<ByteBuf, bvs> a = zc.a(ale.b, bvs::b, za.k, bvs::c, bvs.a.e, bvs::d, bvs::new);
+      public static final zc<wp, agj.a> b = zc.a(bvp.b, agj.a::a, za.k, agj.a::b, a.a(za.a(ArrayList::new)), agj.a::c, agj.a::new);
 
-   public int g() {
-      return this.i;
-   }
+      public jo<bvp> a() {
+         return this.c;
+      }
 
-   public boolean h() {
-      return (this.j & 2) != 0;
-   }
+      public double b() {
+         return this.d;
+      }
 
-   public boolean i() {
-      return (this.j & 1) != 0;
-   }
-
-   public boolean j() {
-      return (this.j & 4) != 0;
-   }
-
-   public boolean k() {
-      return (this.j & 8) != 0;
+      public Collection<bvs> c() {
+         return this.e;
+      }
    }
 }

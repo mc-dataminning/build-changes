@@ -1,46 +1,25 @@
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public enum ddu implements ddi {
-   a;
-
+public interface ddu extends dea, dem, deo {
    @Override
-   public float a(jj $$0, boolean $$1) {
-      return 1.0F;
+   default <T extends drv> Optional<T> a(jf $$0, drx<T> $$1) {
+      return dem.super.a($$0, $$1);
    }
 
    @Override
-   public eqe x_() {
-      return eqe.c;
+   default List<ezq> c(@Nullable btr $$0, eyr $$1) {
+      return dea.super.c($$0, $$1);
    }
 
    @Override
-   public int a(je $$0, ddq $$1) {
-      return -1;
-   }
-
-   @Nullable
-   @Override
-   public drs c_(je $$0) {
-      return null;
+   default boolean a(@Nullable btr $$0, ezq $$1) {
+      return dea.super.a($$0, $$1);
    }
 
    @Override
-   public duo a_(je $$0) {
-      return dhl.a.o();
-   }
-
-   @Override
-   public eqp b_(je $$0) {
-      return eqq.a.g();
-   }
-
-   @Override
-   public int H_() {
-      return 0;
-   }
-
-   @Override
-   public int G_() {
-      return 0;
+   default jf a(eao.a $$0, jf $$1) {
+      return dem.super.a($$0, $$1);
    }
 }

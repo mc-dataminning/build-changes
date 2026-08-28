@@ -1,42 +1,29 @@
-import java.util.UUID;
+public class aai implements zl<aae> {
+   public static final zc<wb, aai> a = zl.a(aai::a, aai::new);
+   private final int b;
 
-public record aai(UUID b, aai.a c) implements zk<aad> {
-   public static final zb<wa, aai> a = zk.a(aai::a, aai::new);
-
-   private aai(wa $$0) {
-      this($$0.n(), $$0.b(aai.a.class));
+   public aai(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(wa $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private aai(wb $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wb $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public zm<aai> a() {
-      return aac.p;
+   public zn<aai> a() {
+      return aad.o;
    }
 
-   public void a(aad $$0) {
+   public void a(aae $$0) {
       $$0.a(this);
    }
 
-   public aai.a e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public int b() {
+      return this.b;
    }
 }

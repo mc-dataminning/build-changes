@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dgb extends dhj {
-   public static final int a = 3;
-   public static final dvf b = dve.r;
+public class dgb extends dfo {
+   public static final MapCodec<dgb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alc.d(dfr.ah), alc.d(dfr.ai), alc.d(dfr.aj), alc.d(dfr.ak), alc.d(dfr.al)).apply($$0, $$0.stable(dgb::new))
+   );
+   private final jo<dfk> c;
+   private final jo<dfk> d;
+   private final jo<dfk> e;
+   private final jo<dfk> f;
+   private final jo<dfk> g;
 
-   @Override
-   protected abstract MapCodec<? extends dgb> a();
-
-   protected dgb(dun.d $$0) {
-      super($$0);
+   public static dgb a(jp<dfk> $$0) {
+      return new dgb($$0.b(dfr.ah), $$0.b(dfr.ai), $$0.b(dfr.aj), $$0.b(dfr.ak), $$0.b(dfr.al));
    }
 
-   protected abstract Iterable<eys> b(duo var1);
-
-   public static boolean c(duo $$0) {
-      return $$0.b(b) && ($$0.a(awt.af) || $$0.a(awt.bl)) && $$0.c(b);
-   }
-
-   @Override
-   protected void a(deg $$0, duo $$1, eyo $$2, coo $$3) {
-      if (!$$0.B && $$3.bV() && this.d($$1)) {
-         a($$0, $$1, $$2.b(), true);
-      }
-   }
-
-   protected boolean d(duo $$0) {
-      return !$$0.c(b);
+   private dgb(jo<dfk> $$0, jo<dfk> $$1, jo<dfk> $$2, jo<dfk> $$3, jo<dfk> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
+   protected Stream<jo<dfk>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
-   private static void a(deg $$0, eys $$1, azl $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(ln.ae, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awe.dK, awf.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   @Override
+   protected MapCodec<? extends dfo> a() {
+      return b;
+   }
+
+   @Override
+   public jo<dfk> getNoiseBiome(int $$0, int $$1, int $$2, dft.f $$3) {
+      int $$4 = jz.c($$0);
+      int $$5 = jz.c($$1);
+      int $$6 = jz.c($$2);
+      int $$7 = kh.a($$4);
+      int $$8 = kh.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (kh.a($$4) * 2 + 1) * 8;
+         int $$10 = (kh.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new eah.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-
-      $$0.a(ln.aJ, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cnu $$0, duo $$1, deh $$2, je $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof dgb) {
-         ((dgb)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(ln.ae, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
-      }
-
-      $$2.a(null, $$3, awe.dM, awf.e, 1.0F, 1.0F);
-      $$2.a($$0, dzl.c, $$3);
-   }
-
-   private static void a(deh $$0, duo $$1, je $$2, boolean $$3) {
-      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   protected void a(duo $$0, arh $$1, je $$2, ddy $$3, BiConsumer<cvp, je> $$4) {
-      if ($$3.f() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

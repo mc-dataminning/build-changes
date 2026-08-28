@@ -1,73 +1,98 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class gkg implements gjr<dtg> {
-   private final Map<dom.a, fzh> a;
-   private static final Map<dom.a, alc> b = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dom.b.c, alc.b("textures/entity/skeleton/skeleton.png"));
-      $$0.put(dom.b.d, alc.b("textures/entity/skeleton/wither_skeleton.png"));
-      $$0.put(dom.b.f, alc.b("textures/entity/zombie/zombie.png"));
-      $$0.put(dom.b.g, alc.b("textures/entity/creeper/creeper.png"));
-      $$0.put(dom.b.i, alc.b("textures/entity/enderdragon/dragon.png"));
-      $$0.put(dom.b.h, alc.b("textures/entity/piglin/piglin.png"));
-      $$0.put(dom.b.e, gxt.a());
-   });
+public class gkg extends gkk {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final eyw k = new eyw(0.0, -0.32F, 0.073F);
+   private final Map<dwf, gkg.a> l;
 
-   public static Map<dom.a, fzh> a(gah $$0) {
-      Builder<dom.a, fzh> $$1 = ImmutableMap.builder();
-      $$1.put(dom.b.c, new fzg($$0.a(gak.cr)));
-      $$1.put(dom.b.d, new fzg($$0.a(gak.de)));
-      $$1.put(dom.b.e, new fzg($$0.a(gak.bL)));
-      $$1.put(dom.b.f, new fzg($$0.a(gak.dn)));
-      $$1.put(dom.b.g, new fzg($$0.a(gak.Y)));
-      $$1.put(dom.b.i, new gae($$0.a(gak.ah)));
-      $$1.put(dom.b.h, new fyl($$0.a(gak.bB)));
-      return $$1.build();
+   public gkg(gjx.a $$0) {
+      super($$0);
+      this.l = dwf.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gkg.a($$0.a(gap.c($$1)))));
    }
 
-   public gkg(gjs.a $$0) {
-      this.a = a($$0.e());
+   @Override
+   public float b() {
+      return 1.0F;
    }
 
-   public void a(dtg $$0, float $$1, fde $$2, ghg $$3, int $$4, int $$5) {
-      float $$6 = $$0.a($$1);
-      duo $$7 = $$0.m();
-      boolean $$8 = $$7.b() instanceof dql;
-      jj $$9 = $$8 ? $$7.c(dql.d) : null;
-      int $$10 = $$8 ? dvu.a($$9.g()) : $$7.c(dom.e);
-      float $$11 = dvu.b($$10);
-      dom.a $$12 = ((dgf)$$7.b()).b();
-      fzh $$13 = this.a.get($$12);
-      ghq $$14 = a($$12, $$0.c());
-      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   @Override
+   public float c() {
+      return 0.9F;
    }
 
-   public static void a(@Nullable jj $$0, float $$1, float $$2, fde $$3, ghg $$4, int $$5, fzh $$6, ghq $$7) {
-      $$3.a();
-      if ($$0 == null) {
-         $$3.a(0.5F, 0.0F, 0.5F);
-      } else {
-         float $$8 = 0.25F;
-         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+   @Override
+   public void a(dth $$0, float $$1, fdi $$2, ghl $$3, int $$4, int $$5) {
+      dus $$6 = $$0.m();
+      don $$7 = (don)$$6.b();
+      dwf $$8 = don.a($$7);
+      gkg.a $$9 = this.l.get($$8);
+      $$9.a($$6);
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   }
+
+   @Override
+   void a(fdi $$0, float $$1, dus $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
+
+   @Override
+   gzm a(dwf $$0) {
+      return gig.b($$0);
+   }
+
+   @Override
+   eyw d() {
+      return k;
+   }
+
+   public static gaw e() {
+      gay $$0 = new gay();
+      gba $$1 = $$0.a();
+      $$1.a("board", gav.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gas.a);
+      $$1.a("plank", gav.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gas.a);
+      gba $$2 = $$1.a("normalChains", gav.c(), gas.a);
+      $$2.a("chainL1", gav.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gas.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainL2", gav.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gas.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("chainR1", gav.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gas.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("chainR2", gav.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gas.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("vChains", gav.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gas.a);
+      return gaw.a($$0, 64, 32);
+   }
+
+   public static final class a extends fyj {
+      public final gaq a;
+      public final gaq b;
+      public final gaq c;
+
+      public a(gaq $$0) {
+         super($$0, ghv::f);
+         this.a = $$0.b("plank");
+         this.c = $$0.b("normalChains");
+         this.b = $$0.b("vChains");
       }
 
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      fdi $$9 = $$4.getBuffer($$7);
-      $$6.a($$2, $$1, 0.0F);
-      $$6.a($$3, $$9, $$5, gws.d);
-      $$3.b();
-   }
-
-   public static ghq a(dom.a $$0, @Nullable cys $$1) {
-      alc $$2 = b.get($$0);
-      if ($$0 == dom.b.e && $$1 != null) {
-         gyd $$3 = fil.Q().an();
-         return ghq.i($$3.b($$1.f()).a());
-      } else {
-         return ghq.g($$2);
+      public void a(dus $$0) {
+         boolean $$1 = !($$0.b() instanceof dil);
+         this.a.k = $$1;
+         this.b.k = false;
+         this.c.k = true;
+         if (!$$1) {
+            boolean $$2 = $$0.c(dvi.a);
+            this.c.k = !$$2;
+            this.b.k = $$2;
+         }
       }
    }
 }

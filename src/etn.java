@@ -1,62 +1,53 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import java.util.Optional;
-import java.util.Set;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class etn {
-   private final azj a;
-   private final ewb b;
-   private final Optional<jo.a> c;
-   private final Set<alb<?>> d;
+public record etn<T>(ald<kb<T>> d, Codec<T> e, etn.a<T> f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final etn<eww> a = new etn<>(lw.bg, eww.e, e());
+   public static final etn<euz> b = new etn<>(lw.bf, evb.c, e());
+   public static final etn<etq> c = new etn<>(lw.be, etq.d, f());
 
-   public etn(azj $$0, ewb $$1, jo.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   public void a(etr $$0, ald<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   public etn(azj $$0, ewb $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
+   public <V> Optional<T> a(ale $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   private etn(azj $$0, ewb $$1, Optional<jo.a> $$2, Set<alb<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static Stream<etn<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   public etn a(String $$0) {
-      return new etn(this.a.a($$0), this.b, this.c, this.d);
+   private static <T extends etm> etn.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public etn a(String $$0, alb<?> $$1) {
-      Set<alb<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new etn(this.a.a($$0), this.b, this.c, $$2);
+   private static etn.a<etq> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public boolean a(alb<?> $$0) {
-      return this.d.contains($$0);
+   public ald<kb<T>> b() {
+      return this.d;
    }
 
-   public void b(String $$0) {
-      this.a.b($$0);
+   public Codec<T> c() {
+      return this.e;
    }
 
-   public void a(eti $$0) {
-      this.b.a(this, $$0);
+   public etn.a<T> d() {
+      return this.f;
    }
 
-   public jo.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
-   }
-
-   public boolean b() {
-      return this.c.isPresent();
-   }
-
-   public etn a(ewb $$0) {
-      return new etn(this.a, $$0, this.c, this.d);
-   }
-
-   public azj c() {
-      return this.a;
+   @FunctionalInterface
+   public interface a<T> {
+      void run(etr var1, ald<T> var2, T var3);
    }
 }

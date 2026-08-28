@@ -1,127 +1,95 @@
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dsn extends drs implements brs {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final azl k = azl.a();
-   @Nullable
-   private xd l;
-
-   public dsn(je $$0, duo $$1) {
-      super(dru.m, $$0, $$1);
-   }
-
-   @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      if (this.ak()) {
-         $$0.a("CustomName", xd.a.a(this.l, $$1));
-      }
-   }
-
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = a($$0.l("CustomName"), $$1);
-      }
-   }
-
-   public static void a(deg $$0, je $$1, duo $$2, dsn $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cnu $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dx() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dD() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)azd.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
-
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
-         }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
-      }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = azd.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = azd.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
-   }
-
-   @Override
-   public xd aj() {
-      return (xd)(this.l != null ? this.l : xd.c("container.enchant"));
-   }
-
-   public void a(@Nullable xd $$0) {
-      this.l = $$0;
-   }
+public class dsn {
+   public static final ald<dsm> a = a("blank");
+   public static final ald<dsm> b = a("angler");
+   public static final ald<dsm> c = a("archer");
+   public static final ald<dsm> d = a("arms_up");
+   public static final ald<dsm> e = a("blade");
+   public static final ald<dsm> f = a("brewer");
+   public static final ald<dsm> g = a("burn");
+   public static final ald<dsm> h = a("danger");
+   public static final ald<dsm> i = a("explorer");
+   public static final ald<dsm> j = a("flow");
+   public static final ald<dsm> k = a("friend");
+   public static final ald<dsm> l = a("guster");
+   public static final ald<dsm> m = a("heart");
+   public static final ald<dsm> n = a("heartbreak");
+   public static final ald<dsm> o = a("howl");
+   public static final ald<dsm> p = a("miner");
+   public static final ald<dsm> q = a("mourner");
+   public static final ald<dsm> r = a("plenty");
+   public static final ald<dsm> s = a("prize");
+   public static final ald<dsm> t = a("scrape");
+   public static final ald<dsm> u = a("sheaf");
+   public static final ald<dsm> v = a("shelter");
+   public static final ald<dsm> w = a("skull");
+   public static final ald<dsm> x = a("snort");
+   private static final Map<cvn, ald<dsm>> y = Map.ofEntries(
+      Map.entry(cvw.qM, a),
+      Map.entry(cvw.xR, b),
+      Map.entry(cvw.xS, c),
+      Map.entry(cvw.xT, d),
+      Map.entry(cvw.xU, e),
+      Map.entry(cvw.xV, f),
+      Map.entry(cvw.xW, g),
+      Map.entry(cvw.xX, h),
+      Map.entry(cvw.xY, i),
+      Map.entry(cvw.xZ, j),
+      Map.entry(cvw.ya, k),
+      Map.entry(cvw.yb, l),
+      Map.entry(cvw.yc, m),
+      Map.entry(cvw.yd, n),
+      Map.entry(cvw.ye, o),
+      Map.entry(cvw.yf, p),
+      Map.entry(cvw.yg, q),
+      Map.entry(cvw.yh, r),
+      Map.entry(cvw.yi, s),
+      Map.entry(cvw.yj, t),
+      Map.entry(cvw.yk, u),
+      Map.entry(cvw.yl, v),
+      Map.entry(cvw.ym, w),
+      Map.entry(cvw.yn, x)
+   );
 
    @Nullable
-   @Override
-   public xd al() {
-      return this.l;
+   public static ald<dsm> a(cvn $$0) {
+      return y.get($$0);
    }
 
-   @Override
-   protected void a(drs.b $$0) {
-      super.a($$0);
-      this.l = $$0.a(kr.g);
+   private static ald<dsm> a(String $$0) {
+      return ald.a(lw.ax, ale.b($$0));
    }
 
-   @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      $$0.a(kr.g, this.l);
+   public static dsm a(kb<dsm> $$0) {
+      a($$0, b, "angler_pottery_pattern");
+      a($$0, c, "archer_pottery_pattern");
+      a($$0, d, "arms_up_pottery_pattern");
+      a($$0, e, "blade_pottery_pattern");
+      a($$0, f, "brewer_pottery_pattern");
+      a($$0, g, "burn_pottery_pattern");
+      a($$0, h, "danger_pottery_pattern");
+      a($$0, i, "explorer_pottery_pattern");
+      a($$0, j, "flow_pottery_pattern");
+      a($$0, k, "friend_pottery_pattern");
+      a($$0, l, "guster_pottery_pattern");
+      a($$0, m, "heart_pottery_pattern");
+      a($$0, n, "heartbreak_pottery_pattern");
+      a($$0, o, "howl_pottery_pattern");
+      a($$0, p, "miner_pottery_pattern");
+      a($$0, q, "mourner_pottery_pattern");
+      a($$0, r, "plenty_pottery_pattern");
+      a($$0, s, "prize_pottery_pattern");
+      a($$0, t, "scrape_pottery_pattern");
+      a($$0, u, "sheaf_pottery_pattern");
+      a($$0, v, "shelter_pottery_pattern");
+      a($$0, w, "skull_pottery_pattern");
+      a($$0, x, "snort_pottery_pattern");
+      return a($$0, a, "decorated_pot_side");
    }
 
-   @Override
-   public void a(uf $$0) {
-      $$0.r("CustomName");
+   private static dsm a(kb<dsm> $$0, ald<dsm> $$1, String $$2) {
+      return kb.a($$0, $$1, new dsm(ale.b($$2)));
    }
 }

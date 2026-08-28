@@ -1,40 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dpp extends dhs implements dhm {
-   public static final MapCodec<dpp> a = b(dpp::new);
-   protected static final float b = 6.0F;
-   protected static final ezm c = dhj.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public interface dpp {
+   cyx b();
 
-   @Override
-   public MapCodec<dpp> a() {
-      return a;
+   static List<dpp> c() {
+      return lv.g.s().map(dpp::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   protected dpp(dun.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static dpp a(dei $$0) {
+      if ($$0.q() instanceof ctu $$1) {
+         dhm var6 = $$1.d();
+         if (var6 instanceof dpp) {
+            return (dpp)var6;
+         }
+      }
 
-   @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return c;
-   }
-
-   @Override
-   public boolean b(dej $$0, je $$1, duo $$2) {
-      return o($$2).o().a($$0, $$1) && $$0.u($$1.d());
-   }
-
-   @Override
-   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
-      djr.a($$0, o($$3).o(), $$2, 2);
-   }
-
-   private static djr o(duo $$0) {
-      return (djr)($$0.a(dhl.bu) ? dhl.iI : dhl.iH);
+      cvn $$2 = $$0.q();
+      return $$2 instanceof dpp ? (dpp)$$2 : null;
    }
 }

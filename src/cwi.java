@@ -1,19 +1,24 @@
-public class cwi extends cxc {
-   public cwi(dhj $$0, dhj $$1, cvk.a $$2) {
-      super($$0, $$1, $$2, jj.a);
+public class cwi extends cvn {
+   public cwi(cvn.a $$0) {
+      super($$0);
    }
 
    @Override
-   public xd m(cvp $$0) {
-      cys $$1 = $$0.a(kr.ab);
-      return (xd)($$1 != null && $$1.c().isPresent() ? xd.a(this.a() + ".named", $$1.c().get()) : super.m($$0));
-   }
+   public brs a(cvs $$0, cnx $$1, bun $$2, brr $$3) {
+      xe $$4 = $$0.a(ks.g);
+      if ($$4 != null && !($$2 instanceof cnx)) {
+         if (!$$1.dS().B && $$2.bI()) {
+            $$2.b($$4);
+            if ($$2 instanceof bup $$5) {
+               $$5.fW();
+            }
 
-   @Override
-   public void l(cvp $$0) {
-      cys $$1 = $$0.a(kr.ab);
-      if ($$1 != null && !$$1.b()) {
-         $$1.a().thenAcceptAsync($$1x -> $$0.b(kr.ab, $$1x), dtg.a);
+            $$0.h(1);
+         }
+
+         return brs.a;
+      } else {
+         return brs.e;
       }
    }
 }

@@ -1,20 +1,19 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dcg(dbr c) implements dcd {
-   public static final MapCodec<dcg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbr.b.fieldOf("factor").forGetter(dcg::b)).apply($$0, dcg::new));
+public interface dcg {
+   Codec<dcg> b = lv.ax.q().dispatch(dcg::a, Function.identity());
 
-   @Override
-   public float a(int $$0, azl $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   static MapCodec<? extends dcg> a(kb<MapCodec<? extends dcg>> $$0) {
+      kb.a($$0, "add", dbx.a);
+      kb.a($$0, "all_of", dby.c.a);
+      kb.a($$0, "multiply", dcj.a);
+      kb.a($$0, "remove_binomial", dcl.a);
+      return kb.a($$0, "set", dcq.a);
    }
 
-   @Override
-   public MapCodec<dcg> a() {
-      return a;
-   }
+   float a(int var1, azn var2, float var3);
 
-   public dbr b() {
-      return this.c;
-   }
+   MapCodec<? extends dcg> a();
 }

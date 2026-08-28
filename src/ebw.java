@@ -1,24 +1,23 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebw extends ecc {
-   final axj<dhj> a;
-   public static final MapCodec<ebw> e = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(axj.a(lv.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ebw::new)
-   );
+public interface ebw<P extends ebv> {
+   ebw<ecb> a = a("matching_blocks", ecb.a);
+   ebw<eca> b = a("matching_block_tag", eca.e);
+   ebw<ecc> c = a("matching_fluids", ecc.a);
+   ebw<eby> d = a("has_sturdy_face", eby.a);
+   ebw<ecf> e = a("solid", ecf.a);
+   ebw<ece> f = a("replaceable", ece.a);
+   ebw<ecj> g = a("would_survive", ecj.a);
+   ebw<ebz> h = a("inside_world_bounds", ebz.a);
+   ebw<ebu> i = a("any_of", ebu.a);
+   ebw<ebt> j = a("all_of", ebt.a);
+   ebw<ecd> k = a("not", ecd.a);
+   ebw<ech> l = a("true", ech.e);
+   ebw<eci> m = a("unobstructed", eci.a);
 
-   protected ebw(ki $$0, axj<dhj> $$1) {
-      super($$0);
-      this.a = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   protected boolean a(duo $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public ebs<?> a() {
-      return ebs.b;
+   private static <P extends ebv> ebw<P> a(String $$0, MapCodec<P> $$1) {
+      return kb.a(lv.M, $$0, () -> $$1);
    }
 }

@@ -1,26 +1,43 @@
 import javax.annotation.Nullable;
 
-public interface cjh {
-   boolean a();
+public class cjh extends cjc {
+   @Nullable
+   private eyw b;
 
-   void b();
+   public cjh(cja $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void c() {
+      if (this.b == null) {
+         this.b = this.a.dq();
+      }
+   }
 
-   void a(ciw var1, je var2, bsg var3, @Nullable cnu var4);
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void d();
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   cjn<? extends cjh> i();
+   @Override
+   public float f() {
+      return 1.0F;
+   }
 
    @Nullable
-   eys g();
+   @Override
+   public eyw g() {
+      return this.b;
+   }
 
-   float a(bsg var1, float var2);
+   @Override
+   public cjq<cjh> i() {
+      return cjq.k;
+   }
 }

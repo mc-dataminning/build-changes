@@ -1,51 +1,106 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public class awl<T> extends faa {
-   public static final zb<wo, awl<?>> a = yz.a(lv.am).b(awl::a, awn::a);
-   private final awm o;
-   private final T p;
-   private final awn<T> q;
+public class awl extends awj {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   protected awl(awn<T> $$0, T $$1, awm $$2) {
-      super(a($$0, $$1));
-      this.q = $$0;
-      this.o = $$2;
-      this.p = $$1;
+   public int a(Collection<dam<?>> $$0, ark $$1) {
+      List<ale> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (dam<?> $$4 : $$0) {
+         ale $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().aq_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            an.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(ael.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   public static <T> String a(awn<T> $$0, T $$1) {
-      return a(lu.v.b($$0)) + ":" + a($$0.b().b($$1));
+   public int b(Collection<dam<?>> $$0, ark $$1) {
+      List<ale> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (dam<?> $$4 : $$0) {
+         ale $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(ael.a.c, $$1, $$2);
+      return $$3;
    }
 
-   private static <T> String a(@Nullable alc $$0) {
-      return $$0.toString().replace(':', '.');
+   private void a(ael.a $$0, ark $$1, List<ale> $$2) {
+      $$1.c.b(new ael($$0, $$2, Collections.emptyList(), this.a()));
    }
 
-   public awn<T> a() {
-      return this.q;
+   public ug b() {
+      ug $$0 = new ug();
+      this.a().b($$0);
+      um $$1 = new um();
+
+      for (ale $$2 : this.a) {
+         $$1.add(vb.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      um $$3 = new um();
+
+      for (ale $$4 : this.b) {
+         $$3.add(vb.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
    }
 
-   public T b() {
-      return this.p;
+   public void a(ug $$0, dao $$1) {
+      this.a(awk.a($$0));
+      um $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      um $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   public String a(int $$0) {
-      return this.o.format($$0);
+   private void a(um $$0, Consumer<dam<?>> $$1, dao $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            ale $$5 = ale.a($$4);
+            Optional<dam<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (aa var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof awl && Objects.equals(this.d(), ((awl)$$0).d());
-   }
-
-   @Override
-   public int hashCode() {
-      return this.d().hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   public void a(ark $$0) {
+      $$0.c.b(new ael(ael.a.a, this.a, this.b, this.a()));
    }
 }

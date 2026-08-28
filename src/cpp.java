@@ -1,45 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class cpp {
-   private final cpo a;
-   private final List<cpp.a> b = Lists.newArrayList();
+   public static final cpp a = a("core");
+   public static final cpp b = a("idle");
+   public static final cpp c = a("work");
+   public static final cpp d = a("play");
+   public static final cpp e = a("rest");
+   public static final cpp f = a("meet");
+   public static final cpp g = a("panic");
+   public static final cpp h = a("raid");
+   public static final cpp i = a("pre_raid");
+   public static final cpp j = a("hide");
+   public static final cpp k = a("fight");
+   public static final cpp l = a("celebrate");
+   public static final cpp m = a("admire_item");
+   public static final cpp n = a("avoid");
+   public static final cpp o = a("ride");
+   public static final cpp p = a("play_dead");
+   public static final cpp q = a("long_jump");
+   public static final cpp r = a("ram");
+   public static final cpp s = a("tongue");
+   public static final cpp t = a("swim");
+   public static final cpp u = a("lay_spawn");
+   public static final cpp v = a("sniff");
+   public static final cpp w = a("investigate");
+   public static final cpp x = a("roar");
+   public static final cpp y = a("emerge");
+   public static final cpp z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cpp(cpo $$0) {
-      this.a = $$0;
+   private cpp(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cpp a(int $$0, cpm $$1) {
-      this.b.add(new cpp.a($$0, $$1));
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public cpo a() {
-      this.b.stream().map(cpp.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         cpm $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   private static cpp a(String $$0) {
+      return kb.a(lv.C, $$0, new cpp($$0));
    }
 
-   static class a {
-      private final int a;
-      private final cpm b;
-
-      public a(int $$0, cpm $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cpp $$1 = (cpp)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
 
-      public cpm b() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

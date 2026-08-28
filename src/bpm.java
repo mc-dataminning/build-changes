@@ -1,6 +1,21 @@
-import java.util.Set;
-import java.util.function.Supplier;
+public enum bpm {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface bpm {
-   Set<bpk> a(Supplier<bob> var1);
+   private final String j;
+
+   private bpm(final String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

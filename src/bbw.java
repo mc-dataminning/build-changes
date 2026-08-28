@@ -1,28 +1,24 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class bbw extends DataFix {
+public class bbw extends bgj {
    public bbw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bho.s, "Sign");
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhm.C);
-      Type<?> $$1 = this.getOutputSchema().getType(bhm.C);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bhm.C.typeName(), DSL.or(DSL.intType(), biz.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bhm.C.typeName(), biz.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bbz::a, $$0xxxx -> bbz.a(biz.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update($$1, ban::b);
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         $$0x = this.a($$0x, "Text1");
+         $$0x = this.a($$0x, "Text2");
+         $$0x = this.a($$0x, "Text3");
+         return this.a($$0x, "Text4");
+      });
    }
 }

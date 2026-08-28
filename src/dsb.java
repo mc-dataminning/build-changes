@@ -1,139 +1,173 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dsb extends drs implements bri {
-   public static final int b = 6;
-   private static final Logger c = LogUtils.getLogger();
-   private final jw<cvp> d = jw.a(6, cvp.k);
-   private int e = -1;
+public class dsb extends drv implements brj {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final jx<cvs> c = jx.a(4, cvs.k);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final dao.a<dba, czw> f = dao.b(daq.e);
 
-   public dsb(je $$0, duo $$1) {
-      super(dru.M, $$0, $$1);
+   public dsb(jf $$0, dus $$1) {
+      super(drx.G, $$0, $$1);
    }
 
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.e = $$0;
-         duo $$1 = this.m();
+   public static void a(dej $$0, jf $$1, dus $$2, dsb $$3) {
+      boolean $$4 = false;
 
-         for (int $$2 = 0; $$2 < din.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).f();
-            dvf $$4 = din.c.get($$2);
-            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cvs $$6 = $$3.c.get($$5);
+         if (!$$6.f()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               dba $$7 = new dba($$6);
+               cvs $$8 = $$3.f.a($$7, $$0).map($$2x -> ((czw)$$2x.b()).a($$7, $$0.G_())).orElse($$6);
+               if ($$8.a($$0.J())) {
+                  bro.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cvs.k);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(dzp.c, $$1, dzp.a.a($$2));
+               }
+            }
          }
+      }
 
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dzl.c, this.p, dzl.a.a($$1));
-      } else {
-         c.error("Expected slot 0-5, got {}", $$0);
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(dej $$0, jf $$1, dus $$2, dsb $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = azf.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void c(dej $$0, jf $$1, dus $$2, dsb $$3) {
+      azn $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dia.a($$0, $$1, $$2.c(dia.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(dia.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).f() && $$4.i() < 0.2F) {
+            jk $$8 = jk.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(lo.ae, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public jx<cvs> b() {
+      return this.c;
+   }
+
+   @Override
+   protected void a(ug $$0, jq.a $$1) {
+      super.a($$0, $$1);
+      this.c.clear();
+      brm.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
       }
    }
 
    @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.d.clear();
-      brj.b($$0, this.d, $$1);
-      this.e = $$0.h("last_interacted_slot");
+   protected void b(ug $$0, jq.a $$1) {
+      super.b($$0, $$1);
+      brm.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public ach c() {
+      return ach.a(this);
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      brj.a($$0, this.d, true, $$1);
-      $$0.a("last_interacted_slot", this.e);
+   public ug a(jq.a $$0) {
+      ug $$1 = new ug();
+      brm.a($$1, this.c, true, $$0);
+      return $$1;
    }
 
-   public int f() {
-      return (int)this.d.stream().filter(Predicate.not(cvp::f)).count();
+   public Optional<dam<czw>> b(cvs $$0) {
+      return this.c.stream().noneMatch(cvs::f) ? Optional.empty() : this.f.a(new dba($$0), this.o);
+   }
+
+   public boolean a(@Nullable bun $$0, cvs $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cvs $$4 = this.c.get($$3);
+         if ($$4.f()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.b(1, $$0));
+            this.o.a(dzp.c, this.aC_(), dzp.a.a($$0, this.m()));
+            this.f();
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private void f() {
+      this.e();
+      this.i().a(this.aC_(), this.m(), this.m(), 3);
    }
 
    @Override
    public void a() {
-      this.d.clear();
+      this.c.clear();
    }
 
-   @Override
-   public int b() {
-      return 6;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d.stream().allMatch(cvp::f);
-   }
-
-   @Override
-   public cvp a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   @Override
-   public cvp a(int $$0, int $$1) {
-      cvp $$2 = Objects.requireNonNullElse(this.d.get($$0), cvp.k);
-      this.d.set($$0, cvp.k);
-      if (!$$2.f()) {
-         this.c($$0);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public cvp b(int $$0) {
-      return this.a($$0, 1);
-   }
-
-   @Override
-   public void a(int $$0, cvp $$1) {
-      if ($$1.a(axc.aV)) {
-         this.d.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.f()) {
-         this.a($$0, 1);
+   public void d() {
+      if (this.o != null) {
+         this.f();
       }
    }
 
    @Override
-   public boolean a(bri $$0, int $$1, cvp $$2) {
-      return $$0.a_($$2x -> $$2x.f() ? true : cvp.c($$2, $$2x) && $$2x.J() + $$2.J() <= $$0.f_($$2x));
-   }
-
-   @Override
-   public int ak_() {
-      return 1;
-   }
-
-   @Override
-   public boolean a(cnu $$0) {
-      return bri.a(this, $$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cvp $$1) {
-      return $$1.a(axc.aV) && this.a($$0).f() && $$1.J() == this.ak_();
-   }
-
-   public int j() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(drs.b $$0) {
+   protected void a(drv.b $$0) {
       super.a($$0);
-      $$0.a(kr.ag, cyl.a).a(this.d);
+      $$0.a(ks.ag, cyo.a).a(this.b());
    }
 
    @Override
-   protected void a(kn.a $$0) {
+   protected void a(ko.a $$0) {
       super.a($$0);
-      $$0.a(kr.ag, cyl.a(this.d));
+      $$0.a(ks.ag, cyo.a(this.b()));
    }
 
    @Override
-   public void a(uf $$0) {
+   public void a(ug $$0) {
       $$0.r("Items");
    }
 }

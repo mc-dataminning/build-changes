@@ -5,72 +5,88 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dqm extends dpu {
-   public static final MapCodec<dqm> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dqm::new));
-   public static final dvi g = dlf.aF;
-   protected static final float h = 2.5F;
-   private static final Map<jj, ezm> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         jj.c,
-         dhj.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
-         jj.d,
-         dhj.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
-         jj.e,
-         dhj.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
-         jj.f,
-         dhj.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
-      )
-   );
+public class dqm extends don {
+   public static final MapCodec<dqm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dwf.a.fieldOf("wood_type").forGetter(don::d), t()).apply($$0, dqm::new));
+   public static final dvm b = dli.aF;
+   public static final ezq c = dhm.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
+   public static final ezq d = dhm.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
+   public static final ezq e = ezn.a(c, dhm.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
+   public static final ezq i = ezn.a(d, dhm.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
+   private static final Map<jk, ezq> j = Maps.newEnumMap(ImmutableMap.of(jk.c, e, jk.d, e, jk.f, i, jk.e, i));
 
    @Override
    public MapCodec<dqm> a() {
-      return f;
+      return a;
    }
 
-   protected dqm(lr $$0, dun.d $$1) {
-      super($$0, $$1);
-      this.l(this.F.b().b(g, jj.c));
-   }
-
-   @Override
-   public String g() {
-      return this.q().a();
+   public dqm(dwf $$0, dur.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.l(this.F.b().b(b, jk.c).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
-      return o($$0);
+   protected brs a(cvs $$0, dus $$1, dej $$2, jf $$3, cnx $$4, brr $$5, eys $$6) {
+      if ($$2.c_($$3) instanceof dth $$7 && this.a($$1, $$4, $$6, $$7, $$0)) {
+         return brs.e;
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static ezm o(duo $$0) {
-      return i.get($$0.c(g));
+   private boolean a(dus $$0, cnx $$1, eys $$2, dth $$3, cvs $$4) {
+      return !$$3.a($$3.a($$1), $$1) && $$4.h() instanceof cvg && !this.a($$2, $$0);
+   }
+
+   private boolean a(eys $$0, dus $$1) {
+      return $$0.c().o() == $$1.c(b).o();
    }
 
    @Override
-   protected boolean a(duo $$0, dej $$1, je $$2) {
-      return b($$1, $$2, $$0.c(g));
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return j.get($$0.c(b));
    }
 
-   public static boolean b(dej $$0, je $$1, jj $$2) {
-      je $$3 = $$1.a($$2.g());
-      duo $$4 = $$0.a_($$3);
-      return $$4.c($$0, $$3, $$2);
+   @Override
+   protected ezq b_(dus $$0, ddo $$1, jf $$2) {
+      return this.a($$0, $$1, $$2, ezb.a());
+   }
+
+   @Override
+   protected ezq b(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      switch ((jk)$$0.c(b)) {
+         case f:
+         case e:
+            return d;
+         default:
+            return c;
+      }
+   }
+
+   public boolean b(dus $$0, dem $$1, jf $$2) {
+      jk $$3 = $$0.c(b).h();
+      jk $$4 = $$0.c(b).i();
+      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   }
+
+   public boolean a(dem $$0, dus $$1, jf $$2, jk $$3) {
+      dus $$4 = $$0.a_($$2);
+      return $$4.a(awv.aA) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dpo.a);
    }
 
    @Nullable
    @Override
-   public duo a(czk $$0) {
-      duo $$1 = this.o();
-      dej $$2 = $$0.q();
-      je $$3 = $$0.a();
-      jj[] $$4 = $$0.f();
+   public dus a(czn $$0) {
+      dus $$1 = this.n();
+      eqt $$2 = $$0.q().b_($$0.a());
+      dem $$3 = $$0.q();
+      jf $$4 = $$0.a();
 
-      for (jj $$5 : $$4) {
-         if ($$5.o().d()) {
-            jj $$6 = $$5.g();
-            $$1 = $$1.b(g, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
+      for (jk $$5 : $$0.f()) {
+         if ($$5.o().d() && !$$5.o().a($$0.k())) {
+            jk $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == equ.c));
             }
          }
       }
@@ -79,35 +95,43 @@ public class dqm extends dpu {
    }
 
    @Override
-   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
-      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? dhl.a.o() : $$0;
+   protected dus a(dus $$0, jk $$1, dus $$2, dek $$3, jf $$4, jf $$5) {
+      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? dho.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
-      jj $$4 = $$0.c(g);
-      double $$5 = (double)$$2.u() + 0.5;
-      double $$6 = (double)$$2.v() + 0.7;
-      double $$7 = (double)$$2.w() + 0.5;
-      double $$8 = 0.22;
-      double $$9 = 0.27;
-      jj $$10 = $$4.g();
-      $$1.a(ln.ae, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
-      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   public float h(dus $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   protected duo a(duo $$0, dnx $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
+   protected dus a(dus $$0, doa $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected duo a(duo $$0, dmg $$1) {
-      return $$0.a($$1.a($$0.c(g)));
+   protected dus a(dus $$0, dmj $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dup.a<dhj, duo> $$0) {
-      $$0.a(g);
+   protected void a(dut.a<dhm, dus> $$0) {
+      $$0.a(b, f);
+   }
+
+   @Override
+   public drv a(jf $$0, dus $$1) {
+      return new dsu($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(dus $$0, eri $$1) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public <T extends drv> drw<T> a(dej $$0, dus $$1, drx<T> $$2) {
+      return a($$2, drx.i, dth::a);
    }
 }

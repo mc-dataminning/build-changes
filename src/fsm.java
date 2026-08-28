@@ -1,32 +1,26 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public interface fsm {
-   static fsm a(ayp $$0) {
-      return new fsl($$0);
+public class fsm implements fsr {
+   private final fow a;
+
+   public fsm(fow $$0) {
+      this.a = $$0;
    }
 
-   static fsm a(ctd $$0) {
-      Objects.requireNonNull($$0);
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-      return (fsm)(switch ($$0) {
-         case ctc $$1 -> new fsk($$1.a());
-         case fsj.a $$2 -> new fsj($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   int a(fjv var1);
-
-   int b(fjv var1);
-
-   default boolean a() {
-      return false;
-   }
-
-   default void a(fjv $$0, int $$1, int $$2, Matrix4f $$3, ghg.a $$4) {
-   }
-
-   default void a(fjv $$0, int $$1, int $$2, fjx $$3) {
+      return $$6;
    }
 }

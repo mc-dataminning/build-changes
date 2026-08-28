@@ -1,25 +1,31 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dpm {
-   cyu b();
+public class dpm extends dhm {
+   public static final MapCodec<dpm> a = b(dpm::new);
+   private static final double b = 5.0;
+   private static final ezq c = dhm.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-   static List<dpm> c() {
-      return lu.g.s().map(dpm::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dpm> a() {
+      return a;
    }
 
-   @Nullable
-   static dpm a(def $$0) {
-      if ($$0.q() instanceof ctr $$1) {
-         dhj var6 = $$1.d();
-         if (var6 instanceof dpm) {
-            return (dpm)var6;
-         }
-      }
+   protected dpm(dur.d $$0) {
+      super($$0);
+   }
 
-      cvk $$2 = $$0.q();
-      return $$2 instanceof dpm ? (dpm)$$2 : null;
+   @Override
+   protected dnt a_(dus $$0) {
+      return dnt.a;
+   }
+
+   @Override
+   protected ezq a(dus $$0, ddo $$1, jf $$2, ezb $$3) {
+      return c;
+   }
+
+   @Override
+   protected float c(dus $$0, ddo $$1, jf $$2) {
+      return 1.0F;
    }
 }

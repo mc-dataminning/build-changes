@@ -1,4 +1,7 @@
-public class gut extends guj {
-   public float a;
-   public int b;
+public class gut extends guo {
+   public cgq.a a;
+
+   public gut() {
+      this.a = cgq.a.a;
+   }
 }

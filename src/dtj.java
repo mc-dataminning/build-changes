@@ -1,430 +1,215 @@
-import java.util.Iterator;
-import java.util.Objects;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dtj extends drs {
-   private static final int d = 5;
-   public static final int a = 48;
-   public static final int b = 48;
-   public static final String c = "author";
+public class dtj extends drv {
+   private static final String b = "profile";
+   private static final String c = "note_block_sound";
+   private static final String d = "custom_name";
+   private static final Logger e = LogUtils.getLogger();
    @Nullable
-   private alc e;
-   private String f = "";
-   private String g = "";
-   private je h = new je(0, 1, 0);
-   private ki i = ki.g;
-   private dmg j = dmg.a;
-   private dnx k = dnx.a;
-   private dvy l;
-   private boolean m = true;
-   private boolean n;
-   private boolean r;
-   private boolean s = true;
-   private float t = 1.0F;
-   private long u;
+   private static Executor f;
+   @Nullable
+   private static LoadingCache<String, CompletableFuture<Optional<GameProfile>>> g;
+   @Nullable
+   private static LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> h;
+   public static final Executor a = $$0 -> {
+      Executor $$1 = f;
+      if ($$1 != null) {
+         $$1.execute($$0);
+      }
+   };
+   @Nullable
+   private cyv i;
+   @Nullable
+   private ale j;
+   private int k;
+   private boolean l;
+   @Nullable
+   private xe m;
 
-   public dtj(je $$0, duo $$1) {
-      super(dru.u, $$0, $$1);
-      this.l = $$1.c(dpi.b);
+   public dtj(jf $$0, dus $$1) {
+      super(drx.p, $$0, $$1);
+   }
+
+   public static void a(final alz $$0, Executor $$1) {
+      f = $$1;
+      final BooleanSupplier $$2 = () -> h == null;
+      g = CacheBuilder.newBuilder()
+         .expireAfterAccess(Duration.ofMinutes(10L))
+         .maximumSize(256L)
+         .build(new CacheLoader<String, CompletableFuture<Optional<GameProfile>>>() {
+            public CompletableFuture<Optional<GameProfile>> a(String $$0x) {
+               return dtj.a($$0, $$0);
+            }
+         });
+      h = CacheBuilder.newBuilder()
+         .expireAfterAccess(Duration.ofMinutes(10L))
+         .maximumSize(256L)
+         .build(new CacheLoader<UUID, CompletableFuture<Optional<GameProfile>>>() {
+            public CompletableFuture<Optional<GameProfile>> a(UUID $$0x) {
+               return dtj.a($$0, $$0, $$2);
+            }
+         });
+   }
+
+   static CompletableFuture<Optional<GameProfile>> a(String $$0, alz $$1) {
+      return $$1.f()
+         .b($$0)
+         .thenCompose(
+            $$0x -> {
+               LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1x = h;
+               return $$1x != null && !$$0x.isEmpty()
+                  ? ((CompletableFuture)$$1x.getUnchecked(((GameProfile)$$0x.get()).getId())).thenApply($$1xx -> $$1xx.or(() -> $$0x))
+                  : CompletableFuture.completedFuture(Optional.empty());
+            }
+         );
+   }
+
+   static CompletableFuture<Optional<GameProfile>> a(UUID $$0, alz $$1, BooleanSupplier $$2) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$2.getAsBoolean()) {
+            return Optional.empty();
+         } else {
+            ProfileResult $$3 = $$1.c().fetchProfile($$0, true);
+            return Optional.ofNullable($$3).map(ProfileResult::profile);
+         }
+      }, ad.g());
+   }
+
+   public static void b() {
+      f = null;
+      g = null;
+      h = null;
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
+   protected void b(ug $$0, jq.a $$1) {
       super.b($$0, $$1);
-      $$0.a("name", this.c());
-      $$0.a("author", this.f);
-      $$0.a("metadata", this.g);
-      $$0.a("posX", this.h.u());
-      $$0.a("posY", this.h.v());
-      $$0.a("posZ", this.h.w());
-      $$0.a("sizeX", this.i.u());
-      $$0.a("sizeY", this.i.v());
-      $$0.a("sizeZ", this.i.w());
-      $$0.a("rotation", this.k.toString());
-      $$0.a("mirror", this.j.toString());
-      $$0.a("mode", this.l.toString());
-      $$0.a("ignoreEntities", this.m);
-      $$0.a("powered", this.n);
-      $$0.a("showair", this.r);
-      $$0.a("showboundingbox", this.s);
-      $$0.a("integrity", this.t);
-      $$0.a("seed", this.u);
+      if (this.i != null) {
+         $$0.a("profile", (vd)cyv.a.encodeStart(uu.a, this.i).getOrThrow());
+      }
+
+      if (this.j != null) {
+         $$0.a("note_block_sound", this.j.toString());
+      }
+
+      if (this.m != null) {
+         $$0.a("custom_name", xe.a.a(this.m, $$1));
+      }
    }
 
    @Override
-   protected void a(uf $$0, jp.a $$1) {
+   protected void a(ug $$0, jq.a $$1) {
       super.a($$0, $$1);
-      this.a($$0.l("name"));
-      this.f = $$0.l("author");
-      this.g = $$0.l("metadata");
-      int $$2 = azd.a($$0.h("posX"), -48, 48);
-      int $$3 = azd.a($$0.h("posY"), -48, 48);
-      int $$4 = azd.a($$0.h("posZ"), -48, 48);
-      this.h = new je($$2, $$3, $$4);
-      int $$5 = azd.a($$0.h("sizeX"), 0, 48);
-      int $$6 = azd.a($$0.h("sizeY"), 0, 48);
-      int $$7 = azd.a($$0.h("sizeZ"), 0, 48);
-      this.i = new ki($$5, $$6, $$7);
-
-      try {
-         this.k = dnx.valueOf($$0.l("rotation"));
-      } catch (IllegalArgumentException var12) {
-         this.k = dnx.a;
+      if ($$0.e("profile")) {
+         cyv.a.parse(uu.a, $$0.c("profile")).resultOrPartial($$0x -> e.error("Failed to load profile from player head: {}", $$0x)).ifPresent(this::a);
       }
 
-      try {
-         this.j = dmg.valueOf($$0.l("mirror"));
-      } catch (IllegalArgumentException var11) {
-         this.j = dmg.a;
+      if ($$0.b("note_block_sound", 8)) {
+         this.j = ale.c($$0.l("note_block_sound"));
       }
 
-      try {
-         this.l = dvy.valueOf($$0.l("mode"));
-      } catch (IllegalArgumentException var10) {
-         this.l = dvy.d;
-      }
-
-      this.m = $$0.q("ignoreEntities");
-      this.n = $$0.q("powered");
-      this.r = $$0.q("showair");
-      this.s = $$0.q("showboundingbox");
-      if ($$0.e("integrity")) {
-         this.t = $$0.j("integrity");
+      if ($$0.b("custom_name", 8)) {
+         this.m = a($$0.l("custom_name"), $$1);
       } else {
-         this.t = 1.0F;
-      }
-
-      this.u = $$0.i("seed");
-      this.G();
-   }
-
-   private void G() {
-      if (this.o != null) {
-         je $$0 = this.aB_();
-         duo $$1 = this.o.a_($$0);
-         if ($$1.a(dhl.pa)) {
-            this.o.a($$0, $$1.b(dpi.b, this.l), 2);
-         }
+         this.m = null;
       }
    }
 
-   public acg b() {
-      return acg.a(this);
-   }
-
-   @Override
-   public uf a(jp.a $$0) {
-      return this.e($$0);
-   }
-
-   public boolean a(cnu $$0) {
-      if (!$$0.gz()) {
-         return false;
+   public static void a(dej $$0, jf $$1, dus $$2, dtj $$3) {
+      if ($$2.b(dop.a) && $$2.c(dop.a)) {
+         $$3.l = true;
+         $$3.k++;
       } else {
-         if ($$0.cR().B) {
-            $$0.a(this);
-         }
-
-         return true;
+         $$3.l = false;
       }
    }
 
-   public String c() {
-      return this.e == null ? "" : this.e.toString();
+   public float a(float $$0) {
+      return this.l ? (float)this.k + $$0 : (float)this.k;
    }
 
-   public boolean d() {
-      return this.e != null;
-   }
-
-   public void a(@Nullable String $$0) {
-      this.a(baa.b($$0) ? null : alc.c($$0));
-   }
-
-   public void a(@Nullable alc $$0) {
-      this.e = $$0;
-   }
-
-   public void a(buk $$0) {
-      this.f = $$0.aj().getString();
-   }
-
-   public je f() {
-      return this.h;
-   }
-
-   public void a(je $$0) {
-      this.h = $$0;
-   }
-
-   public ki j() {
+   @Nullable
+   public cyv c() {
       return this.i;
    }
 
-   public void a(ki $$0) {
-      this.i = $$0;
-   }
-
-   public dmg k() {
+   @Nullable
+   public ale d() {
       return this.j;
    }
 
-   public void a(dmg $$0) {
-      this.j = $$0;
+   public ach f() {
+      return ach.a(this);
    }
 
-   public dnx t() {
-      return this.k;
+   @Override
+   public ug a(jq.a $$0) {
+      return this.e($$0);
    }
 
-   public void a(dnx $$0) {
-      this.k = $$0;
-   }
-
-   public String u() {
-      return this.g;
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-   }
-
-   public dvy v() {
-      return this.l;
-   }
-
-   public void a(dvy $$0) {
-      this.l = $$0;
-      duo $$1 = this.o.a_(this.aB_());
-      if ($$1.a(dhl.pa)) {
-         this.o.a(this.aB_(), $$1.b(dpi.b, $$0), 2);
+   public void a(@Nullable cyv $$0) {
+      synchronized (this) {
+         this.i = $$0;
       }
+
+      this.j();
    }
 
-   public boolean w() {
-      return this.m;
-   }
-
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   public float x() {
-      return this.t;
-   }
-
-   public void a(float $$0) {
-      this.t = $$0;
-   }
-
-   public long y() {
-      return this.u;
-   }
-
-   public void a(long $$0) {
-      this.u = $$0;
-   }
-
-   public boolean z() {
-      if (this.l != dvy.a) {
-         return false;
+   private void j() {
+      if (this.i != null && !this.i.b()) {
+         this.i.a().thenAcceptAsync($$0 -> {
+            this.i = $$0;
+            this.e();
+         }, a);
       } else {
-         je $$0 = this.aB_();
-         int $$1 = 80;
-         je $$2 = new je($$0.u() - 80, this.o.G_(), $$0.w() - 80);
-         je $$3 = new je($$0.u() + 80, this.o.an(), $$0.w() + 80);
-         Stream<je> $$4 = this.a($$2, $$3);
-         return a($$0, $$4).filter($$1x -> {
-            int $$2x = $$1x.k() - $$1x.h();
-            int $$3x = $$1x.l() - $$1x.i();
-            int $$4x = $$1x.m() - $$1x.j();
-            if ($$2x > 1 && $$3x > 1 && $$4x > 1) {
-               this.h = new je($$1x.h() - $$0.u() + 1, $$1x.i() - $$0.v() + 1, $$1x.j() - $$0.w() + 1);
-               this.i = new ki($$2x - 1, $$3x - 1, $$4x - 1);
-               this.e();
-               duo $$5 = this.o.a_($$0);
-               this.o.a($$0, $$5, $$5, 3);
-               return true;
-            } else {
-               return false;
-            }
-         }).isPresent();
+         this.e();
       }
    }
 
-   private Stream<je> a(je $$0, je $$1) {
-      return je.d($$0, $$1)
-         .filter($$0x -> this.o.a_($$0x).a(dhl.pa))
-         .map(this.o::c_)
-         .filter($$0x -> $$0x instanceof dtj)
-         .map($$0x -> (dtj)$$0x)
-         .filter($$0x -> $$0x.l == dvy.c && Objects.equals(this.e, $$0x.e))
-         .map(drs::aB_);
+   public static CompletableFuture<Optional<GameProfile>> a(String $$0) {
+      LoadingCache<String, CompletableFuture<Optional<GameProfile>>> $$1 = g;
+      return $$1 != null && bac.f($$0) ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
    }
 
-   private static Optional<eku> a(je $$0, Stream<je> $$1) {
-      Iterator<je> $$2 = $$1.iterator();
-      if (!$$2.hasNext()) {
-         return Optional.empty();
-      } else {
-         je $$3 = $$2.next();
-         eku $$4 = new eku($$3);
-         if ($$2.hasNext()) {
-            $$2.forEachRemaining($$4::a);
-         } else {
-            $$4.a($$0);
-         }
-
-         return Optional.of($$4);
-      }
+   public static CompletableFuture<Optional<GameProfile>> a(UUID $$0) {
+      LoadingCache<UUID, CompletableFuture<Optional<GameProfile>>> $$1 = h;
+      return $$1 != null ? (CompletableFuture)$$1.getUnchecked($$0) : CompletableFuture.completedFuture(Optional.empty());
    }
 
-   public boolean A() {
-      return this.l != dvy.a ? false : this.b(true);
+   @Override
+   protected void a(drv.b $$0) {
+      super.a($$0);
+      this.a($$0.a(ks.ab));
+      this.j = $$0.a(ks.ac);
+      this.m = $$0.a(ks.g);
    }
 
-   public boolean b(boolean $$0) {
-      if (this.e == null) {
-         return false;
-      } else {
-         je $$1 = this.aB_().a((ki)this.h);
-         arh $$2 = (arh)this.o;
-         epf $$3 = $$2.q();
-
-         epe $$4;
-         try {
-            $$4 = $$3.a(this.e);
-         } catch (aa var8) {
-            return false;
-         }
-
-         $$4.a(this.o, $$1, this.i, !this.m, dhl.kN);
-         $$4.a(this.f);
-         if ($$0) {
-            try {
-               return $$3.c(this.e);
-            } catch (aa var7) {
-               return false;
-            }
-         } else {
-            return true;
-         }
-      }
+   @Override
+   protected void a(ko.a $$0) {
+      super.a($$0);
+      $$0.a(ks.ab, this.i);
+      $$0.a(ks.ac, this.j);
+      $$0.a(ks.g, this.m);
    }
 
-   public static azl b(long $$0) {
-      return $$0 == 0L ? azl.a(ad.c()) : azl.a($$0);
-   }
-
-   public boolean a(arh $$0) {
-      if (this.l == dvy.b && this.e != null) {
-         epe $$1 = $$0.q().b(this.e).orElse(null);
-         if ($$1 == null) {
-            return false;
-         } else if ($$1.a().equals(this.i)) {
-            this.a($$0, $$1);
-            return true;
-         } else {
-            this.a($$1);
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(arh $$0) {
-      epe $$1 = this.d($$0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         this.a($$1);
-         return true;
-      }
-   }
-
-   private void a(epe $$0) {
-      this.f = !baa.b($$0.b()) ? $$0.b() : "";
-      this.i = $$0.a();
-      this.e();
-   }
-
-   public void c(arh $$0) {
-      epe $$1 = this.d($$0);
-      if ($$1 != null) {
-         this.a($$0, $$1);
-      }
-   }
-
-   @Nullable
-   private epe d(arh $$0) {
-      return this.e == null ? null : $$0.q().b(this.e).orElse(null);
-   }
-
-   private void a(arh $$0, epe $$1) {
-      this.a($$1);
-      epa $$2 = new epa().a(this.j).a(this.k).a(this.m);
-      if (this.t < 1.0F) {
-         $$2.b().a(new eoh(azd.a(this.t, 0.0F, 1.0F))).a(b(this.u));
-      }
-
-      je $$3 = this.aB_().a((ki)this.h);
-      $$1.a($$0, $$3, $$3, $$2, b(this.u), 2);
-   }
-
-   public void B() {
-      if (this.e != null) {
-         arh $$0 = (arh)this.o;
-         epf $$1 = $$0.q();
-         $$1.d(this.e);
-      }
-   }
-
-   public boolean C() {
-      if (this.l == dvy.b && !this.o.B && this.e != null) {
-         arh $$0 = (arh)this.o;
-         epf $$1 = $$0.q();
-
-         try {
-            return $$1.b(this.e).isPresent();
-         } catch (aa var4) {
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public boolean D() {
-      return this.n;
-   }
-
-   public void c(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public boolean E() {
-      return this.r;
-   }
-
-   public void d(boolean $$0) {
-      this.r = $$0;
-   }
-
-   public boolean F() {
-      return this.s;
-   }
-
-   public void e(boolean $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a(ug $$0) {
+      super.a($$0);
+      $$0.r("profile");
+      $$0.r("note_block_sound");
+      $$0.r("custom_name");
    }
 }

@@ -1,19 +1,32 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import java.util.Optional;
 
-public enum cyq {
-   a(0),
-   b(1);
+public record cyq(Optional<jn> c, boolean d) {
+   public static final Codec<cyq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jn.b.optionalFieldOf("target").forGetter(cyq::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(cyq::b)).apply($$0, cyq::new)
+   );
+   public static final zc<ByteBuf, cyq> b = zc.a(jn.c.a(za::a), cyq::a, za.b, cyq::b, cyq::new);
 
-   public static final IntFunction<cyq> c = axu.a(cyq::a, values(), axu.a.a);
-   public static final zb<ByteBuf, cyq> d = yz.a(c, cyq::a);
-   private final int e;
-
-   private cyq(final int $$0) {
-      this.e = $$0;
+   public cyq a(arj $$0) {
+      if (this.d && !this.c.isEmpty()) {
+         if (this.c.get().a() != $$0.ag()) {
+            return this;
+         } else {
+            jf $$1 = this.c.get().b();
+            return $$0.k($$1) && $$0.y().a(cfu.s, $$1) ? this : new cyq(Optional.empty(), true);
+         }
+      } else {
+         return this;
+      }
    }
 
-   public int a() {
-      return this.e;
+   public Optional<jn> a() {
+      return this.c;
+   }
+
+   public boolean b() {
+      return this.d;
    }
 }

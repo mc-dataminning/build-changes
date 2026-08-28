@@ -1,63 +1,32 @@
-import javax.annotation.Nullable;
+public class fsx extends ftb {
+   private static final xe b = xe.c("multiplayerWarning.header").a(n.r);
+   private static final xe c = xe.c("multiplayerWarning.message");
+   private static final xe d = xe.c("multiplayerWarning.check");
+   private static final xe s = b.f().f("\n").b(c);
+   private final fqh u;
 
-public abstract class fsx extends fqd {
-   private static final int b = 100;
-   private final xd c;
-   @Nullable
-   private final xd d;
-   private final xd s;
-   @Nullable
-   protected fkm a;
-   @Nullable
-   private fkv u;
-   private final fnw v;
-
-   protected fsx(xd $$0, xd $$1, xd $$2) {
-      this($$0, $$1, null, $$2);
-   }
-
-   protected fsx(xd $$0, xd $$1, @Nullable xd $$2, xd $$3) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.s = $$3;
-      this.v = new fnw(0, 0, this.n, this.o);
-   }
-
-   protected abstract fnz m();
-
-   @Override
-   protected void aR_() {
-      foc $$0 = this.v.a(foc.d().a(8));
-      $$0.c().b();
-      $$0.a(new flr(this.n(), this.p));
-      this.u = $$0.a(new fkv(this.n - 100, this.c, this.p, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      foc $$1 = $$0.a(foc.d().a(8));
-      $$1.c().b();
-      if (this.d != null) {
-         this.a = $$1.a(fkm.a(this.d, this.p).a());
-      }
-
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fki var10000 = this.c($$1x);
-      });
-      this.c();
+   public fsx(fqh $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.n - 100);
-      }
+   protected fod m() {
+      fog $$0 = fog.e().a(8);
+      $$0.a(fko.a(xd.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.ay();
+         }
 
-      this.v.a();
-      fnw.a(this.v, this.H());
+         this.m.a(new fsw(this.u));
+      }).a());
+      $$0.a(fko.a(xd.k, $$0x -> this.d()).a());
+      return $$0;
    }
 
    @Override
-   public xd i() {
-      return this.s;
+   public void d() {
+      this.m.a(this.u);
    }
 }

@@ -1,33 +1,21 @@
-public class gox extends gop<clc, gut, fyj> {
-   private static final alc a = alc.b("textures/entity/phantom.png");
+public class gox extends gmj<cgr, gtw, fyk> {
+   private static final ale a = ale.b("textures/entity/cat/ocelot.png");
 
-   public gox(gnj.a $$0) {
-      super($$0, new fyj($$0.a(gak.bs)), 0.75F);
-      this.a(new gru(this));
+   public gox(gno.a $$0) {
+      super($$0, new fyk($$0.a(gap.bn)), new fyk($$0.a(gap.bo)), 0.4F);
    }
 
-   public alc a(gut $$0) {
+   public ale a(gtw $$0) {
       return a;
    }
 
-   public gut c() {
-      return new gut();
+   public gtw c() {
+      return new gtw();
    }
 
-   public void a(clc $$0, gut $$1, float $$2) {
+   public void a(cgr $$0, gtw $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.t() + $$1.p;
-      $$1.b = $$0.q();
-   }
-
-   protected void a(gut $$0, fde $$1) {
-      float $$2 = 1.0F + 0.15F * (float)$$0.b;
-      $$1.b($$2, $$2, $$2);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(gut $$0, fde $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$1.a(a.b.rotationDegrees($$0.V));
+      $$1.d = $$0.cf();
+      $$1.e = $$0.cg();
    }
 }

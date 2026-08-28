@@ -1,20 +1,23 @@
-public interface akh<T> {
-   zb<? super wo, T> codec();
-
-   default akg<T> a(int $$0) {
-      return new akg<>($$0, this);
-   }
-
-   T copy(T var1);
-
-   static <T> akh<T> a(zb<? super wo, T> $$0) {
-      return () -> $$0;
-   }
-
-   public interface a<T> extends akh<T> {
-      @Override
-      default T copy(T $$0) {
-         return $$0;
+public record akh<T>(int a, aki<T> b) {
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         akh<?> $$1 = (akh<?>)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "<entity data: " + this.a + ">";
    }
 }

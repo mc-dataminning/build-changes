@@ -1,29 +1,27 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class eww implements ews {
-   private static final eww b = new eww();
-   public static final MapCodec<eww> a = MapCodec.unit(b);
+public interface eww extends etm, Predicate<etl> {
+   Codec<eww> d = lv.F.q().dispatch("condition", eww::b, ewx::a);
+   Codec<eww> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, ewj.b));
+   Codec<jo<eww>> f = ala.a(lw.bg, e);
 
-   private eww() {
-   }
+   ewx b();
 
-   @Override
-   public ewt b() {
-      return ewu.g;
-   }
+   @FunctionalInterface
+   public interface a {
+      eww build();
 
-   @Override
-   public Set<ewa<?>> a() {
-      return ImmutableSet.of(ewd.b);
-   }
+      default eww.a invert() {
+         return ewt.a(this);
+      }
 
-   public boolean a(eth $$0) {
-      return $$0.a(ewd.b);
-   }
+      default ewk.a or(eww.a $$0) {
+         return ewk.a(this, $$0);
+      }
 
-   public static ews.a c() {
-      return () -> b;
+      default ewj.a and(eww.a $$0) {
+         return ewj.a(this, $$0);
+      }
    }
 }

@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aed implements zl<aca> {
+   public static final zc<wb, aed> a = zl.a(aed::a, aed::new);
+   private final int b;
 
-public class aed implements zk<abz> {
-   public static final aed a = new aed();
-   public static final zb<ByteBuf, aed> b = zb.a(a);
+   public aed(bsg $$0) {
+      this($$0.b());
+   }
 
-   private aed() {
+   public aed(int $$0) {
+      this.b = $$0;
+   }
+
+   private aed(wb $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wb $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zm<aed> a() {
-      return ago.ad;
+   public zn<aed> a() {
+      return agp.ac;
    }
 
-   public void a(abz $$0) {
+   public void a(aca $$0) {
       $$0.a(this);
    }
 }

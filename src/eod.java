@@ -1,65 +1,55 @@
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eod extends epb {
-   public static final MapCodec<eod> a = MapCodec.unit(() -> eod.b);
-   public static final eod b = new eod();
-   private final Map<dhj, dhj> c = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dhl.m, dhl.pr);
-      $$0.put(dhl.cn, dhl.pr);
-      $$0.put(dhl.b, dhl.pv);
-      $$0.put(dhl.eH, dhl.pw);
-      $$0.put(dhl.eI, dhl.pw);
-      $$0.put(dhl.cQ, dhl.ps);
-      $$0.put(dhl.ni, dhl.ps);
-      $$0.put(dhl.nk, dhl.pD);
-      $$0.put(dhl.fj, dhl.pA);
-      $$0.put(dhl.ng, dhl.pA);
-      $$0.put(dhl.jI, dhl.pu);
-      $$0.put(dhl.nw, dhl.pu);
-      $$0.put(dhl.jE, dhl.pE);
-      $$0.put(dhl.jD, dhl.pE);
-      $$0.put(dhl.jK, dhl.pz);
-      $$0.put(dhl.nu, dhl.pz);
-      $$0.put(dhl.nK, dhl.pB);
-      $$0.put(dhl.nI, dhl.pB);
-      $$0.put(dhl.fP, dhl.pt);
-      $$0.put(dhl.fQ, dhl.pt);
-      $$0.put(dhl.eK, dhl.py);
-      $$0.put(dhl.eJ, dhl.px);
-      $$0.put(dhl.eW, dhl.eX);
-   });
+public class eod extends elg {
+   public static final MapCodec<eod> d = a(eod::new);
 
-   private eod() {
+   public eod(elg.c $$0) {
+      super($$0);
    }
 
    @Override
-   public epe.c a(dej $$0, je $$1, je $$2, epe.c $$3, epe.c $$4, epa $$5) {
-      dhj $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         duo $$7 = $$4.b();
-         duo $$8 = $$6.o();
-         if ($$7.b(dpe.b)) {
-            $$8 = $$8.b(dpe.b, $$7.c(dpe.b));
-         }
+   public Optional<elg.b> a(elg.a $$0) {
+      doa $$1 = doa.a($$0.f());
+      jf $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new elg.b($$2, (Consumer<ely>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
 
-         if ($$7.b(dpe.c)) {
-            $$8 = $$8.b(dpe.c, $$7.c(dpe.c));
-         }
+   private void a(ely $$0, elg.a $$1, jf $$2, doa $$3) {
+      List<eoc.i> $$4 = Lists.newLinkedList();
+      eoc.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
 
-         if ($$7.b(don.b)) {
-            $$8 = $$8.b(don.b, $$7.c(don.b));
-         }
+   @Override
+   public void a(dfg $$0, dfe $$1, dwp $$2, azn $$3, eky $$4, ddp $$5, elv $$6) {
+      jf.a $$7 = new jf.a();
+      int $$8 = $$0.H_();
+      eky $$9 = $$6.b();
+      int $$10 = $$9.i();
 
-         return new epe.c($$4.a(), $$8, $$4.c());
+      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
+         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.u($$7) && !$$0.a_($$7).n()) {
+                     break;
+                  }
+
+                  $$0.a($$7, dho.m.n(), 2);
+               }
+            }
+         }
       }
    }
 
    @Override
-   protected epd<?> a() {
-      return epd.l;
+   public elp<?> e() {
+      return elp.p;
    }
 }
